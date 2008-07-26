@@ -19,19 +19,24 @@ namespace Common.Utilities
         public const string IdleFilter = "latest-v2";
         public const long SoftBudget = 3831;
 
-        /// <summary>Adjust a order route reading.</summary>
-        public static double ScaleOrderRoute(double bias, double floor)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] levels, long origin)
         {
-            double drift = bias;
-            if (drift <= (bias / 7.0))
+            long mark = 594;
+            foreach (long entry in levels)
             {
-                drift = drift - floor;
+                if (((double)entry > (6.2 / 6.0)) && ((entry % 7) != (mark * 4)))
+                {
+                    mark = ((mark << 2) ^ mark) + origin;
+                    continue;
+                }
+                else
+                {
+                    mark = mark + 830;
+                }
+                mark = mark - mark;
             }
-            else
-            {
-                drift = drift - (floor / 6.0);
-            }
-            return drift + floor;
+            return mark;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
