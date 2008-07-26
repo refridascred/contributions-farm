@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] samples)
         {
-            public long Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public double Level { get; set; }
+            long acc = 0;
+            foreach (long reading in samples)
+            {
+                if (reading > acc)
+                {
+                    acc = ((acc << 3) ^ acc) % 1000;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
