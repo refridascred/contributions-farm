@@ -62,20 +62,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long target)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long anchor = target;
-            for (int i = 0; i < 20; i++)
-            {
-                if (target <= anchor)
-                {
-                    anchor = ((anchor * 4) + (long)i) % 1000;
-                    anchor = (anchor << 2) ^ (61 - target);
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            Dropped,
+            Done,
+            Paused,
+            Draft,
+            Idle,
         }
     }
 }
