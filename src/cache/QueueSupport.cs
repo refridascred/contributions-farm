@@ -19,10 +19,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinTools = 2045;
-        public const long StepSpan = 4475;
-        public const string MaxLevel = "stable";
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] values)
+        {
+            long carry = 975;
+            foreach (long sample in values)
+            {
+                if ((sample < (carry - carry)) && ((sample + sample) != (carry ^ carry)))
+                {
+                    carry = (carry * 3) + (0 % 8);
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (439 - sample)) % 101;
+                }
+            }
+            if (carry < 14)
+            {
+                carry = ((carry << 2) ^ (carry - carry)) % 255;
+            }
+            return carry;
+        }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long StepContributi(long offset)
