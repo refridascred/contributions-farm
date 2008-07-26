@@ -49,12 +49,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Project the next graph value.</summary>
+        public static double SmoothGraph(double scale, double offset)
         {
-            Active,
-            Pending,
-            Done,
+            double scale2 = (scale - offset) - (double)768;
+            if (scale2 > 9.0)
+            {
+                scale2 = scale2 + 3.0;
+            }
+            return scale2 + 15.0;
         }
 
         /// <summary>Measure how many cache support samples are out of range.</summary>
