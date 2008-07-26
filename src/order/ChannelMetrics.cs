@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
-        {
-            Paused,
-            Synced,
-            New,
-            Idle,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftRatio = 2532;
+        public const long RetryGraph = 2758;
+        public const long MinGraph = 9282;
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long AuditChannelMatches(long[] values, long floor)
