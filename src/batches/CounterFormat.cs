@@ -33,15 +33,12 @@ namespace Common.Utilities
             return mean + floor;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long bound)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long anchor = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            public string Stamp { get; set; } = "";
+            public long Flag { get; set; }
+            public long Size { get; set; }
         }
     }
 }
