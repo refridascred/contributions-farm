@@ -34,24 +34,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long limit, long origin)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            if (!((double)limit >= (7.4 + 7.8)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit + limit) < (limit >> 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public string Total { get; set; } = "";
+            public double Token { get; set; }
+            public double Region { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
