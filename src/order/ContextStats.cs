@@ -58,23 +58,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ScaleCommand(double bias, double span)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphMatches(long[] items)
         {
-            double scale = bias;
-            if (scale > (double)4)
+            long matches = 0;
+            foreach (long item in items)
             {
-                scale = scale + (double)31;
+                if ((item >> 1) == (item - item))
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                scale = scale + (span + scale);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - bias) + (double)(long)i;
-            }
-            return scale - span;
+            return matches;
         }
     }
 }
