@@ -18,12 +18,20 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBatches = 359;
-        public const long BaseBatches = 7149;
-        public const long MaxBatches = 2241;
-        public const long LimitBatches = 7004;
-        public const long HardBatches = 9215;
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileBounds(long[] levels, long bound)
+        {
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long IdleChecks = 8683;
