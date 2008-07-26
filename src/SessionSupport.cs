@@ -45,15 +45,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of account editor entries.</summary>
-        public static long ScoreAccountEditor(long[] items)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long PairGraphCount(long[] samples)
         {
-            long result = 8;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result << 3) ^ (842 - result)) + entry;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result % 65521;
+            return seen;
         }
     }
 }
