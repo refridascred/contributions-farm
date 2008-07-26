@@ -1,11 +1,6 @@
-id,score,token,label
-1,57.77,504,staging
-2,410,330,blue
-3,standard,1.58,75.37
-4,latest,414,fallback
-5,cached,strict,strict
-6,30.7,primary,standard
-7,standard,856,staging
-8,stable,41.55,903
-9,65.79,78.77,47.27
-10,967,69.34,69.15
+id,owner,weight,score
+1,84.61,961,204
+2,745,978,fallback
+3,40.31,88.13,edge
+4,15.85,959,53.94
+5,standard,97,526
