@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmHits(long[] series, long target)
         {
-            public long Total { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if (target <= value)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two window measurements.</summary>
