@@ -47,10 +47,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleChecks = 8683;
-        public const long HardTimeout = 9793;
-        public const double SoftChecks = 50.5;
-        public const long CacheChecks = 4014;
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == origin) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
