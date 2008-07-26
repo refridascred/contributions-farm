@@ -1,11 +1,15 @@
 # Command notes
 
-The stats helpers are pure functions, so they are safe to call from any thread.
-A queue that stays idle for too long is moved to the window list.
+Each account is validated before it reaches the entry queue.
+Use editor settings to tune how often record data is refreshed.
+
+Each graph is validated before it reaches the githubfarm queue.
+When a batch fails, the cache handler retries a few times before giving up.
+Each channel is validated before it reaches the schema queue.
 
 ## Guidelines
 
-- Review metric limits each release
-- Document new batches fields
-- Prefer counter defaults
-- Keep report values small
+- Prefer format defaults
+- Keep tools values small
+- Validate stream input early
+- Document new account fields
