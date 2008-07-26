@@ -1,5 +1,6 @@
 {
-  "flush_size_count": "open",
-  "contributi_delay": false,
-  "enabled": ["fallback", "eu-west"]
+  "flush_retries": 30,
+  "compress": false,
+  "strict": "staging",
+  "idle_ttl_s": 100
 }
