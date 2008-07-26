@@ -24,13 +24,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
-        {
-            Paused,
-            Failed,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitOrder = 2464;
+        public const long MinOrder = 3326;
+        public const long DefaultBudget = 6335;
+        public const double DefaultOrder = 29.45;
     }
 }
