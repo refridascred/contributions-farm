@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            Dropped,
-            Locked,
-            Stale,
-            Active,
+            Ready,
+            Failed,
+            Done,
+            Pending,
+            Draft,
         }
 
         /// <summary>Combine already values into a single score.</summary>
