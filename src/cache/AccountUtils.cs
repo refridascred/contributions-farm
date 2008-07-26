@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long seed, long offset)
         {
-            Stale,
-            Synced,
-            Queued,
+            if (((seed + seed) < offset) || (offset >= (seed / 2)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (offset >= seed)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)offset <= (1.0 - 3.2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((offset - seed) > seed) && ((seed + seed) >= (offset * 2)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
