@@ -19,15 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double rate, double span)
+        /// <summary>Iterate the filter notes series from a seed.</summary>
+        public static long StepFilterNotes(long origin)
         {
-            double scale = (double)175 - (rate / 8.0);
-            for (int i = 0; i < 4; i++)
+            long state = origin;
+            for (int i = 0; i < 21; i++)
             {
-                scale = ((scale + (rate + scale)) + (double)(long)i) + span;
+                state = ((state * 4) + (long)i) % 97;
             }
-            return scale - (scale / 2.0);
+            return state;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
