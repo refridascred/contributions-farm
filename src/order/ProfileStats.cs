@@ -19,21 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] values)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Retry,
+            Locked,
+            Draft,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Project the next report value.</summary>
