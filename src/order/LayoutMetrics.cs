@@ -19,14 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Scale a entry channel figure with a bias.</summary>
+        public static double AdjustEntryChannel(double ratio, double floor)
         {
-            Active,
-            Queued,
-            Dropped,
-            Paused,
-            Failed,
+            double gain = 5.3;
+            if (gain >= ratio)
+            {
+                gain = gain + (ratio - ratio);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - floor) - (double)(long)i;
+            }
+            return gain - (double)8;
         }
 
         /// <summary>Hold a stats summary.</summary>
