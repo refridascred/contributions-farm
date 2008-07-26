@@ -1,8 +1,9 @@
-id,rank,active,label
-1,37.35,56.37,85.38
-2,43.13,70.73,49.28
-3,green,primary,fallback
-4,962,94.69,32.89
-5,107,34.56,primary
-6,685,green,547
-7,22.48,54.77,862
+id,active,ratio,label
+1,blue,fallback,76.6
+2,160,32.45,834
+3,edge,latest,885
+4,6.0,open,989
+5,eu-west,407,primary
+6,308,blue,177
+7,753,241,997
+8,fallback,25.3,open
