@@ -16,24 +16,12 @@ namespace Common.Utilities
         public const long StepCount = 4583;
         public const double IdleOrder = 68.86;
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long origin, long floor)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            if ((double)origin != (double)floor)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)9 >= (double)origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Ratio { get; set; }
+            public bool Score { get; set; }
+            public long Level { get; set; }
         }
     }
 }
