@@ -25,21 +25,10 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long OverlapMetricCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepWidth = 427;
+        public const double RetryLevel = 51.94;
+        public const long CacheSession = 9379;
+        public const long DefaultSession = 9845;
     }
 }
