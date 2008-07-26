@@ -1,6 +1,5 @@
 {
-  "strict": ["blue", "fallback", "strict", "fallback"],
-  "payload_capacity": 68.83,
-  "default_timeout": 71,
-  "burst_threshold_ms": 7
+  "sync_interval_count": "stable",
+  "cache_timeout": 6287,
+  "sync_depth_s": 7.39
 }
