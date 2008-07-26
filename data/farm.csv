@@ -1,10 +1,6 @@
-id,state,level,label,owner
-1,eu-west,862,95.44,100
-2,318,708,eu-west,49.21
-3,422,559,94.96,794
-4,644,122,open,latest
-5,977,300,82.57,521
-6,95.07,87.55,54.45,470
-7,fallback,989,52.31,standard
-8,157,blue,stable,staging
-9,fallback,310,22,845
+id,level,state,region,weight
+1,89.25,532,989,960
+2,39.4,958,23.78,320
+3,280,cached,806,351
+4,6.89,blue,50.76,504
+5,42.82,637,22.16,62.37
