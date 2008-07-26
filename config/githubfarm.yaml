@@ -1,14 +1,4 @@
 # githubfarm settings
-soft_ratio_count: strict
-retry_threshold_pct:
-  - 260
-  - 177
-  - 466
-  - 85
-default_window_s: 28.9
-token_ttl:
-  verbose: 4172
-  compress: 76
-  window_capacity: false
-batch_retries_count: 76
-flush_retries_pct: 31
+poll_threshold_ms: stable
+verbose: 70
+strict: 15
