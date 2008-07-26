@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many cache graph samples are out of range.</summary>
-        public static long TallyCacheGraphOutliers(long[] items)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((item / 7) != (hits + hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Synced,
+            Queued,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Fold a list of stream readings.</summary>
