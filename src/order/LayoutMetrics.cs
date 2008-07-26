@@ -19,11 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string StepAlready = "standard-v2";
-        public const string RetryAlready = "standard-1";
-        public const string IdleAlready = "cached";
-        public const long WindowAlready = 4932;
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
+        {
+            Dropped,
+            Failed,
+            Paused,
+            Pending,
+        }
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long FoldGraph(long[] levels)
