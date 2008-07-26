@@ -1,6 +1,13 @@
 # support settings
-support_ratio: 4693
-context_depth: 47
-already_ttl: true
-metric_capacity: 60.52
-batch_ratio: 6749
+soft_window_pct: 2735
+payload_timeout: blue
+default_size_s:
+  retry_interval_s: 33.4
+  burst_ratio: standard
+  burst_timeout_count:
+    - strict
+    - open
+  soft_depth: true
+  idle_ttl: 94.3
+record_depth: true
+hard_ratio_ms: primary
