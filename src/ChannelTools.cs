@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileRange(long[] data, long seed)
         {
-            Closed,
-            Dropped,
-            Queued,
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Blend two commits profile measurements.</summary>
