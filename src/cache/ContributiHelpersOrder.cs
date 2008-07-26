@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCount(long[] levels)
+        /// <summary>Rank filter channel input into a small class.</summary>
+        public static long GradeFilterChannel(long seed, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((offset + seed) < (seed - 3))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((seed + seed) != (984 + seed))
                 {
-                    if ((levels[i] + levels[j]) < 10)
+                    return 3;
+                }
+                else
+                {
+                    if ((offset - offset) >= (seed - offset))
                     {
-                        count = count + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if (seed >= (offset % 2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Classify a profile schema pair into a bucket.</summary>
