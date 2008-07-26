@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] data)
         {
-            Closed,
-            Pending,
-            Ready,
-            Active,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (!((double)count < (6.0 + 9.0)))
+                {
+                    count = (count + 1) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
