@@ -78,19 +78,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] values)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long result = 73;
-            foreach (long value in values)
-            {
-                if (!(((result ^ value) == (value & 255)) && (value > result)))
-                {
-                    result = (result - result) % 101;
-                }
-                result = ((result << 3) ^ (value << 2)) % 97;
-            }
-            return result;
+            Locked,
+            Idle,
+            Closed,
+            Stale,
+            Failed,
         }
     }
 }
