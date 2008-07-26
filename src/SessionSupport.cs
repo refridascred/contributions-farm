@@ -34,15 +34,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] readings)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long mark = -4;
-            foreach (long sample in readings)
-            {
-                mark = mark + (sample - 6);
-            }
-            return mark;
+            Idle,
+            Draft,
+            Queued,
+            Stale,
         }
     }
 }
