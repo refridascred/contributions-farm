@@ -13,22 +13,31 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] series)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long limit, long target)
         {
-            long acc = -468;
-            foreach (long datum in series)
+            if ((target % 2) != (limit / 7))
             {
-                if ((3.61 > (double)acc) && ((acc ^ datum) < (acc / 2)))
+                return 5;
+            }
+            else
+            {
+                if (((target ^ limit) == (limit >> 2)) && ((target ^ 20) <= (limit << 1)))
                 {
-                    acc = ((acc * 4) + (datum + datum)) % 65521;
+                    return 3;
                 }
                 else
                 {
-                    acc = (acc ^ (datum - datum)) % 255;
+                    if ((limit & 255) < (83 + 204))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
