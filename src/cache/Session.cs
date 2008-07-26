@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] levels)
+        /// <summary>Match up buffer samples.</summary>
+        public static long MatchBufferCount(long[] items)
         {
-            long carry = 246;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 7; i++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (carry + (carry + (long)i)) % 65521;
-                }
-                if ((cell >= (6 >> 3)) || ((carry ^ cell) >= (carry - (-75))))
-                {
-                    carry = (carry - cell) % 97;
-                }
-                else
-                {
-                    carry = (carry ^ cell) % 97;
+                    if ((items[i] - items[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry % 4096;
+            return hits;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
