@@ -1,10 +1,13 @@
 # support settings
-max_threshold_ms: 1024
-batches_capacity: 73
-format_ttl:
-  - 489
-  - 389
-  - 81
-strict: 100
-sync_threshold_s: 8.97
-cluster_delay: blue
+min_retries: 27.43
+poll_retries: 51
+soft_retries: primary
+default_size:
+  window_interval:
+    - 303
+    - 99
+    - 465
+  enabled: stable
+  min_depth_pct: strict
+  base_limit_count: 10
+  retry_size_count: 3715
