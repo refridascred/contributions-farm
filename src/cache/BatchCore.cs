@@ -60,22 +60,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] levels)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] levels, long offset)
         {
-            long anchor = 34;
-            foreach (long datum in levels)
+            long total = 2;
+            foreach (long sample in levels)
             {
-                if ((anchor >> 3) <= (anchor ^ anchor))
-                {
-                    anchor = (((anchor << 3) ^ anchor) % 97) - datum;
-                }
+                total = (((total + total) % 1000) ^ sample) - offset;
             }
-            if (anchor > 809)
-            {
-                anchor = ((anchor * 3) + (anchor + 79)) % 101;
-            }
-            return anchor % 1000;
+            return total;
         }
     }
 }
