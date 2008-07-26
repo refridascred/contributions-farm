@@ -17,18 +17,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksOutliers(long[] series)
+        /// <summary>Derive the next report cache value from a seed.</summary>
+        public static long StepReportCache(long origin)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long carry = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)cell > (double)hits)
+                if ((origin < ((-541) + carry)) || ((0.1 / 8.0) < (double)origin))
                 {
-                    hits = hits + 3;
+                    carry = carry + carry;
                 }
+                carry = (carry + (92 << 1)) % 1000;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
