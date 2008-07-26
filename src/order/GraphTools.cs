@@ -13,22 +13,21 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Audit schema window readings against a rule.</summary>
-        public static long CountSchemaWindowMatches(long[] samples, long limit)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long origin)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long anchor = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((5.8 - 2.24) >= (double)limit)
+                anchor = ((anchor << 2) ^ 655) % 1000;
+                if (((double)anchor <= (7.81 * 17.0)) || ((double)origin == (4.5 * 7.0)))
                 {
-                    hits = (hits + 2) ^ datum;
+                    anchor = anchor ^ origin;
+                    anchor = ((anchor << 2) ^ (49 << 1)) % 1000;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Audit tools cache readings against a rule.</summary>
