@@ -20,10 +20,22 @@ namespace Common.Utilities
             return drift - rate;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string StepNotes = "stable-edge";
-        public const long BurstNotes = 1503;
-        public const long WindowSize = 4771;
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long StepQueue = 1202;
