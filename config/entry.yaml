@@ -1,5 +1,28 @@
 # entry settings
-hard_window_s: edge
-idle_depth_s: false
-base_retries_ms: true
-support_capacity: 11.18
+retry_timeout:
+  - legacy
+  - cached
+  - eu-west
+burst_ttl: 52
+sync_delay_pct: fallback
+verbose: strict
+warm_timeout_count:
+  default_size_count: eu-west
+  token_limit:
+    - staging
+    - fallback
+    - standard
+  verbose: legacy
+  flush_window_s:
+    retry_retries_count: 9186
+    soft_size: fallback
+    order_window: 7684
+    sync_capacity: 91.58
+    stats_ratio: standard
+  soft_interval_ms: open
+  profile_size: true
+poll_window:
+  - eu-west
+  - fallback
+  - eu-west
+  - strict
