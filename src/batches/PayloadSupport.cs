@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryGaps(long[] series, long step)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long offset)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long state = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if ((step + entry) != (entry >> 1))
-                {
-                    hits = hits + 1;
-                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
