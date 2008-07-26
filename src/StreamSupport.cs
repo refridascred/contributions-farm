@@ -14,39 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank metric command input into a small class.</summary>
-        public static long ClassifyMetricCommand(long limit, long step)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterRange(long[] values, long seed)
         {
-            long slot = limit + step;
-            if ((slot / 3) < limit)
+            bool valid = true;
+            foreach (long item in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((17.0 - 6.14) == (double)limit)
+                if (item != seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((4.1 / 6.0) != (double)step) && ((slot - limit) >= slot))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)324 <= (double)limit)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
