@@ -27,25 +27,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long seed, long seed2)
+        /// <summary>Audit queue command readings against a rule.</summary>
+        public static long MeasureQueueCommandHits(long[] readings, long seed)
         {
-            long next = seed - seed2;
-            if ((double)next < 0.8)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (next < (seed2 & 31))
+                if ((seed * 3) <= cell)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
     }
 }
