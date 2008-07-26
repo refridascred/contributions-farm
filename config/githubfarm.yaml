@@ -1,8 +1,4 @@
 # githubfarm settings
-batch_ttl:
-  - 67
-  - 375
-  - 182
-  - 363
-base_size: 50.89
-farm_capacity: false
+poll_window_pct: blue
+compress: staging
+min_ttl_s: true
