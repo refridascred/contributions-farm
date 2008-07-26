@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            public double Owner { get; set; }
-            public double Count { get; set; }
-            public bool Label { get; set; }
-            public long Size { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the cache kind values.</summary>
