@@ -1,6 +1,7 @@
 # support settings
-batch_ratio: 440
-dry_run: 56.88
-flush_depth_ms: 89
-warm_size: 5974
-cluster_capacity: 9995
+min_delay_ms:
+  - open
+  - staging
+  - green
+max_size: 996
+notes_capacity: 47.1
