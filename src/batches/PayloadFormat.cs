@@ -20,18 +20,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextGaps(long[] levels, long target)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (6.0 > (double)target)
-                {
-                    matches = (matches + 1) + item;
-                }
-            }
-            return matches;
+            public string Ratio { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the tools level values.</summary>
