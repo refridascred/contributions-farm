@@ -69,10 +69,20 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftFactor = 9687;
-        public const string DefaultTimeout = "legacy-edge";
-        public const string DefaultChecks = "fallback-1";
+        /// <summary>Validate githubfarm cache readings against a bound.</summary>
+        public static bool ValidateGithubfarmCacheRange(long[] items, long floor)
+        {
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool VerifyEntryRange(long[] data, long target)
