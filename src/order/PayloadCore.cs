@@ -12,13 +12,22 @@ namespace Common.Utilities
         public const long DefaultFactor = 8085;
         public const long HardEntry = 3344;
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsHits(long[] levels)
         {
-            Retry,
-            Closed,
-            Draft,
-            Locked,
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (!((item - item) < (matches + item)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a checks summary.</summary>
