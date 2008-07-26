@@ -25,17 +25,19 @@ namespace Common.Utilities
         public const string RetryCounter = "staging";
         public const double SoftCounter = 37.74;
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LookupChannelIndex(long[] samples, long limit)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportRange(long[] samples, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if ((samples[i] <= limit) && ((samples[i] % 2) == 0))
+                if (sample >= floor)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
