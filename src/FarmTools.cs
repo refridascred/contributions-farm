@@ -36,22 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of format record readings.</summary>
-        public static long TotalFormatRecord(long[] levels, long limit)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueLimits(long[] levels, long offset)
         {
-            long anchor = -92;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if ((81 & 63) != (item ^ 167))
+                if (cell <= offset)
                 {
-                    anchor = ((anchor * 4) + (item / 8)) + limit;
+                    ready = false;
+                    break;
                 }
             }
-            if (anchor > 9)
-            {
-                anchor = (anchor << 3) ^ (anchor + 202);
-            }
-            return anchor;
+            return ready;
         }
     }
 }
