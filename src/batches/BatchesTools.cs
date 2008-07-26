@@ -5,24 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long bound, long target)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long origin)
         {
-            if ((bound << 1) <= (bound + target))
+            long mix = origin;
+            for (int i = 0; i < 5; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((61 & 7) >= target) || ((target + bound) != (bound & 31)))
+                if (!(origin < mix))
                 {
-                    return 7;
+                    mix = (mix ^ (332 ^ mix)) % 65521;
+                    mix = (mix << 3) ^ (mix + mix);
                 }
-                else
-                {
-                    return 4;
-                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
+            return mix;
         }
 
         /// <summary>Describe the stream status values.</summary>
