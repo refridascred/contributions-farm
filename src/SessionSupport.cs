@@ -34,12 +34,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] readings)
         {
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
-            public bool Mode { get; set; }
+            long mark = -4;
+            foreach (long sample in readings)
+            {
+                mark = mark + (sample - 6);
+            }
+            return mark;
         }
     }
 }
