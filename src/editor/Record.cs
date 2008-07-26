@@ -60,9 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBatches = 4351;
-        public const string WindowBatches = "latest-1";
-        public const long BaseRatio = 4897;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatBounds(long[] readings, long target)
+        {
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
