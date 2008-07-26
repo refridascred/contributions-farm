@@ -12,32 +12,25 @@ namespace Common.Utilities
         public const long MinLevel = 9232;
         public const long IdleSpan = 6263;
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long step, long limit)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long origin)
         {
-            long next = step ^ limit;
-            if ((limit & 31) == (next / 4))
+            long total = origin;
+            for (int i = 0; i < 16; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((next >> 2) >= (next & 127))
+                if (16.0 > 1.8)
                 {
-                    return 6;
+                    total = total ^ (8 + total);
+                    continue;
                 }
                 else
                 {
-                    if (!((double)step >= (14.0 + 5.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    total = ((total * 3) + (total + origin)) % 4096;
+                    total = total + (origin - total);
                 }
+                total = ((total * 5) + (long)i) % 101;
             }
+            return total;
         }
 
         /// <summary>Fold a list of order readings.</summary>
