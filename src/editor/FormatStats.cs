@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Format stats helpers.</summary>
     public static class FormatStats
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterHits(long[] series)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long seed, long bound)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            if (!(bound > (bound << 1)))
             {
-                if ((tally ^ tally) <= (reading - tally))
+                return 6;
+            }
+            else
+            {
+                if ((30 + bound) == (bound + bound))
                 {
-                    tally = tally + 2;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
