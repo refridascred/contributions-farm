@@ -29,18 +29,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsOutliers(long[] items)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((reading + count) >= (reading / 2))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public long Limit { get; set; }
+            public long Level { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
