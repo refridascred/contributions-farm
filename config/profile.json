@@ -1,11 +1,8 @@
 {
-  "idle_ratio_s": true,
-  "graph_size": false,
-  "batch_depth_s": {
-    "cache_interval_s": "standard",
-    "min_interval": "stable",
-    "flush_ratio_s": 15.86,
-    "dry_run": 11.9,
-    "persist": [269, 377, 10]
-  }
+  "base_ttl": 25.09,
+  "farm_limit": "legacy",
+  "max_limit": 69,
+  "dry_run": 250,
+  "hard_limit": "cached",
+  "verbose": [79, 485, 250]
 }
