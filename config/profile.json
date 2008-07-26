@@ -1,15 +1,5 @@
 {
-  "soft_size_s": ["fallback", "legacy", "cached", "green"],
-  "cache_limit": {
-    "burst_timeout_s": 8175,
-    "default_retries_count": 250,
-    "burst_ttl": 500,
-    "warm_ratio_count": "staging"
-  },
-  "burst_limit_count": 3910,
-  "hard_retries_count": {
-    "cache_ratio_pct": 23,
-    "profile_capacity": "fallback",
-    "default_delay_ms": "staging"
-  }
+  "idle_retries_s": "latest",
+  "retry_capacity_count": 29,
+  "hard_retries_ms": "primary"
 }
