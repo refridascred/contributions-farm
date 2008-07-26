@@ -75,19 +75,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ProjectOrder(double rate, double floor)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            double rate2 = floor + 0.07;
-            if (rate2 <= rate2)
-            {
-                rate2 = (rate2 - rate2) + rate;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate2 = (rate2 - floor) - (double)(long)i;
-            }
-            return rate2 - (3.0 * 3.9);
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
