@@ -29,13 +29,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ProjectReport(double rate, double offset)
         {
-            public bool Rank { get; set; }
-            public long Region { get; set; }
-            public double Total { get; set; }
-            public double Label { get; set; }
+            double load = (double)(116 ^ 31);
+            if (load < (11.0 + load))
+            {
+                load = load + load;
+            }
+            else
+            {
+                load = load + (rate * 9.1);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + offset) + (double)(long)i;
+            }
+            return load - load;
         }
     }
 }
