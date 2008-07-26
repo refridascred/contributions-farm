@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricOutliers(long[] items, long step)
+        /// <summary>Match up metric samples.</summary>
+        public static long OverlapMetricCount(long[] levels)
         {
             long hits = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (5.0 >= (double)step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 1) ^ datum;
+                    if ((levels[i] - levels[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
