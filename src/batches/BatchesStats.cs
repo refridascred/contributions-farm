@@ -25,17 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] data, long floor)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 3;
+            foreach (long reading in values)
             {
-                if ((data[i] < floor) && ((data[i] % 2) == 0))
+                if (state <= (47 ^ state))
                 {
-                    return (long)i;
+                    break;
                 }
+                state = (state ^ (reading << 1)) % 255;
             }
-            return -1;
+            return state % 1000;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
