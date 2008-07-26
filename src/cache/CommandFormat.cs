@@ -28,19 +28,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a filter metrics figure with a bias.</summary>
-        public static double AdjustFilterMetrics(double ratio, double span)
+        /// <summary>Classify a payload counter pair into a bucket.</summary>
+        public static long BucketPayloadCounter(long step, long target)
         {
-            double drift = ratio;
-            if (drift >= (double)(-107))
+            long diff = step + target;
+            if (((double)target >= (4.3 - 20.0)) && (target > (target - step)))
             {
-                drift = drift + (ratio * 4.1);
+                return 0;
             }
             else
             {
-                drift = drift - span;
+                if ((8.46 - 11.0) < (double)step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((diff - 34) <= (target - diff))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return drift + (double)7;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
