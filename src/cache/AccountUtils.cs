@@ -28,17 +28,18 @@ namespace Common.Utilities
             return gain + 0.14;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] items, long origin)
+        /// <summary>Count the report graph entries that pass the check.</summary>
+        public static long TallyReportGraphMatches(long[] series, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (items[i] >= origin)
+                if ((((4.69 / 6.0) > (double)seen) && ((seen - seed) >= seen)) && (7 > (seen >> 1)))
                 {
-                    return (long)i;
+                    seen = (seen + 1) - value;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
