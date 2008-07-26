@@ -13,14 +13,32 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long limit, long offset)
         {
-            Idle,
-            Paused,
-            Queued,
-            Locked,
-            Ready,
+            long cur = limit - offset;
+            if ((offset ^ cur) > offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((9.12 * 4.7) <= (double)limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((86 & 15) != (cur << 2)) || (cur < (limit >> 2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
