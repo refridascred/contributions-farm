@@ -1,6 +1,19 @@
 {
-  "warm_window_pct": 53.18,
-  "audit": ["cached", "latest", "open", "edge"],
-  "tools_timeout": 250,
-  "hard_retries_s": [257, 256]
+  "burst_threshold_s": [336, 196, 496, 173],
+  "max_limit_count": "blue",
+  "sync_window": {
+    "layout_threshold": {
+      "poll_limit": 60,
+      "soft_delay_s": "primary",
+      "idle_ratio_s": false,
+      "order_threshold": true,
+      "max_capacity_ms": true,
+      "default_interval": true
+    },
+    "strict": 9.61,
+    "soft_capacity": [368, 228, 132, 96],
+    "verbose": 5593,
+    "soft_delay": 500,
+    "report_interval": 96.8
+  }
 }
