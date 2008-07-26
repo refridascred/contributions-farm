@@ -1,9 +1,7 @@
 # githubfarm settings
-default_ttl_ms: edge
-flush_depth_s: 61.49
-record_depth: 31
-strict:
-  - green
-  - eu-west
-max_threshold_s: primary
-batches_depth: blue
+max_threshold: 3
+soft_limit_pct: stable
+min_threshold_count: 7980
+queue_ratio: 9
+base_size: standard
+dry_run: 500
