@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long bound, long limit)
         {
-            Draft,
-            Paused,
-            Pending,
-            New,
-            Ready,
+            if (((690 % 60) == (bound - limit)) || ((bound >> 5) <= limit))
+            {
+                return 6;
+            }
+            else
+            {
+                if (limit > (976 - bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (limit >= (limit & 7))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
