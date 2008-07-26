@@ -53,19 +53,12 @@ namespace Common.Utilities
         public const long CacheDepth = 8462;
         public const string BaseProfile = "fallback-1";
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ScaleEditor(double bias, double offset)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            double drift = bias;
-            if (drift > (offset / 6.0))
-            {
-                drift = drift + (double)14;
-            }
-            else
-            {
-                drift = drift - (double)173;
-            }
-            return drift + (drift * 4.36);
+            public long Weight { get; set; }
+            public long Level { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
