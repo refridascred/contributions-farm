@@ -1,5 +1,17 @@
 {
-  "buffer_capacity": "legacy",
-  "default_ttl": 60.74,
-  "idle_ratio_pct": 63.63
+  "soft_window": [334, 129, 352],
+  "queue_capacity": 7574,
+  "readonly": {
+    "counter_ttl": "green",
+    "default_interval": 4760,
+    "sync_capacity_s": "standard"
+  },
+  "flush_ttl_count": "staging",
+  "audit": "eu-west",
+  "poll_interval_pct": {
+    "entry_interval": [216, 13, 138],
+    "default_window": [206, 44, 287],
+    "retry_limit_count": 3929,
+    "compress": 60
+  }
 }
