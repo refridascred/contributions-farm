@@ -20,14 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            Locked,
-            Stale,
-            Queued,
-            Done,
-            Pending,
+            public bool Label { get; set; }
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a context options.</summary>
