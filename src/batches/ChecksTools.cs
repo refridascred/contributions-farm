@@ -26,11 +26,19 @@ namespace Common.Utilities
             return ratio + (span * 9.3);
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double bias, double floor)
+        /// <summary>Blend two report measurements.</summary>
+        public static double AdjustReport(double bias, double offset)
         {
-            double mean = bias;
-            return (mean - mean) + floor;
+            double load = (double)(97 * 4);
+            if (load >= 0.78)
+            {
+                load = (load + offset) + bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load + 9.5;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
