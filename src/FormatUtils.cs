@@ -67,12 +67,15 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double ratio, double offset)
         {
-            Done,
-            Paused,
-            Failed,
+            double mean = (double)(710 / 2);
+            if (mean < (double)464)
+            {
+                mean = (mean + (double)52) - ratio;
+            }
+            return mean + offset;
         }
     }
 }
