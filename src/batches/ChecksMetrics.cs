@@ -81,22 +81,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long bound)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueGaps(long[] samples)
         {
-            long acc = bound;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                long offset = acc + bound;
-                acc = ((acc * 3) + offset) % 255;
-                if ((4.1 / 4.0) == (double)bound)
+                if (((11.0 + 9.3) < (3.7 + 3.5)) && ((10.0 + 2.9) != (double)seen))
                 {
-                    acc = acc + (offset & 63);
-                    offset = (offset << 2) ^ (bound - (long)i);
+                    seen = (seen + 2) + entry;
                 }
-                acc = ((acc * 5) + (long)i) % 65521;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
     }
 }
