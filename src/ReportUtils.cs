@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long floor, long bound)
-        {
-            long offset = floor - bound;
-            if ((492 % 12) == (offset - bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if (floor >= (offset - offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinCount = 6675;
+        public const string DefaultQueue = "fallback-v2";
+        public const double WindowQueue = 41.69;
+        public const long MinInterval = 7586;
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long MatchFarmCount(long[] samples)
