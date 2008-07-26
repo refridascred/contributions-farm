@@ -48,9 +48,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitMetric = 6047;
-        public const long BatchMetric = 3043;
-        public const long MinFactor = 7659;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitLevel = 5906;
+        public const double BatchChannel = 24.96;
+        public const long BaseSize = 7145;
+        public const long DefaultLevel = 2079;
+        public const long MinInterval = 7920;
     }
 }
