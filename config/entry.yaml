@@ -1,9 +1,11 @@
 # entry settings
-poll_timeout_s: 100
-retry_delay_count: 30
-enabled:
-  route_threshold: 86
-  payload_size: 1
-  verbose: stable
-default_retries_s: 2.15
-graph_retries: true
+dry_run: 25.42
+min_window: true
+audit: fallback
+max_depth: legacy
+hard_retries_s:
+  - 210
+  - 56
+  - 438
+  - 355
+flush_delay: 6841
