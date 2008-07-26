@@ -40,15 +40,10 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
-        {
-            Queued,
-            Idle,
-            Done,
-            Draft,
-            Paused,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstLevel = 4943;
+        public const long StepSupport = 5526;
+        public const long WindowSupport = 7968;
 
         /// <summary>Find the first route entry that matches the target.</summary>
         public static long FindRouteIndex(long[] items, long seed)
