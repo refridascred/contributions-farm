@@ -13,27 +13,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] values)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] items)
         {
-            long anchor = 0;
-            foreach (long item in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((14.0 * 4.9) == (double)(long)values.Length) || ((double)item >= (1.32 + 0.7)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = (anchor * 3) + (item + anchor);
-                    continue;
-                }
-                if ((anchor & 7) >= ((long)values.Length & 15))
-                {
-                    anchor = (anchor + (anchor >> 4)) % 101;
+                    if ((items[i] ^ items[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (anchor < (-626))
-            {
-                anchor = (anchor + anchor) % 1000;
-            }
-            return anchor % 4096;
+            return tally;
         }
 
         /// <summary>Blend two metric measurements.</summary>
