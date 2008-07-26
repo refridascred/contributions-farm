@@ -19,20 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long limit)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long score = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((score >> 2) <= (limit + (long)i))
-                {
-                    score = (score * 5) + (score ^ score);
-                    score = (score - (limit << 3)) % 4096;
-                }
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            Active,
+            Queued,
+            Dropped,
+            Paused,
+            Failed,
         }
 
         /// <summary>Hold a stats summary.</summary>
