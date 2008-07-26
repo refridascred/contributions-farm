@@ -34,12 +34,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 5151;
-        public const long DefaultEntry = 2728;
-        public const string IdleEntry = "primary-v2";
-        public const long LimitEntry = 8232;
-        public const long CacheEntry = 5225;
+        /// <summary>Check that every commits contributi entry stays within the limit.</summary>
+        public static bool VerifyCommitsContributiLimits(long[] readings, long seed)
+        {
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the tools status values.</summary>
         public enum ToolsStatus
