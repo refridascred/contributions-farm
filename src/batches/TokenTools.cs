@@ -33,9 +33,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string CacheRecord = "legacy-1";
-        public const long StepRecord = 3621;
-        public const long LimitBudget = 7346;
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
