@@ -12,18 +12,13 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesGaps(long[] levels, long limit)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((double)tally < 9.75)
-                {
-                    tally = ((tally + 2) + item) + limit;
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
