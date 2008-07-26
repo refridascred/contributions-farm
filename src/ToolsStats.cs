@@ -39,20 +39,10 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Validate batches checks readings against a bound.</summary>
-        public static bool VerifyBatchesChecksRange(long[] items, long origin)
-        {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheSpan = 1513;
+        public const long WindowSize = 4094;
+        public const string BaseGithubfarm = "fallback-1";
 
         /// <summary>Scale a token order figure with a bias.</summary>
         public static double SmoothTokenOrder(double bias, double floor)
