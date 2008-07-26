@@ -72,24 +72,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a farm cluster value against two limits.</summary>
-        public static long SortFarmCluster(long offset, long bound)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheHits(long[] levels, long floor)
         {
-            if ((offset - bound) != (bound & 255))
+            long hits = 0;
+            foreach (long value in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound == (8.85 / 9.0))
+                if (hits >= (hits * 5))
                 {
-                    return 1;
+                    hits = ((hits + 2) + value) - floor;
                 }
                 else
                 {
-                    return 0;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
