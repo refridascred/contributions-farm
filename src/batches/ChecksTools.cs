@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowInterval = 5734;
-        public const long MinCount = 1184;
-        public const long WindowLevel = 7629;
-        public const long BatchLayout = 6233;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatRange(long[] values, long step)
+        {
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry <= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long StepWindow(long offset)
