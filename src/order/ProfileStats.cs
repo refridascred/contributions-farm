@@ -52,19 +52,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Check that every route graph entry stays within the limit.</summary>
-        public static bool VerifyRouteGraphRange(long[] items, long bound)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] data)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long anchor = 24;
+            foreach (long reading in data)
             {
-                if (entry <= bound)
+                if ((reading / 9) <= (reading * 5))
                 {
-                    found = false;
-                    break;
+                    anchor = ((anchor << 2) ^ (anchor + reading)) % 65521;
                 }
             }
-            return found;
+            return anchor;
         }
     }
 }
