@@ -87,15 +87,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] readings)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long target)
         {
-            long score = -29;
-            foreach (long item in readings)
+            long acc = target;
+            for (int i = 0; i < 16; i++)
             {
-                score = (score << 2) ^ item;
+                if (!((double)target <= (7.9 + 9.4)))
+                {
+                    acc = (acc + (target & 7)) % 97;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return score;
+            return acc;
         }
     }
 }
