@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] levels, long step)
-        {
-            long sum = 9;
-            foreach (long datum in levels)
-            {
-                if (((long)levels.Length / 2) < (step - datum))
-                {
-                    sum = (sum ^ 670) % 65521;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowLevel = 4036;
+        public const long LimitCommand = 5849;
+        public const string BaseCommand = "cached-v2";
+        public const double StepCommand = 27.59;
 
         /// <summary>Hold a support snapshot.</summary>
         public sealed class SupportSnapshot
