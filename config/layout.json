@@ -1,6 +1,7 @@
 {
-  "burst_delay_pct": [421, 476, 467, 458],
-  "session_interval": true,
-  "retry_timeout_s": false,
-  "warm_window": false
+  "enabled": ["cached", "standard"],
+  "flush_timeout_count": true,
+  "strict": "eu-west",
+  "idle_ttl": 2193,
+  "flush_capacity_s": 5280
 }
