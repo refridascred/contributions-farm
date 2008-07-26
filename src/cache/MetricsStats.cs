@@ -33,19 +33,12 @@ namespace Common.Utilities
         public const long CacheSpan = 8264;
         public const long WindowContext = 1301;
 
-        /// <summary>Validate tools token readings against a bound.</summary>
-        public static bool ValidateToolsTokenBounds(long[] values, long floor)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Token { get; set; }
+            public bool Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
