@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the window context entries that pass the check.</summary>
-        public static long MeasureWindowContextOutliers(long[] readings)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderLimits(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if ((sample & 3) < sample)
+                if (reading < step)
                 {
-                    seen = seen + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
