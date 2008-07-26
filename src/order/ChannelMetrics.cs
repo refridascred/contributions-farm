@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] values)
+        /// <summary>Compare every pair of farm session readings.</summary>
+        public static long PairFarmSessionCount(long[] levels)
         {
-            long state = -4;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((10.0 - 5.6) <= (double)entry)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = (state + state) % 97;
+                    if ((levels[i] - levels[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state % 4096;
+            return matches;
         }
 
         /// <summary>Measure how many layout channel samples are out of range.</summary>
