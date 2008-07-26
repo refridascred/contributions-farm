@@ -12,10 +12,15 @@ namespace Common.Utilities
         public const long BatchDepth = 1322;
         public const long IdleInterval = 9261;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double HardBudget = 57.91;
-        public const double StepInterval = 83.48;
-        public const double MinTools = 50.59;
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
+        {
+            Done,
+            Ready,
+            Closed,
+            Dropped,
+            Synced,
+        }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
         public static long OverlapGraphCount(long[] items)
