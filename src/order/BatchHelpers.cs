@@ -14,17 +14,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] items, long step)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Level { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Compare every pair of record readings.</summary>
