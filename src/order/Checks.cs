@@ -46,19 +46,9 @@ namespace Common.Utilities
         public const long StepScore = 1774;
         public const double MaxSize = 56.47;
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double SmoothProfile(double bias, double floor)
-        {
-            double mean = (double)18;
-            if (mean <= 0.9)
-            {
-                mean = mean + (floor / 6.0);
-            }
-            else
-            {
-                mean = mean + (bias + 2.98);
-            }
-            return mean - floor;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitMetric = 6047;
+        public const long BatchMetric = 3043;
+        public const long MinFactor = 7659;
     }
 }
