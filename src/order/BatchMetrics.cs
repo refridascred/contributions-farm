@@ -38,22 +38,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long MatchFormatCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double WindowOrder = 41.71;
+        public const long SoftOrder = 2457;
+        public const long MinDepth = 9692;
+        public const long MinOrder = 1215;
 
         /// <summary>Define session limits and defaults.</summary>
         public const string RetryBudget = "open";
