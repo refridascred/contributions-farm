@@ -1,12 +1,17 @@
 # githubfarm settings
-retry_capacity_ms: 60
-hard_window: fallback
-idle_window: blue
-hard_window_count:
-  verbose:
-    - latest
-    - eu-west
-  max_capacity_s: 5424
-  filter_interval: latest
-  checks_retries: false
-compress: cached
+compress:
+  cache_delay: strict
+  batch_ttl: 66.45
+  buffer_threshold:
+    verbose: true
+    warm_timeout_s: 3271
+    idle_threshold_ms: 3647
+    persist: 9
+    flush_window: open
+    poll_ratio: 6496
+  strict: eu-west
+  persist: 26
+persist: strict
+batches_window: open
+flush_timeout: 26
+warm_delay_ms: cached
