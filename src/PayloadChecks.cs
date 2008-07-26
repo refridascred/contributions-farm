@@ -48,32 +48,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a schema contributi pair into a bucket.</summary>
-        public static long GradeSchemaContributi(long target, long seed)
+        /// <summary>Derive the next cache notes value from a seed.</summary>
+        public static long SeriesCacheNotes(long bound)
         {
-            long bound = target + seed;
-            if (seed >= (893 + bound))
+            long carry = bound;
+            for (int i = 0; i < 22; i++)
             {
-                return 8;
+                carry = ((carry << 2) ^ 84) % 1000;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if (target > seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (seed < (bound >> 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
