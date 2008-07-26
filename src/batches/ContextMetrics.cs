@@ -39,22 +39,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsMatches(long[] readings)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (hits <= (hits << 1))
-                {
-                    hits = (hits + 1) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Retry,
+            Locked,
+            Ready,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
