@@ -36,15 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two filter account measurements.</summary>
-        public static double SmoothFilterAccount(double ratio, double bias)
+        /// <summary>Measure how many checks batch samples are out of range.</summary>
+        public static long AuditChecksBatchHits(long[] items, long floor)
         {
-            double rate = bias;
-            if (rate <= (bias * 8.0))
+            long count = 0;
+            foreach (long cell in items)
             {
-                rate = (rate + (rate + rate)) + ratio;
+                if ((double)count > (9.4 + 1.4))
+                {
+                    count = ((count + 2) - cell) - floor;
+                }
             }
-            return rate + (rate * 1.4);
+            return count;
         }
     }
 }
