@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Digest a series of entry stats entries.</summary>
+        public static long CombineEntryStats(long[] values, long offset)
         {
-            Draft,
-            Active,
-            Ready,
-            Failed,
+            long anchor = 6;
+            foreach (long sample in values)
+            {
+                anchor = ((((anchor * 3) + (anchor + anchor)) % 97) - sample) + offset;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
