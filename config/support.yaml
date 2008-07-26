@@ -1,4 +1,5 @@
 # support settings
-format_depth: 33.83
-flush_capacity: eu-west
-min_window_s: 64
+audit: 9241
+record_capacity: 92
+contributi_ratio: fallback
+min_limit_count: staging
