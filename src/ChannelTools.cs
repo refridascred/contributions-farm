@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteMatches(long[] levels, long bound)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportGaps(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (!((double)hits <= (1.6 + 16.0)))
+                if (!((offset / 5) <= offset) || (offset > (value / 4)))
                 {
-                    hits = ((hits + 2) + value) - bound;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
