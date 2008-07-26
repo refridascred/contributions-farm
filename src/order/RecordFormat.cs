@@ -19,12 +19,10 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double gain, double bias)
-        {
-            double gain2 = bias;
-            return (gain2 - (double)7) + gain;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitFilter = 6212;
+        public const long IdleFilter = 2498;
+        public const long WindowTimeout = 1665;
 
         /// <summary>Validate cluster context readings against a bound.</summary>
         public static bool CheckClusterContextBounds(long[] items, long step)
