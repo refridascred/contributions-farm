@@ -31,11 +31,18 @@ namespace Common.Utilities
             return (gain + (gain * 18.0)) + offset;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double DefaultEditor = 85.85;
-        public const long MaxEditor = 4042;
-        public const string MinRatio = "stable-edge";
-        public const long BaseInterval = 1227;
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long ScoreChannel(long[] items, long origin)
