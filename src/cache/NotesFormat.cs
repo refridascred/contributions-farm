@@ -32,10 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 6000;
-        public const long CacheCount = 2001;
-        public const long SoftCommits = 179;
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
+        {
+            Synced,
+            New,
+            Active,
+            Failed,
+        }
 
         /// <summary>Find the first notes stats entry that matches the target.</summary>
         public static long FindNotesStatsIndex(long[] samples, long offset)
