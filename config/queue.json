@@ -1,8 +1,8 @@
 {
-  "verbose": 31,
-  "channel_ttl": false,
-  "min_threshold_count": [157, 2],
-  "window_ratio": 6455,
-  "min_retries_ms": "fallback",
-  "idle_interval": 60
+  "cache_ttl": "edge",
+  "enabled": "fallback",
+  "commits_interval": 9679,
+  "order_window": 60,
+  "compress": true,
+  "context_window": "local"
 }
