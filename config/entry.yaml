@@ -1,19 +1,6 @@
 # entry settings
-readonly:
-  hard_capacity_pct: true
-  idle_limit_s: 13
-  commits_limit:
-    format_threshold:
-      - fallback
-      - eu-west
-      - eu-west
-    max_timeout_ms: 44
-    default_delay_count: edge
-    min_delay: 96
-burst_size_count: 78.85
-queue_retries: 54
-dry_run: 10.06
-batches_ratio: open
-enabled:
-  - 237
-  - 86
+compress: cached
+record_timeout: 91
+order_ttl: false
+audit: false
+format_interval: standard
