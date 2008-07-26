@@ -61,16 +61,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] readings, long seed)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryBounds(long[] items, long floor)
         {
-            long carry = 7;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                carry = ((carry << 2) ^ entry) + seed;
-                carry = carry ^ (entry / 5);
+                if (cell >= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry % 65521;
+            return ok;
         }
 
         /// <summary>Adjust a graph reading.</summary>
