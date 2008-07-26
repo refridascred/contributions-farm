@@ -1,5 +1,6 @@
 {
-  "commits_threshold": "green",
-  "editor_retries": 68.62,
-  "enabled": ["latest", "local", "stable", "legacy"]
+  "flush_window": 20,
+  "min_depth_count": 6290,
+  "session_depth": 52.53,
+  "channel_interval": "green"
 }
