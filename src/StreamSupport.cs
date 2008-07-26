@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double BlendProfile(double ratio, double floor)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            double drift = (double)6 - (double)2;
-            return ((drift + (7.6 + drift)) + ratio) + floor;
+            public long Owner { get; set; }
+            public long Weight { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Rank batch input into a small class.</summary>
