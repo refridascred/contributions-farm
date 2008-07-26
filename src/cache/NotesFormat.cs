@@ -19,21 +19,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long MatchStreamCount(long[] levels)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public string Offset { get; set; } = "";
+            public double Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the route phase values.</summary>
