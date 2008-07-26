@@ -13,19 +13,21 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double gain, double span)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long seed)
         {
-            double bias = (1.39 - gain) - (9.1 * 2.0);
-            if (bias >= (double)0)
+            long carry = seed;
+            for (int i = 0; i < 16; i++)
             {
-                bias = bias - span;
+                carry = (carry - (seed << 3)) % 97;
+                carry = (carry - (carry + 1)) % 1000;
+                if ((carry + 773) > (seed >> 5))
+                {
+                    carry = (carry << 3) ^ seed;
+                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + (span * 4.0)) + (double)(long)i;
-            }
-            return bias - (double)4;
+            return carry;
         }
 
         /// <summary>Audit tools cache readings against a rule.</summary>
