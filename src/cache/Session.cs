@@ -19,38 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long step, long step2)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricHits(long[] items, long step)
         {
-            if ((step - 144) <= step2)
+            long seen = 0;
+            foreach (long value in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(step <= (step2 ^ step2)))
+                if ((step << 1) < (value * 5))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step2 & 127) == (step >> 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((12.0 - 16.0) > (double)step2)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Project the next channel value.</summary>
