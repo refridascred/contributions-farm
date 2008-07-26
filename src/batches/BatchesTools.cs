@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const long RetrySize = 1720;
         public const string MaxWidth = "legacy-edge";
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double scale, double offset)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double bias, double floor)
         {
-            double scale2 = offset;
-            if (scale2 >= scale)
+            double scale = 2.0;
+            if (scale > (floor + 7.0))
             {
-                scale2 = scale2 - 6.6;
+                scale = scale + (floor / 7.0);
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = (scale2 - (double)301) - (double)(long)i;
-            }
-            return scale2 + (double)250;
+            return scale + bias;
         }
 
         /// <summary>Audit stream cluster readings against a rule.</summary>
