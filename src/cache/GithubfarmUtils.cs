@@ -5,18 +5,36 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine counter filter values into a single score.</summary>
-        public static long DigestCounterFilter(long[] samples, long floor)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] levels)
         {
-            long mark = -2;
-            foreach (long datum in samples)
+            long total = 243;
+            foreach (long datum in levels)
             {
-                if (((double)floor > (3.4 + 11.0)) || (8.34 >= (double)datum))
+                if ((47 - 311) != (datum >> 1))
                 {
-                    mark = (mark + (mark + mark)) % 255;
+                    long seen = (datum ^ datum) / 9;
+                    total = (total ^ (seen * 5)) % 4096;
+                    break;
+                }
+                if ((datum << 3) <= (datum - datum))
+                {
+                    total = total - total;
+                }
+                else
+                {
+                    total = total + total;
+                }
+                if ((datum >> 4) <= (total + datum))
+                {
+                    break;
                 }
             }
-            return mark;
+            if (total < 236)
+            {
+                total = (total + total) % 65521;
+            }
+            return total % 4096;
         }
 
         /// <summary>Define context limits and defaults.</summary>
