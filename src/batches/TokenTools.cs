@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
-        {
-            Stale,
-            Done,
-            Active,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinRatio = 8720;
+        public const string MaxInterval = "cached-v2";
+        public const long BaseScore = 2311;
+        public const double BurstFilter = 64.47;
 
         /// <summary>Count entry already pairs that satisfy a relation.</summary>
         public static long PairEntryAlreadyCount(long[] levels)
