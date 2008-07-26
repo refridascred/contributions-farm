@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportRange(long[] items, long step)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] series)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell < step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] + series[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Hold a cache info.</summary>
