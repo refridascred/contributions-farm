@@ -1,6 +1,7 @@
 {
-  "dry_run": false,
-  "batch_ratio_ms": "legacy",
-  "editor_timeout": 6008,
-  "retry_ttl_pct": "fallback"
+  "sync_window_pct": false,
+  "editor_capacity": 41.65,
+  "enabled": true,
+  "min_ttl": "stable",
+  "retry_capacity_count": [195, 280, 441, 434]
 }
