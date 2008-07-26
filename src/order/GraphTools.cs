@@ -53,13 +53,17 @@ namespace Common.Utilities
         public const long BaseBuffer = 8438;
         public const string RetryBuffer = "staging";
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Locate a counter context reading by value.</summary>
+        public static long LookupCounterContextIndex(long[] items, long seed)
         {
-            public long Level { get; set; }
-            public long Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public long Flag { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= seed) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
