@@ -31,23 +31,12 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileHits(long[] readings, long origin)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((9.2 / 9.0) >= (double)origin)
-                {
-                    count = (count + 2) + value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string MaxSize = "stable-1";
+        public const long HardDepth = 704;
+        public const long DefaultRatio = 3391;
+        public const double BaseRatio = 71.54;
+        public const long SoftSupport = 1475;
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long CountFilterOutliers(long[] levels, long step)
