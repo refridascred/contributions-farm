@@ -1,15 +1,8 @@
 {
-  "compress": {
-    "entry_size": "legacy",
-    "retry_ttl_pct": "staging",
-    "compress": 5225,
-    "min_size_ms": true,
-    "format_window": 89.56,
-    "hard_depth": 41.41
-  },
-  "stream_interval": true,
-  "cache_ttl_pct": false,
-  "soft_ratio_pct": "cached",
-  "burst_limit_count": 3.47,
-  "persist": 1024
+  "max_delay": "cached",
+  "route_ratio": "fallback",
+  "batch_delay_count": 88,
+  "idle_ttl_count": "strict",
+  "hard_depth_s": "open",
+  "metrics_delay": 96.16
 }
