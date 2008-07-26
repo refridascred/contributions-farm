@@ -41,18 +41,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphOutliers(long[] readings, long step)
+        /// <summary>Audit account session readings against a rule.</summary>
+        public static long MeasureAccountSessionOutliers(long[] values)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if ((((0 / 2) > (count & 63)) || ((step << 3) <= (step ^ sample))) && ((4.58 * 3.57) >= (double)sample))
+                if (((datum & 31) == (datum - datum)) && ((datum / 2) <= (datum + datum)))
                 {
-                    count = count + 3;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
