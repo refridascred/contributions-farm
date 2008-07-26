@@ -25,10 +25,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepWidth = 427;
-        public const double RetryLevel = 51.94;
-        public const long CacheSession = 9379;
-        public const long DefaultSession = 9845;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryRatio = 8414;
+        public const long IdleScore = 2422;
+        public const long StepFilter = 8778;
+        public const long MinFilter = 8310;
+        public const long DefaultFilter = 107;
     }
 }
