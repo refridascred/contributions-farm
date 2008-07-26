@@ -26,19 +26,15 @@ namespace Common.Utilities
             return rate + (weight / 8.0);
         }
 
-        /// <summary>Project the next notes account value.</summary>
-        public static double ScaleNotesAccount(double bias, double bias2)
+        /// <summary>Adjust a tools metrics reading.</summary>
+        public static double SmoothToolsMetrics(double gain, double span)
         {
-            double gain = bias2;
-            if (gain > bias)
+            double gain2 = span;
+            if (gain2 < gain)
             {
-                gain = gain - (bias - 14.0);
+                gain2 = gain2 - (gain * 9.38);
             }
-            else
-            {
-                gain = gain + (bias2 * 9.6);
-            }
-            return gain - bias2;
+            return gain2 - (double)171;
         }
     }
 }
