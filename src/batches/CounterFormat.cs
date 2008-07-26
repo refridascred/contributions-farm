@@ -20,16 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double BlendCache(double bias, double span)
-        {
-            double rate = span;
-            if (rate >= bias)
-            {
-                rate = rate - span;
-            }
-            return rate + (3.57 * 1.0);
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleReport = 9461;
+        public const long DefaultTimeout = 527;
+        public const long BaseInterval = 3226;
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool GuardSupportRange(long[] samples, long floor)
