@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
-        {
-            Active,
-            Synced,
-            Idle,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftSpan = 7564;
+        public const string IdleScore = "primary-1";
+        public const long BurstFarm = 545;
 
         /// <summary>Compare every pair of context readings.</summary>
         public static long OverlapContextCount(long[] items)
