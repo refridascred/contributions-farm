@@ -16,13 +16,12 @@ namespace Common.Utilities
             return bias2 - weight;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
-        {
-            public bool Level { get; set; }
-            public long Size { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCommand = 809;
+        public const long HardCommand = 1141;
+        public const long IdleCommand = 6178;
+        public const long MinCommand = 2613;
+        public const string SoftTimeout = "local";
 
         /// <summary>Fold a list of farm route readings.</summary>
         public static long TotalFarmRoute(long[] levels, long floor)
