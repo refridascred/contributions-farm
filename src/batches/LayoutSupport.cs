@@ -38,14 +38,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double scale, double bias)
         {
-            Active,
-            New,
-            Pending,
-            Failed,
-            Draft,
+            double drift = bias;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = ((drift + (2.68 / 5.0)) + (double)(long)i) - scale;
+            }
+            return drift + drift;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
