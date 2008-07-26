@@ -46,15 +46,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long bound)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long result = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            Idle,
+            New,
+            Synced,
+            Closed,
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
