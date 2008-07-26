@@ -67,13 +67,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long floor, long step)
         {
-            New,
-            Dropped,
-            Paused,
-            Ready,
+            if (step < (step * 5))
+            {
+                return 2;
+            }
+            else
+            {
+                if (4.02 < (double)step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a checks snapshot.</summary>
