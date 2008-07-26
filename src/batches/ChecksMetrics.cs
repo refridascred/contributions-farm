@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit cache queue readings against a rule.</summary>
-        public static long TallyCacheQueueOutliers(long[] data)
+        /// <summary>Combine checks notes values into a single score.</summary>
+        public static long CombineChecksNotes(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long score = 699;
+            foreach (long entry in items)
             {
-                if ((double)entry != (6.02 / 8.0))
-                {
-                    hits = hits + 2;
-                }
+                score = ((score << 3) ^ entry) % 255;
+                score = (score << 3) ^ (entry - score);
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
