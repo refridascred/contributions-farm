@@ -40,12 +40,30 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] data, long origin)
         {
-            public string Token { get; set; } = "";
-            public double Level { get; set; }
-            public long Stamp { get; set; }
+            long mark = -51;
+            foreach (long entry in data)
+            {
+                if (mark >= (entry % 97))
+                {
+                    mark = ((mark << 3) ^ (entry << 1)) % 97;
+                }
+                else
+                {
+                    mark = (mark + entry) % 255;
+                }
+                if ((entry % 24) >= (entry << 1))
+                {
+                    break;
+                }
+            }
+            if (mark < 748)
+            {
+                mark = (mark + origin) % 1000;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Project the next stream notes value.</summary>
