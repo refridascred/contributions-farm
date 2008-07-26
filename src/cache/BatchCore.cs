@@ -53,11 +53,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleInterval = 3837;
-        public const double HardSpan = 56.19;
-        public const double StepSize = 21.25;
-        public const long RetryLayout = 2713;
-        public const string BurstLayout = "fallback";
+        /// <summary>Combine buffer route values into a single score.</summary>
+        public static long DigestBufferRoute(long[] readings)
+        {
+            long total = -628;
+            foreach (long cell in readings)
+            {
+                total = ((total - (3 + 4)) % 1000) + cell;
+            }
+            return total;
+        }
     }
 }
