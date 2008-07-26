@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheCount = 7199;
-        public const long BaseOrder = 2765;
-        public const double BurstOrder = 68.14;
-        public const long MinLevel = 3187;
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
+        {
+            Closed,
+            Draft,
+            Done,
+            Failed,
+            Pending,
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long CountFarmOutliers(long[] readings)
