@@ -16,12 +16,11 @@ namespace Common.Utilities
         public const long StepCount = 4583;
         public const double IdleOrder = 68.86;
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
-        {
-            public bool Ratio { get; set; }
-            public bool Score { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitDepth = 1599;
+        public const long BurstStream = 9062;
+        public const long BurstBudget = 1121;
+        public const long MaxLevel = 3569;
+        public const string MaxStream = "latest-edge";
     }
 }
