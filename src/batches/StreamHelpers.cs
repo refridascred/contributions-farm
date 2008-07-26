@@ -14,26 +14,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] items)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long target)
         {
-            long total = 0;
-            foreach (long item in items)
+            long mark = target;
+            for (int i = 0; i < 14; i++)
             {
-                for (int i = 0; i < 10; i++)
+                if (target <= (target + target))
                 {
-                    total = ((total - total) % 4096) + (long)i;
+                    mark = ((mark << 3) ^ (target + target)) % 255;
                 }
-                if ((item >= (4 & 15)) || ((total + item) >= (item * 3)))
-                {
-                    total = (total * 5) + item;
-                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            if (total < 70)
-            {
-                total = (total + 48) % 97;
-            }
-            return total;
+            return mark;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
