@@ -12,17 +12,13 @@ namespace Common.Utilities
             return ((rate - (double)6) + weight) + offset;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] series, long offset)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= offset) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Idle,
+            Locked,
+            Active,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
