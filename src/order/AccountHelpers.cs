@@ -46,15 +46,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] readings)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long score = 3;
-            foreach (long reading in readings)
-            {
-                score = score ^ reading;
-            }
-            return score % 97;
+            public long Flag { get; set; }
+            public bool Ratio { get; set; }
+            public long Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Look up the position of a support sample.</summary>
