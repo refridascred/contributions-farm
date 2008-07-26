@@ -43,32 +43,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long seed, long origin)
+        /// <summary>Count githubfarm checks pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmChecksCount(long[] series)
         {
-            long edge = seed + origin;
-            if ((double)edge < (7.86 / 3.0))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((0 + origin) != (origin + seed))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin & 1) > edge)
+                    if ((series[i] + series[j]) == 0)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
