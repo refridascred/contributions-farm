@@ -45,19 +45,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchBounds(long[] levels, long floor)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long PairGithubfarmCount(long[] data)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell <= floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((data[i] - data[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
