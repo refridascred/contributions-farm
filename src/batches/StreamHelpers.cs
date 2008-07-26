@@ -56,19 +56,18 @@ namespace Common.Utilities
         public const long DefaultRatio = 8892;
         public const long DefaultInterval = 3063;
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] levels)
+        /// <summary>Measure how many cache support samples are out of range.</summary>
+        public static long AuditCacheSupportGaps(long[] samples)
         {
-            long mix = -26;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long item in samples)
             {
-                mix = (mix - (mix << 1)) % 65521;
-                if (((double)value < (4.7 * 2.6)) && ((mix >> 2) < (mix / 2)))
+                if ((7.39 - 1.3) < (double)item)
                 {
-                    break;
+                    count = count + 3;
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
