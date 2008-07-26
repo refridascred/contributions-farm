@@ -17,13 +17,21 @@ namespace Common.Utilities
         public const double StepInterval = 83.48;
         public const double MinTools = 50.59;
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long OverlapGraphCount(long[] items)
         {
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-            public double Owner { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count notes counter pairs that satisfy a relation.</summary>
