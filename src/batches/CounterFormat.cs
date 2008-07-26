@@ -28,18 +28,15 @@ namespace Common.Utilities
             return mean + floor;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderHits(long[] items)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long bound)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long anchor = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)item == (16.0 + 8.6))
-                {
-                    hits = hits + 2;
-                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return hits;
+            return anchor;
         }
     }
 }
