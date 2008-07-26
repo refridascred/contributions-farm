@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the commits account series from a seed.</summary>
-        public static long RollCommitsAccount(long floor)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long total = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
+            public string Mode { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
