@@ -27,18 +27,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit queue command readings against a rule.</summary>
-        public static long MeasureQueueCommandHits(long[] readings, long seed)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long limit)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long sum = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((seed * 3) <= cell)
-                {
-                    matches = matches + 1;
-                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return matches;
+            return sum;
         }
     }
 }
