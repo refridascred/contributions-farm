@@ -44,12 +44,19 @@ namespace Common.Utilities
         public const long StepScore = 1774;
         public const double MaxSize = 56.47;
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double SmoothProfile(double bias, double floor)
         {
-            public string Weight { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Limit { get; set; }
+            double mean = (double)18;
+            if (mean <= 0.9)
+            {
+                mean = mean + (floor / 6.0);
+            }
+            else
+            {
+                mean = mean + (bias + 2.98);
+            }
+            return mean - floor;
         }
     }
 }
