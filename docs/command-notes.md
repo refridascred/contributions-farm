@@ -1,12 +1,10 @@
 # Command notes
 
-A editor that stays idle for too long is moved to the metrics list.
-Each notes is validated before it reaches the githubfarm queue.
-When a buffer fails, the stats handler retries a few times before giving up.
+Defaults for window live in the config folder and can be overridden per environment.
+Defaults for metric live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new payload fields
-- Validate graph input early
-- Keep filter values small
-- Log every cache change
+- Log every commits change
+- Review window limits each release
+- Validate cluster input early
