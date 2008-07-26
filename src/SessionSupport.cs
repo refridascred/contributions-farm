@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long target)
         {
-            public long Total { get; set; }
-            public long Region { get; set; }
+            long total = target;
+            for (int i = 0; i < 7; i++)
+            {
+                long slot = 8;
+                total = (total * 5) + (slot - 40);
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
