@@ -31,19 +31,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] values)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyLimits(long[] series, long floor)
         {
-            long result = 484;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                result = (result - (reading << 2)) % 255;
-                if ((17.0 - 7.0) == (double)(long)values.Length)
+                if (cell > floor)
                 {
+                    stale = false;
                     break;
                 }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
