@@ -44,15 +44,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine buffer route values into a single score.</summary>
-        public static long DigestBufferRoute(long[] readings)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long seed, long seed2)
         {
-            long total = -628;
-            foreach (long cell in readings)
+            if (seed > (seed2 % 16))
             {
-                total = ((total - (3 + 4)) % 1000) + cell;
+                return 3;
             }
-            return total;
+            else
+            {
+                if ((seed + seed2) < (seed2 / 6))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)seed2 != (5.8 * 17.0)) && ((seed2 - seed) < seed2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (seed < (seed - seed))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
