@@ -20,39 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank payload window input into a small class.</summary>
-        public static long BucketPayloadWindow(long floor, long seed)
+        /// <summary>Count entry already pairs that satisfy a relation.</summary>
+        public static long PairEntryAlreadyCount(long[] levels)
         {
-            long delta = floor + seed;
-            if ((seed % 16) >= (floor >> 3))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((floor + delta) <= delta) || ((double)delta <= (20.0 + 0.41)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed + seed) < seed)
+                    if ((levels[i] + levels[j]) < 13)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((delta - floor) != (delta + delta))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
