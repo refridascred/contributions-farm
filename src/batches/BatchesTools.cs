@@ -29,13 +29,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] data, long seed)
         {
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public long Level { get; set; }
-            public double Owner { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= seed) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
