@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of cache batch entries.</summary>
-        public static long WeighCacheBatch(long[] samples)
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] levels)
         {
-            long mix = 68;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((14.0 - 7.0) >= (double)sample)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = (mix + (737 - mix)) % 1000;
+                    if ((levels[i] ^ levels[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mix > 10)
-            {
-                mix = (mix * 4) + (0 >> 1);
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Project the next layout value.</summary>
