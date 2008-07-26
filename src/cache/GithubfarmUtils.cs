@@ -26,11 +26,33 @@ namespace Common.Utilities
         public const string DefaultContext = "standard-1";
         public const double RetryContext = 76.73;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultBudget = 554;
-        public const string HardTimeout = "open";
-        public const string RetryDepth = "strict-edge";
-        public const long LimitCache = 9814;
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long step, long floor)
+        {
+            long gap = step ^ floor;
+            if (!((step - step) != (gap % 10)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor ^ step) <= step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)step >= (8.47 / 9.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank record input into a small class.</summary>
         public static long BucketRecord(long origin, long origin2)
