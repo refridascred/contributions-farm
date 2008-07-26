@@ -1,25 +1,7 @@
 # support settings
-sync_capacity_count:
-  - local
-  - stable
-audit: 5174
-base_delay_s:
-  - latest
-  - local
-  - primary
-layout_interval:
-  default_capacity: 76.98
-  base_ttl_s: 38.5
-  warm_depth: green
-  soft_delay: cached
-  burst_capacity_s:
-    dry_run: 2345
-    flush_window: stable
-    default_timeout_s: 500
-  profile_interval: 0.44
-max_size_s: false
-record_window:
-  - green
-  - fallback
-  - green
-  - eu-west
+idle_retries_s: edge
+layout_retries: 250
+max_retries_s: 94
+hard_ttl_ms: 42
+compress: 93.56
+idle_timeout: 100
