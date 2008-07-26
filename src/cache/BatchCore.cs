@@ -29,11 +29,15 @@ namespace Common.Utilities
         public const double SoftFactor = 90.69;
         public const double LimitMetrics = 69.06;
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double weight, double bias)
         {
-            public bool Flag { get; set; }
-            public double Token { get; set; }
+            double scale = weight + (double)6;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (double)858) + (double)(long)i;
+            }
+            return scale + (bias + scale);
         }
 
         /// <summary>Accumulate queue samples.</summary>
