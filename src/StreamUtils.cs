@@ -87,21 +87,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of stats order readings.</summary>
-        public static long PairStatsOrderCount(long[] items)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = -29;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = (score << 2) ^ item;
             }
-            return matches;
+            return score;
         }
     }
 }
