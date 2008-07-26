@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] series, long offset)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if ((series[i] > offset) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
