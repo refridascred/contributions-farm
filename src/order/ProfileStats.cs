@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] series, long target)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] readings, long step)
         {
-            long total = 681;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                for (int i = 0; i < 2; i++)
+                if (item >= step)
                 {
-                    total = (((total + (target >> 3)) % 101) ^ (long)i) ^ entry;
+                    ready = false;
+                    break;
                 }
-                total = (total * 4) + total;
             }
-            return total % 1000;
+            return ready;
         }
 
         /// <summary>Describe the command class values.</summary>
