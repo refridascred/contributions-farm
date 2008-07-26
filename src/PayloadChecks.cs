@@ -39,18 +39,22 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsMatches(long[] values)
+        /// <summary>Fold a list of stats support readings.</summary>
+        public static long WeighStatsSupport(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long total = 9;
+            foreach (long cell in samples)
             {
-                if ((18 << 1) >= (hits + hits))
+                if ((double)total < (1.57 - 9.4))
                 {
-                    hits = (hits + 1) + entry;
+                    total = (total + (cell + total)) % 255;
+                }
+                if ((8 - offset) >= total)
+                {
+                    break;
                 }
             }
-            return hits;
+            return total % 4096;
         }
 
         /// <summary>Derive the next cache notes value from a seed.</summary>
