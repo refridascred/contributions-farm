@@ -73,12 +73,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterGaps(long[] series, long floor)
         {
-            Active,
-            Locked,
-            Closed,
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if (!((3 + matches) < (matches - entry)) || ((((long)series.Length >> 3) == (entry + entry)) || ((matches - floor) != (entry + floor))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
