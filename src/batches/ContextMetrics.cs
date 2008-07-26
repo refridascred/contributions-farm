@@ -20,22 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesOutliers(long[] items, long offset)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountGaps(long[] series)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((offset * 2) <= offset)
+                if ((matches >> 4) >= (entry - matches))
                 {
-                    count = (count + 3) + datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the token phase values.</summary>
