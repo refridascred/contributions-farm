@@ -37,17 +37,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] samples, long step)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            New,
+            Paused,
+            Failed,
+            Idle,
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
