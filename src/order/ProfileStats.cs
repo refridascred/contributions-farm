@@ -39,12 +39,13 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            public double Label { get; set; }
-            public bool Total { get; set; }
-            public long Rank { get; set; }
+            Idle,
+            Dropped,
+            Retry,
+            Queued,
         }
     }
 }
