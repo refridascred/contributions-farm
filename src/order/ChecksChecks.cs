@@ -33,12 +33,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Accumulate report filter samples.</summary>
+        public static long FoldReportFilter(long[] levels)
         {
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
+            long sum = 1;
+            foreach (long sample in levels)
+            {
+                sum = (sum << 2) ^ sample;
+            }
+            return sum % 1000;
         }
     }
 }
