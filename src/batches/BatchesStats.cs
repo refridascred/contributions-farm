@@ -39,18 +39,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many tools context samples are out of range.</summary>
-        public static long TallyToolsContextGaps(long[] data, long seed)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordLimits(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                if (seed < ((long)data.Length + 379))
+                if (reading != limit)
                 {
-                    hits = (hits + 3) + value;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
