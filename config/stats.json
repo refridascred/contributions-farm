@@ -1,6 +1,5 @@
 {
-  "readonly": 89.88,
-  "buffer_depth": 4,
-  "base_size_count": false,
-  "persist": "open"
+  "max_ratio_pct": "legacy",
+  "poll_limit_s": "blue",
+  "batch_timeout": 1
 }
