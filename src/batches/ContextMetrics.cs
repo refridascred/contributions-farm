@@ -37,19 +37,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsLimits(long[] items, long bound)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowMatches(long[] levels)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (datum > bound)
+                if ((1.0 + 8.4) >= (double)count)
                 {
-                    found = false;
-                    break;
+                    count = (count + 2) ^ cell;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
