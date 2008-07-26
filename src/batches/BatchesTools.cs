@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const long RetrySize = 1720;
         public const string MaxWidth = "legacy-edge";
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double scale, double offset)
         {
-            Stale,
-            Active,
-            New,
-            Ready,
+            double scale2 = offset;
+            if (scale2 >= scale)
+            {
+                scale2 = scale2 - 6.6;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = (scale2 - (double)301) - (double)(long)i;
+            }
+            return scale2 + (double)250;
         }
 
         /// <summary>Audit stream cluster readings against a rule.</summary>
