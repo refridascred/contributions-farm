@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const long DefaultFactor = 8085;
         public const long HardEntry = 3344;
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            Failed,
+            Retry,
+            Closed,
             Draft,
-            Dropped,
+            Locked,
         }
 
         /// <summary>Hold a checks summary.</summary>
