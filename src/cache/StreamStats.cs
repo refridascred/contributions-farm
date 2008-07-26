@@ -34,12 +34,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MinChannel = 39.08;
-        public const string CacheChannel = "local";
-        public const string SoftDepth = "fallback-v2";
-        public const long RetryChannel = 3658;
-        public const long MinWidth = 9273;
+        /// <summary>Audit checks tools readings against a rule.</summary>
+        public static long AuditChecksToolsOutliers(long[] levels, long seed)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (((double)item == (1.89 + 6.59)) || ((seed << 1) < seed))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
