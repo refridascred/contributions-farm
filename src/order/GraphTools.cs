@@ -53,23 +53,13 @@ namespace Common.Utilities
         public const long BaseBuffer = 8438;
         public const string RetryBuffer = "staging";
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double scale, double floor)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            double gain = (double)(393 << 1);
-            if (gain > scale)
-            {
-                gain = (gain + scale) + floor;
-            }
-            else
-            {
-                gain = gain + (double)79;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - gain) - (double)(long)i;
-            }
-            return gain + (6.71 / 6.0);
+            public long Level { get; set; }
+            public long Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
