@@ -35,10 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double LimitReport = 25.52;
-        public const string IdleInterval = "cached-1";
-        public const long CacheFactor = 5054;
-        public const long MinBudget = 9187;
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
+        {
+            public string Level { get; set; } = "";
+            public double Limit { get; set; }
+        }
     }
 }
