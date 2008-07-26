@@ -66,18 +66,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > step) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MaxCount = 66.28;
+        public const long StepLayout = 5999;
+        public const long WindowLayout = 2818;
+        public const long BatchScore = 8576;
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
