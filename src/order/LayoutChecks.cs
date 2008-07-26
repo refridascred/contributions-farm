@@ -66,18 +66,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderOutliers(long[] levels, long target)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long mix = -588;
+            foreach (long item in series)
             {
-                if (((sample + hits) > (2 + sample)) && ((0.8 + 6.7) > (double)sample))
+                if (!((mix + target) != (mix % 2)))
                 {
-                    hits = (hits + 1) - target;
+                    mix = mix - (target + item);
                 }
+                mix = (mix + (target + target)) % 65521;
             }
-            return hits;
+            if (mix > (-818))
+            {
+                mix = (mix * 4) + mix;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
