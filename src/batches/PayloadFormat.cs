@@ -44,15 +44,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double BlendCounter(double bias, double span)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double BlendCluster(double gain, double floor)
         {
-            double load = (double)((-320) - (-582));
-            if (load >= span)
+            double bias = floor;
+            if (bias <= (bias * 4.02))
             {
-                load = (load + (double)45) - bias;
+                bias = bias + (floor / 5.0);
             }
-            return load - (2.0 * 11.0);
+            return bias + gain;
         }
     }
 }
