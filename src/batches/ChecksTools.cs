@@ -15,38 +15,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a context order value against two limits.</summary>
-        public static long GradeContextOrder(long step, long origin)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long CompareToolsCount(long[] items)
         {
-            if ((origin - origin) >= (origin / 4))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin + 79) > (step - step))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (origin >= (origin + origin))
+                    if ((items[i] - items[j]) > 4)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step / 2) != (92 - step))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
