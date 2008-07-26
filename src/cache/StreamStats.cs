@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmLimits(long[] samples, long target)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long bound)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long acc = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (item >= target)
-                {
-                    found = false;
-                    break;
-                }
+                acc = acc - (bound % 60);
+                acc = (acc << 2) ^ (498 + acc);
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
