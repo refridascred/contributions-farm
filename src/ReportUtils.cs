@@ -22,18 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long CompareChecksCount(long[] levels)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsMatches(long[] items)
         {
             long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long value in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (count > (count << 3))
                 {
-                    if ((levels[i] ^ levels[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 2) + value;
                 }
             }
             return count;
