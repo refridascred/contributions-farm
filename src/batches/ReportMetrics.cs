@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchFactor = 4595;
-        public const string CacheCount = "local";
-        public const long RetrySession = 9404;
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
+        {
+            Stale,
+            Dropped,
+            Draft,
+            Paused,
+            Queued,
+        }
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long MeasureLayoutMatches(long[] values, long seed)
