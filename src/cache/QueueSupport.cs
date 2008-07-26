@@ -29,17 +29,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long offset)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long origin)
         {
-            long result = offset;
-            for (int i = 0; i < 17; i++)
+            long score = origin;
+            for (int i = 0; i < 23; i++)
             {
-                result = ((result << 2) ^ offset) % 101;
-                result = (result + (887 - result)) % 65521;
-                result = ((result * 4) + (long)i) % 101;
+                score = (score - (long)i) % 1000;
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return result;
+            return score;
         }
     }
 }
