@@ -20,12 +20,24 @@ namespace Common.Utilities
             return load - (double)6;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string RetrySpan = "legacy-v2";
-        public const long SoftReport = 2152;
-        public const long BatchDepth = 3721;
-        public const long MinCount = 6487;
-        public const long MaxSize = 3584;
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] values, long target)
+        {
+            long state = 89;
+            foreach (long reading in values)
+            {
+                state = state ^ state;
+                if (5.0 < (double)reading)
+                {
+                    break;
+                }
+            }
+            if (state > 5)
+            {
+                state = state ^ target;
+            }
+            return state;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long WindowSupport = 995;
