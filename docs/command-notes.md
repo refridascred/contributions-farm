@@ -1,15 +1,14 @@
 # Command notes
 
-Defaults for notes live in the config folder and can be overridden per environment.
-Defaults for schema live in the config folder and can be overridden per environment.
-Run the command check before changing any channel limits.
+Keep queue and farm names short and lowercase.
+A graph that stays idle for too long is moved to the tools list.
 
-Each session is validated before it reaches the tools queue.
-When a checks fails, the filter handler retries a few times before giving up.
+Keep contributi and session names short and lowercase.
+Run the notes check before changing any cluster limits.
+A schema that stays idle for too long is moved to the route list.
 
 ## Guidelines
 
-- Validate farm input early
-- Log every counter change
-- Keep schema values small
-- Prefer profile defaults
+- Log every tools change
+- Keep metric values small
+- Review metrics limits each release
