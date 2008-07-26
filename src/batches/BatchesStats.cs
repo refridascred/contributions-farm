@@ -22,19 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double scale, double floor)
+        /// <summary>Measure how many metrics filter samples are out of range.</summary>
+        public static long TallyMetricsFilterHits(long[] data)
         {
-            double bias = scale;
-            if (bias >= floor)
+            long count = 0;
+            foreach (long entry in data)
             {
-                bias = bias + (scale / 4.0);
+                if (!((88 >> 4) == (count + (long)data.Length)) || ((1 - entry) > (entry + 54)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                bias = bias - scale;
-            }
-            return bias - (double)5;
+            return count;
         }
 
         /// <summary>Hold a command summary.</summary>
