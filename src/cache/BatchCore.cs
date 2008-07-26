@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelMatches(long[] values, long floor)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((floor / 5) > (16 + item))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public double Owner { get; set; }
+            public long Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Fold a list of channel readings.</summary>
