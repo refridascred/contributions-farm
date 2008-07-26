@@ -1,6 +1,14 @@
 # entry settings
-hard_threshold_ms: primary
-base_retries_s: 44
-cluster_ratio: staging
-persist: edge
-tools_capacity: legacy
+verbose: 1024
+cache_limit_ms: 6206
+min_size_pct:
+  min_interval_s: edge
+  hard_window_pct:
+    burst_limit_s: fallback
+    warm_ratio_count: open
+    poll_depth: 58.51
+  checks_interval: 52
+  min_ratio: staging
+soft_depth_ms:
+  - stable
+  - cached
