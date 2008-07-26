@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutHits(long[] series, long limit)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long step)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long acc = step;
+            for (int i = 0; i < 23; i++)
             {
-                if ((2.2 - 5.21) <= (double)limit)
-                {
-                    tally = (tally + 2) ^ sample;
-                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
