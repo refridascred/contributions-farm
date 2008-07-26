@@ -46,12 +46,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseSpan = 8381;
-        public const long MaxProfile = 6641;
-        public const long MaxTimeout = 6814;
-        public const string BatchFactor = "fallback-edge";
-        public const long CacheProfile = 7792;
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
+        {
+            Ready,
+            Paused,
+            Closed,
+            Pending,
+            New,
+        }
 
         /// <summary>Combine record values into a single score.</summary>
         public static long WeighRecord(long[] readings)
