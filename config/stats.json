@@ -1,5 +1,5 @@
 {
-  "strict": ["strict", "blue"],
-  "min_depth_count": "strict",
-  "soft_depth_pct": "blue"
+  "persist": "primary",
+  "base_timeout_ms": ["standard", "standard", "eu-west"],
+  "batch_ratio": "primary"
 }
