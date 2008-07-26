@@ -39,15 +39,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long bound)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long carry = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            Queued,
+            Dropped,
+            Pending,
+            Failed,
+            Draft,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
