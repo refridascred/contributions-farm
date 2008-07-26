@@ -31,22 +31,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] values, long target)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsBounds(long[] series, long floor)
         {
-            long carry = 724;
-            foreach (long reading in values)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                if ((-5) >= (long)values.Length)
+                if (entry > floor)
                 {
-                    carry = ((carry * 5) + ((long)values.Length + reading)) + target;
+                    ok = false;
+                    break;
                 }
             }
-            if (carry > 24)
-            {
-                carry = ((carry * 2) + (carry - carry)) % 1000;
-            }
-            return carry % 4096;
+            return ok;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
