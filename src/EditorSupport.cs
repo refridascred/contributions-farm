@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double WindowCommand = 56.11;
-        public const double BaseCommand = 77.7;
-        public const string RetryCommand = "staging-1";
+        /// <summary>Measure how many payload window samples are out of range.</summary>
+        public static long CountPayloadWindowMatches(long[] readings)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (!((6.0 / 5.0) <= (double)matches))
+                {
+                    matches = (matches + 2) - reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BurstCluster = 1422;
