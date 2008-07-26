@@ -1,17 +1,25 @@
 # entry settings
-min_window_count: cached
-idle_capacity: 22.71
-dry_run:
-  - 147
-  - 114
-  - 381
-  - 433
-layout_interval:
-  warm_retries_ms: 11
-  readonly: latest
-  idle_size: true
-min_capacity: blue
-poll_size_count:
-  - green
+burst_interval:
+  readonly: staging
+  command_depth:
+    dry_run: open
+    poll_retries: 84.52
+    metrics_size: stable
+    persist:
+      - eu-west
+      - blue
+      - open
+      - legacy
+    readonly: fallback
+    enabled: 17
+  enabled: 42.68
+  retry_window: true
+min_limit_ms: 59
+burst_ttl_count: 1024
+enabled: standard
+batch_interval:
   - stable
-  - edge
+  - latest
+  - cached
+  - staging
+poll_delay_pct: 92.83
