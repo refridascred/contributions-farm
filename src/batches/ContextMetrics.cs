@@ -20,19 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ProjectMetric(double bias, double span)
+        /// <summary>Validate report entry readings against a bound.</summary>
+        public static bool ValidateReportEntryLimits(long[] data, long limit)
         {
-            double drift = bias;
-            if (drift <= 1.8)
+            bool ready = true;
+            foreach (long item in data)
             {
-                drift = (drift - (drift + drift)) - span;
+                if (item < limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (double)665) + (double)(long)i;
-            }
-            return drift - bias;
+            return ready;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
