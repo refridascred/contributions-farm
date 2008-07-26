@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsRange(long[] readings, long floor)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Paused,
+            Pending,
+            Idle,
+            Active,
+            Locked,
         }
 
         /// <summary>Accumulate report filter samples.</summary>
