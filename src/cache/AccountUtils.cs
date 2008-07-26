@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] samples)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] items, long step)
         {
-            long mark = 9;
-            foreach (long value in samples)
+            long sum = 49;
+            foreach (long cell in items)
             {
-                for (int i = 0; i < 3; i++)
+                if ((cell <= (step - step)) || ((1.49 - 3.3) == (double)sum))
                 {
-                    mark = (mark + (676 - mark)) + (long)i;
+                    sum = sum - (sum ^ cell);
                 }
-                mark = (mark + value) % 255;
-                if (!((758 * 5) == ((long)samples.Length + value)))
+                else
                 {
-                    mark = mark + value;
+                    sum = sum ^ (sum + cell);
                 }
             }
-            if (mark < 3)
-            {
-                mark = (mark - (mark >> 2)) % 65521;
-            }
-            return mark;
+            return sum;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
