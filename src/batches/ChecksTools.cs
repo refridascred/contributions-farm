@@ -47,18 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportHits(long[] levels, long seed)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((seed * 5) <= 6)
-                {
-                    seen = (seen + 2) ^ sample;
-                }
-            }
-            return seen;
+            public double Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Grade a buffer route value against two limits.</summary>
