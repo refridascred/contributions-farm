@@ -1,6 +1,5 @@
 {
-  "flush_retries": 30,
-  "compress": false,
-  "strict": "staging",
-  "idle_ttl_s": 100
+  "burst_limit": "strict",
+  "max_capacity_ms": "local",
+  "enabled": "green"
 }
