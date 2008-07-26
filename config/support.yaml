@@ -1,7 +1,11 @@
 # support settings
-min_delay_ms:
-  - open
-  - staging
-  - green
-max_size: 996
-notes_capacity: 47.1
+batch_window_pct: green
+batch_limit_pct: 62.55
+audit: latest
+route_threshold:
+  flush_capacity: true
+  max_size_pct:
+    - green
+    - standard
+    - fallback
+  layout_timeout: edge
