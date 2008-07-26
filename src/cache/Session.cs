@@ -60,15 +60,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a tools metrics reading.</summary>
-        public static double SmoothToolsMetrics(double gain, double span)
-        {
-            double gain2 = span;
-            if (gain2 < gain)
-            {
-                gain2 = gain2 - (gain * 9.38);
-            }
-            return gain2 - (double)171;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 1023;
+        public const string MinTools = "standard";
+        public const long DefaultRatio = 3098;
+        public const long SoftSize = 7970;
     }
 }
