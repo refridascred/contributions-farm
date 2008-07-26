@@ -78,21 +78,21 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long floor)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long OverlapStreamCount(long[] samples)
         {
-            long state = floor;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((long)i >> 4) > (state >> 5))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    continue;
+                    if ((samples[i] - samples[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                state = state + (state % 8);
-                state = state ^ ((long)i + 716);
-                state = ((state * 3) + (long)i) % 97;
             }
-            return state;
+            return hits;
         }
     }
 }
