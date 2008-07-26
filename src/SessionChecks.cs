@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BatchCommits = "strict-1";
-        public const double HardSpan = 65.91;
-        public const double MinCommits = 26.79;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchGaps(long[] readings, long bound)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((16.0 * 9.0) != (double)item)
+                {
+                    tally = (tally + 1) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a account summary.</summary>
         public sealed class AccountSummary
