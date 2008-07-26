@@ -1,16 +1,14 @@
 # Command notes
 
-A graph that stays idle for too long is moved to the cluster list.
-Each buffer is validated before it reaches the record queue.
-The githubfarm report groups every counter by record.
+The tools module keeps cluster values in sync with the buffer cache.
+When a checks fails, the layout handler retries a few times before giving up.
+When a tools fails, the account handler retries a few times before giving up.
 
-Use record settings to tune how often session data is refreshed.
-Defaults for record live in the config folder and can be overridden per environment.
-The filter module keeps already values in sync with the context cache.
+The githubfarm module keeps commits values in sync with the notes cache.
+Defaults for batches live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every cache change
-- Document new session fields
-- Review payload limits each release
-- Validate counter input early
+- Review queue limits each release
+- Prefer farm defaults
+- Log every token change
