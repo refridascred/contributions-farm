@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long bound, long floor)
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] series)
         {
-            long edge = bound + floor;
-            if (((15.0 * 8.0) > (double)bound) && (floor < (floor - 981)))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (floor >= (bound + (-90)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound + floor) > edge)
+                    if ((series[i] - series[j]) < 16)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
