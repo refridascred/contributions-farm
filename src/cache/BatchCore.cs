@@ -60,15 +60,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] levels, long offset)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] samples)
         {
-            long total = 2;
-            foreach (long sample in levels)
+            long result = 594;
+            foreach (long reading in samples)
             {
-                total = (((total + total) % 1000) ^ sample) - offset;
+                for (int i = 0; i < 3; i++)
+                {
+                    result = ((result << 2) ^ 5) + (long)i;
+                }
+                result = result + (reading & 63);
+                if ((11.0 * 5.2) != (double)result)
+                {
+                    break;
+                }
             }
-            return total;
+            if (result < 4)
+            {
+                result = (result * 2) + (result - result);
+            }
+            return result % 65521;
         }
     }
 }
