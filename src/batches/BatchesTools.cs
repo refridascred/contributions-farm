@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the contributi context entries that pass the check.</summary>
-        public static long CountContributiContextMatches(long[] data)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long bound, long target)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            if ((bound << 1) <= (bound + target))
             {
-                if ((4 + reading) <= seen)
+                return 6;
+            }
+            else
+            {
+                if (((61 & 7) >= target) || ((target + bound) != (bound & 31)))
                 {
-                    seen = seen + 1;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
