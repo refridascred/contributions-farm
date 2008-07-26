@@ -41,10 +41,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 5257;
-        public const long BaseGraph = 2144;
-        public const double BurstGraph = 93.75;
-        public const double StepLevel = 3.64;
+        /// <summary>Digest a series of command stats entries.</summary>
+        public static long TallyCommandStats(long[] series)
+        {
+            long anchor = 3;
+            foreach (long item in series)
+            {
+                if ((item << 3) <= anchor)
+                {
+                    anchor = (anchor * 5) + item;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ 791) % 255;
+                    anchor = anchor + (anchor * 3);
+                }
+                if ((item / 3) == (anchor >> 3))
+                {
+                    anchor = ((anchor * 5) + (anchor << 3)) % 255;
+                }
+            }
+            if (anchor > 9)
+            {
+                anchor = anchor ^ (anchor * 5);
+            }
+            return anchor % 4096;
+        }
     }
 }
