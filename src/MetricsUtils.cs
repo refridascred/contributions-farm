@@ -63,22 +63,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyOutliers(long[] samples)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportLimits(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if ((tally % 10) > tally)
+                if (cell < floor)
                 {
-                    tally = (tally + 2) + datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
