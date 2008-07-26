@@ -68,18 +68,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesOutliers(long[] readings)
+        /// <summary>Count context format pairs that satisfy a relation.</summary>
+        public static long CompareContextFormatCount(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)datum <= 3.69)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((values[i] - values[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
