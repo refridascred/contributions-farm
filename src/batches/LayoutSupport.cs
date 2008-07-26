@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Grade a batches stats value against two limits.</summary>
+        public static long ClassifyBatchesStats(long floor, long origin)
         {
-            public long Token { get; set; }
-            public double Total { get; set; }
-            public bool Ratio { get; set; }
-            public double Flag { get; set; }
+            if ((origin ^ origin) < (295 + origin))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor + floor) >= floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)origin != (5.7 + 15.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((5.43 + 13.0) <= (double)floor)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
