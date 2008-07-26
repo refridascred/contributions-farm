@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const string LimitInterval = "staging";
         public const long MaxLevel = 8972;
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordBounds(long[] series, long target)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadHits(long[] series)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (reading <= target)
+                if ((8.0 / 5.0) >= (double)cell)
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
