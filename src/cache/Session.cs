@@ -49,22 +49,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] values, long limit)
+        /// <summary>Project the next notes account value.</summary>
+        public static double ScaleNotesAccount(double bias, double bias2)
         {
-            long acc = 65;
-            foreach (long cell in values)
+            double gain = bias2;
+            if (gain > bias)
             {
-                if (cell >= (acc / 4))
-                {
-                    acc = (acc * 5) + limit;
-                }
-                if ((acc < (cell / 6)) || (limit > (cell - limit)))
-                {
-                    acc = acc ^ (cell * 5);
-                }
+                gain = gain - (bias - 14.0);
             }
-            return acc;
+            else
+            {
+                gain = gain + (bias2 * 9.6);
+            }
+            return gain - bias2;
         }
     }
 }
