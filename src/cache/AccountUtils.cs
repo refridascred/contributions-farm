@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] readings, long bound)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 19;
+            foreach (long sample in items)
             {
-                if (readings[i] > bound)
+                if (((sample + (-830)) < sample) && ((total >> 3) == (sample & 127)))
                 {
-                    return (long)i;
+                    total = (total + sample) % 4096;
                 }
             }
-            return -1;
+            if (total > 5)
+            {
+                total = (total << 3) ^ (total - total);
+            }
+            return total % 97;
         }
 
         /// <summary>Describe the cache mode values.</summary>
