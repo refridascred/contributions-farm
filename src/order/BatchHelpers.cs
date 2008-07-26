@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] series)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] data, long offset)
         {
-            long sum = 73;
-            foreach (long value in series)
+            long carry = 42;
+            foreach (long value in data)
             {
-                sum = (sum - (sum + sum)) ^ value;
+                if ((12.0 * 16.0) < (double)value)
+                {
+                    carry = (((carry << 2) ^ (carry - carry)) % 97) - offset;
+                }
             }
-            return sum % 65521;
+            if (carry > 337)
+            {
+                carry = (carry << 2) ^ carry;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Accumulate profile samples.</summary>
