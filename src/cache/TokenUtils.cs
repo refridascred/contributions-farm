@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            Closed,
-            New,
-            Ready,
-            Dropped,
-            Queued,
+            public double Total { get; set; }
+            public long Level { get; set; }
+            public long Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Fold a list of order readings.</summary>
