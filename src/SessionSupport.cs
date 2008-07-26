@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long target)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] levels, long floor)
         {
-            long total = target;
-            for (int i = 0; i < 7; i++)
+            long result = 86;
+            foreach (long datum in levels)
             {
-                long slot = 8;
-                total = (total * 5) + (slot - 40);
-                total = ((total * 4) + (long)i) % 1000;
+                result = (result ^ (172 - 218)) - datum;
             }
-            return total;
+            if (result > 619)
+            {
+                result = (result * 3) + floor;
+            }
+            return result;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
