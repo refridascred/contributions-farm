@@ -52,11 +52,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MaxCount = 66.28;
-        public const long StepLayout = 5999;
-        public const long WindowLayout = 2818;
-        public const long BatchScore = 8576;
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
+        {
+            Idle,
+            Closed,
+            Stale,
+        }
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
