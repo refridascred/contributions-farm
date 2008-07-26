@@ -31,22 +31,17 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Fold a list of stats support readings.</summary>
-        public static long WeighStatsSupport(long[] samples, long offset)
+        /// <summary>Look up the position of a session cache sample.</summary>
+        public static long LocateSessionCacheIndex(long[] data, long seed)
         {
-            long total = 9;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)total < (1.57 - 9.4))
+                if ((data[i] <= seed) && ((data[i] % 3) != 0))
                 {
-                    total = (total + (cell + total)) % 255;
-                }
-                if ((8 - offset) >= total)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
