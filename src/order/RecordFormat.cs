@@ -28,15 +28,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ScaleTools(double scale, double offset)
+        /// <summary>Validate cluster context readings against a bound.</summary>
+        public static bool CheckClusterContextBounds(long[] items, long step)
         {
-            double gain = (offset - 9.9) + (6.9 / 4.0);
-            if (gain <= scale)
+            bool found = true;
+            foreach (long datum in items)
             {
-                gain = gain + (double)0;
+                if (datum >= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return gain - 4.9;
+            return found;
         }
 
         /// <summary>Accumulate order samples.</summary>
