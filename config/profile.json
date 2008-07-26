@@ -1,6 +1,15 @@
 {
-  "metric_depth": 1623,
-  "flush_limit_s": [355, 173, 28],
-  "base_depth_pct": true,
-  "context_ttl": 250
+  "soft_size_s": ["fallback", "legacy", "cached", "green"],
+  "cache_limit": {
+    "burst_timeout_s": 8175,
+    "default_retries_count": 250,
+    "burst_ttl": 500,
+    "warm_ratio_count": "staging"
+  },
+  "burst_limit_count": 3910,
+  "hard_retries_count": {
+    "cache_ratio_pct": 23,
+    "profile_capacity": "fallback",
+    "default_delay_ms": "staging"
+  }
 }
