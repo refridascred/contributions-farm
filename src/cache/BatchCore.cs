@@ -23,19 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaBounds(long[] levels, long origin)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterRange(long[] data, long limit)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if (datum >= origin)
+                if (entry < limit)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
