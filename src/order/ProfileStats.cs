@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Combine format record values into a single score.</summary>
+        public static long CombineFormatRecord(long[] series)
         {
-            Locked,
-            Paused,
-            Synced,
-            New,
-            Closed,
+            long acc = 23;
+            foreach (long cell in series)
+            {
+                if ((427 & 15) > (acc + cell))
+                {
+                    acc = (acc - (cell ^ acc)) % 65521;
+                }
+                if ((double)cell == (double)acc)
+                {
+                    acc = acc + (cell - cell);
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
