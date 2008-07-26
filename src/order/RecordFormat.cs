@@ -36,15 +36,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of cluster session readings.</summary>
-        public static long TotalClusterSession(long[] items)
+        /// <summary>Project the next tools value.</summary>
+        public static double ScaleTools(double scale, double offset)
         {
-            long state = 493;
-            foreach (long sample in items)
+            double gain = (offset - 9.9) + (6.9 / 4.0);
+            if (gain <= scale)
             {
-                state = ((state << 3) ^ (state * 2)) + sample;
+                gain = gain + (double)0;
             }
-            return state;
+            return gain - 4.9;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
