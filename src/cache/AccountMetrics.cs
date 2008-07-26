@@ -52,12 +52,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            public long Token { get; set; }
-            public long Stamp { get; set; }
-            public bool Offset { get; set; }
+            Stale,
+            Closed,
+            Retry,
         }
 
         /// <summary>Combine channel values into a single score.</summary>
