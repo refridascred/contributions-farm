@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountGaps(long[] data, long seed)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long limit)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long mix = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)matches == (4.9 * 4.5))
-                {
-                    matches = ((matches + 1) + reading) + seed;
-                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Rank payload window input into a small class.</summary>
