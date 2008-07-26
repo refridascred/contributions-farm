@@ -1,5 +1,5 @@
 {
-  "entry_capacity": 98,
-  "flush_timeout_s": true,
-  "default_window": 100
+  "githubfarm_capacity": 3351,
+  "notes_limit": 59.16,
+  "flush_window_s": ["fallback", "cached"]
 }
