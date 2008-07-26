@@ -64,13 +64,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsRange(long[] series, long bound)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmRange(long[] levels, long target)
         {
             bool ready = true;
-            foreach (long datum in series)
+            foreach (long entry in levels)
             {
-                if (datum <= bound)
+                if (entry < target)
                 {
                     ready = false;
                     break;
