@@ -1,7 +1,5 @@
 {
-  "record_interval": 46.29,
-  "min_limit": true,
-  "max_limit_pct": "primary",
-  "idle_timeout": 65.97,
-  "dry_run": 24
+  "strict": 1024,
+  "hard_limit_count": 14,
+  "compress": true
 }
