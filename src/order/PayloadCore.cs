@@ -32,19 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsHits(long[] levels)
+        /// <summary>Measure how many profile account samples are out of range.</summary>
+        public static long MeasureProfileAccountMatches(long[] data)
         {
             long matches = 0;
-            foreach (long item in levels)
+            foreach (long entry in data)
             {
-                if (!((item - item) < (matches + item)))
+                if ((entry - matches) >= (matches >> 2))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = matches + 2;
                 }
             }
             return matches;
