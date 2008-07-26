@@ -1,9 +1,6 @@
-id,rank,owner
-1,55,933
-2,766,995
-3,blue,946
-4,561,85.71
-5,440,49
-6,380,686
-7,primary,63.55
-8,18.5,37.75
+id,label,state,active
+1,edge,staging,316
+2,251,latest,cached
+3,strict,567,cached
+4,418,75.17,760
+5,83.48,strict,678
