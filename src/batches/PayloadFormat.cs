@@ -40,12 +40,32 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double DefaultInterval = 87.08;
-        public const long HardLevel = 3746;
-        public const long SoftDepth = 5923;
-        public const long CacheToken = 4520;
-        public const long MinTimeout = 6337;
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long floor, long seed)
+        {
+            if (seed >= (seed << 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if (floor < (floor + floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor % 12) < (floor << 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first route entry that matches the target.</summary>
         public static long FindRouteIndex(long[] items, long seed)
