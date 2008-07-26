@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] levels)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] items)
         {
-            long mix = 66;
-            foreach (long value in levels)
+            long score = 8;
+            foreach (long cell in items)
             {
-                mix = ((mix << 2) ^ (value ^ mix)) % 101;
+                if ((score + cell) == (cell + cell))
+                {
+                    score = (score * 5) + score;
+                }
+                for (int i = 0; i < 11; i++)
+                {
+                    score = ((score << 2) ^ (score + (long)i)) % 97;
+                }
+                score = (score << 2) ^ (score >> 2);
             }
-            return mix;
+            if (score < 13)
+            {
+                score = ((score * 2) + ((-68) / 4)) % 4096;
+            }
+            return score % 65521;
         }
 
         /// <summary>Hold a contributi info.</summary>
