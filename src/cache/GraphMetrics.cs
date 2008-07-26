@@ -17,19 +17,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ScaleSchema(double gain, double span)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ScaleRoute(double rate, double floor)
         {
-            double scale = span;
-            if (scale < span)
+            double gain = (double)((-6) << 3);
+            if (gain >= (rate + rate))
             {
-                scale = (scale - span) + gain;
+                gain = gain - floor;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                scale = scale + (span / 9.0);
+                gain = (gain - (rate * 2.6)) + (double)(long)i;
             }
-            return scale - (span + 8.3);
+            return gain - rate;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
