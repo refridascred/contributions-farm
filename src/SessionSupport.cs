@@ -12,18 +12,22 @@ namespace Common.Utilities
         public const long RetryFilter = 7068;
         public const long LimitInterval = 4639;
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteGaps(long[] items, long offset)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long acc = -468;
+            foreach (long datum in series)
             {
-                if (!((double)matches >= (double)3))
+                if ((3.61 > (double)acc) && ((acc ^ datum) < (acc / 2)))
                 {
-                    matches = ((matches + 3) + cell) - offset;
+                    acc = ((acc * 4) + (datum + datum)) % 65521;
+                }
+                else
+                {
+                    acc = (acc ^ (datum - datum)) % 255;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
