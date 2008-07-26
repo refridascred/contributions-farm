@@ -19,10 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BurstBatches = "strict-v2";
-        public const long WindowLevel = 5633;
-        public const long DefaultBatches = 6200;
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Project the next report value.</summary>
         public static double SmoothReport(double ratio, double floor)
