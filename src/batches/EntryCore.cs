@@ -26,17 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] series, long target)
+        /// <summary>Fold a list of account stats readings.</summary>
+        public static long WeighAccountStats(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 4;
+            foreach (long item in samples)
             {
-                if ((series[i] <= target) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                sum = (sum + item) % 1000;
             }
-            return -1;
+            if (sum < 70)
+            {
+                sum = sum - sum;
+            }
+            return sum;
         }
 
         /// <summary>Describe the schema mode values.</summary>
