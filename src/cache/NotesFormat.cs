@@ -20,13 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            public long Count { get; set; }
-            public string Offset { get; set; } = "";
-            public double Rank { get; set; }
-            public long Flag { get; set; }
+            Queued,
+            Failed,
+            Locked,
+            Idle,
+            Stale,
         }
 
         /// <summary>Describe the route phase values.</summary>
