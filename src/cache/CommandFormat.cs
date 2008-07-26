@@ -40,13 +40,13 @@ namespace Common.Utilities
         public const string MaxRatio = "open-1";
         public const long LimitChannel = 6848;
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            Failed,
-            Draft,
-            Ready,
-            Synced,
+            Retry,
+            Dropped,
+            Idle,
+            Done,
         }
     }
 }
