@@ -47,17 +47,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a metric checks counter forward.</summary>
-        public static long IterateMetricChecks(long bound)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueGaps(long[] items)
         {
-            long anchor = bound;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                anchor = (anchor + (anchor << 1)) % 4096;
-                anchor = anchor + (bound / 9);
-                anchor = ((anchor * 4) + (long)i) % 97;
+                if ((-953) < (tally * 4))
+                {
+                    tally = (tally + 3) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
