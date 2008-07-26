@@ -19,12 +19,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            Locked,
-            Synced,
-            Stale,
+            Paused,
+            Failed,
+            Done,
+            Ready,
+            Active,
         }
 
         /// <summary>Combine counter values into a single score.</summary>
