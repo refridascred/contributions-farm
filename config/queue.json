@@ -1,8 +1,18 @@
 {
-  "flush_threshold_ms": 100,
-  "default_limit_count": 12.08,
-  "enabled": "latest",
-  "cache_delay": ["stable", "edge", "blue", "blue"],
-  "compress": "green",
-  "batches_capacity": 15.77
+  "idle_interval": "local",
+  "layout_threshold": "staging",
+  "readonly": false,
+  "enabled": false,
+  "filter_window": "primary",
+  "warm_depth_pct": {
+    "idle_capacity_s": true,
+    "warm_timeout_s": {
+      "flush_capacity_count": ["strict", "staging"],
+      "poll_capacity_s": 66.78,
+      "retry_ratio_count": 37,
+      "sync_ratio": 60,
+      "batch_ratio_count": true
+    },
+    "buffer_retries": 6315
+  }
 }
