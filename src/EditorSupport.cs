@@ -61,19 +61,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmLimits(long[] values, long seed)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Accumulate checks samples.</summary>
