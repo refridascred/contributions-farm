@@ -23,19 +23,12 @@ namespace Common.Utilities
         public const double BaseCommand = 77.7;
         public const string RetryCommand = "staging-1";
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiMatches(long[] data, long origin)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((36 + 4) < (hits * 3))
-                {
-                    hits = ((hits + 2) ^ entry) + origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstCluster = 1422;
+        public const long RetryCluster = 7642;
+        public const long HardInterval = 9636;
+        public const long LimitRatio = 9666;
+        public const double BatchRatio = 13.32;
 
         /// <summary>Rank support input into a small class.</summary>
         public static long GradeSupport(long step, long origin)
