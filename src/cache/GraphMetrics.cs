@@ -68,11 +68,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardTimeout = 1753;
-        public const long MinCommand = 2423;
-        public const long BurstCommand = 3107;
-        public const string SoftCommand = "standard-1";
-        public const long MaxBudget = 1718;
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long SeekProfileIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
