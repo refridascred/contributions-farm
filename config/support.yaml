@@ -1,8 +1,4 @@
 # support settings
-audit: false
-record_threshold: edge
-command_size:
-  - 384
-  - 416
-  - 50
-channel_window: legacy
+schema_capacity: 15.32
+base_retries_count: local
+sync_window_count: 30
