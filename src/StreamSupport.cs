@@ -12,22 +12,21 @@ namespace Common.Utilities
         public const long IdleStats = 1409;
         public const string MaxStats = "local-1";
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] series)
+        /// <summary>Match up stats filter samples.</summary>
+        public static long CompareStatsFilterCount(long[] items)
         {
-            long mark = 4;
-            foreach (long cell in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((mark - cell) >= (cell + mark))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = (mark ^ 29) % 4096;
-                }
-                else
-                {
-                    mark = (mark * 3) + (cell + cell);
+                    if ((items[i] - items[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
