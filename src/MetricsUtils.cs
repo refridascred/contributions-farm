@@ -41,19 +41,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatBounds(long[] levels, long step)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] levels, long bound)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value != step)
+                if (levels[i] > bound)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Blend two payload measurements.</summary>
