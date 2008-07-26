@@ -1,20 +1,4 @@
 # githubfarm settings
-burst_delay_pct: 48
-base_depth_count: 18
-enabled:
-  - 113
-  - 78
-  - 429
-  - 148
-max_depth:
-  burst_capacity_pct:
-    - 382
-    - 371
-    - 154
-  idle_retries_count: 83
-  idle_size:
-    burst_size_s: 63
-    persist: false
-    cache_interval_count: 34.09
-  min_ratio_pct: 60
-  retry_depth_pct: latest
+hard_ttl_pct: 92.23
+idle_depth: true
+idle_window: local
