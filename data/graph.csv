@@ -1,9 +1,8 @@
-id,active,count,label
-1,19.64,stable,44.89
-2,422,edge,307
-3,352,715,65.74
-4,41.1,69.6,stable
-5,72.47,707,standard
-6,blue,534,legacy
-7,latest,39.29,961
-8,cached,76.06,67.27
+id,region,token
+1,783,staging
+2,856,280
+3,940,standard
+4,283,local
+5,blue,open
+6,17,59.41
+7,75.07,36.92
