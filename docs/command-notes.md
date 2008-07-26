@@ -1,14 +1,14 @@
 # Command notes
 
-Keep queue and farm names short and lowercase.
-A graph that stays idle for too long is moved to the tools list.
+A metric that stays idle for too long is moved to the context list.
+Each profile is validated before it reaches the payload queue.
 
-Keep contributi and session names short and lowercase.
-Run the notes check before changing any cluster limits.
-A schema that stays idle for too long is moved to the route list.
+Run the batch check before changing any contributi limits.
+A record that stays idle for too long is moved to the buffer list.
+Run the tools check before changing any contributi limits.
 
 ## Guidelines
 
-- Log every tools change
-- Keep metric values small
-- Review metrics limits each release
+- Prefer window defaults
+- Log every account change
+- Validate record input early
