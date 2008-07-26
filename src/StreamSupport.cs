@@ -20,15 +20,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ScaleProfile(double scale, double bias)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            double ratio = (bias * 1.8) * 8.75;
-            if (ratio >= (ratio * 1.33))
-            {
-                ratio = (ratio + ratio) - scale;
-            }
-            return ratio + ratio;
+            Ready,
+            Done,
+            Stale,
+            Pending,
         }
     }
 }
