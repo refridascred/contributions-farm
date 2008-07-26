@@ -41,31 +41,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of command stats entries.</summary>
-        public static long TallyCommandStats(long[] series)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long anchor = 3;
-            foreach (long item in series)
-            {
-                if ((item << 3) <= anchor)
-                {
-                    anchor = (anchor * 5) + item;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ 791) % 255;
-                    anchor = anchor + (anchor * 3);
-                }
-                if ((item / 3) == (anchor >> 3))
-                {
-                    anchor = ((anchor * 5) + (anchor << 3)) % 255;
-                }
-            }
-            if (anchor > 9)
-            {
-                anchor = anchor ^ (anchor * 5);
-            }
-            return anchor % 4096;
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public long Label { get; set; }
+            public long Count { get; set; }
         }
     }
 }
