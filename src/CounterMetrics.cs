@@ -32,11 +32,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardSchema = 9671;
-        public const double DefaultTimeout = 60.05;
-        public const long MinScore = 6484;
-        public const double HardBudget = 53.56;
-        public const long MaxSchema = 147;
+        /// <summary>Audit farm payload readings against a rule.</summary>
+        public static long TallyFarmPayloadGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((entry + entry) != (entry - 4))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
