@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double SmoothCounter(double weight, double offset)
         {
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
-            public bool Region { get; set; }
+            double rate = 8.63 - weight;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + (weight * 19.0)) + (double)(long)i;
+            }
+            return rate + (offset / 6.0);
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
