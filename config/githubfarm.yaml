@@ -1,4 +1,20 @@
 # githubfarm settings
-poll_threshold_ms: stable
-verbose: 70
-strict: 15
+verbose:
+  readonly:
+    - 95
+    - 12
+    - 314
+    - 26
+  poll_limit: 60
+  flush_window: 55
+  batch_ttl_ms: primary
+window_window: false
+min_timeout_ms: 65.95
+dry_run:
+  retry_capacity_s: 8602
+  stats_delay: 33
+  min_interval_pct: true
+  burst_delay_count: 92
+  soft_threshold: true
+warm_capacity: eu-west
+hard_retries_count: stable
