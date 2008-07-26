@@ -45,15 +45,19 @@ namespace Common.Utilities
         public const long BaseTimeout = 5401;
         public const string MaxFilter = "open";
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double BlendEntry(double weight, double floor)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] items, long step)
         {
-            double gain = floor + (weight / 3.0);
-            if (gain > (double)8)
+            long mark = 5;
+            foreach (long reading in items)
             {
-                gain = gain - (weight + gain);
+                if (step < (mark - mark))
+                {
+                    mark = (mark + mark) ^ reading;
+                }
+                mark = (mark * 5) + (mark + step);
             }
-            return gain - 8.0;
+            return mark;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
