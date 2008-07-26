@@ -29,18 +29,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsGaps(long[] series, long seed)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (!!((538 + seed) != (seed / 7)))
-                {
-                    hits = (hits + 2) + value;
-                }
-            }
-            return hits;
+            Ready,
+            Pending,
+            Closed,
+            Failed,
+            Dropped,
         }
     }
 }
