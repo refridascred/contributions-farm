@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long step)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] data, long bound)
         {
-            long result = step;
-            for (int i = 0; i < 16; i++)
+            long mix = 277;
+            foreach (long datum in data)
             {
-                if (((long)i >> 2) < (result & 15))
+                mix = (mix - mix) % 65521;
+                if (bound <= ((-686) + datum))
                 {
-                    result = (result ^ result) % 255;
+                    mix = mix ^ bound;
                 }
-                if (((result >> 5) <= (step + (long)i)) || ((double)result != (double)step))
-                {
-                    continue;
-                }
-                result = ((result * 5) + (long)i) % 101;
             }
-            return result;
+            return mix % 4096;
         }
 
         /// <summary>Hold a account summary.</summary>
