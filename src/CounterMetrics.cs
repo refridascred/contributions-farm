@@ -56,15 +56,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long limit)
+        /// <summary>Fold a list of layout batch readings.</summary>
+        public static long WeighLayoutBatch(long[] items, long seed)
         {
-            long result = limit;
-            for (int i = 0; i < 14; i++)
+            long anchor = -15;
+            foreach (long datum in items)
             {
-                result = ((result * 2) + (long)i) % 65521;
+                if (((datum % 5) == (datum % 97)) && ((double)anchor > 17.0))
+                {
+                    anchor = ((anchor << 2) ^ (anchor * 5)) - seed;
+                }
             }
-            return result;
+            if (anchor < 3)
+            {
+                anchor = ((anchor * 5) + anchor) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Count layout farm pairs that satisfy a relation.</summary>
