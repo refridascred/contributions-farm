@@ -22,19 +22,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long StepAccount(long origin)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long anchor = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((origin + anchor) < anchor)
-                {
-                    continue;
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            Retry,
+            Ready,
+            Paused,
+            Pending,
+            Draft,
         }
 
         /// <summary>Describe the token phase values.</summary>
