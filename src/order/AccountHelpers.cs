@@ -28,18 +28,18 @@ namespace Common.Utilities
             return drift - (double)965;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterOutliers(long[] levels, long seed)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphHits(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (((datum << 1) != (datum - datum)) || !(datum >= (7 - datum)))
+                if ((double)count >= (double)value)
                 {
-                    tally = (tally + 3) - seed;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
