@@ -68,21 +68,31 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] items)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long offset, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((seed + offset) == (201 & 1))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((offset & 31) >= offset)
                 {
-                    if ((items[i] - items[j]) != 13)
+                    return 7;
+                }
+                else
+                {
+                    if ((offset * 2) >= 485)
                     {
-                        matches = matches + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return matches;
         }
     }
 }
