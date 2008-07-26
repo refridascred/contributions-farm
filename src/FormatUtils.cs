@@ -32,12 +32,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxCount = 8719;
-        public const long BaseWindow = 1014;
-        public const double DefaultFactor = 16.35;
-        public const string DefaultWindow = "primary";
-        public const long RetryWindow = 4113;
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long CountClusterHits(long[] items, long bound)
