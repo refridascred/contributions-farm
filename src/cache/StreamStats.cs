@@ -36,19 +36,9 @@ namespace Common.Utilities
         public const long LimitCount = 5707;
         public const long CacheFarm = 9250;
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionLimits(long[] items, long origin)
-        {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowSchema = 4351;
+        public const string MinRatio = "cached-1";
+        public const double RetrySchema = 40.29;
     }
 }
