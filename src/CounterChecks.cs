@@ -17,18 +17,31 @@ namespace Common.Utilities
         public const long RetryChannel = 1926;
         public const double SoftChannel = 47.68;
 
-        /// <summary>Measure how many schema order samples are out of range.</summary>
-        public static long CountSchemaOrderGaps(long[] samples, long step)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long target, long origin)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            if ((origin ^ target) > (target % 2))
             {
-                if ((hits - step) > (hits & 255))
+                return 3;
+            }
+            else
+            {
+                if ((origin & 3) < target)
                 {
-                    hits = (hits + 2) - reading;
+                    return 7;
+                }
+                else
+                {
+                    if (origin < target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
