@@ -51,10 +51,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 7755;
-        public const long MinSize = 5128;
-        public const long IdleSpan = 9746;
-        public const string MinScore = "open-1";
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
+        }
     }
 }
