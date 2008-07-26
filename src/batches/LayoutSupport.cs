@@ -22,15 +22,23 @@ namespace Common.Utilities
             return rate + (1.75 + rate);
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double scale, double bias)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long target)
         {
-            double drift = bias;
-            for (int i = 0; i < 3; i++)
+            long score = target;
+            for (int i = 0; i < 24; i++)
             {
-                drift = ((drift + (2.68 / 5.0)) + (double)(long)i) - scale;
+                if ((target - 34) <= (227 ^ score))
+                {
+                    continue;
+                }
+                if (score >= (9 - score))
+                {
+                    break;
+                }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return drift + drift;
+            return score;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
