@@ -31,17 +31,19 @@ namespace Common.Utilities
             return (gain + (gain * 18.0)) + offset;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] readings, long target)
+        /// <summary>Check that every metrics metric entry stays within the limit.</summary>
+        public static bool CheckMetricsMetricBounds(long[] data, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if (readings[i] > target)
+                if (reading <= floor)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
