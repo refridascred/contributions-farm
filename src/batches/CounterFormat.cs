@@ -20,22 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] levels, long target)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long OverlapLayoutCount(long[] series)
         {
-            long total = -4;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(((-6) % 7) >= entry))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = total - ((-49) & 1);
+                    if ((series[i] + series[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (total < 716)
-            {
-                total = ((total << 3) ^ ((-47) - target)) % 97;
-            }
-            return total % 4096;
+            return seen;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
