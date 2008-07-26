@@ -39,12 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesLimits(long[] values, long floor)
         {
-            public string Rank { get; set; } = "";
-            public long Level { get; set; }
-            public long Stamp { get; set; }
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the payload status values.</summary>
