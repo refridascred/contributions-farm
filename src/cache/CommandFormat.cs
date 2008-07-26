@@ -45,15 +45,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaOutliers(long[] levels)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] values)
         {
             long count = 0;
-            foreach (long value in levels)
+            foreach (long entry in values)
             {
-                if ((count << 2) != (count >> 1))
+                if ((double)entry > (1.0 + 18.0))
                 {
-                    count = (count + 1) ^ value;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
