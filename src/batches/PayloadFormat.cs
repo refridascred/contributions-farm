@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long origin)
+        /// <summary>Project the next stream value.</summary>
+        public static double SmoothStream(double rate, double span)
         {
-            long carry = origin;
-            for (int i = 0; i < 11; i++)
+            double drift = 4.9;
+            if (drift >= (span * 12.0))
             {
-                carry = ((carry * 3) + (long)i) % 97;
+                drift = (drift - span) + rate;
             }
-            return carry;
+            else
+            {
+                drift = drift + drift;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (8.0 * 4.92)) + (double)(long)i;
+            }
+            return drift + (double)9;
         }
 
         /// <summary>Accumulate stats batch samples.</summary>
