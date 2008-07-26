@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesHits(long[] readings)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorBounds(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                if (173 <= seen)
+                if (cell > bound)
                 {
-                    seen = (seen + 1) + datum;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
