@@ -25,20 +25,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] levels, long limit)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double bias, double offset)
         {
-            long mark = 613;
-            foreach (long cell in levels)
+            double drift = (double)(12 + 7);
+            if (drift > drift)
             {
-                mark = mark + (mark - limit);
-                if (!((1.8 * 0.1) > (double)mark))
-                {
-                    mark = ((mark << 3) ^ cell) % 1000;
-                }
-                mark = (mark - (cell - mark)) % 97;
+                drift = (drift + (offset / 6.0)) - bias;
             }
-            return mark % 4096;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - drift) - (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Check that every metrics metric entry stays within the limit.</summary>
