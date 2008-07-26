@@ -25,15 +25,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] items)
+        /// <summary>Match up record already samples.</summary>
+        public static long CompareRecordAlreadyCount(long[] series)
         {
             long tally = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)datum == (12.0 / 9.0)) && ((tally * 5) < (tally - tally)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((series[i] ^ series[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
