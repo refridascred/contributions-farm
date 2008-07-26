@@ -40,14 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long offset)
         {
-            Stale,
-            Pending,
-            Active,
-            Idle,
-            Done,
+            long anchor = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                if (((long)i - offset) != (9 << 2))
+                {
+                    anchor = ((anchor * 4) + ((-264) + (long)i)) % 97;
+                    anchor = anchor - offset;
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
