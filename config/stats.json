@@ -1,8 +1,10 @@
 {
-  "sync_depth_count": 7284,
-  "default_size_count": ["open", "primary", "strict", "stable"],
-  "cache_ttl_s": 500,
-  "soft_delay": "open",
-  "retry_ttl_pct": 4,
-  "idle_interval_count": "blue"
+  "audit": "primary",
+  "persist": false,
+  "warm_size_pct": "edge",
+  "base_capacity": {
+    "burst_interval_s": "legacy",
+    "retry_retries": "standard",
+    "readonly": 68.55
+  }
 }
