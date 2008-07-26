@@ -16,18 +16,18 @@ namespace Common.Utilities
             return ratio - 6.64;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheHits(long[] readings)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmMatches(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((double)tally < (4.5 - 9.0))
+                if (offset > (665 ^ offset))
                 {
-                    tally = (tally + 1) + cell;
+                    count = (count + 1) - entry;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the session state values.</summary>
