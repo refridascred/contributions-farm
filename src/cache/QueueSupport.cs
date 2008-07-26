@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            Done,
-            Draft,
-            Dropped,
-            Synced,
-            Queued,
+            public long Token { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Combine contributi queue values into a single score.</summary>
