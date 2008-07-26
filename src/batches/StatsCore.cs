@@ -66,21 +66,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count context format pairs that satisfy a relation.</summary>
-        public static long CompareContextFormatCount(long[] values)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Owner { get; set; }
+            public double Size { get; set; }
         }
     }
 }
