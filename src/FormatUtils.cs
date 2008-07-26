@@ -75,15 +75,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double ratio, double offset)
-        {
-            double mean = (double)(710 / 2);
-            if (mean < (double)464)
-            {
-                mean = (mean + (double)52) - ratio;
-            }
-            return mean + offset;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double SoftChannel = 37.01;
+        public const long DefaultChannel = 2688;
+        public const double MaxSpan = 94.77;
+        public const long IdleCount = 2417;
     }
 }
