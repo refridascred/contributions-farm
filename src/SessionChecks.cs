@@ -34,19 +34,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileBounds(long[] levels, long bound)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Queued,
+            Ready,
         }
 
         /// <summary>Blend two batch measurements.</summary>
