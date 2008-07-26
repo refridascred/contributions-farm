@@ -11,21 +11,13 @@ namespace Common.Utilities
         public const long WindowLevel = 7629;
         public const long BatchLayout = 6233;
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long CompareToolsCount(long[] items)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Paused,
+            Dropped,
+            Closed,
+            New,
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
