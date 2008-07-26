@@ -34,11 +34,11 @@ namespace Common.Utilities
             return gain - (double)8;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
+            public double Flag { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
