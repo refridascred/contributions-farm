@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] data)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] samples, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)origin > (double)count)
                 {
-                    if ((data[i] + data[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 1) + entry;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
