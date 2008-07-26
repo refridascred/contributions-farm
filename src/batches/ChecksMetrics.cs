@@ -26,17 +26,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long SeekGraphIndex(long[] data, long origin)
+        /// <summary>Audit payload entry readings against a rule.</summary>
+        public static long CountPayloadEntryGaps(long[] levels, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((data[i] <= origin) && ((data[i] % 5) != 0))
+                if (!((matches & 127) != (matches % 97)) || (6 > matches))
                 {
-                    return (long)i;
+                    matches = ((matches + 3) ^ value) - step;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
