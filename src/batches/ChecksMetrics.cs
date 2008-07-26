@@ -70,11 +70,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardGithubfarm = 9548;
-        public const double CacheRatio = 77.9;
-        public const string BatchTimeout = "stable";
-        public const string IdleGithubfarm = "standard-v2";
-        public const long WindowGithubfarm = 5358;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 3913;
+        public const long RetryRecord = 1395;
+        public const string BaseTimeout = "open-v2";
     }
 }
