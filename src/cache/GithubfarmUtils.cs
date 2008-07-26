@@ -44,32 +44,18 @@ namespace Common.Utilities
         public const string DefaultContext = "standard-1";
         public const double RetryContext = 76.73;
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long step, long floor)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionHits(long[] levels)
         {
-            long gap = step ^ floor;
-            if (!((step - step) != (gap % 10)))
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor ^ step) <= step)
+                if (!((entry ^ hits) != ((-82) % 8)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)step >= (8.47 / 9.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Rank record input into a small class.</summary>
