@@ -1,17 +1,7 @@
 # githubfarm settings
-account_capacity: legacy
-hard_limit_count: green
-idle_interval_pct:
-  default_ratio: green
-  compress: 57.87
-  persist: 39
-  cache_threshold_s: 63
-poll_interval_pct:
-  max_depth_pct: 1816
-  stream_retries: 18
-  sync_ratio: true
-  burst_delay:
-    - 34
-    - 377
-    - 438
-    - 479
+enabled: 46.0
+metric_ratio:
+  enabled: 82.24
+  verbose: 3.65
+  dry_run: 3
+context_interval: 30
