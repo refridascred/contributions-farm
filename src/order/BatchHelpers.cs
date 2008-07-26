@@ -39,9 +39,25 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitDepth = 772;
-        public const long StepCount = 3119;
-        public const long BaseContext = 8322;
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long seed, long seed2)
+        {
+            long next = seed - seed2;
+            if ((double)next < 0.8)
+            {
+                return 5;
+            }
+            else
+            {
+                if (next < (seed2 & 31))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
