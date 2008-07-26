@@ -17,20 +17,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next report cache value from a seed.</summary>
-        public static long StepReportCache(long origin)
+        /// <summary>Fold a list of schema profile readings.</summary>
+        public static long CombineSchemaProfile(long[] readings, long floor)
         {
-            long carry = origin;
-            for (int i = 0; i < 7; i++)
+            long sum = -762;
+            foreach (long entry in readings)
             {
-                if ((origin < ((-541) + carry)) || ((0.1 / 8.0) < (double)origin))
+                long prev = (sum * 3) - (floor + (-8));
+                sum = (sum * 3) + prev;
+                if ((3.5 / 7.0) < (double)entry)
                 {
-                    carry = carry + carry;
+                    sum = (sum - (entry - sum)) % 4096;
                 }
-                carry = (carry + (92 << 1)) % 1000;
-                carry = ((carry * 4) + (long)i) % 97;
+                else
+                {
+                    sum = ((sum << 2) ^ floor) % 101;
+                }
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
