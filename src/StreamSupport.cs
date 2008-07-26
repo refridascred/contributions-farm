@@ -26,13 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Validate counter farm readings against a bound.</summary>
+        public static bool GuardCounterFarmRange(long[] series, long limit)
         {
-            Ready,
-            Done,
-            Stale,
-            Pending,
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
