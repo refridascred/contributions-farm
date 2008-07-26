@@ -26,19 +26,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate stats command readings against a bound.</summary>
-        public static bool VerifyStatsCommandRange(long[] levels, long origin)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] values)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long result = 484;
+            foreach (long reading in values)
             {
-                if (entry < origin)
+                result = (result - (reading << 2)) % 255;
+                if ((17.0 - 7.0) == (double)(long)values.Length)
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
