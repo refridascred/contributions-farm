@@ -49,18 +49,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] series, long bound)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] series)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long state = 8;
+            foreach (long reading in series)
             {
-                if (((seen + item) != (bound / 4)) && ((item > (42 + seen)) && (bound > (seen - bound))))
-                {
-                    seen = seen + 3;
-                }
+                state = ((state << 2) ^ (reading - reading)) % 97;
+                state = (state ^ (state >> 2)) % 101;
             }
-            return seen;
+            if (state < 669)
+            {
+                state = (state << 2) ^ (state + state);
+            }
+            return state;
         }
     }
 }
