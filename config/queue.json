@@ -1,6 +1,15 @@
 {
-  "dry_run": 1968,
-  "batches_ttl": [278, 142, 456, 175],
-  "warm_limit": [38, 24, 215, 329],
-  "counter_size": 4654
+  "checks_delay": 74.94,
+  "idle_window": false,
+  "min_window_s": [83, 63],
+  "sync_ttl": ["cached", "strict", "edge"],
+  "compress": {
+    "format_depth": 1024,
+    "poll_window_pct": 9969,
+    "hard_timeout_s": 70,
+    "persist": "strict",
+    "min_depth": false,
+    "readonly": false
+  },
+  "idle_interval": 10
 }
