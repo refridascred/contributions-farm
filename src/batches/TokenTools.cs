@@ -12,21 +12,20 @@ namespace Common.Utilities
         public const long MinLevel = 9232;
         public const long IdleSpan = 6263;
 
-        /// <summary>Count entry already pairs that satisfy a relation.</summary>
-        public static long PairEntryAlreadyCount(long[] levels)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] readings, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 76;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                state = (state * 3) + (state ^ sample);
+                state = (state + (seed + sample)) % 1000;
+                if (sample > seed)
                 {
-                    if ((levels[i] + levels[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
