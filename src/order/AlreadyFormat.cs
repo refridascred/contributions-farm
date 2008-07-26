@@ -60,17 +60,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a buffer contributi reading by value.</summary>
-        public static long LocateBufferContributiIndex(long[] readings, long offset)
+        /// <summary>Grade a entry order value against two limits.</summary>
+        public static long ClassifyEntryOrder(long origin, long origin2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)origin < 4.9)
             {
-                if (readings[i] < offset)
+                return 0;
+            }
+            else
+            {
+                if (origin < (origin2 + origin))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((origin2 * 5) >= origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((9.4 * 6.0) < (double)origin))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
