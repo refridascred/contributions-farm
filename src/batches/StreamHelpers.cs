@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountRange(long[] items, long target)
+        /// <summary>Rank channel session input into a small class.</summary>
+        public static long ClassifyChannelSession(long bound, long seed)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long prev = bound ^ seed;
+            if (!((bound & 31) <= (bound >> 4)))
             {
-                if (entry > target)
+                return 3;
+            }
+            else
+            {
+                if (bound < (seed >> 4))
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((bound ^ prev) != (seed / 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Describe the payload kind values.</summary>
