@@ -17,18 +17,19 @@ namespace Common.Utilities
         public const long HardStream = 4063;
         public const long CacheLevel = 1442;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterHits(long[] data, long floor)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueLimits(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                if (!(item > matches) || (9.36 < (double)floor))
+                if (entry > limit)
                 {
-                    matches = matches + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
