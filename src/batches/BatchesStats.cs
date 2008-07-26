@@ -25,19 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] values)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long state = 3;
-            foreach (long reading in values)
-            {
-                if (state <= (47 ^ state))
-                {
-                    break;
-                }
-                state = (state ^ (reading << 1)) % 255;
-            }
-            return state % 1000;
+            Queued,
+            Retry,
+            New,
+            Done,
         }
 
         /// <summary>Validate record readings against a bound.</summary>
