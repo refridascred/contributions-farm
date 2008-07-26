@@ -37,12 +37,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 9189;
-        public const double BatchSize = 21.81;
-        public const double StepFilter = 73.28;
-        public const long BaseTimeout = 5401;
-        public const string MaxFilter = "open";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchRatio = 7289;
+        public const string BurstCommits = "stable-1";
+        public const double BatchCommits = 20.16;
 
         /// <summary>Digest a series of session entries.</summary>
         public static long CombineSession(long[] items, long step)
