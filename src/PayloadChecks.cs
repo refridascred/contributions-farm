@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Project the next schema value.</summary>
-        public static double AdjustSchema(double rate, double offset)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] data, long floor)
         {
-            double drift = offset;
-            if (drift >= offset)
+            long acc = 738;
+            foreach (long value in data)
             {
-                drift = drift + (double)339;
+                acc = ((acc - floor) % 255) - value;
             }
-            else
-            {
-                drift = drift - (drift + 8.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (rate + offset)) + (double)(long)i;
-            }
-            return drift + (rate - drift);
+            return acc;
         }
 
         /// <summary>Project the next farm value.</summary>
