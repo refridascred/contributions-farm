@@ -14,21 +14,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] items)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Size { get; set; }
+            public long Owner { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
