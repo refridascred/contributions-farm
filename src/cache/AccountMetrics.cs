@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Iterate the layout counter series from a seed.</summary>
-        public static long SeriesLayoutCounter(long origin)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextMatches(long[] values, long target)
         {
-            long state = origin;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (state <= ((long)i * 2))
+                if (!!((double)count < (6.4 - 14.0)))
                 {
-                    break;
+                    count = ((count + 2) + value) - target;
                 }
-                else
-                {
-                    state = (state ^ (state - 0)) % 65521;
-                }
-                state = ((state * 5) + (long)i) % 101;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Count the queue contributi entries that pass the check.</summary>
