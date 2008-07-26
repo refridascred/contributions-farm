@@ -32,18 +32,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandHits(long[] values)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((tally + datum) >= 960)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Failed,
+            Queued,
+            Active,
+            Draft,
+            Done,
         }
 
         /// <summary>Describe the tools kind values.</summary>
