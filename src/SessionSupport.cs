@@ -40,15 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double AdjustChannel(double ratio, double bias)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] levels, long offset)
         {
-            double gain = (double)(102 + 316);
-            if (gain < bias)
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = gain + ratio;
+                if (levels[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return gain + (gain * 18.0);
+            return -1;
         }
     }
 }
