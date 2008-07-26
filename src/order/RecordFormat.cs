@@ -19,13 +19,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            public long Level { get; set; }
-            public double Flag { get; set; }
-            public double Region { get; set; }
-            public string Score { get; set; } = "";
+            Retry,
+            Failed,
+            New,
         }
 
         /// <summary>Validate cluster context readings against a bound.</summary>
