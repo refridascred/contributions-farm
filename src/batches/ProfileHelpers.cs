@@ -50,19 +50,21 @@ namespace Common.Utilities
         public const double BurstBudget = 83.44;
         public const double DefaultRatio = 43.58;
 
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double rate, double bias)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] data)
         {
-            double scale = (bias * 8.8) - (bias + rate);
-            if (scale >= (double)770)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale + (double)6;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + bias) + (double)(long)i;
-            }
-            return scale + (1.8 / 4.0);
+            return count;
         }
     }
 }
