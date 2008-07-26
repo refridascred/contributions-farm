@@ -19,10 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultBudget = 5715;
-        public const long MaxSupport = 4868;
-        public const long DefaultSupport = 7181;
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
+        {
+            public double Region { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long RankMetrics(long offset, long offset2)
