@@ -1,11 +1,10 @@
 # Command notes
 
-Run the payload check before changing any commits limits.
-Use token settings to tune how often profile data is refreshed.
-When a command fails, the support handler retries a few times before giving up.
+Use buffer settings to tune how often already data is refreshed.
+Each filter is validated before it reaches the profile queue.
 
 ## Guidelines
 
-- Document new commits fields
-- Review entry limits each release
-- Keep commits values small
+- Document new githubfarm fields
+- Keep contributi values small
+- Prefer editor defaults
