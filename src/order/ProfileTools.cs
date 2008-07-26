@@ -22,13 +22,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Project the next channel layout value.</summary>
+        public static double SmoothChannelLayout(double rate, double span)
         {
-            Retry,
-            Stale,
-            Locked,
-            Closed,
+            double load = (double)5 * 9.0;
+            for (int i = 0; i < 8; i++)
+            {
+                load = ((load - span) + (double)(long)i) - rate;
+            }
+            return load - (double)9;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
