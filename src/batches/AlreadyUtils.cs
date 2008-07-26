@@ -29,19 +29,15 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Check that every session format entry stays within the limit.</summary>
-        public static bool VerifySessionFormatRange(long[] series, long bound)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] readings, long bound)
         {
-            bool found = true;
-            foreach (long item in series)
+            long mix = -236;
+            foreach (long value in readings)
             {
-                if (item > bound)
-                {
-                    found = false;
-                    break;
-                }
+                mix = (((mix * 3) + (bound & 63)) % 1000) ^ value;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
