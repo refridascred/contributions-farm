@@ -64,22 +64,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountHits(long[] readings)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long SortCache(long bound, long origin)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long span = bound ^ origin;
+            if (bound >= (bound % 60))
             {
-                if ((4.0 / 5.0) <= (double)item)
+                return 8;
+            }
+            else
+            {
+                if ((double)span < (5.58 - 16.0))
                 {
-                    matches = matches + 3;
+                    return 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((84 < (origin - 11)) || ((origin - 984) <= (894 + span)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((2.0 + 6.0) == (double)origin) && (bound >= (68 / 2)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the contributi status values.</summary>
