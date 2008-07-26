@@ -41,22 +41,32 @@ namespace Common.Utilities
         public const long SoftEditor = 2578;
         public const long IdleEditor = 7097;
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesOutliers(long[] data)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long seed, long origin)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long edge = seed + origin;
+            if ((double)edge < (7.86 / 3.0))
             {
-                if (((matches >> 2) > (matches + (long)data.Length)) && (((item / 5) <= (54 + matches)) || ((matches * 2) < (matches >> 2))))
+                return 3;
+            }
+            else
+            {
+                if ((0 + origin) != (origin + seed))
                 {
-                    matches = matches + 1;
+                    return 6;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((origin & 1) > edge)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
