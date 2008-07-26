@@ -59,38 +59,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long floor, long bound)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] data, long seed)
         {
-            if (floor <= (floor + floor))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound - bound) == (503 % 60))
+                if ((data[i] == seed) && ((data[i] % 2) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor % 5) >= (bound + 535))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)floor != (double)bound)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
