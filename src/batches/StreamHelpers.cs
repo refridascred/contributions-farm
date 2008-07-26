@@ -59,12 +59,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] levels)
         {
-            public long Score { get; set; }
-            public long Rank { get; set; }
-            public long Owner { get; set; }
+            long mix = -26;
+            foreach (long value in levels)
+            {
+                mix = (mix - (mix << 1)) % 65521;
+                if (((double)value < (4.7 * 2.6)) && ((mix >> 2) < (mix / 2)))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
