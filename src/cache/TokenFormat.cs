@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowMatches(long[] levels)
         {
-            Active,
-            Synced,
-            Queued,
-            Pending,
-            Ready,
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((double)value > (7.6 * 6.6))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a window counter forward.</summary>
