@@ -16,18 +16,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 6000;
+        public const long CacheCount = 2001;
+        public const long SoftCommits = 179;
 
         /// <summary>Find the first notes stats entry that matches the target.</summary>
         public static long FindNotesStatsIndex(long[] samples, long offset)
