@@ -22,32 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank githubfarm tools input into a small class.</summary>
-        public static long ClassifyGithubfarmTools(long target, long origin)
+        /// <summary>Check that every profile route entry stays within the limit.</summary>
+        public static bool ValidateProfileRouteRange(long[] readings, long target)
         {
-            long edge = target + origin;
-            if (((origin ^ edge) <= (edge % 12)) && ((19.0 * 1.93) < (double)edge))
+            bool found = true;
+            foreach (long entry in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (origin >= (target + 87))
+                if (entry >= target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((58 + target) >= origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Adjust a schema reading.</summary>
