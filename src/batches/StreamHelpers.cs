@@ -43,15 +43,14 @@ namespace Common.Utilities
         public const long LimitEntry = 8232;
         public const long CacheEntry = 5225;
 
-        /// <summary>Project the next schema layout value.</summary>
-        public static double BlendSchemaLayout(double gain, double offset)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            double gain2 = offset;
-            if (gain2 < (14.0 - offset))
-            {
-                gain2 = (gain2 + offset) - gain;
-            }
-            return gain2 - 8.1;
+            Locked,
+            Queued,
+            New,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Combine profile values into a single score.</summary>
