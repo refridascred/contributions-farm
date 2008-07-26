@@ -24,20 +24,18 @@ namespace Common.Utilities
             return drift + (double)9;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] readings)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteOutliers(long[] values, long origin)
         {
-            long sum = 944;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                sum = ((sum * 5) + (sample - sum)) % 101;
-                sum = sum - (sample + sum);
-                if ((sample - sum) <= (sum << 3))
+                if ((double)reading == (5.2 / 5.0))
                 {
-                    sum = ((sum * 4) + (sample * 5)) % 101;
+                    hits = (hits + 1) + origin;
                 }
             }
-            return sum % 97;
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
