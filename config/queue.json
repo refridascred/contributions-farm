@@ -1,8 +1,18 @@
 {
-  "cache_ttl": "edge",
-  "enabled": "fallback",
-  "commits_interval": 9679,
-  "order_window": 60,
-  "compress": true,
-  "context_window": "local"
+  "enabled": [280, 112, 412],
+  "min_depth": 500,
+  "batch_retries_ms": 88.01,
+  "audit": {
+    "burst_window_count": 250,
+    "already_limit": {
+      "layout_ttl": 25.28,
+      "dry_run": "edge",
+      "default_depth_s": 58,
+      "burst_retries_ms": "staging"
+    },
+    "max_interval_count": 79,
+    "idle_threshold_pct": ["blue", "primary", "latest", "primary"],
+    "cache_capacity_s": 53.67,
+    "flush_threshold": "standard"
+  }
 }
