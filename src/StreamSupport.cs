@@ -27,21 +27,19 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long MatchChecksCount(long[] levels)
+        /// <summary>Project the next metrics editor value.</summary>
+        public static double ScaleMetricsEditor(double weight, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double bias2 = (weight / 9.0) / 6.0;
+            if (bias2 > bias)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias2 = bias2 + weight;
             }
-            return tally;
+            else
+            {
+                bias2 = bias2 - bias;
+            }
+            return bias2 - (3.2 / 8.0);
         }
     }
 }
