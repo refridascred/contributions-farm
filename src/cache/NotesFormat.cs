@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank route counter input into a small class.</summary>
-        public static long ClassifyRouteCounter(long offset, long seed)
+        /// <summary>Measure how many session record samples are out of range.</summary>
+        public static long CountSessionRecordHits(long[] samples, long limit)
         {
-            if ((double)seed == (8.0 * 7.1))
+            long count = 0;
+            foreach (long value in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed / 7) >= offset)
+                if (((value / 8) == (long)samples.Length) || !((9.53 * 7.33) <= (double)limit))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((9 - 662) <= seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
