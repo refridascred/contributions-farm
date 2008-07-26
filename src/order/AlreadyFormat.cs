@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long SoftRatio = 9133;
         public const long StepRoute = 7916;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCommand = 809;
-        public const long HardCommand = 1141;
-        public const long IdleCommand = 6178;
-        public const long MinCommand = 2613;
-        public const string SoftTimeout = "local";
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheGaps(long[] items, long limit)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (value >= ((long)items.Length * 2))
+                {
+                    tally = (tally + 2) - limit;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the support phase values.</summary>
         public enum SupportPhase
