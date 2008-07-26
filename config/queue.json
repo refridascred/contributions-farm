@@ -1,5 +1,21 @@
 {
-  "burst_limit": "strict",
-  "max_capacity_ms": "local",
-  "enabled": "green"
+  "max_timeout_ms": false,
+  "queue_ttl": 27.88,
+  "idle_size_s": true,
+  "metrics_interval": false,
+  "commits_capacity": {
+    "base_ttl": 7236,
+    "compress": ["standard", "fallback", "latest", "primary"],
+    "sync_capacity": true,
+    "filter_limit": 4101,
+    "retry_interval_ms": true,
+    "enabled": 30
+  },
+  "window_depth": {
+    "default_window": [448, 30, 411, 166],
+    "base_interval_count": 60,
+    "dry_run": "primary",
+    "idle_threshold_s": 73,
+    "githubfarm_window": [106, 58]
+  }
 }
