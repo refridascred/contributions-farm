@@ -37,10 +37,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchRatio = 7289;
-        public const string BurstCommits = "stable-1";
-        public const double BatchCommits = 20.16;
+        /// <summary>Check that every window stats entry stays within the limit.</summary>
+        public static bool VerifyWindowStatsRange(long[] items, long limit)
+        {
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Digest a series of session entries.</summary>
         public static long CombineSession(long[] items, long step)
