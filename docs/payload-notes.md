@@ -1,11 +1,10 @@
 # Payload notes
 
-Defaults for booking live in the config folder and can be overridden per environment.
-Use schema settings to tune how often farm data is refreshed.
+Use editor settings to tune how often route data is refreshed.
+When a session fails, the schema handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep stats values small
-- Log every stats change
-- Validate account input early
-- Prefer account defaults
+- Keep token values small
+- Validate session input early
+- Prefer channel defaults
