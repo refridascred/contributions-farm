@@ -12,22 +12,18 @@ namespace Common.Utilities
         public const double LimitLevel = 89.03;
         public const double BatchBuffer = 97.28;
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchOutliers(long[] data)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyGaps(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if ((entry - entry) > (entry ^ tally))
+                if (((long)values.Length * 3) <= (seed + seed))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = (matches + 2) + datum;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the layout status values.</summary>
