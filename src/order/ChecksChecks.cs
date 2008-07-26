@@ -22,14 +22,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Count the order cache entries that pass the check.</summary>
+        public static long CountOrderCacheOutliers(long[] values, long seed)
         {
-            Closed,
-            Retry,
-            Paused,
-            Draft,
-            New,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((entry + entry) > (seed + 425))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
