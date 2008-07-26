@@ -1,7 +1,8 @@
 # githubfarm settings
-max_threshold: 3
-soft_limit_pct: stable
-min_threshold_count: 7980
-queue_ratio: 9
-base_size: standard
-dry_run: 500
+base_ratio_pct: staging
+default_delay_pct:
+  - blue
+  - local
+dry_run: fallback
+context_threshold: 2640
+soft_delay: 84.5
