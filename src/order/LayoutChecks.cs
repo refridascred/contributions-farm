@@ -38,12 +38,13 @@ namespace Common.Utilities
         public const long StepProfile = 3394;
         public const string StepWidth = "primary-1";
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 3331;
-        public const string MinFactor = "strict";
-        public const double StepReport = 77.09;
-        public const string SoftRatio = "standard-edge";
-        public const long WindowReport = 7990;
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
+        {
+            Pending,
+            Done,
+            Locked,
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long TallyOrderOutliers(long[] levels, long target)
