@@ -19,32 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long seed, long offset)
-        {
-            if (((double)offset <= (4.0 * 4.46)) && ((offset - 16) <= (seed * 3)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((834 % 60) > (offset << 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((seed ^ 7) < (986 + seed)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepAccount = 5849;
+        public const long WindowRatio = 8014;
+        public const string BaseAccount = "standard-edge";
+        public const double StepDepth = 71.25;
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long ClassifyEntry(long seed, long origin)
