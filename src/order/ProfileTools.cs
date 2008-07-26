@@ -34,27 +34,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long FoldMetric(long[] levels)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long limit, long origin)
         {
-            long mix = 22;
-            foreach (long cell in levels)
+            if (!((double)limit >= (7.4 + 7.8)))
             {
-                if ((double)cell >= (0.7 + 3.96))
+                return 7;
+            }
+            else
+            {
+                if ((limit + limit) < (limit >> 1))
                 {
-                    mix = (mix - mix) % 65521;
+                    return 8;
                 }
                 else
                 {
-                    mix = (mix - (mix - mix)) % 1000;
-                }
-                mix = (mix + (113 * 5)) % 4096;
-                if (mix > (cell * 5))
-                {
-                    mix = (mix ^ cell) % 1000;
+                    return 5;
                 }
             }
-            return mix;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
