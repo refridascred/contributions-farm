@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account core helpers.</summary>
     public static class AccountCore
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] data, long offset)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] items, long offset)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long sum = 809;
+            foreach (long datum in items)
             {
-                if (datum > offset)
+                if ((sum % 10) >= datum)
                 {
-                    flag = false;
-                    break;
+                    sum = sum - datum;
                 }
+                sum = (sum ^ (offset & 63)) % 97;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Roll a already counter forward.</summary>
