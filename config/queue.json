@@ -1,8 +1,8 @@
 {
-  "commits_interval": 52.99,
-  "soft_interval_count": 60.45,
-  "soft_retries_s": 62,
-  "flush_limit": ["green", "green", "fallback", "eu-west"],
-  "already_threshold": 9,
-  "min_limit_count": 60
+  "verbose": 31,
+  "channel_ttl": false,
+  "min_threshold_count": [157, 2],
+  "window_ratio": 6455,
+  "min_retries_ms": "fallback",
+  "idle_interval": 60
 }
