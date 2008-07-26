@@ -1,13 +1,10 @@
 # support settings
-soft_window_pct: 2735
-payload_timeout: blue
-default_size_s:
-  retry_interval_s: 33.4
-  burst_ratio: standard
-  burst_timeout_count:
-    - strict
-    - open
-  soft_depth: true
-  idle_ttl: 94.3
-record_depth: true
-hard_ratio_ms: primary
+batch_size_s: strict
+graph_ttl: false
+persist: false
+strict: standard
+min_size_pct:
+  - primary
+  - edge
+  - local
+  - eu-west
