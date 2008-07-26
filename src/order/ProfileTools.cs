@@ -47,20 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] samples, long offset)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountMatches(long[] values, long seed)
         {
-            long sum = 141;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (item > (sum * 2))
+                if ((3 >> 5) < tally)
                 {
-                    sum = (((sum << 3) ^ (sum / 9)) % 97) + offset;
-                    sum = (sum + (item - 316)) % 1000;
+                    tally = ((tally + 2) + datum) + seed;
                 }
-                sum = ((sum << 3) ^ sum) % 255;
             }
-            return sum;
+            return tally;
         }
     }
 }
