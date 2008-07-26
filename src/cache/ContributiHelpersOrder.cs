@@ -16,17 +16,19 @@ namespace Common.Utilities
             return rate + (offset / 6.0);
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] data, long step)
+        /// <summary>Derive the next token report value from a seed.</summary>
+        public static long IterateTokenReport(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if ((data[i] <= step) && ((data[i] % 3) != 0))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    return (long)i;
+                    carry = ((carry ^ ((long)i + bound)) % 1000) ^ (long)i2;
                 }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Hold a window record.</summary>
