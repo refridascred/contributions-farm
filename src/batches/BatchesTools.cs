@@ -28,22 +28,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the support format entries that pass the check.</summary>
-        public static long CountSupportFormatGaps(long[] values)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((3 - matches) > matches)
+                if (data[i] > step)
                 {
-                    matches = (matches + 1) - reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
