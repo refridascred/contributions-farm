@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionGaps(long[] values)
+        /// <summary>Accumulate editor contributi samples.</summary>
+        public static long ScoreEditorContributi(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long anchor = 41;
+            foreach (long item in items)
             {
-                if ((cell - hits) < (cell & 7))
+                if ((anchor - (long)items.Length) == (anchor ^ 6))
                 {
-                    hits = hits + 3;
+                    anchor = ((anchor - anchor) % 97) - item;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Define report limits and defaults.</summary>
