@@ -68,19 +68,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadBounds(long[] levels, long seed)
+        /// <summary>Match up support session samples.</summary>
+        public static long OverlapSupportSessionCount(long[] levels)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum != seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((levels[i] - levels[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
