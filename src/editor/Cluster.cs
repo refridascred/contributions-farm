@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const long SoftAlready = 3897;
         public const string BatchInterval = "open-v2";
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
-        {
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double WindowWidth = 38.94;
+        public const double BaseCommits = 47.64;
+        public const long SoftBudget = 649;
+        public const double SoftCommits = 80.45;
+        public const long BurstCommits = 8099;
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long RankContributi(long floor, long step)
