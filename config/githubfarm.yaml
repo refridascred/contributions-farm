@@ -1,6 +1,16 @@
 # githubfarm settings
-soft_size_ms: green
-entry_ttl: strict
-token_window: edge
-audit: 76.59
-base_window_ms: true
+idle_depth_s:
+  retry_ratio: 32.29
+  idle_capacity_pct: true
+  strict: 7218
+  session_interval: false
+  checks_capacity: 1024
+  audit: 250
+min_delay_s: 60
+compress: 7219
+soft_limit_s:
+  - eu-west
+  - latest
+  - strict
+  - legacy
+idle_interval: false
