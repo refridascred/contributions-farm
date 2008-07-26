@@ -48,18 +48,21 @@ namespace Common.Utilities
         public const long CacheTimeout = 5802;
         public const string WindowLevel = "latest-edge";
 
-        /// <summary>Measure how many entry schema samples are out of range.</summary>
-        public static long CountEntrySchemaOutliers(long[] items, long floor)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long OverlapBatchesCount(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((cell + tally) < (cell * 4))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 2) - floor;
+                    if ((data[i] - data[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
