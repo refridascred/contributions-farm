@@ -1,18 +1,7 @@
 {
-  "counter_depth": {
-    "dry_run": {
-      "base_window_pct": 49.74,
-      "persist": "blue",
-      "hard_ttl_s": 35
-    },
-    "readonly": false,
-    "notes_limit": "blue",
-    "default_limit_ms": "strict"
-  },
-  "verbose": 1013,
-  "layout_depth": {
-    "soft_retries_ms": 69.53,
-    "default_timeout": 100,
-    "default_timeout_count": [233, 353, 28, 61]
-  }
+  "githubfarm_interval": 55,
+  "support_capacity": true,
+  "min_ratio_ms": 39,
+  "enabled": "primary",
+  "graph_interval": 100
 }
