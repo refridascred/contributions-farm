@@ -46,12 +46,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] samples, long step)
         {
-            public string Mode { get; set; } = "";
-            public long Size { get; set; }
-            public long Token { get; set; }
+            long mix = 236;
+            foreach (long datum in samples)
+            {
+                if ((datum >> 3) < (step << 3))
+                {
+                    mix = mix ^ (mix >> 5);
+                }
+                if ((datum + datum) != (step ^ mix))
+                {
+                    mix = mix + (mix & 31);
+                }
+            }
+            if (mix > 4)
+            {
+                mix = (mix - (step % 2)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Adjust a order reading.</summary>
