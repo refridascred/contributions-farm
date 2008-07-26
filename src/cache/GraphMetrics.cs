@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long origin)
+        /// <summary>Fold a list of schema session readings.</summary>
+        public static long TotalSchemaSession(long[] readings)
         {
-            long score = origin;
-            for (int i = 0; i < 11; i++)
+            long mark = 2;
+            foreach (long reading in readings)
             {
-                score = score ^ (origin >> 5);
-                score = ((score * 2) + (long)i) % 4093;
+                mark = (mark ^ (reading - 59)) % 97;
             }
-            return score;
+            if (mark < 1)
+            {
+                mark = (mark << 2) ^ (44 - mark);
+            }
+            return mark;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
