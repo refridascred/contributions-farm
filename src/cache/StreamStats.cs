@@ -36,19 +36,19 @@ namespace Common.Utilities
         public const long LimitCount = 5707;
         public const long CacheFarm = 9250;
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileBounds(long[] readings, long seed)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionLimits(long[] items, long origin)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if (cell < seed)
+                if (value != origin)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
     }
 }
