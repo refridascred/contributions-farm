@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double ScaleAccount(double bias, double bias2)
+        /// <summary>Adjust a payload metrics reading.</summary>
+        public static double BlendPayloadMetrics(double ratio, double floor)
         {
-            double weight = bias2;
-            return (weight + (bias2 / 4.0)) + bias;
+            double ratio2 = ratio;
+            if (ratio2 <= 0.89)
+            {
+                ratio2 = ratio2 - (double)8;
+            }
+            return ratio2 + floor;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
