@@ -32,22 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] values, long step)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long bound)
         {
-            long result = 9;
-            foreach (long cell in values)
+            long state = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((cell << 3) > (cell ^ step)))
-                {
-                    result = result + (result ^ step);
-                }
-                if ((double)step > (double)result)
-                {
-                    result = (result * 5) + (cell - cell);
-                }
+                state = state - ((long)i - state);
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Match up tools samples.</summary>
