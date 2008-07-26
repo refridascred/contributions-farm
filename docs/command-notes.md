@@ -1,11 +1,16 @@
 # Command notes
 
-Use report settings to tune how often queue data is refreshed.
-Keep record and stream names short and lowercase.
-The entry helpers are pure functions, so they are safe to call from any thread.
+When a counter fails, the batch handler retries a few times before giving up.
+Each entry is validated before it reaches the cluster queue.
+A entry that stays idle for too long is moved to the farm list.
+
+Defaults for checks live in the config folder and can be overridden per environment.
+A session that stays idle for too long is moved to the profile list.
+The schema report groups every stats by githubfarm.
 
 ## Guidelines
 
-- Validate queue input early
-- Review filter limits each release
-- Document new channel fields
+- Prefer report defaults
+- Review channel limits each release
+- Log every counter change
+- Keep graph values small
