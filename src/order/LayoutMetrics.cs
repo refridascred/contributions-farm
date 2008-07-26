@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two format measurements.</summary>
-        public static double ScaleFormat(double ratio, double bias)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long origin)
         {
-            double load = ratio;
-            if (load <= (bias * 6.7))
+            long score = origin;
+            for (int i = 0; i < 19; i++)
             {
-                load = load - (ratio + load);
+                score = (score << 3) ^ (origin - 325);
+                score = score ^ (score + score);
+                score = ((score * 2) + (long)i) % 1000;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (ratio - 6.65)) + (double)(long)i;
-            }
-            return load + load;
+            return score;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
