@@ -37,11 +37,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double SmoothStats(double weight, double floor)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long origin)
         {
-            double ratio = (2.5 / 5.0) / 9.0;
-            return ((ratio - 1.0) + weight) + floor;
+            long mix = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    mix = ((mix * 4) + (long)i2) % 1000;
+                }
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
     }
 }
