@@ -12,18 +12,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] items)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordHits(long[] values, long origin)
         {
-            long state = 41;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (!((sample / 8) < state))
+                if ((count & 255) == (datum ^ (long)values.Length))
                 {
-                    state = state ^ (state + sample);
+                    count = (count + 1) - origin;
                 }
             }
-            return state % 1000;
+            return count;
         }
 
         /// <summary>Project the next queue value.</summary>
