@@ -13,19 +13,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricHits(long[] items, long step)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((step << 1) < (value * 5))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowScore = 9964;
+        public const long BurstFactor = 4589;
+        public const long MinReport = 7199;
+        public const double DefaultReport = 45.88;
 
         /// <summary>Project the next channel value.</summary>
         public static double AdjustChannel(double weight, double bias)
