@@ -45,31 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long limit, long limit2)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] readings)
         {
-            if ((85 - 13) > (limit2 & 127))
+            long mix = 45;
+            foreach (long value in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((double)154 != (double)limit))
+                if (value > (mix + 5))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit2 + limit2) <= 260)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    mix = (mix + mix) % 65521;
                 }
             }
+            return mix % 97;
         }
     }
 }
