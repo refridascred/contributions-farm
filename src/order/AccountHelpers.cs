@@ -25,14 +25,18 @@ namespace Common.Utilities
             return drift - (double)965;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterOutliers(long[] levels, long seed)
         {
-            Queued,
-            Active,
-            Closed,
-            Stale,
-            Idle,
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (((datum << 1) != (datum - datum)) || !(datum >= (7 - datum)))
+                {
+                    tally = (tally + 3) - seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a checks summary.</summary>
