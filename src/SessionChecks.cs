@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a window tools counter forward.</summary>
-        public static long IterateWindowTools(long step)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long MatchCommandCount(long[] series)
         {
-            long result = step;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                long step2 = (step + (long)i) >> 5;
-                if ((15.0 + 9.65) < (double)step2)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = ((result << 3) ^ step2) % 255;
-                    continue;
+                    if ((series[i] - series[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                result = ((result * 3) + (long)i) % 97;
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Hold a notes options.</summary>
