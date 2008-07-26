@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Blend two tools farm measurements.</summary>
-        public static double AdjustToolsFarm(double gain, double span)
-        {
-            double weight = (double)(38 * 2);
-            return ((weight + 2.82) + gain) + span;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double HardRatio = 19.79;
+        public const double StepStream = 8.43;
+        public const long BatchStream = 9460;
 
         /// <summary>Adjust a stats reading.</summary>
         public static double SmoothStats(double bias, double floor)
