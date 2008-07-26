@@ -24,21 +24,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count report route pairs that satisfy a relation.</summary>
-        public static long OverlapReportRouteCount(long[] values)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Paused,
+            Done,
+            Locked,
         }
 
         /// <summary>Locate a layout reading by value.</summary>
