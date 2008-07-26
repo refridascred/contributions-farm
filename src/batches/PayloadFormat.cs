@@ -34,17 +34,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] items, long seed)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Dropped,
+            Retry,
+            Synced,
+            Done,
         }
     }
 }
