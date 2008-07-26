@@ -48,21 +48,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long CompareOrderCount(long[] data)
+        /// <summary>Project the next stream notes value.</summary>
+        public static double AdjustStreamNotes(double scale, double span)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double scale2 = (span * 4.49) * 9.0;
+            if (scale2 >= span)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale2 = scale2 + (span / 9.0);
             }
-            return count;
+            else
+            {
+                scale2 = scale2 + (scale - scale);
+            }
+            return scale2 - (double)76;
         }
     }
 }
