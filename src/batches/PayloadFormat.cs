@@ -30,10 +30,25 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BaseNotes = "latest";
-        public const double BaseCount = 80.81;
-        public const string WindowNotes = "open-edge";
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 5; i++)
+            {
+                if (1 > (target + 581))
+                {
+                    result = result - (118 + result);
+                    result = (result << 3) ^ (result ^ (long)i);
+                }
+                else
+                {
+                    result = result - (result / 3);
+                }
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Blend two counter measurements.</summary>
         public static double BlendCounter(double bias, double span)
