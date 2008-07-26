@@ -27,40 +27,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Grade a tools checks value against two limits.</summary>
-        public static long SortToolsChecks(long origin, long target)
-        {
-            long bound = origin + target;
-            if (((target & 127) >= bound) || ((double)origin <= (double)bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((bound >> 2) >= (target + bound)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)bound <= (double)108)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound <= (target + 477)) && ((double)bound <= (5.4 - 1.03)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheSize = 6783;
+        public const string BaseFactor = "fallback-v2";
+        public const long LimitSpan = 5478;
+        public const long SoftFactor = 111;
+        public const string IdleWidth = "fallback-edge";
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long CountMetricGaps(long[] items, long seed)
