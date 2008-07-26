@@ -20,17 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] values, long floor)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesOutliers(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (values[i] == floor)
+                if (((double)matches <= 4.17) && (((matches + matches) == (datum % 8)) && (matches >= datum)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
