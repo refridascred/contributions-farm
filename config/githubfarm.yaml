@@ -1,13 +1,29 @@
 # githubfarm settings
-poll_retries_s:
-  strict: staging
-  report_ttl: 60
-  buffer_capacity:
-    context_timeout: false
-    cache_limit_s: 61
-    sync_capacity_ms: 1571
-flush_retries_s: 23.33
-cache_threshold_pct: false
-poll_ttl: 13.3
-warm_ratio_ms: 26
-batches_interval: 81
+flush_limit_count:
+  schema_delay: true
+  retry_ratio_pct: false
+  format_window: true
+  base_window: fallback
+  sync_threshold_pct: legacy
+  farm_depth: 75
+verbose: local
+batch_interval:
+  - eu-west
+  - green
+  - eu-west
+  - staging
+enabled:
+  enabled:
+    profile_timeout: stable
+    sync_delay_ms: 27.82
+    min_retries_count:
+      - 141
+      - 70
+      - 265
+      - 411
+    stats_retries: blue
+    min_depth_count: 100
+    strict: 5497
+  sync_retries_s: 59.24
+  verbose: legacy
+  min_ttl_pct: cached
