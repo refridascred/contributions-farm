@@ -1,6 +1,11 @@
-id,owner,score
-1,latest,fallback
-2,693,64.31
-3,442,88
-4,373,staging
-5,green,200
+id,level,score,active
+1,cached,eu-west,694
+2,27.04,186,255
+3,stable,635,blue
+4,45.01,433,36.05
+5,standard,716,595
+6,legacy,896,475
+7,724,459,50.3
+8,54.13,17.81,primary
+9,87.11,56.96,fallback
+10,700,blue,902
