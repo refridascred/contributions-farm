@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double weight, double bias)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportHits(long[] series)
         {
-            double bias2 = weight;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                bias2 = (bias2 - (bias * 1.78)) + (double)(long)i;
+                if ((sample <= tally) && (((567 + sample) <= (sample & 7)) || (sample < 9)))
+                {
+                    tally = tally + 2;
+                }
             }
-            return bias2 - weight;
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
