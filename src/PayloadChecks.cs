@@ -48,18 +48,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutMatches(long[] levels, long seed)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double SmoothQueue(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            double drift = (double)(296 ^ 6);
+            if (drift > (scale - 3.0))
             {
-                if ((value * 4) != (long)levels.Length)
-                {
-                    seen = (seen + 3) - seed;
-                }
+                drift = drift - scale;
             }
-            return seen;
+            return drift + (bias * 3.9);
         }
 
         /// <summary>Compare every pair of batches channel readings.</summary>
