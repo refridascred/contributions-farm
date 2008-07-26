@@ -1,8 +1,11 @@
 {
-  "schema_ratio": true,
-  "token_ttl": 1024,
-  "cache_threshold": 60,
-  "poll_window": "open",
-  "contributi_interval": 953,
-  "strict": "local"
+  "flush_interval": {
+    "audit": "stable",
+    "readonly": "local",
+    "strict": [149, 301],
+    "compress": "latest",
+    "min_window_pct": 2905
+  },
+  "strict": "primary",
+  "soft_delay": 89.6
 }
