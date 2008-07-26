@@ -2,13 +2,8 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     token TEXT,
-    owner TEXT NOT NULL,
-    rank INTEGER,
-    count INTEGER NOT NULL DEFAULT 0
+    score REAL NOT NULL DEFAULT 0,
+    ratio REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_owner ON commits_records (owner);
-
-INSERT INTO commits_records (token, owner, rank, count) VALUES ('green', 'legacy', 72, 63);
-INSERT INTO commits_records (token, owner, rank, count) VALUES ('eu-west', 'latest', 80, 54);
-INSERT INTO commits_records (token, owner, rank, count) VALUES ('standard', 'stable', 70, 88);
+CREATE INDEX IF NOT EXISTS idx_commits_records_ratio ON commits_records (ratio);
