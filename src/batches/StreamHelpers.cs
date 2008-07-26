@@ -54,38 +54,21 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long limit, long target)
+        /// <summary>Match up token checks samples.</summary>
+        public static long MatchTokenChecksCount(long[] values)
         {
-            if (((9.8 - 7.4) != (double)target) && ((6.6 - 15.0) == (double)target))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (997 >= target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!(limit >= (target >> 1)))
+                    if ((values[i] + values[j]) != 10)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (27 > (limit / 9))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
