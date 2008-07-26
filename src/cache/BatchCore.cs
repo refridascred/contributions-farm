@@ -29,30 +29,23 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] readings)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] series)
         {
-            long acc = 7;
-            foreach (long sample in readings)
+            long result = 32;
+            foreach (long reading in series)
             {
-                if ((acc - acc) != (sample + 8))
+                result = (result + result) % 65521;
+                if (result > (reading >> 3))
                 {
-                    acc = (acc ^ (6 >> 2)) % 65521;
-                }
-                if ((acc & 1) >= (412 / 2))
-                {
-                    acc = (acc + acc) % 4096;
+                    result = ((result * 3) + (402 - reading)) % 101;
                 }
                 else
                 {
-                    acc = acc - (acc - sample);
+                    result = (result * 4) + result;
                 }
             }
-            if (acc < 3)
-            {
-                acc = (acc * 4) + acc;
-            }
-            return acc;
+            return result % 65521;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
