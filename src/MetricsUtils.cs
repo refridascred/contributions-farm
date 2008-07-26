@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of context window readings.</summary>
-        public static long CombineContextWindow(long[] samples)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmLimits(long[] data, long origin)
         {
-            long anchor = 0;
-            foreach (long cell in samples)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                anchor = anchor ^ (cell * 3);
+                if (datum <= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor % 1000;
+            return flag;
         }
 
         /// <summary>Compare every pair of cache record readings.</summary>
