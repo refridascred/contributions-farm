@@ -49,22 +49,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] data, long floor)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] values)
         {
-            long mix = -8;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)data.Length ^ item) < item)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = mix - (mix >> 4);
+                    if ((values[i] - values[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mix > (-37))
-            {
-                mix = mix + (mix - floor);
-            }
-            return mix % 4096;
+            return seen;
         }
     }
 }
