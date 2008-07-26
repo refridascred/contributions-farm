@@ -1,6 +1,13 @@
 {
-  "strict": 30.57,
-  "account_interval": 31.01,
-  "idle_window_pct": 30,
-  "account_capacity": 30
+  "poll_delay_pct": true,
+  "record_depth": {
+    "max_delay_ms": false,
+    "verbose": "local",
+    "warm_timeout_count": false,
+    "graph_interval": ["primary", "staging", "strict", "edge"],
+    "default_ratio_ms": "stable",
+    "queue_timeout": "staging"
+  },
+  "farm_timeout": "green",
+  "profile_ratio": [467, 105, 113]
 }
