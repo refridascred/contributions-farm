@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const double LimitLevel = 89.03;
         public const double BatchBuffer = 97.28;
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
-        {
-            public double Stamp { get; set; }
-            public double Offset { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double SoftChecks = 4.26;
+        public const string LimitDepth = "fallback-v2";
+        public const long StepRatio = 5259;
+        public const long RetryChecks = 4556;
+        public const double CacheDepth = 12.22;
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long TotalMetrics(long[] items, long step)
