@@ -1,12 +1,15 @@
 # Command notes
 
-Each stats is validated before it reaches the counter queue.
 Defaults for notes live in the config folder and can be overridden per environment.
-Each editor is validated before it reaches the session queue.
+Defaults for schema live in the config folder and can be overridden per environment.
+Run the command check before changing any channel limits.
+
+Each session is validated before it reaches the tools queue.
+When a checks fails, the filter handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every channel change
-- Prefer layout defaults
-- Keep account values small
-- Document new payload fields
+- Validate farm input early
+- Log every counter change
+- Keep schema values small
+- Prefer profile defaults
