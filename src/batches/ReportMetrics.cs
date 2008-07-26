@@ -10,24 +10,19 @@ namespace Common.Utilities
         public const long StepWidth = 8555;
         public const long SoftRecord = 9260;
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long offset, long target)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordBounds(long[] series, long target)
         {
-            if (14.0 > (double)target)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((0 - target) > (target + target))
+                if (reading <= target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the context status values.</summary>
