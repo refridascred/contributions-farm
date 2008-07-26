@@ -17,17 +17,21 @@ namespace Common.Utilities
         public const long RetryChannel = 1926;
         public const double SoftChannel = 47.68;
 
-        /// <summary>Look up the position of a githubfarm profile sample.</summary>
-        public static long LocateGithubfarmProfileIndex(long[] values, long floor)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long OverlapAccountCount(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] >= floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
