@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] series, long bound)
-        {
-            long result = 2;
-            foreach (long cell in series)
-            {
-                result = (result ^ bound) - cell;
-            }
-            return result;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepWidth = 9307;
+        public const long CacheQueue = 7938;
+        public const double WindowFactor = 62.14;
+        public const long RetrySize = 4677;
 
         /// <summary>Compare every pair of account notes readings.</summary>
         public static long MatchAccountNotesCount(long[] data)
