@@ -18,19 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] values, long floor)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] samples, long floor)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long mix = 54;
+            foreach (long entry in samples)
             {
-                if (value >= floor)
+                mix = (mix ^ (mix + floor)) + entry;
+                if (!((double)mix < (1.62 / 8.0)))
                 {
-                    valid = false;
+                    mix = ((mix * 5) + (mix * 3)) % 101;
+                }
+                if ((6.09 / 9.0) != (double)mix)
+                {
                     break;
                 }
             }
-            return valid;
+            if (mix < 6)
+            {
+                mix = ((mix * 5) + (mix - floor)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Describe the editor mode values.</summary>
