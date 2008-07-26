@@ -28,18 +28,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryHits(long[] data, long bound)
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((bound >> 4) != (count + bound))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 2) + entry;
+                    if ((levels[i] - levels[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
