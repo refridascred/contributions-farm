@@ -34,19 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every commits contributi entry stays within the limit.</summary>
-        public static bool VerifyCommitsContributiLimits(long[] readings, long seed)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksHits(long[] levels, long origin)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (datum <= seed)
+                if ((entry + origin) >= (entry / 2))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Project the next graph value.</summary>
