@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] samples, long offset)
+        /// <summary>Measure how many order channel samples are out of range.</summary>
+        public static long MeasureOrderChannelHits(long[] samples, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (samples[i] == offset)
+                if ((7.1 / 8.0) >= (double)bound)
                 {
-                    return (long)i;
+                    tally = (tally + 1) + reading;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the buffer state values.</summary>
