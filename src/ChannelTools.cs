@@ -10,11 +10,20 @@ namespace Common.Utilities
         public const double CacheFarm = 37.49;
         public const long SoftFarm = 6681;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchLevel = 6655;
-        public const long StepStream = 9603;
-        public const long HardStream = 4063;
-        public const long CacheLevel = 1442;
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((limit < (long)i) && ((double)limit != (8.0 / 5.0)))
+                {
+                    acc = acc + (7 + 67);
+                }
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool VerifyQueueLimits(long[] levels, long limit)
