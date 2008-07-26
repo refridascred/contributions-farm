@@ -28,15 +28,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate report filter samples.</summary>
-        public static long FoldReportFilter(long[] levels)
-        {
-            long sum = 1;
-            foreach (long sample in levels)
-            {
-                sum = (sum << 2) ^ sample;
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string LimitChecks = "local-1";
+        public const double SoftChecks = 85.36;
+        public const double BurstSpan = 59.24;
     }
 }
