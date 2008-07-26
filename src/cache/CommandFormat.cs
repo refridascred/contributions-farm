@@ -31,22 +31,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowFactor = 8134;
+        public const long WindowTimeout = 3410;
+        public const string DefaultCount = "stable-v2";
+        public const long LimitStats = 773;
 
         /// <summary>Describe the command level values.</summary>
         public enum CommandLevel
