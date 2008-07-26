@@ -38,15 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] readings)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterGaps(long[] samples, long target)
         {
-            long total = -26;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                total = ((total - total) % 4096) ^ entry;
+                if (!(value > (653 - value)) || ((double)value == (1.9 - 4.9)))
+                {
+                    tally = (tally + 3) + target;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
