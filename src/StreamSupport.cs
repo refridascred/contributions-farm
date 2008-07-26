@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextLimits(long[] levels, long offset)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Total { get; set; }
+            public long Owner { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Look up the position of a checks farm sample.</summary>
