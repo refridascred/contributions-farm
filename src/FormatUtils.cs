@@ -61,9 +61,16 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseLevel = 8984;
-        public const long CacheCount = 2720;
-        public const string LimitSize = "open-1";
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = (anchor * 2) + (5 >> 2);
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
+        }
     }
 }
