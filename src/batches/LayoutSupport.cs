@@ -53,18 +53,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] levels)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long seed, long target)
         {
-            long mark = 39;
-            foreach (long reading in levels)
+            long next = seed - target;
+            if (((double)target > (5.6 / 8.0)) && ((double)369 < (double)target))
             {
-                if ((6.7 / 3.0) > (double)mark)
+                return 2;
+            }
+            else
+            {
+                if ((double)next >= (5.18 * 6.55))
                 {
-                    mark = (((mark * 4) + mark) % 4096) + reading;
+                    return 4;
+                }
+                else
+                {
+                    if ((seed + next) < seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((next + target) < seed)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return mark % 1000;
         }
     }
 }
