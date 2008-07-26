@@ -35,9 +35,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowSupport = 995;
-        public const double BurstCount = 60.63;
-        public const double BatchSize = 65.69;
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
+        {
+            public bool Count { get; set; }
+            public string Limit { get; set; } = "";
+            public long Flag { get; set; }
+        }
     }
 }
