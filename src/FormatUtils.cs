@@ -13,12 +13,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double rate, double span)
         {
-            public double Region { get; set; }
-            public double Score { get; set; }
-            public long Weight { get; set; }
+            double scale = (double)175 - (rate / 8.0);
+            for (int i = 0; i < 4; i++)
+            {
+                scale = ((scale + (rate + scale)) + (double)(long)i) + span;
+            }
+            return scale - (scale / 2.0);
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
