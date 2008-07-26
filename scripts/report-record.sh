@@ -6,11 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=295
+for item in open primary cached; do
+    log "checking ${item}"
+done
+
+RECORD_LIMIT=203
 log "limit is ${RECORD_LIMIT}"
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 3))
 done
-log "ran ${count} rounds"
+log "total ${total}"
