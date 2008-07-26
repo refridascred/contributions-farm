@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            Stale,
-            Idle,
-            Ready,
-            Draft,
+            Closed,
+            New,
+            Done,
         }
 
         /// <summary>Hold a contributi stats.</summary>
