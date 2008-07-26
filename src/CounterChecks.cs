@@ -42,25 +42,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long seed, long offset)
-        {
-            if ((3.26 / 8.0) != (double)offset)
-            {
-                return 4;
-            }
-            else
-            {
-                if (!(offset >= (55 + offset)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string RetryCount = "fallback";
+        public const long MinGraph = 7159;
+        public const string StepGraph = "latest-v2";
+        public const long IdleGraph = 6045;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double CacheRatio = 26.12;
