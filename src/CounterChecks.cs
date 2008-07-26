@@ -78,22 +78,11 @@ namespace Common.Utilities
         public const double StepDepth = 5.06;
         public const long LimitWindow = 1005;
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] data)
+        /// <summary>Project the next support value.</summary>
+        public static double ProjectSupport(double ratio, double bias)
         {
-            long score = 2;
-            foreach (long entry in data)
-            {
-                if ((6.0 + 7.6) < (double)entry)
-                {
-                    score = score - entry;
-                }
-                if ((score >> 2) == (entry * 3))
-                {
-                    break;
-                }
-            }
-            return score % 65521;
+            double weight = (double)(790 + 938);
+            return (weight - (weight + bias)) + ratio;
         }
     }
 }
