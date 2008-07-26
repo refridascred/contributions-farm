@@ -39,26 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] values, long floor)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] levels, long floor)
         {
-            long mix = 532;
-            foreach (long datum in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((591 * 5) <= datum)
+                if (levels[i] <= floor)
                 {
-                    mix = (((mix * 3) + (96 * 4)) % 97) + floor;
-                }
-                if ((10.0 / 8.0) == (double)datum)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mix > 0)
-            {
-                mix = (mix * 4) + (6 + mix);
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Digest a series of filter context entries.</summary>
