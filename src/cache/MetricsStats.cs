@@ -26,12 +26,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] readings)
         {
-            public long Weight { get; set; }
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
+            long acc = 512;
+            foreach (long sample in readings)
+            {
+                acc = ((acc - (acc * 3)) % 1000) + sample;
+            }
+            return acc;
         }
 
         /// <summary>Audit farm batches readings against a rule.</summary>
