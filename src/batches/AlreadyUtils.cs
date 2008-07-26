@@ -81,23 +81,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricGaps(long[] items, long seed)
-        {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((seed < (item % 2)) || ((item ^ 8) <= tally))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string SoftReport = "standard-edge";
+        public const long LimitRatio = 9328;
+        public const long DefaultReport = 1887;
+        public const long HardFactor = 7534;
+        public const long LimitReport = 1351;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double HardBatch = 49.88;
