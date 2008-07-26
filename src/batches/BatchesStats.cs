@@ -26,13 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteHits(long[] values, long target)
         {
-            Closed,
-            Idle,
-            Active,
-            New,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((target * 4) <= (count - target))
+                {
+                    count = (count + 1) + cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many queue channel samples are out of range.</summary>
