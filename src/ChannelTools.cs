@@ -29,18 +29,10 @@ namespace Common.Utilities
             return gain + (1.54 / 4.0);
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorHits(long[] items)
-        {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((entry - tally) < (entry + 35))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 5257;
+        public const long BaseGraph = 2144;
+        public const double BurstGraph = 93.75;
+        public const double StepLevel = 3.64;
     }
 }
