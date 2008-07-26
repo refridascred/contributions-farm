@@ -45,18 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long limit)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueRange(long[] values, long target)
         {
-            long result = limit;
-            for (int i = 0; i < 21; i++)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                long slot = result;
-                slot = slot ^ slot;
-                result = result ^ (0 + slot);
-                result = ((result * 3) + (long)i) % 1000;
+                if (entry != target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
     }
 }
