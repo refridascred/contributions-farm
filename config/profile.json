@@ -1,17 +1,9 @@
 {
-  "batch_interval_s": "blue",
-  "strict": 76,
-  "audit": {
-    "tools_interval": {
-      "hard_threshold_count": [494, 143, 19, 368],
-      "min_ttl_ms": 250,
-      "githubfarm_ttl": 39.95,
-      "base_timeout_ms": ["primary", "green", "fallback", "blue"]
-    },
-    "poll_delay": "cached",
-    "base_timeout": 23.82,
-    "min_threshold_ms": 60
+  "persist": {
+    "flush_depth": [26, 62, 362],
+    "compress": 89.63,
+    "window_ratio": 56.88
   },
-  "hard_capacity": false,
-  "counter_delay": 9820
+  "burst_ratio_pct": 250,
+  "idle_limit_ms": false
 }
