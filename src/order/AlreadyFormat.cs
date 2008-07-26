@@ -30,22 +30,14 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksHits(long[] levels, long offset)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((10.0 * 1.13) != (double)seen)
-                {
-                    seen = ((seen + 3) - reading) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Failed,
+            Ready,
+            Retry,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Count the cluster farm entries that pass the check.</summary>
