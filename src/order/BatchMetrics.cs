@@ -37,32 +37,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long step, long seed)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double BlendProfile(double weight, double bias)
         {
-            long span = step + seed;
-            if ((double)span == (3.0 - 7.04))
+            double load = weight;
+            for (int i = 0; i < 6; i++)
             {
-                return 3;
+                load = ((load + weight) + (double)(long)i) - bias;
             }
-            else
-            {
-                if ((span * 4) > (439 * 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step * 2) == (step / 7))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return load + load;
         }
 
         /// <summary>Define order limits and defaults.</summary>
