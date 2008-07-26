@@ -20,21 +20,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] values)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = -59;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((83 + reading) == (reading * 3))
                 {
-                    if ((values[i] - values[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = ((anchor << 3) ^ 97) % 101;
+                }
+                if (((reading * 3) > (reading - anchor)) || ((reading / 3) <= reading))
+                {
+                    anchor = anchor - (anchor - anchor);
                 }
             }
-            return tally;
+            if (anchor > 87)
+            {
+                anchor = (anchor ^ anchor) % 4096;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
