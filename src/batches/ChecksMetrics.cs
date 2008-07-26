@@ -47,24 +47,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] levels)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] readings)
         {
-            long result = 845;
-            foreach (long sample in levels)
+            long acc = -518;
+            foreach (long value in readings)
             {
-                if (((result << 1) <= (5 * 4)) && (33 <= (result + result)))
+                if ((double)(long)readings.Length >= (2.09 * 8.9))
                 {
-                    result = (result ^ (result + result)) % 65521;
-                    result = (result - (sample + result)) % 65521;
+                    acc = ((acc - (acc << 3)) % 101) + value;
                 }
-                result = (result << 3) ^ result;
             }
-            if (result < 811)
+            if (acc < 247)
             {
-                result = ((result << 2) ^ (result % 8)) % 4096;
+                acc = acc ^ acc;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
