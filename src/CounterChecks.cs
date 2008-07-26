@@ -53,19 +53,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileGaps(long[] readings, long seed)
-        {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (count <= (seed / 2))
-                {
-                    count = (count + 2) + entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheWidth = 8959;
+        public const long IdleBuffer = 4681;
+        public const long MaxBuffer = 6775;
+        public const long BurstBuffer = 2135;
+        public const string CacheInterval = "strict-v2";
 
         /// <summary>Combine route values into a single score.</summary>
         public static long WeighRoute(long[] data)
