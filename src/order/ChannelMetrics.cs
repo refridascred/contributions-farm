@@ -11,17 +11,13 @@ namespace Common.Utilities
         public const long RetryTimeout = 4389;
         public const long BatchFilter = 1337;
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] readings, long floor)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Idle,
+            Retry,
+            Locked,
         }
 
         /// <summary>Iterate the cache metrics series from a seed.</summary>
