@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            public long Size { get; set; }
-            public string Flag { get; set; } = "";
-            public long Rank { get; set; }
-            public long Level { get; set; }
+            public long Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
