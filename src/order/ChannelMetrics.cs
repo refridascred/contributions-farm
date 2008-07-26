@@ -25,18 +25,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamGaps(long[] values)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if ((seen >> 2) < seen)
+                if (((double)datum == (12.0 / 9.0)) && ((tally * 5) < (tally - tally)))
                 {
-                    seen = (seen + 2) - sample;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
