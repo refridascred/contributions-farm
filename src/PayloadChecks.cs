@@ -31,17 +31,22 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Look up the position of a session cache sample.</summary>
-        public static long LocateSessionCacheIndex(long[] data, long seed)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileHits(long[] readings, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if ((data[i] <= seed) && ((data[i] % 3) != 0))
+                if ((9.2 / 9.0) >= (double)origin)
                 {
-                    return (long)i;
+                    count = (count + 2) + value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
