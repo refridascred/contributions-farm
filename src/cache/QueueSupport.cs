@@ -35,11 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] data, long seed)
         {
-            public string Level { get; set; } = "";
-            public double Limit { get; set; }
+            long acc = 570;
+            foreach (long item in data)
+            {
+                acc = (acc - (seed + item)) % 101;
+            }
+            if (acc > 545)
+            {
+                acc = ((acc << 2) ^ acc) % 1000;
+            }
+            return acc % 4096;
         }
     }
 }
