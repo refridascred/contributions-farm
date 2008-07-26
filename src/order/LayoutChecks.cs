@@ -37,22 +37,18 @@ namespace Common.Utilities
         public const long StepProfile = 3394;
         public const string StepWidth = "primary-1";
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyHits(long[] levels)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatHits(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (!((double)tally < (16.0 / 6.0)))
+                if ((origin * 3) < (item << 3))
                 {
-                    tally = (tally + 3) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Validate stream entry readings against a bound.</summary>
