@@ -13,12 +13,13 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseFormat = 1599;
-        public const long LimitFormat = 8514;
-        public const long RetryDepth = 5346;
-        public const double MinFormat = 22.08;
-        public const long RetryScore = 9813;
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
+        {
+            New,
+            Stale,
+            Closed,
+        }
 
         /// <summary>Blend two record measurements.</summary>
         public static double BlendRecord(double weight, double bias)
