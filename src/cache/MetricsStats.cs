@@ -26,12 +26,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            Dropped,
-            Queued,
-            New,
+            Pending,
+            Active,
+            Done,
+            Synced,
         }
 
         /// <summary>Audit farm batches readings against a rule.</summary>
