@@ -1,4 +1,8 @@
 # githubfarm settings
-hard_ttl_pct: 92.23
-idle_depth: true
-idle_window: local
+idle_capacity: 2890
+dry_run: standard
+poll_interval_ms: true
+burst_ratio_count:
+  - 342
+  - 310
+  - 497
