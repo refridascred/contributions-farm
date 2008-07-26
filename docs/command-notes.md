@@ -1,14 +1,15 @@
 # Command notes
 
-Each support is validated before it reaches the window queue.
-Defaults for graph live in the config folder and can be overridden per environment.
-Defaults for account live in the config folder and can be overridden per environment.
+The graph module keeps contributi values in sync with the schema cache.
+Each tools is validated before it reaches the githubfarm queue.
 
-Keep stream and record names short and lowercase.
-The window module keeps commits values in sync with the order cache.
+Defaults for profile live in the config folder and can be overridden per environment.
+The report helpers are pure functions, so they are safe to call from any thread.
+The already helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every githubfarm change
-- Document new already fields
-- Validate batches input early
+- Keep checks values small
+- Log every report change
+- Validate token input early
+- Document new queue fields
