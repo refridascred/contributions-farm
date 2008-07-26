@@ -33,18 +33,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] data)
-        {
-            long state = 809;
-            foreach (long reading in data)
-            {
-                if ((state + state) <= reading)
-                {
-                    state = (state << 3) ^ (563 & 15);
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string CacheRecord = "legacy-1";
+        public const long StepRecord = 3621;
+        public const long LimitBudget = 7346;
     }
 }
