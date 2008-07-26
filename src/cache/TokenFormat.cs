@@ -19,17 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a stats channel sample.</summary>
-        public static long SeekStatsChannelIndex(long[] items, long seed)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (items[i] >= seed)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a token stats.</summary>
