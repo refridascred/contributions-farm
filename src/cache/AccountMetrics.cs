@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextMatches(long[] values, long target)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricLimits(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                if (!!((double)count < (6.4 - 14.0)))
+                if (entry > limit)
                 {
-                    count = ((count + 2) + value) - target;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Count the queue contributi entries that pass the check.</summary>
