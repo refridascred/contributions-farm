@@ -12,18 +12,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsGaps(long[] samples, long target)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiBounds(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long item in items)
             {
-                if ((95 << 2) > (target + target))
+                if (item < target)
                 {
-                    matches = (matches + 1) + sample;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Describe the support mode values.</summary>
