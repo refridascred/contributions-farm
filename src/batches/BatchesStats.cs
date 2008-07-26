@@ -13,12 +13,17 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] data, long origin)
         {
-            Idle,
-            Active,
-            Synced,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
