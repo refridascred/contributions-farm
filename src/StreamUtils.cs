@@ -54,20 +54,17 @@ namespace Common.Utilities
             return weight - scale;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long step)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] series, long floor)
         {
-            long mix = step;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((step << 2) <= (42 + mix))
+                if (series[i] == floor)
                 {
-                    mix = ((mix << 3) ^ step) % 97;
+                    return (long)i;
                 }
-                mix = mix + (27 - step);
-                mix = ((mix * 3) + (long)i) % 97;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Compare every pair of stats order readings.</summary>
