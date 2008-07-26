@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterBounds(long[] series, long offset)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long bound)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long carry = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (entry > offset)
+                carry = carry + carry;
+                if ((bound * 3) < (bound % 10))
                 {
-                    stale = false;
-                    break;
+                    carry = (carry ^ (long)i) % 101;
+                    carry = (carry + bound) % 65521;
                 }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Validate report entry readings against a bound.</summary>
