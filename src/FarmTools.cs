@@ -20,16 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long bound)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long sum = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                sum = sum - ((long)i - sum);
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            public bool Score { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the filter state values.</summary>
