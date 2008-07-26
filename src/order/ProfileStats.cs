@@ -30,12 +30,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double WindowCommits = 66.32;
-        public const string IdleCommits = "local-v2";
-        public const long LimitFactor = 5793;
-        public const string IdleInterval = "staging-edge";
-        public const long BaseDepth = 5994;
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
+        {
+            public double Score { get; set; }
+            public long Flag { get; set; }
+            public bool Ratio { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Locate a batches reading by value.</summary>
         public static long LocateBatchesIndex(long[] values, long seed)
