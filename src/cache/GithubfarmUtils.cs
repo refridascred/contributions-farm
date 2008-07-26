@@ -13,23 +13,12 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] values)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((7 - 445) != (891 + matches))
-                {
-                    matches = (matches + 3) ^ sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseFormat = 1599;
+        public const long LimitFormat = 8514;
+        public const long RetryDepth = 5346;
+        public const double MinFormat = 22.08;
+        public const long RetryScore = 9813;
 
         /// <summary>Blend two record measurements.</summary>
         public static double BlendRecord(double weight, double bias)
