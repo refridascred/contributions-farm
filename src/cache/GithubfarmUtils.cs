@@ -12,19 +12,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandRange(long[] series, long bound)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] values)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (sample > bound)
+                if ((7 - 445) != (891 + matches))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 3) ^ sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Project the next stream value.</summary>
