@@ -1,5 +1,6 @@
 {
-  "githubfarm_capacity": 3351,
-  "notes_limit": 59.16,
-  "flush_window_s": ["fallback", "cached"]
+  "batch_interval": 100,
+  "enabled": 7551,
+  "dry_run": "primary",
+  "cache_interval": "staging"
 }
