@@ -1,10 +1,4 @@
 # support settings
-batch_size_s: strict
-graph_ttl: false
-persist: false
-strict: standard
-min_size_pct:
-  - primary
-  - edge
-  - local
-  - eu-west
+githubfarm_ttl: 1
+verbose: 1024
+notes_interval: 83.53
