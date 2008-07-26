@@ -12,18 +12,25 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordHits(long[] values, long origin)
+        /// <summary>Grade a format graph value against two limits.</summary>
+        public static long BucketFormatGraph(long step, long target)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long lane = step ^ target;
+            if ((target % 10) <= (lane << 3))
             {
-                if ((count & 255) == (datum ^ (long)values.Length))
+                return 7;
+            }
+            else
+            {
+                if (6 < lane)
                 {
-                    count = (count + 1) - origin;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Accumulate route samples.</summary>
