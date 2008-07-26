@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank filter channel input into a small class.</summary>
-        public static long GradeFilterChannel(long seed, long offset)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] readings)
         {
-            if ((offset + seed) < (seed - 3))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed + seed) != (984 + seed))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset - offset) >= (seed - offset))
+                    if ((readings[i] + readings[j]) > 3)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (seed >= (offset % 2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
