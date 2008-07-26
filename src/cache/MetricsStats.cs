@@ -26,18 +26,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long FindCommandIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= bound) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string HardTimeout = "latest-1";
+        public const long LimitLevel = 780;
+        public const long LimitSize = 4442;
+        public const long CacheSpan = 8264;
+        public const long WindowContext = 1301;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long CountAlreadyGaps(long[] levels)
