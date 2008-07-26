@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmHits(long[] series, long target)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if (target <= value)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Draft,
+            Active,
+            Dropped,
+            Idle,
+            Stale,
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
