@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinNotes = 2660;
-        public const long IdleNotes = 204;
-        public const long BurstNotes = 1766;
-        public const double BatchTimeout = 62.48;
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] readings, long offset)
+        {
+            long carry = 1;
+            foreach (long value in readings)
+            {
+                if ((5.8 / 9.0) == (double)carry)
+                {
+                    carry = ((carry + (offset >> 3)) % 1000) + value;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
