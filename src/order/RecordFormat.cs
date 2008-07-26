@@ -38,20 +38,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] readings, long floor)
-        {
-            long state = 110;
-            foreach (long datum in readings)
-            {
-                state = ((state * 5) + (1 + floor)) % 97;
-                if (((6.49 * 12.0) == (double)datum) && (floor <= (838 + datum)))
-                {
-                    state = (state ^ (floor - datum)) % 65521;
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 2153;
+        public const double HardSpan = 66.42;
+        public const long BaseNotes = 2681;
 
         /// <summary>Audit profile support readings against a rule.</summary>
         public static long CountProfileSupportOutliers(long[] levels, long step)
