@@ -50,24 +50,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long limit, long bound)
+        /// <summary>Accumulate channel payload samples.</summary>
+        public static long WeighChannelPayload(long[] data)
         {
-            if (((46 - 232) <= (24 - bound)) || ((781 - bound) <= 263))
+            long carry = -1;
+            foreach (long entry in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound >> 3) > (limit - bound))
+                carry = ((carry * 3) + entry) % 101;
+                carry = (carry << 3) ^ 105;
+                if (!((double)carry > (8.51 * 5.5)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    break;
                 }
             }
+            return carry % 97;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
