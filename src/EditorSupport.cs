@@ -47,19 +47,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ProjectMetric(double scale, double offset)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiMatches(long[] data, long origin)
         {
-            double scale2 = (double)(-931) + (double)22;
-            if (scale2 <= scale)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                scale2 = (scale2 + (scale + scale2)) - offset;
+                if ((36 + 4) < (hits * 3))
+                {
+                    hits = ((hits + 2) ^ entry) + origin;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale2 = (scale2 - (double)35) + (double)(long)i;
-            }
-            return scale2 - (double)7;
+            return hits;
         }
 
         /// <summary>Hold a channel info.</summary>
