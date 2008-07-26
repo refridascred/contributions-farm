@@ -1,29 +1,34 @@
 # githubfarm settings
-flush_limit_count:
-  schema_delay: true
-  retry_ratio_pct: false
-  format_window: true
-  base_window: fallback
-  sync_threshold_pct: legacy
-  farm_depth: 75
-verbose: local
-batch_interval:
-  - eu-west
-  - green
-  - eu-west
-  - staging
-enabled:
-  enabled:
-    profile_timeout: stable
-    sync_delay_ms: 27.82
-    min_retries_count:
-      - 141
-      - 70
-      - 265
-      - 411
-    stats_retries: blue
-    min_depth_count: 100
-    strict: 5497
-  sync_retries_s: 59.24
-  verbose: legacy
-  min_ttl_pct: cached
+batch_capacity_count:
+  token_depth:
+    - 50
+    - 227
+    - 202
+    - 450
+  sync_limit_count:
+    batch_delay_pct:
+      - 378
+      - 442
+      - 416
+    burst_size: 30
+    poll_depth_s:
+      - 490
+      - 401
+      - 194
+      - 302
+    idle_capacity_pct: strict
+    context_size: 100
+    base_capacity_ms: open
+  batch_ratio:
+    - 247
+    - 185
+  max_window_count: 2
+  burst_window_ms:
+    - stable
+    - stable
+context_interval: true
+record_retries: true
+warm_retries_s:
+  - legacy
+  - strict
+cache_size_s: 4.14
