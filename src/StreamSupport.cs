@@ -13,11 +13,17 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] values, long limit)
         {
-            public double Flag { get; set; }
-            public string Limit { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the route class values.</summary>
