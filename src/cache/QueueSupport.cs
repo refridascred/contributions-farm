@@ -31,13 +31,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            public string Weight { get; set; } = "";
-            public double Flag { get; set; }
-            public long Region { get; set; }
-            public bool Score { get; set; }
+            public double Level { get; set; }
+            public string Score { get; set; } = "";
+            public long Count { get; set; }
+            public long Token { get; set; }
         }
     }
 }
