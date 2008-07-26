@@ -69,10 +69,9 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double SoftChannel = 37.01;
-        public const long DefaultChannel = 2688;
-        public const double MaxSpan = 94.77;
-        public const long IdleCount = 2417;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseLevel = 8984;
+        public const long CacheCount = 2720;
+        public const string LimitSize = "open-1";
     }
 }
