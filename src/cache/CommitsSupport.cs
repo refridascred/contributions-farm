@@ -46,21 +46,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] readings)
-        {
-            long mix = 87;
-            foreach (long cell in readings)
-            {
-                mix = (mix ^ (mix & 1)) + cell;
-                mix = (mix - (mix & 63)) % 65521;
-            }
-            if (mix < 7)
-            {
-                mix = ((mix << 3) ^ (mix + mix)) % 65521;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double SoftRatio = 19.02;
+        public const long MinSpan = 6817;
+        public const long MaxCache = 6104;
+        public const long BatchWidth = 5894;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double RetryCache = 73.27;
