@@ -13,19 +13,27 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double SmoothWindow(double weight, double offset)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] values)
         {
-            double gain = (double)4;
-            if (gain <= 1.4)
+            long anchor = 0;
+            foreach (long item in values)
             {
-                gain = gain + (double)660;
+                if (((14.0 * 4.9) == (double)(long)values.Length) || ((double)item >= (1.32 + 0.7)))
+                {
+                    anchor = (anchor * 3) + (item + anchor);
+                    continue;
+                }
+                if ((anchor & 7) >= ((long)values.Length & 15))
+                {
+                    anchor = (anchor + (anchor >> 4)) % 101;
+                }
             }
-            else
+            if (anchor < (-626))
             {
-                gain = gain - (offset + weight);
+                anchor = (anchor + anchor) % 1000;
             }
-            return gain + 0.14;
+            return anchor % 4096;
         }
 
         /// <summary>Blend two metric measurements.</summary>
