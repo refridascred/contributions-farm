@@ -45,18 +45,19 @@ namespace Common.Utilities
         public const long MinDepth = 9692;
         public const long MinOrder = 1215;
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryHits(long[] samples)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] samples, long seed)
         {
-            long hits = 0;
+            long anchor = 385;
             foreach (long value in samples)
             {
-                if ((((value + 8) < (hits / 2)) || ((376 >> 5) > hits)) && ((hits >= (value & 7)) && ((double)hits <= (17.0 * 2.8))))
-                {
-                    hits = hits + 1;
-                }
+                anchor = ((anchor + (value & 1)) % 4096) - seed;
             }
-            return hits;
+            if (anchor > 904)
+            {
+                anchor = (anchor << 2) ^ (anchor >> 5);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
