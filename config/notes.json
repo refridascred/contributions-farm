@@ -1,5 +1,8 @@
 {
-  "persist": "staging",
-  "dry_run": "cached",
-  "readonly": true
+  "cache_interval": ["eu-west", "blue", "primary", "edge"],
+  "channel_capacity": "eu-west",
+  "metric_ttl": 1024,
+  "flush_retries_s": 87,
+  "audit": "standard",
+  "verbose": "blue"
 }
