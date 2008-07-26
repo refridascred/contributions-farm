@@ -12,15 +12,12 @@ namespace Common.Utilities
         public const double LimitLevel = 89.03;
         public const double BatchBuffer = 97.28;
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long step)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long mark = step;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            public double Stamp { get; set; }
+            public double Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Accumulate metrics samples.</summary>
