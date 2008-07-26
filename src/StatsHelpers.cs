@@ -46,12 +46,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 366;
-        public const long IdleSize = 6605;
-        public const long MaxSize = 2552;
-        public const long CacheDepth = 8462;
-        public const string BaseProfile = "fallback-1";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowQueue = 3430;
+        public const long StepDepth = 7100;
+        public const long StepQueue = 7748;
+        public const string StepScore = "alpha-1";
+        public const long StepWidth = 5214;
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
