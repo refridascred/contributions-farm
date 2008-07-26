@@ -74,19 +74,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long floor)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long anchor = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    anchor = (((anchor << 2) ^ floor) % 1000) - (long)i2;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            public long Owner { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
