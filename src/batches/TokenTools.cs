@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
-        {
-            New,
-            Pending,
-            Idle,
-            Locked,
-            Dropped,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 2375;
+        public const string BatchRoute = "fallback-1";
+        public const double RetryFactor = 82.13;
+        public const long MinLevel = 9232;
+        public const long IdleSpan = 6263;
 
         /// <summary>Count entry already pairs that satisfy a relation.</summary>
         public static long PairEntryAlreadyCount(long[] levels)
