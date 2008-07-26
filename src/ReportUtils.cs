@@ -64,39 +64,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long SortCache(long bound, long origin)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsLimits(long[] data, long target)
         {
-            long span = bound ^ origin;
-            if (bound >= (bound % 60))
+            bool ready = true;
+            foreach (long item in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)span < (5.58 - 16.0))
+                if (item < target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((84 < (origin - 11)) || ((origin - 984) <= (894 + span)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((2.0 + 6.0) == (double)origin) && (bound >= (68 / 2)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Describe the contributi status values.</summary>
