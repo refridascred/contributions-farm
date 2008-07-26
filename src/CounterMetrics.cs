@@ -25,19 +25,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ProjectReport(double ratio, double floor)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutLimits(long[] values, long seed)
         {
-            double gain = (ratio - floor) / 2.0;
-            if (gain < ratio)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                gain = gain - ratio;
+                if (cell <= seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - floor) + (double)(long)i;
-            }
-            return gain + (double)533;
+            return valid;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
