@@ -1,34 +1,6 @@
 # githubfarm settings
-batch_capacity_count:
-  token_depth:
-    - 50
-    - 227
-    - 202
-    - 450
-  sync_limit_count:
-    batch_delay_pct:
-      - 378
-      - 442
-      - 416
-    burst_size: 30
-    poll_depth_s:
-      - 490
-      - 401
-      - 194
-      - 302
-    idle_capacity_pct: strict
-    context_size: 100
-    base_capacity_ms: open
-  batch_ratio:
-    - 247
-    - 185
-  max_window_count: 2
-  burst_window_ms:
-    - stable
-    - stable
-context_interval: true
-record_retries: true
-warm_retries_s:
-  - legacy
-  - strict
-cache_size_s: 4.14
+soft_size_ms: green
+entry_ttl: strict
+token_window: edge
+audit: 76.59
+base_window_ms: true
