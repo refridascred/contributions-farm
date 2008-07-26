@@ -66,22 +66,19 @@ namespace Common.Utilities
         public const string DefaultTimeout = "legacy-edge";
         public const string DefaultChecks = "fallback-1";
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] levels)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryRange(long[] data, long target)
         {
-            long total = 32;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if ((80 >> 3) < (total % 3))
+                if (sample < target)
                 {
-                    total = (total - total) % 255;
-                }
-                else
-                {
-                    total = ((total * 2) + (sample / 3)) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            return total;
+            return flag;
         }
     }
 }
