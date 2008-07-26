@@ -30,14 +30,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long origin, long limit)
         {
-            Synced,
-            Draft,
-            Done,
-            New,
-            Paused,
+            long bound = origin + limit;
+            if (((double)bound <= 20.0) && ((6 - limit) == (limit - limit)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit % 12) >= (origin & 63))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Locate a context reading by value.</summary>
