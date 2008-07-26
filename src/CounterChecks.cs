@@ -15,11 +15,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double RetryInterval = 78.06;
-        public const long MaxBudget = 3247;
-        public const long RetryChannel = 1926;
-        public const double SoftChannel = 47.68;
+        /// <summary>Count channel account pairs that satisfy a relation.</summary>
+        public static long MatchChannelAccountCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long OverlapAccountCount(long[] samples)
