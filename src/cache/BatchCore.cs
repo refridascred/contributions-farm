@@ -52,13 +52,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] levels)
         {
-            Closed,
-            Done,
-            Draft,
-            Dropped,
+            long anchor = 34;
+            foreach (long datum in levels)
+            {
+                if ((anchor >> 3) <= (anchor ^ anchor))
+                {
+                    anchor = (((anchor << 3) ^ anchor) % 97) - datum;
+                }
+            }
+            if (anchor > 809)
+            {
+                anchor = ((anchor * 3) + (anchor + 79)) % 101;
+            }
+            return anchor % 1000;
         }
     }
 }
