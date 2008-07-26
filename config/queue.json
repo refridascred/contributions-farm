@@ -1,17 +1,7 @@
 {
-  "enabled": 99,
-  "default_ratio": {
-    "layout_delay": "staging",
-    "warm_timeout_count": 100,
-    "farm_size": ["latest", "blue"],
-    "cache_ratio_s": "strict",
-    "persist": "staging"
-  },
-  "record_interval": false,
-  "hard_retries_pct": {
-    "warm_depth_pct": "standard",
-    "poll_limit": "latest",
-    "cache_threshold_s": 1024
-  },
-  "max_threshold_s": 96.01
+  "token_window": "green",
+  "soft_capacity_count": 66.28,
+  "cache_interval": true,
+  "token_threshold": 57.01,
+  "buffer_ratio": "green"
 }
