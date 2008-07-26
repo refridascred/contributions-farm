@@ -44,13 +44,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Classify a notes metrics pair into a bucket.</summary>
+        public static long SortNotesMetrics(long seed, long limit)
         {
-            Closed,
-            Synced,
-            Draft,
-            Ready,
+            if ((limit < (46 + limit)) || ((seed - seed) != (seed + seed)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((1 >> 4) < (limit - limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((353 + seed) > 441) || (limit < (81 << 3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the metric class values.</summary>
