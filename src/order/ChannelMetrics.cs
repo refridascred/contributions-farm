@@ -32,11 +32,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double DefaultWidth = 55.22;
-        public const string BatchSize = "local-v2";
-        public const long SoftReport = 2925;
-        public const double IdleReport = 76.6;
-        public const string MaxScore = "cached-1";
+        /// <summary>Measure how many layout channel samples are out of range.</summary>
+        public static long MeasureLayoutChannelMatches(long[] values, long offset)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((offset * 4) > (cell >> 3))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
