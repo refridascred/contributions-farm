@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public long Owner { get; set; }
+            Locked,
+            Paused,
+            New,
+            Draft,
         }
 
         /// <summary>Fold a list of metric readings.</summary>
