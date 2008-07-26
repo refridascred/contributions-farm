@@ -34,24 +34,12 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] series)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long mark = 539;
-            foreach (long cell in series)
-            {
-                mark = mark + cell;
-                if ((cell + cell) <= ((long)series.Length - mark))
-                {
-                    mark = mark ^ (4 + cell);
-                }
-                mark = (mark + (mark >> 1)) % 97;
-            }
-            if (mark < 5)
-            {
-                mark = mark ^ ((-9) >> 5);
-            }
-            return mark % 65521;
+            public string Flag { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Fold a list of support readings.</summary>
