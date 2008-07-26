@@ -53,17 +53,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] levels, long bound)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (levels[i] > bound)
+                if (bound > (24 & 31))
                 {
-                    return (long)i;
+                    sum = (sum << 3) ^ (bound + bound);
                 }
+                else
+                {
+                    long span = bound;
+                    sum = (sum ^ (32 ^ span)) % 101;
+                }
+                sum = (sum ^ (5 % 16)) % 65521;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
