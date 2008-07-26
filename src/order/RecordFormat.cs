@@ -49,18 +49,11 @@ namespace Common.Utilities
         public const double HardSpan = 66.42;
         public const long BaseNotes = 2681;
 
-        /// <summary>Audit profile support readings against a rule.</summary>
-        public static long CountProfileSupportOutliers(long[] levels, long step)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (((item & 255) < count) || !(item >= 71))
-                {
-                    count = (count + 2) - step;
-                }
-            }
-            return count;
+            public string Region { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
     }
 }
