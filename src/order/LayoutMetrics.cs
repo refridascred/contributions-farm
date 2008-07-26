@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long origin)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ScaleFormat(double ratio, double bias)
         {
-            long acc = origin;
-            for (int i = 0; i < 7; i++)
+            double load = ratio;
+            if (load <= (bias * 6.7))
             {
-                if (!((origin >> 4) <= (origin % 60)))
-                {
-                    acc = (acc - origin) % 1000;
-                }
-                if ((66 * 4) <= (acc * 5))
-                {
-                    break;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
+                load = load - (ratio + load);
             }
-            return acc;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (ratio - 6.65)) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
