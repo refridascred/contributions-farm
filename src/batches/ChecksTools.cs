@@ -42,31 +42,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a buffer route value against two limits.</summary>
-        public static long ClassifyBufferRoute(long offset, long origin)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            if (((offset & 127) > origin) && ((double)offset > 16.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if (1.4 > (double)offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((4.1 / 6.0) >= (double)origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Count { get; set; }
+            public bool Score { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
