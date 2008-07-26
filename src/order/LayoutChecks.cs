@@ -45,19 +45,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Validate stream entry readings against a bound.</summary>
-        public static bool ValidateStreamEntryBounds(long[] levels, long limit)
+        /// <summary>Match up batches samples.</summary>
+        public static long OverlapBatchesCount(long[] samples)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum > limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
