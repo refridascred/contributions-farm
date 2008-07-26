@@ -22,22 +22,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many tools session samples are out of range.</summary>
-        public static long CountToolsSessionHits(long[] samples, long limit)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long bound)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long result = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if ((hits - 0) >= (limit % 2))
+                result = result - (bound + 293);
+                if ((result + result) <= (2 >> 4))
                 {
-                    hits = (hits + 1) + reading;
+                    continue;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    result = ((result << 2) ^ (long)i) % 65521;
+                    result = ((result << 3) ^ (bound << 1)) % 4096;
                 }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
