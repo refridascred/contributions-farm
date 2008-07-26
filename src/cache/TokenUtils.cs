@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            public double Rank { get; set; }
-            public string Total { get; set; } = "";
+            Locked,
+            Paused,
+            Done,
+            Synced,
+            Idle,
         }
 
         /// <summary>Rank checks input into a small class.</summary>
