@@ -28,13 +28,23 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Project the next layout value.</summary>
+        public static double AdjustLayout(double rate, double bias)
         {
-            public string Offset { get; set; } = "";
-            public double Region { get; set; }
-            public long Score { get; set; }
-            public long Limit { get; set; }
+            double drift = bias;
+            if (drift < drift)
+            {
+                drift = drift - rate;
+            }
+            else
+            {
+                drift = drift - (rate + 7.09);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (rate / 4.0)) + (double)(long)i;
+            }
+            return drift - 3.9;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
