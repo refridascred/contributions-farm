@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double SoftFilter = 36.04;
-        public const long LimitCount = 8816;
-        public const string StepFilter = "standard-edge";
-        public const long SoftCount = 9744;
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
+        {
+            Closed,
+            New,
+            Stale,
+            Pending,
+            Done,
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double RetryInterval = 78.06;
