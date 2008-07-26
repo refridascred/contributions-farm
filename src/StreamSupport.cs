@@ -12,15 +12,25 @@ namespace Common.Utilities
             return ((drift + (7.6 + drift)) + ratio) + floor;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double SmoothToken(double scale, double offset)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long target, long step)
         {
-            double gain = scale / 6.0;
-            if (gain <= (gain - 6.0))
+            long offset = target + step;
+            if ((double)step > (2.75 + 4.0))
             {
-                gain = gain + (scale + offset);
+                return 1;
             }
-            return gain - gain;
+            else
+            {
+                if ((step > (offset - step)) || ((offset ^ step) >= step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Project the next metrics editor value.</summary>
