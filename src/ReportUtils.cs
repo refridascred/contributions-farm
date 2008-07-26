@@ -48,10 +48,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string DefaultInterval = "legacy";
-        public const double IdleWidth = 1.73;
-        public const long StepSpan = 3180;
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
+        {
+            public long Level { get; set; }
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Match up window samples.</summary>
         public static long PairWindowCount(long[] items)
