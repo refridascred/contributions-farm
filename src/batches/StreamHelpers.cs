@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long BatchDepth = 1322;
         public const long IdleInterval = 9261;
 
-        /// <summary>Audit counter token readings against a rule.</summary>
-        public static long CountCounterTokenMatches(long[] data)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((seen + seen) < seen)
-                {
-                    seen = (seen + 2) ^ item;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
