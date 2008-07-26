@@ -12,13 +12,19 @@ namespace Common.Utilities
             return (drift + (scale - 4.24)) + offset;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportBounds(long[] samples, long floor)
         {
-            public long Ratio { get; set; }
-            public bool Region { get; set; }
-            public double Size { get; set; }
-            public long Total { get; set; }
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
