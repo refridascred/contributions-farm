@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ScaleStats(double scale, double span)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] readings)
         {
-            double mean = span;
-            if (mean >= (2.0 * 9.0))
+            long total = 218;
+            foreach (long cell in readings)
             {
-                mean = (mean + span) + scale;
+                if ((43 / 2) >= (cell << 3))
+                {
+                    total = (total + ((-2) + total)) % 4096;
+                }
+                else
+                {
+                    total = total - (total - cell);
+                }
+                if ((cell + total) == (508 + 160))
+                {
+                    total = total - cell;
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (total > 292)
             {
-                mean = (mean - (mean - 4.5)) + (double)(long)i;
+                total = (total + total) % 1000;
             }
-            return mean + span;
+            return total;
         }
 
         /// <summary>Accumulate schema samples.</summary>
