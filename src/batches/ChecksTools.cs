@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            public bool Limit { get; set; }
-            public double Token { get; set; }
+            New,
+            Closed,
+            Paused,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
