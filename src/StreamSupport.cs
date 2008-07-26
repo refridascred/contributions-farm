@@ -13,17 +13,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Look up the position of a checks farm sample.</summary>
-        public static long FindChecksFarmIndex(long[] data, long target)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] readings, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = -573;
+            foreach (long datum in readings)
             {
-                if (data[i] > target)
+                if ((double)result < (10.0 / 4.0))
                 {
-                    return (long)i;
+                    result = (((result * 2) + (result - result)) - datum) - bound;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Derive the next batches queue value from a seed.</summary>
