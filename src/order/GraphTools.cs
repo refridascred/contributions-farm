@@ -68,15 +68,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long target)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long offset)
         {
-            long acc = target;
-            for (int i = 0; i < 10; i++)
+            long mark = offset;
+            for (int i = 0; i < 9; i++)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                mark = (mark + (offset ^ (long)i)) % 65521;
+                if (!((mark - mark) > ((long)i - offset)))
+                {
+                    mark = mark - mark;
+                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return acc;
+            return mark;
         }
     }
 }
