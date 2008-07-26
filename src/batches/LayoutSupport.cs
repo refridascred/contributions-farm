@@ -33,10 +33,14 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetrySize = 6786;
-        public const long StepRatio = 8649;
-        public const double WindowMetrics = 42.2;
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
+        {
+            public string Score { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Fold a list of support readings.</summary>
         public static long CombineSupport(long[] levels)
