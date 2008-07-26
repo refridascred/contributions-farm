@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Adjust a githubfarm batches reading.</summary>
-        public static double SmoothGithubfarmBatches(double ratio, double span)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            double bias = ratio + span;
-            if (bias >= ratio)
-            {
-                bias = bias + (ratio / 7.0);
-            }
-            else
-            {
-                bias = bias - 6.4;
-            }
-            return bias - 13.0;
+            Locked,
+            Pending,
+            Paused,
         }
 
         /// <summary>Locate a checks reading by value.</summary>
