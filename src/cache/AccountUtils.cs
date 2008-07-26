@@ -28,25 +28,17 @@ namespace Common.Utilities
             return gain + 0.14;
         }
 
-        /// <summary>Grade a counter route value against two limits.</summary>
-        public static long GradeCounterRoute(long target, long seed)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] items, long origin)
         {
-            long diff = target + seed;
-            if ((3.8 * 7.89) > (double)diff)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((target ^ seed) > (target / 6)) || ((12.0 * 10.0) == (double)target))
+                if (items[i] >= origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
