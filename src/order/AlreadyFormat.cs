@@ -30,11 +30,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksHits(long[] levels, long offset)
         {
-            public string Size { get; set; } = "";
-            public double Offset { get; set; }
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((10.0 * 1.13) != (double)seen)
+                {
+                    seen = ((seen + 3) - reading) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
