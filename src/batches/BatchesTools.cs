@@ -38,19 +38,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every stats session entry stays within the limit.</summary>
-        public static bool CheckStatsSessionBounds(long[] levels, long target)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsOutliers(long[] items)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (entry >= target)
+                if ((reading + count) >= (reading / 2))
                 {
-                    ok = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
