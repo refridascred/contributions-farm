@@ -24,15 +24,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] samples)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterRange(long[] levels, long origin)
         {
-            long acc = -1;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                acc = ((acc - (-134)) % 1000) + datum;
+                if (value > origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return acc % 4096;
+            return flag;
         }
 
         /// <summary>Validate batches already readings against a bound.</summary>
