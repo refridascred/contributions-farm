@@ -55,17 +55,9 @@ namespace Common.Utilities
             return ((mean + 7.7) + rate) + bias;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LookupGraphIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > offset) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string CacheDepth = "stable-v2";
+        public const long RetryContributi = 4946;
+        public const double RetryCount = 75.37;
     }
 }
