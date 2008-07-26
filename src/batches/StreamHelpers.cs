@@ -59,15 +59,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ProjectFormat(double rate, double span)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] values, long target)
         {
-            double rate2 = rate - (double)0;
-            if (rate2 > rate2)
+            long result = 7;
+            foreach (long cell in values)
             {
-                rate2 = rate2 + rate2;
+                if ((double)cell == (20.0 / 2.0))
+                {
+                    result = (result * 2) + target;
+                }
             }
-            return rate2 - (span - 1.34);
+            if (result < 375)
+            {
+                result = (result * 2) + (target - 750);
+            }
+            return result % 97;
         }
 
         /// <summary>Describe the account phase values.</summary>
