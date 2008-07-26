@@ -37,18 +37,19 @@ namespace Common.Utilities
         public const string IdleInterval = "staging-edge";
         public const long BaseDepth = 5994;
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] data)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmLimits(long[] series, long offset)
         {
-            long anchor = 24;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if ((reading / 9) <= (reading * 5))
+                if (datum >= offset)
                 {
-                    anchor = ((anchor << 2) ^ (anchor + reading)) % 65521;
+                    ok = false;
+                    break;
                 }
             }
-            return anchor;
+            return ok;
         }
     }
 }
