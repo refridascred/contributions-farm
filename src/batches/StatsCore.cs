@@ -36,14 +36,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] levels)
         {
-            Active,
-            Failed,
-            Done,
-            Synced,
-            Locked,
+            long carry = 466;
+            foreach (long entry in levels)
+            {
+                if ((44 < (entry & 127)) || ((carry * 2) <= entry))
+                {
+                    carry = ((carry << 3) ^ (carry + (long)levels.Length)) % 1000;
+                }
+            }
+            if (carry < 832)
+            {
+                carry = (carry << 2) ^ (carry & 31);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Hold a report options.</summary>
