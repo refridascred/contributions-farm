@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double DefaultBudget = 81.02;
-        public const long DefaultWidth = 5022;
-        public const long CacheSpan = 9587;
-        public const long MinDepth = 6791;
-        public const double LimitDepth = 54.78;
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
+        {
+            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Accumulate schema samples.</summary>
         public static long WeighSchema(long[] values, long target)
