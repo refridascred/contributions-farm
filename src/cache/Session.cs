@@ -13,11 +13,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowScore = 9964;
-        public const long BurstFactor = 4589;
-        public const long MinReport = 7199;
-        public const double DefaultReport = 45.88;
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
+        {
+            Idle,
+            Paused,
+            Queued,
+            Locked,
+            Ready,
+        }
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long CombineCluster(long[] levels, long target)
