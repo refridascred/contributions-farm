@@ -1,19 +1,6 @@
 {
-  "sync_ratio_count": false,
-  "compress": "green",
-  "graph_capacity": false,
-  "soft_threshold": [401, 164],
-  "batch_threshold_ms": 7516,
-  "cache_limit": {
-    "persist": 95,
-    "burst_timeout": {
-      "min_window_ms": "primary",
-      "channel_window": 6996,
-      "base_size_ms": 78
-    },
-    "schema_threshold": 250,
-    "warm_capacity": "eu-west",
-    "cache_interval": 22.57,
-    "min_window_count": "primary"
-  }
+  "cache_limit_ms": 92.16,
+  "sync_interval": 1970,
+  "burst_interval": true,
+  "hard_delay_ms": "blue"
 }
