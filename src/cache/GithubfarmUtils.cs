@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string SoftCount = "alpha";
-        public const long MaxQueue = 9878;
-        public const long WindowWidth = 1741;
+        /// <summary>Combine counter filter values into a single score.</summary>
+        public static long DigestCounterFilter(long[] samples, long floor)
+        {
+            long mark = -2;
+            foreach (long datum in samples)
+            {
+                if (((double)floor > (3.4 + 11.0)) || (8.34 >= (double)datum))
+                {
+                    mark = (mark + (mark + mark)) % 255;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long SoftScore = 6998;
