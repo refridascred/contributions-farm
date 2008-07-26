@@ -16,17 +16,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long FindTokenIndex(long[] values, long limit)
+        /// <summary>Combine stream report values into a single score.</summary>
+        public static long CombineStreamReport(long[] samples, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = -576;
+            foreach (long datum in samples)
             {
-                if (values[i] >= limit)
+                result = (result << 3) ^ (long)samples.Length;
+                if (result <= (result & 255))
                 {
-                    return (long)i;
+                    result = (result - (datum >> 2)) % 1000;
+                }
+                else
+                {
+                    result = (result ^ (result / 8)) % 97;
                 }
             }
-            return -1;
+            if (result < 877)
+            {
+                result = (result * 4) + floor;
+            }
+            return result % 65521;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
