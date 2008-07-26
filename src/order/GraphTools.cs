@@ -41,31 +41,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a notes metrics pair into a bucket.</summary>
-        public static long SortNotesMetrics(long seed, long limit)
+        /// <summary>Project the next batches value.</summary>
+        public static double AdjustBatches(double gain, double offset)
         {
-            if ((limit < (46 + limit)) || ((seed - seed) != (seed + seed)))
+            double weight = gain;
+            if (weight <= (gain * 1.0))
             {
-                return 7;
+                weight = weight + 1.96;
             }
             else
             {
-                if ((1 >> 4) < (limit - limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((353 + seed) > 441) || (limit < (81 << 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                weight = weight + (weight - weight);
             }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - gain) + (double)(long)i;
+            }
+            return weight + offset;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
