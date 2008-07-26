@@ -47,19 +47,19 @@ namespace Common.Utilities
         public const long StepProfile = 3394;
         public const string StepWidth = "primary-1";
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long bound)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenRange(long[] items, long bound)
         {
-            long score = bound;
-            for (int i = 0; i < 6; i++)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if (!(((long)i - 910) >= score))
+                if (item != bound)
                 {
-                    score = (score + 410) % 1000;
+                    valid = false;
+                    break;
                 }
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
