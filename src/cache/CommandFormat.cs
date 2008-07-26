@@ -24,40 +24,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long origin, long seed)
-        {
-            long gap = origin - seed;
-            if ((origin >> 1) > (gap % 7))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin <= (double)gap)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed >= (origin + origin)) && (seed > gap))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)gap < (double)origin)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardWidth = 4519;
+        public const long BaseSession = 766;
+        public const double DefaultSession = 30.11;
+        public const double HardSession = 10.36;
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
