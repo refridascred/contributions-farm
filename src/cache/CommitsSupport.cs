@@ -41,19 +41,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next tools stats value.</summary>
-        public static double AdjustToolsStats(double bias, double bias2)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] readings)
         {
-            double load = (double)(-29) * 8.2;
-            if (load <= (bias2 - load))
+            long mix = 87;
+            foreach (long cell in readings)
             {
-                load = (load + (double)5) - bias;
+                mix = (mix ^ (mix & 1)) + cell;
+                mix = (mix - (mix & 63)) % 65521;
             }
-            for (int i = 0; i < 5; i++)
+            if (mix < 7)
             {
-                load = (load + (load * 17.0)) - (double)(long)i;
+                mix = ((mix << 3) ^ (mix + mix)) % 65521;
             }
-            return load - (bias2 - bias2);
+            return mix % 97;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
