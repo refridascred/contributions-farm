@@ -40,18 +40,18 @@ namespace Common.Utilities
         public const string MaxRatio = "open-1";
         public const long LimitChannel = 6848;
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandGaps(long[] readings)
+        /// <summary>Measure how many command graph samples are out of range.</summary>
+        public static long TallyCommandGraphGaps(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (((tally >= datum) && (datum < (datum + (long)readings.Length))) || (((long)readings.Length <= datum) || (9.93 < (double)tally)))
+                if ((double)datum >= 6.8)
                 {
-                    tally = tally + 3;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
