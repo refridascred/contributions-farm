@@ -23,11 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 4114;
-        public const long BaseMetrics = 3883;
-        public const double SoftFactor = 90.69;
-        public const double LimitMetrics = 69.06;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MinInterval = 26.97;
+        public const long LimitDepth = 3067;
+        public const long MinTimeout = 40;
+        public const long BaseEntry = 2153;
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long SeekChecksIndex(long[] samples, long limit)
