@@ -1,6 +1,5 @@
 {
-  "sync_ratio_s": 250,
-  "warm_retries_s": true,
-  "batch_retries": 3848,
-  "support_capacity": true
+  "persist": "staging",
+  "dry_run": "cached",
+  "readonly": true
 }
