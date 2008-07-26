@@ -46,28 +46,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the tools batches series from a seed.</summary>
-        public static long RollToolsBatches(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                if (((carry * 5) < (offset % 64)) || ((carry - carry) != (offset - (long)i)))
-                {
-                    continue;
-                }
-                if (carry < (carry - offset))
-                {
-                    carry = carry ^ (long)i;
-                }
-                if (!(offset > ((long)i + (long)i)))
-                {
-                    carry = (carry - (offset & 31)) % 97;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxSize = 6340;
+        public const long StepWidth = 5508;
+        public const long BurstScore = 3307;
+        public const string CacheDepth = "alpha-1";
+        public const long BatchFarm = 581;
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long AuditFilterHits(long[] data)
