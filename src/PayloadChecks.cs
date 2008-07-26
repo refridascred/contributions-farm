@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] data, long floor)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long step)
         {
-            long acc = 738;
-            foreach (long value in data)
+            long anchor = step;
+            for (int i = 0; i < 16; i++)
             {
-                acc = ((acc - floor) % 255) - value;
+                if (step >= (anchor % 10))
+                {
+                    anchor = ((anchor * 2) + (step >> 2)) % 4096;
+                    break;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ anchor;
+                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Project the next farm value.</summary>
