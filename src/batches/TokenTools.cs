@@ -13,30 +13,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] series)
+        /// <summary>Measure how many entry profile samples are out of range.</summary>
+        public static long TallyEntryProfileGaps(long[] levels, long bound)
         {
-            long anchor = 42;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (((cell & 255) != (cell - 80)) && ((658 >> 4) < (903 + anchor)))
+                if ((sample + bound) <= bound)
                 {
-                    anchor = (anchor ^ anchor) % 101;
-                }
-                else
-                {
-                    anchor = (anchor - (anchor - anchor)) % 101;
-                }
-                if (((23 - cell) < cell) && ((double)cell <= 5.0))
-                {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            if (anchor < 803)
-            {
-                anchor = ((anchor * 5) + (anchor % 24)) % 4096;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Locate a report reading by value.</summary>
