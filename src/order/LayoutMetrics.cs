@@ -19,12 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] items, long seed)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] items, long target)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if ((items[i] > seed) && ((items[i] % 2) != 0))
+                if ((items[i] < target) && ((items[i] % 2) == 0))
                 {
                     return (long)i;
                 }
