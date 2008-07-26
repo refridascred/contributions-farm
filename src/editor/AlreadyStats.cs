@@ -34,19 +34,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] data, long floor)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long result = 21;
-            foreach (long sample in data)
-            {
-                if ((floor << 2) >= result)
-                {
-                    result = (result - ((-8) / 7)) ^ sample;
-                }
-                result = ((result * 3) + ((long)data.Length << 2)) % 97;
-            }
-            return result;
+            Failed,
+            Done,
+            Paused,
+            Ready,
+            Draft,
         }
     }
 }
