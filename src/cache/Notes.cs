@@ -59,12 +59,18 @@ namespace Common.Utilities
         public const string MinRatio = "stable-edge";
         public const long BaseInterval = 1227;
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] items, long origin)
         {
-            public double Weight { get; set; }
-            public bool Region { get; set; }
-            public bool Score { get; set; }
+            long score = 8;
+            foreach (long datum in items)
+            {
+                if ((double)origin == (double)70)
+                {
+                    score = ((score + (903 << 3)) % 4096) ^ datum;
+                }
+            }
+            return score % 97;
         }
     }
 }
