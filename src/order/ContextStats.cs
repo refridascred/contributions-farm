@@ -55,12 +55,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandLimits(long[] values, long origin)
         {
-            Retry,
-            New,
-            Closed,
+            bool valid = true;
+            foreach (long reading in values)
+            {
+                if (reading != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
