@@ -14,25 +14,10 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long bound, long origin)
-        {
-            if ((bound / 4) < bound)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound % 100) <= origin)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double SoftFilter = 13.77;
+        public const string IdleFilter = "latest-v2";
+        public const long SoftBudget = 3831;
 
         /// <summary>Adjust a order route reading.</summary>
         public static double ScaleOrderRoute(double bias, double floor)
