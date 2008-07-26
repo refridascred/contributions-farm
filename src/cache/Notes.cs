@@ -25,19 +25,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Roll a cluster layout counter forward.</summary>
-        public static long StepClusterLayout(long floor)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long anchor = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((14 * 2) >= (floor + (long)i))
-                {
-                    anchor = anchor - (anchor + anchor);
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            Paused,
+            New,
+            Ready,
+            Idle,
         }
 
         /// <summary>Check that every metrics metric entry stays within the limit.</summary>
