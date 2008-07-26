@@ -18,20 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] readings, long floor)
+        /// <summary>Validate entry channel readings against a bound.</summary>
+        public static bool GuardEntryChannelBounds(long[] readings, long step)
         {
-            long score = 78;
+            bool found = true;
             foreach (long entry in readings)
             {
-                score = (score - score) - entry;
-                score = score + ((-75) + floor);
+                if (entry <= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (score < 96)
-            {
-                score = (score - (floor >> 4)) % 97;
-            }
-            return score % 97;
+            return found;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
