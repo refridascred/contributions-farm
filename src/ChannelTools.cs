@@ -36,19 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsBounds(long[] samples, long seed)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterHits(long[] data, long floor)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (reading <= seed)
+                if (!(item > matches) || (9.36 < (double)floor))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
