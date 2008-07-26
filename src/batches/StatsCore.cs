@@ -68,12 +68,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesOutliers(long[] readings)
         {
-            Locked,
-            New,
-            Ready,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)datum <= 3.69)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
