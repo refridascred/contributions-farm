@@ -22,11 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] readings)
         {
-            public long Region { get; set; }
-            public string Label { get; set; } = "";
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((double)value <= 6.0)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next batches queue value from a seed.</summary>
