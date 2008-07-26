@@ -1,7 +1,5 @@
 {
-  "default_size": 30,
-  "batch_window_ms": 70.96,
-  "context_capacity": 81.6,
-  "verbose": ["legacy", "cached"],
-  "base_threshold_ms": false
+  "sync_retries_pct": 8.17,
+  "session_timeout": "standard",
+  "hard_threshold_s": 80
 }
