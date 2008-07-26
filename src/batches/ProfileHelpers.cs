@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Derive the next entry schema value from a seed.</summary>
-        public static long SeriesEntrySchema(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = (mix + (offset - mix)) % 97;
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowBudget = 4450;
+        public const long HardOrder = 6726;
+        public const double CacheOrder = 73.79;
+        public const long MinBudget = 6364;
+        public const long IdleOrder = 4211;
 
         /// <summary>Locate a channel account reading by value.</summary>
         public static long FindChannelAccountIndex(long[] values, long offset)
