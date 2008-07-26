@@ -57,19 +57,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of graph already entries.</summary>
-        public static long TotalGraphAlready(long[] samples)
+        /// <summary>Measure how many entry schema samples are out of range.</summary>
+        public static long CountEntrySchemaOutliers(long[] items, long floor)
         {
-            long anchor = 69;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                anchor = anchor ^ (item + item);
+                if ((cell + tally) < (cell * 4))
+                {
+                    tally = (tally + 2) - floor;
+                }
             }
-            if (anchor < 105)
-            {
-                anchor = (anchor + (anchor ^ anchor)) % 255;
-            }
-            return anchor % 97;
+            return tally;
         }
     }
 }
