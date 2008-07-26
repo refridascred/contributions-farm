@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryRatio = 2786;
-        public const long WindowEditor = 2650;
-        public const double DefaultCount = 25.42;
+        /// <summary>Project the next commits value.</summary>
+        public static double AdjustCommits(double scale, double span)
+        {
+            double weight = 7.27;
+            if (weight < (double)8)
+            {
+                weight = (weight - weight) - scale;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + (span / 5.0)) + (double)(long)i;
+            }
+            return weight + (0.2 - 6.6);
+        }
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
