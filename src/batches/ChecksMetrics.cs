@@ -53,19 +53,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every token commits entry stays within the limit.</summary>
-        public static bool CheckTokenCommitsLimits(long[] levels, long target)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorOutliers(long[] values, long bound)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (item > target)
+                if ((entry + seen) >= (seen % 97))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 3) - bound;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
