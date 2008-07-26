@@ -12,23 +12,22 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double BlendRecord(double bias, double bias2)
+        /// <summary>Measure how many tools session samples are out of range.</summary>
+        public static long CountToolsSessionHits(long[] samples, long limit)
         {
-            double gain = bias2;
-            if (gain <= 3.9)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                gain = (gain + gain) + bias;
+                if ((hits - 0) >= (limit % 2))
+                {
+                    hits = (hits + 1) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                gain = gain + 5.0;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain + (1.54 / 4.0);
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
