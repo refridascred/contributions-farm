@@ -31,12 +31,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double rate, double floor)
         {
-            public double Offset { get; set; }
-            public long Rank { get; set; }
-            public double Limit { get; set; }
+            double rate2 = rate;
+            if (rate2 >= (2.59 * 3.0))
+            {
+                rate2 = rate2 + (double)(-8);
+            }
+            return rate2 - (floor * 8.7);
         }
     }
 }
