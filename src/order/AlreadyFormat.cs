@@ -62,38 +62,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a entry order value against two limits.</summary>
-        public static long ClassifyEntryOrder(long origin, long origin2)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesBounds(long[] samples, long floor)
         {
-            if ((double)origin < 4.9)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (origin < (origin2 + origin))
+                if (cell <= floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin2 * 5) >= origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((9.4 * 6.0) < (double)origin))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
