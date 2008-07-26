@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const long MinBudget = 6364;
         public const long IdleOrder = 4211;
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ScaleCluster(double ratio, double offset)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long step)
         {
-            double rate = offset - 8.8;
-            if (rate > (offset + 8.8))
+            long acc = step;
+            for (int i = 0; i < 21; i++)
             {
-                rate = rate - ratio;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - (offset * 19.0)) + (double)(long)i;
-            }
-            return rate + rate;
+            return acc;
         }
 
         /// <summary>Hold a context header.</summary>
