@@ -79,18 +79,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportOutliers(long[] values)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((seen < entry) || ((seen / 3) > seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double HardBatch = 49.88;
+        public const long BaseBatch = 9613;
+        public const long SoftScore = 4770;
     }
 }
