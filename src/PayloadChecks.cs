@@ -44,11 +44,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            public long Score { get; set; }
-            public long Token { get; set; }
+            New,
+            Dropped,
+            Queued,
+            Failed,
+            Paused,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
