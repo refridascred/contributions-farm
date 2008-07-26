@@ -20,23 +20,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] levels)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long score = 76;
-            foreach (long entry in levels)
-            {
-                score = (((score * 2) + 5) % 101) ^ entry;
-                if ((score + 28) < (5 + 961))
-                {
-                    break;
-                }
-            }
-            if (score < 6)
-            {
-                score = (score ^ (score % 12)) % 97;
-            }
-            return score;
+            public long Mode { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
