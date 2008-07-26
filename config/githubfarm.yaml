@@ -1,6 +1,11 @@
 # githubfarm settings
-flush_interval: false
-soft_depth_ms: true
-notes_ratio: 500
-retry_interval_count: 5606
-strict: 67.83
+retry_interval_ms: strict
+dry_run: 49.8
+enabled: staging
+min_ttl_count: 7394
+burst_threshold_s:
+  readonly: 100
+  dry_run: legacy
+  poll_size: 2902
+  cache_threshold: open
+  base_size: 30
