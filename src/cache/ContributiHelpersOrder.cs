@@ -14,11 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitInterval = 4161;
-        public const long BurstCount = 4915;
-        public const long DefaultDepth = 8348;
-        public const double RetryRecord = 65.95;
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LookupSupportIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= step) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
