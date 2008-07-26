@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowMatches(long[] levels)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelGaps(long[] items)
         {
             long hits = 0;
-            foreach (long value in levels)
+            foreach (long item in items)
             {
-                if ((double)value > (7.6 * 6.6))
+                if ((item ^ hits) <= (hits - 77))
                 {
-                    hits = hits + 2;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
