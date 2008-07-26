@@ -41,19 +41,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every stream stats entry stays within the limit.</summary>
-        public static bool ValidateStreamStatsLimits(long[] items, long offset)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesOutliers(long[] series, long origin)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (datum < offset)
+                if ((seen + origin) != (value ^ seen))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
