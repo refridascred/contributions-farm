@@ -29,21 +29,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] series)
+        /// <summary>Measure how many contributi layout samples are out of range.</summary>
+        public static long MeasureContributiLayoutHits(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (hits <= (entry / 3))
                 {
-                    if ((series[i] ^ series[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Fold a list of layout batch readings.</summary>
