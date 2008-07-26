@@ -45,10 +45,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BaseSpan = 21.87;
-        public const long CacheSpan = 1174;
-        public const long MaxCount = 8212;
-        public const long SoftInterval = 3403;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string StepWidth = "latest-edge";
+        public const long CacheMetric = 9604;
+        public const long SoftSize = 5943;
     }
 }
