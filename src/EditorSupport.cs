@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Locate a account window reading by value.</summary>
-        public static long LookupAccountWindowIndex(long[] readings, long limit)
+        /// <summary>Adjust a metric record reading.</summary>
+        public static double BlendMetricRecord(double weight, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate = (double)(1 + 51);
+            return ((rate - (double)6) + weight) + offset;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
