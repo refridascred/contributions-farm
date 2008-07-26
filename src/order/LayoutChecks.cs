@@ -37,12 +37,19 @@ namespace Common.Utilities
         public const long StepProfile = 3394;
         public const string StepWidth = "primary-1";
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsBounds(long[] series, long seed)
         {
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Match up batches samples.</summary>
