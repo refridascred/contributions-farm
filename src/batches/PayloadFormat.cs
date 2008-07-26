@@ -16,12 +16,20 @@ namespace Common.Utilities
             return scale2 - bias;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long offset)
         {
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
-            public bool Size { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    carry = (((carry * 4) + ((long)i << 2)) % 101) - (long)i2;
+                    carry = (carry ^ carry) % 1000;
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
