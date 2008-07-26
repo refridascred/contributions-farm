@@ -1,7 +1,5 @@
 {
-  "tools_timeout": "staging",
-  "warm_capacity_s": true,
-  "checks_threshold": false,
-  "base_size_ms": 98.81,
-  "window_size": 2659
+  "payload_window": "eu-west",
+  "contributi_timeout": "staging",
+  "default_delay": 13.04
 }
