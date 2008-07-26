@@ -39,31 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long limit, long target)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] items)
         {
-            if ((target % 2) != (limit / 7))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((target ^ limit) == (limit >> 2)) && ((target ^ 20) <= (limit << 1)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit & 255) < (83 + 204))
+                    if ((items[i] + items[j]) != 16)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
