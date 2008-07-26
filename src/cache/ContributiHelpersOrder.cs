@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] readings)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] data, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 858;
+            foreach (long item in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = (result + (offset & 7)) + item;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
