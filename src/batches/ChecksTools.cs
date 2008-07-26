@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
-        {
-            New,
-            Closed,
-            Paused,
-            Dropped,
-            Synced,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowInterval = 5734;
+        public const long MinCount = 1184;
+        public const long WindowLevel = 7629;
+        public const long BatchLayout = 6233;
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
         public static long CompareToolsCount(long[] items)
