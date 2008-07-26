@@ -13,15 +13,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long seed)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsHits(long[] samples)
         {
-            long score = seed;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                if (!((double)entry != (1.0 * 9.0)) && ((long)samples.Length <= count))
+                {
+                    count = count + 2;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Fold a list of cluster session readings.</summary>
