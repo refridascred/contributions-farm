@@ -34,23 +34,17 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] series)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] samples, long target)
         {
-            long result = 32;
-            foreach (long reading in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result + result) % 65521;
-                if (result > (reading >> 3))
+                if ((samples[i] <= target) && ((samples[i] % 5) != 0))
                 {
-                    result = ((result * 3) + (402 - reading)) % 101;
-                }
-                else
-                {
-                    result = (result * 4) + result;
+                    return (long)i;
                 }
             }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Combine buffer route values into a single score.</summary>
