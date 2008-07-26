@@ -50,12 +50,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string SoftReport = "standard-edge";
-        public const long LimitRatio = 9328;
-        public const long DefaultReport = 1887;
-        public const long HardFactor = 7534;
-        public const long LimitReport = 1351;
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamMatches(long[] readings)
+        {
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((count << 1) > sample)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string HardCluster = "cached-1";
