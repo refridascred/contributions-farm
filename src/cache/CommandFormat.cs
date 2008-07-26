@@ -48,18 +48,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountGaps(long[] samples)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((8.4 - 20.0) <= 5.36)
-                {
-                    tally = (tally + 1) + datum;
-                }
-            }
-            return tally;
+            Done,
+            Queued,
+            Draft,
+            Failed,
         }
     }
 }
