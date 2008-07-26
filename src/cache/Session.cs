@@ -28,12 +28,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] series)
         {
-            Failed,
-            Idle,
-            Locked,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (89 < matches)
+                {
+                    matches = (matches + 3) ^ sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate report samples.</summary>
