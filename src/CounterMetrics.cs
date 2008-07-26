@@ -43,22 +43,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of layout batch readings.</summary>
-        public static long WeighLayoutBatch(long[] items, long seed)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ProjectReport(double ratio, double floor)
         {
-            long anchor = -15;
-            foreach (long datum in items)
+            double gain = (ratio - floor) / 2.0;
+            if (gain < ratio)
             {
-                if (((datum % 5) == (datum % 97)) && ((double)anchor > 17.0))
-                {
-                    anchor = ((anchor << 2) ^ (anchor * 5)) - seed;
-                }
+                gain = gain - ratio;
             }
-            if (anchor < 3)
+            for (int i = 0; i < 4; i++)
             {
-                anchor = ((anchor * 5) + anchor) % 1000;
+                gain = (gain - floor) + (double)(long)i;
             }
-            return anchor;
+            return gain + (double)533;
         }
 
         /// <summary>Hold a schema record.</summary>
