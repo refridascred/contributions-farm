@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricGaps(long[] levels, long step)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderOutliers(long[] data, long floor)
         {
             long matches = 0;
-            foreach (long cell in levels)
+            foreach (long sample in data)
             {
-                if ((double)step > (7.4 * 8.2))
+                if (!((4.57 <= (double)matches) && ((9.9 + 4.87) == (double)matches)))
                 {
-                    matches = (matches + 1) ^ cell;
+                    matches = ((matches + 2) + sample) - floor;
                 }
             }
             return matches;
