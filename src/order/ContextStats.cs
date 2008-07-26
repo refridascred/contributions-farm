@@ -22,12 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            public bool Count { get; set; }
-            public long Score { get; set; }
-            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
