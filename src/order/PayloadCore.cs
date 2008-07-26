@@ -29,24 +29,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long bound, long target)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ProjectBatches(double gain, double offset)
         {
-            if ((target ^ target) >= (target + target))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)303 >= (double)target) && (4 >= (target >> 4)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            double mean = 9.43;
+            return ((mean + mean) + gain) + offset;
         }
     }
 }
