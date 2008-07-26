@@ -19,12 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string RetryOrder = "primary";
-        public const string BaseOrder = "stable";
-        public const long IdleOrder = 711;
-        public const long BaseLevel = 5666;
-        public const long IdleRatio = 4531;
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((double)(long)i < (20.0 + 8.82))
+                {
+                    sum = sum + (sum / 6);
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Find the first notes stats entry that matches the target.</summary>
         public static long FindNotesStatsIndex(long[] samples, long offset)
