@@ -39,18 +39,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit order command readings against a rule.</summary>
-        public static long AuditOrderCommandHits(long[] readings)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiHits(long[] data)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((double)item > 7.34)
+                if (((datum - seen) != (long)data.Length) && ((5.7 * 0.33) > (double)datum))
                 {
-                    tally = tally + 2;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Fold a list of support readings.</summary>
