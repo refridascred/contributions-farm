@@ -37,12 +37,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Locate a token account reading by value.</summary>
+        public static long SeekTokenAccountIndex(long[] items, long floor)
         {
-            Paused,
-            Done,
-            Locked,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == floor) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
