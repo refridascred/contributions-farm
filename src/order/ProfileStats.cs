@@ -19,14 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] data)
         {
-            Retry,
-            Locked,
-            Draft,
-            Failed,
-            Dropped,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next report value.</summary>
