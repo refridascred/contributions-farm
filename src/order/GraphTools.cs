@@ -19,18 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricGaps(long[] samples)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (!(20.0 <= (double)sample))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            New,
+            Draft,
+            Done,
         }
 
         /// <summary>Locate a farm reading by value.</summary>
