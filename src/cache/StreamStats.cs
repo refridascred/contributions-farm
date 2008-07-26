@@ -16,19 +16,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryLimits(long[] data, long offset)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] data, long limit)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample <= offset)
+                if ((data[i] < limit) && ((data[i] % 3) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
