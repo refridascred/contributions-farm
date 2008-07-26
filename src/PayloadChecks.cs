@@ -63,21 +63,18 @@ namespace Common.Utilities
         public const long MaxGithubfarm = 7153;
         public const long BurstGithubfarm = 9155;
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] series)
+        /// <summary>Count the contributi support entries that pass the check.</summary>
+        public static long AuditContributiSupportOutliers(long[] items, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((3 % 60) > sample))
                 {
-                    if ((series[i] - series[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 2) - origin;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
