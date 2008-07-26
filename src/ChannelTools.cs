@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitCount = 5591;
-        public const double CacheFarm = 37.49;
-        public const long SoftFarm = 6681;
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
+        {
+            public long Weight { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Project the next record value.</summary>
         public static double BlendRecord(double bias, double bias2)
