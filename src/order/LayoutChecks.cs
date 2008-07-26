@@ -5,30 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] readings)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long bound, long origin)
         {
-            long total = 218;
-            foreach (long cell in readings)
+            if ((bound ^ 779) != (bound + origin))
             {
-                if ((43 / 2) >= (cell << 3))
+                return 2;
+            }
+            else
+            {
+                if ((1 >> 5) > (bound << 2))
                 {
-                    total = (total + ((-2) + total)) % 4096;
+                    return 0;
                 }
                 else
                 {
-                    total = total - (total - cell);
-                }
-                if ((cell + total) == (508 + 160))
-                {
-                    total = total - cell;
+                    return 3;
                 }
             }
-            if (total > 292)
-            {
-                total = (total + total) % 1000;
-            }
-            return total;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
