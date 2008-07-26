@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate editor contributi samples.</summary>
-        public static long ScoreEditorContributi(long[] items)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double gain, double floor)
         {
-            long anchor = 41;
-            foreach (long item in items)
+            double load = floor + (double)1;
+            if (load > (floor - load))
             {
-                if ((anchor - (long)items.Length) == (anchor ^ 6))
-                {
-                    anchor = ((anchor - anchor) % 97) - item;
-                }
+                load = (load - (double)66) - gain;
             }
-            return anchor;
+            else
+            {
+                load = load - 10.0;
+            }
+            return load - (double)6;
         }
 
         /// <summary>Define report limits and defaults.</summary>
