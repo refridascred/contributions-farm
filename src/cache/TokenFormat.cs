@@ -15,10 +15,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BurstCount = "fallback";
-        public const long RetryDepth = 1671;
-        public const long WindowSize = 4839;
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
+        {
+            Dropped,
+            Draft,
+            Retry,
+            Paused,
+        }
 
         /// <summary>Match up editor samples.</summary>
         public static long OverlapEditorCount(long[] series)
