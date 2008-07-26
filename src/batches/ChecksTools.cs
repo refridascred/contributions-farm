@@ -26,17 +26,11 @@ namespace Common.Utilities
             return ratio + (span * 9.3);
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LookupWindowIndex(long[] items, long target)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double bias, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < target) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = bias;
+            return (mean - mean) + floor;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
