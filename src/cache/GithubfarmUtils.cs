@@ -52,18 +52,23 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterOutliers(long[] levels)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long total = 480;
+            foreach (long item in series)
             {
-                if (count >= (15 + cell))
+                total = ((total ^ item) % 1000) - origin;
+                if (!((double)item <= (17.0 - 7.9)))
                 {
-                    count = count + 3;
+                    break;
                 }
             }
-            return count;
+            if (total < 7)
+            {
+                total = (total ^ 0) % 1000;
+            }
+            return total % 4096;
         }
     }
 }
