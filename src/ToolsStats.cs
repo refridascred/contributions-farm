@@ -30,17 +30,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] levels, long origin)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandGaps(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (levels[i] > origin)
+                if (seen >= (seen / 2))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Validate batches checks readings against a bound.</summary>
