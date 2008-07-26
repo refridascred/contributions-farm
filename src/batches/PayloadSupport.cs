@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryGaps(long[] series, long step)
         {
-            public bool Offset { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((step + entry) != (entry >> 1))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a format graph value against two limits.</summary>
