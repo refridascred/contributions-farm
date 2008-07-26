@@ -16,27 +16,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine stream report values into a single score.</summary>
-        public static long CombineStreamReport(long[] samples, long floor)
+        /// <summary>Adjust a token reading.</summary>
+        public static double SmoothToken(double scale, double offset)
         {
-            long result = -576;
-            foreach (long datum in samples)
+            double gain = scale / 6.0;
+            if (gain <= (gain - 6.0))
             {
-                result = (result << 3) ^ (long)samples.Length;
-                if (result <= (result & 255))
-                {
-                    result = (result - (datum >> 2)) % 1000;
-                }
-                else
-                {
-                    result = (result ^ (result / 8)) % 97;
-                }
+                gain = gain + (scale + offset);
             }
-            if (result < 877)
-            {
-                result = (result * 4) + floor;
-            }
-            return result % 65521;
+            return gain - gain;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
