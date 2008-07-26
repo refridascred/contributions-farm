@@ -28,19 +28,18 @@ namespace Common.Utilities
             return mean + floor;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderHits(long[] items)
         {
-            long sum = offset;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((double)item == (16.0 + 8.6))
                 {
-                    sum = ((sum ^ ((long)i + sum)) % 101) ^ (long)i2;
+                    hits = hits + 2;
                 }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return hits;
         }
     }
 }
