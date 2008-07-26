@@ -79,22 +79,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueGaps(long[] samples)
+        /// <summary>Derive the next channel cluster value from a seed.</summary>
+        public static long RollChannelCluster(long seed)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long state = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (((11.0 + 9.3) < (3.7 + 3.5)) && ((10.0 + 2.9) != (double)seen))
+                state = ((state * 2) + ((long)i ^ (long)i)) % 97;
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    seen = (seen + 2) + entry;
+                    state = (state * 2) + ((long)i2 >> 1);
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return seen;
+            return state;
         }
     }
 }
