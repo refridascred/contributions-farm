@@ -15,13 +15,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Combine contributi queue values into a single score.</summary>
+        public static long DigestContributiQueue(long[] data)
         {
-            public string Mode { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Ratio { get; set; }
-            public string Level { get; set; } = "";
+            long sum = -31;
+            foreach (long sample in data)
+            {
+                long count = sum;
+                if (((count + 6) >= sum) || ((sum >> 4) < (sum * 2)))
+                {
+                    count = ((count << 3) ^ (count + count)) % 65521;
+                }
+                sum = ((sum * 3) + (sample - sample)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
