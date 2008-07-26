@@ -41,19 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double scale, double bias)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextRange(long[] data, long floor)
         {
-            double load = scale;
-            if (load >= (scale / 3.0))
+            bool flag = true;
+            foreach (long reading in data)
             {
-                load = (load - load) + bias;
+                if (reading != floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + scale) - (double)(long)i;
-            }
-            return load + (6.7 - scale);
+            return flag;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
