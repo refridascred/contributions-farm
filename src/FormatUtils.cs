@@ -49,15 +49,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterHits(long[] items, long bound)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandGaps(long[] data)
         {
             long matches = 0;
-            foreach (long cell in items)
+            foreach (long sample in data)
             {
-                if ((152 - 5) != (58 + matches))
+                if (((sample % 10) > (4 - matches)) || (sample < (matches % 12)))
                 {
-                    matches = ((matches + 3) + cell) + bound;
+                    matches = matches + 3;
                 }
             }
             return matches;
