@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Rank route counter input into a small class.</summary>
+        public static long ClassifyRouteCounter(long offset, long seed)
         {
-            Stale,
-            Done,
-            Queued,
-            Failed,
+            if ((double)seed == (8.0 * 7.1))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed / 7) >= offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((9 - 662) <= seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
