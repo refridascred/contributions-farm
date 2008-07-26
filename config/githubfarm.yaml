@@ -1,7 +1,13 @@
 # githubfarm settings
-githubfarm_size: false
-retry_ratio: standard
-commits_ratio: false
-already_ratio: 30
-token_capacity: local
-burst_timeout_count: false
+batches_ratio: green
+batch_threshold: legacy
+queue_window:
+  sync_limit_count: 82
+  buffer_ratio: 9498
+  cluster_limit:
+    base_ratio_ms: true
+    cache_retries: local
+    enabled: 3
+    poll_capacity_count: primary
+    entry_retries: 250
+  min_delay_count: 2115
