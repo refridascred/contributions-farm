@@ -36,15 +36,19 @@ namespace Common.Utilities
         public const long LimitCount = 5707;
         public const long CacheFarm = 9250;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] samples)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileBounds(long[] readings, long seed)
         {
-            long mark = 968;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                mark = ((mark * 4) + (item & 1)) % 97;
+                if (cell < seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mark;
+            return stale;
         }
     }
 }
