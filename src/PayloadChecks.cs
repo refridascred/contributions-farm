@@ -55,10 +55,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowInterval = 8771;
-        public const long MaxGithubfarm = 7153;
-        public const long BurstGithubfarm = 9155;
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the route state values.</summary>
         public enum RouteState
