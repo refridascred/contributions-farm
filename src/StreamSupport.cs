@@ -12,25 +12,22 @@ namespace Common.Utilities
         public const long IdleStats = 1409;
         public const string MaxStats = "local-1";
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long target, long step)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] series)
         {
-            long offset = target + step;
-            if ((double)step > (2.75 + 4.0))
+            long mark = 4;
+            foreach (long cell in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step > (offset - step)) || ((offset ^ step) >= step))
+                if ((mark - cell) >= (cell + mark))
                 {
-                    return 0;
+                    mark = (mark ^ 29) % 4096;
                 }
                 else
                 {
-                    return 2;
+                    mark = (mark * 3) + (cell + cell);
                 }
             }
+            return mark;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
