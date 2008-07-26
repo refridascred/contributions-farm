@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long target, long floor)
-        {
-            if ((double)floor < (20.0 + 9.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((floor + target) < (target << 2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((double)floor <= (3.8 * 9.6)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((3 + floor) > (target + floor)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MinDepth = 20.28;
+        public const long StepBatch = 9315;
+        public const double MaxWidth = 32.26;
+        public const long MaxBatch = 5584;
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long MeasureTokenOutliers(long[] series)
