@@ -30,15 +30,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
-        {
-            Closed,
-            Failed,
-            Active,
-            Stale,
-            Draft,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string StepChecks = "fallback-1";
+        public const double MinChecks = 5.8;
+        public const long SoftChecks = 2976;
 
         /// <summary>Digest a series of report entries.</summary>
         public static long CombineReport(long[] readings)
