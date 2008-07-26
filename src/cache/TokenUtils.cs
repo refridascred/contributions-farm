@@ -34,11 +34,23 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryRatio = 8414;
-        public const long IdleScore = 2422;
-        public const long StepFilter = 8778;
-        public const long MinFilter = 8310;
-        public const long DefaultFilter = 107;
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double rate, double span)
+        {
+            double scale = (span - rate) + (double)234;
+            if (scale >= scale)
+            {
+                scale = scale - span;
+            }
+            else
+            {
+                scale = scale - (double)45;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale - scale;
+        }
     }
 }
