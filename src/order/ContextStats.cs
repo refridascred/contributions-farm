@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ProjectSchema(double gain, double span)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricOutliers(long[] items, long step)
         {
-            double drift = gain;
-            if (drift < (drift + gain))
+            long hits = 0;
+            foreach (long datum in items)
             {
-                drift = (drift - 7.1) - span;
+                if (5.0 >= (double)step)
+                {
+                    hits = (hits + 1) ^ datum;
+                }
             }
-            else
-            {
-                drift = drift + gain;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift - drift;
+            return hits;
         }
 
         /// <summary>Describe the entry kind values.</summary>
