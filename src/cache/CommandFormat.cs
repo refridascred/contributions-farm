@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] readings, long floor)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long MatchOrderCount(long[] samples)
         {
-            long mark = 5;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((553 >> 5) >= (floor << 2)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = mark + (mark + floor);
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (8 ^ floor);
-                }
-                if (((reading + reading) > reading) && ((double)reading >= 4.3))
-                {
-                    break;
+                    if ((samples[i] + samples[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark % 1000;
+            return matches;
         }
 
         /// <summary>Count batch record pairs that satisfy a relation.</summary>
