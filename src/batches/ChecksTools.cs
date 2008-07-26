@@ -49,18 +49,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksGaps(long[] items, long limit)
-        {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (tally <= (tally * 2))
-                {
-                    tally = ((tally + 3) - cell) - limit;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 6165;
+        public const double IdleRatio = 38.54;
+        public const string BaseGithubfarm = "strict";
     }
 }
