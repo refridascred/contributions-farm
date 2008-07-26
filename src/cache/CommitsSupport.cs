@@ -19,17 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] readings, long seed)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (readings[i] <= seed)
-                {
-                    return (long)i;
-                }
+                total = total - (total - total);
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Accumulate counter samples.</summary>
