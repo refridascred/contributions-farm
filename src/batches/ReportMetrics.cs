@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next queue filter value from a seed.</summary>
-        public static long SeriesQueueFilter(long floor)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long score = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((double)score == (5.0 * 1.9))
-                {
-                    score = score + score;
-                }
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            Ready,
+            Closed,
+            Failed,
+            Draft,
+            Pending,
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
