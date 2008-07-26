@@ -29,12 +29,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LookupEditorIndex(long[] samples, long seed)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] data, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((samples[i] >= seed) && ((samples[i] % 2) != 0))
+                if (data[i] > offset)
                 {
                     return (long)i;
                 }
