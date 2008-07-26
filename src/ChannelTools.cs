@@ -25,22 +25,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate filter commits samples.</summary>
-        public static long ScoreFilterCommits(long[] data, long seed)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long score = 84;
-            foreach (long sample in data)
-            {
-                if (((double)sample == (5.3 / 5.0)) || ((score / 8) < seed))
-                {
-                    score = (score ^ (3 ^ sample)) % 4096;
-                }
-                if (810 >= (sample - sample))
-                {
-                    break;
-                }
-            }
-            return score % 65521;
+            public string Ratio { get; set; } = "";
+            public double Limit { get; set; }
         }
     }
 }
