@@ -44,18 +44,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit metric metrics readings against a rule.</summary>
-        public static long TallyMetricMetricsGaps(long[] data, long floor)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((double)floor != (double)matches)
-                {
-                    matches = (matches + 2) - cell;
-                }
-            }
-            return matches;
+            New,
+            Stale,
+            Ready,
+            Queued,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
