@@ -36,10 +36,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double DefaultEditor = 22.31;
-        public const long SoftEditor = 2578;
-        public const long IdleEditor = 7097;
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long BucketBuffer(long seed, long origin)
