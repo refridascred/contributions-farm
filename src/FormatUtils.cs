@@ -47,15 +47,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a record checks figure with a bias.</summary>
-        public static double BlendRecordChecks(double ratio, double floor)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterHits(long[] items, long bound)
         {
-            double bias = ratio;
-            if (bias < (16.0 / 6.0))
+            long matches = 0;
+            foreach (long cell in items)
             {
-                bias = (bias - (8.73 - ratio)) - floor;
+                if ((152 - 5) != (58 + matches))
+                {
+                    matches = ((matches + 3) + cell) + bound;
+                }
             }
-            return bias + ratio;
+            return matches;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
