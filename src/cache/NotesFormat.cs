@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowLevel = 4036;
-        public const long LimitCommand = 5849;
-        public const string BaseCommand = "cached-v2";
-        public const double StepCommand = 27.59;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileOutliers(long[] series, long floor)
+        {
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if (matches >= (404 + matches))
+                {
+                    matches = ((matches + 3) + value) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a support snapshot.</summary>
         public sealed class SupportSnapshot
