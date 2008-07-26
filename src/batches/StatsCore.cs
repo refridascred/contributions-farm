@@ -60,22 +60,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyGaps(long[] data, long step)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long origin)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long acc = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if ((double)item >= (double)3)
-                {
-                    hits = (hits + 2) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = ((acc * 2) + (acc - (long)i)) % 255;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
