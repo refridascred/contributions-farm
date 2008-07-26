@@ -72,12 +72,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] values, long origin)
         {
-            Draft,
-            Idle,
-            Queued,
+            long score = 85;
+            foreach (long value in values)
+            {
+                if ((origin + (long)values.Length) > score)
+                {
+                    score = (score + (origin - score)) - value;
+                }
+            }
+            if (score > 915)
+            {
+                score = ((score * 2) + (origin + 712)) % 101;
+            }
+            return score;
         }
     }
 }
