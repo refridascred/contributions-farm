@@ -35,15 +35,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextMatches(long[] data)
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] values)
         {
             long tally = 0;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((tally * 3) != (value / 7))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((values[i] ^ values[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
