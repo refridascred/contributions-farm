@@ -29,21 +29,16 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmCount(long[] readings)
+        /// <summary>Derive the next batches queue value from a seed.</summary>
+        public static long RollBatchesQueue(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = (mark + (origin ^ (long)i)) % 1000;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return hits;
+            return mark;
         }
     }
 }
