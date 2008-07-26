@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionLimits(long[] data, long origin)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long target, long limit)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long next = target ^ limit;
+            if (next < (next - next))
             {
-                if (cell >= origin)
+                return 5;
+            }
+            else
+            {
+                if (target <= limit)
                 {
-                    valid = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return valid;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
