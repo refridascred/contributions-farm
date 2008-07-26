@@ -46,11 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ProjectBatches(double gain, double offset)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            double mean = 9.43;
-            return ((mean + mean) + gain) + offset;
+            public long Rank { get; set; }
+            public string Offset { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
     }
 }
