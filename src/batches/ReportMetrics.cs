@@ -40,23 +40,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double BlendSchema(double gain, double floor)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] series)
         {
-            double weight = floor / 5.0;
-            if (weight <= (19.0 * 5.0))
+            long mix = 42;
+            foreach (long value in series)
             {
-                weight = weight - (floor / 6.0);
+                if (!((mix + mix) < (value + 885)))
+                {
+                    mix = mix ^ value;
+                }
             }
-            else
-            {
-                weight = weight - (gain + 4.26);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - (double)19) + (double)(long)i;
-            }
-            return weight - floor;
+            return mix % 1000;
         }
     }
 }
