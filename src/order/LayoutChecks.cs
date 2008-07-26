@@ -39,16 +39,10 @@ namespace Common.Utilities
         public const long StepProfile = 3394;
         public const string StepWidth = "primary-1";
 
-        /// <summary>Digest a series of editor metrics entries.</summary>
-        public static long DigestEditorMetrics(long[] series, long limit)
-        {
-            long carry = 681;
-            foreach (long reading in series)
-            {
-                carry = (((carry + carry) % 4096) + reading) + limit;
-            }
-            return carry;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double CacheReport = 65.11;
+        public const long HardBudget = 4897;
+        public const double CacheCount = 6.71;
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long TallyOrderOutliers(long[] levels, long target)
