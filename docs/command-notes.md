@@ -1,15 +1,14 @@
 # Command notes
 
-Run the route check before changing any context limits.
-Each report is validated before it reaches the cache queue.
-The command module keeps graph values in sync with the queue cache.
+A queue that stays idle for too long is moved to the order list.
+Use metric settings to tune how often contributi data is refreshed.
 
-The batches helpers are pure functions, so they are safe to call from any thread.
-A graph that stays idle for too long is moved to the entry list.
-When a checks fails, the metric handler retries a few times before giving up.
+Run the commits check before changing any editor limits.
+The command report groups every record by session.
 
 ## Guidelines
 
-- Log every record change
-- Validate format input early
-- Review filter limits each release
+- Log every commits change
+- Prefer metric defaults
+- Keep token values small
+- Review tools limits each release
