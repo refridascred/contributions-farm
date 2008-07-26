@@ -28,18 +28,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryMatches(long[] readings, long offset)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long state = 809;
+            foreach (long reading in data)
             {
-                if (offset > (offset + entry))
+                if ((state + state) <= reading)
                 {
-                    seen = seen + 3;
+                    state = (state << 3) ^ (563 & 15);
                 }
             }
-            return seen;
+            return state % 65521;
         }
     }
 }
