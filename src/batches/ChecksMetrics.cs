@@ -24,18 +24,17 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmMatches(long[] readings, long offset)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (offset > (665 ^ offset))
+                if (series[i] < bound)
                 {
-                    count = (count + 1) - entry;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
