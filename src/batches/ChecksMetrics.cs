@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Audit cache queue readings against a rule.</summary>
+        public static long TallyCacheQueueOutliers(long[] data)
         {
-            public long Count { get; set; }
-            public long Score { get; set; }
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((double)entry != (6.02 / 8.0))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
