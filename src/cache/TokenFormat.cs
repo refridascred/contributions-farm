@@ -32,10 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultLevel = 5719;
-        public const long MaxMetrics = 7550;
-        public const string CacheSpan = "latest";
-        public const long BatchLevel = 5606;
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
+        {
+            public string Mode { get; set; } = "";
+            public long Score { get; set; }
+        }
     }
 }
