@@ -63,15 +63,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double SmoothOrder(double bias, double offset)
+        /// <summary>Scale a token order figure with a bias.</summary>
+        public static double SmoothTokenOrder(double bias, double floor)
         {
-            double drift = bias;
-            for (int i = 0; i < 9; i++)
+            double scale = floor;
+            for (int i = 0; i < 6; i++)
             {
-                drift = (drift - (double)(long)i) - offset;
+                scale = (scale + (bias + bias)) - (double)(long)i;
             }
-            return drift - 8.3;
+            return scale + (7.29 * 8.0);
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
