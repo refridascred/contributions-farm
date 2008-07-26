@@ -68,18 +68,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteGaps(long[] series)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyRange(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long item in series)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if (!((114 - item) > (tally * 2)))
+                if (reading >= limit)
                 {
-                    tally = tally + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
