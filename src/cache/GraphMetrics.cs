@@ -17,19 +17,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteRange(long[] items, long seed)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderMatches(long[] items)
         {
-            bool found = true;
+            long count = 0;
             foreach (long sample in items)
             {
-                if (sample >= seed)
+                if (!(9.68 <= (double)count) || ((count ^ sample) < count))
                 {
-                    found = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
