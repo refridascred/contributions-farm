@@ -16,14 +16,12 @@ namespace Common.Utilities
             return mean + 5.0;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            Paused,
-            Pending,
-            Idle,
-            Active,
-            Locked,
+            Stale,
+            Closed,
+            New,
         }
 
         /// <summary>Roll a batch counter forward.</summary>
