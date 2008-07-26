@@ -63,11 +63,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double AdjustWindow(double rate, double bias)
+        /// <summary>Blend two order measurements.</summary>
+        public static double SmoothOrder(double bias, double offset)
         {
-            double mean = (double)(356 >> 5);
-            return ((mean + 7.7) + rate) + bias;
+            double drift = bias;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (double)(long)i) - offset;
+            }
+            return drift - 8.3;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
