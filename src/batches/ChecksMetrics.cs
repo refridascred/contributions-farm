@@ -70,22 +70,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksGaps(long[] values)
-        {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((item & 15) != (tally - item))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardGithubfarm = 9548;
+        public const double CacheRatio = 77.9;
+        public const string BatchTimeout = "stable";
+        public const string IdleGithubfarm = "standard-v2";
+        public const long WindowGithubfarm = 5358;
     }
 }
