@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] values, long seed)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long PairFarmCount(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] < seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
