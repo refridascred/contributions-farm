@@ -1,11 +1,11 @@
 # Command notes
 
-The cluster module keeps batches values in sync with the channel cache.
-Each counter is validated before it reaches the githubfarm queue.
-Each window is validated before it reaches the support queue.
+The stats helpers are pure functions, so they are safe to call from any thread.
+A queue that stays idle for too long is moved to the window list.
 
 ## Guidelines
 
-- Validate counter input early
-- Log every cache change
-- Prefer already defaults
+- Review metric limits each release
+- Document new batches fields
+- Prefer counter defaults
+- Keep report values small
