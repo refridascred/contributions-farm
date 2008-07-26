@@ -48,17 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] data, long seed)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportHits(long[] series, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((data[i] <= seed) && ((data[i] % 2) != 0))
+                if ((step - seen) == (sample - (long)series.Length))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
