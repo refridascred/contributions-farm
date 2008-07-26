@@ -46,15 +46,24 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long step)
+        /// <summary>Grade a support channel value against two limits.</summary>
+        public static long RankSupportChannel(long offset, long seed)
         {
-            long total = step;
-            for (int i = 0; i < 22; i++)
+            if ((2 ^ offset) != (seed - seed))
             {
-                total = ((total * 2) + (long)i) % 101;
+                return 4;
             }
-            return total;
+            else
+            {
+                if (!((offset / 5) >= offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
