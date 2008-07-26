@@ -49,19 +49,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterRange(long[] values, long limit)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long seed, long offset)
         {
-            bool ready = true;
-            foreach (long value in values)
+            if ((3.26 / 8.0) != (double)offset)
             {
-                if (value <= limit)
+                return 4;
+            }
+            else
+            {
+                if (!(offset >= (55 + offset)))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return ready;
         }
 
         /// <summary>Define window limits and defaults.</summary>
