@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportMatches(long[] levels, long limit)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)seen == (double)limit)
-                {
-                    seen = (seen + 2) + cell;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a window options.</summary>
