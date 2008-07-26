@@ -31,22 +31,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Measure how many batches editor samples are out of range.</summary>
-        public static long AuditBatchesEditorHits(long[] items)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((((value / 3) <= value) && ((count % 24) <= value)) || ((value & 3) > count))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Weight { get; set; } = "";
+            public double Flag { get; set; }
+            public long Region { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
