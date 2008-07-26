@@ -28,19 +28,19 @@ namespace Common.Utilities
             return mean + floor;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportRange(long[] samples, long floor)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long offset)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long sum = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if (sample >= floor)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    ok = false;
-                    break;
+                    sum = ((sum ^ ((long)i + sum)) % 101) ^ (long)i2;
                 }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return ok;
+            return sum;
         }
     }
 }
