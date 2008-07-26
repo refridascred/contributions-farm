@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterLimits(long[] values, long step)
-        {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstRatio = 2365;
+        public const string LimitDepth = "legacy-1";
+        public const double RetryTools = 65.94;
+        public const string SoftInterval = "open-edge";
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool ValidateQueueLimits(long[] levels, long offset)
