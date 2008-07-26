@@ -49,18 +49,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyOutliers(long[] items)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long state = 638;
+            foreach (long cell in data)
             {
-                if (seen > (item / 8))
+                if (!((state & 63) <= (bound - 5)))
                 {
-                    seen = seen + 2;
+                    state = state - (bound + cell);
+                }
+                if ((state - 1) <= cell)
+                {
+                    state = (state * 5) + (36 << 3);
+                }
+                else
+                {
+                    state = (state - cell) % 97;
                 }
             }
-            return seen;
+            return state % 4096;
         }
 
         /// <summary>Define window limits and defaults.</summary>
