@@ -64,19 +64,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmRange(long[] levels, long target)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long limit, long bound)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            if (((46 - 232) <= (24 - bound)) || ((781 - bound) <= 263))
             {
-                if (entry < target)
+                return 4;
+            }
+            else
+            {
+                if ((bound >> 3) > (limit - bound))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return ready;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
