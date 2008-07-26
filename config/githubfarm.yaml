@@ -1,11 +1,6 @@
 # githubfarm settings
-hard_interval_s: 75
-entry_interval:
-  persist:
-    strict: 74.41
-    batch_ratio: 434
-    sync_timeout: fallback
-  retry_limit_count: blue
-  metric_ratio: green
-  flush_ratio: false
-already_window: 1024
+cache_capacity_pct: 3
+idle_window_count: 7244
+queue_ttl: true
+max_depth_count: 3.63
+graph_ratio: standard
