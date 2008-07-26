@@ -38,25 +38,12 @@ namespace Common.Utilities
         public const long LimitRatio = 9666;
         public const double BatchRatio = 13.32;
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long step, long origin)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long diff = step ^ origin;
-            if (!(diff <= (step >> 5)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)origin < (8.11 * 14.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Pending,
+            Synced,
+            Done,
         }
 
         /// <summary>Describe the record mode values.</summary>
