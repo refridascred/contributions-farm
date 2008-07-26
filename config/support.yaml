@@ -1,4 +1,4 @@
 # support settings
-burst_retries_ms: 4243
-format_retries: true
-cluster_timeout: eu-west
+format_depth: 33.83
+flush_capacity: eu-west
+min_window_s: 64
