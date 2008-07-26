@@ -20,31 +20,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] series)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long total = 66;
-            foreach (long cell in series)
-            {
-                total = total + (cell - total);
-                if ((double)cell <= (7.7 * 6.7))
-                {
-                    break;
-                }
-                else
-                {
-                    total = (total - total) % 65521;
-                }
-                if ((cell * 2) >= (total + cell))
-                {
-                    total = (total - ((-137) + total)) % 4096;
-                }
-            }
-            if (total < 3)
-            {
-                total = total + (total ^ total);
-            }
-            return total;
+            public long Offset { get; set; }
+            public double Mode { get; set; }
+            public bool Total { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Grade a report value against two limits.</summary>
