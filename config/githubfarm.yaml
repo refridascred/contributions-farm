@@ -1,4 +1,16 @@
 # githubfarm settings
-poll_window_pct: blue
-compress: staging
-min_ttl_s: true
+cache_retries_count:
+  default_capacity_ms: edge
+  report_limit: 1341
+  hard_limit_s: stable
+  max_delay_ms: 23.17
+  batch_timeout_ms: 100
+  retry_interval_s:
+    idle_depth_s: 68.58
+    flush_delay_s: 500
+    dry_run: true
+    warm_delay_s: 26.2
+    githubfarm_size: true
+sync_retries: true
+cache_window_ms: stable
+batch_interval_pct: 4789
