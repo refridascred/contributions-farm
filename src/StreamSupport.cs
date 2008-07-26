@@ -36,23 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ProjectReport(double rate, double offset)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double AdjustChannel(double weight, double offset)
         {
-            double load = (double)(116 ^ 31);
-            if (load < (11.0 + load))
+            double weight2 = weight;
+            if (weight2 <= offset)
             {
-                load = load + load;
+                weight2 = weight2 + (weight / 9.0);
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                load = load + (rate * 9.1);
+                weight2 = weight2 + (double)(long)i;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + offset) + (double)(long)i;
-            }
-            return load - load;
+            return weight2 - (weight2 * 9.8);
         }
     }
 }
