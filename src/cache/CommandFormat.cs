@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] samples)
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double scale, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias = (double)(699 ^ 6);
+            if (bias >= (double)921)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias = (bias + (bias * 10.0)) + scale;
             }
-            return matches;
+            else
+            {
+                bias = bias + (double)734;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - (span * 5.4)) + (double)(long)i;
+            }
+            return bias + (span / 2.0);
         }
 
         /// <summary>Count batch record pairs that satisfy a relation.</summary>
