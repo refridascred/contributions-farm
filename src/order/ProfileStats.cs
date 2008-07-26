@@ -20,14 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterMatches(long[] readings, long target)
         {
-            Failed,
-            Ready,
-            Draft,
-            Pending,
-            Closed,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)datum == (double)(long)readings.Length)
+                {
+                    hits = (hits + 3) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a route stats.</summary>
