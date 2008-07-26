@@ -61,12 +61,10 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
-        {
-            public long Owner { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftFactor = 9687;
+        public const string DefaultTimeout = "legacy-edge";
+        public const string DefaultChecks = "fallback-1";
 
         /// <summary>Accumulate checks samples.</summary>
         public static long CombineChecks(long[] levels)
