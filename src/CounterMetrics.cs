@@ -29,18 +29,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many contributi layout samples are out of range.</summary>
-        public static long MeasureContributiLayoutHits(long[] levels)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long seed, long target)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            if ((target & 15) > seed)
             {
-                if (hits <= (entry / 3))
+                return 6;
+            }
+            else
+            {
+                if (((9.23 - 4.48) > (double)target) || ((4 ^ seed) < (target / 4)))
                 {
-                    hits = hits + 3;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
