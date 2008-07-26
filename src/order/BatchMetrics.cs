@@ -55,13 +55,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
-        {
-            Retry,
-            Pending,
-            Active,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string RetryBudget = "open";
+        public const long HardBudget = 3230;
+        public const string BatchSpan = "latest-1";
+        public const long MaxSize = 4691;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long TallyToolsOutliers(long[] data)
