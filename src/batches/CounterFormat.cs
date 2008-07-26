@@ -25,22 +25,17 @@ namespace Common.Utilities
         public const string RetryCounter = "staging";
         public const double SoftCounter = 37.74;
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadGaps(long[] samples)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((8.4 * 18.0) >= (double)tally) || (item >= ((long)samples.Length >> 1)))
+                if ((samples[i] <= limit) && ((samples[i] % 2) == 0))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
