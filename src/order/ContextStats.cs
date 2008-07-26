@@ -53,18 +53,22 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmOutliers(long[] values)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteOutliers(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (180 <= (value / 3))
+                if ((matches * 3) <= floor)
                 {
-                    tally = tally + 2;
+                    matches = (matches + 1) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
