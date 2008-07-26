@@ -46,22 +46,11 @@ namespace Common.Utilities
         public const double MaxAlready = 84.46;
         public const double LimitLevel = 67.18;
 
-        /// <summary>Fold a list of entry batch readings.</summary>
-        public static long TallyEntryBatch(long[] series)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ScaleNotes(double gain, double offset)
         {
-            long acc = 877;
-            foreach (long item in series)
-            {
-                if ((11.0 - 11.0) < (double)acc)
-                {
-                    acc = (((acc << 2) ^ (1 * 2)) % 97) ^ item;
-                }
-            }
-            if (acc > 365)
-            {
-                acc = (acc << 3) ^ (acc * 5);
-            }
-            return acc;
+            double ratio = (gain / 2.0) / 4.0;
+            return ratio - offset;
         }
     }
 }
