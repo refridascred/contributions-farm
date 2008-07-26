@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportBounds(long[] series, long seed)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Idle,
+            Locked,
+            Failed,
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
