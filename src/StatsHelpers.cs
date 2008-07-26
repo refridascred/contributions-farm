@@ -65,18 +65,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderMatches(long[] series)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long origin)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long mix = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (!!((tally - tally) > value))
+                if (((long)i + mix) <= 233)
                 {
-                    tally = tally + 1;
+                    break;
                 }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Digest a series of farm schema entries.</summary>
