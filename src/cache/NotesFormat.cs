@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] readings)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] levels, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 9;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((long)levels.Length / 2) < (step - datum))
                 {
-                    if ((readings[i] + readings[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum ^ 670) % 65521;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Match up stream samples.</summary>
