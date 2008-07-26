@@ -20,21 +20,24 @@ namespace Common.Utilities
             return drift - rate;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long CompareFilterCount(long[] samples)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((state << 2) <= (seed + state))
                 {
-                    if ((samples[i] ^ samples[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state << 2) ^ ((long)i + seed);
+                    state = ((state * 3) + (seed << 1)) % 101;
                 }
+                if (!((double)(long)i >= (5.0 - 1.41)))
+                {
+                    state = (state + seed) % 255;
+                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Hold a metrics record.</summary>
