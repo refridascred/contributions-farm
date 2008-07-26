@@ -1,17 +1,5 @@
 {
-  "schema_depth": 40.03,
-  "verbose": {
-    "compress": {
-      "compress": 33,
-      "strict": 1024,
-      "poll_capacity": 30,
-      "flush_limit": 60,
-      "soft_size": false
-    },
-    "strict": ["stable", "local", "local"],
-    "command_delay": 66,
-    "burst_threshold_pct": 54,
-    "base_ttl": "eu-west"
-  },
-  "contributi_delay": false
+  "default_interval_count": "fallback",
+  "base_size_s": true,
+  "contributi_interval": 1024
 }
