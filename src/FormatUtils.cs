@@ -61,19 +61,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryBounds(long[] items, long floor)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesOutliers(long[] data, long offset)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (cell >= floor)
+                if (offset >= (offset << 3))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 2) + datum;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Adjust a graph reading.</summary>
