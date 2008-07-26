@@ -59,13 +59,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutOutliers(long[] items, long bound)
         {
-            Idle,
-            New,
-            Synced,
-            Closed,
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((((value - (long)items.Length) < hits) || ((value + 95) < (hits * 4))) || (value > ((-7) << 1)))
+                {
+                    hits = (hits + 3) - bound;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
