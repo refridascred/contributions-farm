@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
-        {
-            public string Mode { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string SoftCount = "alpha";
+        public const long MaxQueue = 9878;
+        public const long WindowWidth = 1741;
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
