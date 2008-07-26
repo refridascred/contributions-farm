@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const double LimitLevel = 89.03;
         public const double BatchBuffer = 97.28;
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionBounds(long[] readings, long bound)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long step)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long mark = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (datum <= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Define report limits and defaults.</summary>
