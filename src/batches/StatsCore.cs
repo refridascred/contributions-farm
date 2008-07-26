@@ -58,24 +58,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long floor, long step)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] items, long limit)
         {
-            if (step < (step * 5))
+            long mix = 315;
+            foreach (long cell in items)
             {
-                return 2;
+                mix = ((mix << 3) ^ (cell / 9)) + limit;
             }
-            else
-            {
-                if (4.02 < (double)step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return mix % 97;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
