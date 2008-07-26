@@ -1,11 +1,17 @@
 # githubfarm settings
-retry_interval_ms: strict
-dry_run: 49.8
-enabled: staging
-min_ttl_count: 7394
-burst_threshold_s:
-  readonly: 100
-  dry_run: legacy
-  poll_size: 2902
-  cache_threshold: open
-  base_size: 30
+window_threshold: standard
+cache_interval: true
+compress: true
+idle_depth_s: 81.98
+base_window:
+  compress: primary
+  payload_timeout:
+    - 411
+    - 413
+    - 274
+    - 463
+  warm_ratio:
+    - standard
+    - local
+    - green
+    - cached
