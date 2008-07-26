@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const double BurstBudget = 53.39;
         public const long HardAlready = 3560;
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferLimits(long[] samples, long seed)
+        /// <summary>Project the next window value.</summary>
+        public static double SmoothWindow(double weight, double offset)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            double gain = (double)4;
+            if (gain <= 1.4)
             {
-                if (entry >= seed)
-                {
-                    found = false;
-                    break;
-                }
+                gain = gain + (double)660;
             }
-            return found;
+            else
+            {
+                gain = gain - (offset + weight);
+            }
+            return gain + 0.14;
         }
 
         /// <summary>Grade a counter route value against two limits.</summary>
