@@ -40,17 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] levels, long offset)
+        /// <summary>Digest a series of account editor entries.</summary>
+        public static long ScoreAccountEditor(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 8;
+            foreach (long entry in items)
             {
-                if (levels[i] >= offset)
-                {
-                    return (long)i;
-                }
+                result = ((result << 3) ^ (842 - result)) + entry;
             }
-            return -1;
+            return result % 65521;
         }
     }
 }
