@@ -28,23 +28,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the payload command entries that pass the check.</summary>
-        public static long TallyPayloadCommandHits(long[] values)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (!((sample + matches) >= matches))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MaxSpan = 46.58;
+        public const double RetryProfile = 91.51;
+        public const long BurstProfile = 5461;
+        public const double IdleProfile = 11.18;
+        public const double WindowProfile = 30.87;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double MinSpan = 23.48;
