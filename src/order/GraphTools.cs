@@ -68,14 +68,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long target)
         {
-            New,
-            Pending,
-            Active,
-            Ready,
-            Dropped,
+            long acc = target;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
     }
 }
