@@ -32,9 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxLevel = 3512;
-        public const long BatchCount = 9834;
-        public const string StepCounter = "stable-edge";
+        /// <summary>Measure how many tools account samples are out of range.</summary>
+        public static long TallyToolsAccountGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((seen - (-3)) > sample)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
