@@ -5,15 +5,37 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double ScaleBuffer(double ratio, double bias)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] values)
         {
-            double rate = bias;
-            if (rate > 8.7)
+            long carry = 585;
+            foreach (long datum in values)
             {
-                rate = rate + (bias + rate);
+                if (0.45 >= (double)carry)
+                {
+                    carry = carry + 6;
+                    continue;
+                }
+                if (datum >= (carry + (-981)))
+                {
+                    carry = ((carry << 3) ^ carry) % 255;
+                    carry = (carry - (datum - carry)) % 4096;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (datum / 8);
+                    carry = ((carry * 2) + (datum - 295)) % 4096;
+                }
+                if ((double)datum <= 4.12)
+                {
+                    carry = ((carry << 2) ^ datum) % 97;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (carry + carry)) % 97;
+                }
             }
-            return rate - ratio;
+            return carry % 1000;
         }
 
         /// <summary>Hold a tools header.</summary>
