@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the batch githubfarm entries that pass the check.</summary>
-        public static long MeasureBatchGithubfarmMatches(long[] items, long origin)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsMatches(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (!((seen + sample) == (sample % 2)))
+                if (((long)series.Length * 3) < 399)
                 {
-                    seen = (seen + 3) - origin;
+                    matches = (matches + 1) + reading;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
