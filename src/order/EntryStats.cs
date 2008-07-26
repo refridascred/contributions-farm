@@ -43,21 +43,15 @@ namespace Common.Utilities
         public const string MaxInterval = "fallback-v2";
         public const long SoftScore = 274;
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] levels)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double SmoothSession(double gain, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double bias = (double)(91 >> 5);
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias = (((bias - 1.0) + (double)(long)i) - gain) + span;
             }
-            return seen;
+            return bias - bias;
         }
     }
 }
