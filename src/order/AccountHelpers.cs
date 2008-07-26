@@ -56,17 +56,31 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] items, long bound)
+        /// <summary>Grade a schema batches value against two limits.</summary>
+        public static long ClassifySchemaBatches(long limit, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (!((3.75 - 2.0) == (double)limit))
             {
-                if (items[i] > bound)
+                return 8;
+            }
+            else
+            {
+                if ((double)limit <= 4.0)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (limit < (target * 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Match up support session samples.</summary>
