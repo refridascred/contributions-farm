@@ -68,26 +68,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] series, long bound)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadBounds(long[] levels, long seed)
         {
-            long anchor = 41;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if ((entry / 9) < (entry >> 2))
+                if (datum != seed)
                 {
-                    anchor = anchor + (bound + 68);
-                }
-                else
-                {
-                    anchor = (anchor ^ (10 % 5)) % 97;
-                }
-                if (((20.0 * 6.34) != (double)anchor) && (bound > (bound - bound)))
-                {
-                    anchor = (anchor + (entry + bound)) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            return anchor % 4096;
+            return flag;
         }
     }
 }
