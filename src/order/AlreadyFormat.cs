@@ -62,12 +62,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Locate a buffer contributi reading by value.</summary>
+        public static long LocateBufferContributiIndex(long[] readings, long offset)
         {
-            Paused,
-            Active,
-            Failed,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
