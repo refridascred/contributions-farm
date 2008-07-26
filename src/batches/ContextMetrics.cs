@@ -37,18 +37,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowMatches(long[] levels)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((1.0 + 8.4) >= (double)count)
-                {
-                    count = (count + 2) ^ cell;
-                }
-            }
-            return count;
+            Ready,
+            Pending,
+            Done,
+            Retry,
+            Locked,
         }
 
         /// <summary>Digest a series of profile entries.</summary>
