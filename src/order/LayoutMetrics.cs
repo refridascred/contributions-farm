@@ -19,18 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] readings)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long sum = 2;
-            foreach (long reading in readings)
-            {
-                if (((92 - 397) < sum) && (((-82) + sum) < reading))
-                {
-                    sum = ((sum << 3) ^ (100 - sum)) % 97;
-                }
-            }
-            return sum;
+            public double Flag { get; set; }
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Iterate the already window series from a seed.</summary>
