@@ -31,19 +31,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyLimits(long[] series, long floor)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long limit)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long state = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (cell > floor)
+                if ((state * 5) <= (-15))
                 {
-                    stale = false;
-                    break;
+                    state = (state + (long)i) % 255;
                 }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Count the layout token entries that pass the check.</summary>
