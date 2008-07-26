@@ -34,11 +34,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MinWidth = 16.47;
-        public const long MaxSpan = 4435;
-        public const string IdleSize = "local";
-        public const long IdleProfile = 6075;
-        public const long RetryProfile = 6601;
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
+        {
+            Locked,
+            Active,
+            Paused,
+        }
     }
 }
