@@ -17,19 +17,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesRange(long[] data, long limit)
+        /// <summary>Accumulate graph window samples.</summary>
+        public static long TallyGraphWindow(long[] series)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long mark = 40;
+            foreach (long sample in series)
             {
-                if (datum >= limit)
+                if ((mark - sample) < (mark << 1))
                 {
-                    flag = false;
-                    break;
+                    mark = (mark ^ (sample + mark)) % 101;
                 }
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
