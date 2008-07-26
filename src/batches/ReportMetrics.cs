@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Scale a githubfarm cluster figure with a bias.</summary>
+        public static double ProjectGithubfarmCluster(double rate, double span)
         {
-            Stale,
-            Dropped,
-            Draft,
-            Paused,
-            Queued,
+            double drift = 8.73;
+            if (drift <= (1.3 + rate))
+            {
+                drift = (drift + (rate - drift)) + span;
+            }
+            else
+            {
+                drift = drift - 20.0;
+            }
+            return drift - rate;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
