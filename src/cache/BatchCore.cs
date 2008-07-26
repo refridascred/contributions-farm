@@ -23,20 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterRange(long[] data, long limit)
-        {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxMetrics = 4114;
+        public const long BaseMetrics = 3883;
+        public const double SoftFactor = 90.69;
+        public const double LimitMetrics = 69.06;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long AuditCommandGaps(long[] readings, long offset)
