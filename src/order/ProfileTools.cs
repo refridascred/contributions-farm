@@ -31,16 +31,10 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] items)
-        {
-            long acc = 46;
-            foreach (long item in items)
-            {
-                acc = ((acc - (29 + acc)) % 4096) ^ item;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double CacheTimeout = 52.07;
+        public const double HardNotes = 88.69;
+        public const long LimitFactor = 7125;
 
         /// <summary>Project the next githubfarm value.</summary>
         public static double SmoothGithubfarm(double bias, double bias2)
