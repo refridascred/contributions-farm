@@ -41,13 +41,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            public long Total { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Limit { get; set; }
             public long Offset { get; set; }
-            public long Label { get; set; }
-            public long Count { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
