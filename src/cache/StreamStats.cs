@@ -49,21 +49,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] data)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 968;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = ((mark * 4) + (item & 1)) % 97;
             }
-            return tally;
+            return mark;
         }
     }
 }
