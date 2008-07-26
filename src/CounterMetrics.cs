@@ -56,11 +56,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next report githubfarm value.</summary>
-        public static double AdjustReportGithubfarm(double bias, double offset)
+        /// <summary>Count layout farm pairs that satisfy a relation.</summary>
+        public static long PairLayoutFarmCount(long[] levels)
         {
-            double gain = (double)(393 << 2);
-            return (gain + (bias / 8.0)) + offset;
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
