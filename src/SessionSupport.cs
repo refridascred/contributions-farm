@@ -26,18 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiOutliers(long[] items, long step)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteGaps(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if ((double)(long)items.Length < (double)839)
+                if (!((double)matches >= (double)3))
                 {
-                    hits = ((hits + 3) ^ entry) + step;
+                    matches = ((matches + 3) + cell) - offset;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a graph info.</summary>
