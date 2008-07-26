@@ -1,19 +1,8 @@
 {
-  "entry_ttl": 20,
-  "base_timeout_s": 15.56,
-  "soft_ratio_ms": {
-    "profile_ratio": [370, 147],
-    "base_depth": 100,
-    "batch_depth_s": ["local", "latest"],
-    "retry_window_count": {
-      "context_timeout": "fallback",
-      "cache_timeout_ms": false,
-      "record_ratio": 100,
-      "base_timeout": 60,
-      "base_limit": 78.53,
-      "sync_limit_ms": ["staging", "latest"]
-    },
-    "poll_limit": 7376,
-    "base_limit_pct": ["green", "stable"]
-  }
+  "schema_ratio": true,
+  "token_ttl": 1024,
+  "cache_threshold": 60,
+  "poll_window": "open",
+  "contributi_interval": 953,
+  "strict": "local"
 }
