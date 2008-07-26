@@ -44,38 +44,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long SortBatches(long seed, long seed2)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            if (seed > (seed2 % 16))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed + seed2) < (seed2 / 6))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)seed2 != (5.8 * 17.0)) && ((seed2 - seed) < seed2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (seed < (seed - seed))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Ready,
+            New,
+            Draft,
         }
     }
 }
