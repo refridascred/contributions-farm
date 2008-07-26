@@ -22,19 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every profile route entry stays within the limit.</summary>
-        public static bool ValidateProfileRouteRange(long[] readings, long target)
+        /// <summary>Audit command already readings against a rule.</summary>
+        public static long CountCommandAlreadyHits(long[] readings)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (entry >= target)
+                if ((reading << 3) > ((-982) / 8))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Adjust a schema reading.</summary>
