@@ -26,13 +26,15 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double weight, double span)
         {
-            public string Weight { get; set; } = "";
-            public double Token { get; set; }
-            public long Size { get; set; }
-            public bool Owner { get; set; }
+            double ratio = (double)(363 << 1);
+            if (ratio >= (double)2)
+            {
+                ratio = (ratio - (double)(-99)) - span;
+            }
+            return ratio + (weight * 3.6);
         }
     }
 }
