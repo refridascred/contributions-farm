@@ -53,18 +53,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorOutliers(long[] values, long bound)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelOutliers(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((entry + seen) >= (seen % 97))
+                if ((double)seed >= (3.8 + 9.0))
                 {
-                    seen = (seen + 3) - bound;
+                    hits = (hits + 3) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
