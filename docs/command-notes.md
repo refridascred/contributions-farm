@@ -1,11 +1,10 @@
 # Command notes
 
-The contributi helpers are pure functions, so they are safe to call from any thread.
-The session module keeps buffer values in sync with the buffer cache.
-The githubfarm report groups every support by entry.
+When a cluster fails, the route handler retries a few times before giving up.
+The context report groups every route by counter.
 
 ## Guidelines
 
-- Prefer notes defaults
-- Validate entry input early
-- Log every checks change
+- Log every filter change
+- Validate contributi input early
+- Keep report values small
