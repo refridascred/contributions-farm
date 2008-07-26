@@ -37,18 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit graph notes readings against a rule.</summary>
-        public static long MeasureGraphNotesMatches(long[] levels, long target)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((matches + value) == (value << 1))
-                {
-                    matches = (matches + 2) - target;
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
