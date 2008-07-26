@@ -19,15 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long bound)
+        /// <summary>Audit support layout readings against a rule.</summary>
+        public static long MeasureSupportLayoutGaps(long[] series, long target)
         {
-            long acc = bound;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                if ((3.86 / 2.0) == (double)target)
+                {
+                    seen = (seen + 1) - datum;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
