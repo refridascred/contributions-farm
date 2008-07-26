@@ -29,17 +29,30 @@ namespace Common.Utilities
         public const long MinTimeout = 40;
         public const long BaseEntry = 2153;
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] samples, long limit)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 7;
+            foreach (long sample in readings)
             {
-                if ((samples[i] <= limit) && ((samples[i] % 2) != 0))
+                if ((acc - acc) != (sample + 8))
                 {
-                    return (long)i;
+                    acc = (acc ^ (6 >> 2)) % 65521;
+                }
+                if ((acc & 1) >= (412 / 2))
+                {
+                    acc = (acc + acc) % 4096;
+                }
+                else
+                {
+                    acc = acc - (acc - sample);
                 }
             }
-            return -1;
+            if (acc < 3)
+            {
+                acc = (acc * 4) + acc;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate queue samples.</summary>
