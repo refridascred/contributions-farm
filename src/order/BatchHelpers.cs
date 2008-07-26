@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutMatches(long[] values)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                if (((double)sample > 6.0) || ((matches / 3) < (sample + sample)))
+                if (cell > bound)
                 {
-                    matches = matches + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Hold a order header.</summary>
