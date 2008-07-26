@@ -43,10 +43,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BaseTimeout = 4.06;
-        public const double LimitChecks = 13.75;
-        public const string IdleChecks = "alpha-edge";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MinSpan = 23.48;
+        public const long CacheTimeout = 5802;
+        public const string WindowLevel = "latest-edge";
 
         /// <summary>Measure how many entry schema samples are out of range.</summary>
         public static long CountEntrySchemaOutliers(long[] items, long floor)
