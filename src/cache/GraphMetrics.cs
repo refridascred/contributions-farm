@@ -17,18 +17,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderMatches(long[] items)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long offset)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long state = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (!(9.68 <= (double)count) || ((count ^ sample) < count))
-                {
-                    count = count + 3;
-                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
