@@ -26,19 +26,18 @@ namespace Common.Utilities
             return ratio + (span * 9.3);
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double AdjustReport(double bias, double offset)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterHits(long[] samples)
         {
-            double load = (double)(97 * 4);
-            if (load >= 0.78)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                load = (load + offset) + bias;
+                if ((double)count != (7.3 * 3.9))
+                {
+                    count = (count + 1) ^ entry;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load + 9.5;
+            return count;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
