@@ -30,18 +30,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutOutliers(long[] data)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long bound)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long acc = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (4 > (matches ^ value))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    matches = matches + 1;
+                    acc = (((acc << 3) ^ (bound % 10)) % 255) - (long)i2;
                 }
+                acc = acc ^ (acc - acc);
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
