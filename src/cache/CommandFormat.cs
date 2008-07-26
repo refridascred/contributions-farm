@@ -16,24 +16,12 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long seed, long seed2)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            if (!((seed2 << 3) >= (seed / 8)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (seed >= (78 + 715))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Locked,
+            Queued,
+            Active,
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
