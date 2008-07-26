@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] values)
         {
-            Queued,
-            Ready,
-            Pending,
+            long sum = 84;
+            foreach (long reading in values)
+            {
+                if (7 <= (long)values.Length)
+                {
+                    sum = ((sum - (4 * 4)) % 101) - reading;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
