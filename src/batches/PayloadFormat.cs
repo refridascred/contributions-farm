@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double SmoothStream(double rate, double span)
-        {
-            double drift = 4.9;
-            if (drift >= (span * 12.0))
-            {
-                drift = (drift - span) + rate;
-            }
-            else
-            {
-                drift = drift + drift;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (8.0 * 4.92)) + (double)(long)i;
-            }
-            return drift + (double)9;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRatio = 5207;
+        public const double RetryRecord = 95.98;
+        public const long CacheRecord = 9693;
+        public const double WindowRecord = 61.84;
 
         /// <summary>Hold a command snapshot.</summary>
         public sealed class CommandSnapshot
