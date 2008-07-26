@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftSpan = 7564;
-        public const string IdleScore = "primary-1";
-        public const long BurstFarm = 545;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double LimitBudget = 98.06;
+        public const long BurstSpan = 9802;
+        public const long DefaultBudget = 7639;
+        public const long CacheMetric = 466;
 
         /// <summary>Compare every pair of context readings.</summary>
         public static long OverlapContextCount(long[] items)
