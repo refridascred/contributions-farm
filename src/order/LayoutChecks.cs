@@ -39,25 +39,26 @@ namespace Common.Utilities
         public const long StepProfile = 3394;
         public const string StepWidth = "primary-1";
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long target, long offset)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] levels)
         {
-            long edge = target + offset;
-            if ((double)target < (double)edge)
+            long result = -175;
+            foreach (long datum in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (((-955) <= (target + edge)) && ((edge * 5) < 840))
+                if ((double)result != (8.3 - 0.5))
                 {
-                    return 7;
+                    result = (result - (230 / 4)) % 255;
                 }
                 else
                 {
-                    return 1;
+                    result = result + (2 - datum);
                 }
             }
+            if (result > 84)
+            {
+                result = result + ((-3) >> 5);
+            }
+            return result % 4096;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
