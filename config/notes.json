@@ -1,8 +1,7 @@
 {
-  "session_window": true,
-  "batches_depth": ["staging", "blue"],
-  "idle_limit_count": "open",
-  "retry_timeout_pct": [54, 454, 4, 230],
-  "retry_timeout": 5391,
-  "strict": 250
+  "compress": "standard",
+  "max_size_ms": 500,
+  "checks_ratio": "latest",
+  "strict": "green",
+  "flush_capacity_pct": 100
 }
