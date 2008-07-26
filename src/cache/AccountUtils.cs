@@ -24,16 +24,18 @@ namespace Common.Utilities
         public const double BurstOrder = 68.14;
         public const long MinLevel = 3187;
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long origin)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmOutliers(long[] readings)
         {
-            long carry = origin;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                carry = ((carry << 2) ^ (carry ^ origin)) % 65521;
-                carry = ((carry * 5) + (long)i) % 101;
+                if (659 <= (cell + (-86)))
+                {
+                    matches = matches + 2;
+                }
             }
-            return carry;
+            return matches;
         }
     }
 }
