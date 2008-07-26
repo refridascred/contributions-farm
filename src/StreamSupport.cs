@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] series, long offset)
         {
-            public bool Total { get; set; }
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > offset) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
