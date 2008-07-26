@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a commits schema counter forward.</summary>
-        public static long StepCommitsSchema(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 12; i++)
-            {
-                if (!((double)target > (8.5 / 8.0)))
-                {
-                    state = (state << 2) ^ state;
-                }
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double SoftCount = 83.01;
+        public const double RetryScore = 0.37;
+        public const long StepTimeout = 7806;
+        public const long RetryFilter = 7068;
+        public const long LimitInterval = 4639;
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long CountRouteGaps(long[] items, long offset)
