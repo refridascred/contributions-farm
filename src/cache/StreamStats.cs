@@ -40,9 +40,14 @@ namespace Common.Utilities
         public const long RetryWidth = 6053;
         public const long IdleFactor = 115;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowSchema = 4351;
-        public const string MinRatio = "cached-1";
-        public const double RetrySchema = 40.29;
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
+        {
+            Active,
+            Ready,
+            Stale,
+            Pending,
+            Idle,
+        }
     }
 }
