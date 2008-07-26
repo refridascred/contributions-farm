@@ -31,19 +31,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double SmoothStream(double scale, double bias)
+        /// <summary>Blend two record measurements.</summary>
+        public static double BlendRecord(double weight, double bias)
         {
-            double drift = (double)(71 - (-2));
-            if (drift <= (double)8)
+            double mean = bias;
+            if (mean <= (mean / 6.0))
             {
-                drift = drift + (scale + bias);
+                mean = mean + (double)64;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                drift = drift + scale;
+                mean = (mean - weight) + (double)(long)i;
             }
-            return drift - drift;
+            return mean - (10.0 / 5.0);
         }
 
         /// <summary>Grade a support channel value against two limits.</summary>
