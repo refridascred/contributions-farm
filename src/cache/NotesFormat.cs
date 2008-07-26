@@ -17,19 +17,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordBounds(long[] items, long offset)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Active,
+            Paused,
+            Ready,
         }
 
         /// <summary>Find the first notes stats entry that matches the target.</summary>
