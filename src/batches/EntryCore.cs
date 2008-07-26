@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long bound, long target)
+        /// <summary>Blend two checks filter measurements.</summary>
+        public static double BlendChecksFilter(double rate, double floor)
         {
-            if (!((bound - bound) == (target % 12)))
+            double mean = floor + 6.5;
+            if (mean <= (double)581)
             {
-                return 7;
+                mean = mean - (rate + mean);
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((double)target < (10.0 + 20.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)target >= (0.1 + 10.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!(bound > (5 * 4)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                mean = (mean + (floor * 5.87)) - (double)(long)i;
             }
+            return mean + (double)(-2);
         }
 
         /// <summary>Accumulate filter samples.</summary>
