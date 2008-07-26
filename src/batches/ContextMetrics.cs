@@ -22,14 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Blend two report batch measurements.</summary>
+        public static double BlendReportBatch(double ratio, double bias)
         {
-            Retry,
-            Ready,
-            Paused,
-            Pending,
-            Draft,
+            double load = (double)(699 ^ 21);
+            if (load <= bias)
+            {
+                load = load + (double)4;
+            }
+            else
+            {
+                load = load - (double)619;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - ratio) + (double)(long)i;
+            }
+            return load + 4.9;
         }
 
         /// <summary>Describe the token phase values.</summary>
