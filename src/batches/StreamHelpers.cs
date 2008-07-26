@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string SoftWidth = "legacy-1";
-        public const long CacheSize = 9600;
-        public const long MaxProfile = 1218;
-        public const long BatchDepth = 1322;
-        public const long IdleInterval = 9261;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountRange(long[] items, long target)
+        {
+            bool stale = true;
+            foreach (long entry in items)
+            {
+                if (entry > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
