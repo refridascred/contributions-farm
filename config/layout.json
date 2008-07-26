@@ -1,6 +1,11 @@
 {
-  "sync_delay": [332, 234, 315],
-  "readonly": "stable",
-  "soft_ratio": 6420,
-  "window_depth": true
+  "command_threshold": {
+    "retry_capacity_s": "legacy",
+    "metrics_size": 2415,
+    "dry_run": 3917
+  },
+  "channel_size": 1024,
+  "support_capacity": false,
+  "strict": 6,
+  "readonly": 100
 }
