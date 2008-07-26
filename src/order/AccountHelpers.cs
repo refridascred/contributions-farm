@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsOutliers(long[] series, long origin)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            double rate = (double)(4 / 8);
+            if (rate <= (double)15)
             {
-                if (((double)origin > (double)sample) || (((long)series.Length << 1) < sample))
-                {
-                    tally = tally + 3;
-                }
+                rate = ((rate + (double)(-81)) - gain) + offset;
             }
-            return tally;
+            return rate + 2.37;
         }
 
         /// <summary>Blend two filter measurements.</summary>
