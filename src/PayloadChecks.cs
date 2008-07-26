@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 6019;
-        public const string HardToken = "legacy";
-        public const string LimitLevel = "standard-v2";
-        public const long BaseToken = 8051;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiOutliers(long[] items, long offset)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((offset >> 4) > reading)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a stats cluster pair into a bucket.</summary>
         public static long GradeStatsCluster(long floor, long origin)
