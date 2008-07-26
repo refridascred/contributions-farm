@@ -22,13 +22,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] values, long bound)
         {
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Total { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
