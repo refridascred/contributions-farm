@@ -40,17 +40,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] data, long limit)
-        {
-            long mix = 7;
-            foreach (long value in data)
-            {
-                mix = (((mix * 2) + limit) % 1000) + value;
-                mix = (mix - (21 / 3)) % 1000;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 9970;
+        public const long MinScore = 2738;
+        public const double MaxAlready = 84.46;
+        public const double LimitLevel = 67.18;
 
         /// <summary>Fold a list of entry batch readings.</summary>
         public static long TallyEntryBatch(long[] series)
