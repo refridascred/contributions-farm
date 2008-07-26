@@ -50,10 +50,13 @@ namespace Common.Utilities
         public const string MaxRecord = "primary-edge";
         public const string RetryRecord = "local-edge";
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowBudget = 7694;
-        public const long RetryFactor = 2705;
-        public const double BatchTimeout = 5.21;
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
+        {
+            Retry,
+            Pending,
+            Active,
+        }
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long TallyToolsOutliers(long[] data)
