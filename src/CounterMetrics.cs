@@ -16,18 +16,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Measure how many metric channel samples are out of range.</summary>
-        public static long AuditMetricChannelMatches(long[] data)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if (((-3) >> 2) < (datum ^ (long)data.Length))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Dropped,
+            Synced,
+            Pending,
+            Closed,
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
