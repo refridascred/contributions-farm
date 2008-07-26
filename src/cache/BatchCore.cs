@@ -29,15 +29,17 @@ namespace Common.Utilities
         public const double SoftFactor = 90.69;
         public const double LimitMetrics = 69.06;
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double weight, double bias)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] samples, long limit)
         {
-            double scale = weight + (double)6;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = (scale + (double)858) + (double)(long)i;
+                if ((samples[i] <= limit) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale + (bias + scale);
+            return -1;
         }
 
         /// <summary>Accumulate queue samples.</summary>
