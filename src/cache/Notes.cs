@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Compare every pair of stats contributi readings.</summary>
-        public static long PairStatsContributiCount(long[] items)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long SortCluster(long offset, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((target / 9) >= (741 - target))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((364 - offset) >= offset)
                 {
-                    if ((items[i] + items[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of support window entries.</summary>
