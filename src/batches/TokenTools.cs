@@ -29,15 +29,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many tools account samples are out of range.</summary>
-        public static long TallyToolsAccountGaps(long[] values)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryMatches(long[] readings, long offset)
         {
             long seen = 0;
-            foreach (long sample in values)
+            foreach (long entry in readings)
             {
-                if ((seen - (-3)) > sample)
+                if (offset > (offset + entry))
                 {
-                    seen = seen + 2;
+                    seen = seen + 3;
                 }
             }
             return seen;
