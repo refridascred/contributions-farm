@@ -1,9 +1,17 @@
 {
-  "already_ttl": 50.33,
-  "strict": {
-    "burst_ratio": [94, 256, 398],
-    "min_depth": true,
-    "warm_timeout_s": 30
+  "enabled": 99,
+  "default_ratio": {
+    "layout_delay": "staging",
+    "warm_timeout_count": 100,
+    "farm_size": ["latest", "blue"],
+    "cache_ratio_s": "strict",
+    "persist": "staging"
   },
-  "warm_ratio_s": 1274
+  "record_interval": false,
+  "hard_retries_pct": {
+    "warm_depth_pct": "standard",
+    "poll_limit": "latest",
+    "cache_threshold_s": 1024
+  },
+  "max_threshold_s": 96.01
 }
