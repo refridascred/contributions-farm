@@ -22,18 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinTools = 2045;
+        public const long StepSpan = 4475;
+        public const string MaxLevel = "stable";
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long StepContributi(long offset)
