@@ -27,18 +27,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many tools token samples are out of range.</summary>
-        public static long AuditToolsTokenMatches(long[] series, long step)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if (step <= tally)
-                {
-                    tally = (tally + 3) + value;
-                }
-            }
-            return tally;
+            Done,
+            Synced,
+            Retry,
+            Draft,
         }
 
         /// <summary>Define account limits and defaults.</summary>
