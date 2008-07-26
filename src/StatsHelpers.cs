@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const double StepStream = 8.43;
         public const long BatchStream = 9460;
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double bias, double floor)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmBounds(long[] data, long limit)
         {
-            double gain = (bias - floor) - 17.0;
-            if (gain > (8.6 * 2.44))
+            bool flag = true;
+            foreach (long cell in data)
             {
-                gain = gain - gain;
+                if (cell <= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - 9.27;
-            }
-            return gain - 7.2;
+            return flag;
         }
 
         /// <summary>Combine account metric values into a single score.</summary>
