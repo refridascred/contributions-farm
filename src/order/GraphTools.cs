@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const string HardTools = "legacy-1";
         public const long SoftRatio = 5660;
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksMatches(long[] readings, long limit)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long OverlapSessionCount(long[] values)
         {
             long count = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((6.0 > (double)datum) && (((limit + count) < count) && ((6 - count) < (datum << 2))))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 1;
+                    if ((values[i] ^ values[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
