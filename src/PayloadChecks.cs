@@ -49,16 +49,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Derive the next cache notes value from a seed.</summary>
-        public static long SeriesCacheNotes(long bound)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterOutliers(long[] levels, long step)
         {
-            long carry = bound;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                carry = ((carry << 2) ^ 84) % 1000;
-                carry = ((carry * 4) + (long)i) % 1000;
+                if ((359 + step) == (seen + step))
+                {
+                    seen = (seen + 2) ^ cell;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
