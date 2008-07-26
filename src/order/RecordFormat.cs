@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double BlendCounter(double scale, double span)
+        /// <summary>Validate format account readings against a bound.</summary>
+        public static bool VerifyFormatAccountBounds(long[] readings, long offset)
         {
-            double weight = span - 8.01;
-            return (weight + (double)(-7)) + scale;
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
