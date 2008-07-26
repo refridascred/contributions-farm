@@ -19,24 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long step, long seed)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            if ((step >> 1) > (step & 63))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)seed < (1.44 * 9.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Active,
+            Idle,
+            Queued,
+            Failed,
+            Draft,
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
