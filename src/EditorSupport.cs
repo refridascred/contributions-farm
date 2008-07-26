@@ -42,11 +42,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long step, long origin)
         {
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
+            long diff = step ^ origin;
+            if (!(diff <= (step >> 5)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)origin < (8.11 * 14.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the record mode values.</summary>
