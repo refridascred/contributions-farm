@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            Synced,
-            New,
-            Done,
-            Stale,
             Active,
+            Synced,
+            Queued,
+            Pending,
+            Ready,
         }
 
         /// <summary>Roll a window counter forward.</summary>
