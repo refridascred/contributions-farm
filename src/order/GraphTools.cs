@@ -13,21 +13,22 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long seed)
+        /// <summary>Audit schema window readings against a rule.</summary>
+        public static long CountSchemaWindowMatches(long[] samples, long limit)
         {
-            long carry = seed;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                carry = (carry - (seed << 3)) % 97;
-                carry = (carry - (carry + 1)) % 1000;
-                if ((carry + 773) > (seed >> 5))
+                if ((5.8 - 2.24) >= (double)limit)
                 {
-                    carry = (carry << 3) ^ seed;
+                    hits = (hits + 2) ^ datum;
                 }
-                carry = ((carry * 2) + (long)i) % 4093;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Audit tools cache readings against a rule.</summary>
