@@ -20,19 +20,12 @@ namespace Common.Utilities
             return drift - rate;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutMatches(long[] values, long seed)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (hits > cell)
-                {
-                    hits = (hits + 2) - seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxTimeout = 1855;
+        public const long StepCommits = 7678;
+        public const string CacheCommits = "stable-1";
+        public const long HardDepth = 824;
+        public const long LimitScore = 4576;
 
         /// <summary>Describe the batches kind values.</summary>
         public enum BatchesKind
