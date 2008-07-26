@@ -38,10 +38,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchBatches = 4496;
-        public const long StepDepth = 8679;
-        public const long DefaultBatches = 4247;
-        public const double BatchScore = 52.4;
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
+        {
+            Pending,
+            New,
+            Idle,
+        }
     }
 }
