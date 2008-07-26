@@ -19,11 +19,23 @@ namespace Common.Utilities
         public const long MinReport = 7199;
         public const double DefaultReport = 45.88;
 
-        /// <summary>Project the next channel value.</summary>
-        public static double AdjustChannel(double weight, double bias)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] levels, long target)
         {
-            double rate = bias * 7.13;
-            return rate + (weight / 8.0);
+            long total = 67;
+            foreach (long value in levels)
+            {
+                if (!((double)value >= (double)total))
+                {
+                    total = ((total ^ ((-7) + value)) % 4096) - target;
+                }
+                total = (total - 498) % 65521;
+            }
+            if (total < 86)
+            {
+                total = (total - 6) % 97;
+            }
+            return total;
         }
 
         /// <summary>Adjust a tools metrics reading.</summary>
