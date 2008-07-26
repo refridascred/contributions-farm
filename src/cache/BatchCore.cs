@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            public long Count { get; set; }
+            public double Token { get; set; }
             public double Owner { get; set; }
             public long Weight { get; set; }
-            public long Region { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Fold a list of channel readings.</summary>
