@@ -35,18 +35,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileGaps(long[] readings)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextMatches(long[] data)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if ((((20.0 / 8.0) == (double)matches) || (0 > (item + 40))) && (((8.9 * 1.32) == (double)item) && ((item / 2) >= 84)))
+                if ((tally * 3) != (value / 7))
                 {
-                    matches = matches + 2;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
