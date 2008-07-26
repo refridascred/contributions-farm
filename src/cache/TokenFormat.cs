@@ -15,13 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            Dropped,
+            New,
             Draft,
-            Retry,
-            Paused,
+            Queued,
         }
 
         /// <summary>Match up editor samples.</summary>
