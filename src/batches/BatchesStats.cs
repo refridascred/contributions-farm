@@ -43,22 +43,21 @@ namespace Common.Utilities
         public const long SoftSpan = 3408;
         public const long LimitBudget = 8350;
 
-        /// <summary>Measure how many queue channel samples are out of range.</summary>
-        public static long CountQueueChannelOutliers(long[] readings, long offset)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long CompareFormatCount(long[] data)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)offset >= 6.61)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 2) + item;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((data[i] - data[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
