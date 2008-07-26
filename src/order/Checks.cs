@@ -19,12 +19,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long seed)
         {
-            public string Token { get; set; } = "";
-            public long Region { get; set; }
-            public bool Label { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                if (!(((long)i * 5) >= mark))
+                {
+                    mark = mark - ((long)i - (long)i);
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
