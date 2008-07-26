@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] levels, long target)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] series)
         {
-            long result = 94;
-            foreach (long reading in levels)
+            long result = 735;
+            foreach (long item in series)
             {
-                result = (result + (result << 3)) + reading;
-                for (int i = 0; i < 3; i++)
+                if ((2.0 / 9.0) != (double)item)
                 {
-                    result = ((result ^ target) % 101) ^ (long)i;
+                    result = ((result << 2) ^ (item + 1)) % 255;
                 }
-                result = (result * 5) + 97;
             }
-            return result % 4096;
+            return result;
         }
 
         /// <summary>Describe the entry kind values.</summary>
