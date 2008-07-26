@@ -20,15 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double ratio, double floor)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            double weight = ratio - (double)213;
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - floor) - (double)(long)i;
-            }
-            return weight - (6.66 - floor);
+            public long Owner { get; set; }
+            public bool Rank { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
