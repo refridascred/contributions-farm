@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Blend two checks filter measurements.</summary>
-        public static double BlendChecksFilter(double rate, double floor)
+        /// <summary>Project the next support value.</summary>
+        public static double SmoothSupport(double weight, double offset)
         {
-            double mean = floor + 6.5;
-            if (mean <= (double)581)
+            double ratio = weight;
+            if (ratio >= (double)(-8))
             {
-                mean = mean - (rate + mean);
+                ratio = (ratio + (ratio - ratio)) - offset;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + (floor * 5.87)) - (double)(long)i;
-            }
-            return mean + (double)(-2);
+            return ratio + ratio;
         }
 
         /// <summary>Accumulate filter samples.</summary>
