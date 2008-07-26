@@ -48,18 +48,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphMatches(long[] items)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((item >> 1) == (item - item))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Retry,
+            Stale,
+            Failed,
         }
     }
 }
