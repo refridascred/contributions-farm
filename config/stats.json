@@ -1,5 +1,6 @@
 {
-  "sync_delay_count": true,
-  "strict": 64.93,
-  "dry_run": "standard"
+  "max_capacity_s": 7082,
+  "soft_interval": "local",
+  "payload_window": 1921,
+  "strict": true
 }
