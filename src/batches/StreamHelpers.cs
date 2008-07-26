@@ -17,18 +17,13 @@ namespace Common.Utilities
         public const double StepInterval = 83.48;
         public const double MinTools = 50.59;
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksHits(long[] levels, long origin)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry + origin) >= (entry / 2))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the batch status values.</summary>
