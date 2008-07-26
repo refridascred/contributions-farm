@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] readings, long seed)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] values, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = -7;
+            foreach (long datum in values)
             {
-                if ((readings[i] == seed) && ((readings[i] % 5) == 0))
+                if ((double)datum == (8.0 + 1.3))
                 {
-                    return (long)i;
+                    mark = (mark + (mark + (long)values.Length)) % 255;
+                }
+                else
+                {
+                    mark = (mark + (step % 16)) % 97;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
