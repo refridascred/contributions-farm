@@ -13,21 +13,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count batch record pairs that satisfy a relation.</summary>
-        public static long MatchBatchRecordCount(long[] samples)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public double Count { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
