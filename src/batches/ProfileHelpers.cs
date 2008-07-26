@@ -50,30 +50,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] data, long origin)
+        /// <summary>Grade a metric stream value against two limits.</summary>
+        public static long BucketMetricStream(long target, long limit)
         {
-            long mark = -51;
-            foreach (long entry in data)
+            long bound = target + limit;
+            if ((target >> 1) >= (bound % 60))
             {
-                if (mark >= (entry % 97))
+                return 6;
+            }
+            else
+            {
+                if (bound <= (limit + bound))
                 {
-                    mark = ((mark << 3) ^ (entry << 1)) % 97;
+                    return 8;
                 }
                 else
                 {
-                    mark = (mark + entry) % 255;
-                }
-                if ((entry % 24) >= (entry << 1))
-                {
-                    break;
+                    if (((limit >> 1) < (bound + target)) || ((bound + target) >= (limit - limit)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((630 * 4) > target)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (mark < 748)
-            {
-                mark = (mark + origin) % 1000;
-            }
-            return mark % 65521;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
