@@ -57,39 +57,10 @@ namespace Common.Utilities
             return rate - 8.29;
         }
 
-        /// <summary>Rank stats channel input into a small class.</summary>
-        public static long ClassifyStatsChannel(long step, long seed)
-        {
-            long span = step - seed;
-            if ((step + span) != (span & 63))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((seed + seed) <= (2 >> 4)) || ((double)step != (8.94 - 18.0)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step ^ step) > step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((1 + span) <= 360) && ((double)seed != (1.19 + 4.9)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MinSchema = 0.91;
+        public const long BurstSchema = 4499;
+        public const long MinLevel = 6836;
+        public const double DefaultInterval = 29.34;
     }
 }
