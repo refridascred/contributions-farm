@@ -30,15 +30,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandGaps(long[] values)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorOutliers(long[] data, long limit)
         {
             long seen = 0;
-            foreach (long entry in values)
+            foreach (long datum in data)
             {
-                if (seen >= (seen / 2))
+                if (((seen - 764) < limit) && ((datum << 1) <= limit))
                 {
-                    seen = (seen + 3) + entry;
+                    seen = seen + 3;
                 }
                 else
                 {
