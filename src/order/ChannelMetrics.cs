@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double AdjustChecks(double gain, double span)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] samples, long offset)
         {
-            double ratio = span;
-            if (ratio < (double)(-47))
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = (ratio + 19.0) + gain;
+                if ((samples[i] > offset) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio - (double)117;
+            return -1;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
