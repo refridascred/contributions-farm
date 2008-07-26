@@ -65,12 +65,20 @@ namespace Common.Utilities
             return weight - scale;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long step)
         {
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-            public double Weight { get; set; }
+            long mix = step;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((step << 2) <= (42 + mix))
+                {
+                    mix = ((mix << 3) ^ step) % 97;
+                }
+                mix = mix + (27 - step);
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of stats order readings.</summary>
