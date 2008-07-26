@@ -73,16 +73,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long StepGithubfarm(long offset)
+        /// <summary>Project the next githubfarm batch value.</summary>
+        public static double BlendGithubfarmBatch(double bias, double span)
         {
-            long mark = offset;
+            double mean = bias;
+            if (mean <= (double)1)
+            {
+                mean = (mean - bias) + span;
+            }
             for (int i = 0; i < 8; i++)
             {
-                mark = ((mark * 3) + (offset - (long)i)) % 1000;
-                mark = ((mark * 4) + (long)i) % 97;
+                mean = (mean + (1.66 + bias)) + (double)(long)i;
             }
-            return mark;
+            return mean - (mean * 7.9);
         }
     }
 }
