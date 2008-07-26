@@ -1,5 +1,12 @@
 {
-  "default_interval_count": "fallback",
-  "base_size_s": true,
-  "contributi_interval": 1024
+  "min_limit": 100,
+  "flush_ttl_pct": 6.81,
+  "max_ttl_count": 250,
+  "entry_ratio": 93.78,
+  "strict": {
+    "flush_capacity_s": ["eu-west", "primary"],
+    "enabled": 100,
+    "graph_ttl": false,
+    "batch_limit_ms": 6038
+  }
 }
