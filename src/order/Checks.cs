@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] values)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long SeekBatchesIndex(long[] levels, long offset)
         {
-            long sum = 84;
-            foreach (long reading in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (7 <= (long)values.Length)
+                if ((levels[i] >= offset) && ((levels[i] % 3) != 0))
                 {
-                    sum = ((sum - (4 * 4)) % 101) - reading;
+                    return (long)i;
                 }
             }
-            return sum % 97;
+            return -1;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
