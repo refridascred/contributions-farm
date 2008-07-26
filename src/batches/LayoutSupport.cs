@@ -14,15 +14,24 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double ratio, double bias)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long bound, long origin)
         {
-            double rate = bias;
-            if (rate <= ratio)
+            if ((bound / 4) < bound)
             {
-                rate = rate + (double)60;
+                return 5;
             }
-            return rate + (1.75 + rate);
+            else
+            {
+                if ((bound % 100) <= origin)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
