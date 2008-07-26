@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate metric context readings against a bound.</summary>
-        public static bool CheckMetricContextLimits(long[] readings, long seed)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double gain, double floor)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            double ratio = floor;
+            if (ratio < 0.26)
             {
-                if (reading != seed)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = ratio + (double)37;
             }
-            return stale;
+            return ratio + gain;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
