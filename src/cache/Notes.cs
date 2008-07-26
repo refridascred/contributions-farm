@@ -28,19 +28,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportLimits(long[] data, long floor)
+        /// <summary>Blend two already stream measurements.</summary>
+        public static double AdjustAlreadyStream(double ratio, double offset)
         {
-            bool ready = true;
-            foreach (long reading in data)
-            {
-                if (reading < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double gain = ratio + ratio;
+            return (gain + (gain * 18.0)) + offset;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
