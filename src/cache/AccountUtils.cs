@@ -45,11 +45,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferRange(long[] levels, long floor)
         {
-            public long Owner { get; set; }
-            public string Limit { get; set; } = "";
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
