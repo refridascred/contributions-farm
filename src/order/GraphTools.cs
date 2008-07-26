@@ -71,12 +71,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            Paused,
             New,
-            Failed,
+            Pending,
+            Active,
+            Ready,
+            Dropped,
         }
     }
 }
