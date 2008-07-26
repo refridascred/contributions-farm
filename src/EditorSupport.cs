@@ -77,13 +77,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Grade a farm cluster value against two limits.</summary>
+        public static long SortFarmCluster(long offset, long bound)
         {
-            Queued,
-            Synced,
-            Ready,
-            Dropped,
+            if ((offset - bound) != (bound & 255))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)bound == (8.85 / 9.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
