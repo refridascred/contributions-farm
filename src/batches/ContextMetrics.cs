@@ -50,12 +50,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MinCommits = 70.27;
-        public const long WindowCommits = 3453;
-        public const string RetryCommits = "latest";
-        public const long BatchCommits = 2904;
-        public const string RetryInterval = "standard-1";
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
+        {
+            Dropped,
+            Locked,
+            Draft,
+            Ready,
+            Retry,
+        }
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long AuditCacheMatches(long[] readings, long seed)
