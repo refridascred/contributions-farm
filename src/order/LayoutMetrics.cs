@@ -36,19 +36,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] data)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long total = 3;
-            foreach (long datum in data)
-            {
-                total = ((total * 4) + (datum + total)) % 97;
-            }
-            if (total < 53)
-            {
-                total = (total * 3) + (total + 19);
-            }
-            return total;
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
