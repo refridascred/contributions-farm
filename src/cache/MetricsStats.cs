@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitBatches = 684;
-        public const long HardDepth = 9499;
-        public const long IdleBatches = 5866;
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long target, long floor)
+        {
+            if (((20.0 / 3.0) >= (double)target) && ((2.0 * 19.0) == (double)floor))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target + target) != ((-9) ^ 893))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)floor < (double)6)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long TallyCache(long[] values, long step)
