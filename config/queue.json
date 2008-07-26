@@ -1,8 +1,14 @@
 {
-  "support_interval": 3434,
-  "cache_threshold_pct": [378, 386, 458, 222],
-  "batch_retries": "open",
-  "strict": [431, 207, 442],
-  "soft_retries": [269, 497, 79],
-  "readonly": 500
+  "persist": 28,
+  "max_retries_pct": false,
+  "counter_delay": 9090,
+  "flush_ratio_count": 31.16,
+  "strict": true,
+  "flush_capacity_pct": {
+    "soft_delay_ms": 56.08,
+    "warm_interval_s": 85.71,
+    "cache_retries": [471, 97, 36, 433],
+    "base_threshold_count": ["local", "blue", "stable", "strict"],
+    "soft_interval_ms": 7711
+  }
 }
