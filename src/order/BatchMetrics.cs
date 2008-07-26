@@ -37,17 +37,32 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] data, long origin)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long step, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long span = step + seed;
+            if ((double)span == (3.0 - 7.04))
             {
-                if (data[i] <= origin)
+                return 3;
+            }
+            else
+            {
+                if ((span * 4) > (439 * 3))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((step * 2) == (step / 7))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
