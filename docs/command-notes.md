@@ -1,10 +1,12 @@
 # Command notes
 
-Defaults for window live in the config folder and can be overridden per environment.
-Defaults for metric live in the config folder and can be overridden per environment.
+A report that stays idle for too long is moved to the metrics list.
+Run the report check before changing any contributi limits.
+Keep route and entry names short and lowercase.
 
 ## Guidelines
 
-- Log every commits change
-- Review window limits each release
-- Validate cluster input early
+- Prefer metric defaults
+- Document new cluster fields
+- Log every metrics change
+- Review profile limits each release
