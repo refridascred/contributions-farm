@@ -32,19 +32,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ScaleRoute(double ratio, double span)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long seed)
         {
-            double scale = (double)(576 + 26);
-            if (scale <= (double)(-108))
+            long mix = seed;
+            for (int i = 0; i < 16; i++)
             {
-                scale = (scale - span) - ratio;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale + scale;
+            return mix;
         }
 
         /// <summary>Combine notes batch values into a single score.</summary>
