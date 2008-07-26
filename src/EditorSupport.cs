@@ -32,12 +32,22 @@ namespace Common.Utilities
         public const long LimitRatio = 9666;
         public const double BatchRatio = 13.32;
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Fold a list of tools route readings.</summary>
+        public static long FoldToolsRoute(long[] readings, long step)
         {
-            Pending,
-            Synced,
-            Done,
+            long carry = -139;
+            foreach (long cell in readings)
+            {
+                if (((long)readings.Length & 63) < (78 - 15))
+                {
+                    carry = ((carry ^ (step >> 2)) % 101) ^ cell;
+                }
+                else
+                {
+                    carry = (carry ^ step) % 101;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Describe the record mode values.</summary>
