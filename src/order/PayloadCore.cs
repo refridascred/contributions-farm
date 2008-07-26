@@ -56,18 +56,24 @@ namespace Common.Utilities
         public const long RetryBudget = 3797;
         public const long LimitScore = 8412;
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferOutliers(long[] samples)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long bound, long target)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            if ((target ^ target) >= (target + target))
             {
-                if ((seen + value) <= (seen + seen))
+                return 2;
+            }
+            else
+            {
+                if (((double)303 >= (double)target) && (4 >= (target >> 4)))
                 {
-                    seen = seen + 1;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
     }
 }
