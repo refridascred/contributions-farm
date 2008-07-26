@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double RetryInterval = 57.14;
-        public const string DefaultCommits = "primary-edge";
-        public const string LimitInterval = "staging";
-        public const long MaxLevel = 8972;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchFactor = 4595;
+        public const string CacheCount = "local";
+        public const long RetrySession = 9404;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long AuditPayloadHits(long[] series)
