@@ -39,13 +39,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Measure how many tools context samples are out of range.</summary>
+        public static long TallyToolsContextGaps(long[] data, long seed)
         {
-            public long Owner { get; set; }
-            public bool Label { get; set; }
-            public bool Flag { get; set; }
-            public double Token { get; set; }
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (seed < ((long)data.Length + 379))
+                {
+                    hits = (hits + 3) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
