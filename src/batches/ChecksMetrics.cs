@@ -30,13 +30,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
-        {
-            Draft,
-            Retry,
-            Active,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepTools = 8004;
+        public const long IdleTools = 6469;
+        public const double BurstScore = 79.86;
 
         /// <summary>Digest a series of report entries.</summary>
         public static long CombineReport(long[] readings)
