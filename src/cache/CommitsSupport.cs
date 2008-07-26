@@ -54,28 +54,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of tools commits readings.</summary>
-        public static long CombineToolsCommits(long[] data, long floor)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenRange(long[] values, long step)
         {
-            long carry = 1;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long item in values)
             {
-                if (item <= (carry % 16))
+                if (item <= step)
                 {
-                    carry = (carry ^ carry) % 101;
-                    carry = (carry ^ (item * 3)) % 255;
+                    ready = false;
                     break;
                 }
-                if ((item - 815) >= (floor & 3))
-                {
-                    carry = (carry << 2) ^ (floor % 7);
-                }
             }
-            if (carry < 198)
-            {
-                carry = (carry ^ (floor / 8)) % 255;
-            }
-            return carry % 97;
+            return ready;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
