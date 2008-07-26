@@ -1,17 +1,22 @@
 # githubfarm settings
-compress:
-  cache_delay: strict
-  batch_ttl: 66.45
-  buffer_threshold:
-    verbose: true
-    warm_timeout_s: 3271
-    idle_threshold_ms: 3647
-    persist: 9
-    flush_window: open
-    poll_ratio: 6496
-  strict: eu-west
-  persist: 26
-persist: strict
-batches_window: open
-flush_timeout: 26
-warm_delay_ms: cached
+audit: 76.54
+base_capacity_s:
+  retry_threshold_ms:
+    warm_ttl_ms: open
+    command_threshold: fallback
+    warm_size: primary
+    base_threshold_pct: 250
+  warm_capacity_s: true
+  idle_retries_ms:
+    - staging
+    - standard
+    - standard
+  readonly: 72.64
+  poll_ttl_pct: false
+max_ttl: false
+support_size: latest
+max_window_pct:
+  - local
+  - eu-west
+  - legacy
+strict: green
