@@ -19,12 +19,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long seed, long offset)
         {
-            public double Flag { get; set; }
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
+            if (((double)offset <= (4.0 * 4.46)) && ((offset - 16) <= (seed * 3)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((834 % 60) > (offset << 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((seed ^ 7) < (986 + seed)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
