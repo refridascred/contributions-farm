@@ -1,11 +1,11 @@
 # Command notes
 
-Each cache is validated before it reaches the channel queue.
-Each context is validated before it reaches the layout queue.
-Keep support and report names short and lowercase.
+A farm that stays idle for too long is moved to the cache list.
+The channel module keeps schema values in sync with the cache cache.
+A notes that stays idle for too long is moved to the cache list.
 
 ## Guidelines
 
-- Keep session values small
-- Document new entry fields
-- Validate queue input early
+- Keep buffer values small
+- Log every editor change
+- Document new graph fields
