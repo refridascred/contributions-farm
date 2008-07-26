@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long OverlapMetricCount(long[] levels)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] levels, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 94;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                result = (result + (result << 3)) + reading;
+                for (int i = 0; i < 3; i++)
                 {
-                    if ((levels[i] - levels[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = ((result ^ target) % 101) ^ (long)i;
                 }
+                result = (result * 5) + 97;
             }
-            return hits;
+            return result % 4096;
         }
 
         /// <summary>Describe the entry kind values.</summary>
