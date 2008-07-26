@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many account already samples are out of range.</summary>
-        public static long AuditAccountAlreadyMatches(long[] samples)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(count >= (-638)) || ((5.56 - 8.4) > (5.0 / 8.0)))
+                if ((items[i] == offset) && ((items[i] % 5) == 0))
                 {
-                    count = (count + 1) + sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
