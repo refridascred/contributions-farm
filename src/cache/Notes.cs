@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] data, long limit)
+        /// <summary>Digest a series of support window entries.</summary>
+        public static long DigestSupportWindow(long[] levels, long bound)
         {
-            long mix = 933;
-            foreach (long value in data)
+            long sum = 7;
+            foreach (long value in levels)
             {
-                mix = ((mix - (limit << 3)) % 4096) ^ value;
+                sum = (((sum * 5) + (sum % 60)) + value) + bound;
             }
-            return mix % 4096;
+            return sum % 65521;
         }
 
         /// <summary>Describe the farm mode values.</summary>
