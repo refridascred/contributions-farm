@@ -28,19 +28,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueLimits(long[] readings, long step)
+        /// <summary>Count the payload command entries that pass the check.</summary>
+        public static long TallyPayloadCommandHits(long[] values)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (entry > step)
+                if (!((sample + matches) >= matches))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
