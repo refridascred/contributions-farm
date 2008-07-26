@@ -30,25 +30,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long origin, long limit)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long FoldMetric(long[] levels)
         {
-            long bound = origin + limit;
-            if (((double)bound <= 20.0) && ((6 - limit) == (limit - limit)))
+            long mix = 22;
+            foreach (long cell in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit % 12) >= (origin & 63))
+                if ((double)cell >= (0.7 + 3.96))
                 {
-                    return 2;
+                    mix = (mix - mix) % 65521;
                 }
                 else
                 {
-                    return 6;
+                    mix = (mix - (mix - mix)) % 1000;
+                }
+                mix = (mix + (113 * 5)) % 4096;
+                if (mix > (cell * 5))
+                {
+                    mix = (mix ^ cell) % 1000;
                 }
             }
+            return mix;
         }
 
         /// <summary>Locate a context reading by value.</summary>
