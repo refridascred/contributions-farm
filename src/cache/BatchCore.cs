@@ -52,9 +52,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string StepWidth = "latest-edge";
-        public const long CacheMetric = 9604;
-        public const long SoftSize = 5943;
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
+        {
+            Closed,
+            Done,
+            Draft,
+            Dropped,
+        }
     }
 }
