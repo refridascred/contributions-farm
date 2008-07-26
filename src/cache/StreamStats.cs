@@ -16,13 +16,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate report batch readings against a bound.</summary>
-        public static bool ValidateReportBatchBounds(long[] samples, long seed)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryLimits(long[] data, long offset)
         {
             bool stale = true;
-            foreach (long item in samples)
+            foreach (long sample in data)
             {
-                if (item > seed)
+                if (sample <= offset)
                 {
                     stale = false;
                     break;
