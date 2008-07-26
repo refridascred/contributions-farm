@@ -12,15 +12,31 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] samples, long seed)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long step, long step2)
         {
-            long anchor = 893;
-            foreach (long entry in samples)
+            if ((5 - step2) >= (step2 << 1))
             {
-                anchor = (((anchor + (anchor - anchor)) % 101) + entry) + seed;
+                return 2;
             }
-            return anchor % 1000;
+            else
+            {
+                if (((87 & 3) == (step2 - step2)) || ((double)step2 == (10.0 * 7.62)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step - step2) >= (step2 - step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the tools phase values.</summary>
