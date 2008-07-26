@@ -11,21 +11,13 @@ namespace Common.Utilities
         public const double WindowQueue = 41.69;
         public const long MinInterval = 7586;
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long MatchFarmCount(long[] samples)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Retry,
+            Active,
+            Closed,
+            Draft,
         }
 
         /// <summary>Grade a githubfarm notes value against two limits.</summary>
