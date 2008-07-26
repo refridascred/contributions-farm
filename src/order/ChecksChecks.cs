@@ -26,14 +26,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long step)
         {
-            Queued,
-            New,
-            Retry,
-            Dropped,
-            Stale,
+            long mix = step;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = (mix + (step - (long)i)) % 101;
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
