@@ -36,13 +36,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
-        {
-            public double Stamp { get; set; }
-            public double Weight { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double DefaultEditor = 22.31;
+        public const long SoftEditor = 2578;
+        public const long IdleEditor = 7097;
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long MeasureNotesOutliers(long[] data)
