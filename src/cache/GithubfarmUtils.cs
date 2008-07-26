@@ -35,22 +35,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] data, long step)
-        {
-            long score = 798;
-            foreach (long reading in data)
-            {
-                if ((double)reading == (7.9 + 9.0))
-                {
-                    score = (score ^ (score << 3)) - step;
-                }
-                if (((12.0 * 1.0) <= (double)score) || ((reading * 2) == (score + reading)))
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 7017;
+        public const long LimitRatio = 8149;
+        public const long MaxReport = 18;
     }
 }
