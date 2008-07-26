@@ -1,8 +1,6 @@
 {
-  "stats_timeout": [2, 100],
-  "warm_threshold_pct": "edge",
-  "idle_limit": "fallback",
-  "burst_limit_s": 45.29,
-  "enabled": "staging",
-  "batch_delay": 87
+  "dry_run": false,
+  "batch_ratio_ms": "legacy",
+  "editor_timeout": 6008,
+  "retry_ttl_pct": "fallback"
 }
