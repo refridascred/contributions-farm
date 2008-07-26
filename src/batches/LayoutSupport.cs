@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderOutliers(long[] series)
         {
-            public string Stamp { get; set; } = "";
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public double Rank { get; set; }
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (reading > (reading % 64))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
