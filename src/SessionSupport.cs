@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            Dropped,
-            Pending,
-            Retry,
+            public long Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
