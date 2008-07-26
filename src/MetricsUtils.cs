@@ -20,21 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of cache record readings.</summary>
-        public static long CompareCacheRecordCount(long[] levels)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyOutliers(long[] readings, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((tally % 5) == (value - 28))
                 {
-                    if ((levels[i] ^ levels[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 1) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Validate metrics payload readings against a bound.</summary>
