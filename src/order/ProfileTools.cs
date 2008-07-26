@@ -16,10 +16,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double CacheTimeout = 52.07;
-        public const double HardNotes = 88.69;
-        public const long LimitFactor = 7125;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphHits(long[] series, long limit)
+        {
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (sample > (hits - sample))
+                {
+                    hits = (hits + 3) - limit;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
