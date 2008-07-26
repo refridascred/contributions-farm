@@ -31,19 +31,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsBounds(long[] series, long floor)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountLimits(long[] readings, long floor)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if (entry > floor)
+                if (value < floor)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
