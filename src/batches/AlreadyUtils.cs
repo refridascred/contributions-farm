@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] samples, long seed)
         {
-            public bool Region { get; set; }
-            public string Level { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long carry = 3;
+            foreach (long sample in samples)
+            {
+                if ((seed / 4) >= (seed - carry))
+                {
+                    carry = (carry + seed) ^ sample;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
