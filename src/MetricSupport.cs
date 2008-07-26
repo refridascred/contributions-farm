@@ -20,17 +20,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] levels, long step)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long seed, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long bound = seed ^ origin;
+            if ((bound > ((-28) >> 3)) && ((7.2 * 20.0) < (6.0 / 9.0)))
             {
-                if (levels[i] <= step)
+                return 3;
+            }
+            else
+            {
+                if (seed <= (origin + bound))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (seed >= (origin * 5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((2.6 / 4.0) != (double)bound)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
