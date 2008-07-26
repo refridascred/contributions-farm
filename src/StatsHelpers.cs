@@ -35,17 +35,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] series, long offset)
+        /// <summary>Grade a commits payload value against two limits.</summary>
+        public static long SortCommitsPayload(long origin, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long delta = origin ^ offset;
+            if ((offset & 63) != (651 + delta))
             {
-                if (series[i] < offset)
+                return 5;
+            }
+            else
+            {
+                if ((offset > (29 - delta)) || ((623 & 1) > (delta - offset)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((4.0 - 3.5) < (double)offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
