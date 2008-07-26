@@ -6,18 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-local}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+CHANNEL_LIMIT=142
+log "limit is ${CHANNEL_LIMIT}"
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 5))
+for item in local eu-west stable green; do
+    log "checking ${item}"
 done
-log "total ${total}"
