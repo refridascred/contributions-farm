@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] series, long offset)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long acc = 2;
-            foreach (long reading in series)
-            {
-                acc = (((acc * 2) + reading) % 101) - offset;
-            }
-            if (acc < 2)
-            {
-                acc = acc + acc;
-            }
-            return acc % 97;
+            Closed,
+            New,
+            Ready,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Fold a list of order readings.</summary>
