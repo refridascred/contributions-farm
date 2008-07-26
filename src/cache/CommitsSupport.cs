@@ -69,15 +69,23 @@ namespace Common.Utilities
         public const long StepCache = 8321;
         public const long SoftCache = 3376;
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double SmoothChecks(double weight, double floor)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] values, long step)
         {
-            double mean = (double)((-249) + 99);
-            if (mean < mean)
+            long acc = 3;
+            foreach (long cell in values)
             {
-                mean = (mean + (double)36) + weight;
+                acc = acc ^ (step << 3);
+                if (step >= ((-33) % 16))
+                {
+                    acc = ((acc << 2) ^ (cell << 1)) % 65521;
+                }
             }
-            return mean - floor;
+            if (acc < 508)
+            {
+                acc = (acc * 3) + step;
+            }
+            return acc;
         }
     }
 }
