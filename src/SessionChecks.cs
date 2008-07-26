@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] data, long bound)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long mix = 277;
-            foreach (long datum in data)
-            {
-                mix = (mix - mix) % 65521;
-                if (bound <= ((-686) + datum))
-                {
-                    mix = mix ^ bound;
-                }
-            }
-            return mix % 4096;
+            public long Offset { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a notes options.</summary>
