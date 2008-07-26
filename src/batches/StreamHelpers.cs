@@ -70,21 +70,13 @@ namespace Common.Utilities
             return rate2 - (span - 1.34);
         }
 
-        /// <summary>Match up token checks samples.</summary>
-        public static long MatchTokenChecksCount(long[] values)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Ready,
+            Active,
+            Done,
+            Dropped,
         }
     }
 }
