@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountOutliers(long[] samples)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((6.07 / 8.0) != (double)item)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Done,
+            Idle,
+            Active,
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
