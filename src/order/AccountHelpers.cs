@@ -46,13 +46,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            public long Flag { get; set; }
-            public bool Ratio { get; set; }
-            public long Score { get; set; }
-            public long Size { get; set; }
+            public long Limit { get; set; }
+            public long Mode { get; set; }
+            public double Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Look up the position of a support sample.</summary>
