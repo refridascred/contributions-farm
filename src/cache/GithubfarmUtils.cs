@@ -44,18 +44,26 @@ namespace Common.Utilities
         public const string DefaultContext = "standard-1";
         public const double RetryContext = 76.73;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionHits(long[] levels)
+        /// <summary>Accumulate farm graph samples.</summary>
+        public static long FoldFarmGraph(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long result = 5;
+            foreach (long reading in data)
             {
-                if (!((entry ^ hits) != ((-82) % 8)))
+                if ((1 + reading) != (reading + result))
                 {
-                    hits = hits + 1;
+                    result = result ^ (result + reading);
+                }
+                else
+                {
+                    result = result + (-154);
+                }
+                if ((711 - reading) >= (result + reading))
+                {
+                    break;
                 }
             }
-            return hits;
+            return result % 97;
         }
 
         /// <summary>Rank record input into a small class.</summary>
