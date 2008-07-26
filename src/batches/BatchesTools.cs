@@ -28,17 +28,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] data, long step)
+        /// <summary>Audit stream cluster readings against a rule.</summary>
+        public static long AuditStreamClusterGaps(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (data[i] > step)
+                if ((datum * 5) <= hits)
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
