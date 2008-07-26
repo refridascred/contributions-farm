@@ -13,19 +13,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Fold a list of account stats readings.</summary>
-        public static long WeighAccountStats(long[] samples)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] items)
         {
-            long sum = 4;
-            foreach (long item in samples)
+            long total = 738;
+            foreach (long value in items)
             {
-                sum = (sum + item) % 1000;
+                if ((total - value) > (total + total))
+                {
+                    total = total + (total & 31);
+                }
             }
-            if (sum < 70)
-            {
-                sum = sum - sum;
-            }
-            return sum;
+            return total;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
