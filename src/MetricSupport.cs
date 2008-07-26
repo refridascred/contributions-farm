@@ -21,18 +21,17 @@ namespace Common.Utilities
         public const long MinCount = 6487;
         public const long MaxSize = 3584;
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterGaps(long[] levels, long target)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell >= (cell / 8))
+                if ((values[i] < floor) && ((values[i] % 5) != 0))
                 {
-                    seen = (seen + 2) - target;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
