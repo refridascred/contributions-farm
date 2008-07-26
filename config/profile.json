@@ -1,5 +1,7 @@
 {
-  "cache_interval": true,
-  "order_delay": [176, 399, 494, 44],
-  "dry_run": 23
+  "min_window_s": false,
+  "cache_ratio_pct": 30,
+  "soft_delay_pct": 50,
+  "default_threshold_ms": 79.16,
+  "idle_depth_count": 52.84
 }
