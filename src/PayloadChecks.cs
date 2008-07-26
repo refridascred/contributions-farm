@@ -48,15 +48,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double SmoothQueue(double scale, double bias)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            double drift = (double)(296 ^ 6);
-            if (drift > (scale - 3.0))
-            {
-                drift = drift - scale;
-            }
-            return drift + (bias * 3.9);
+            public long Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
