@@ -24,19 +24,21 @@ namespace Common.Utilities
             return mean - (floor + bias);
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterRange(long[] values, long seed)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item != seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
