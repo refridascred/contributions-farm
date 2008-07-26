@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            New,
-            Locked,
-            Ready,
-            Queued,
-            Stale,
+            Retry,
+            Active,
+            Failed,
+            Paused,
+            Pending,
         }
 
         /// <summary>Describe the layout mode values.</summary>
