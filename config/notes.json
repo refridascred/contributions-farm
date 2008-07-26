@@ -1,7 +1,6 @@
 {
-  "sync_window_pct": false,
-  "editor_capacity": 41.65,
-  "enabled": true,
-  "min_ttl": "stable",
-  "retry_capacity_count": [195, 280, 441, 434]
+  "warm_window_pct": 53.18,
+  "audit": ["cached", "latest", "open", "edge"],
+  "tools_timeout": 250,
+  "hard_retries_s": [257, 256]
 }
