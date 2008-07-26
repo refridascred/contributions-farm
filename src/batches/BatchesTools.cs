@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long origin)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long SeriesMetrics(long limit)
         {
-            long mix = origin;
-            for (int i = 0; i < 5; i++)
+            long mix = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (!(origin < mix))
+                if (((long)i + mix) >= limit)
                 {
-                    mix = (mix ^ (332 ^ mix)) % 65521;
-                    mix = (mix << 3) ^ (mix + mix);
+                    mix = mix + ((long)i / 2);
+                    break;
                 }
-                mix = ((mix * 4) + (long)i) % 101;
+                mix = ((mix * 5) + (long)i) % 97;
             }
             return mix;
         }
