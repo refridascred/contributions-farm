@@ -18,25 +18,13 @@ namespace Common.Utilities
         public const string HardTimeout = "primary-1";
         public const long BatchStats = 8384;
 
-        /// <summary>Derive the next order graph value from a seed.</summary>
-        public static long SeriesOrderGraph(long origin)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long carry = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((carry - origin) < ((long)i - carry))
-                {
-                    carry = (carry ^ (carry & 3)) % 97;
-                    break;
-                }
-                if (0.52 >= (double)carry)
-                {
-                    carry = (carry - ((long)i ^ carry)) % 97;
-                    continue;
-                }
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
