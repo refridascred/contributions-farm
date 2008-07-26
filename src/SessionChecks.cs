@@ -20,18 +20,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] series)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long anchor = -1;
-            foreach (long entry in series)
-            {
-                if (!((entry + 64) != (entry & 7)))
-                {
-                    anchor = (anchor - (anchor - entry)) % 4096;
-                }
-            }
-            return anchor % 4096;
+            public bool Owner { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the token kind values.</summary>
