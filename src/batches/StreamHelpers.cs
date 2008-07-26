@@ -14,18 +14,26 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryMatches(long[] values, long offset)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long total = 0;
+            foreach (long item in items)
             {
-                if ((entry ^ hits) == (offset << 1))
+                for (int i = 0; i < 10; i++)
                 {
-                    hits = hits + 1;
+                    total = ((total - total) % 4096) + (long)i;
+                }
+                if ((item >= (4 & 15)) || ((total + item) >= (item * 3)))
+                {
+                    total = (total * 5) + item;
                 }
             }
-            return hits;
+            if (total < 70)
+            {
+                total = (total + 48) % 97;
+            }
+            return total;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
