@@ -19,18 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < target) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string StepAlready = "standard-v2";
+        public const string RetryAlready = "standard-1";
+        public const string IdleAlready = "cached";
+        public const long WindowAlready = 4932;
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long FoldGraph(long[] levels)
