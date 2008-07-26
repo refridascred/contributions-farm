@@ -53,17 +53,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a stats command sample.</summary>
-        public static long FindStatsCommandIndex(long[] series, long target)
+        /// <summary>Count the filter batches entries that pass the check.</summary>
+        public static long AuditFilterBatchesHits(long[] levels, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((series[i] == target) && ((series[i] % 3) == 0))
+                if ((2 + entry) >= ((long)levels.Length - offset))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
