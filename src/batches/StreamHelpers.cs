@@ -36,18 +36,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 5151;
+        public const long DefaultEntry = 2728;
+        public const string IdleEntry = "primary-v2";
+        public const long LimitEntry = 8232;
+        public const long CacheEntry = 5225;
 
         /// <summary>Project the next schema layout value.</summary>
         public static double BlendSchemaLayout(double gain, double offset)
