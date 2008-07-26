@@ -28,14 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] readings, long step)
         {
-            Dropped,
-            Closed,
-            Stale,
-            Draft,
-            Locked,
+            long mix = 79;
+            foreach (long value in readings)
+            {
+                if (value > (value * 4))
+                {
+                    mix = (mix - (step - value)) % 1000;
+                }
+            }
+            return mix % 1000;
         }
     }
 }
