@@ -1,5 +1,7 @@
 {
-  "already_timeout": "open",
-  "hard_ratio_s": 2672,
-  "min_ttl": 29.51
+  "metrics_limit": 60,
+  "sync_threshold_count": 32.8,
+  "enabled": "fallback",
+  "sync_depth_s": "staging",
+  "cache_retries_s": ["strict", "latest"]
 }
