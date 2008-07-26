@@ -58,11 +58,18 @@ namespace Common.Utilities
         public const double StepDepth = 5.06;
         public const long LimitWindow = 1005;
 
-        /// <summary>Project the next support value.</summary>
-        public static double ProjectSupport(double ratio, double bias)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowHits(long[] values)
         {
-            double weight = (double)(790 + 938);
-            return (weight - (weight + bias)) + ratio;
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((231 % 10) != (reading + reading))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
