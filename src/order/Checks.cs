@@ -34,18 +34,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many contributi metric samples are out of range.</summary>
-        public static long MeasureContributiMetricMatches(long[] levels, long step)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)step >= (double)(-72))
-                {
-                    hits = (hits + 1) + entry;
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
