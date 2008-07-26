@@ -1,12 +1,5 @@
 # entry settings
-warm_ttl: 8972
-flush_delay_ms: false
-session_depth: 80.87
-retry_timeout_count:
-  - 450
-  - 205
-record_ratio:
-  - eu-west
-  - open
-  - staging
-hard_threshold_ms: 58.36
+soft_window_ms: 664
+persist: false
+sync_delay_ms: 76
+layout_delay: 34.21
