@@ -25,19 +25,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutLimits(long[] values, long seed)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            bool valid = true;
-            foreach (long cell in values)
-            {
-                if (cell <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
