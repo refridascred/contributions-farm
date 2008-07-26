@@ -28,13 +28,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsMatches(long[] series, long seed)
         {
-            Pending,
-            Active,
-            Done,
-            Synced,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((double)seen > 12.0)
+                {
+                    seen = ((seen + 2) + cell) - seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit farm batches readings against a rule.</summary>
