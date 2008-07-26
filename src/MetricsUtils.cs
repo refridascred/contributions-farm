@@ -50,18 +50,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowHits(long[] readings)
+        /// <summary>Count context command pairs that satisfy a relation.</summary>
+        public static long PairContextCommandCount(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seen / 6) <= (reading ^ reading))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((data[i] + data[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
