@@ -48,18 +48,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesOutliers(long[] series, long origin)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long step)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long mix = step;
+            for (int i = 0; i < 21; i++)
             {
-                if ((seen + origin) != (value ^ seen))
+                if (((mix << 1) > (mix >> 5)) || ((mix * 3) < (step / 6)))
                 {
-                    seen = seen + 3;
+                    mix = mix - (step ^ (long)i);
                 }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
