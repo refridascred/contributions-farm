@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate entry channel readings against a bound.</summary>
-        public static bool GuardEntryChannelBounds(long[] readings, long step)
-        {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BurstSize = 63.41;
+        public const long LimitRatio = 5590;
+        public const string StepCommand = "open-1";
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long BucketStats(long seed, long seed2)
