@@ -20,22 +20,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the queue contributi entries that pass the check.</summary>
-        public static long AuditQueueContributiGaps(long[] levels, long bound)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long floor, long bound)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long slot = floor - bound;
+            if ((double)slot > (7.5 * 19.0))
             {
-                if ((bound ^ entry) < (seen + bound))
+                return 1;
+            }
+            else
+            {
+                if (4.6 <= (4.4 + 8.7))
                 {
-                    seen = seen + 3;
+                    return 6;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
