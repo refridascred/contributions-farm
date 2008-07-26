@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Audit notes session readings against a rule.</summary>
+        public static long TallyNotesSessionOutliers(long[] values)
         {
-            public double Total { get; set; }
-            public long Level { get; set; }
-            public long Mode { get; set; }
-            public long Label { get; set; }
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((double)hits < (double)item)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of order readings.</summary>
