@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
-        {
-            public bool Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public double Ratio { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string HardWidth = "local-1";
+        public const double HardDepth = 56.88;
+        public const string BurstSize = "local-v2";
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
