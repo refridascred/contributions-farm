@@ -20,13 +20,10 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
-        {
-            public double Level { get; set; }
-            public string Score { get; set; } = "";
-            public long Count { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultSize = 6849;
+        public const long BaseFactor = 5061;
+        public const string LimitFactor = "alpha-1";
+        public const string LimitSize = "latest";
     }
 }
