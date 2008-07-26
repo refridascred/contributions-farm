@@ -17,19 +17,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ScaleRoute(double rate, double floor)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteRange(long[] items, long seed)
         {
-            double gain = (double)((-6) << 3);
-            if (gain >= (rate + rate))
+            bool found = true;
+            foreach (long sample in items)
             {
-                gain = gain - floor;
+                if (sample >= seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - (rate * 2.6)) + (double)(long)i;
-            }
-            return gain - rate;
+            return found;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
