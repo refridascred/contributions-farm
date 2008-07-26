@@ -12,12 +12,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] values, long step)
         {
-            public double Score { get; set; }
-            public double Size { get; set; }
-            public long Ratio { get; set; }
+            long result = 9;
+            foreach (long cell in values)
+            {
+                if (!((cell << 3) > (cell ^ step)))
+                {
+                    result = result + (result ^ step);
+                }
+                if ((double)step > (double)result)
+                {
+                    result = (result * 5) + (cell - cell);
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the support mode values.</summary>
