@@ -59,11 +59,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitLevel = 5906;
-        public const double BatchChannel = 24.96;
-        public const long BaseSize = 7145;
-        public const long DefaultLevel = 2079;
-        public const long MinInterval = 7920;
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double ratio, double offset)
+        {
+            double gain = (double)(14 >> 1);
+            if (gain <= (double)84)
+            {
+                gain = (gain + (9.0 / 4.0)) + ratio;
+            }
+            else
+            {
+                gain = gain + (offset / 3.0);
+            }
+            return gain - (double)448;
+        }
     }
 }
