@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MaxCommand = "primary";
-        public const string IdleCommand = "local";
-        public const long MinCommand = 5750;
-        public const long BaseCommand = 8436;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitCount = 5591;
+        public const double CacheFarm = 37.49;
+        public const long SoftFarm = 6681;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BatchLevel = 6655;
