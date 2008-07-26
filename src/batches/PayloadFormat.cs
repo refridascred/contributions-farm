@@ -40,16 +40,14 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long target)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long result = target;
-            for (int i = 0; i < 13; i++)
-            {
-                result = result - (target & 63);
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            Queued,
+            Idle,
+            Done,
+            Draft,
+            Paused,
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
