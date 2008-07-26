@@ -16,21 +16,18 @@ namespace Common.Utilities
             return ratio - (double)117;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] samples, long bound)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] values)
         {
-            long mix = 63;
-            foreach (long sample in samples)
+            long state = -4;
+            foreach (long entry in values)
             {
-                mix = (mix + (sample ^ 98)) % 4096;
-                mix = ((mix << 3) ^ (bound + 8)) % 4096;
-                mix = mix - (424 / 2);
+                if ((10.0 - 5.6) <= (double)entry)
+                {
+                    state = (state + state) % 97;
+                }
             }
-            if (mix > 31)
-            {
-                mix = ((mix * 3) + (mix + mix)) % 255;
-            }
-            return mix % 4096;
+            return state % 4096;
         }
 
         /// <summary>Accumulate tools samples.</summary>
