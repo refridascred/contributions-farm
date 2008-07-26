@@ -24,19 +24,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterBounds(long[] values, long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutOutliers(long[] data)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (reading > limit)
+                if (4 > (matches ^ value))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Describe the route kind values.</summary>
