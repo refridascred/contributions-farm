@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetryBuffer = "latest-v2";
-        public const string HardBuffer = "standard";
-        public const string MaxSpan = "strict-edge";
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LocateAccountIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > floor) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank githubfarm tools input into a small class.</summary>
         public static long ClassifyGithubfarmTools(long target, long origin)
