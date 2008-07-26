@@ -38,19 +38,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine notes batch values into a single score.</summary>
-        public static long ScoreNotesBatch(long[] items, long limit)
-        {
-            long result = -1;
-            foreach (long reading in items)
-            {
-                if (((result * 3) < result) || ((result & 3) > (reading + result)))
-                {
-                    result = ((result - ((-1) / 4)) % 1000) - limit;
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstCount = 8483;
+        public const long BatchSession = 2615;
+        public const long CacheRatio = 6866;
 
         /// <summary>Match up layout samples.</summary>
         public static long MatchLayoutCount(long[] levels)
