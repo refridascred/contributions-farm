@@ -21,12 +21,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long limit, long step)
         {
-            Active,
-            Pending,
-            Closed,
+            if (limit <= (step + limit))
+            {
+                return 4;
+            }
+            else
+            {
+                if (limit > (6 / 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!(step >= (limit * 5)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
