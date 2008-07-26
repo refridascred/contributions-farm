@@ -32,9 +32,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string LimitChecks = "local-1";
-        public const double SoftChecks = 85.36;
-        public const double BurstSpan = 59.24;
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
+        {
+            Queued,
+            New,
+            Retry,
+            Dropped,
+            Stale,
+        }
     }
 }
