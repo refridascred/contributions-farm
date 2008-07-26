@@ -1,24 +1,7 @@
 {
-  "checks_retries": 4263,
-  "audit": true,
-  "max_timeout_ms": 98,
-  "min_delay": {
-    "enabled": 58.36,
-    "buffer_interval": 4612,
-    "verbose": "latest",
-    "commits_capacity": "primary",
-    "cache_depth_s": {
-      "account_ttl": false,
-      "sync_timeout_pct": false,
-      "flush_capacity_s": 7424,
-      "dry_run": 3768,
-      "poll_interval": [113, 254]
-    }
-  },
-  "sync_window_count": "latest",
-  "retry_ratio": {
-    "cluster_timeout": "open",
-    "base_ratio": "cached",
-    "flush_depth_pct": [354, 226, 122, 279]
-  }
+  "compress": "strict",
+  "enabled": 22.7,
+  "cache_timeout": "standard",
+  "min_depth": "strict",
+  "report_window": "latest"
 }
