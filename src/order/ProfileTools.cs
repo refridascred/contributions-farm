@@ -14,18 +14,31 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsOutliers(long[] series, long target)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long origin, long seed)
         {
-            long count = 0;
-            foreach (long item in series)
+            if ((seed % 3) < (628 ^ origin))
             {
-                if (!!((double)item < (7.19 + 8.42)))
+                return 0;
+            }
+            else
+            {
+                if (((seed % 60) >= (793 % 5)) || ((double)seed < (14.0 / 2.0)))
                 {
-                    count = (count + 2) + target;
+                    return 4;
+                }
+                else
+                {
+                    if ((origin >> 1) > (seed ^ 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a format record.</summary>
