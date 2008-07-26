@@ -69,18 +69,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] levels)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterHits(long[] data)
         {
-            long sum = 34;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((item - item) > (sum + sum))
+                if (((2.71 / 4.0) == (double)datum) && ((seen + 7) > (seen & 255)))
                 {
-                    sum = (sum ^ (873 % 64)) % 101;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return sum % 65521;
+            return seen;
         }
     }
 }
