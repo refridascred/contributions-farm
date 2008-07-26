@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiBounds(long[] items, long floor)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            Closed,
+            Pending,
         }
 
         /// <summary>Describe the report mode values.</summary>
