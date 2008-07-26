@@ -38,19 +38,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every metrics metric entry stays within the limit.</summary>
-        public static bool CheckMetricsMetricBounds(long[] data, long floor)
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double bias, double floor)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            double rate = 20.0;
+            if (rate > (double)8)
             {
-                if (reading <= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                rate = rate - (bias - bias);
             }
-            return stale;
+            else
+            {
+                rate = rate - 11.0;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + floor) + (double)(long)i;
+            }
+            return rate - 8.29;
         }
 
         /// <summary>Rank stats channel input into a small class.</summary>
