@@ -1,5 +1,9 @@
 {
-  "sync_interval_count": "stable",
-  "cache_timeout": 6287,
-  "sync_depth_s": 7.39
+  "retry_retries_ms": "standard",
+  "token_ttl": "primary",
+  "cache_interval_pct": {
+    "max_delay_s": "latest",
+    "poll_threshold_pct": 43.16,
+    "graph_threshold": 5242
+  }
 }
