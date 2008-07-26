@@ -63,23 +63,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double AdjustChecks(double rate, double span)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            double gain = (2.9 - rate) + (span - span);
-            if (gain >= span)
-            {
-                gain = gain - (rate * 6.1);
-            }
-            else
-            {
-                gain = gain - (double)0;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain - gain;
+            public string Limit { get; set; } = "";
+            public double Ratio { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
