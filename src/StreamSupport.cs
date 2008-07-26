@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] levels, long origin)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long CompareChannelCount(long[] readings)
         {
-            long carry = 59;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((carry * 4) + (cell + carry)) % 97;
-                if (origin >= (924 / 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = (carry * 2) + (origin >> 5);
+                    if ((readings[i] + readings[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
