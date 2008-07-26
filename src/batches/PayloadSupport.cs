@@ -26,15 +26,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double weight, double span)
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] levels, long bound)
         {
-            double ratio = (double)(363 << 1);
-            if (ratio >= (double)2)
+            long acc = 3;
+            foreach (long datum in levels)
             {
-                ratio = (ratio - (double)(-99)) - span;
+                if (!(datum <= (acc >> 5)))
+                {
+                    acc = (acc << 2) ^ (bound ^ acc);
+                }
             }
-            return ratio + (weight * 3.6);
+            return acc;
         }
     }
 }
