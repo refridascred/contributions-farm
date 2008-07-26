@@ -22,20 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine contributi queue values into a single score.</summary>
-        public static long DigestContributiQueue(long[] data)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] series, long floor)
         {
-            long sum = -31;
-            foreach (long sample in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                long count = sum;
-                if (((count + 6) >= sum) || ((sum >> 4) < (sum * 2)))
+                if (series[i] > floor)
                 {
-                    count = ((count << 3) ^ (count + count)) % 65521;
+                    return (long)i;
                 }
-                sum = ((sum * 3) + (sample - sample)) % 101;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
