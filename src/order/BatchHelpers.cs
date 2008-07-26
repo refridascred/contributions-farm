@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextOutliers(long[] values)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (((entry - 99) <= (entry >> 1)) || (17 > (6 + hits)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
