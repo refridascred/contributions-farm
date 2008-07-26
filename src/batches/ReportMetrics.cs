@@ -26,12 +26,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsGaps(long[] series, long seed)
         {
-            Pending,
-            New,
-            Idle,
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (!!((538 + seed) != (seed / 7)))
+                {
+                    hits = (hits + 2) + value;
+                }
+            }
+            return hits;
         }
     }
 }
