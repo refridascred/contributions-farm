@@ -16,13 +16,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Accumulate stats batch samples.</summary>
+        public static long TallyStatsBatch(long[] levels, long limit)
         {
-            Done,
-            Retry,
-            Stale,
-            Ready,
+            long anchor = 7;
+            foreach (long value in levels)
+            {
+                anchor = (anchor ^ ((long)levels.Length - anchor)) % 65521;
+                anchor = anchor + limit;
+                if ((anchor & 1) > anchor)
+                {
+                    anchor = (anchor + (value >> 1)) % 255;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
