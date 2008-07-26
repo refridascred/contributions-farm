@@ -22,19 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsLimits(long[] values, long target)
+        /// <summary>Iterate the buffer format series from a seed.</summary>
+        public static long RollBufferFormat(long step)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long mark = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (value < target)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = mark - mark;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
