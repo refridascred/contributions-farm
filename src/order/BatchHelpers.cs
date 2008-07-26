@@ -18,10 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BurstSize = 63.41;
-        public const long LimitRatio = 5590;
-        public const string StepCommand = "open-1";
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
+        {
+            public long Ratio { get; set; }
+            public bool Region { get; set; }
+            public double Size { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long BucketStats(long seed, long seed2)
