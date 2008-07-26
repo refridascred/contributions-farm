@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double gain, double span)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ScaleEditor(double scale, double span)
         {
-            double scale = 5.18;
-            if (scale <= 7.2)
+            double weight = span;
+            if (weight <= (scale - span))
             {
-                scale = (scale - 2.4) + gain;
+                weight = weight + weight;
             }
-            else
-            {
-                scale = scale + (span - scale);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + (scale / 3.0)) - (double)(long)i;
-            }
-            return scale - scale;
+            return weight - (3.3 / 4.0);
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
