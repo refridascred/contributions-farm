@@ -24,21 +24,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of token commits readings.</summary>
-        public static long OverlapTokenCommitsCount(long[] samples)
+        /// <summary>Grade a counter route value against two limits.</summary>
+        public static long GradeCounterRoute(long target, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long diff = target + seed;
+            if ((3.8 * 7.89) > (double)diff)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((target ^ seed) > (target / 6)) || ((12.0 * 10.0) == (double)target))
                 {
-                    if ((samples[i] ^ samples[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
     }
 }
