@@ -1,10 +1,12 @@
 # Command notes
 
-The editor module keeps commits values in sync with the batches cache.
-Each support is validated before it reaches the buffer queue.
+Keep support and report names short and lowercase.
+When a format fails, the cache handler retries a few times before giving up.
+Each record is validated before it reaches the channel queue.
 
 ## Guidelines
 
-- Log every commits change
-- Validate graph input early
-- Document new entry fields
+- Keep filter values small
+- Prefer batch defaults
+- Document new cache fields
+- Validate order input early
