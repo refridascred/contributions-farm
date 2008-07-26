@@ -25,19 +25,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueLimits(long[] levels, long limit)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            bool ready = true;
-            foreach (long entry in levels)
-            {
-                if (entry > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Level { get; set; }
+            public bool Token { get; set; }
+            public long Label { get; set; }
         }
     }
 }
