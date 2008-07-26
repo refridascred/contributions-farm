@@ -13,19 +13,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] data, long limit)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long floor)
         {
-            long total = -1;
-            foreach (long entry in data)
+            long acc = floor;
+            for (int i = 0; i < 18; i++)
             {
-                total = total - (total % 97);
-                if (((41 + limit) > (1 + entry)) || ((entry & 15) <= (544 / 9)))
-                {
-                    break;
-                }
+                acc = (acc - (floor / 8)) % 4096;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return total % 65521;
+            return acc;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
