@@ -32,18 +32,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many profile account samples are out of range.</summary>
-        public static long MeasureProfileAccountMatches(long[] data)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long floor, long target)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long lane = floor - target;
+            if ((14.0 * 6.3) >= (double)lane)
             {
-                if ((entry - matches) >= (matches >> 2))
+                return 5;
+            }
+            else
+            {
+                if (lane <= 39)
                 {
-                    matches = matches + 2;
+                    return 7;
+                }
+                else
+                {
+                    if ((lane + target) != (32 << 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target + floor) != (target + target))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
