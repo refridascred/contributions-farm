@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate schema notes readings against a bound.</summary>
-        public static bool ValidateSchemaNotesRange(long[] values, long step)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long seed)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long anchor = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (datum > step)
+                if ((anchor % 7) <= (anchor * 2))
                 {
-                    valid = false;
                     break;
                 }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Hold a metric record.</summary>
