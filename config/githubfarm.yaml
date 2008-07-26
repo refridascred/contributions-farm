@@ -1,13 +1,15 @@
 # githubfarm settings
-batches_ratio: green
-batch_threshold: legacy
-queue_window:
-  sync_limit_count: 82
-  buffer_ratio: 9498
-  cluster_limit:
-    base_ratio_ms: true
-    cache_retries: local
-    enabled: 3
-    poll_capacity_count: primary
-    entry_retries: 250
-  min_delay_count: 2115
+poll_size_ms: stable
+warm_threshold: 61
+min_interval_count:
+  - 215
+  - 257
+  - 287
+  - 169
+batches_ttl: 91.85
+default_ttl: 500
+default_retries_s:
+  - 468
+  - 250
+  - 26
+  - 497
