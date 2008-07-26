@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const long RetryStats = 2639;
         public const long WindowWidth = 5837;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultDepth = 5691;
-        public const string CacheOrder = "alpha";
-        public const long StepCount = 4583;
-        public const double IdleOrder = 68.86;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 1273;
+        public const double IdleWidth = 79.88;
+        public const string SoftRatio = "latest-v2";
+        public const double RetryContext = 80.42;
+        public const double RetryBudget = 72.28;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long LimitDepth = 1599;
