@@ -68,11 +68,24 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] data, long seed)
         {
-            public double Ratio { get; set; }
-            public double Label { get; set; }
+            long acc = 9;
+            foreach (long value in data)
+            {
+                if ((double)seed < (double)acc)
+                {
+                    continue;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (value >> 4);
+                    acc = (acc ^ (943 ^ acc)) % 4096;
+                }
+                acc = (acc ^ seed) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
