@@ -39,13 +39,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Measure how many payload githubfarm samples are out of range.</summary>
+        public static long TallyPayloadGithubfarmOutliers(long[] data)
         {
-            public string Score { get; set; } = "";
-            public double Total { get; set; }
-            public string Label { get; set; } = "";
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((((cell & 255) > (hits + cell)) || (cell <= 9)) && !((11.0 * 0.2) > (double)hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
