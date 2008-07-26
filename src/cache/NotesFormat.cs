@@ -36,10 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double HardCount = 73.47;
-        public const double RetryLayout = 5.52;
-        public const double BatchLayout = 75.85;
-        public const long CacheWidth = 1856;
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
+        {
+            Paused,
+            Stale,
+            Pending,
+        }
     }
 }
