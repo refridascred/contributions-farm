@@ -35,17 +35,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] data, long origin)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if ((data[i] == origin) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Look up the position of a counter metrics sample.</summary>
