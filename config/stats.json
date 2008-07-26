@@ -1,5 +1,6 @@
 {
-  "persist": true,
-  "burst_window_count": "edge",
-  "sync_retries": "stable"
+  "batch_ttl": "green",
+  "min_retries": 20.73,
+  "sync_threshold_count": ["standard", "standard", "standard"],
+  "buffer_interval": "blue"
 }
