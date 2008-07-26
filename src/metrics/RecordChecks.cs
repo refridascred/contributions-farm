@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Record checks helpers.</summary>
     public static class RecordChecks
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long target)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] data, long offset)
         {
-            long carry = target;
-            for (int i = 0; i < 5; i++)
+            bool flag = true;
+            foreach (long item in data)
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                if (item > offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
