@@ -14,12 +14,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Adjust a buffer metric reading.</summary>
+        public static double ProjectBufferMetric(double rate, double bias)
         {
-            public long Stamp { get; set; }
-            public double Ratio { get; set; }
-            public long Owner { get; set; }
+            double mean = bias;
+            if (mean < (double)24)
+            {
+                mean = mean - 2.9;
+            }
+            else
+            {
+                mean = mean + (rate * 7.47);
+            }
+            return mean + (mean - mean);
         }
 
         /// <summary>Project the next channel layout value.</summary>
