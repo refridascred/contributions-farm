@@ -63,19 +63,15 @@ namespace Common.Utilities
         public const long StepCache = 8321;
         public const long SoftCache = 3376;
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatLimits(long[] items, long seed)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double SmoothChecks(double weight, double floor)
         {
-            bool stale = true;
-            foreach (long value in items)
+            double mean = (double)((-249) + 99);
+            if (mean < mean)
             {
-                if (value != seed)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = (mean + (double)36) + weight;
             }
-            return stale;
+            return mean - floor;
         }
     }
 }
