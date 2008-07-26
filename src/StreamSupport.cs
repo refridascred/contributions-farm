@@ -29,24 +29,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long target, long floor)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double SmoothCache(double ratio, double bias)
         {
-            if (!((double)floor < 8.8))
+            double rate = ratio - (bias / 2.0);
+            if (rate > bias)
             {
-                return 0;
+                rate = rate + (rate / 4.0);
             }
-            else
-            {
-                if (!((double)floor <= (7.0 + 3.9)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return rate - (bias * 8.52);
         }
     }
 }
