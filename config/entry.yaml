@@ -1,4 +1,5 @@
 # entry settings
-compress: cached
-persist: 8658
-token_ttl: true
+tools_window: false
+graph_window: 25.27
+strict: stable
+soft_threshold_pct: 49
