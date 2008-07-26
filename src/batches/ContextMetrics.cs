@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] series)
+        /// <summary>Validate schema notes readings against a bound.</summary>
+        public static bool ValidateSchemaNotesRange(long[] values, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (datum > step)
                 {
-                    if ((series[i] ^ series[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Hold a metric record.</summary>
