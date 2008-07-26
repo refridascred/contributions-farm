@@ -40,17 +40,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] readings, long limit)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Paused,
+            Pending,
+            Draft,
+            Failed,
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
