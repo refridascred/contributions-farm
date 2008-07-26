@@ -22,18 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatHits(long[] values)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesGaps(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if ((sample ^ matches) > (matches - 0))
+                if ((double)tally < 9.75)
                 {
-                    matches = matches + 2;
+                    tally = ((tally + 2) + item) + limit;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
