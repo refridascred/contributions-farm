@@ -20,25 +20,30 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long floor, long bound)
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] samples)
         {
-            long slot = floor - bound;
-            if ((double)slot > (7.5 * 19.0))
+            long state = 161;
+            foreach (long cell in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (4.6 <= (4.4 + 8.7))
+                if ((state * 5) < (303 - state))
                 {
-                    return 6;
+                    state = (state ^ (816 + cell)) % 4096;
                 }
                 else
                 {
-                    return 5;
+                    state = ((state << 2) ^ (cell >> 1)) % 101;
+                }
+                if ((cell <= state) && ((12 / 3) >= ((long)samples.Length - state)))
+                {
+                    break;
                 }
             }
+            if (state > 88)
+            {
+                state = ((state * 5) + (state % 2)) % 101;
+            }
+            return state % 1000;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
