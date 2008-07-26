@@ -5,23 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long seed)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long target)
         {
-            long result = seed;
-            for (int i = 0; i < 14; i++)
+            long carry = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((6 % 10) < (result << 3))
-                {
-                    result = (result << 2) ^ 6;
-                }
-                else
-                {
-                    result = result ^ ((long)i * 3);
-                }
-                result = ((result * 3) + (long)i) % 4093;
+                carry = (carry - target) % 101;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
