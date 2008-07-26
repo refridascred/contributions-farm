@@ -25,23 +25,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine account metric values into a single score.</summary>
-        public static long WeighAccountMetric(long[] readings)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] series, long offset)
         {
-            long carry = 5;
-            foreach (long entry in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((carry - entry) <= entry)
+                if (series[i] < offset)
                 {
-                    carry = ((carry * 3) + (entry & 3)) % 4096;
+                    return (long)i;
                 }
-                else
-                {
-                    carry = (carry * 5) + 4;
-                }
-                carry = carry ^ (entry & 3);
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
