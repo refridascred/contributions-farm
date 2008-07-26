@@ -30,12 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a route stream reading by value.</summary>
-        public static long SeekRouteStreamIndex(long[] samples, long step)
+        /// <summary>Look up the position of a filter buffer sample.</summary>
+        public static long LocateFilterBufferIndex(long[] values, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] == step)
+                if ((values[i] > origin) && ((values[i] % 2) == 0))
                 {
                     return (long)i;
                 }
