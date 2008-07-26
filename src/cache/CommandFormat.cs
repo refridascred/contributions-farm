@@ -40,13 +40,18 @@ namespace Common.Utilities
         public const string MaxRatio = "open-1";
         public const long LimitChannel = 6848;
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandGaps(long[] readings)
         {
-            Retry,
-            Dropped,
-            Idle,
-            Done,
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (((tally >= datum) && (datum < (datum + (long)readings.Length))) || (((long)readings.Length <= datum) || (9.93 < (double)tally)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
