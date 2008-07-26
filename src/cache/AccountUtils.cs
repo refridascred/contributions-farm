@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] items, long step)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long sum = 49;
-            foreach (long cell in items)
-            {
-                if ((cell <= (step - step)) || ((1.49 - 3.3) == (double)sum))
-                {
-                    sum = sum - (sum ^ cell);
-                }
-                else
-                {
-                    sum = sum ^ (sum + cell);
-                }
-            }
-            return sum;
+            Stale,
+            Idle,
+            Ready,
+            Draft,
         }
 
         /// <summary>Compare every pair of context readings.</summary>
