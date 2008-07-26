@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Cluster helpers.</summary>
     public static class Cluster
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftFactor = 8185;
-        public const string BatchFactor = "local-edge";
-        public const double HardLevel = 54.6;
-        public const long SoftAlready = 3897;
-        public const string BatchInterval = "open-v2";
+        /// <summary>Count the booking entries that pass the check.</summary>
+        public static long AuditBookingHits(long[] data, long origin)
+        {
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((reading << 2) > (965 - count))
+                {
+                    count = (count + 1) + origin;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double WindowWidth = 38.94;
