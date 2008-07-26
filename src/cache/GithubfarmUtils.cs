@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Count the batch githubfarm entries that pass the check.</summary>
+        public static long MeasureBatchGithubfarmMatches(long[] items, long origin)
         {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (!((seen + sample) == (sample % 2)))
+                {
+                    seen = (seen + 3) - origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
