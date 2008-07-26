@@ -30,12 +30,39 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitSpan = 6499;
-        public const string WindowAccount = "local-edge";
-        public const long SoftSize = 8742;
-        public const string MaxInterval = "fallback-v2";
-        public const long SoftScore = 274;
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long limit, long floor)
+        {
+            if ((floor + floor) > (floor - (-486)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor + 8) > (limit << 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((2 ^ limit) == (floor ^ limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor + limit) < (floor & 127))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Scale a session figure with a bias.</summary>
         public static double SmoothSession(double gain, double span)
