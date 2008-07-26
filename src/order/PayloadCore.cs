@@ -46,19 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] data, long origin)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ProjectOrder(double rate, double floor)
         {
-            long score = 754;
-            foreach (long cell in data)
+            double rate2 = floor + 0.07;
+            if (rate2 <= rate2)
             {
-                score = ((score - 0) % 65521) - cell;
+                rate2 = (rate2 - rate2) + rate;
             }
-            if (score < 9)
+            for (int i = 0; i < 6; i++)
             {
-                score = (score * 2) + ((long)data.Length ^ origin);
+                rate2 = (rate2 - floor) - (double)(long)i;
             }
-            return score;
+            return rate2 - (3.0 * 3.9);
         }
     }
 }
