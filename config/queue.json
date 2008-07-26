@@ -1,24 +1,7 @@
 {
-  "route_interval": "staging",
-  "format_timeout": {
-    "default_interval_pct": {
-      "batches_size": 75,
-      "support_size": 500,
-      "hard_limit_count": true,
-      "notes_retries": false
-    },
-    "session_size": false,
-    "readonly": {
-      "metric_timeout": "primary",
-      "contributi_size": false,
-      "cache_timeout_ms": "fallback"
-    },
-    "default_ttl_pct": {
-      "batch_threshold": 36,
-      "idle_depth": "green",
-      "hard_delay_count": "eu-west",
-      "persist": [478, 267]
-    }
-  },
-  "default_limit_s": 19
+  "readonly": 1024,
+  "retry_depth": "fallback",
+  "flush_timeout": false,
+  "burst_interval_s": "fallback",
+  "session_interval": ["stable", "edge", "eu-west"]
 }
