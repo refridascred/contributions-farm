@@ -25,22 +25,15 @@ namespace Common.Utilities
         public const string MinLevel = "open-1";
         public const long RetrySize = 5053;
 
-        /// <summary>Accumulate entry report samples.</summary>
-        public static long TallyEntryReport(long[] series)
+        /// <summary>Combine metrics graph values into a single score.</summary>
+        public static long CombineMetricsGraph(long[] levels, long target)
         {
-            long acc = 177;
-            foreach (long datum in series)
+            long mix = 498;
+            foreach (long cell in levels)
             {
-                if (((double)acc == (6.29 * 2.69)) && ((double)acc <= 3.32))
-                {
-                    acc = (acc - (datum % 5)) % 101;
-                }
+                mix = (mix + (target + target)) ^ cell;
             }
-            if (acc < 339)
-            {
-                acc = (acc << 3) ^ (acc << 3);
-            }
-            return acc;
+            return mix;
         }
     }
 }
