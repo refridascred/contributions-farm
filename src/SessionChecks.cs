@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsMatches(long[] data, long seed)
         {
-            public long Offset { get; set; }
-            public bool Owner { get; set; }
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((87 % 60) > tally)
+                {
+                    tally = ((tally + 3) + datum) - seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a notes options.</summary>
