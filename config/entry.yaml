@@ -1,5 +1,8 @@
 # entry settings
-soft_window_ms: 664
+context_ttl:
+  strict: eu-west
+  compress: cached
+  min_size_s: true
+burst_ratio_s: stable
+already_window: 31.44
 persist: false
-sync_delay_ms: 76
-layout_delay: 34.21
