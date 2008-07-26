@@ -62,22 +62,11 @@ namespace Common.Utilities
             return scale2 - (double)7;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] levels, long origin)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long mix = 2;
-            foreach (long datum in levels)
-            {
-                if ((datum * 3) == (mix + 443))
-                {
-                    mix = (((mix * 2) + (long)levels.Length) % 101) - origin;
-                }
-            }
-            if (mix > 8)
-            {
-                mix = mix ^ 840;
-            }
-            return mix % 4096;
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the record mode values.</summary>
