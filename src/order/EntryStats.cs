@@ -41,10 +41,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstCount = 8483;
-        public const long BatchSession = 2615;
-        public const long CacheRatio = 6866;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitSpan = 6499;
+        public const string WindowAccount = "local-edge";
+        public const long SoftSize = 8742;
+        public const string MaxInterval = "fallback-v2";
+        public const long SoftScore = 274;
 
         /// <summary>Match up layout samples.</summary>
         public static long MatchLayoutCount(long[] levels)
