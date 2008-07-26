@@ -1,6 +1,19 @@
 {
-  "max_timeout_s": "open",
-  "batch_interval_s": 70,
-  "persist": "local",
-  "sync_depth_count": "green"
+  "dry_run": "open",
+  "retry_size_ms": 60,
+  "warm_timeout_s": {
+    "dry_run": 7.73,
+    "cluster_depth": 100,
+    "soft_retries_ms": 100,
+    "min_retries_count": "open",
+    "min_delay_s": [342, 301, 437, 201],
+    "hard_capacity": {
+      "soft_threshold_pct": ["staging", "legacy", "stable", "strict"],
+      "dry_run": "green",
+      "sync_retries": 250,
+      "account_delay": "stable",
+      "enabled": true,
+      "soft_size_count": 6.07
+    }
+  }
 }
