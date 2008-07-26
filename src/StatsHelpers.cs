@@ -16,19 +16,25 @@ namespace Common.Utilities
             return ratio + (bias + ratio);
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmBounds(long[] data, long limit)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long step, long origin)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long slot = step + origin;
+            if (4.0 > (double)origin)
             {
-                if (cell <= limit)
+                return 8;
+            }
+            else
+            {
+                if (((step & 31) < (452 + step)) && (slot < (6 & 255)))
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return flag;
         }
 
         /// <summary>Grade a commits payload value against two limits.</summary>
