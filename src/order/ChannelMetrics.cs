@@ -33,18 +33,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many layout channel samples are out of range.</summary>
-        public static long MeasureLayoutChannelMatches(long[] values, long offset)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((offset * 4) > (cell >> 3))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Paused,
+            Failed,
+            Queued,
+            Draft,
         }
     }
 }
