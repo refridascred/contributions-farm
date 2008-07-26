@@ -45,11 +45,10 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseDepth = 8112;
-        public const double BatchSize = 62.77;
-        public const long LimitWidth = 6027;
-        public const long LimitEditor = 8535;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double IdleTimeout = 8.05;
+        public const double BurstBudget = 83.44;
+        public const double DefaultRatio = 43.58;
 
         /// <summary>Project the next checks value.</summary>
         public static double SmoothChecks(double rate, double bias)
