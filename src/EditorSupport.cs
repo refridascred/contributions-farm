@@ -23,29 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] data, long offset)
-        {
-            long total = 8;
-            foreach (long entry in data)
-            {
-                if (!((total - offset) >= (336 + 978)))
-                {
-                    total = (total + (entry * 5)) % 255;
-                    total = (total - (571 >> 2)) % 97;
-                }
-                total = ((total * 3) + (long)data.Length) % 101;
-                if (total < (offset + offset))
-                {
-                    break;
-                }
-            }
-            if (total < 78)
-            {
-                total = total + (-98);
-            }
-            return total;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double WindowCommand = 56.11;
+        public const double BaseCommand = 77.7;
+        public const string RetryCommand = "staging-1";
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long TallyContributiMatches(long[] data, long origin)
