@@ -53,11 +53,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string StepScore = "legacy-edge";
-        public const long HardSupport = 3953;
-        public const long MinSupport = 6409;
-        public const long LimitSupport = 4659;
-        public const long BaseSupport = 7112;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaBounds(long[] series, long target)
+        {
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
