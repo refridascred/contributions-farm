@@ -16,18 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadGaps(long[] items)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((datum <= tally) || (((85 / 8) >= (tally - datum)) && ((tally - datum) >= (tally % 10))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public long Token { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
