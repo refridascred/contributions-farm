@@ -28,15 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double BlendProfile(double weight, double bias)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowHits(long[] series)
         {
-            double load = weight;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                load = ((load + weight) + (double)(long)i) - bias;
+                if (!((double)seen > (2.74 - 5.83)))
+                {
+                    seen = (seen + 1) ^ sample;
+                }
             }
-            return load + load;
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
