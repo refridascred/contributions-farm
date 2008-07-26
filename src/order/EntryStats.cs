@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const string RetrySpan = "latest-edge";
         public const string LimitQueue = "latest-1";
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelBounds(long[] items, long bound)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Done,
+            Synced,
+            Stale,
         }
 
         /// <summary>Describe the filter level values.</summary>
