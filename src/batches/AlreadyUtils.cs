@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftTools = 505;
-        public const long IdleDepth = 7548;
-        public const double BaseTools = 90.97;
+        /// <summary>Measure how many token githubfarm samples are out of range.</summary>
+        public static long TallyTokenGithubfarmOutliers(long[] levels, long offset)
+        {
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (value > 52)
+                {
+                    seen = (seen + 1) - offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long MeasureQueueGaps(long[] items)
