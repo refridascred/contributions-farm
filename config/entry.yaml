@@ -1,13 +1,12 @@
 # entry settings
-readonly: blue
-default_limit_pct: standard
-audit:
-  - blue
-  - cached
-min_limit_ms: true
-warm_capacity:
-  - local
-  - local
-  - green
+graph_window: true
+tools_retries:
+  - edge
   - stable
-soft_ratio: 35.29
+  - standard
+min_limit_pct: blue
+soft_delay: 250
+idle_limit_count:
+  - cached
+  - local
+  - cached
