@@ -22,13 +22,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long step, long step2)
         {
-            public double Rank { get; set; }
-            public long Token { get; set; }
-            public long Offset { get; set; }
-            public string Flag { get; set; } = "";
+            if ((step - 144) <= step2)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!(step <= (step2 ^ step2)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step2 & 127) == (step >> 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((12.0 - 16.0) > (double)step2)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
