@@ -33,22 +33,19 @@ namespace Common.Utilities
         public const long CacheSpan = 8264;
         public const long WindowContext = 1301;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyGaps(long[] levels)
+        /// <summary>Validate tools token readings against a bound.</summary>
+        public static bool ValidateToolsTokenBounds(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if ((value ^ hits) >= hits)
+                if (entry <= floor)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
