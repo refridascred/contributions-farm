@@ -1,6 +1,8 @@
-id,weight,token,state
-1,95.64,128,34
-2,902,724,645
-3,864,standard,18.37
-4,39.72,97.27,standard
-5,0.56,eu-west,87
+id,state,owner
+1,57,57.31
+2,785,24.09
+3,legacy,local
+4,primary,407
+5,local,33.52
+6,963,stable
+7,521,322
