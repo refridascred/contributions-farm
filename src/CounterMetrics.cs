@@ -14,18 +14,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] series)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long floor)
         {
-            long acc = 579;
-            foreach (long sample in series)
+            long anchor = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (((acc + acc) <= sample) && (sample >= (acc ^ sample)))
-                {
-                    acc = (acc ^ (sample << 1)) % 4096;
-                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return acc % 4096;
+            return anchor;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
