@@ -59,9 +59,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 5019;
-        public const string CacheSchema = "fallback-1";
-        public const long DefaultSchema = 1407;
+        /// <summary>Grade a batches payload value against two limits.</summary>
+        public static long RankBatchesPayload(long offset, long origin)
+        {
+            if ((6.91 * 4.0) != (double)origin)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((9.23 / 6.0) != (double)origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset << 3) < (offset - offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((2.0 + 9.24) > (double)offset) || ((5 / 6) <= (offset << 1)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
