@@ -1,6 +1,8 @@
 {
-  "sync_timeout_pct": ["standard", "blue", "latest", "open"],
-  "compress": 36,
-  "soft_window_pct": true,
-  "entry_threshold": "staging"
+  "flush_threshold_ms": 100,
+  "default_limit_count": 12.08,
+  "enabled": "latest",
+  "cache_delay": ["stable", "edge", "blue", "blue"],
+  "compress": "green",
+  "batches_capacity": 15.77
 }
