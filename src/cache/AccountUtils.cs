@@ -13,18 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] levels)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowLimits(long[] series, long offset)
         {
-            long mark = 5;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if ((337 / 8) >= mark)
+                if (entry > offset)
                 {
-                    mark = (((mark * 2) + mark) % 4096) - item;
+                    stale = false;
+                    break;
                 }
             }
-            return mark % 1000;
+            return stale;
         }
 
         /// <summary>Count the already editor entries that pass the check.</summary>
