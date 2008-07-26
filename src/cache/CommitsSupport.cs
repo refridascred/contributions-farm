@@ -63,22 +63,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueGaps(long[] samples)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((matches ^ entry) != (entry + 520))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Fold a list of schema readings.</summary>
