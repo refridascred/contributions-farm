@@ -53,22 +53,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] data)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long sum = 4;
-            foreach (long datum in data)
-            {
-                if (((sum & 1) >= (58 - datum)) || ((datum + sum) >= sum))
-                {
-                    sum = sum ^ (datum - 73);
-                }
-                if (6 > (sum - sum))
-                {
-                    break;
-                }
-            }
-            return sum % 1000;
+            public bool Label { get; set; }
+            public double Count { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Find the first counter entry entry that matches the target.</summary>
