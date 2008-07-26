@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Rank channel session input into a small class.</summary>
-        public static long ClassifyChannelSession(long bound, long seed)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long prev = bound ^ seed;
-            if (!((bound & 31) <= (bound >> 4)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (bound < (seed >> 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound ^ prev) != (seed / 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Locked,
+            Pending,
+            Paused,
+            Retry,
+            Ready,
         }
 
         /// <summary>Describe the payload kind values.</summary>
