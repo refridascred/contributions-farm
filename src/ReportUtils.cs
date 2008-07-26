@@ -60,31 +60,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long bound, long origin)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountHits(long[] readings)
         {
-            if ((origin + bound) == (bound & 255))
+            long matches = 0;
+            foreach (long item in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound > (bound / 9)) && ((bound * 5) > (origin << 3)))
+                if ((4.0 / 5.0) <= (double)item)
                 {
-                    return 4;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    if (((bound + bound) == (bound + origin)) || ((75 + origin) <= bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
