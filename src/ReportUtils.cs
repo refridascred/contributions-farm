@@ -66,14 +66,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
-        {
-            Locked,
-            Idle,
-            Closed,
-            Stale,
-            Failed,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardMetrics = 5886;
+        public const string DefaultBudget = "open-1";
+        public const long RetryMetrics = 3190;
+        public const long IdleMetrics = 122;
+        public const string BatchBudget = "fallback";
     }
 }
