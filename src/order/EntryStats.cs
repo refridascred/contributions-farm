@@ -23,21 +23,16 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] levels)
+        /// <summary>Roll a commits report counter forward.</summary>
+        public static long StepCommitsReport(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = (sum << 2) ^ bound;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Measure how many tools token samples are out of range.</summary>
