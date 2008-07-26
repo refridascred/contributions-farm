@@ -49,15 +49,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
-        {
-            Locked,
-            Queued,
-            New,
-            Dropped,
-            Retry,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheDepth = 5634;
+        public const string WindowGraph = "primary-edge";
+        public const long RetryGraph = 1260;
+        public const long DefaultRatio = 8892;
+        public const long DefaultInterval = 3063;
 
         /// <summary>Combine support values into a single score.</summary>
         public static long WeighSupport(long[] levels)
