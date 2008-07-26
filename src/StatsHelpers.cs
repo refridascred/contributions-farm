@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate payload channel readings against a bound.</summary>
-        public static bool GuardPayloadChannelRange(long[] levels, long step)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double AdjustTools(double bias, double span)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            double ratio = (double)12 + (double)354;
+            for (int i = 0; i < 4; i++)
             {
-                if (value < step)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio = ((ratio + ratio) + (double)(long)i) + span;
             }
-            return ok;
+            return ratio + (bias + ratio);
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
