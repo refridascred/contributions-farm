@@ -23,12 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] data)
         {
-            Pending,
-            Draft,
-            Locked,
+            long sum = -87;
+            foreach (long value in data)
+            {
+                sum = (((sum * 2) + (44 / 3)) % 97) ^ value;
+            }
+            if (sum < 81)
+            {
+                sum = sum + (sum * 2);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
