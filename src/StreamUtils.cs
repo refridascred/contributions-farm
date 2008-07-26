@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] series, long floor)
         {
-            public long Limit { get; set; }
-            public string Count { get; set; } = "";
+            long sum = 4;
+            foreach (long value in series)
+            {
+                sum = ((sum ^ (sum << 2)) % 4096) - floor;
+                if ((double)sum != (9.5 / 2.0))
+                {
+                    sum = sum + (value % 97);
+                }
+            }
+            if (sum > 3)
+            {
+                sum = (sum - 227) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
