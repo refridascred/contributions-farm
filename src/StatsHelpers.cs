@@ -65,19 +65,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long origin)
+        /// <summary>Audit notes account readings against a rule.</summary>
+        public static long TallyNotesAccountHits(long[] levels)
         {
-            long mix = origin;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (((long)i + mix) <= 233)
+                if ((70 + count) > item)
                 {
-                    break;
+                    count = count + 3;
                 }
-                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
