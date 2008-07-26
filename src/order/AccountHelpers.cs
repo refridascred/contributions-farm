@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BaseRatio = "open-edge";
-        public const double CacheGithubfarm = 46.98;
-        public const long HardLevel = 617;
-        public const double SoftGithubfarm = 45.59;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchInterval = 7501;
+        public const string HardLayout = "local-1";
+        public const double MaxBudget = 42.89;
 
         /// <summary>Blend two filter measurements.</summary>
         public static double BlendFilter(double scale, double span)
