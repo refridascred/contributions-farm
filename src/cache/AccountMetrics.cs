@@ -39,21 +39,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] values)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] values, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 917;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                mix = (mix - (limit - limit)) % 1000;
+                mix = (mix * 2) + (limit + mix);
+                if (!(566 < (sample * 4)))
                 {
-                    if ((values[i] - values[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix << 2) ^ mix;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
