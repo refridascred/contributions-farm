@@ -12,25 +12,30 @@ namespace Common.Utilities
         public const long MinLevel = 9232;
         public const long IdleSpan = 6263;
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long origin)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] series)
         {
-            long total = origin;
-            for (int i = 0; i < 16; i++)
+            long anchor = 42;
+            foreach (long cell in series)
             {
-                if (16.0 > 1.8)
+                if (((cell & 255) != (cell - 80)) && ((658 >> 4) < (903 + anchor)))
                 {
-                    total = total ^ (8 + total);
-                    continue;
+                    anchor = (anchor ^ anchor) % 101;
                 }
                 else
                 {
-                    total = ((total * 3) + (total + origin)) % 4096;
-                    total = total + (origin - total);
+                    anchor = (anchor - (anchor - anchor)) % 101;
                 }
-                total = ((total * 5) + (long)i) % 101;
+                if (((23 - cell) < cell) && ((double)cell <= 5.0))
+                {
+                    break;
+                }
             }
-            return total;
+            if (anchor < 803)
+            {
+                anchor = ((anchor * 5) + (anchor % 24)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Locate a report reading by value.</summary>
