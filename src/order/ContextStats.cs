@@ -32,30 +32,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] samples)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] samples, long origin)
         {
-            long total = 3;
-            foreach (long item in samples)
+            long state = 83;
+            foreach (long reading in samples)
             {
-                if (((item % 97) < (total / 4)) && (item > (item * 3)))
+                if ((state * 4) <= (origin << 3))
                 {
-                    total = (total ^ (371 ^ item)) % 255;
-                }
-                if ((double)total > (5.0 / 8.0))
-                {
-                    total = total + (total % 97);
-                }
-                if (64 <= total)
-                {
-                    total = total + (total + total);
+                    state = (state - (origin / 7)) ^ reading;
                 }
             }
-            if (total < 9)
+            if (state > 2)
             {
-                total = (total << 3) ^ (total & 7);
+                state = state - (origin % 7);
             }
-            return total % 1000;
+            return state % 4096;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
