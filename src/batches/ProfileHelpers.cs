@@ -25,12 +25,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftBatches = 3410;
-        public const long MaxBatches = 9298;
-        public const long MinBatches = 8472;
-        public const long LimitBatches = 4397;
-        public const long HardBatches = 2256;
+        /// <summary>Derive the next order graph value from a seed.</summary>
+        public static long SeriesOrderGraph(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((carry - origin) < ((long)i - carry))
+                {
+                    carry = (carry ^ (carry & 3)) % 97;
+                    break;
+                }
+                if (0.52 >= (double)carry)
+                {
+                    carry = (carry - ((long)i ^ carry)) % 97;
+                    continue;
+                }
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a session summary.</summary>
         public sealed class SessionSummary
