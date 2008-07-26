@@ -16,13 +16,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            Done,
-            Dropped,
-            Stale,
-            Queued,
+            public string Offset { get; set; } = "";
+            public double Region { get; set; }
+            public long Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
