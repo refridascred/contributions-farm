@@ -55,11 +55,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandBounds(long[] readings, long floor)
         {
-            public long Owner { get; set; }
-            public bool Stamp { get; set; }
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
