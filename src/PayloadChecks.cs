@@ -42,12 +42,40 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string MaxSize = "stable-1";
-        public const long HardDepth = 704;
-        public const long DefaultRatio = 3391;
-        public const double BaseRatio = 71.54;
-        public const long SoftSupport = 1475;
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long origin, long bound)
+        {
+            long gap = origin - bound;
+            if ((76 % 24) <= gap)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin + origin) != (origin + gap))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin << 3) >= (gap & 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)origin == (3.7 + 18.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the cluster phase values.</summary>
         public enum ClusterPhase
