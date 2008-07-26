@@ -1,11 +1,12 @@
 # Command notes
 
-A batches that stays idle for too long is moved to the stream list.
-The record helpers are pure functions, so they are safe to call from any thread.
+The layout module keeps checks values in sync with the stream cache.
+Keep commits and notes names short and lowercase.
+The order module keeps tools values in sync with the payload cache.
 
 ## Guidelines
 
-- Validate profile input early
-- Log every queue change
-- Document new layout fields
-- Review contributi limits each release
+- Validate editor input early
+- Keep batch values small
+- Review githubfarm limits each release
+- Log every cache change
