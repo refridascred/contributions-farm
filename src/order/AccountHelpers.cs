@@ -36,39 +36,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long target, long offset)
-        {
-            if ((offset >> 3) < (target * 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((offset - offset) <= (target & 63)) || ((10.0 + 0.48) > (double)target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((3.67 * 18.0) != (double)target) || ((43 & 127) > (target ^ target)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset >> 5) >= (offset & 15))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BatchEditor = "alpha";
+        public const long CacheEditor = 5169;
+        public const long MaxEditor = 7249;
+        public const long WindowInterval = 5019;
+        public const long BaseEditor = 775;
 
         /// <summary>Hold a metrics options.</summary>
         public sealed class MetricsOptions
