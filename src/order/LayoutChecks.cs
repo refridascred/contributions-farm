@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long bound, long origin)
+        /// <summary>Combine batch tools values into a single score.</summary>
+        public static long CombineBatchTools(long[] readings, long limit)
         {
-            if ((bound ^ 779) != (bound + origin))
+            long score = 79;
+            foreach (long value in readings)
             {
-                return 2;
+                score = ((score ^ (score ^ value)) % 1000) - limit;
+                score = (score + value) % 65521;
             }
-            else
-            {
-                if ((1 >> 5) > (bound << 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return score;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
