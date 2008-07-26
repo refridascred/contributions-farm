@@ -24,18 +24,12 @@ namespace Common.Utilities
             return drift + (double)9;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteOutliers(long[] values, long origin)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((double)reading == (5.2 / 5.0))
-                {
-                    hits = (hits + 1) + origin;
-                }
-            }
-            return hits;
+            public string Offset { get; set; } = "";
+            public long Total { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
