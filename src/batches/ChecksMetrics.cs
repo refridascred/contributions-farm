@@ -14,10 +14,17 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MaxEditor = 52.08;
-        public const long SoftEditor = 106;
-        public const long DefaultEditor = 9904;
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = acc + acc;
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Match up batch samples.</summary>
         public static long MatchBatchCount(long[] levels)
