@@ -58,15 +58,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] items, long limit)
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double weight, double bias)
         {
-            long mix = 315;
-            foreach (long cell in items)
+            double ratio = bias / 9.0;
+            if (ratio <= (9.1 * 4.0))
             {
-                mix = ((mix << 3) ^ (cell / 9)) + limit;
+                ratio = ratio + weight;
             }
-            return mix % 97;
+            else
+            {
+                ratio = ratio - (weight / 6.0);
+            }
+            return ratio + (ratio * 5.3);
         }
 
         /// <summary>Hold a checks snapshot.</summary>
