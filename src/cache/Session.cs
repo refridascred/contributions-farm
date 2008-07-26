@@ -22,18 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutHits(long[] series, long origin)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((22 + value) != (value + value))
-                {
-                    tally = (tally + 3) - origin;
-                }
-            }
-            return tally;
+            public string Region { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
