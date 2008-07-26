@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Check that every contributi cluster entry stays within the limit.</summary>
-        public static bool CheckContributiClusterLimits(long[] levels, long bound)
+        /// <summary>Compare every pair of stats contributi readings.</summary>
+        public static long PairStatsContributiCount(long[] items)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading >= bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((items[i] + items[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Digest a series of support window entries.</summary>
