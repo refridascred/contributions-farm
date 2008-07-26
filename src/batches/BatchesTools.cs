@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long limit)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long mix = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                if (((long)i + mix) >= limit)
-                {
-                    mix = mix + ((long)i / 2);
-                    break;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            New,
+            Closed,
+            Pending,
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
