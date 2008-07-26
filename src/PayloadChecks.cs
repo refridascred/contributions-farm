@@ -47,18 +47,12 @@ namespace Common.Utilities
         public const double BaseRatio = 71.54;
         public const long SoftSupport = 1475;
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterOutliers(long[] levels, long step)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((359 + step) == (seen + step))
-                {
-                    seen = (seen + 2) ^ cell;
-                }
-            }
-            return seen;
+            Locked,
+            Synced,
+            Idle,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
