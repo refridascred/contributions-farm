@@ -48,19 +48,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] items, long step)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long mark = 5;
-            foreach (long reading in items)
-            {
-                if (step < (mark - mark))
-                {
-                    mark = (mark + mark) ^ reading;
-                }
-                mark = (mark * 5) + (mark + step);
-            }
-            return mark;
+            Stale,
+            Failed,
+            Ready,
+            Queued,
+            Locked,
         }
 
         /// <summary>Accumulate session samples.</summary>
