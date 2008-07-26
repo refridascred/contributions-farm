@@ -37,25 +37,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long bound)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long sum = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                if (bound > (24 & 31))
-                {
-                    sum = (sum << 3) ^ (bound + bound);
-                }
-                else
-                {
-                    long span = bound;
-                    sum = (sum ^ (32 ^ span)) % 101;
-                }
-                sum = (sum ^ (5 % 16)) % 65521;
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
+            public long Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
