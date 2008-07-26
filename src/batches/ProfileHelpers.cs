@@ -40,18 +40,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowGaps(long[] data, long floor)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((double)datum > (double)floor)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Token { get; set; } = "";
+            public double Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Compare every pair of order readings.</summary>
