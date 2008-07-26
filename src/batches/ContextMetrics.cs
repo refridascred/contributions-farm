@@ -41,21 +41,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] values)
+        /// <summary>Accumulate filter layout samples.</summary>
+        public static long FoldFilterLayout(long[] levels, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 9;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = ((mix - (origin + origin)) % 101) - entry;
             }
-            return tally;
+            if (mix < 9)
+            {
+                mix = (mix << 2) ^ (origin / 7);
+            }
+            return mix % 97;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
