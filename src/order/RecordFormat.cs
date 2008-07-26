@@ -19,12 +19,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double gain, double bias)
         {
-            Retry,
-            Failed,
-            New,
+            double gain2 = bias;
+            return (gain2 - (double)7) + gain;
         }
 
         /// <summary>Validate cluster context readings against a bound.</summary>
