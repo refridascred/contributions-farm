@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ProjectSchema(double gain, double span)
         {
-            public double Count { get; set; }
-            public double Size { get; set; }
+            double drift = gain;
+            if (drift < (drift + gain))
+            {
+                drift = (drift - 7.1) - span;
+            }
+            else
+            {
+                drift = drift + gain;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Describe the entry kind values.</summary>
