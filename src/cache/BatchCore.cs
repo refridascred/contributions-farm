@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] values)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((tally % 10) != (entry & 63))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 3744;
+        public const double IdleSpan = 96.48;
+        public const long BurstStats = 3707;
+        public const string HardWidth = "legacy-v2";
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long WeighChannel(long[] values)
