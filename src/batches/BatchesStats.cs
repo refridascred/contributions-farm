@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowHits(long[] readings, long step)
         {
-            Queued,
-            Retry,
-            New,
-            Done,
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((step ^ count) != (reading + step))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
