@@ -22,19 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a entry queue reading.</summary>
-        public static double AdjustEntryQueue(double ratio, double floor)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] samples, long target)
         {
-            double weight = ratio;
-            if (weight > (15.0 / 3.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight + floor;
+                if ((samples[i] <= target) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight - (ratio + weight);
+            return -1;
         }
 
         /// <summary>Hold a buffer stats.</summary>
