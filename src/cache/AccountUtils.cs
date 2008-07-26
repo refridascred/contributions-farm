@@ -28,12 +28,23 @@ namespace Common.Utilities
             return gain + 0.14;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double ratio, double floor)
         {
-            Retry,
-            Stale,
-            Done,
+            double bias = (2.3 - ratio) + ratio;
+            if (bias < 7.1)
+            {
+                bias = bias + (floor - bias);
+            }
+            else
+            {
+                bias = bias + floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - floor) + (double)(long)i;
+            }
+            return bias - floor;
         }
     }
 }
