@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueRange(long[] items, long bound)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Retry,
+            Done,
+            Locked,
+            Pending,
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
