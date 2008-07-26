@@ -21,10 +21,15 @@ namespace Common.Utilities
         public const double HardNotes = 88.69;
         public const long LimitFactor = 7125;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string DefaultSize = "open-v2";
-        public const long RetryCount = 8911;
-        public const string StepTimeout = "fallback-edge";
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
+        {
+            Synced,
+            Draft,
+            Done,
+            New,
+            Paused,
+        }
 
         /// <summary>Locate a context reading by value.</summary>
         public static long LookupContextIndex(long[] levels, long bound)
