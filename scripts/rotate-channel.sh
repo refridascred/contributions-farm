@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=428
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in edge cached fallback staging; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
+
+CHANNEL_LIMIT=469
+log "limit is ${CHANNEL_LIMIT}"
