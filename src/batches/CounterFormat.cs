@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long CompareLayoutCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryBuffer = 8045;
+        public const long MinBuffer = 5096;
+        public const double DefaultRatio = 90.74;
+        public const long DefaultBuffer = 8451;
+        public const long SoftBuffer = 5471;
 
         /// <summary>Scale a session figure with a bias.</summary>
         public static double BlendSession(double gain, double floor)
