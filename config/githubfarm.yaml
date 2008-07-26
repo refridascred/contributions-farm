@@ -1,22 +1,12 @@
 # githubfarm settings
-audit: 76.54
-base_capacity_s:
-  retry_threshold_ms:
-    warm_ttl_ms: open
-    command_threshold: fallback
-    warm_size: primary
-    base_threshold_pct: 250
-  warm_capacity_s: true
-  idle_retries_ms:
-    - staging
-    - standard
-    - standard
-  readonly: 72.64
-  poll_ttl_pct: false
-max_ttl: false
-support_size: latest
-max_window_pct:
-  - local
-  - eu-west
-  - legacy
-strict: green
+strict: false
+soft_delay_count: 5419
+base_ttl_count: 1106
+retry_depth_s: 81.64
+hard_capacity:
+  - 300
+  - 432
+  - 253
+max_timeout:
+  - stable
+  - stable
