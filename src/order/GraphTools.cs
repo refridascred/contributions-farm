@@ -19,12 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long floor)
         {
-            New,
-            Draft,
-            Done,
+            long acc = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    acc = (((acc * 3) + ((long)i >> 5)) % 97) ^ (long)i2;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
