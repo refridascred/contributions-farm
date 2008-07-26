@@ -38,19 +38,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a tools githubfarm figure with a bias.</summary>
-        public static double ScaleToolsGithubfarm(double rate, double offset)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] readings)
         {
-            double gain = (double)((-95) ^ 51);
-            if (gain <= rate)
+            long total = -26;
+            foreach (long entry in readings)
             {
-                gain = (gain - gain) + offset;
+                total = ((total - total) % 4096) ^ entry;
             }
-            else
-            {
-                gain = gain - 4.41;
-            }
-            return gain + (double)64;
+            return total;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
