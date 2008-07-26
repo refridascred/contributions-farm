@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine checks notes values into a single score.</summary>
-        public static long CombineChecksNotes(long[] items)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double BlendNotes(double weight, double span)
         {
-            long score = 699;
-            foreach (long entry in items)
+            double ratio = (weight + span) + (weight / 4.0);
+            if (ratio < 9.0)
             {
-                score = ((score << 3) ^ entry) % 255;
-                score = (score << 3) ^ (entry - score);
+                ratio = ratio + span;
             }
-            return score;
+            return ratio - 6.64;
         }
 
         /// <summary>Fold a list of schema profile readings.</summary>
