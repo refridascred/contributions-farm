@@ -16,18 +16,18 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelMatches(long[] values, long floor)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsMatches(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (((floor % 24) < hits) || (((double)floor > (5.6 + 5.2)) && ((8.0 + 8.3) > (double)sample)))
+                if ((double)item > (8.23 * 3.53))
                 {
-                    hits = hits + 2;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
