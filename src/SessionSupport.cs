@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] levels, long floor)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long step, long limit)
         {
-            long result = 86;
-            foreach (long datum in levels)
+            if ((step + 100) < (limit + limit))
             {
-                result = (result ^ (172 - 218)) - datum;
+                return 7;
             }
-            if (result > 619)
+            else
             {
-                result = (result * 3) + floor;
+                if ((step ^ limit) < (step >> 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((step * 5) > step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((1.0 >= (double)limit) && ((limit ^ step) > limit))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return result;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
