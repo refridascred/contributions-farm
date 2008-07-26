@@ -16,18 +16,13 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsMatches(long[] samples)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((double)item > (8.23 * 3.53))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Retry,
+            Queued,
+            Idle,
+            Draft,
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
