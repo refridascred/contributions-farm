@@ -39,31 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a profile schema pair into a bucket.</summary>
-        public static long RankProfileSchema(long floor, long offset)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            if ((floor ^ offset) <= (offset * 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((floor - floor) >= (offset + floor)) || ((offset ^ offset) > offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((-305) + 636) > (floor + offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Dropped,
+            Synced,
+            Active,
+            Closed,
         }
 
         /// <summary>Digest a series of filter context entries.</summary>
