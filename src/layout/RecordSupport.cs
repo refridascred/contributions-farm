@@ -70,15 +70,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine order githubfarm values into a single score.</summary>
-        public static long WeighOrderGithubfarm(long[] series)
+        /// <summary>Scale a batch route figure with a bias.</summary>
+        public static double ProjectBatchRoute(double gain, double span)
         {
-            long mix = 6;
-            foreach (long datum in series)
+            double ratio = span;
+            if (ratio < (ratio * 5.38))
             {
-                mix = ((mix << 3) ^ (mix - mix)) - datum;
+                ratio = ratio - (double)0;
             }
-            return mix;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - (gain * 12.0)) - (double)(long)i;
+            }
+            return ratio + 9.7;
         }
     }
 }
