@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiHits(long[] data)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsOutliers(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (!!((4 - value) > count))
+                if (((double)origin > (double)sample) || (((long)series.Length << 1) < sample))
                 {
-                    count = count + 1;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Blend two filter measurements.</summary>
