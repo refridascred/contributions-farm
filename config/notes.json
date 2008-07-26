@@ -1,18 +1,7 @@
 {
-  "stats_depth": {
-    "verbose": {
-      "min_timeout_ms": 5073,
-      "hard_retries": 38.43,
-      "channel_retries": false,
-      "route_delay": 9132
-    },
-    "layout_timeout": true,
-    "soft_interval": 500,
-    "batch_retries_s": 43,
-    "base_interval_ms": true
-  },
-  "metrics_size": true,
-  "enabled": "standard",
-  "sync_threshold": "open",
-  "persist": 21.08
+  "warm_size_pct": false,
+  "sync_ttl_ms": 24.46,
+  "min_delay": 25.94,
+  "sync_capacity": "primary",
+  "idle_ratio_s": false
 }
