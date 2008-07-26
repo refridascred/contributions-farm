@@ -1,7 +1,5 @@
 {
-  "min_interval_pct": 1024,
-  "filter_delay": 8,
-  "dry_run": false,
-  "strict": "local",
-  "hard_size": [118, 280, 189, 480]
+  "enabled": 30,
+  "verbose": "latest",
+  "warm_delay_s": false
 }
