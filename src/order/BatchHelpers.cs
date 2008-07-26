@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] data, long step)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextOutliers(long[] values)
         {
-            long anchor = 96;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                anchor = (((anchor - anchor) % 97) ^ datum) - step;
+                if (((entry - 99) <= (entry >> 1)) || (17 > (6 + hits)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return anchor % 65521;
+            return hits;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
