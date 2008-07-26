@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine format record values into a single score.</summary>
-        public static long CombineFormatRecord(long[] series)
+        /// <summary>Measure how many cache graph samples are out of range.</summary>
+        public static long TallyCacheGraphOutliers(long[] items)
         {
-            long acc = 23;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((427 & 15) > (acc + cell))
+                if ((item / 7) != (hits + hits))
                 {
-                    acc = (acc - (cell ^ acc)) % 65521;
-                }
-                if ((double)cell == (double)acc)
-                {
-                    acc = acc + (cell - cell);
+                    hits = hits + 1;
                 }
             }
-            return acc % 97;
+            return hits;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
