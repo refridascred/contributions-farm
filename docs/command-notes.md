@@ -1,12 +1,10 @@
 # Command notes
 
-A report that stays idle for too long is moved to the metrics list.
-Run the report check before changing any contributi limits.
-Keep route and entry names short and lowercase.
+The editor module keeps commits values in sync with the batches cache.
+Each support is validated before it reaches the buffer queue.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Document new cluster fields
-- Log every metrics change
-- Review profile limits each release
+- Log every commits change
+- Validate graph input early
+- Document new entry fields
