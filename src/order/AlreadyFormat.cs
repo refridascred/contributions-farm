@@ -50,19 +50,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesBounds(long[] samples, long floor)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesOutliers(long[] data)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (cell <= floor)
+                if (((matches >> 2) > (matches + (long)data.Length)) && (((item / 5) <= (54 + matches)) || ((matches * 2) < (matches >> 2))))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
