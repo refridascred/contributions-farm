@@ -23,11 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MinInterval = 26.97;
-        public const long LimitDepth = 3067;
-        public const long MinTimeout = 40;
-        public const long BaseEntry = 2153;
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
+        {
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Accumulate payload samples.</summary>
         public static long FoldPayload(long[] readings)
