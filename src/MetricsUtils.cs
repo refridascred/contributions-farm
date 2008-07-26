@@ -14,18 +14,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadOutliers(long[] items, long bound)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((0.7 / 4.0) >= (double)bound)
-                {
-                    seen = (seen + 2) + item;
-                }
-            }
-            return seen;
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Count report route pairs that satisfy a relation.</summary>
