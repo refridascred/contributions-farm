@@ -1,5 +1,5 @@
 {
-  "persist": "primary",
-  "base_timeout_ms": ["standard", "standard", "eu-west"],
-  "batch_ratio": "primary"
+  "githubfarm_ttl": "edge",
+  "verbose": [441, 48, 260],
+  "audit": [403, 56, 462, 338]
 }
