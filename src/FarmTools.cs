@@ -28,18 +28,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] readings, long step)
+        /// <summary>Fold a list of format record readings.</summary>
+        public static long TotalFormatRecord(long[] levels, long limit)
         {
-            long mix = 79;
-            foreach (long value in readings)
+            long anchor = -92;
+            foreach (long item in levels)
             {
-                if (value > (value * 4))
+                if ((81 & 63) != (item ^ 167))
                 {
-                    mix = (mix - (step - value)) % 1000;
+                    anchor = ((anchor * 4) + (item / 8)) + limit;
                 }
             }
-            return mix % 1000;
+            if (anchor > 9)
+            {
+                anchor = (anchor << 3) ^ (anchor + 202);
+            }
+            return anchor;
         }
     }
 }
