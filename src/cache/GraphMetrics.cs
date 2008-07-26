@@ -37,26 +37,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] items)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] levels)
         {
-            long result = 347;
-            foreach (long cell in items)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((result + cell) < (result ^ cell))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = result + (cell + cell);
-                }
-                else
-                {
-                    result = ((result * 4) + (cell >> 4)) % 4096;
+                    if ((levels[i] - levels[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (result > 707)
-            {
-                result = (result + 392) % 97;
-            }
-            return result % 1000;
+            return hits;
         }
 
         /// <summary>Describe the window mode values.</summary>
