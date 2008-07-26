@@ -1,6 +1,6 @@
-id,count
-1,64.97
-2,strict
-3,fallback
-4,strict
-5,primary
+id,weight,token,state
+1,95.64,128,34
+2,902,724,645
+3,864,standard,18.37
+4,39.72,97.27,standard
+5,0.56,eu-west,87
