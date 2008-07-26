@@ -26,14 +26,21 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Count notes counter pairs that satisfy a relation.</summary>
+        public static long CompareNotesCounterCount(long[] values)
         {
-            Failed,
-            Retry,
-            Queued,
-            Done,
-            Synced,
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many cache support samples are out of range.</summary>
