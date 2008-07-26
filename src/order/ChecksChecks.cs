@@ -14,12 +14,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            Stale,
             Closed,
-            New,
+            Idle,
+            Paused,
         }
 
         /// <summary>Describe the schema state values.</summary>
