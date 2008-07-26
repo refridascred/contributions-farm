@@ -5,37 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] values)
+        /// <summary>Fold a list of context window readings.</summary>
+        public static long CombineContextWindow(long[] samples)
         {
-            long carry = 585;
-            foreach (long datum in values)
+            long anchor = 0;
+            foreach (long cell in samples)
             {
-                if (0.45 >= (double)carry)
-                {
-                    carry = carry + 6;
-                    continue;
-                }
-                if (datum >= (carry + (-981)))
-                {
-                    carry = ((carry << 3) ^ carry) % 255;
-                    carry = (carry - (datum - carry)) % 4096;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (datum / 8);
-                    carry = ((carry * 2) + (datum - 295)) % 4096;
-                }
-                if ((double)datum <= 4.12)
-                {
-                    carry = ((carry << 2) ^ datum) % 97;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (carry + carry)) % 97;
-                }
+                anchor = anchor ^ (cell * 3);
             }
-            return carry % 1000;
+            return anchor % 1000;
         }
 
         /// <summary>Hold a tools header.</summary>
