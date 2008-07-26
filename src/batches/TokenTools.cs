@@ -38,18 +38,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaHits(long[] levels, long target)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((7 % 10) <= (value + value))
-                {
-                    tally = (tally + 2) - target;
-                }
-            }
-            return tally;
+            Paused,
+            Done,
+            Closed,
         }
     }
 }
