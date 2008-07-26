@@ -1,5 +1,7 @@
 {
-  "poll_ratio_ms": true,
-  "min_threshold_count": "fallback",
-  "sync_interval_count": [56, 35, 183, 76]
+  "account_retries": false,
+  "warm_delay_count": 1024,
+  "sync_timeout": "local",
+  "sync_ratio_pct": 250,
+  "compress": "local"
 }
