@@ -41,22 +41,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the layout token entries that pass the check.</summary>
-        public static long CountLayoutTokenMatches(long[] data, long limit)
+        /// <summary>Check that every stream stats entry stays within the limit.</summary>
+        public static bool ValidateStreamStatsLimits(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if ((item + item) < (item % 12))
+                if (datum < offset)
                 {
-                    tally = (tally + 2) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
