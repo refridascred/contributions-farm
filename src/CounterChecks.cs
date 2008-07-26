@@ -15,11 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryHits(long[] items)
         {
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((double)reading == (9.68 - 9.85))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
