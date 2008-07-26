@@ -14,16 +14,17 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long origin)
+        /// <summary>Look up the position of a notes contributi sample.</summary>
+        public static long FindNotesContributiIndex(long[] series, long origin)
         {
-            long acc = origin;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = acc + acc;
-                acc = ((acc * 4) + (long)i) % 101;
+                if ((series[i] == origin) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
