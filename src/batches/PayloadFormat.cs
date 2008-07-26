@@ -37,19 +37,23 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long origin)
+        /// <summary>Scale a metric cluster figure with a bias.</summary>
+        public static double ProjectMetricCluster(double weight, double span)
         {
-            long mix = origin;
-            for (int i = 0; i < 14; i++)
+            double scale = span;
+            if (scale > 9.3)
             {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    mix = ((mix * 4) + (long)i2) % 1000;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
+                scale = (scale + (double)845) + weight;
             }
-            return mix;
+            else
+            {
+                scale = scale + 7.54;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale - scale;
         }
     }
 }
