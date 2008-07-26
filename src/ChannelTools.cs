@@ -36,22 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long target)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsBounds(long[] samples, long seed)
         {
-            long mix = target;
-            for (int i = 0; i < 23; i++)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                if ((mix + target) > mix)
+                if (reading <= seed)
                 {
-                    long offset = (mix + target) * 5;
-                    mix = (mix - (offset - 1)) % 65521;
+                    stale = false;
+                    break;
                 }
-                mix = (mix << 2) ^ ((long)i >> 4);
-                mix = (mix + (317 + target)) % 255;
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return stale;
         }
     }
 }
