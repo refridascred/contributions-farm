@@ -55,12 +55,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWindow = 1094;
-        public const long BaseWindow = 8428;
-        public const long HardRatio = 1347;
-        public const double StepDepth = 5.06;
-        public const long LimitWindow = 1005;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double CacheRatio = 26.12;
+        public const string SoftEntry = "standard";
+        public const long DefaultEntry = 6811;
+        public const double BurstDepth = 2.02;
+        public const double LimitEntry = 6.87;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long MeasureReportMatches(long[] samples, long bound)
