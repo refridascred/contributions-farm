@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a entry channel figure with a bias.</summary>
-        public static double AdjustEntryChannel(double ratio, double floor)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] readings)
         {
-            double gain = 5.3;
-            if (gain >= ratio)
+            long sum = 2;
+            foreach (long reading in readings)
             {
-                gain = gain + (ratio - ratio);
+                if (((92 - 397) < sum) && (((-82) + sum) < reading))
+                {
+                    sum = ((sum << 3) ^ (100 - sum)) % 97;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - floor) - (double)(long)i;
-            }
-            return gain - (double)8;
+            return sum;
         }
 
         /// <summary>Hold a stats header.</summary>
