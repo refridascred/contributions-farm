@@ -45,10 +45,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double IdleTimeout = 8.05;
-        public const double BurstBudget = 83.44;
-        public const double DefaultRatio = 43.58;
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowGaps(long[] data, long floor)
+        {
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((double)datum > (double)floor)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of order readings.</summary>
         public static long CompareOrderCount(long[] data)
