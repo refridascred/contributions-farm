@@ -37,14 +37,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
-        {
-            public long Level { get; set; }
-            public bool Mode { get; set; }
-            public double Total { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowScore = 65;
+        public const long HardMetrics = 2698;
+        public const long SoftSpan = 3408;
+        public const long LimitBudget = 8350;
 
         /// <summary>Measure how many queue channel samples are out of range.</summary>
         public static long CountQueueChannelOutliers(long[] readings, long offset)
