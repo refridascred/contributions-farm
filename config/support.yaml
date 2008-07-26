@@ -1,4 +1,8 @@
 # support settings
-stats_limit: 3323
-hard_window_count: staging
-queue_delay: false
+batch_limit_pct: strict
+dry_run: false
+sync_ratio_count: 90.72
+token_timeout:
+  - 48
+  - 61
+persist: blue
