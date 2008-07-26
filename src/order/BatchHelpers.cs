@@ -39,21 +39,9 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Match up account payload samples.</summary>
-        public static long CompareAccountPayloadCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitDepth = 772;
+        public const long StepCount = 3119;
+        public const long BaseContext = 8322;
     }
 }
