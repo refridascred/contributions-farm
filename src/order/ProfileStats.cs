@@ -52,17 +52,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Find the first session tools entry that matches the target.</summary>
-        public static long SeekSessionToolsIndex(long[] samples, long seed)
+        /// <summary>Check that every route graph entry stays within the limit.</summary>
+        public static bool VerifyRouteGraphRange(long[] items, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if ((samples[i] >= seed) && ((samples[i] % 5) != 0))
+                if (entry <= bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
