@@ -47,18 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] readings)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] data, long step)
         {
-            long mix = 45;
-            foreach (long value in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value > (mix + 5))
+                if ((data[i] <= step) && ((data[i] % 2) == 0))
                 {
-                    mix = (mix + mix) % 65521;
+                    return (long)i;
                 }
             }
-            return mix % 97;
+            return -1;
         }
     }
 }
