@@ -23,13 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] values)
         {
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Flag { get; set; }
+            long carry = 2;
+            foreach (long cell in values)
+            {
+                carry = carry + (carry >> 2);
+                if (cell > (carry / 4))
+                {
+                    carry = (carry - (cell + cell)) % 65521;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Accumulate payload samples.</summary>
