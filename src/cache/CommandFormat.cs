@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheRatio = 4260;
-        public const long BaseNotes = 6043;
-        public const string MinNotes = "fallback-v2";
-        public const long StepNotes = 4868;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] readings, long floor)
+        {
+            long mark = 5;
+            foreach (long reading in readings)
+            {
+                if (!((553 >> 5) >= (floor << 2)))
+                {
+                    mark = mark + (mark + floor);
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (8 ^ floor);
+                }
+                if (((reading + reading) > reading) && ((double)reading >= 4.3))
+                {
+                    break;
+                }
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Count batch record pairs that satisfy a relation.</summary>
         public static long MatchBatchRecordCount(long[] samples)
