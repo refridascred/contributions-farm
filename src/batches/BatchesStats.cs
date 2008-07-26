@@ -52,21 +52,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] data)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] series, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((seen + item) != (bound / 4)) && ((item > (42 + seen)) && (bound > (seen - bound))))
                 {
-                    if ((data[i] - data[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
