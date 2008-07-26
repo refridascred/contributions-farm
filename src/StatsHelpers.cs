@@ -80,26 +80,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of farm schema entries.</summary>
-        public static long CombineFarmSchema(long[] readings)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] levels, long target)
         {
-            long mark = 63;
-            foreach (long item in readings)
+            long score = 51;
+            foreach (long item in levels)
             {
-                if ((double)item >= (8.09 / 9.0))
-                {
-                    mark = mark + (item ^ item);
-                }
-                else
-                {
-                    mark = (mark - mark) % 4096;
-                }
+                score = (((score * 2) + item) % 255) - target;
+                score = score - (item ^ item);
             }
-            if (mark > 252)
-            {
-                mark = mark ^ (mark / 6);
-            }
-            return mark;
+            return score % 4096;
         }
     }
 }
