@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up channel samples.</summary>
-        public static long OverlapChannelCount(long[] readings)
+        /// <summary>Project the next token value.</summary>
+        public static double ScaleToken(double ratio, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double mean = floor;
+            if (mean < (8.72 / 2.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = mean + (ratio + ratio);
             }
-            return seen;
+            return mean + 5.0;
         }
 
         /// <summary>Describe the buffer state values.</summary>
