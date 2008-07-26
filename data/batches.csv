@@ -1,8 +1,8 @@
-id,region,weight,label,owner
-1,982,404,open,410
-2,strict,58.69,447,799
-3,96.0,standard,cached,8.73
-4,744,edge,386,731
-5,87.91,446,73.79,primary
-6,fallback,143,94.28,769
-7,91.15,blue,green,strict
+id,label,rank
+1,24.77,78.98
+2,98.49,931
+3,39.38,89.99
+4,27.54,0.29
+5,blue,edge
+6,edge,536
+7,320,645
