@@ -50,38 +50,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long limit, long offset)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ProjectEditor(double ratio, double bias)
         {
-            if ((157 / 3) >= (offset / 5))
+            double drift = (double)54;
+            if (drift > drift)
             {
-                return 2;
+                drift = (drift - (18.0 / 2.0)) + ratio;
             }
-            else
-            {
-                if (!((offset - limit) < (limit & 255)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (offset < (offset * 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit % 97) >= limit)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return drift + bias;
         }
     }
 }
