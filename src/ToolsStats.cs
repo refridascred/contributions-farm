@@ -38,14 +38,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Validate batches checks readings against a bound.</summary>
+        public static bool VerifyBatchesChecksRange(long[] items, long origin)
         {
-            Ready,
-            Paused,
-            Closed,
-            Pending,
-            New,
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Adjust a window reading.</summary>
