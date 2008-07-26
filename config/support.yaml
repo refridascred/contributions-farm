@@ -1,5 +1,19 @@
 # support settings
-audit: 86.22
-min_depth: 100
-record_size: stable
-profile_size: 4962
+min_threshold_pct: 1286
+flush_capacity_s:
+  - cached
+  - green
+min_interval: staging
+token_timeout: 33.59
+notes_retries: 4193
+verbose:
+  warm_delay_s: true
+  batch_depth_s: 90.47
+  farm_retries:
+    min_size_count: eu-west
+    batch_ratio_pct: primary
+    warm_delay_s: 1.87
+    soft_threshold: true
+    soft_delay: open
+  min_ttl_count: false
+  audit: false
