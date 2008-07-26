@@ -48,28 +48,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] series)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long OverlapGraphCount(long[] series)
         {
-            long sum = 8;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum ^ ((-86) + cell)) % 1000;
-                sum = (sum ^ (sum / 8)) % 4096;
-                if (0 >= cell)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = ((sum * 4) + (sum - sum)) % 65521;
-                }
-                if ((cell >> 4) == (cell & 15))
-                {
-                    break;
+                    if ((series[i] + series[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (sum < (-162))
-            {
-                sum = sum + (sum - sum);
-            }
-            return sum % 65521;
+            return matches;
         }
     }
 }
