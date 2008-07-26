@@ -19,11 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepAccount = 5849;
-        public const long WindowRatio = 8014;
-        public const string BaseAccount = "standard-edge";
-        public const double StepDepth = 71.25;
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > seed) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long ClassifyEntry(long seed, long origin)
