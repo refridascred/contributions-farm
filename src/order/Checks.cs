@@ -19,15 +19,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long floor)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long state = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            public string Token { get; set; } = "";
+            public long Region { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
