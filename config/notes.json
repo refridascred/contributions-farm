@@ -1,7 +1,5 @@
 {
-  "warm_size_pct": false,
-  "sync_ttl_ms": 24.46,
-  "min_delay": 25.94,
-  "sync_capacity": "primary",
-  "idle_ratio_s": false
+  "buffer_capacity": "legacy",
+  "default_ttl": 60.74,
+  "idle_ratio_pct": 63.63
 }
