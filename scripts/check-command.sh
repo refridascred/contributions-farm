@@ -17,7 +17,3 @@ while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in blue green cached staging; do
-    log "checking ${item}"
-done
