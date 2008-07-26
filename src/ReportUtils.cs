@@ -39,31 +39,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a githubfarm notes value against two limits.</summary>
-        public static long GradeGithubfarmNotes(long step, long bound)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] levels, long bound)
         {
-            if ((step << 3) <= (step + step))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound * 4) <= bound)
+                if (levels[i] <= bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((7.56 / 3.0) != (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
