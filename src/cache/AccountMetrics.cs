@@ -24,19 +24,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterRange(long[] levels, long origin)
+        /// <summary>Count the queue contributi entries that pass the check.</summary>
+        public static long AuditQueueContributiGaps(long[] levels, long bound)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (value > origin)
+                if ((bound ^ entry) < (seen + bound))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Validate batches already readings against a bound.</summary>
