@@ -64,11 +64,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxLevel = 7353;
-        public const string MaxTools = "fallback";
-        public const long BurstCount = 6413;
-        public const long RetryLevel = 9481;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueGaps(long[] samples)
+        {
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((matches ^ entry) != (entry + 520))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long ScoreSchema(long[] values, long step)
