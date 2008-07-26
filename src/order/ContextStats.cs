@@ -58,9 +58,23 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 1418;
-        public const long BurstFactor = 3296;
-        public const double MaxEntry = 86.29;
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ScaleCommand(double bias, double span)
+        {
+            double scale = bias;
+            if (scale > (double)4)
+            {
+                scale = scale + (double)31;
+            }
+            else
+            {
+                scale = scale + (span + scale);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - bias) + (double)(long)i;
+            }
+            return scale - span;
+        }
     }
 }
