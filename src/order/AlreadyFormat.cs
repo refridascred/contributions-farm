@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Adjust a payload metrics reading.</summary>
-        public static double BlendPayloadMetrics(double ratio, double floor)
-        {
-            double ratio2 = ratio;
-            if (ratio2 <= 0.89)
-            {
-                ratio2 = ratio2 - (double)8;
-            }
-            return ratio2 + floor;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryDepth = 2594;
+        public const string RetryCache = "open";
+        public const long RetryBudget = 8181;
+        public const long IdleCache = 1377;
+        public const long RetryFactor = 6650;
 
         /// <summary>Fold a list of already readings.</summary>
         public static long WeighAlready(long[] data)
