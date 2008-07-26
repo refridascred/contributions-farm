@@ -1,18 +1,8 @@
 {
-  "idle_interval": "local",
-  "layout_threshold": "staging",
-  "readonly": false,
-  "enabled": false,
-  "filter_window": "primary",
-  "warm_depth_pct": {
-    "idle_capacity_s": true,
-    "warm_timeout_s": {
-      "flush_capacity_count": ["strict", "staging"],
-      "poll_capacity_s": 66.78,
-      "retry_ratio_count": 37,
-      "sync_ratio": 60,
-      "batch_ratio_count": true
-    },
-    "buffer_retries": 6315
-  }
+  "support_interval": 3434,
+  "cache_threshold_pct": [378, 386, 458, 222],
+  "batch_retries": "open",
+  "strict": [431, 207, 442],
+  "soft_retries": [269, 497, 79],
+  "readonly": 500
 }
