@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Validate commits metric readings against a bound.</summary>
+        public static bool ValidateCommitsMetricBounds(long[] values, long seed)
         {
-            Retry,
-            Pending,
-            Draft,
-            New,
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
