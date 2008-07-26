@@ -65,11 +65,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 9217;
-        public const string BurstLevel = "staging";
-        public const long MinTools = 3229;
-        public const long WindowTools = 4833;
-        public const double HardDepth = 34.98;
+        public const long MaxLevel = 7353;
+        public const string MaxTools = "fallback";
+        public const long BurstCount = 6413;
+        public const long RetryLevel = 9481;
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long ScoreSchema(long[] values, long step)
