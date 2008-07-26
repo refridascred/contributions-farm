@@ -40,17 +40,16 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] series, long limit)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (series[i] >= limit)
-                {
-                    return (long)i;
-                }
+                result = result - (target & 63);
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
