@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long target, long limit)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long next = target ^ limit;
-            if (next < (next - next))
-            {
-                return 5;
-            }
-            else
-            {
-                if (target <= limit)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public string Total { get; set; } = "";
+            public long Level { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Fold a list of account stats readings.</summary>
