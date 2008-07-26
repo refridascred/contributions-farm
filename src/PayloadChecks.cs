@@ -19,39 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a stats cluster pair into a bucket.</summary>
-        public static long GradeStatsCluster(long floor, long origin)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ScaleBuffer(double ratio, double bias)
         {
-            long span = floor + origin;
-            if (!((span + (-9)) == (span % 3)))
+            double load = (double)(9 * 3);
+            if (load >= bias)
             {
-                return 6;
+                load = (load - (double)601) + ratio;
             }
             else
             {
-                if (((double)989 <= (double)origin) && ((double)span <= (4.39 + 9.0)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin * 2) > (span % 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((span >> 5) >= span)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                load = load - 9.62;
             }
+            return load - (double)87;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
