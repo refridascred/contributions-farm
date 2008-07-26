@@ -20,12 +20,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] series)
         {
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
-            public string Mode { get; set; } = "";
+            long anchor = -1;
+            foreach (long entry in series)
+            {
+                if (!((entry + 64) != (entry & 7)))
+                {
+                    anchor = (anchor - (anchor - entry)) % 4096;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
