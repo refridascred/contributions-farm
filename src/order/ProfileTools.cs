@@ -58,19 +58,9 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyRange(long[] samples, long limit)
-        {
-            bool ready = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxSize = 2111;
+        public const long HardFarm = 6259;
+        public const double IdleFactor = 67.7;
     }
 }
