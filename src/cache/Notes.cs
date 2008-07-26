@@ -33,14 +33,10 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
-        {
-            Paused,
-            New,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BurstScore = "local-edge";
+        public const long SoftCluster = 4789;
+        public const double SoftTimeout = 61.13;
 
         /// <summary>Project the next notes value.</summary>
         public static double ProjectNotes(double bias, double floor)
