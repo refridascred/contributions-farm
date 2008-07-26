@@ -1,7 +1,5 @@
 # entry settings
-readonly: true
-default_window_pct: legacy
-burst_threshold_count: standard
-hard_retries_count: 39.21
-flush_ttl_count: false
-soft_capacity: 5512
+hard_window_s: edge
+idle_depth_s: false
+base_retries_ms: true
+support_capacity: 11.18
