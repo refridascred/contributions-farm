@@ -1,8 +1,6 @@
 {
-  "cluster_delay": 15,
-  "burst_delay_count": "cached",
-  "hard_capacity_pct": 55,
-  "filter_limit": 3287,
-  "strict": "cached",
-  "default_capacity": true
+  "stream_capacity": [401, 30, 445, 337],
+  "enabled": "open",
+  "context_depth": ["fallback", "eu-west"],
+  "idle_threshold_pct": "edge"
 }
