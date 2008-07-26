@@ -22,19 +22,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next token report value from a seed.</summary>
-        public static long IterateTokenReport(long bound)
+        /// <summary>Classify a profile schema pair into a bucket.</summary>
+        public static long RankProfileSchema(long floor, long offset)
         {
-            long carry = bound;
-            for (int i = 0; i < 22; i++)
+            if ((floor ^ offset) <= (offset * 3))
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    carry = ((carry ^ ((long)i + bound)) % 1000) ^ (long)i2;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if (((floor - floor) >= (offset + floor)) || ((offset ^ offset) > offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((-305) + 636) > (floor + offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of filter context entries.</summary>
