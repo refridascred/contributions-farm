@@ -19,19 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ScaleBuffer(double ratio, double bias)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long seed)
         {
-            double load = (double)(9 * 3);
-            if (load >= bias)
+            long score = seed;
+            for (int i = 0; i < 9; i++)
             {
-                load = (load - (double)601) + ratio;
+                score = ((score * 2) + (long)i) % 97;
             }
-            else
-            {
-                load = load - 9.62;
-            }
-            return load - (double)87;
+            return score;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
