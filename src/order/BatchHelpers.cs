@@ -23,19 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportBounds(long[] samples, long floor)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] items, long step)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading >= floor)
+                if (items[i] > step)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
