@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsLimits(long[] items, long floor)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
