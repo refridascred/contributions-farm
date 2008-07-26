@@ -61,17 +61,38 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Find the first counter entry entry that matches the target.</summary>
-        public static long LookupCounterEntryIndex(long[] data, long limit)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long limit, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (((9.8 - 7.4) != (double)target) && ((6.6 - 15.0) == (double)target))
             {
-                if (data[i] == limit)
+                return 0;
+            }
+            else
+            {
+                if (997 >= target)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (!(limit >= (target >> 1)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (27 > (limit / 9))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
