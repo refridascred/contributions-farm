@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] data, long limit)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] series)
         {
-            long result = 1;
-            foreach (long entry in data)
+            long sum = 73;
+            foreach (long value in series)
             {
-                if (limit <= (limit << 3))
-                {
-                    result = ((result << 3) ^ (result - entry)) % 65521;
-                    continue;
-                }
-                else
-                {
-                    result = ((result * 3) + entry) % 65521;
-                }
-                result = result - (limit + limit);
-                result = (result + (result ^ limit)) % 1000;
+                sum = (sum - (sum + sum)) ^ value;
             }
-            return result % 97;
+            return sum % 65521;
         }
 
         /// <summary>Accumulate profile samples.</summary>
