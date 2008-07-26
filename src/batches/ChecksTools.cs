@@ -41,12 +41,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long seed)
         {
-            public double Count { get; set; }
-            public bool Score { get; set; }
-            public string Size { get; set; } = "";
+            long acc = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    acc = (acc ^ seed) + (long)i2;
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
