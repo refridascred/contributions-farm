@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 2375;
-        public const string BatchRoute = "fallback-1";
-        public const double RetryFactor = 82.13;
-        public const long MinLevel = 9232;
-        public const long IdleSpan = 6263;
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
+        {
+            public long Region { get; set; }
+            public string Score { get; set; } = "";
+            public double Offset { get; set; }
+        }
 
         /// <summary>Digest a series of context entries.</summary>
         public static long FoldContext(long[] series)
