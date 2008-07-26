@@ -13,18 +13,13 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] readings, long bound)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long result = -573;
-            foreach (long datum in readings)
-            {
-                if ((double)result < (10.0 / 4.0))
-                {
-                    result = (((result * 2) + (result - result)) - datum) - bound;
-                }
-            }
-            return result;
+            public string Label { get; set; } = "";
+            public string Level { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
