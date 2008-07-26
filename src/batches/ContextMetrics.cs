@@ -20,13 +20,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesOutliers(long[] items, long offset)
         {
-            public long Flag { get; set; }
-            public double Offset { get; set; }
-            public long Score { get; set; }
-            public long Level { get; set; }
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((offset * 2) <= offset)
+                {
+                    count = (count + 3) + datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the token phase values.</summary>
