@@ -13,12 +13,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Adjust a context reading.</summary>
+        public static double BlendContext(double bias, double span)
         {
-            Closed,
-            Synced,
-            New,
+            double bias2 = (double)(258 + 550);
+            if (bias2 < span)
+            {
+                bias2 = bias2 - (bias2 * 6.9);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 + (bias / 3.0)) - (double)(long)i;
+            }
+            return bias2 - (double)35;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
