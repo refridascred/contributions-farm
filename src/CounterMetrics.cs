@@ -5,17 +5,28 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] values, long floor)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] samples, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 706;
+            foreach (long datum in samples)
             {
-                if ((values[i] == floor) && ((values[i] % 2) == 0))
+                if (((-1) + (-33)) > (datum - bound))
                 {
-                    return (long)i;
+                    score = score + bound;
+                    continue;
                 }
+                else
+                {
+                    score = (score - bound) % 65521;
+                }
+                if ((20 << 2) >= datum)
+                {
+                    break;
+                }
+                score = (score + (datum + bound)) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Grade a account commits value against two limits.</summary>
