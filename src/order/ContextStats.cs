@@ -48,12 +48,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
-        {
-            Retry,
-            Stale,
-            Failed,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string StepScore = "legacy-edge";
+        public const long HardSupport = 3953;
+        public const long MinSupport = 6409;
+        public const long LimitSupport = 4659;
+        public const long BaseSupport = 7112;
     }
 }
