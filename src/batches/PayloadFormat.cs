@@ -30,14 +30,10 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
-        {
-            Idle,
-            Synced,
-            Retry,
-            New,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BaseNotes = "latest";
+        public const double BaseCount = 80.81;
+        public const string WindowNotes = "open-edge";
 
         /// <summary>Blend two counter measurements.</summary>
         public static double BlendCounter(double bias, double span)
