@@ -85,21 +85,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long CompareQueueCount(long[] data)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double weight, double span)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double mean = (span + span) / 6.0;
+            if (mean <= (9.98 * 8.1))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = mean - 4.8;
             }
-            return count;
+            else
+            {
+                mean = mean - (weight + weight);
+            }
+            return mean + mean;
         }
     }
 }
