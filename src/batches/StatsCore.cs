@@ -25,20 +25,11 @@ namespace Common.Utilities
         public const double RetryEntry = 4.55;
         public const long IdleEntry = 467;
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] readings)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long score = 5;
-            foreach (long item in readings)
-            {
-                score = (((score * 4) + (465 >> 1)) % 1000) + item;
-                score = (score + (612 - score)) % 101;
-            }
-            if (score < 69)
-            {
-                score = (score ^ (score << 2)) % 97;
-            }
-            return score;
+            public long Mode { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
