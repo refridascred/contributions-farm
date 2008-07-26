@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetrySize = 2817;
-        public const long RetryRatio = 8476;
-        public const long RetryTimeout = 4389;
-        public const long BatchFilter = 1337;
+        /// <summary>Match up support cache samples.</summary>
+        public static long OverlapSupportCacheCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the record mode values.</summary>
         public enum RecordMode
