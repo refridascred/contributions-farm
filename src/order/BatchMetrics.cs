@@ -25,22 +25,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] values)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] data, long origin)
         {
-            long total = 415;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(item >= (total - item)))
+                if (data[i] <= origin)
                 {
-                    total = ((total << 2) ^ (item >> 1)) % 1000;
-                }
-                else
-                {
-                    total = (total << 2) ^ (item - item);
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
