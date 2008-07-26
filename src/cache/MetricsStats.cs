@@ -64,19 +64,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteBounds(long[] items, long limit)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphOutliers(long[] readings, long step)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (sample >= limit)
+                if ((((0 / 2) > (count & 63)) || ((step << 3) <= (step ^ sample))) && ((4.58 * 3.57) >= (double)sample))
                 {
-                    ok = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
