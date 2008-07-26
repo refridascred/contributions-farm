@@ -22,23 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double AdjustLayout(double rate, double bias)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricGaps(long[] levels, long step)
         {
-            double drift = bias;
-            if (drift < drift)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                drift = drift - rate;
+                if ((double)step > (7.4 * 8.2))
+                {
+                    matches = (matches + 1) ^ cell;
+                }
             }
-            else
-            {
-                drift = drift - (rate + 7.09);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (rate / 4.0)) + (double)(long)i;
-            }
-            return drift - 3.9;
+            return matches;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
