@@ -34,12 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BatchMetric = 82.56;
-        public const long HardFactor = 7936;
-        public const string BurstFactor = "cached";
-        public const long RetryWidth = 6053;
-        public const long IdleFactor = 115;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MinChannel = 39.08;
+        public const string CacheChannel = "local";
+        public const string SoftDepth = "fallback-v2";
+        public const long RetryChannel = 3658;
+        public const long MinWidth = 9273;
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
