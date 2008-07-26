@@ -1,16 +1,10 @@
 # githubfarm settings
-idle_depth_s:
-  retry_ratio: 32.29
-  idle_capacity_pct: true
-  strict: 7218
-  session_interval: false
-  checks_capacity: 1024
-  audit: 250
-min_delay_s: 60
-compress: 7219
-soft_limit_s:
-  - eu-west
-  - latest
-  - strict
-  - legacy
-idle_interval: false
+base_retries:
+  - 411
+  - 361
+hard_retries_ms: 79
+profile_retries:
+  - 331
+  - 154
+idle_depth: staging
+compress: open
