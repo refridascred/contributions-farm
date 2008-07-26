@@ -32,24 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long seed, long origin)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] data)
         {
-            if ((origin - seed) == (seed + seed))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((3.71 - 8.5) <= (double)origin) || ((origin - seed) <= origin))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    if ((data[i] ^ data[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
     }
 }
