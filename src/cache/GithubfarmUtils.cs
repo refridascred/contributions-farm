@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const long MaxQueue = 9878;
         public const long WindowWidth = 1741;
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
-        {
-            New,
-            Stale,
-            Closed,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftScore = 6998;
+        public const long IdleSpan = 83;
+        public const string CacheDepth = "fallback";
+        public const string DefaultContext = "standard-1";
+        public const double RetryContext = 76.73;
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long TallyQueueGaps(long[] readings, long limit)
