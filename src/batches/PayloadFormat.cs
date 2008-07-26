@@ -24,20 +24,13 @@ namespace Common.Utilities
             return drift + (double)9;
         }
 
-        /// <summary>Accumulate stats batch samples.</summary>
-        public static long TallyStatsBatch(long[] levels, long limit)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long anchor = 7;
-            foreach (long value in levels)
-            {
-                anchor = (anchor ^ ((long)levels.Length - anchor)) % 65521;
-                anchor = anchor + limit;
-                if ((anchor & 1) > anchor)
-                {
-                    anchor = (anchor + (value >> 1)) % 255;
-                }
-            }
-            return anchor % 1000;
+            Active,
+            Locked,
+            Pending,
+            Idle,
         }
 
         /// <summary>Digest a series of schema entries.</summary>
