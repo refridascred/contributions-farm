@@ -33,19 +33,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next metrics editor value.</summary>
-        public static double ScaleMetricsEditor(double weight, double bias)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long target, long floor)
         {
-            double bias2 = (weight / 9.0) / 6.0;
-            if (bias2 > bias)
+            if (!((double)floor < 8.8))
             {
-                bias2 = bias2 + weight;
+                return 0;
             }
             else
             {
-                bias2 = bias2 - bias;
+                if (!((double)floor <= (7.0 + 3.9)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return bias2 - (3.2 / 8.0);
         }
     }
 }
