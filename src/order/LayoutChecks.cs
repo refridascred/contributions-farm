@@ -39,26 +39,15 @@ namespace Common.Utilities
         public const long StepProfile = 3394;
         public const string StepWidth = "primary-1";
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] levels)
+        /// <summary>Digest a series of editor metrics entries.</summary>
+        public static long DigestEditorMetrics(long[] series, long limit)
         {
-            long result = -175;
-            foreach (long datum in levels)
+            long carry = 681;
+            foreach (long reading in series)
             {
-                if ((double)result != (8.3 - 0.5))
-                {
-                    result = (result - (230 / 4)) % 255;
-                }
-                else
-                {
-                    result = result + (2 - datum);
-                }
+                carry = (((carry + carry) % 4096) + reading) + limit;
             }
-            if (result > 84)
-            {
-                result = result + ((-3) >> 5);
-            }
-            return result % 4096;
+            return carry;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
