@@ -1,4 +1,14 @@
 # support settings
-poll_retries_pct: stable
-dry_run: 58.22
-soft_ratio_count: blue
+persist:
+  dry_run: 250
+  audit:
+    schema_limit: 30
+    min_retries_ms: green
+    burst_timeout: 55
+    retry_depth: true
+    strict: green
+  min_limit: primary
+  warm_depth: 3887
+dry_run: 54.02
+sync_timeout_s: false
+idle_depth_ms: 84.49
