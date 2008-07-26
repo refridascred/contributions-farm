@@ -66,12 +66,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferGaps(long[] readings)
         {
-            public bool Offset { get; set; }
-            public long Owner { get; set; }
-            public string Count { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum + datum) <= ((long)readings.Length - hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
