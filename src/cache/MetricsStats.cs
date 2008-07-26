@@ -33,12 +33,21 @@ namespace Common.Utilities
         public const long CacheSpan = 8264;
         public const long WindowContext = 1301;
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Match up session format samples.</summary>
+        public static long MatchSessionFormatCount(long[] values)
         {
-            public double Token { get; set; }
-            public bool Flag { get; set; }
-            public long Owner { get; set; }
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit account session readings against a rule.</summary>
