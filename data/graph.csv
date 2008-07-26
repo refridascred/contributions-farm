@@ -1,6 +1,8 @@
-id,owner,weight,score
-1,84.61,961,204
-2,745,978,fallback
-3,40.31,88.13,edge
-4,15.85,959,53.94
-5,standard,97,526
+id,state,token,region,ratio
+1,stable,50.56,848,eu-west
+2,local,legacy,297,207
+3,472,local,11.97,green
+4,20.64,staging,open,17.92
+5,open,legacy,edge,285
+6,strict,797,872,786
+7,564,42.34,98.84,75
