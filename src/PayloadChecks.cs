@@ -48,14 +48,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Classify a schema contributi pair into a bucket.</summary>
+        public static long GradeSchemaContributi(long target, long seed)
         {
-            New,
-            Dropped,
-            Queued,
-            Failed,
-            Paused,
+            long bound = target + seed;
+            if (seed >= (893 + bound))
+            {
+                return 8;
+            }
+            else
+            {
+                if (target > seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (seed < (bound >> 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
