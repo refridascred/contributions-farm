@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] data, long origin)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long target, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((double)floor < (20.0 + 9.0))
             {
-                if ((data[i] < origin) && ((data[i] % 3) == 0))
+                return 8;
+            }
+            else
+            {
+                if (!((floor + target) < (target << 2)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)floor <= (3.8 * 9.6)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((3 + floor) > (target + floor)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
