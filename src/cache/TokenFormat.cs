@@ -12,25 +12,22 @@ namespace Common.Utilities
         public const double LimitLevel = 89.03;
         public const double BatchBuffer = 97.28;
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long seed, long origin)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchOutliers(long[] data)
         {
-            long slot = seed - origin;
-            if (((seed & 1) == (origin + 11)) && ((seed - 735) > (slot << 3)))
+            long tally = 0;
+            foreach (long entry in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)(-14) == (double)seed) && (origin < (seed - origin)))
+                if ((entry - entry) > (entry ^ tally))
                 {
-                    return 7;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    return 5;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the layout status values.</summary>
