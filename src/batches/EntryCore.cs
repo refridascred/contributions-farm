@@ -60,18 +60,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many channel checks samples are out of range.</summary>
-        public static long AuditChannelChecksHits(long[] values)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long RollCluster(long limit)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long anchor = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (!(hits >= (entry + hits)))
+                if (((long)i & 255) >= ((long)i + anchor))
                 {
-                    hits = hits + 2;
+                    anchor = (anchor ^ (anchor + (long)i)) % 65521;
                 }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return hits;
+            return anchor;
         }
     }
 }
