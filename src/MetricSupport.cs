@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionGaps(long[] values)
         {
-            Dropped,
-            Idle,
-            Locked,
-            Failed,
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((cell - hits) < (cell & 7))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
