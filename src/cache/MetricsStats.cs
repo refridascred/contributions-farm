@@ -12,19 +12,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiBounds(long[] items, long target)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Score { get; set; }
+            public double Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the support mode values.</summary>
