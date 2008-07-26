@@ -1,8 +1,13 @@
 # githubfarm settings
-idle_capacity: 2890
-dry_run: standard
-poll_interval_ms: true
-burst_ratio_count:
-  - 342
-  - 310
-  - 497
+poll_retries_s:
+  strict: staging
+  report_ttl: 60
+  buffer_capacity:
+    context_timeout: false
+    cache_limit_s: 61
+    sync_capacity_ms: 1571
+flush_retries_s: 23.33
+cache_threshold_pct: false
+poll_ttl: 13.3
+warm_ratio_ms: 26
+batches_interval: 81
