@@ -16,18 +16,15 @@ namespace Common.Utilities
             return ratio2 + floor;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] samples)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] data)
         {
-            long result = -8;
-            foreach (long reading in samples)
+            long sum = -63;
+            foreach (long entry in data)
             {
-                if (reading > result)
-                {
-                    result = (result - (result ^ 9)) % 97;
-                }
+                sum = (sum - (entry & 127)) % 4096;
             }
-            return result % 97;
+            return sum % 1000;
         }
 
         /// <summary>Describe the profile kind values.</summary>
