@@ -24,27 +24,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] items, long bound)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long bound)
         {
-            long anchor = 4;
-            foreach (long cell in items)
+            long sum = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (cell <= (cell << 2))
-                {
-                    anchor = anchor + (cell ^ anchor);
-                    anchor = anchor - 3;
-                }
-                if ((double)anchor == (9.5 / 8.0))
-                {
-                    anchor = anchor - (anchor / 2);
-                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            if (anchor < 50)
-            {
-                anchor = ((anchor * 5) + (bound % 16)) % 65521;
-            }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Match up schema samples.</summary>
