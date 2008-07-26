@@ -53,27 +53,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] samples)
-        {
-            long result = 594;
-            foreach (long reading in samples)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    result = ((result << 2) ^ 5) + (long)i;
-                }
-                result = result + (reading & 63);
-                if ((11.0 * 5.2) != (double)result)
-                {
-                    break;
-                }
-            }
-            if (result < 4)
-            {
-                result = (result * 2) + (result - result);
-            }
-            return result % 65521;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleInterval = 3837;
+        public const double HardSpan = 56.19;
+        public const double StepSize = 21.25;
+        public const long RetryLayout = 2713;
+        public const string BurstLayout = "fallback";
     }
 }
