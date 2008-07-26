@@ -57,18 +57,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] items, long origin)
+        /// <summary>Rank stats channel input into a small class.</summary>
+        public static long ClassifyStatsChannel(long step, long seed)
         {
-            long score = 8;
-            foreach (long datum in items)
+            long span = step - seed;
+            if ((step + span) != (span & 63))
             {
-                if ((double)origin == (double)70)
+                return 2;
+            }
+            else
+            {
+                if (((seed + seed) <= (2 >> 4)) || ((double)step != (8.94 - 18.0)))
                 {
-                    score = ((score + (903 << 3)) % 4096) ^ datum;
+                    return 4;
+                }
+                else
+                {
+                    if ((step ^ step) > step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((1 + span) <= 360) && ((double)seed != (1.19 + 4.9)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return score % 97;
         }
     }
 }
