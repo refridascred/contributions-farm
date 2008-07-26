@@ -1,4 +1,22 @@
 # support settings
-schema_capacity: 15.32
-base_retries_count: local
-sync_window_count: 30
+hard_ttl_pct: 46.23
+batch_limit:
+  - local
+  - green
+  - legacy
+compress:
+  base_limit: 2
+  compress:
+    - stable
+    - fallback
+    - fallback
+  cache_delay_count: 95
+  burst_limit_pct: local
+  poll_interval_pct: 500
+  retry_interval_pct: 44.3
+profile_ttl: fallback
+cache_retries_s:
+  - blue
+  - stable
+  - standard
+flush_capacity_ms: 65.36
