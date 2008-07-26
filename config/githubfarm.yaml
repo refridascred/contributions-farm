@@ -1,29 +1,14 @@
 # githubfarm settings
-idle_size_s:
-  stats_depth: true
-  account_interval:
-    hard_window_pct: 8445
-    base_interval_ms:
-      - 217
-      - 269
-      - 157
-    persist: 30
-    entry_retries: 8838
-    max_retries: false
-    warm_threshold: green
-  channel_capacity:
-    editor_timeout: false
-    base_retries: latest
-    persist:
-      - stable
-      - eu-west
-      - local
-    enabled: 37
-    default_capacity_s:
-      - 266
-      - 90
-    burst_delay_pct: 2.55
-dry_run: 4711
-verbose: primary
-strict: 100
-warm_delay_count: legacy
+soft_ratio_count: strict
+retry_threshold_pct:
+  - 260
+  - 177
+  - 466
+  - 85
+default_window_s: 28.9
+token_ttl:
+  verbose: 4172
+  compress: 76
+  window_capacity: false
+batch_retries_count: 76
+flush_retries_pct: 31
