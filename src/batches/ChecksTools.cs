@@ -32,17 +32,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] data, long offset)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a entry header.</summary>
