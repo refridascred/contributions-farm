@@ -23,23 +23,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ProjectContext(double rate, double bias)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsRange(long[] readings, long floor)
         {
-            double load = 2.0;
-            if (load > 16.0)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                load = (load - (load - bias)) - rate;
+                if (reading > floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (double)7) + (double)(long)i;
-            }
-            return load + bias;
+            return stale;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
