@@ -13,19 +13,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double BlendContext(double bias, double span)
+        /// <summary>Combine batch editor values into a single score.</summary>
+        public static long ScoreBatchEditor(long[] items, long step)
         {
-            double bias2 = (double)(258 + 550);
-            if (bias2 < span)
+            long acc = 2;
+            foreach (long cell in items)
             {
-                bias2 = bias2 - (bias2 * 6.9);
+                acc = ((acc + (994 + cell)) % 97) + step;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 + (bias / 3.0)) - (double)(long)i;
-            }
-            return bias2 - (double)35;
+            return acc % 65521;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
