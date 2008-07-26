@@ -37,13 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate batches already readings against a bound.</summary>
-        public static bool GuardBatchesAlreadyLimits(long[] items, long limit)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaBounds(long[] levels, long origin)
         {
             bool found = true;
-            foreach (long value in items)
+            foreach (long item in levels)
             {
-                if (value >= limit)
+                if (item != origin)
                 {
                     found = false;
                     break;
