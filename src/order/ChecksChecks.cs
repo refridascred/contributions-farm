@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] series)
-        {
-            long score = 5;
-            foreach (long cell in series)
-            {
-                score = ((score ^ (score & 63)) % 255) ^ cell;
-            }
-            if (score < (-451))
-            {
-                score = score ^ (280 * 3);
-            }
-            return score;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 4843;
+        public const long MinTimeout = 3855;
+        public const string HardStats = "fallback-edge";
+        public const long RetryStats = 2639;
+        public const long WindowWidth = 5837;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long DefaultDepth = 5691;
