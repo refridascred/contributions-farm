@@ -1,14 +1,6 @@
 {
-  "compress": [494, 154],
-  "batch_delay": 87.04,
-  "stream_interval": "stable",
-  "min_ratio": {
-    "audit": 30,
-    "sync_ttl": 1597,
-    "burst_limit_pct": ["cached", "eu-west"],
-    "max_size": 8065,
-    "graph_retries": 62.23
-  },
-  "poll_depth_pct": "primary",
-  "warm_depth": "local"
+  "flush_limit_s": "strict",
+  "warm_window_s": true,
+  "commits_ratio": [186, 365, 262],
+  "persist": false
 }
