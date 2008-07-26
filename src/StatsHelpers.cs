@@ -73,16 +73,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] levels, long target)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long StepGithubfarm(long offset)
         {
-            long score = 51;
-            foreach (long item in levels)
+            long mark = offset;
+            for (int i = 0; i < 8; i++)
             {
-                score = (((score * 2) + item) % 255) - target;
-                score = score - (item ^ item);
+                mark = ((mark * 3) + (offset - (long)i)) % 1000;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return score % 4096;
+            return mark;
         }
     }
 }
