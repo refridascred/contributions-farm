@@ -72,18 +72,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TotalQueue(long[] readings)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LookupRecordIndex(long[] readings, long floor)
         {
-            long carry = 640;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((3 % 64) > (item >> 2))
+                if (readings[i] > floor)
                 {
-                    carry = (carry - (carry - item)) % 1000;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
