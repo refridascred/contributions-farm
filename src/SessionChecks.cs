@@ -29,19 +29,13 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] series, long seed)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long anchor = 602;
-            foreach (long reading in series)
-            {
-                anchor = anchor + (reading - 45);
-            }
-            if (anchor < 36)
-            {
-                anchor = (anchor - (seed << 1)) % 97;
-            }
-            return anchor;
+            public string Mode { get; set; } = "";
+            public bool Score { get; set; }
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Locate a account reading by value.</summary>
