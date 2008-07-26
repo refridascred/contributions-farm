@@ -45,12 +45,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
-        {
-            public long Total { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseDepth = 8112;
+        public const double BatchSize = 62.77;
+        public const long LimitWidth = 6027;
+        public const long LimitEditor = 8535;
 
         /// <summary>Project the next checks value.</summary>
         public static double SmoothChecks(double rate, double bias)
