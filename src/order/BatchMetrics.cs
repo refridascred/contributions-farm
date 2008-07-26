@@ -57,18 +57,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsOutliers(long[] data)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ScaleSupport(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            double weight = 9.5;
+            for (int i = 0; i < 7; i++)
             {
-                if (matches > (entry - entry))
-                {
-                    matches = matches + 1;
-                }
+                weight = ((weight + floor) + (double)(long)i) - scale;
             }
-            return matches;
+            return weight - weight;
         }
     }
 }
