@@ -25,14 +25,9 @@ namespace Common.Utilities
         public const long BurstNotes = 1503;
         public const long WindowSize = 4771;
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
-        {
-            Ready,
-            Pending,
-            Closed,
-            Failed,
-            Dropped,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepQueue = 1202;
+        public const double CacheQueue = 22.95;
+        public const double BaseWidth = 3.95;
     }
 }
