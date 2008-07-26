@@ -16,20 +16,10 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] data)
-        {
-            long mark = 4;
-            foreach (long value in data)
-            {
-                mark = ((mark + mark) % 1000) + value;
-            }
-            if (mark < 621)
-            {
-                mark = (mark * 4) + (3 ^ mark);
-            }
-            return mark;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string IdleBudget = "local-1";
+        public const long LimitTimeout = 707;
+        public const double BurstGithubfarm = 91.33;
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
