@@ -12,20 +12,32 @@ namespace Common.Utilities
         public const long MinLevel = 9232;
         public const long IdleSpan = 6263;
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] readings, long seed)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long step, long limit)
         {
-            long state = 76;
-            foreach (long sample in readings)
+            long next = step ^ limit;
+            if ((limit & 31) == (next / 4))
             {
-                state = (state * 3) + (state ^ sample);
-                state = (state + (seed + sample)) % 1000;
-                if (sample > seed)
+                return 8;
+            }
+            else
+            {
+                if ((next >> 2) >= (next & 127))
                 {
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)step >= (14.0 + 5.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Fold a list of order readings.</summary>
