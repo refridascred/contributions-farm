@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitRatio = 5207;
-        public const double RetryRecord = 95.98;
-        public const long CacheRecord = 9693;
-        public const double WindowRecord = 61.84;
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
+        {
+            public double Region { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Hold a command snapshot.</summary>
         public sealed class CommandSnapshot
