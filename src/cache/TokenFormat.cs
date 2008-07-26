@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelGaps(long[] items)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long bound, long floor)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long edge = bound + floor;
+            if (((15.0 * 8.0) > (double)bound) && (floor < (floor - 981)))
             {
-                if ((item ^ hits) <= (hits - 77))
+                return 5;
+            }
+            else
+            {
+                if (floor >= (bound + (-90)))
                 {
-                    hits = hits + 1;
+                    return 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((bound + floor) > edge)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit support layout readings against a rule.</summary>
