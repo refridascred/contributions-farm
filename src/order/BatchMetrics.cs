@@ -28,18 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowHits(long[] series)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryHits(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (!((double)seen > (2.74 - 5.83)))
+                if ((bound >> 4) != (count + bound))
                 {
-                    seen = (seen + 1) ^ sample;
+                    count = (count + 2) + entry;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
