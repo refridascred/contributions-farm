@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportGaps(long[] levels, long seed)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (!((1.01 <= (double)seed) && ((count * 3) == (count - count))))
-                {
-                    count = (count + 1) + value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepScore = 8358;
+        public const long BurstRatio = 9337;
+        public const long LimitCount = 4324;
+        public const long MinDepth = 591;
 
         /// <summary>Describe the notes state values.</summary>
         public enum NotesState
