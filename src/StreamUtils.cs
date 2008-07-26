@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count commits graph pairs that satisfy a relation.</summary>
-        public static long MatchCommitsGraphCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryAlready = 7175;
+        public const string BurstWidth = "alpha-v2";
+        public const string BurstDepth = "legacy-1";
+        public const long CacheAlready = 6248;
+        public const long IdleAlready = 7999;
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long ClassifyMetrics(long limit, long target)
