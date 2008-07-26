@@ -25,19 +25,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double bias, double offset)
+        /// <summary>Roll a cluster layout counter forward.</summary>
+        public static long StepClusterLayout(long floor)
         {
-            double drift = (double)(12 + 7);
-            if (drift > drift)
+            long anchor = floor;
+            for (int i = 0; i < 23; i++)
             {
-                drift = (drift + (offset / 6.0)) - bias;
+                if ((14 * 2) >= (floor + (long)i))
+                {
+                    anchor = anchor - (anchor + anchor);
+                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - drift) - (double)(long)i;
-            }
-            return drift + drift;
+            return anchor;
         }
 
         /// <summary>Check that every metrics metric entry stays within the limit.</summary>
