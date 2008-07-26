@@ -10,13 +10,11 @@ namespace Common.Utilities
         public const double HardDepth = 56.88;
         public const string BurstSize = "local-v2";
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
-        {
-            Closed,
-            Idle,
-            Paused,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultDepth = 5691;
+        public const string CacheOrder = "alpha";
+        public const long StepCount = 4583;
+        public const double IdleOrder = 68.86;
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long BucketToken(long origin, long floor)
