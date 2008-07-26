@@ -26,22 +26,29 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long offset, long offset2)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long offset, long floor)
         {
-            if (!((double)offset2 > 4.0))
+            if (!(offset >= (floor ^ offset)))
             {
                 return 2;
             }
             else
             {
-                if ((3 ^ offset2) < offset2)
+                if ((2.3 - 7.0) > (double)offset)
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    return 7;
+                    if (((double)offset >= (double)floor) && ((27 - floor) >= (floor >> 4)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
         }
