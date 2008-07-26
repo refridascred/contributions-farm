@@ -34,12 +34,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
-        {
-            public long Size { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultCache = 5598;
+        public const long SoftCache = 5008;
+        public const long MinCache = 1845;
+        public const long StepScore = 1774;
+        public const double MaxSize = 56.47;
 
         /// <summary>Hold a route snapshot.</summary>
         public sealed class RouteSnapshot
