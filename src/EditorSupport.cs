@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many payload window samples are out of range.</summary>
-        public static long CountPayloadWindowMatches(long[] readings)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((6.0 / 5.0) <= (double)matches))
+                if ((series[i] >= offset) && ((series[i] % 3) == 0))
                 {
-                    matches = (matches + 2) - reading;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
