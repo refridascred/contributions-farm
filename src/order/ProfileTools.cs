@@ -5,30 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of githubfarm commits readings.</summary>
-        public static long FoldGithubfarmCommits(long[] items)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long total = 7;
-            foreach (long cell in items)
-            {
-                if ((5.9 / 6.0) >= 1.39)
-                {
-                    total = (total + (total ^ 10)) % 1000;
-                }
-                if ((321 - cell) != (total - cell))
-                {
-                    total = ((total << 2) ^ total) % 255;
-                }
-                if ((double)cell <= (16.0 - 5.0))
-                {
-                    total = (total * 3) + (cell << 3);
-                }
-                else
-                {
-                    total = total - (cell & 3);
-                }
-            }
-            return total % 65521;
+            Draft,
+            Active,
+            Ready,
+            Failed,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
