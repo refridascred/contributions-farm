@@ -35,17 +35,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first notes stats entry that matches the target.</summary>
-        public static long FindNotesStatsIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > offset) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double HardCount = 73.47;
+        public const double RetryLayout = 5.52;
+        public const double BatchLayout = 75.85;
+        public const long CacheWidth = 1856;
     }
 }
