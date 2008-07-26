@@ -1,7 +1,31 @@
 # payload settings
-farm_retries: 46.05
-layout_interval: 94
-retry_ttl_ms: 96.71
-base_timeout_count: 53.72
-support_threshold: 96.34
-strict: false
+compress:
+  idle_window_pct: 41
+  cache_capacity: 15.1
+  burst_size_pct:
+    warm_ratio_ms: cached
+    min_limit_s: latest
+    min_timeout: false
+    soft_ratio_count: 7109
+    flush_delay_pct: 30
+    hard_timeout: latest
+  dry_run: legacy
+  readonly: 22.8
+githubfarm_retries:
+  compress: false
+  poll_interval_pct: 59.37
+  cache_size_pct: local
+  max_window_ms:
+    enabled: fallback
+    min_depth_s: true
+    checks_size: true
+    soft_interval_s:
+      - 56
+      - 434
+      - 245
+      - 51
+    counter_limit: 61
+    warm_timeout_ms: staging
+  default_size_s: 100
+  burst_timeout_ms: 6673
+farm_interval: green
