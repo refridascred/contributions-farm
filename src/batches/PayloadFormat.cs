@@ -40,31 +40,17 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long floor, long seed)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] series, long limit)
         {
-            if (seed >= (seed << 2))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (floor < (floor + floor))
+                if (series[i] >= limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor % 12) < (floor << 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
