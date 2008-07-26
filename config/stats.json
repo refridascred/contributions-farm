@@ -1,6 +1,8 @@
 {
-  "min_window_count": "green",
-  "default_delay": 7537,
-  "checks_window": false,
-  "cache_threshold_pct": ["edge", "local", "open"]
+  "sync_depth_count": 7284,
+  "default_size_count": ["open", "primary", "strict", "stable"],
+  "cache_ttl_s": 500,
+  "soft_delay": "open",
+  "retry_ttl_pct": 4,
+  "idle_interval_count": "blue"
 }
