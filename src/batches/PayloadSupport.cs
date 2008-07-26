@@ -19,11 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long seed, long origin)
         {
-            public double Region { get; set; }
-            public string Stamp { get; set; } = "";
+            if ((double)seed == (8.4 / 8.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((seed << 1) > 625) || ((seed << 2) < ((-163) + 779)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
