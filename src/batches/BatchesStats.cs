@@ -35,18 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteHits(long[] values, long target)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((target * 4) <= (count - target))
-                {
-                    count = (count + 1) + cell;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public bool Mode { get; set; }
+            public double Total { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Measure how many queue channel samples are out of range.</summary>
