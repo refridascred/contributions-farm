@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorBounds(long[] readings, long limit)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsHits(long[] readings)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (datum > limit)
+                if ((double)cell >= (double)matches)
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
