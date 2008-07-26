@@ -36,13 +36,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
-        {
-            public string Level { get; set; } = "";
-            public double Total { get; set; }
-            public double Count { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBuffer = 5918;
+        public const long LimitCount = 7365;
+        public const double MinBuffer = 15.56;
+        public const long BatchSpan = 5021;
     }
 }
