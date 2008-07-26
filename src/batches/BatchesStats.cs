@@ -37,11 +37,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowScore = 65;
-        public const long HardMetrics = 2698;
-        public const long SoftSpan = 3408;
-        public const long LimitBudget = 8350;
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
+        {
+            public long Owner { get; set; }
+            public bool Label { get; set; }
+            public bool Flag { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
         public static long CompareFormatCount(long[] data)
