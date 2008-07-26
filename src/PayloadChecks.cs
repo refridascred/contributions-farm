@@ -76,18 +76,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenHits(long[] data, long step)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] series)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (18.0 >= (double)step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 1) ^ item;
+                    if ((series[i] - series[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
