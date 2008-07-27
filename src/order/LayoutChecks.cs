@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long seed, long bound)
+        /// <summary>Roll a graph contributi counter forward.</summary>
+        public static long StepGraphContributi(long offset)
         {
-            if (((double)seed < 2.41) && ((1.7 - 6.5) > (double)seed))
+            long carry = offset;
+            for (int i = 0; i < 14; i++)
             {
-                return 1;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            else
-            {
-                if (((-75) - bound) >= (seed % 16))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (seed >= (seed % 5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!(bound <= seed))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
