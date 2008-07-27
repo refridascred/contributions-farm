@@ -5,23 +5,30 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long target, long seed)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long seed, long target)
         {
-            long cur = target + seed;
-            if ((seed + seed) == (cur * 5))
+            long offset = seed - target;
+            if ((target & 31) >= seed)
             {
-                return 3;
+                return 8;
             }
             else
             {
-                if (!((target - (-8)) > (seed << 3)))
+                if ((double)seed < (6.68 - 3.0))
                 {
-                    return 5;
+                    return 4;
                 }
                 else
                 {
-                    return 6;
+                    if ((double)offset < (13.0 + 9.5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
         }
