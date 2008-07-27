@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long offset, long origin)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] levels)
         {
-            long lane = offset ^ origin;
-            if (((lane + offset) >= (offset ^ origin)) || ((offset - origin) <= (471 + lane)))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (0 <= (688 ^ lane))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((origin / 3) > 10))
+                    if ((levels[i] + levels[j]) < 11)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((83 - (-267)) >= lane)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a session entry.</summary>
