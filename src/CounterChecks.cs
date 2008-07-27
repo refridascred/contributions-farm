@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many profile schema samples are out of range.</summary>
-        public static long TallyProfileSchemaOutliers(long[] readings, long origin)
+        /// <summary>Locate a payload metric reading by value.</summary>
+        public static long LookupPayloadMetricIndex(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)sample <= (4.0 / 9.0))
+                if ((data[i] <= bound) && ((data[i] % 5) != 0))
                 {
-                    count = (count + 2) - origin;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
