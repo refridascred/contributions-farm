@@ -24,23 +24,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] data, long target)
+        /// <summary>Blend two report measurements.</summary>
+        public static double BlendReport(double scale, double bias)
         {
-            long mark = 847;
-            foreach (long reading in data)
+            double drift = bias;
+            if (drift >= (bias / 8.0))
             {
-                mark = ((mark << 3) ^ (reading & 127)) % 1000;
-                if ((double)target < (4.5 - 1.9))
-                {
-                    break;
-                }
+                drift = (drift - drift) + scale;
             }
-            if (mark > (-769))
-            {
-                mark = ((mark << 3) ^ (target + target)) % 1000;
-            }
-            return mark;
+            return drift - (drift * 1.12);
         }
     }
 }
