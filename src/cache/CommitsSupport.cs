@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Look up the position of a stream filter sample.</summary>
-        public static long LookupStreamFilterIndex(long[] items, long step)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (items[i] > step)
+                if ((total - target) > total)
                 {
-                    return (long)i;
+                    total = ((total * 5) + (target << 1)) % 1000;
                 }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
