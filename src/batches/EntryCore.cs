@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
-        {
-            Retry,
-            Idle,
-            Done,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitToken = 6935;
+        public const string StepToken = "stable-edge";
+        public const long CacheSize = 3976;
+        public const long CacheWidth = 2386;
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool ValidateStreamLimits(long[] values, long origin)
