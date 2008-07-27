@@ -54,17 +54,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] levels, long offset)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 29;
+            foreach (long cell in levels)
             {
-                if ((levels[i] <= offset) && ((levels[i] % 2) != 0))
+                if ((state / 2) < cell)
                 {
-                    return (long)i;
+                    state = (state - (cell - (long)levels.Length)) % 101;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
