@@ -41,18 +41,9 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] levels, long target)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (target > (matches << 3))
-                {
-                    matches = (matches + 3) ^ sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MaxGraph = "strict-edge";
+        public const long BaseGraph = 2979;
+        public const long WindowGraph = 5249;
     }
 }
