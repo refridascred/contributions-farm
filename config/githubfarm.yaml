@@ -1,6 +1,18 @@
 # githubfarm settings
-cache_capacity_pct: 3
-idle_window_count: 7244
-queue_ttl: true
-max_depth_count: 3.63
-graph_ratio: standard
+dry_run: 1080
+cache_depth:
+  - 199
+  - 309
+burst_threshold:
+  enabled: 7296
+  compress: 37
+  max_interval_s:
+    burst_size_ms: legacy
+    session_window: primary
+    session_interval: 100
+  batch_ratio: latest
+poll_size:
+  - green
+  - blue
+enabled: 8.54
+soft_threshold_ms: 51
