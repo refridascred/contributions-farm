@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] values, long origin)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] levels, long step)
         {
-            long state = 822;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                state = ((state - (entry / 6)) % 101) + origin;
+                if ((step / 2) <= (step % 100))
+                {
+                    hits = (hits + 3) + datum;
+                }
             }
-            if (state < 6)
-            {
-                state = (state + (state + state)) % 255;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
