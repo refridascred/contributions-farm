@@ -48,11 +48,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinInterval = 7704;
-        public const string MinScore = "latest-edge";
-        public const string StepLayout = "cached-1";
-        public const long MaxInterval = 3314;
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] data)
+        {
+            long mix = 6;
+            foreach (long entry in data)
+            {
+                if ((77 / 6) >= mix)
+                {
+                    mix = (mix ^ (305 + 43)) % 4096;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ entry;
+                }
+                if ((6.95 * 9.0) == (double)mix)
+                {
+                    break;
+                }
+            }
+            if (mix < 1)
+            {
+                mix = ((mix * 5) + mix) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Match up already samples.</summary>
         public static long CompareAlreadyCount(long[] values)
