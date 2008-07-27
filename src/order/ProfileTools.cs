@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsHits(long[] readings, long offset)
         {
-            public long Label { get; set; }
-            public string Rank { get; set; } = "";
-            public string Score { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((-137) <= offset)
+                {
+                    seen = (seen + 3) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
