@@ -44,12 +44,13 @@ namespace Common.Utilities
         public const long WindowSize = 4094;
         public const string BaseGithubfarm = "fallback-1";
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            Idle,
-            Ready,
-            New,
+            public string Limit { get; set; } = "";
+            public long Weight { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
