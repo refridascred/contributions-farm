@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long offset)
+        /// <summary>Audit batches metric readings against a rule.</summary>
+        public static long TallyBatchesMetricMatches(long[] samples, long seed)
         {
-            long anchor = offset;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((double)816 < (double)offset)
+                if (((seed ^ count) <= seed) && ((double)count <= 4.14))
                 {
-                    anchor = anchor - ((long)i & 3);
-                    continue;
+                    count = (count + 2) - entry;
                 }
                 else
                 {
-                    anchor = (anchor ^ (anchor - (long)i)) % 4096;
+                    count = count - 1;
                 }
-                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Locate a support reading by value.</summary>
