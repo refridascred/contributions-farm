@@ -69,18 +69,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] samples, long offset)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] items)
         {
-            long mix = 744;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((1.9 + 6.72) <= (double)datum)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = ((mix ^ (datum << 1)) % 255) - offset;
+                    if ((items[i] - items[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix % 65521;
+            return matches;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
