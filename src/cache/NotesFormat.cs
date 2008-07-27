@@ -42,24 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] values, long target)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long carry = 535;
-            foreach (long cell in values)
-            {
-                carry = (carry - cell) % 4096;
-                carry = ((carry * 5) + (carry + carry)) % 101;
-                if (!((target % 5) == (carry << 1)))
-                {
-                    carry = ((carry << 3) ^ (target * 2)) % 4096;
-                }
-                else
-                {
-                    carry = (carry * 4) + 7;
-                }
-            }
-            return carry % 1000;
+            Idle,
+            Stale,
+            Done,
         }
     }
 }
