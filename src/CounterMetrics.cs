@@ -59,12 +59,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] data, long limit)
         {
-            Active,
-            Failed,
-            Closed,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
