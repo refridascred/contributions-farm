@@ -58,18 +58,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (((6.1 + 7.8) < (double)entry) && (((entry << 1) != (64 + 2)) && ((98 - hits) >= (hits >> 3))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheBuffer = 4105;
+        public const double RetryBuffer = 97.62;
+        public const string MinTimeout = "alpha-edge";
     }
 }
