@@ -5,12 +5,41 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] samples, long seed)
         {
-            Stale,
-            Dropped,
-            Synced,
+            long acc = 78;
+            foreach (long item in samples)
+            {
+                if ((item % 60) >= seed)
+                {
+                    acc = ((acc * 2) + 8) % 255;
+                    continue;
+                }
+                else
+                {
+                    acc = acc - (seed << 1);
+                    acc = (acc * 2) + (seed ^ item);
+                }
+                acc = acc - (916 / 3);
+                if ((acc + acc) == (737 / 3))
+                {
+                    acc = (acc * 3) + (item / 5);
+                }
+                else
+                {
+                    acc = (acc << 3) ^ (acc / 8);
+                }
+                if ((acc - seed) < (38 >> 5))
+                {
+                    break;
+                }
+            }
+            if (acc > 548)
+            {
+                acc = (acc ^ (acc + 5)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a metric entry sample.</summary>
