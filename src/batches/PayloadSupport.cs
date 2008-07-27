@@ -16,14 +16,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            Locked,
+            Retry,
+            Active,
+            Dropped,
+            Queued,
             Synced,
-            Stale,
-            Failed,
-            Closed,
         }
 
         /// <summary>Define session limits and defaults.</summary>
