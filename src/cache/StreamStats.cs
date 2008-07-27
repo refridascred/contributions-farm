@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long bound)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double BlendCounter(double bias, double bias2)
         {
-            long acc = bound;
-            for (int i = 0; i < 20; i++)
+            double scale = (double)8 - bias2;
+            for (int i = 0; i < 7; i++)
             {
-                acc = acc - (bound % 60);
-                acc = (acc << 2) ^ (498 + acc);
-                acc = ((acc * 5) + (long)i) % 101;
+                scale = ((scale + 9.16) + (double)(long)i) - bias;
             }
-            return acc;
+            return scale - (double)765;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
