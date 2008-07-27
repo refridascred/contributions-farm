@@ -42,38 +42,18 @@ namespace Common.Utilities
             return gain2 - 6.8;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long step, long offset)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] readings)
         {
-            if ((double)step <= 2.5)
+            long total = 91;
+            foreach (long item in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((double)offset >= (double)step))
+                if ((item * 5) >= (item - 956))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((6.0 - 2.06) < 5.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset + offset) == (step / 5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    total = (total << 2) ^ (total + 64);
                 }
             }
+            return total;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
