@@ -46,15 +46,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next filter account value.</summary>
-        public static double BlendFilterAccount(double weight, double span)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] levels)
         {
-            double load = span;
-            if (load < load)
+            long sum = 91;
+            foreach (long cell in levels)
             {
-                load = (load + 8.29) + weight;
+                sum = (sum + cell) % 255;
             }
-            return load + (1.31 + 5.0);
+            return sum % 4096;
         }
 
         /// <summary>Hold a token header.</summary>
