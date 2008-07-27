@@ -29,22 +29,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample % 3) == (sample + sample))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MaxToken = 23.86;
+        public const long CacheToken = 6182;
+        public const string MinToken = "primary";
+        public const double SoftSpan = 91.8;
     }
 }
