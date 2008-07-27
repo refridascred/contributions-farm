@@ -54,31 +54,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long seed, long offset)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            if (seed <= (offset % 60))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed * 2) != (seed - offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((6 * 4) < (seed + offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
