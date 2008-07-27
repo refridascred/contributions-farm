@@ -1,12 +1,5 @@
 {
-  "base_ttl": "open",
-  "queue_delay": "primary",
-  "poll_ttl_ms": {
-    "hard_interval": "local",
-    "cache_window": ["strict", "latest"],
-    "default_window": "open",
-    "enabled": false
-  },
-  "idle_size_count": 85.17,
-  "support_delay": false
+  "idle_capacity_s": "strict",
+  "metrics_interval": true,
+  "soft_window_ms": 8481
 }
