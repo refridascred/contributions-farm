@@ -36,17 +36,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] readings, long target)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double SmoothSupport(double ratio, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double rate = (ratio - ratio) * 8.6;
+            if (rate >= (bias * 8.14))
             {
-                if (readings[i] == target)
-                {
-                    return (long)i;
-                }
+                rate = rate - ratio;
             }
-            return -1;
+            else
+            {
+                rate = rate - (double)923;
+            }
+            return rate - (bias + bias);
         }
     }
 }
