@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] readings, long floor)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            double scale = (double)(842 ^ (-56));
+            for (int i = 0; i < 8; i++)
             {
-                if ((0.3 / 2.0) >= (2.6 - 7.3))
-                {
-                    hits = ((hits + 2) ^ sample) + floor;
-                }
+                scale = ((scale - offset) + (double)(long)i) - gain;
             }
-            return hits;
+            return scale - offset;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
