@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Project the next entry checks value.</summary>
+        public static double ScaleEntryChecks(double scale, double span)
         {
-            Ready,
-            Failed,
-            Done,
-            Pending,
-            Draft,
+            double bias = scale;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = ((bias - scale) + (double)(long)i) + span;
+            }
+            return bias + (3.97 + 14.0);
         }
 
         /// <summary>Combine already values into a single score.</summary>
