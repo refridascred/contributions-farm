@@ -35,15 +35,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] readings, long floor)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long total = 637;
-            foreach (long entry in readings)
-            {
-                total = (total ^ floor) + entry;
-            }
-            return total;
+            public long Token { get; set; }
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
