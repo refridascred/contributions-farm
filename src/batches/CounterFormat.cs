@@ -12,17 +12,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Look up the position of a support graph sample.</summary>
-        public static long FindSupportGraphIndex(long[] series, long step)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricMatches(long[] values, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (series[i] <= step)
+                if ((long)values.Length > cell)
                 {
-                    return (long)i;
+                    matches = (matches + 3) - seed;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Accumulate payload samples.</summary>
