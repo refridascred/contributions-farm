@@ -14,15 +14,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double rate, double span)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            double load = rate;
-            for (int i = 0; i < 9; i++)
-            {
-                load = ((load + (rate - 5.1)) + (double)(long)i) + span;
-            }
-            return load + (load - rate);
+            Closed,
+            Done,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
