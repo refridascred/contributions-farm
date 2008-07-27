@@ -23,18 +23,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many token githubfarm samples are out of range.</summary>
-        public static long TallyTokenGithubfarmOutliers(long[] levels, long offset)
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            double drift = (double)27 / 7.0;
+            if (drift >= (bias * 4.07))
             {
-                if (value > 52)
-                {
-                    seen = (seen + 1) - offset;
-                }
+                drift = (drift - 9.0) + ratio;
             }
-            return seen;
+            return drift + drift;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
