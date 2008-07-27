@@ -84,22 +84,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] readings)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading > (hits << 2)) && !(hits >= reading))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Ready,
+            Stale,
+            Synced,
         }
     }
 }
