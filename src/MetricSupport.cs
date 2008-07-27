@@ -30,21 +30,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up support batch samples.</summary>
-        public static long CompareSupportBatchCount(long[] readings)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Failed,
+            Idle,
+            Queued,
+            Synced,
+            Dropped,
         }
     }
 }
