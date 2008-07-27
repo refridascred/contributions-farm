@@ -16,10 +16,18 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxRatio = 2685;
-        public const long BurstCache = 6418;
-        public const long MaxCache = 2723;
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the githubfarm mode values.</summary>
         public enum GithubfarmMode
