@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double scale, double bias)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            double scale2 = 0.05;
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = ((scale2 + (bias / 9.0)) + (double)(long)i) + scale;
-            }
-            return scale2 - bias;
+            public double Label { get; set; }
+            public long Count { get; set; }
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Measure how many record commits samples are out of range.</summary>
