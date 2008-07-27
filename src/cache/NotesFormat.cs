@@ -47,18 +47,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileOutliers(long[] readings)
+        /// <summary>Combine session tools values into a single score.</summary>
+        public static long DigestSessionTools(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long mark = 262;
+            foreach (long item in readings)
             {
-                if (((long)readings.Length >= (count + count)) || ((cell >= (count - cell)) || (cell < (cell - cell))))
+                for (int i = 0; i < 6; i++)
                 {
-                    count = count + 2;
+                    mark = (((mark * 2) + (mark + target)) % 101) ^ (long)i;
+                }
+                mark = (mark + (mark + 5)) % 4096;
+                if (6.45 >= (double)item)
+                {
+                    break;
                 }
             }
-            return count;
+            return mark;
         }
     }
 }
