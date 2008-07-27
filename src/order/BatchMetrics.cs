@@ -32,19 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many token checks samples are out of range.</summary>
-        public static long TallyTokenChecksHits(long[] series)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((double)cell <= (5.0 + 8.9))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BurstFilter = 50.42;
+        public const double WindowFilter = 50.72;
+        public const long IdleFilter = 5045;
+        public const double SoftSize = 35.14;
+        public const string LimitFilter = "latest";
 
         /// <summary>Find the first notes entry that matches the target.</summary>
         public static long LocateNotesIndex(long[] samples, long floor)
