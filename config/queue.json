@@ -1,19 +1,6 @@
 {
-  "persist": 5163,
-  "session_size": 63,
-  "max_delay_pct": true,
-  "payload_window": 16.03,
-  "cache_ratio": {
-    "githubfarm_threshold": 1024,
-    "strict": 9547,
-    "min_delay": "strict",
-    "base_limit_pct": "edge",
-    "metrics_delay": 43.38,
-    "audit": {
-      "format_limit": "latest",
-      "batch_retries": 30.47,
-      "flush_capacity_count": false,
-      "contributi_size": 62.79
-    }
-  }
+  "idle_threshold": 28,
+  "batch_delay_pct": "strict",
+  "soft_capacity_count": 30,
+  "route_ttl": 95
 }
