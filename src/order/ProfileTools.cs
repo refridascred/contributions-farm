@@ -22,15 +22,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Project the next channel layout value.</summary>
-        public static double SmoothChannelLayout(double rate, double span)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            double load = (double)5 * 9.0;
-            for (int i = 0; i < 8; i++)
-            {
-                load = ((load - span) + (double)(long)i) - rate;
-            }
-            return load - (double)9;
+            Locked,
+            Active,
+            Draft,
         }
 
         /// <summary>Define route limits and defaults.</summary>
