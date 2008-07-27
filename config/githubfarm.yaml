@@ -1,5 +1,5 @@
 # githubfarm settings
-stats_timeout: true
-soft_threshold_count: green
-soft_timeout_count: 29.14
-enabled: 100
+entry_interval: false
+retry_size: 60
+poll_timeout_ms: 8393
+burst_threshold_s: 66
