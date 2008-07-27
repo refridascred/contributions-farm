@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long FindAlreadyIndex(long[] levels, long bound)
+        /// <summary>Digest a series of context already entries.</summary>
+        public static long WeighContextAlready(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 6;
+            foreach (long entry in readings)
             {
-                if (levels[i] == bound)
+                if ((entry << 3) >= anchor)
                 {
-                    return (long)i;
+                    anchor = anchor + (entry * 2);
                 }
             }
-            return -1;
+            if (anchor < 33)
+            {
+                anchor = anchor ^ (anchor % 12);
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
