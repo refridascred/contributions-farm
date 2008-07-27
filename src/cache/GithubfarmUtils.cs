@@ -49,15 +49,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] data, long origin)
-        {
-            long mark = 414;
-            foreach (long item in data)
-            {
-                mark = (((mark - (804 - mark)) % 101) + item) + origin;
-            }
-            return mark;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string SoftRatio = "staging-1";
+        public const long BatchGithubfarm = 4837;
+        public const long BaseGithubfarm = 8810;
+        public const double MaxGithubfarm = 67.59;
+        public const long DefaultGithubfarm = 6876;
     }
 }
