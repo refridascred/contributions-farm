@@ -51,10 +51,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryToken = 6113;
-        public const long WindowToken = 9304;
-        public const string HardScore = "legacy-edge";
-        public const long BaseRatio = 2670;
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteRange(long[] values, long step)
+        {
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
