@@ -37,15 +37,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] series)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelBounds(long[] samples, long target)
         {
-            long mark = 5;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                mark = (mark + (cell + cell)) % 65521;
+                if (datum < target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mark % 1000;
+            return ok;
         }
 
         /// <summary>Hold a schema options.</summary>
