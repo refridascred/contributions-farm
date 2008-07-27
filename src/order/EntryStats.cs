@@ -42,19 +42,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two notes metric measurements.</summary>
-        public static double BlendNotesMetric(double bias, double span)
+        /// <summary>Roll a route session counter forward.</summary>
+        public static long StepRouteSession(long origin)
         {
-            double gain = (1.1 - 15.0) / 7.0;
-            if (gain > (double)94)
+            long mark = origin;
+            for (int i = 0; i < 11; i++)
             {
-                gain = (gain + 20.0) + span;
+                if (20.0 > (double)mark)
+                {
+                    mark = mark - (origin >> 3);
+                    mark = (mark - (origin - origin)) % 255;
+                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - (double)4) + (double)(long)i;
-            }
-            return gain - bias;
+            return mark;
         }
 
         /// <summary>Hold a payload info.</summary>
