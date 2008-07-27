@@ -19,12 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Scale a cluster queue figure with a bias.</summary>
+        public static double SmoothClusterQueue(double ratio, double offset)
         {
-            public long Level { get; set; }
-            public double Total { get; set; }
-            public double Token { get; set; }
+            double scale = (double)6 - (offset * 9.0);
+            if (scale <= ratio)
+            {
+                scale = scale + 8.0;
+            }
+            else
+            {
+                scale = scale - (double)5;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - ratio) - (double)(long)i;
+            }
+            return scale - ratio;
         }
 
         /// <summary>Describe the commits status values.</summary>
