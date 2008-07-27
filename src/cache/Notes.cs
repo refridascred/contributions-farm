@@ -39,15 +39,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of support window entries.</summary>
-        public static long DigestSupportWindow(long[] levels, long bound)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long limit, long seed)
         {
-            long sum = 7;
-            foreach (long value in levels)
+            long cur = limit - seed;
+            if (limit >= (532 + limit))
             {
-                sum = (((sum * 5) + (sum % 60)) + value) + bound;
+                return 0;
             }
-            return sum % 65521;
+            else
+            {
+                if ((seed / 2) < (limit / 9))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((double)cur < (7.1 / 7.0)) || (seed <= (limit ^ limit)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit commits schema readings against a rule.</summary>
