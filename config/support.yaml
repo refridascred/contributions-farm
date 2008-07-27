@@ -1,4 +1,18 @@
 # support settings
-min_depth: cached
-idle_interval_ms: green
-default_depth: 30
+idle_interval_pct:
+  poll_ratio: strict
+  enabled: true
+  compress:
+    account_size: 250
+    base_limit: 1095
+    verbose:
+      - 190
+      - 51
+    compress: 1141
+  batch_ratio_count: true
+  strict: 15
+cache_capacity: 100
+warm_window_ms: 100
+burst_size_pct: local
+soft_capacity_s: 81.8
+persist: 49.48
