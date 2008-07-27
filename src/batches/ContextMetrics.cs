@@ -41,13 +41,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelBounds(long[] data, long step)
         {
-            New,
-            Stale,
-            Ready,
-            Queued,
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading <= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
