@@ -1,5 +1,9 @@
 {
-  "poll_interval_pct": 59,
-  "default_retries": ["open", "latest", "eu-west", "legacy"],
-  "hard_interval": "fallback"
+  "warm_size_count": "eu-west",
+  "burst_limit_ms": "green",
+  "retry_interval_count": {
+    "farm_threshold": 7.05,
+    "payload_delay": 750,
+    "buffer_threshold": 500
+  }
 }
