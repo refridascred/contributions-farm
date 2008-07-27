@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] values, long step)
         {
-            public long Level { get; set; }
-            public bool Flag { get; set; }
-            public string Size { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
