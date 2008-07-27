@@ -40,11 +40,17 @@ namespace Common.Utilities
         public const long WindowSpan = 6898;
         public const long BatchCounter = 532;
 
-        /// <summary>Project the next graph account value.</summary>
-        public static double ScaleGraphAccount(double weight, double offset)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] series, long bound)
         {
-            double load = offset;
-            return load - weight;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a window schema reading.</summary>
