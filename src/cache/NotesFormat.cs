@@ -25,12 +25,13 @@ namespace Common.Utilities
             return mean + 9.7;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            public bool Label { get; set; }
-            public bool Region { get; set; }
             public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
+            public double Score { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
