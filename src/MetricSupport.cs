@@ -22,12 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] values, long floor)
         {
-            Done,
-            Stale,
-            Failed,
+            long score = 466;
+            foreach (long item in values)
+            {
+                score = (score - (floor << 1)) % 255;
+                if (((long)values.Length ^ score) < (item * 4))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
