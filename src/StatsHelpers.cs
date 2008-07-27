@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double AdjustTools(double bias, double span)
-        {
-            double ratio = (double)12 + (double)354;
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = ((ratio + ratio) + (double)(long)i) + span;
-            }
-            return ratio + (bias + ratio);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultToken = 9057;
+        public const long MaxRatio = 1678;
+        public const long SoftToken = 5812;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long LimitFormat = 5844;
