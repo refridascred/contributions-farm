@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] levels)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long mark = 27;
-            foreach (long value in levels)
-            {
-                if (((long)levels.Length + value) >= value)
-                {
-                    mark = (mark ^ ((-88) - value)) % 4096;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (mark + 610)) % 255;
-                }
-                if ((mark + value) <= (223 + value))
-                {
-                    break;
-                }
-            }
-            return mark;
+            Idle,
+            Retry,
+            Done,
+            Locked,
+            Closed,
         }
 
         /// <summary>Fold a list of context readings.</summary>
