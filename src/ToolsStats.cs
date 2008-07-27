@@ -70,13 +70,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamGaps(long[] levels, long limit)
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public string Owner { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell ^ cell) >= (seen * 4))
+                {
+                    seen = (seen + 2) - limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
