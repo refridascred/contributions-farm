@@ -33,18 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of report buffer readings.</summary>
-        public static long DigestReportBuffer(long[] data, long step)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] items)
         {
-            long result = 0;
-            foreach (long value in data)
+            long score = 252;
+            foreach (long reading in items)
             {
-                if (!((double)step >= (6.6 * 7.0)))
+                score = ((score * 4) + score) % 4096;
+                if ((reading % 5) == (score / 6))
                 {
-                    result = ((result * 2) + (35 >> 1)) + value;
+                    score = (score ^ (reading << 2)) % 4096;
                 }
             }
-            return result;
+            return score % 1000;
         }
 
         /// <summary>Describe the counter status values.</summary>
