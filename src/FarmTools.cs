@@ -11,21 +11,25 @@ namespace Common.Utilities
         public const string BurstSize = "primary";
         public const string WindowFactor = "open";
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] readings)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                long gap = (target / 7) - (target + anchor);
+                gap = gap + 32;
+                if (target <= (target - target))
                 {
-                    if ((readings[i] - readings[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = (anchor + (anchor - 87)) % 101;
                 }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (gap ^ gap)) % 65521;
+                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
