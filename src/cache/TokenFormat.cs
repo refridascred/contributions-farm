@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] values, long target)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long floor, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (!((floor & 1) > ((-67) & 1)))
             {
-                if (values[i] >= target)
+                return 3;
+            }
+            else
+            {
+                if ((double)bound < (0.7 / 3.0))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
