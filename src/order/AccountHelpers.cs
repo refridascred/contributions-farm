@@ -79,22 +79,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] readings, long step)
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] series)
         {
-            long sum = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(datum > 8))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = ((sum * 2) + (sum % 5)) - step;
-                }
-                else
-                {
-                    sum = sum - 221;
+                    if ((series[i] ^ series[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum % 65521;
+            return hits;
         }
 
         /// <summary>Describe the stats level values.</summary>
