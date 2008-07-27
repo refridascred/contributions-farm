@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] items, long step)
         {
-            Synced,
-            Active,
-            Stale,
-            Pending,
+            long sum = 503;
+            foreach (long item in items)
+            {
+                sum = (sum + ((long)items.Length - item)) - step;
+            }
+            return sum;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
