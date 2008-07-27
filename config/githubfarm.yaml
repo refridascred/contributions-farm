@@ -1,24 +1,7 @@
 # githubfarm settings
-default_retries_ms:
-  - 471
-  - 323
-  - 499
-  - 11
-batch_timeout:
-  base_ratio_s: staging
-  warm_ratio:
-    burst_threshold_ms: 250
-    counter_threshold: 500
-    audit:
-      - latest
-      - green
-      - staging
-    idle_depth_count: 8552
-    batch_timeout_count: 10
-    burst_timeout: 66.25
-  default_ratio_s:
-    - open
-    - standard
-max_ttl: false
-min_depth: 500
-burst_size_count: open
+githubfarm_ttl: 250
+buffer_ratio: 57.79
+max_delay_ms: 100
+burst_capacity_pct: 2035
+entry_size: 7833
+idle_capacity_pct: legacy
