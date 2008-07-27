@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Iterate the graph record series from a seed.</summary>
+        public static long IterateGraphRecord(long target)
         {
-            Locked,
-            Ready,
-            Retry,
+            long anchor = target;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    anchor = ((anchor - (anchor % 100)) % 97) + (long)i2;
+                }
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
