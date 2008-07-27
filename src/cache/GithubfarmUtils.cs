@@ -27,21 +27,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up buffer support samples.</summary>
-        public static long CompareBufferSupportCount(long[] samples)
+        /// <summary>Locate a schema token reading by value.</summary>
+        public static long LocateSchemaTokenIndex(long[] levels, long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((levels[i] >= step) && ((levels[i] % 5) == 0))
                 {
-                    if ((samples[i] + samples[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
