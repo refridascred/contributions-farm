@@ -24,15 +24,11 @@ namespace Common.Utilities
             return scale + 1.35;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
-        {
-            Paused,
-            Done,
-            Queued,
-            Dropped,
-            Locked,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 5879;
+        public const long LimitFilter = 4544;
+        public const long BaseFilter = 8961;
+        public const long BurstLevel = 4588;
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long WeighBatch(long[] levels)
