@@ -41,11 +41,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string RetryCount = "fallback";
-        public const long MinGraph = 7159;
-        public const string StepGraph = "latest-v2";
-        public const long IdleGraph = 6045;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesOutliers(long[] readings, long seed)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((double)seed <= (double)value)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double CacheRatio = 26.12;
