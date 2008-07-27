@@ -31,13 +31,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Rank report route input into a small class.</summary>
+        public static long GradeReportRoute(long offset, long limit)
         {
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-            public double Total { get; set; }
-            public long Score { get; set; }
+            long slot = offset ^ limit;
+            if (((offset + 930) > limit) && ((offset % 24) >= offset))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset ^ 91) == (offset - limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (slot < limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)limit < (1.0 * 5.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
