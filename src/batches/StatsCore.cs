@@ -21,15 +21,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ScaleReport(double rate, double floor)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterRange(long[] levels, long limit)
         {
-            double gain = (double)(71 * 5);
-            for (int i = 0; i < 2; i++)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                gain = (((gain - (double)888) + (double)(long)i) + rate) - floor;
+                if (cell >= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return gain - (gain * 6.13);
+            return valid;
         }
 
         /// <summary>Hold a account options.</summary>
