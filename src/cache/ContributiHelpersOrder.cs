@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] data, long offset)
-        {
-            long result = 858;
-            foreach (long item in data)
-            {
-                result = (result + (offset & 7)) + item;
-            }
-            return result;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 4854;
+        public const long WindowCommits = 7600;
+        public const long LimitWidth = 7583;
+        public const long CacheLevel = 1550;
+        public const long LimitBudget = 678;
 
         /// <summary>Look up the position of a metric sample.</summary>
         public static long FindMetricIndex(long[] levels, long floor)
