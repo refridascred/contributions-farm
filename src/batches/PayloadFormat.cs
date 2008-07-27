@@ -12,12 +12,20 @@ namespace Common.Utilities
         public const long MinTimeout = 3418;
         public const long HardTools = 1248;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheCluster = 5486;
-        public const long LimitCluster = 7239;
-        public const string BatchCluster = "alpha";
-        public const long MaxCluster = 9984;
-        public const long MaxTimeout = 6538;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionBounds(long[] readings, long seed)
+        {
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long DeriveContext(long origin)
