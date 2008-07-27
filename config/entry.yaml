@@ -1,13 +1,6 @@
 # entry settings
-min_threshold:
-  default_limit_pct: stable
-  sync_limit_count: eu-west
-  readonly: local
-  dry_run: standard
-  poll_size: true
-  batch_limit: green
-flush_interval_count:
-  - 31
-  - 3
-  - 412
-idle_depth_pct: 97.62
+enabled:
+  - 352
+  - 360
+dry_run: eu-west
+burst_window_ms: legacy
