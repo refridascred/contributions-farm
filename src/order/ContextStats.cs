@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteLimits(long[] series, long offset)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesOutliers(long[] samples, long target)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (sample < offset)
+                if (((hits % 8) <= 29) || (hits >= (hits + 8)))
                 {
-                    ok = false;
-                    break;
+                    hits = ((hits + 1) + entry) + target;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Describe the profile phase values.</summary>
