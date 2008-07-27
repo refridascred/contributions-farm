@@ -31,12 +31,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Check that every report record entry stays within the limit.</summary>
+        public static bool ValidateReportRecordLimits(long[] items, long seed)
         {
-            public bool Label { get; set; }
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate record metrics readings against a bound.</summary>
