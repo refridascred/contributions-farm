@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 7374;
-        public const double BurstReport = 1.99;
-        public const double MaxDepth = 96.26;
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] values)
+        {
+            long total = 238;
+            foreach (long value in values)
+            {
+                if ((double)value > (7.0 / 6.0))
+                {
+                    total = (total + (total - value)) % 1000;
+                }
+                else
+                {
+                    total = total - 3;
+                }
+            }
+            return total % 4096;
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long TallyFarmGaps(long[] readings)
