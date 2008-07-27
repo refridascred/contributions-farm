@@ -10,11 +10,14 @@ namespace Common.Utilities
         public const long LimitLevel = 5763;
         public const string WindowTimeout = "local-1";
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double WindowSize = 95.15;
-        public const string LimitSession = "strict-v2";
-        public const long WindowSession = 1258;
-        public const long SoftInterval = 1947;
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
+        {
+            Failed,
+            Active,
+            Locked,
+            Draft,
+        }
 
         /// <summary>Project the next report value.</summary>
         public static double ScaleReport(double rate, double floor)
