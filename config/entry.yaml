@@ -1,8 +1,5 @@
 # entry settings
-strict: 100
-tools_capacity:
-  - primary
-  - cached
-  - open
-window_retries: 99
-default_ttl: true
+min_retries_s: 53.43
+persist: primary
+idle_depth_pct: 19.01
+batch_window_count: eu-west
