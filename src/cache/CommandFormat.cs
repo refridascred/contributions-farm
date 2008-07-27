@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] series)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long mark = 168;
-            foreach (long item in series)
-            {
-                mark = mark ^ (mark / 5);
-                if ((2 < item) || ((3.1 * 3.99) == (double)item))
-                {
-                    mark = mark + (item - item);
-                }
-                if (((mark % 16) != (item ^ 27)) && ((5 >> 5) > (0 ^ mark)))
-                {
-                    break;
-                }
-            }
-            return mark;
+            Failed,
+            Stale,
+            Ready,
         }
 
         /// <summary>Audit already support readings against a rule.</summary>
