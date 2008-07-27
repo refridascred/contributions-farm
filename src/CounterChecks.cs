@@ -78,12 +78,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double CacheRatio = 26.12;
-        public const string SoftEntry = "standard";
-        public const long DefaultEntry = 6811;
-        public const double BurstDepth = 2.02;
-        public const double LimitEntry = 6.87;
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool ValidateFilterRange(long[] readings, long bound)
