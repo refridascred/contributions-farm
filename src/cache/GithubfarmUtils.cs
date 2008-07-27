@@ -26,31 +26,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long origin, long floor)
+        /// <summary>Roll a layout entry counter forward.</summary>
+        public static long IterateLayoutEntry(long limit)
         {
-            if ((5.36 - 7.8) >= (double)origin)
+            long mark = limit;
+            for (int i = 0; i < 21; i++)
             {
-                return 8;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((floor & 3) < 898)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)205 < (double)floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
