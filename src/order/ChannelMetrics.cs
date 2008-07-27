@@ -14,19 +14,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricMatches(long[] levels)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] samples, long step)
         {
             long seen = 0;
-            foreach (long sample in levels)
+            foreach (long cell in samples)
             {
-                if ((seen * 5) >= (sample & 7))
+                if (((cell << 1) == (cell ^ (-30))) && ((double)(long)samples.Length > 5.3))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 3) + step;
                 }
             }
             return seen;
