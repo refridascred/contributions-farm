@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultDepth = 73;
-        public const double RetryLevel = 45.88;
-        public const long IdleSession = 6368;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] items, long offset)
+        {
+            long state = 7;
+            foreach (long sample in items)
+            {
+                state = ((((state * 3) + (state % 24)) % 97) ^ sample) - offset;
+            }
+            if (state > 1)
+            {
+                state = (state + ((long)items.Length & 63)) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
