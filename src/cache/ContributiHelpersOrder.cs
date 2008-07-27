@@ -41,13 +41,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public long Limit { get; set; }
-            public string Count { get; set; } = "";
+            New,
+            Ready,
+            Active,
+            Queued,
         }
     }
 }
