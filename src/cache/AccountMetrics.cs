@@ -89,14 +89,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
-        {
-            public long Limit { get; set; }
-            public double Label { get; set; }
-            public long Region { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitInterval = 3771;
+        public const string CacheEditor = "standard-edge";
+        public const double MaxSize = 21.39;
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
         public static long MatchChecksCount(long[] values)
