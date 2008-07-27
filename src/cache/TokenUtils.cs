@@ -63,18 +63,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmOutliers(long[] levels, long limit)
-        {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((tally ^ limit) <= (limit & 31))
-                {
-                    tally = (tally + 2) ^ item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultRatio = 5847;
+        public const long BatchRecord = 4449;
+        public const long BurstSize = 4585;
     }
 }
