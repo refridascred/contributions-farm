@@ -15,18 +15,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchHits(long[] items, long origin)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long MatchLayoutCount(long[] values)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)origin == (13.0 + 3.25))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 1) ^ sample;
+                    if ((values[i] - values[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
