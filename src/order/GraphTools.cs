@@ -33,23 +33,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Scale a checks queue figure with a bias.</summary>
-        public static double ScaleChecksQueue(double weight, double floor)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsLimits(long[] values, long target)
         {
-            double weight2 = floor;
-            if (weight2 < (floor / 8.0))
+            bool stale = true;
+            foreach (long cell in values)
             {
-                weight2 = weight2 - (weight / 3.0);
+                if (cell < target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                weight2 = weight2 + 7.0;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight2 = (weight2 + 7.5) + (double)(long)i;
-            }
-            return weight2 + (double)9;
+            return stale;
         }
 
         /// <summary>Validate payload githubfarm readings against a bound.</summary>
