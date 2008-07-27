@@ -64,22 +64,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsGaps(long[] samples)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long carry = 7;
+            foreach (long item in series)
             {
-                if ((238 << 2) > (matches + 22))
-                {
-                    matches = (matches + 1) ^ reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = ((carry + (carry ^ 6)) % 97) ^ item;
             }
-            return matches;
+            return carry;
         }
     }
 }
