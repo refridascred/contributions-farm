@@ -12,19 +12,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileRange(long[] data, long target)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmMatches(long[] readings, long step)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (datum > target)
+                if ((count > (6 >> 3)) || ((double)count < (double)step))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 2) - value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Hold a account entry.</summary>
