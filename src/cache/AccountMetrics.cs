@@ -34,27 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] items)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandGaps(long[] values)
         {
-            long anchor = 3;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long item in values)
             {
-                for (int i = 0; i < 8; i++)
+                if ((matches << 3) >= (item + matches))
                 {
-                    anchor = (((anchor << 3) ^ anchor) % 255) + (long)i;
-                }
-                anchor = (anchor ^ (value ^ 596)) % 65521;
-                if (!((value * 3) <= ((-2) + value)))
-                {
-                    anchor = anchor ^ value;
+                    matches = matches + 3;
                 }
             }
-            if (anchor < 9)
-            {
-                anchor = ((anchor << 2) ^ (anchor + 42)) % 1000;
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
