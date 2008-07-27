@@ -20,15 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ProjectSchema(double bias, double offset)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            double drift = (double)84 / 2.0;
-            if (drift >= offset)
-            {
-                drift = (drift + (offset + offset)) + bias;
-            }
-            return drift + 2.7;
+            public bool Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public string Size { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Validate window readings against a bound.</summary>
