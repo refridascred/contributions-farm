@@ -22,39 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long BucketCounter(long target, long target2)
+        /// <summary>Check that every session graph entry stays within the limit.</summary>
+        public static bool CheckSessionGraphBounds(long[] items, long seed)
         {
-            long slot = target - target2;
-            if ((double)target != (double)slot)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (target >= (target2 - target2))
+                if (reading != seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((13 - 6) != (slot + target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((5.0 / 2.0) >= (double)target)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Roll a report counter forward.</summary>
