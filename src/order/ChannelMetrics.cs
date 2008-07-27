@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > limit) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftSpan = 9591;
+        public const long CacheCount = 4338;
+        public const long RetryMetric = 9148;
+        public const long DefaultMetric = 7555;
+        public const long IdleFactor = 8857;
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long TallyMetricMatches(long[] levels)
