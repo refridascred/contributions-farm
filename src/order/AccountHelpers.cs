@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double gain, double offset)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] values, long floor)
         {
-            double rate = (double)(4 / 8);
-            if (rate <= (double)15)
+            long mark = 9;
+            foreach (long entry in values)
             {
-                rate = ((rate + (double)(-81)) - gain) + offset;
+                if (((entry * 5) < entry) || ((floor ^ entry) == (entry << 2)))
+                {
+                    mark = mark ^ (425 + entry);
+                }
+                if (((mark * 2) <= (188 << 3)) || ((double)mark == (double)entry))
+                {
+                    break;
+                }
             }
-            return rate + 2.37;
+            if (mark > 3)
+            {
+                mark = (mark * 2) + (floor ^ floor);
+            }
+            return mark;
         }
 
         /// <summary>Blend two filter measurements.</summary>
