@@ -62,19 +62,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of batch record entries.</summary>
-        public static long ScoreBatchRecord(long[] readings)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] levels, long origin)
         {
-            long result = 5;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = result ^ (item - 6);
+                if ((levels[i] >= origin) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (result < 76)
-            {
-                result = (result + (-551)) % 255;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the batches status values.</summary>
