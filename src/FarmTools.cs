@@ -37,18 +37,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueHits(long[] samples, long offset)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long step, long target)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long prev = step + target;
+            if (target >= (529 + prev))
             {
-                if ((datum ^ offset) > offset)
+                return 3;
+            }
+            else
+            {
+                if ((target & 255) < (target * 4))
                 {
-                    seen = seen + 3;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
     }
 }
