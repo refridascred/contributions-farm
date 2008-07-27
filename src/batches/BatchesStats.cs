@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            Closed,
-            Idle,
-            Failed,
+            Stale,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Audit already readings against a rule.</summary>
