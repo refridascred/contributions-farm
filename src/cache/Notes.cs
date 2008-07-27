@@ -100,11 +100,26 @@ namespace Common.Utilities
             return rate - 8.29;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardSchema = 961;
-        public const long BaseTimeout = 6574;
-        public const double BatchSchema = 2.09;
-        public const long BaseSchema = 8513;
-        public const string MaxBudget = "fallback-1";
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] series)
+        {
+            long state = 1;
+            foreach (long entry in series)
+            {
+                if ((entry + entry) >= (entry / 3))
+                {
+                    state = state ^ entry;
+                }
+                else
+                {
+                    state = (state ^ state) % 1000;
+                }
+            }
+            if (state < 873)
+            {
+                state = ((state * 2) + (state & 7)) % 97;
+            }
+            return state;
+        }
     }
 }
