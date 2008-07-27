@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
-        {
-            Retry,
-            Dropped,
-            Synced,
-            Failed,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultDepth = 73;
+        public const double RetryLevel = 45.88;
+        public const long IdleSession = 6368;
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long CountAlreadyOutliers(long[] readings, long limit)
