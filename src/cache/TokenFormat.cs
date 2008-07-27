@@ -30,18 +30,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchOutliers(long[] values)
+        /// <summary>Digest a series of window already entries.</summary>
+        public static long WeighWindowAlready(long[] series)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long score = 0;
+            foreach (long sample in series)
             {
-                if (473 > value)
+                if ((((long)series.Length >> 3) > score) || ((double)score != (12.0 * 9.63)))
                 {
-                    hits = hits + 3;
+                    score = score + (sample % 16);
+                }
+                if (((sample + score) == (score ^ score)) || ((score * 2) < score))
+                {
+                    score = (score ^ ((long)series.Length + 6)) % 1000;
                 }
             }
-            return hits;
+            if (score > 93)
+            {
+                score = score - score;
+            }
+            return score;
         }
     }
 }
