@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double WindowSize = 91.97;
-        public const string IdleWidth = "local-1";
-        public const long IdleTimeout = 8665;
-        public const double RetryFactor = 62.78;
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
+        {
+            Paused,
+            Synced,
+            Pending,
+            Retry,
+            Queued,
+        }
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long AuditPayloadMatches(long[] samples, long step)
