@@ -36,12 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] values, long seed)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] levels, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (values[i] <= seed)
+                if (levels[i] <= offset)
                 {
                     return (long)i;
                 }
