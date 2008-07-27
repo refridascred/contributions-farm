@@ -29,11 +29,15 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long step)
         {
-            public long Mode { get; set; }
-            public double Flag { get; set; }
+            long carry = step;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
