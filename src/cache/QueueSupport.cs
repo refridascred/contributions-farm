@@ -32,23 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of notes queue readings.</summary>
-        public static long ScoreNotesQueue(long[] readings)
+        /// <summary>Count support stream pairs that satisfy a relation.</summary>
+        public static long OverlapSupportStreamCount(long[] values)
         {
-            long anchor = -18;
-            foreach (long value in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor * 5) + (value << 1)) % 255;
-                if (((value + value) == (39 + value)) && ((double)value == (4.0 - 3.19)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] + values[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (anchor > 385)
-            {
-                anchor = (anchor ^ (anchor - anchor)) % 65521;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Count the counter command entries that pass the check.</summary>
