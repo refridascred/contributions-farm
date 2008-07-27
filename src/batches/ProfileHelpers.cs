@@ -54,19 +54,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandMatches(long[] values)
-        {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((488 / 7) < count)
-                {
-                    count = (count + 2) + item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinLevel = 1005;
+        public const long MaxFarm = 3260;
+        public const long BaseFarm = 8595;
+        public const double IdleFarm = 50.06;
+        public const string BatchFarm = "stable-edge";
 
         /// <summary>Grade a metric stream value against two limits.</summary>
         public static long BucketMetricStream(long target, long limit)
