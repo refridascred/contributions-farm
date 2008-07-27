@@ -33,18 +33,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportGaps(long[] series)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((cell & 255) < (cell + count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Stale,
+            Idle,
+            Locked,
         }
     }
 }
