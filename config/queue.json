@@ -1,5 +1,6 @@
 {
-  "strict": 39,
-  "warm_size": 6,
-  "min_ratio_pct": 42.78
+  "schema_timeout": 18.13,
+  "base_ratio_s": true,
+  "enabled": 60,
+  "farm_interval": "legacy"
 }
