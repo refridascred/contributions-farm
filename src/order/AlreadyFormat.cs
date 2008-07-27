@@ -41,14 +41,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            Retry,
-            Draft,
-            Done,
-            Locked,
-            Queued,
+            public long Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
