@@ -16,12 +16,10 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
-        {
-            public long Count { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double RetrySpan = 0.88;
+        public const double SoftMetrics = 69.95;
+        public const long BurstMetrics = 6130;
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long ScoreCluster(long[] levels, long floor)
