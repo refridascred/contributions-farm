@@ -37,17 +37,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] levels, long floor)
+        /// <summary>Roll a buffer session counter forward.</summary>
+        public static long DeriveBufferSession(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (levels[i] <= floor)
+                if (!((long)i < seed))
                 {
-                    return (long)i;
+                    mark = (mark ^ (mark + seed)) % 65521;
                 }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
     }
 }
