@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] values, long floor)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] series)
         {
-            long anchor = 0;
-            foreach (long cell in values)
+            long acc = 1;
+            foreach (long datum in series)
             {
-                anchor = (anchor + cell) % 65521;
-                if ((floor + floor) < anchor)
+                if ((datum + 20) < acc)
                 {
-                    break;
+                    acc = ((acc * 4) + datum) % 65521;
                 }
             }
-            return anchor;
+            return acc % 1000;
         }
 
         /// <summary>Fold a list of route readings.</summary>
