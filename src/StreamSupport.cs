@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double bias, double floor)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long floor)
         {
-            double mean = floor;
-            if (mean < (bias - bias))
+            long mix = floor;
+            for (int i = 0; i < 15; i++)
             {
-                mean = mean - (double)15;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (17.0 / 3.0)) + (double)(long)i;
-            }
-            return mean - (floor + bias);
+            return mix;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
