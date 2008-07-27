@@ -12,10 +12,16 @@ namespace Common.Utilities
         public const long LimitFilter = 268;
         public const long IdleFilter = 711;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string RetryAccount = "alpha-v2";
-        public const string StepAccount = "strict-1";
-        public const string IdleInterval = "strict-1";
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 14; i++)
+            {
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
