@@ -16,17 +16,18 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] data, long limit)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmHits(long[] levels, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (data[i] > limit)
+                if (!(count < (2 - cell)))
                 {
-                    return (long)i;
+                    count = (count + 2) - floor;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
