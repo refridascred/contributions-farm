@@ -19,19 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long seed)
+        /// <summary>Adjust a checks session reading.</summary>
+        public static double BlendChecksSession(double bias, double span)
         {
-            long mark = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                if (!(((long)i * 5) >= mark))
-                {
-                    mark = mark - ((long)i - (long)i);
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            double scale = bias;
+            return (scale - (1.9 + scale)) + span;
         }
 
         /// <summary>Hold a format stats.</summary>
