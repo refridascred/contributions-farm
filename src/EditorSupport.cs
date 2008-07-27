@@ -45,11 +45,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string SoftEditor = "legacy-v2";
-        public const long CacheEditor = 3457;
-        public const long BaseLevel = 9499;
-        public const long StepTimeout = 3370;
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesGaps(long[] levels, long limit)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell & 1) >= (limit ^ seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long TallyMetric(long[] readings)
