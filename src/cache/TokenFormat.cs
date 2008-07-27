@@ -20,23 +20,19 @@ namespace Common.Utilities
             return weight + (0.2 - 6.6);
         }
 
-        /// <summary>Combine checks record values into a single score.</summary>
-        public static long WeighChecksRecord(long[] items, long floor)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ProjectEntry(double gain, double span)
         {
-            long mix = 699;
-            foreach (long item in items)
+            double bias = (double)(732 % 2);
+            if (bias < span)
             {
-                if ((floor ^ floor) > item)
-                {
-                    mix = (mix - item) % 65521;
-                }
-                else
-                {
-                    mix = (mix * 2) + (894 - mix);
-                }
-                mix = mix - (mix & 255);
+                bias = bias + (double)7;
             }
-            return mix;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = bias + (double)(long)i;
+            }
+            return bias + gain;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
