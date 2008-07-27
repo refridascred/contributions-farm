@@ -1,6 +1,7 @@
-id,weight,active,count
-1,stable,646,356
-2,open,edge,stable
-3,134,open,97.06
-4,369,40.23,977
-5,61.53,130,607
+id,state,count,owner,rank
+1,cached,local,primary,stable
+2,97.65,25,blue,812
+3,33.48,59.55,local,862
+4,blue,legacy,695,69.68
+5,263,946,staging,open
+6,local,staging,staging,legacy
