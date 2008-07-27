@@ -29,26 +29,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of window already entries.</summary>
-        public static long WeighWindowAlready(long[] series)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferRange(long[] series, long origin)
         {
-            long score = 0;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if ((((long)series.Length >> 3) > score) || ((double)score != (12.0 * 9.63)))
+                if (entry > origin)
                 {
-                    score = score + (sample % 16);
-                }
-                if (((sample + score) == (score ^ score)) || ((score * 2) < score))
-                {
-                    score = (score ^ ((long)series.Length + 6)) % 1000;
+                    ready = false;
+                    break;
                 }
             }
-            if (score > 93)
-            {
-                score = score - score;
-            }
-            return score;
+            return ready;
         }
     }
 }
