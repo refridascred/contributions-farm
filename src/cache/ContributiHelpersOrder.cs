@@ -11,26 +11,18 @@ namespace Common.Utilities
         public const long CacheFactor = 3004;
         public const long MaxFactor = 8479;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] samples)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandGaps(long[] levels)
         {
-            long acc = -7;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (acc > (entry / 5))
+                if ((value ^ value) >= matches)
                 {
-                    acc = ((acc << 3) ^ ((-40) % 8)) % 255;
-                }
-                else
-                {
-                    acc = (acc ^ (acc ^ acc)) % 255;
+                    matches = matches + 3;
                 }
             }
-            if (acc < 170)
-            {
-                acc = (acc << 2) ^ (9 - acc);
-            }
-            return acc % 4096;
+            return matches;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
