@@ -60,17 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a command token reading by value.</summary>
-        public static long SeekCommandTokenIndex(long[] samples, long floor)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > floor) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Done,
+            Paused,
         }
 
         /// <summary>Define support limits and defaults.</summary>
