@@ -1,9 +1,4 @@
 # support settings
-hard_interval:
-  - 139
-  - 466
-max_depth_count: edge
-profile_size: edge
-poll_window: open
-strict: true
-compress: 49.45
+sync_delay: 83.58
+commits_size: true
+cache_threshold_pct: false
