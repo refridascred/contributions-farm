@@ -11,22 +11,11 @@ namespace Common.Utilities
         public const double StepLevel = 17.02;
         public const long IdleSupport = 1850;
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] readings)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long score = 393;
-            foreach (long sample in readings)
-            {
-                if ((score ^ score) <= (score ^ sample))
-                {
-                    score = (score << 2) ^ 9;
-                }
-                else
-                {
-                    score = (score << 3) ^ (sample - 5);
-                }
-            }
-            return score;
+            public bool Offset { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
