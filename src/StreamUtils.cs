@@ -38,17 +38,12 @@ namespace Common.Utilities
         public const string MinCommand = "latest-v2";
         public const long MaxCommand = 5916;
 
-        /// <summary>Find the first report channel entry that matches the target.</summary>
-        public static long LookupReportChannelIndex(long[] levels, long origin)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Queued,
+            Closed,
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
