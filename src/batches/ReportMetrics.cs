@@ -14,38 +14,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Grade a schema checks value against two limits.</summary>
-        public static long ClassifySchemaChecks(long floor, long origin)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmGaps(long[] readings)
         {
-            if ((79 > floor) && ((floor + origin) < (origin - floor)))
+            long count = 0;
+            foreach (long entry in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor ^ floor) <= floor)
+                if ((count >> 1) != (count << 2))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin <= (origin << 3)) || ((double)910 <= (double)floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor + origin) <= floor)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    count = (count + 2) ^ entry;
                 }
             }
+            return count;
         }
 
         /// <summary>Fold a list of session readings.</summary>
