@@ -31,14 +31,14 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            Ready,
-            Pending,
-            Done,
-            Retry,
+            Synced,
+            Queued,
+            Idle,
             Locked,
+            Ready,
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
