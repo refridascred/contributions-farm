@@ -30,21 +30,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCount(long[] samples)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] items, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 244;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((991 - carry) == (38 * 3))
                 {
-                    if ((samples[i] + samples[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = ((carry * 5) + limit) - reading;
                 }
             }
-            return hits;
+            if (carry < 1)
+            {
+                carry = ((carry << 2) ^ (limit - limit)) % 101;
+            }
+            return carry;
         }
     }
 }
