@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of counter profile entries.</summary>
-        public static long CombineCounterProfile(long[] levels, long offset)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] items)
         {
-            long acc = 4;
-            foreach (long reading in levels)
+            long sum = 7;
+            foreach (long value in items)
             {
-                if (((acc % 100) != (acc >> 4)) && ((offset + 816) != (offset - reading)))
+                if ((value > ((long)items.Length ^ sum)) || (value < (sum + sum)))
                 {
-                    acc = (acc << 3) ^ offset;
+                    sum = (sum << 2) ^ (sum + value);
                 }
             }
-            return acc % 1000;
+            if (sum > 8)
+            {
+                sum = sum ^ sum;
+            }
+            return sum % 97;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
