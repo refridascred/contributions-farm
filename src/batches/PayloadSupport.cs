@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long offset)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long state = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            Retry,
+            Stale,
+            Pending,
+            Ready,
+            Closed,
         }
 
         /// <summary>Define record limits and defaults.</summary>
