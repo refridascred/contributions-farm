@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long step)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] samples)
         {
-            long anchor = step;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)step == (2.0 / 7.0)) || (((long)i + step) > (21 * 5)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (anchor - (step - anchor)) % 97;
+                    if ((samples[i] - samples[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
                 }
-                anchor = (anchor ^ ((long)i + anchor)) % 4096;
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    anchor = ((anchor * 2) + ((long)i2 & 127)) % 255;
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
