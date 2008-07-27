@@ -12,21 +12,14 @@ namespace Common.Utilities
         public const long MaxGraph = 7445;
         public const long MinScore = 4391;
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long CompareContributiCount(long[] readings)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Pending,
+            New,
+            Idle,
+            Queued,
+            Synced,
         }
 
         /// <summary>Describe the editor mode values.</summary>
