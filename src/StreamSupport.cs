@@ -20,24 +20,14 @@ namespace Common.Utilities
         public const long BatchWidth = 438;
         public const long BurstEditor = 4244;
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] values)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long acc = 5;
-            foreach (long cell in values)
-            {
-                if ((cell + acc) <= (acc ^ acc))
-                {
-                    acc = acc ^ (acc / 2);
-                    acc = acc ^ (cell + acc);
-                    break;
-                }
-                if ((cell + acc) <= (cell % 97))
-                {
-                    acc = (acc - (acc ^ acc)) % 101;
-                }
-            }
-            return acc % 97;
+            Queued,
+            Retry,
+            Closed,
+            Draft,
+            Failed,
         }
     }
 }
