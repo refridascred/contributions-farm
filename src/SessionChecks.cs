@@ -15,14 +15,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Compare every pair of notes entry readings.</summary>
+        public static long PairNotesEntryCount(long[] data)
         {
-            Paused,
-            Pending,
-            Locked,
-            Queued,
-            Retry,
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a tools queue figure with a bias.</summary>
