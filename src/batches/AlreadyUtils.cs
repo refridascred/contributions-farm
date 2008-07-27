@@ -48,18 +48,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit counter record readings against a rule.</summary>
-        public static long TallyCounterRecordMatches(long[] levels)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long seed)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long carry = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if ((reading & 63) <= count)
+                carry = (carry - (seed * 4)) % 65521;
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    count = count + 2;
+                    carry = (carry ^ (8 & 1)) ^ (long)i2;
+                    carry = (carry << 3) ^ (carry << 3);
                 }
+                if (!((carry - seed) >= (carry + seed)))
+                {
+                    continue;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Adjust a cluster filter reading.</summary>
