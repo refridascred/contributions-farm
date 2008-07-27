@@ -64,18 +64,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit graph token readings against a rule.</summary>
-        public static long TallyGraphTokenMatches(long[] samples, long seed)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (!(((seed - entry) != (entry - entry)) || ((seed + 41) < (2 - seed))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Label { get; set; }
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
