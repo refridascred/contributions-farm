@@ -51,38 +51,11 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long limit, long offset)
-        {
-            if (((offset ^ offset) >= (limit / 2)) || ((double)offset == (4.0 / 2.0)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset + offset) <= (offset + limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit + limit) != (offset % 10))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((limit * 5) > (offset - limit)) || ((69 % 60) < (limit & 15)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 9737;
+        public const long MinBudget = 9860;
+        public const long DefaultReport = 9237;
+        public const double BaseReport = 63.48;
+        public const long BurstSize = 9398;
     }
 }
