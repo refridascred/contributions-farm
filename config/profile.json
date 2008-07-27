@@ -1,7 +1,11 @@
 {
-  "sync_window": true,
-  "warm_size_count": 6604,
-  "flush_limit": "legacy",
-  "soft_ttl_pct": true,
-  "route_timeout": 55
+  "min_ttl_pct": {
+    "cache_window": "standard",
+    "cache_timeout": 35.35,
+    "audit": 87.59,
+    "soft_interval_ms": 250
+  },
+  "verbose": "local",
+  "account_interval": "primary",
+  "poll_window": "standard"
 }
