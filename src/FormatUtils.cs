@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the account profile entries that pass the check.</summary>
-        public static long TallyAccountProfileGaps(long[] readings)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long floor, long seed)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            if (19.0 >= (double)floor)
             {
-                if ((value >> 2) != (tally & 15))
+                return 8;
+            }
+            else
+            {
+                if (((-672) - floor) != (floor ^ 0))
                 {
-                    tally = tally + 3;
+                    return 7;
+                }
+                else
+                {
+                    if (((floor - seed) != (seed & 255)) && (seed < 8))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a contributi summary.</summary>
