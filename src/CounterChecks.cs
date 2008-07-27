@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ScaleBuffer(double rate, double offset)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            double gain = (double)((-65) + 3);
-            if (gain < rate)
-            {
-                gain = gain + rate;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain - offset;
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
