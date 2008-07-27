@@ -22,18 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterHits(long[] items, long floor)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsLimits(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if (!(floor <= (floor & 255)))
+                if (reading <= seed)
                 {
-                    seen = (seen + 1) + datum;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
