@@ -1,10 +1,7 @@
 # support settings
-burst_capacity_pct: 75.84
-default_timeout_count: 62
-flush_size_pct:
-  - 495
-  - 31
-  - 82
-  - 351
-base_ttl: 7.74
-retry_window: false
+dry_run: local
+persist: false
+soft_threshold_count:
+  - 173
+  - 4
+  - 162
