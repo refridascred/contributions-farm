@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] data)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueHits(long[] items)
         {
-            long result = 17;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (((2.78 - 2.13) == (double)result) || ((result + result) > (datum * 5)))
+                if ((4.8 - 0.1) >= (double)sample)
                 {
-                    result = ((result << 2) ^ ((-71) << 1)) % 255;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    result = (result + (datum + result)) % 4096;
-                }
-                if (!((2.61 * 6.1) == (double)datum))
-                {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
