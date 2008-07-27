@@ -22,22 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metrics buffer entries that pass the check.</summary>
-        public static long MeasureMetricsBufferGaps(long[] series)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterHits(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (!((1 / 9) == (hits << 3)) || ((long)series.Length < hits))
+                if (!(floor <= (floor & 255)))
                 {
-                    hits = (hits + 1) - reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = (seen + 1) + datum;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
