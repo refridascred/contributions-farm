@@ -26,11 +26,12 @@ namespace Common.Utilities
         public const long CacheOrder = 7654;
         public const long SoftOrder = 5168;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string DefaultCount = "standard-edge";
-        public const string HardChannel = "staging-1";
-        public const long DefaultInterval = 4109;
-        public const long SoftChannel = 5991;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinDepth = 7594;
+        public const long BatchDepth = 4147;
+        public const string DefaultMetrics = "latest-edge";
+        public const double BurstFactor = 52.42;
+        public const long MaxLevel = 6902;
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long TallyNotesMatches(long[] items, long limit)
