@@ -59,13 +59,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] samples, long origin)
         {
-            public double Limit { get; set; }
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-            public double Owner { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
