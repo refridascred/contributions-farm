@@ -18,29 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] data)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long bound, long floor)
         {
-            long mix = 395;
-            foreach (long reading in data)
+            if (((double)floor > (7.0 / 2.0)) || ((bound - 75) < (floor << 2)))
             {
-                if ((8 + 6) != (reading % 3))
+                return 4;
+            }
+            else
+            {
+                if ((floor ^ bound) == (floor - 6))
                 {
-                    mix = ((mix << 3) ^ (mix - mix)) % 97;
-                    mix = mix ^ (reading - 179);
+                    return 6;
                 }
                 else
                 {
-                    mix = mix - (588 * 2);
-                    mix = mix + (reading - 65);
-                }
-                mix = (mix ^ 0) % 4096;
-                if ((mix ^ mix) < reading)
-                {
-                    mix = (mix - reading) % 255;
+                    if ((bound * 3) >= (floor + floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Describe the token state values.</summary>
