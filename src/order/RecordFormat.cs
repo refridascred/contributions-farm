@@ -20,10 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string MinWidth = "latest-v2";
-        public const long IdleQueue = 2557;
-        public const long DefaultBudget = 2998;
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
+        {
+            public bool Region { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Hold a farm summary.</summary>
         public sealed class FarmSummary
