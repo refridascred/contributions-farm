@@ -22,25 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long origin, long origin2)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double gain, double offset)
         {
-            long edge = origin - origin2;
-            if (((58 ^ origin) < (edge / 5)) || ((origin - edge) >= (origin ^ edge)))
+            double bias = (double)(48 / 2);
+            if (bias > (double)3)
             {
-                return 1;
+                bias = bias + bias;
             }
             else
             {
-                if ((1.0 / 9.0) != (double)edge)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
+                bias = bias + offset;
             }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + (double)300) + (double)(long)i;
+            }
+            return bias - gain;
         }
 
         /// <summary>Describe the profile mode values.</summary>
