@@ -1,8 +1,9 @@
 {
-  "batch_ratio_pct": 9262,
-  "verbose": "blue",
-  "sync_limit_pct": 38.21,
-  "cache_delay": false,
-  "soft_timeout_ms": "open",
-  "soft_threshold": ["eu-west", "staging", "fallback"]
+  "cache_size": {
+    "poll_depth_ms": 55.38,
+    "commits_window": 5648,
+    "min_limit": 54.55
+  },
+  "stream_retries": 40,
+  "hard_interval_s": 93.6
 }
