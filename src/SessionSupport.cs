@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] values)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long sum = 89;
+            foreach (long datum in values)
             {
-                if ((reading >> 4) > (reading << 1))
+                if ((limit >> 5) >= (datum + sum))
                 {
-                    matches = matches + 3;
+                    sum = (sum << 2) ^ 22;
+                }
+                if ((4.44 * 8.8) > (8.06 - 3.7))
+                {
+                    sum = sum + (limit >> 1);
+                }
+                else
+                {
+                    sum = (sum ^ (limit * 2)) % 255;
                 }
             }
-            return matches;
+            return sum % 1000;
         }
 
         /// <summary>Hold a entry stats.</summary>
