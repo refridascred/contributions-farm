@@ -59,12 +59,17 @@ namespace Common.Utilities
         public const long RetryCommits = 4099;
         public const string BaseCommits = "staging";
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] samples, long seed)
         {
-            public string Score { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
