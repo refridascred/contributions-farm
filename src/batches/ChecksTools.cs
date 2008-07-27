@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a route cache pair into a bucket.</summary>
-        public static long GradeRouteCache(long step, long target)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesOutliers(long[] series, long seed)
         {
-            if ((target ^ step) <= step)
+            long count = 0;
+            foreach (long sample in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)target >= (7.1 * 4.9))
+                if ((sample + 107) <= seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((15.0 + 4.5) <= (double)target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Find the first batch channel entry that matches the target.</summary>
