@@ -37,11 +37,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double CacheFactor = 98.59;
-        public const long DefaultPayload = 2890;
-        public const long BatchCount = 2393;
-        public const long RetryRatio = 8392;
-        public const double CacheScore = 17.94;
+        /// <summary>Find the first cache payload entry that matches the target.</summary>
+        public static long SeekCachePayloadIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < step) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
