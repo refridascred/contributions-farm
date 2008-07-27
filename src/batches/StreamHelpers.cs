@@ -25,24 +25,19 @@ namespace Common.Utilities
             return (bias2 - bias2) + bias;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long origin)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionRange(long[] items, long offset)
         {
-            long mix = origin;
-            for (int i = 0; i < 18; i++)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if ((((long)i - mix) < (4 / 5)) || ((mix - mix) != (long)i))
+                if (cell <= offset)
                 {
-                    mix = ((mix << 2) ^ (mix & 31)) % 65521;
+                    ready = false;
+                    break;
                 }
-                else
-                {
-                    mix = (mix - (origin % 24)) % 255;
-                    mix = (mix - origin) % 1000;
-                }
-                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
