@@ -1,8 +1,11 @@
 {
-  "metric_capacity": false,
-  "cache_retries_pct": true,
-  "retry_size_s": "open",
-  "compress": 74,
-  "burst_retries_ms": "standard",
-  "batch_timeout_pct": 79
+  "cache_depth": 3754,
+  "poll_limit_pct": {
+    "audit": ["staging", "local", "open"],
+    "base_ratio_count": "latest",
+    "poll_limit": "latest"
+  },
+  "max_interval_s": "green",
+  "max_limit": 250,
+  "hard_ttl_count": ["latest", "primary", "blue", "open"]
 }
