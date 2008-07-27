@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long HardRecord = 2755;
         public const long MinRecord = 9699;
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public bool Level { get; set; }
+            public double Mode { get; set; }
+            public double Total { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
