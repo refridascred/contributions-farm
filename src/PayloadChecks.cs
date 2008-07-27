@@ -70,14 +70,21 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long seed)
         {
-            Ready,
-            Closed,
-            Locked,
-            Queued,
-            New,
+            long anchor = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    anchor = ((anchor * 4) + (anchor - seed)) + (long)i2;
+                    anchor = anchor - (anchor - seed);
+                }
+                anchor = (anchor << 3) ^ (anchor + (long)i);
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
     }
 }
