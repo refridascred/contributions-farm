@@ -23,16 +23,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long origin)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double gain, double floor)
         {
-            long score = origin;
-            for (int i = 0; i < 23; i++)
+            double bias = (double)(1 & 15);
+            if (bias < bias)
             {
-                score = (score - (long)i) % 1000;
-                score = ((score * 5) + (long)i) % 1000;
+                bias = (bias + bias) + floor;
             }
-            return score;
+            return bias + (gain + bias);
         }
     }
 }
