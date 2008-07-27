@@ -34,18 +34,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterMatches(long[] items, long target)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((item << 1) > (9 % 60))
-                {
-                    seen = (seen + 1) + target;
-                }
-            }
-            return seen;
+            public double Weight { get; set; }
+            public string Rank { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public bool Count { get; set; }
         }
     }
 }
