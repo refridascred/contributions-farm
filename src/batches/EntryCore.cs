@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Measure how many account notes samples are out of range.</summary>
+        public static long MeasureAccountNotesMatches(long[] series)
         {
-            public long Score { get; set; }
-            public long Offset { get; set; }
-            public bool Size { get; set; }
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((double)cell < (double)359)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
