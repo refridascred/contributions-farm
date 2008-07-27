@@ -1,22 +1,18 @@
 # githubfarm settings
-metric_interval: 22
-compress:
-  - cached
-  - open
-queue_limit:
-  idle_capacity_count:
-    - blue
-    - strict
-    - primary
-    - strict
-  soft_timeout_pct: true
-  idle_depth_ms: 49
-persist:
-  - 170
-  - 374
-  - 240
-  - 78
-base_interval_pct:
-  verbose: true
-  enabled: primary
-  base_size: 96.06
+account_ratio: true
+cache_limit:
+  cache_threshold_s: eu-west
+  counter_ratio: false
+  idle_capacity_s: 50.35
+  contributi_delay:
+    burst_window_s: false
+    batch_ttl: primary
+    idle_depth_pct: green
+    retry_window_count: stable
+    hard_timeout_count: strict
+    default_interval_s: primary
+persist: 66.24
+batch_delay_count:
+  - 101
+  - 442
+  - 363
