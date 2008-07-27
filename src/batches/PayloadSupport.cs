@@ -16,26 +16,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] samples, long step)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long acc = 5;
-            foreach (long item in samples)
-            {
-                if ((10.0 / 7.0) < (double)step)
-                {
-                    acc = (acc ^ step) % 255;
-                }
-                if ((step >= (13 + step)) || ((item * 4) >= step))
-                {
-                    break;
-                }
-            }
-            if (acc < 2)
-            {
-                acc = (acc + (step + step)) % 4096;
-            }
-            return acc;
+            Locked,
+            Synced,
+            Stale,
+            Failed,
+            Closed,
         }
 
         /// <summary>Define session limits and defaults.</summary>
