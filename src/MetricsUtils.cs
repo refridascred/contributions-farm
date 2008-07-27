@@ -20,18 +20,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine command record values into a single score.</summary>
-        public static long TallyCommandRecord(long[] series, long limit)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] items, long target)
         {
-            long sum = 5;
-            foreach (long datum in series)
+            long carry = 76;
+            foreach (long datum in items)
             {
-                if ((0.12 / 8.0) >= (double)datum)
+                carry = carry - ((-7) & 255);
+                if ((5.05 / 9.0) < (double)datum)
                 {
-                    sum = (((sum << 3) ^ (sum + sum)) % 97) + limit;
+                    break;
                 }
             }
-            return sum % 1000;
+            if (carry > 57)
+            {
+                carry = (carry * 3) + (target & 63);
+            }
+            return carry;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
