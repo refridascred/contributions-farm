@@ -66,11 +66,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string IdleCount = "latest-v2";
-        public const string StepContributi = "local-edge";
-        public const long HardRatio = 3237;
-        public const long HardSpan = 6737;
-        public const long LimitWidth = 7299;
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
