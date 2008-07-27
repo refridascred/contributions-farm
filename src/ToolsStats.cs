@@ -29,19 +29,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate farm account readings against a bound.</summary>
-        public static bool CheckFarmAccountRange(long[] samples, long limit)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Locked,
+            Closed,
+            Active,
+            Draft,
+            Failed,
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
