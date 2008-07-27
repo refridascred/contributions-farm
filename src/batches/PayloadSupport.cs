@@ -15,11 +15,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitWidth = 8210;
-        public const long IdleWidth = 1323;
-        public const string HardRecord = "legacy-1";
-        public const string HardDepth = "local-edge";
+        /// <summary>Measure how many session batches samples are out of range.</summary>
+        public static long AuditSessionBatchesMatches(long[] series, long origin)
+        {
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((origin + origin) <= ((-6) + matches))
+                {
+                    matches = (matches + 1) + item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate stream route samples.</summary>
         public static long WeighStreamRoute(long[] samples)
