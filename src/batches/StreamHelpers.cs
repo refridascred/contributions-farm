@@ -14,12 +14,24 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long seed)
         {
-            public long Mode { get; set; }
-            public bool Total { get; set; }
-            public long Owner { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                if (seed < (seed / 6))
+                {
+                    acc = ((acc * 4) + (acc >> 4)) % 4096;
+                    acc = (acc ^ 5) % 255;
+                }
+                if ((acc % 7) <= 7)
+                {
+                    acc = (acc * 2) + (77 >> 4);
+                }
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
