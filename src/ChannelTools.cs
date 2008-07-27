@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const string IdleRatio = "stable";
         public const long MaxCommand = 4956;
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadBounds(long[] readings, long floor)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferHits(long[] items, long limit)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (value >= floor)
+                if (!((limit * 2) == (matches << 1)))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 2) ^ sample;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
