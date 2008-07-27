@@ -14,12 +14,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Project the next queue record value.</summary>
+        public static double SmoothQueueRecord(double scale, double offset)
         {
-            Failed,
-            Idle,
-            Pending,
+            double load = scale;
+            if (load > load)
+            {
+                load = load - 3.79;
+            }
+            else
+            {
+                load = load + (offset / 6.0);
+            }
+            return load - (6.82 / 4.0);
         }
 
         /// <summary>Audit already readings against a rule.</summary>
