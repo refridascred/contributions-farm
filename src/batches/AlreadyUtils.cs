@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double SmoothEditor(double ratio, double bias)
+        /// <summary>Locate a route stats reading by value.</summary>
+        public static long FindRouteStatsIndex(long[] samples, long offset)
         {
-            double scale = (double)(-2) / 4.0;
-            if (scale >= 6.0)
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = (scale + bias) + ratio;
+                if ((samples[i] <= offset) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale - scale;
+            return -1;
         }
 
         /// <summary>Check that every channel metrics entry stays within the limit.</summary>
