@@ -1,10 +1,15 @@
 {
-  "default_retries_count": "eu-west",
-  "sync_ratio": {
-    "strict": 1024,
-    "retry_size_ms": 6465,
-    "base_limit": [400, 374],
-    "burst_size_s": [401, 61, 434]
+  "audit": 3259,
+  "format_timeout": false,
+  "strict": {
+    "flush_limit_s": "latest",
+    "burst_depth_count": 3,
+    "strict": "cached",
+    "queue_limit": [428, 496],
+    "default_window_s": [491, 68, 274],
+    "payload_size": true
   },
-  "githubfarm_delay": 912
+  "default_retries": false,
+  "report_delay": "primary",
+  "token_threshold": 72
 }
