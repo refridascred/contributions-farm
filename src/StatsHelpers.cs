@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            public long Level { get; set; }
-            public double Offset { get; set; }
-            public long Region { get; set; }
-            public bool Token { get; set; }
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
