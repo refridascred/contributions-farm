@@ -23,16 +23,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long step)
+        /// <summary>Match up stats samples.</summary>
+        public static long CompareStatsCount(long[] levels)
         {
-            long state = step;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = state ^ (826 % 64);
-                state = ((state * 5) + (long)i) % 65521;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Hold a window summary.</summary>
