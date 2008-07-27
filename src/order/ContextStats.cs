@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long MinSupport = 3764;
         public const string StepSupport = "strict-v2";
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowGaps(long[] samples)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((((double)hits != (double)(long)samples.Length) && ((hits % 12) >= (10 + value))) && ((hits ^ value) >= (value / 7)))
+                if ((levels[i] == step) && ((levels[i] % 2) == 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Adjust a cache reading.</summary>
