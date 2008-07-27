@@ -13,22 +13,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowMatches(long[] samples)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            double rate = (double)8 + span;
+            if (rate > (double)8)
             {
-                if ((16.0 + 9.1) > (double)value)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                rate = rate + ratio;
             }
-            return matches;
+            else
+            {
+                rate = rate + (17.0 * 3.2);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + span) + (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Define command limits and defaults.</summary>
