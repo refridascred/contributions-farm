@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheRatio = 5203;
-        public const long WindowProfile = 2612;
-        public const long BaseTimeout = 9081;
-        public const long DefaultFactor = 4462;
-        public const long CacheProfile = 6484;
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] levels, long seed)
+        {
+            long total = 0;
+            foreach (long item in levels)
+            {
+                total = ((total * 4) + (item >> 4)) + seed;
+            }
+            if (total < 602)
+            {
+                total = total ^ total;
+            }
+            return total % 4096;
+        }
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long CombineContributi(long[] series)
