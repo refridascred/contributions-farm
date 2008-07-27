@@ -37,19 +37,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileRange(long[] data, long seed)
-        {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCount = 8933;
+        public const long BatchCache = 1287;
+        public const double MaxCache = 84.97;
+        public const double StepTimeout = 84.79;
     }
 }
