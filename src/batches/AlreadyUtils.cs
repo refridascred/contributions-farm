@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] levels)
-        {
-            long sum = 218;
-            foreach (long reading in levels)
-            {
-                if ((double)sum <= (3.24 + 4.37))
-                {
-                    sum = (((sum << 2) ^ (sum << 3)) % 97) ^ reading;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ sum;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdlePayload = 1991;
+        public const long StepPayload = 6158;
+        public const double MinRatio = 94.81;
+        public const long RetrySpan = 9187;
+        public const double WindowPayload = 77.9;
 
         /// <summary>Adjust a record reading.</summary>
         public static double AdjustRecord(double ratio, double bias)
