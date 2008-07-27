@@ -13,10 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MaxSpan = 61.4;
-        public const string BatchTimeout = "stable-1";
-        public const long BaseSpan = 2225;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyGaps(long[] items, long floor)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (((floor - 3) > (838 << 1)) && ((274 - matches) <= matches))
+                {
+                    matches = (matches + 2) + reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the profile series from a seed.</summary>
         public static long DeriveProfile(long step)
