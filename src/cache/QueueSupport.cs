@@ -23,24 +23,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank channel payload input into a small class.</summary>
-        public static long ClassifyChannelPayload(long floor, long target)
-        {
-            if (((34 ^ floor) != (target & 31)) && ((double)floor <= (double)target))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((78 * 4) < (floor % 10))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowMetric = 1879;
+        public const string SoftMetric = "latest-edge";
+        public const long MaxMetric = 8375;
+        public const double CacheRatio = 39.55;
     }
 }
