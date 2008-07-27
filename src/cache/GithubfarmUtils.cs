@@ -27,17 +27,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a schema token reading by value.</summary>
-        public static long LocateSchemaTokenIndex(long[] levels, long step)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 527;
+            foreach (long cell in levels)
             {
-                if ((levels[i] >= step) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                state = ((state * 3) + (state & 255)) + cell;
             }
-            return -1;
+            return state % 97;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
