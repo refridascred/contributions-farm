@@ -30,12 +30,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            Pending,
-            Done,
+            Idle,
+            Closed,
             Locked,
+            Ready,
+            Synced,
         }
 
         /// <summary>Combine already values into a single score.</summary>
