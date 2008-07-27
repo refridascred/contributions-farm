@@ -14,17 +14,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a batch account reading by value.</summary>
-        public static long LookupBatchAccountIndex(long[] samples, long offset)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 5;
+            foreach (long cell in series)
             {
-                if (samples[i] <= offset)
+                acc = (acc ^ (cell ^ acc)) % 65521;
+                if ((cell * 4) <= (cell + 9))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return acc % 4096;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
