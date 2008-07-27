@@ -36,19 +36,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate entry account readings against a bound.</summary>
-        public static bool VerifyEntryAccountLimits(long[] series, long origin)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Paused,
+            Ready,
+            Retry,
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
