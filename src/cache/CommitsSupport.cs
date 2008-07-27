@@ -69,13 +69,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmHits(long[] data)
         {
-            public double Total { get; set; }
-            public double Size { get; set; }
-            public double Offset { get; set; }
-            public long Mode { get; set; }
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((count >> 2) <= (23 - item))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
