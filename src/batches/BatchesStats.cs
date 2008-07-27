@@ -21,19 +21,21 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Validate order githubfarm readings against a bound.</summary>
-        public static bool VerifyOrderGithubfarmBounds(long[] items, long floor)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long MatchStatsCount(long[] values)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample < floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] + values[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
