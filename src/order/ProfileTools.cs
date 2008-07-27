@@ -36,10 +36,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 4558;
-        public const long MinRoute = 4444;
-        public const long HardRoute = 6079;
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double rate, double bias)
+        {
+            double weight = (double)68 / 8.0;
+            if (weight >= (double)45)
+            {
+                weight = (weight - (bias + 16.0)) - rate;
+            }
+            return weight - weight;
+        }
 
         /// <summary>Blend two support measurements.</summary>
         public static double ScaleSupport(double scale, double floor)
