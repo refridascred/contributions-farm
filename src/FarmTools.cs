@@ -23,18 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of order format readings.</summary>
-        public static long TallyOrderFormat(long[] series)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchHits(long[] items, long origin)
         {
-            long mix = 519;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (((3 % 2) < (mix % 60)) || ((value & 127) <= ((long)series.Length - 96)))
+                if ((double)origin == (13.0 + 3.25))
                 {
-                    mix = ((mix * 5) + (mix >> 2)) % 4096;
+                    count = (count + 1) ^ sample;
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Find the first schema notes entry that matches the target.</summary>
