@@ -71,17 +71,10 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string StepBuffer = "standard-v2";
+        public const long HardBuffer = 9673;
+        public const string MinSize = "stable-v2";
+        public const long WindowFactor = 4147;
     }
 }
