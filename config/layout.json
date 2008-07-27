@@ -1,5 +1,12 @@
 {
-  "warm_retries_ms": 10.08,
-  "max_limit": "latest",
-  "metric_threshold": 12.27
+  "metrics_interval": "staging",
+  "commits_retries": "blue",
+  "base_window": 77.02,
+  "route_interval": {
+    "retry_depth_count": 60,
+    "dry_run": false,
+    "cluster_depth": ["fallback", "staging"],
+    "support_delay": "blue"
+  },
+  "readonly": 85.2
 }
