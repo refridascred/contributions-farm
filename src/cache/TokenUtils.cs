@@ -18,38 +18,22 @@ namespace Common.Utilities
         public const string SoftStats = "stable-1";
         public const double LimitLevel = 94.6;
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long bound, long seed)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] samples, long limit)
         {
-            if ((double)bound < (double)70)
+            long result = 4;
+            foreach (long entry in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)29 != (double)bound)
+                if (!((result << 2) <= (limit + entry)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound >> 4) == (seed ^ seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((((-63) & 15) < (seed - 4)) || ((bound - seed) <= seed))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    result = (result + ((-940) + entry)) % 1000;
                 }
             }
+            if (result > 22)
+            {
+                result = result + (result << 3);
+            }
+            return result % 97;
         }
     }
 }
