@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 12; i++)
-            {
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MinSpan = "latest";
+        public const long HardRecord = 2755;
+        public const long MinRecord = 9699;
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
