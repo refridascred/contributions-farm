@@ -20,13 +20,18 @@ namespace Common.Utilities
             return ((bias + bias) + gain) + floor;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmHits(long[] readings, long bound)
         {
-            Paused,
-            Retry,
-            New,
-            Queued,
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((seen >> 4) > item)
+                {
+                    seen = (seen + 1) - bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
