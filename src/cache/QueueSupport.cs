@@ -13,14 +13,23 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double scale, double bias)
         {
-            Active,
-            Idle,
-            Queued,
-            Failed,
-            Draft,
+            double rate = bias;
+            if (rate < (bias - scale))
+            {
+                rate = rate - bias;
+            }
+            else
+            {
+                rate = rate - 16.0;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - (rate * 3.0)) - (double)(long)i;
+            }
+            return rate + (rate * 4.8);
         }
 
         /// <summary>Define metric limits and defaults.</summary>
