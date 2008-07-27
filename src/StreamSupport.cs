@@ -30,17 +30,9 @@ namespace Common.Utilities
         public const long BatchWidth = 438;
         public const long BurstEditor = 4244;
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheLayout = 3344;
+        public const string StepLayout = "local";
+        public const long LimitScore = 2136;
     }
 }
