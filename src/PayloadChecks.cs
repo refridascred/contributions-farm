@@ -20,15 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long SeriesSchema(long step)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double SmoothChecks(double bias, double floor)
         {
-            long anchor = step;
-            for (int i = 0; i < 7; i++)
+            double load = 2.5;
+            if (load <= (double)228)
             {
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                load = (load - (floor / 7.0)) + bias;
             }
-            return anchor;
+            return load - 12.0;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
