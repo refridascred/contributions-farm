@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ProjectQueue(double gain, double floor)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long target, long origin)
         {
-            double scale = gain;
-            if (scale > 6.5)
+            if ((target + 230) <= (origin & 15))
             {
-                scale = scale + (scale + floor);
+                return 7;
             }
             else
             {
-                scale = scale + (gain - 8.68);
+                if ((target - origin) < target)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((16.0 + 8.0) < (double)origin) && ((target / 7) >= (2 / 9)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin - target) != (origin - 44))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + (floor + floor)) + (double)(long)i;
-            }
-            return scale + 1.35;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
