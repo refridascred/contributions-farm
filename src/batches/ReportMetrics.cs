@@ -20,25 +20,11 @@ namespace Common.Utilities
             return drift - rate;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((state << 2) <= (seed + state))
-                {
-                    state = (state << 2) ^ ((long)i + seed);
-                    state = ((state * 3) + (seed << 1)) % 101;
-                }
-                if (!((double)(long)i >= (5.0 - 1.41)))
-                {
-                    state = (state + seed) % 255;
-                }
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinContext = 3290;
+        public const long HardBudget = 8934;
+        public const long BaseSize = 380;
+        public const string LimitSize = "legacy-1";
 
         /// <summary>Hold a metrics record.</summary>
         public sealed class MetricsRecord
