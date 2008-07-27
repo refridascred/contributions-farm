@@ -20,12 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ScaleStats(double weight, double offset)
-        {
-            double ratio = (offset + weight) / 8.0;
-            return ratio + weight;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseBudget = 799;
+        public const long LimitSpan = 6079;
+        public const long SoftInterval = 9897;
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long PairProfileCount(long[] levels)
