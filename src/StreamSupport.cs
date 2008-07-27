@@ -57,17 +57,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long SeekTokenIndex(long[] items, long offset)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksGaps(long[] readings, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (items[i] >= offset)
+                if ((seed << 2) == (hits ^ value))
                 {
-                    return (long)i;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
