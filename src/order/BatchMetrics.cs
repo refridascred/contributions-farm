@@ -54,27 +54,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] series)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long anchor = -7;
-            foreach (long entry in series)
-            {
-                if ((anchor & 7) >= entry)
-                {
-                    anchor = (anchor + (entry + anchor)) % 4096;
-                }
-                anchor = (anchor ^ (anchor >> 3)) % 97;
-                if ((double)anchor <= 1.6)
-                {
-                    anchor = (anchor ^ (entry ^ entry)) % 65521;
-                }
-            }
-            if (anchor < 763)
-            {
-                anchor = (anchor - anchor) % 65521;
-            }
-            return anchor % 65521;
+            public long Region { get; set; }
+            public double Weight { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count the order route entries that pass the check.</summary>
