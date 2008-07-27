@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BurstLevel = "alpha";
-        public const long IdleSupport = 8788;
-        public const long MinSupport = 3764;
-        public const string StepSupport = "strict-v2";
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 3880;
+        public const long HardAccount = 6552;
+        public const double CacheRatio = 86.93;
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long FindMetricIndex(long[] levels, long step)
