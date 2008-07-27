@@ -23,21 +23,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] items)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterRange(long[] items, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long value in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (value < bound)
                 {
-                    if ((items[i] - items[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Accumulate queue format samples.</summary>
