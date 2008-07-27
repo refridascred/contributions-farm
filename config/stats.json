@@ -1,5 +1,15 @@
 {
-  "tools_depth": 1024,
-  "persist": [69, 403, 288, 133],
-  "batch_timeout": "legacy"
+  "readonly": {
+    "enabled": 30,
+    "cache_timeout": 1024,
+    "default_size_s": ["open", "stable"],
+    "warm_window_count": [400, 254, 8, 58],
+    "audit": 6216,
+    "sync_retries_s": "stable"
+  },
+  "hard_retries_pct": 250,
+  "flush_delay_ms": 1732,
+  "max_limit": "staging",
+  "enabled": "fallback",
+  "warm_capacity_count": "green"
 }
