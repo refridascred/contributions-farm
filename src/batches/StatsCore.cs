@@ -40,22 +40,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] levels)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long seed)
         {
-            long carry = 466;
-            foreach (long entry in levels)
+            long state = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if ((44 < (entry & 127)) || ((carry * 2) <= entry))
-                {
-                    carry = ((carry << 3) ^ (carry + (long)levels.Length)) % 1000;
-                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            if (carry < 832)
-            {
-                carry = (carry << 2) ^ (carry & 31);
-            }
-            return carry % 4096;
+            return state;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
