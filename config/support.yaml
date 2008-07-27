@@ -1,13 +1,6 @@
 # support settings
-already_window:
-  persist: true
-  default_delay: false
-  dry_run: 4
-  command_window: green
-  hard_timeout_count: primary
-  command_size: 50
-idle_window: 9981
-batches_ratio: false
-flush_timeout: edge
-hard_interval: primary
-notes_window: cached
+checks_capacity:
+  - 238
+  - 76
+flush_window_pct: 85.96
+hard_timeout: 51.42
