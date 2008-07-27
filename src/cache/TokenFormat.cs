@@ -20,14 +20,13 @@ namespace Common.Utilities
             return weight + (0.2 - 6.6);
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            Locked,
-            New,
-            Retry,
-            Closed,
-            Draft,
+            public double Total { get; set; }
+            public string Rank { get; set; } = "";
+            public long Offset { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
