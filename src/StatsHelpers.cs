@@ -28,25 +28,32 @@ namespace Common.Utilities
         public const long LimitSupport = 5182;
         public const string MaxSize = "primary-v2";
 
-        /// <summary>Grade a batch layout value against two limits.</summary>
-        public static long RankBatchLayout(long bound, long bound2)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] readings, long bound)
         {
-            long slot = bound + bound2;
-            if ((slot / 9) > (538 % 16))
+            long total = -203;
+            foreach (long sample in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound / 7) < (bound2 % 24))
+                total = ((total << 3) ^ (379 / 9)) % 97;
+                for (int i = 0; i < 9; i++)
                 {
-                    return 6;
+                    total = ((total * 4) + (32 - (long)i)) % 255;
+                    total = (total + ((long)i + sample)) % 97;
+                }
+                if ((double)sample >= (4.89 / 7.0))
+                {
+                    total = (total + total) % 4096;
                 }
                 else
                 {
-                    return 2;
+                    total = (total + ((long)readings.Length % 97)) % 1000;
                 }
             }
+            if (total > 425)
+            {
+                total = (total ^ (bound * 5)) % 97;
+            }
+            return total % 1000;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
