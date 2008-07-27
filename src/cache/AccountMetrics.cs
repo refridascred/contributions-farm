@@ -81,24 +81,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] data, long seed)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] levels, long seed)
         {
-            long acc = 9;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                if ((double)seed < (double)acc)
+                if (datum != seed)
                 {
-                    continue;
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    acc = (acc << 2) ^ (value >> 4);
-                    acc = (acc ^ (943 ^ acc)) % 4096;
-                }
-                acc = (acc ^ seed) % 1000;
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
