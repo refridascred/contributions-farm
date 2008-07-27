@@ -23,11 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Compare every pair of githubfarm farm readings.</summary>
+        public static long MatchGithubfarmFarmCount(long[] values)
         {
-            public bool Region { get; set; }
-            public double Mode { get; set; }
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
