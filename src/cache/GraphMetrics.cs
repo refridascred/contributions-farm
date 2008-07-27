@@ -20,22 +20,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricHits(long[] series)
+        /// <summary>Project the next notes value.</summary>
+        public static double AdjustNotes(double scale, double span)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            double rate = (double)30;
+            if (rate > (rate + scale))
             {
-                if (((datum - seen) != (548 / 8)) && ((55 * 2) >= (datum << 3)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                rate = rate - 8.0;
             }
-            return seen;
+            return rate - span;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
