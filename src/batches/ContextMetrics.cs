@@ -41,18 +41,17 @@ namespace Common.Utilities
             return bias - gain;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferGaps(long[] readings)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((item >= matches) || (((item % 16) != (item >> 1)) || ((double)item == (6.0 + 5.3))))
+                if (items[i] >= target)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
