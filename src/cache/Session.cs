@@ -31,21 +31,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] values)
+        /// <summary>Validate cluster order readings against a bound.</summary>
+        public static bool VerifyClusterOrderBounds(long[] samples, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (cell >= floor)
                 {
-                    if ((values[i] - values[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
