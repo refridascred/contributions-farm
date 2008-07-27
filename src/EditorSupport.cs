@@ -15,19 +15,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double ratio, double span)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long RollQueue(long bound)
         {
-            double scale = 9.6 / 3.0;
-            if (scale > (double)51)
+            long state = bound;
+            for (int i = 0; i < 19; i++)
             {
-                scale = (scale + ratio) + span;
+                state = state + state;
+                if (((double)(long)i >= (3.18 + 2.03)) && (((-8) - state) <= 942))
+                {
+                    state = (state - (long)i) % 255;
+                    state = (state + (bound & 1)) % 4096;
+                    continue;
+                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - (ratio / 3.0)) - (double)(long)i;
-            }
-            return scale + ratio;
+            return state;
         }
 
         /// <summary>Combine payload cluster values into a single score.</summary>
