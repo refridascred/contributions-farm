@@ -63,10 +63,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitInterval = 3771;
-        public const string CacheEditor = "standard-edge";
-        public const double MaxSize = 21.39;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksRange(long[] items, long floor)
+        {
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Match up channel samples.</summary>
         public static long OverlapChannelCount(long[] values)
