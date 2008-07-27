@@ -1,5 +1,8 @@
 {
-  "flush_retries_count": 78.17,
-  "enabled": true,
-  "flush_limit_count": "blue"
+  "max_window_count": 69.12,
+  "burst_capacity_pct": 1097,
+  "idle_ratio": 5156,
+  "base_depth_ms": "stable",
+  "entry_timeout": "green",
+  "max_ttl_pct": "strict"
 }
