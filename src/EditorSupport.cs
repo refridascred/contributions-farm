@@ -22,22 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long bound)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long state = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                state = state + state;
-                if (((double)(long)i >= (3.18 + 2.03)) && (((-8) - state) <= 942))
-                {
-                    state = (state - (long)i) % 255;
-                    state = (state + (bound & 1)) % 4096;
-                    continue;
-                }
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            New,
+            Paused,
+            Failed,
+            Locked,
         }
 
         /// <summary>Combine payload cluster values into a single score.</summary>
