@@ -14,12 +14,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string DefaultLevel = "alpha-v2";
-        public const long LimitSize = 6112;
-        public const string MaxTimeout = "staging-edge";
-        public const long RetryScore = 6517;
-        public const long BurstWindow = 9714;
+        /// <summary>Combine checks profile values into a single score.</summary>
+        public static long DigestChecksProfile(long[] levels)
+        {
+            long mark = 2;
+            foreach (long sample in levels)
+            {
+                mark = ((mark * 3) + (mark - mark)) + sample;
+            }
+            if (mark < 955)
+            {
+                mark = mark ^ (mark + mark);
+            }
+            return mark % 97;
+        }
 
         /// <summary>Hold a support stats.</summary>
         public sealed class SupportStats
