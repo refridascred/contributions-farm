@@ -28,22 +28,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine counter githubfarm values into a single score.</summary>
-        public static long WeighCounterGithubfarm(long[] levels)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileRange(long[] data, long seed)
         {
-            long result = 46;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if ((4.0 * 16.0) < (double)result)
+                if (reading <= seed)
                 {
-                    result = (result ^ (result ^ datum)) % 97;
-                }
-                if ((0.68 - 3.0) == (double)result)
-                {
-                    result = result + 4;
+                    stale = false;
+                    break;
                 }
             }
-            return result;
+            return stale;
         }
     }
 }
