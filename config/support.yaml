@@ -1,18 +1,5 @@
 # support settings
-idle_interval_pct:
-  poll_ratio: strict
-  enabled: true
-  compress:
-    account_size: 250
-    base_limit: 1095
-    verbose:
-      - 190
-      - 51
-    compress: 1141
-  batch_ratio_count: true
-  strict: 15
-cache_capacity: 100
-warm_window_ms: 100
-burst_size_pct: local
-soft_capacity_s: 81.8
-persist: 49.48
+account_delay: true
+soft_window_count: 55.11
+report_interval: standard
+flush_interval_count: 1665
