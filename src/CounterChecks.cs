@@ -41,19 +41,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesOutliers(long[] readings, long seed)
-        {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((double)seed <= (double)value)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitRatio = 2492;
+        public const long MaxWidth = 4492;
+        public const string HardDepth = "alpha-edge";
+        public const long HardTools = 2766;
+        public const long MinLevel = 3864;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double CacheRatio = 26.12;
