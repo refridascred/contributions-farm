@@ -21,19 +21,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextRange(long[] items, long origin)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Ratio { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
