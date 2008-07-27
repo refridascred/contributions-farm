@@ -29,24 +29,15 @@ namespace Common.Utilities
         public const long SoftCommand = 774;
         public const string BaseCommand = "primary";
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long seed, long offset)
+        /// <summary>Accumulate format farm samples.</summary>
+        public static long TallyFormatFarm(long[] items, long step)
         {
-            if ((seed << 2) > offset)
+            long state = 629;
+            foreach (long cell in items)
             {
-                return 6;
+                state = ((((state * 3) + (state / 3)) % 101) - cell) - step;
             }
-            else
-            {
-                if (((4.6 - 2.79) < (double)offset) && ((seed & 3) < offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return state;
         }
     }
 }
