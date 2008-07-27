@@ -1,7 +1,6 @@
 {
-  "enabled": ["edge", "standard", "fallback", "primary"],
-  "audit": false,
-  "retry_capacity_s": [393, 296],
-  "order_window": ["primary", "cached"],
-  "account_interval": "cached"
+  "batch_ratio": 59.54,
+  "cache_depth_s": 85,
+  "audit": "edge",
+  "default_timeout": ["strict", "fallback"]
 }
