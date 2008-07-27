@@ -33,24 +33,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long target)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long origin)
         {
-            long result = target;
-            for (int i = 0; i < 5; i++)
+            long state = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (1 > (target + 581))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    result = result - (118 + result);
-                    result = (result << 3) ^ (result ^ (long)i);
+                    state = (state ^ (44 - origin)) - (long)i2;
                 }
-                else
+                for (int i3 = 0; i3 < 8; i3++)
                 {
-                    result = result - (result / 3);
+                    state = (((state * 5) + (long)i) % 65521) ^ (long)i3;
                 }
-                result = ((result * 5) + (long)i) % 4093;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
