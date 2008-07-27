@@ -1,6 +1,11 @@
-id,weight,region,active,state
-1,4.78,edge,open,green
-2,379,cached,12.61,86.95
-3,541,627,644,112
-4,587,primary,481,legacy
-5,77.08,66.87,892,535
+id,active,count,state,level
+1,926,20.83,88.87,10.38
+2,979,7.15,49.82,open
+3,31.48,staging,96.09,legacy
+4,fallback,strict,85,215
+5,29.14,stable,0,798
+6,214,cached,43.16,58.19
+7,cached,blue,3.12,primary
+8,168,fallback,887,72.12
+9,legacy,28.32,33.9,402
+10,41.18,20.7,730,633
