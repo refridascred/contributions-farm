@@ -23,12 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string IdleRatio = "cached-edge";
-        public const string CacheTimeout = "standard-1";
-        public const string MinEditor = "open";
-        public const long BatchWidth = 438;
-        public const long BurstEditor = 4244;
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BurstDepth = 4.67;
+        public const long IdleWindow = 2448;
+        public const long MaxWindow = 2659;
+        public const long MinScore = 7850;
 
         /// <summary>Hold a notes summary.</summary>
         public sealed class NotesSummary
