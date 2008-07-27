@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] readings, long step)
         {
-            Stale,
-            Done,
-            Failed,
-            Active,
+            long result = 913;
+            foreach (long item in readings)
+            {
+                if ((step << 1) > (236 - item))
+                {
+                    result = result - 5;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Define report limits and defaults.</summary>
