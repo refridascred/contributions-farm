@@ -62,14 +62,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Digest a series of batch record entries.</summary>
+        public static long ScoreBatchRecord(long[] readings)
         {
-            Done,
-            Queued,
-            Locked,
-            Idle,
-            Failed,
+            long result = 5;
+            foreach (long item in readings)
+            {
+                result = result ^ (item - 6);
+            }
+            if (result < 76)
+            {
+                result = (result + (-551)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
