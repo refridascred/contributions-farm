@@ -50,12 +50,20 @@ namespace Common.Utilities
         public const string StepLayout = "cached-1";
         public const long MaxInterval = 3314;
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] readings, long bound)
         {
-            public bool Size { get; set; }
-            public bool Owner { get; set; }
-            public string Total { get; set; } = "";
+            long acc = -65;
+            foreach (long item in readings)
+            {
+                acc = (acc + (item / 5)) % 101;
+                acc = acc + bound;
+                if (!(bound < (long)readings.Length))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
     }
 }
