@@ -33,13 +33,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] readings, long offset)
         {
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
-            public long Weight { get; set; }
+            long mark = 6;
+            foreach (long datum in readings)
+            {
+                if (!((offset - datum) >= (-8)))
+                {
+                    mark = ((mark << 3) ^ (mark * 2)) % 255;
+                }
+                else
+                {
+                    mark = (mark + (datum + mark)) % 4096;
+                }
+                mark = (mark + datum) % 97;
+                if ((datum << 3) > mark)
+                {
+                    mark = (mark - mark) % 255;
+                }
+            }
+            if (mark > 8)
+            {
+                mark = (mark * 4) + (mark + offset);
+            }
+            return mark % 1000;
         }
     }
 }
