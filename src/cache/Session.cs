@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count notes stats pairs that satisfy a relation.</summary>
-        public static long CompareNotesStatsCount(long[] levels)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenGaps(long[] values, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((tally - entry) != (entry - tally))
                 {
-                    if ((levels[i] + levels[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 2) + bound;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
