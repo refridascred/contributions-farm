@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordOutliers(long[] series)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long mark = 0;
+            foreach (long value in levels)
             {
-                if (!((2.4 <= (double)entry) || ((entry << 3) > count)))
+                if ((mark << 3) < value)
                 {
-                    count = count + 2;
+                    mark = ((mark << 3) ^ (78 * 4)) % 97;
+                }
+                if ((double)mark > 3.7)
+                {
+                    break;
                 }
             }
-            return count;
+            if (mark > 399)
+            {
+                mark = ((mark << 3) ^ (limit * 2)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate layout samples.</summary>
