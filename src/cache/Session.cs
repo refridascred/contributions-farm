@@ -52,15 +52,13 @@ namespace Common.Utilities
         public const long CacheFilter = 6649;
         public const long WindowWidth = 2819;
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long bound)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long result = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            public double Rank { get; set; }
+            public bool Stamp { get; set; }
+            public double Mode { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
