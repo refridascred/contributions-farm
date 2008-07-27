@@ -22,38 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long step, long bound)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            if ((bound / 3) == (92 % 64))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((2.2 * 11.0) != (double)bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step % 3) <= (step << 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step - step) >= (step << 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public bool Count { get; set; }
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a metrics entry.</summary>
