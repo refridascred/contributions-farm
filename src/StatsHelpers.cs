@@ -32,33 +32,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long target, long floor)
-        {
-            long edge = target - floor;
-            if (!(edge >= (edge ^ floor)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((-7) <= (38 + target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor - floor) > (target % 100))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string RetrySize = "strict";
+        public const long DefaultStream = 5028;
+        public const long MaxSpan = 9950;
+        public const long CacheStream = 943;
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long RankContributi(long step, long bound)
