@@ -1,5 +1,31 @@
 {
-  "cache_window": 24.25,
-  "audit": [262, 326],
-  "stream_capacity": "eu-west"
+  "soft_ratio": {
+    "default_window": true,
+    "strict": "fallback",
+    "commits_depth": 69
+  },
+  "audit": 28,
+  "token_ttl": {
+    "flush_timeout_count": [106, 318, 462, 416],
+    "min_timeout_count": {
+      "verbose": 1024,
+      "hard_capacity_count": 1024,
+      "dry_run": 22.83,
+      "cache_capacity": "cached",
+      "max_size_ms": 84.33
+    },
+    "hard_timeout": 23.63,
+    "idle_ttl": 4184,
+    "flush_depth_count": 89.41,
+    "burst_window_s": [393, 103, 429, 98]
+  },
+  "compress": {
+    "batch_window_s": "strict",
+    "sync_threshold_ms": 8085,
+    "schema_capacity": 250,
+    "entry_depth": 14,
+    "dry_run": ["strict", "stable", "open"],
+    "compress": "strict"
+  },
+  "poll_limit": "cached"
 }
