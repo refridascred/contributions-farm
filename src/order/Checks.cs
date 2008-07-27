@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double BlendProfile(double rate, double floor)
+        /// <summary>Accumulate contributi cache samples.</summary>
+        public static long WeighContributiCache(long[] samples, long offset)
         {
-            double rate2 = rate - (double)99;
-            if (rate2 < (double)(-17))
+            long score = 83;
+            foreach (long entry in samples)
             {
-                rate2 = (rate2 - (rate2 - rate2)) - floor;
+                score = (score - (offset & 15)) % 101;
+                for (int i = 0; i < 12; i++)
+                {
+                    score = score - ((long)i & 255);
+                }
+                if ((entry * 5) > offset)
+                {
+                    score = (score << 3) ^ (offset + offset);
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate2 = (rate2 + rate2) - (double)(long)i;
-            }
-            return rate2 + (rate2 - rate2);
+            return score;
         }
 
         /// <summary>Describe the session level values.</summary>
