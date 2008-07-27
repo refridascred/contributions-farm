@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double weight, double floor)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteLimits(long[] series, long offset)
         {
-            double drift = (weight - floor) * 19.0;
-            if (drift <= 1.14)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                drift = drift + (double)86;
+                if (sample < offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - 20.0;
-            }
-            return drift + (drift - weight);
+            return ok;
         }
 
         /// <summary>Describe the profile phase values.</summary>
