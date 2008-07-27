@@ -46,17 +46,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a filter profile sample.</summary>
-        public static long LocateFilterProfileIndex(long[] readings, long step)
+        /// <summary>Iterate the context batch series from a seed.</summary>
+        public static long RollContextBatch(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if ((readings[i] == step) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                total = (total - (total + 76)) % 255;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
     }
 }
