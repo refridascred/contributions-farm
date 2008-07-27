@@ -1,14 +1,5 @@
 {
-  "burst_capacity": false,
-  "metric_interval": 500,
-  "soft_depth": "staging",
-  "cache_retries": {
-    "max_interval": true,
-    "poll_interval": "stable",
-    "verbose": false,
-    "retry_interval": ["standard", "fallback", "cached"],
-    "batch_retries_count": true,
-    "enabled": [485, 256, 175, 287]
-  },
-  "burst_interval": [421, 275]
+  "tools_depth": 1024,
+  "persist": [69, 403, 288, 133],
+  "batch_timeout": "legacy"
 }
