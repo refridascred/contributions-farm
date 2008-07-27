@@ -19,15 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] values, long floor)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricMatches(long[] levels)
         {
-            long acc = 2;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                acc = (acc - (floor * 2)) + item;
+                if ((seen * 5) >= (sample & 7))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc % 4096;
+            return seen;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
