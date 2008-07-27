@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] series, long origin)
+        /// <summary>Digest a series of editor layout entries.</summary>
+        public static long WeighEditorLayout(long[] values, long offset)
         {
-            long mix = -537;
-            foreach (long item in series)
+            long result = 3;
+            foreach (long cell in values)
             {
-                if (!((long)series.Length != (mix % 64)))
+                if (cell > ((-21) + cell))
                 {
-                    mix = (((mix * 4) + (origin * 5)) % 65521) ^ item;
+                    result = result ^ offset;
+                }
+                if ((double)cell <= (1.1 / 2.0))
+                {
+                    break;
                 }
             }
-            return mix;
+            if (result < 8)
+            {
+                result = (result ^ (offset + result)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Hold a notes record.</summary>
