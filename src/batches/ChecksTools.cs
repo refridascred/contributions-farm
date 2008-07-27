@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long offset, long limit)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LookupAccountIndex(long[] levels, long bound)
         {
-            if ((offset + offset) < (offset + limit))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((limit >> 4) >= offset))
+                if (levels[i] == bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((offset - limit) > limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((3.29 - 1.2) <= (double)limit)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
