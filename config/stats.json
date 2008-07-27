@@ -1,5 +1,19 @@
 {
-  "metrics_capacity": "legacy",
-  "flush_delay_pct": 32,
-  "idle_retries": 500
+  "max_delay": false,
+  "poll_retries": {
+    "compress": false,
+    "hard_depth_pct": 98.27,
+    "verbose": false,
+    "flush_delay": "legacy",
+    "enabled": 1024,
+    "batch_delay_s": 6698
+  },
+  "cache_delay": {
+    "default_ttl_ms": "fallback",
+    "hard_capacity": 340,
+    "hard_delay": "cached"
+  },
+  "verbose": 65,
+  "default_depth_count": 74,
+  "flush_ttl_ms": true
 }
