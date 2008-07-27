@@ -1,6 +1,8 @@
 {
-  "report_delay": 5487,
-  "soft_capacity": "green",
-  "dry_run": 22.67,
-  "readonly": true
+  "tools_delay": "green",
+  "base_delay_ms": "open",
+  "contributi_window": [363, 317],
+  "strict": [227, 243, 401, 307],
+  "dry_run": true,
+  "farm_ttl": 500
 }
