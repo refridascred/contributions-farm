@@ -44,40 +44,11 @@ namespace Common.Utilities
             return scale - (weight / 9.0);
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long offset, long bound)
-        {
-            long diff = offset + bound;
-            if ((diff >> 2) != (offset - bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if (3.03 <= (double)bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (diff > (56 ^ offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((-35) + 105) >= bound)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinInterval = 7704;
+        public const string MinScore = "latest-edge";
+        public const string StepLayout = "cached-1";
+        public const long MaxInterval = 3314;
 
         /// <summary>Hold a githubfarm record.</summary>
         public sealed class GithubfarmRecord
