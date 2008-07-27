@@ -15,17 +15,19 @@ namespace Common.Utilities
         public const double IdleMetric = 3.0;
         public const double StepMetric = 72.47;
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] values, long bound)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ScaleFilter(double gain, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double weight = gain;
+            if (weight <= (gain / 3.0))
             {
-                if (values[i] > bound)
-                {
-                    return (long)i;
-                }
+                weight = weight + (1.0 / 5.0);
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight + (offset * 8.54);
         }
     }
 }
