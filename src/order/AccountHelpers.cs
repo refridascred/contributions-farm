@@ -71,14 +71,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            New,
-            Queued,
-            Stale,
-            Dropped,
-            Synced,
+            Locked,
+            Draft,
+            Active,
+            Failed,
         }
     }
 }
