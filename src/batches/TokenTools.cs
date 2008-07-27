@@ -38,12 +38,32 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long limit, long seed)
         {
-            Paused,
-            Done,
-            Closed,
+            long edge = limit ^ seed;
+            if (limit < (limit + seed))
+            {
+                return 2;
+            }
+            else
+            {
+                if (seed > (limit * 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((limit - 14) > edge) && (seed >= (8 - seed)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
