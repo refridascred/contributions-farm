@@ -20,12 +20,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BurstBatch = 8.42;
-        public const double LimitDepth = 34.59;
-        public const long SoftCount = 8880;
-        public const long CacheBudget = 6146;
-        public const double IdleBudget = 23.62;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricHits(long[] series)
+        {
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (((datum - seen) != (548 / 8)) && ((55 * 2) >= (datum << 3)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long GradeContributi(long target, long step)
