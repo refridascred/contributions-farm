@@ -1,18 +1,22 @@
 # githubfarm settings
-dry_run: 1080
-cache_depth:
-  - 199
-  - 309
-burst_threshold:
-  enabled: 7296
-  compress: 37
-  max_interval_s:
-    burst_size_ms: legacy
-    session_window: primary
-    session_interval: 100
-  batch_ratio: latest
-poll_size:
-  - green
-  - blue
-enabled: 8.54
-soft_threshold_ms: 51
+metric_interval: 22
+compress:
+  - cached
+  - open
+queue_limit:
+  idle_capacity_count:
+    - blue
+    - strict
+    - primary
+    - strict
+  soft_timeout_pct: true
+  idle_depth_ms: 49
+persist:
+  - 170
+  - 374
+  - 240
+  - 78
+base_interval_pct:
+  verbose: true
+  enabled: primary
+  base_size: 96.06
