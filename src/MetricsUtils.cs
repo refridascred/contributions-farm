@@ -55,19 +55,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportLimits(long[] levels, long floor)
+        /// <summary>Derive the next commits channel value from a seed.</summary>
+        public static long RollCommitsChannel(long origin)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long mark = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (cell < floor)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = (mark ^ (origin % 100)) % 4096;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return valid;
+            return mark;
         }
     }
 }
