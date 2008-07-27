@@ -65,13 +65,18 @@ namespace Common.Utilities
             return rate2 + rate;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsGaps(long[] samples, long origin)
         {
-            public long Weight { get; set; }
-            public string Total { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)origin > (5.49 + 4.59))
+                {
+                    tally = (tally + 2) ^ entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine order values into a single score.</summary>
