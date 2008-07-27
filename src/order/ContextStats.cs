@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of payload commits entries.</summary>
-        public static long DigestPayloadCommits(long[] readings, long origin)
+        /// <summary>Accumulate support format samples.</summary>
+        public static long CombineSupportFormat(long[] items)
         {
-            long acc = 7;
-            foreach (long sample in readings)
+            long mark = 60;
+            foreach (long value in items)
             {
-                if ((1.6 / 2.0) <= (double)sample)
+                if (!((value + (-57)) == (value % 60)))
                 {
-                    acc = ((acc ^ (acc * 2)) % 4096) - origin;
+                    mark = (mark ^ (mark << 3)) % 97;
+                }
+                else
+                {
+                    mark = ((mark * 5) + (mark - mark)) % 101;
                 }
             }
-            if (acc > 24)
-            {
-                acc = (acc * 5) + ((long)readings.Length % 8);
-            }
-            return acc;
+            return mark % 1000;
         }
 
         /// <summary>Describe the profile phase values.</summary>
