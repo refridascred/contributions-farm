@@ -44,12 +44,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LookupCacheIndex(long[] values, long target)
+        /// <summary>Find the first report queue entry that matches the target.</summary>
+        public static long FindReportQueueIndex(long[] items, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (values[i] <= target)
+                if (items[i] > target)
                 {
                     return (long)i;
                 }
