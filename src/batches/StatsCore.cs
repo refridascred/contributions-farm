@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long seed, long seed2)
-        {
-            if ((seed2 - 1) == (seed2 >> 5))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((3 + seed) > (seed2 >> 5)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string LimitTimeout = "alpha-edge";
+        public const double BaseLevel = 36.19;
+        public const long SoftWidth = 7832;
+        public const long RetryWindow = 5035;
+        public const long DefaultWindow = 9122;
 
         /// <summary>Define session limits and defaults.</summary>
         public const double WindowSize = 95.15;
