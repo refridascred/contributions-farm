@@ -1,5 +1,4 @@
 # support settings
-support_ttl: true
-queue_timeout: 100
-default_delay_s: true
-poll_window_s: 58
+window_interval: 250
+soft_ttl_count: local
+retry_retries_s: 1024
