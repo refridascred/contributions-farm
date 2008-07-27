@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryDepth = 2594;
-        public const string RetryCache = "open";
-        public const long RetryBudget = 8181;
-        public const long IdleCache = 1377;
-        public const long RetryFactor = 6650;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryBudget = 4412;
+        public const double BaseProfile = 94.32;
+        public const long HardInterval = 240;
+        public const long DefaultProfile = 5025;
 
         /// <summary>Fold a list of already readings.</summary>
         public static long WeighAlready(long[] data)
