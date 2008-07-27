@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every channel metrics entry stays within the limit.</summary>
-        public static bool GuardChannelMetricsLimits(long[] items, long limit)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] items, long bound)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum >= limit)
+                if ((items[i] <= bound) && ((items[i] % 3) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
