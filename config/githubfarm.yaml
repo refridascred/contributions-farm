@@ -1,11 +1,19 @@
 # githubfarm settings
-cache_ttl_pct: 78.01
-compress: 30
-stream_limit: 88
-flush_size:
-  - eu-west
-  - open
-  - latest
-  - stable
-base_threshold: eu-west
-poll_capacity: 1024
+payload_threshold:
+  batch_ttl_ms: true
+  audit: 100
+  poll_limit_ms:
+    - 156
+    - 492
+  enabled: 1024
+  sync_ttl:
+    soft_depth_s:
+      - open
+      - staging
+      - staging
+      - local
+    idle_limit_ms: 69.7
+    batch_ttl_count: 30
+    default_capacity_ms: 94
+verbose: false
+stats_capacity: green
