@@ -46,19 +46,18 @@ namespace Common.Utilities
             return weight + (double)820;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteRange(long[] values, long step)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterOutliers(long[] readings, long bound)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (sample > step)
+                if ((datum <= (68 - bound)) && ((double)tally <= (3.8 * 8.43)))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
