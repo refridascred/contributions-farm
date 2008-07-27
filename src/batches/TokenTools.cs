@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double BlendQueue(double bias, double offset)
-        {
-            double gain = (bias + offset) - bias;
-            return gain + (offset * 1.1);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheToken = 8477;
+        public const double BurstToken = 76.54;
+        public const long MinToken = 9801;
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long CompareSchemaCount(long[] levels)
