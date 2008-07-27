@@ -25,11 +25,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BurstDepth = 4.67;
-        public const long IdleWindow = 2448;
-        public const long MaxWindow = 2659;
-        public const long MinScore = 7850;
+        /// <summary>Find the first editor context entry that matches the target.</summary>
+        public static long SeekEditorContextIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long ScoreSchema(long[] levels)
