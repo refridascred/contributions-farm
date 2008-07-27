@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long HardRecord = 2755;
         public const long MinRecord = 9699;
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Check that every cache session entry stays within the limit.</summary>
+        public static bool GuardCacheSessionLimits(long[] values, long bound)
         {
-            public double Mode { get; set; }
-            public double Total { get; set; }
-            public bool Owner { get; set; }
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
