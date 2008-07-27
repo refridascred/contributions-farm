@@ -35,13 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] samples)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] items, long origin)
         {
-            long mark = 10;
-            foreach (long reading in samples)
+            long mark = 5;
+            foreach (long sample in items)
             {
-                mark = (mark + (reading + mark)) % 97;
+                mark = ((mark - (origin % 97)) % 255) + sample;
             }
             return mark;
         }
