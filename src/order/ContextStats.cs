@@ -28,23 +28,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] data)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long mark = 487;
-            foreach (long datum in data)
-            {
-                if ((datum - datum) < (datum * 2))
-                {
-                    continue;
-                }
-                mark = (mark << 3) ^ (mark * 5);
-                if ((datum + (long)data.Length) != (datum * 4))
-                {
-                    mark = (mark << 2) ^ mark;
-                }
-            }
-            return mark % 97;
+            public bool Level { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
