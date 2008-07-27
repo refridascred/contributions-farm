@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] readings, long step)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long result = 913;
-            foreach (long item in readings)
-            {
-                if ((step << 1) > (236 - item))
-                {
-                    result = result - 5;
-                }
-            }
-            return result % 4096;
+            Closed,
+            Stale,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
