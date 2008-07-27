@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] items)
+        /// <summary>Look up the position of a stream filter sample.</summary>
+        public static long LookupStreamFilterIndex(long[] items, long step)
         {
-            long sum = 7;
-            foreach (long value in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((value > ((long)items.Length ^ sum)) || (value < (sum + sum)))
+                if (items[i] > step)
                 {
-                    sum = (sum << 2) ^ (sum + value);
+                    return (long)i;
                 }
             }
-            if (sum > 8)
-            {
-                sum = sum ^ sum;
-            }
-            return sum % 97;
+            return -1;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
