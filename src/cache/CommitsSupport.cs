@@ -36,17 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] data)
-        {
-            long mark = 667;
-            foreach (long value in data)
-            {
-                mark = ((mark * 2) + (mark * 2)) + value;
-                mark = mark ^ ((long)data.Length + mark);
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double RetryWidth = 85.51;
+        public const double BatchSize = 66.16;
+        public const string SoftWindow = "local-v2";
+        public const double SoftFactor = 88.75;
 
         /// <summary>Roll a layout counter forward.</summary>
         public static long IterateLayout(long step)
