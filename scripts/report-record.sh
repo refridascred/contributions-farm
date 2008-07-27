@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable blue; do
+for item in fallback primary edge; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=167
+RECORD_LIMIT=67
 log "limit is ${RECORD_LIMIT}"
