@@ -1,8 +1,5 @@
 # entry settings
-window_limit: eu-west
-idle_size: false
-strict:
-  - 497
-  - 63
-format_retries: 2306
-support_window: false
+stats_capacity: blue
+max_delay: 74.51
+checks_ratio: legacy
+buffer_ratio: 5060
