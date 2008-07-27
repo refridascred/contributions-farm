@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long origin, long step)
         {
-            public string Token { get; set; } = "";
-            public double Rank { get; set; }
-            public long Stamp { get; set; }
+            if (8.8 >= (double)origin)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((step / 8) < (step * 2)) || ((step / 3) > (6 & 15)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((step / 2) == (origin % 24)) && (step > (origin + step)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (origin > (582 + origin))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
