@@ -1,6 +1,11 @@
 # entry settings
-order_ratio: cached
-audit: 21.88
-max_limit_count: 35.56
-default_delay_pct: stable
-hard_window_ms: latest
+persist: 56.29
+metric_ratio:
+  - open
+  - open
+  - fallback
+  - strict
+batch_timeout_pct: latest
+strict: false
+report_timeout: primary
+warm_ttl_count: 8
