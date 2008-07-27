@@ -14,13 +14,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            Closed,
-            Done,
-            Paused,
-            Dropped,
+            public long Mode { get; set; }
+            public bool Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Roll a batch counter forward.</summary>
