@@ -23,21 +23,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Derive the next command token value from a seed.</summary>
-        public static long RollCommandToken(long floor)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long total = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((floor / 5) >= floor)
-                {
-                    total = total - floor;
-                    continue;
-                }
-                total = total + (89 >> 4);
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            Draft,
+            Synced,
+            Active,
+            New,
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
