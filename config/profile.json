@@ -1,8 +1,13 @@
 {
-  "support_interval": "fallback",
-  "support_timeout": 79.91,
-  "idle_ttl_pct": "latest",
-  "record_capacity": false,
-  "readonly": "eu-west",
-  "commits_delay": 87
+  "soft_limit_ms": {
+    "retry_size": [169, 108, 493, 241],
+    "flush_delay_ms": "strict",
+    "cache_limit_s": [226, 49, 59],
+    "buffer_timeout": 500,
+    "soft_size": "latest"
+  },
+  "sync_window": "cached",
+  "stats_limit": 62.86,
+  "default_retries_s": 500,
+  "persist": ["legacy", "legacy"]
 }
