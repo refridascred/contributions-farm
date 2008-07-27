@@ -63,10 +63,22 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 1023;
-        public const string MinTools = "standard";
-        public const long DefaultRatio = 3098;
-        public const long SoftSize = 7970;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (!(hits < (hits + hits)) || ((3.8 * 1.3) == (double)sample))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
