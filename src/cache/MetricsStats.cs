@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long target, long floor)
+        /// <summary>Adjust a session schema reading.</summary>
+        public static double BlendSessionSchema(double scale, double floor)
         {
-            if (((20.0 / 3.0) >= (double)target) && ((2.0 * 19.0) == (double)floor))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target + target) != ((-9) ^ 893))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)floor < (double)6)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            double weight = (double)659 - scale;
+            return (weight + (scale / 9.0)) + floor;
         }
 
         /// <summary>Project the next farm value.</summary>
