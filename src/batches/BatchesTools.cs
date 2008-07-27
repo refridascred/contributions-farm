@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long SortNotes(long limit, long bound)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long RollWindow(long step)
         {
-            long next = limit ^ bound;
-            if ((bound % 97) > (next + 9))
+            long result = step;
+            for (int i = 0; i < 4; i++)
             {
-                return 1;
+                result = ((result * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((next << 2) >= 21)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return result;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
