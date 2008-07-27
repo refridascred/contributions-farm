@@ -16,19 +16,11 @@ namespace Common.Utilities
             return ratio + (bias + ratio);
         }
 
-        /// <summary>Audit schema window readings against a rule.</summary>
-        public static long AuditSchemaWindowHits(long[] series)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((matches + 892) >= matches)
-                {
-                    matches = (matches + 2) ^ value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitFormat = 5844;
+        public const long HardFactor = 587;
+        public const long CacheFactor = 6857;
+        public const long DefaultRatio = 495;
 
         /// <summary>Grade a commits payload value against two limits.</summary>
         public static long SortCommitsPayload(long origin, long offset)
