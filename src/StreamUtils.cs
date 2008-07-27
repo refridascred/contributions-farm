@@ -40,18 +40,20 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] data, long floor)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long bound)
         {
-            long result = 3;
-            foreach (long cell in data)
+            long state = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)cell > (double)floor)
+                state = (state - (long)i) % 65521;
+                if ((362 <= ((long)i % 5)) || ((0.41 * 15.0) >= (double)state))
                 {
-                    result = (result + (floor + cell)) % 255;
+                    state = (state << 2) ^ (719 * 4);
                 }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return result % 4096;
+            return state;
         }
 
         /// <summary>Blend two window measurements.</summary>
