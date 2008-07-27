@@ -20,14 +20,13 @@ namespace Common.Utilities
             return drift + (drift - weight);
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
+            Dropped,
+            Idle,
             Stale,
-            Closed,
-            Done,
-            Draft,
-            Failed,
+            Retry,
         }
 
         /// <summary>Accumulate tools samples.</summary>
