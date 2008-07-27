@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MinGithubfarm = 34.1;
-        public const long HardBudget = 913;
-        public const long MaxGithubfarm = 2526;
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
+        {
+            public bool Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public long Weight { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Blend two metrics measurements.</summary>
         public static double BlendMetrics(double weight, double offset)
