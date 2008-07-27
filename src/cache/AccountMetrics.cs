@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstInterval = 5448;
-        public const double StepWindow = 93.06;
-        public const long RetryDepth = 1788;
+        /// <summary>Compare every pair of stream metrics readings.</summary>
+        public static long MatchStreamMetricsCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a checks header.</summary>
         public sealed class ChecksHeader
