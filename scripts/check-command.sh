@@ -6,9 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached legacy staging fallback; do
+for item in strict blue legacy eu-west; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=446
-log "limit is ${COMMAND_LIMIT}"
+mode="${1:-latest}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
