@@ -1,6 +1,7 @@
 {
-  "poll_ratio_pct": false,
-  "hard_size": 9987,
-  "contributi_delay": "legacy",
-  "soft_size": "legacy"
+  "cache_ratio": true,
+  "dry_run": 100,
+  "tools_size": 98,
+  "warm_delay_s": 100,
+  "retry_limit_count": ["staging", "eu-west", "stable", "staging"]
 }
