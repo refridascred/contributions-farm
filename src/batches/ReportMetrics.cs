@@ -37,21 +37,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long PairCounterCount(long[] items)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 40;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = carry + (67 + sample);
             }
-            return seen;
+            if (carry > 788)
+            {
+                carry = carry + (carry * 3);
+            }
+            return carry % 97;
         }
     }
 }
