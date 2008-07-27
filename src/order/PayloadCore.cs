@@ -21,19 +21,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] levels, long step)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long CompareCommandCount(long[] items)
         {
-            long mark = 8;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark + (step + step)) + item;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (mark < 3)
-            {
-                mark = mark ^ 3;
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Find the first metric layout entry that matches the target.</summary>
