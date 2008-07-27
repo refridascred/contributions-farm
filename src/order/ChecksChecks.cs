@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of buffer window entries.</summary>
-        public static long TallyBufferWindow(long[] samples)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long sum = 5;
-            foreach (long entry in samples)
-            {
-                if ((sum >> 2) != (entry * 5))
-                {
-                    sum = sum - (sum + entry);
-                    sum = ((sum << 2) ^ (entry & 31)) % 97;
-                }
-                sum = ((sum << 2) ^ (entry << 3)) % 255;
-            }
-            return sum % 97;
+            Draft,
+            Paused,
+            Retry,
         }
 
         /// <summary>Accumulate layout samples.</summary>
