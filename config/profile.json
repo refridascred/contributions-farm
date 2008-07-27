@@ -1,6 +1,5 @@
 {
-  "payload_retries": "staging",
-  "base_retries": 44,
-  "stats_retries": "open",
-  "batch_ratio_count": 58.39
+  "notes_depth": 95.64,
+  "token_timeout": "local",
+  "cache_limit": 5774
 }
