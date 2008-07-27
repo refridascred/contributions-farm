@@ -85,11 +85,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
-        {
-            public double Owner { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string SoftFactor = "staging";
+        public const double MinCommand = 5.32;
+        public const long BaseBudget = 6153;
+        public const long WindowCommand = 3409;
     }
 }
