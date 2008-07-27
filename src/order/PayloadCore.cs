@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                double bias = (13.0 * 4.74) * 0.8;
-                if (!(((13.0 + bias) == (bias + 14.0)) || ((seed / 4) > (seed & 31))))
-                {
-                    mark = (mark + (mark * 3)) % 255;
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinLevel = 4438;
+        public const double BurstFactor = 67.69;
+        public const long CacheCount = 1982;
+        public const double MinSize = 47.05;
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
         public static long CompareCommandCount(long[] items)
