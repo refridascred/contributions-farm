@@ -41,25 +41,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank cluster contributi input into a small class.</summary>
-        public static long GradeClusterContributi(long limit, long bound)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] items, long offset)
         {
-            long step = limit ^ bound;
-            if (!((0 >> 1) <= step))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)step > 5.0)
+                if (items[i] >= offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
