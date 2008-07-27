@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string IdleProfile = "standard-v2";
-        public const long RetrySpan = 7318;
-        public const long RetryFactor = 9865;
-        public const string LimitProfile = "primary";
-        public const long BatchProfile = 4361;
+        /// <summary>Compare every pair of command stream readings.</summary>
+        public static long PairCommandStreamCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of cluster commits entries.</summary>
         public static long ScoreClusterCommits(long[] series)
