@@ -23,22 +23,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] values, long target)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long bound, long floor)
         {
-            long result = 59;
-            foreach (long value in values)
+            if (!(floor <= 9))
             {
-                if (!((double)value < (10.0 * 9.5)))
+                return 6;
+            }
+            else
+            {
+                if (floor > (20 + floor))
                 {
-                    result = result ^ (target << 1);
+                    return 0;
+                }
+                else
+                {
+                    if (!(floor >= (bound + floor)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (bound >= (91 & 255))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (result < 561)
-            {
-                result = (result ^ 742) % 4096;
-            }
-            return result % 65521;
         }
 
         /// <summary>Accumulate batches counter samples.</summary>
