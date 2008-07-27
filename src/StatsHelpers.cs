@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultToken = 9057;
-        public const long MaxRatio = 1678;
-        public const long SoftToken = 5812;
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
+        {
+            public long Level { get; set; }
+            public double Offset { get; set; }
+            public long Region { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long TallyAlreadyGaps(long[] samples)
