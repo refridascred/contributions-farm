@@ -32,35 +32,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] series)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] readings, long limit)
         {
-            long score = 57;
-            foreach (long value in series)
+            long acc = 138;
+            foreach (long sample in readings)
             {
-                score = (score + (value * 2)) % 97;
-                if (8.6 >= (double)score)
-                {
-                    score = score + (value + 900);
-                }
-                if (value <= (value ^ score))
-                {
-                    score = (score + (score * 2)) % 255;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (score << 1)) % 65521;
-                }
-                if (4.1 < (double)value)
-                {
-                    break;
-                }
+                acc = ((acc - (9 - sample)) % 255) - limit;
             }
-            if (score < (-153))
-            {
-                score = (score ^ (score << 3)) % 1000;
-            }
-            return score;
+            return acc % 4096;
         }
 
         /// <summary>Define record limits and defaults.</summary>
