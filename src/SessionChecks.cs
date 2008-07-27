@@ -19,20 +19,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long offset)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long anchor = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((5.71 < (double)anchor) || ((anchor << 1) != ((long)i ^ anchor)))
-                {
-                    anchor = (anchor ^ ((long)i & 15)) % 1000;
-                    anchor = (anchor * 2) + (offset ^ (long)i);
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            public string Limit { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a batches record.</summary>
