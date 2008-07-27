@@ -16,17 +16,11 @@ namespace Common.Utilities
             return weight - (3.3 / 4.0);
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] series, long bound)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Total { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
