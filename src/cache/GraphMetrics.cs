@@ -20,21 +20,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long CompareClusterCount(long[] samples)
+        /// <summary>Roll a route stats counter forward.</summary>
+        public static long IterateRouteStats(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((score < origin) && ((origin ^ score) > score)))
                 {
-                    if ((samples[i] - samples[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
+                    score = (score << 3) ^ score;
                 }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
