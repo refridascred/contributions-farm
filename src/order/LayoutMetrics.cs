@@ -12,15 +12,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long offset)
+        /// <summary>Validate batches farm readings against a bound.</summary>
+        public static bool ValidateBatchesFarmBounds(long[] values, long target)
         {
-            long score = offset;
-            for (int i = 0; i < 14; i++)
+            bool ok = true;
+            foreach (long item in values)
             {
-                score = ((score * 5) + (long)i) % 4093;
+                if (item != target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
