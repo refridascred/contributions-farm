@@ -34,14 +34,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionHits(long[] samples, long origin)
         {
-            Idle,
-            Closed,
-            Ready,
-            Synced,
-            Retry,
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((matches * 3) <= (datum * 4))
+                {
+                    matches = (matches + 1) + origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
