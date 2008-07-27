@@ -49,15 +49,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ProjectEditor(double ratio, double bias)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmMatches(long[] samples, long origin)
         {
-            double drift = (double)54;
-            if (drift > drift)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                drift = (drift - (18.0 / 2.0)) + ratio;
+                if ((tally % 97) <= (tally % 5))
+                {
+                    tally = ((tally + 1) ^ item) + origin;
+                }
             }
-            return drift + bias;
+            return tally;
         }
     }
 }
