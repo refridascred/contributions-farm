@@ -1,8 +1,13 @@
 # githubfarm settings
-base_capacity: eu-west
-batch_depth_ms:
-  - 18
-  - 203
-  - 421
-tools_ttl: eu-west
-audit: 84.15
+enabled: 30
+channel_depth:
+  - primary
+  - open
+  - primary
+  - edge
+metric_interval:
+  - green
+  - fallback
+audit: open
+farm_capacity: 1024
+default_capacity: 6.63
