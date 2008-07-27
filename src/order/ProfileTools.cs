@@ -14,12 +14,24 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Grade a channel batch value against two limits.</summary>
+        public static long BucketChannelBatch(long limit, long bound)
         {
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
+            if (bound >= (limit >> 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit < (limit ^ bound)) || ((limit >> 4) > (limit + limit)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the cache status values.</summary>
