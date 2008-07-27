@@ -14,38 +14,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long bound, long floor)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long offset)
         {
-            if (!(floor <= 9))
+            long score = offset;
+            for (int i = 0; i < 14; i++)
             {
-                return 6;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if (floor > (20 + floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!(floor >= (bound + floor)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (bound >= (91 & 255))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Accumulate batches counter samples.</summary>
