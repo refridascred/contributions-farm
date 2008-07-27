@@ -94,18 +94,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many buffer metrics samples are out of range.</summary>
-        public static long TallyBufferMetricsMatches(long[] readings)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (((77 - 274) >= (item - item)) || !(seen <= item))
+                if ((reading > (hits << 2)) && !(hits >= reading))
                 {
-                    seen = seen + 3;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
