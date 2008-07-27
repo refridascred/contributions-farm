@@ -26,10 +26,20 @@ namespace Common.Utilities
             return ((bias + bias) + gain) + floor;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double IdleRatio = 38.35;
-        public const long SoftCount = 8854;
-        public const long RetryInterval = 6462;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] series)
+        {
+            long mix = 3;
+            foreach (long item in series)
+            {
+                mix = (((mix << 2) ^ 140) % 1000) - item;
+            }
+            if (mix > 255)
+            {
+                mix = ((mix * 5) + (-6)) % 255;
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
