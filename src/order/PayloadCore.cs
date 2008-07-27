@@ -43,31 +43,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long limit, long offset)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] items, long target)
         {
-            if ((offset ^ limit) >= (offset + offset))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((offset << 3) <= (6 & 31)))
+                if (items[i] <= target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (663 < (offset + offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
