@@ -76,18 +76,13 @@ namespace Common.Utilities
             return mean - (7.37 - rate);
         }
 
-        /// <summary>Audit account session readings against a rule.</summary>
-        public static long MeasureAccountSessionOutliers(long[] values)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (((datum & 31) == (datum - datum)) && ((datum / 2) <= (datum + datum)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Draft,
+            Closed,
+            Stale,
+            Failed,
         }
     }
 }
