@@ -55,16 +55,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the context batch series from a seed.</summary>
-        public static long RollContextBatch(long limit)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long limit, long offset)
         {
-            long total = limit;
-            for (int i = 0; i < 15; i++)
+            if ((offset ^ limit) >= (offset + offset))
             {
-                total = (total - (total + 76)) % 255;
-                total = ((total * 4) + (long)i) % 4093;
+                return 6;
             }
-            return total;
+            else
+            {
+                if (!((offset << 3) <= (6 & 31)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (663 < (offset + offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
