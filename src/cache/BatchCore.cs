@@ -57,20 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long floor)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterRange(long[] data, long target)
         {
-            long result = floor;
-            for (int i = 0; i < 13; i++)
+            bool ok = true;
+            foreach (long item in data)
             {
-                if ((7.8 + 9.02) == (double)result)
+                if (item <= target)
                 {
-                    result = result - (long)i;
+                    ok = false;
                     break;
                 }
-                result = ((result * 5) + (long)i) % 97;
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
