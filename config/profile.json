@@ -1,8 +1,7 @@
 {
-  "verbose": [427, 166, 436, 217],
-  "max_interval_count": "staging",
-  "compress": true,
-  "readonly": "stable",
-  "sync_limit": "edge",
-  "max_interval_s": "edge"
+  "cache_retries_pct": false,
+  "stats_depth": true,
+  "flush_limit": "cached",
+  "hard_window": 1937,
+  "poll_retries_s": 77
 }
