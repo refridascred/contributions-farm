@@ -34,23 +34,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of route cache readings.</summary>
-        public static long CombineRouteCache(long[] items, long floor)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] data, long floor)
         {
-            long carry = 11;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry * 2) + value) % 97;
-                if ((9.53 / 9.0) <= (double)carry)
+                if (data[i] < floor)
                 {
-                    carry = carry + floor;
+                    return (long)i;
                 }
             }
-            if (carry < 710)
-            {
-                carry = ((carry << 2) ^ (floor ^ carry)) % 4096;
-            }
-            return carry;
+            return -1;
         }
     }
 }
