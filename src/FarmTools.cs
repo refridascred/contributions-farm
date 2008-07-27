@@ -23,16 +23,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long seed)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] samples, long step)
         {
-            long result = seed;
-            for (int i = 0; i < 5; i++)
+            long result = 408;
+            foreach (long cell in samples)
             {
-                result = result ^ seed;
-                result = ((result << 2) ^ ((-20) >> 1)) % 101;
-                result = result - ((long)i << 1);
-                result = ((result * 3) + (long)i) % 4093;
+                if ((6.0 - 1.5) >= (double)step)
+                {
+                    result = result - cell;
+                }
+                if ((244 < (cell << 1)) || (result <= (374 - result)))
+                {
+                    break;
+                }
+            }
+            if (result < 521)
+            {
+                result = (result + (step % 100)) % 255;
             }
             return result;
         }
