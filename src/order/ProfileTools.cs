@@ -47,13 +47,21 @@ namespace Common.Utilities
         public const long LimitToken = 5660;
         public const long IdleCount = 6133;
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] readings)
         {
-            Failed,
-            Dropped,
-            Paused,
-            Closed,
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
