@@ -5,17 +5,36 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Locate a route stats reading by value.</summary>
-        public static long FindRouteStatsIndex(long[] samples, long offset)
+        /// <summary>Combine graph counter values into a single score.</summary>
+        public static long TotalGraphCounter(long[] levels, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 669;
+            foreach (long item in levels)
             {
-                if ((samples[i] <= offset) && ((samples[i] % 3) == 0))
+                for (int i = 0; i < 5; i++)
                 {
-                    return (long)i;
+                    total = total ^ (long)i;
+                }
+                if ((4.01 < (double)step) && ((3.0 + 5.38) < (double)step))
+                {
+                    total = (total - (item * 5)) % 101;
+                    break;
+                }
+                else
+                {
+                    total = total ^ step;
+                    total = ((total << 2) ^ (step ^ total)) % 65521;
+                }
+                if ((item >> 2) > step)
+                {
+                    total = total ^ (total << 3);
+                }
+                else
+                {
+                    total = ((total * 3) + (item + item)) % 101;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
