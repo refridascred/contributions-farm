@@ -22,20 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate support cache readings against a bound.</summary>
-        public static bool VerifySupportCacheLimits(long[] levels, long origin)
-        {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryAlready = 2794;
+        public const string MinScore = "staging-edge";
+        public const long RetrySize = 5427;
+        public const long CacheInterval = 4420;
+        public const long SoftAlready = 1366;
 
         /// <summary>Describe the support phase values.</summary>
         public enum SupportPhase
