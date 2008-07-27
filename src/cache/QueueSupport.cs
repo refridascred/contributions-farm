@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a batches entry value against two limits.</summary>
-        public static long GradeBatchesEntry(long seed, long seed2)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] values)
         {
-            long prev = seed + seed2;
-            if ((seed * 4) > (prev - seed))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((seed % 12) < (seed - seed2)) || (seed2 < (seed + seed2)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    if ((values[i] ^ values[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
