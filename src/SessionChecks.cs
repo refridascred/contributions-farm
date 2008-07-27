@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the entry account series from a seed.</summary>
-        public static long RollEntryAccount(long floor)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long floor)
         {
-            long sum = floor;
-            for (int i = 0; i < 13; i++)
+            long result = floor;
+            for (int i = 0; i < 18; i++)
             {
-                sum = ((sum << 3) ^ (sum << 3)) % 97;
-                sum = ((sum * 4) + (long)i) % 97;
+                result = ((result * 3) + (long)i) % 101;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Describe the notes state values.</summary>
