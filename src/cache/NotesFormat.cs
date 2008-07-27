@@ -47,23 +47,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine session tools values into a single score.</summary>
-        public static long DigestSessionTools(long[] readings, long target)
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] values, long target)
         {
-            long mark = 262;
-            foreach (long item in readings)
+            long carry = 535;
+            foreach (long cell in values)
             {
-                for (int i = 0; i < 6; i++)
+                carry = (carry - cell) % 4096;
+                carry = ((carry * 5) + (carry + carry)) % 101;
+                if (!((target % 5) == (carry << 1)))
                 {
-                    mark = (((mark * 2) + (mark + target)) % 101) ^ (long)i;
+                    carry = ((carry << 3) ^ (target * 2)) % 4096;
                 }
-                mark = (mark + (mark + 5)) % 4096;
-                if (6.45 >= (double)item)
+                else
                 {
-                    break;
+                    carry = (carry * 4) + 7;
                 }
             }
-            return mark;
+            return carry % 1000;
         }
     }
 }
