@@ -1,15 +1,12 @@
 # Command notes
 
-Run the token check before changing any editor limits.
-Each layout is validated before it reaches the route queue.
-The notes module keeps entry values in sync with the stats cache.
-
-Each channel is validated before it reaches the checks queue.
-Use queue settings to tune how often githubfarm data is refreshed.
+Run the contributi check before changing any cluster limits.
+The batches helpers are pure functions, so they are safe to call from any thread.
+The account module keeps order values in sync with the cluster cache.
 
 ## Guidelines
 
-- Keep editor values small
-- Log every counter change
-- Prefer batches defaults
+- Keep layout values small
 - Document new context fields
+- Review farm limits each release
+- Log every session change
