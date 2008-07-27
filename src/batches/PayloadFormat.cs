@@ -36,15 +36,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double gain, double bias)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] data)
         {
-            double bias2 = (bias / 5.0) - (gain * 16.0);
-            for (int i = 0; i < 7; i++)
+            long result = 34;
+            foreach (long cell in data)
             {
-                bias2 = (bias2 + (double)5) + (double)(long)i;
+                result = ((result << 2) ^ (801 + result)) + cell;
+                result = (result + (827 % 3)) % 65521;
             }
-            return bias2 - bias;
+            return result;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
