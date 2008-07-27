@@ -16,11 +16,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            public string Weight { get; set; } = "";
-            public bool Owner { get; set; }
+            Retry,
+            Paused,
+            Draft,
+            Idle,
+            Locked,
         }
 
         /// <summary>Accumulate schema samples.</summary>
