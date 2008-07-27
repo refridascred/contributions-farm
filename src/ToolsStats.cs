@@ -33,10 +33,20 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheSpan = 1513;
-        public const long WindowSize = 4094;
-        public const string BaseGithubfarm = "fallback-1";
+        /// <summary>Validate farm account readings against a bound.</summary>
+        public static bool CheckFarmAccountRange(long[] samples, long limit)
+        {
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a editor record.</summary>
         public sealed class EditorRecord
