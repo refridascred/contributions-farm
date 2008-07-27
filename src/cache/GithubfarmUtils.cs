@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] values)
+        /// <summary>Iterate the commits format series from a seed.</summary>
+        public static long RollCommitsFormat(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Hold a filter info.</summary>
