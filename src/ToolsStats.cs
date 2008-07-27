@@ -25,19 +25,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TotalCluster(long[] values)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] samples, long offset)
         {
-            long sum = 2;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                sum = ((sum + (sum & 31)) % 4096) ^ datum;
+                if (((7.4 + 6.82) <= (double)tally) || (((double)offset < (3.2 + 9.0)) && ((tally - (-2)) < (202 - (long)samples.Length))))
+                {
+                    tally = (tally + 1) + reading;
+                }
             }
-            if (sum < 449)
-            {
-                sum = (sum + (sum - sum)) % 65521;
-            }
-            return sum % 1000;
+            return tally;
         }
 
         /// <summary>Validate farm account readings against a bound.</summary>
