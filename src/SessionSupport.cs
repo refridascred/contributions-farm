@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsHits(long[] readings, long origin)
+        /// <summary>Check that every already buffer entry stays within the limit.</summary>
+        public static bool CheckAlreadyBufferBounds(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if ((666 + 82) < origin)
+                if (sample >= limit)
                 {
-                    seen = (seen + 2) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Match up stats samples.</summary>
