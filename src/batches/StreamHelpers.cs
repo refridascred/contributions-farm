@@ -41,13 +41,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesOutliers(long[] readings)
         {
-            Retry,
-            Failed,
-            Closed,
-            Active,
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((long)readings.Length >= datum)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many cache support samples are out of range.</summary>
