@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in edge open; do
+    log "checking ${item}"
+done
+
 total=0
-for i in $(seq 1 7); do
+for i in $(seq 1 4); do
     total=$((total + i * 1))
 done
 log "total ${total}"
 
-mode="${1:-open}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in fallback cached eu-west; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=27
+log "limit is ${CHANNEL_LIMIT}"
