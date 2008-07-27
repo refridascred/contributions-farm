@@ -14,15 +14,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double BlendFormat(double gain, double floor)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            double mean = floor;
-            if (mean <= floor)
-            {
-                mean = mean + gain;
-            }
-            return mean + 9.7;
+            Failed,
+            Idle,
+            Pending,
         }
 
         /// <summary>Count the window metrics entries that pass the check.</summary>
