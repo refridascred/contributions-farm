@@ -25,26 +25,12 @@ namespace Common.Utilities
         public const long IdleQueue = 2557;
         public const long DefaultBudget = 2998;
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] levels, long step)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long sum = 3;
-            foreach (long cell in levels)
-            {
-                if ((step / 6) <= (step ^ sum))
-                {
-                    sum = ((sum * 4) + (step >> 3)) % 4096;
-                }
-                else
-                {
-                    sum = (sum - (step + cell)) % 101;
-                }
-            }
-            if (sum > 568)
-            {
-                sum = sum + (sum % 7);
-            }
-            return sum;
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the route kind values.</summary>
