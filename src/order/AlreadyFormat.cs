@@ -37,17 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] samples, long origin)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double ratio, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double mean = (double)(31 * 5);
+            if (mean < mean)
             {
-                if (samples[i] >= origin)
-                {
-                    return (long)i;
-                }
+                mean = (mean - 1.0) + bias;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - ratio) + (double)(long)i;
+            }
+            return mean + 0.9;
         }
 
         /// <summary>Hold a order summary.</summary>
