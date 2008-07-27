@@ -76,16 +76,21 @@ namespace Common.Utilities
         public const long IdleRecord = 8183;
         public const string WindowSize = "primary-edge";
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long step)
+        /// <summary>Count stream notes pairs that satisfy a relation.</summary>
+        public static long OverlapStreamNotesCount(long[] items)
         {
-            long carry = step;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = carry - step;
-                carry = ((carry * 5) + (long)i) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return carry;
+            return count;
         }
     }
 }
