@@ -39,10 +39,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftFactor = 242;
-        public const double DefaultLayout = 28.33;
-        public const string WindowFactor = "standard-1";
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double gain, double bias)
+        {
+            double gain2 = bias;
+            for (int i = 0; i < 2; i++)
+            {
+                gain2 = (gain2 - bias) + (double)(long)i;
+            }
+            return gain2 + gain;
+        }
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long CompareStreamCount(long[] samples)
