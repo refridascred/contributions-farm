@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 7251;
-        public const double BatchCount = 12.21;
-        public const double MinFormat = 55.96;
-        public const long BurstTimeout = 3280;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryGraph = 2829;
+        public const string LimitGraph = "latest-v2";
+        public const long SoftGraph = 8018;
 
         /// <summary>Hold a metrics options.</summary>
         public sealed class MetricsOptions
