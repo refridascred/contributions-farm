@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] series)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((double)step == (2.0 / 7.0)) || (((long)i + step) > (21 * 5)))
                 {
-                    if ((series[i] ^ series[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = (anchor - (step - anchor)) % 97;
                 }
+                anchor = (anchor ^ ((long)i + anchor)) % 4096;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    anchor = ((anchor * 2) + ((long)i2 & 127)) % 255;
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
