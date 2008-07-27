@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every contributi token entry stays within the limit.</summary>
-        public static bool GuardContributiTokenRange(long[] values, long floor)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Level { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Look up the position of a support graph sample.</summary>
