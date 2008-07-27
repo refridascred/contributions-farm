@@ -32,24 +32,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long target, long offset)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            if ((double)offset <= (6.7 - 14.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target >> 1) != (9 >> 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
