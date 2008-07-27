@@ -32,15 +32,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double weight, double bias)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            double rate = (weight - 12.0) / 7.0;
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - (bias * 5.9)) - (double)(long)i;
-            }
-            return rate - (bias / 8.0);
+            New,
+            Idle,
+            Dropped,
+            Active,
         }
 
         /// <summary>Describe the farm class values.</summary>
