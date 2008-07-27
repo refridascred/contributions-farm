@@ -45,9 +45,12 @@ namespace Common.Utilities
             return weight + (double)820;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstWidth = 773;
-        public const string BatchSpan = "stable-1";
-        public const long DefaultCommits = 4486;
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
+        {
+            public double Rank { get; set; }
+            public long Ratio { get; set; }
+            public double Label { get; set; }
+        }
     }
 }
