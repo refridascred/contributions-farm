@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long origin)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] data, long seed)
         {
-            long mix = origin;
-            for (int i = 0; i < 15; i++)
+            long result = 0;
+            foreach (long value in data)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((52 % 24) > (result + result))
                 {
-                    mix = ((mix ^ (mix + mix)) % 101) ^ (long)i2;
+                    result = ((result << 2) ^ (seed + 5)) ^ value;
                 }
-                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Describe the payload class values.</summary>
