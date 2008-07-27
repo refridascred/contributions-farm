@@ -19,15 +19,24 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ScaleEditor(double bias, double floor)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long offset)
         {
-            double drift = 8.37;
-            if (drift <= (bias * 3.42))
+            long anchor = offset;
+            for (int i = 0; i < 17; i++)
             {
-                drift = (drift + (bias / 6.0)) + floor;
+                if (offset > (offset - 2))
+                {
+                    anchor = anchor ^ (offset ^ (long)i);
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + offset) % 4096;
+                }
+                anchor = (anchor + anchor) % 1000;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return drift + bias;
+            return anchor;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
