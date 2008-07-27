@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryInterval = 6105;
+        public const string MaxCount = "latest-edge";
+        public const string MaxBatches = "legacy-v2";
+        public const double RetryBatches = 16.77;
+        public const long BurstLevel = 7392;
 
         /// <summary>Grade a farm value against two limits.</summary>
         public static long GradeFarm(long target, long target2)
