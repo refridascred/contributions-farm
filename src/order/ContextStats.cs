@@ -34,21 +34,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] items)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double BlendCache(double ratio, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double weight = 7.24;
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight = ((weight + (double)(long)i) - ratio) + span;
             }
-            return seen;
+            return weight + (double)820;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
