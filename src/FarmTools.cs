@@ -37,17 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first schema notes entry that matches the target.</summary>
-        public static long SeekSchemaNotesIndex(long[] samples, long origin)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordOutliers(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (samples[i] == origin)
+                if (cell > (long)series.Length)
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
