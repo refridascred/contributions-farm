@@ -42,12 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            Idle,
-            Stale,
-            Done,
+            public bool Label { get; set; }
+            public bool Region { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
