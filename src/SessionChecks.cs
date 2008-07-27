@@ -34,16 +34,18 @@ namespace Common.Utilities
             return ratio + 4.38;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long floor)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] series)
         {
-            long score = floor;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                score = score ^ (floor % 7);
-                score = ((score * 3) + (long)i) % 101;
+                if (!((1.0 * 11.0) < (double)cell))
+                {
+                    hits = hits + 1;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Match up layout samples.</summary>
