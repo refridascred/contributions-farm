@@ -78,11 +78,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowScore = 5853;
-        public const double BurstWidth = 50.47;
-        public const long StepLayout = 1742;
-        public const long HardLayout = 4333;
-        public const long RetrySize = 7673;
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
+        {
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
+        }
     }
 }
