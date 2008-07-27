@@ -1,5 +1,9 @@
 # entry settings
-token_ratio: open
-base_size_ms: 95
-hard_threshold_pct: true
-sync_retries_ms: true
+compress: cached
+batch_ratio_count: green
+burst_window:
+  base_capacity_s: false
+  farm_ttl: false
+  batch_threshold: stable
+  burst_capacity_s: 39
+  poll_delay: eu-west
