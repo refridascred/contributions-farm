@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double gain, double offset)
-        {
-            double scale = (double)(842 ^ (-56));
-            for (int i = 0; i < 8; i++)
-            {
-                scale = ((scale - offset) + (double)(long)i) - gain;
-            }
-            return scale - offset;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdlePayload = 4013;
+        public const long StepPayload = 6287;
+        public const long MinPayload = 5963;
 
         /// <summary>Hold a farm header.</summary>
         public sealed class FarmHeader
