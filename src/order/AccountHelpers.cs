@@ -71,19 +71,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] data, long offset)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] values, long seed)
         {
-            long carry = 2;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                carry = ((carry + offset) % 101) - entry;
+                if (sample < seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (carry > 824)
-            {
-                carry = (carry << 2) ^ (47 - (-5));
-            }
-            return carry % 1000;
+            return ok;
         }
     }
 }
