@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksBounds(long[] readings, long limit)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long RollAlready(long limit)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long acc = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (datum >= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = acc ^ (3 % 12);
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
