@@ -47,17 +47,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] readings, long limit)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileOutliers(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (readings[i] > limit)
+                if ((tally ^ value) <= (long)series.Length)
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
