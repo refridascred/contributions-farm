@@ -1,5 +1,5 @@
 # githubfarm settings
-soft_window_ms: true
-profile_timeout: primary
-window_ratio: open
-verbose: 909
+default_ratio_count: false
+flush_capacity: 500
+enabled: 100
+dry_run: 1024
