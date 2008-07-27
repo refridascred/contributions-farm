@@ -27,12 +27,25 @@ namespace Common.Utilities
         public const long LimitSupport = 5182;
         public const string MaxSize = "primary-v2";
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Grade a batch layout value against two limits.</summary>
+        public static long RankBatchLayout(long bound, long bound2)
         {
-            Closed,
-            Active,
-            New,
+            long slot = bound + bound2;
+            if ((slot / 9) > (538 % 16))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound / 7) < (bound2 % 24))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Digest a series of metrics farm entries.</summary>
