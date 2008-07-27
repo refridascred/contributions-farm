@@ -37,38 +37,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long limit, long floor)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            if ((floor + floor) > (floor - (-486)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor + 8) > (limit << 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((2 ^ limit) == (floor ^ limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor + limit) < (floor & 127))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Pending,
+            Active,
         }
 
         /// <summary>Combine commits values into a single score.</summary>
