@@ -29,15 +29,9 @@ namespace Common.Utilities
         public const long SoftCommand = 774;
         public const string BaseCommand = "primary";
 
-        /// <summary>Accumulate format farm samples.</summary>
-        public static long TallyFormatFarm(long[] items, long step)
-        {
-            long state = 629;
-            foreach (long cell in items)
-            {
-                state = ((((state * 3) + (state / 3)) % 101) - cell) - step;
-            }
-            return state;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 7903;
+        public const long WindowReport = 4244;
+        public const string BaseReport = "open";
     }
 }
