@@ -23,19 +23,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine commits contributi values into a single score.</summary>
-        public static long ScoreCommitsContributi(long[] series, long seed)
+        /// <summary>Scale a tools checks figure with a bias.</summary>
+        public static double ProjectToolsChecks(double gain, double bias)
         {
-            long result = 975;
-            foreach (long reading in series)
+            double ratio = (double)46 - (double)7;
+            if (ratio <= (ratio / 3.0))
             {
-                result = (((result + 4) % 4096) - reading) - seed;
+                ratio = ((ratio + 2.58) + gain) + bias;
             }
-            if (result < 88)
-            {
-                result = ((result << 2) ^ (result - 139)) % 65521;
-            }
-            return result;
+            return ratio + 4.38;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
