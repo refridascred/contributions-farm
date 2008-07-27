@@ -16,24 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long seed, long origin)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            if ((double)seed == (8.4 / 8.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((seed << 1) > 625) || ((seed << 2) < ((-163) + 779)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
