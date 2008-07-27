@@ -48,11 +48,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchGaps(long[] values)
         {
-            public string Stamp { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (!((double)hits != (9.9 / 7.0)))
+                {
+                    hits = (hits + 1) + entry;
+                }
+            }
+            return hits;
         }
     }
 }
