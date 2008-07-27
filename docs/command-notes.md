@@ -1,11 +1,11 @@
 # Command notes
 
-Run the schema check before changing any batch limits.
-The account module keeps command values in sync with the notes cache.
+Each buffer is validated before it reaches the filter queue.
+Run the contributi check before changing any context limits.
+The context report groups every format by account.
 
 ## Guidelines
 
-- Review metric limits each release
-- Log every layout change
-- Prefer filter defaults
-- Document new graph fields
+- Log every filter change
+- Validate filter input early
+- Keep window values small
