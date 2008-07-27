@@ -26,18 +26,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit already support readings against a rule.</summary>
-        public static long MeasureAlreadySupportOutliers(long[] series)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (entry > (matches - entry))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Label { get; set; }
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the batch phase values.</summary>
