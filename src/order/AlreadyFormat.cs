@@ -53,21 +53,22 @@ namespace Common.Utilities
         public const long LimitDepth = 1664;
         public const long LimitInterval = 477;
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] values)
+        /// <summary>Count the already channel entries that pass the check.</summary>
+        public static long MeasureAlreadyChannelHits(long[] series, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((value << 3) < (value + value))
                 {
-                    if ((values[i] - values[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 2) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
