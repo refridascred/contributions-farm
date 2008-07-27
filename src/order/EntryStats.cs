@@ -53,22 +53,26 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] values)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] samples, long target)
         {
-            long score = 772;
-            foreach (long entry in values)
+            long score = -8;
+            foreach (long cell in samples)
             {
-                if (9 <= (entry - score))
+                if ((cell / 7) < 8)
                 {
-                    score = (score - entry) % 1000;
+                    score = (score - (cell - score)) % 255;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (cell ^ target)) % 4096;
                 }
             }
-            if (score < 487)
+            if (score > 73)
             {
-                score = ((score << 3) ^ 370) % 1000;
+                score = score + (target % 10);
             }
-            return score % 4096;
+            return score;
         }
     }
 }
