@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MinSpan = "latest";
-        public const long HardRecord = 2755;
-        public const long MinRecord = 9699;
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksBounds(long[] readings, long limit)
+        {
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long TotalFilter(long[] levels, long seed)
