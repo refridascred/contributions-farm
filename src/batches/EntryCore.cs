@@ -21,14 +21,18 @@ namespace Common.Utilities
         public const long LimitTimeout = 707;
         public const double BurstGithubfarm = 91.33;
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Count the schema entry entries that pass the check.</summary>
+        public static long AuditSchemaEntryMatches(long[] data, long origin)
         {
-            Ready,
-            Failed,
-            Dropped,
-            Retry,
-            Synced,
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if (!(origin < (origin + seen)))
+                {
+                    seen = (seen + 2) - entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
