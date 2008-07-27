@@ -41,17 +41,18 @@ namespace Common.Utilities
         public const string MinLevel = "primary-1";
         public const double CacheEntry = 83.7;
 
-        /// <summary>Find the first route window entry that matches the target.</summary>
-        public static long LocateRouteWindowIndex(long[] samples, long seed)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamHits(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (samples[i] < seed)
+                if ((seen / 6) >= entry)
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Grade a editor channel value against two limits.</summary>
