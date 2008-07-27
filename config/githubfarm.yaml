@@ -1,13 +1,4 @@
 # githubfarm settings
-enabled: 30
-channel_depth:
-  - primary
-  - open
-  - primary
-  - edge
-metric_interval:
-  - green
-  - fallback
-audit: open
-farm_capacity: 1024
-default_capacity: 6.63
+batches_ratio: 250
+idle_size_ms: true
+burst_size_s: 35
