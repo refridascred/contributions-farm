@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] values)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long MatchGithubfarmCount(long[] data)
         {
-            long total = 238;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)value > (7.0 / 6.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = (total + (total - value)) % 1000;
-                }
-                else
-                {
-                    total = total - 3;
+                    if ((data[i] + data[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total % 4096;
+            return matches;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
