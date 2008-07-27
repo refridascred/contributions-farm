@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a githubfarm cluster figure with a bias.</summary>
-        public static double ProjectGithubfarmCluster(double rate, double span)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionGaps(long[] samples)
         {
-            double drift = 8.73;
-            if (drift <= (1.3 + rate))
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                drift = (drift + (rate - drift)) + span;
+                if (!((431 * 4) <= entry))
+                {
+                    tally = tally + 1;
+                }
             }
-            else
-            {
-                drift = drift - 20.0;
-            }
-            return drift - rate;
+            return tally;
         }
 
         /// <summary>Define context limits and defaults.</summary>
