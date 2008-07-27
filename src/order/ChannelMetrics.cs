@@ -27,18 +27,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountGaps(long[] levels, long origin)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long target, long offset)
         {
-            long count = 0;
-            foreach (long value in levels)
+            if ((double)offset <= (6.7 - 14.0))
             {
-                if ((count - value) < (origin % 97))
+                return 7;
+            }
+            else
+            {
+                if ((target >> 1) != (9 >> 4))
                 {
-                    count = count + 2;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
     }
 }
