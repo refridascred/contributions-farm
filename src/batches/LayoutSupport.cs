@@ -31,17 +31,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a route filter sample.</summary>
-        public static long LookupRouteFilterIndex(long[] samples, long step)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutRange(long[] items, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if (samples[i] > step)
+                if (sample >= origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Describe the format status values.</summary>
