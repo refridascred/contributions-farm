@@ -1,6 +1,8 @@
 {
-  "commits_ttl": false,
-  "readonly": 9.55,
-  "default_delay_count": ["open", "stable", "blue"],
-  "strict": "stable"
+  "route_timeout": "stable",
+  "warm_capacity_ms": 5344,
+  "contributi_timeout": "cached",
+  "max_delay_s": "staging",
+  "metric_capacity": "eu-west",
+  "audit": 54
 }
