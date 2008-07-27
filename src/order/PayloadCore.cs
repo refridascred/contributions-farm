@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinGraph = 729;
-        public const string CacheRatio = "legacy-edge";
-        public const long SoftRatio = 1190;
-        public const long MaxGraph = 7445;
-        public const long MinScore = 4391;
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                double bias = (13.0 * 4.74) * 0.8;
+                if (!(((13.0 + bias) == (bias + 14.0)) || ((seed / 4) > (seed & 31))))
+                {
+                    mark = (mark + (mark * 3)) % 255;
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Locate a context metrics reading by value.</summary>
         public static long LookupContextMetricsIndex(long[] data, long floor)
