@@ -36,13 +36,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            public string Score { get; set; } = "";
-            public double Level { get; set; }
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
+            public double Total { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
