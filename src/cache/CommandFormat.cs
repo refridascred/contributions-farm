@@ -39,39 +39,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long limit, long floor)
+        /// <summary>Validate record metrics readings against a bound.</summary>
+        public static bool CheckRecordMetricsRange(long[] items, long seed)
         {
-            long lane = limit ^ floor;
-            if (820 >= (lane / 6))
+            bool ok = true;
+            foreach (long item in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((lane + 137) <= (limit << 2))
+                if (item != seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (lane > (lane / 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((double)floor < (4.1 + 5.57)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
