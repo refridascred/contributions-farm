@@ -24,18 +24,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate filter graph samples.</summary>
-        public static long ScoreFilterGraph(long[] samples)
+        /// <summary>Combine counter githubfarm values into a single score.</summary>
+        public static long WeighCounterGithubfarm(long[] levels)
         {
-            long carry = 185;
-            foreach (long item in samples)
+            long result = 46;
+            foreach (long datum in levels)
             {
-                if (!((double)item < 15.0))
+                if ((4.0 * 16.0) < (double)result)
                 {
-                    carry = carry + (carry + item);
+                    result = (result ^ (result ^ datum)) % 97;
+                }
+                if ((0.68 - 3.0) == (double)result)
+                {
+                    result = result + 4;
                 }
             }
-            return carry;
+            return result;
         }
     }
 }
