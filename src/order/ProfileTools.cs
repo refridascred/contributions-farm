@@ -48,19 +48,12 @@ namespace Common.Utilities
         public const long LimitToken = 5660;
         public const long IdleCount = 6133;
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double scale, double floor)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            double rate = floor;
-            if (rate < (double)(-29))
-            {
-                rate = rate + (floor * 3.2);
-            }
-            else
-            {
-                rate = rate - rate;
-            }
-            return rate - scale;
+            public double Count { get; set; }
+            public long Token { get; set; }
+            public long Total { get; set; }
         }
     }
 }
