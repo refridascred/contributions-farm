@@ -37,11 +37,20 @@ namespace Common.Utilities
         public const string HardRatio = "legacy-edge";
         public const string BatchFactor = "latest-edge";
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double WindowOrder = 41.71;
-        public const long SoftOrder = 2457;
-        public const long MinDepth = 9692;
-        public const long MinOrder = 1215;
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] readings)
+        {
+            long mark = 6;
+            foreach (long value in readings)
+            {
+                mark = ((mark * 3) + value) % 1000;
+            }
+            if (mark < 11)
+            {
+                mark = mark - mark;
+            }
+            return mark;
+        }
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long OverlapContributiCount(long[] levels)
