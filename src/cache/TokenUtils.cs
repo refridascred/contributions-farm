@@ -25,21 +25,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count stream context pairs that satisfy a relation.</summary>
-        public static long MatchStreamContextCount(long[] data)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long bound, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((double)bound < (double)70)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((double)29 != (double)bound)
                 {
-                    if ((data[i] ^ data[j]) == 17)
+                    return 5;
+                }
+                else
+                {
+                    if ((bound >> 4) == (seed ^ seed))
                     {
-                        count = count + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((((-63) & 15) < (seed - 4)) || ((bound - seed) <= seed))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
