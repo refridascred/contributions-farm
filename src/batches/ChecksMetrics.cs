@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string RetryLevel = "primary";
-        public const double IdleSpan = 26.54;
-        public const long BatchOrder = 1137;
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
+        {
+            Paused,
+            Stale,
+            Retry,
+            New,
+            Closed,
+        }
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool ValidateSessionRange(long[] items, long bound)
