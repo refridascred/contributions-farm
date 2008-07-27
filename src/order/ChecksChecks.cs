@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowOutliers(long[] readings, long target)
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell - 424) <= (seen - (-207)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 1) - target;
+                    if ((series[i] + series[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
