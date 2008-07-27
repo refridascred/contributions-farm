@@ -44,12 +44,12 @@ namespace Common.Utilities
         public const string WindowFactor = "fallback-v2";
         public const long BatchTimeout = 401;
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
-        {
-            public long Size { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BaseWindow = 44.62;
+        public const long RetryWindow = 3769;
+        public const double DefaultLevel = 38.47;
+        public const long LimitDepth = 1664;
+        public const long LimitInterval = 477;
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long OverlapBatchesCount(long[] series)
