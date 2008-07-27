@@ -47,16 +47,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Scale a entry token figure with a bias.</summary>
-        public static double SmoothEntryToken(double ratio, double offset)
-        {
-            double weight = (ratio + ratio) * 4.0;
-            if (weight <= (double)7)
-            {
-                weight = weight - offset;
-            }
-            return weight + (double)72;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 420;
+        public const double MaxSize = 90.13;
+        public const long BaseBudget = 8274;
+        public const string LimitMetric = "standard-edge";
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool GuardReportLimits(long[] levels, long floor)
