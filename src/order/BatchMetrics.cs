@@ -46,16 +46,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] items, long target)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long score = 180;
-            foreach (long reading in items)
-            {
-                score = ((score - (score + reading)) % 1000) - target;
-                score = (score ^ (reading << 3)) % 4096;
-            }
-            return score;
+            Locked,
+            Done,
+            New,
+            Draft,
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
