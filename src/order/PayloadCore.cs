@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const long CacheCount = 1982;
         public const double MinSize = 47.05;
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] items, long limit)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double rate, double bias)
         {
-            long result = 130;
-            foreach (long sample in items)
+            double load = rate + (rate - 2.9);
+            if (load > bias)
             {
-                result = (((result << 2) ^ (limit & 255)) % 97) - sample;
+                load = load - (bias - rate);
             }
-            if (result > 2)
-            {
-                result = ((result << 2) ^ (limit - result)) % 65521;
-            }
-            return result % 1000;
+            return load - (double)115;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
