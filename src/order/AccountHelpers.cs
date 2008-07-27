@@ -97,11 +97,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardSpan = 545;
-        public const double IdleCluster = 5.05;
-        public const long BaseCluster = 7064;
-        public const string BaseScore = "open-edge";
-        public const string WindowCount = "alpha";
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
+        {
+            Paused,
+            Closed,
+            Pending,
+        }
     }
 }
