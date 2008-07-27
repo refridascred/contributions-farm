@@ -25,18 +25,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportHits(long[] series, long step)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long floor, long bound)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            if (((bound + floor) < (floor + 388)) || ((double)floor >= (6.34 + 6.0)))
             {
-                if ((step - seen) == (sample - (long)series.Length))
+                return 2;
+            }
+            else
+            {
+                if ((floor % 64) >= (bound / 8))
                 {
-                    seen = seen + 3;
+                    return 5;
+                }
+                else
+                {
+                    if ((4.0 / 7.0) > (double)floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)bound != (4.2 - 4.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
