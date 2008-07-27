@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MaxProfile = 46.52;
-        public const long HardProfile = 3126;
-        public const double SoftTimeout = 16.14;
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
+        {
+            Locked,
+            Closed,
+            Draft,
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long MeasureWindowMatches(long[] samples)
