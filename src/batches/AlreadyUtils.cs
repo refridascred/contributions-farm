@@ -56,12 +56,15 @@ namespace Common.Utilities
             return load + (double)433;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Adjust a cluster filter reading.</summary>
+        public static double SmoothClusterFilter(double weight, double bias)
         {
-            Ready,
-            Queued,
-            Closed,
+            double ratio = 13.0;
+            if (ratio < weight)
+            {
+                ratio = (ratio + ratio) - bias;
+            }
+            return ratio + (ratio * 7.0);
         }
     }
 }
