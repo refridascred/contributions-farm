@@ -39,19 +39,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksBounds(long[] samples, long bound)
+        /// <summary>Roll a stream batches counter forward.</summary>
+        public static long IterateStreamBatches(long bound)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long carry = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (item != bound)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
