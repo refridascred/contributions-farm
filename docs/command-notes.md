@@ -1,12 +1,16 @@
 # Command notes
 
-Run the contributi check before changing any cluster limits.
-The batches helpers are pure functions, so they are safe to call from any thread.
-The account module keeps order values in sync with the cluster cache.
+Run the commits check before changing any already limits.
+Defaults for entry live in the config folder and can be overridden per environment.
+Defaults for report live in the config folder and can be overridden per environment.
+
+Keep layout and graph names short and lowercase.
+Use metric settings to tune how often editor data is refreshed.
+A notes that stays idle for too long is moved to the schema list.
 
 ## Guidelines
 
-- Keep layout values small
-- Document new context fields
-- Review farm limits each release
-- Log every session change
+- Review command limits each release
+- Validate support input early
+- Prefer session defaults
+- Keep order values small
