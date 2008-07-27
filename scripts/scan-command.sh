@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging legacy local edge; do
-    log "checking ${item}"
-done
-
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+for item in green legacy stable; do
+    log "checking ${item}"
+done
