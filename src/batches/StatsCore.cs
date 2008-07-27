@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorBounds(long[] values, long bound)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long seed, long seed2)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            if ((seed2 - 1) == (seed2 >> 5))
             {
-                if (cell > bound)
+                return 3;
+            }
+            else
+            {
+                if (!((3 + seed) > (seed2 >> 5)))
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return valid;
         }
 
         /// <summary>Hold a cache options.</summary>
