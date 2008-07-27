@@ -22,17 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] data, long origin)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double SmoothLayout(double weight, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double bias = offset;
+            if (bias >= 15.0)
             {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
+                bias = bias + (double)392;
             }
-            return -1;
+            else
+            {
+                bias = bias + (weight / 9.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - (bias + 1.0)) + (double)(long)i;
+            }
+            return bias - (offset / 5.0);
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
