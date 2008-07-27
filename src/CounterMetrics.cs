@@ -24,15 +24,14 @@ namespace Common.Utilities
             return scale + 1.35;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ProjectSchema(double weight, double span)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            double mean = weight;
-            for (int i = 0; i < 4; i++)
-            {
-                mean = ((mean + 9.0) + (double)(long)i) - span;
-            }
-            return mean + 2.0;
+            Paused,
+            Done,
+            Queued,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Digest a series of batch entries.</summary>
