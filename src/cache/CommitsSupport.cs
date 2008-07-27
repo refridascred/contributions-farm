@@ -19,16 +19,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long origin)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double weight, double offset)
         {
-            long total = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                total = total - (total - total);
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
+            double drift = weight;
+            return (drift - weight) + offset;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
