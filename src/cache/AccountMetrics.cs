@@ -76,12 +76,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BaseEditor = "cached-v2";
-        public const long MinEditor = 7090;
-        public const long MaxFactor = 5957;
-        public const long IdleBudget = 2521;
-        public const long StepEditor = 6526;
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] levels, long target)
+        {
+            long mark = 7;
+            foreach (long datum in levels)
+            {
+                mark = (mark + (datum ^ mark)) + target;
+                if (((mark >> 5) > mark) && ((double)mark > (6.9 - 3.52)))
+                {
+                    break;
+                }
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long SeekWindowIndex(long[] items, long seed)
