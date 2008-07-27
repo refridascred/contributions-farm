@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double BlendContext(double rate, double span)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            double gain = (rate * 0.48) + (double)42;
-            if (gain <= 16.0)
-            {
-                gain = (gain - gain) - span;
-            }
-            return gain + (gain - rate);
+            Active,
+            Stale,
+            Pending,
+            Paused,
+            Retry,
         }
 
         /// <summary>Audit contributi record readings against a rule.</summary>
