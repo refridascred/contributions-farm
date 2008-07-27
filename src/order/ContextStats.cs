@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstAccount = 3880;
-        public const long HardAccount = 6552;
-        public const double CacheRatio = 86.93;
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double weight, double floor)
+        {
+            double drift = (weight - floor) * 19.0;
+            if (drift <= 1.14)
+            {
+                drift = drift + (double)86;
+            }
+            else
+            {
+                drift = drift - 20.0;
+            }
+            return drift + (drift - weight);
+        }
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long FindMetricIndex(long[] levels, long step)
