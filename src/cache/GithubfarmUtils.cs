@@ -16,16 +16,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxRatio = 871;
+        public const string IdleFilter = "latest-1";
+        public const string LimitFilter = "staging";
+        public const long RetryFilter = 9737;
 
         /// <summary>Hold a window entry.</summary>
         public sealed class WindowEntry
