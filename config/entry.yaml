@@ -1,9 +1,10 @@
 # entry settings
-burst_ratio: blue
-retry_depth:
-  - 272
-  - 82
-  - 234
-  - 161
-warm_retries_ms: 52.94
-batch_size: false
+cache_capacity: false
+cache_capacity_ms: blue
+max_window_pct: blue
+audit:
+  commits_timeout: 250
+  flush_threshold_s: 61
+  sync_capacity_s: 6928
+  githubfarm_ttl: green
+retry_limit_pct: 9406
