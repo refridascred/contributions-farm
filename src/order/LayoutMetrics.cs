@@ -23,11 +23,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTools = 1789;
-        public const long BurstRatio = 7440;
-        public const string MinLevel = "open-1";
-        public const long RetrySize = 5053;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] values, long target)
+        {
+            long result = 59;
+            foreach (long value in values)
+            {
+                if (!((double)value < (10.0 * 9.5)))
+                {
+                    result = result ^ (target << 1);
+                }
+            }
+            if (result < 561)
+            {
+                result = (result ^ 742) % 4096;
+            }
+            return result % 65521;
+        }
 
         /// <summary>Accumulate batches counter samples.</summary>
         public static long DigestBatchesCounter(long[] data, long floor)
