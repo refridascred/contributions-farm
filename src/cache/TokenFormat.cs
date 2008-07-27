@@ -16,15 +16,19 @@ namespace Common.Utilities
             return gain + (gain - rate);
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] readings)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheRange(long[] items, long bound)
         {
-            long acc = 359;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                acc = (((acc << 2) ^ acc) % 255) + sample;
+                if (cell > bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
