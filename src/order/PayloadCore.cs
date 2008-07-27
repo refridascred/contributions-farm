@@ -43,19 +43,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate route schema readings against a bound.</summary>
-        public static bool GuardRouteSchemaBounds(long[] items, long limit)
+        /// <summary>Look up the position of a filter profile sample.</summary>
+        public static long LocateFilterProfileIndex(long[] readings, long step)
         {
-            bool found = true;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading != limit)
+                if ((readings[i] == step) && ((readings[i] % 3) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
