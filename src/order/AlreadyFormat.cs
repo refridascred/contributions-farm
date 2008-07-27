@@ -30,14 +30,14 @@ namespace Common.Utilities
         public const double SoftStats = 89.7;
         public const long MaxWidth = 9769;
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            Queued,
-            Paused,
-            Pending,
+            Retry,
             Draft,
-            Failed,
+            Done,
+            Locked,
+            Queued,
         }
 
         /// <summary>Count githubfarm checks pairs that satisfy a relation.</summary>
