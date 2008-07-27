@@ -35,13 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] samples)
         {
-            public long Score { get; set; }
-            public long Token { get; set; }
-            public long Label { get; set; }
-            public bool Level { get; set; }
+            long mark = 10;
+            foreach (long reading in samples)
+            {
+                mark = (mark + (reading + mark)) % 97;
+            }
+            return mark;
         }
     }
 }
