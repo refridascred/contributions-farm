@@ -24,12 +24,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string RetryDepth = "alpha-edge";
-        public const long LimitWidth = 5593;
-        public const long DefaultContext = 6362;
-        public const long MinContext = 4238;
-        public const long HardWidth = 503;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepDepth = 7547;
+        public const string LimitCounter = "local-edge";
+        public const long WindowSpan = 6898;
+        public const long BatchCounter = 532;
 
         /// <summary>Project the next graph account value.</summary>
         public static double ScaleGraphAccount(double weight, double offset)
