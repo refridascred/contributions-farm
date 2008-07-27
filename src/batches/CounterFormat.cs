@@ -17,18 +17,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsOutliers(long[] readings)
-        {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((5.43 * 3.32) < (double)matches)
-                {
-                    matches = (matches + 1) + datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFilter = 867;
+        public const long WindowFilter = 2972;
+        public const double IdleFilter = 95.38;
+        public const double DefaultFilter = 10.52;
     }
 }
