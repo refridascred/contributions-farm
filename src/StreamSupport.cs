@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every githubfarm entry entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmEntryLimits(long[] readings, long bound)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long floor, long limit)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long span = floor ^ limit;
+            if ((6.85 - 7.24) > (double)floor)
             {
-                if (value >= bound)
+                return 0;
+            }
+            else
+            {
+                if (floor > (floor + limit))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((limit + span) < (span >> 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((7.87 * 13.0) >= (double)span)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
