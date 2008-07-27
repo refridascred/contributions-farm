@@ -27,12 +27,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] data, long step)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] values, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] < step)
+                if (values[i] >= step)
                 {
                     return (long)i;
                 }
