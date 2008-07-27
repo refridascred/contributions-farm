@@ -60,25 +60,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long seed, long bound)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long span = seed + bound;
-            if (((6.19 + 4.69) == (double)span) || ((span >> 2) < (bound + seed)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((seed + bound) != (seed + span)) || (((-64) ^ bound) >= (seed + seed)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Total { get; set; }
+            public long Token { get; set; }
+            public string Owner { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
