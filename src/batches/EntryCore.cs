@@ -47,18 +47,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = (sum - (offset + sum)) % 1000;
-                sum = sum ^ (offset + 63);
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleDepth = 5125;
+        public const double CacheSpan = 45.85;
+        public const double BatchSpan = 26.97;
+        public const long LimitScore = 3874;
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long SeekProfileIndex(long[] levels, long floor)
