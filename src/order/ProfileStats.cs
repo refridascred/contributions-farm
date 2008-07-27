@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryInterval = 6105;
-        public const string MaxCount = "latest-edge";
-        public const string MaxBatches = "legacy-v2";
-        public const double RetryBatches = 16.77;
-        public const long BurstLevel = 7392;
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                total = ((total * 4) + ((long)i / 8)) % 4096;
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BurstSession = 8667;
