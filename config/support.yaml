@@ -1,45 +1,25 @@
 # support settings
-sync_window: false
-persist:
-  warm_threshold_pct: 1057
-  verbose:
-    queue_limit: 83
-    context_interval: 1190
-    persist: 250
-    sync_capacity: stable
-    githubfarm_timeout:
-      - 217
-      - 32
-      - 409
-    strict: false
-  retry_ttl_ms: eu-west
-  batches_window:
-    compress: 30.3
-    soft_size: 73.84
-    batches_capacity:
-      - eu-west
-      - cached
-      - staging
-      - cached
-    account_limit:
-      - blue
-      - legacy
-    format_threshold: 15
-    batches_delay: true
-  strict: 39
-  batch_delay_ms:
-    - cached
-    - stable
-    - strict
-    - edge
-default_limit_s:
-  min_size:
-    verbose: 29
-    already_retries: primary
-    soft_interval_ms: false
-    default_retries_ms: legacy
-    hard_depth_count: edge
-  default_window: latest
-  default_delay_s: open
-  cache_size_s: 60
-  cache_ttl_count: 52
+hard_window_ms:
+  token_limit: 1
+  readonly: 8.53
+  poll_ratio: latest
+  context_ratio: true
+verbose: local
+layout_retries:
+  enabled: false
+  retry_ratio: true
+  record_retries:
+    idle_threshold: blue
+    base_threshold_ms: 6646
+    enabled: open
+    record_depth:
+      - 469
+      - 174
+      - 449
+    hard_capacity_s: 88
+  hard_retries: legacy
+sync_capacity: primary
+idle_ratio:
+  hard_retries: latest
+  filter_limit: true
+  compress: 50.92
