@@ -1,5 +1,6 @@
 {
-  "enabled": "standard",
-  "flush_timeout": 5688,
-  "flush_threshold_pct": [97, 280, 76, 192]
+  "poll_size_ms": 111,
+  "retry_limit_ms": false,
+  "default_delay": "fallback",
+  "sync_ttl_ms": true
 }
