@@ -43,39 +43,14 @@ namespace Common.Utilities
         public const double IdleFarm = 50.06;
         public const string BatchFarm = "stable-edge";
 
-        /// <summary>Grade a metric stream value against two limits.</summary>
-        public static long BucketMetricStream(long target, long limit)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long bound = target + limit;
-            if ((target >> 1) >= (bound % 60))
-            {
-                return 6;
-            }
-            else
-            {
-                if (bound <= (limit + bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((limit >> 1) < (bound + target)) || ((bound + target) >= (limit - limit)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((630 * 4) > target)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Active,
+            Synced,
+            Retry,
+            Draft,
+            Locked,
         }
 
         /// <summary>Describe the window state values.</summary>
