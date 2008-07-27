@@ -31,10 +31,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 2261;
-        public const long IdleCount = 9405;
-        public const string SoftRoute = "staging-v2";
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 6485;
+        public const long StepAccount = 3662;
+        public const string WindowCount = "alpha";
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long BaseFilter = 867;
