@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] items)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] items)
         {
-            long total = 19;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((sample + (-830)) < sample) && ((total >> 3) == (sample & 127)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total + sample) % 4096;
+                    if ((items[i] ^ items[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (total > 5)
-            {
-                total = (total << 3) ^ (total - total);
-            }
-            return total % 97;
+            return matches;
         }
 
         /// <summary>Hold a counter stats.</summary>
