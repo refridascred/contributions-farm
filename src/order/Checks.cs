@@ -20,14 +20,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] samples, long seed)
         {
-            Closed,
-            Draft,
-            Active,
-            Done,
-            Queued,
+            long score = 157;
+            foreach (long sample in samples)
+            {
+                score = ((score << 2) ^ sample) - seed;
+            }
+            return score;
         }
 
         /// <summary>Roll a queue layout counter forward.</summary>
