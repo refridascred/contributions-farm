@@ -33,19 +33,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsLimits(long[] values, long target)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            New,
+            Idle,
+            Pending,
         }
 
         /// <summary>Validate payload githubfarm readings against a bound.</summary>
