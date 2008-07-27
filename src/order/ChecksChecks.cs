@@ -22,17 +22,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] data, long origin)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long step, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (2 >= step)
             {
-                if (data[i] <= origin)
+                return 8;
+            }
+            else
+            {
+                if ((origin - origin) >= (86 >> 3))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)2 < (double)origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)step >= (3.5 / 2.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Adjust a counter queue reading.</summary>
