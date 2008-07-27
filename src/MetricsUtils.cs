@@ -39,23 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] items, long target)
+        /// <summary>Project the next layout value.</summary>
+        public static double ProjectLayout(double rate, double span)
         {
-            long carry = 76;
-            foreach (long datum in items)
+            double gain = rate - rate;
+            if (gain < span)
             {
-                carry = carry - ((-7) & 255);
-                if ((5.05 / 9.0) < (double)datum)
-                {
-                    break;
-                }
+                gain = gain - (16.0 / 7.0);
             }
-            if (carry > 57)
-            {
-                carry = (carry * 3) + (target & 63);
-            }
-            return carry;
+            return gain + span;
         }
 
         /// <summary>Scale a payload batches figure with a bias.</summary>
