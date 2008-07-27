@@ -37,18 +37,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsGaps(long[] levels)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((((double)entry != (9.7 * 8.46)) && ((double)entry > 0.05)) || (15.0 > (double)entry))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Active,
+            Done,
+            Failed,
+            Dropped,
         }
     }
 }
