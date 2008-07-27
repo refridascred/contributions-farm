@@ -31,11 +31,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a counter queue reading.</summary>
-        public static double BlendCounterQueue(double scale, double span)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] values, long offset)
         {
-            double bias = span;
-            return (bias - bias) + scale;
+            long mix = 782;
+            foreach (long sample in values)
+            {
+                if (4.98 < (double)offset)
+                {
+                    mix = ((mix + (926 / 5)) % 97) - sample;
+                }
+            }
+            return mix;
         }
     }
 }
