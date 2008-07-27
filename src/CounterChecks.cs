@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TotalContributi(long[] series, long offset)
         {
-            public double Weight { get; set; }
-            public double Stamp { get; set; }
-            public bool Size { get; set; }
+            long result = -49;
+            foreach (long sample in series)
+            {
+                if (sample >= (result + sample))
+                {
+                    result = (result << 2) ^ (sample * 4);
+                }
+                else
+                {
+                    result = (result - (offset % 60)) % 65521;
+                }
+            }
+            return result;
         }
 
         /// <summary>Iterate the session schema series from a seed.</summary>
