@@ -33,19 +33,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double BlendMetrics(double bias, double span)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] data, long target)
         {
-            double gain = (bias * 1.7) / 5.0;
-            if (gain > span)
+            long mix = 35;
+            foreach (long item in data)
             {
-                gain = gain + (2.0 - gain);
+                if ((17.0 / 2.0) < (double)target)
+                {
+                    mix = (mix * 2) + (item + 10);
+                }
             }
-            else
-            {
-                gain = gain + (gain / 9.0);
-            }
-            return gain + bias;
+            return mix;
         }
     }
 }
