@@ -41,18 +41,21 @@ namespace Common.Utilities
             return bias - (offset / 5.0);
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] samples, long offset)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long PairCounterCount(long[] items)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((value + value) > value)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 3) - offset;
+                    if ((items[i] - items[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
