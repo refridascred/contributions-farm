@@ -20,12 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Check that every report editor entry stays within the limit.</summary>
+        public static bool ValidateReportEditorRange(long[] values, long step)
         {
-            Ready,
-            Closed,
-            Pending,
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Validate entry account readings against a bound.</summary>
