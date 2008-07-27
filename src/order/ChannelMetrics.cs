@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ProjectCluster(double rate, double offset)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            double weight = rate;
-            return weight + (offset + rate);
+            public string Token { get; set; } = "";
+            public double Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
