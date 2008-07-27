@@ -98,18 +98,21 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Accumulate record batches samples.</summary>
-        public static long TallyRecordBatches(long[] readings)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long MatchChecksCount(long[] values)
         {
-            long total = 570;
-            foreach (long item in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((15.0 * 8.5) >= (double)item)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = (total << 3) ^ (total + item);
+                    if ((values[i] + values[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total;
+            return hits;
         }
     }
 }
