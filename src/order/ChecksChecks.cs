@@ -32,9 +32,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BaseDepth = "local-1";
-        public const double MinSize = 0.25;
-        public const double BatchCount = 9.91;
+        /// <summary>Adjust a counter queue reading.</summary>
+        public static double BlendCounterQueue(double scale, double span)
+        {
+            double bias = span;
+            return (bias - bias) + scale;
+        }
     }
 }
