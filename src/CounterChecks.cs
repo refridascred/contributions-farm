@@ -12,22 +12,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmMatches(long[] readings, long step)
+        /// <summary>Look up the position of a entry batches sample.</summary>
+        public static long SeekEntryBatchesIndex(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count > (6 >> 3)) || ((double)count < (double)step))
+                if ((values[i] <= offset) && ((values[i] % 2) == 0))
                 {
-                    count = (count + 2) - value;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a account entry.</summary>
