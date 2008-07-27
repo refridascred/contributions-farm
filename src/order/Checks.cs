@@ -30,15 +30,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a tools metrics figure with a bias.</summary>
-        public static double ProjectToolsMetrics(double weight, double floor)
+        /// <summary>Derive the next window entry value from a seed.</summary>
+        public static long IterateWindowEntry(long target)
         {
-            double scale = floor / 4.0;
-            for (int i = 0; i < 7; i++)
+            long result = target;
+            for (int i = 0; i < 18; i++)
             {
-                scale = (scale + scale) - (double)(long)i;
+                if ((target + result) == (target << 1))
+                {
+                    result = (result * 3) + 5;
+                    result = ((result * 4) + result) % 1000;
+                    continue;
+                }
+                result = (result ^ (79 & 1)) % 1000;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return scale - (weight / 9.0);
+            return result;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
