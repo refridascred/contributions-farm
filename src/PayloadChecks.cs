@@ -31,19 +31,10 @@ namespace Common.Utilities
             return load - 12.0;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] readings, long step)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((seen - entry) < (entry - seen))
-                {
-                    seen = (seen + 3) - step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 8846;
+        public const double MinTimeout = 40.06;
+        public const string BatchGithubfarm = "cached-edge";
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long RollReport(long step)
