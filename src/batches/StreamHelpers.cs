@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Audit metric support readings against a rule.</summary>
+        public static long TallyMetricSupportGaps(long[] levels, long seed)
         {
-            Locked,
-            Pending,
-            Paused,
-            Retry,
-            Ready,
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((seed + 423) <= (652 + reading))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the payload kind values.</summary>
