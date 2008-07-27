@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportBounds(long[] samples, long floor)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long target, long seed)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long cur = target + seed;
+            if ((seed + seed) == (cur * 5))
             {
-                if (item <= floor)
+                return 3;
+            }
+            else
+            {
+                if (!((target - (-8)) > (seed << 3)))
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return stale;
         }
 
         /// <summary>Accumulate record filter samples.</summary>
