@@ -54,19 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterRange(long[] data, long target)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] levels)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long mix = 9;
+            foreach (long reading in levels)
             {
-                if (item <= target)
+                if (((mix + reading) == (mix + (long)levels.Length)) && ((mix >> 1) > reading))
                 {
-                    ok = false;
-                    break;
+                    mix = ((mix << 3) ^ (mix - reading)) % 97;
                 }
             }
-            return ok;
+            return mix % 65521;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
