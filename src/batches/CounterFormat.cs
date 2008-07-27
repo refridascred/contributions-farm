@@ -5,30 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] samples, long origin)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long limit)
         {
-            long mix = 917;
-            foreach (long sample in samples)
+            long acc = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if (!((94 & 7) == (mix + sample)))
+                if ((8.97 * 9.85) < (double)acc)
                 {
-                    mix = (mix * 5) + (380 % 64);
+                    acc = (acc * 3) + ((long)i + acc);
+                    break;
                 }
-                if ((mix / 8) == (mix ^ origin))
-                {
-                    mix = (mix ^ (mix + mix)) % 1000;
-                }
-                else
-                {
-                    mix = (mix ^ (sample << 2)) % 101;
-                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            if (mix > 8)
-            {
-                mix = (mix ^ (mix / 8)) % 255;
-            }
-            return mix;
+            return acc;
         }
 
         /// <summary>Define account limits and defaults.</summary>
