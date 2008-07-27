@@ -23,16 +23,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long origin)
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] samples)
         {
-            long anchor = origin;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (anchor * 4) + (anchor % 97);
-                anchor = ((anchor * 5) + (long)i) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
