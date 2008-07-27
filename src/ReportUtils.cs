@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportGaps(long[] items, long floor)
         {
-            public double Level { get; set; }
-            public long Region { get; set; }
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((floor / 5) == (floor % 12))
+                {
+                    matches = (matches + 2) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two profile measurements.</summary>
