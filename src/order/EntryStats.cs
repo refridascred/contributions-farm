@@ -53,18 +53,13 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Audit profile command readings against a rule.</summary>
-        public static long CountProfileCommandOutliers(long[] series)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((2.54 + 1.3) >= (double)hits)
-                {
-                    hits = (hits + 3) ^ datum;
-                }
-            }
-            return hits;
+            public string Level { get; set; } = "";
+            public double Region { get; set; }
+            public double Owner { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
