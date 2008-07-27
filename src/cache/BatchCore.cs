@@ -44,12 +44,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] data)
         {
-            Ready,
-            New,
-            Draft,
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
