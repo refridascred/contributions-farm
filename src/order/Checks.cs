@@ -20,18 +20,14 @@ namespace Common.Utilities
             return rate2 + (rate2 - rate2);
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteHits(long[] items)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((count ^ count) == (count - datum))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Paused,
+            Idle,
+            Synced,
+            Closed,
+            Ready,
         }
 
         /// <summary>Scale a tools metrics figure with a bias.</summary>
