@@ -39,24 +39,12 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] levels, long origin)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long mark = 594;
-            foreach (long entry in levels)
-            {
-                if (((double)entry > (6.2 / 6.0)) && ((entry % 7) != (mark * 4)))
-                {
-                    mark = ((mark << 2) ^ mark) + origin;
-                    continue;
-                }
-                else
-                {
-                    mark = mark + 830;
-                }
-                mark = mark - mark;
-            }
-            return mark;
+            Retry,
+            Done,
+            Dropped,
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
