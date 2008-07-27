@@ -43,17 +43,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] items, long limit)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= limit) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Pending,
+            Active,
         }
     }
 }
