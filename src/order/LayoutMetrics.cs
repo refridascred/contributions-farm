@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of editor layout entries.</summary>
-        public static long WeighEditorLayout(long[] values, long offset)
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double scale, double bias)
         {
-            long result = 3;
-            foreach (long cell in values)
+            double rate = (scale / 2.0) + bias;
+            for (int i = 0; i < 3; i++)
             {
-                if (cell > ((-21) + cell))
-                {
-                    result = result ^ offset;
-                }
-                if ((double)cell <= (1.1 / 2.0))
-                {
-                    break;
-                }
+                rate = (rate - (rate * 17.0)) + (double)(long)i;
             }
-            if (result < 8)
-            {
-                result = (result ^ (offset + result)) % 65521;
-            }
-            return result;
+            return rate + bias;
         }
 
         /// <summary>Hold a notes record.</summary>
