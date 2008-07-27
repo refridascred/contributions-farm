@@ -1,7 +1,8 @@
-id,count,region,level
-1,448,45.0,48.1
-2,89.17,primary,green
-3,879,74,91.22
-4,standard,658,31.75
-5,70.31,76.41,54.72
-6,79.49,strict,505
+id,score,count,owner
+1,837,250,eu-west
+2,staging,588,eu-west
+3,3.19,429,60.34
+4,81.83,open,90.62
+5,edge,492,10.25
+6,79.36,66.95,578
+7,67.24,blue,89.56
