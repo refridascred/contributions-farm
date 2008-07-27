@@ -44,17 +44,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first report queue entry that matches the target.</summary>
-        public static long FindReportQueueIndex(long[] items, long target)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (items[i] > target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Scale a cache report figure with a bias.</summary>
