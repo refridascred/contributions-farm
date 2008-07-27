@@ -54,22 +54,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadGaps(long[] series)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long state = 234;
+            foreach (long reading in levels)
             {
-                if (!((double)sample >= 9.0) && ((matches & 127) < sample))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                state = ((((state << 2) ^ 17) % 97) - reading) - target;
+                state = ((state * 5) + (state >> 2)) % 1000;
             }
-            return matches;
+            if (state < (-2))
+            {
+                state = state + state;
+            }
+            return state;
         }
     }
 }
