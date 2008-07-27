@@ -1,8 +1,8 @@
 # entry settings
-persist:
-  - staging
-  - green
-  - legacy
-  - standard
-compress: 88.87
-burst_capacity_pct: 48.17
+sync_size_count:
+  - 158
+  - 8
+  - 424
+  - 68
+layout_delay: 89
+idle_retries_pct: 60
