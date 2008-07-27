@@ -34,12 +34,15 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitRatio = 2492;
-        public const long MaxWidth = 4492;
-        public const string HardDepth = "alpha-edge";
-        public const long HardTools = 2766;
-        public const long MinLevel = 3864;
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
+        {
+            Idle,
+            Closed,
+            Ready,
+            Synced,
+            Retry,
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double CacheRatio = 26.12;
