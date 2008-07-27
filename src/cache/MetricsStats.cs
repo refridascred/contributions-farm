@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a session schema reading.</summary>
-        public static double BlendSessionSchema(double scale, double floor)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            double weight = (double)659 - scale;
-            return (weight + (scale / 9.0)) + floor;
+            Queued,
+            Draft,
+            Synced,
         }
 
         /// <summary>Project the next farm value.</summary>
