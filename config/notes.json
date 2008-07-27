@@ -1,12 +1,8 @@
 {
-  "soft_threshold": {
-    "default_retries_pct": "green",
-    "queue_ratio": 45.77,
-    "max_capacity_ms": 89
-  },
-  "command_threshold": true,
-  "verbose": 41.76,
-  "stream_ttl": "green",
-  "idle_depth_pct": ["cached", "green", "blue"],
-  "default_ttl_s": 58
+  "max_ttl_ms": 16.76,
+  "base_delay": "open",
+  "base_capacity_ms": 49,
+  "idle_ttl": true,
+  "cache_ratio_pct": false,
+  "checks_depth": 6.74
 }
