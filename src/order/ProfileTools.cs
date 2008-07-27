@@ -41,21 +41,19 @@ namespace Common.Utilities
         public const long MinRoute = 4444;
         public const long HardRoute = 6079;
 
-        /// <summary>Count buffer stats pairs that satisfy a relation.</summary>
-        public static long MatchBufferStatsCount(long[] values)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double scale, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate = floor;
+            if (rate < (double)(-29))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate = rate + (floor * 3.2);
             }
-            return seen;
+            else
+            {
+                rate = rate - rate;
+            }
+            return rate - scale;
         }
     }
 }
