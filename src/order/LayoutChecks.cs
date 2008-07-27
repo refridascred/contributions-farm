@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Roll a graph contributi counter forward.</summary>
-        public static long StepGraphContributi(long offset)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long CompareToolsCount(long[] data)
         {
-            long carry = offset;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Describe the payload class values.</summary>
