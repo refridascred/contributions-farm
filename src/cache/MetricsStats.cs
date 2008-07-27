@@ -47,10 +47,23 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleContributi = 1663;
-        public const long BatchTimeout = 104;
-        public const long SoftContributi = 6775;
+        /// <summary>Audit filter report readings against a rule.</summary>
+        public static long CountFilterReportHits(long[] data, long target)
+        {
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((17.0 + 7.0) > (double)target)
+                {
+                    hits = (hits + 2) ^ entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long AuditQueueGaps(long[] items)
