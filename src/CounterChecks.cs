@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long origin, long bound)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double SmoothMetric(double rate, double bias)
         {
-            long lane = origin - bound;
-            if ((double)bound <= (3.9 - 8.6))
+            double load = 1.6 - 6.03;
+            if (load <= bias)
             {
-                return 0;
+                load = load + (double)95;
             }
-            else
-            {
-                if (!((857 / 6) == (lane + origin)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)bound <= (double)origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return load - (bias + rate);
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
