@@ -1,7 +1,7 @@
 {
-  "batch_threshold_pct": "standard",
-  "editor_retries": "latest",
-  "batch_limit_ms": [224, 147, 325],
-  "base_capacity_s": true,
-  "min_retries": 68
+  "githubfarm_threshold": "cached",
+  "warm_ratio": "open",
+  "hard_depth_pct": 43.43,
+  "batch_ttl_s": true,
+  "channel_timeout": 30.51
 }
