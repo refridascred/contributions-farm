@@ -18,19 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderBounds(long[] samples, long bound)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long step)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long state = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (cell <= bound)
-                {
-                    found = false;
-                    break;
-                }
+                state = state ^ (826 % 64);
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Hold a window summary.</summary>
