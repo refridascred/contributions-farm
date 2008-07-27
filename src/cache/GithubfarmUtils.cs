@@ -51,11 +51,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string SoftRatio = "staging-1";
-        public const long BatchGithubfarm = 4837;
-        public const long BaseGithubfarm = 8810;
-        public const double MaxGithubfarm = 67.59;
-        public const long DefaultGithubfarm = 6876;
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
+        {
+            Active,
+            Retry,
+            Locked,
+            Dropped,
+        }
     }
 }
