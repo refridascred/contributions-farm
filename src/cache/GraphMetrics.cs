@@ -78,13 +78,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
-            public double Owner { get; set; }
-            public long Limit { get; set; }
+            public long Score { get; set; }
+            public bool Flag { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
