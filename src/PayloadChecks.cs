@@ -48,12 +48,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long step)
         {
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
-            public string Rank { get; set; } = "";
+            long carry = step;
+            for (int i = 0; i < 9; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
