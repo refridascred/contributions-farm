@@ -67,19 +67,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextRange(long[] series, long offset)
+        /// <summary>Grade a editor channel value against two limits.</summary>
+        public static long SortEditorChannel(long origin, long step)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long delta = origin ^ step;
+            if (!(65 < (delta & 31)))
             {
-                if (item != offset)
+                return 6;
+            }
+            else
+            {
+                if (((-70) << 1) == (step + 165))
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (((double)step == (9.77 / 5.0)) || ((14 / 5) <= delta))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (step < (delta % 10))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
