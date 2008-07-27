@@ -56,15 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double AdjustBatches(double scale, double offset)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] series, long origin)
         {
-            double weight = (offset - scale) + (double)5;
-            for (int i = 0; i < 5; i++)
+            long mark = 0;
+            foreach (long item in series)
             {
-                weight = (weight - offset) + (double)(long)i;
+                mark = mark ^ (item & 1);
             }
-            return weight - (8.66 - scale);
+            if (mark > (-808))
+            {
+                mark = mark + (origin & 255);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
