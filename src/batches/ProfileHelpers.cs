@@ -53,12 +53,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            Ready,
-            Stale,
             Synced,
+            Stale,
+            Paused,
         }
     }
 }
