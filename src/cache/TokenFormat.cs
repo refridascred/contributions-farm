@@ -31,22 +31,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] items, long limit)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] data)
         {
-            long carry = 244;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((991 - carry) == (38 * 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = ((carry * 5) + limit) - reading;
+                    if ((data[i] ^ data[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (carry < 1)
-            {
-                carry = ((carry << 2) ^ (limit - limit)) % 101;
-            }
-            return carry;
+            return tally;
         }
     }
 }
