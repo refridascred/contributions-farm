@@ -20,13 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmBounds(long[] samples, long seed)
         {
-            Active,
-            Closed,
-            Dropped,
-            Queued,
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every payload commits entry stays within the limit.</summary>
