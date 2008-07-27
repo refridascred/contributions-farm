@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double AdjustRecord(double ratio, double span)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] readings, long bound)
         {
-            double load = ratio;
-            if (load > (double)768)
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = (load - load) - span;
+                if ((readings[i] >= bound) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - (ratio - ratio);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (1.2 / 8.0)) + (double)(long)i;
-            }
-            return load - load;
+            return -1;
         }
 
         /// <summary>Combine already values into a single score.</summary>
