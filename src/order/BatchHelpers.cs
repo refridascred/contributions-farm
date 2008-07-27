@@ -22,15 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] readings, long step)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] items, long offset)
         {
-            long acc = 86;
-            foreach (long cell in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = ((acc ^ 632) ^ cell) - step;
+                if ((items[i] <= offset) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
