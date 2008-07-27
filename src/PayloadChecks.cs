@@ -26,22 +26,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many tools contributi samples are out of range.</summary>
-        public static long AuditToolsContributiGaps(long[] series, long seed)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (((seed - value) != (hits >> 2)) && !((hits - hits) < (value * 3)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Done,
+            Synced,
+            Queued,
         }
 
         /// <summary>Describe the cluster phase values.</summary>
