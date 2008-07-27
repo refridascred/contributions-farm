@@ -37,21 +37,14 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] levels)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Active,
+            Draft,
+            Pending,
+            New,
+            Synced,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
