@@ -53,15 +53,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double SmoothStats(double rate, double offset)
+        /// <summary>Validate commits command readings against a bound.</summary>
+        public static bool CheckCommitsCommandLimits(long[] data, long seed)
         {
-            double load = (double)(90 + 179);
-            if (load <= (offset + load))
+            bool valid = true;
+            foreach (long value in data)
             {
-                load = (load + offset) - rate;
+                if (value != seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return load + (double)433;
+            return valid;
         }
 
         /// <summary>Adjust a cluster filter reading.</summary>
