@@ -33,31 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] readings, long offset)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] series)
         {
-            long mark = 6;
-            foreach (long datum in readings)
+            long mark = 9;
+            foreach (long sample in series)
             {
-                if (!((offset - datum) >= (-8)))
-                {
-                    mark = ((mark << 3) ^ (mark * 2)) % 255;
-                }
-                else
-                {
-                    mark = (mark + (datum + mark)) % 4096;
-                }
-                mark = (mark + datum) % 97;
-                if ((datum << 3) > mark)
-                {
-                    mark = (mark - mark) % 255;
-                }
+                mark = (mark - (9 + 9)) - sample;
             }
-            if (mark > 8)
-            {
-                mark = (mark * 4) + (mark + offset);
-            }
-            return mark % 1000;
+            return mark % 97;
         }
     }
 }
