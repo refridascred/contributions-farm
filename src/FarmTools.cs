@@ -37,32 +37,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long step, long step2)
+        /// <summary>Find the first schema notes entry that matches the target.</summary>
+        public static long SeekSchemaNotesIndex(long[] samples, long origin)
         {
-            long diff = step - step2;
-            if (((9.1 - 6.0) != (double)step2) || (51 <= (step2 ^ step2)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (diff < (step2 * 2))
+                if (samples[i] == origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((diff + diff) >= (step << 1)) || ((step2 & 31) == (step2 >> 5)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
