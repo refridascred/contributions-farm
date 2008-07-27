@@ -32,13 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorHits(long[] levels, long origin)
         {
-            public double Level { get; set; }
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public double Total { get; set; }
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if (((-6) & 63) < (hits ^ hits))
+                {
+                    hits = ((hits + 1) ^ entry) - origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the commits status values.</summary>
