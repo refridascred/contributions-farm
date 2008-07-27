@@ -11,11 +11,20 @@ namespace Common.Utilities
         public const string BurstSize = "primary";
         public const string WindowFactor = "open";
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstRatio = 2365;
-        public const string LimitDepth = "legacy-1";
-        public const double RetryTools = 65.94;
-        public const string SoftInterval = "open-edge";
+        /// <summary>Check that every stats tools entry stays within the limit.</summary>
+        public static bool VerifyStatsToolsBounds(long[] levels, long origin)
+        {
+            bool valid = true;
+            foreach (long cell in levels)
+            {
+                if (cell > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool CheckNotesLimits(long[] levels, long offset)
