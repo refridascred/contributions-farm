@@ -59,19 +59,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenRange(long[] values, long step)
+        /// <summary>Grade a stats tools value against two limits.</summary>
+        public static long SortStatsTools(long bound, long step)
         {
-            bool ready = true;
-            foreach (long item in values)
+            if ((double)bound < (0.77 / 3.0))
             {
-                if (item <= step)
+                return 5;
+            }
+            else
+            {
+                if (((5.2 / 5.0) > (double)step) && ((bound + step) < bound))
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a payload header.</summary>
