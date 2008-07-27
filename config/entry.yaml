@@ -1,6 +1,5 @@
 # entry settings
-enabled:
-  - 352
-  - 360
-dry_run: eu-west
-burst_window_ms: legacy
+cache_size: 51.22
+githubfarm_ratio: 65
+batch_size_ms: 46
+audit: 58.4
