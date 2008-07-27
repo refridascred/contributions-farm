@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] samples, long step)
-        {
-            long total = 16;
-            foreach (long sample in samples)
-            {
-                total = ((total - 567) + sample) + step;
-            }
-            return total;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MaxProfile = 46.52;
+        public const long HardProfile = 3126;
+        public const double SoftTimeout = 16.14;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long MeasureWindowMatches(long[] samples)
