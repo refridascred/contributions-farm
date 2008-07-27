@@ -28,32 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a commits payload value against two limits.</summary>
-        public static long SortCommitsPayload(long origin, long offset)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportGaps(long[] items)
         {
-            long delta = origin ^ offset;
-            if ((offset & 63) != (651 + delta))
+            long hits = 0;
+            foreach (long entry in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset > (29 - delta)) || ((623 & 1) > (delta - offset)))
+                if ((double)hits == (double)entry)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((4.0 - 3.5) < (double)offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
