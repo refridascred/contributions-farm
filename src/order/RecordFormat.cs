@@ -20,39 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long target, long seed)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphLimits(long[] items, long origin)
         {
-            long edge = target ^ seed;
-            if ((seed + edge) < (target - target))
+            bool valid = true;
+            foreach (long item in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (((target / 4) == (seed << 1)) || ((edge >> 5) > (-52)))
+                if (item >= origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((3.0 > (double)edge) && ((seed - edge) > (seed >> 5)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (seed <= (seed << 1))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
