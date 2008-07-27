@@ -50,19 +50,17 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Scale a payload batches figure with a bias.</summary>
-        public static double BlendPayloadBatches(double rate, double span)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] samples, long bound)
         {
-            double mean = 5.0;
-            if (mean <= span)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean + (rate - mean);
+                if (samples[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean + (rate * 7.35);
+            return -1;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
