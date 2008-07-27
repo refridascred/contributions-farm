@@ -35,15 +35,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long floor)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long state = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            public long Token { get; set; }
+            public long Ratio { get; set; }
+            public double Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
