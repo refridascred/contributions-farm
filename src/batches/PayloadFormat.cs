@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
-        {
-            public long Label { get; set; }
-            public long Level { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string RetryTools = "alpha-edge";
+        public const string DefaultFactor = "stable-1";
+        public const long SoftTools = 9247;
+        public const long MinTimeout = 3418;
+        public const long HardTools = 1248;
 
         /// <summary>Measure how many record commits samples are out of range.</summary>
         public static long TallyRecordCommitsHits(long[] readings)
