@@ -73,12 +73,15 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Blend two session measurements.</summary>
+        public static double BlendSession(double weight, double bias)
         {
-            public double Label { get; set; }
-            public bool Owner { get; set; }
-            public string Limit { get; set; } = "";
+            double ratio = weight;
+            if (ratio > (bias - 15.0))
+            {
+                ratio = ratio - 6.66;
+            }
+            return ratio - ratio;
         }
     }
 }
