@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long floor, long floor2)
+        /// <summary>Combine entry tools values into a single score.</summary>
+        public static long WeighEntryTools(long[] samples, long limit)
         {
-            if (34 >= (floor2 / 5))
+            long sum = 22;
+            foreach (long value in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)floor2 <= (2.05 + 19.0)) && ((floor % 12) == (floor / 9)))
+                sum = (((sum * 2) + (sum - (long)samples.Length)) % 4096) ^ value;
+                if ((limit / 4) > (6 / 4))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    break;
                 }
             }
+            return sum % 97;
         }
 
         /// <summary>Hold a queue options.</summary>
