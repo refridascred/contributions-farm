@@ -18,12 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Locate a profile batch reading by value.</summary>
+        public static long LookupProfileBatchIndex(long[] values, long offset)
         {
-            Closed,
-            Pending,
-            Synced,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the filter class values.</summary>
