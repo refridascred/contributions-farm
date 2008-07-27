@@ -36,22 +36,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate already token samples.</summary>
-        public static long TotalAlreadyToken(long[] items)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsGaps(long[] data)
         {
-            long result = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if ((entry % 2) != (result + entry))
+                if ((double)tally > 1.2)
                 {
-                    result = result + (entry % 12);
+                    tally = (tally + 1) + cell;
                 }
-                if ((entry + result) >= result)
+                else
                 {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
