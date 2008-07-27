@@ -10,21 +10,15 @@ namespace Common.Utilities
         public const long LimitLevel = 5763;
         public const string WindowTimeout = "local-1";
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] samples)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = target;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Project the next report value.</summary>
