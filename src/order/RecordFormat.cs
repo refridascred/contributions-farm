@@ -33,14 +33,39 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Rank account route input into a small class.</summary>
+        public static long RankAccountRoute(long floor, long step)
         {
-            Paused,
-            Ready,
-            Pending,
-            New,
-            Done,
+            long prev = floor ^ step;
+            if ((prev >> 2) == (3 << 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if (prev < (step << 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (step < prev)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((floor ^ step) >= floor))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a contributi stats.</summary>
