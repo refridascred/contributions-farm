@@ -62,23 +62,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine queue payload values into a single score.</summary>
-        public static long WeighQueuePayload(long[] readings)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] levels, long floor)
         {
-            long result = 9;
-            foreach (long datum in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = ((result ^ result) % 255) ^ datum;
-                if ((double)result < (8.9 * 3.2))
+                if ((levels[i] >= floor) && ((levels[i] % 2) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (result < 3)
-            {
-                result = (result ^ (result ^ result)) % 101;
-            }
-            return result;
+            return -1;
         }
     }
 }
