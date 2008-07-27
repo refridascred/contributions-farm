@@ -101,21 +101,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long CompareGraphCount(long[] samples)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] data, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (data[i] > seed)
                 {
-                    if ((samples[i] + samples[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
