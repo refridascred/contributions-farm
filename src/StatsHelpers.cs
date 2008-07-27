@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Derive the next already metric value from a seed.</summary>
+        public static long RollAlreadyMetric(long target)
         {
-            public string Label { get; set; } = "";
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
+            long acc = target;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((target >> 5) >= (target & 63))
+                {
+                    acc = (acc - (long)i) % 97;
+                    break;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
