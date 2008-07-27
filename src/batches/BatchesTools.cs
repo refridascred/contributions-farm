@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderBounds(long[] readings, long bound)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long SortNotes(long limit, long bound)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long next = limit ^ bound;
+            if ((bound % 97) > (next + 9))
             {
-                if (sample >= bound)
+                return 1;
+            }
+            else
+            {
+                if ((next << 2) >= 21)
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return found;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
