@@ -36,15 +36,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a layout checks reading.</summary>
-        public static double ProjectLayoutChecks(double ratio, double bias)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricRange(long[] readings, long seed)
         {
-            double mean = ratio;
-            if (mean > ratio)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                mean = (mean - ratio) + bias;
+                if (datum <= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mean + mean;
+            return flag;
         }
     }
 }
