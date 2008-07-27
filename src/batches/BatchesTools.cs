@@ -36,38 +36,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long step, long origin)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] readings, long target)
         {
-            if ((step % 24) >= (step >> 1))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin < (origin << 2)) && ((step >> 2) >= (origin + origin)))
+                if (readings[i] == target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)origin <= (double)3)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!(step <= (step >> 1)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
