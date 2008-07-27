@@ -29,19 +29,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double rate, double span)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesGaps(long[] items, long origin)
         {
-            double gain = rate;
-            if (gain < rate)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                gain = gain - (5.2 * 6.6);
+                if ((sample - origin) == (248 - 75))
+                {
+                    matches = matches + 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - rate) + (double)(long)i;
-            }
-            return gain - (span - rate);
+            return matches;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
