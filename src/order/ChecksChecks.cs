@@ -5,26 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] levels, long limit)
+        /// <summary>Digest a series of buffer window entries.</summary>
+        public static long TallyBufferWindow(long[] samples)
         {
-            long mark = 0;
-            foreach (long value in levels)
+            long sum = 5;
+            foreach (long entry in samples)
             {
-                if ((mark << 3) < value)
+                if ((sum >> 2) != (entry * 5))
                 {
-                    mark = ((mark << 3) ^ (78 * 4)) % 97;
+                    sum = sum - (sum + entry);
+                    sum = ((sum << 2) ^ (entry & 31)) % 97;
                 }
-                if ((double)mark > 3.7)
-                {
-                    break;
-                }
+                sum = ((sum << 2) ^ (entry << 3)) % 255;
             }
-            if (mark > 399)
-            {
-                mark = ((mark << 3) ^ (limit * 2)) % 101;
-            }
-            return mark;
+            return sum % 97;
         }
 
         /// <summary>Accumulate layout samples.</summary>
