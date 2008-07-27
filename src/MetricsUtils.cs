@@ -34,20 +34,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long target)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueHits(long[] data, long seed)
         {
-            long score = target;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (((double)target > 5.0) && ((target * 4) < target))
+                if ((tally - reading) >= (tally + seed))
                 {
-                    score = (score * 3) + (454 % 12);
+                    tally = tally + 2;
                 }
-                score = ((score * 4) + (target / 8)) % 255;
-                score = ((score * 2) + (long)i) % 1000;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
