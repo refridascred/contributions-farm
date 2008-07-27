@@ -14,13 +14,13 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            New,
-            Dropped,
-            Retry,
-            Done,
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a support stats.</summary>
