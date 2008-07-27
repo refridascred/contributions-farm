@@ -55,20 +55,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmLimits(long[] items, long target)
-        {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftToken = 685;
+        public const long IdleToken = 2421;
+        public const long StepToken = 6534;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long AuditStreamGaps(long[] levels, long limit)
