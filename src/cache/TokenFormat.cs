@@ -30,23 +30,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double BlendChannel(double weight, double bias)
+        /// <summary>Roll a farm checks counter forward.</summary>
+        public static long StepFarmChecks(long step)
         {
-            double bias2 = weight;
-            if (bias2 <= (weight * 4.5))
+            long carry = step;
+            for (int i = 0; i < 4; i++)
             {
-                bias2 = bias2 + 7.59;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            else
-            {
-                bias2 = bias2 - (weight - bias);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = bias2 - (double)(long)i;
-            }
-            return bias2 - bias2;
+            return carry;
         }
     }
 }
