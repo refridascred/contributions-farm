@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmOutliers(long[] items)
+        /// <summary>Count notes stats pairs that satisfy a relation.</summary>
+        public static long CompareNotesStatsCount(long[] levels)
         {
             long hits = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((cell ^ hits) != (402 % 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((levels[i] + levels[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
