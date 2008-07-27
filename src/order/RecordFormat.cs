@@ -48,18 +48,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesMatches(long[] items, long limit)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((limit * 5) > (hits % 8))
-                {
-                    hits = (hits + 1) + entry;
-                }
-            }
-            return hits;
+            Paused,
+            Ready,
+            Pending,
+            New,
+            Done,
         }
 
         /// <summary>Hold a contributi stats.</summary>
