@@ -48,15 +48,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double BlendCluster(double gain, double floor)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryMatches(long[] values)
         {
-            double bias = floor;
-            if (bias <= (bias * 4.02))
+            long matches = 0;
+            foreach (long cell in values)
             {
-                bias = bias + (floor / 5.0);
+                if ((1.92 / 8.0) > (double)matches)
+                {
+                    matches = (matches + 3) + cell;
+                }
             }
-            return bias + gain;
+            return matches;
         }
     }
 }
