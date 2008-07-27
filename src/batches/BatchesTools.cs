@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderBounds(long[] readings, long bound)
         {
-            Synced,
-            Closed,
-            Idle,
-            Done,
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
