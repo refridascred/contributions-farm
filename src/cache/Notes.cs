@@ -68,23 +68,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double bias, double floor)
+        /// <summary>Project the next graph account value.</summary>
+        public static double ScaleGraphAccount(double weight, double offset)
         {
-            double rate = 20.0;
-            if (rate > (double)8)
-            {
-                rate = rate - (bias - bias);
-            }
-            else
-            {
-                rate = rate - 11.0;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + floor) + (double)(long)i;
-            }
-            return rate - 8.29;
+            double load = offset;
+            return load - weight;
         }
 
         /// <summary>Blend two context measurements.</summary>
