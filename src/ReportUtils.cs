@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] levels)
+        /// <summary>Roll a checks context counter forward.</summary>
+        public static long DeriveChecksContext(long floor)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long result = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((((tally << 1) < (item & 255)) && (tally >= (item + item))) && ((9.22 + 6.7) <= (double)(long)levels.Length))
+                result = result - ((long)i - result);
+                if (result <= (108 - floor))
                 {
-                    tally = tally + 2;
+                    result = ((result * 5) + result) % 97;
                 }
+                else
+                {
+                    result = (result - ((long)i - result)) % 4096;
+                    result = ((result << 2) ^ (result << 3)) % 4096;
+                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
