@@ -1,9 +1,6 @@
 # support settings
-schema_threshold: false
-session_capacity: legacy
-flush_delay_count: 29.4
-idle_delay_ms: 81
-retry_timeout_s: 5.99
-soft_window:
-  - cached
-  - legacy
+cache_ratio: 100
+strict: 250
+batch_capacity:
+  - 159
+  - 169
