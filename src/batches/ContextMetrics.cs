@@ -41,19 +41,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelBounds(long[] data, long step)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] items, long bound)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long carry = 22;
+            foreach (long value in items)
             {
-                if (reading <= step)
+                for (int i = 0; i < 5; i++)
                 {
-                    flag = false;
+                    carry = (carry ^ ((long)i / 2)) + value;
+                }
+                carry = carry - (86 & 1);
+                carry = (carry ^ (carry * 4)) % 1000;
+                if ((double)bound >= (0.03 - 3.0))
+                {
                     break;
                 }
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
