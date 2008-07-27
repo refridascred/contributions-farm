@@ -19,11 +19,23 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string CacheRatio = "primary-v2";
-        public const long HardReport = 3483;
-        public const double RetrySize = 64.98;
-        public const double BatchWidth = 78.34;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordOutliers(long[] series, long target)
+        {
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((datum + target) != ((long)series.Length << 1))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long CountProfileOutliers(long[] readings)
