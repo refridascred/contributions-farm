@@ -23,38 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long step, long origin)
+        /// <summary>Count payload entry pairs that satisfy a relation.</summary>
+        public static long MatchPayloadEntryCount(long[] values)
         {
-            if (2 >= step)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin - origin) >= (86 >> 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)2 < (double)origin)
+                    if ((values[i] ^ values[j]) > 20)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)step >= (3.5 / 2.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Adjust a counter queue reading.</summary>
