@@ -23,21 +23,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long CompareAccountCount(long[] series)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] samples, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (samples[i] > origin)
                 {
-                    if ((series[i] + series[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
