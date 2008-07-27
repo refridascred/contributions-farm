@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountHits(long[] values)
         {
-            public long Ratio { get; set; }
-            public bool Size { get; set; }
-            public string Limit { get; set; } = "";
-            public double Mode { get; set; }
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (((datum < ((long)values.Length - 264)) && ((26 >> 2) <= (hits ^ hits))) && ((hits - datum) <= (hits - hits)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
