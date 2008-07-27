@@ -35,14 +35,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            Locked,
-            Closed,
-            Active,
-            Draft,
+            Ready,
+            Retry,
+            Synced,
             Failed,
+            Pending,
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
