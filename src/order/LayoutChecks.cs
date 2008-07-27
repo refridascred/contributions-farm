@@ -16,39 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long limit, long offset)
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double ratio, double bias)
         {
-            long next = limit - offset;
-            if ((offset / 2) < (offset & 15))
+            double scale = bias;
+            if (scale <= (scale / 4.0))
             {
-                return 3;
+                scale = scale + (scale / 2.0);
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((20.0 - 15.0) <= (double)limit)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((next % 5) <= (limit ^ next))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((6.5 - 3.0) < (double)next) || (offset > (next - offset)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                scale = (scale + ratio) + (double)(long)i;
             }
+            return scale - scale;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
