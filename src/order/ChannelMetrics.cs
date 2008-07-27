@@ -19,15 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long floor)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] values, long floor)
         {
-            long score = floor;
-            for (int i = 0; i < 8; i++)
+            long acc = 2;
+            foreach (long item in values)
             {
-                score = ((score * 2) + (long)i) % 1000;
+                acc = (acc - (floor * 2)) + item;
             }
-            return score;
+            return acc % 4096;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
