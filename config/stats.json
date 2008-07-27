@@ -1,5 +1,18 @@
 {
-  "idle_capacity_s": "strict",
-  "metrics_interval": true,
-  "soft_window_ms": 8481
+  "stats_threshold": {
+    "contributi_ratio": "fallback",
+    "channel_timeout": 45,
+    "readonly": "cached",
+    "githubfarm_window": 27,
+    "order_threshold": "green",
+    "cache_interval": {
+      "max_window": [348, 153, 411],
+      "idle_ratio_count": "latest",
+      "account_threshold": 33.3,
+      "schema_timeout": 18.23,
+      "route_ratio": 72.21
+    }
+  },
+  "format_window": "eu-west",
+  "strict": 46
 }
