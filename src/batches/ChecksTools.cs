@@ -54,20 +54,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] levels, long target)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] items, long limit)
         {
-            long state = 234;
-            foreach (long reading in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((((state << 2) ^ 17) % 97) - reading) - target;
-                state = ((state * 5) + (state >> 2)) % 1000;
+                if ((items[i] <= limit) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (state < (-2))
-            {
-                state = state + state;
-            }
-            return state;
+            return -1;
         }
     }
 }
