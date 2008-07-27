@@ -44,19 +44,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] series, long bound)
+        /// <summary>Audit graph token readings against a rule.</summary>
+        public static long TallyGraphTokenMatches(long[] samples, long seed)
         {
-            long mix = 5;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                mix = (((mix * 3) + bound) % 1000) - cell;
-                if ((double)752 >= (double)mix)
+                if (!(((seed - entry) != (entry - entry)) || ((seed + 41) < (2 - seed))))
                 {
-                    break;
+                    count = count + 1;
                 }
             }
-            return mix % 97;
+            return count;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
