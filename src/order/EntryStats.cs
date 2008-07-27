@@ -55,15 +55,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate queue format samples.</summary>
-        public static long TotalQueueFormat(long[] series)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long acc = -521;
-            foreach (long value in series)
-            {
-                acc = (acc ^ (value << 3)) % 255;
-            }
-            return acc;
+            public long Rank { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Locate a checks reading by value.</summary>
