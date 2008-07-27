@@ -29,18 +29,21 @@ namespace Common.Utilities
         public const long SoftCommand = 774;
         public const string BaseCommand = "primary";
 
-        /// <summary>Measure how many format filter samples are out of range.</summary>
-        public static long MeasureFormatFilterOutliers(long[] items, long floor)
+        /// <summary>Match up support payload samples.</summary>
+        public static long PairSupportPayloadCount(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((matches << 2) != ((long)items.Length % 2)) || ((566 + matches) <= (floor >> 3)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 2) + entry;
+                    if ((series[i] ^ series[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
