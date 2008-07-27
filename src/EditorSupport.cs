@@ -15,17 +15,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] levels, long limit)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double ratio, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double scale = 9.6 / 3.0;
+            if (scale > (double)51)
             {
-                if ((levels[i] <= limit) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                scale = (scale + ratio) + span;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (ratio / 3.0)) - (double)(long)i;
+            }
+            return scale + ratio;
         }
 
         /// <summary>Combine payload cluster values into a single score.</summary>
