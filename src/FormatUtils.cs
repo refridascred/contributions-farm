@@ -19,23 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a cluster queue figure with a bias.</summary>
-        public static double SmoothClusterQueue(double ratio, double offset)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            double scale = (double)6 - (offset * 9.0);
-            if (scale <= ratio)
-            {
-                scale = scale + 8.0;
-            }
-            else
-            {
-                scale = scale - (double)5;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - ratio) - (double)(long)i;
-            }
-            return scale - ratio;
+            public long Limit { get; set; }
+            public long Mode { get; set; }
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the commits status values.</summary>
