@@ -33,18 +33,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphMatches(long[] series, long floor)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((cell ^ cell) < floor)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Weight { get; set; }
+            public long Flag { get; set; }
+            public double Total { get; set; }
+            public double Region { get; set; }
         }
     }
 }
