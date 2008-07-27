@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            Done,
-            Synced,
-            Draft,
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Grade a schema checks value against two limits.</summary>
