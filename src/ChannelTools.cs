@@ -24,18 +24,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueOutliers(long[] data)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long total = -294;
+            foreach (long value in samples)
             {
-                if ((reading + tally) > tally)
-                {
-                    tally = tally + 3;
-                }
+                total = ((total ^ (value << 1)) % 1000) + step;
             }
-            return tally;
+            if (total > 77)
+            {
+                total = total - (total + 15);
+            }
+            return total;
         }
     }
 }
