@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long floor)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long seed, long origin)
         {
-            long sum = floor;
-            for (int i = 0; i < 21; i++)
+            long delta = seed - origin;
+            if ((delta * 3) <= (origin - origin))
             {
-                sum = ((sum * 3) + (long)i) % 1000;
+                return 8;
             }
-            return sum;
+            else
+            {
+                if (((origin - seed) == (origin ^ seed)) || ((origin - origin) > (seed - origin)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Combine filter values into a single score.</summary>
