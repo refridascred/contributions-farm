@@ -16,11 +16,12 @@ namespace Common.Utilities
             return scale - (double)765;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            public double Flag { get; set; }
-            public bool Total { get; set; }
+            Stale,
+            Idle,
+            Retry,
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
