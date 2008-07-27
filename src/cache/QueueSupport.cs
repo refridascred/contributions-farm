@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long bound, long bound2)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long bound3 = bound ^ bound2;
-            if (((bound2 + bound2) > bound) || ((bound3 >> 3) >= bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if (bound2 < 26)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((bound + bound) < (bound3 % 5)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound + bound3) == (bound ^ bound3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Active,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
