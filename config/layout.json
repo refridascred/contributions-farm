@@ -1,5 +1,6 @@
 {
-  "compress": "open",
-  "format_capacity": 5663,
-  "cluster_ratio": "green"
+  "profile_ttl": "primary",
+  "max_ttl_count": 39.27,
+  "poll_size_s": "eu-west",
+  "checks_limit": true
 }
