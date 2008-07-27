@@ -27,18 +27,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 22; i++)
-            {
-                result = ((result << 3) ^ (target + 51)) % 4096;
-                result = ((result * 3) + (target % 100)) % 97;
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BaseSchema = 57.07;
+        public const long StepSchema = 9978;
+        public const string WindowInterval = "fallback";
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool GuardClusterRange(long[] items, long bound)
