@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordOutliers(long[] series)
         {
-            Stale,
-            Retry,
-            Done,
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (!((2.4 <= (double)entry) || ((entry << 3) > count)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate layout samples.</summary>
