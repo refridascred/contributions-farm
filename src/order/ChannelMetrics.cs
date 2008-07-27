@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderMatches(long[] readings)
         {
-            Closed,
-            Idle,
-            Retry,
-            Locked,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)entry != (6.07 / 5.0))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
