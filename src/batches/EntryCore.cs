@@ -40,11 +40,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleDepth = 5125;
-        public const double CacheSpan = 45.85;
-        public const double BatchSpan = 26.97;
-        public const long LimitScore = 3874;
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] values)
+        {
+            long carry = 7;
+            foreach (long cell in values)
+            {
+                carry = ((carry * 4) + (8 / 5)) % 4096;
+                carry = carry ^ (long)values.Length;
+                if ((298 - carry) == (2 - cell))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long SeekProfileIndex(long[] levels, long floor)
