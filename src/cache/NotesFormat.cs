@@ -28,11 +28,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseScore = 7203;
-        public const long StepProfile = 4247;
-        public const long BurstSpan = 7477;
-        public const long MaxProfile = 6435;
-        public const long MinProfile = 8929;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileOutliers(long[] readings)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if (((long)readings.Length >= (count + count)) || ((cell >= (count - cell)) || (cell < (cell - cell))))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
