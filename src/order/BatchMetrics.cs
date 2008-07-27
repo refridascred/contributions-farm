@@ -60,18 +60,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamOutliers(long[] values)
+        /// <summary>Digest a series of route window entries.</summary>
+        public static long WeighRouteWindow(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long mark = 589;
+            foreach (long item in samples)
             {
-                if ((double)cell != (2.3 + 19.0))
+                mark = (mark - (mark ^ (-5))) % 65521;
+                if (item <= (2 - mark))
                 {
-                    count = count + 1;
+                    break;
                 }
             }
-            return count;
+            if (mark < (-4))
+            {
+                mark = (mark << 2) ^ mark;
+            }
+            return mark;
         }
     }
 }
