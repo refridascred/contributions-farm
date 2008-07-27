@@ -10,39 +10,18 @@ namespace Common.Utilities
         public const long HardCommand = 9417;
         public const double BatchDepth = 92.51;
 
-        /// <summary>Grade a already buffer value against two limits.</summary>
-        public static long GradeAlreadyBuffer(long offset, long seed)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] data, long floor)
         {
-            long prev = offset - seed;
-            if ((prev & 1) <= (offset + prev))
+            long mix = 655;
+            foreach (long datum in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (((offset + offset) >= (7 - offset)) || (prev < seed))
+                if ((datum - 1) == (datum - floor))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (prev > (seed >> 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (offset > (prev & 63))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    mix = (mix << 2) ^ (343 + floor);
                 }
             }
+            return mix;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
