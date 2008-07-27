@@ -1,8 +1,7 @@
-id,score,region
-1,551,21.24
-2,476,497
-3,44.98,832
-4,eu-west,30
-5,19.96,904
-6,380,stable
-7,staging,166
+id,rank,label,region,level
+1,primary,229,687,49.5
+2,370,46.2,3,135
+3,972,strict,334,staging
+4,390,196,51.23,stable
+5,stable,194,325,eu-west
+6,388,493,fallback,22.78
