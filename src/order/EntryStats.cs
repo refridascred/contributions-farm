@@ -19,10 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string IdleFactor = "primary-1";
-        public const long MaxLevel = 9230;
-        public const long MinQueue = 8866;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxRatio = 2685;
+        public const long BurstCache = 6418;
+        public const long MaxCache = 2723;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long DefaultEntry = 2996;
