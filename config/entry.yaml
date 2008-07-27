@@ -1,6 +1,9 @@
 # entry settings
-session_ratio: false
-soft_retries_s: 8190
-retry_ratio: true
-default_ttl: latest
-compress: cached
+burst_ratio: blue
+retry_depth:
+  - 272
+  - 82
+  - 234
+  - 161
+warm_retries_ms: 52.94
+batch_size: false
