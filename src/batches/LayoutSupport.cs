@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Grade a batches stats value against two limits.</summary>
-        public static long ClassifyBatchesStats(long floor, long origin)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] levels)
         {
-            if ((origin ^ origin) < (295 + origin))
+            long score = 9;
+            foreach (long entry in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor + floor) >= floor)
+                if ((score >= (entry / 8)) && (((long)levels.Length + score) <= (entry / 9)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)origin != (5.7 + 15.0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((5.43 + 13.0) <= (double)floor)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    score = score - score;
                 }
             }
+            return score;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
