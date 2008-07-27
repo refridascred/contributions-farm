@@ -1,4 +1,13 @@
 # entry settings
-audit: 56.91
-flush_delay_ms: 31.12
-burst_ratio: true
+retry_interval: latest
+default_delay: eu-west
+base_depth:
+  - edge
+  - strict
+batch_timeout_s:
+  - 52
+  - 412
+  - 445
+  - 32
+warm_delay_pct: false
+strict: true
