@@ -39,12 +39,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 6334;
-        public const long SoftToken = 1637;
-        public const string BurstToken = "fallback-edge";
-        public const double CacheFactor = 21.29;
-        public const long HardInterval = 7239;
+        /// <summary>Scale a payload batches figure with a bias.</summary>
+        public static double BlendPayloadBatches(double rate, double span)
+        {
+            double mean = 5.0;
+            if (mean <= span)
+            {
+                mean = mean + (rate - mean);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean + (rate * 7.35);
+        }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long RankEditor(long step, long step2)
