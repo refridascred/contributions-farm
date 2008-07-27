@@ -42,15 +42,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double scale, double floor)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            double load = (scale / 7.0) + (floor * 7.1);
-            if (load < floor)
-            {
-                load = load + 11.0;
-            }
-            return load - load;
+            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Adjust a editor reading.</summary>
