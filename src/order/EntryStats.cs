@@ -38,12 +38,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Blend two notes metric measurements.</summary>
+        public static double BlendNotesMetric(double bias, double span)
         {
-            Ready,
-            Pending,
-            Active,
+            double gain = (1.1 - 15.0) / 7.0;
+            if (gain > (double)94)
+            {
+                gain = (gain + 20.0) + span;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - (double)4) + (double)(long)i;
+            }
+            return gain - bias;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
