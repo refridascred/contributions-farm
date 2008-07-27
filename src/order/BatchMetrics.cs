@@ -32,22 +32,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 7432;
+        public const string HardRatio = "legacy-edge";
+        public const string BatchFactor = "latest-edge";
 
         /// <summary>Define order limits and defaults.</summary>
         public const double WindowOrder = 41.71;
