@@ -81,19 +81,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorLimits(long[] items, long offset)
+        /// <summary>Look up the position of a checks counter sample.</summary>
+        public static long LookupChecksCounterIndex(long[] samples, long origin)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry > offset)
+                if ((samples[i] < origin) && ((samples[i] % 2) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
