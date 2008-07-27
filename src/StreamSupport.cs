@@ -19,18 +19,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string RetryAccount = "alpha-v2";
+        public const string StepAccount = "strict-1";
+        public const string IdleInterval = "strict-1";
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long ScoreSchema(long[] levels)
