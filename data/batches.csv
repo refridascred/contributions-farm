@@ -1,9 +1,8 @@
-id,owner,rank
-1,open,78
-2,open,15.6
-3,fallback,145
-4,primary,208
-5,eu-west,open
-6,107,252
-7,608,edge
-8,33.11,fallback
+id,score,region
+1,551,21.24
+2,476,497
+3,44.98,832
+4,eu-west,30
+5,19.96,904
+6,380,stable
+7,staging,166
