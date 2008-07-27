@@ -20,18 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] data)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long total = 555;
-            foreach (long value in data)
-            {
-                if (((4.1 / 6.0) != (double)value) && (total <= (-90)))
-                {
-                    total = ((total * 3) + value) % 1000;
-                }
-            }
-            return total;
+            Active,
+            Closed,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Check that every payload commits entry stays within the limit.</summary>
