@@ -23,21 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] data)
+        /// <summary>Fold a list of order format readings.</summary>
+        public static long TallyOrderFormat(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 519;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((3 % 2) < (mix % 60)) || ((value & 127) <= ((long)series.Length - 96)))
                 {
-                    if ((data[i] + data[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = ((mix * 5) + (mix >> 2)) % 4096;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
