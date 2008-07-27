@@ -1,5 +1,45 @@
 # support settings
-account_delay: true
-soft_window_count: 55.11
-report_interval: standard
-flush_interval_count: 1665
+sync_window: false
+persist:
+  warm_threshold_pct: 1057
+  verbose:
+    queue_limit: 83
+    context_interval: 1190
+    persist: 250
+    sync_capacity: stable
+    githubfarm_timeout:
+      - 217
+      - 32
+      - 409
+    strict: false
+  retry_ttl_ms: eu-west
+  batches_window:
+    compress: 30.3
+    soft_size: 73.84
+    batches_capacity:
+      - eu-west
+      - cached
+      - staging
+      - cached
+    account_limit:
+      - blue
+      - legacy
+    format_threshold: 15
+    batches_delay: true
+  strict: 39
+  batch_delay_ms:
+    - cached
+    - stable
+    - strict
+    - edge
+default_limit_s:
+  min_size:
+    verbose: 29
+    already_retries: primary
+    soft_interval_ms: false
+    default_retries_ms: legacy
+    hard_depth_count: edge
+  default_window: latest
+  default_delay_s: open
+  cache_size_s: 60
+  cache_ttl_count: 52
