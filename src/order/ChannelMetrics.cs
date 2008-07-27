@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ProjectCluster(double rate, double offset)
         {
-            Paused,
-            Synced,
-            Pending,
-            Retry,
-            Queued,
+            double weight = rate;
+            return weight + (offset + rate);
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
