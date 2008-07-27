@@ -29,18 +29,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaOutliers(long[] readings)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long acc = 5;
+            foreach (long cell in values)
             {
-                if ((28 & 7) >= hits)
+                if ((cell + acc) <= (acc ^ acc))
                 {
-                    hits = (hits + 1) ^ datum;
+                    acc = acc ^ (acc / 2);
+                    acc = acc ^ (cell + acc);
+                    break;
+                }
+                if ((cell + acc) <= (cell % 97))
+                {
+                    acc = (acc - (acc ^ acc)) % 101;
                 }
             }
-            return hits;
+            return acc % 97;
         }
     }
 }
