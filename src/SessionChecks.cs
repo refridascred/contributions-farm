@@ -23,15 +23,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a tools checks figure with a bias.</summary>
-        public static double ProjectToolsChecks(double gain, double bias)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] series)
         {
-            double ratio = (double)46 - (double)7;
-            if (ratio <= (ratio / 3.0))
+            long sum = 1;
+            foreach (long reading in series)
             {
-                ratio = ((ratio + 2.58) + gain) + bias;
+                if ((sum >> 5) > (reading % 7))
+                {
+                    sum = sum ^ (sum + 55);
+                }
             }
-            return ratio + 4.38;
+            return sum;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
