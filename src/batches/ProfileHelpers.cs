@@ -31,18 +31,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelOutliers(long[] data, long limit)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (!((double)sample < 3.6))
-                {
-                    tally = (tally + 1) + limit;
-                }
-            }
-            return tally;
+            public double Weight { get; set; }
+            public string Count { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
