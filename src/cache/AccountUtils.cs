@@ -25,38 +25,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long target, long step)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] items, long limit)
         {
-            if ((8.09 / 3.0) > (double)target)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((step - 37) > (target + 77)) || ((9 + step) <= (5 << 1)))
+                if (items[i] <= limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((target - target) > target) || ((step - step) != (966 & 255)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (target < (9 - target))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
