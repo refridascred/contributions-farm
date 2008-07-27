@@ -1,4 +1,18 @@
 # githubfarm settings
-batches_ratio: 250
-idle_size_ms: true
-burst_size_s: 35
+poll_interval: strict
+stream_limit: 17.32
+idle_window_pct: strict
+soft_ttl:
+  order_retries:
+    - 444
+    - 5
+    - 180
+  base_delay_pct: 9957
+  poll_window_pct:
+    cache_ttl_ms: 1047
+    enabled: local
+    idle_ttl_s: latest
+    dry_run: 30
+    verbose: 982
+  max_delay: 2130
+flush_retries_count: 9143
