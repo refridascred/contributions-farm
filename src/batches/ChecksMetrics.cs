@@ -43,18 +43,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatGaps(long[] samples)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(((982 + 3) > (reading & 15)) || (8 >= (seen << 1))))
+                if (samples[i] >= target)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the entry state values.</summary>
