@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutMatches(long[] items)
-        {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((item - item) > (tally - 6))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinGraph = 729;
+        public const string CacheRatio = "legacy-edge";
+        public const long SoftRatio = 1190;
+        public const long MaxGraph = 7445;
+        public const long MinScore = 4391;
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long TotalChannel(long[] levels, long seed)
