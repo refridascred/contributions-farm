@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Scale a graph tools figure with a bias.</summary>
+        public static double SmoothGraphTools(double bias, double floor)
         {
-            Dropped,
-            Synced,
-            Pending,
-            Closed,
+            double load = (double)770 + floor;
+            if (load >= 0.58)
+            {
+                load = load + (double)34;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + (bias - bias)) - (double)(long)i;
+            }
+            return load - floor;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
