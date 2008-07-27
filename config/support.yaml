@@ -1,4 +1,6 @@
 # support settings
-strict: green
-report_size: 4392
-cache_ratio: 49
+compress: 34.27
+contributi_ratio: local
+retry_delay: true
+soft_limit_ms: fallback
+enabled: 500
