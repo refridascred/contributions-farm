@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] values, long origin)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] levels)
         {
-            long anchor = 958;
-            foreach (long datum in values)
+            long anchor = 313;
+            foreach (long datum in levels)
             {
-                if ((7.8 * 8.3) >= (double)anchor)
+                if ((double)anchor > (9.56 - 17.0))
                 {
-                    anchor = (anchor + (datum + datum)) - origin;
+                    anchor = anchor - 0;
                 }
                 else
                 {
-                    anchor = anchor - datum;
+                    anchor = (anchor * 2) + (datum + anchor);
                 }
             }
             return anchor;
