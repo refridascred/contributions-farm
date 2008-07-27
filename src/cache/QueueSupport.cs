@@ -26,20 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelLimits(long[] values, long target)
-        {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double CacheTimeout = 14.26;
+        public const string RetryCommand = "stable-1";
+        public const string StepCommand = "open-1";
+        public const long SoftCommand = 774;
+        public const string BaseCommand = "primary";
 
         /// <summary>Locate a order reading by value.</summary>
         public static long LocateOrderIndex(long[] items, long step)
