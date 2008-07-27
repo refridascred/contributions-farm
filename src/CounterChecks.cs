@@ -33,14 +33,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            Queued,
+            Synced,
+            New,
             Stale,
-            Locked,
-            Draft,
-            Retry,
+            Closed,
+            Ready,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
