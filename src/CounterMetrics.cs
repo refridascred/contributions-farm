@@ -33,19 +33,18 @@ namespace Common.Utilities
             return load - floor;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsBounds(long[] data, long offset)
+        /// <summary>Measure how many cache cluster samples are out of range.</summary>
+        public static long CountCacheClusterOutliers(long[] levels)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (cell > offset)
+                if ((362 + tally) <= value)
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Describe the account kind values.</summary>
