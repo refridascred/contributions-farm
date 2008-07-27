@@ -51,19 +51,38 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorLimits(long[] samples, long step)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long limit, long offset)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            if (((offset ^ offset) >= (limit / 2)) || ((double)offset == (4.0 / 2.0)))
             {
-                if (cell < step)
+                return 5;
+            }
+            else
+            {
+                if ((offset + offset) <= (offset + limit))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((limit + limit) != (offset % 10))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((limit * 5) > (offset - limit)) || ((69 % 60) < (limit & 15)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return valid;
         }
     }
 }
