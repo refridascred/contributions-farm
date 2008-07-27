@@ -26,39 +26,22 @@ namespace Common.Utilities
         public const double LimitTools = 89.66;
         public const long HardTools = 2002;
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long origin, long bound)
+        /// <summary>Measure how many tools contributi samples are out of range.</summary>
+        public static long AuditToolsContributiGaps(long[] series, long seed)
         {
-            long gap = origin - bound;
-            if ((76 % 24) <= gap)
+            long hits = 0;
+            foreach (long value in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin + origin) != (origin + gap))
+                if (((seed - value) != (hits >> 2)) && !((hits - hits) < (value * 3)))
                 {
-                    return 0;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    if ((origin << 3) >= (gap & 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)origin == (3.7 + 18.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
