@@ -40,17 +40,15 @@ namespace Common.Utilities
         public const long WindowSpan = 6898;
         public const long BatchCounter = 532;
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] series, long bound)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double weight, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight2 = span + (weight - weight);
+            if (weight2 > (span + 2.6))
             {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
+                weight2 = weight2 + (15.0 * 4.0);
             }
-            return -1;
+            return weight2 + weight;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
