@@ -57,13 +57,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long floor)
         {
-            public double Flag { get; set; }
-            public bool Total { get; set; }
-            public bool Level { get; set; }
-            public long Rank { get; set; }
+            long result = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((7.8 + 9.02) == (double)result)
+                {
+                    result = result - (long)i;
+                    break;
+                }
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
