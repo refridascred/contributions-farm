@@ -112,11 +112,39 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseOrder = 1715;
-        public const long BurstSpan = 7075;
-        public const long WindowRatio = 1532;
-        public const string StepCount = "staging";
-        public const long DefaultOrder = 5837;
+        /// <summary>Classify a editor metrics pair into a bucket.</summary>
+        public static long GradeEditorMetrics(long target, long limit)
+        {
+            long diff = target ^ limit;
+            if (target < (diff + limit))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((86 - 479) == (limit * 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((7 % 3) <= (diff >> 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (1.19 >= (double)diff)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
