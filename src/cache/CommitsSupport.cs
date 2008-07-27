@@ -18,17 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long FindTokenIndex(long[] samples, long offset)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 1;
+            foreach (long item in values)
             {
-                if ((samples[i] > offset) && ((samples[i] % 2) != 0))
+                if (mark > item)
                 {
-                    return (long)i;
+                    mark = ((mark * 4) + (item - 48)) % 101;
+                }
+                else
+                {
+                    mark = mark ^ item;
                 }
             }
-            return -1;
+            return mark % 65521;
         }
 
         /// <summary>Define window limits and defaults.</summary>
