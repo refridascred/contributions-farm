@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseNotes = 3353;
+        public const long LimitLevel = 5763;
+        public const string WindowTimeout = "local-1";
 
         /// <summary>Define session limits and defaults.</summary>
         public const double WindowSize = 95.15;
