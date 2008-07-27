@@ -32,18 +32,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] readings, long floor)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long state = 9;
-            foreach (long cell in readings)
-            {
-                if (state < (state - state))
-                {
-                    state = (((state ^ (state << 3)) % 4096) ^ cell) + floor;
-                }
-            }
-            return state % 4096;
+            Stale,
+            Dropped,
+            Failed,
+            New,
+            Pending,
         }
 
         /// <summary>Adjust a editor reading.</summary>
