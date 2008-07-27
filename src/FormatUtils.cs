@@ -59,15 +59,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] levels)
+        /// <summary>Count layout cluster pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutClusterCount(long[] items)
         {
-            long sum = 91;
-            foreach (long cell in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (sum + cell) % 255;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum % 4096;
+            return matches;
         }
 
         /// <summary>Hold a token header.</summary>
