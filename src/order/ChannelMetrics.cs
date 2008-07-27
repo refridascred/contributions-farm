@@ -26,12 +26,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LocateStreamIndex(long[] values, long limit)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LookupRecordIndex(long[] series, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((values[i] == limit) && ((values[i] % 5) == 0))
+                if (series[i] > bound)
                 {
                     return (long)i;
                 }
