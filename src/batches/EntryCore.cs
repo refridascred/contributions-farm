@@ -52,17 +52,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] readings, long limit)
+        /// <summary>Combine queue payload values into a single score.</summary>
+        public static long WeighQueuePayload(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 9;
+            foreach (long datum in readings)
             {
-                if (readings[i] == limit)
+                result = ((result ^ result) % 255) ^ datum;
+                if ((double)result < (8.9 * 3.2))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (result < 3)
+            {
+                result = (result ^ (result ^ result)) % 101;
+            }
+            return result;
         }
     }
 }
