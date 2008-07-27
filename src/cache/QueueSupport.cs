@@ -13,23 +13,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double scale, double bias)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchOutliers(long[] series)
         {
-            double rate = bias;
-            if (rate < (bias - scale))
+            long count = 0;
+            foreach (long sample in series)
             {
-                rate = rate - bias;
+                if ((count << 3) != (13 + 6))
+                {
+                    count = (count + 3) + sample;
+                }
             }
-            else
-            {
-                rate = rate - 16.0;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - (rate * 3.0)) - (double)(long)i;
-            }
-            return rate + (rate * 4.8);
+            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
