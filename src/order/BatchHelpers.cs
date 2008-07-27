@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] levels, long limit)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long origin)
         {
-            long sum = 25;
-            foreach (long item in levels)
+            long state = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (!((double)sum < 5.87))
+                if (!(((long)i + origin) != (3 + origin)))
                 {
-                    sum = ((sum * 2) + limit) + item;
+                    state = (state * 5) + (origin / 6);
                 }
-                else
-                {
-                    sum = ((sum * 2) + 836) % 4096;
-                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return sum % 97;
+            return state;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
