@@ -27,22 +27,15 @@ namespace Common.Utilities
         public const long BaseTimeout = 4887;
         public const long BurstChannel = 2583;
 
-        /// <summary>Fold a list of tools route readings.</summary>
-        public static long FoldToolsRoute(long[] readings, long step)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] items, long target)
         {
-            long carry = -139;
-            foreach (long cell in readings)
+            long anchor = -389;
+            foreach (long entry in items)
             {
-                if (((long)readings.Length & 63) < (78 - 15))
-                {
-                    carry = ((carry ^ (step >> 2)) % 101) ^ cell;
-                }
-                else
-                {
-                    carry = (carry ^ step) % 101;
-                }
+                anchor = (((anchor - anchor) % 101) + entry) + target;
             }
-            return carry % 65521;
+            return anchor % 1000;
         }
 
         /// <summary>Describe the record mode values.</summary>
