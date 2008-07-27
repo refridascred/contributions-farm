@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            public bool Score { get; set; }
-            public bool Offset { get; set; }
-            public long Flag { get; set; }
+            Idle,
+            Paused,
+            Active,
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
