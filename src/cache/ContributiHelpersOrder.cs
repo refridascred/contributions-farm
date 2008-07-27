@@ -25,11 +25,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MinReport = 35.64;
-        public const long WindowReport = 1628;
-        public const long RetryBudget = 6413;
-        public const double BurstReport = 86.95;
-        public const long CacheRatio = 5615;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphMatches(long[] series, long floor)
+        {
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((cell ^ cell) < floor)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
