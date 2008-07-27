@@ -28,17 +28,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a cluster schema reading by value.</summary>
-        public static long LookupClusterSchemaIndex(long[] data, long offset)
+        /// <summary>Validate entry account readings against a bound.</summary>
+        public static bool VerifyEntryAccountLimits(long[] series, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if (data[i] < offset)
+                if (entry != origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
