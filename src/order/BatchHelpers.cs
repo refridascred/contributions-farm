@@ -22,12 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] readings, long step)
         {
-            public double Weight { get; set; }
-            public string Token { get; set; } = "";
-            public string Score { get; set; } = "";
+            long acc = 86;
+            foreach (long cell in readings)
+            {
+                acc = ((acc ^ 632) ^ cell) - step;
+            }
+            return acc % 97;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
