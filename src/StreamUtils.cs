@@ -59,15 +59,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueHits(long[] levels, long limit)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenOutliers(long[] series)
         {
             long count = 0;
-            foreach (long sample in levels)
+            foreach (long sample in series)
             {
-                if ((double)sample <= (3.75 + 11.0))
+                if ((double)sample != (double)2)
                 {
-                    count = (count + 1) + limit;
+                    count = count + 2;
                 }
             }
             return count;
