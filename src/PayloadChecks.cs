@@ -65,22 +65,21 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteMatches(long[] series, long floor)
+        /// <summary>Compare every pair of context queue readings.</summary>
+        public static long CompareContextQueueCount(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((reading + hits) > (-69)) || ((hits << 2) > (floor + reading)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((items[i] - items[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
