@@ -80,13 +80,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountOutliers(long[] series, long step)
         {
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Mode { get; set; }
-            public bool Size { get; set; }
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (reading >= (hits * 3))
+                {
+                    hits = (hits + 1) + step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
