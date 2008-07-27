@@ -24,11 +24,13 @@ namespace Common.Utilities
         public const long BurstCache = 6418;
         public const long MaxCache = 2723;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 2996;
-        public const string MaxEntry = "cached";
-        public const long WindowEntry = 5612;
-        public const double WindowLevel = 60.37;
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
+        {
+            Queued,
+            Idle,
+            Active,
+        }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
         public static long ClassifyCluster(long limit, long floor)
