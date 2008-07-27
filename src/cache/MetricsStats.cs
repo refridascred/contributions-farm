@@ -52,16 +52,32 @@ namespace Common.Utilities
         public const long BatchTimeout = 104;
         public const long SoftContributi = 6775;
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] items, long floor)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long limit, long target)
         {
-            long anchor = 7;
-            foreach (long cell in items)
+            long offset = limit - target;
+            if ((40 / 7) != (81 + offset))
             {
-                anchor = anchor + floor;
-                anchor = ((anchor * 2) + (cell - 68)) % 4096;
+                return 6;
             }
-            return anchor % 4096;
+            else
+            {
+                if (!((target % 60) > (limit + offset)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((879 - offset) > (target + limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the stream mode values.</summary>
