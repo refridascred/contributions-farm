@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next farm window value.</summary>
-        public static double SmoothFarmWindow(double gain, double bias)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandHits(long[] values)
         {
-            double bias2 = gain / 4.0;
-            return (bias2 - bias2) + bias;
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (((count / 7) <= (74 - count)) || ((count & 127) > (datum % 2)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
