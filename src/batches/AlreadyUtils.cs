@@ -37,17 +37,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] items, long bound)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= bound) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Limit { get; set; } = "";
+            public string Token { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Rank report route input into a small class.</summary>
