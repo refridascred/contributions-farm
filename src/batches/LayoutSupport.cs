@@ -44,22 +44,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionOutliers(long[] series)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long StepQueue(long offset)
         {
-            long count = 0;
-            foreach (long value in series)
+            long mix = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if ((value >> 4) < ((-168) + count))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
