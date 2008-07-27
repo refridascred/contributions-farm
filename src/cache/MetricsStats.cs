@@ -47,14 +47,10 @@ namespace Common.Utilities
             return scale + 5.0;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
-        {
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleContributi = 1663;
+        public const long BatchTimeout = 104;
+        public const long SoftContributi = 6775;
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long WeighPayload(long[] items, long floor)
