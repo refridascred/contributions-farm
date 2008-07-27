@@ -51,13 +51,22 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] levels)
         {
-            public double Region { get; set; }
-            public bool Stamp { get; set; }
-            public bool Score { get; set; }
-            public bool Owner { get; set; }
+            long state = 83;
+            foreach (long cell in levels)
+            {
+                if (!(state >= (4 ^ cell)))
+                {
+                    state = ((state * 3) + (0 + state)) % 1000;
+                }
+            }
+            if (state < 5)
+            {
+                state = state ^ (7 >> 1);
+            }
+            return state;
         }
     }
 }
