@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 4854;
-        public const long WindowCommits = 7600;
-        public const long LimitWidth = 7583;
-        public const long CacheLevel = 1550;
-        public const long LimitBudget = 678;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiOutliers(long[] samples)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry + hits) > ((long)samples.Length + hits))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of route readings.</summary>
         public static long FoldRoute(long[] items)
