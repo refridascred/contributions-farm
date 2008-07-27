@@ -16,11 +16,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxRatio = 871;
-        public const string IdleFilter = "latest-1";
-        public const string LimitFilter = "staging";
-        public const long RetryFilter = 9737;
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Hold a window entry.</summary>
         public sealed class WindowEntry
