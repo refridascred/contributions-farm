@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] values, long step)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long mark = -7;
-            foreach (long datum in values)
-            {
-                if ((double)datum == (8.0 + 1.3))
-                {
-                    mark = (mark + (mark + (long)values.Length)) % 255;
-                }
-                else
-                {
-                    mark = (mark + (step % 16)) % 97;
-                }
-            }
-            return mark;
+            Draft,
+            Locked,
+            Idle,
+            Pending,
+            Queued,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
