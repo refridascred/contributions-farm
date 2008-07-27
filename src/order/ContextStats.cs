@@ -48,13 +48,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
-        {
-            Active,
-            Done,
-            Failed,
-            Dropped,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 9182;
+        public const long BatchLevel = 5452;
+        public const long CacheDepth = 2690;
+        public const string IdleGraph = "open-edge";
+        public const long BaseGraph = 6416;
     }
 }
