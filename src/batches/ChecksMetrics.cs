@@ -72,13 +72,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] readings)
         {
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public bool Total { get; set; }
-            public bool Region { get; set; }
+            long anchor = -704;
+            foreach (long value in readings)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    anchor = (anchor << 3) ^ (long)i;
+                }
+                if (anchor <= (value + anchor))
+                {
+                    anchor = ((anchor * 3) + (anchor % 5)) % 4096;
+                }
+            }
+            return anchor;
         }
     }
 }
