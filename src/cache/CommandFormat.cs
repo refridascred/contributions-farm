@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double StepQueue = 97.92;
-        public const double SoftTimeout = 33.25;
-        public const double BaseQueue = 43.76;
-        public const long CacheQueue = 4517;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double WindowWidth = 98.88;
+        public const long BaseCommits = 2959;
+        public const string CacheDepth = "fallback-v2";
+        public const string CacheScore = "legacy-1";
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool VerifyEditorBounds(long[] levels, long seed)
