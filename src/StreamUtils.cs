@@ -31,13 +31,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyGaps(long[] items)
         {
-            public double Mode { get; set; }
-            public long Size { get; set; }
-            public bool Stamp { get; set; }
-            public string Ratio { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((sample - (-4)) < sample)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
