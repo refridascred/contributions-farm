@@ -1,27 +1,9 @@
 # entry settings
-max_timeout_ms:
-  graph_threshold: false
-  idle_retries_count:
-    - 122
-    - 447
-  audit: 39.25
-  hard_ttl_ms: eu-west
-  batch_window_s: false
-poll_window:
-  stream_interval: 250
-  poll_limit_count:
-    - cached
-    - latest
-    - stable
-    - local
-  min_depth:
-    - 231
-    - 425
-    - 330
-    - 345
-  compress: 90
-poll_limit:
-  - primary
-  - edge
-batch_threshold: primary
-burst_depth_s: 4333
+sync_window: true
+soft_timeout: local
+sync_timeout:
+  - 281
+  - 157
+  - 227
+  - 46
+persist: blue
