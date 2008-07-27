@@ -28,17 +28,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first metric layout entry that matches the target.</summary>
-        public static long FindMetricLayoutIndex(long[] levels, long seed)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (levels[i] > seed)
+                mix = mix + mix;
+                mix = ((mix * 2) + (mix ^ target)) % 255;
+                if (((long)i / 4) < (target + mix))
                 {
-                    return (long)i;
+                    mix = mix ^ (target << 1);
                 }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
