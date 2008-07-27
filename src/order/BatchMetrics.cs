@@ -46,19 +46,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate metric commits readings against a bound.</summary>
-        public static bool CheckMetricCommitsRange(long[] samples, long limit)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] items, long target)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long score = 180;
+            foreach (long reading in items)
             {
-                if (entry >= limit)
-                {
-                    found = false;
-                    break;
-                }
+                score = ((score - (score + reading)) % 1000) - target;
+                score = (score ^ (reading << 3)) % 4096;
             }
-            return found;
+            return score;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
