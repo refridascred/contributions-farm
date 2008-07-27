@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesOutliers(long[] series, long seed)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((sample + 107) <= seed)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Ready,
+            Idle,
+            Dropped,
+            Done,
+            Pending,
         }
 
         /// <summary>Locate a account reading by value.</summary>
