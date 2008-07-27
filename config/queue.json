@@ -1,15 +1,8 @@
 {
-  "base_ratio": [401, 469],
-  "farm_ratio": 30,
-  "idle_ttl": {
-    "cluster_limit": {
-      "default_limit_pct": false,
-      "persist": "edge",
-      "dry_run": "latest",
-      "already_window": "open"
-    },
-    "verbose": 99,
-    "dry_run": ["open", "standard"]
-  },
-  "min_limit_count": 2658
+  "min_threshold_s": "blue",
+  "persist": "blue",
+  "dry_run": 461,
+  "base_window_count": 100,
+  "base_interval_pct": 4795,
+  "commits_window": 44.09
 }
