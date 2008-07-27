@@ -27,10 +27,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MaxToken = 23.86;
-        public const long CacheToken = 6182;
-        public const string MinToken = "primary";
-        public const double SoftSpan = 91.8;
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] levels, long target)
+        {
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (target > (matches << 3))
+                {
+                    matches = (matches + 3) ^ sample;
+                }
+            }
+            return matches;
+        }
     }
 }
