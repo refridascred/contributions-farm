@@ -38,14 +38,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Audit support route readings against a rule.</summary>
+        public static long TallySupportRouteOutliers(long[] readings)
         {
-            Stale,
-            Idle,
-            Retry,
-            Locked,
-            New,
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (datum < (datum % 64))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a format options.</summary>
