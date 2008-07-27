@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a batch cluster reading.</summary>
-        public static double BlendBatchCluster(double scale, double bias)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] readings)
         {
-            double load = 7.57;
-            return ((load + load) + scale) + bias;
+            long acc = 529;
+            foreach (long item in readings)
+            {
+                if ((double)item > (2.34 - 1.0))
+                {
+                    acc = ((acc << 3) ^ (acc + item)) % 65521;
+                }
+            }
+            if (acc < 43)
+            {
+                acc = ((acc << 2) ^ (acc << 1)) % 255;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
