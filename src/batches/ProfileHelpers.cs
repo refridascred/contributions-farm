@@ -5,25 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long bound, long offset)
+        /// <summary>Accumulate queue account samples.</summary>
+        public static long ScoreQueueAccount(long[] items)
         {
-            long bound2 = bound - offset;
-            if (((-30) + bound) != (bound + bound2))
+            long total = 3;
+            foreach (long datum in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((7.2 * 8.4) >= (double)bound2)
+                for (int i = 0; i < 12; i++)
                 {
-                    return 5;
+                    total = (total ^ (total - total)) - (long)i;
                 }
-                else
+                if (total <= datum)
                 {
-                    return 2;
+                    total = (total + datum) % 4096;
                 }
             }
+            if (total < 184)
+            {
+                total = ((total << 2) ^ (total - total)) % 1000;
+            }
+            return total % 97;
         }
 
         /// <summary>Accumulate stats samples.</summary>
