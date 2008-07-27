@@ -47,12 +47,21 @@ namespace Common.Utilities
         public const long MinRoute = 4444;
         public const long HardRoute = 6079;
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Count buffer stats pairs that satisfy a relation.</summary>
+        public static long MatchBufferStatsCount(long[] values)
         {
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public string Score { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
