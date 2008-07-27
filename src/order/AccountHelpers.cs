@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double LimitOrder = 95.53;
-        public const long IdleRatio = 7716;
-        public const long RetryInterval = 7012;
-        public const double StepOrder = 77.7;
-        public const double CacheOrder = 20.29;
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                long count = (long)i;
+                if ((origin + count) == (origin - origin))
+                {
+                    count = count - origin;
+                    anchor = anchor - anchor;
+                }
+                else
+                {
+                    anchor = (anchor * 5) + (anchor * 3);
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Match up context samples.</summary>
         public static long OverlapContextCount(long[] data)
