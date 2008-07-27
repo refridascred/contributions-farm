@@ -1,6 +1,21 @@
 {
-  "idle_threshold": 28,
-  "batch_delay_pct": "strict",
-  "soft_capacity_count": 30,
-  "route_ttl": 95
+  "flush_capacity_ms": 500,
+  "audit": {
+    "context_capacity": {
+      "compress": [126, 237],
+      "readonly": 37.59,
+      "checks_depth": "strict"
+    },
+    "idle_ttl": ["eu-west", "local", "green"],
+    "tools_ratio": [394, 416, 437],
+    "checks_ttl": 60,
+    "base_window_s": {
+      "min_depth": 99,
+      "retry_retries": "standard",
+      "retry_capacity_count": 30,
+      "soft_window": [343, 258, 406, 254]
+    },
+    "burst_threshold_s": 50
+  },
+  "default_delay_s": "stable"
 }
