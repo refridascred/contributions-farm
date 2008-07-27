@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchMatches(long[] series, long offset)
+        /// <summary>Grade a batches entry value against two limits.</summary>
+        public static long GradeBatchesEntry(long seed, long seed2)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long prev = seed + seed2;
+            if ((seed * 4) > (prev - seed))
             {
-                if (((94 + (-551)) == (offset >> 4)) && ((tally <= (sample % 97)) || ((176 % 60) > (offset / 7))))
+                return 8;
+            }
+            else
+            {
+                if (((seed % 12) < (seed - seed2)) || (seed2 < (seed + seed2)))
                 {
-                    tally = tally + 1;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
