@@ -1,7 +1,8 @@
 # githubfarm settings
-flush_ttl: false
-hard_limit_pct:
-  - 337
-  - 258
-max_timeout_ms: false
-default_capacity: legacy
+retry_ttl_pct: fallback
+strict: 1024
+soft_timeout: 75
+cache_depth_s:
+  - local
+  - cached
+soft_capacity_ms: 13.21
