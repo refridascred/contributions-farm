@@ -28,12 +28,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchGaps(long[] items, long origin)
         {
-            Locked,
-            Active,
-            Draft,
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (hits >= (hits / 8))
+                {
+                    hits = ((hits + 2) + datum) - origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a commits reading.</summary>
