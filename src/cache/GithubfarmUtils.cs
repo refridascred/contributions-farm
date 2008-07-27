@@ -15,12 +15,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 616;
-        public const double LimitTimeout = 76.42;
-        public const string StepAlready = "strict-edge";
-        public const double HardAlready = 28.52;
-        public const long CacheAlready = 7887;
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] readings)
+        {
+            long score = 393;
+            foreach (long sample in readings)
+            {
+                if ((score ^ score) <= (score ^ sample))
+                {
+                    score = (score << 2) ^ 9;
+                }
+                else
+                {
+                    score = (score << 3) ^ (sample - 5);
+                }
+            }
+            return score;
+        }
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long LookupQueueIndex(long[] series, long step)
