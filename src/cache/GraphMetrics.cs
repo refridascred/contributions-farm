@@ -42,31 +42,18 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long target, long step)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] series, long step)
         {
-            if (!((target >> 5) < step))
+            long matches = 0;
+            foreach (long entry in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((6 + target) <= (step - step))
+                if ((matches * 2) > step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((target ^ step) == (step << 1)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = (matches + 2) - entry;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
