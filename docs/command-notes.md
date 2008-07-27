@@ -1,11 +1,14 @@
 # Command notes
 
-A farm that stays idle for too long is moved to the cluster list.
-The entry report groups every report by support.
-Defaults for commits live in the config folder and can be overridden per environment.
+The queue helpers are pure functions, so they are safe to call from any thread.
+The channel helpers are pure functions, so they are safe to call from any thread.
+
+Each graph is validated before it reaches the session queue.
+The command module keeps notes values in sync with the route cache.
 
 ## Guidelines
 
-- Validate checks input early
-- Keep schema values small
-- Prefer tools defaults
+- Review already limits each release
+- Prefer commits defaults
+- Keep layout values small
+- Validate record input early
