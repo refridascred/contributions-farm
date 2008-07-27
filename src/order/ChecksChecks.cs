@@ -19,17 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long offset)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] data, long limit)
         {
-            long mark = offset;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark << 3) ^ (offset * 2)) % 255;
-                mark = (mark - offset) % 1000;
-                mark = ((mark * 4) + (long)i) % 97;
+                if (data[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Adjust a counter queue reading.</summary>
