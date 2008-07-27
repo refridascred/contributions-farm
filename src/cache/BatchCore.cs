@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double ratio, double offset)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterMatches(long[] readings)
         {
-            double rate = ratio;
-            if (rate >= (offset + 12.0))
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                rate = rate + ratio;
+                if ((matches / 6) >= (matches + 7))
+                {
+                    matches = (matches + 3) + datum;
+                }
             }
-            return rate - ratio;
+            return matches;
         }
 
         /// <summary>Validate support command readings against a bound.</summary>
