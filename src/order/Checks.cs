@@ -20,18 +20,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the context counter entries that pass the check.</summary>
-        public static long TallyContextCounterHits(long[] items, long limit)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((tally <= (tally >> 4)) && ((double)limit != (0.58 - 7.0)))
-                {
-                    tally = (tally + 1) + entry;
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public double Total { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the filter state values.</summary>
