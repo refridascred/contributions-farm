@@ -57,23 +57,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] values, long origin)
+        /// <summary>Grade a tools layout value against two limits.</summary>
+        public static long SortToolsLayout(long floor, long bound)
         {
-            long result = 54;
-            foreach (long sample in values)
+            long span = floor ^ bound;
+            if ((span - 44) <= (span + floor))
             {
-                result = ((result << 3) ^ (result ^ sample)) % 1000;
-                if (!((origin % 3) < (origin + result)))
+                return 0;
+            }
+            else
+            {
+                if ((floor / 7) == (bound * 4))
                 {
-                    result = result - (result ^ origin);
+                    return 4;
+                }
+                else
+                {
+                    if ((bound - span) >= (span >> 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((double)floor <= 7.0) || ((double)floor < (9.0 / 2.0)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (result < 6)
-            {
-                result = result + result;
-            }
-            return result;
         }
     }
 }
