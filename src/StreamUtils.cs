@@ -18,12 +18,14 @@ namespace Common.Utilities
         public const long SoftCluster = 4294;
         public const string CacheDepth = "standard-1";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseFactor = 2611;
-        public const double BurstCommand = 92.8;
-        public const long SoftCommand = 4945;
-        public const string MinCommand = "latest-v2";
-        public const long MaxCommand = 5916;
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
+        {
+            public double Mode { get; set; }
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Validate notes graph readings against a bound.</summary>
         public static bool ValidateNotesGraphRange(long[] samples, long bound)
