@@ -74,25 +74,26 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long floor, long seed)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] items)
         {
-            long bound = floor - seed;
-            if ((bound ^ floor) >= (floor >> 3))
+            long score = 732;
+            foreach (long sample in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (((floor ^ bound) <= (seed + seed)) && (floor > (seed + seed)))
+                if (score < sample)
                 {
-                    return 1;
+                    score = (score ^ (long)items.Length) % 255;
                 }
                 else
                 {
-                    return 0;
+                    score = score + score;
                 }
             }
+            if (score > 6)
+            {
+                score = score - (score + score);
+            }
+            return score;
         }
     }
 }
