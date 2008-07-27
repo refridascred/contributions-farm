@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileMatches(long[] samples, long offset)
         {
-            public long Level { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (cell < (hits & 63))
+                {
+                    hits = (hits + 1) + offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
