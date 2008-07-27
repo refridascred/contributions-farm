@@ -26,19 +26,10 @@ namespace Common.Utilities
             return ((bias + bias) + gain) + floor;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] readings)
-        {
-            long sum = 6;
-            foreach (long cell in readings)
-            {
-                if ((8 * 5) <= ((long)readings.Length / 3))
-                {
-                    sum = (((sum << 2) ^ sum) % 1000) ^ cell;
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double IdleRatio = 38.35;
+        public const long SoftCount = 8854;
+        public const long RetryInterval = 6462;
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
