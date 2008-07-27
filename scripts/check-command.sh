@@ -6,21 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
+for item in local staging cached; do
+    log "checking ${item}"
+done
+
+COMMAND_LIMIT=479
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-latest}"
 case "${mode}" in
-    open)
+    local)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-COMMAND_LIMIT=281
-log "limit is ${COMMAND_LIMIT}"
-
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
