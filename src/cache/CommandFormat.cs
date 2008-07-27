@@ -40,22 +40,13 @@ namespace Common.Utilities
         public const string MaxRatio = "open-1";
         public const long LimitChannel = 6848;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsOutliers(long[] data)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((tally & 255) >= tally)
-                {
-                    tally = (tally + 2) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Synced,
+            Closed,
+            Done,
+            New,
         }
     }
 }
