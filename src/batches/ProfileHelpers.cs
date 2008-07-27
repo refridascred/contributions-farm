@@ -86,18 +86,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the entry route entries that pass the check.</summary>
-        public static long TallyEntryRouteGaps(long[] samples, long limit)
+        /// <summary>Audit stats route readings against a rule.</summary>
+        public static long MeasureStatsRouteHits(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if ((cell * 4) < (limit / 6))
+                if (datum >= (count / 6))
                 {
-                    matches = matches + 3;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
