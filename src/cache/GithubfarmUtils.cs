@@ -65,38 +65,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long origin, long origin2)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] data, long origin)
         {
-            if (!((double)origin <= (7.0 * 4.8)))
+            long mark = 414;
+            foreach (long item in data)
             {
-                return 6;
+                mark = (((mark - (804 - mark)) % 101) + item) + origin;
             }
-            else
-            {
-                if ((origin2 + origin2) == (9 & 7))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin + origin2) < origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin + origin) >= origin2)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
     }
 }
