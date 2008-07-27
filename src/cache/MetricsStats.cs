@@ -59,14 +59,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            Synced,
-            Paused,
-            Locked,
-            Done,
-            Dropped,
+            public double Rank { get; set; }
+            public long Level { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
