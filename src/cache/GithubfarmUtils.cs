@@ -16,11 +16,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long bound)
         {
-            public bool Offset { get; set; }
-            public string Rank { get; set; } = "";
+            long sum = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
