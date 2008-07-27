@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinLevel = 4438;
-        public const double BurstFactor = 67.69;
-        public const long CacheCount = 1982;
-        public const double MinSize = 47.05;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferOutliers(long[] values, long target)
+        {
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((sample % 3) <= (tally & 63))
+                {
+                    tally = (tally + 2) - target;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
         public static double SmoothCluster(double rate, double bias)
