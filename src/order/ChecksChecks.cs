@@ -26,15 +26,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the notes batch series from a seed.</summary>
-        public static long RollNotesBatch(long offset)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long offset, long step)
         {
-            long score = offset;
-            for (int i = 0; i < 12; i++)
+            long diff = offset - step;
+            if ((double)offset >= (double)diff)
             {
-                score = ((score * 3) + (long)i) % 1000;
+                return 1;
             }
-            return score;
+            else
+            {
+                if ((step << 3) > (4 % 24))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((diff << 1) == (step * 3)) && ((84 >> 2) == (step - step)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a buffer session counter forward.</summary>
