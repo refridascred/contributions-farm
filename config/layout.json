@@ -1,8 +1,13 @@
 {
-  "idle_size": [280, 132, 267],
-  "already_ratio": 60,
-  "base_timeout": 89,
-  "base_capacity": [55, 268, 339, 403],
-  "default_ttl_pct": "cached",
-  "batch_delay_ms": 51.02
+  "min_timeout_count": 60.59,
+  "cache_retries_s": "latest",
+  "cache_window": 53.7,
+  "poll_limit": 64.96,
+  "burst_limit_pct": {
+    "default_depth": 19.4,
+    "base_capacity_s": true,
+    "sync_window": 100,
+    "enabled": "latest"
+  },
+  "compress": ["latest", "blue", "fallback"]
 }
