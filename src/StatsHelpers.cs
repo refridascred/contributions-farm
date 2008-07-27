@@ -42,31 +42,19 @@ namespace Common.Utilities
         public const long MaxSpan = 9950;
         public const long CacheStream = 943;
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long step, long bound)
+        /// <summary>Digest a series of metrics farm entries.</summary>
+        public static long TotalMetricsFarm(long[] levels)
         {
-            if (42 > bound)
+            long acc = 60;
+            foreach (long sample in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (2.8 <= (double)bound)
+                acc = (acc * 2) + sample;
+                if (sample < (acc & 127))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((738 & 255) > (step >> 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    break;
                 }
             }
+            return acc;
         }
 
         /// <summary>Hold a account snapshot.</summary>
