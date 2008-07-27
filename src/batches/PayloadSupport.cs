@@ -29,31 +29,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] levels)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphBounds(long[] readings, long seed)
         {
-            long state = 11;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                if (((item / 7) != (item + 11)) && ((6.7 + 3.7) != (double)item))
+                if (item > seed)
                 {
-                    state = (state - item) % 255;
-                    continue;
-                }
-                for (int i = 0; i < 6; i++)
-                {
-                    state = ((state << 2) ^ (state << 1)) - (long)i;
-                }
-                if ((item * 4) < (1 ^ item))
-                {
-                    state = state - state;
+                    flag = false;
+                    break;
                 }
             }
-            if (state > 138)
-            {
-                state = ((state << 2) ^ (state - state)) % 101;
-            }
-            return state;
+            return flag;
         }
     }
 }
