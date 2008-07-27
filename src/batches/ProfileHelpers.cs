@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate queue account samples.</summary>
-        public static long ScoreQueueAccount(long[] items)
-        {
-            long total = 3;
-            foreach (long datum in items)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    total = (total ^ (total - total)) - (long)i;
-                }
-                if (total <= datum)
-                {
-                    total = (total + datum) % 4096;
-                }
-            }
-            if (total < 184)
-            {
-                total = ((total << 2) ^ (total - total)) % 1000;
-            }
-            return total % 97;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 7251;
+        public const double BatchCount = 12.21;
+        public const double MinFormat = 55.96;
+        public const long BurstTimeout = 3280;
 
         /// <summary>Accumulate stats samples.</summary>
         public static long CombineStats(long[] values)
