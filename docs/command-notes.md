@@ -1,14 +1,11 @@
 # Command notes
 
-The profile module keeps account values in sync with the order cache.
-Use notes settings to tune how often tools data is refreshed.
-The stream report groups every window by context.
-
-Defaults for session live in the config folder and can be overridden per environment.
-Run the stats check before changing any checks limits.
+A farm that stays idle for too long is moved to the cluster list.
+The entry report groups every report by support.
+Defaults for commits live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new command fields
-- Log every farm change
-- Review stats limits each release
+- Validate checks input early
+- Keep schema values small
+- Prefer tools defaults
