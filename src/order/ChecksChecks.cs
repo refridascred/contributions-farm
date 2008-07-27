@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            Draft,
-            Paused,
-            Retry,
+            public long Weight { get; set; }
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Combine githubfarm notes values into a single score.</summary>
