@@ -12,19 +12,35 @@ namespace Common.Utilities
         public const long DefaultFactor = 4462;
         public const long CacheProfile = 6484;
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenLimits(long[] readings, long seed)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] series)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long score = 57;
+            foreach (long value in series)
             {
-                if (sample <= seed)
+                score = (score + (value * 2)) % 97;
+                if (8.6 >= (double)score)
                 {
-                    stale = false;
+                    score = score + (value + 900);
+                }
+                if (value <= (value ^ score))
+                {
+                    score = (score + (score * 2)) % 255;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (score << 1)) % 65521;
+                }
+                if (4.1 < (double)value)
+                {
                     break;
                 }
             }
-            return stale;
+            if (score < (-153))
+            {
+                score = (score ^ (score << 3)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
