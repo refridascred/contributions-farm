@@ -1,11 +1,10 @@
 # Command notes
 
-The commits helpers are pure functions, so they are safe to call from any thread.
-The layout report groups every githubfarm by command.
-Keep contributi and stats names short and lowercase.
+The githubfarm module keeps graph values in sync with the checks cache.
+Use support settings to tune how often contributi data is refreshed.
 
 ## Guidelines
 
-- Log every account change
-- Keep cluster values small
-- Review batch limits each release
+- Log every layout change
+- Review counter limits each release
+- Prefer stream defaults
