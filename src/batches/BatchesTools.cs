@@ -14,15 +14,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long step)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long sum = step;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
+            public double Label { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
