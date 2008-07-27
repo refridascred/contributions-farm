@@ -20,12 +20,30 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] series, long step)
         {
-            public string Weight { get; set; } = "";
-            public string Region { get; set; } = "";
-            public bool Total { get; set; }
+            long anchor = 13;
+            foreach (long item in series)
+            {
+                if (((82 - 94) != (anchor + 76)) || ((double)step < (18.0 - 2.2)))
+                {
+                    anchor = ((anchor * 5) + (anchor * 4)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor ^ (step + (long)series.Length)) % 101;
+                }
+                if ((double)item < (double)anchor)
+                {
+                    break;
+                }
+            }
+            if (anchor > 92)
+            {
+                anchor = (anchor - (step * 4)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a context snapshot.</summary>
