@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterHits(long[] items, long seed)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((0 % 100) >= (seed >> 2))
-                {
-                    matches = (matches + 3) + cell;
-                }
-            }
-            return matches;
+            Stale,
+            Synced,
+            Pending,
+            Retry,
         }
 
         /// <summary>Describe the profile phase values.</summary>
