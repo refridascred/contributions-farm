@@ -43,13 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Validate route schema readings against a bound.</summary>
+        public static bool GuardRouteSchemaBounds(long[] items, long limit)
         {
-            public long Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Stamp { get; set; }
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
