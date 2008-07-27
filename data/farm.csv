@@ -1,9 +1,6 @@
-id,weight,rank,active,token
-1,620,85,653,eu-west
-2,37.88,319,681,826
-3,97.92,147,399,2.13
-4,112,61,90.74,stable
-5,734,blue,cached,293
-6,713,812,88.9,local
-7,5.83,edge,blue,48.14
-8,stable,green,957,47.23
+id,ratio,rank,owner
+1,853,671,68.05
+2,local,primary,fallback
+3,193,standard,395
+4,standard,95.21,legacy
+5,955,49.58,primary
