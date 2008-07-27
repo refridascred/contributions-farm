@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksMatches(long[] levels, long floor)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowOutliers(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (!(66 < (floor & 63)))
+                if ((cell - 424) <= (seen - (-207)))
                 {
-                    count = (count + 3) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = (seen + 1) - target;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
