@@ -25,26 +25,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] data, long step)
+        /// <summary>Match up support editor samples.</summary>
+        public static long PairSupportEditorCount(long[] levels)
         {
-            long mix = -963;
-            foreach (long sample in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((sample % 60) < (step * 2)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = (mix ^ sample) % 65521;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (mix ^ sample)) % 255;
+                    if ((levels[i] ^ levels[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mix > 9)
-            {
-                mix = ((mix << 3) ^ (step - step)) % 65521;
-            }
-            return mix % 4096;
+            return seen;
         }
     }
 }
