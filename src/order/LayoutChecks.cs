@@ -36,14 +36,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesOutliers(long[] readings)
         {
-            Idle,
-            Closed,
-            Locked,
-            Ready,
-            Synced,
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading + reading) < reading)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine already values into a single score.</summary>
