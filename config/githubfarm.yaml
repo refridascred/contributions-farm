@@ -1,40 +1,12 @@
 # githubfarm settings
-dry_run:
-  soft_ratio_s: 100
-  soft_timeout_ms:
-    soft_ttl_s:
-      - cached
-      - standard
-      - latest
-      - strict
-    cache_timeout:
-      - primary
-      - strict
-      - eu-west
-      - green
-    sync_threshold: 9196
-    verbose: 500
-  soft_ttl: 72.47
-  account_size: true
-  poll_size_pct: false
-farm_window: 8744
-verbose: green
-flush_delay_count: true
-batch_threshold_ms: open
-poll_threshold_pct:
-  retry_delay_s: false
-  token_window:
-    order_limit: 48.14
-    batch_ttl_count: 10.41
-    verbose: legacy
-    readonly:
-      - staging
-      - standard
-      - blue
-      - local
-    soft_size: local
-  githubfarm_ratio:
-    default_interval_ms: true
-    persist: 5637
-    soft_ttl_count: 60
-    batch_delay_s: 1024
+metrics_ratio: 21.04
+cache_timeout: primary
+enabled: false
+payload_capacity: 50
+hard_capacity:
+  poll_size_count: edge
+  order_window: 100
+  format_delay: 91.73
+  base_threshold_s: 45.0
+  verbose: 1648
+  batch_capacity: 97
