@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const long StepSpan = 9838;
         public const long BurstEntry = 9532;
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftBuffer = 2251;
+        public const long MaxBuffer = 6212;
+        public const string StepBuffer = "open";
+        public const long StepInterval = 2740;
+        public const string BatchBuffer = "standard";
 
         /// <summary>Describe the commits status values.</summary>
         public enum CommitsStatus
