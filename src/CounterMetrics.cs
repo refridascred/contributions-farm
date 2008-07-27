@@ -20,13 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Accumulate record filter samples.</summary>
+        public static long TallyRecordFilter(long[] samples, long origin)
         {
-            public bool Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public string Size { get; set; } = "";
-            public bool Total { get; set; }
+            long sum = 1;
+            foreach (long value in samples)
+            {
+                sum = (sum ^ (sum / 4)) + origin;
+                sum = (sum - (value - (-9))) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
