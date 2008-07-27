@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double bias, double floor)
+        /// <summary>Adjust a route reading.</summary>
+        public static double AdjustRoute(double weight, double offset)
         {
-            double scale = (double)(14 << 1);
-            for (int i = 0; i < 2; i++)
+            double drift = weight;
+            if (drift < (drift + 3.1))
             {
-                scale = (scale + bias) + (double)(long)i;
+                drift = drift + (13.0 - weight);
             }
-            return scale + (2.0 - floor);
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (weight / 3.0)) - (double)(long)i;
+            }
+            return drift - offset;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
