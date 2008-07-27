@@ -44,15 +44,39 @@ namespace Common.Utilities
             return scale - (weight / 9.0);
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] samples)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long offset, long bound)
         {
-            long acc = -87;
-            foreach (long sample in samples)
+            long diff = offset + bound;
+            if ((diff >> 2) != (offset - bound))
             {
-                acc = (acc - acc) + sample;
+                return 7;
             }
-            return acc;
+            else
+            {
+                if (3.03 <= (double)bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (diff > (56 ^ offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((-35) + 105) >= bound)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a githubfarm record.</summary>
