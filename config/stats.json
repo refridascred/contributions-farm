@@ -1,8 +1,10 @@
 {
-  "soft_depth_ms": "fallback",
-  "max_ttl_pct": ["standard", "primary", "eu-west"],
-  "verbose": 6632,
-  "compress": false,
-  "profile_depth": [374, 454, 57, 134],
-  "max_capacity": "legacy"
+  "strict": {
+    "dry_run": 100,
+    "sync_retries_count": 90,
+    "burst_threshold_pct": "open",
+    "base_timeout_s": "legacy"
+  },
+  "window_interval": 8825,
+  "hard_capacity_s": false
 }
