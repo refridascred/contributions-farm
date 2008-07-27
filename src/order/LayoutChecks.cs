@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Locate a filter contributi reading by value.</summary>
-        public static long LookupFilterContributiIndex(long[] samples, long limit)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long seed, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (((double)seed < 2.41) && ((1.7 - 6.5) > (double)seed))
             {
-                if (samples[i] <= limit)
+                return 1;
+            }
+            else
+            {
+                if (((-75) - bound) >= (seed % 16))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (seed >= (seed % 5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!(bound <= seed))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the format phase values.</summary>
