@@ -1,13 +1,8 @@
 # entry settings
-retry_interval: latest
-default_delay: eu-west
-base_depth:
-  - edge
-  - strict
-batch_timeout_s:
-  - 52
-  - 412
-  - 445
-  - 32
-warm_delay_pct: false
-strict: true
+window_limit: eu-west
+idle_size: false
+strict:
+  - 497
+  - 63
+format_retries: 2306
+support_window: false
