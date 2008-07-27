@@ -1,6 +1,25 @@
 # entry settings
-poll_retries_s: 6307
-batch_depth: 5
-burst_limit_ms: latest
-readonly: standard
-batch_timeout: 6110
+verbose:
+  - strict
+  - open
+  - blue
+profile_size: 30.18
+sync_depth_pct:
+  - 250
+  - 397
+  - 381
+  - 419
+compress: true
+strict:
+  token_retries: staging
+  min_ttl_s: eu-west
+  report_limit: green
+  batch_depth_ms: 100
+  order_timeout:
+    warm_retries_s:
+      - latest
+      - staging
+      - fallback
+    hard_ratio_ms: 30
+    order_interval: 219
+poll_limit: 29
