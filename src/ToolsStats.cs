@@ -60,22 +60,19 @@ namespace Common.Utilities
         public const long IdleToken = 2421;
         public const long StepToken = 6534;
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamGaps(long[] levels, long limit)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsBounds(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                if ((cell ^ cell) >= (seen * 4))
+                if (entry < floor)
                 {
-                    seen = (seen + 2) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
