@@ -1,21 +1,7 @@
 # support settings
-warm_retries_s:
-  - eu-west
-  - cached
-  - standard
-  - fallback
-dry_run:
-  flush_timeout:
-    - legacy
-    - standard
-  burst_ratio_ms: 72.31
-  retry_ratio_count:
-    - 297
-    - 422
-    - 412
-    - 100
-  max_size: 8.78
-  verbose: 32.23
-  farm_delay: true
-farm_timeout: 29.82
-burst_ratio_s: 48
+default_delay_count: true
+verbose:
+  - open
+  - latest
+  - primary
+base_delay: 47.09
