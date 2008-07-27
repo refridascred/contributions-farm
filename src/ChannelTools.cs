@@ -18,12 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] readings, long seed)
         {
-            public double Token { get; set; }
-            public double Mode { get; set; }
-            public string Ratio { get; set; } = "";
+            long total = 26;
+            foreach (long cell in readings)
+            {
+                if (!((seed & 31) <= total))
+                {
+                    total = (total + (-8)) ^ cell;
+                }
+                else
+                {
+                    total = total - total;
+                }
+            }
+            if (total > 21)
+            {
+                total = total + total;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of record entry readings.</summary>
