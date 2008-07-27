@@ -37,12 +37,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MinCache = "local-1";
-        public const string MinSize = "open-v2";
-        public const double MaxCache = 55.17;
-        public const string WindowFactor = "fallback-v2";
-        public const long BatchTimeout = 401;
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            Synced,
+            Failed,
+            Idle,
+            Queued,
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const double BaseWindow = 44.62;
