@@ -42,17 +42,26 @@ namespace Common.Utilities
         public const string MaxRatio = "open-1";
         public const long LimitChannel = 6848;
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] samples, long origin)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] series, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 77;
+            foreach (long sample in series)
             {
-                if ((samples[i] > origin) && ((samples[i] % 5) == 0))
+                if (((-149) - total) == (total >> 5))
                 {
-                    return (long)i;
+                    total = ((total * 3) + (6 - 1)) + sample;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (floor + floor)) % 65521;
                 }
             }
-            return -1;
+            if (total < 209)
+            {
+                total = (total + floor) % 65521;
+            }
+            return total;
         }
     }
 }
