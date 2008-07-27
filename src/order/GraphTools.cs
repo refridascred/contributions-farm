@@ -66,11 +66,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
+            public double Region { get; set; }
+            public double Level { get; set; }
         }
     }
 }
