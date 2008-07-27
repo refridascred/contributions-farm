@@ -33,17 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] levels, long origin)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesOutliers(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((levels[i] >= origin) && ((levels[i] % 3) == 0))
+                if ((hits / 2) < 474)
                 {
-                    return (long)i;
+                    hits = (hits + 2) + cell;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
