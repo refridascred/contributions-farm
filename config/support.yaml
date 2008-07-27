@@ -1,4 +1,18 @@
 # support settings
-window_interval: 250
-soft_ttl_count: local
-retry_retries_s: 1024
+default_ttl: 70.16
+token_delay: true
+hard_limit_count:
+  min_size: false
+  max_window_ms: 22.95
+  verbose: stable
+  min_ratio_s: 8937
+  audit:
+    compress: 500
+    dry_run: 45
+    audit:
+      - 171
+      - 178
+    idle_size: 1071
+  default_limit_s: legacy
+dry_run: eu-west
+idle_ratio_s: strict
