@@ -37,10 +37,11 @@ namespace Common.Utilities
             return scale - (3.69 / 3.0);
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstCount = 8933;
-        public const long BatchCache = 1287;
-        public const double MaxCache = 84.97;
-        public const double StepTimeout = 84.79;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string LimitCount = "alpha";
+        public const long CacheDepth = 1634;
+        public const string CacheFactor = "local";
+        public const long IdleBudget = 7767;
+        public const long StepSpan = 1761;
     }
 }
