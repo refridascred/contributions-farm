@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long floor, long offset)
+        /// <summary>Digest a series of record support entries.</summary>
+        public static long TallyRecordSupport(long[] items)
         {
-            if (floor < 880)
+            long score = -749;
+            foreach (long value in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (offset <= (offset >> 2))
+                if ((score << 2) <= value)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)offset == (16.0 - 11.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (1.32 <= (double)offset)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    score = score + value;
                 }
             }
+            if (score > 4)
+            {
+                score = (score ^ score) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Describe the counter state values.</summary>
