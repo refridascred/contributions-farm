@@ -56,14 +56,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] samples, long offset)
         {
-            Synced,
-            Active,
-            Stale,
-            Closed,
-            Paused,
+            long mix = 744;
+            foreach (long datum in samples)
+            {
+                if ((1.9 + 6.72) <= (double)datum)
+                {
+                    mix = ((mix ^ (datum << 1)) % 255) - offset;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
