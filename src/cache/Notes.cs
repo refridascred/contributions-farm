@@ -27,13 +27,24 @@ namespace Common.Utilities
         public const long WindowSpan = 6898;
         public const long BatchCounter = 532;
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long step)
         {
-            Paused,
-            Dropped,
-            Pending,
-            Queued,
+            long mix = step;
+            for (int i = 0; i < 22; i++)
+            {
+                if (!(68 >= mix))
+                {
+                    mix = (mix << 3) ^ (mix - mix);
+                }
+                else
+                {
+                    mix = (mix ^ (step << 2)) % 1000;
+                }
+                mix = (mix << 2) ^ ((long)i - 430);
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Define report limits and defaults.</summary>
