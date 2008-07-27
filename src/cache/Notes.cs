@@ -40,15 +40,17 @@ namespace Common.Utilities
         public const long WindowSpan = 6898;
         public const long BatchCounter = 532;
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double weight, double span)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] levels, long floor)
         {
-            double weight2 = span + (weight - weight);
-            if (weight2 > (span + 2.6))
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight2 = weight2 + (15.0 * 4.0);
+                if ((levels[i] > floor) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight2 + weight;
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
