@@ -35,39 +35,21 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Rank account route input into a small class.</summary>
-        public static long RankAccountRoute(long floor, long step)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long MatchChannelCount(long[] readings)
         {
-            long prev = floor ^ step;
-            if ((prev >> 2) == (3 << 3))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (prev < (step << 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (step < prev)
+                    if ((readings[i] + readings[j]) == 19)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((floor ^ step) >= floor))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Count order report pairs that satisfy a relation.</summary>
