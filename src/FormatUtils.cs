@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
-        {
-            Draft,
-            Active,
-            Dropped,
-            Idle,
-            Stale,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string HardSpan = "stable-v2";
+        public const long StepSpan = 9838;
+        public const long BurstEntry = 9532;
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
         public static long PairCommitsCount(long[] samples)
