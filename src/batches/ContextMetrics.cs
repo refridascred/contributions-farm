@@ -43,15 +43,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double gain, double bias)
+        /// <summary>Match up command session samples.</summary>
+        public static long OverlapCommandSessionCount(long[] readings)
         {
-            double gain2 = bias;
-            for (int i = 0; i < 2; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain2 = (gain2 - bias) + (double)(long)i;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return gain2 + gain;
+            return matches;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
