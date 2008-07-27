@@ -15,15 +15,39 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] levels)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long GradeFarm(long origin, long limit)
         {
-            long state = 527;
-            foreach (long cell in levels)
+            long offset = origin ^ limit;
+            if ((double)offset <= (2.6 * 20.0))
             {
-                state = ((state * 3) + (state & 255)) + cell;
+                return 7;
             }
-            return state % 97;
+            else
+            {
+                if ((origin + 39) > 3)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((0.4 - 11.0) > (double)origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)limit > (0.88 / 9.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a layout entry counter forward.</summary>
