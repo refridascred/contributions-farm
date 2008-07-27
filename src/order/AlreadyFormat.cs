@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryBudget = 4412;
-        public const double BaseProfile = 94.32;
-        public const long HardInterval = 240;
-        public const long DefaultProfile = 5025;
+        /// <summary>Count the metric batches entries that pass the check.</summary>
+        public static long MeasureMetricBatchesGaps(long[] values)
+        {
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (!((cell / 8) == (count + cell)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of already readings.</summary>
         public static long WeighAlready(long[] data)
