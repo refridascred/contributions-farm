@@ -16,12 +16,13 @@ namespace Common.Utilities
             return scale - (double)765;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            Stale,
-            Idle,
-            Retry,
+            public double Limit { get; set; }
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
