@@ -23,11 +23,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
-        {
-            public string Stamp { get; set; } = "";
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitRatio = 1763;
+        public const long IdleNotes = 3756;
+        public const long RetryInterval = 770;
     }
 }
