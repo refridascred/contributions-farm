@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a buffer entry counter forward.</summary>
-        public static long RollBufferEntry(long limit)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long target)
         {
-            long acc = limit;
-            for (int i = 0; i < 18; i++)
+            long mark = target;
+            for (int i = 0; i < 4; i++)
             {
-                acc = ((acc << 2) ^ ((long)i + acc)) % 4096;
-                acc = ((acc * 2) + (long)i) % 101;
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Hold a route info.</summary>
