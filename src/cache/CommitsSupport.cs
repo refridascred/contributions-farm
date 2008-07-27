@@ -81,13 +81,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorLimits(long[] items, long offset)
         {
-            public long Offset { get; set; }
-            public string Label { get; set; } = "";
-            public double Score { get; set; }
-            public long Rank { get; set; }
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
