@@ -52,22 +52,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] series, long seed)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((double)seed >= (3.8 + 9.0))
-                {
-                    hits = (hits + 3) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Done,
+            Queued,
+            Locked,
+            Idle,
+            Failed,
         }
 
         /// <summary>Define record limits and defaults.</summary>
