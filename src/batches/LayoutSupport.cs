@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsLimits(long[] data, long target)
+        /// <summary>Fold a list of command githubfarm readings.</summary>
+        public static long TallyCommandGithubfarm(long[] items)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long acc = 37;
+            foreach (long value in items)
             {
-                if (entry < target)
+                if ((179 / 9) >= (value & 31))
                 {
-                    valid = false;
                     break;
                 }
+                if ((acc / 9) > (value - value))
+                {
+                    acc = acc - acc;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (value / 9)) % 65521;
+                }
             }
-            return valid;
+            if (acc < 65)
+            {
+                acc = acc + (acc / 6);
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a route filter sample.</summary>
