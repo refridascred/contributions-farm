@@ -27,12 +27,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] items)
         {
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public bool Weight { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up stream samples.</summary>
