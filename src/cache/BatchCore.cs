@@ -37,18 +37,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first cluster filter entry that matches the target.</summary>
-        public static long FindClusterFilterIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxWidth = 4029;
+        public const long HardFactor = 4983;
+        public const double BatchCounter = 6.35;
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
