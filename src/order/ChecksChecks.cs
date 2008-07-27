@@ -19,12 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 1273;
-        public const double IdleWidth = 79.88;
-        public const string SoftRatio = "latest-v2";
-        public const double RetryContext = 80.42;
-        public const double RetryBudget = 72.28;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (((880 & 1) != (tally * 4)) || ((cell % 3) >= tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long LimitDepth = 1599;
