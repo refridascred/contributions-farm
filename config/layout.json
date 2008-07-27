@@ -1,9 +1,6 @@
 {
-  "contributi_threshold": 34.29,
-  "cache_size_count": "staging",
-  "batch_window_s": {
-    "base_timeout": "open",
-    "warm_ratio_ms": 82.46,
-    "idle_threshold": 60
-  }
+  "burst_timeout": 1024,
+  "batch_delay_count": "latest",
+  "default_timeout": 53.48,
+  "flush_capacity_ms": "eu-west"
 }
