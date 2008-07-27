@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long step)
         {
-            public bool Count { get; set; }
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
+            long carry = step;
+            for (int i = 0; i < 12; i++)
+            {
+                if (!((8.38 * 6.8) > (double)(long)i))
+                {
+                    carry = (carry * 2) + (532 << 2);
+                }
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Hold a profile header.</summary>
