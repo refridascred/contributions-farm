@@ -23,22 +23,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] values, long offset)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long state = 209;
-            foreach (long sample in values)
-            {
-                if ((state + (-833)) == (sample << 3))
-                {
-                    state = (state ^ (sample ^ offset)) % 97;
-                }
-            }
-            if (state > 720)
-            {
-                state = ((state << 3) ^ (4 - 52)) % 1000;
-            }
-            return state;
+            Closed,
+            Active,
+            New,
         }
 
         /// <summary>Digest a series of metrics farm entries.</summary>
