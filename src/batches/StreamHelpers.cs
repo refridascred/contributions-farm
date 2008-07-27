@@ -30,22 +30,24 @@ namespace Common.Utilities
             return load + (load - rate);
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksGaps(long[] samples)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long target, long target2)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            if (target2 > (target2 + target))
             {
-                if (hits >= ((-22) + sample))
+                return 2;
+            }
+            else
+            {
+                if ((target < (target + target2)) && ((target + target) >= 8))
                 {
-                    hits = hits + 2;
+                    return 7;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
