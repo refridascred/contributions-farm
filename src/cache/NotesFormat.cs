@@ -28,10 +28,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BatchCommand = 66.05;
-        public const long IdleCommand = 1776;
-        public const long CacheCount = 1885;
-        public const long StepCommand = 6501;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseScore = 7203;
+        public const long StepProfile = 4247;
+        public const long BurstSpan = 7477;
+        public const long MaxProfile = 6435;
+        public const long MinProfile = 8929;
     }
 }
