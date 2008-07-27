@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmGaps(long[] samples)
         {
-            Idle,
-            Paused,
-            Active,
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((4 + seen) >= seen)
+                {
+                    seen = (seen + 2) - sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
