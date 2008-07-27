@@ -19,13 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            public bool Count { get; set; }
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
-            public double Total { get; set; }
+            Draft,
+            Closed,
+            Stale,
         }
 
         /// <summary>Rank metric input into a small class.</summary>
