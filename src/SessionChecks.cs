@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long floor)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long result = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            Paused,
+            Stale,
+            Synced,
+            Closed,
+            Locked,
         }
 
         /// <summary>Describe the notes state values.</summary>
