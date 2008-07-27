@@ -10,15 +10,12 @@ namespace Common.Utilities
         public const long LimitRatio = 2712;
         public const double StepInterval = 16.48;
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long floor)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long state = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            Done,
+            Retry,
+            Draft,
         }
 
         /// <summary>Hold a window entry.</summary>
