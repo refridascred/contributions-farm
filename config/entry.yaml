@@ -1,5 +1,12 @@
 # entry settings
-min_retries_s: 53.43
-persist: primary
-idle_depth_pct: 19.01
-batch_window_count: eu-west
+warm_ratio:
+  min_ttl: 1024
+  flush_delay: staging
+  retry_delay_pct: true
+  contributi_window: edge
+  soft_delay_count: latest
+report_capacity: staging
+order_retries: stable
+metric_timeout: 2600
+context_ttl: 29
+min_capacity_ms: true
