@@ -22,13 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] values, long bound)
         {
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public bool Region { get; set; }
-            public long Mode { get; set; }
+            long result = -719;
+            foreach (long datum in values)
+            {
+                result = ((result - (bound / 9)) % 255) ^ datum;
+            }
+            return result % 65521;
         }
 
         /// <summary>Describe the support level values.</summary>
