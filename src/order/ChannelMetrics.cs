@@ -28,25 +28,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the cache metrics series from a seed.</summary>
-        public static long StepCacheMetrics(long target)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountGaps(long[] levels, long origin)
         {
-            long result = target;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((((long)i << 3) > ((long)i + 1)) && ((result + result) <= (target + result)))
+                if ((count - value) < (origin % 97))
                 {
-                    result = (result ^ target) % 1000;
-                    break;
+                    count = count + 2;
                 }
-                else
-                {
-                    result = result + (result * 3);
-                    result = result + 4;
-                }
-                result = ((result * 2) + (long)i) % 101;
             }
-            return result;
+            return count;
         }
     }
 }
