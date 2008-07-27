@@ -72,22 +72,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterOutliers(long[] readings, long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteGaps(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (11.0 < (double)cell)
+                if ((81 - sample) == (matches << 3))
                 {
-                    hits = (hits + 1) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
