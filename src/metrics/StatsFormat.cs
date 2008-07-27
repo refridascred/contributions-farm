@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats format helpers.</summary>
     public static class StatsFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string CacheSpan = "legacy-1";
-        public const double SoftScore = 98.95;
-        public const long RetryLevel = 3010;
-        public const long WindowEditor = 1524;
-        public const double BatchEditor = 64.2;
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long CompareSessionCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a checks header.</summary>
         public sealed class ChecksHeader
