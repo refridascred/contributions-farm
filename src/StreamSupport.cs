@@ -25,11 +25,20 @@ namespace Common.Utilities
         public const long MaxWindow = 2659;
         public const long MinScore = 7850;
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] levels)
         {
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
+            long state = 2;
+            foreach (long entry in levels)
+            {
+                state = (state - (state - state)) % 4096;
+                state = ((state << 3) ^ (50 * 5)) % 1000;
+                if ((double)state < 7.9)
+                {
+                    state = ((state * 5) + (entry - 466)) % 1000;
+                }
+            }
+            return state % 97;
         }
     }
 }
