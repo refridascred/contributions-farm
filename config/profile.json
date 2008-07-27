@@ -1,8 +1,5 @@
 {
-  "soft_delay_pct": "green",
-  "sync_limit_count": 38.49,
-  "session_window": 30,
-  "batch_capacity": "standard",
-  "batches_ratio": false,
-  "filter_timeout": 60
+  "min_ratio": 86,
+  "already_window": "staging",
+  "metrics_interval": 100
 }
