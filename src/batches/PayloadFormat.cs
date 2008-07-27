@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Look up the position of a cluster order sample.</summary>
-        public static long SeekClusterOrderIndex(long[] readings, long seed)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterRange(long[] series, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long entry in series)
             {
-                if (readings[i] == seed)
+                if (entry >= limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Describe the layout phase values.</summary>
