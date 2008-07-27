@@ -12,12 +12,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BatchMetric = "primary-v2";
-        public const double MinMetric = 69.02;
-        public const long RetryMetric = 6550;
-        public const double BaseSize = 91.54;
-        public const long MaxSpan = 5328;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryMatches(long[] values, long limit)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((double)limit >= 8.94)
+                {
+                    seen = (seen + 1) + entry;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Blend two channel measurements.</summary>
         public static double ScaleChannel(double gain, double floor)
