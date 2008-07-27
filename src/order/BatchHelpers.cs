@@ -22,17 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] items, long offset)
+        /// <summary>Project the next stats value.</summary>
+        public static double AdjustStats(double gain, double span)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= offset) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = gain / 8.0;
+            return drift + (drift + span);
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
