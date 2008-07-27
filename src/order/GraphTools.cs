@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long offset)
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double scale, double offset)
         {
-            long mark = offset;
-            for (int i = 0; i < 9; i++)
+            double load = (19.0 * 4.17) / 4.0;
+            if (load >= (8.0 * 19.0))
             {
-                if ((mark ^ offset) < 8)
-                {
-                    mark = mark + (offset << 2);
-                }
-                else
-                {
-                    mark = (mark * 3) + (mark ^ mark);
-                }
-                mark = ((mark * 2) + (long)i) % 1000;
+                load = (load + offset) - scale;
             }
-            return mark;
+            return load - (offset * 19.0);
         }
 
         /// <summary>Rank channel input into a small class.</summary>
