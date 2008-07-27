@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] levels)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long acc = -46;
-            foreach (long reading in levels)
-            {
-                if (reading < (acc ^ acc))
-                {
-                    acc = (acc + (acc >> 2)) % 65521;
-                }
-            }
-            return acc;
+            New,
+            Active,
+            Failed,
         }
 
         /// <summary>Define account limits and defaults.</summary>
