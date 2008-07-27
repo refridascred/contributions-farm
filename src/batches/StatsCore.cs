@@ -31,23 +31,12 @@ namespace Common.Utilities
         public const long WindowSession = 1258;
         public const long SoftInterval = 1947;
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long bound)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long result = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    result = ((result - (bound + bound)) % 101) - (long)i2;
-                }
-                if ((result << 2) <= ((long)i + bound))
-                {
-                    result = ((result * 4) + ((long)i + bound)) % 65521;
-                }
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
+            Active,
+            New,
+            Pending,
         }
 
         /// <summary>Hold a schema record.</summary>
