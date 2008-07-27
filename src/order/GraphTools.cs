@@ -54,24 +54,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long origin, long floor)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            if (origin >= (floor << 2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin * 3) >= floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
