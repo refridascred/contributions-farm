@@ -34,12 +34,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            Locked,
-            Synced,
-            Idle,
+            public string Limit { get; set; } = "";
+            public long Count { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Match up buffer samples.</summary>
