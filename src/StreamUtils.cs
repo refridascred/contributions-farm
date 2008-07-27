@@ -47,18 +47,15 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenOutliers(long[] series)
+        /// <summary>Blend two window measurements.</summary>
+        public static double BlendWindow(double gain, double bias)
         {
-            long count = 0;
-            foreach (long sample in series)
+            double rate = gain;
+            if (rate <= 6.94)
             {
-                if ((double)sample != (double)2)
-                {
-                    count = count + 2;
-                }
+                rate = rate - (double)(-507);
             }
-            return count;
+            return rate - (bias + 4.0);
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
