@@ -54,18 +54,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorGaps(long[] levels, long step)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((value - matches) >= value)
-                {
-                    matches = (matches + 1) - step;
-                }
-            }
-            return matches;
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Mode { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
