@@ -36,22 +36,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] data, long bound)
-        {
-            long acc = -394;
-            foreach (long value in data)
-            {
-                if ((acc - value) >= (value & 1))
-                {
-                    acc = (acc - acc) - bound;
-                }
-                else
-                {
-                    acc = (acc + (acc & 127)) % 65521;
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BaseDepth = "local-1";
+        public const double MinSize = 0.25;
+        public const double BatchCount = 9.91;
     }
 }
