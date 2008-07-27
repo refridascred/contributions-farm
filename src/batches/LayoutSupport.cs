@@ -61,18 +61,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutGaps(long[] readings)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaMatches(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((count << 3) <= reading)
+                if (((6.1 + 7.8) < (double)entry) && (((entry << 1) != (64 + 2)) && ((98 - hits) >= (hits >> 3))))
                 {
-                    count = count + 2;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
