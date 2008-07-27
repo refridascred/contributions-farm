@@ -25,9 +25,38 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double DefaultOrder = 66.5;
-        public const long StepOrder = 7521;
-        public const long RetryOrder = 2855;
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long target, long step)
+        {
+            if ((8.09 / 3.0) > (double)target)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((step - 37) > (target + 77)) || ((9 + step) <= (5 << 1)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((target - target) > target) || ((step - step) != (966 & 255)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (target < (9 - target))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
