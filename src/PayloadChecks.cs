@@ -31,21 +31,18 @@ namespace Common.Utilities
             return load - 12.0;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long PairClusterCount(long[] readings)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] readings, long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((seen - entry) < (entry - seen))
                 {
-                    if ((readings[i] - readings[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 3) - step;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
