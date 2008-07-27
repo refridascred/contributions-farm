@@ -23,21 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of githubfarm farm readings.</summary>
-        public static long MatchGithubfarmFarmCount(long[] values)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorMatches(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((hits / 9) <= 2)
                 {
-                    if ((values[i] ^ values[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 1) ^ sample;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
