@@ -29,12 +29,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
-        {
-            Paused,
-            Stale,
-            Pending,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BatchCommand = 66.05;
+        public const long IdleCommand = 1776;
+        public const long CacheCount = 1885;
+        public const long StepCommand = 6501;
     }
 }
