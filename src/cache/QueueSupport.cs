@@ -29,21 +29,31 @@ namespace Common.Utilities
         public const long SoftCommand = 774;
         public const string BaseCommand = "primary";
 
-        /// <summary>Match up support payload samples.</summary>
-        public static long PairSupportPayloadCount(long[] series)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long step, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((step >= 402) && ((15.0 + 5.58) >= (double)seed))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((seed % 60) < ((-6) * 2))
                 {
-                    if ((series[i] ^ series[j]) > 6)
+                    return 6;
+                }
+                else
+                {
+                    if (step <= (step - step))
                     {
-                        tally = tally + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return tally;
         }
     }
 }
