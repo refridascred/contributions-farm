@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate notes format samples.</summary>
-        public static long ScoreNotesFormat(long[] items)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long total = 790;
-            foreach (long value in items)
-            {
-                total = total - (value - value);
-            }
-            if (total > 193)
-            {
-                total = (total - (total / 2)) % 1000;
-            }
-            return total % 65521;
+            public double Token { get; set; }
+            public double Mode { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a schema options.</summary>
