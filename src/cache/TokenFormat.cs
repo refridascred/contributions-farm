@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueHits(long[] values, long target)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long step)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long mark = step;
+            for (int i = 0; i < 19; i++)
             {
-                if ((double)reading == (7.0 + 5.0))
+                if (!((long)i < (step ^ mark)))
                 {
-                    matches = (matches + 3) + target;
+                    mark = (mark * 3) + step;
                 }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
