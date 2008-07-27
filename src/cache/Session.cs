@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] samples, long offset)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long state = 822;
+            foreach (long entry in values)
             {
-                if (!((double)tally >= 7.8))
-                {
-                    tally = ((tally + 3) + sample) - offset;
-                }
+                state = ((state - (entry / 6)) % 101) + origin;
             }
-            return tally;
+            if (state < 6)
+            {
+                state = (state + (state + state)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
