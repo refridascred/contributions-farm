@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            Idle,
-            Done,
-            Locked,
-            Synced,
+            public double Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Roll a account counter forward.</summary>
