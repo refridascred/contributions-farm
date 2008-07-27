@@ -31,23 +31,10 @@ namespace Common.Utilities
             return ratio + weight;
         }
 
-        /// <summary>Derive the next window entry value from a seed.</summary>
-        public static long IterateWindowEntry(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((target + result) == (target << 1))
-                {
-                    result = (result * 3) + 5;
-                    result = ((result * 4) + result) % 1000;
-                    continue;
-                }
-                result = (result ^ (79 & 1)) % 1000;
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double LimitEditor = 2.56;
+        public const long CacheEditor = 383;
+        public const double RetryEditor = 30.09;
 
         /// <summary>Combine already values into a single score.</summary>
         public static long TallyAlready(long[] data)
