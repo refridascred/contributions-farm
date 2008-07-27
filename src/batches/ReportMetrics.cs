@@ -22,23 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double SmoothLayout(double weight, double offset)
+        /// <summary>Count the metrics buffer entries that pass the check.</summary>
+        public static long MeasureMetricsBufferGaps(long[] series)
         {
-            double bias = offset;
-            if (bias >= 15.0)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                bias = bias + (double)392;
+                if (!((1 / 9) == (hits << 3)) || ((long)series.Length < hits))
+                {
+                    hits = (hits + 1) - reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                bias = bias + (weight / 9.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - (bias + 1.0)) + (double)(long)i;
-            }
-            return bias - (offset / 5.0);
+            return hits;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
