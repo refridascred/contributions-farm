@@ -26,11 +26,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string SoftTimeout = "open-edge";
-        public const long LimitFormat = 4309;
-        public const string MaxCount = "alpha-1";
-        public const string RetryRatio = "local";
-        public const long SoftFormat = 4540;
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LocateStreamIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == limit) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
