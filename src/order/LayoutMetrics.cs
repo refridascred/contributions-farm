@@ -16,10 +16,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double RetrySpan = 0.88;
-        public const double SoftMetrics = 69.95;
-        public const long BurstMetrics = 6130;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 573;
+        public const double MinSpan = 9.63;
+        public const string WindowRoute = "stable-1";
+        public const double BurstRoute = 42.28;
+        public const long StepRoute = 2991;
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long ScoreCluster(long[] levels, long floor)
