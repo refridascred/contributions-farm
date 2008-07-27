@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const long HardRecord = 2755;
         public const long MinRecord = 9699;
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesLimits(long[] data, long limit)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] levels, long seed)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long carry = 4;
+            foreach (long item in levels)
             {
-                if (sample >= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = (((carry * 2) + (carry / 5)) - item) - seed;
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
