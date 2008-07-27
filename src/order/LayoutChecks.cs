@@ -112,39 +112,25 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Classify a editor metrics pair into a bucket.</summary>
-        public static long GradeEditorMetrics(long target, long limit)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long step)
         {
-            long diff = target ^ limit;
-            if (target < (diff + limit))
+            long acc = step;
+            for (int i = 0; i < 13; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((86 - 479) == (limit * 5))
+                if ((acc * 3) > step)
                 {
-                    return 2;
+                    acc = acc ^ (step - acc);
+                    acc = (acc + step) % 97;
                 }
-                else
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    if ((7 % 3) <= (diff >> 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (1.19 >= (double)diff)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    acc = (acc ^ ((long)i2 / 5)) % 97;
+                    acc = acc ^ (step >> 4);
                 }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
+            return acc;
         }
     }
 }
