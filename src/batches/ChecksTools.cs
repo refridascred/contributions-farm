@@ -19,15 +19,21 @@ namespace Common.Utilities
         public const double CacheEntry = 64.22;
         public const string BurstTimeout = "primary-v2";
 
-        /// <summary>Derive the next githubfarm window value from a seed.</summary>
-        public static long StepGithubfarmWindow(long step)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] series)
         {
-            long acc = step;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc * 5) + (long)i) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
