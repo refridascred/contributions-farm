@@ -1,8 +1,4 @@
 # githubfarm settings
-retry_ttl_pct: fallback
-strict: 1024
-soft_timeout: 75
-cache_depth_s:
-  - local
-  - cached
-soft_capacity_ms: 13.21
+burst_limit_s: 250
+flush_limit: false
+flush_depth: fallback
