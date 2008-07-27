@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Adjust a profile reading.</summary>
+        public static double BlendProfile(double rate, double floor)
         {
-            public long Level { get; set; }
-            public bool Region { get; set; }
-            public string Flag { get; set; } = "";
+            double rate2 = rate - (double)99;
+            if (rate2 < (double)(-17))
+            {
+                rate2 = (rate2 - (rate2 - rate2)) - floor;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate2 = (rate2 + rate2) - (double)(long)i;
+            }
+            return rate2 + (rate2 - rate2);
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
