@@ -72,19 +72,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double scale, double offset)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            double bias = offset;
-            if (bias <= (bias + scale))
-            {
-                bias = bias - (offset - scale);
-            }
-            else
-            {
-                bias = bias - (offset - 11.0);
-            }
-            return bias - (offset / 8.0);
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public bool Total { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
