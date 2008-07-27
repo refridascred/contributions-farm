@@ -24,12 +24,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Accumulate filter graph samples.</summary>
+        public static long ScoreFilterGraph(long[] samples)
         {
-            public bool Count { get; set; }
-            public string Limit { get; set; } = "";
-            public long Flag { get; set; }
+            long carry = 185;
+            foreach (long item in samples)
+            {
+                if (!((double)item < 15.0))
+                {
+                    carry = carry + (carry + item);
+                }
+            }
+            return carry;
         }
     }
 }
