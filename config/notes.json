@@ -1,8 +1,7 @@
 {
-  "cache_capacity": false,
-  "batch_limit_s": "latest",
-  "base_limit": "stable",
-  "profile_depth": 48.23,
-  "min_ratio_pct": false,
-  "cache_size_pct": true
+  "warm_interval_ms": "fallback",
+  "batch_window": 90.54,
+  "contributi_threshold": "stable",
+  "soft_interval": 92,
+  "min_capacity_s": false
 }
