@@ -14,19 +14,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] series)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long floor)
         {
-            long acc = 5;
-            foreach (long cell in series)
+            long score = floor;
+            for (int i = 0; i < 8; i++)
             {
-                acc = (acc ^ (cell ^ acc)) % 65521;
-                if ((cell * 4) <= (cell + 9))
-                {
-                    break;
-                }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return acc % 4096;
+            return score;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
