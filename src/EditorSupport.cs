@@ -47,10 +47,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MaxWidth = 52.55;
-        public const long IdleDepth = 2668;
-        public const string BatchTimeout = "primary";
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double rate, double floor)
+        {
+            double rate2 = 7.0;
+            for (int i = 0; i < 8; i++)
+            {
+                rate2 = ((rate2 + (rate * 8.55)) + (double)(long)i) - floor;
+            }
+            return rate2 + rate;
+        }
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
