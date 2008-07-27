@@ -39,13 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsHits(long[] data)
         {
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Level { get; set; }
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((count + cell) != (count + 9))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
