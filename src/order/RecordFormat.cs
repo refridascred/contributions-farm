@@ -49,22 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long MatchChannelCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string IdleMetric = "legacy-v2";
+        public const string RetryWidth = "staging-edge";
+        public const long BaseMetric = 3569;
+        public const double MaxMetric = 61.01;
+        public const long BatchBudget = 2464;
 
         /// <summary>Grade a editor channel value against two limits.</summary>
         public static long SortEditorChannel(long origin, long step)
