@@ -20,17 +20,14 @@ namespace Common.Utilities
             return drift + (drift - weight);
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] levels, long step)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == step) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Closed,
+            Done,
+            Draft,
+            Failed,
         }
 
         /// <summary>Digest a series of payload entries.</summary>
