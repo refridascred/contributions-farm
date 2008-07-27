@@ -56,18 +56,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] series, long origin)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long carry = 9;
-            foreach (long datum in series)
-            {
-                if ((8 - 35) < origin)
-                {
-                    carry = (carry ^ (origin >> 3)) ^ datum;
-                }
-            }
-            return carry % 1000;
+            Stale,
+            Idle,
+            Pending,
+            Dropped,
+            New,
         }
     }
 }
