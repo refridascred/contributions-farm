@@ -37,12 +37,12 @@ namespace Common.Utilities
             return scale - (3.69 / 3.0);
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            public string Rank { get; set; } = "";
-            public bool Flag { get; set; }
-            public double Score { get; set; }
+            Paused,
+            Stale,
+            Active,
         }
     }
 }
