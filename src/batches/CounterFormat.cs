@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine checks metrics values into a single score.</summary>
-        public static long CombineChecksMetrics(long[] series, long floor)
+        /// <summary>Check that every contributi token entry stays within the limit.</summary>
+        public static bool GuardContributiTokenRange(long[] values, long floor)
         {
-            long result = 9;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if (!((double)sample >= (9.6 - 18.0)))
+                if (value > floor)
                 {
-                    result = ((result << 2) ^ sample) % 4096;
-                }
-                if ((result < (sample ^ sample)) || ((result + floor) > sample))
-                {
+                    ready = false;
                     break;
                 }
             }
-            if (result > 19)
-            {
-                result = (result * 4) + (floor - result);
-            }
-            return result;
+            return ready;
         }
 
         /// <summary>Hold a graph summary.</summary>
