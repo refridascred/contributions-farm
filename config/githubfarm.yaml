@@ -1,31 +1,40 @@
 # githubfarm settings
-retry_depth_count:
-  enabled:
-    - 123
-    - 295
-    - 435
-  min_limit_s: 61.48
-  burst_interval_s: eu-west
-layout_capacity: 97
-soft_capacity_pct:
-  dry_run: 88.83
-  verbose: latest
-  entry_window: 63.37
-  warm_retries_ms:
-    order_size: 49.8
-    poll_timeout_ms: 98
-    retry_capacity_count:
-      - 406
-      - 24
-    counter_window: false
-    dry_run: 7
-    warm_delay_count: 1721
-  queue_window: 58
-order_ttl: 60
-flush_timeout:
-  retry_delay: staging
-  batch_timeout:
-    - fallback
-    - eu-west
-    - open
-  dry_run: blue
+dry_run:
+  soft_ratio_s: 100
+  soft_timeout_ms:
+    soft_ttl_s:
+      - cached
+      - standard
+      - latest
+      - strict
+    cache_timeout:
+      - primary
+      - strict
+      - eu-west
+      - green
+    sync_threshold: 9196
+    verbose: 500
+  soft_ttl: 72.47
+  account_size: true
+  poll_size_pct: false
+farm_window: 8744
+verbose: green
+flush_delay_count: true
+batch_threshold_ms: open
+poll_threshold_pct:
+  retry_delay_s: false
+  token_window:
+    order_limit: 48.14
+    batch_ttl_count: 10.41
+    verbose: legacy
+    readonly:
+      - staging
+      - standard
+      - blue
+      - local
+    soft_size: local
+  githubfarm_ratio:
+    default_interval_ms: true
+    persist: 5637
+    soft_ttl_count: 60
+    batch_delay_s: 1024
