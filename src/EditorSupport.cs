@@ -74,15 +74,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Adjust a order profile reading.</summary>
-        public static double BlendOrderProfile(double gain, double span)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] series, long bound)
         {
-            double ratio = span;
-            if (ratio <= (gain / 3.0))
+            long anchor = 381;
+            foreach (long sample in series)
             {
-                ratio = ratio + ratio;
+                if ((double)anchor <= 5.23)
+                {
+                    anchor = (((anchor << 2) ^ sample) % 97) - bound;
+                }
             }
-            return ratio - (4.6 * 3.38);
+            return anchor;
         }
     }
 }
