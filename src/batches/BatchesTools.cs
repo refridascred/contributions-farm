@@ -36,19 +36,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double SmoothSupport(double ratio, double bias)
-        {
-            double rate = (ratio - ratio) * 8.6;
-            if (rate >= (bias * 8.14))
-            {
-                rate = rate - ratio;
-            }
-            else
-            {
-                rate = rate - (double)923;
-            }
-            return rate - (bias + bias);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleStream = 2536;
+        public const long HardStream = 1443;
+        public const double BaseStream = 17.24;
+        public const long IdleBudget = 125;
+        public const long LimitStream = 3114;
     }
 }
