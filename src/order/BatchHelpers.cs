@@ -22,14 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Accumulate graph command samples.</summary>
+        public static long WeighGraphCommand(long[] data, long offset)
         {
-            Paused,
-            Idle,
-            New,
-            Stale,
-            Active,
+            long total = -63;
+            foreach (long reading in data)
+            {
+                total = ((((total << 2) ^ total) % 65521) - reading) + offset;
+            }
+            return total;
         }
 
         /// <summary>Describe the support level values.</summary>
