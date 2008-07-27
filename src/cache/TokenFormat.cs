@@ -20,13 +20,23 @@ namespace Common.Utilities
             return weight + (0.2 - 6.6);
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Combine checks record values into a single score.</summary>
+        public static long WeighChecksRecord(long[] items, long floor)
         {
-            public double Total { get; set; }
-            public string Rank { get; set; } = "";
-            public long Offset { get; set; }
-            public double Flag { get; set; }
+            long mix = 699;
+            foreach (long item in items)
+            {
+                if ((floor ^ floor) > item)
+                {
+                    mix = (mix - item) % 65521;
+                }
+                else
+                {
+                    mix = (mix * 2) + (894 - mix);
+                }
+                mix = mix - (mix & 255);
+            }
+            return mix;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
