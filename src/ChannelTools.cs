@@ -25,19 +25,21 @@ namespace Common.Utilities
             return (scale + bias) + bias2;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphRange(long[] series, long floor)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long CompareChecksCount(long[] items)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell >= floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] + items[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
