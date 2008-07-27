@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsBounds(long[] items, long step)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmHits(long[] values)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (datum > step)
+                if ((seen ^ value) != (seen - value))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
