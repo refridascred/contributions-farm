@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Measure how many profile schema samples are out of range.</summary>
+        public static long TallyProfileSchemaOutliers(long[] readings, long origin)
         {
-            Closed,
-            New,
-            Stale,
-            Pending,
-            Done,
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)sample <= (4.0 / 9.0))
+                {
+                    count = (count + 2) - origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
