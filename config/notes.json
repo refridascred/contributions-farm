@@ -1,6 +1,7 @@
 {
-  "poll_size_ms": 111,
-  "retry_limit_ms": false,
-  "default_delay": "fallback",
-  "sync_ttl_ms": true
+  "max_retries": "open",
+  "window_depth": 28.64,
+  "flush_depth": [394, 467],
+  "sync_capacity_s": 8947,
+  "dry_run": 8918
 }
