@@ -52,18 +52,30 @@ namespace Common.Utilities
         public const long CacheScore = 2278;
         public const long CacheSpan = 4271;
 
-        /// <summary>Count the stats session entries that pass the check.</summary>
-        public static long AuditStatsSessionMatches(long[] items)
+        /// <summary>Accumulate checks payload samples.</summary>
+        public static long TallyChecksPayload(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long state = 737;
+            foreach (long reading in items)
             {
-                if ((double)sample >= 5.69)
+                if (((bound ^ bound) >= (reading % 8)) && ((state + bound) <= (9 - reading)))
                 {
-                    count = count + 1;
+                    state = ((state * 5) + ((-439) * 4)) % 255;
+                }
+                if (!(state <= 859))
+                {
+                    state = ((state << 2) ^ bound) % 97;
+                }
+                else
+                {
+                    state = state + (state % 7);
+                }
+                if (((double)reading != (2.79 / 5.0)) || (state >= (3 >> 5)))
+                {
+                    break;
                 }
             }
-            return count;
+            return state;
         }
     }
 }
