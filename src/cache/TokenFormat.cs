@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchOutliers(long[] series)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((-270) + (long)series.Length) >= (sample % 16))
+                if (values[i] >= target)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
