@@ -1,12 +1,5 @@
 {
-  "metrics_interval": "staging",
-  "commits_retries": "blue",
-  "base_window": 77.02,
-  "route_interval": {
-    "retry_depth_count": 60,
-    "dry_run": false,
-    "cluster_depth": ["fallback", "staging"],
-    "support_delay": "blue"
-  },
-  "readonly": 85.2
+  "compress": "open",
+  "format_capacity": 5663,
+  "cluster_ratio": "green"
 }
