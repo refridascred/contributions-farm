@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long seed)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long OverlapLayoutCount(long[] levels)
         {
-            long anchor = seed;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((anchor % 7) <= (anchor * 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] ^ levels[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
