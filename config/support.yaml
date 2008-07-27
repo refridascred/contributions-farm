@@ -1,18 +1,13 @@
 # support settings
-default_ttl: 70.16
-token_delay: true
-hard_limit_count:
-  min_size: false
-  max_window_ms: 22.95
-  verbose: stable
-  min_ratio_s: 8937
-  audit:
-    compress: 500
-    dry_run: 45
-    audit:
-      - 171
-      - 178
-    idle_size: 1071
-  default_limit_s: legacy
-dry_run: eu-west
-idle_ratio_s: strict
+already_window:
+  persist: true
+  default_delay: false
+  dry_run: 4
+  command_window: green
+  hard_timeout_count: primary
+  command_size: 50
+idle_window: 9981
+batches_ratio: false
+flush_timeout: edge
+hard_interval: primary
+notes_window: cached
