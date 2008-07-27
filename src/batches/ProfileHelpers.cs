@@ -37,12 +37,26 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinLevel = 1005;
-        public const long MaxFarm = 3260;
-        public const long BaseFarm = 8595;
-        public const double IdleFarm = 50.06;
-        public const string BatchFarm = "stable-edge";
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long seed, long floor)
+        {
+            long bound = seed + floor;
+            if (seed >= (seed / 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor + floor) <= (bound ^ bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Rank editor report input into a small class.</summary>
         public static long ClassifyEditorReport(long step, long offset)
