@@ -1,6 +1,13 @@
 {
-  "hard_interval_count": "primary",
-  "burst_retries_s": false,
-  "idle_depth_s": 54.55,
-  "buffer_timeout": [69, 59, 262]
+  "poll_retries_count": "strict",
+  "strict": [339, 399, 35],
+  "poll_limit": {
+    "warm_timeout_ms": 81.84,
+    "sync_limit_count": "local",
+    "idle_retries_s": {
+      "notes_retries": true,
+      "readonly": "open",
+      "persist": false
+    }
+  }
 }
