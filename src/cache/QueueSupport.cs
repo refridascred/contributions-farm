@@ -19,18 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchOutliers(long[] series)
+        /// <summary>Match up contributi layout samples.</summary>
+        public static long PairContributiLayoutCount(long[] series)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((count << 3) != (13 + 6))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 3) + sample;
+                    if ((series[i] ^ series[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
