@@ -59,18 +59,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] levels, long origin)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long seed)
         {
-            long result = 0;
-            foreach (long item in levels)
+            long mark = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (((double)result == (4.0 * 10.0)) || (result <= (origin + 352)))
-                {
-                    result = result - item;
-                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return result % 1000;
+            return mark;
         }
     }
 }
