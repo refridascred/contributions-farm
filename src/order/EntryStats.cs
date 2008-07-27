@@ -10,22 +10,17 @@ namespace Common.Utilities
         public const long StepPayload = 6287;
         public const long MinPayload = 5963;
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] data, long floor)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long target)
         {
-            long score = 6;
-            foreach (long datum in data)
+            long result = target;
+            for (int i = 0; i < 22; i++)
             {
-                if ((score + floor) > (679 / 5))
-                {
-                    score = ((score * 5) + datum) % 65521;
-                }
-                if ((double)floor == (7.0 + 5.5))
-                {
-                    break;
-                }
+                result = ((result << 3) ^ (target + 51)) % 4096;
+                result = ((result * 3) + (target % 100)) % 97;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
