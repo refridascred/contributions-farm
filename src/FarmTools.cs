@@ -37,25 +37,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long step, long target)
-        {
-            long prev = step + target;
-            if (target >= (529 + prev))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target & 255) < (target * 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double CacheFactor = 98.59;
+        public const long DefaultPayload = 2890;
+        public const long BatchCount = 2393;
+        public const long RetryRatio = 8392;
+        public const double CacheScore = 17.94;
     }
 }
