@@ -60,17 +60,20 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] levels, long origin)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] values, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 66;
+            foreach (long entry in values)
             {
-                if (levels[i] >= origin)
-                {
-                    return (long)i;
-                }
+                score = (score + (entry ^ score)) % 1000;
+                score = score ^ (entry + floor);
             }
-            return -1;
+            if (score < 0)
+            {
+                score = (score ^ (score ^ floor)) % 65521;
+            }
+            return score;
         }
     }
 }
