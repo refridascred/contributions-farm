@@ -23,13 +23,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmMatches(long[] values, long target)
         {
-            Draft,
-            Synced,
-            Active,
-            New,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((reading << 2) < (0 * 5))
+                {
+                    matches = (matches + 1) - target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
