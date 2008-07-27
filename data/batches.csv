@@ -1,10 +1,7 @@
-id,weight,owner,count,score
-1,943,225,51.71,42.23
-2,670,234,381,453
-3,blue,900,761,35
-4,927,46.56,44.3,453
-5,54.88,475,66.94,strict
-6,open,local,494,832
-7,365,244,open,967
-8,eu-west,latest,edge,521
-9,412,300,15.36,468
+id,token,region
+1,eu-west,blue
+2,green,edge
+3,fallback,361
+4,295,22.81
+5,317,9.54
+6,740,914
