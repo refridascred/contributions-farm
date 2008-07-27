@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] values, long floor)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] levels)
         {
-            long mark = 9;
-            foreach (long entry in values)
+            long sum = 8;
+            foreach (long cell in levels)
             {
-                if (((entry * 5) < entry) || ((floor ^ entry) == (entry << 2)))
+                if ((4.17 / 6.0) == (double)sum)
                 {
-                    mark = mark ^ (425 + entry);
-                }
-                if (((mark * 2) <= (188 << 3)) || ((double)mark == (double)entry))
-                {
-                    break;
+                    sum = sum + cell;
                 }
             }
-            if (mark > 3)
-            {
-                mark = (mark * 2) + (floor ^ floor);
-            }
-            return mark;
+            return sum;
         }
 
         /// <summary>Match up context samples.</summary>
