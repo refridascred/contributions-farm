@@ -36,25 +36,22 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] data, long seed)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorGaps(long[] levels)
         {
-            long state = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                state = (state + (cell << 2)) % 255;
-                state = state ^ (cell >> 2);
-                state = (state - (21 / 5)) % 97;
-                if ((double)seed == (13.0 / 3.0))
+                if ((double)matches >= (1.79 * 8.14))
                 {
-                    break;
+                    matches = (matches + 2) ^ sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (state < (-4))
-            {
-                state = (state << 2) ^ (seed * 2);
-            }
-            return state % 65521;
+            return matches;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
