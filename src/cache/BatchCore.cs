@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ScaleContributi(double scale, double floor)
+        /// <summary>Compare every pair of contributi token readings.</summary>
+        public static long PairContributiTokenCount(long[] data)
         {
-            double gain = floor;
-            if (gain >= gain)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = gain + (floor / 4.0);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - (double)(-898)) - (double)(long)i;
-            }
-            return gain - scale;
+            return tally;
         }
 
         /// <summary>Hold a counter header.</summary>
