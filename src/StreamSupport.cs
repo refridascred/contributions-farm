@@ -40,21 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] levels)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long CompareMetricsCount(long[] levels)
         {
-            long hits = 0;
+            long tally = 0;
             for (int i = 0; i < levels.Length; i++)
             {
                 for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) == 2)
+                    if ((levels[i] + levels[j]) != 20)
                     {
-                        hits = hits + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
