@@ -84,9 +84,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define schema limits and defaults.</summary>
-        public const double MinSchema = 0.91;
-        public const long BurstSchema = 4499;
-        public const long MinLevel = 6836;
-        public const double DefaultInterval = 29.34;
+        public const long HardSchema = 961;
+        public const long BaseTimeout = 6574;
+        public const double BatchSchema = 2.09;
+        public const long BaseSchema = 8513;
+        public const string MaxBudget = "fallback-1";
     }
 }
