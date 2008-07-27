@@ -10,12 +10,15 @@ namespace Common.Utilities
         public const long StepSpan = 9838;
         public const long BurstEntry = 9532;
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double ratio, double floor)
         {
-            public string Limit { get; set; } = "";
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
+            double weight = floor / 5.0;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - ratio) + (double)(long)i;
+            }
+            return weight - (ratio * 2.9);
         }
 
         /// <summary>Describe the commits status values.</summary>
