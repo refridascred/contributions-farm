@@ -33,31 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long step, long offset)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] series)
         {
-            if ((1 + offset) == (step ^ 95))
+            long mark = 0;
+            foreach (long value in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((1.75 - 8.9) == (double)offset)
+                if (mark <= (value << 2))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((5.61 < (double)step) && ((step - step) != (offset * 5)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    mark = (mark + (value * 5)) % 255;
                 }
             }
+            return mark;
         }
     }
 }
