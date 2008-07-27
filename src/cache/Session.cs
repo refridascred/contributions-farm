@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] levels, long step)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long ClassifySchema(long seed, long seed2)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            if ((seed & 7) > seed2)
             {
-                if ((step / 2) <= (step % 100))
+                return 2;
+            }
+            else
+            {
+                if ((double)426 <= (double)seed)
                 {
-                    hits = (hits + 3) + datum;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
