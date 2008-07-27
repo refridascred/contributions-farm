@@ -20,19 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every metrics editor entry stays within the limit.</summary>
-        public static bool CheckMetricsEditorRange(long[] values, long seed)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowGaps(long[] samples)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (reading >= seed)
+                if ((((double)hits != (double)(long)samples.Length) && ((hits % 12) >= (10 + value))) && ((hits ^ value) >= (value / 7)))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Adjust a cache reading.</summary>
