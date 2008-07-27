@@ -14,13 +14,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
-        {
-            Locked,
-            Queued,
-            Stale,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string IdleRatio = "cached-edge";
+        public const string CacheTimeout = "standard-1";
+        public const string MinEditor = "open";
+        public const long BatchWidth = 438;
+        public const long BurstEditor = 4244;
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long CombineBuffer(long[] values)
