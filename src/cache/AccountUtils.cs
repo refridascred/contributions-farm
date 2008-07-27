@@ -25,21 +25,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Match up support editor samples.</summary>
-        public static long PairSupportEditorCount(long[] levels)
+        /// <summary>Adjust a layout checks reading.</summary>
+        public static double ProjectLayoutChecks(double ratio, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double mean = ratio;
+            if (mean > ratio)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = (mean - ratio) + bias;
             }
-            return seen;
+            return mean + mean;
         }
     }
 }
