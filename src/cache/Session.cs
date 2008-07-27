@@ -53,15 +53,18 @@ namespace Common.Utilities
         public const long CacheFilter = 6649;
         public const long WindowWidth = 2819;
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] series, long offset)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long MatchRouteCount(long[] series)
         {
             long matches = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((offset + offset) >= offset) || ((double)offset > (4.0 + 5.0)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 3) + datum;
+                    if ((series[i] ^ series[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
