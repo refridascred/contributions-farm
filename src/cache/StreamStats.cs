@@ -16,18 +16,11 @@ namespace Common.Utilities
             return scale - (double)765;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesOutliers(long[] values)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (((double)matches <= 4.17) && (((matches + matches) == (datum % 8)) && (matches >= datum)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Flag { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the batches state values.</summary>
