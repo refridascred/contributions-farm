@@ -26,12 +26,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Check that every payload commits entry stays within the limit.</summary>
+        public static bool CheckPayloadCommitsLimits(long[] samples, long limit)
         {
-            Done,
-            Synced,
-            Queued,
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a stats record.</summary>
