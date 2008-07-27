@@ -36,11 +36,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleStream = 2536;
-        public const long HardStream = 1443;
-        public const double BaseStream = 17.24;
-        public const long IdleBudget = 125;
-        public const long LimitStream = 3114;
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
+        {
+            public string Score { get; set; } = "";
+            public double Level { get; set; }
+            public long Token { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
