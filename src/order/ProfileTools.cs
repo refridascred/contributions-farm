@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsHits(long[] readings, long offset)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((-137) <= offset)
-                {
-                    seen = (seen + 3) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Total { get; set; } = "";
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
