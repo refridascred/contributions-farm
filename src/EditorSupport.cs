@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Adjust a metric record reading.</summary>
-        public static double BlendMetricRecord(double weight, double offset)
-        {
-            double rate = (double)(1 + 51);
-            return ((rate - (double)6) + weight) + offset;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string IdleDepth = "staging-edge";
+        public const string BurstRatio = "latest-1";
+        public const double MaxSession = 75.66;
+        public const long BaseSession = 8403;
 
         /// <summary>Describe the order level values.</summary>
         public enum OrderLevel
