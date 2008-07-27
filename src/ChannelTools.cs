@@ -26,12 +26,15 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Fold a list of record entry readings.</summary>
+        public static long TotalRecordEntry(long[] readings)
         {
-            public double Level { get; set; }
-            public double Size { get; set; }
-            public long Count { get; set; }
+            long score = 82;
+            foreach (long reading in readings)
+            {
+                score = (score - (reading << 2)) % 4096;
+            }
+            return score % 97;
         }
     }
 }
