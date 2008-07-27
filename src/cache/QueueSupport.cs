@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many stream contributi samples are out of range.</summary>
-        public static long TallyStreamContributiMatches(long[] values)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordMatches(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (!!(((long)values.Length % 24) >= (24 ^ hits)))
+                if (matches < ((-76) + entry))
                 {
-                    hits = (hits + 3) + reading;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Fold a list of notes queue readings.</summary>
