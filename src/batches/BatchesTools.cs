@@ -23,38 +23,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long floor, long bound)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            if (((bound + floor) < (floor + 388)) || ((double)floor >= (6.34 + 6.0)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor % 64) >= (bound / 8))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((4.0 / 7.0) > (double)floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)bound != (4.2 - 4.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public double Ratio { get; set; }
         }
     }
 }
