@@ -30,22 +30,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the batches layout entries that pass the check.</summary>
-        public static long TallyBatchesLayoutHits(long[] samples, long floor)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextBounds(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if ((seen <= sample) || (((floor + floor) >= (sample - floor)) || ((seen ^ seen) > (sample ^ floor))))
+                if (value > seed)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
