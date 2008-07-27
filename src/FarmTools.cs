@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepWidth = 8079;
-        public const string WindowContext = "open-edge";
-        public const string BurstSize = "primary";
-        public const string WindowFactor = "open";
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 16; i++)
+            {
+                mark = ((mark << 3) ^ (step - step)) % 1000;
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long StepChannel(long target)
