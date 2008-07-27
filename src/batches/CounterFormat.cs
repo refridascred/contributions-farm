@@ -12,18 +12,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricMatches(long[] values, long seed)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((long)values.Length > cell)
-                {
-                    matches = (matches + 3) - seed;
-                }
-            }
-            return matches;
+            public string Size { get; set; } = "";
+            public long Mode { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Accumulate payload samples.</summary>
