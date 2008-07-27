@@ -1,21 +1,6 @@
 {
-  "idle_limit_s": true,
-  "schema_retries": {
-    "payload_timeout": false,
-    "poll_limit_ms": 876,
-    "idle_capacity_count": 12,
-    "schema_delay": true,
-    "burst_interval": "blue",
-    "order_depth": ["cached", "stable", "latest", "stable"]
-  },
-  "commits_threshold": "stable",
-  "min_retries_s": {
-    "max_retries_ms": 3806,
-    "soft_size_pct": ["standard", "latest"],
-    "base_timeout_s": true,
-    "warm_delay": ["cached", "standard", "local"],
-    "enabled": "local"
-  },
-  "burst_delay": 6,
-  "min_timeout_count": true
+  "hard_interval_count": "primary",
+  "burst_retries_s": false,
+  "idle_depth_s": 54.55,
+  "buffer_timeout": [69, 59, 262]
 }
