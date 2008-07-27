@@ -33,11 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitDepth = 1599;
-        public const long BurstStream = 9062;
-        public const long BurstBudget = 1121;
-        public const long MaxLevel = 3569;
-        public const string MaxStream = "latest-edge";
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] data, long bound)
+        {
+            long acc = -394;
+            foreach (long value in data)
+            {
+                if ((acc - value) >= (value & 1))
+                {
+                    acc = (acc - acc) - bound;
+                }
+                else
+                {
+                    acc = (acc + (acc & 127)) % 65521;
+                }
+            }
+            return acc % 97;
+        }
     }
 }
