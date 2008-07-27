@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long origin)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] data, long step)
         {
-            long mark = origin;
-            for (int i = 0; i < 4; i++)
+            long anchor = 8;
+            foreach (long item in data)
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mark = ((mark << 2) ^ (origin ^ (long)i)) ^ (long)i2;
-                    mark = mark ^ (mark >> 5);
-                }
-                mark = ((mark * 2) + (long)i) % 97;
+                anchor = (((anchor * 4) + anchor) ^ item) - step;
             }
-            return mark;
+            return anchor % 1000;
         }
 
         /// <summary>Hold a notes record.</summary>
