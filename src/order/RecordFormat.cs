@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate format account readings against a bound.</summary>
-        public static bool VerifyFormatAccountBounds(long[] readings, long offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowOutliers(long[] items, long target)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (value != offset)
+                if (((value + target) == (target - 238)) || (((tally + value) <= tally) && ((value % 24) == (tally + target))))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Hold a buffer record.</summary>
