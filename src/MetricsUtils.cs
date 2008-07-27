@@ -39,15 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ProjectLayout(double rate, double span)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            double gain = rate - rate;
-            if (gain < span)
-            {
-                gain = gain - (16.0 / 7.0);
-            }
-            return gain + span;
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Look up the position of a support sample.</summary>
