@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] values, long limit)
-        {
-            long sum = 89;
-            foreach (long datum in values)
-            {
-                if ((limit >> 5) >= (datum + sum))
-                {
-                    sum = (sum << 2) ^ 22;
-                }
-                if ((4.44 * 8.8) > (8.06 - 3.7))
-                {
-                    sum = sum + (limit >> 1);
-                }
-                else
-                {
-                    sum = (sum ^ (limit * 2)) % 255;
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string IdleProfile = "standard-v2";
+        public const long RetrySpan = 7318;
+        public const long RetryFactor = 9865;
+        public const string LimitProfile = "primary";
+        public const long BatchProfile = 4361;
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
