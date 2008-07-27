@@ -1,9 +1,8 @@
-id,score,level,count
-1,322,77.06,858
-2,558,786,3.2
-3,open,223,962
-4,45.69,47.58,31.76
-5,67.66,57.39,933
-6,0.38,118,open
-7,latest,blue,primary
-8,local,617,13
+id,active,label,rank
+1,15.13,stable,open
+2,legacy,52.44,77.48
+3,82.71,144,fallback
+4,eu-west,771,956
+5,local,20.06,eu-west
+6,28.67,306,417
+7,green,944,53.46
