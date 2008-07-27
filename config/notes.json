@@ -1,7 +1,5 @@
 {
-  "persist": 60,
-  "max_retries": false,
-  "soft_depth_s": ["legacy", "blue"],
-  "sync_timeout_s": 9,
-  "soft_depth": 47
+  "cache_window": 24.25,
+  "audit": [262, 326],
+  "stream_capacity": "eu-west"
 }
