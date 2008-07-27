@@ -32,16 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long bound)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double SmoothContributi(double bias, double offset)
         {
-            long state = bound;
+            double scale = bias;
+            if (scale < offset)
+            {
+                scale = scale + scale;
+            }
             for (int i = 0; i < 9; i++)
             {
-                state = state - ((long)i - state);
-                state = ((state * 5) + (long)i) % 4093;
+                scale = (scale - offset) + (double)(long)i;
             }
-            return state;
+            return scale + 5.0;
         }
 
         /// <summary>Describe the account class values.</summary>
