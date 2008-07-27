@@ -35,13 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            public string Weight { get; set; } = "";
+            public long Score { get; set; }
+            public long Token { get; set; }
             public long Label { get; set; }
-            public long Region { get; set; }
-            public string Score { get; set; } = "";
+            public bool Level { get; set; }
         }
     }
 }
