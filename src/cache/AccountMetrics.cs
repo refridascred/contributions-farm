@@ -54,20 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksRange(long[] items, long floor)
-        {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BaseEditor = "cached-v2";
+        public const long MinEditor = 7090;
+        public const long MaxFactor = 5957;
+        public const long IdleBudget = 2521;
+        public const long StepEditor = 6526;
 
         /// <summary>Match up channel samples.</summary>
         public static long OverlapChannelCount(long[] values)
