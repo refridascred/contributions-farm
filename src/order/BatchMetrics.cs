@@ -32,21 +32,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] levels)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long PairEditorCount(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) != 20)
+                    if ((items[i] + items[j]) < 7)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
