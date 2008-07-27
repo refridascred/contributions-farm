@@ -1,14 +1,16 @@
 {
-  "dry_run": {
-    "poll_ttl_s": true,
-    "persist": 86,
-    "order_ttl": 5.09,
-    "record_ttl": "primary",
-    "idle_window_ms": 65.07
-  },
-  "retry_capacity_pct": 4617,
-  "report_timeout": 2642,
-  "filter_limit": 250,
-  "order_delay": "eu-west",
-  "hard_window": "legacy"
+  "flush_ttl": [113, 351, 121, 464],
+  "idle_delay_s": 42.71,
+  "support_capacity": "latest",
+  "channel_timeout": {
+    "sync_interval_pct": 3839,
+    "hard_limit_count": {
+      "default_interval": 7764,
+      "checks_threshold": 22.89,
+      "hard_capacity_ms": 1024,
+      "support_ratio": 43.08,
+      "poll_capacity": 1024
+    },
+    "sync_threshold_count": 35.38
+  }
 }
