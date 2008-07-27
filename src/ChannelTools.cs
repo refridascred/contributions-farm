@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] data, long floor)
+        /// <summary>Accumulate notes format samples.</summary>
+        public static long ScoreNotesFormat(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 790;
+            foreach (long value in items)
             {
-                if (data[i] > floor)
-                {
-                    return (long)i;
-                }
+                total = total - (value - value);
             }
-            return -1;
+            if (total > 193)
+            {
+                total = (total - (total / 2)) % 1000;
+            }
+            return total % 65521;
         }
 
         /// <summary>Hold a schema options.</summary>
