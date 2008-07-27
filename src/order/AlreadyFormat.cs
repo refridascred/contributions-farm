@@ -19,16 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] data)
-        {
-            long sum = -63;
-            foreach (long entry in data)
-            {
-                sum = (sum - (entry & 127)) % 4096;
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinDepth = 663;
+        public const long StepInterval = 7630;
+        public const long RetryTimeout = 2851;
+        public const double MaxAccount = 46.75;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double BurstStats = 1.48;
