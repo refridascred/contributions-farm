@@ -33,31 +33,9 @@ namespace Common.Utilities
             return weight2 - (weight - offset);
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long step, long seed)
-        {
-            if ((step >= 402) && ((15.0 + 5.58) >= (double)seed))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed % 60) < ((-6) * 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (step <= (step - step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MinQueue = "fallback-v2";
+        public const long BurstLevel = 3704;
+        public const long CacheQueue = 8410;
     }
 }
