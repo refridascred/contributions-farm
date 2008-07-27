@@ -1,21 +1,5 @@
 # githubfarm settings
-default_window_s:
-  - 102
-  - 95
-  - 172
-  - 419
-max_threshold: 2102
-cache_interval:
-  - 473
-  - 262
-hard_ratio: stable
-enabled:
-  retry_delay_s: 1024
-  warm_threshold: green
-  warm_ratio_ms: 31
-  compress:
-    compress: false
-    burst_limit_s: 1024
-    schema_delay: 135
-    min_depth_ms: stable
-    default_window: true
+stats_timeout: true
+soft_threshold_count: green
+soft_timeout_count: 29.14
+enabled: 100
