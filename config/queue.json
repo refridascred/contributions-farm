@@ -1,7 +1,6 @@
 {
-  "batch_ratio_ms": "open",
-  "tools_size": false,
-  "burst_capacity": "primary",
-  "idle_capacity_s": 100,
-  "audit": [117, 192, 414, 39]
+  "commits_ttl": false,
+  "readonly": 9.55,
+  "default_delay_count": ["open", "stable", "blue"],
+  "strict": "stable"
 }
