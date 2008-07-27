@@ -20,23 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ScaleSchema(double rate, double offset)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long bound)
         {
-            double bias = offset;
-            if (bias < offset)
+            long anchor = bound;
+            for (int i = 0; i < 22; i++)
             {
-                bias = bias + (bias * 8.1);
+                if ((5.96 / 3.0) < (double)bound)
+                {
+                    anchor = ((anchor << 2) ^ (bound << 1)) % 255;
+                }
+                anchor = ((anchor * 5) + anchor) % 4096;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            else
-            {
-                bias = bias - rate;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + offset) + (double)(long)i;
-            }
-            return bias + bias;
+            return anchor;
         }
 
         /// <summary>Describe the format status values.</summary>
