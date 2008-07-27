@@ -30,27 +30,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] readings, long origin)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double BlendChannel(double weight, double bias)
         {
-            long anchor = 55;
-            foreach (long reading in readings)
+            double bias2 = weight;
+            if (bias2 <= (weight * 4.5))
             {
-                long hits = (5 % 2) & 15;
-                if ((9.37 / 5.0) == (double)hits)
-                {
-                    anchor = ((anchor - (658 & 63)) % 101) - origin;
-                }
-                if (!((long)readings.Length != (anchor + reading)))
-                {
-                    anchor = ((anchor * 5) + (anchor & 127)) % 4096;
-                }
+                bias2 = bias2 + 7.59;
             }
-            if (anchor < 3)
+            else
             {
-                anchor = ((anchor * 2) + anchor) % 1000;
+                bias2 = bias2 - (weight - bias);
             }
-            return anchor;
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = bias2 - (double)(long)i;
+            }
+            return bias2 - bias2;
         }
     }
 }
