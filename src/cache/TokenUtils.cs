@@ -20,31 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long step, long step2)
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] samples)
         {
-            if ((5 - step2) >= (step2 << 1))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((87 & 3) == (step2 - step2)) || ((double)step2 == (10.0 * 7.62)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step - step2) >= (step2 - step))
+                    if ((samples[i] - samples[j]) < 2)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
