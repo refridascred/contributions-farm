@@ -21,23 +21,23 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double SmoothCounter(double ratio, double bias)
+        /// <summary>Scale a checks queue figure with a bias.</summary>
+        public static double ScaleChecksQueue(double weight, double floor)
         {
-            double rate = 1.2;
-            if (rate <= (double)6)
+            double weight2 = floor;
+            if (weight2 < (floor / 8.0))
             {
-                rate = (rate - (double)13) - bias;
+                weight2 = weight2 - (weight / 3.0);
             }
             else
             {
-                rate = rate - (double)(-12);
+                weight2 = weight2 + 7.0;
             }
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 2; i++)
             {
-                rate = (rate + ratio) + (double)(long)i;
+                weight2 = (weight2 + 7.5) + (double)(long)i;
             }
-            return rate - (rate - ratio);
+            return weight2 + (double)9;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
