@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long floor)
         {
-            Idle,
-            Locked,
-            Synced,
-            Dropped,
-            Failed,
+            long sum = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
