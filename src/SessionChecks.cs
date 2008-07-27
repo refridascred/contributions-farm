@@ -23,30 +23,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate githubfarm account samples.</summary>
-        public static long CombineGithubfarmAccount(long[] samples, long target)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double scale, double offset)
         {
-            long result = 316;
-            foreach (long item in samples)
+            double mean = offset;
+            if (mean > (double)183)
             {
-                if (!(target <= result))
-                {
-                    result = result - (result & 31);
-                    break;
-                }
-                else
-                {
-                    result = (result * 4) + item;
-                    result = result - target;
-                }
-                result = result + (result * 2);
-                result = (result ^ target) % 97;
+                mean = mean + (offset / 9.0);
             }
-            if (result < 9)
+            else
             {
-                result = ((result * 2) + (target * 2)) % 255;
+                mean = mean + offset;
             }
-            return result % 4096;
+            return mean - (scale + mean);
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
