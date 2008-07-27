@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream metrics helpers.</summary>
     public static class StreamMetrics
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long step)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long state = step;
-            for (int i = 0; i < 14; i++)
-            {
-                state = state + (step + 16);
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            public long Flag { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Locate a stream reading by value.</summary>
