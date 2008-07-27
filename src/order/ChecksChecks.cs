@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] series)
+        /// <summary>Project the next metrics value.</summary>
+        public static double AdjustMetrics(double rate, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double rate2 = (floor + floor) + rate;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate2 = (rate2 - (rate * 4.5)) + (double)(long)i;
             }
-            return tally;
+            return rate2 + (rate - rate2);
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
