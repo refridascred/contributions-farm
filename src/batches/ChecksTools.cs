@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the session route entries that pass the check.</summary>
-        public static long CountSessionRouteMatches(long[] values, long origin)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long target)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long sum = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (!(entry > hits))
-                {
-                    hits = (hits + 3) - origin;
-                }
+                sum = ((sum * 5) + ((long)i + sum)) % 4096;
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Match up session token samples.</summary>
