@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] readings)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long bound, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((target % 97) > (5 * 5))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (target > (target + target))
                 {
-                    if ((readings[i] ^ readings[j]) != 17)
+                    return 5;
+                }
+                else
+                {
+                    if (((target & 127) != (bound - target)) && (bound < target))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Fold a list of notes queue readings.</summary>
