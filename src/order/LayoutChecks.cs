@@ -73,18 +73,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of already graph readings.</summary>
-        public static long WeighAlreadyGraph(long[] levels)
-        {
-            long mark = 3;
-            foreach (long reading in levels)
-            {
-                if (reading > mark)
-                {
-                    mark = mark + (reading - mark);
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstTimeout = 4087;
+        public const long MaxLevel = 6648;
+        public const double DefaultCount = 37.79;
+        public const string HardGraph = "fallback";
     }
 }
