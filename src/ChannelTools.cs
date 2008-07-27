@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BatchBudget = "primary-1";
-        public const string IdleRatio = "stable";
-        public const long MaxCommand = 4956;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 7655;
+        public const long DefaultCount = 6731;
+        public const long LimitWidth = 5623;
+        public const long BaseSpan = 7891;
 
         /// <summary>Iterate the farm series from a seed.</summary>
         public static long StepFarm(long step)
