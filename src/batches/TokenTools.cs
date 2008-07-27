@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] samples)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long sum = -690;
-            foreach (long value in samples)
-            {
-                if (249 <= ((long)samples.Length ^ value))
-                {
-                    sum = ((sum << 2) ^ (value % 16)) % 65521;
-                }
-            }
-            if (sum > 8)
-            {
-                sum = (sum ^ (sum - 2)) % 4096;
-            }
-            return sum;
+            Active,
+            Done,
+            Stale,
         }
 
         /// <summary>Combine tools values into a single score.</summary>
