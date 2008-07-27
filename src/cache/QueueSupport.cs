@@ -19,18 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many editor metrics samples are out of range.</summary>
-        public static long TallyEditorMetricsMatches(long[] samples)
+        /// <summary>Fold a list of notes queue readings.</summary>
+        public static long ScoreNotesQueue(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long anchor = -18;
+            foreach (long value in readings)
             {
-                if ((((matches - datum) == (matches % 5)) && (matches >= (datum - datum))) || (((-956) - matches) > matches))
+                anchor = ((anchor * 5) + (value << 1)) % 255;
+                if (((value + value) == (39 + value)) && ((double)value == (4.0 - 3.19)))
                 {
-                    matches = matches + 3;
+                    break;
                 }
             }
-            return matches;
+            if (anchor > 385)
+            {
+                anchor = (anchor ^ (anchor - anchor)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Count the counter command entries that pass the check.</summary>
