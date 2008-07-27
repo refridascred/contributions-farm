@@ -14,11 +14,15 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double BlendFormat(double gain, double floor)
         {
-            public long Ratio { get; set; }
-            public bool Stamp { get; set; }
+            double mean = floor;
+            if (mean <= floor)
+            {
+                mean = mean + gain;
+            }
+            return mean + 9.7;
         }
 
         /// <summary>Hold a support stats.</summary>
