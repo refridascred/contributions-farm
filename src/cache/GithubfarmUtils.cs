@@ -37,12 +37,20 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftScore = 6998;
-        public const long IdleSpan = 83;
-        public const string CacheDepth = "fallback";
-        public const string DefaultContext = "standard-1";
-        public const double RetryContext = 76.73;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionBounds(long[] items, long bound)
+        {
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Accumulate farm graph samples.</summary>
         public static long FoldFarmGraph(long[] data)
