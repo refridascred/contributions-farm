@@ -48,18 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of contributi schema entries.</summary>
-        public static long TotalContributiSchema(long[] series, long origin)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ProjectCluster(double gain, double span)
         {
-            long carry = 205;
-            foreach (long entry in series)
+            double load = span;
+            if (load < (gain * 15.0))
             {
-                if (((double)origin > (double)122) || (origin <= (2 << 3)))
-                {
-                    carry = ((carry ^ (7 - 8)) % 255) ^ entry;
-                }
+                load = load - (17.0 - span);
             }
-            return carry % 1000;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (double)736) + (double)(long)i;
+            }
+            return load - (double)9;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
