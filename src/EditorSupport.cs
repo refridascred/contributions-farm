@@ -40,15 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double BlendChecks(double weight, double span)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] levels, long limit)
         {
-            double rate = span;
-            if (rate < 7.3)
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = (rate - (span + 1.9)) + weight;
+                if ((levels[i] <= limit) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate + span;
+            return -1;
         }
 
         /// <summary>Combine payload cluster values into a single score.</summary>
