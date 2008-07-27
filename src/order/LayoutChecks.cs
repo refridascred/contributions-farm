@@ -67,39 +67,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long floor, long bound)
+        /// <summary>Fold a list of already graph readings.</summary>
+        public static long WeighAlreadyGraph(long[] levels)
         {
-            long edge = floor - bound;
-            if ((7.7 - 15.0) > (double)bound)
+            long mark = 3;
+            foreach (long reading in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((edge - bound) >= edge)
+                if (reading > mark)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((floor / 3) != (bound + floor)) && ((edge & 63) == (floor - floor)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor < (edge ^ floor)) && ((double)edge > 8.8))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    mark = mark + (reading - mark);
                 }
             }
+            return mark;
         }
     }
 }
