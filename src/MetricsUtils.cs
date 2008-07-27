@@ -67,15 +67,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] values)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long mark = 2;
-            foreach (long reading in values)
-            {
-                mark = ((mark * 5) + (reading << 3)) % 65521;
-            }
-            return mark;
+            Ready,
+            Active,
+            Synced,
+            Queued,
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
