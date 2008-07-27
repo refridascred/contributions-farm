@@ -81,10 +81,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstTimeout = 4087;
-        public const long MaxLevel = 6648;
-        public const double DefaultCount = 37.79;
-        public const string HardGraph = "fallback";
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
+        {
+            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Mode { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
