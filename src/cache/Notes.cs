@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long target, long origin)
+        /// <summary>Measure how many stats metric samples are out of range.</summary>
+        public static long AuditStatsMetricGaps(long[] samples, long target)
         {
-            if (((target - target) < (92 ^ target)) && ((double)origin == (double)76))
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target + target) != (origin + 791))
+                if (!((hits ^ reading) == (target + target)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((target >> 4) >= (target + target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin - target) >= (target % 12))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a route stats.</summary>
