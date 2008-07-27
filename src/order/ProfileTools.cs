@@ -42,15 +42,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double rate, double bias)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            double weight = (double)68 / 8.0;
-            if (weight >= (double)45)
-            {
-                weight = (weight - (bias + 16.0)) - rate;
-            }
-            return weight - weight;
+            public string Ratio { get; set; } = "";
+            public string Level { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Blend two support measurements.</summary>
