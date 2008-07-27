@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] levels, long seed)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphHits(long[] items)
         {
-            long total = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                total = ((total * 4) + (item >> 4)) + seed;
+                if ((entry + 6) == (entry & 127))
+                {
+                    hits = hits + 1;
+                }
             }
-            if (total < 602)
-            {
-                total = total ^ total;
-            }
-            return total % 4096;
+            return hits;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
