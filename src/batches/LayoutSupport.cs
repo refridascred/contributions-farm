@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] levels)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsLimits(long[] data, long target)
         {
-            long score = 9;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if ((score >= (entry / 8)) && (((long)levels.Length + score) <= (entry / 9)))
+                if (entry < target)
                 {
-                    score = score - score;
+                    valid = false;
+                    break;
                 }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
