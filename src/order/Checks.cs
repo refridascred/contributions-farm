@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaMatches(long[] series)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((7.8 * 9.0) < (8.3 + 12.0))
-                {
-                    count = (count + 2) - entry;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public bool Region { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
