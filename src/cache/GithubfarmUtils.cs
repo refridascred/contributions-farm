@@ -35,22 +35,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Combine account already values into a single score.</summary>
-        public static long CombineAccountAlready(long[] items, long origin)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long mark = 51;
-            foreach (long entry in items)
-            {
-                if (!(mark < (entry ^ mark)))
-                {
-                    mark = mark - (mark ^ origin);
-                }
-                else
-                {
-                    mark = (mark * 5) + (mark ^ 36);
-                }
-            }
-            return mark;
+            Stale,
+            New,
+            Failed,
+            Ready,
         }
     }
 }
