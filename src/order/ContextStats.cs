@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string HardQueue = "open";
-        public const long CacheQueue = 5355;
-        public const string SoftSpan = "legacy-edge";
-        public const long HardScore = 4183;
+        /// <summary>Roll a metric metrics counter forward.</summary>
+        public static long SeriesMetricMetrics(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = (anchor - (anchor << 3)) % 1000;
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the profile phase values.</summary>
         public enum ProfilePhase
