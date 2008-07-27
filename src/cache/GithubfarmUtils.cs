@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] values, long step)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] items, long target)
         {
-            long mark = 82;
-            foreach (long entry in values)
+            long state = 45;
+            foreach (long item in items)
             {
-                if ((9.37 * 9.9) != (double)step)
+                if ((88 + state) <= (item * 3))
                 {
-                    mark = (mark + (mark + mark)) - entry;
-                }
-                else
-                {
-                    mark = ((mark * 2) + ((-82) + mark)) % 97;
+                    state = (state ^ (target + item)) % 97;
                 }
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Match up buffer support samples.</summary>
