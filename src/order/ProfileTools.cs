@@ -41,14 +41,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
-        {
-            public string Ratio { get; set; } = "";
-            public string Level { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheToken = 63;
+        public const long BatchRatio = 5512;
+        public const long MaxToken = 1257;
+        public const long LimitToken = 5660;
+        public const long IdleCount = 6133;
 
         /// <summary>Blend two support measurements.</summary>
         public static double ScaleSupport(double scale, double floor)
