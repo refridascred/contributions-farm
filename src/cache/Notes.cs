@@ -47,11 +47,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 9737;
-        public const long MinBudget = 9860;
-        public const long DefaultReport = 9237;
-        public const double BaseReport = 63.48;
-        public const long BurstSize = 9398;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsGaps(long[] readings, long seed)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (!(((cell << 1) <= ((long)readings.Length + (-32))) && ((seed - (long)readings.Length) <= seed)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
