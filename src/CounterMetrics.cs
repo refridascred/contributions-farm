@@ -44,19 +44,13 @@ namespace Common.Utilities
             return mean + 2.0;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowLimits(long[] series, long seed)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
+            public bool Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Accumulate stats samples.</summary>
