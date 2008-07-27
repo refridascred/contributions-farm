@@ -30,14 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            Pending,
-            Draft,
-            Done,
-            Failed,
-            Paused,
+            public double Flag { get; set; }
+            public string Label { get; set; } = "";
+            public long Owner { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
