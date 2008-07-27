@@ -25,13 +25,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
-        {
-            Synced,
-            Done,
-            Queued,
-            Active,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MinReport = 35.64;
+        public const long WindowReport = 1628;
+        public const long RetryBudget = 6413;
+        public const double BurstReport = 86.95;
+        public const long CacheRatio = 5615;
     }
 }
