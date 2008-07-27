@@ -74,18 +74,25 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterGaps(long[] series, long floor)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long floor, long seed)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long bound = floor - seed;
+            if ((bound ^ floor) >= (floor >> 3))
             {
-                if (!((3 + matches) < (matches - entry)) || ((((long)series.Length >> 3) == (entry + entry)) || ((matches - floor) != (entry + floor))))
+                return 4;
+            }
+            else
+            {
+                if (((floor ^ bound) <= (seed + seed)) && (floor > (seed + seed)))
                 {
-                    matches = matches + 1;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
     }
 }
