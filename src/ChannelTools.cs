@@ -25,15 +25,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of record entry readings.</summary>
-        public static long TotalRecordEntry(long[] readings)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueOutliers(long[] data)
         {
-            long score = 82;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                score = (score - (reading << 2)) % 4096;
+                if ((reading + tally) > tally)
+                {
+                    tally = tally + 3;
+                }
             }
-            return score % 97;
+            return tally;
         }
     }
 }
