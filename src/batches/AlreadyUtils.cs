@@ -87,10 +87,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 5388;
-        public const long DefaultBatches = 5534;
-        public const long MinBatches = 1361;
-        public const long SoftBatches = 4574;
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
