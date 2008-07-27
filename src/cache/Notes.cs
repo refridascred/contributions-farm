@@ -10,18 +10,22 @@ namespace Common.Utilities
         public const long HardCommand = 9417;
         public const double BatchDepth = 92.51;
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] data, long floor)
+        /// <summary>Fold a list of commits cache readings.</summary>
+        public static long CombineCommitsCache(long[] levels, long offset)
         {
-            long mix = 655;
-            foreach (long datum in data)
+            long score = 76;
+            foreach (long sample in levels)
             {
-                if ((datum - 1) == (datum - floor))
+                if ((734 + offset) < ((-16) - score))
                 {
-                    mix = (mix << 2) ^ (343 + floor);
+                    score = ((score << 3) ^ (score + score)) % 65521;
+                }
+                else
+                {
+                    score = ((score * 3) + (445 - sample)) % 1000;
                 }
             }
-            return mix;
+            return score % 97;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
