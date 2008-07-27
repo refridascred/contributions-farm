@@ -1,5 +1,10 @@
 {
-  "default_interval_ms": 100,
-  "audit": "primary",
-  "metrics_retries": "primary"
+  "default_retries_count": "eu-west",
+  "sync_ratio": {
+    "strict": 1024,
+    "retry_size_ms": 6465,
+    "base_limit": [400, 374],
+    "burst_size_s": [401, 61, 434]
+  },
+  "githubfarm_delay": 912
 }
