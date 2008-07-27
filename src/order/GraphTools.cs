@@ -46,12 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MinRatio = 18.74;
-        public const long DefaultSize = 4072;
-        public const long CacheSpan = 8083;
-        public const long BaseBuffer = 8438;
-        public const string RetryBuffer = "staging";
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] values)
+        {
+            long total = 9;
+            foreach (long sample in values)
+            {
+                if (((double)490 > (double)(long)values.Length) && ((2.0 * 9.0) != (double)sample))
+                {
+                    total = (total ^ (total & 7)) % 101;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Locate a counter context reading by value.</summary>
         public static long LookupCounterContextIndex(long[] items, long seed)
