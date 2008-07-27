@@ -48,11 +48,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            public bool Level { get; set; }
-            public string Weight { get; set; } = "";
+            Retry,
+            Failed,
+            Closed,
+            Active,
         }
 
         /// <summary>Measure how many cache support samples are out of range.</summary>
