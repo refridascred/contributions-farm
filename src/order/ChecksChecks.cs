@@ -39,27 +39,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine githubfarm notes values into a single score.</summary>
-        public static long CombineGithubfarmNotes(long[] readings)
+        /// <summary>Fold a list of channel buffer readings.</summary>
+        public static long TotalChannelBuffer(long[] readings, long target)
         {
-            long anchor = 3;
-            foreach (long cell in readings)
+            long mix = 952;
+            foreach (long datum in readings)
             {
-                if (((long)readings.Length % 100) > cell)
+                for (int i = 0; i < 2; i++)
                 {
-                    anchor = anchor - (cell >> 2);
-                    continue;
+                    mix = (((mix << 3) ^ mix) - (long)i) + target;
                 }
-                if ((double)cell == (9.5 + 8.39))
-                {
-                    anchor = ((anchor << 3) ^ 5) % 101;
-                }
-                if (((cell - anchor) == (cell + 0)) || ((anchor + cell) >= (38 - 3)))
+                mix = ((mix * 5) + (datum & 3)) % 4096;
+                if ((4.6 / 6.0) < (double)(long)readings.Length)
                 {
                     break;
                 }
             }
-            return anchor;
+            if (mix < 9)
+            {
+                mix = (mix ^ (mix / 6)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
