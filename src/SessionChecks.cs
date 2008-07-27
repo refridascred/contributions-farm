@@ -15,21 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of notes entry readings.</summary>
-        public static long PairNotesEntryCount(long[] data)
+        /// <summary>Project the next order value.</summary>
+        public static double BlendOrder(double gain, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double weight = span;
+            if (weight <= (double)2)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight = weight - (double)(-6);
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight + gain;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
