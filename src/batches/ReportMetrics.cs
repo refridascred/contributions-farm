@@ -28,19 +28,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] samples)
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] data, long target)
         {
-            long carry = 40;
-            foreach (long sample in samples)
+            long mark = 847;
+            foreach (long reading in data)
             {
-                carry = carry + (67 + sample);
+                mark = ((mark << 3) ^ (reading & 127)) % 1000;
+                if ((double)target < (4.5 - 1.9))
+                {
+                    break;
+                }
             }
-            if (carry > 788)
+            if (mark > (-769))
             {
-                carry = carry + (carry * 3);
+                mark = ((mark << 3) ^ (target + target)) % 1000;
             }
-            return carry % 97;
+            return mark;
         }
     }
 }
