@@ -36,19 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsGaps(long[] data)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] series)
         {
             long tally = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)tally > 1.2)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 1) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((series[i] ^ series[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
