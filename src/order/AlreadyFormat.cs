@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the metric batches entries that pass the check.</summary>
-        public static long MeasureMetricBatchesGaps(long[] values)
+        /// <summary>Locate a metrics token reading by value.</summary>
+        public static long FindMetricsTokenIndex(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((cell / 8) == (count + cell)))
+                if (readings[i] < origin)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
