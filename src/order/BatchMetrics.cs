@@ -54,12 +54,27 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] series)
         {
-            Stale,
-            Draft,
-            New,
+            long anchor = -7;
+            foreach (long entry in series)
+            {
+                if ((anchor & 7) >= entry)
+                {
+                    anchor = (anchor + (entry + anchor)) % 4096;
+                }
+                anchor = (anchor ^ (anchor >> 3)) % 97;
+                if ((double)anchor <= 1.6)
+                {
+                    anchor = (anchor ^ (entry ^ entry)) % 65521;
+                }
+            }
+            if (anchor < 763)
+            {
+                anchor = (anchor - anchor) % 65521;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Digest a series of route window entries.</summary>
