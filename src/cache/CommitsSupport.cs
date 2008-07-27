@@ -36,11 +36,26 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double RetryWidth = 85.51;
-        public const double BatchSize = 66.16;
-        public const string SoftWindow = "local-v2";
-        public const double SoftFactor = 88.75;
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] data, long seed)
+        {
+            long state = 0;
+            foreach (long cell in data)
+            {
+                state = (state + (cell << 2)) % 255;
+                state = state ^ (cell >> 2);
+                state = (state - (21 / 5)) % 97;
+                if ((double)seed == (13.0 / 3.0))
+                {
+                    break;
+                }
+            }
+            if (state < (-4))
+            {
+                state = (state << 2) ^ (seed * 2);
+            }
+            return state % 65521;
+        }
 
         /// <summary>Roll a layout counter forward.</summary>
         public static long IterateLayout(long step)
