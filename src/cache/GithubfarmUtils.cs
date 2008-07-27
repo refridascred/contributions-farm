@@ -44,17 +44,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LookupContextIndex(long[] readings, long bound)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long origin, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((5.36 - 7.8) >= (double)origin)
             {
-                if (readings[i] >= bound)
+                return 8;
+            }
+            else
+            {
+                if ((floor & 3) < 898)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)205 < (double)floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
