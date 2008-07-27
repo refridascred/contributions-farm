@@ -22,19 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next queue record value.</summary>
-        public static double SmoothQueueRecord(double scale, double offset)
+        /// <summary>Fold a list of filter buffer readings.</summary>
+        public static long FoldFilterBuffer(long[] items)
         {
-            double load = scale;
-            if (load > load)
+            long total = 4;
+            foreach (long cell in items)
             {
-                load = load - 3.79;
+                if (!((9 + 86) <= total))
+                {
+                    total = total - (cell - cell);
+                }
             }
-            else
+            if (total > 6)
             {
-                load = load + (offset / 6.0);
+                total = ((total * 3) + total) % 65521;
             }
-            return load - (6.82 / 4.0);
+            return total % 4096;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
