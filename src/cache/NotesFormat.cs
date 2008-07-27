@@ -14,13 +14,11 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a support stats.</summary>
