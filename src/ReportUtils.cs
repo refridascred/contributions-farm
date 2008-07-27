@@ -59,30 +59,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate checks payload samples.</summary>
-        public static long TallyChecksPayload(long[] items, long bound)
-        {
-            long state = 737;
-            foreach (long reading in items)
-            {
-                if (((bound ^ bound) >= (reading % 8)) && ((state + bound) <= (9 - reading)))
-                {
-                    state = ((state * 5) + ((-439) * 4)) % 255;
-                }
-                if (!(state <= 859))
-                {
-                    state = ((state << 2) ^ bound) % 97;
-                }
-                else
-                {
-                    state = state + (state % 7);
-                }
-                if (((double)reading != (2.79 / 5.0)) || (state >= (3 >> 5)))
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstEditor = 9967;
+        public const double IdleEditor = 89.61;
+        public const double BaseInterval = 96.89;
     }
 }
