@@ -54,14 +54,21 @@ namespace Common.Utilities
         public const string StepLayout = "cached-1";
         public const long MaxInterval = 3314;
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] values)
         {
-            Ready,
-            Paused,
-            Done,
-            Locked,
-            Active,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
