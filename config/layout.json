@@ -1,5 +1,5 @@
 {
-  "window_ttl": 500,
-  "stats_retries": [324, 21, 362],
-  "queue_ttl": 65.26
+  "context_threshold": "local",
+  "command_window": 71,
+  "metrics_ttl": 100
 }
