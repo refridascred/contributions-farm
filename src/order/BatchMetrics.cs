@@ -39,17 +39,19 @@ namespace Common.Utilities
         public const double SoftSize = 35.14;
         public const string LimitFilter = "latest";
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] samples, long floor)
+        /// <summary>Validate metric commits readings against a bound.</summary>
+        public static bool CheckMetricCommitsRange(long[] samples, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if ((samples[i] >= floor) && ((samples[i] % 5) != 0))
+                if (entry >= limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Describe the already level values.</summary>
