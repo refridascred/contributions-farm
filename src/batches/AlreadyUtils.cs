@@ -61,15 +61,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a cluster filter reading.</summary>
-        public static double SmoothClusterFilter(double weight, double bias)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long target)
         {
-            double ratio = 13.0;
-            if (ratio < weight)
+            long mark = target;
+            for (int i = 0; i < 6; i++)
             {
-                ratio = (ratio + ratio) - bias;
+                if (((long)i > (20 + mark)) || ((double)target == (double)mark))
+                {
+                    mark = (mark + (long)i) % 101;
+                }
+                mark = mark + (mark - target);
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return ratio + (ratio * 7.0);
+            return mark;
         }
     }
 }
