@@ -13,19 +13,38 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsLimits(long[] series, long seed)
+        /// <summary>Grade a schema checks value against two limits.</summary>
+        public static long ClassifySchemaChecks(long floor, long origin)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            if ((79 > floor) && ((floor + origin) < (origin - floor)))
             {
-                if (reading <= seed)
+                return 0;
+            }
+            else
+            {
+                if ((floor ^ floor) <= floor)
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((origin <= (origin << 3)) || ((double)910 <= (double)floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor + origin) <= floor)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Fold a list of session readings.</summary>
