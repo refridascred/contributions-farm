@@ -1,8 +1,7 @@
-id,owner,ratio,weight,level
-1,staging,staging,85.31,126
-2,522,96.29,blue,strict
-3,353,192,edge,784
-4,cached,10,67.85,162
-5,latest,eu-west,stable,73.52
-6,legacy,primary,3.83,strict
-7,228,86.55,standard,staging
+id,count,owner,ratio
+1,703,49.98,62.16
+2,40.09,fallback,local
+3,59.28,29,52.26
+4,eu-west,217,local
+5,463,59.32,latest
+6,53.68,eu-west,704
