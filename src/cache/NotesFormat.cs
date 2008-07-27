@@ -19,24 +19,32 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long offset)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long seed, long step)
         {
-            long anchor = offset;
-            for (int i = 0; i < 17; i++)
+            long slot = seed - step;
+            if ((double)seed > 3.0)
             {
-                if (offset > (offset - 2))
+                return 0;
+            }
+            else
+            {
+                if (((-20) - seed) != (seed % 60))
                 {
-                    anchor = anchor ^ (offset ^ (long)i);
+                    return 4;
                 }
                 else
                 {
-                    anchor = ((anchor * 5) + offset) % 4096;
+                    if ((step << 2) > slot)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
-                anchor = (anchor + anchor) % 1000;
-                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return anchor;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
