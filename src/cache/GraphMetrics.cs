@@ -40,21 +40,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] levels)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long target, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (!((target >> 5) < step))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((6 + target) <= (step - step))
                 {
-                    if ((levels[i] - levels[j]) == 19)
+                    return 6;
+                }
+                else
+                {
+                    if (!((target ^ step) == (step << 1)))
                     {
-                        hits = hits + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit graph token readings against a rule.</summary>
