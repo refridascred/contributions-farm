@@ -1,12 +1,6 @@
 # entry settings
-warm_ratio:
-  min_ttl: 1024
-  flush_delay: staging
-  retry_delay_pct: true
-  contributi_window: edge
-  soft_delay_count: latest
-report_capacity: staging
-order_retries: stable
-metric_timeout: 2600
-context_ttl: 29
-min_capacity_ms: true
+order_ratio: cached
+audit: 21.88
+max_limit_count: 35.56
+default_delay_pct: stable
+hard_window_ms: latest
