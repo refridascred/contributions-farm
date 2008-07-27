@@ -36,30 +36,18 @@ namespace Common.Utilities
         public const long CacheEditor = 383;
         public const double RetryEditor = 30.09;
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] data)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionHits(long[] items)
         {
-            long mix = 6;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if ((77 / 6) >= mix)
+                if ((double)count != (9.0 + 0.48))
                 {
-                    mix = (mix ^ (305 + 43)) % 4096;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ entry;
-                }
-                if ((6.95 * 9.0) == (double)mix)
-                {
-                    break;
+                    count = (count + 3) + reading;
                 }
             }
-            if (mix < 1)
-            {
-                mix = ((mix * 5) + mix) % 65521;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Match up already samples.</summary>
