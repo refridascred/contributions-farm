@@ -32,19 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double SmoothContributi(double bias, double offset)
+        /// <summary>Project the next farm value.</summary>
+        public static double SmoothFarm(double gain, double bias)
         {
-            double scale = bias;
-            if (scale < offset)
+            double drift = (double)52 / 9.0;
+            if (drift <= gain)
             {
-                scale = scale + scale;
+                drift = drift + (double)9;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                scale = (scale - offset) + (double)(long)i;
+                drift = drift - bias;
             }
-            return scale + 5.0;
+            return drift - drift;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
