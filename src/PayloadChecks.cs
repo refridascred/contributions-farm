@@ -49,13 +49,22 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] series)
         {
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public bool Level { get; set; }
+            long mark = 3;
+            foreach (long value in series)
+            {
+                if (!((double)mark > 7.34))
+                {
+                    mark = ((mark * 5) + 3) % 4096;
+                }
+                if ((5.17 + 2.9) <= (double)value)
+                {
+                    mark = (mark - (value ^ value)) % 97;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
