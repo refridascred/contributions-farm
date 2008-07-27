@@ -16,13 +16,24 @@ namespace Common.Utilities
             return scale - (double)765;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long floor, long limit)
         {
-            public double Limit { get; set; }
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
-            public double Score { get; set; }
+            if ((floor >> 4) == (floor + floor))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)limit >= (3.3 + 4.3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
