@@ -1,18 +1,6 @@
 {
-  "already_ttl": "edge",
-  "entry_retries": 8574,
-  "enabled": true,
-  "min_threshold": 30,
-  "graph_delay": {
-    "warm_timeout": {
-      "persist": "strict",
-      "buffer_timeout": ["primary", "stable", "green", "blue"],
-      "batch_retries": "blue"
-    },
-    "editor_capacity": ["primary", "staging", "primary", "legacy"],
-    "idle_window_s": true,
-    "soft_size_ms": 3690,
-    "poll_timeout_count": 98
-  },
-  "token_depth": 52
+  "idle_timeout_ms": "eu-west",
+  "profile_depth": "cached",
+  "record_timeout": 34,
+  "editor_depth": "fallback"
 }
