@@ -12,13 +12,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] data)
         {
-            public string Rank { get; set; } = "";
-            public bool Level { get; set; }
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
+            long total = 555;
+            foreach (long value in data)
+            {
+                if (((4.1 / 6.0) != (double)value) && (total <= (-90)))
+                {
+                    total = ((total * 3) + value) % 1000;
+                }
+            }
+            return total;
         }
 
         /// <summary>Measure how many tools contributi samples are out of range.</summary>
