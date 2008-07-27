@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphHits(long[] items)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long carry = -66;
+            foreach (long datum in data)
             {
-                if ((entry + 6) == (entry & 127))
+                carry = ((carry * 2) + (datum >> 3)) % 4096;
+                if ((double)carry >= (double)datum)
                 {
-                    hits = hits + 1;
+                    carry = ((carry * 2) + 658) % 1000;
+                }
+                else
+                {
+                    carry = carry + ((-80) % 64);
+                }
+                if ((datum ^ carry) > (datum - carry))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (carry > 825)
+            {
+                carry = ((carry * 5) + ((-1) % 16)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
