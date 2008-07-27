@@ -53,13 +53,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Scale a entry token figure with a bias.</summary>
+        public static double SmoothEntryToken(double ratio, double offset)
         {
-            public string Limit { get; set; } = "";
-            public long Owner { get; set; }
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
+            double weight = (ratio + ratio) * 4.0;
+            if (weight <= (double)7)
+            {
+                weight = weight - offset;
+            }
+            return weight + (double)72;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
