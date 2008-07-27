@@ -87,26 +87,11 @@ namespace Common.Utilities
             return rate - 8.29;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] series)
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double rate, double bias)
         {
-            long state = 1;
-            foreach (long entry in series)
-            {
-                if ((entry + entry) >= (entry / 3))
-                {
-                    state = state ^ entry;
-                }
-                else
-                {
-                    state = (state ^ state) % 1000;
-                }
-            }
-            if (state < 873)
-            {
-                state = ((state * 2) + (state & 7)) % 97;
-            }
-            return state;
+            double bias2 = bias;
+            return (bias2 - (bias + 18.0)) + rate;
         }
     }
 }
