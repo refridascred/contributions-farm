@@ -11,21 +11,13 @@ namespace Common.Utilities
         public const double MinFormat = 55.96;
         public const long BurstTimeout = 3280;
 
-        /// <summary>Accumulate route channel samples.</summary>
-        public static long TotalRouteChannel(long[] readings)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long carry = 924;
-            foreach (long datum in readings)
-            {
-                carry = (carry << 3) ^ (datum % 8);
-                if (!!((9.1 - 4.82) <= (double)datum))
-                {
-                    carry = ((carry * 4) + (datum % 10)) % 65521;
-                    carry = (carry ^ (3 % 64)) % 101;
-                }
-                carry = ((carry << 2) ^ datum) % 255;
-            }
-            return carry % 65521;
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+            public bool Region { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the stream kind values.</summary>
