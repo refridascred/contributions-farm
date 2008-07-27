@@ -23,17 +23,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] values, long target)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
