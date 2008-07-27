@@ -19,15 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double ratio, double floor)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            double weight = floor / 5.0;
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - ratio) + (double)(long)i;
-            }
-            return weight - (ratio * 2.9);
+            public long Level { get; set; }
+            public double Total { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the commits status values.</summary>
