@@ -1,7 +1,16 @@
 {
-  "hard_window_count": 91,
-  "metric_threshold": 5440,
-  "hard_limit_pct": "primary",
-  "max_capacity": "local",
-  "batch_size": 5
+  "commits_threshold": {
+    "hard_capacity_pct": "strict",
+    "batch_timeout_s": ["staging", "staging", "staging", "stable"],
+    "batch_delay": {
+      "hard_delay": 7227,
+      "cache_size_ms": 1024,
+      "stats_window": "standard",
+      "sync_limit_ms": 258,
+      "graph_timeout": [102, 110],
+      "cache_capacity_s": true
+    }
+  },
+  "audit": 62.02,
+  "dry_run": "cached"
 }
