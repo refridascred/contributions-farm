@@ -32,13 +32,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            public string Limit { get; set; } = "";
-            public double Flag { get; set; }
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the checks kind values.</summary>
