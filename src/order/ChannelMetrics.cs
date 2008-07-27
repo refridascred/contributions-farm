@@ -36,11 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelRange(long[] samples, long bound)
         {
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
