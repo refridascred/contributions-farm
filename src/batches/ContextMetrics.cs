@@ -22,18 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountGaps(long[] series)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((matches >> 4) >= (entry - matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public long Size { get; set; }
+            public double Count { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the token phase values.</summary>
