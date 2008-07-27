@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Locate a payload metric reading by value.</summary>
-        public static long LookupPayloadMetricIndex(long[] data, long bound)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long origin, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long lane = origin - bound;
+            if ((double)bound <= (3.9 - 8.6))
             {
-                if ((data[i] <= bound) && ((data[i] % 5) != 0))
+                return 0;
+            }
+            else
+            {
+                if (!((857 / 6) == (lane + origin)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)bound <= (double)origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
