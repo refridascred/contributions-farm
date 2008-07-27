@@ -12,21 +12,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] items)
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double gain, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double weight = gain;
+            if (weight < 4.5)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight = weight - (offset + weight);
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight + (20.0 + gain);
         }
 
         /// <summary>Blend two channel measurements.</summary>
