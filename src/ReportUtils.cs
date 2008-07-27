@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadOutliers(long[] readings)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (seen >= (datum ^ 55))
+                if ((((tally << 1) < (item & 255)) && (tally >= (item + item))) && ((9.22 + 6.7) <= (double)(long)levels.Length))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
