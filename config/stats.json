@@ -1,10 +1,11 @@
 {
-  "strict": {
-    "dry_run": 100,
-    "sync_retries_count": 90,
-    "burst_threshold_pct": "open",
-    "base_timeout_s": "legacy"
+  "min_ratio_count": 1024,
+  "stream_ratio": 250,
+  "idle_window_ms": 1.64,
+  "session_window": {
+    "base_threshold_pct": [338, 208],
+    "retry_size_pct": ["legacy", "local", "open", "latest"],
+    "default_delay_s": 500
   },
-  "window_interval": 8825,
-  "hard_capacity_s": false
+  "strict": true
 }
