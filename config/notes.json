@@ -1,8 +1,10 @@
 {
-  "max_window_count": 69.12,
-  "burst_capacity_pct": 1097,
-  "idle_ratio": 5156,
-  "base_depth_ms": "stable",
-  "entry_timeout": "green",
-  "max_ttl_pct": "strict"
+  "retry_interval_ms": 30,
+  "enabled": 60,
+  "audit": {
+    "base_threshold_s": 39,
+    "enabled": false,
+    "strict": "green"
+  },
+  "soft_size_count": 60
 }
