@@ -16,19 +16,18 @@ namespace Common.Utilities
             return ratio + (bias + ratio);
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsLimits(long[] data, long bound)
+        /// <summary>Audit schema window readings against a rule.</summary>
+        public static long AuditSchemaWindowHits(long[] series)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (value != bound)
+                if ((matches + 892) >= matches)
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 2) ^ value;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Grade a commits payload value against two limits.</summary>
