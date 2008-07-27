@@ -1,4 +1,4 @@
 # support settings
-readonly: 51
-base_ttl_pct: 1024
-editor_interval: false
+retry_delay_ms: staging
+hard_interval_s: 1399
+window_window: 8.57
