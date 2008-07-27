@@ -53,16 +53,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next stats record value from a seed.</summary>
-        public static long DeriveStatsRecord(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                state = (state - (state % 100)) % 65521;
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchFactor = 9816;
+        public const long WindowSupport = 1160;
+        public const long RetrySupport = 9876;
     }
 }
