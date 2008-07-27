@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long PairContributiCount(long[] readings)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long PairAccountCount(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) == 12)
+                    if ((values[i] ^ values[j]) > 18)
                     {
-                        seen = seen + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Validate route notes readings against a bound.</summary>
