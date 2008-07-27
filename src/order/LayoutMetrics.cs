@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterMatches(long[] readings, long limit)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmMatches(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((0 ^ (long)readings.Length) > (count / 7))
+                if ((9.85 / 7.0) >= (double)floor)
                 {
-                    count = ((count + 1) + item) - limit;
+                    matches = (matches + 3) ^ sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
