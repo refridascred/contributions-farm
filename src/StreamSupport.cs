@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MaxCount = "legacy-v2";
-        public const string WindowFilter = "latest";
-        public const long MinDepth = 4937;
-        public const long LimitFilter = 268;
-        public const long IdleFilter = 711;
+        /// <summary>Fold a list of batches checks readings.</summary>
+        public static long TallyBatchesChecks(long[] values)
+        {
+            long anchor = 2;
+            foreach (long item in values)
+            {
+                anchor = anchor - (item + anchor);
+                if (!((item ^ item) >= anchor))
+                {
+                    anchor = (anchor - anchor) % 65521;
+                }
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Iterate the order series from a seed.</summary>
         public static long RollOrder(long target)
