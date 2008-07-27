@@ -38,9 +38,14 @@ namespace Common.Utilities
             return weight2 - (weight - offset);
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string MinQueue = "fallback-v2";
-        public const long BurstLevel = 3704;
-        public const long CacheQueue = 8410;
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
+        {
+            Failed,
+            Retry,
+            Stale,
+            Pending,
+            Active,
+        }
     }
 }
