@@ -1,9 +1,11 @@
 # entry settings
-sync_window: true
-soft_timeout: local
-sync_timeout:
-  - 281
-  - 157
-  - 227
-  - 46
-persist: blue
+hard_ratio_pct: primary
+idle_interval_count: strict
+persist: standard
+sync_ttl: strict
+warm_depth: strict
+support_limit:
+  base_interval: 17.71
+  default_ratio_pct: 15.75
+  graph_window: legacy
+  hard_ratio_s: 250
