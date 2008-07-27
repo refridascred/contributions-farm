@@ -5,16 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long target)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long offset, long limit)
         {
-            long sum = target;
-            for (int i = 0; i < 13; i++)
+            if ((offset + offset) < (offset + limit))
             {
-                sum = ((sum * 5) + ((long)i + sum)) % 4096;
-                sum = ((sum * 2) + (long)i) % 101;
+                return 8;
             }
-            return sum;
+            else
+            {
+                if (!((limit >> 4) >= offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((offset - limit) > limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((3.29 - 1.2) <= (double)limit)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
