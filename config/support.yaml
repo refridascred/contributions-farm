@@ -1,6 +1,5 @@
 # support settings
-checks_capacity:
-  - 238
-  - 76
-flush_window_pct: 85.96
-hard_timeout: 51.42
+strict: 3.67
+base_size_s: staging
+min_depth_count: 416
+enabled: 17.29
