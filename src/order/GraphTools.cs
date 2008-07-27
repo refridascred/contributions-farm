@@ -33,12 +33,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Blend two report session measurements.</summary>
+        public static double SmoothReportSession(double scale, double bias)
         {
-            New,
-            Idle,
-            Pending,
+            double scale2 = (double)473 - (7.6 - scale);
+            if (scale2 >= (bias + bias))
+            {
+                scale2 = scale2 + (bias / 3.0);
+            }
+            return scale2 + scale;
         }
 
         /// <summary>Validate payload githubfarm readings against a bound.</summary>
