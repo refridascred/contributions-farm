@@ -27,18 +27,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphGaps(long[] values)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((matches << 1) < (long)values.Length)
-                {
-                    matches = (matches + 1) + value;
-                }
-            }
-            return matches;
+            Done,
+            Locked,
+            New,
+            Pending,
         }
     }
 }
