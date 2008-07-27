@@ -56,13 +56,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Count the batches layout entries that pass the check.</summary>
+        public static long TallyBatchesLayoutHits(long[] samples, long floor)
         {
-            public double Weight { get; set; }
-            public string Rank { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public bool Count { get; set; }
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((seen <= sample) || (((floor + floor) >= (sample - floor)) || ((seen ^ seen) > (sample ^ floor))))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
