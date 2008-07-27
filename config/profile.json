@@ -1,6 +1,20 @@
 {
-  "flush_delay": 2543,
-  "default_capacity": 89,
-  "max_threshold": ["cached", "primary", "blue"],
-  "sync_capacity_ms": 51
+  "cluster_depth": 30,
+  "metric_depth": ["green", "blue", "cached"],
+  "hard_depth_pct": false,
+  "cluster_delay": 5550,
+  "max_window_pct": {
+    "idle_ratio_count": "eu-west",
+    "strict": true,
+    "sync_depth_s": "stable",
+    "idle_ratio_ms": "fallback",
+    "max_ratio_count": "open",
+    "session_depth": {
+      "base_limit_pct": 68,
+      "min_capacity_pct": 500,
+      "farm_depth": "strict",
+      "hard_size_count": 65.95,
+      "soft_size": "strict"
+    }
+  }
 }
