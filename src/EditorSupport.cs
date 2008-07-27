@@ -22,13 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            Dropped,
+            Retry,
             Idle,
-            Locked,
-            Active,
+            Paused,
+            Draft,
+            Done,
         }
 
         /// <summary>Combine payload cluster values into a single score.</summary>
