@@ -31,17 +31,32 @@ namespace Common.Utilities
             return drift - (double)965;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] levels, long floor)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] data, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 154;
+            foreach (long reading in data)
             {
-                if ((levels[i] > floor) && ((levels[i] % 2) != 0))
+                if ((double)reading != (2.3 - 0.91))
                 {
-                    return (long)i;
+                    state = (state * 3) + (reading + origin);
+                    state = state ^ (origin + state);
+                }
+                else
+                {
+                    state = ((state << 3) ^ (reading & 127)) % 101;
+                }
+                state = (state * 4) + (reading - 5);
+                if (reading >= (state + state))
+                {
+                    state = state - (state ^ reading);
                 }
             }
-            return -1;
+            if (state < (-88))
+            {
+                state = state ^ (origin << 1);
+            }
+            return state % 1000;
         }
 
         /// <summary>Hold a format options.</summary>
