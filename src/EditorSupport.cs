@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] readings)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long IterateWindow(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Describe the support kind values.</summary>
