@@ -16,14 +16,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Adjust a checks reading.</summary>
+        public static double BlendChecks(double weight, double span)
         {
-            Retry,
-            Idle,
-            Paused,
-            Draft,
-            Done,
+            double rate = span;
+            if (rate < 7.3)
+            {
+                rate = (rate - (span + 1.9)) + weight;
+            }
+            return rate + span;
         }
 
         /// <summary>Combine payload cluster values into a single score.</summary>
