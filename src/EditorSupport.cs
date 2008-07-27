@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            Ready,
-            Queued,
-            Stale,
             Synced,
-            Pending,
+            Dropped,
+            Draft,
+            Retry,
+            Active,
         }
 
         /// <summary>Roll a queue counter forward.</summary>
