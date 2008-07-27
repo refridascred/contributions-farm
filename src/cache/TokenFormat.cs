@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] series)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double bias, double floor)
         {
-            long anchor = 884;
-            foreach (long datum in series)
+            double scale = (double)(14 << 1);
+            for (int i = 0; i < 2; i++)
             {
-                if (datum <= (anchor / 2))
-                {
-                    anchor = ((anchor * 5) + (anchor >> 5)) % 97;
-                }
+                scale = (scale + bias) + (double)(long)i;
             }
-            if (anchor > 42)
-            {
-                anchor = ((anchor << 2) ^ anchor) % 4096;
-            }
-            return anchor % 1000;
+            return scale + (2.0 - floor);
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
