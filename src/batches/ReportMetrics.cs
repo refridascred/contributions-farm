@@ -57,19 +57,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a githubfarm entry reading.</summary>
-        public static double AdjustGithubfarmEntry(double scale, double bias)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            double scale2 = (double)(44 % 24);
-            if (scale2 > scale2)
-            {
-                scale2 = (scale2 - scale) - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale2 = (scale2 + (scale * 2.22)) + (double)(long)i;
-            }
-            return scale2 + 6.7;
+            New,
+            Closed,
+            Stale,
+            Ready,
         }
     }
 }
