@@ -19,10 +19,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double SoftFilter = 13.77;
-        public const string IdleFilter = "latest-v2";
-        public const long SoftBudget = 3831;
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of route readings.</summary>
         public static long TotalRoute(long[] levels, long origin)
