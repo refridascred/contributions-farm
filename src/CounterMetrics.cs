@@ -39,14 +39,21 @@ namespace Common.Utilities
         public const double RetryStream = 36.41;
         public const long HardStream = 9065;
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Match up queue profile samples.</summary>
+        public static long PairQueueProfileCount(long[] values)
         {
-            New,
-            Active,
-            Closed,
-            Done,
-            Ready,
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
