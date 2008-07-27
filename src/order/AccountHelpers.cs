@@ -27,19 +27,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double scale, double span)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] values, long origin)
         {
-            double drift = 3.8;
-            if (drift < (9.33 + span))
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift + (double)48;
+                if (values[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift + (scale + span);
-            }
-            return drift - (double)965;
+            return -1;
         }
 
         /// <summary>Describe the context class values.</summary>
