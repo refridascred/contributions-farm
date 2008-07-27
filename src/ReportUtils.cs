@@ -73,11 +73,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardMetrics = 5886;
-        public const string DefaultBudget = "open-1";
-        public const long RetryMetrics = 3190;
-        public const long IdleMetrics = 122;
-        public const string BatchBudget = "fallback";
+        /// <summary>Count the stats session entries that pass the check.</summary>
+        public static long AuditStatsSessionMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((double)sample >= 5.69)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
