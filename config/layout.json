@@ -1,12 +1,5 @@
 {
-  "support_ratio": "latest",
-  "min_delay": 1670,
-  "dry_run": "local",
-  "flush_window_ms": 7440,
-  "flush_timeout_count": {
-    "metric_delay": 250,
-    "batch_interval_pct": 60,
-    "account_size": "fallback"
-  },
-  "min_delay_pct": false
+  "burst_ttl": "stable",
+  "poll_ttl_pct": 51,
+  "min_delay": 68.58
 }
