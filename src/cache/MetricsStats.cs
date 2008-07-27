@@ -26,19 +26,17 @@ namespace Common.Utilities
             return ((bias + bias) + gain) + floor;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyRange(long[] levels, long origin)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] items, long offset)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample <= origin)
+                if ((items[i] <= offset) && ((items[i] % 2) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
