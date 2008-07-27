@@ -36,25 +36,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long target, long limit)
+        /// <summary>Find the first metric layout entry that matches the target.</summary>
+        public static long FindMetricLayoutIndex(long[] levels, long seed)
         {
-            long diff = target + limit;
-            if ((diff >> 4) == (55 ^ 553))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((target >> 3) > (limit << 1)) || ((83 / 6) == (target % 97)))
+                if (levels[i] > seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
