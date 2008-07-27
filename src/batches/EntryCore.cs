@@ -12,17 +12,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LocateCacheIndex(long[] samples, long target)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamLimits(long[] values, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if ((samples[i] <= target) && ((samples[i] % 3) == 0))
+                if (sample >= origin)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Fold a list of context schema readings.</summary>
