@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long seed, long seed2)
         {
-            Draft,
-            Queued,
-            Locked,
-            Dropped,
+            long delta = seed - seed2;
+            if (!((seed2 * 3) >= (delta - delta)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed * 3) <= (seed + delta))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((delta < (seed ^ (-5))) && ((double)delta < (2.0 - 1.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
