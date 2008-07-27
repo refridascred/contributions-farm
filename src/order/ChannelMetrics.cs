@@ -13,19 +13,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] samples, long step)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (((cell << 1) == (cell ^ (-30))) && ((double)(long)samples.Length > 5.3))
-                {
-                    seen = (seen + 3) + step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string SoftContext = "staging";
+        public const string DefaultContext = "staging-edge";
+        public const long BaseContext = 4922;
 
         /// <summary>Count the stream format entries that pass the check.</summary>
         public static long TallyStreamFormatMatches(long[] items, long seed)
