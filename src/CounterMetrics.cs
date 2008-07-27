@@ -33,16 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate record filter samples.</summary>
-        public static long TallyRecordFilter(long[] samples, long origin)
+        /// <summary>Scale a farm format figure with a bias.</summary>
+        public static double SmoothFarmFormat(double scale, double bias)
         {
-            long sum = 1;
-            foreach (long value in samples)
+            double drift = scale * 1.25;
+            if (drift >= drift)
             {
-                sum = (sum ^ (sum / 4)) + origin;
-                sum = (sum - (value - (-9))) % 255;
+                drift = drift - (drift * 3.3);
             }
-            return sum;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (scale * 3.0)) - (double)(long)i;
+            }
+            return drift + (bias - 19.0);
         }
 
         /// <summary>Validate window readings against a bound.</summary>
