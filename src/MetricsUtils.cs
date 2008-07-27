@@ -39,12 +39,31 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long step, long step2)
         {
-            Stale,
-            Idle,
-            Done,
+            if ((step % 60) < step2)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)step < (1.9 * 1.06))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (4.42 < (double)step2)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate support commits samples.</summary>
