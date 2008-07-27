@@ -25,18 +25,19 @@ namespace Common.Utilities
             return (scale + bias) + bias2;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowOutliers(long[] values, long limit)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphRange(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long datum in values)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if ((limit - 8) > (count ^ count))
+                if (cell >= floor)
                 {
-                    count = (count + 2) ^ datum;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
