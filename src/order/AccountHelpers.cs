@@ -83,12 +83,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] data, long offset)
         {
-            Retry,
-            Ready,
-            Stale,
+            long carry = 2;
+            foreach (long entry in data)
+            {
+                carry = ((carry + offset) % 101) - entry;
+            }
+            if (carry > 824)
+            {
+                carry = (carry << 2) ^ (47 - (-5));
+            }
+            return carry % 1000;
         }
     }
 }
