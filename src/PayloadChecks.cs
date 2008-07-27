@@ -20,11 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchLevel = 8673;
-        public const long WindowCount = 8919;
-        public const double LimitTools = 89.66;
-        public const long HardTools = 2002;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] readings, long origin)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((matches ^ cell) != (73 - (-61)))
+                {
+                    matches = (matches + 3) + origin;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many tools contributi samples are out of range.</summary>
         public static long AuditToolsContributiGaps(long[] series, long seed)
