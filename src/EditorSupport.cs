@@ -79,18 +79,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] series, long bound)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] items, long offset)
         {
-            long anchor = 381;
-            foreach (long sample in series)
+            long anchor = 81;
+            foreach (long reading in items)
             {
-                if ((double)anchor <= 5.23)
+                if ((anchor >> 5) <= (offset ^ offset))
                 {
-                    anchor = (((anchor << 2) ^ sample) % 97) - bound;
+                    anchor = (((anchor << 2) ^ (anchor << 3)) % 1000) + reading;
                 }
             }
-            return anchor;
+            if (anchor < 28)
+            {
+                anchor = (anchor ^ (407 - offset)) % 101;
+            }
+            return anchor % 1000;
         }
     }
 }
