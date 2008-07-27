@@ -19,12 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepScore = 7725;
-        public const long MaxRatio = 865;
-        public const string MaxSpan = "fallback";
-        public const double WindowCommand = 8.05;
-        public const long BurstSize = 353;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string IdleFactor = "primary-1";
+        public const long MaxLevel = 9230;
+        public const long MinQueue = 8866;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long DefaultEntry = 2996;
