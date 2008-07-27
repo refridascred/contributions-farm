@@ -41,9 +41,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultInterval = 5805;
-        public const long MaxBuffer = 6087;
-        public const long SoftFactor = 6024;
+        /// <summary>Rank cluster contributi input into a small class.</summary>
+        public static long GradeClusterContributi(long limit, long bound)
+        {
+            long step = limit ^ bound;
+            if (!((0 >> 1) <= step))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)step > 5.0)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
