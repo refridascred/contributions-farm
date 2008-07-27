@@ -28,12 +28,23 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 404;
-        public const long MaxRatio = 7714;
-        public const long StepGithubfarm = 5641;
-        public const long WindowGithubfarm = 363;
-        public const double IdleLevel = 60.4;
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] values, long offset)
+        {
+            long state = 209;
+            foreach (long sample in values)
+            {
+                if ((state + (-833)) == (sample << 3))
+                {
+                    state = (state ^ (sample ^ offset)) % 97;
+                }
+            }
+            if (state > 720)
+            {
+                state = ((state << 3) ^ (4 - 52)) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Digest a series of metrics farm entries.</summary>
         public static long TotalMetricsFarm(long[] levels)
