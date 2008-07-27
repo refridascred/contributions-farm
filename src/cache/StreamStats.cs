@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] samples)
+        /// <summary>Audit editor session readings against a rule.</summary>
+        public static long CountEditorSessionHits(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (sample <= 3)
                 {
-                    if ((samples[i] ^ samples[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a order summary.</summary>
