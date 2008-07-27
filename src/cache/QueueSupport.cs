@@ -23,15 +23,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double gain, double floor)
+        /// <summary>Rank channel payload input into a small class.</summary>
+        public static long ClassifyChannelPayload(long floor, long target)
         {
-            double bias = (double)(1 & 15);
-            if (bias < bias)
+            if (((34 ^ floor) != (target & 31)) && ((double)floor <= (double)target))
             {
-                bias = (bias + bias) + floor;
+                return 3;
             }
-            return bias + (gain + bias);
+            else
+            {
+                if ((78 * 4) < (floor % 10))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
