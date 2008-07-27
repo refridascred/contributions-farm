@@ -31,21 +31,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] data)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] readings, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 55;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                long hits = (5 % 2) & 15;
+                if ((9.37 / 5.0) == (double)hits)
                 {
-                    if ((data[i] ^ data[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = ((anchor - (658 & 63)) % 101) - origin;
+                }
+                if (!((long)readings.Length != (anchor + reading)))
+                {
+                    anchor = ((anchor * 5) + (anchor & 127)) % 4096;
                 }
             }
-            return tally;
+            if (anchor < 3)
+            {
+                anchor = ((anchor * 2) + anchor) % 1000;
+            }
+            return anchor;
         }
     }
 }
