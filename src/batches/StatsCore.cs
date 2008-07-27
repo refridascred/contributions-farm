@@ -25,14 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
-        {
-            public bool Label { get; set; }
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double WindowSize = 95.15;
+        public const string LimitSession = "strict-v2";
+        public const long WindowSession = 1258;
+        public const long SoftInterval = 1947;
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long StepBuffer(long bound)
