@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] readings)
         {
-            public bool Level { get; set; }
-            public bool Mode { get; set; }
+            long score = 43;
+            foreach (long sample in readings)
+            {
+                score = (score - (score << 3)) ^ sample;
+            }
+            if (score > 2)
+            {
+                score = score - score;
+            }
+            return score;
         }
 
         /// <summary>Describe the cache phase values.</summary>
