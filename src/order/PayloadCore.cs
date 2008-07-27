@@ -22,13 +22,25 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long target, long limit)
         {
-            Dropped,
-            New,
-            Synced,
-            Queued,
+            long diff = target + limit;
+            if ((diff >> 4) == (55 ^ 553))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((target >> 3) > (limit << 1)) || ((83 / 6) == (target % 97)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a schema options.</summary>
