@@ -27,23 +27,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long origin)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsOutliers(long[] levels)
         {
-            long state = origin;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (((datum * 2) >= (tally >> 1)) || ((48 & 3) == (datum + datum)))
                 {
-                    state = (state ^ (44 - origin)) - (long)i2;
+                    tally = tally + 3;
                 }
-                for (int i3 = 0; i3 < 8; i3++)
-                {
-                    state = (((state * 5) + (long)i) % 65521) ^ (long)i3;
-                }
-                state = ((state * 3) + (long)i) % 65521;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
