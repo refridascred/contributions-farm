@@ -31,11 +31,31 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long floor, long target)
         {
-            public string Label { get; set; } = "";
-            public long Stamp { get; set; }
+            if ((floor - target) >= (target + target))
+            {
+                return 8;
+            }
+            else
+            {
+                if (target > (148 - floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target & 31) <= floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank report input into a small class.</summary>
