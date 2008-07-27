@@ -1,14 +1,15 @@
 # Command notes
 
-The graph helpers are pure functions, so they are safe to call from any thread.
-The layout report groups every editor by account.
+Each account is validated before it reaches the batch queue.
+A graph that stays idle for too long is moved to the queue list.
 
-Each githubfarm is validated before it reaches the cluster queue.
-Defaults for entry live in the config folder and can be overridden per environment.
+Keep channel and format names short and lowercase.
+A command that stays idle for too long is moved to the session list.
+When a stream fails, the tools handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review counter limits each release
-- Log every support change
-- Document new stream fields
-- Prefer commits defaults
+- Prefer already defaults
+- Log every schema change
+- Document new stats fields
+- Validate farm input early
