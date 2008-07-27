@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const double BaseQueue = 43.76;
         public const long CacheQueue = 4517;
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorBounds(long[] levels, long seed)
         {
-            Failed,
-            Stale,
-            Ready,
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Audit already support readings against a rule.</summary>
