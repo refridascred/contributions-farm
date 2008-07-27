@@ -32,17 +32,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] items, long bound)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long target, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long edge = target - floor;
+            if (!(edge >= (edge ^ floor)))
             {
-                if ((items[i] > bound) && ((items[i] % 5) != 0))
+                return 5;
+            }
+            else
+            {
+                if ((-7) <= (38 + target))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((floor - floor) > (target % 100))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
