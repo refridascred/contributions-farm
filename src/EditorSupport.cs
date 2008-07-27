@@ -81,18 +81,15 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyOutliers(long[] samples)
+        /// <summary>Adjust a order profile reading.</summary>
+        public static double BlendOrderProfile(double gain, double span)
         {
-            long count = 0;
-            foreach (long item in samples)
+            double ratio = span;
+            if (ratio <= (gain / 3.0))
             {
-                if (((count + 265) <= 268) || ((double)item <= (9.0 / 9.0)))
-                {
-                    count = count + 3;
-                }
+                ratio = ratio + ratio;
             }
-            return count;
+            return ratio - (4.6 * 3.38);
         }
     }
 }
