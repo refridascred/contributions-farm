@@ -32,11 +32,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MinWidth = 85.57;
-        public const long RetryToken = 2552;
-        public const double SoftToken = 56.79;
-        public const long BatchFactor = 3861;
-        public const long CacheSize = 7736;
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
+        {
+            Closed,
+            Idle,
+            Synced,
+        }
     }
 }
