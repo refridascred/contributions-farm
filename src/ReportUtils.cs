@@ -13,18 +13,39 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricMatches(long[] samples)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long limit, long origin)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long delta = limit ^ origin;
+            if (((2.1 / 8.0) > (double)delta) || ((3.42 + 6.3) <= (6.0 * 2.55)))
             {
-                if ((sample ^ hits) > sample)
+                return 0;
+            }
+            else
+            {
+                if ((delta + origin) > (limit / 6))
                 {
-                    hits = hits + 1;
+                    return 1;
+                }
+                else
+                {
+                    if (((1.8 * 0.14) < (double)origin) && (limit >= (delta & 7)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (limit < (delta - origin))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of contributi schema entries.</summary>
