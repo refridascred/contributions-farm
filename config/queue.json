@@ -1,6 +1,8 @@
 {
-  "poll_ttl_s": 30,
-  "default_limit_s": "local",
-  "strict": "open",
-  "editor_depth": "local"
+  "default_timeout_pct": false,
+  "burst_interval_s": "primary",
+  "cache_depth_ms": 8810,
+  "idle_timeout": false,
+  "persist": 97.52,
+  "min_retries_s": 11.06
 }
