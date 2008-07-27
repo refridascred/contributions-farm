@@ -1,7 +1,8 @@
 {
-  "editor_capacity": "stable",
-  "batch_delay_pct": 250,
-  "hard_window": [130, 53, 17],
-  "warm_size_count": "staging",
-  "idle_limit": ["fallback", "primary"]
+  "verbose": [427, 166, 436, 217],
+  "max_interval_count": "staging",
+  "compress": true,
+  "readonly": "stable",
+  "sync_limit": "edge",
+  "max_interval_s": "edge"
 }
