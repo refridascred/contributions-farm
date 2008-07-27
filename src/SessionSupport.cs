@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsHits(long[] readings, long origin)
         {
-            Active,
-            Dropped,
-            Closed,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((666 + 82) < origin)
+                {
+                    seen = (seen + 2) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
