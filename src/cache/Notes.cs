@@ -21,11 +21,20 @@ namespace Common.Utilities
         public const string LimitBuffer = "fallback-edge";
         public const long LimitInterval = 4989;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepDepth = 7547;
-        public const string LimitCounter = "local-edge";
-        public const long WindowSpan = 6898;
-        public const long BatchCounter = 532;
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderLimits(long[] levels, long target)
+        {
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long DeriveMetric(long step)
