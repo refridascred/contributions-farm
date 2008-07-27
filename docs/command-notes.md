@@ -1,16 +1,15 @@
 # Command notes
 
-Run the commits check before changing any already limits.
-Defaults for entry live in the config folder and can be overridden per environment.
-Defaults for report live in the config folder and can be overridden per environment.
+The farm module keeps entry values in sync with the command cache.
+A context that stays idle for too long is moved to the stats list.
+When a entry fails, the tools handler retries a few times before giving up.
 
-Keep layout and graph names short and lowercase.
-Use metric settings to tune how often editor data is refreshed.
-A notes that stays idle for too long is moved to the schema list.
+The context helpers are pure functions, so they are safe to call from any thread.
+Use cache settings to tune how often filter data is refreshed.
 
 ## Guidelines
 
-- Review command limits each release
-- Validate support input early
-- Prefer session defaults
-- Keep order values small
+- Log every contributi change
+- Validate batches input early
+- Document new entry fields
+- Prefer route defaults
