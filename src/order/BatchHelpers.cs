@@ -22,11 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double AdjustStats(double gain, double span)
+        /// <summary>Combine order context values into a single score.</summary>
+        public static long TotalOrderContext(long[] samples)
         {
-            double drift = gain / 8.0;
-            return drift + (drift + span);
+            long acc = 985;
+            foreach (long entry in samples)
+            {
+                acc = ((acc * 4) + 9) % 65521;
+                acc = ((acc << 3) ^ (acc * 2)) % 4096;
+                if ((entry % 60) <= (entry - acc))
+                {
+                    acc = ((acc << 2) ^ acc) % 4096;
+                }
+            }
+            if (acc < 24)
+            {
+                acc = acc - (acc + acc);
+            }
+            return acc;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
