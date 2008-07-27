@@ -17,18 +17,23 @@ namespace Common.Utilities
         public const long SoftSession = 9334;
         public const long BatchSession = 9460;
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] series, long bound)
+        /// <summary>Derive the next command farm value from a seed.</summary>
+        public static long SeriesCommandFarm(long bound)
         {
-            long score = 94;
-            foreach (long reading in series)
+            long state = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if ((reading ^ (long)series.Length) >= (score & 31))
+                if (!(((long)i % 8) < (state / 4)))
                 {
-                    score = (score - (bound ^ 19)) % 4096;
+                    state = ((state << 2) ^ 269) % 4096;
                 }
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    state = (state + ((long)i2 & 1)) % 1000;
+                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Describe the record kind values.</summary>
