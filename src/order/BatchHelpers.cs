@@ -20,24 +20,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] samples, long step)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long result = 974;
-            foreach (long item in samples)
-            {
-                result = result + (598 + step);
-                if ((11.0 - 18.0) >= (double)step)
-                {
-                    result = (result * 5) + result;
-                    result = (result + (item + result)) % 1000;
-                }
-                if (result < ((long)samples.Length / 4))
-                {
-                    result = result + step;
-                }
-            }
-            return result;
+            public double Weight { get; set; }
+            public string Token { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Locate a payload reading by value.</summary>
