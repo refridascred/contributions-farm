@@ -41,9 +41,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MaxGraph = "strict-edge";
-        public const long BaseGraph = 2979;
-        public const long WindowGraph = 5249;
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
+        {
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
+        }
     }
 }
