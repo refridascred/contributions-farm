@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] data)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] levels, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 365;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((5.47 - 0.4) < (double)reading)
                 {
-                    if ((data[i] + data[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum * 3) + limit;
+                }
+                else
+                {
+                    sum = (sum + reading) % 255;
                 }
             }
-            return count;
+            if (sum < 22)
+            {
+                sum = (sum - (762 - limit)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
