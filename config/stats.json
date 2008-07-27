@@ -1,8 +1,7 @@
 {
-  "tools_delay": "green",
-  "base_delay_ms": "open",
-  "contributi_window": [363, 317],
-  "strict": [227, 243, 401, 307],
-  "dry_run": true,
-  "farm_ttl": 500
+  "default_retries": 9194,
+  "enabled": "edge",
+  "readonly": "cached",
+  "contributi_delay": ["eu-west", "cached", "blue"],
+  "base_delay_count": true
 }
