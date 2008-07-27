@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] samples, long target)
+        /// <summary>Fold a list of commits batches readings.</summary>
+        public static long CombineCommitsBatches(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 30;
+            foreach (long entry in values)
             {
-                if ((samples[i] == target) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark + (mark / 5)) % 1000) + entry;
             }
-            return -1;
+            return mark % 97;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
