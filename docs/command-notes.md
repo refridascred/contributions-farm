@@ -1,13 +1,14 @@
 # Command notes
 
-Use account settings to tune how often counter data is refreshed.
-Defaults for support live in the config folder and can be overridden per environment.
+The graph helpers are pure functions, so they are safe to call from any thread.
+The layout report groups every editor by account.
 
-Defaults for metric live in the config folder and can be overridden per environment.
-Defaults for window live in the config folder and can be overridden per environment.
+Each githubfarm is validated before it reaches the cluster queue.
+Defaults for entry live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep batches values small
-- Document new buffer fields
-- Log every farm change
+- Review counter limits each release
+- Log every support change
+- Document new stream fields
+- Prefer commits defaults
