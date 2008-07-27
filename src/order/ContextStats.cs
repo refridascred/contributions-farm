@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderLimits(long[] readings, long step)
-        {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BurstLevel = "alpha";
+        public const long IdleSupport = 8788;
+        public const long MinSupport = 3764;
+        public const string StepSupport = "strict-v2";
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long MeasureWindowGaps(long[] samples)
