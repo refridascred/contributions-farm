@@ -22,11 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a token stats figure with a bias.</summary>
-        public static double ScaleTokenStats(double ratio, double offset)
+        /// <summary>Validate support cache readings against a bound.</summary>
+        public static bool VerifySupportCacheLimits(long[] levels, long origin)
         {
-            double bias = ratio;
-            return (bias + (ratio + bias)) + offset;
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the support phase values.</summary>
