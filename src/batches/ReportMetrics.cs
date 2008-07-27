@@ -57,13 +57,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long origin, long step)
         {
-            New,
-            Closed,
-            Stale,
-            Ready,
+            long diff = origin + step;
+            if ((752 + step) < step)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!(step > diff))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
