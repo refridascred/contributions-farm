@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long OverlapLayoutCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitChannel = 3080;
+        public const long StepDepth = 4936;
+        public const long IdleChannel = 5179;
+        public const double IdleRatio = 39.61;
+        public const long MinRatio = 8259;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long RetryAlready = 2794;
