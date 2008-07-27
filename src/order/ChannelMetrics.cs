@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit route batches readings against a rule.</summary>
-        public static long CountRouteBatchesHits(long[] data)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((733 + count) > count)
-                {
-                    count = (count + 3) ^ value;
-                }
-            }
-            return count;
+            public double Token { get; set; }
+            public long Owner { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Describe the record mode values.</summary>
