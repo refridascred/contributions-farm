@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmMatches(long[] levels, long floor)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((9.85 / 7.0) >= (double)floor)
-                {
-                    matches = (matches + 3) ^ sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Idle,
+            Done,
+            Locked,
+            Synced,
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
