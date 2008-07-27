@@ -66,23 +66,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] values, long step)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long acc = 3;
-            foreach (long cell in values)
-            {
-                acc = acc ^ (step << 3);
-                if (step >= ((-33) % 16))
-                {
-                    acc = ((acc << 2) ^ (cell << 1)) % 65521;
-                }
-            }
-            if (acc < 508)
-            {
-                acc = (acc * 3) + step;
-            }
-            return acc;
+            public long Offset { get; set; }
+            public string Label { get; set; } = "";
+            public double Score { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
