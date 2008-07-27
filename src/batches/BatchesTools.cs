@@ -18,10 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double StepFactor = 60.87;
-        public const string DefaultFormat = "fallback-1";
-        public const double LimitTimeout = 6.11;
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                score = (score - (score + score)) % 65521;
+                score = score + (score % 97);
+                if ((seed - score) > (score * 5))
+                {
+                    score = score ^ score;
+                    continue;
+                }
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long DigestProfile(long[] series)
