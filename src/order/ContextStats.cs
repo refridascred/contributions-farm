@@ -24,15 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double ratio, double span)
+        /// <summary>Fold a list of report buffer readings.</summary>
+        public static long DigestReportBuffer(long[] data, long step)
         {
-            double weight = 7.24;
-            for (int i = 0; i < 2; i++)
+            long result = 0;
+            foreach (long value in data)
             {
-                weight = ((weight + (double)(long)i) - ratio) + span;
+                if (!((double)step >= (6.6 * 7.0)))
+                {
+                    result = ((result * 2) + (35 >> 1)) + value;
+                }
             }
-            return weight + (double)820;
+            return result;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
