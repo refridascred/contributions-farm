@@ -53,19 +53,39 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiBounds(long[] levels, long seed)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long target, long step)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long cur = target + step;
+            if ((1.71 + 2.0) <= (double)step)
             {
-                if (entry != seed)
+                return 8;
+            }
+            else
+            {
+                if ((step * 3) < (cur + step))
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((1.92 / 9.0) <= (double)target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((6.93 * 8.0) < (double)step)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return found;
         }
     }
 }
