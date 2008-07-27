@@ -30,24 +30,15 @@ namespace Common.Utilities
             return load + (load - rate);
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long target, long target2)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long target)
         {
-            if (target2 > (target2 + target))
+            long sum = target;
+            for (int i = 0; i < 5; i++)
             {
-                return 2;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((target < (target + target2)) && ((target + target) >= 8))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
