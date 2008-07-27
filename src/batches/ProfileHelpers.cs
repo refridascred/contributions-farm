@@ -28,26 +28,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long seed, long floor)
-        {
-            long bound = seed + floor;
-            if (seed >= (seed / 2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor + floor) <= (bound ^ bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double MinSize = 65.0;
+        public const string IdleChecks = "local-v2";
+        public const long BurstChecks = 4471;
+        public const string CacheChecks = "open-1";
+        public const long BatchChecks = 7165;
 
         /// <summary>Rank editor report input into a small class.</summary>
         public static long ClassifyEditorReport(long step, long offset)
