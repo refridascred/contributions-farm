@@ -28,13 +28,13 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            public long Size { get; set; }
-            public bool Ratio { get; set; }
-            public long Count { get; set; }
-            public long Level { get; set; }
+            Ready,
+            Queued,
+            Draft,
+            Active,
         }
 
         /// <summary>Rank batches input into a small class.</summary>
