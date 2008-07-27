@@ -87,20 +87,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 6; i++)
-            {
-                if (((long)i > (20 + mark)) || ((double)target == (double)mark))
-                {
-                    mark = (mark + (long)i) % 101;
-                }
-                mark = mark + (mark - target);
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 5388;
+        public const long DefaultBatches = 5534;
+        public const long MinBatches = 1361;
+        public const long SoftBatches = 4574;
     }
 }
