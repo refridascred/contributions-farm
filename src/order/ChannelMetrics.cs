@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftSpan = 9591;
-        public const long CacheCount = 4338;
-        public const long RetryMetric = 9148;
-        public const long DefaultMetric = 7555;
-        public const long IdleFactor = 8857;
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
+        {
+            Synced,
+            Active,
+            Stale,
+            Pending,
+        }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long TallyMetricMatches(long[] levels)
