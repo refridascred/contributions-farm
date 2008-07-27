@@ -20,11 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MinOrder = 3.15;
-        public const long RetryTimeout = 4333;
-        public const long CacheOrder = 7654;
-        public const long SoftOrder = 5168;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MinWidth = "latest-v2";
+        public const long IdleQueue = 2557;
+        public const long DefaultBudget = 2998;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long WeighCounter(long[] levels, long step)
