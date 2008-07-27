@@ -81,17 +81,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a checks counter sample.</summary>
-        public static long LookupChecksCounterIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < origin) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double DefaultFactor = 92.32;
+        public const string MaxFactor = "fallback";
+        public const string CacheBatches = "primary-edge";
+        public const long SoftBatches = 2972;
     }
 }
