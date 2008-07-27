@@ -1,9 +1,15 @@
 {
-  "cache_size": {
-    "poll_depth_ms": 55.38,
-    "commits_window": 5648,
-    "min_limit": 54.55
+  "base_ratio": [401, 469],
+  "farm_ratio": 30,
+  "idle_ttl": {
+    "cluster_limit": {
+      "default_limit_pct": false,
+      "persist": "edge",
+      "dry_run": "latest",
+      "already_window": "open"
+    },
+    "verbose": 99,
+    "dry_run": ["open", "standard"]
   },
-  "stream_retries": 40,
-  "hard_interval_s": 93.6
+  "min_limit_count": 2658
 }
