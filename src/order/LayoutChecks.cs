@@ -60,15 +60,11 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseOrder = 1715;
+        public const long BurstSpan = 7075;
+        public const long WindowRatio = 1532;
+        public const string StepCount = "staging";
+        public const long DefaultOrder = 5837;
     }
 }
