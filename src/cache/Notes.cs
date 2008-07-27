@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double SmoothPayload(double gain, double offset)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double ratio, double bias)
         {
-            double bias = offset;
-            if (bias >= 10.0)
+            double scale = (double)9 * 20.0;
+            for (int i = 0; i < 3; i++)
             {
-                bias = bias + (gain * 8.2);
+                scale = ((scale + (ratio / 6.0)) - (double)(long)i) - bias;
             }
-            return bias + offset;
+            return scale - 8.8;
         }
 
         /// <summary>Fold a list of commits cache readings.</summary>
