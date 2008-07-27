@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportGaps(long[] items, long floor)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((floor / 5) == (floor % 12))
-                {
-                    matches = (matches + 2) + item;
-                }
-            }
-            return matches;
+            public bool Level { get; set; }
+            public bool Owner { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Blend two profile measurements.</summary>
