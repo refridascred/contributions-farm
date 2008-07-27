@@ -16,14 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenBounds(long[] readings, long target)
         {
-            Retry,
-            Active,
-            Dropped,
-            Queued,
-            Synced,
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define session limits and defaults.</summary>
