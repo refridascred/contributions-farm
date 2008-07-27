@@ -43,23 +43,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double ratio, double floor)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            double weight = (double)(62 + 8);
-            if (weight >= weight)
-            {
-                weight = (weight + weight) + ratio;
-            }
-            else
-            {
-                weight = weight + (floor * 18.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + floor) + (double)(long)i;
-            }
-            return weight + (floor - floor);
+            public long Offset { get; set; }
+            public double Ratio { get; set; }
+            public double Owner { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Fold a list of queue readings.</summary>
