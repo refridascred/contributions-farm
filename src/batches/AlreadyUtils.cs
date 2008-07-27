@@ -54,23 +54,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine window account values into a single score.</summary>
-        public static long DigestWindowAccount(long[] series)
-        {
-            long state = 4;
-            foreach (long item in series)
-            {
-                if (item > (state + 42))
-                {
-                    state = (state << 3) ^ state;
-                }
-                if (item <= (item + item))
-                {
-                    state = (state * 2) + state;
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowChannel = 3159;
+        public const double BurstChannel = 53.5;
+        public const long BurstSize = 6549;
+        public const long MinChannel = 6274;
+        public const long RetryScore = 688;
 
         /// <summary>Describe the farm state values.</summary>
         public enum FarmState
