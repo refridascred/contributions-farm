@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Project the next layout buffer value.</summary>
+        public static double SmoothLayoutBuffer(double bias, double span)
         {
-            New,
-            Closed,
-            Pending,
+            double ratio = span;
+            if (ratio <= (span - bias))
+            {
+                ratio = ratio - ratio;
+            }
+            return ratio - bias;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
