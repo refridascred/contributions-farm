@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmGaps(long[] samples)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long sum = 997;
+            foreach (long sample in levels)
             {
-                if ((4 + seen) >= seen)
+                sum = sum + sum;
+                if ((sum * 3) <= (-162))
                 {
-                    seen = (seen + 2) - sample;
+                    sum = sum + sample;
                 }
             }
-            return seen;
+            if (sum > 40)
+            {
+                sum = (sum ^ (sum * 4)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Match up contributi layout samples.</summary>
