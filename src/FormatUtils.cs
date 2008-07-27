@@ -30,15 +30,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two token tools measurements.</summary>
-        public static double BlendTokenTools(double scale, double span)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            double mean = scale + (double)2;
-            if (mean <= (span / 9.0))
-            {
-                mean = mean - 10.0;
-            }
-            return mean - (double)180;
+            Done,
+            Queued,
+            Paused,
+            Stale,
         }
 
         /// <summary>Hold a context info.</summary>
