@@ -10,23 +10,19 @@ namespace Common.Utilities
         public const string IdleRatio = "stable";
         public const long MaxCommand = 4956;
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long origin)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadBounds(long[] readings, long floor)
         {
-            long state = origin;
-            for (int i = 0; i < 9; i++)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if (origin < (state - state))
+                if (value >= floor)
                 {
-                    state = state ^ (origin % 7);
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    state = ((state * 2) + ((long)i + 62)) % 4096;
-                }
-                state = ((state * 5) + (long)i) % 4093;
             }
-            return state;
+            return found;
         }
 
         /// <summary>Fold a list of record entry readings.</summary>
