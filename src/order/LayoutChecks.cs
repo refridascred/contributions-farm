@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCommits = 2209;
-        public const string BaseCommits = "cached-v2";
-        public const double BatchBudget = 19.58;
-        public const double WindowCommits = 51.31;
-        public const long BurstBudget = 1452;
+        /// <summary>Locate a filter contributi reading by value.</summary>
+        public static long LookupFilterContributiIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
