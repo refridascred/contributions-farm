@@ -14,13 +14,23 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double gain, double offset)
         {
-            Failed,
-            Retry,
-            Closed,
-            Done,
+            double bias = offset;
+            if (bias < (double)849)
+            {
+                bias = bias + offset;
+            }
+            else
+            {
+                bias = bias - offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - (bias + 0.2)) + (double)(long)i;
+            }
+            return bias - (gain / 3.0);
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
