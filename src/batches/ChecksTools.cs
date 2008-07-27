@@ -36,22 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricOutliers(long[] data)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (!((632 / 5) > (27 + entry)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Synced,
+            Stale,
+            New,
         }
     }
 }
