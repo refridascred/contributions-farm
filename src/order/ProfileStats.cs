@@ -22,23 +22,14 @@ namespace Common.Utilities
         public const long SoftSession = 9334;
         public const long BatchSession = 9460;
 
-        /// <summary>Derive the next command farm value from a seed.</summary>
-        public static long SeriesCommandFarm(long bound)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long state = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!(((long)i % 8) < (state / 4)))
-                {
-                    state = ((state << 2) ^ 269) % 4096;
-                }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    state = (state + ((long)i2 & 1)) % 1000;
-                }
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            Idle,
+            Pending,
+            Retry,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Describe the record kind values.</summary>
