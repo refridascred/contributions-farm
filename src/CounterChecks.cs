@@ -33,17 +33,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] values, long bound)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Stale,
+            Locked,
+            Draft,
+            Retry,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
