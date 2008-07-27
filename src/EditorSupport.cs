@@ -22,11 +22,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double StepChannel = 4.46;
-        public const long SoftChannel = 5341;
-        public const long BaseTimeout = 4887;
-        public const long BurstChannel = 2583;
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryRange(long[] items, long step)
+        {
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a context entry.</summary>
         public sealed class ContextEntry
