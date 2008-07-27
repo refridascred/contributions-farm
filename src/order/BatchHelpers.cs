@@ -40,17 +40,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] values, long offset)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextMatches(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (values[i] > offset)
+                if ((matches ^ 2) == (matches / 2))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + datum;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
