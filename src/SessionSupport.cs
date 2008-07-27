@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the report account entries that pass the check.</summary>
-        public static long TallyReportAccountMatches(long[] values, long seed)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!!(seed >= (seed + 65)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 2) - sample;
+                    if ((samples[i] ^ samples[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a window summary.</summary>
