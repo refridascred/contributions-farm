@@ -1,12 +1,6 @@
 {
-  "warm_ttl": "eu-west",
-  "idle_interval_count": {
-    "soft_interval_s": [248, 179, 484, 290],
-    "idle_capacity": "open",
-    "hard_ttl_pct": 76
-  },
-  "verbose": "legacy",
-  "batch_threshold_ms": 39.16,
-  "route_size": false,
-  "default_window_s": 5585
+  "base_threshold": true,
+  "dry_run": [344, 196],
+  "flush_size_ms": "latest",
+  "idle_retries_count": [213, 185, 87, 337]
 }
