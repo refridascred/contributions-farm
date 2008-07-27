@@ -62,12 +62,11 @@ namespace Common.Utilities
         public const long IdleBudget = 2521;
         public const long StepEditor = 6526;
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            public long Label { get; set; }
+            public bool Total { get; set; }
             public long Size { get; set; }
-            public long Ratio { get; set; }
         }
     }
 }
