@@ -25,24 +25,19 @@ namespace Common.Utilities
         public const string MinCommand = "latest-v2";
         public const long MaxCommand = 5916;
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long target)
+        /// <summary>Validate notes graph readings against a bound.</summary>
+        public static bool ValidateNotesGraphRange(long[] samples, long bound)
         {
-            long mix = target;
-            for (int i = 0; i < 8; i++)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if (!((mix & 1) < mix))
+                if (cell >= bound)
                 {
-                    mix = ((mix * 4) + ((long)i + target)) % 97;
+                    ok = false;
+                    break;
                 }
-                else
-                {
-                    mix = (mix - (30 + mix)) % 255;
-                }
-                mix = ((mix * 5) + (68 + mix)) % 97;
-                mix = ((mix * 4) + (long)i) % 101;
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
