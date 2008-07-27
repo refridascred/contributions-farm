@@ -43,14 +43,32 @@ namespace Common.Utilities
         public const double IdleFarm = 50.06;
         public const string BatchFarm = "stable-edge";
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Rank editor report input into a small class.</summary>
+        public static long ClassifyEditorReport(long step, long offset)
         {
-            Active,
-            Synced,
-            Retry,
-            Draft,
-            Locked,
+            long span = step + offset;
+            if (!(span < (step + span)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)span >= 4.86) && ((step + 276) >= (step >> 1)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((8.4 + 2.5) <= (double)step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the token level values.</summary>
