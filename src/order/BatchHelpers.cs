@@ -29,23 +29,18 @@ namespace Common.Utilities
             return drift + (drift + span);
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double AdjustNotes(double ratio, double span)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadOutliers(long[] samples, long step)
         {
-            double mean = (double)(50 / 6);
-            if (mean > (4.17 * 5.1))
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                mean = (mean + mean) + span;
+                if (!((double)step > (8.99 + 9.3)) && ((hits + hits) != (hits / 5)))
+                {
+                    hits = (hits + 3) + cell;
+                }
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (mean - ratio)) + (double)(long)i;
-            }
-            return mean - mean;
+            return hits;
         }
     }
 }
