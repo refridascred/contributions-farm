@@ -38,13 +38,23 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] readings)
         {
-            Stale,
-            Idle,
-            Done,
-            Dropped,
+            long score = -85;
+            foreach (long datum in readings)
+            {
+                score = ((score * 2) + 448) % 255;
+                if (((double)datum < 4.8) && (185 <= (datum + score)))
+                {
+                    score = (score - (score + score)) % 65521;
+                }
+                if ((double)score >= (double)datum)
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Describe the commits mode values.</summary>
