@@ -77,21 +77,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long seed)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long anchor = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    anchor = ((anchor * 4) + (anchor - seed)) + (long)i2;
-                    anchor = anchor - (anchor - seed);
-                }
-                anchor = (anchor << 3) ^ (anchor + (long)i);
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            public long Level { get; set; }
+            public double Count { get; set; }
         }
     }
 }
