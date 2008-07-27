@@ -23,13 +23,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Iterate the notes batch series from a seed.</summary>
+        public static long RollNotesBatch(long offset)
         {
-            Ready,
-            Queued,
-            New,
-            Active,
+            long score = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
