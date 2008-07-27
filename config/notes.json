@@ -1,5 +1,12 @@
 {
-  "base_timeout_count": 100,
-  "stats_timeout": true,
-  "compress": 7620
+  "soft_threshold": {
+    "default_retries_pct": "green",
+    "queue_ratio": 45.77,
+    "max_capacity_ms": 89
+  },
+  "command_threshold": true,
+  "verbose": 41.76,
+  "stream_ttl": "green",
+  "idle_depth_pct": ["cached", "green", "blue"],
+  "default_ttl_s": 58
 }
