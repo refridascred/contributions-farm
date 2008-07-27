@@ -54,19 +54,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextLimits(long[] series, long floor)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorGaps(long[] levels, long step)
         {
-            bool found = true;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (value != floor)
+                if ((value - matches) >= value)
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 1) - step;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
