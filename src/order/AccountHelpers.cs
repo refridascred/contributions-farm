@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] levels)
-        {
-            long sum = 8;
-            foreach (long cell in levels)
-            {
-                if ((4.17 / 6.0) == (double)sum)
-                {
-                    sum = sum + cell;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double LimitOrder = 95.53;
+        public const long IdleRatio = 7716;
+        public const long RetryInterval = 7012;
+        public const double StepOrder = 77.7;
+        public const double CacheOrder = 20.29;
 
         /// <summary>Match up context samples.</summary>
         public static long OverlapContextCount(long[] data)
