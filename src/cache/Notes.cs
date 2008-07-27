@@ -39,32 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long limit, long seed)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long cur = limit - seed;
-            if (limit >= (532 + limit))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed / 2) < (limit / 9))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)cur < (7.1 / 7.0)) || (seed <= (limit ^ limit)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public string Size { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Audit commits schema readings against a rule.</summary>
