@@ -10,13 +10,13 @@ namespace Common.Utilities
         public const string LimitGraph = "latest-v2";
         public const long SoftGraph = 8018;
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-            public bool Region { get; set; }
-            public bool Mode { get; set; }
+            public bool Stamp { get; set; }
+            public long Label { get; set; }
+            public long Region { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the stream kind values.</summary>
