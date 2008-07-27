@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterBounds(long[] readings, long origin)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] levels, long offset)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry <= origin)
+                if ((levels[i] <= offset) && ((levels[i] % 2) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Combine already values into a single score.</summary>
