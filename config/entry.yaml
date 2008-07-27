@@ -1,8 +1,8 @@
 # entry settings
-base_window: green
-idle_size_pct: open
-strict: true
-retry_window_s:
-  retry_size_ms: strict
-  strict: 34.4
-  context_delay: 66
+strict: 100
+tools_capacity:
+  - primary
+  - cached
+  - open
+window_retries: 99
+default_ttl: true
