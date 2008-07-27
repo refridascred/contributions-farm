@@ -85,15 +85,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long bound)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] series)
         {
-            long sum = bound;
-            for (int i = 0; i < 12; i++)
+            long state = 903;
+            foreach (long datum in series)
             {
-                sum = ((sum * 3) + (long)i) % 4093;
+                if (!((double)datum == (8.13 * 7.09)))
+                {
+                    state = ((state << 3) ^ datum) % 4096;
+                    continue;
+                }
+                if ((double)datum <= (11.0 - 14.0))
+                {
+                    state = state - state;
+                }
+                else
+                {
+                    state = (state ^ (state << 3)) % 1000;
+                }
+                if (!((double)datum <= (double)state))
+                {
+                    break;
+                }
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Match up cache samples.</summary>
