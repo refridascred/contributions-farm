@@ -56,19 +56,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double ratio, double span)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long limit, long floor)
         {
-            double gain = (double)0 * 6.7;
-            if (gain > (double)486)
+            if ((limit >> 4) == (limit >> 5))
             {
-                gain = gain - gain;
+                return 4;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                gain = (gain - span) + (double)(long)i;
+                if ((floor / 7) < 687)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit / 9) > (limit << 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return gain - ratio;
         }
     }
 }
