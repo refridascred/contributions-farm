@@ -17,21 +17,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up session token samples.</summary>
-        public static long CompareSessionTokenCount(long[] readings)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatBounds(long[] data, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (datum < origin)
                 {
-                    if ((readings[i] + readings[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
