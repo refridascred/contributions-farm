@@ -14,19 +14,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionBounds(long[] readings, long seed)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            bool found = true;
-            foreach (long cell in readings)
-            {
-                if (cell < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Count { get; set; }
+            public double Label { get; set; }
+            public double Limit { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
