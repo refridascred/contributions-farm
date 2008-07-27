@@ -32,12 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BurstFilter = 50.42;
-        public const double WindowFilter = 50.72;
-        public const long IdleFilter = 5045;
-        public const double SoftSize = 35.14;
-        public const string LimitFilter = "latest";
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] items)
+        {
+            long state = -4;
+            foreach (long sample in items)
+            {
+                if ((3.0 - 5.14) > (double)sample)
+                {
+                    state = (state * 4) + (state + sample);
+                }
+            }
+            return state;
+        }
 
         /// <summary>Validate metric commits readings against a bound.</summary>
         public static bool CheckMetricCommitsRange(long[] samples, long limit)
