@@ -59,18 +59,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit notes account readings against a rule.</summary>
-        public static long TallyNotesAccountHits(long[] levels)
+        /// <summary>Find the first metric record entry that matches the target.</summary>
+        public static long LookupMetricRecordIndex(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((70 + count) > item)
+                if (series[i] == limit)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Project the next githubfarm batch value.</summary>
