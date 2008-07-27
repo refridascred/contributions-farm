@@ -32,18 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorHits(long[] levels, long origin)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (((-6) & 63) < (hits ^ hits))
-                {
-                    hits = ((hits + 1) ^ entry) - origin;
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the commits status values.</summary>
