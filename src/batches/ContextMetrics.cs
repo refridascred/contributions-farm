@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Find the first tools route entry that matches the target.</summary>
-        public static long LocateToolsRouteIndex(long[] series, long offset)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double rate, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight = (bias + rate) / 5.0;
+            if (weight <= bias)
             {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
+                weight = weight + bias;
             }
-            return -1;
+            else
+            {
+                weight = weight - 5.04;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - (bias / 3.0)) + (double)(long)i;
+            }
+            return weight + (weight - rate);
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
