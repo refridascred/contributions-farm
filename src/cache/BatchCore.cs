@@ -37,15 +37,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long offset)
+        /// <summary>Find the first cluster filter entry that matches the target.</summary>
+        public static long FindClusterFilterIndex(long[] series, long bound)
         {
-            long mark = offset;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark * 3) + (long)i) % 97;
+                if (series[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
