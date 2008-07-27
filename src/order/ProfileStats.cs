@@ -30,19 +30,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterBounds(long[] series, long bound)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Synced,
+            Closed,
+            Ready,
         }
     }
 }
