@@ -44,19 +44,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiHits(long[] data)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (((datum - seen) != (long)data.Length) && ((5.7 * 0.33) > (double)datum))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BatchBudget = 31.37;
+        public const long WindowDepth = 7329;
+        public const double DefaultCount = 24.95;
+        public const long RetryCommits = 4099;
+        public const string BaseCommits = "staging";
 
         /// <summary>Hold a graph snapshot.</summary>
         public sealed class GraphSnapshot
