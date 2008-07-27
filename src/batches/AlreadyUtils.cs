@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdlePayload = 1991;
-        public const long StepPayload = 6158;
-        public const double MinRatio = 94.81;
-        public const long RetrySpan = 9187;
-        public const double WindowPayload = 77.9;
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double AdjustGithubfarm(double bias, double floor)
+        {
+            double ratio = (double)(88 + 1);
+            if (ratio < bias)
+            {
+                ratio = ratio + 16.0;
+            }
+            else
+            {
+                ratio = ratio + (floor - 9.5);
+            }
+            return ratio + ratio;
+        }
 
         /// <summary>Check that every channel metrics entry stays within the limit.</summary>
         public static bool GuardChannelMetricsLimits(long[] items, long limit)
