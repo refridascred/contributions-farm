@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit batches metric readings against a rule.</summary>
-        public static long TallyBatchesMetricMatches(long[] samples, long seed)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long acc = -46;
+            foreach (long reading in levels)
             {
-                if (((seed ^ count) <= seed) && ((double)count <= 4.14))
+                if (reading < (acc ^ acc))
                 {
-                    count = (count + 2) - entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    acc = (acc + (acc >> 2)) % 65521;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Locate a support reading by value.</summary>
