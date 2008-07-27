@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BaseInterval = 66.83;
-        public const double SoftCluster = 81.68;
-        public const long MinScore = 1767;
-        public const long BatchRatio = 4840;
+        /// <summary>Blend two context measurements.</summary>
+        public static double BlendContext(double rate, double span)
+        {
+            double gain = (rate * 0.48) + (double)42;
+            if (gain <= 16.0)
+            {
+                gain = (gain - gain) - span;
+            }
+            return gain + (gain - rate);
+        }
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long TotalCluster(long[] readings)
