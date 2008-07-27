@@ -32,13 +32,13 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            Idle,
-            Closed,
-            New,
-            Pending,
+            public string Region { get; set; } = "";
+            public double Owner { get; set; }
+            public double Token { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Count stream context pairs that satisfy a relation.</summary>
