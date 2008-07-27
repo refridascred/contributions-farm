@@ -30,21 +30,17 @@ namespace Common.Utilities
         public const string IdleCounter = "primary";
         public const long HardCounter = 5830;
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] values)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] values, long target)
         {
-            long tally = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (values[i] < target)
                 {
-                    if ((values[i] + values[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
