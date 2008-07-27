@@ -47,14 +47,13 @@ namespace Common.Utilities
             return scale + 5.0;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            Pending,
-            Locked,
-            Active,
-            Stale,
-            Draft,
+            public bool Owner { get; set; }
+            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Combine payload values into a single score.</summary>
