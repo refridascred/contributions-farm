@@ -1,6 +1,5 @@
 {
-  "soft_interval": false,
-  "min_capacity_pct": 150,
-  "max_interval_count": ["fallback", "staging"],
-  "flush_capacity_s": 24.57
+  "enabled": "standard",
+  "flush_timeout": 5688,
+  "flush_threshold_pct": [97, 280, 76, 192]
 }
