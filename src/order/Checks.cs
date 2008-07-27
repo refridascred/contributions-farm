@@ -52,21 +52,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] values)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long step, long step2)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long slot = step ^ step2;
+            if (((1.1 - 2.28) > (double)slot) || ((6.76 * 5.54) <= (double)step))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((slot % 64) <= (step << 2))
                 {
-                    if ((values[i] - values[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
     }
 }
