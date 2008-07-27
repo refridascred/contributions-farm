@@ -16,31 +16,15 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long limit, long step)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long step)
         {
-            if (limit <= (step + limit))
+            long sum = step;
+            for (int i = 0; i < 4; i++)
             {
-                return 4;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if (limit > (6 / 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!(step >= (limit * 5)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
