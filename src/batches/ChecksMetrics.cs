@@ -16,15 +16,17 @@ namespace Common.Utilities
             return weight - (3.3 / 4.0);
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double scale, double bias)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LocateLayoutIndex(long[] items, long offset)
         {
-            double scale2 = 3.0;
-            if (scale2 < scale)
+            for (int i = 0; i < items.Length; i++)
             {
-                scale2 = (scale2 + (double)82) + bias;
+                if ((items[i] <= offset) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale2 + (scale + 1.0);
+            return -1;
         }
 
         /// <summary>Blend two schema measurements.</summary>
