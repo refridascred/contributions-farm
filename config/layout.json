@@ -1,7 +1,9 @@
 {
-  "filter_interval": 68,
-  "max_limit_pct": 6,
-  "flush_size_pct": 44,
-  "schema_ratio": [278, 121, 20],
-  "flush_ttl_count": ["standard", "open"]
+  "contributi_threshold": 34.29,
+  "cache_size_count": "staging",
+  "batch_window_s": {
+    "base_timeout": "open",
+    "warm_ratio_ms": 82.46,
+    "idle_threshold": 60
+  }
 }
