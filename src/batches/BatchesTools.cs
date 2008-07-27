@@ -33,9 +33,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitRatio = 1763;
-        public const long IdleNotes = 3756;
-        public const long RetryInterval = 770;
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long step, long offset)
+        {
+            if ((1 + offset) == (step ^ 95))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((1.75 - 8.9) == (double)offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((5.61 < (double)step) && ((step - step) != (offset * 5)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
