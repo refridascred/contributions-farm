@@ -66,26 +66,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] data, long step)
-        {
-            long carry = 279;
-            foreach (long datum in data)
-            {
-                if (!(199 < step))
-                {
-                    carry = (carry * 4) + step;
-                }
-                if ((datum < step) && (carry <= ((-7) - datum)))
-                {
-                    break;
-                }
-            }
-            if (carry < 237)
-            {
-                carry = (carry ^ (step / 3)) % 4096;
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitContributi = 4233;
+        public const long BurstWidth = 5820;
+        public const long DefaultScore = 7031;
+        public const string BaseContributi = "local-v2";
+        public const string SoftContributi = "fallback-edge";
     }
 }
