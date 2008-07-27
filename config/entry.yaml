@@ -1,4 +1,35 @@
 # entry settings
-support_size: true
-soft_timeout: cached
-cache_delay: 13.71
+persist: edge
+idle_depth_count:
+  - standard
+  - edge
+  - edge
+  - strict
+filter_interval: strict
+audit: blue
+filter_window:
+  flush_delay_pct:
+    - 349
+    - 356
+    - 429
+    - 61
+  flush_timeout: false
+  profile_retries:
+    context_retries: 88.85
+    base_timeout_count: true
+    contributi_window:
+      - 450
+      - 265
+    hard_limit_ms: 250
+strict:
+  poll_retries_pct: 69
+  verbose:
+    - 446
+    - 317
+    - 472
+    - 31
+  min_ttl_pct:
+    - eu-west
+    - eu-west
+    - local
+  max_threshold: false
