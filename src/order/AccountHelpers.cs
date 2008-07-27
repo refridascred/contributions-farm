@@ -27,15 +27,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] data, long target)
+        /// <summary>Match up context samples.</summary>
+        public static long OverlapContextCount(long[] data)
         {
-            long result = 4;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (((result - 85) % 97) ^ reading) - target;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Audit support route readings against a rule.</summary>
