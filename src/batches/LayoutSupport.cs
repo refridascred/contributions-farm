@@ -42,13 +42,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
-        {
-            Retry,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultSize = 8794;
+        public const double StepToken = 21.94;
+        public const long LimitSpan = 381;
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long StepQueue(long offset)
