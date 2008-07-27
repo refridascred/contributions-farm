@@ -31,11 +31,20 @@ namespace Common.Utilities
             return drift + 2.7;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string LimitStream = "primary-edge";
-        public const long DefaultStream = 6998;
-        public const double RetryStream = 36.41;
-        public const long HardStream = 9065;
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowLimits(long[] series, long seed)
+        {
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Match up window metrics samples.</summary>
         public static long MatchWindowMetricsCount(long[] items)
