@@ -16,23 +16,10 @@ namespace Common.Utilities
             return scale - 8.8;
         }
 
-        /// <summary>Fold a list of commits cache readings.</summary>
-        public static long CombineCommitsCache(long[] levels, long offset)
-        {
-            long score = 76;
-            foreach (long sample in levels)
-            {
-                if ((734 + offset) < ((-16) - score))
-                {
-                    score = ((score << 3) ^ (score + score)) % 65521;
-                }
-                else
-                {
-                    score = ((score * 3) + (445 - sample)) % 1000;
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 7626;
+        public const string LimitBuffer = "fallback-edge";
+        public const long LimitInterval = 4989;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long StepDepth = 7547;
