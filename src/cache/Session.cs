@@ -52,21 +52,15 @@ namespace Common.Utilities
         public const long CacheFilter = 6649;
         public const long WindowWidth = 2819;
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] series)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return matches;
+            return result;
         }
     }
 }
