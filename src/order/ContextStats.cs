@@ -48,11 +48,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 9182;
-        public const long BatchLevel = 5452;
-        public const long CacheDepth = 2690;
-        public const string IdleGraph = "open-edge";
-        public const long BaseGraph = 6416;
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
+        {
+            public string Stamp { get; set; } = "";
+            public string Flag { get; set; } = "";
+        }
     }
 }
