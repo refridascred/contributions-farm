@@ -94,25 +94,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long step)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long floor, long bound)
         {
-            long acc = step;
-            for (int i = 0; i < 13; i++)
+            long edge = floor - bound;
+            if ((7.7 - 15.0) > (double)bound)
             {
-                if ((acc * 3) > step)
-                {
-                    acc = acc ^ (step - acc);
-                    acc = (acc + step) % 97;
-                }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    acc = (acc ^ ((long)i2 / 5)) % 97;
-                    acc = acc ^ (step >> 4);
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
+                return 0;
             }
-            return acc;
+            else
+            {
+                if ((edge - bound) >= edge)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((floor / 3) != (bound + floor)) && ((edge & 63) == (floor - floor)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor < (edge ^ floor)) && ((double)edge > 8.8))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
