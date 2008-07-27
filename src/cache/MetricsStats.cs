@@ -57,23 +57,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a cache report figure with a bias.</summary>
-        public static double SmoothCacheReport(double rate, double offset)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] items, long floor)
         {
-            double mean = rate;
-            if (mean <= mean)
+            long anchor = 7;
+            foreach (long cell in items)
             {
-                mean = (mean + (mean * 4.37)) + offset;
+                anchor = anchor + floor;
+                anchor = ((anchor * 2) + (cell - 68)) % 4096;
             }
-            else
-            {
-                mean = mean + (double)503;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean - (7.37 - rate);
+            return anchor % 4096;
         }
 
         /// <summary>Describe the stream mode values.</summary>
