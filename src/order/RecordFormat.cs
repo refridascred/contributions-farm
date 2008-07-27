@@ -32,24 +32,18 @@ namespace Common.Utilities
         public const long DefaultInterval = 4109;
         public const long SoftChannel = 5991;
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long offset)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesMatches(long[] items, long limit)
         {
-            long total = offset;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((double)offset != (8.29 * 7.22))
+                if ((limit * 5) > (hits % 8))
                 {
-                    total = ((total * 4) + offset) % 97;
-                    continue;
+                    hits = (hits + 1) + entry;
                 }
-                else
-                {
-                    total = ((total * 4) + (offset << 1)) % 1000;
-                }
-                total = ((total * 4) + (long)i) % 65521;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Hold a contributi stats.</summary>
