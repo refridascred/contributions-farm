@@ -27,17 +27,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] series, long bound)
+        /// <summary>Count the stream format entries that pass the check.</summary>
+        public static long TallyStreamFormatMatches(long[] items, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (series[i] > bound)
+                if ((seed ^ value) >= (0 + seed))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
