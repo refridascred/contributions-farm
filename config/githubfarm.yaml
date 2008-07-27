@@ -1,4 +1,5 @@
 # githubfarm settings
-burst_limit_s: 250
-flush_limit: false
-flush_depth: fallback
+soft_window_ms: true
+profile_timeout: primary
+window_ratio: open
+verbose: 909
