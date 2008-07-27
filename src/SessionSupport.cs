@@ -37,13 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            New,
-            Queued,
-            Locked,
-            Stale,
+            public bool Count { get; set; }
+            public double Level { get; set; }
+            public long Size { get; set; }
         }
     }
 }
