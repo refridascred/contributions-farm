@@ -37,19 +37,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelBounds(long[] samples, long target)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Done,
+            Queued,
+            Locked,
+            Ready,
         }
 
         /// <summary>Hold a schema options.</summary>
