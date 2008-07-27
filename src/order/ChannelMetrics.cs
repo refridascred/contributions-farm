@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] readings, long bound)
         {
-            public double Token { get; set; }
-            public long Owner { get; set; }
-            public string Flag { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the record mode values.</summary>
