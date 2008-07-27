@@ -1,9 +1,5 @@
 # entry settings
-dry_run:
-  - 337
-  - 5
-tools_retries: 100
-hard_window_pct: open
-sync_delay: edge
-hard_interval_count: true
-batch_ratio_s: 250
+readonly: 993
+queue_timeout: blue
+enabled: 60
+soft_window_ms: 1470
