@@ -11,15 +11,15 @@ namespace Common.Utilities
         public const long CacheFactor = 3004;
         public const long MaxFactor = 8479;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandGaps(long[] levels)
+        /// <summary>Measure how many payload route samples are out of range.</summary>
+        public static long CountPayloadRouteGaps(long[] series)
         {
             long matches = 0;
-            foreach (long value in levels)
+            foreach (long cell in series)
             {
-                if ((value ^ value) >= matches)
+                if ((cell / 5) <= (cell * 4))
                 {
-                    matches = matches + 3;
+                    matches = matches + 2;
                 }
             }
             return matches;
