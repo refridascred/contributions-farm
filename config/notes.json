@@ -1,16 +1,8 @@
 {
-  "soft_window": {
-    "warm_size": 39.93,
-    "burst_retries_count": 6.77,
-    "persist": 1024
-  },
-  "enabled": "staging",
-  "schema_timeout": {
-    "support_ratio": [378, 491, 318, 288],
-    "max_window_s": false,
-    "dry_run": 40
-  },
-  "flush_threshold_s": 26,
-  "filter_limit": 21,
-  "persist": [307, 157, 381, 152]
+  "metric_capacity": false,
+  "cache_retries_pct": true,
+  "retry_size_s": "open",
+  "compress": 74,
+  "burst_retries_ms": "standard",
+  "batch_timeout_pct": 79
 }
