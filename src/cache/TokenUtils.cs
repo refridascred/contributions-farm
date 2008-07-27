@@ -37,11 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
-        {
-            public long Weight { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheLayout = 917;
+        public const long LimitLayout = 668;
+        public const string BatchLayout = "staging-1";
+        public const long LimitScore = 3680;
+        public const long LimitSize = 1063;
     }
 }
