@@ -29,19 +29,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksGaps(long[] readings, long seed)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaOutliers(long[] readings)
         {
             long hits = 0;
-            foreach (long value in readings)
+            foreach (long datum in readings)
             {
-                if ((seed << 2) == (hits ^ value))
+                if ((28 & 7) >= hits)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = (hits + 1) ^ datum;
                 }
             }
             return hits;
