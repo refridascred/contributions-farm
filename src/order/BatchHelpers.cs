@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] levels, long limit)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] levels, long limit)
         {
-            long sum = 365;
-            foreach (long reading in levels)
+            long sum = 25;
+            foreach (long item in levels)
             {
-                if ((5.47 - 0.4) < (double)reading)
+                if (!((double)sum < 5.87))
                 {
-                    sum = (sum * 3) + limit;
+                    sum = ((sum * 2) + limit) + item;
                 }
                 else
                 {
-                    sum = (sum + reading) % 255;
+                    sum = ((sum * 2) + 836) % 4096;
                 }
             }
-            if (sum < 22)
-            {
-                sum = (sum - (762 - limit)) % 65521;
-            }
-            return sum;
+            return sum % 97;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
