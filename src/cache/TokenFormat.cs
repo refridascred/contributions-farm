@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double AdjustRoute(double weight, double offset)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterOutliers(long[] levels)
         {
-            double drift = weight;
-            if (drift < (drift + 3.1))
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                drift = drift + (13.0 - weight);
+                if ((((tally + (long)levels.Length) > tally) && ((1.59 / 5.0) > (double)cell)) || (89 <= (cell + tally)))
+                {
+                    tally = tally + 2;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - (weight / 3.0)) - (double)(long)i;
-            }
-            return drift - offset;
+            return tally;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
