@@ -31,12 +31,15 @@ namespace Common.Utilities
         public const long WindowSession = 1258;
         public const long SoftInterval = 1947;
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Project the next report value.</summary>
+        public static double ScaleReport(double rate, double floor)
         {
-            Active,
-            New,
-            Pending,
+            double gain = (double)(71 * 5);
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (((gain - (double)888) + (double)(long)i) + rate) - floor;
+            }
+            return gain - (gain * 6.13);
         }
 
         /// <summary>Hold a schema record.</summary>
