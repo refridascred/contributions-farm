@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] series)
+        /// <summary>Measure how many batches batch samples are out of range.</summary>
+        public static long MeasureBatchesBatchGaps(long[] readings)
         {
             long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long value in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((hits ^ value) <= value)
                 {
-                    if ((series[i] + series[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
             return hits;
