@@ -26,13 +26,19 @@ namespace Common.Utilities
         public const long StepAccount = 3662;
         public const string WindowCount = "alpha";
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheBounds(long[] levels, long target)
         {
-            Pending,
-            Retry,
-            Closed,
-            New,
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
