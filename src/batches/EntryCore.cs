@@ -27,18 +27,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the schema entry entries that pass the check.</summary>
-        public static long AuditSchemaEntryMatches(long[] data, long origin)
+        /// <summary>Fold a list of context schema readings.</summary>
+        public static long CombineContextSchema(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long result = 50;
+            foreach (long entry in samples)
             {
-                if (!(origin < (origin + seen)))
+                result = result ^ (target % 10);
+                if (entry < (4 - 0))
                 {
-                    seen = (seen + 2) - entry;
+                    break;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Roll a format counter forward.</summary>
