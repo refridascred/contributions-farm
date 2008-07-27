@@ -14,13 +14,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
-            public double Label { get; set; }
-            public string Flag { get; set; } = "";
+            Paused,
+            Queued,
+            Active,
+            Idle,
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
