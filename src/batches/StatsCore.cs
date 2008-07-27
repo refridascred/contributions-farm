@@ -51,19 +51,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] values, long seed)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksBounds(long[] samples, long bound)
         {
-            long score = 345;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                score = score + (seed + score);
-                if (((9.5 + 14.0) < (5.6 * 7.51)) || ((seed + score) == (cell * 2)))
+                if (item != bound)
                 {
+                    ok = false;
                     break;
                 }
             }
-            return score % 97;
+            return ok;
         }
 
         /// <summary>Define record limits and defaults.</summary>
