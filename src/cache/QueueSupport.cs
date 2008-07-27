@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] levels)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchMatches(long[] series, long offset)
         {
-            long sum = 997;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                sum = sum + sum;
-                if ((sum * 3) <= (-162))
+                if (((94 + (-551)) == (offset >> 4)) && ((tally <= (sample % 97)) || ((176 % 60) > (offset / 7))))
                 {
-                    sum = sum + sample;
+                    tally = tally + 1;
                 }
             }
-            if (sum > 40)
-            {
-                sum = (sum ^ (sum * 4)) % 1000;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Match up contributi layout samples.</summary>
