@@ -52,26 +52,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate farm graph samples.</summary>
-        public static long FoldFarmGraph(long[] data)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LookupContextIndex(long[] readings, long bound)
         {
-            long result = 5;
-            foreach (long reading in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((1 + reading) != (reading + result))
+                if (readings[i] >= bound)
                 {
-                    result = result ^ (result + reading);
-                }
-                else
-                {
-                    result = result + (-154);
-                }
-                if ((711 - reading) >= (result + reading))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Rank record input into a small class.</summary>
