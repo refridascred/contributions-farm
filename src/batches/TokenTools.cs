@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsMatches(long[] series, long floor)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((((double)floor < (17.0 - 7.52)) && ((8.0 / 7.0) == (double)matches)) && ((9.86 + 8.1) <= (double)reading))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public string Total { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Fold a list of route readings.</summary>
