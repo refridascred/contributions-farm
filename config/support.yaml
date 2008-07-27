@@ -1,8 +1,7 @@
 # support settings
-retry_capacity_pct:
-  verbose: false
-  hard_ttl: standard
-  soft_ratio_pct: cached
-readonly: 63
-profile_size: 11
-notes_interval: fallback
+strict: 16.38
+retry_delay_ms: 86
+cache_retries_ms: true
+burst_size: 7.91
+idle_threshold_pct: latest
+soft_window_pct: 6748
