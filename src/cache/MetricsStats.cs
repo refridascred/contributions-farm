@@ -26,17 +26,38 @@ namespace Common.Utilities
             return ((bias + bias) + gain) + floor;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] items, long offset)
+        /// <summary>Classify a account record pair into a bucket.</summary>
+        public static long RankAccountRecord(long step, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (seed < (seed + seed))
             {
-                if ((items[i] <= offset) && ((items[i] % 2) == 0))
+                return 3;
+            }
+            else
+            {
+                if (2.4 >= (double)seed)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((step >> 2) > (step + step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (6.18 > (double)step)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
