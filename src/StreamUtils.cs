@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaOutliers(long[] values)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowMatches(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (!(5 <= (entry + entry)))
+                if ((16.0 + 9.1) > (double)value)
                 {
-                    hits = hits + 1;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
