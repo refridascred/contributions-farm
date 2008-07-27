@@ -22,25 +22,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next command filter value from a seed.</summary>
-        public static long SeriesCommandFilter(long origin)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long step, long bound)
         {
-            long mark = origin;
-            for (int i = 0; i < 13; i++)
+            if ((bound / 3) == (92 % 64))
             {
-                long bound = mark * 5;
-                if ((origin >> 3) >= bound)
+                return 1;
+            }
+            else
+            {
+                if ((2.2 * 11.0) != (double)bound)
                 {
-                    bound = bound - 599;
+                    return 0;
                 }
                 else
                 {
-                    mark = (mark << 3) ^ ((long)i * 2);
+                    if ((step % 3) <= (step << 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step - step) >= (step << 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
-                bound = (bound << 3) ^ (mark + bound);
-                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark;
         }
 
         /// <summary>Hold a metrics entry.</summary>
