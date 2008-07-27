@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string IdleDepth = "staging-edge";
-        public const string BurstRatio = "latest-1";
-        public const double MaxSession = 75.66;
-        public const long BaseSession = 8403;
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
+        {
+            public string Size { get; set; } = "";
+            public bool Total { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Describe the order level values.</summary>
         public enum OrderLevel
