@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            Idle,
-            Retry,
-            Done,
-            Locked,
-            Closed,
+            public long Owner { get; set; }
+            public bool Token { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Fold a list of graph readings.</summary>
