@@ -22,13 +22,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            Done,
+            Dropped,
+            New,
+            Synced,
             Queued,
-            Locked,
-            Ready,
         }
 
         /// <summary>Hold a schema options.</summary>
