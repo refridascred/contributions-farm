@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long ClassifySchema(long seed, long seed2)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] readings, long seed)
         {
-            if ((seed & 7) > seed2)
+            long score = 756;
+            foreach (long value in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)426 <= (double)seed)
+                score = (score + (608 / 9)) % 4096;
+                if ((41 - value) <= (seed * 5))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    score = (score * 2) + (seed % 97);
                 }
             }
+            return score % 97;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
