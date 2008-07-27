@@ -40,20 +40,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] values)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] items, long seed)
         {
-            long carry = 7;
-            foreach (long cell in values)
+            long carry = 0;
+            foreach (long entry in items)
             {
-                carry = ((carry * 4) + (8 / 5)) % 4096;
-                carry = carry ^ (long)values.Length;
-                if ((298 - carry) == (2 - cell))
+                if ((double)seed != (2.58 - 7.26))
                 {
-                    break;
+                    carry = ((carry * 5) + (seed + carry)) ^ entry;
+                }
+                else
+                {
+                    carry = (carry ^ (seed / 7)) % 97;
                 }
             }
-            return carry;
+            if (carry > 4)
+            {
+                carry = carry + (seed >> 3);
+            }
+            return carry % 97;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
