@@ -20,18 +20,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmMatches(long[] values, long target)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((reading << 2) < (0 * 5))
-                {
-                    matches = (matches + 1) - target;
-                }
-            }
-            return matches;
+            public string Rank { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Locate a checks reading by value.</summary>
