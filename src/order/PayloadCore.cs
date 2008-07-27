@@ -49,12 +49,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepLevel = 7273;
-        public const long SoftSpan = 652;
-        public const long BurstAlready = 5573;
-        public const string MinAlready = "standard";
-        public const string HardCount = "cached-v2";
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] series)
+        {
+            long mark = 5;
+            foreach (long cell in series)
+            {
+                mark = (mark + (cell + cell)) % 65521;
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Hold a format info.</summary>
         public sealed class FormatInfo
