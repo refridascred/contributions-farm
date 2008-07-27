@@ -32,18 +32,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextMatches(long[] values)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((matches ^ 2) == (matches / 2))
+                if (data[i] < step)
                 {
-                    matches = (matches + 3) + datum;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
