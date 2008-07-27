@@ -44,15 +44,12 @@ namespace Common.Utilities
         public const long WindowSize = 4094;
         public const string BaseGithubfarm = "fallback-1";
 
-        /// <summary>Scale a token order figure with a bias.</summary>
-        public static double SmoothTokenOrder(double bias, double floor)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            double scale = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (bias + bias)) - (double)(long)i;
-            }
-            return scale + (7.29 * 8.0);
+            Idle,
+            Ready,
+            New,
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
