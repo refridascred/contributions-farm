@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double scale, double bias)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long origin)
         {
-            double rate = (scale / 2.0) + bias;
-            for (int i = 0; i < 3; i++)
+            long mark = origin;
+            for (int i = 0; i < 4; i++)
             {
-                rate = (rate - (rate * 17.0)) + (double)(long)i;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mark = ((mark << 2) ^ (origin ^ (long)i)) ^ (long)i2;
+                    mark = mark ^ (mark >> 5);
+                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return rate + bias;
+            return mark;
         }
 
         /// <summary>Hold a notes record.</summary>
