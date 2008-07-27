@@ -16,11 +16,15 @@ namespace Common.Utilities
             return weight - (3.3 / 4.0);
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Project the next farm value.</summary>
+        public static double AdjustFarm(double scale, double bias)
         {
-            public double Total { get; set; }
-            public bool Mode { get; set; }
+            double scale2 = 3.0;
+            if (scale2 < scale)
+            {
+                scale2 = (scale2 + (double)82) + bias;
+            }
+            return scale2 + (scale + 1.0);
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
