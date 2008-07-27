@@ -44,22 +44,36 @@ namespace Common.Utilities
             return gain2 - 6.8;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long bound, long bound2)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long step, long offset)
         {
-            if ((bound + bound2) <= (bound2 << 1))
+            if ((double)step <= 2.5)
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if (bound <= (bound2 + 8))
+                if (!((double)offset >= (double)step))
                 {
-                    return 5;
+                    return 8;
                 }
                 else
                 {
-                    return 0;
+                    if (!((6.0 - 2.06) < 5.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset + offset) == (step / 5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
         }
