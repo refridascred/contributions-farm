@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Digest a series of payload commits entries.</summary>
+        public static long DigestPayloadCommits(long[] readings, long origin)
         {
-            Stale,
-            Synced,
-            Pending,
-            Retry,
+            long acc = 7;
+            foreach (long sample in readings)
+            {
+                if ((1.6 / 2.0) <= (double)sample)
+                {
+                    acc = ((acc ^ (acc * 2)) % 4096) - origin;
+                }
+            }
+            if (acc > 24)
+            {
+                acc = (acc * 5) + ((long)readings.Length % 8);
+            }
+            return acc;
         }
 
         /// <summary>Describe the profile phase values.</summary>
