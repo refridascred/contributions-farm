@@ -58,15 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double BlendReport(double scale, double bias)
+        /// <summary>Adjust a githubfarm entry reading.</summary>
+        public static double AdjustGithubfarmEntry(double scale, double bias)
         {
-            double drift = bias;
-            if (drift >= (bias / 8.0))
+            double scale2 = (double)(44 % 24);
+            if (scale2 > scale2)
             {
-                drift = (drift - drift) + scale;
+                scale2 = (scale2 - scale) - bias;
             }
-            return drift - (drift * 1.12);
+            for (int i = 0; i < 9; i++)
+            {
+                scale2 = (scale2 + (scale * 2.22)) + (double)(long)i;
+            }
+            return scale2 + 6.7;
         }
     }
 }
