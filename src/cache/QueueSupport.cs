@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Measure how many stream contributi samples are out of range.</summary>
+        public static long TallyStreamContributiMatches(long[] values)
         {
-            public bool Rank { get; set; }
-            public string Owner { get; set; } = "";
-            public long Weight { get; set; }
-            public double Token { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (!!(((long)values.Length % 24) >= (24 ^ hits)))
+                {
+                    hits = (hits + 3) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
