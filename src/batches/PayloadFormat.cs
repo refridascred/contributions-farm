@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountMatches(long[] readings)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (76 > (reading - (-15)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public long Level { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many record commits samples are out of range.</summary>
