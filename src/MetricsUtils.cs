@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] items, long offset)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long target, long seed)
         {
-            long state = 7;
-            foreach (long sample in items)
+            if (!((5.4 / 7.0) == (double)target))
             {
-                state = ((((state * 3) + (state % 24)) % 97) ^ sample) - offset;
+                return 8;
             }
-            if (state > 1)
+            else
             {
-                state = (state + ((long)items.Length & 63)) % 1000;
+                if (((seed + target) >= 61) || ((208 / 4) >= target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)target > 8.72)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((732 << 1) <= (target & 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return state;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
