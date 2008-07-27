@@ -55,18 +55,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit commits schema readings against a rule.</summary>
-        public static long MeasureCommitsSchemaGaps(long[] values, long target)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long state = 6;
+            foreach (long cell in data)
             {
-                if (((seen << 2) <= (seen >> 5)) && ((double)target != (2.18 - 12.0)))
+                if (((708 << 2) <= bound) && ((double)bound > (1.86 + 19.0)))
                 {
-                    seen = (seen + 2) - item;
+                    state = (state ^ (state / 8)) % 4096;
+                }
+                else
+                {
+                    state = (state ^ (cell - 4)) % 97;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Project the next graph account value.</summary>
