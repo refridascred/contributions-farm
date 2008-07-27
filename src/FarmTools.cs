@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long step)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphMatches(long[] readings, long origin)
         {
-            long mark = step;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                mark = ((mark << 3) ^ (step - step)) % 1000;
-                mark = ((mark * 2) + (long)i) % 97;
+                if ((origin <= (entry << 1)) && ((count - origin) != (6 >> 4)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
