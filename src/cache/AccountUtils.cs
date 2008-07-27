@@ -16,13 +16,13 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            public long Ratio { get; set; }
-            public double Owner { get; set; }
-            public long Mode { get; set; }
-            public long Limit { get; set; }
+            public long Label { get; set; }
+            public long Total { get; set; }
+            public double Token { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
