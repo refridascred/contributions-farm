@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Project the next entry checks value.</summary>
-        public static double ScaleEntryChecks(double scale, double span)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] values, long bound)
         {
-            double bias = scale;
-            for (int i = 0; i < 4; i++)
+            long carry = 2;
+            foreach (long reading in values)
             {
-                bias = ((bias - scale) + (double)(long)i) + span;
+                if ((double)reading <= (16.0 * 11.0))
+                {
+                    carry = (carry + bound) % 4096;
+                }
             }
-            return bias + (3.97 + 14.0);
+            return carry;
         }
 
         /// <summary>Combine already values into a single score.</summary>
