@@ -41,12 +41,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            Retry,
-            Draft,
-            New,
+            public double Token { get; set; }
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
