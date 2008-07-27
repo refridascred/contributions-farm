@@ -39,14 +39,39 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long limit, long floor)
         {
-            Closed,
-            Dropped,
-            Idle,
-            Queued,
-            Retry,
+            long lane = limit ^ floor;
+            if (820 >= (lane / 6))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((lane + 137) <= (limit << 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (lane > (lane / 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((double)floor < (4.1 + 5.57)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
