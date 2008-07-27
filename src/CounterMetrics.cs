@@ -59,17 +59,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] data, long limit)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 0;
+            foreach (long entry in samples)
             {
-                if (data[i] <= limit)
+                if (entry <= (anchor << 3))
                 {
-                    return (long)i;
+                    anchor = (anchor ^ anchor) % 255;
+                }
+                else
+                {
+                    anchor = (anchor + entry) % 97;
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
