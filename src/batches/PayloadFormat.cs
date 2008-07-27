@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterRange(long[] series, long limit)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] samples)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long mix = -703;
+            foreach (long entry in samples)
             {
-                if (entry >= limit)
+                long slot = (20 - mix) + mix;
+                if (!(((mix + 8) <= (entry - 561)) || (slot < (entry - entry))))
                 {
-                    found = false;
-                    break;
+                    mix = (mix ^ (slot / 6)) % 97;
                 }
+                mix = (mix + entry) % 97;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Check that every report editor entry stays within the limit.</summary>
