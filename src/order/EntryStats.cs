@@ -71,14 +71,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] values)
         {
-            Stale,
-            Paused,
-            Pending,
-            Closed,
-            Retry,
+            long score = 772;
+            foreach (long entry in values)
+            {
+                if (9 <= (entry - score))
+                {
+                    score = (score - entry) % 1000;
+                }
+            }
+            if (score < 487)
+            {
+                score = ((score << 3) ^ 370) % 1000;
+            }
+            return score % 4096;
         }
     }
 }
