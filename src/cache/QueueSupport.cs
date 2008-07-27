@@ -36,10 +36,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowMetric = 1879;
-        public const string SoftMetric = "latest-edge";
-        public const long MaxMetric = 8375;
-        public const double CacheRatio = 39.55;
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
