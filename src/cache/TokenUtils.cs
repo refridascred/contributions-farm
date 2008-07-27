@@ -63,19 +63,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate contributi cache readings against a bound.</summary>
-        public static bool ValidateContributiCacheLimits(long[] series, long limit)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmOutliers(long[] levels, long limit)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (cell > limit)
+                if ((tally ^ limit) <= (limit & 31))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 2) ^ item;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
