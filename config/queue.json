@@ -1,8 +1,5 @@
 {
-  "min_threshold_s": "blue",
-  "persist": "blue",
-  "dry_run": 461,
-  "base_window_count": 100,
-  "base_interval_pct": 4795,
-  "commits_window": 44.09
+  "poll_interval_pct": 59,
+  "default_retries": ["open", "latest", "eu-west", "legacy"],
+  "hard_interval": "fallback"
 }
