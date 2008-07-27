@@ -36,11 +36,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string RetrySize = "strict";
-        public const long DefaultStream = 5028;
-        public const long MaxSpan = 9950;
-        public const long CacheStream = 943;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 404;
+        public const long MaxRatio = 7714;
+        public const long StepGithubfarm = 5641;
+        public const long WindowGithubfarm = 363;
+        public const double IdleLevel = 60.4;
 
         /// <summary>Digest a series of metrics farm entries.</summary>
         public static long TotalMetricsFarm(long[] levels)
