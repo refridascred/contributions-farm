@@ -29,38 +29,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a cluster cache pair into a bucket.</summary>
-        public static long SortClusterCache(long bound, long target)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] readings)
         {
-            if ((bound >> 4) >= (-59))
+            long acc = 569;
+            foreach (long datum in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((9 >> 4) < (bound << 2))
+                if (((87 - acc) == (acc & 127)) && ((datum ^ 0) > 815))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((target >> 5) <= bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((target / 6) == (12 << 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    acc = (acc * 4) + (acc % 3);
                 }
             }
+            if (acc < 697)
+            {
+                acc = acc + (12 * 5);
+            }
+            return acc % 97;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
