@@ -41,23 +41,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] levels, long floor)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long mix = 265;
-            foreach (long reading in levels)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    mix = (((mix ^ (floor % 24)) % 1000) - (long)i) - reading;
-                }
-                mix = mix + ((-52) / 5);
-            }
-            if (mix < 31)
-            {
-                mix = mix ^ floor;
-            }
-            return mix % 65521;
+            Retry,
+            Draft,
+            New,
         }
     }
 }
