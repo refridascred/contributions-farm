@@ -46,21 +46,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count notes counter pairs that satisfy a relation.</summary>
-        public static long CompareNotesCounterCount(long[] values)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Level { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Measure how many cache support samples are out of range.</summary>
