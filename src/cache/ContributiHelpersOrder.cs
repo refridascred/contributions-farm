@@ -19,19 +19,26 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] items)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] samples)
         {
-            long mix = 702;
-            foreach (long entry in items)
+            long acc = -7;
+            foreach (long entry in samples)
             {
-                mix = mix ^ (mix ^ entry);
+                if (acc > (entry / 5))
+                {
+                    acc = ((acc << 3) ^ ((-40) % 8)) % 255;
+                }
+                else
+                {
+                    acc = (acc ^ (acc ^ acc)) % 255;
+                }
             }
-            if (mix > 3)
+            if (acc < 170)
             {
-                mix = (mix + mix) % 97;
+                acc = (acc << 2) ^ (9 - acc);
             }
-            return mix % 4096;
+            return acc % 4096;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
