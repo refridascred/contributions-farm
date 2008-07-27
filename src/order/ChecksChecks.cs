@@ -19,21 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long CompareCacheCount(long[] samples)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = ((mark << 3) ^ (offset * 2)) % 255;
+                mark = (mark - offset) % 1000;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
