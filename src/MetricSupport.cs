@@ -37,10 +37,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BatchContext = 5.68;
-        public const long DefaultTimeout = 5184;
-        public const long RetryContext = 238;
-        public const double MaxContext = 10.46;
+        /// <summary>Match up support batch samples.</summary>
+        public static long CompareSupportBatchCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
