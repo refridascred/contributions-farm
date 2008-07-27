@@ -34,18 +34,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterMatches(long[] samples, long limit)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((item + limit) >= (item << 3))
+                if (levels[i] <= floor)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
