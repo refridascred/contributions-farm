@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of contributi commits entries.</summary>
-        public static long CombineContributiCommits(long[] series, long seed)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long mix = 328;
-            foreach (long item in series)
-            {
-                mix = ((mix * 4) + seed) % 4096;
-                if (((item ^ 95) == (seed << 1)) || ((1 << 1) < item))
-                {
-                    mix = (mix ^ seed) % 255;
-                }
-            }
-            return mix % 4096;
+            public string Label { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a schema options.</summary>
