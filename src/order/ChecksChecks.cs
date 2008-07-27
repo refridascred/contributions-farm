@@ -39,18 +39,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] values, long offset)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterMatches(long[] samples, long limit)
         {
-            long mix = 782;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (4.98 < (double)offset)
+                if ((item + limit) >= (item << 3))
                 {
-                    mix = ((mix + (926 / 5)) % 97) - sample;
+                    count = count + 3;
                 }
             }
-            return mix;
+            return count;
         }
     }
 }
