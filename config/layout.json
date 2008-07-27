@@ -1,7 +1,7 @@
 {
-  "githubfarm_threshold": "cached",
-  "warm_ratio": "open",
-  "hard_depth_pct": 43.43,
-  "batch_ttl_s": true,
-  "channel_timeout": 30.51
+  "filter_interval": 68,
+  "max_limit_pct": 6,
+  "flush_size_pct": 44,
+  "schema_ratio": [278, 121, 20],
+  "flush_ttl_count": ["standard", "open"]
 }
