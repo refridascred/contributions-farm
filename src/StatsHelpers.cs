@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long StepSession(long floor)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long floor, long floor2)
         {
-            long anchor = floor;
-            for (int i = 0; i < 8; i++)
+            if (34 >= (floor2 / 5))
             {
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if (((double)floor2 <= (2.05 + 19.0)) && ((floor % 12) == (floor / 9)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Hold a queue options.</summary>
