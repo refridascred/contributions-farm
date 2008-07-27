@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double AdjustGithubfarm(double bias, double floor)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double SmoothEditor(double ratio, double bias)
         {
-            double ratio = (double)(88 + 1);
-            if (ratio < bias)
+            double scale = (double)(-2) / 4.0;
+            if (scale >= 6.0)
             {
-                ratio = ratio + 16.0;
+                scale = (scale + bias) + ratio;
             }
-            else
-            {
-                ratio = ratio + (floor - 9.5);
-            }
-            return ratio + ratio;
+            return scale - scale;
         }
 
         /// <summary>Check that every channel metrics entry stays within the limit.</summary>
