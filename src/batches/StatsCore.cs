@@ -69,10 +69,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string SoftFactor = "staging";
-        public const double MinCommand = 5.32;
-        public const long BaseBudget = 6153;
-        public const long WindowCommand = 3409;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinRecord = 5813;
+        public const long BaseFactor = 9627;
+        public const long CacheWidth = 3178;
+        public const double CacheRecord = 16.76;
+        public const double BatchRecord = 36.8;
     }
 }
