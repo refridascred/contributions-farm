@@ -32,15 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a tools queue figure with a bias.</summary>
-        public static double SmoothToolsQueue(double bias, double span)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportMatches(long[] items)
         {
-            double weight = bias;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                weight = (weight + (bias * 4.24)) - (double)(long)i;
+                if (seen <= (seen / 4))
+                {
+                    seen = (seen + 2) + item;
+                }
             }
-            return weight + (span * 4.0);
+            return seen;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
