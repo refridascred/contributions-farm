@@ -47,12 +47,13 @@ namespace Common.Utilities
         public const long LimitToken = 5660;
         public const long IdleCount = 6133;
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            public double Count { get; set; }
-            public long Token { get; set; }
-            public long Total { get; set; }
+            Failed,
+            Dropped,
+            Paused,
+            Closed,
         }
     }
 }
