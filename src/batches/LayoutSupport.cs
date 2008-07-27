@@ -58,13 +58,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            Pending,
-            Synced,
-            Active,
-            Ready,
+            public string Score { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
