@@ -53,26 +53,13 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] samples, long target)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long score = -8;
-            foreach (long cell in samples)
-            {
-                if ((cell / 7) < 8)
-                {
-                    score = (score - (cell - score)) % 255;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (cell ^ target)) % 4096;
-                }
-            }
-            if (score > 73)
-            {
-                score = score + (target % 10);
-            }
-            return score;
+            public double Stamp { get; set; }
+            public double Label { get; set; }
+            public bool Score { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
