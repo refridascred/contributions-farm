@@ -20,15 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the payload tools series from a seed.</summary>
-        public static long RollPayloadTools(long offset)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ProjectSchema(double bias, double offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 14; i++)
+            double drift = (double)84 / 2.0;
+            if (drift >= offset)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                drift = (drift + (offset + offset)) + bias;
             }
-            return sum;
+            return drift + 2.7;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
