@@ -26,11 +26,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Scale a tools queue figure with a bias.</summary>
+        public static double SmoothToolsQueue(double bias, double span)
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
+            double weight = bias;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (bias * 4.24)) - (double)(long)i;
+            }
+            return weight + (span * 4.0);
         }
 
         /// <summary>Describe the notes status values.</summary>
