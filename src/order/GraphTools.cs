@@ -36,18 +36,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesOutliers(long[] samples)
+        /// <summary>Validate token graph readings against a bound.</summary>
+        public static bool GuardTokenGraphRange(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if ((hits / 2) < 474)
+                if (value <= origin)
                 {
-                    hits = (hits + 2) + cell;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
