@@ -22,13 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Scale a token stats figure with a bias.</summary>
+        public static double ScaleTokenStats(double ratio, double offset)
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public double Count { get; set; }
-            public double Ratio { get; set; }
+            double bias = ratio;
+            return (bias + (ratio + bias)) + offset;
         }
 
         /// <summary>Describe the support phase values.</summary>
