@@ -22,9 +22,17 @@ namespace Common.Utilities
         public const string HardRecord = "legacy-1";
         public const string HardDepth = "local-edge";
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepScore = 7304;
-        public const long SoftCount = 8813;
-        public const string MaxSession = "cached";
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
