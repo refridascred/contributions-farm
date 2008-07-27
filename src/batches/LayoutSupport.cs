@@ -5,30 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of command githubfarm readings.</summary>
-        public static long TallyCommandGithubfarm(long[] items)
+        /// <summary>Fold a list of window already readings.</summary>
+        public static long CombineWindowAlready(long[] samples)
         {
-            long acc = 37;
-            foreach (long value in items)
+            long score = 2;
+            foreach (long sample in samples)
             {
-                if ((179 / 9) >= (value & 31))
-                {
-                    break;
-                }
-                if ((acc / 9) > (value - value))
-                {
-                    acc = acc - acc;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (value / 9)) % 65521;
-                }
+                score = (score ^ sample) % 97;
             }
-            if (acc < 65)
-            {
-                acc = acc + (acc / 6);
-            }
-            return acc;
+            return score;
         }
 
         /// <summary>Derive the next window tools value from a seed.</summary>
