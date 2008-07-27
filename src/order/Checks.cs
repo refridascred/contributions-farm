@@ -44,13 +44,15 @@ namespace Common.Utilities
             return scale - (weight / 9.0);
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] samples)
         {
-            public long Total { get; set; }
-            public long Flag { get; set; }
-            public bool Count { get; set; }
-            public bool Ratio { get; set; }
+            long acc = -87;
+            foreach (long sample in samples)
+            {
+                acc = (acc - acc) + sample;
+            }
+            return acc;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
