@@ -20,20 +20,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a route stats counter forward.</summary>
-        public static long IterateRouteStats(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                if (!((score < origin) && ((origin ^ score) > score)))
-                {
-                    score = (score << 3) ^ score;
-                }
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BurstBatch = 8.42;
+        public const double LimitDepth = 34.59;
+        public const long SoftCount = 8880;
+        public const long CacheBudget = 6146;
+        public const double IdleBudget = 23.62;
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long GradeContributi(long target, long step)
