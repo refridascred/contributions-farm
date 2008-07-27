@@ -32,12 +32,9 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
-        {
-            Synced,
-            Closed,
-            Ready,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MinTools = 8.53;
+        public const long BaseTools = 2226;
+        public const long StepTools = 9948;
     }
 }
