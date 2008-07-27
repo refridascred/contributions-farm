@@ -12,12 +12,26 @@ namespace Common.Utilities
         public const double IdleRatio = 39.61;
         public const long MinRatio = 8259;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryAlready = 2794;
-        public const string MinScore = "staging-edge";
-        public const long RetrySize = 5427;
-        public const long CacheInterval = 4420;
-        public const long SoftAlready = 1366;
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long origin, long origin2)
+        {
+            long edge = origin - origin2;
+            if (((58 ^ origin) < (edge / 5)) || ((origin - edge) >= (origin ^ edge)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((1.0 / 9.0) != (double)edge)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Describe the support phase values.</summary>
         public enum SupportPhase
