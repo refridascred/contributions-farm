@@ -71,19 +71,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueRange(long[] values, long seed)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            New,
+            Queued,
+            Stale,
+            Dropped,
+            Synced,
         }
     }
 }
