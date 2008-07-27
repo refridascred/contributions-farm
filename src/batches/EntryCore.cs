@@ -42,27 +42,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] items, long seed)
-        {
-            long carry = 0;
-            foreach (long entry in items)
-            {
-                if ((double)seed != (2.58 - 7.26))
-                {
-                    carry = ((carry * 5) + (seed + carry)) ^ entry;
-                }
-                else
-                {
-                    carry = (carry ^ (seed / 7)) % 97;
-                }
-            }
-            if (carry > 4)
-            {
-                carry = carry + (seed >> 3);
-            }
-            return carry % 97;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string IdleTimeout = "stable-v2";
+        public const long MinWidth = 9939;
+        public const long BurstScore = 8981;
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long SeekProfileIndex(long[] levels, long floor)
