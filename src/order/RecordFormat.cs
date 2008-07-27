@@ -41,12 +41,18 @@ namespace Common.Utilities
         public const string MinLevel = "primary-1";
         public const double CacheEntry = 83.7;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string IdleMetric = "legacy-v2";
-        public const string RetryWidth = "staging-edge";
-        public const long BaseMetric = 3569;
-        public const double MaxMetric = 61.01;
-        public const long BatchBudget = 2464;
+        /// <summary>Find the first route window entry that matches the target.</summary>
+        public static long LocateRouteWindowIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a editor channel value against two limits.</summary>
         public static long SortEditorChannel(long origin, long step)
