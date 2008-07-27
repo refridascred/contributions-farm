@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterMatches(long[] readings)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ScaleContributi(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            double gain = floor;
+            if (gain >= gain)
             {
-                if ((matches / 6) >= (matches + 7))
-                {
-                    matches = (matches + 3) + datum;
-                }
+                gain = gain + (floor / 4.0);
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - (double)(-898)) - (double)(long)i;
+            }
+            return gain - scale;
         }
 
         /// <summary>Validate support command readings against a bound.</summary>
