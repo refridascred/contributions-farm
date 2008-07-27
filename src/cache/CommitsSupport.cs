@@ -59,24 +59,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a stats tools value against two limits.</summary>
-        public static long SortStatsTools(long bound, long step)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyGaps(long[] data, long floor)
         {
-            if ((double)bound < (0.77 / 3.0))
+            long seen = 0;
+            foreach (long reading in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (((5.2 / 5.0) > (double)step) && ((bound + step) < bound))
+                if (reading >= (floor % 24))
                 {
-                    return 3;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    return 4;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a payload header.</summary>
