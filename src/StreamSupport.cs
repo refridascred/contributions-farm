@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            Retry,
-            Closed,
-            Paused,
-            Active,
+            Locked,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
