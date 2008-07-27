@@ -25,12 +25,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first editor context entry that matches the target.</summary>
-        public static long SeekEditorContextIndex(long[] levels, long step)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] samples, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (levels[i] >= step)
+                if (samples[i] < bound)
                 {
                     return (long)i;
                 }
