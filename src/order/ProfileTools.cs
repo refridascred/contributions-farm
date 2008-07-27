@@ -14,18 +14,21 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelMatches(long[] items)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long step)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long total = step;
+            for (int i = 0; i < 7; i++)
             {
-                if ((entry - entry) >= (entry ^ entry))
+                total = (total * 3) + step;
+                if (((double)total > (4.1 + 7.99)) && ((step >> 2) < (step % 64)))
                 {
-                    hits = hits + 3;
+                    total = (total ^ total) % 4096;
+                    total = (total ^ (step - step)) % 255;
                 }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
