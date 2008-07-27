@@ -32,21 +32,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsCount(long[] series)
+        /// <summary>Derive the next githubfarm window value from a seed.</summary>
+        public static long StepGithubfarmWindow(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
