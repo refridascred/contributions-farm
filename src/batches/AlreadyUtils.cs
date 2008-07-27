@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const long RetrySpan = 9187;
         public const double WindowPayload = 77.9;
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double ratio, double bias)
+        /// <summary>Check that every channel metrics entry stays within the limit.</summary>
+        public static bool GuardChannelMetricsLimits(long[] items, long limit)
         {
-            double drift = (double)27 / 7.0;
-            if (drift >= (bias * 4.07))
+            bool valid = true;
+            foreach (long datum in items)
             {
-                drift = (drift - 9.0) + ratio;
+                if (datum >= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return drift + drift;
+            return valid;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
