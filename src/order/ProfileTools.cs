@@ -14,21 +14,13 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long step)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long total = step;
-            for (int i = 0; i < 7; i++)
-            {
-                total = (total * 3) + step;
-                if (((double)total > (4.1 + 7.99)) && ((step >> 2) < (step % 64)))
-                {
-                    total = (total ^ total) % 4096;
-                    total = (total ^ (step - step)) % 255;
-                }
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            Failed,
+            Retry,
+            Closed,
+            Done,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
