@@ -33,12 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] readings, long seed)
+        /// <summary>Look up the position of a filter report sample.</summary>
+        public static long LocateFilterReportIndex(long[] items, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((readings[i] >= seed) && ((readings[i] % 2) != 0))
+                if (items[i] >= origin)
                 {
                     return (long)i;
                 }
