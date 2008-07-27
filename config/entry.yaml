@@ -1,11 +1,4 @@
 # entry settings
-persist: 56.29
-metric_ratio:
-  - open
-  - open
-  - fallback
-  - strict
-batch_timeout_pct: latest
-strict: false
-report_timeout: primary
-warm_ttl_count: 8
+support_size: true
+soft_timeout: cached
+cache_delay: 13.71
