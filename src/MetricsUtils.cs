@@ -32,11 +32,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long target)
         {
-            public string Flag { get; set; } = "";
-            public bool Token { get; set; }
+            long score = target;
+            for (int i = 0; i < 4; i++)
+            {
+                if (((double)target > 5.0) && ((target * 4) < target))
+                {
+                    score = (score * 3) + (454 % 12);
+                }
+                score = ((score * 4) + (target / 8)) % 255;
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
