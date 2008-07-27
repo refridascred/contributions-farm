@@ -12,22 +12,21 @@ namespace Common.Utilities
         public const long MaxGraph = 7445;
         public const long MinScore = 4391;
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] levels, long seed)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long CompareContributiCount(long[] readings)
         {
-            long total = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((total - total) == (total * 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = (total ^ (entry * 4)) % 255;
+                    if ((readings[i] - readings[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (total > (-578))
-            {
-                total = (total * 2) + (seed % 64);
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Describe the editor mode values.</summary>
