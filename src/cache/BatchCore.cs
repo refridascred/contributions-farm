@@ -57,18 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] levels)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long offset)
         {
-            long mix = 9;
-            foreach (long reading in levels)
+            long mark = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (((mix + reading) == (mix + (long)levels.Length)) && ((mix >> 1) > reading))
-                {
-                    mix = ((mix << 3) ^ (mix - reading)) % 97;
-                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return mix % 65521;
+            return mark;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
