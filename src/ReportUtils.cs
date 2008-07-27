@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a checks context counter forward.</summary>
-        public static long DeriveChecksContext(long floor)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long result = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                result = result - ((long)i - result);
-                if (result <= (108 - floor))
-                {
-                    result = ((result * 5) + result) % 97;
-                }
-                else
-                {
-                    result = (result - ((long)i - result)) % 4096;
-                    result = ((result << 2) ^ (result << 3)) % 4096;
-                }
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
+            public double Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Blend two profile measurements.</summary>
