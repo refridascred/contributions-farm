@@ -57,39 +57,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a tools layout value against two limits.</summary>
-        public static long SortToolsLayout(long floor, long bound)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long span = floor ^ bound;
-            if ((span - 44) <= (span + floor))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor / 7) == (bound * 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound - span) >= (span >> 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((double)floor <= 7.0) || ((double)floor < (9.0 / 2.0)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
