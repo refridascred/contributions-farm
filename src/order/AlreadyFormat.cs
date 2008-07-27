@@ -23,15 +23,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
-        {
-            Failed,
-            Ready,
-            Retry,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BurstStats = 1.48;
+        public const long MinFactor = 3491;
+        public const double RetryStats = 46.49;
+        public const double SoftStats = 89.7;
+        public const long MaxWidth = 9769;
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
