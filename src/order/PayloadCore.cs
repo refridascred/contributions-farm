@@ -12,14 +12,17 @@ namespace Common.Utilities
         public const long MaxGraph = 7445;
         public const long MinScore = 4391;
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Locate a context metrics reading by value.</summary>
+        public static long LookupContextMetricsIndex(long[] data, long floor)
         {
-            Pending,
-            New,
-            Idle,
-            Queued,
-            Synced,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
