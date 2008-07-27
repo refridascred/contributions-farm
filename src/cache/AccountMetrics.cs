@@ -22,12 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
-        {
-            public string Flag { get; set; } = "";
-            public double Count { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BatchMetric = "primary-v2";
+        public const double MinMetric = 69.02;
+        public const long RetryMetric = 6550;
+        public const double BaseSize = 91.54;
+        public const long MaxSpan = 5328;
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long MeasureCommandGaps(long[] values)
