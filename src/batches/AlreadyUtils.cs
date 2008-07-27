@@ -85,25 +85,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long seed)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long bound)
         {
-            long carry = seed;
-            for (int i = 0; i < 17; i++)
+            long sum = bound;
+            for (int i = 0; i < 12; i++)
             {
-                carry = (carry - (seed * 4)) % 65521;
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    carry = (carry ^ (8 & 1)) ^ (long)i2;
-                    carry = (carry << 3) ^ (carry << 3);
-                }
-                if (!((carry - seed) >= (carry + seed)))
-                {
-                    continue;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Match up cache samples.</summary>
