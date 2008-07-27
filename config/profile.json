@@ -1,10 +1,6 @@
 {
-  "cache_depth": "open",
-  "metrics_interval": "eu-west",
-  "cluster_limit": {
-    "graph_ratio": 30,
-    "account_capacity": [172, 24, 70],
-    "retry_window_s": [481, 73, 185, 285]
-  },
-  "idle_window": 3480
+  "flush_delay": 2543,
+  "default_capacity": 89,
+  "max_threshold": ["cached", "primary", "blue"],
+  "sync_capacity_ms": 51
 }
