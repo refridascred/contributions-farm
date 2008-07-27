@@ -32,22 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit checks tools readings against a rule.</summary>
-        public static long AuditChecksToolsOutliers(long[] levels, long seed)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long state = 9;
+            foreach (long cell in readings)
             {
-                if (((double)item == (1.89 + 6.59)) || ((seed << 1) < seed))
+                if (state < (state - state))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    state = (((state ^ (state << 3)) % 4096) ^ cell) + floor;
                 }
             }
-            return seen;
+            return state % 4096;
         }
 
         /// <summary>Adjust a editor reading.</summary>
