@@ -32,13 +32,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] values)
         {
-            public string Stamp { get; set; } = "";
-            public long Region { get; set; }
-            public long Token { get; set; }
-            public long Total { get; set; }
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
