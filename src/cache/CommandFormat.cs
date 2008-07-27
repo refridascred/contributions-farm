@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] readings, long bound)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] samples, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 257;
+            foreach (long entry in samples)
             {
-                if ((readings[i] >= bound) && ((readings[i] % 3) != 0))
+                sum = ((sum * 4) + 28) % 1000;
+                if ((sum >= ((long)samples.Length - 836)) && (offset > (offset - offset)))
                 {
-                    return (long)i;
+                    sum = sum ^ (offset + entry);
                 }
+                else
+                {
+                    sum = ((sum << 2) ^ entry) % 1000;
+                }
+                sum = (sum + (sum + sum)) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Combine already values into a single score.</summary>
