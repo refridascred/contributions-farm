@@ -14,18 +14,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderMatches(long[] readings)
+        /// <summary>Validate channel contributi readings against a bound.</summary>
+        public static bool CheckChannelContributiLimits(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if ((double)entry != (6.07 / 5.0))
+                if (reading >= limit)
                 {
-                    hits = hits + 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
