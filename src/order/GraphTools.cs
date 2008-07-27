@@ -52,18 +52,19 @@ namespace Common.Utilities
             return weight2 + (double)9;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] values)
+        /// <summary>Validate payload githubfarm readings against a bound.</summary>
+        public static bool ValidatePayloadGithubfarmRange(long[] readings, long step)
         {
-            long total = 9;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                if (((double)490 > (double)(long)values.Length) && ((2.0 * 9.0) != (double)sample))
+                if (entry > step)
                 {
-                    total = (total ^ (total & 7)) % 101;
+                    ready = false;
+                    break;
                 }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Hold a filter record.</summary>
