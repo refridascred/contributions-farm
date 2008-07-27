@@ -40,10 +40,16 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBatch = 1302;
-        public const long CacheScore = 2278;
-        public const long CacheSpan = 4271;
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double AdjustGithubfarm(double bias, double offset)
+        {
+            double rate = (double)(90 % 12);
+            if (rate < (bias + bias))
+            {
+                rate = (rate - (double)648) + offset;
+            }
+            return rate + (double)4;
+        }
 
         /// <summary>Accumulate checks payload samples.</summary>
         public static long TallyChecksPayload(long[] items, long bound)
