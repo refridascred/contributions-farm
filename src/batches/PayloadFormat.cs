@@ -16,20 +16,18 @@ namespace Common.Utilities
             return scale2 - bias;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long offset)
+        /// <summary>Measure how many record commits samples are out of range.</summary>
+        public static long TallyRecordCommitsHits(long[] readings)
         {
-            long carry = offset;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((double)item <= (3.0 + 0.1))
                 {
-                    carry = (((carry * 4) + ((long)i << 2)) % 101) - (long)i2;
-                    carry = (carry ^ carry) % 1000;
+                    seen = seen + 1;
                 }
-                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
