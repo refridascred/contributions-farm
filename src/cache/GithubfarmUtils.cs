@@ -5,36 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] levels)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] values, long step)
         {
-            long total = 243;
-            foreach (long datum in levels)
+            long mark = 82;
+            foreach (long entry in values)
             {
-                if ((47 - 311) != (datum >> 1))
+                if ((9.37 * 9.9) != (double)step)
                 {
-                    long seen = (datum ^ datum) / 9;
-                    total = (total ^ (seen * 5)) % 4096;
-                    break;
-                }
-                if ((datum << 3) <= (datum - datum))
-                {
-                    total = total - total;
+                    mark = (mark + (mark + mark)) - entry;
                 }
                 else
                 {
-                    total = total + total;
-                }
-                if ((datum >> 4) <= (total + datum))
-                {
-                    break;
+                    mark = ((mark * 2) + ((-82) + mark)) % 97;
                 }
             }
-            if (total < 236)
-            {
-                total = (total + total) % 65521;
-            }
-            return total % 4096;
+            return mark;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
