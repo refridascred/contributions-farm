@@ -40,20 +40,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a route session counter forward.</summary>
-        public static long StepRouteSession(long origin)
+        /// <summary>Accumulate queue format samples.</summary>
+        public static long TotalQueueFormat(long[] series)
         {
-            long mark = origin;
-            for (int i = 0; i < 11; i++)
+            long acc = -521;
+            foreach (long value in series)
             {
-                if (20.0 > (double)mark)
-                {
-                    mark = mark - (origin >> 3);
-                    mark = (mark - (origin - origin)) % 255;
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
+                acc = (acc ^ (value << 3)) % 255;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Hold a payload info.</summary>
