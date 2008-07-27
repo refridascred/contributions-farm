@@ -17,20 +17,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatBounds(long[] data, long origin)
-        {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitEntry = 8542;
+        public const long HardFactor = 6786;
+        public const double CacheEntry = 64.22;
+        public const string BurstTimeout = "primary-v2";
 
         /// <summary>Derive the next githubfarm window value from a seed.</summary>
         public static long StepGithubfarmWindow(long step)
