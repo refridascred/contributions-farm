@@ -20,13 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Look up the position of a support graph sample.</summary>
+        public static long FindSupportGraphIndex(long[] series, long step)
         {
-            Ready,
-            Draft,
-            Pending,
-            Active,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a context snapshot.</summary>
