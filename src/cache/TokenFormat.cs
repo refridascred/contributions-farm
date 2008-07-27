@@ -15,12 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleContributi = 5372;
-        public const long MinLevel = 5390;
-        public const long DefaultDepth = 8136;
-        public const double StepFactor = 2.01;
-        public const long BaseRatio = 9134;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueHits(long[] values, long target)
+        {
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((double)reading == (7.0 + 5.0))
+                {
+                    matches = (matches + 3) + target;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool CheckBufferRange(long[] series, long origin)
