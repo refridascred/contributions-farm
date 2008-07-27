@@ -36,18 +36,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MaxSpan = "alpha-edge";
+        public const string MinLevel = "primary-1";
+        public const double CacheEntry = 83.7;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string IdleMetric = "legacy-v2";
