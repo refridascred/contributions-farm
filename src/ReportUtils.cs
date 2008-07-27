@@ -33,39 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long limit, long origin)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] readings, long seed)
         {
-            long delta = limit ^ origin;
-            if (((2.1 / 8.0) > (double)delta) || ((3.42 + 6.3) <= (6.0 * 2.55)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((delta + origin) > (limit / 6))
+                if ((readings[i] >= seed) && ((readings[i] % 2) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((1.8 * 0.14) < (double)origin) && (limit >= (delta & 7)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (limit < (delta - origin))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
