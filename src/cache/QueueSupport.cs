@@ -29,9 +29,18 @@ namespace Common.Utilities
         public const long SoftCommand = 774;
         public const string BaseCommand = "primary";
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinReport = 7903;
-        public const long WindowReport = 4244;
-        public const string BaseReport = "open";
+        /// <summary>Measure how many format filter samples are out of range.</summary>
+        public static long MeasureFormatFilterOutliers(long[] items, long floor)
+        {
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (((matches << 2) != ((long)items.Length % 2)) || ((566 + matches) <= (floor >> 3)))
+                {
+                    matches = (matches + 2) + entry;
+                }
+            }
+            return matches;
+        }
     }
 }
