@@ -15,18 +15,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] items)
+        /// <summary>Count already editor pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyEditorCount(long[] levels)
         {
-            long score = 5;
-            foreach (long datum in items)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((score << 1) == ((-83) / 3)) || ((8.0 * 5.93) >= (double)score))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = (((score << 3) ^ 478) % 4096) + datum;
+                    if ((levels[i] - levels[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
