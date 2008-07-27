@@ -39,19 +39,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueHits(long[] data, long seed)
-        {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((tally - reading) >= (tally + seed))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 6334;
+        public const long SoftToken = 1637;
+        public const string BurstToken = "fallback-edge";
+        public const double CacheFactor = 21.29;
+        public const long HardInterval = 7239;
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long RankEditor(long step, long step2)
