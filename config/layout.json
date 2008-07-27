@@ -1,6 +1,16 @@
 {
-  "base_threshold": true,
-  "dry_run": [344, 196],
-  "flush_size_ms": "latest",
-  "idle_retries_count": [213, 185, 87, 337]
+  "cache_window_ms": "eu-west",
+  "channel_timeout": 22.07,
+  "flush_limit": "edge",
+  "command_threshold": {
+    "metrics_interval": 35,
+    "sync_timeout": 100,
+    "flush_ratio_ms": {
+      "cache_window": "primary",
+      "warm_window_s": true,
+      "counter_size": 86.63
+    }
+  },
+  "hard_ratio_ms": false,
+  "default_capacity": 1024
 }
