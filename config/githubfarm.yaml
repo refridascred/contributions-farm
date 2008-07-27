@@ -1,18 +1,23 @@
 # githubfarm settings
-account_ratio: true
-cache_limit:
-  cache_threshold_s: eu-west
-  counter_ratio: false
-  idle_capacity_s: 50.35
-  contributi_delay:
-    burst_window_s: false
-    batch_ttl: primary
-    idle_depth_pct: green
-    retry_window_count: stable
-    hard_timeout_count: strict
-    default_interval_s: primary
-persist: 66.24
-batch_delay_count:
-  - 101
-  - 442
-  - 363
+warm_threshold_pct: true
+commits_ttl: 5623
+stream_timeout: 60
+retry_limit_s:
+  cache_retries: fallback
+  poll_threshold: 22.16
+  min_ratio_s: 69
+  flush_retries: staging
+  warm_ratio_count: cached
+  editor_ttl: standard
+window_interval: 65.72
+persist:
+  buffer_ratio: latest
+  format_window:
+    tools_ttl:
+      - 420
+      - 430
+    soft_threshold: false
+    readonly: true
+  batch_retries: 100
+  tools_timeout: 52.22
+  flush_size_s: blue
