@@ -60,18 +60,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueGaps(long[] items)
+        /// <summary>Locate a command token reading by value.</summary>
+        public static long SeekCommandTokenIndex(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seen < (seen >> 1)) || ((seen < 3) && ((cell - cell) <= (-940))))
+                if ((samples[i] > floor) && ((samples[i] % 2) == 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
