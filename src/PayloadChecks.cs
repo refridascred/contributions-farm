@@ -12,18 +12,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenOutliers(long[] readings, long origin)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((matches ^ cell) != (73 - (-61)))
-                {
-                    matches = (matches + 3) + origin;
-                }
-            }
-            return matches;
+            public string Rank { get; set; } = "";
+            public bool Level { get; set; }
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many tools contributi samples are out of range.</summary>
