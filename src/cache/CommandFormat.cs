@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= offset) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double StepQueue = 97.92;
+        public const double SoftTimeout = 33.25;
+        public const double BaseQueue = 43.76;
+        public const long CacheQueue = 4517;
 
         /// <summary>Describe the githubfarm state values.</summary>
         public enum GithubfarmState
