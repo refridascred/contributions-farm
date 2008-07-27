@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
-        {
-            Draft,
-            Locked,
-            Idle,
-            Pending,
-            Queued,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepWidth = 8079;
+        public const string WindowContext = "open-edge";
+        public const string BurstSize = "primary";
+        public const string WindowFactor = "open";
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long BurstRatio = 2365;
