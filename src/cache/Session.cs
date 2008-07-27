@@ -31,21 +31,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up queue record samples.</summary>
-        public static long OverlapQueueRecordCount(long[] items)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
