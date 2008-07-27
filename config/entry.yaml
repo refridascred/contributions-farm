@@ -1,5 +1,5 @@
 # entry settings
-readonly: 993
-queue_timeout: blue
-enabled: 60
-soft_window_ms: 1470
+verbose: primary
+readonly: false
+flush_delay_pct: false
+metric_threshold: false
