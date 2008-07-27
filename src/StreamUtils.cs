@@ -56,12 +56,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double LimitRecord = 62.09;
-        public const long CacheTimeout = 9730;
-        public const long RetryInterval = 359;
-        public const long IdleRecord = 8183;
-        public const string WindowSize = "primary-edge";
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count stream notes pairs that satisfy a relation.</summary>
         public static long OverlapStreamNotesCount(long[] items)
