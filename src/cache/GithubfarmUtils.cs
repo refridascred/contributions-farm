@@ -23,19 +23,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionBounds(long[] items, long bound)
+        /// <summary>Match up buffer support samples.</summary>
+        public static long CompareBufferSupportCount(long[] samples)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading < bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((samples[i] + samples[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
