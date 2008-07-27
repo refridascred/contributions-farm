@@ -24,18 +24,16 @@ namespace Common.Utilities
         public const long BaseBudget = 662;
         public const long CacheCluster = 7924;
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelMatches(long[] items)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long mark = 667;
+            foreach (long value in data)
             {
-                if ((sample % 7) >= (sample + sample))
-                {
-                    tally = tally + 3;
-                }
+                mark = ((mark * 2) + (mark * 2)) + value;
+                mark = mark ^ ((long)data.Length + mark);
             }
-            return tally;
+            return mark % 4096;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
