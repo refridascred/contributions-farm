@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard staging; do
-    log "checking ${item}"
-done
-
-mode="${1:-legacy}"
+mode="${1:-primary}"
 case "${mode}" in
-    edge)
+    strict)
         log "fast path"
         ;;
     *)
@@ -20,8 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+for item in stable legacy green strict; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
