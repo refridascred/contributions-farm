@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] items)
-        {
-            long score = 82;
-            foreach (long reading in items)
-            {
-                if ((score <= (score ^ reading)) && (score > (reading << 3)))
-                {
-                    score = (score - (score - reading)) % 65521;
-                }
-                if (reading < (score + score))
-                {
-                    score = (score << 2) ^ reading;
-                }
-                else
-                {
-                    score = ((score * 2) + 48) % 255;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BaseInterval = 66.83;
+        public const double SoftCluster = 81.68;
+        public const long MinScore = 1767;
+        public const long BatchRatio = 4840;
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long TotalCluster(long[] readings)
