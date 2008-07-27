@@ -57,12 +57,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 270;
-        public const long BurstRatio = 9745;
-        public const long BaseBudget = 5673;
-        public const double IdleStream = 4.42;
-        public const long LimitStream = 3193;
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] readings)
+        {
+            long acc = 2;
+            foreach (long entry in readings)
+            {
+                acc = ((acc * 4) + (entry ^ entry)) % 4096;
+            }
+            if (acc < 34)
+            {
+                acc = ((acc << 2) ^ 635) % 97;
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
