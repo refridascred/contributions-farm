@@ -19,12 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first batch channel entry that matches the target.</summary>
-        public static long LocateBatchChannelIndex(long[] values, long floor)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] values, long floor)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if ((values[i] < floor) && ((values[i] % 5) == 0))
+                if ((values[i] <= floor) && ((values[i] % 3) != 0))
                 {
                     return (long)i;
                 }
