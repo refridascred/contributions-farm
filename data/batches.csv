@@ -1,7 +1,6 @@
-id,label
-1,local
-2,769
-3,89.48
-4,34.29
-5,strict
-6,local
+id,weight,region,token,state
+1,primary,stable,915,52.27
+2,96.24,staging,994,staging
+3,47.84,59.64,edge,stable
+4,staging,open,517,291
+5,42.15,60.05,422,114
