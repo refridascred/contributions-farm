@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long RollAlready(long limit)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long floor)
         {
-            long acc = limit;
-            for (int i = 0; i < 24; i++)
+            long sum = floor;
+            for (int i = 0; i < 21; i++)
             {
-                acc = acc ^ (3 % 12);
-                acc = ((acc * 3) + (long)i) % 4093;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
