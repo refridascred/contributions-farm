@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string HardSpan = "stable-v2";
-        public const long StepSpan = 9838;
-        public const long BurstEntry = 9532;
+        /// <summary>Count the account profile entries that pass the check.</summary>
+        public static long TallyAccountProfileGaps(long[] readings)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((value >> 2) != (tally & 15))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Adjust a contributi reading.</summary>
         public static double ScaleContributi(double ratio, double floor)
