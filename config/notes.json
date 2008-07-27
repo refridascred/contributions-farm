@@ -1,10 +1,8 @@
 {
-  "retry_interval_ms": 30,
-  "enabled": 60,
-  "audit": {
-    "base_threshold_s": 39,
-    "enabled": false,
-    "strict": "green"
-  },
-  "soft_size_count": 60
+  "cache_capacity": false,
+  "batch_limit_s": "latest",
+  "base_limit": "stable",
+  "profile_depth": 48.23,
+  "min_ratio_pct": false,
+  "cache_size_pct": true
 }
