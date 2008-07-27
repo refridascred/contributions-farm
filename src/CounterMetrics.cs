@@ -42,17 +42,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] data, long step)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= step) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Active,
+            Closed,
+            Done,
+            Ready,
         }
     }
 }
