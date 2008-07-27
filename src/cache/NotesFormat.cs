@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long OverlapSessionCount(long[] series)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] items, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = -44;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((entry / 9) == (floor ^ floor))
                 {
-                    if ((series[i] ^ series[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score ^ (score + floor)) % 101;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Fold a list of filter buffer readings.</summary>
