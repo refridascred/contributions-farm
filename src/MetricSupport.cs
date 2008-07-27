@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double BlendFilter(double rate, double span)
+        /// <summary>Validate route notes readings against a bound.</summary>
+        public static bool GuardRouteNotesRange(long[] series, long offset)
         {
-            double scale = (double)(616 % 3);
-            if (scale <= scale)
+            bool ok = true;
+            foreach (long value in series)
             {
-                scale = (scale + scale) - rate;
+                if (value < offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - span) + (double)(long)i;
-            }
-            return scale - (3.69 / 3.0);
+            return ok;
         }
 
         /// <summary>Define context limits and defaults.</summary>
