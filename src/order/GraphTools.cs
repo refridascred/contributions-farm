@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double scale, double offset)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            double load = (19.0 * 4.17) / 4.0;
-            if (load >= (8.0 * 19.0))
-            {
-                load = (load + offset) - scale;
-            }
-            return load - (offset * 19.0);
+            Draft,
+            Queued,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Rank channel input into a small class.</summary>
