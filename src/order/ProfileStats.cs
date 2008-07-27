@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            Synced,
-            Queued,
-            Dropped,
+            Idle,
             Locked,
+            Synced,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Fold a list of stream readings.</summary>
