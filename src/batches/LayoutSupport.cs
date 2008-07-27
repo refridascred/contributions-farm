@@ -31,19 +31,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutRange(long[] items, long origin)
+        /// <summary>Derive the next window tools value from a seed.</summary>
+        public static long SeriesWindowTools(long limit)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long anchor = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (sample >= origin)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Describe the format status values.</summary>
