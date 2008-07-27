@@ -71,15 +71,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long origin)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long anchor = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            Paused,
+            Draft,
+            Done,
         }
     }
 }
