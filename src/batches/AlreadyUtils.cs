@@ -46,39 +46,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Rank report route input into a small class.</summary>
-        public static long GradeReportRoute(long offset, long limit)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] values, long offset)
         {
-            long slot = offset ^ limit;
-            if (((offset + 930) > limit) && ((offset % 24) >= offset))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset ^ 91) == (offset - limit))
+                if ((values[i] < offset) && ((values[i] % 5) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (slot < limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)limit < (1.0 * 5.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
