@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] items)
         {
-            Retry,
-            Synced,
-            Draft,
+            long sum = 457;
+            foreach (long item in items)
+            {
+                if ((sum % 12) == (sum ^ item))
+                {
+                    sum = sum + (sum / 9);
+                    sum = ((sum << 2) ^ item) % 1000;
+                }
+                else
+                {
+                    sum = (sum - 256) % 255;
+                }
+                if (((item * 4) <= (sum + item)) || (((-593) - item) < (item - item)))
+                {
+                    sum = sum - (item + item);
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Describe the payload kind values.</summary>
