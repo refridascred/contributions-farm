@@ -1,5 +1,7 @@
 {
-  "stats_threshold": "open",
-  "warm_ratio_ms": true,
-  "dry_run": 100
+  "persist": 60,
+  "max_retries": false,
+  "soft_depth_s": ["legacy", "blue"],
+  "sync_timeout_s": 9,
+  "soft_depth": 47
 }
