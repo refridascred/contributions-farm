@@ -19,10 +19,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstSize = 7001;
-        public const long BaseBudget = 662;
-        public const long CacheCluster = 7924;
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > offset) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of support readings.</summary>
         public static long TotalSupport(long[] data)
