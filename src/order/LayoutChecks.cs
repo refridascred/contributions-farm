@@ -27,14 +27,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            Retry,
-            Paused,
-            Locked,
-            Ready,
-            Pending,
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Match up stream samples.</summary>
