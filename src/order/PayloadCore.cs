@@ -19,21 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] readings)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Fold a list of format readings.</summary>
