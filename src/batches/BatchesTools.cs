@@ -16,22 +16,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long OverlapEditorCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double StepFactor = 60.87;
+        public const string DefaultFormat = "fallback-1";
+        public const double LimitTimeout = 6.11;
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long DigestProfile(long[] series)
