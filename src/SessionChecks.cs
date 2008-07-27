@@ -32,13 +32,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportGaps(long[] series)
         {
-            Done,
-            Locked,
-            New,
-            Pending,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((cell & 255) < (cell + count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
