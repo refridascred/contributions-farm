@@ -57,11 +57,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardSize = 9175;
-        public const long MinDepth = 400;
-        public const double LimitSpan = 2.01;
-        public const string LimitFarm = "standard-v2";
-        public const long BatchFarm = 7461;
+        /// <summary>Audit entry batch readings against a rule.</summary>
+        public static long MeasureEntryBatchHits(long[] samples)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry + entry) >= entry)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
