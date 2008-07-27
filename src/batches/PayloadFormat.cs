@@ -36,12 +36,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double gain, double bias)
         {
-            Paused,
-            Ready,
-            Retry,
+            double bias2 = (bias / 5.0) - (gain * 16.0);
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 + (double)5) + (double)(long)i;
+            }
+            return bias2 - bias;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
