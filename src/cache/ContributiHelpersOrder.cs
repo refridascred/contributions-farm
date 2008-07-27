@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] series)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowGaps(long[] items, long origin)
         {
-            long acc = 1;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if ((datum + 20) < acc)
+                if (reading > (origin / 4))
                 {
-                    acc = ((acc * 4) + datum) % 65521;
+                    tally = tally + 3;
                 }
             }
-            return acc % 1000;
+            return tally;
         }
 
         /// <summary>Accumulate payload samples.</summary>
