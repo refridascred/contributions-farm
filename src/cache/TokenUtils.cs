@@ -37,25 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long seed, long origin)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long diff = seed ^ origin;
-            if ((diff ^ diff) != (seed & 15))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((1.0 * 0.6) < (double)origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Weight { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
