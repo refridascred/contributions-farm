@@ -40,15 +40,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double AdjustGithubfarm(double bias, double offset)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            double rate = (double)(90 % 12);
-            if (rate < (bias + bias))
-            {
-                rate = (rate - (double)648) + offset;
-            }
-            return rate + (double)4;
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Accumulate checks payload samples.</summary>
