@@ -19,23 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double weight, double offset)
+        /// <summary>Measure how many editor metrics samples are out of range.</summary>
+        public static long TallyEditorMetricsMatches(long[] samples)
         {
-            double weight2 = (double)(88 + 933);
-            if (weight2 < (double)938)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                weight2 = weight2 + (double)48;
+                if ((((matches - datum) == (matches % 5)) && (matches >= (datum - datum))) || (((-956) - matches) > matches))
+                {
+                    matches = matches + 3;
+                }
             }
-            else
-            {
-                weight2 = weight2 - (11.0 / 6.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight2 = weight2 - (double)(long)i;
-            }
-            return weight2 - (weight - offset);
+            return matches;
         }
 
         /// <summary>Count the counter command entries that pass the check.</summary>
