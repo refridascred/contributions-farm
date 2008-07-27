@@ -19,13 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchBounds(long[] values, long origin)
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public string Limit { get; set; } = "";
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine context values into a single score.</summary>
