@@ -1,5 +1,7 @@
 # githubfarm settings
-default_ratio_count: false
-flush_capacity: 500
-enabled: 100
-dry_run: 1024
+cluster_limit: 60
+dry_run: 37
+burst_size_count:
+  - stable
+  - fallback
+enabled: 69.61
