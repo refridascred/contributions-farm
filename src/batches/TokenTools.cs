@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheToken = 8477;
-        public const double BurstToken = 76.54;
-        public const long MinToken = 9801;
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long WindowMetric = 6005;
