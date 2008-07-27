@@ -39,14 +39,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long limit, long offset)
         {
-            Pending,
-            Failed,
-            Ready,
-            Dropped,
-            Idle,
+            long next = limit - offset;
+            if ((offset / 2) < (offset & 15))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((20.0 - 15.0) <= (double)limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((next % 5) <= (limit ^ next))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((6.5 - 3.0) < (double)next) || (offset > (next - offset)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
