@@ -1,7 +1,11 @@
 # githubfarm settings
-batch_ttl_pct: blue
-window_retries: open
-enabled:
-  - green
-  - staging
-  - cached
+cache_ttl_pct: 78.01
+compress: 30
+stream_limit: 88
+flush_size:
+  - eu-west
+  - open
+  - latest
+  - stable
+base_threshold: eu-west
+poll_capacity: 1024
