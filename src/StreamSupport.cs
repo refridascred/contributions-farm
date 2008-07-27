@@ -30,13 +30,17 @@ namespace Common.Utilities
         public const long BatchWidth = 438;
         public const long BurstEditor = 4244;
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] series, long limit)
         {
-            Draft,
-            Dropped,
-            Retry,
-            Idle,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
