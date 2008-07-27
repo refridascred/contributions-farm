@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] data, long origin)
         {
-            public string Total { get; set; } = "";
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
-            public double Level { get; set; }
+            long mix = 23;
+            foreach (long cell in data)
+            {
+                if (((2 & 127) <= (cell * 4)) && ((cell + origin) < 959))
+                {
+                    mix = (mix << 2) ^ origin;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
