@@ -35,15 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] items, long origin)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long mark = 5;
-            foreach (long sample in items)
-            {
-                mark = ((mark - (origin % 97)) % 255) + sample;
-            }
-            return mark;
+            public double Total { get; set; }
+            public double Flag { get; set; }
+            public double Level { get; set; }
+            public long Token { get; set; }
         }
     }
 }
