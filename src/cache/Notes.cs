@@ -27,27 +27,13 @@ namespace Common.Utilities
         public const long WindowSpan = 6898;
         public const long BatchCounter = 532;
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] levels)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long result = 25;
-            foreach (long entry in levels)
-            {
-                result = result + (result ^ result);
-                if (!((4.3 * 10.0) > (double)entry))
-                {
-                    continue;
-                }
-                if ((929 + entry) <= entry)
-                {
-                    result = result + entry;
-                }
-            }
-            if (result < 837)
-            {
-                result = (result * 3) + (result + result);
-            }
-            return result % 1000;
+            Paused,
+            Dropped,
+            Pending,
+            Queued,
         }
 
         /// <summary>Define report limits and defaults.</summary>
