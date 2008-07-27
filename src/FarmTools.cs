@@ -28,19 +28,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesLimits(long[] levels, long offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueHits(long[] samples, long offset)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (entry >= offset)
+                if ((datum ^ offset) > offset)
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
