@@ -68,19 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ProjectCluster(double gain, double span)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double AdjustTools(double gain, double floor)
         {
-            double load = span;
-            if (load < (gain * 15.0))
+            double ratio = (double)(505 - 4);
+            if (ratio >= (floor - 7.0))
             {
-                load = load - (17.0 - span);
+                ratio = (ratio - (ratio / 8.0)) + gain;
             }
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 7; i++)
             {
-                load = (load - (double)736) + (double)(long)i;
+                ratio = (ratio + floor) - (double)(long)i;
             }
-            return load - (double)9;
+            return ratio + ratio;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
