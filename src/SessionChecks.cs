@@ -32,18 +32,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportMatches(long[] items)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamOutliers(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (seen <= (seen / 4))
+                if (!(count > (count >> 5)) && ((11.0 + 10.0) <= (double)count))
                 {
-                    seen = (seen + 2) + item;
+                    count = ((count + 3) ^ value) - seed;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a command entry.</summary>
