@@ -21,14 +21,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] readings, long limit)
         {
-            Pending,
-            Stale,
-            Idle,
-            Ready,
-            New,
+            long mix = 8;
+            foreach (long reading in readings)
+            {
+                mix = ((mix ^ limit) % 4096) + reading;
+            }
+            return mix;
         }
     }
 }
