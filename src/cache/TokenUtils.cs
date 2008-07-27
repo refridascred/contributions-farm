@@ -12,18 +12,17 @@ namespace Common.Utilities
             return ((load + load) + scale) + bias;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandOutliers(long[] levels, long origin)
+        /// <summary>Locate a contributi window reading by value.</summary>
+        public static long FindContributiWindowIndex(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((2.0 + 7.4) <= (double)value)
+                if (samples[i] > offset)
                 {
-                    hits = (hits + 2) + origin;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count stream context pairs that satisfy a relation.</summary>
