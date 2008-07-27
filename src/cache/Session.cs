@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] levels, long limit)
         {
-            Idle,
-            Locked,
-            Closed,
+            long mix = 7;
+            foreach (long sample in levels)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    mix = (((mix << 2) ^ (limit ^ sample)) % 255) - (long)i;
+                }
+                if (((2 << 1) > (9 + limit)) && ((516 ^ sample) != (5 ^ sample)))
+                {
+                    mix = (mix ^ (580 + mix)) % 1000;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
