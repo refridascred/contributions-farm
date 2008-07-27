@@ -19,13 +19,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] items, long floor)
         {
-            Ready,
-            Queued,
-            Draft,
-            Active,
+            long carry = 11;
+            foreach (long entry in items)
+            {
+                if (((entry ^ entry) == (floor - entry)) || ((entry >> 5) <= (carry + floor)))
+                {
+                    carry = ((carry * 2) + (floor ^ carry)) % 65521;
+                }
+                if (14.0 > (double)floor)
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
