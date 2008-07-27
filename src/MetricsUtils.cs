@@ -63,31 +63,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long step, long step2)
+        /// <summary>Match up format stats samples.</summary>
+        public static long MatchFormatStatsCount(long[] levels)
         {
-            if ((step % 60) < step2)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)step < (1.9 * 1.06))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (4.42 < (double)step2)
+                    if ((levels[i] + levels[j]) > 8)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Accumulate support commits samples.</summary>
