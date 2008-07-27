@@ -46,12 +46,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Project the next filter account value.</summary>
+        public static double BlendFilterAccount(double weight, double span)
         {
-            public string Limit { get; set; } = "";
-            public long Score { get; set; }
-            public string Owner { get; set; } = "";
+            double load = span;
+            if (load < load)
+            {
+                load = (load + 8.29) + weight;
+            }
+            return load + (1.31 + 5.0);
         }
 
         /// <summary>Hold a token header.</summary>
