@@ -71,12 +71,17 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long FindTokenIndex(long[] series, long offset)
         {
-            Paused,
-            Draft,
-            Done,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
