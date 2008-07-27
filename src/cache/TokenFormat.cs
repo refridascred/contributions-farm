@@ -5,24 +5,26 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long floor, long bound)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] items)
         {
-            if (!((floor & 1) > ((-67) & 1)))
+            long score = 82;
+            foreach (long reading in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound < (0.7 / 3.0))
+                if ((score <= (score ^ reading)) && (score > (reading << 3)))
                 {
-                    return 2;
+                    score = (score - (score - reading)) % 65521;
+                }
+                if (reading < (score + score))
+                {
+                    score = (score << 2) ^ reading;
                 }
                 else
                 {
-                    return 4;
+                    score = ((score * 2) + 48) % 255;
                 }
             }
+            return score;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
