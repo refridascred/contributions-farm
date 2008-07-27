@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
+mode="${1:-stable}"
 case "${mode}" in
-    eu-west)
+    legacy)
         log "fast path"
         ;;
     *)
@@ -18,6 +18,6 @@ esac
 
 total=0
 for i in $(seq 1 5); do
-    total=$((total + i * 4))
+    total=$((total + i * 5))
 done
 log "total ${total}"
