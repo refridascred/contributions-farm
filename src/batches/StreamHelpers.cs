@@ -41,22 +41,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 3994;
+        public const long DefaultCount = 3676;
+        public const long WindowProfile = 2314;
+        public const long BatchSpan = 3049;
+        public const long BaseDepth = 3346;
 
         /// <summary>Derive the next stream command value from a seed.</summary>
         public static long RollStreamCommand(long limit)
