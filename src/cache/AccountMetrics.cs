@@ -20,30 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] samples)
+        /// <summary>Validate layout stream readings against a bound.</summary>
+        public static bool GuardLayoutStreamLimits(long[] items, long bound)
         {
-            long state = 161;
-            foreach (long cell in samples)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if ((state * 5) < (303 - state))
+                if (datum < bound)
                 {
-                    state = (state ^ (816 + cell)) % 4096;
-                }
-                else
-                {
-                    state = ((state << 2) ^ (cell >> 1)) % 101;
-                }
-                if ((cell <= state) && ((12 / 3) >= ((long)samples.Length - state)))
-                {
+                    ready = false;
                     break;
                 }
             }
-            if (state > 88)
-            {
-                state = ((state * 5) + (state % 2)) % 101;
-            }
-            return state % 1000;
+            return ready;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
