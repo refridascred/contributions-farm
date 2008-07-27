@@ -23,14 +23,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            Closed,
-            Draft,
-            Done,
-            Failed,
-            Pending,
+            public long Ratio { get; set; }
+            public double Owner { get; set; }
+            public long Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
