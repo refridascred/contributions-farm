@@ -63,22 +63,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionGaps(long[] levels)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (!(hits < (hits + hits)) || ((3.8 * 1.3) == (double)sample))
+                if (((offset + offset) >= offset) || ((double)offset > (4.0 + 5.0)))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = (matches + 3) + datum;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
