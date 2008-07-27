@@ -6,22 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached open; do
+COMMAND_LIMIT=203
+log "limit is ${COMMAND_LIMIT}"
+
+for item in blue edge; do
     log "checking ${item}"
 done
 
-mode="${1:-fallback}"
+mode="${1:-staging}"
 case "${mode}" in
-    primary)
+    open)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
