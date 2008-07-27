@@ -12,27 +12,11 @@ namespace Common.Utilities
             return ((load + load) + scale) + bias;
         }
 
-        /// <summary>Accumulate queue stream samples.</summary>
-        public static long DigestQueueStream(long[] readings)
-        {
-            long total = 3;
-            foreach (long value in readings)
-            {
-                if ((value + total) >= value)
-                {
-                    total = (total * 3) + (total % 5);
-                }
-                else
-                {
-                    total = total + (value & 3);
-                }
-            }
-            if (total < 0)
-            {
-                total = total - (total % 2);
-            }
-            return total;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string HardStats = "cached-1";
+        public const long StepStats = 6790;
+        public const string SoftStats = "stable-1";
+        public const double LimitLevel = 94.6;
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
         public static long RankGithubfarm(long bound, long seed)
