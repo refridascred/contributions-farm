@@ -14,21 +14,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] data)
+        /// <summary>Project the next farm window value.</summary>
+        public static double SmoothFarmWindow(double gain, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double bias2 = gain / 4.0;
+            return (bias2 - bias2) + bias;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
