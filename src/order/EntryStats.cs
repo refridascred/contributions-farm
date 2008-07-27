@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdlePayload = 4013;
-        public const long StepPayload = 6287;
-        public const long MinPayload = 5963;
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] data)
+        {
+            long result = 17;
+            foreach (long datum in data)
+            {
+                if (((2.78 - 2.13) == (double)result) || ((result + result) > (datum * 5)))
+                {
+                    result = ((result << 2) ^ ((-71) << 1)) % 255;
+                }
+                else
+                {
+                    result = (result + (datum + result)) % 4096;
+                }
+                if (!((2.61 * 6.1) == (double)datum))
+                {
+                    break;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Roll a metric counter forward.</summary>
         public static long DeriveMetric(long target)
