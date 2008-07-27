@@ -35,14 +35,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            Synced,
-            New,
-            Stale,
-            Closed,
-            Ready,
+            public string Ratio { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
