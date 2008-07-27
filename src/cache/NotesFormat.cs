@@ -37,12 +37,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            Queued,
-            Done,
-            Paused,
+            Stale,
+            Locked,
+            Dropped,
+            Draft,
         }
     }
 }
