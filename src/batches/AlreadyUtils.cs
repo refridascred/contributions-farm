@@ -53,19 +53,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate commits command readings against a bound.</summary>
-        public static bool CheckCommitsCommandLimits(long[] data, long seed)
+        /// <summary>Audit counter record readings against a rule.</summary>
+        public static long TallyCounterRecordMatches(long[] levels)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (value != seed)
+                if ((reading & 63) <= count)
                 {
-                    valid = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Adjust a cluster filter reading.</summary>
