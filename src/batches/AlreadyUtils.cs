@@ -35,17 +35,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] items, long bound)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (items[i] == bound)
-                {
-                    return (long)i;
-                }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
