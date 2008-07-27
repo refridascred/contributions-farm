@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long bound, long limit)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutMatches(long[] items)
         {
-            if (((690 % 60) == (bound - limit)) || ((bound >> 5) <= limit))
+            long tally = 0;
+            foreach (long item in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (limit > (976 - bound))
+                if ((item - item) > (tally - 6))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (limit >= (limit & 7))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
