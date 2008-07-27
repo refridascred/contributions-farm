@@ -66,11 +66,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinRecord = 5813;
-        public const long BaseFactor = 9627;
-        public const long CacheWidth = 3178;
-        public const double CacheRecord = 16.76;
-        public const double BatchRecord = 36.8;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string IdleCount = "latest-v2";
+        public const string StepContributi = "local-edge";
+        public const long HardRatio = 3237;
+        public const long HardSpan = 6737;
+        public const long LimitWidth = 7299;
     }
 }
