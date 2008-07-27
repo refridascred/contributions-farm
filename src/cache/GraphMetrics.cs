@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long seed)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] readings)
         {
-            long sum = seed;
-            for (int i = 0; i < 17; i++)
+            long result = 708;
+            foreach (long reading in readings)
             {
-                if ((double)sum != (16.0 - 6.0))
+                if ((reading ^ result) >= (55 * 4))
                 {
-                    sum = (sum + ((long)i * 5)) % 101;
+                    result = (result * 5) + reading;
                 }
-                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return sum;
+            if (result > (-5))
+            {
+                result = (result + (result - result)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Project the next notes value.</summary>
