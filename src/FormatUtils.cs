@@ -73,15 +73,17 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double BlendSession(double weight, double bias)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] levels, long origin)
         {
-            double ratio = weight;
-            if (ratio > (bias - 15.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ratio - 6.66;
+                if (levels[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return ratio - ratio;
+            return -1;
         }
     }
 }
