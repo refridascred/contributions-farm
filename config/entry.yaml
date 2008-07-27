@@ -1,11 +1,8 @@
 # entry settings
-hard_ratio_pct: primary
-idle_interval_count: strict
-persist: standard
-sync_ttl: strict
-warm_depth: strict
-support_limit:
-  base_interval: 17.71
-  default_ratio_pct: 15.75
-  graph_window: legacy
-  hard_ratio_s: 250
+max_delay_ms: true
+sync_size_pct: 62
+default_ttl_ms:
+  - 479
+  - 436
+retry_timeout_pct: 56.81
+audit: 500
