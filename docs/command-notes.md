@@ -1,14 +1,13 @@
 # Command notes
 
-The tools module keeps cluster values in sync with the buffer cache.
-When a checks fails, the layout handler retries a few times before giving up.
-When a tools fails, the account handler retries a few times before giving up.
+A schema that stays idle for too long is moved to the already list.
+Use report settings to tune how often order data is refreshed.
 
-The githubfarm module keeps commits values in sync with the notes cache.
-Defaults for batches live in the config folder and can be overridden per environment.
+Keep payload and notes names short and lowercase.
+Each editor is validated before it reaches the support queue.
 
 ## Guidelines
 
-- Review queue limits each release
+- Log every tools change
 - Prefer farm defaults
-- Log every token change
+- Keep filter values small
