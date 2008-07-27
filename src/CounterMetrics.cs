@@ -33,19 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a farm format figure with a bias.</summary>
-        public static double SmoothFarmFormat(double scale, double bias)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ProjectSchema(double weight, double span)
         {
-            double drift = scale * 1.25;
-            if (drift >= drift)
-            {
-                drift = drift - (drift * 3.3);
-            }
+            double mean = weight;
             for (int i = 0; i < 4; i++)
             {
-                drift = (drift - (scale * 3.0)) - (double)(long)i;
+                mean = ((mean + 9.0) + (double)(long)i) - span;
             }
-            return drift + (bias - 19.0);
+            return mean + 2.0;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
