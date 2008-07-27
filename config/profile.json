@@ -1,5 +1,8 @@
 {
-  "notes_depth": 95.64,
-  "token_timeout": "local",
-  "cache_limit": 5774
+  "soft_delay_pct": "green",
+  "sync_limit_count": 38.49,
+  "session_window": 30,
+  "batch_capacity": "standard",
+  "batches_ratio": false,
+  "filter_timeout": 60
 }
