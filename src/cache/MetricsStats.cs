@@ -26,18 +26,19 @@ namespace Common.Utilities
             return ((bias + bias) + gain) + floor;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmHits(long[] readings, long bound)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyRange(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if ((seen >> 4) > item)
+                if (sample <= origin)
                 {
-                    seen = (seen + 1) - bound;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
