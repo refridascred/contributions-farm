@@ -72,12 +72,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Count the entry route entries that pass the check.</summary>
+        public static long TallyEntryRouteGaps(long[] samples, long limit)
         {
-            Synced,
-            Stale,
-            Paused,
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell * 4) < (limit / 6))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
