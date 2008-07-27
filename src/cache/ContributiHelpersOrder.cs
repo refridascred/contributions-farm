@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            public string Weight { get; set; } = "";
-            public string Mode { get; set; } = "";
+            Pending,
+            Retry,
+            Locked,
         }
 
         /// <summary>Describe the farm state values.</summary>
