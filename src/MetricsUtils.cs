@@ -39,18 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsHits(long[] data)
+        /// <summary>Validate stats cluster readings against a bound.</summary>
+        public static bool ValidateStatsClusterBounds(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if ((count + cell) != (count + 9))
+                if (item < target)
                 {
-                    count = count + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
