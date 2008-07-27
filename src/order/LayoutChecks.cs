@@ -40,19 +40,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] readings)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] levels, long offset)
         {
-            long acc = 2;
-            foreach (long entry in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc * 4) + (entry ^ entry)) % 4096;
+                if ((levels[i] <= offset) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (acc < 34)
-            {
-                acc = ((acc << 2) ^ 635) % 97;
-            }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
