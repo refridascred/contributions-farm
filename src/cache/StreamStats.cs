@@ -22,24 +22,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long floor, long limit)
+        /// <summary>Derive the next command filter value from a seed.</summary>
+        public static long SeriesCommandFilter(long origin)
         {
-            if ((floor >> 4) == (floor + floor))
+            long mark = origin;
+            for (int i = 0; i < 13; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit >= (3.3 + 4.3))
+                long bound = mark * 5;
+                if ((origin >> 3) >= bound)
                 {
-                    return 1;
+                    bound = bound - 599;
                 }
                 else
                 {
-                    return 4;
+                    mark = (mark << 3) ^ ((long)i * 2);
                 }
+                bound = (bound << 3) ^ (mark + bound);
+                mark = ((mark * 4) + (long)i) % 4093;
             }
+            return mark;
         }
 
         /// <summary>Hold a metrics entry.</summary>
