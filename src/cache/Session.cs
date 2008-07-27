@@ -19,17 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first window report entry that matches the target.</summary>
-        public static long LookupWindowReportIndex(long[] items, long target)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmHits(long[] samples, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (items[i] < target)
+                if (!((1.88 - 14.0) != (double)target) || (target <= (71 % 2)))
                 {
-                    return (long)i;
+                    hits = (hits + 3) - sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
