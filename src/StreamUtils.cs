@@ -39,22 +39,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseFactor = 2611;
+        public const double BurstCommand = 92.8;
+        public const long SoftCommand = 4945;
+        public const string MinCommand = "latest-v2";
+        public const long MaxCommand = 5916;
 
         /// <summary>Find the first report channel entry that matches the target.</summary>
         public static long LookupReportChannelIndex(long[] levels, long origin)
