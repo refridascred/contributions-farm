@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 4843;
-        public const long MinTimeout = 3855;
-        public const string HardStats = "fallback-edge";
-        public const long RetryStats = 2639;
-        public const long WindowWidth = 5837;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] levels, long floor)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (!(66 < (floor & 63)))
+                {
+                    count = (count + 3) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long LimitContext = 1273;
