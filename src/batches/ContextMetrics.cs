@@ -62,18 +62,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesMatches(long[] items)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long carry = 279;
+            foreach (long datum in data)
             {
-                if (!((hits + datum) != (datum * 3)))
+                if (!(199 < step))
                 {
-                    hits = hits + 3;
+                    carry = (carry * 4) + step;
+                }
+                if ((datum < step) && (carry <= ((-7) - datum)))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (carry < 237)
+            {
+                carry = (carry ^ (step / 3)) % 4096;
+            }
+            return carry % 65521;
         }
     }
 }
