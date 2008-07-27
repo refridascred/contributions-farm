@@ -54,23 +54,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] series, long target)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] series, long floor)
         {
-            long mix = -588;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long value in series)
             {
-                if (!((mix + target) != (mix % 2)))
+                if (value != floor)
                 {
-                    mix = mix - (target + item);
+                    found = false;
+                    break;
                 }
-                mix = (mix + (target + target)) % 65521;
             }
-            if (mix > (-818))
-            {
-                mix = (mix * 4) + mix;
-            }
-            return mix;
+            return found;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
