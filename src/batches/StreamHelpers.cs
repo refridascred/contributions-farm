@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] series, long floor)
         {
-            public bool Limit { get; set; }
-            public double Weight { get; set; }
-            public string Flag { get; set; } = "";
-            public string Score { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > floor) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next farm window value.</summary>
