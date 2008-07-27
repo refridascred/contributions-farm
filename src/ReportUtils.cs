@@ -68,19 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double AdjustTools(double gain, double floor)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportRange(long[] readings, long step)
         {
-            double ratio = (double)(505 - 4);
-            if (ratio >= (floor - 7.0))
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                ratio = (ratio - (ratio / 8.0)) + gain;
+                if (datum < step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + floor) - (double)(long)i;
-            }
-            return ratio + ratio;
+            return valid;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
