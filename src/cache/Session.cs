@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenGaps(long[] values, long bound)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((tally - entry) != (entry - tally))
-                {
-                    tally = (tally + 2) + bound;
-                }
-            }
-            return tally;
+            Idle,
+            Locked,
+            Closed,
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
