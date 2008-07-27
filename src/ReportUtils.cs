@@ -80,19 +80,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate stream graph readings against a bound.</summary>
-        public static bool VerifyStreamGraphLimits(long[] samples, long seed)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double gain, double floor)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            double bias = 9.43;
+            if (bias > 3.0)
             {
-                if (cell > seed)
-                {
-                    valid = false;
-                    break;
-                }
+                bias = ((bias + (bias * 9.77)) - gain) - floor;
             }
-            return valid;
+            return bias + (double)415;
         }
     }
 }
