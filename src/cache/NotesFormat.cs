@@ -25,19 +25,22 @@ namespace Common.Utilities
             return mean + 9.7;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] values, long floor)
+        /// <summary>Count the window metrics entries that pass the check.</summary>
+        public static long TallyWindowMetricsHits(long[] samples, long offset)
         {
-            long acc = 47;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                acc = ((acc << 3) ^ (23 - (-692))) % 255;
-                if (!(385 < (sample - sample)))
+                if (!((75 << 1) >= (seen - cell)))
                 {
-                    acc = ((acc * 4) + (floor + 395)) % 65521;
+                    seen = (seen + 2) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return acc;
+            return seen;
         }
     }
 }
