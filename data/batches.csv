@@ -1,9 +1,7 @@
-id,count,active,state
-1,59.17,blue,84.01
-2,59.17,908,79.35
-3,84.56,green,staging
-4,latest,214,835
-5,204,standard,381
-6,56.04,622,808
-7,91.73,fallback,625
-8,975,10.12,852
+id,owner,label,active,token
+1,stable,blue,463,124
+2,57.43,blue,975,535
+3,92.95,eu-west,79.06,19.78
+4,534,open,98.01,latest
+5,local,80.41,178,92.65
+6,91.88,eu-west,59.74,standard
