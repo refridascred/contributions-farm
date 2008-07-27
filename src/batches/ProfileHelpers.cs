@@ -28,12 +28,13 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            public double Weight { get; set; }
-            public string Count { get; set; } = "";
-            public string Limit { get; set; } = "";
+            public long Size { get; set; }
+            public bool Ratio { get; set; }
+            public long Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
