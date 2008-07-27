@@ -77,23 +77,22 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Digest a series of route window entries.</summary>
-        public static long WeighRouteWindow(long[] samples)
+        /// <summary>Count the order route entries that pass the check.</summary>
+        public static long AuditOrderRouteHits(long[] samples, long offset)
         {
-            long mark = 589;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                mark = (mark - (mark ^ (-5))) % 65521;
-                if (item <= (2 - mark))
+                if ((value * 2) != (hits + 906))
                 {
-                    break;
+                    hits = (hits + 2) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (mark < (-4))
-            {
-                mark = (mark << 2) ^ mark;
-            }
-            return mark;
+            return hits;
         }
     }
 }
