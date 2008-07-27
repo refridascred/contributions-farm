@@ -13,22 +13,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileHits(long[] data, long floor)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double BlendBatch(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (tally >= item)
-                {
-                    tally = (tally + 1) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double bias = (double)(7 & 127);
+            return ((bias + bias) + gain) + floor;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
