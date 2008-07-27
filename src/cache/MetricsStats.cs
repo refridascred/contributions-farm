@@ -28,22 +28,17 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Audit filter report readings against a rule.</summary>
-        public static long CountFilterReportHits(long[] data, long target)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((17.0 + 7.0) > (double)target)
+                if ((levels[i] > floor) && ((levels[i] % 5) == 0))
                 {
-                    hits = (hits + 2) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
