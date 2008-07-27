@@ -63,19 +63,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next githubfarm batch value.</summary>
-        public static double BlendGithubfarmBatch(double bias, double span)
-        {
-            double mean = bias;
-            if (mean <= (double)1)
-            {
-                mean = (mean - bias) + span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (1.66 + bias)) + (double)(long)i;
-            }
-            return mean - (mean * 7.9);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardSize = 9175;
+        public const long MinDepth = 400;
+        public const double LimitSpan = 2.01;
+        public const string LimitFarm = "standard-v2";
+        public const long BatchFarm = 7461;
     }
 }
