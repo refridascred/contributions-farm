@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            Active,
-            Done,
-            Stale,
+            public long Token { get; set; }
+            public bool Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Combine tools values into a single score.</summary>
