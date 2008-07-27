@@ -50,21 +50,32 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] values)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long step, long step2)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long gap = step ^ step2;
+            if ((gap ^ 35) >= (gap + gap))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((gap * 4) >= gap) || ((double)gap == (6.06 * 5.3)))
                 {
-                    if ((values[i] - values[j]) == 6)
+                    return 1;
+                }
+                else
+                {
+                    if (step < (step - step))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return tally;
         }
     }
 }
