@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterOutliers(long[] levels)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchOutliers(long[] series)
         {
             long tally = 0;
-            foreach (long cell in levels)
+            foreach (long sample in series)
             {
-                if ((((tally + (long)levels.Length) > tally) && ((1.59 / 5.0) > (double)cell)) || (89 <= (cell + tally)))
+                if (((-270) + (long)series.Length) >= (sample % 16))
                 {
                     tally = tally + 2;
                 }
