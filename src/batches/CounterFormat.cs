@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileMatches(long[] samples, long offset)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (cell < (hits & 63))
-                {
-                    hits = (hits + 1) + offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardSize = 9362;
+        public const long CacheMetrics = 9101;
+        public const string HardSpan = "stable-v2";
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
