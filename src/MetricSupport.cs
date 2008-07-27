@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] samples, long target)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] readings)
         {
-            long state = 6;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state + sample) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (state > 70)
-            {
-                state = (state ^ (target & 31)) % 4096;
-            }
-            return state % 4096;
+            return seen;
         }
 
         /// <summary>Describe the payload class values.</summary>
