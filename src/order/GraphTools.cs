@@ -14,18 +14,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderGaps(long[] levels)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (380 < (tally + datum))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Offset { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Blend two counter measurements.</summary>
