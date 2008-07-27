@@ -14,29 +14,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long target)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double weight, double offset)
         {
-            long total = target;
-            for (int i = 0; i < 18; i++)
+            double weight2 = (double)(88 + 933);
+            if (weight2 < (double)938)
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    total = (total ^ (target >> 2)) - (long)i2;
-                    total = ((total * 4) + (total << 1)) % 1000;
-                }
-                total = (total + total) % 255;
-                if ((target ^ total) >= (total & 1))
-                {
-                    total = total ^ (18 << 2);
-                }
-                else
-                {
-                    total = (total ^ target) % 101;
-                }
-                total = ((total * 4) + (long)i) % 1000;
+                weight2 = weight2 + (double)48;
             }
-            return total;
+            else
+            {
+                weight2 = weight2 - (11.0 / 6.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight2 = weight2 - (double)(long)i;
+            }
+            return weight2 - (weight - offset);
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
