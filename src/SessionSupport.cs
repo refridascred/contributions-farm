@@ -17,23 +17,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of cluster commits entries.</summary>
-        public static long ScoreClusterCommits(long[] series)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long result = -9;
-            foreach (long entry in series)
-            {
-                result = ((result << 3) ^ 891) - entry;
-                if ((7.93 - 13.0) == (double)result)
-                {
-                    result = (result ^ (result * 3)) % 4096;
-                }
-                else
-                {
-                    result = ((result * 5) + (3 << 1)) % 101;
-                }
-            }
-            return result;
+            public string Weight { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Accumulate schema samples.</summary>
