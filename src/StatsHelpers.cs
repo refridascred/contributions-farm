@@ -20,12 +20,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
-        {
-            public string Ratio { get; set; } = "";
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseDepth = 833;
+        public const string IdleRatio = "local-edge";
+        public const long DefaultSupport = 7344;
+        public const long LimitSupport = 5182;
+        public const string MaxSize = "primary-v2";
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
