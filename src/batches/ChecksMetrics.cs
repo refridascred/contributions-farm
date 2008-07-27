@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ScaleEditor(double scale, double span)
-        {
-            double weight = span;
-            if (weight <= (scale - span))
-            {
-                weight = weight + weight;
-            }
-            return weight - (3.3 / 4.0);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string RetryLevel = "primary";
+        public const double IdleSpan = 26.54;
+        public const long BatchOrder = 1137;
 
         /// <summary>Count the token checks entries that pass the check.</summary>
         public static long AuditTokenChecksMatches(long[] readings)
