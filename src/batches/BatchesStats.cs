@@ -13,15 +13,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
-        {
-            Stale,
-            Idle,
-            Paused,
-            Done,
-            Queued,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MaxSpan = 61.4;
+        public const string BatchTimeout = "stable-1";
+        public const long BaseSpan = 2225;
 
         /// <summary>Iterate the profile series from a seed.</summary>
         public static long DeriveProfile(long step)
