@@ -28,18 +28,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchGaps(long[] items, long origin)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long floor)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long mix = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (hits >= (hits / 8))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    hits = ((hits + 2) + datum) - origin;
+                    mix = (((mix << 2) ^ (floor + mix)) % 255) - (long)i2;
                 }
+                mix = ((mix << 2) ^ (mix ^ 831)) % 4096;
+                if ((mix * 2) == (mix >> 2))
+                {
+                    mix = (mix - (mix * 3)) % 65521;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
