@@ -54,18 +54,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandMatches(long[] readings)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadGaps(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((double)cell >= (double)82)
+                if (!((double)sample >= 9.0) && ((matches & 127) < sample))
                 {
-                    tally = tally + 3;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
