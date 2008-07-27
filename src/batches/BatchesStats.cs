@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long step, long floor)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            if ((1 ^ 700) >= step)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor + step) <= 743)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Closed,
+            Idle,
+            Failed,
         }
 
         /// <summary>Describe the report status values.</summary>
