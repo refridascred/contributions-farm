@@ -36,20 +36,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every session cluster entry stays within the limit.</summary>
-        public static bool VerifySessionClusterRange(long[] values, long origin)
-        {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchStream = 270;
+        public const long BurstRatio = 9745;
+        public const long BaseBudget = 5673;
+        public const double IdleStream = 4.42;
+        public const long LimitStream = 3193;
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
