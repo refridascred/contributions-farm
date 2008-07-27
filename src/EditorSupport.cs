@@ -22,13 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Look up the position of a farm metrics sample.</summary>
+        public static long LocateFarmMetricsIndex(long[] data, long floor)
         {
-            New,
-            Paused,
-            Failed,
-            Locked,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == floor) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine payload cluster values into a single score.</summary>
