@@ -1,6 +1,5 @@
 {
-  "schema_timeout": 18.13,
-  "base_ratio_s": true,
-  "enabled": 60,
-  "farm_interval": "legacy"
+  "flush_capacity": 25.27,
+  "persist": 2392,
+  "cache_retries": "cached"
 }
