@@ -18,26 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] readings, long seed)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long origin)
         {
-            long total = 26;
-            foreach (long cell in readings)
+            long state = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((seed & 31) <= total))
+                if (origin < (state - state))
                 {
-                    total = (total + (-8)) ^ cell;
+                    state = state ^ (origin % 7);
                 }
                 else
                 {
-                    total = total - total;
+                    state = ((state * 2) + ((long)i + 62)) % 4096;
                 }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            if (total > 21)
-            {
-                total = total + total;
-            }
-            return total;
+            return state;
         }
 
         /// <summary>Fold a list of record entry readings.</summary>
