@@ -17,13 +17,19 @@ namespace Common.Utilities
         public const double RetryTools = 65.94;
         public const string SoftInterval = "open-edge";
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesLimits(long[] levels, long offset)
         {
-            New,
-            Ready,
-            Stale,
-            Draft,
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
