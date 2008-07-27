@@ -23,26 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] samples, long step)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterHits(long[] samples, long floor)
         {
-            long result = 408;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((6.0 - 1.5) >= (double)step)
+                if (((10.0 + 6.73) < (double)floor) && (count > (entry + count)))
                 {
-                    result = result - cell;
+                    count = count + 1;
                 }
-                if ((244 < (cell << 1)) || (result <= (374 - result)))
+                else
                 {
-                    break;
+                    count = count - 1;
                 }
             }
-            if (result < 521)
-            {
-                result = (result + (step % 100)) % 255;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Find the first cache payload entry that matches the target.</summary>
