@@ -19,12 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Project the next counter schema value.</summary>
+        public static double BlendCounterSchema(double bias, double offset)
         {
-            Paused,
-            Ready,
-            Pending,
+            double scale = bias / 4.0;
+            if (scale >= (offset / 9.0))
+            {
+                scale = scale - (offset + scale);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale - (bias - offset);
         }
 
         /// <summary>Fold a list of context schema readings.</summary>
