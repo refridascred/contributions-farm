@@ -54,14 +54,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsGaps(long[] samples)
         {
-            Failed,
-            Active,
-            Queued,
-            Idle,
-            Closed,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((238 << 2) > (matches + 22))
+                {
+                    matches = (matches + 1) ^ reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
