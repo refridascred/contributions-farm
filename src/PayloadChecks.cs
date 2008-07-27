@@ -65,17 +65,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] readings, long limit)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteMatches(long[] series, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((readings[i] < limit) && ((readings[i] % 2) == 0))
+                if (((reading + hits) > (-69)) || ((hits << 2) > (floor + reading)))
                 {
-                    return (long)i;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
