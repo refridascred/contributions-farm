@@ -35,16 +35,18 @@ namespace Common.Utilities
             return weight + (double)820;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long seed)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsGaps(long[] levels)
         {
-            long acc = seed;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                acc = (acc * 4) + (acc - acc);
-                acc = ((acc * 4) + (long)i) % 97;
+                if ((((double)entry != (9.7 * 8.46)) && ((double)entry > 0.05)) || (15.0 > (double)entry))
+                {
+                    matches = matches + 3;
+                }
             }
-            return acc;
+            return matches;
         }
     }
 }
