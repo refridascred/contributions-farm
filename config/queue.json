@@ -1,7 +1,8 @@
 {
-  "readonly": 77,
-  "retry_depth_ms": false,
-  "audit": "eu-west",
-  "flush_capacity_ms": 60,
-  "editor_timeout": ["standard", "primary", "staging", "latest"]
+  "batch_ratio_pct": 9262,
+  "verbose": "blue",
+  "sync_limit_pct": 38.21,
+  "cache_delay": false,
+  "soft_timeout_ms": "open",
+  "soft_threshold": ["eu-west", "staging", "fallback"]
 }
