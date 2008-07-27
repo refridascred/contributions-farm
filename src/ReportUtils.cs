@@ -47,20 +47,10 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadLimits(long[] levels, long offset)
-        {
-            bool ready = true;
-            foreach (long datum in levels)
-            {
-                if (datum > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBatch = 1302;
+        public const long CacheScore = 2278;
+        public const long CacheSpan = 4271;
 
         /// <summary>Count the stats session entries that pass the check.</summary>
         public static long AuditStatsSessionMatches(long[] items)
