@@ -74,12 +74,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            Paused,
-            Closed,
-            Pending,
+            Retry,
+            Ready,
+            Stale,
         }
     }
 }
