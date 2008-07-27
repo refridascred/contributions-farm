@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of context already entries.</summary>
-        public static long WeighContextAlready(long[] readings)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long seed)
         {
-            long anchor = 6;
-            foreach (long entry in readings)
+            long sum = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if ((entry << 3) >= anchor)
+                if ((double)sum != (16.0 - 6.0))
                 {
-                    anchor = anchor + (entry * 2);
+                    sum = (sum + ((long)i * 5)) % 101;
                 }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            if (anchor < 33)
-            {
-                anchor = anchor ^ (anchor % 12);
-            }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Match up cluster samples.</summary>
