@@ -74,25 +74,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long seed)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long score = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((score & 15) <= (score << 1))
-                {
-                    score = (score << 2) ^ (score - seed);
-                    score = score ^ (score & 3);
-                    break;
-                }
-                if (!((score % 60) <= ((long)i + score)))
-                {
-                    score = (score + (seed >> 1)) % 65521;
-                }
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
+            public double Owner { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
