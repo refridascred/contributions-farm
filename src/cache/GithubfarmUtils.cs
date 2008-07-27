@@ -15,40 +15,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long origin, long limit)
-        {
-            long offset = origin ^ limit;
-            if ((double)offset <= (2.6 * 20.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin + 39) > 3)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((0.4 - 11.0) > (double)origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)limit > (0.88 / 9.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 616;
+        public const double LimitTimeout = 76.42;
+        public const string StepAlready = "strict-edge";
+        public const double HardAlready = 28.52;
+        public const long CacheAlready = 7887;
 
         /// <summary>Roll a layout entry counter forward.</summary>
         public static long IterateLayoutEntry(long limit)
