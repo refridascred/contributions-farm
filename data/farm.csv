@@ -1,7 +1,10 @@
-id,state,count,owner,rank
-1,cached,local,primary,stable
-2,97.65,25,blue,812
-3,33.48,59.55,local,862
-4,blue,legacy,695,69.68
-5,263,946,staging,open
-6,local,staging,staging,legacy
+id,owner,rank,ratio
+1,77.06,stable,87.57
+2,621,81.81,10.46
+3,311,blue,277
+4,804,primary,standard
+5,982,cached,70.45
+6,190,fallback,690
+7,93.13,35.08,391
+8,59.95,24,574
+9,677,754,cached
