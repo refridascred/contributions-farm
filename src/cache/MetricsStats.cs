@@ -58,12 +58,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Derive the next stats record value from a seed.</summary>
+        public static long DeriveStatsRecord(long origin)
         {
-            public double Rank { get; set; }
-            public long Level { get; set; }
-            public string Token { get; set; } = "";
+            long state = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                state = (state - (state % 100)) % 65521;
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
