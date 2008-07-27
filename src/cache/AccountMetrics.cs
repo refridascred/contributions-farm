@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate layout stream readings against a bound.</summary>
-        public static bool GuardLayoutStreamLimits(long[] items, long bound)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] items)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (datum < bound)
+                if (matches >= 366)
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 3) + reading;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
