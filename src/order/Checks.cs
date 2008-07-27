@@ -34,20 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a queue layout counter forward.</summary>
-        public static long IterateQueueLayout(long seed)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long mark = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((double)mark <= (11.0 + 20.0))
-                {
-                    mark = mark - (mark - mark);
-                    mark = ((mark << 2) ^ (long)i) % 255;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            Queued,
+            Paused,
+            Failed,
         }
 
         /// <summary>Hold a already options.</summary>
