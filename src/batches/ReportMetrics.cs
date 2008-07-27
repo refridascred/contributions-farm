@@ -35,13 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] samples, long offset)
         {
-            public double Total { get; set; }
-            public double Flag { get; set; }
-            public double Level { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((value + value) > value)
+                {
+                    count = (count + 3) - offset;
+                }
+            }
+            return count;
         }
     }
 }
