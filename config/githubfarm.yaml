@@ -1,23 +1,8 @@
 # githubfarm settings
-warm_threshold_pct: true
-commits_ttl: 5623
-stream_timeout: 60
-retry_limit_s:
-  cache_retries: fallback
-  poll_threshold: 22.16
-  min_ratio_s: 69
-  flush_retries: staging
-  warm_ratio_count: cached
-  editor_ttl: standard
-window_interval: 65.72
-persist:
-  buffer_ratio: latest
-  format_window:
-    tools_ttl:
-      - 420
-      - 430
-    soft_threshold: false
-    readonly: true
-  batch_retries: 100
-  tools_timeout: 52.22
-  flush_size_s: blue
+base_capacity: eu-west
+batch_depth_ms:
+  - 18
+  - 203
+  - 421
+tools_ttl: eu-west
+audit: 84.15
