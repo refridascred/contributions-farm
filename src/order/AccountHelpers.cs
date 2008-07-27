@@ -27,17 +27,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] values, long origin)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] data, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 4;
+            foreach (long reading in data)
             {
-                if (values[i] >= origin)
-                {
-                    return (long)i;
-                }
+                result = (((result - 85) % 97) ^ reading) - target;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Describe the context class values.</summary>
