@@ -14,24 +14,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Grade a channel batch value against two limits.</summary>
-        public static long BucketChannelBatch(long limit, long bound)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelMatches(long[] items)
         {
-            if (bound >= (limit >> 3))
+            long hits = 0;
+            foreach (long entry in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit < (limit ^ bound)) || ((limit >> 4) > (limit + limit)))
+                if ((entry - entry) >= (entry ^ entry))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the cache status values.</summary>
