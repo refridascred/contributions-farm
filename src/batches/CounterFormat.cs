@@ -20,30 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] series, long step)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long anchor = 13;
-            foreach (long item in series)
-            {
-                if (((82 - 94) != (anchor + 76)) || ((double)step < (18.0 - 2.2)))
-                {
-                    anchor = ((anchor * 5) + (anchor * 4)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor ^ (step + (long)series.Length)) % 101;
-                }
-                if ((double)item < (double)anchor)
-                {
-                    break;
-                }
-            }
-            if (anchor > 92)
-            {
-                anchor = (anchor - (step * 4)) % 97;
-            }
-            return anchor;
+            Ready,
+            Draft,
+            Pending,
+            Active,
         }
 
         /// <summary>Hold a context snapshot.</summary>
