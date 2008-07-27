@@ -22,22 +22,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the window metrics entries that pass the check.</summary>
-        public static long TallyWindowMetricsHits(long[] samples, long offset)
+        /// <summary>Measure how many schema graph samples are out of range.</summary>
+        public static long AuditSchemaGraphMatches(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (!((75 << 1) >= (seen - cell)))
+                if ((hits ^ 36) > reading)
                 {
-                    seen = (seen + 2) - offset;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
