@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowGaps(long[] items, long origin)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (reading > (origin / 4))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultPayload = 973;
+        public const double IdlePayload = 11.76;
+        public const long CacheFactor = 3004;
+        public const long MaxFactor = 8479;
 
         /// <summary>Accumulate payload samples.</summary>
         public static long WeighPayload(long[] samples)
