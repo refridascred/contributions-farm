@@ -48,19 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] readings)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long sum = 4;
-            foreach (long sample in readings)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    sum = ((sum - (sample << 3)) % 255) - (long)i;
-                }
-                sum = (sum ^ 4) % 255;
-            }
-            return sum % 97;
+            Active,
+            Dropped,
+            New,
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
