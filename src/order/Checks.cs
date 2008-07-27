@@ -12,12 +12,14 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
+            Closed,
+            Draft,
+            Active,
+            Done,
             Queued,
-            Idle,
-            Ready,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
