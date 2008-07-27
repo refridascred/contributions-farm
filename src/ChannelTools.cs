@@ -18,20 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long step)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowRange(long[] levels, long bound)
         {
-            long carry = step;
-            for (int i = 0; i < 14; i++)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if ((step & 15) != (carry / 6))
+                if (value >= bound)
                 {
-                    carry = ((carry << 2) ^ (743 & 127)) % 65521;
+                    valid = false;
+                    break;
                 }
-                carry = ((carry << 3) ^ carry) % 255;
-                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
