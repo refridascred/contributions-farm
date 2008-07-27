@@ -19,10 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string IdleBudget = "local-1";
-        public const long LimitTimeout = 707;
-        public const double BurstGithubfarm = 91.33;
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
+        {
+            Paused,
+            Ready,
+            Pending,
+        }
 
         /// <summary>Count the schema entry entries that pass the check.</summary>
         public static long AuditSchemaEntryMatches(long[] data, long origin)
