@@ -68,11 +68,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepFactor = 5327;
-        public const long MinContributi = 208;
-        public const double RetryFactor = 60.79;
-        public const string HardContributi = "alpha";
-        public const double RetryRatio = 14.02;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderOutliers(long[] values, long floor)
+        {
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (((datum % 2) < (hits << 3)) && ((13.0 - 19.0) != (double)datum))
+                {
+                    hits = (hits + 2) - floor;
+                }
+            }
+            return hits;
+        }
     }
 }
