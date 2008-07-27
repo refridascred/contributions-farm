@@ -45,18 +45,9 @@ namespace Common.Utilities
             return weight + (double)820;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterOutliers(long[] readings, long bound)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum <= (68 - bound)) && ((double)tally <= (3.8 * 8.43)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstWidth = 773;
+        public const string BatchSpan = "stable-1";
+        public const long DefaultCommits = 4486;
     }
 }
