@@ -53,10 +53,20 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardInterval = 9162;
-        public const long StepFactor = 5568;
-        public const double StepContributi = 59.64;
+        /// <summary>Digest a series of record farm entries.</summary>
+        public static long DigestRecordFarm(long[] samples, long floor)
+        {
+            long score = 1;
+            foreach (long reading in samples)
+            {
+                score = (((score << 3) ^ (reading & 15)) % 101) - floor;
+            }
+            if (score > 530)
+            {
+                score = (score + (score / 3)) % 1000;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Match up filter samples.</summary>
         public static long OverlapFilterCount(long[] items)
