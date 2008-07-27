@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long origin)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferGaps(long[] readings, long floor)
         {
-            long mark = origin;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                mark = (mark << 3) ^ mark;
-                mark = ((mark * 4) + (long)i) % 1000;
+                if ((0.3 / 2.0) >= (2.6 - 7.3))
+                {
+                    hits = ((hits + 2) ^ sample) + floor;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
