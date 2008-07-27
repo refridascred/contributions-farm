@@ -16,12 +16,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] samples, long step)
         {
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
+            long acc = 5;
+            foreach (long item in samples)
+            {
+                if ((10.0 / 7.0) < (double)step)
+                {
+                    acc = (acc ^ step) % 255;
+                }
+                if ((step >= (13 + step)) || ((item * 4) >= step))
+                {
+                    break;
+                }
+            }
+            if (acc < 2)
+            {
+                acc = (acc + (step + step)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Define session limits and defaults.</summary>
