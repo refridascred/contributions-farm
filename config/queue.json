@@ -1,8 +1,5 @@
 {
-  "route_timeout": "stable",
-  "warm_capacity_ms": 5344,
-  "contributi_timeout": "cached",
-  "max_delay_s": "staging",
-  "metric_capacity": "eu-west",
-  "audit": 54
+  "strict": 39,
+  "warm_size": 6,
+  "min_ratio_pct": 42.78
 }
