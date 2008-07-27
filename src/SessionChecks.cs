@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Count the notes profile entries that pass the check.</summary>
+        public static long AuditNotesProfileOutliers(long[] data, long target)
         {
-            Stale,
-            Done,
-            Synced,
-            Queued,
-            Ready,
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((tally > (target + tally)) && ((item << 2) == (item & 7)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next order value.</summary>
