@@ -27,12 +27,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphGaps(long[] values)
         {
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((matches << 1) < (long)values.Length)
+                {
+                    matches = (matches + 1) + value;
+                }
+            }
+            return matches;
         }
     }
 }
