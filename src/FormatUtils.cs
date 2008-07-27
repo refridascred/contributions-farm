@@ -60,20 +60,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] values, long floor)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long score = 66;
-            foreach (long entry in values)
-            {
-                score = (score + (entry ^ score)) % 1000;
-                score = score ^ (entry + floor);
-            }
-            if (score < 0)
-            {
-                score = (score ^ (score ^ floor)) % 65521;
-            }
-            return score;
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
