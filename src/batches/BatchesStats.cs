@@ -25,10 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitDepth = 9069;
-        public const string IdleCounter = "primary";
-        public const long HardCounter = 5830;
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
+        {
+            Stale,
+            Idle,
+            Paused,
+            Done,
+            Queued,
+        }
 
         /// <summary>Look up the position of a editor sample.</summary>
         public static long LocateEditorIndex(long[] values, long target)
