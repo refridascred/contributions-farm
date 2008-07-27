@@ -13,21 +13,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count payload entry pairs that satisfy a relation.</summary>
-        public static long MatchPayloadEntryCount(long[] values)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] series, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 44;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((double)total <= (double)reading))
                 {
-                    if ((values[i] ^ values[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
+                    total = total + (reading >> 3);
+                }
+                if ((limit <= reading) || ((reading - reading) != (reading % 2)))
+                {
+                    total = (total - 128) % 4096;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Adjust a counter queue reading.</summary>
