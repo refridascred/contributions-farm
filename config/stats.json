@@ -1,13 +1,5 @@
 {
-  "dry_run": 7819,
-  "default_ttl_count": {
-    "order_threshold": [139, 163, 468, 278],
-    "cluster_ratio": true,
-    "flush_timeout_ms": 31.3,
-    "burst_threshold_ms": 810,
-    "burst_limit_count": 250,
-    "idle_depth_s": 9607
-  },
-  "flush_capacity_count": true,
-  "metric_interval": "latest"
+  "metrics_capacity": "legacy",
+  "flush_delay_pct": 32,
+  "idle_retries": 500
 }
