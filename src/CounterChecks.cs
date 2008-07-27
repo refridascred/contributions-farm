@@ -25,11 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Count batches payload pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesPayloadCount(long[] readings)
         {
-            public string Ratio { get; set; } = "";
-            public double Region { get; set; }
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the filter class values.</summary>
