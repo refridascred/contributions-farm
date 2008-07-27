@@ -1,10 +1,5 @@
 {
-  "enabled": {
-    "max_limit_s": ["green", "standard"],
-    "verbose": 49,
-    "layout_interval": 11.16,
-    "hard_timeout_ms": 250
-  },
-  "metric_depth": "strict",
-  "idle_ttl_count": 98.28
+  "base_delay_pct": 57.99,
+  "order_capacity": ["standard", "staging"],
+  "max_delay": "legacy"
 }
