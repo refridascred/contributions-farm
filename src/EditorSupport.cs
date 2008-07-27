@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long floor, long target)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long lane = floor + target;
-            if ((floor / 7) <= 14)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((15.0 - 5.27) < (double)floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((double)lane <= (4.3 * 7.0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor + target) >= (lane % 16))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Queued,
+            Stale,
+            Synced,
+            Pending,
         }
 
         /// <summary>Locate a graph reading by value.</summary>
