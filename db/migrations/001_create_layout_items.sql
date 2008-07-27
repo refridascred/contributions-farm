@@ -2,9 +2,7 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     owner TEXT NOT NULL,
-    rank INTEGER,
-    state TEXT NOT NULL DEFAULT 'new',
-    created_at TIMESTAMP,
+    weight REAL,
     region TEXT
 );
 
