@@ -19,12 +19,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Grade a already buffer value against two limits.</summary>
+        public static long GradeAlreadyBuffer(long offset, long seed)
         {
-            public long Total { get; set; }
-            public string Size { get; set; } = "";
-            public double Limit { get; set; }
+            long prev = offset - seed;
+            if ((prev & 1) <= (offset + prev))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((offset + offset) >= (7 - offset)) || (prev < seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (prev > (seed >> 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (offset > (prev & 63))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit commits schema readings against a rule.</summary>
