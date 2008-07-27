@@ -38,14 +38,18 @@ namespace Common.Utilities
             return weight2 - (weight - offset);
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Count the counter command entries that pass the check.</summary>
+        public static long MeasureCounterCommandGaps(long[] readings, long step)
         {
-            Failed,
-            Retry,
-            Stale,
-            Pending,
-            Active,
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (((tally & 3) != (step - step)) && ((tally << 1) <= (80 - (-55))))
+                {
+                    tally = (tally + 3) + cell;
+                }
+            }
+            return tally;
         }
     }
 }
