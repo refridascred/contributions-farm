@@ -43,18 +43,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit already farm readings against a rule.</summary>
-        public static long TallyAlreadyFarmOutliers(long[] values, long offset)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryLimits(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if ((hits % 7) < (hits & 31))
+                if (datum != offset)
                 {
-                    hits = ((hits + 3) + cell) + offset;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
