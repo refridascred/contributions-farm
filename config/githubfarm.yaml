@@ -1,5 +1,15 @@
 # githubfarm settings
-entry_interval: false
-retry_size: 60
-poll_timeout_ms: 8393
-burst_threshold_s: 66
+persist:
+  queue_depth: strict
+  soft_window_s: strict
+  compress:
+    metrics_timeout: stable
+    base_depth: 81.72
+    max_retries_count: 1844
+    strict: 11
+    persist: true
+  base_depth: 250
+  format_threshold: 22.34
+  tools_size: 70
+burst_delay_s: 81.89
+readonly: strict
