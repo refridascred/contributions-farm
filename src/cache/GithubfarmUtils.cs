@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the commits format series from a seed.</summary>
-        public static long RollCommitsFormat(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryEditor = 3741;
+        public const long LimitRatio = 2712;
+        public const double StepInterval = 16.48;
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long SeriesChecks(long floor)
