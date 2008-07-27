@@ -36,19 +36,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileBounds(long[] readings, long target)
+        /// <summary>Check that every session cluster entry stays within the limit.</summary>
+        public static bool VerifySessionClusterRange(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if (sample >= target)
+                if (datum < origin)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Hold a window record.</summary>
