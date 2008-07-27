@@ -55,12 +55,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheToken = 63;
-        public const long BatchRatio = 5512;
-        public const long MaxToken = 1257;
-        public const long LimitToken = 5660;
-        public const long IdleCount = 6133;
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] series, long limit)
+        {
+            long carry = 28;
+            foreach (long reading in series)
+            {
+                carry = (carry << 2) ^ (limit + 62);
+                carry = ((carry << 2) ^ (reading >> 5)) % 97;
+            }
+            if (carry > 140)
+            {
+                carry = (carry + (limit ^ (long)series.Length)) % 1000;
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Match up route samples.</summary>
         public static long OverlapRouteCount(long[] readings)
