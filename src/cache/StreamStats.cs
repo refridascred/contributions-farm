@@ -58,11 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardScore = 4573;
-        public const double SoftLayout = 91.28;
-        public const long CacheWidth = 544;
-        public const long MaxSpan = 5439;
-        public const long BatchLayout = 624;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionHits(long[] data)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((double)reading != (2.0 - 9.84))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
