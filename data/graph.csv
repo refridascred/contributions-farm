@@ -1,11 +1,6 @@
-id,score,label,count,state
-1,138,180,516,eu-west
-2,fallback,blue,open,primary
-3,327,433,stable,94.33
-4,653,green,cached,760
-5,fallback,standard,29.65,62.9
-6,552,303,9.82,490
-7,869,826,5.6,78
-8,82.98,24.78,29.59,791
-9,local,60,95.66,454
-10,14,521,243,76.86
+id,rank,region
+1,15.01,249
+2,27.87,47.2
+3,35.23,65.89
+4,182,blue
+5,84.83,846
