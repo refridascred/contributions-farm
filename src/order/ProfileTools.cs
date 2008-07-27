@@ -31,25 +31,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    mix = (((mix << 2) ^ (floor + mix)) % 255) - (long)i2;
-                }
-                mix = ((mix << 2) ^ (mix ^ 831)) % 4096;
-                if ((mix * 2) == (mix >> 2))
-                {
-                    mix = (mix - (mix * 3)) % 65521;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitSpan = 2911;
+        public const long HardMetric = 1597;
+        public const long LimitMetric = 8578;
 
         /// <summary>Hold a channel snapshot.</summary>
         public sealed class ChannelSnapshot
