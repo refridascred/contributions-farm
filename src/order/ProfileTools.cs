@@ -38,9 +38,12 @@ namespace Common.Utilities
         public const long MinRoute = 4444;
         public const long HardRoute = 6079;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxSize = 2111;
-        public const long HardFarm = 6259;
-        public const double IdleFactor = 67.7;
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
+        {
+            public long Count { get; set; }
+            public long Token { get; set; }
+            public string Score { get; set; } = "";
+        }
     }
 }
