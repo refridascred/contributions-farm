@@ -20,18 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorHits(long[] readings)
+        /// <summary>Check that every metrics editor entry stays within the limit.</summary>
+        public static bool CheckMetricsEditorRange(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if ((1 - 2) != (tally - item))
+                if (reading >= seed)
                 {
-                    tally = tally + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Adjust a cache reading.</summary>
