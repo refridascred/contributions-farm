@@ -1,12 +1,22 @@
 # support settings
-strict:
-  farm_size: false
-  schema_threshold: 5.59
-  enabled: 43
-  dry_run: 500
-  sync_ttl_ms: standard
-hard_capacity: 56.75
-soft_timeout_pct: blue
-hard_retries: staging
-record_window: 9477
-base_ttl: 11.21
+max_size: fallback
+batch_ratio_s:
+  - 65
+  - 339
+  - 491
+  - 145
+max_timeout_count:
+  format_window: blue
+  hard_threshold:
+    - 266
+    - 451
+    - 386
+    - 141
+  compress:
+    default_interval_s: stable
+    default_limit: local
+    hard_limit_count: true
+    retry_timeout: fallback
+    batch_retries: false
+  idle_window: 74.32
+order_capacity: 100
