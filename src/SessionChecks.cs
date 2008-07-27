@@ -46,19 +46,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyBounds(long[] samples, long origin)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Weight { get; set; }
+            public long Mode { get; set; }
+            public long Rank { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
