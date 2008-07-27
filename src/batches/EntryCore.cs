@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Project the next support value.</summary>
-        public static double SmoothSupport(double weight, double offset)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            double ratio = weight;
-            if (ratio >= (double)(-8))
-            {
-                ratio = (ratio + (ratio - ratio)) - offset;
-            }
-            return ratio + ratio;
+            public long Score { get; set; }
+            public long Offset { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
