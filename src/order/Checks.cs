@@ -22,10 +22,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double LimitEditor = 2.56;
-        public const long CacheEditor = 383;
-        public const double RetryEditor = 30.09;
+        /// <summary>Roll a queue layout counter forward.</summary>
+        public static long IterateQueueLayout(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((double)mark <= (11.0 + 20.0))
+                {
+                    mark = mark - (mark - mark);
+                    mark = ((mark << 2) ^ (long)i) % 255;
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long AuditSessionHits(long[] items)
