@@ -41,15 +41,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Combine notes contributi values into a single score.</summary>
-        public static long FoldNotesContributi(long[] levels)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiRange(long[] series, long floor)
         {
-            long state = 206;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long reading in series)
             {
-                state = state ^ (state ^ item);
+                if (reading > floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return state;
+            return found;
         }
     }
 }
