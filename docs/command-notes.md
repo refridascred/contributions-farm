@@ -1,11 +1,12 @@
 # Command notes
 
-Use farm settings to tune how often report data is refreshed.
-The notes module keeps graph values in sync with the githubfarm cache.
-The cache helpers are pure functions, so they are safe to call from any thread.
+Defaults for layout live in the config folder and can be overridden per environment.
+Keep contributi and order names short and lowercase.
+The session module keeps layout values in sync with the account cache.
 
 ## Guidelines
 
-- Log every stream change
-- Review batches limits each release
-- Prefer context defaults
+- Document new schema fields
+- Review entry limits each release
+- Prefer token defaults
+- Log every window change
