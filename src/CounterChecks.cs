@@ -56,18 +56,13 @@ namespace Common.Utilities
         public const double BurstDepth = 2.02;
         public const double LimitEntry = 6.87;
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportMatches(long[] samples, long bound)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum + datum) <= (bound / 4))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Dropped,
+            Active,
+            Locked,
+            New,
         }
     }
 }
