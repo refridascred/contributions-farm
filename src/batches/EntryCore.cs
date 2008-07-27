@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            public double Label { get; set; }
-            public long Limit { get; set; }
+            Retry,
+            Idle,
+            Done,
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
