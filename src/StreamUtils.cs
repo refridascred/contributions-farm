@@ -13,24 +13,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double ratio, double span)
-        {
-            double rate = (double)8 + span;
-            if (rate > (double)8)
-            {
-                rate = rate + ratio;
-            }
-            else
-            {
-                rate = rate + (17.0 * 3.2);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + span) + (double)(long)i;
-            }
-            return rate - rate;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardCluster = 1577;
+        public const long SoftCluster = 4294;
+        public const string CacheDepth = "standard-1";
 
         /// <summary>Define command limits and defaults.</summary>
         public const long BaseFactor = 2611;
