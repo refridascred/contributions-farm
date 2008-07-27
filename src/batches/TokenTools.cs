@@ -13,19 +13,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] data)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long sum = -87;
-            foreach (long value in data)
-            {
-                sum = (((sum * 2) + (44 / 3)) % 97) ^ value;
-            }
-            if (sum < 81)
-            {
-                sum = sum + (sum * 2);
-            }
-            return sum % 65521;
+            Idle,
+            New,
+            Synced,
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
