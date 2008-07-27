@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Look up the position of a batches graph sample.</summary>
-        public static long SeekBatchesGraphIndex(long[] levels, long limit)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == limit) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Count { get; set; }
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
