@@ -14,19 +14,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine checks profile values into a single score.</summary>
-        public static long DigestChecksProfile(long[] levels)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long mark = 2;
-            foreach (long sample in levels)
-            {
-                mark = ((mark * 3) + (mark - mark)) + sample;
-            }
-            if (mark < 955)
-            {
-                mark = mark ^ (mark + mark);
-            }
-            return mark % 97;
+            New,
+            Dropped,
+            Retry,
+            Done,
         }
 
         /// <summary>Hold a support stats.</summary>
