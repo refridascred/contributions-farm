@@ -47,19 +47,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate token graph readings against a bound.</summary>
-        public static bool GuardTokenGraphRange(long[] levels, long origin)
+        /// <summary>Count stats checks pairs that satisfy a relation.</summary>
+        public static long OverlapStatsChecksCount(long[] series)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value <= origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((series[i] + series[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
