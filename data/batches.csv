@@ -1,9 +1,8 @@
-id,level,count
-1,105,blue
-2,337,712
-3,stable,325
-4,eu-west,7.11
-5,eu-west,edge
-6,29.27,568
-7,edge,659
-8,35.85,441
+id,label,count,token,active
+1,448,758,staging,13.91
+2,green,legacy,630,47
+3,416,623,185,fallback
+4,594,18.4,604,905
+5,87.51,840,828,27.74
+6,blue,local,601,40.06
+7,817,67.11,133,708
