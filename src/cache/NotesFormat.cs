@@ -22,22 +22,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many schema graph samples are out of range.</summary>
-        public static long AuditSchemaGraphMatches(long[] data)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyHits(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((hits ^ 36) > reading)
+                if ((seen / 4) <= (seen + seen))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = (seen + 3) + entry;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
