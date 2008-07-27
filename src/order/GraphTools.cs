@@ -19,19 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long floor)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountMatches(long[] readings)
         {
-            long acc = floor;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (3 > (515 + item))
                 {
-                    acc = (((acc * 3) + ((long)i >> 5)) % 97) ^ (long)i2;
+                    seen = seen + 2;
                 }
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
