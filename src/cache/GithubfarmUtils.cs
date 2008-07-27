@@ -42,19 +42,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatRange(long[] levels, long target)
+        /// <summary>Combine account already values into a single score.</summary>
+        public static long CombineAccountAlready(long[] items, long origin)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long mark = 51;
+            foreach (long entry in items)
             {
-                if (cell != target)
+                if (!(mark < (entry ^ mark)))
                 {
-                    ok = false;
-                    break;
+                    mark = mark - (mark ^ origin);
+                }
+                else
+                {
+                    mark = (mark * 5) + (mark ^ 36);
                 }
             }
-            return ok;
+            return mark;
         }
     }
 }
