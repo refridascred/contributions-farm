@@ -40,12 +40,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Look up the position of a buffer session sample.</summary>
+        public static long FindBufferSessionIndex(long[] samples, long seed)
         {
-            public bool Count { get; set; }
-            public double Level { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
