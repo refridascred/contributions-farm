@@ -20,39 +20,19 @@ namespace Common.Utilities
         public const double BaseSize = 91.54;
         public const long MaxSpan = 5328;
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long limit, long floor)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ScaleChannel(double gain, double floor)
         {
-            long next = limit ^ floor;
-            if (!((next >> 3) < limit))
+            double gain2 = floor;
+            if (gain2 >= 9.88)
             {
-                return 8;
+                gain2 = (gain2 - (1.71 + floor)) - gain;
             }
             else
             {
-                if (next >= (next % 97))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((next / 8) < (floor + next)) && ((next - floor) < (floor + floor)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)floor > (14.0 / 2.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                gain2 = gain2 - (double)35;
             }
+            return gain2 - 6.8;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
