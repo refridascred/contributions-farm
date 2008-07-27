@@ -25,14 +25,26 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] data, long step)
         {
-            Closed,
-            Draft,
-            Synced,
-            Queued,
-            Pending,
+            long mix = -963;
+            foreach (long sample in data)
+            {
+                if (!((sample % 60) < (step * 2)))
+                {
+                    mix = (mix ^ sample) % 65521;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (mix ^ sample)) % 255;
+                }
+            }
+            if (mix > 9)
+            {
+                mix = ((mix << 3) ^ (step - step)) % 65521;
+            }
+            return mix % 4096;
         }
     }
 }
