@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long CacheLevel = 1550;
         public const long LimitBudget = 678;
 
-        /// <summary>Look up the position of a support record sample.</summary>
-        public static long LookupSupportRecordIndex(long[] data, long offset)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 702;
+            foreach (long entry in items)
             {
-                if (data[i] >= offset)
-                {
-                    return (long)i;
-                }
+                mix = mix ^ (mix ^ entry);
             }
-            return -1;
+            if (mix > 3)
+            {
+                mix = (mix + mix) % 97;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Define token limits and defaults.</summary>
