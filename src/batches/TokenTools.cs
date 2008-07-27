@@ -18,10 +18,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowMetric = 6005;
-        public const double IdleMetric = 3.0;
-        public const double StepMetric = 72.47;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] data)
+        {
+            long mix = 395;
+            foreach (long reading in data)
+            {
+                if ((8 + 6) != (reading % 3))
+                {
+                    mix = ((mix << 3) ^ (mix - mix)) % 97;
+                    mix = mix ^ (reading - 179);
+                }
+                else
+                {
+                    mix = mix - (588 * 2);
+                    mix = mix + (reading - 65);
+                }
+                mix = (mix ^ 0) % 4096;
+                if ((mix ^ mix) < reading)
+                {
+                    mix = (mix - reading) % 255;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
