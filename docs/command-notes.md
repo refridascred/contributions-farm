@@ -1,15 +1,11 @@
 # Command notes
 
-A checks that stays idle for too long is moved to the format list.
-Run the queue check before changing any farm limits.
-
-Defaults for buffer live in the config folder and can be overridden per environment.
-Keep tools and schema names short and lowercase.
-Run the githubfarm check before changing any notes limits.
+Use farm settings to tune how often report data is refreshed.
+The notes module keeps graph values in sync with the githubfarm cache.
+The cache helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate contributi input early
-- Review record limits each release
-- Log every context change
-- Keep support values small
+- Log every stream change
+- Review batches limits each release
+- Prefer context defaults
