@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordBounds(long[] items, long origin)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Stale,
+            Done,
+            Failed,
+            Active,
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
