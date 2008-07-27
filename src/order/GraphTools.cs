@@ -33,15 +33,28 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Blend two report session measurements.</summary>
-        public static double SmoothReportSession(double scale, double bias)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long target)
         {
-            double scale2 = (double)473 - (7.6 - scale);
-            if (scale2 >= (bias + bias))
+            long acc = target;
+            for (int i = 0; i < 15; i++)
             {
-                scale2 = scale2 + (bias / 3.0);
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    acc = ((acc + (target & 7)) % 101) ^ (long)i2;
+                }
+                if ((1.9 + 2.6) > (double)acc)
+                {
+                    acc = acc + target;
+                    continue;
+                }
+                else
+                {
+                    acc = (acc ^ (acc & 1)) % 255;
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return scale2 + scale;
+            return acc;
         }
 
         /// <summary>Validate payload githubfarm readings against a bound.</summary>
