@@ -37,12 +37,12 @@ namespace Common.Utilities
             return scale - (3.69 / 3.0);
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            Paused,
-            Stale,
-            Active,
+            public long Offset { get; set; }
+            public bool Stamp { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
