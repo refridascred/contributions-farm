@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] items, long target)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] levels)
         {
-            long state = 45;
-            foreach (long item in items)
+            long mark = 27;
+            foreach (long value in levels)
             {
-                if ((88 + state) <= (item * 3))
+                if (((long)levels.Length + value) >= value)
                 {
-                    state = (state ^ (target + item)) % 97;
+                    mark = (mark ^ ((-88) - value)) % 4096;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (mark + 610)) % 255;
+                }
+                if ((mark + value) <= (223 + value))
+                {
+                    break;
                 }
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Match up buffer support samples.</summary>
