@@ -20,14 +20,15 @@ namespace Common.Utilities
             return rate2 + (rate2 - rate2);
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Project the next profile value.</summary>
+        public static double AdjustProfile(double weight, double offset)
         {
-            Paused,
-            Idle,
-            Synced,
-            Closed,
-            Ready,
+            double ratio = offset;
+            if (ratio >= weight)
+            {
+                ratio = ratio + (double)(-86);
+            }
+            return ratio + weight;
         }
 
         /// <summary>Derive the next window entry value from a seed.</summary>
