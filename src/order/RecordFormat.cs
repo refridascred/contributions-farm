@@ -35,18 +35,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string DefaultCount = "standard-edge";
+        public const string HardChannel = "staging-1";
+        public const long DefaultInterval = 4109;
+        public const long SoftChannel = 5991;
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
