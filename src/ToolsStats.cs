@@ -57,15 +57,25 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double BlendQueue(double ratio, double offset)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long seed, long bound)
         {
-            double ratio2 = (ratio - offset) + 5.54;
-            if (ratio2 > 2.3)
+            long span = seed + bound;
+            if (((6.19 + 4.69) == (double)span) || ((span >> 2) < (bound + seed)))
             {
-                ratio2 = ratio2 - 7.0;
+                return 8;
             }
-            return ratio2 + 9.5;
+            else
+            {
+                if (((seed + bound) != (seed + span)) || (((-64) ^ bound) >= (seed + seed)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
