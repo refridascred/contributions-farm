@@ -1,18 +1,8 @@
 {
-  "soft_capacity_ms": false,
-  "metrics_threshold": 67.85,
-  "session_interval": "local",
-  "poll_interval_ms": true,
-  "hard_timeout_pct": {
-    "layout_ttl": "open",
-    "min_window": 89,
-    "record_depth": {
-      "min_window_pct": 9,
-      "counter_size": false,
-      "idle_ttl_ms": 17.22,
-      "base_window": false
-    },
-    "enabled": true,
-    "soft_depth": 60
-  }
+  "poll_depth": true,
+  "enabled": "open",
+  "flush_capacity_count": 5745,
+  "hard_capacity_ms": 81.22,
+  "batch_capacity_s": [345, 490],
+  "retry_capacity": 63.67
 }
