@@ -21,18 +21,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] samples, long offset)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (((7.4 + 6.82) <= (double)tally) || (((double)offset < (3.2 + 9.0)) && ((tally - (-2)) < (202 - (long)samples.Length))))
-                {
-                    tally = (tally + 1) + reading;
-                }
-            }
-            return tally;
+            public bool Token { get; set; }
+            public double Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Validate farm account readings against a bound.</summary>
