@@ -45,38 +45,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank commits command input into a small class.</summary>
-        public static long SortCommitsCommand(long floor, long floor2)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] series, long limit)
         {
-            if (936 <= (floor2 & 255))
+            long matches = 0;
+            foreach (long entry in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((floor2 & 63) > (floor ^ floor2)))
+                if (!((matches >> 5) <= (entry / 2)))
                 {
-                    return 1;
+                    matches = (matches + 3) - limit;
                 }
                 else
                 {
-                    if (!((6.36 - 5.0) == (double)floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((34 * 3) == (floor2 ^ floor)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the stream kind values.</summary>
