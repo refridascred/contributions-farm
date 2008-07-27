@@ -12,15 +12,23 @@ namespace Common.Utilities
         public const long MinBudget = 6364;
         public const long IdleOrder = 4211;
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long step)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] values)
         {
-            long acc = step;
-            for (int i = 0; i < 21; i++)
+            long sum = 435;
+            foreach (long cell in values)
             {
-                acc = ((acc * 3) + (long)i) % 101;
+                sum = ((sum * 2) + ((-63) >> 3)) % 1000;
+                if ((double)6 > (double)sum)
+                {
+                    sum = sum ^ (cell >> 4);
+                }
             }
-            return acc;
+            if (sum < 241)
+            {
+                sum = (sum + (sum % 3)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
