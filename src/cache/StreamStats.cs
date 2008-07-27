@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double BlendCounter(double bias, double bias2)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long OverlapSchemaCount(long[] samples)
         {
-            double scale = (double)8 - bias2;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = ((scale + 9.16) + (double)(long)i) - bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return scale - (double)765;
+            return matches;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
