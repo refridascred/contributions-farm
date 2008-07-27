@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string RetryTools = "alpha-edge";
-        public const string DefaultFactor = "stable-1";
-        public const long SoftTools = 9247;
-        public const long MinTimeout = 3418;
-        public const long HardTools = 1248;
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
+        {
+            public bool Label { get; set; }
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool VerifySessionBounds(long[] readings, long seed)
