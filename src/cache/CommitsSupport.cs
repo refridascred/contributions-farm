@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count graph queue pairs that satisfy a relation.</summary>
-        public static long OverlapGraphQueueCount(long[] data)
+        /// <summary>Digest a series of counter profile entries.</summary>
+        public static long CombineCounterProfile(long[] levels, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 4;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((acc % 100) != (acc >> 4)) && ((offset + 816) != (offset - reading)))
                 {
-                    if ((data[i] ^ data[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc << 3) ^ offset;
                 }
             }
-            return matches;
+            return acc % 1000;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
