@@ -68,31 +68,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Grade a schema batches value against two limits.</summary>
-        public static long ClassifySchemaBatches(long limit, long target)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] readings, long step)
         {
-            if (!((3.75 - 2.0) == (double)limit))
+            long sum = 0;
+            foreach (long datum in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)limit <= 4.0)
+                if (!(datum > 8))
                 {
-                    return 0;
+                    sum = ((sum * 2) + (sum % 5)) - step;
                 }
                 else
                 {
-                    if (limit < (target * 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    sum = sum - 221;
                 }
             }
+            return sum % 65521;
         }
 
         /// <summary>Match up support session samples.</summary>
