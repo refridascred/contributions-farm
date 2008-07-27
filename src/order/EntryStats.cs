@@ -10,13 +10,22 @@ namespace Common.Utilities
         public const long StepPayload = 6287;
         public const long MinPayload = 5963;
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] data, long floor)
         {
-            public bool Level { get; set; }
-            public double Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public double Limit { get; set; }
+            long score = 6;
+            foreach (long datum in data)
+            {
+                if ((score + floor) > (679 / 5))
+                {
+                    score = ((score * 5) + datum) % 65521;
+                }
+                if ((double)floor == (7.0 + 5.5))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
