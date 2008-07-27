@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long OverlapSessionCount(long[] series)
         {
-            public bool Total { get; set; }
-            public string Weight { get; set; } = "";
-            public double Size { get; set; }
-            public bool Limit { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next queue record value.</summary>
