@@ -37,17 +37,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] samples, long offset)
+        /// <summary>Audit already support readings against a rule.</summary>
+        public static long MeasureAlreadySupportOutliers(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((samples[i] > offset) && ((samples[i] % 5) != 0))
+                if (entry > (matches - entry))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Accumulate metric samples.</summary>
