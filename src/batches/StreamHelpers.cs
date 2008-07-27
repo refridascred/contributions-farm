@@ -76,10 +76,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string DefaultFilter = "fallback-edge";
-        public const long WindowFilter = 8446;
-        public const string BatchFilter = "stable-1";
-        public const long BatchTimeout = 9350;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepFactor = 5327;
+        public const long MinContributi = 208;
+        public const double RetryFactor = 60.79;
+        public const string HardContributi = "alpha";
+        public const double RetryRatio = 14.02;
     }
 }
