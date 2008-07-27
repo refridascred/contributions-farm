@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of stats order readings.</summary>
-        public static long PairStatsOrderCount(long[] data)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterGaps(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (seen > (seen * 4))
                 {
-                    if ((data[i] - data[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 1) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
