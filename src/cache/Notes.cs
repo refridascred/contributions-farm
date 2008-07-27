@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many stats metric samples are out of range.</summary>
-        public static long AuditStatsMetricGaps(long[] samples, long target)
+        /// <summary>Validate entry counter readings against a bound.</summary>
+        public static bool ValidateEntryCounterBounds(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if (!((hits ^ reading) == (target + target)))
+                if (value <= target)
                 {
-                    hits = hits + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Grade a already buffer value against two limits.</summary>
