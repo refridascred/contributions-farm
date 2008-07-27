@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] samples, long step)
         {
-            Queued,
-            Paused,
-            Locked,
-            Synced,
+            long total = 16;
+            foreach (long sample in samples)
+            {
+                total = ((total - 567) + sample) + step;
+            }
+            return total;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
