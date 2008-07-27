@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] values, long origin)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long bound, long bound2)
         {
-            for (int i = 0; i < values.Length; i++)
+            long bound3 = bound ^ bound2;
+            if (((bound2 + bound2) > bound) || ((bound3 >> 3) >= bound))
             {
-                if (values[i] > origin)
+                return 8;
+            }
+            else
+            {
+                if (bound2 < 26)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (!((bound + bound) < (bound3 % 5)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound + bound3) == (bound ^ bound3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
