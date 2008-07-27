@@ -1,8 +1,9 @@
-id,region,active,token
-1,49.57,local,43.88
-2,753,local,34
-3,54.05,fallback,blue
-4,edge,stable,925
-5,592,92.84,11.3
-6,blue,549,90
-7,primary,972,395
+id,weight,level
+1,56,staging
+2,515,93.94
+3,901,stable
+4,776,86.93
+5,261,primary
+6,69.91,49.68
+7,288,strict
+8,green,42.97
