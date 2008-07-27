@@ -49,25 +49,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long step, long step2)
+        /// <summary>Audit already farm readings against a rule.</summary>
+        public static long TallyAlreadyFarmOutliers(long[] values, long offset)
         {
-            long slot = step ^ step2;
-            if (((1.1 - 2.28) > (double)slot) || ((6.76 * 5.54) <= (double)step))
+            long hits = 0;
+            foreach (long cell in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((slot % 64) <= (step << 2))
+                if ((hits % 7) < (hits & 31))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    hits = ((hits + 3) + cell) + offset;
                 }
             }
+            return hits;
         }
     }
 }
