@@ -10,16 +10,10 @@ namespace Common.Utilities
         public const long SoftScore = 8496;
         public const long LimitLayout = 9685;
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] values, long offset)
-        {
-            long carry = -87;
-            foreach (long item in values)
-            {
-                carry = ((carry * 2) + (item & 31)) + offset;
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitDepth = 9069;
+        public const string IdleCounter = "primary";
+        public const long HardCounter = 5830;
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long MatchStatsCount(long[] values)
