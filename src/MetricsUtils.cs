@@ -78,22 +78,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate support commits samples.</summary>
-        public static long DigestSupportCommits(long[] items)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextMatches(long[] series, long step)
         {
-            long score = 6;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (((score - score) > ((long)items.Length / 3)) || ((score - value) <= (148 * 3)))
+                if (5 < entry)
                 {
-                    score = (score << 3) ^ (850 >> 1);
-                }
-                else
-                {
-                    score = ((score << 2) ^ (value - value)) % 97;
+                    matches = (matches + 3) + step;
                 }
             }
-            return score % 97;
+            return matches;
         }
     }
 }
