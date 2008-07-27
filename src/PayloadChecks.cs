@@ -20,22 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count checks cache pairs that satisfy a relation.</summary>
-        public static long CompareChecksCacheCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchLevel = 8673;
+        public const long WindowCount = 8919;
+        public const double LimitTools = 89.66;
+        public const long HardTools = 2002;
 
         /// <summary>Classify a order pair into a bucket.</summary>
         public static long ClassifyOrder(long origin, long bound)
