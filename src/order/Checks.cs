@@ -20,15 +20,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] samples, long seed)
+        /// <summary>Count the context counter entries that pass the check.</summary>
+        public static long TallyContextCounterHits(long[] items, long limit)
         {
-            long score = 157;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                score = ((score << 2) ^ sample) - seed;
+                if ((tally <= (tally >> 4)) && ((double)limit != (0.58 - 7.0)))
+                {
+                    tally = (tally + 1) + entry;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Roll a queue layout counter forward.</summary>
