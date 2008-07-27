@@ -83,22 +83,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] readings)
+        /// <summary>Count the tools metrics entries that pass the check.</summary>
+        public static long MeasureToolsMetricsMatches(long[] items)
         {
-            long anchor = -704;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long value in items)
             {
-                for (int i = 0; i < 8; i++)
+                if ((seen & 3) == (seen / 4))
                 {
-                    anchor = (anchor << 3) ^ (long)i;
+                    seen = (seen + 1) ^ value;
                 }
-                if (anchor <= (value + anchor))
+                else
                 {
-                    anchor = ((anchor * 3) + (anchor % 5)) % 4096;
+                    seen = seen - 1;
                 }
             }
-            return anchor;
+            return seen;
         }
     }
 }
