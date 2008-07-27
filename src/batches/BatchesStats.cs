@@ -42,22 +42,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up command entry samples.</summary>
-        public static long PairCommandEntryCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string HardTimeout = "primary";
+        public const long RetryScore = 762;
+        public const long DefaultReport = 6437;
+        public const long BaseBudget = 9316;
 
         /// <summary>Iterate the profile series from a seed.</summary>
         public static long DeriveProfile(long step)
