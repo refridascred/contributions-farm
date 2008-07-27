@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double bias, double bias2)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            double scale = bias - (double)4;
-            return (scale + bias) + bias2;
+            Draft,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
