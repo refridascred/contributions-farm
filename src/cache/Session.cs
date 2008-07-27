@@ -48,13 +48,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
-        {
-            Active,
-            Dropped,
-            New,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MinRatio = 66.89;
+        public const long CacheFilter = 6649;
+        public const long WindowWidth = 2819;
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long MeasureCounterGaps(long[] series, long offset)
