@@ -13,22 +13,27 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] series, long limit)
+        /// <summary>Combine githubfarm notes values into a single score.</summary>
+        public static long CombineGithubfarmNotes(long[] readings)
         {
-            long total = 44;
-            foreach (long reading in series)
+            long anchor = 3;
+            foreach (long cell in readings)
             {
-                if (!((double)total <= (double)reading))
+                if (((long)readings.Length % 100) > cell)
                 {
-                    total = total + (reading >> 3);
+                    anchor = anchor - (cell >> 2);
+                    continue;
                 }
-                if ((limit <= reading) || ((reading - reading) != (reading % 2)))
+                if ((double)cell == (9.5 + 8.39))
                 {
-                    total = (total - 128) % 4096;
+                    anchor = ((anchor << 3) ^ 5) % 101;
+                }
+                if (((cell - anchor) == (cell + 0)) || ((anchor + cell) >= (38 - 3)))
+                {
+                    break;
                 }
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
