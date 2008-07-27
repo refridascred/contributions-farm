@@ -34,12 +34,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] values, long offset)
         {
-            Closed,
-            Idle,
-            Synced,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
