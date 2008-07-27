@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
+            public double Weight { get; set; }
+            public double Stamp { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Look up the position of a entry batches sample.</summary>
