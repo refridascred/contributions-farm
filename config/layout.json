@@ -1,6 +1,8 @@
 {
-  "burst_timeout": 1024,
-  "batch_delay_count": "latest",
-  "default_timeout": 53.48,
-  "flush_capacity_ms": "eu-west"
+  "counter_capacity": "primary",
+  "enabled": ["blue", "primary"],
+  "batch_size_ms": true,
+  "retry_size_count": ["edge", "local"],
+  "soft_timeout": [340, 29, 312, 246],
+  "verbose": "open"
 }
