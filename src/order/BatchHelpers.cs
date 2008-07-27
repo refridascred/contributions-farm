@@ -23,15 +23,21 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] values, long bound)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long OverlapBatchCount(long[] items)
         {
-            long result = -719;
-            foreach (long datum in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result - (bound / 9)) % 255) ^ datum;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return result % 65521;
+            return count;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
