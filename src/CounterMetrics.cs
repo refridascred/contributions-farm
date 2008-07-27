@@ -44,22 +44,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] samples)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long anchor = 0;
-            foreach (long entry in samples)
-            {
-                if (entry <= (anchor << 3))
-                {
-                    anchor = (anchor ^ anchor) % 255;
-                }
-                else
-                {
-                    anchor = (anchor + entry) % 97;
-                }
-            }
-            return anchor;
+            public bool Weight { get; set; }
+            public long Total { get; set; }
         }
     }
 }
