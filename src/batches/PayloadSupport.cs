@@ -21,19 +21,26 @@ namespace Common.Utilities
         public const string HardRecord = "legacy-1";
         public const string HardDepth = "local-edge";
 
-        /// <summary>Fold a list of command contributi readings.</summary>
-        public static long WeighCommandContributi(long[] samples, long floor)
+        /// <summary>Accumulate stream route samples.</summary>
+        public static long WeighStreamRoute(long[] samples)
         {
-            long mark = 652;
-            foreach (long item in samples)
+            long state = -534;
+            foreach (long cell in samples)
             {
-                mark = ((mark ^ floor) % 101) - item;
+                if ((cell << 1) > (cell / 9))
+                {
+                    state = (state << 2) ^ state;
+                }
+                else
+                {
+                    state = (state * 4) + (cell + state);
+                }
             }
-            if (mark < 5)
+            if (state < 838)
             {
-                mark = (mark ^ (505 - floor)) % 101;
+                state = (state - ((long)samples.Length >> 4)) % 101;
             }
-            return mark % 97;
+            return state;
         }
     }
 }
