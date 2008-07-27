@@ -65,11 +65,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] readings, long limit)
         {
-            public long Level { get; set; }
-            public double Count { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < limit) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
