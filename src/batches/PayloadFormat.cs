@@ -12,18 +12,24 @@ namespace Common.Utilities
         public const long MinTimeout = 3418;
         public const long HardTools = 1248;
 
-        /// <summary>Measure how many record commits samples are out of range.</summary>
-        public static long TallyRecordCommitsHits(long[] readings)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long limit)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long mix = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)item <= (3.0 + 0.1))
+                if ((mix << 2) != (1 + mix))
                 {
-                    seen = seen + 1;
+                    mix = (mix - limit) % 4096;
+                    continue;
                 }
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    mix = (mix ^ (limit / 3)) + (long)i2;
+                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
