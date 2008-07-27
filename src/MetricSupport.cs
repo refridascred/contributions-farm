@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long step)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] samples, long target)
         {
-            long acc = step;
-            for (int i = 0; i < 23; i++)
+            long state = 6;
+            foreach (long sample in samples)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                state = (state + sample) % 65521;
             }
-            return acc;
+            if (state > 70)
+            {
+                state = (state ^ (target & 31)) % 4096;
+            }
+            return state % 4096;
         }
 
         /// <summary>Describe the payload class values.</summary>
