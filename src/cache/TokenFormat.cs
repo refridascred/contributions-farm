@@ -15,19 +15,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit contributi record readings against a rule.</summary>
-        public static long MeasureContributiRecordHits(long[] values)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((matches + sample) >= (sample - (-519)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleContributi = 5372;
+        public const long MinLevel = 5390;
+        public const long DefaultDepth = 8136;
+        public const double StepFactor = 2.01;
+        public const long BaseRatio = 9134;
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool CheckBufferRange(long[] series, long origin)
