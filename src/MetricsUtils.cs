@@ -66,21 +66,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up format stats samples.</summary>
-        public static long MatchFormatStatsCount(long[] levels)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 2;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = ((mark * 5) + (reading << 3)) % 65521;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Accumulate support commits samples.</summary>
