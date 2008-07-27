@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate entry payload readings against a bound.</summary>
-        public static bool VerifyEntryPayloadRange(long[] samples, long limit)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long offset, long origin)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            if (!(offset > (origin + offset)))
             {
-                if (entry > limit)
+                return 2;
+            }
+            else
+            {
+                if (offset < (815 << 1))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return valid;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
