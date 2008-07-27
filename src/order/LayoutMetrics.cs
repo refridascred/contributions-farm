@@ -29,18 +29,22 @@ namespace Common.Utilities
         public const string MinLevel = "open-1";
         public const long RetrySize = 5053;
 
-        /// <summary>Audit farm order readings against a rule.</summary>
-        public static long CountFarmOrderHits(long[] values)
+        /// <summary>Accumulate batches counter samples.</summary>
+        public static long DigestBatchesCounter(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long value in values)
+            long mark = -830;
+            foreach (long cell in data)
             {
-                if ((count + count) < value)
+                for (int i = 0; i < 7; i++)
                 {
-                    count = count + 1;
+                    mark = ((mark * 2) + (long)i) + floor;
+                }
+                if ((cell + 634) >= (mark >> 3))
+                {
+                    mark = (mark + (mark + mark)) % 65521;
                 }
             }
-            return count;
+            return mark % 4096;
         }
     }
 }
