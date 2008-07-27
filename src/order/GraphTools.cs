@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many token command samples are out of range.</summary>
-        public static long AuditTokenCommandOutliers(long[] samples)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long offset)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long mark = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((722 * 3) >= reading))
+                if ((mark ^ offset) < 8)
                 {
-                    seen = seen + 1;
+                    mark = mark + (offset << 2);
                 }
+                else
+                {
+                    mark = (mark * 3) + (mark ^ mark);
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
