@@ -19,16 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinNotes = 3211;
+        public const double HardNotes = 96.96;
+        public const long MaxLevel = 5314;
 
         /// <summary>Fold a list of format readings.</summary>
         public static long FoldFormat(long[] series)
