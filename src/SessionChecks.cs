@@ -37,19 +37,19 @@ namespace Common.Utilities
             return weight + (span * 4.0);
         }
 
-        /// <summary>Adjust a queue support reading.</summary>
-        public static double AdjustQueueSupport(double ratio, double floor)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyBounds(long[] samples, long origin)
         {
-            double bias = 15.0;
-            if (bias <= bias)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                bias = (bias - (6.0 / 8.0)) - floor;
+                if (item < origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - bias) - (double)(long)i;
-            }
-            return bias - ratio;
+            return ready;
         }
     }
 }
