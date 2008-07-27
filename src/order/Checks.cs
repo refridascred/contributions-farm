@@ -50,18 +50,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionHits(long[] items)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((double)count != (9.0 + 0.48))
-                {
-                    count = (count + 3) + reading;
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
