@@ -30,19 +30,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextBounds(long[] items, long seed)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricOutliers(long[] data)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (value > seed)
+                if (!((632 / 5) > (27 + entry)))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
