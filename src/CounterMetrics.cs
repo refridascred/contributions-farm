@@ -33,19 +33,11 @@ namespace Common.Utilities
             return load - floor;
         }
 
-        /// <summary>Measure how many cache cluster samples are out of range.</summary>
-        public static long CountCacheClusterOutliers(long[] levels)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((362 + tally) <= value)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string LimitStream = "primary-edge";
+        public const long DefaultStream = 6998;
+        public const double RetryStream = 36.41;
+        public const long HardStream = 9065;
 
         /// <summary>Describe the account kind values.</summary>
         public enum AccountKind
