@@ -25,13 +25,19 @@ namespace Common.Utilities
             return mean + 9.7;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] values, long floor)
         {
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
-            public double Score { get; set; }
-            public long Flag { get; set; }
+            long acc = 47;
+            foreach (long sample in values)
+            {
+                acc = ((acc << 3) ^ (23 - (-692))) % 255;
+                if (!(385 < (sample - sample)))
+                {
+                    acc = ((acc * 4) + (floor + 395)) % 65521;
+                }
+            }
+            return acc;
         }
     }
 }
