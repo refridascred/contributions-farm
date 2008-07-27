@@ -33,19 +33,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferRange(long[] series, long origin)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double BlendMetrics(double bias, double span)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            double gain = (bias * 1.7) / 5.0;
+            if (gain > span)
             {
-                if (entry > origin)
-                {
-                    ready = false;
-                    break;
-                }
+                gain = gain + (2.0 - gain);
             }
-            return ready;
+            else
+            {
+                gain = gain + (gain / 9.0);
+            }
+            return gain + bias;
         }
     }
 }
