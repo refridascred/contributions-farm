@@ -26,22 +26,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] readings)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double bias, double floor)
         {
-            long state = -671;
-            foreach (long item in readings)
-            {
-                if ((double)item <= (double)7)
-                {
-                    state = ((state * 3) + item) % 101;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (item - state)) % 255;
-                }
-            }
-            return state % 4096;
+            double mean = (double)0 * 4.4;
+            return (mean - (floor + mean)) + bias;
         }
 
         /// <summary>Digest a series of contributi schema entries.</summary>
