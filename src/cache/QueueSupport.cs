@@ -33,17 +33,24 @@ namespace Common.Utilities
         public const long SoftCommand = 774;
         public const string BaseCommand = "primary";
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] items, long step)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long seed, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((seed << 2) > offset)
             {
-                if (items[i] < step)
+                return 6;
+            }
+            else
+            {
+                if (((4.6 - 2.79) < (double)offset) && ((seed & 3) < offset))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
     }
 }
