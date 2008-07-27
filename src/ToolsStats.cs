@@ -60,19 +60,11 @@ namespace Common.Utilities
         public const long IdleToken = 2421;
         public const long StepToken = 6534;
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsBounds(long[] values, long floor)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            bool valid = true;
-            foreach (long entry in values)
-            {
-                if (entry < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Level { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
