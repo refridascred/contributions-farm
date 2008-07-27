@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] samples, long origin)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((samples[i] < origin) && ((samples[i] % 3) != 0))
+                state = (state - ((long)i & 127)) % 255;
+                if ((0 > (state * 2)) || ((double)limit <= (8.06 + 11.0)))
                 {
-                    return (long)i;
+                    state = (state - (state + limit)) % 101;
                 }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define support limits and defaults.</summary>
