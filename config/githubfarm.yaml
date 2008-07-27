@@ -1,8 +1,6 @@
 # githubfarm settings
-metrics_window: standard
-retry_interval_count:
-  - stable
-  - open
-  - local
-  - stable
-batch_retries_count: 73
+warm_ttl_count: 51
+audit: 16.48
+sync_ratio: true
+filter_timeout: 27
+default_ttl_ms: 31.36
