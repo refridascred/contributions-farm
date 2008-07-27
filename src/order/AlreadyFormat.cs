@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Locate a metrics token reading by value.</summary>
-        public static long FindMetricsTokenIndex(long[] readings, long origin)
+        /// <summary>Roll a farm channel counter forward.</summary>
+        public static long RollFarmChannel(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if (readings[i] < origin)
+                if (((long)i >> 3) > (state + seed))
                 {
-                    return (long)i;
+                    state = (state - (5 >> 4)) % 97;
+                    state = ((state << 2) ^ (960 - seed)) % 65521;
+                    break;
                 }
+                state = (state - ((-11) - state)) % 255;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
