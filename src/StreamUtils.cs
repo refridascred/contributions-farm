@@ -39,12 +39,21 @@ namespace Common.Utilities
         public const string MinCommand = "latest-v2";
         public const long MaxCommand = 5916;
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Match up editor samples.</summary>
+        public static long OverlapEditorCount(long[] levels)
         {
-            Dropped,
-            Queued,
-            Closed,
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
