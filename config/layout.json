@@ -1,6 +1,7 @@
 {
-  "persist": 24,
-  "schema_retries": true,
-  "warm_ttl_count": "standard",
-  "idle_limit_s": 250
+  "batch_threshold_pct": "standard",
+  "editor_retries": "latest",
+  "batch_limit_ms": [224, 147, 325],
+  "base_capacity_s": true,
+  "min_retries": 68
 }
