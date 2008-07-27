@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] data)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] readings, long floor)
         {
-            long carry = -66;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((carry * 2) + (datum >> 3)) % 4096;
-                if ((double)carry >= (double)datum)
+                if (readings[i] == floor)
                 {
-                    carry = ((carry * 2) + 658) % 1000;
-                }
-                else
-                {
-                    carry = carry + ((-80) % 64);
-                }
-                if ((datum ^ carry) > (datum - carry))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (carry > 825)
-            {
-                carry = ((carry * 5) + ((-1) % 16)) % 4096;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
