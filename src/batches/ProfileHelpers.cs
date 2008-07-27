@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowBudget = 4450;
-        public const long HardOrder = 6726;
-        public const double CacheOrder = 73.79;
-        public const long MinBudget = 6364;
-        public const long IdleOrder = 4211;
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long bound, long offset)
+        {
+            long bound2 = bound - offset;
+            if (((-30) + bound) != (bound + bound2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((7.2 * 8.4) >= (double)bound2)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Accumulate stats samples.</summary>
         public static long CombineStats(long[] values)
