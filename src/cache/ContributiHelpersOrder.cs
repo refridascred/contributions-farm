@@ -11,18 +11,14 @@ namespace Common.Utilities
         public const long CacheFactor = 3004;
         public const long MaxFactor = 8479;
 
-        /// <summary>Measure how many payload route samples are out of range.</summary>
-        public static long CountPayloadRouteGaps(long[] series)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((cell / 5) <= (cell * 4))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Failed,
+            Closed,
+            New,
+            Draft,
+            Paused,
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
