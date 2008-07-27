@@ -58,19 +58,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadRange(long[] series, long bound)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadLimits(long[] levels, long offset)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if (reading < bound)
+                if (datum > offset)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Count the stats session entries that pass the check.</summary>
