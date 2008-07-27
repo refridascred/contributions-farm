@@ -49,12 +49,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiGaps(long[] readings, long target)
         {
-            Queued,
-            Pending,
-            Done,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((double)hits >= 0.44)
+                {
+                    hits = ((hits + 1) - item) - target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
