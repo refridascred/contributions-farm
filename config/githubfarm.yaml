@@ -1,15 +1,10 @@
 # githubfarm settings
-persist:
-  queue_depth: strict
-  soft_window_s: strict
-  compress:
-    metrics_timeout: stable
-    base_depth: 81.72
-    max_retries_count: 1844
-    strict: 11
-    persist: true
-  base_depth: 250
-  format_threshold: 22.34
-  tools_size: 70
-burst_delay_s: 81.89
-readonly: strict
+hard_retries_count: 21
+batches_delay:
+  - open
+  - primary
+  - cached
+  - eu-west
+flush_ttl_pct: 31
+max_retries: 6069
+readonly: false
