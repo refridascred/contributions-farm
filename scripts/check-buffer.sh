@@ -6,13 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open green legacy; do
+for item in standard latest; do
     log "checking ${item}"
 done
 
-mode="${1:-latest}"
+mode="${1:-edge}"
 case "${mode}" in
-    staging)
+    edge)
         log "fast path"
         ;;
     *)
