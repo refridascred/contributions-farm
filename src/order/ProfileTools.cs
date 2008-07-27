@@ -42,11 +42,17 @@ namespace Common.Utilities
             return bias - (gain / 3.0);
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] values, long floor)
         {
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
