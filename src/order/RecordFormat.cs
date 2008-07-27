@@ -26,12 +26,27 @@ namespace Common.Utilities
         public const long CacheOrder = 7654;
         public const long SoftOrder = 5168;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinDepth = 7594;
-        public const long BatchDepth = 4147;
-        public const string DefaultMetrics = "latest-edge";
-        public const double BurstFactor = 52.42;
-        public const long MaxLevel = 6902;
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] levels, long step)
+        {
+            long sum = 3;
+            foreach (long cell in levels)
+            {
+                if ((step / 6) <= (step ^ sum))
+                {
+                    sum = ((sum * 4) + (step >> 3)) % 4096;
+                }
+                else
+                {
+                    sum = (sum - (step + cell)) % 101;
+                }
+            }
+            if (sum > 568)
+            {
+                sum = sum + (sum % 7);
+            }
+            return sum;
+        }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long TallyNotesMatches(long[] items, long limit)
