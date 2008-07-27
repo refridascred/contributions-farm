@@ -1,8 +1,8 @@
 {
-  "farm_capacity": [427, 111, 447, 318],
-  "strict": false,
-  "idle_depth_s": ["staging", "staging", "blue", "edge"],
-  "warm_depth": 8000,
-  "retry_delay_ms": "blue",
-  "verbose": 1.63
+  "base_capacity_ms": 8958,
+  "audit": 84,
+  "verbose": "stable",
+  "min_ratio": "local",
+  "sync_ratio": "standard",
+  "poll_ttl": "green"
 }
