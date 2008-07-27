@@ -42,13 +42,17 @@ namespace Common.Utilities
         public const string MaxRatio = "open-1";
         public const long LimitChannel = 6848;
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] samples, long origin)
         {
-            Synced,
-            Closed,
-            Done,
-            New,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > origin) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
