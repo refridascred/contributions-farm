@@ -56,13 +56,19 @@ namespace Common.Utilities
         public const double BurstDepth = 2.02;
         public const double LimitEntry = 6.87;
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterRange(long[] readings, long bound)
         {
-            Dropped,
-            Active,
-            Locked,
-            New,
+            bool ready = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
