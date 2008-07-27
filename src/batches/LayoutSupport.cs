@@ -20,20 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long bound)
+        /// <summary>Look up the position of a route filter sample.</summary>
+        public static long LookupRouteFilterIndex(long[] samples, long step)
         {
-            long anchor = bound;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((5.96 / 3.0) < (double)bound)
+                if (samples[i] > step)
                 {
-                    anchor = ((anchor << 2) ^ (bound << 1)) % 255;
+                    return (long)i;
                 }
-                anchor = ((anchor * 5) + anchor) % 4096;
-                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the format status values.</summary>
