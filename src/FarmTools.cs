@@ -17,25 +17,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long target)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long seed)
         {
-            long anchor = target;
-            for (int i = 0; i < 14; i++)
+            long result = seed;
+            for (int i = 0; i < 5; i++)
             {
-                long gap = (target / 7) - (target + anchor);
-                gap = gap + 32;
-                if (target <= (target - target))
-                {
-                    anchor = (anchor + (anchor - 87)) % 101;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (gap ^ gap)) % 65521;
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                result = result ^ seed;
+                result = ((result << 2) ^ ((-20) >> 1)) % 101;
+                result = result - ((long)i << 1);
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
