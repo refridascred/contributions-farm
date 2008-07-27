@@ -54,38 +54,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a batches payload value against two limits.</summary>
-        public static long RankBatchesPayload(long offset, long origin)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandMatches(long[] readings)
         {
-            if ((6.91 * 4.0) != (double)origin)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((9.23 / 6.0) != (double)origin)
+                if ((double)cell >= (double)82)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset << 3) < (offset - offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((2.0 + 9.24) > (double)offset) || ((5 / 6) <= (offset << 1)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
     }
 }
