@@ -1,6 +1,5 @@
 {
-  "flush_ttl_s": ["latest", "staging"],
-  "default_ratio_s": true,
-  "idle_capacity_count": 2,
-  "dry_run": "edge"
+  "flush_retries_count": 78.17,
+  "enabled": true,
+  "flush_limit_count": "blue"
 }
