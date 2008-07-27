@@ -16,17 +16,18 @@ namespace Common.Utilities
             return weight - (3.3 / 4.0);
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] items, long offset)
+        /// <summary>Count the token checks entries that pass the check.</summary>
+        public static long AuditTokenChecksMatches(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((items[i] <= offset) && ((items[i] % 5) != 0))
+                if (entry <= (count - count))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Blend two schema measurements.</summary>
