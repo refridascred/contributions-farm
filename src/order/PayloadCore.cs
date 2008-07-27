@@ -19,10 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinNotes = 3211;
-        public const double HardNotes = 96.96;
-        public const long MaxLevel = 5314;
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] levels, long seed)
+        {
+            long total = 0;
+            foreach (long entry in levels)
+            {
+                if ((total - total) == (total * 2))
+                {
+                    total = (total ^ (entry * 4)) % 255;
+                }
+            }
+            if (total > (-578))
+            {
+                total = (total * 2) + (seed % 64);
+            }
+            return total;
+        }
 
         /// <summary>Fold a list of format readings.</summary>
         public static long FoldFormat(long[] series)
