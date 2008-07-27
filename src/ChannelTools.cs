@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowRange(long[] levels, long bound)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ProjectBatch(double bias, double bias2)
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double scale = bias - (double)4;
+            return (scale + bias) + bias2;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
