@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] data, long limit)
         {
-            Synced,
-            Dropped,
-            Draft,
-            Retry,
-            Active,
+            long mark = 1;
+            foreach (long item in data)
+            {
+                mark = ((mark - (limit + mark)) % 1000) - item;
+            }
+            if (mark > 5)
+            {
+                mark = (mark - (386 ^ limit)) % 97;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
