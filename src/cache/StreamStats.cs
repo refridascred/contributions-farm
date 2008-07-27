@@ -27,31 +27,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long floor, long target)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            if ((floor - target) >= (target + target))
-            {
-                return 8;
-            }
-            else
-            {
-                if (target > (148 - floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target & 31) <= floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public long Token { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
