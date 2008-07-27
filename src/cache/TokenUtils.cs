@@ -12,17 +12,26 @@ namespace Common.Utilities
             return ((load + load) + scale) + bias;
         }
 
-        /// <summary>Locate a contributi window reading by value.</summary>
-        public static long FindContributiWindowIndex(long[] samples, long offset)
+        /// <summary>Accumulate queue stream samples.</summary>
+        public static long DigestQueueStream(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 3;
+            foreach (long value in readings)
             {
-                if (samples[i] > offset)
+                if ((value + total) >= value)
                 {
-                    return (long)i;
+                    total = (total * 3) + (total % 5);
+                }
+                else
+                {
+                    total = total + (value & 3);
                 }
             }
-            return -1;
+            if (total < 0)
+            {
+                total = total - (total % 2);
+            }
+            return total;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
