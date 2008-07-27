@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
-        {
-            New,
-            Active,
-            Failed,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MaxCount = "legacy-v2";
+        public const string WindowFilter = "latest";
+        public const long MinDepth = 4937;
+        public const long LimitFilter = 268;
+        public const long IdleFilter = 711;
 
         /// <summary>Define account limits and defaults.</summary>
         public const string RetryAccount = "alpha-v2";
