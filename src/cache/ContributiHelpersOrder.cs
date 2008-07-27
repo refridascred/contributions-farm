@@ -41,21 +41,15 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] items)
+        /// <summary>Combine notes contributi values into a single score.</summary>
+        public static long FoldNotesContributi(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 206;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = state ^ (state ^ item);
             }
-            return tally;
+            return state;
         }
     }
 }
