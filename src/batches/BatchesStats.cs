@@ -25,22 +25,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] readings)
+        /// <summary>Validate order githubfarm readings against a bound.</summary>
+        public static bool VerifyOrderGithubfarmBounds(long[] items, long floor)
         {
-            long acc = 569;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if (((87 - acc) == (acc & 127)) && ((datum ^ 0) > 815))
+                if (sample < floor)
                 {
-                    acc = (acc * 4) + (acc % 3);
+                    stale = false;
+                    break;
                 }
             }
-            if (acc < 697)
-            {
-                acc = acc + (12 * 5);
-            }
-            return acc % 97;
+            return stale;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
