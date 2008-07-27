@@ -20,26 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] series)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ScaleStats(double weight, double offset)
         {
-            long anchor = -59;
-            foreach (long reading in series)
-            {
-                if ((83 + reading) == (reading * 3))
-                {
-                    anchor = ((anchor << 3) ^ 97) % 101;
-                }
-                if (((reading * 3) > (reading - anchor)) || ((reading / 3) <= reading))
-                {
-                    anchor = anchor - (anchor - anchor);
-                }
-            }
-            if (anchor > 87)
-            {
-                anchor = (anchor ^ anchor) % 4096;
-            }
-            return anchor % 97;
+            double ratio = (offset + weight) / 8.0;
+            return ratio + weight;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
