@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxDepth = 267;
-        public const long DefaultSchema = 4263;
-        public const double MinInterval = 11.69;
-        public const string SoftSchema = "legacy-1";
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportBounds(long[] samples, long floor)
+        {
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Scale a graph tools figure with a bias.</summary>
         public static double SmoothGraphTools(double bias, double floor)
