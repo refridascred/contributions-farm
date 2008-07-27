@@ -33,23 +33,10 @@ namespace Common.Utilities
             return load - (double)9;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] samples, long offset)
-        {
-            long total = -1;
-            foreach (long item in samples)
-            {
-                if ((total ^ item) > total)
-                {
-                    total = (total - (offset + item)) % 4096;
-                }
-                if ((offset * 5) >= offset)
-                {
-                    break;
-                }
-            }
-            return total % 97;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 4558;
+        public const long MinRoute = 4444;
+        public const long HardRoute = 6079;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long MaxSize = 2111;
