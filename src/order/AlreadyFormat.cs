@@ -23,18 +23,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsOutliers(long[] values)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((15.0 + 7.61) <= (double)count) && (count > (item & 1)))
+                if ((samples[i] <= limit) && ((samples[i] % 3) == 0))
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the route state values.</summary>
