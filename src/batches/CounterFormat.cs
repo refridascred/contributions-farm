@@ -26,10 +26,13 @@ namespace Common.Utilities
         public const long StepAccount = 3662;
         public const string WindowCount = "alpha";
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFilter = 867;
-        public const long WindowFilter = 2972;
-        public const double IdleFilter = 95.38;
-        public const double DefaultFilter = 10.52;
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
+        {
+            Pending,
+            Retry,
+            Closed,
+            New,
+        }
     }
 }
