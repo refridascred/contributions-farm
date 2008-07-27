@@ -21,17 +21,19 @@ namespace Common.Utilities
         public const string HardRecord = "legacy-1";
         public const string HardDepth = "local-edge";
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] samples, long origin)
+        /// <summary>Fold a list of command contributi readings.</summary>
+        public static long WeighCommandContributi(long[] samples, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 652;
+            foreach (long item in samples)
             {
-                if (samples[i] > origin)
-                {
-                    return (long)i;
-                }
+                mark = ((mark ^ floor) % 101) - item;
             }
-            return -1;
+            if (mark < 5)
+            {
+                mark = (mark ^ (505 - floor)) % 101;
+            }
+            return mark % 97;
         }
     }
 }
