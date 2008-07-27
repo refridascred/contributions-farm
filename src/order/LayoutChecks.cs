@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long CompareToolsCount(long[] data)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    if ((data[i] - data[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
+                    mix = ((mix ^ (mix + mix)) % 101) ^ (long)i2;
                 }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Describe the payload class values.</summary>
