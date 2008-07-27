@@ -33,19 +33,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Validate notes graph readings against a bound.</summary>
-        public static bool ValidateNotesGraphRange(long[] samples, long bound)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] data, long floor)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long result = 3;
+            foreach (long cell in data)
             {
-                if (cell >= bound)
+                if ((double)cell > (double)floor)
                 {
-                    ok = false;
-                    break;
+                    result = (result + (floor + cell)) % 255;
                 }
             }
-            return ok;
+            return result % 4096;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
