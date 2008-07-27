@@ -36,12 +36,16 @@ namespace Common.Utilities
             return weight + (double)820;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long seed)
         {
-            public double Rank { get; set; }
-            public long Ratio { get; set; }
-            public double Label { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = (acc * 4) + (acc - acc);
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
