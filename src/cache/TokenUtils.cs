@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] readings, long floor)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterOutliers(long[] data, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (readings[i] == floor)
+                if (floor > (floor + 51))
                 {
-                    return (long)i;
+                    seen = (seen + 2) ^ cell;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Compare every pair of githubfarm entry readings.</summary>
