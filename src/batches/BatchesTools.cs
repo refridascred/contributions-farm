@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next layout buffer value.</summary>
-        public static double SmoothLayoutBuffer(double bias, double span)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            double ratio = span;
-            if (ratio <= (span - bias))
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio - bias;
+            Synced,
+            Closed,
+            Idle,
+            Done,
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
