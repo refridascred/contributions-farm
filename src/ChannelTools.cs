@@ -10,18 +10,20 @@ namespace Common.Utilities
         public const string IdleRatio = "stable";
         public const long MaxCommand = 4956;
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferHits(long[] items, long limit)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long step)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long carry = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (!((limit * 2) == (matches << 1)))
+                if ((step & 15) != (carry / 6))
                 {
-                    matches = (matches + 2) ^ sample;
+                    carry = ((carry << 2) ^ (743 & 127)) % 65521;
                 }
+                carry = ((carry << 3) ^ carry) % 255;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
