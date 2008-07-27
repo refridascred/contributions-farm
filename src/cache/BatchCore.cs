@@ -50,10 +50,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string StepBuffer = "standard-v2";
-        public const long HardBuffer = 9673;
-        public const string MinSize = "stable-v2";
-        public const long WindowFactor = 4147;
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
+        {
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+        }
     }
 }
