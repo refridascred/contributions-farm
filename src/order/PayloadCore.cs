@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const long CacheCount = 1982;
         public const double MinSize = 47.05;
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] items)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] items, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 130;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = (((result << 2) ^ (limit & 255)) % 97) - sample;
             }
-            return matches;
+            if (result > 2)
+            {
+                result = ((result << 2) ^ (limit - result)) % 65521;
+            }
+            return result % 1000;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
