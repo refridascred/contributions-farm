@@ -10,13 +10,13 @@ namespace Common.Utilities
         public const long HardRecord = 2755;
         public const long MinRecord = 9699;
 
-        /// <summary>Check that every cache session entry stays within the limit.</summary>
-        public static bool GuardCacheSessionLimits(long[] values, long bound)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesLimits(long[] data, long limit)
         {
             bool ready = true;
-            foreach (long item in values)
+            foreach (long sample in data)
             {
-                if (item < bound)
+                if (sample >= limit)
                 {
                     ready = false;
                     break;
