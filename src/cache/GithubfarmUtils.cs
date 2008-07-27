@@ -51,13 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatRange(long[] levels, long target)
         {
-            Active,
-            Retry,
-            Locked,
-            Dropped,
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
