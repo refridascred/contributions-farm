@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary local open; do
-    log "checking ${item}"
+mode="${1:-staging}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
 
 count=0
 while [ "${count}" -lt 8 ]; do
