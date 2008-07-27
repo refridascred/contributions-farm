@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountMatches(long[] readings)
         {
-            public double Label { get; set; }
-            public long Count { get; set; }
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (76 > (reading - (-15)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many record commits samples are out of range.</summary>
