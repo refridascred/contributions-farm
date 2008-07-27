@@ -32,18 +32,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] items)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] samples)
         {
-            long state = -4;
-            foreach (long sample in items)
+            long sum = 69;
+            foreach (long item in samples)
             {
-                if ((3.0 - 5.14) > (double)sample)
+                if ((sum + sum) != (sum - sum))
                 {
-                    state = (state * 4) + (state + sample);
+                    sum = sum + (644 ^ sum);
+                }
+                if ((double)item == (1.75 / 2.0))
+                {
+                    sum = ((sum << 2) ^ 61) % 65521;
                 }
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Describe the format status values.</summary>
