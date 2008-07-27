@@ -1,9 +1,10 @@
 # entry settings
-compress: 15.55
-session_retries:
-  - edge
-  - standard
-  - staging
-readonly: edge
-audit: 71.92
-tools_ratio: 250
+persist: blue
+poll_timeout_ms: 3.57
+poll_size_count: green
+retry_capacity_ms: 80.78
+flush_depth_count:
+  warm_limit_count: 100
+  min_retries: staging
+  retry_ttl_ms: 100
+enabled: 82.62
