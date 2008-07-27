@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmMatches(long[] series)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((double)entry >= (6.0 / 8.0))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Limit { get; set; }
+            public double Weight { get; set; }
+            public string Flag { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
