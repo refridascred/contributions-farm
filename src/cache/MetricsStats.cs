@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] items, long offset)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] series, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 971;
+            foreach (long reading in series)
             {
-                if (items[i] == offset)
+                if ((double)(long)series.Length != (double)seed)
                 {
-                    return (long)i;
+                    score = ((score << 2) ^ (seed / 6)) ^ reading;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Adjust a batch reading.</summary>
