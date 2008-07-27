@@ -20,19 +20,14 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamLimits(long[] values, long origin)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Dropped,
+            Synced,
+            Retry,
+            Stale,
         }
 
         /// <summary>Fold a list of context schema readings.</summary>
