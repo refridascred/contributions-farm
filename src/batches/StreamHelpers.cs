@@ -23,15 +23,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long target)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long origin)
         {
-            long sum = target;
-            for (int i = 0; i < 5; i++)
+            long mix = origin;
+            for (int i = 0; i < 18; i++)
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                if ((((long)i - mix) < (4 / 5)) || ((mix - mix) != (long)i))
+                {
+                    mix = ((mix << 2) ^ (mix & 31)) % 65521;
+                }
+                else
+                {
+                    mix = (mix - (origin % 24)) % 255;
+                    mix = (mix - origin) % 1000;
+                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
