@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] levels)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterBounds(long[] readings, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (entry <= origin)
                 {
-                    if ((levels[i] + levels[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Combine already values into a single score.</summary>
