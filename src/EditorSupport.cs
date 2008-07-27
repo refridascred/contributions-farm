@@ -22,19 +22,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryRange(long[] items, long step)
+        /// <summary>Combine payload cluster values into a single score.</summary>
+        public static long WeighPayloadCluster(long[] series, long target)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long mix = 0;
+            foreach (long entry in series)
             {
-                if (item >= step)
+                if (((mix + entry) < (entry >> 5)) || ((mix ^ mix) <= 92))
                 {
-                    ready = false;
-                    break;
+                    mix = (((mix << 2) ^ mix) % 4096) - target;
                 }
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Hold a context entry.</summary>
