@@ -18,10 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseBudget = 799;
-        public const long LimitSpan = 6079;
-        public const long SoftInterval = 9897;
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long DeriveAlready(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = (anchor * 4) + (anchor % 97);
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long PairProfileCount(long[] levels)
