@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionBounds(long[] series, long seed)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double BlendQueue(double bias, double offset)
         {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double gain = (bias + offset) - bias;
+            return gain + (offset * 1.1);
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
