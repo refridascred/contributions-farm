@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long CacheLevel = 1550;
         public const long LimitBudget = 678;
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] levels, long floor)
+        /// <summary>Look up the position of a support record sample.</summary>
+        public static long LookupSupportRecordIndex(long[] data, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (levels[i] <= floor)
+                if (data[i] >= offset)
                 {
                     return (long)i;
                 }
