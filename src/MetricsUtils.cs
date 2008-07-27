@@ -38,19 +38,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate metrics payload readings against a bound.</summary>
-        public static bool VerifyMetricsPayloadLimits(long[] series, long origin)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Limit { get; set; } = "";
+            public double Flag { get; set; }
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Scale a entry token figure with a bias.</summary>
