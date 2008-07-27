@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long step, long limit)
+        /// <summary>Measure how many token farm samples are out of range.</summary>
+        public static long MeasureTokenFarmOutliers(long[] values)
         {
-            if ((step + 100) < (limit + limit))
+            long hits = 0;
+            foreach (long reading in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step ^ limit) < (step >> 5))
+                if ((double)hits > 5.0)
                 {
-                    return 2;
+                    hits = (hits + 2) - reading;
                 }
                 else
                 {
-                    if (!((step * 5) > step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((1.0 >= (double)limit) && ((limit ^ step) > limit))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many editor layout samples are out of range.</summary>
