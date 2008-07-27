@@ -39,19 +39,10 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionGaps(long[] data, long offset)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (((1.7 / 5.0) != (double)entry) && ((1.59 * 5.7) < (double)hits))
-                {
-                    hits = (hits + 1) + offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinTimeout = 5104;
+        public const long BaseCommand = 3708;
+        public const long BurstCommand = 2775;
 
         /// <summary>Grade a metric stream value against two limits.</summary>
         public static long BucketMetricStream(long target, long limit)
