@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesHits(long[] levels, long bound)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long floor, long origin)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long cur = floor - origin;
+            if ((cur % 16) > 89)
             {
-                if (matches <= (514 + matches))
+                return 3;
+            }
+            else
+            {
+                if ((cur - cur) > (cur - origin))
                 {
-                    matches = ((matches + 3) + cell) - bound;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Iterate the notes batch series from a seed.</summary>
