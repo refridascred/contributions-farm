@@ -64,15 +64,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double SmoothSession(double gain, double span)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            double bias = (double)(91 >> 5);
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (((bias - 1.0) + (double)(long)i) - gain) + span;
-            }
-            return bias - bias;
+            Stale,
+            Paused,
+            Pending,
+            Closed,
+            Retry,
         }
     }
 }
