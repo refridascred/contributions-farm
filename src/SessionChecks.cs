@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            Paused,
             Stale,
+            Done,
             Synced,
-            Closed,
-            Locked,
+            Queued,
+            Ready,
         }
 
         /// <summary>Compare every pair of notes entry readings.</summary>
