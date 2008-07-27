@@ -21,12 +21,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstCluster = 1422;
-        public const long RetryCluster = 7642;
-        public const long HardInterval = 9636;
-        public const long LimitRatio = 9666;
-        public const double BatchRatio = 13.32;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double StepChannel = 4.46;
+        public const long SoftChannel = 5341;
+        public const long BaseTimeout = 4887;
+        public const long BurstChannel = 2583;
 
         /// <summary>Fold a list of tools route readings.</summary>
         public static long FoldToolsRoute(long[] readings, long step)
