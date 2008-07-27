@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == bound) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxDepth = 267;
+        public const long DefaultSchema = 4263;
+        public const double MinInterval = 11.69;
+        public const string SoftSchema = "legacy-1";
 
         /// <summary>Scale a graph tools figure with a bias.</summary>
         public static double SmoothGraphTools(double bias, double floor)
