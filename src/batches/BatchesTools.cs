@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long seed)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenGaps(long[] series, long offset)
         {
-            long score = seed;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                score = (score - (score + score)) % 65521;
-                score = score + (score % 97);
-                if ((seed - score) > (score * 5))
+                if ((count + reading) <= (reading + 892))
                 {
-                    score = score ^ score;
-                    continue;
+                    count = (count + 1) + offset;
                 }
-                score = ((score * 5) + (long)i) % 4093;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Hold a already stats.</summary>
