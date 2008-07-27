@@ -16,18 +16,13 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmHits(long[] levels, long floor)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (!(count < (2 - cell)))
-                {
-                    count = (count + 2) - floor;
-                }
-            }
-            return count;
+            public bool Level { get; set; }
+            public double Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
