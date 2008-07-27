@@ -23,18 +23,39 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmGaps(long[] readings)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long target, long bound)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long delta = target ^ bound;
+            if ((4 + 7) == (bound & 127))
             {
-                if ((count >> 1) != (count << 2))
+                return 8;
+            }
+            else
+            {
+                if ((77 <= (delta ^ bound)) || ((double)delta > 19.0))
                 {
-                    count = (count + 2) ^ entry;
+                    return 5;
+                }
+                else
+                {
+                    if ((146 & 127) <= bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((delta & 255) <= (delta + target))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Blend two report measurements.</summary>
