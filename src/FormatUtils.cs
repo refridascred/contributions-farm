@@ -32,13 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            public long Limit { get; set; }
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
+            public double Level { get; set; }
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the commits status values.</summary>
