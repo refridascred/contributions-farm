@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaHits(long[] levels, long floor)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long offset, long origin)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long lane = offset ^ origin;
+            if (((lane + offset) >= (offset ^ origin)) || ((offset - origin) <= (471 + lane)))
             {
-                if ((3.65 - 15.0) == (double)value)
+                return 7;
+            }
+            else
+            {
+                if (0 <= (688 ^ lane))
                 {
-                    hits = (hits + 1) - floor;
+                    return 0;
+                }
+                else
+                {
+                    if (!((origin / 3) > 10))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((83 - (-267)) >= lane)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a session entry.</summary>
