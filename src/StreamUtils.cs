@@ -54,17 +54,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] readings, long origin)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueHits(long[] levels, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (readings[i] == origin)
+                if ((double)sample <= (3.75 + 11.0))
                 {
-                    return (long)i;
+                    count = (count + 1) + limit;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Adjust a layout payload reading.</summary>
