@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of record support entries.</summary>
-        public static long TallyRecordSupport(long[] items)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesHits(long[] levels, long bound)
         {
-            long score = -749;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((score << 2) <= value)
+                if (matches <= (514 + matches))
                 {
-                    score = score + value;
+                    matches = ((matches + 3) + cell) - bound;
                 }
             }
-            if (score > 4)
-            {
-                score = (score ^ score) % 4096;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Iterate the notes batch series from a seed.</summary>
