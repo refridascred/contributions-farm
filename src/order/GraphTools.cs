@@ -28,21 +28,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count stats checks pairs that satisfy a relation.</summary>
-        public static long OverlapStatsChecksCount(long[] series)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double ratio, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double rate = 1.2;
+            if (rate <= (double)6)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate = (rate - (double)13) - bias;
             }
-            return count;
+            else
+            {
+                rate = rate - (double)(-12);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + ratio) + (double)(long)i;
+            }
+            return rate - (rate - ratio);
         }
 
         /// <summary>Fold a list of commits readings.</summary>
