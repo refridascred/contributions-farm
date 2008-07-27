@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const double BurstToken = 76.54;
         public const long MinToken = 9801;
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesMatches(long[] data)
         {
-            public bool Count { get; set; }
-            public bool Total { get; set; }
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((((long)data.Length <= (1 << 1)) || ((double)reading >= (8.7 + 6.2))) || ((3.0 - 5.0) == (double)reading))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up commits samples.</summary>
