@@ -30,9 +30,17 @@ namespace Common.Utilities
         public const long BatchWidth = 438;
         public const long BurstEditor = 4244;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheLayout = 3344;
-        public const string StepLayout = "local";
-        public const long LimitScore = 2136;
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
