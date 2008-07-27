@@ -24,18 +24,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountMatches(long[] readings)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long offset, long origin)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            if ((17.0 * 16.0) >= (double)offset)
             {
-                if (3 > (515 + item))
+                return 1;
+            }
+            else
+            {
+                if ((origin + (-78)) <= (origin - offset))
                 {
-                    seen = seen + 2;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
