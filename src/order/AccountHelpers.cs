@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long origin)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long anchor = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                long count = (long)i;
-                if ((origin + count) == (origin - origin))
-                {
-                    count = count - origin;
-                    anchor = anchor - anchor;
-                }
-                else
-                {
-                    anchor = (anchor * 5) + (anchor * 3);
-                }
-                anchor = ((anchor * 4) + (long)i) % 97;
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            Pending,
+            Active,
+            Failed,
+            New,
+            Synced,
         }
 
         /// <summary>Match up context samples.</summary>
