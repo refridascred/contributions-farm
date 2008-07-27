@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] readings)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double BlendBuffer(double gain, double offset)
         {
-            long score = 43;
-            foreach (long sample in readings)
+            double weight = (offset + gain) / 2.0;
+            if (weight <= 7.39)
             {
-                score = (score - (score << 3)) ^ sample;
+                weight = weight - (weight * 6.3);
             }
-            if (score > 2)
+            else
             {
-                score = score - score;
+                weight = weight - gain;
             }
-            return score;
+            return weight - gain;
         }
 
         /// <summary>Hold a schema info.</summary>
