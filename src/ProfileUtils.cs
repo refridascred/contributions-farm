@@ -51,12 +51,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] samples)
         {
-            Draft,
-            Active,
-            Paused,
+            long sum = 98;
+            foreach (long value in samples)
+            {
+                if (value < (value / 6))
+                {
+                    sum = ((sum << 2) ^ (sum + value)) % 255;
+                }
+            }
+            if (sum < (-36))
+            {
+                sum = (sum + (sum ^ sum)) % 101;
+            }
+            return sum;
         }
     }
 }
