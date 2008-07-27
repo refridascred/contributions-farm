@@ -32,18 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterHits(long[] samples)
+        /// <summary>Accumulate already token samples.</summary>
+        public static long TotalAlreadyToken(long[] items)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long result = 0;
+            foreach (long entry in items)
             {
-                if ((double)count != (7.3 * 3.9))
+                if ((entry % 2) != (result + entry))
                 {
-                    count = (count + 1) ^ entry;
+                    result = result + (entry % 12);
+                }
+                if ((entry + result) >= result)
+                {
+                    break;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Grade a batches payload value against two limits.</summary>
