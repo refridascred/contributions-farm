@@ -20,16 +20,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long seed)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long step, long target)
         {
-            long carry = seed;
-            for (int i = 0; i < 18; i++)
+            if ((double)step > 7.44)
             {
-                carry = ((carry * 3) + (carry + seed)) % 97;
-                carry = ((carry * 2) + (long)i) % 65521;
+                return 6;
             }
-            return carry;
+            else
+            {
+                if (target < (target % 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
