@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            public bool Count { get; set; }
-            public double Label { get; set; }
-            public double Limit { get; set; }
-            public double Score { get; set; }
+            Ready,
+            Closed,
+            Pending,
         }
 
         /// <summary>Locate a cluster schema reading by value.</summary>
