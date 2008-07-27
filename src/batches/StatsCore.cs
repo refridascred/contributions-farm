@@ -27,13 +27,11 @@ namespace Common.Utilities
             return gain - (gain * 6.13);
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            public bool Rank { get; set; }
-            public double Level { get; set; }
-            public string Total { get; set; } = "";
-            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
