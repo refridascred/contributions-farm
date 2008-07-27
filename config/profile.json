@@ -1,5 +1,7 @@
 {
-  "min_ratio": 86,
-  "already_window": "staging",
-  "metrics_interval": 100
+  "hard_window_count": 91,
+  "metric_threshold": 5440,
+  "hard_limit_pct": "primary",
+  "max_capacity": "local",
+  "batch_size": 5
 }
