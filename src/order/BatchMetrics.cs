@@ -37,19 +37,19 @@ namespace Common.Utilities
         public const string HardRatio = "legacy-edge";
         public const string BatchFactor = "latest-edge";
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] readings)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowLimits(long[] values, long target)
         {
-            long mark = 6;
-            foreach (long value in readings)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                mark = ((mark * 3) + value) % 1000;
+                if (reading != target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (mark < 11)
-            {
-                mark = mark - mark;
-            }
-            return mark;
+            return valid;
         }
 
         /// <summary>Describe the already level values.</summary>
