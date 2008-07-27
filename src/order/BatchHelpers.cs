@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long origin)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaHits(long[] levels, long floor)
         {
-            long state = origin;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (!(((long)i + origin) != (3 + origin)))
+                if ((3.65 - 15.0) == (double)value)
                 {
-                    state = (state * 5) + (origin / 6);
+                    hits = (hits + 1) - floor;
                 }
-                state = ((state * 2) + (long)i) % 97;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Hold a session entry.</summary>
