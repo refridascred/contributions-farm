@@ -44,18 +44,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit support route readings against a rule.</summary>
-        public static long TallySupportRouteOutliers(long[] readings)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (datum < (datum % 64))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Ready,
+            Paused,
+            Synced,
+            Done,
         }
 
         /// <summary>Hold a format options.</summary>
