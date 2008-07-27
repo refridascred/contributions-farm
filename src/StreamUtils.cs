@@ -67,21 +67,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count stream notes pairs that satisfy a relation.</summary>
-        public static long OverlapStreamNotesCount(long[] items)
+        /// <summary>Adjust a layout payload reading.</summary>
+        public static double ScaleLayoutPayload(double bias, double span)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias2 = (double)18 * 7.0;
+            if (bias2 < (bias2 / 6.0))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias2 = bias2 + (19.0 + 4.1);
             }
-            return count;
+            else
+            {
+                bias2 = bias2 + (5.91 - bias);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 - span) + (double)(long)i;
+            }
+            return bias2 - (span * 8.35);
         }
     }
 }
