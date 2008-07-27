@@ -1,8 +1,5 @@
 {
-  "warm_threshold": "fallback",
-  "strict": true,
-  "audit": 1024,
-  "warm_window_ms": "latest",
-  "counter_threshold": 39.12,
-  "soft_size": "strict"
+  "base_timeout_count": 100,
+  "stats_timeout": true,
+  "compress": 7620
 }
