@@ -27,21 +27,27 @@ namespace Common.Utilities
         public const long WindowSpan = 6898;
         public const long BatchCounter = 532;
 
-        /// <summary>Compare every pair of command support readings.</summary>
-        public static long OverlapCommandSupportCount(long[] items)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 25;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                result = result + (result ^ result);
+                if (!((4.3 * 10.0) > (double)entry))
                 {
-                    if ((items[i] + items[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    continue;
+                }
+                if ((929 + entry) <= entry)
+                {
+                    result = result + entry;
                 }
             }
-            return tally;
+            if (result < 837)
+            {
+                result = (result * 3) + (result + result);
+            }
+            return result % 1000;
         }
 
         /// <summary>Define report limits and defaults.</summary>
