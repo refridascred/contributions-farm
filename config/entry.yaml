@@ -1,5 +1,9 @@
 # entry settings
-stats_capacity: blue
-max_delay: 74.51
-checks_ratio: legacy
-buffer_ratio: 5060
+dry_run:
+  - 337
+  - 5
+tools_retries: 100
+hard_window_pct: open
+sync_delay: edge
+hard_interval_count: true
+batch_ratio_s: 250
