@@ -34,19 +34,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricRange(long[] readings, long seed)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] data, long floor)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum <= seed)
+                if (data[i] > floor)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
