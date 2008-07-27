@@ -1,8 +1,6 @@
 {
-  "max_ttl_ms": 16.76,
-  "base_delay": "open",
-  "base_capacity_ms": 49,
-  "idle_ttl": true,
-  "cache_ratio_pct": false,
-  "checks_depth": 6.74
+  "soft_interval": false,
+  "min_capacity_pct": 150,
+  "max_interval_count": ["fallback", "staging"],
+  "flush_capacity_s": 24.57
 }
