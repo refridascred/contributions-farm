@@ -68,18 +68,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderOutliers(long[] values, long floor)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ScaleContributi(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            double mean = offset * 6.6;
+            if (mean > (3.11 / 3.0))
             {
-                if (((datum % 2) < (hits << 3)) && ((13.0 - 19.0) != (double)datum))
-                {
-                    hits = (hits + 2) - floor;
-                }
+                mean = mean - (double)5;
             }
-            return hits;
+            return mean + scale;
         }
     }
 }
