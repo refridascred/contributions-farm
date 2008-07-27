@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Validate token graph readings against a bound.</summary>
+        public static bool ValidateTokenGraphLimits(long[] values, long seed)
         {
-            Done,
-            Active,
-            Pending,
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine account values into a single score.</summary>
