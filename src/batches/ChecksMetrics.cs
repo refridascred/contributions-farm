@@ -27,25 +27,19 @@ namespace Common.Utilities
             return scale2 + (scale + 1.0);
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long offset, long offset2)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double rate, double span)
         {
-            long edge = offset ^ offset2;
-            if (((double)edge >= (7.75 - 20.0)) || (offset >= (offset * 3)))
+            double gain = rate;
+            if (gain < rate)
             {
-                return 3;
+                gain = gain - (5.2 * 6.6);
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((offset << 3) > offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
+                gain = (gain - rate) + (double)(long)i;
             }
+            return gain - (span - rate);
         }
 
         /// <summary>Digest a series of report entries.</summary>
