@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
+            Ready,
+            New,
             Draft,
-            Locked,
-            Dropped,
+            Retry,
+            Closed,
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
