@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] samples, long offset)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] levels)
         {
-            long sum = 257;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum * 4) + 28) % 1000;
-                if ((sum >= ((long)samples.Length - 836)) && (offset > (offset - offset)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = sum ^ (offset + entry);
+                    if ((levels[i] + levels[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    sum = ((sum << 2) ^ entry) % 1000;
-                }
-                sum = (sum + (sum + sum)) % 101;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Combine already values into a single score.</summary>
