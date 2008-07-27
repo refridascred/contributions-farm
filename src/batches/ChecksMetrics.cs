@@ -72,9 +72,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRecord = 3913;
-        public const long RetryRecord = 1395;
-        public const string BaseTimeout = "open-v2";
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
+        {
+            New,
+            Draft,
+            Synced,
+        }
     }
 }
