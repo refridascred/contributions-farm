@@ -17,12 +17,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            Synced,
-            Closed,
+            Paused,
+            Pending,
+            Locked,
             Queued,
+            Retry,
         }
 
         /// <summary>Hold a window stats.</summary>
