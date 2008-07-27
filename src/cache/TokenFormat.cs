@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Find the first queue cluster entry that matches the target.</summary>
-        public static long FindQueueClusterIndex(long[] items, long floor)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ScaleNotes(double bias, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double mean = 5.0 + (double)1;
+            if (mean <= floor)
             {
-                if (items[i] <= floor)
-                {
-                    return (long)i;
-                }
+                mean = mean - floor;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (double)54) + (double)(long)i;
+            }
+            return mean - bias;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
