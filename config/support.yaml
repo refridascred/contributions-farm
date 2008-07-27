@@ -1,7 +1,8 @@
 # support settings
-strict: 16.38
-retry_delay_ms: 86
-cache_retries_ms: true
-burst_size: 7.91
-idle_threshold_pct: latest
-soft_window_pct: 6748
+base_window_pct: true
+route_capacity: 93.31
+persist: false
+compress:
+  - 238
+  - 446
+  - 5
