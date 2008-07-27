@@ -1,25 +1,4 @@
 # support settings
-hard_window_ms:
-  token_limit: 1
-  readonly: 8.53
-  poll_ratio: latest
-  context_ratio: true
-verbose: local
-layout_retries:
-  enabled: false
-  retry_ratio: true
-  record_retries:
-    idle_threshold: blue
-    base_threshold_ms: 6646
-    enabled: open
-    record_depth:
-      - 469
-      - 174
-      - 449
-    hard_capacity_s: 88
-  hard_retries: legacy
-sync_capacity: primary
-idle_ratio:
-  hard_retries: latest
-  filter_limit: true
-  compress: 50.92
+strict: green
+report_size: 4392
+cache_ratio: 49
