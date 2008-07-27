@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
+            Retry,
             Dropped,
-            Done,
-            Ready,
-            Locked,
+            Synced,
+            Failed,
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
