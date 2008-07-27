@@ -20,18 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] items)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (matches >= 366)
-                {
-                    matches = (matches + 3) + reading;
-                }
-            }
-            return matches;
+            public string Flag { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
