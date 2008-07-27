@@ -1,5 +1,5 @@
 {
-  "context_threshold": "local",
-  "command_window": 71,
-  "metrics_ttl": 100
+  "audit": ["edge", "local", "green"],
+  "payload_limit": 63,
+  "soft_window": [287, 440, 40]
 }
