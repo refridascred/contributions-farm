@@ -23,18 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorMatches(long[] levels)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsOutliers(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long value in items)
             {
-                if ((hits / 9) <= 2)
+                if ((6.2 + 0.85) < (double)count)
                 {
-                    hits = (hits + 1) ^ sample;
+                    count = ((count + 1) + value) + step;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
