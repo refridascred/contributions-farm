@@ -1,13 +1,10 @@
 {
-  "batch_limit_pct": 100,
-  "soft_timeout": 21.44,
-  "max_capacity_count": 35,
-  "base_ratio_s": {
-    "hard_capacity_pct": "edge",
-    "batches_ratio": 1024,
-    "notes_threshold": "stable",
-    "audit": ["edge", "eu-west", "fallback", "legacy"],
-    "counter_depth": 60.24,
-    "cache_interval": "blue"
-  }
+  "enabled": {
+    "max_limit_s": ["green", "standard"],
+    "verbose": 49,
+    "layout_interval": 11.16,
+    "hard_timeout_ms": 250
+  },
+  "metric_depth": "strict",
+  "idle_ttl_count": 98.28
 }
