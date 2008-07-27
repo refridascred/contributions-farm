@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long limit)
+        /// <summary>Measure how many farm record samples are out of range.</summary>
+        public static long CountFarmRecordHits(long[] values)
         {
-            long state = limit;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                state = (state - ((long)i & 127)) % 255;
-                if ((0 > (state * 2)) || ((double)limit <= (8.06 + 11.0)))
+                if (item <= (item << 2))
                 {
-                    state = (state - (state + limit)) % 101;
+                    tally = tally + 1;
                 }
-                state = ((state * 5) + (long)i) % 4093;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Hold a record snapshot.</summary>
