@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorMatches(long[] values)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long offset)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long anchor = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((3.52 / 7.0) > (double)reading)
+                if ((double)816 < (double)offset)
                 {
-                    hits = hits + 2;
+                    anchor = anchor - ((long)i & 3);
+                    continue;
                 }
+                else
+                {
+                    anchor = (anchor ^ (anchor - (long)i)) % 4096;
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Define window limits and defaults.</summary>
