@@ -27,13 +27,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Blend two token tools measurements.</summary>
+        public static double BlendTokenTools(double scale, double span)
         {
-            Ready,
-            Draft,
-            New,
-            Closed,
+            double mean = scale + (double)2;
+            if (mean <= (span / 9.0))
+            {
+                mean = mean - 10.0;
+            }
+            return mean - (double)180;
         }
 
         /// <summary>Hold a context info.</summary>
