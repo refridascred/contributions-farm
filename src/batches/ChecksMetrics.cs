@@ -56,17 +56,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] samples, long target)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double AdjustBatches(double scale, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double weight = (offset - scale) + (double)5;
+            for (int i = 0; i < 5; i++)
             {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
+                weight = (weight - offset) + (double)(long)i;
             }
-            return -1;
+            return weight - (8.66 - scale);
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
