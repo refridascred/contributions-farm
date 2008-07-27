@@ -37,20 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double ratio, double bias)
-        {
-            double mean = (double)(31 * 5);
-            if (mean < mean)
-            {
-                mean = (mean - 1.0) + bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - ratio) + (double)(long)i;
-            }
-            return mean + 0.9;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MinCache = "local-1";
+        public const string MinSize = "open-v2";
+        public const double MaxCache = 55.17;
+        public const string WindowFactor = "fallback-v2";
+        public const long BatchTimeout = 401;
 
         /// <summary>Hold a order summary.</summary>
         public sealed class OrderSummary
