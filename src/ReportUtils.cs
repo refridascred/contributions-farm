@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Grade a session support value against two limits.</summary>
+        public static long SortSessionSupport(long offset, long floor)
         {
-            public bool Level { get; set; }
-            public bool Owner { get; set; }
-            public string Label { get; set; } = "";
+            long lane = offset + floor;
+            if (((1 / 8) > (lane / 5)) || ((lane - 20) < (lane + lane)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (9 > offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((98 * 5) < (lane - floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a context value against two limits.</summary>
