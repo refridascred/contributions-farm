@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksRange(long[] series, long bound)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsOutliers(long[] values)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (entry != bound)
+                if (!((15.0 + 7.61) <= (double)count) && (count > (item & 1)))
                 {
-                    valid = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Describe the counter mode values.</summary>
