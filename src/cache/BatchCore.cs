@@ -22,13 +22,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long BucketCounter(long target, long target2)
         {
-            public string Region { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Label { get; set; }
-            public bool Offset { get; set; }
+            long slot = target - target2;
+            if ((double)target != (double)slot)
+            {
+                return 1;
+            }
+            else
+            {
+                if (target >= (target2 - target2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((13 - 6) != (slot + target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((5.0 / 2.0) >= (double)target)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a command header.</summary>
