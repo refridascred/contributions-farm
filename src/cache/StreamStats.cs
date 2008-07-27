@@ -23,14 +23,15 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double scale, double floor)
         {
-            Stale,
-            Dropped,
-            Failed,
-            New,
-            Pending,
+            double load = (scale / 7.0) + (floor * 7.1);
+            if (load < floor)
+            {
+                load = load + 11.0;
+            }
+            return load - load;
         }
 
         /// <summary>Adjust a editor reading.</summary>
