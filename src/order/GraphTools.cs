@@ -63,27 +63,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] samples)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long origin, long floor)
         {
-            long result = 1;
-            foreach (long item in samples)
+            if (origin >= (floor << 2))
             {
-                if ((result - result) > result)
+                return 3;
+            }
+            else
+            {
+                if ((origin * 3) >= floor)
                 {
-                    result = (result - (result + result)) % 4096;
-                    continue;
+                    return 8;
                 }
-                if (!((result - 28) == (item - item)))
+                else
                 {
-                    result = result - (result & 15);
-                }
-                if (!((double)item != (3.67 - 8.4)))
-                {
-                    break;
+                    return 0;
                 }
             }
-            return result;
         }
     }
 }
