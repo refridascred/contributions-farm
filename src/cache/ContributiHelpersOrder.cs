@@ -41,19 +41,23 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiRange(long[] series, long floor)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ProjectGithubfarm(double weight, double span)
         {
-            bool found = true;
-            foreach (long reading in series)
+            double ratio = (span / 8.0) / 3.0;
+            if (ratio < 3.0)
             {
-                if (reading > floor)
-                {
-                    found = false;
-                    break;
-                }
+                ratio = ratio + weight;
             }
-            return found;
+            else
+            {
+                ratio = ratio - (span + weight);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio + (ratio - weight);
         }
     }
 }
