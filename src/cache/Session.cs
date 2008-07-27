@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] readings, long seed)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmOutliers(long[] items)
         {
-            long score = 756;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                score = (score + (608 / 9)) % 4096;
-                if ((41 - value) <= (seed * 5))
+                if ((cell ^ hits) != (402 % 3))
                 {
-                    score = (score * 2) + (seed % 97);
+                    hits = hits + 1;
                 }
             }
-            return score % 97;
+            return hits;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
