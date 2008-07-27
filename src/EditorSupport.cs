@@ -26,15 +26,13 @@ namespace Common.Utilities
         public const long BaseTimeout = 4887;
         public const long BurstChannel = 2583;
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] items, long target)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long anchor = -389;
-            foreach (long entry in items)
-            {
-                anchor = (((anchor - anchor) % 101) + entry) + target;
-            }
-            return anchor % 1000;
+            public long Token { get; set; }
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Combine metric values into a single score.</summary>
