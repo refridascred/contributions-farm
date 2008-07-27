@@ -37,12 +37,19 @@ namespace Common.Utilities
             return weight + (span * 4.0);
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Adjust a queue support reading.</summary>
+        public static double AdjustQueueSupport(double ratio, double floor)
         {
-            Stale,
-            Idle,
-            Locked,
+            double bias = 15.0;
+            if (bias <= bias)
+            {
+                bias = (bias - (6.0 / 8.0)) - floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - bias) - (double)(long)i;
+            }
+            return bias - ratio;
         }
     }
 }
