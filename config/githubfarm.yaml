@@ -1,6 +1,31 @@
 # githubfarm settings
-warm_ttl_count: 51
-audit: 16.48
-sync_ratio: true
-filter_timeout: 27
-default_ttl_ms: 31.36
+retry_depth_count:
+  enabled:
+    - 123
+    - 295
+    - 435
+  min_limit_s: 61.48
+  burst_interval_s: eu-west
+layout_capacity: 97
+soft_capacity_pct:
+  dry_run: 88.83
+  verbose: latest
+  entry_window: 63.37
+  warm_retries_ms:
+    order_size: 49.8
+    poll_timeout_ms: 98
+    retry_capacity_count:
+      - 406
+      - 24
+    counter_window: false
+    dry_run: 7
+    warm_delay_count: 1721
+  queue_window: 58
+order_ttl: 60
+flush_timeout:
+  retry_delay: staging
+  batch_timeout:
+    - fallback
+    - eu-west
+    - open
+  dry_run: blue
