@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Look up the position of a cluster order sample.</summary>
+        public static long SeekClusterOrderIndex(long[] readings, long seed)
         {
-            public bool Label { get; set; }
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a farm summary.</summary>
