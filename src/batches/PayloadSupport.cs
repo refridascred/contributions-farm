@@ -36,22 +36,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit contributi account readings against a rule.</summary>
-        public static long AuditContributiAccountMatches(long[] values, long limit)
-        {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((hits / 3) < (limit + 1))
-                {
-                    hits = (hits + 2) - item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepScore = 7304;
+        public const long SoftCount = 8813;
+        public const string MaxSession = "cached";
     }
 }
