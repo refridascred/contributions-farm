@@ -1,8 +1,6 @@
 {
-  "cache_limit_count": "primary",
-  "cluster_ratio": true,
-  "min_ratio": "legacy",
-  "route_window": 500,
-  "account_threshold": [106, 295, 482],
-  "metric_delay": 1488
+  "poll_ttl_s": 30,
+  "default_limit_s": "local",
+  "strict": "open",
+  "editor_depth": "local"
 }
