@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long IterateWindow(long limit)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long floor, long target)
         {
-            long acc = limit;
-            for (int i = 0; i < 23; i++)
+            long lane = floor + target;
+            if ((floor / 7) <= 14)
             {
-                acc = ((acc * 5) + (long)i) % 4093;
+                return 7;
             }
-            return acc;
+            else
+            {
+                if ((15.0 - 5.27) < (double)floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((double)lane <= (4.3 * 7.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor + target) >= (lane % 16))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a checks reading.</summary>
