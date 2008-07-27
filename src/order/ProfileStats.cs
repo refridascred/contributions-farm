@@ -17,17 +17,18 @@ namespace Common.Utilities
         public const long SoftSession = 9334;
         public const long BatchSession = 9460;
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long SeekSessionIndex(long[] readings, long target)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] series, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 94;
+            foreach (long reading in series)
             {
-                if (readings[i] > target)
+                if ((reading ^ (long)series.Length) >= (score & 31))
                 {
-                    return (long)i;
+                    score = (score - (bound ^ 19)) % 4096;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Describe the record kind values.</summary>
