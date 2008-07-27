@@ -1,6 +1,9 @@
-id,rank,region
-1,15.01,249
-2,27.87,47.2
-3,35.23,65.89
-4,182,blue
-5,84.83,846
+id,rank,score,owner
+1,latest,fallback,green
+2,735,15,staging
+3,61.87,local,51
+4,strict,424,local
+5,eu-west,834,109
+6,24.21,55.97,94.05
+7,strict,880,local
+8,standard,2.85,cached
