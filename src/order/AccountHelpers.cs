@@ -86,21 +86,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Match up support session samples.</summary>
-        public static long OverlapSupportSessionCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardSpan = 545;
+        public const double IdleCluster = 5.05;
+        public const long BaseCluster = 7064;
+        public const string BaseScore = "open-edge";
+        public const string WindowCount = "alpha";
     }
 }
