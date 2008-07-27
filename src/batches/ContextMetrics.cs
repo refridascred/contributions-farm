@@ -41,13 +41,18 @@ namespace Common.Utilities
             return bias - gain;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferGaps(long[] readings)
         {
-            Synced,
-            New,
-            Retry,
-            Paused,
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((item >= matches) || (((item % 16) != (item >> 1)) || ((double)item == (6.0 + 5.3))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
