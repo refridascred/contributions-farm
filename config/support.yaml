@@ -1,13 +1,9 @@
 # support settings
-warm_threshold_s: standard
-sync_ttl: 90.75
-cluster_ratio:
-  idle_interval: 35.94
-  sync_interval_pct: 2103
-  burst_delay_s: false
-filter_delay: 6.51
-metric_retries:
-  - 120
-  - 274
-  - 238
-  - 209
+schema_threshold: false
+session_capacity: legacy
+flush_delay_count: 29.4
+idle_delay_ms: 81
+retry_timeout_s: 5.99
+soft_window:
+  - cached
+  - legacy
