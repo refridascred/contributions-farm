@@ -43,21 +43,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up command session samples.</summary>
-        public static long OverlapCommandSessionCount(long[] readings)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = state + state;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
