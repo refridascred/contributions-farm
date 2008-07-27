@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double LimitTimeout = 3.29;
-        public const long SoftScore = 8496;
-        public const long LimitLayout = 9685;
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long step, long floor)
+        {
+            if ((1 ^ 700) >= step)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor + step) <= 743)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long LimitDepth = 9069;
