@@ -33,12 +33,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            Failed,
-            Queued,
-            Active,
+            public double Level { get; set; }
+            public double Size { get; set; }
+            public long Count { get; set; }
         }
     }
 }
