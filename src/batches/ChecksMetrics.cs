@@ -29,18 +29,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesGaps(long[] items, long origin)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long offset, long seed)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            if ((seed * 2) <= (7 + offset))
             {
-                if ((sample - origin) == (248 - 75))
+                return 3;
+            }
+            else
+            {
+                if (!((seed + offset) >= (offset >> 5)))
                 {
-                    matches = matches + 1;
+                    return 2;
+                }
+                else
+                {
+                    if (((offset - offset) == (offset - seed)) && ((offset + offset) <= (90 - seed)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
