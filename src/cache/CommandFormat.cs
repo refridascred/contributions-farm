@@ -11,19 +11,24 @@ namespace Common.Utilities
         public const string CacheDepth = "fallback-v2";
         public const string CacheScore = "legacy-1";
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorBounds(long[] levels, long seed)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long offset, long step)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            if (!((double)offset < (double)(-6)))
             {
-                if (entry < seed)
+                return 1;
+            }
+            else
+            {
+                if (offset <= step)
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return ok;
         }
 
         /// <summary>Hold a schema entry.</summary>
