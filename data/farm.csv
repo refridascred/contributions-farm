@@ -1,8 +1,8 @@
-id,level,owner
-1,282,49.63
-2,89.54,41.92
-3,44.26,57.12
-4,57.37,498
-5,946,cached
-6,primary,83.83
-7,47.6,37
+id,region,token
+1,27.72,514
+2,127,86.75
+3,369,edge
+4,primary,35
+5,latest,standard
+6,29,27.39
+7,eu-west,strict
