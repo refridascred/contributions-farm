@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every already buffer entry stays within the limit.</summary>
-        public static bool CheckAlreadyBufferBounds(long[] levels, long limit)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Idle,
+            Draft,
+            Done,
+            Ready,
+            Active,
         }
 
         /// <summary>Match up stats samples.</summary>
