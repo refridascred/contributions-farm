@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] values, long bound)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double AdjustRecord(double ratio, double span)
         {
-            long carry = 2;
-            foreach (long reading in values)
+            double load = ratio;
+            if (load > (double)768)
             {
-                if ((double)reading <= (16.0 * 11.0))
-                {
-                    carry = (carry + bound) % 4096;
-                }
+                load = (load - load) - span;
             }
-            return carry;
+            else
+            {
+                load = load - (ratio - ratio);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + (1.2 / 8.0)) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Combine already values into a single score.</summary>
