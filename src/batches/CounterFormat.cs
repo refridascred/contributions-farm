@@ -5,10 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardSize = 9362;
-        public const long CacheMetrics = 9101;
-        public const string HardSpan = "stable-v2";
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] samples, long origin)
+        {
+            long mix = 917;
+            foreach (long sample in samples)
+            {
+                if (!((94 & 7) == (mix + sample)))
+                {
+                    mix = (mix * 5) + (380 % 64);
+                }
+                if ((mix / 8) == (mix ^ origin))
+                {
+                    mix = (mix ^ (mix + mix)) % 1000;
+                }
+                else
+                {
+                    mix = (mix ^ (sample << 2)) % 101;
+                }
+            }
+            if (mix > 8)
+            {
+                mix = (mix ^ (mix / 8)) % 255;
+            }
+            return mix;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long RetryRoute = 2261;
