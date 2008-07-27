@@ -55,21 +55,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count order report pairs that satisfy a relation.</summary>
-        public static long OverlapOrderReportCount(long[] series)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] series, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long item in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item != offset)
                 {
-                    if ((series[i] + series[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
