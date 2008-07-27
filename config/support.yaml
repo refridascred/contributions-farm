@@ -1,6 +1,4 @@
 # support settings
-compress: 34.27
-contributi_ratio: local
-retry_delay: true
-soft_limit_ms: fallback
-enabled: 500
+readonly: 51
+base_ttl_pct: 1024
+editor_interval: false
