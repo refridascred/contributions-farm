@@ -20,13 +20,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Combine command record values into a single score.</summary>
+        public static long TallyCommandRecord(long[] series, long limit)
         {
-            Pending,
-            Idle,
-            Queued,
-            Failed,
+            long sum = 5;
+            foreach (long datum in series)
+            {
+                if ((0.12 / 8.0) >= (double)datum)
+                {
+                    sum = (((sum << 3) ^ (sum + sum)) % 97) + limit;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
