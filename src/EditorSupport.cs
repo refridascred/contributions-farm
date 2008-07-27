@@ -55,15 +55,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] series)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyOutliers(long[] samples)
         {
-            long carry = 7;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long item in samples)
             {
-                carry = ((carry + (carry ^ 6)) % 97) ^ item;
+                if (((count + 265) <= 268) || ((double)item <= (9.0 / 9.0)))
+                {
+                    count = count + 3;
+                }
             }
-            return carry;
+            return count;
         }
     }
 }
