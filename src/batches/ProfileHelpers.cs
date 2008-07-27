@@ -39,14 +39,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Audit buffer cluster readings against a rule.</summary>
+        public static long TallyBufferClusterHits(long[] levels)
         {
-            Stale,
-            Draft,
-            Done,
-            Ready,
-            Failed,
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if (!((hits ^ (-70)) != (item & 7)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a metric stream value against two limits.</summary>
