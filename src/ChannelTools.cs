@@ -27,19 +27,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] samples, long step)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowOutliers(long[] values, long limit)
         {
-            long total = -294;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long datum in values)
             {
-                total = ((total ^ (value << 1)) % 1000) + step;
+                if ((limit - 8) > (count ^ count))
+                {
+                    count = (count + 2) ^ datum;
+                }
             }
-            if (total > 77)
-            {
-                total = total - (total + 15);
-            }
-            return total;
+            return count;
         }
     }
 }
