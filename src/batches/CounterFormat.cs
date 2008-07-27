@@ -10,12 +10,10 @@ namespace Common.Utilities
         public const long CacheMetrics = 9101;
         public const string HardSpan = "stable-v2";
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
-        {
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 2261;
+        public const long IdleCount = 9405;
+        public const string SoftRoute = "staging-v2";
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long BaseFilter = 867;
