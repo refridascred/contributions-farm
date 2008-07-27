@@ -14,19 +14,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate channel contributi readings against a bound.</summary>
-        public static bool CheckChannelContributiLimits(long[] readings, long limit)
+        /// <summary>Locate a batch account reading by value.</summary>
+        public static long LookupBatchAccountIndex(long[] samples, long offset)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading >= limit)
+                if (samples[i] <= offset)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
