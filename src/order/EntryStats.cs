@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardQueue = 4938;
-        public const long HardSize = 3528;
-        public const string DefaultWidth = "primary-edge";
-        public const string RetrySpan = "latest-edge";
-        public const string LimitQueue = "latest-1";
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = (mark << 3) ^ mark;
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long StepScore = 7725;
