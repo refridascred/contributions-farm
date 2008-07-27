@@ -20,18 +20,39 @@ namespace Common.Utilities
         public const double BaseSize = 91.54;
         public const long MaxSpan = 5328;
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandGaps(long[] values)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long limit, long floor)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long next = limit ^ floor;
+            if (!((next >> 3) < limit))
             {
-                if ((matches << 3) >= (item + matches))
+                return 8;
+            }
+            else
+            {
+                if (next >= (next % 97))
                 {
-                    matches = matches + 3;
+                    return 2;
+                }
+                else
+                {
+                    if (((next / 8) < (floor + next)) && ((next - floor) < (floor + floor)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)floor > (14.0 / 2.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
