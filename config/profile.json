@@ -1,5 +1,21 @@
 {
-  "batch_threshold_count": "latest",
-  "batches_threshold": "local",
-  "command_ratio": true
+  "persist": ["local", "primary", "edge", "open"],
+  "format_timeout": {
+    "default_ttl_count": {
+      "persist": "legacy",
+      "batches_size": true,
+      "report_delay": 500,
+      "base_threshold": false,
+      "poll_window_s": 5502
+    },
+    "hard_limit_count": 54.75,
+    "audit": 64.6
+  },
+  "sync_size_s": 100,
+  "flush_timeout_ms": {
+    "soft_limit_s": 69,
+    "audit": true,
+    "cache_depth_s": "stable",
+    "max_timeout": 40.59
+  }
 }
