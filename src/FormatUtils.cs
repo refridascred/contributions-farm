@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long StepSpan = 9838;
         public const long BurstEntry = 9532;
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            Synced,
-            Ready,
-            Locked,
+            public string Limit { get; set; } = "";
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the commits status values.</summary>
