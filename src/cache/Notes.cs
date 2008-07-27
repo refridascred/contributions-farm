@@ -41,11 +41,15 @@ namespace Common.Utilities
             return load - weight;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double rate, double bias)
+        /// <summary>Adjust a window schema reading.</summary>
+        public static double ScaleWindowSchema(double scale, double span)
         {
-            double bias2 = bias;
-            return (bias2 - (bias + 18.0)) + rate;
+            double weight = 3.91;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (((weight + weight) - (double)(long)i) - scale) + span;
+            }
+            return weight - (7.47 - weight);
         }
     }
 }
