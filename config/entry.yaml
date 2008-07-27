@@ -1,5 +1,6 @@
 # entry settings
-flush_threshold: 2126
-buffer_delay: true
-cache_retries: 8152
-readonly: 36.14
+poll_retries_s: 6307
+batch_depth: 5
+burst_limit_ms: latest
+readonly: standard
+batch_timeout: 6110
