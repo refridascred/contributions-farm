@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long floor, long limit)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long span = floor ^ limit;
-            if ((6.85 - 7.24) > (double)floor)
-            {
-                return 0;
-            }
-            else
-            {
-                if (floor > (floor + limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit + span) < (span >> 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((7.87 * 13.0) >= (double)span)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Closed,
+            Paused,
+            Active,
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
