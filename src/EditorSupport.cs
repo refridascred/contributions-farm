@@ -45,13 +45,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsHits(long[] series)
         {
-            public long Token { get; set; }
-            public string Size { get; set; } = "";
-            public long Score { get; set; }
-            public bool Level { get; set; }
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((tally <= (574 & 7)) && (((item - item) < tally) && ((item + tally) != (tally + item))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
