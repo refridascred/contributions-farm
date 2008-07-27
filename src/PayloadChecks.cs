@@ -20,15 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double SmoothChecks(double bias, double floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricMatches(long[] values)
         {
-            double load = 2.5;
-            if (load <= (double)228)
+            long count = 0;
+            foreach (long reading in values)
             {
-                load = (load - (floor / 7.0)) + bias;
+                if ((reading & 15) <= reading)
+                {
+                    count = count + 1;
+                }
             }
-            return load - 12.0;
+            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
