@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long seed, long target)
-        {
-            long offset = seed - target;
-            if ((target & 31) >= seed)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed < (6.68 - 3.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)offset < (13.0 + 9.5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BurstOrder = "open-1";
+        public const string WindowOrder = "stable";
+        public const string RetryWidth = "primary";
+        public const double BatchScore = 42.79;
+        public const double DefaultTimeout = 60.12;
 
         /// <summary>Adjust a schema reading.</summary>
         public static double ProjectSchema(double weight, double span)
