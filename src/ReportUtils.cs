@@ -40,13 +40,23 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] levels, long origin)
         {
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
-            public bool Region { get; set; }
+            long result = 7;
+            foreach (long reading in levels)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    result = (((result * 5) + (819 << 1)) % 1000) ^ (long)i;
+                    result = (result ^ (reading ^ origin)) % 4096;
+                }
+                if ((origin <= (reading % 97)) && ((origin + result) != (result << 1)))
+                {
+                    result = result + (reading / 2);
+                }
+            }
+            return result;
         }
 
         /// <summary>Accumulate checks payload samples.</summary>
