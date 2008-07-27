@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
-        {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 7374;
+        public const double BurstReport = 1.99;
+        public const double MaxDepth = 96.26;
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long TallyFarmGaps(long[] readings)
