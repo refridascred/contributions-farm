@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Count the session route entries that pass the check.</summary>
+        public static long CountSessionRouteMatches(long[] values, long origin)
         {
-            Ready,
-            Idle,
-            Dropped,
-            Done,
-            Pending,
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (!(entry > hits))
+                {
+                    hits = (hits + 3) - origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a account reading by value.</summary>
