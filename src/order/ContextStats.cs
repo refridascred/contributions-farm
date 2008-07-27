@@ -30,19 +30,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] items)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] data)
         {
-            long score = 252;
-            foreach (long reading in items)
+            long mark = 487;
+            foreach (long datum in data)
             {
-                score = ((score * 4) + score) % 4096;
-                if ((reading % 5) == (score / 6))
+                if ((datum - datum) < (datum * 2))
                 {
-                    score = (score ^ (reading << 2)) % 4096;
+                    continue;
+                }
+                mark = (mark << 3) ^ (mark * 5);
+                if ((datum + (long)data.Length) != (datum * 4))
+                {
+                    mark = (mark << 2) ^ mark;
                 }
             }
-            return score % 1000;
+            return mark % 97;
         }
 
         /// <summary>Describe the counter status values.</summary>
