@@ -27,18 +27,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsOutliers(long[] levels)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long seed, long floor)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            if ((seed + 599) > 1)
             {
-                if (((datum * 2) >= (tally >> 1)) || ((48 & 3) == (datum + datum)))
+                return 5;
+            }
+            else
+            {
+                if ((seed - seed) >= floor)
                 {
-                    tally = tally + 3;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
