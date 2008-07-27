@@ -45,19 +45,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsHits(long[] series)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((tally <= (574 & 7)) && (((item - item) < tally) && ((item + tally) != (tally + item))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string SoftEditor = "legacy-v2";
+        public const long CacheEditor = 3457;
+        public const long BaseLevel = 9499;
+        public const long StepTimeout = 3370;
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long TallyMetric(long[] readings)
