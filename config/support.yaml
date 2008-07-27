@@ -1,10 +1,8 @@
 # support settings
-burst_threshold_ms: standard
-report_retries: primary
-min_threshold: 6263
-batch_interval:
-  - 11
-  - 162
-  - 401
-  - 159
-report_interval: 41.76
+retry_capacity_pct:
+  verbose: false
+  hard_ttl: standard
+  soft_ratio_pct: cached
+readonly: 63
+profile_size: 11
+notes_interval: fallback
