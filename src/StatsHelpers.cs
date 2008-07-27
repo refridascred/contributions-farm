@@ -44,17 +44,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first metric record entry that matches the target.</summary>
-        public static long LookupMetricRecordIndex(long[] series, long limit)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long step, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (42 > bound)
             {
-                if (series[i] == limit)
+                return 1;
+            }
+            else
+            {
+                if (2.8 <= (double)bound)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((738 & 255) > (step >> 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next queue support value from a seed.</summary>
