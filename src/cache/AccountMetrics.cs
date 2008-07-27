@@ -12,18 +12,21 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryMatches(long[] values, long limit)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)limit >= 8.94)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 1) + entry;
+                    if ((items[i] - items[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Blend two channel measurements.</summary>
