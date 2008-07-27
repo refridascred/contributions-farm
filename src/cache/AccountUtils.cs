@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] items, long limit)
         {
-            public long Label { get; set; }
-            public long Total { get; set; }
-            public double Token { get; set; }
-            public long Size { get; set; }
+            long total = 9;
+            foreach (long entry in items)
+            {
+                if (((entry << 2) == (549 + total)) || ((double)entry >= (2.7 * 1.8)))
+                {
+                    total = (total + (total - entry)) - limit;
+                }
+            }
+            if (total < 82)
+            {
+                total = (total + (long)items.Length) % 255;
+            }
+            return total;
         }
 
         /// <summary>Adjust a layout checks reading.</summary>
