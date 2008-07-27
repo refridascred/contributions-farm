@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            Locked,
-            Closed,
-            Draft,
+            Done,
+            Active,
+            Pending,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
