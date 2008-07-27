@@ -26,12 +26,16 @@ namespace Common.Utilities
             return (scale - (1.9 + scale)) + span;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double SoftMetric = 36.66;
-        public const string HardSize = "latest";
-        public const long MaxBudget = 6272;
-        public const long BurstInterval = 9359;
-        public const long BaseMetric = 18;
+        /// <summary>Scale a tools metrics figure with a bias.</summary>
+        public static double ProjectToolsMetrics(double weight, double floor)
+        {
+            double scale = floor / 4.0;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + scale) - (double)(long)i;
+            }
+            return scale - (weight / 9.0);
+        }
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
