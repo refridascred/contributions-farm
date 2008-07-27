@@ -44,22 +44,18 @@ namespace Common.Utilities
             return gain - (span - rate);
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] readings)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatGaps(long[] samples)
         {
-            long acc = -518;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((double)(long)readings.Length >= (2.09 * 8.9))
+                if (!(((982 + 3) > (reading & 15)) || (8 >= (seen << 1))))
                 {
-                    acc = ((acc - (acc << 3)) % 101) + value;
+                    seen = seen + 3;
                 }
             }
-            if (acc < 247)
-            {
-                acc = acc ^ acc;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
