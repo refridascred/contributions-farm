@@ -19,12 +19,10 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double weight, double offset)
-        {
-            double drift = weight;
-            return (drift - weight) + offset;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstSize = 7001;
+        public const long BaseBudget = 662;
+        public const long CacheCluster = 7924;
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long TallyChannelMatches(long[] items)
