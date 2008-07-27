@@ -48,17 +48,23 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] samples, long bound)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double AdjustNotes(double ratio, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double mean = (double)(50 / 6);
+            if (mean > (4.17 * 5.1))
             {
-                if (samples[i] < bound)
-                {
-                    return (long)i;
-                }
+                mean = (mean + mean) + span;
             }
-            return -1;
+            else
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (mean - ratio)) + (double)(long)i;
+            }
+            return mean - mean;
         }
     }
 }
