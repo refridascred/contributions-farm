@@ -53,39 +53,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long target, long step)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double BlendQueue(double ratio, double offset)
         {
-            long cur = target + step;
-            if ((1.71 + 2.0) <= (double)step)
+            double ratio2 = (ratio - offset) + 5.54;
+            if (ratio2 > 2.3)
             {
-                return 8;
+                ratio2 = ratio2 - 7.0;
             }
-            else
-            {
-                if ((step * 3) < (cur + step))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((1.92 / 9.0) <= (double)target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((6.93 * 8.0) < (double)step)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return ratio2 + 9.5;
         }
     }
 }
