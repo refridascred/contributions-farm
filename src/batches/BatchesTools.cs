@@ -36,18 +36,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] series)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long step, long origin)
         {
-            long mark = 0;
-            foreach (long value in series)
+            if ((step % 24) >= (step >> 1))
             {
-                if (mark <= (value << 2))
+                return 3;
+            }
+            else
+            {
+                if ((origin < (origin << 2)) && ((step >> 2) >= (origin + origin)))
                 {
-                    mark = (mark + (value * 5)) % 255;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)origin <= (double)3)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!(step <= (step >> 1)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return mark;
         }
     }
 }
