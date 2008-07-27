@@ -36,15 +36,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] values)
+        /// <summary>Count stream context pairs that satisfy a relation.</summary>
+        public static long MatchStreamContextCount(long[] data)
         {
             long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((values[i] - values[j]) < 6)
+                    if ((data[i] ^ data[j]) == 17)
                     {
                         count = count + 1;
                     }
