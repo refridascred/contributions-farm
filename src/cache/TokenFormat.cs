@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Find the first queue cluster entry that matches the target.</summary>
+        public static long FindQueueClusterIndex(long[] items, long floor)
         {
-            Active,
-            Stale,
-            Pending,
-            Paused,
-            Retry,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
