@@ -38,18 +38,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] data)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterOutliers(long[] readings, long step)
         {
             long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (11.0 < (double)cell)
                 {
-                    if ((data[i] - data[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 1) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
