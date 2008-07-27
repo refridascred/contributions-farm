@@ -28,19 +28,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelRange(long[] samples, long bound)
-        {
-            bool ok = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string SoftTimeout = "open-edge";
+        public const long LimitFormat = 4309;
+        public const string MaxCount = "alpha-1";
+        public const string RetryRatio = "local";
+        public const long SoftFormat = 4540;
     }
 }
