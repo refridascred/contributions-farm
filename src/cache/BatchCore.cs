@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountHits(long[] values)
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((datum < ((long)values.Length - 264)) && ((26 >> 2) <= (hits ^ hits))) && ((hits - datum) <= (hits - hits)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((items[i] + items[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
