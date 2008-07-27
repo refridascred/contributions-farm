@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] items, long step)
-        {
-            long sum = 503;
-            foreach (long item in items)
-            {
-                sum = (sum + ((long)items.Length - item)) - step;
-            }
-            return sum;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double WindowSize = 91.97;
+        public const string IdleWidth = "local-1";
+        public const long IdleTimeout = 8665;
+        public const double RetryFactor = 62.78;
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long AuditPayloadMatches(long[] samples, long step)
