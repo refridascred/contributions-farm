@@ -30,12 +30,17 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long SeekContextIndex(long[] values, long seed)
         {
-            public string Token { get; set; } = "";
-            public long Score { get; set; }
-            public string Label { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
