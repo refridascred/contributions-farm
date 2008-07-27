@@ -22,19 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate route notes readings against a bound.</summary>
-        public static bool GuardRouteNotesRange(long[] series, long offset)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Failed,
+            Done,
+            Dropped,
         }
 
         /// <summary>Match up support batch samples.</summary>
