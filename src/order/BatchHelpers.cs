@@ -23,21 +23,21 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long OverlapBatchCount(long[] items)
+        /// <summary>Derive the next command token value from a seed.</summary>
+        public static long RollCommandToken(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((floor / 5) >= floor)
                 {
-                    if ((items[i] ^ items[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
+                    total = total - floor;
+                    continue;
                 }
+                total = total + (89 >> 4);
+                total = ((total * 2) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
