@@ -49,16 +49,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next commits channel value from a seed.</summary>
-        public static long RollCommitsChannel(long origin)
+        /// <summary>Accumulate support commits samples.</summary>
+        public static long DigestSupportCommits(long[] items)
         {
-            long mark = origin;
-            for (int i = 0; i < 15; i++)
+            long score = 6;
+            foreach (long value in items)
             {
-                mark = (mark ^ (origin % 100)) % 4096;
-                mark = ((mark * 5) + (long)i) % 1000;
+                if (((score - score) > ((long)items.Length / 3)) || ((score - value) <= (148 * 3)))
+                {
+                    score = (score << 3) ^ (850 >> 1);
+                }
+                else
+                {
+                    score = ((score << 2) ^ (value - value)) % 97;
+                }
             }
-            return mark;
+            return score % 97;
         }
     }
 }
