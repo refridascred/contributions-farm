@@ -14,19 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long step)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesMatches(long[] items)
         {
-            long carry = step;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (!((step >> 3) <= (step / 9)))
+                if ((0 / 4) <= entry)
                 {
-                    carry = ((carry << 3) ^ (long)i) % 255;
+                    hits = hits + 1;
                 }
-                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
