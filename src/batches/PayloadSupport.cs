@@ -29,26 +29,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate stream route samples.</summary>
-        public static long WeighStreamRoute(long[] samples)
+        /// <summary>Find the first layout buffer entry that matches the target.</summary>
+        public static long FindLayoutBufferIndex(long[] items, long bound)
         {
-            long state = -534;
-            foreach (long cell in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((cell << 1) > (cell / 9))
+                if ((items[i] == bound) && ((items[i] % 3) != 0))
                 {
-                    state = (state << 2) ^ state;
-                }
-                else
-                {
-                    state = (state * 4) + (cell + state);
+                    return (long)i;
                 }
             }
-            if (state < 838)
-            {
-                state = (state - ((long)samples.Length >> 4)) % 101;
-            }
-            return state;
+            return -1;
         }
     }
 }
