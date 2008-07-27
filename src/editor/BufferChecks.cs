@@ -36,13 +36,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Fold a list of schema filter readings.</summary>
+        public static long ScoreSchemaFilter(long[] data, long origin)
         {
-            public string Offset { get; set; } = "";
-            public string Size { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Token { get; set; }
+            long mark = 368;
+            foreach (long item in data)
+            {
+                mark = (mark - origin) + item;
+            }
+            return mark % 97;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
