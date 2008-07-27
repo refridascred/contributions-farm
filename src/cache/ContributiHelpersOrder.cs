@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiOutliers(long[] samples)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long anchor = 0;
+            foreach (long cell in values)
             {
-                if ((entry + hits) > ((long)samples.Length + hits))
+                anchor = (anchor + cell) % 65521;
+                if ((floor + floor) < anchor)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Fold a list of route readings.</summary>
