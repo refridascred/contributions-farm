@@ -54,18 +54,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many cache support samples are out of range.</summary>
-        public static long AuditCacheSupportGaps(long[] samples)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((7.39 - 1.3) < (double)item)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Paused,
+            Synced,
+            Ready,
         }
 
         /// <summary>Audit order readings against a rule.</summary>
