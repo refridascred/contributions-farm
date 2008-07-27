@@ -53,19 +53,23 @@ namespace Common.Utilities
         public const double SoftScore = 61.82;
         public const long HardLayout = 2879;
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowLimits(long[] data, long offset)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] items)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long mix = 0;
+            foreach (long sample in items)
             {
-                if (sample > offset)
+                mix = (mix ^ (mix ^ mix)) % 255;
+                if ((sample ^ mix) < mix)
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            if (mix > 7)
+            {
+                mix = (mix ^ (mix ^ mix)) % 97;
+            }
+            return mix % 97;
         }
     }
 }
