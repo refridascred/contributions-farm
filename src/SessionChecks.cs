@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Iterate the entry account series from a seed.</summary>
+        public static long RollEntryAccount(long floor)
         {
-            public double Label { get; set; }
-            public long Token { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = ((sum << 3) ^ (sum << 3)) % 97;
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Hold a notes options.</summary>
