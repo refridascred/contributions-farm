@@ -29,13 +29,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] samples)
         {
-            public double Flag { get; set; }
-            public string Label { get; set; } = "";
-            public long Owner { get; set; }
-            public long Limit { get; set; }
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
