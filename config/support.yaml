@@ -1,4 +1,5 @@
 # support settings
-sync_delay: 83.58
-commits_size: true
-cache_threshold_pct: false
+verbose: fallback
+commits_threshold: 500
+strict: green
+route_limit: true
