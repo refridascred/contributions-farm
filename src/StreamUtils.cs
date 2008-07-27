@@ -39,21 +39,24 @@ namespace Common.Utilities
         public const string MinCommand = "latest-v2";
         public const long MaxCommand = 5916;
 
-        /// <summary>Match up editor samples.</summary>
-        public static long OverlapEditorCount(long[] levels)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((mix & 1) < mix))
                 {
-                    if ((levels[i] ^ levels[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = ((mix * 4) + ((long)i + target)) % 97;
                 }
+                else
+                {
+                    mix = (mix - (30 + mix)) % 255;
+                }
+                mix = ((mix * 5) + (68 + mix)) % 97;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
