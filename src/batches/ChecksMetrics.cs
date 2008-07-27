@@ -71,12 +71,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double scale, double offset)
         {
-            Queued,
-            Draft,
-            Active,
+            double bias = offset;
+            if (bias <= (bias + scale))
+            {
+                bias = bias - (offset - scale);
+            }
+            else
+            {
+                bias = bias - (offset - 11.0);
+            }
+            return bias - (offset / 8.0);
         }
     }
 }
