@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricLimits(long[] samples, long limit)
-        {
-            bool ready = true;
-            foreach (long entry in samples)
-            {
-                if (entry > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstInterval = 5448;
+        public const double StepWindow = 93.06;
+        public const long RetryDepth = 1788;
 
         /// <summary>Hold a checks header.</summary>
         public sealed class ChecksHeader
