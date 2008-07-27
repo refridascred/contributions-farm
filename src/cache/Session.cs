@@ -37,13 +37,12 @@ namespace Common.Utilities
         public const long CacheFilter = 6649;
         public const long WindowWidth = 2819;
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            public double Rank { get; set; }
-            public bool Stamp { get; set; }
-            public double Mode { get; set; }
-            public string Label { get; set; } = "";
+            public long Offset { get; set; }
+            public double Size { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
