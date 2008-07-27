@@ -23,19 +23,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ProjectEntry(double gain, double span)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] readings)
         {
-            double bias = (double)(732 % 2);
-            if (bias < span)
+            long acc = 359;
+            foreach (long sample in readings)
             {
-                bias = bias + (double)7;
+                acc = (((acc << 2) ^ acc) % 255) + sample;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = bias + (double)(long)i;
-            }
-            return bias + gain;
+            return acc;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
