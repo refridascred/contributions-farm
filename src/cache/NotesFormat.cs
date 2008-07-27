@@ -20,14 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long step)
         {
-            Queued,
-            Failed,
-            Locked,
-            Idle,
-            Stale,
+            long carry = step;
+            for (int i = 0; i < 14; i++)
+            {
+                if (!((step >> 3) <= (step / 9)))
+                {
+                    carry = ((carry << 3) ^ (long)i) % 255;
+                }
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Describe the route phase values.</summary>
