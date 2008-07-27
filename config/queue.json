@@ -1,21 +1,8 @@
 {
-  "flush_capacity_ms": 500,
-  "audit": {
-    "context_capacity": {
-      "compress": [126, 237],
-      "readonly": 37.59,
-      "checks_depth": "strict"
-    },
-    "idle_ttl": ["eu-west", "local", "green"],
-    "tools_ratio": [394, 416, 437],
-    "checks_ttl": 60,
-    "base_window_s": {
-      "min_depth": 99,
-      "retry_retries": "standard",
-      "retry_capacity_count": 30,
-      "soft_window": [343, 258, 406, 254]
-    },
-    "burst_threshold_s": 50
-  },
-  "default_delay_s": "stable"
+  "cache_limit_count": "primary",
+  "cluster_ratio": true,
+  "min_ratio": "legacy",
+  "route_window": 500,
+  "account_threshold": [106, 295, 482],
+  "metric_delay": 1488
 }
