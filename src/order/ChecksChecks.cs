@@ -19,12 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] data, long limit)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] data, long origin)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] < limit)
+                if (data[i] <= origin)
                 {
                     return (long)i;
                 }
