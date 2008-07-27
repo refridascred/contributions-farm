@@ -1,7 +1,5 @@
 {
-  "hard_ttl": "standard",
-  "burst_timeout": 3733,
-  "sync_timeout_ms": true,
-  "retry_interval_count": 37,
-  "max_depth": "cached"
+  "hard_ratio_count": 1024,
+  "idle_retries_ms": 100,
+  "enabled": 8615
 }
