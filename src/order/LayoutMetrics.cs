@@ -25,22 +25,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate batches counter samples.</summary>
-        public static long DigestBatchesCounter(long[] data, long floor)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LookupGithubfarmIndex(long[] samples, long limit)
         {
-            long mark = -830;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 7; i++)
+                if ((samples[i] < limit) && ((samples[i] % 2) == 0))
                 {
-                    mark = ((mark * 2) + (long)i) + floor;
-                }
-                if ((cell + 634) >= (mark >> 3))
-                {
-                    mark = (mark + (mark + mark)) % 65521;
+                    return (long)i;
                 }
             }
-            return mark % 4096;
+            return -1;
         }
     }
 }
