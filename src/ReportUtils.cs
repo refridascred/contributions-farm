@@ -78,15 +78,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double gain, double floor)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long limit, long bound)
         {
-            double bias = 9.43;
-            if (bias > 3.0)
+            long diff = limit + bound;
+            if (bound > (bound - bound))
             {
-                bias = ((bias + (bias * 9.77)) - gain) - floor;
+                return 1;
             }
-            return bias + (double)415;
+            else
+            {
+                if ((bound + limit) <= diff)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound & 127) <= diff)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((diff & 15) < (bound + bound))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
