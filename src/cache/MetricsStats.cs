@@ -13,19 +13,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double SmoothFarm(double gain, double bias)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileHits(long[] data, long floor)
         {
-            double drift = (double)52 / 9.0;
-            if (drift <= gain)
+            long tally = 0;
+            foreach (long item in data)
             {
-                drift = drift + (double)9;
+                if (tally >= item)
+                {
+                    tally = (tally + 1) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                drift = drift - bias;
-            }
-            return drift - drift;
+            return tally;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
