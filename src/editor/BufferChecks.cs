@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Buffer checks helpers.</summary>
     public static class BufferChecks
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmOutliers(long[] data, long step)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long CompareContextCount(long[] series)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((step <= (2 + 83)) || !(entry < (step + count)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 3;
+                    if ((series[i] ^ series[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Compare every pair of metrics stream readings.</summary>
