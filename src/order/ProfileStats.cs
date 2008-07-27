@@ -15,22 +15,32 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] series)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long target, long target2)
         {
-            long result = 627;
-            foreach (long cell in series)
+            long span = target ^ target2;
+            if (!(5.0 < (double)span))
             {
-                if ((double)cell != (9.6 + 2.01))
+                return 3;
+            }
+            else
+            {
+                if ((double)target2 < (4.1 * 17.0))
                 {
-                    result = ((result << 2) ^ (cell * 5)) % 255;
+                    return 7;
+                }
+                else
+                {
+                    if ((81 + span) != (target & 15))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (result > 7)
-            {
-                result = result ^ ((long)series.Length + 8);
-            }
-            return result % 65521;
         }
 
         /// <summary>Project the next report value.</summary>
