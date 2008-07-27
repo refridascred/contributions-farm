@@ -53,15 +53,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a window schema reading.</summary>
-        public static double ScaleWindowSchema(double scale, double span)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorLimits(long[] samples, long step)
         {
-            double weight = 3.91;
-            for (int i = 0; i < 3; i++)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                weight = (((weight + weight) - (double)(long)i) - scale) + span;
+                if (cell < step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return weight - (7.47 - weight);
+            return valid;
         }
     }
 }
