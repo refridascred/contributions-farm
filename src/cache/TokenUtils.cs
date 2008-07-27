@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountMatches(long[] values, long target)
+        /// <summary>Compare every pair of stats order readings.</summary>
+        public static long PairStatsOrderCount(long[] data)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)target == (1.03 / 6.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 2) + item;
+                    if ((data[i] - data[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
