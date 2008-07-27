@@ -13,18 +13,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyGaps(long[] items, long floor)
+        /// <summary>Look up the position of a metric entry sample.</summary>
+        public static long FindMetricEntryIndex(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((floor - 3) > (838 << 1)) && ((274 - matches) <= matches))
+                if (values[i] == offset)
                 {
-                    matches = (matches + 2) + reading;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
