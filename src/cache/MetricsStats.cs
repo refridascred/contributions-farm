@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportOutliers(long[] samples, long limit)
         {
-            Queued,
-            Draft,
-            Synced,
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if (((limit ^ limit) < limit) || ((double)8 < (double)limit))
+                {
+                    hits = (hits + 1) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a batch reading.</summary>
