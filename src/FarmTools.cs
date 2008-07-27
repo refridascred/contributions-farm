@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const string BurstSize = "primary";
         public const string WindowFactor = "open";
 
-        /// <summary>Check that every stats tools entry stays within the limit.</summary>
-        public static bool VerifyStatsToolsBounds(long[] levels, long origin)
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell > origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] - readings[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
