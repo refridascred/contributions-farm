@@ -77,17 +77,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < step) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string DefaultFilter = "fallback-edge";
+        public const long WindowFilter = 8446;
+        public const string BatchFilter = "stable-1";
+        public const long BatchTimeout = 9350;
     }
 }
