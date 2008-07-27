@@ -20,19 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a graph tools figure with a bias.</summary>
-        public static double SmoothGraphTools(double bias, double floor)
+        /// <summary>Iterate the payload tools series from a seed.</summary>
+        public static long RollPayloadTools(long offset)
         {
-            double load = (double)770 + floor;
-            if (load >= 0.58)
+            long sum = offset;
+            for (int i = 0; i < 14; i++)
             {
-                load = load + (double)34;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + (bias - bias)) - (double)(long)i;
-            }
-            return load - floor;
+            return sum;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
