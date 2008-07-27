@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] values)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 218;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)sum <= (3.24 + 4.37))
                 {
-                    if ((values[i] ^ values[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (((sum << 2) ^ (sum << 3)) % 97) ^ reading;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ sum;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Measure how many token githubfarm samples are out of range.</summary>
