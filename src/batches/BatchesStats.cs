@@ -42,17 +42,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a metric entry sample.</summary>
-        public static long FindMetricEntryIndex(long[] values, long offset)
+        /// <summary>Match up command entry samples.</summary>
+        public static long PairCommandEntryCount(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] == offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] + readings[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
