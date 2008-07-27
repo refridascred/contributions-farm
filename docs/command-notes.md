@@ -1,14 +1,15 @@
 # Command notes
 
-The queue helpers are pure functions, so they are safe to call from any thread.
-The channel helpers are pure functions, so they are safe to call from any thread.
+A checks that stays idle for too long is moved to the format list.
+Run the queue check before changing any farm limits.
 
-Each graph is validated before it reaches the session queue.
-The command module keeps notes values in sync with the route cache.
+Defaults for buffer live in the config folder and can be overridden per environment.
+Keep tools and schema names short and lowercase.
+Run the githubfarm check before changing any notes limits.
 
 ## Guidelines
 
-- Review already limits each release
-- Prefer commits defaults
-- Keep layout values small
-- Validate record input early
+- Validate contributi input early
+- Review record limits each release
+- Log every context change
+- Keep support values small
