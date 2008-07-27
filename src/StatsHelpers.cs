@@ -10,12 +10,23 @@ namespace Common.Utilities
         public const long MaxRatio = 1678;
         public const long SoftToken = 5812;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double StepEditor = 3.56;
-        public const string DefaultEditor = "stable-v2";
-        public const long HardEditor = 837;
-        public const double RetryEditor = 39.26;
-        public const string BatchCount = "alpha-edge";
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyGaps(long[] samples)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)sample != (double)tally)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a commits payload value against two limits.</summary>
         public static long SortCommitsPayload(long origin, long offset)
