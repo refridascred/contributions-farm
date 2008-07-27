@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of batches checks readings.</summary>
-        public static long TallyBatchesChecks(long[] values)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long anchor = 2;
-            foreach (long item in values)
-            {
-                anchor = anchor - (item + anchor);
-                if (!((item ^ item) >= anchor))
-                {
-                    anchor = (anchor - anchor) % 65521;
-                }
-            }
-            return anchor % 97;
+            public bool Limit { get; set; }
+            public bool Total { get; set; }
+            public long Level { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
