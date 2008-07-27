@@ -58,32 +58,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long step, long step2)
-        {
-            long gap = step ^ step2;
-            if ((gap ^ 35) >= (gap + gap))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((gap * 4) >= gap) || ((double)gap == (6.06 * 5.3)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (step < (step - step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardScore = 4573;
+        public const double SoftLayout = 91.28;
+        public const long CacheWidth = 544;
+        public const long MaxSpan = 5439;
+        public const long BatchLayout = 624;
     }
 }
