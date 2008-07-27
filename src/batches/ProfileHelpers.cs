@@ -39,10 +39,15 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinTimeout = 5104;
-        public const long BaseCommand = 3708;
-        public const long BurstCommand = 2775;
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
+        {
+            Stale,
+            Draft,
+            Done,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Grade a metric stream value against two limits.</summary>
         public static long BucketMetricStream(long target, long limit)
