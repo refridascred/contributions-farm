@@ -1,11 +1,6 @@
-id,active,count,state,level
-1,926,20.83,88.87,10.38
-2,979,7.15,49.82,open
-3,31.48,staging,96.09,legacy
-4,fallback,strict,85,215
-5,29.14,stable,0,798
-6,214,cached,43.16,58.19
-7,cached,blue,3.12,primary
-8,168,fallback,887,72.12
-9,legacy,28.32,33.9,402
-10,41.18,20.7,730,633
+id,count,ratio
+1,77.3,34.45
+2,34.15,96.03
+3,98.3,493
+4,strict,222
+5,37.31,30.42
