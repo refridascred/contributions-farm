@@ -98,17 +98,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] data, long seed)
+        /// <summary>Accumulate record batches samples.</summary>
+        public static long TallyRecordBatches(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 570;
+            foreach (long item in readings)
             {
-                if (data[i] > seed)
+                if ((15.0 * 8.5) >= (double)item)
                 {
-                    return (long)i;
+                    total = (total << 3) ^ (total + item);
                 }
             }
-            return -1;
+            return total;
         }
     }
 }
