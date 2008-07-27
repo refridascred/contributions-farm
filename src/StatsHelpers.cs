@@ -14,22 +14,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyGaps(long[] samples)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextRange(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if ((double)sample != (double)tally)
+                if (datum > origin)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
