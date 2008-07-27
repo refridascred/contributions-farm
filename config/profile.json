@@ -1,9 +1,8 @@
 {
-  "persist": {
-    "flush_depth": [26, 62, 362],
-    "compress": 89.63,
-    "window_ratio": 56.88
-  },
-  "burst_ratio_pct": 250,
-  "idle_limit_ms": false
+  "support_interval": "fallback",
+  "support_timeout": 79.91,
+  "idle_ttl_pct": "latest",
+  "record_capacity": false,
+  "readonly": "eu-west",
+  "commits_delay": 87
 }
