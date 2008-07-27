@@ -18,15 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] readings, long limit)
+        /// <summary>Compare every pair of githubfarm entry readings.</summary>
+        public static long CompareGithubfarmEntryCount(long[] readings)
         {
-            long acc = 138;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc - (9 - sample)) % 255) - limit;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return acc % 4096;
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
