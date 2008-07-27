@@ -17,11 +17,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            public bool Owner { get; set; }
-            public bool Stamp { get; set; }
+            Synced,
+            Closed,
+            Queued,
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
