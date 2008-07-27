@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionGaps(long[] samples)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] values)
         {
             long tally = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((431 * 4) <= entry))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((values[i] - values[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
