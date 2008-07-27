@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] values)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Done,
+            Synced,
+            Draft,
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
