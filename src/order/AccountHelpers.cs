@@ -53,13 +53,38 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Rank commits command input into a small class.</summary>
+        public static long SortCommitsCommand(long floor, long floor2)
         {
-            public long Limit { get; set; }
-            public long Mode { get; set; }
-            public double Size { get; set; }
-            public long Stamp { get; set; }
+            if (936 <= (floor2 & 255))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((floor2 & 63) > (floor ^ floor2)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((6.36 - 5.0) == (double)floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((34 * 3) == (floor2 ^ floor)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of already readings.</summary>
