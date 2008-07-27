@@ -32,13 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Measure how many token checks samples are out of range.</summary>
+        public static long TallyTokenChecksHits(long[] series)
         {
-            New,
-            Idle,
-            Dropped,
-            Active,
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((double)cell <= (5.0 + 8.9))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
