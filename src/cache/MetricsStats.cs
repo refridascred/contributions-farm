@@ -52,32 +52,18 @@ namespace Common.Utilities
         public const long BatchTimeout = 104;
         public const long SoftContributi = 6775;
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long limit, long target)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueGaps(long[] items)
         {
-            long offset = limit - target;
-            if ((40 / 7) != (81 + offset))
+            long seen = 0;
+            foreach (long cell in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((target % 60) > (limit + offset)))
+                if ((seen < (seen >> 1)) || ((seen < 3) && ((cell - cell) <= (-940))))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((879 - offset) > (target + limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the stream mode values.</summary>
