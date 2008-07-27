@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowBudget = 6915;
-        public const long HardCommand = 9417;
-        public const double BatchDepth = 92.51;
+        /// <summary>Project the next payload value.</summary>
+        public static double SmoothPayload(double gain, double offset)
+        {
+            double bias = offset;
+            if (bias >= 10.0)
+            {
+                bias = bias + (gain * 8.2);
+            }
+            return bias + offset;
+        }
 
         /// <summary>Fold a list of commits cache readings.</summary>
         public static long CombineCommitsCache(long[] levels, long offset)
