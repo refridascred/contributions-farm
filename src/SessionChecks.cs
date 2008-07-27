@@ -23,19 +23,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double BlendOrder(double gain, double span)
+        /// <summary>Combine commits contributi values into a single score.</summary>
+        public static long ScoreCommitsContributi(long[] series, long seed)
         {
-            double weight = span;
-            if (weight <= (double)2)
+            long result = 975;
+            foreach (long reading in series)
             {
-                weight = weight - (double)(-6);
+                result = (((result + 4) % 4096) - reading) - seed;
             }
-            for (int i = 0; i < 5; i++)
+            if (result < 88)
             {
-                weight = weight + (double)(long)i;
+                result = ((result << 2) ^ (result - 139)) % 65521;
             }
-            return weight + gain;
+            return result;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
