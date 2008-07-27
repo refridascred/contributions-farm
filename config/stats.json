@@ -1,7 +1,13 @@
 {
-  "notes_limit": ["edge", "eu-west", "primary"],
-  "min_capacity_ms": "local",
-  "idle_ratio_pct": 99,
-  "max_limit": 88.34,
-  "min_retries_s": 1024
+  "batch_limit_pct": 100,
+  "soft_timeout": 21.44,
+  "max_capacity_count": 35,
+  "base_ratio_s": {
+    "hard_capacity_pct": "edge",
+    "batches_ratio": 1024,
+    "notes_threshold": "stable",
+    "audit": ["edge", "eu-west", "fallback", "legacy"],
+    "counter_depth": 60.24,
+    "cache_interval": "blue"
+  }
 }
