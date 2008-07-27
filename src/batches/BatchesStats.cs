@@ -29,12 +29,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MinFarm = "latest-edge";
-        public const long WindowFarm = 5334;
-        public const long MaxFarm = 816;
-        public const string SoftFarm = "latest-edge";
-        public const string BatchLevel = "latest";
+        /// <summary>Classify a cluster cache pair into a bucket.</summary>
+        public static long SortClusterCache(long bound, long target)
+        {
+            if ((bound >> 4) >= (-59))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((9 >> 4) < (bound << 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target >> 5) <= bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target / 6) == (12 << 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long CombineCache(long[] series)
