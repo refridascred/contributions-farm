@@ -1,6 +1,11 @@
 {
-  "idle_timeout_ms": "eu-west",
-  "profile_depth": "cached",
-  "record_timeout": 34,
-  "editor_depth": "fallback"
+  "filter_delay": {
+    "soft_delay": 29,
+    "githubfarm_timeout": 100,
+    "warm_interval_s": true,
+    "enabled": "green"
+  },
+  "readonly": "fallback",
+  "githubfarm_size": 6.83,
+  "default_window_ms": 60
 }
