@@ -23,10 +23,26 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepTools = 8004;
-        public const long IdleTools = 6469;
-        public const double BurstScore = 79.86;
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long offset, long offset2)
+        {
+            long edge = offset ^ offset2;
+            if (((double)edge >= (7.75 - 20.0)) || (offset >= (offset * 3)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset << 3) > offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Digest a series of report entries.</summary>
         public static long CombineReport(long[] readings)
