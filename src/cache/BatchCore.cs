@@ -20,19 +20,13 @@ namespace Common.Utilities
             return gain - scale;
         }
 
-        /// <summary>Validate support command readings against a bound.</summary>
-        public static bool CheckSupportCommandRange(long[] series, long step)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Region { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Label { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a command header.</summary>
