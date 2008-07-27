@@ -21,12 +21,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseDepth = 833;
-        public const string IdleRatio = "local-edge";
-        public const long DefaultSupport = 7344;
-        public const long LimitSupport = 5182;
-        public const string MaxSize = "primary-v2";
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
+        {
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long TallyContext(long[] readings, long bound)
