@@ -32,14 +32,24 @@ namespace Common.Utilities
         public const long DefaultInterval = 4109;
         public const long SoftChannel = 5991;
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long offset)
         {
-            Draft,
-            Idle,
-            Retry,
-            Ready,
-            Failed,
+            long total = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((double)offset != (8.29 * 7.22))
+                {
+                    total = ((total * 4) + offset) % 97;
+                    continue;
+                }
+                else
+                {
+                    total = ((total * 4) + (offset << 1)) % 1000;
+                }
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Hold a contributi stats.</summary>
