@@ -52,12 +52,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BatchBudget = 31.37;
-        public const long WindowDepth = 7329;
-        public const double DefaultCount = 24.95;
-        public const long RetryCommits = 4099;
-        public const string BaseCommits = "staging";
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionOutliers(long[] series)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((value >> 4) < ((-168) + count))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long LookupAccountIndex(long[] samples, long seed)
