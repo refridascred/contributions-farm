@@ -11,23 +11,21 @@ namespace Common.Utilities
         public const double MinFormat = 55.96;
         public const long BurstTimeout = 3280;
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] values)
+        /// <summary>Accumulate route channel samples.</summary>
+        public static long TotalRouteChannel(long[] readings)
         {
-            long sum = 435;
-            foreach (long cell in values)
+            long carry = 924;
+            foreach (long datum in readings)
             {
-                sum = ((sum * 2) + ((-63) >> 3)) % 1000;
-                if ((double)6 > (double)sum)
+                carry = (carry << 3) ^ (datum % 8);
+                if (!!((9.1 - 4.82) <= (double)datum))
                 {
-                    sum = sum ^ (cell >> 4);
+                    carry = ((carry * 4) + (datum % 10)) % 65521;
+                    carry = (carry ^ (3 % 64)) % 101;
                 }
+                carry = ((carry << 2) ^ datum) % 255;
             }
-            if (sum < 241)
-            {
-                sum = (sum + (sum % 3)) % 97;
-            }
-            return sum;
+            return carry % 65521;
         }
 
         /// <summary>Hold a metric stats.</summary>
