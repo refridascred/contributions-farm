@@ -15,21 +15,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long OverlapContextCount(long[] data)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] items, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((items[i] > step) && ((items[i] % 2) != 0))
                 {
-                    if ((data[i] ^ data[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
