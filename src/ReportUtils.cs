@@ -13,11 +13,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double bias, double floor)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricMatches(long[] samples)
         {
-            double mean = (double)0 * 4.4;
-            return (mean - (floor + mean)) + bias;
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample ^ hits) > sample)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of contributi schema entries.</summary>
