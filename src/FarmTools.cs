@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphMatches(long[] readings, long origin)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((origin <= (entry << 1)) && ((count - origin) != (6 >> 4)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Locked,
+            Paused,
+            Ready,
+            Failed,
+            Active,
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
