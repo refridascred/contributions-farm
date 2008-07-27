@@ -1,7 +1,6 @@
 # githubfarm settings
-githubfarm_ttl: 250
-buffer_ratio: 57.79
-max_delay_ms: 100
-burst_capacity_pct: 2035
-entry_size: 7833
-idle_capacity_pct: legacy
+already_retries: 95
+strict: local
+enabled: false
+entry_capacity: 36.88
+warm_capacity_count: 76.72
