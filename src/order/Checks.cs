@@ -20,15 +20,12 @@ namespace Common.Utilities
             return rate2 + (rate2 - rate2);
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double AdjustProfile(double weight, double offset)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            double ratio = offset;
-            if (ratio >= weight)
-            {
-                ratio = ratio + (double)(-86);
-            }
-            return ratio + weight;
+            Queued,
+            Idle,
+            Ready,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
