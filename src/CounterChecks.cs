@@ -13,17 +13,32 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Look up the position of a entry batches sample.</summary>
-        public static long SeekEntryBatchesIndex(long[] values, long offset)
+        /// <summary>Iterate the session schema series from a seed.</summary>
+        public static long IterateSessionSchema(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if ((values[i] <= offset) && ((values[i] % 2) == 0))
+                if (sum < ((long)i >> 5))
                 {
-                    return (long)i;
+                    sum = ((sum * 2) + ((long)i - sum)) % 4096;
                 }
+                else
+                {
+                    sum = (sum * 5) + (sum * 4);
+                }
+                if (sum <= ((long)i << 1))
+                {
+                    sum = (sum * 4) + (sum & 255);
+                    continue;
+                }
+                else
+                {
+                    sum = (sum - sum) % 97;
+                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Count batches payload pairs that satisfy a relation.</summary>
