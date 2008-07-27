@@ -23,18 +23,30 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] series)
+        /// <summary>Accumulate githubfarm account samples.</summary>
+        public static long CombineGithubfarmAccount(long[] samples, long target)
         {
-            long sum = 1;
-            foreach (long reading in series)
+            long result = 316;
+            foreach (long item in samples)
             {
-                if ((sum >> 5) > (reading % 7))
+                if (!(target <= result))
                 {
-                    sum = sum ^ (sum + 55);
+                    result = result - (result & 31);
+                    break;
                 }
+                else
+                {
+                    result = (result * 4) + item;
+                    result = result - target;
+                }
+                result = result + (result * 2);
+                result = (result ^ target) % 97;
             }
-            return sum;
+            if (result < 9)
+            {
+                result = ((result * 2) + (target * 2)) % 255;
+            }
+            return result % 4096;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
