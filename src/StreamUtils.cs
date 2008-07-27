@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long bound)
+        /// <summary>Locate a stats notes reading by value.</summary>
+        public static long LocateStatsNotesIndex(long[] samples, long limit)
         {
-            long acc = bound;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (samples[i] <= limit)
                 {
-                    acc = ((acc << 2) ^ (420 / 3)) ^ (long)i2;
+                    return (long)i;
                 }
-                acc = acc + (acc + acc);
-                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
