@@ -13,27 +13,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] items)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long CompareSchemaCount(long[] levels)
         {
-            long mark = 95;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((value / 9) > mark)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    continue;
-                }
-                mark = (mark ^ (6 * 5)) % 1000;
-                if ((value + value) >= (value / 2))
-                {
-                    mark = mark ^ ((-166) / 4);
+                    if ((levels[i] ^ levels[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mark < 56)
-            {
-                mark = (mark + (mark >> 3)) % 97;
-            }
-            return mark % 97;
+            return seen;
         }
 
         /// <summary>Describe the farm phase values.</summary>
