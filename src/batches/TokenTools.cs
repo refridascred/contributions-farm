@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionBounds(long[] series, long seed)
         {
-            public string Total { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Region { get; set; }
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
