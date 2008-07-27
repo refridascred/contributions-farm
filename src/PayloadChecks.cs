@@ -35,19 +35,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every payload commits entry stays within the limit.</summary>
-        public static bool CheckPayloadCommitsLimits(long[] samples, long limit)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry < limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] - readings[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Hold a stats record.</summary>
