@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] readings)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] readings)
         {
-            long result = 708;
-            foreach (long reading in readings)
+            long mix = 533;
+            foreach (long item in readings)
             {
-                if ((reading ^ result) >= (55 * 4))
+                if ((double)item < 0.3)
                 {
-                    result = (result * 5) + reading;
+                    mix = (mix - (item - item)) % 255;
+                }
+                if ((1.0 / 3.0) != (double)mix)
+                {
+                    mix = (mix + (mix ^ 49)) % 65521;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (item * 2)) % 65521;
+                }
+                if (((8 & 3) >= mix) && (mix > (item >> 3)))
+                {
+                    break;
                 }
             }
-            if (result > (-5))
-            {
-                result = (result + (result - result)) % 4096;
-            }
-            return result;
+            return mix;
         }
 
         /// <summary>Project the next notes value.</summary>
