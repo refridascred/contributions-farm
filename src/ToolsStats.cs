@@ -48,13 +48,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmLimits(long[] items, long target)
         {
-            public string Limit { get; set; } = "";
-            public long Weight { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Owner { get; set; }
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
