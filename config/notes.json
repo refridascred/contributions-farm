@@ -1,8 +1,7 @@
 {
-  "window_ratio": false,
-  "warm_window_count": 93.63,
-  "base_size": "edge",
-  "max_delay": ["strict", "open", "open"],
-  "sync_window": "strict",
-  "verbose": [224, 80, 98, 403]
+  "default_ratio_ms": ["blue", "edge", "strict", "cached"],
+  "poll_ratio_count": 94.25,
+  "default_ttl_count": true,
+  "entry_window": ["green", "legacy", "open", "green"],
+  "hard_capacity_s": "edge"
 }
