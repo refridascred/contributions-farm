@@ -12,19 +12,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionLimits(long[] values, long seed)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Roll a context contributi counter forward.</summary>
