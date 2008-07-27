@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest primary green; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=326
+BUFFER_LIMIT=293
 log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-green}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
