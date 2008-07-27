@@ -47,23 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] levels, long target)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] readings)
         {
-            long total = 67;
-            foreach (long value in levels)
+            long sum = 4;
+            foreach (long sample in readings)
             {
-                if (!((double)value >= (double)total))
+                for (int i = 0; i < 8; i++)
                 {
-                    total = ((total ^ ((-7) + value)) % 4096) - target;
+                    sum = ((sum - (sample << 3)) % 255) - (long)i;
                 }
-                total = (total - 498) % 65521;
+                sum = (sum ^ 4) % 255;
             }
-            if (total < 86)
-            {
-                total = (total - 6) % 97;
-            }
-            return total;
+            return sum % 97;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
