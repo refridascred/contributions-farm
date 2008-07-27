@@ -38,22 +38,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamOutliers(long[] series, long seed)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long floor)
         {
-            long count = 0;
-            foreach (long value in series)
+            long score = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (!(count > (count >> 5)) && ((11.0 + 10.0) <= (double)count))
-                {
-                    count = ((count + 3) ^ value) - seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                score = score ^ (floor % 7);
+                score = ((score * 3) + (long)i) % 101;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Describe the payload state values.</summary>
