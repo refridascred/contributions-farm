@@ -1,7 +1,10 @@
 {
-  "notes_threshold": "primary",
-  "retry_ratio_pct": 1377,
-  "payload_capacity": 60,
-  "warm_size_s": "primary",
-  "strict": ["edge", "standard"]
+  "farm_ttl": "cached",
+  "default_depth_count": "staging",
+  "hard_depth_s": {
+    "readonly": 100,
+    "compress": "cached",
+    "soft_depth": 85,
+    "audit": "standard"
+  }
 }
