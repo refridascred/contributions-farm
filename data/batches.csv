@@ -1,6 +1,11 @@
-id,token,active,count,ratio
-1,18.05,primary,685,140
-2,60.56,strict,877,59.92
-3,5,16.82,723,204
-4,605,144,3,23.43
-5,320,276,42.07,6.75
+id,ratio,weight,rank,active
+1,blue,strict,958,standard
+2,23,283,629,29.3
+3,504,1,187,fallback
+4,860,20.12,119,50.39
+5,cached,green,345,standard
+6,78.57,staging,702,51.91
+7,544,26.21,83.2,14
+8,97.41,945,87.05,blue
+9,36.78,strict,44.19,33.67
+10,51.77,95.9,edge,12.0
