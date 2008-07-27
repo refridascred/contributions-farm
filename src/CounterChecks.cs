@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Adjust a metric reading.</summary>
-        public static double SmoothMetric(double rate, double bias)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ScaleBuffer(double rate, double offset)
         {
-            double load = 1.6 - 6.03;
-            if (load <= bias)
+            double gain = (double)((-65) + 3);
+            if (gain < rate)
             {
-                load = load + (double)95;
+                gain = gain + rate;
             }
-            return load - (bias + rate);
+            for (int i = 0; i < 7; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain - offset;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
