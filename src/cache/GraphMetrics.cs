@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long offset, long origin)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long FindAlreadyIndex(long[] levels, long bound)
         {
-            if (!(offset > (origin + offset)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (offset < (815 << 1))
+                if (levels[i] == bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
