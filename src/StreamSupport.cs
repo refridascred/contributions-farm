@@ -14,19 +14,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesBounds(long[] levels, long floor)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Queued,
+            Stale,
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
