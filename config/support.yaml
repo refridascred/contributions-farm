@@ -1,8 +1,6 @@
 # support settings
-base_window_pct: true
-route_capacity: 93.31
-persist: false
-compress:
-  - 238
-  - 446
-  - 5
+hard_timeout:
+  - 147
+  - 470
+metrics_retries: legacy
+channel_timeout: 13.64
