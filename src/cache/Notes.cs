@@ -47,18 +47,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsGaps(long[] readings, long seed)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (!(((cell << 1) <= ((long)readings.Length + (-32))) && ((seed - (long)readings.Length) <= seed)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Dropped,
+            Done,
+            Stale,
+            Active,
+            Pending,
         }
     }
 }
