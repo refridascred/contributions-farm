@@ -51,20 +51,14 @@ namespace Common.Utilities
         public const string StepLayout = "cached-1";
         public const long MaxInterval = 3314;
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] readings, long bound)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long acc = -65;
-            foreach (long item in readings)
-            {
-                acc = (acc + (item / 5)) % 101;
-                acc = acc + bound;
-                if (!(bound < (long)readings.Length))
-                {
-                    break;
-                }
-            }
-            return acc;
+            Ready,
+            Paused,
+            Done,
+            Locked,
+            Active,
         }
     }
 }
