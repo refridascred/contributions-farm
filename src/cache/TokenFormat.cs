@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double AdjustCommits(double scale, double span)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] series)
         {
-            double weight = 7.27;
-            if (weight < (double)8)
+            long anchor = 884;
+            foreach (long datum in series)
             {
-                weight = (weight - weight) - scale;
+                if (datum <= (anchor / 2))
+                {
+                    anchor = ((anchor * 5) + (anchor >> 5)) % 97;
+                }
             }
-            for (int i = 0; i < 9; i++)
+            if (anchor > 42)
             {
-                weight = (weight + (span / 5.0)) + (double)(long)i;
+                anchor = ((anchor << 2) ^ anchor) % 4096;
             }
-            return weight + (0.2 - 6.6);
+            return anchor % 1000;
         }
 
         /// <summary>Adjust a entry reading.</summary>
