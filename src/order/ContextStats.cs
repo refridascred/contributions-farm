@@ -28,11 +28,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Check that every stats channel entry stays within the limit.</summary>
+        public static bool GuardStatsChannelLimits(long[] series, long limit)
         {
-            public bool Level { get; set; }
-            public bool Score { get; set; }
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
