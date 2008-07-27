@@ -1,11 +1,14 @@
 {
-  "min_ratio_count": 1024,
-  "stream_ratio": 250,
-  "idle_window_ms": 1.64,
-  "session_window": {
-    "base_threshold_pct": [338, 208],
-    "retry_size_pct": ["legacy", "local", "open", "latest"],
-    "default_delay_s": 500
+  "burst_capacity": false,
+  "metric_interval": 500,
+  "soft_depth": "staging",
+  "cache_retries": {
+    "max_interval": true,
+    "poll_interval": "stable",
+    "verbose": false,
+    "retry_interval": ["standard", "fallback", "cached"],
+    "batch_retries_count": true,
+    "enabled": [485, 256, 175, 287]
   },
-  "strict": true
+  "burst_interval": [421, 275]
 }
