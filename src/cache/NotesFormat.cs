@@ -14,19 +14,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesMatches(long[] items)
-        {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((0 / 4) <= entry)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string CacheRatio = "primary-v2";
+        public const long HardReport = 3483;
+        public const double RetrySize = 64.98;
+        public const double BatchWidth = 78.34;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long CountProfileOutliers(long[] readings)
