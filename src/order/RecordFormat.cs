@@ -20,20 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphLimits(long[] items, long origin)
-        {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MinOrder = 3.15;
+        public const long RetryTimeout = 4333;
+        public const long CacheOrder = 7654;
+        public const long SoftOrder = 5168;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string DefaultCount = "standard-edge";
