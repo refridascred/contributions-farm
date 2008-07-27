@@ -1,6 +1,7 @@
 # githubfarm settings
-already_retries: 95
-strict: local
-enabled: false
-entry_capacity: 36.88
-warm_capacity_count: 76.72
+batch_ttl_pct: blue
+window_retries: open
+enabled:
+  - green
+  - staging
+  - cached
