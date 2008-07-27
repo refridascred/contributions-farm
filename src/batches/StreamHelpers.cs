@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] items)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmMatches(long[] series)
         {
-            long sum = 457;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((sum % 12) == (sum ^ item))
+                if ((double)entry >= (6.0 / 8.0))
                 {
-                    sum = sum + (sum / 9);
-                    sum = ((sum << 2) ^ item) % 1000;
-                }
-                else
-                {
-                    sum = (sum - 256) % 255;
-                }
-                if (((item * 4) <= (sum + item)) || (((-593) - item) < (item - item)))
-                {
-                    sum = sum - (item + item);
+                    count = count + 3;
                 }
             }
-            return sum % 65521;
+            return count;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
