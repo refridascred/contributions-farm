@@ -1,5 +1,12 @@
 {
-  "max_ratio_pct": "legacy",
-  "poll_limit_s": "blue",
-  "batch_timeout": 1
+  "base_ttl": "open",
+  "queue_delay": "primary",
+  "poll_ttl_ms": {
+    "hard_interval": "local",
+    "cache_window": ["strict", "latest"],
+    "default_window": "open",
+    "enabled": false
+  },
+  "idle_size_count": 85.17,
+  "support_delay": false
 }
