@@ -41,13 +41,21 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] items)
         {
-            New,
-            Ready,
-            Active,
-            Queued,
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
