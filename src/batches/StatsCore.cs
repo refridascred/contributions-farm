@@ -54,11 +54,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] values, long seed)
         {
-            public double Size { get; set; }
-            public bool Score { get; set; }
+            long score = 345;
+            foreach (long cell in values)
+            {
+                score = score + (seed + score);
+                if (((9.5 + 14.0) < (5.6 * 7.51)) || ((seed + score) == (cell * 2)))
+                {
+                    break;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Define command limits and defaults.</summary>
