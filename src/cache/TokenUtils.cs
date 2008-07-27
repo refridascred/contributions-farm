@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterGaps(long[] values)
-        {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (seen > (seen * 4))
-                {
-                    seen = (seen + 1) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheRatio = 5203;
+        public const long WindowProfile = 2612;
+        public const long BaseTimeout = 9081;
+        public const long DefaultFactor = 4462;
+        public const long CacheProfile = 6484;
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool VerifyTokenLimits(long[] readings, long seed)
