@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long PairCacheCount(long[] levels)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 9;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((long)samples.Length + acc) == (sample / 2))
                 {
-                    if ((levels[i] + levels[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = ((acc << 3) ^ acc) % 255;
+                }
+                if ((sample + acc) >= 57)
+                {
+                    acc = (acc * 4) + (sample / 5);
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Combine order context values into a single score.</summary>
