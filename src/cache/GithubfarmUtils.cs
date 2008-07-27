@@ -22,15 +22,17 @@ namespace Common.Utilities
         public const double HardAlready = 28.52;
         public const long CacheAlready = 7887;
 
-        /// <summary>Roll a layout entry counter forward.</summary>
-        public static long IterateLayoutEntry(long limit)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] series, long step)
         {
-            long mark = limit;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                if (series[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
