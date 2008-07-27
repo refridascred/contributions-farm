@@ -23,24 +23,17 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long seed, long floor)
+        /// <summary>Locate a cluster schema reading by value.</summary>
+        public static long LookupClusterSchemaIndex(long[] data, long offset)
         {
-            if ((seed + 599) > 1)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed - seed) >= floor)
+                if (data[i] < offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
