@@ -46,23 +46,13 @@ namespace Common.Utilities
         public const long IdleDepth = 2668;
         public const string BatchTimeout = "primary";
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] readings)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long score = -85;
-            foreach (long datum in readings)
-            {
-                score = ((score * 2) + 448) % 255;
-                if (((double)datum < 4.8) && (185 <= (datum + score)))
-                {
-                    score = (score - (score + score)) % 65521;
-                }
-                if ((double)score >= (double)datum)
-                {
-                    break;
-                }
-            }
-            return score;
+            public long Weight { get; set; }
+            public string Total { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Digest a series of order entries.</summary>
