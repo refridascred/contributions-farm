@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many account notes samples are out of range.</summary>
-        public static long MeasureAccountNotesMatches(long[] series)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((double)cell < (double)359)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Label { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Look up the position of a support sample.</summary>
