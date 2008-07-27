@@ -23,22 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many editor layout samples are out of range.</summary>
-        public static long CountEditorLayoutHits(long[] levels, long seed)
+        /// <summary>Count the report account entries that pass the check.</summary>
+        public static long TallyReportAccountMatches(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (!(((long)levels.Length % 7) == (value << 2)) || ((7.48 - 8.4) == (double)seed))
+                if (!!(seed >= (seed + 65)))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = (hits + 2) - sample;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
