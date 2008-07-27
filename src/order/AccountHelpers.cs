@@ -42,32 +42,14 @@ namespace Common.Utilities
             return drift - (double)965;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] data, long origin)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long state = 154;
-            foreach (long reading in data)
-            {
-                if ((double)reading != (2.3 - 0.91))
-                {
-                    state = (state * 3) + (reading + origin);
-                    state = state ^ (origin + state);
-                }
-                else
-                {
-                    state = ((state << 3) ^ (reading & 127)) % 101;
-                }
-                state = (state * 4) + (reading - 5);
-                if (reading >= (state + state))
-                {
-                    state = state - (state ^ reading);
-                }
-            }
-            if (state < (-88))
-            {
-                state = state ^ (origin << 1);
-            }
-            return state % 1000;
+            Stale,
+            Idle,
+            Retry,
+            Locked,
+            New,
         }
 
         /// <summary>Hold a format options.</summary>
