@@ -57,21 +57,32 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] series)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long seed, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long lane = seed ^ floor;
+            if ((2.1 <= (double)seed) && ((lane % 24) != (floor ^ seed)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (460 < (floor * 4))
                 {
-                    if ((series[i] ^ series[j]) == 0)
+                    return 8;
+                }
+                else
+                {
+                    if (!((2.3 * 19.0) >= (double)lane))
                     {
-                        hits = hits + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the record phase values.</summary>
