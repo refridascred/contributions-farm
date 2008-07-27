@@ -37,19 +37,14 @@ namespace Common.Utilities
         public const string HardRatio = "legacy-edge";
         public const string BatchFactor = "latest-edge";
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowLimits(long[] values, long target)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            bool valid = true;
-            foreach (long reading in values)
-            {
-                if (reading != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Failed,
+            New,
+            Stale,
+            Active,
         }
 
         /// <summary>Describe the already level values.</summary>
