@@ -66,13 +66,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
-        {
-            Draft,
-            Closed,
-            Stale,
-            Failed,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitChecks = 2694;
+        public const double CacheInterval = 76.97;
+        public const long MinChecks = 5452;
+        public const long BaseChecks = 2432;
     }
 }
