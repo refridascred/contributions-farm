@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderRange(long[] values, long target)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountMatches(long[] values, long target)
         {
-            bool stale = true;
+            long seen = 0;
             foreach (long item in values)
             {
-                if (item > target)
+                if ((double)target == (1.03 / 6.0))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 2) + item;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
