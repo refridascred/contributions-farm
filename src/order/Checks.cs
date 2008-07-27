@@ -29,19 +29,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteRange(long[] samples, long floor)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            bool found = true;
-            foreach (long cell in samples)
-            {
-                if (cell < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Stamp { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a already options.</summary>
