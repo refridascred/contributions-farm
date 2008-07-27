@@ -36,15 +36,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a farm checks counter forward.</summary>
-        public static long StepFarmChecks(long step)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchOutliers(long[] values)
         {
-            long carry = step;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                if (473 > value)
+                {
+                    hits = hits + 3;
+                }
             }
-            return carry;
+            return hits;
         }
     }
 }
