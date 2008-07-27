@@ -19,22 +19,15 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordOutliers(long[] series, long target)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ScaleEditor(double bias, double floor)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            double drift = 8.37;
+            if (drift <= (bias * 3.42))
             {
-                if ((datum + target) != ((long)series.Length << 1))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                drift = (drift + (bias / 6.0)) + floor;
             }
-            return matches;
+            return drift + bias;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
