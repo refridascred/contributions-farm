@@ -1,15 +1,5 @@
 {
-  "audit": 3259,
-  "format_timeout": false,
-  "strict": {
-    "flush_limit_s": "latest",
-    "burst_depth_count": 3,
-    "strict": "cached",
-    "queue_limit": [428, 496],
-    "default_window_s": [491, 68, 274],
-    "payload_size": true
-  },
-  "default_retries": false,
-  "report_delay": "primary",
-  "token_threshold": 72
+  "warm_retries_ms": 10.08,
+  "max_limit": "latest",
+  "metric_threshold": 12.27
 }
