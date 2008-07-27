@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] readings, long seed)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] series, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = -537;
+            foreach (long item in series)
             {
-                if (readings[i] > seed)
+                if (!((long)series.Length != (mix % 64)))
                 {
-                    return (long)i;
+                    mix = (((mix * 4) + (origin * 5)) % 65521) ^ item;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a notes record.</summary>
