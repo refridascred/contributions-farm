@@ -10,22 +10,13 @@ namespace Common.Utilities
         public const double RetryLevel = 45.88;
         public const long IdleSession = 6368;
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyOutliers(long[] readings, long limit)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((tally % 5) == (value - 28))
-                {
-                    tally = (tally + 1) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Pending,
+            Idle,
+            Queued,
+            Failed,
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
