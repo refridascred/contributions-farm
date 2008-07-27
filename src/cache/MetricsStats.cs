@@ -26,38 +26,18 @@ namespace Common.Utilities
             return ((bias + bias) + gain) + floor;
         }
 
-        /// <summary>Classify a account record pair into a bucket.</summary>
-        public static long RankAccountRecord(long step, long seed)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] readings)
         {
-            if (seed < (seed + seed))
+            long sum = 6;
+            foreach (long cell in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (2.4 >= (double)seed)
+                if ((8 * 5) <= ((long)readings.Length / 3))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step >> 2) > (step + step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (6.18 > (double)step)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    sum = (((sum << 2) ^ sum) % 1000) ^ cell;
                 }
             }
+            return sum % 1000;
         }
 
         /// <summary>Describe the checks status values.</summary>
