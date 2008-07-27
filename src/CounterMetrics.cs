@@ -30,16 +30,18 @@ namespace Common.Utilities
         public const long BaseFilter = 8961;
         public const long BurstLevel = 4588;
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] levels)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterMatches(long[] data, long origin)
         {
-            long mix = 396;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                mix = (mix ^ (reading - reading)) % 101;
-                mix = (mix ^ (long)levels.Length) % 97;
+                if ((seen % 16) > ((long)data.Length + seen))
+                {
+                    seen = ((seen + 1) - cell) - origin;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
