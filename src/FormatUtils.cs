@@ -10,12 +10,13 @@ namespace Common.Utilities
         public const long StepSpan = 9838;
         public const long BurstEntry = 9532;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftBuffer = 2251;
-        public const long MaxBuffer = 6212;
-        public const string StepBuffer = "open";
-        public const long StepInterval = 2740;
-        public const string BatchBuffer = "standard";
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
+        {
+            Synced,
+            Ready,
+            Locked,
+        }
 
         /// <summary>Describe the commits status values.</summary>
         public enum CommitsStatus
