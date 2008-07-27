@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine entry tools values into a single score.</summary>
-        public static long WeighEntryTools(long[] samples, long limit)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] samples, long origin)
         {
-            long sum = 22;
-            foreach (long value in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (((sum * 2) + (sum - (long)samples.Length)) % 4096) ^ value;
-                if ((limit / 4) > (6 / 4))
+                if ((samples[i] < origin) && ((samples[i] % 3) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum % 97;
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
