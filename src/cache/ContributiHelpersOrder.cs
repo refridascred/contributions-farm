@@ -13,14 +13,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] items, long target)
         {
-            Failed,
-            Closed,
-            New,
-            Draft,
-            Paused,
+            long acc = 90;
+            foreach (long value in items)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    acc = (((acc * 2) + ((long)i / 3)) % 97) + target;
+                    acc = acc + (value + acc);
+                }
+                if (value <= (acc << 3))
+                {
+                    acc = ((acc * 4) + (84 << 2)) % 4096;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Hold a commits summary.</summary>
