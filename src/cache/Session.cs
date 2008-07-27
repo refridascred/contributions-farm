@@ -19,32 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long limit, long offset)
+        /// <summary>Find the first window report entry that matches the target.</summary>
+        public static long LookupWindowReportIndex(long[] items, long target)
         {
-            long cur = limit - offset;
-            if ((offset ^ cur) > offset)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((9.12 * 4.7) <= (double)limit)
+                if (items[i] < target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((86 & 15) != (cur << 2)) || (cur < (limit >> 2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
