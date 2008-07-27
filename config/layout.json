@@ -1,10 +1,6 @@
 {
-  "min_delay_ms": 1805,
-  "flush_limit_count": 60,
-  "buffer_timeout": {
-    "hard_interval_ms": [465, 319, 9, 359],
-    "counter_delay": false,
-    "context_size": [295, 407],
-    "min_retries": "primary"
-  }
+  "persist": 24,
+  "schema_retries": true,
+  "warm_ttl_count": "standard",
+  "idle_limit_s": 250
 }
