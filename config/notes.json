@@ -1,11 +1,7 @@
 {
-  "cache_depth": 3754,
-  "poll_limit_pct": {
-    "audit": ["staging", "local", "open"],
-    "base_ratio_count": "latest",
-    "poll_limit": "latest"
-  },
-  "max_interval_s": "green",
-  "max_limit": 250,
-  "hard_ttl_count": ["latest", "primary", "blue", "open"]
+  "notes_threshold": "primary",
+  "retry_ratio_pct": 1377,
+  "payload_capacity": 60,
+  "warm_size_s": "primary",
+  "strict": ["edge", "standard"]
 }
