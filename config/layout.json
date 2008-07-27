@@ -1,6 +1,15 @@
 {
-  "burst_delay": [248, 430, 151],
-  "base_timeout_pct": true,
-  "idle_interval_s": 1510,
-  "sync_window_s": "cached"
+  "soft_timeout": true,
+  "soft_ratio": "stable",
+  "dry_run": "latest",
+  "batch_size": {
+    "readonly": 85,
+    "default_delay": 86,
+    "metrics_ratio": {
+      "payload_threshold": "latest",
+      "schema_window": "local",
+      "schema_threshold": [473, 414, 142]
+    },
+    "batch_delay": true
+  }
 }
