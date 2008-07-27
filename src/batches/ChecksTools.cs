@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LookupAccountIndex(long[] levels, long bound)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Draft,
+            Paused,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
