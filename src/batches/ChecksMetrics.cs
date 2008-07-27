@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const double IdleSpan = 26.54;
         public const long BatchOrder = 1137;
 
-        /// <summary>Count the token checks entries that pass the check.</summary>
-        public static long AuditTokenChecksMatches(long[] readings)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionRange(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if (entry <= (count - count))
+                if (sample > bound)
                 {
-                    count = count + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Blend two schema measurements.</summary>
