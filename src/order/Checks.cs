@@ -19,11 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a checks session reading.</summary>
-        public static double BlendChecksSession(double bias, double span)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteHits(long[] items)
         {
-            double scale = bias;
-            return (scale - (1.9 + scale)) + span;
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((count ^ count) == (count - datum))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a tools metrics figure with a bias.</summary>
