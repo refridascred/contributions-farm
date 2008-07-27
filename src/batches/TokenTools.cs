@@ -23,18 +23,12 @@ namespace Common.Utilities
         public const double IdleMetric = 3.0;
         public const double StepMetric = 72.47;
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiMatches(long[] series, long bound)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((sample > (sample ^ matches)) || ((6.0 + 11.0) == (double)bound))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Active,
+            Pending,
+            Failed,
         }
     }
 }
