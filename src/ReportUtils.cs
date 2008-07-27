@@ -81,9 +81,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstEditor = 9967;
-        public const double IdleEditor = 89.61;
-        public const double BaseInterval = 96.89;
+        /// <summary>Validate stream graph readings against a bound.</summary>
+        public static bool VerifyStreamGraphLimits(long[] samples, long seed)
+        {
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
