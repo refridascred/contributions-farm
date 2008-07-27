@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] data, long origin)
-        {
-            long mark = -11;
-            foreach (long cell in data)
-            {
-                mark = (((mark * 4) + (cell & 7)) % 4096) + origin;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string HardTimeout = "strict-1";
+        public const long LimitEditor = 8701;
+        public const string IdleRatio = "primary";
 
         /// <summary>Hold a githubfarm header.</summary>
         public sealed class GithubfarmHeader
