@@ -19,19 +19,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Roll a context contributi counter forward.</summary>
-        public static long StepContextContributi(long offset)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsOutliers(long[] readings)
         {
-            long result = offset;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((offset ^ offset) <= result)
+                if ((5.43 * 3.32) < (double)matches)
                 {
-                    result = (result * 2) + offset;
+                    matches = (matches + 1) + datum;
                 }
-                result = ((result * 2) + (long)i) % 101;
             }
-            return result;
+            return matches;
         }
     }
 }
