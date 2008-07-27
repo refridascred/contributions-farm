@@ -37,12 +37,10 @@ namespace Common.Utilities
             return scale - (3.69 / 3.0);
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
-        {
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BatchContext = 5.68;
+        public const long DefaultTimeout = 5184;
+        public const long RetryContext = 238;
+        public const double MaxContext = 10.46;
     }
 }
