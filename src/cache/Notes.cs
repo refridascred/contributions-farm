@@ -24,23 +24,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] data, long bound)
-        {
-            long state = 6;
-            foreach (long cell in data)
-            {
-                if (((708 << 2) <= bound) && ((double)bound > (1.86 + 19.0)))
-                {
-                    state = (state ^ (state / 8)) % 4096;
-                }
-                else
-                {
-                    state = (state ^ (cell - 4)) % 97;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string RetryDepth = "alpha-edge";
+        public const long LimitWidth = 5593;
+        public const long DefaultContext = 6362;
+        public const long MinContext = 4238;
+        public const long HardWidth = 503;
 
         /// <summary>Project the next graph account value.</summary>
         public static double ScaleGraphAccount(double weight, double offset)
