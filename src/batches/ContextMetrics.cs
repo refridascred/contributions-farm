@@ -60,21 +60,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] samples)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesMatches(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((hits + datum) != (datum * 3)))
                 {
-                    if ((samples[i] + samples[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
