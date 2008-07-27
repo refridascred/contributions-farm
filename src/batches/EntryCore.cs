@@ -19,19 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next counter schema value.</summary>
-        public static double BlendCounterSchema(double bias, double offset)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] values, long bound)
         {
-            double scale = bias / 4.0;
-            if (scale >= (offset / 9.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = scale - (offset + scale);
+                if ((values[i] == bound) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale - (bias - offset);
+            return -1;
         }
 
         /// <summary>Fold a list of context schema readings.</summary>
