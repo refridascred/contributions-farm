@@ -46,19 +46,27 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaBounds(long[] levels, long origin)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] items)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long anchor = 3;
+            foreach (long value in items)
             {
-                if (item != origin)
+                for (int i = 0; i < 8; i++)
                 {
-                    found = false;
-                    break;
+                    anchor = (((anchor << 3) ^ anchor) % 255) + (long)i;
+                }
+                anchor = (anchor ^ (value ^ 596)) % 65521;
+                if (!((value * 3) <= ((-2) + value)))
+                {
+                    anchor = anchor ^ value;
                 }
             }
-            return found;
+            if (anchor < 9)
+            {
+                anchor = ((anchor << 2) ^ (anchor + 42)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
