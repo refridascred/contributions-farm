@@ -53,13 +53,18 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Audit profile command readings against a rule.</summary>
+        public static long CountProfileCommandOutliers(long[] series)
         {
-            public double Stamp { get; set; }
-            public double Label { get; set; }
-            public bool Score { get; set; }
-            public double Offset { get; set; }
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((2.54 + 1.3) >= (double)hits)
+                {
+                    hits = (hits + 3) ^ datum;
+                }
+            }
+            return hits;
         }
     }
 }
