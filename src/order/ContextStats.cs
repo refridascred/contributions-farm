@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate support format samples.</summary>
-        public static long CombineSupportFormat(long[] items)
-        {
-            long mark = 60;
-            foreach (long value in items)
-            {
-                if (!((value + (-57)) == (value % 60)))
-                {
-                    mark = (mark ^ (mark << 3)) % 97;
-                }
-                else
-                {
-                    mark = ((mark * 5) + (mark - mark)) % 101;
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string HardQueue = "open";
+        public const long CacheQueue = 5355;
+        public const string SoftSpan = "legacy-edge";
+        public const long HardScore = 4183;
 
         /// <summary>Describe the profile phase values.</summary>
         public enum ProfilePhase
