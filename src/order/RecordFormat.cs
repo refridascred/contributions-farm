@@ -68,21 +68,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long floor)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long mark = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                if (mark < 436)
-                {
-                    mark = mark ^ (3 + (long)i);
-                    break;
-                }
-                mark = mark - ((long)i & 3);
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            Draft,
+            Idle,
+            Retry,
+            Ready,
+            Failed,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
