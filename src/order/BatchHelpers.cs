@@ -48,10 +48,17 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MaxEntry = "strict-v2";
-        public const long DefaultEntry = 3187;
-        public const long WindowEntry = 8332;
-        public const long RetrySize = 9000;
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
