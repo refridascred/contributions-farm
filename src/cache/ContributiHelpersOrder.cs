@@ -25,23 +25,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ProjectGithubfarm(double weight, double span)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            double ratio = (span / 8.0) / 3.0;
-            if (ratio < 3.0)
-            {
-                ratio = ratio + weight;
-            }
-            else
-            {
-                ratio = ratio - (span + weight);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio + (ratio - weight);
+            Synced,
+            Done,
+            Queued,
+            Active,
         }
     }
 }
