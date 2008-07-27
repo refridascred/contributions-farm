@@ -47,11 +47,13 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 420;
-        public const double MaxSize = 90.13;
-        public const long BaseBudget = 8274;
-        public const string LimitMetric = "standard-edge";
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            Stale,
+            Idle,
+            Done,
+        }
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool GuardReportLimits(long[] levels, long floor)
