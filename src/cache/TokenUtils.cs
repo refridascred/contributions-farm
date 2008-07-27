@@ -12,13 +12,18 @@ namespace Common.Utilities
             return ((load + load) + scale) + bias;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandOutliers(long[] levels, long origin)
         {
-            public string Region { get; set; } = "";
-            public double Owner { get; set; }
-            public double Token { get; set; }
-            public double Count { get; set; }
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((2.0 + 7.4) <= (double)value)
+                {
+                    hits = (hits + 2) + origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count stream context pairs that satisfy a relation.</summary>
