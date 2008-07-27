@@ -27,17 +27,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] series, long step)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Combine account already values into a single score.</summary>
