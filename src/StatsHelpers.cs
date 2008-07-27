@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next already metric value from a seed.</summary>
-        public static long RollAlreadyMetric(long target)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long floor)
         {
-            long acc = target;
-            for (int i = 0; i < 10; i++)
+            long anchor = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((target >> 5) >= (target & 63))
-                {
-                    acc = (acc - (long)i) % 97;
-                    break;
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Hold a queue options.</summary>
