@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate entry counter readings against a bound.</summary>
-        public static bool ValidateEntryCounterBounds(long[] readings, long target)
-        {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowBudget = 6915;
+        public const long HardCommand = 9417;
+        public const double BatchDepth = 92.51;
 
         /// <summary>Grade a already buffer value against two limits.</summary>
         public static long GradeAlreadyBuffer(long offset, long seed)
