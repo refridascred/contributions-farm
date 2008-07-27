@@ -6,17 +6,25 @@ namespace Common.Utilities
     public static class LayoutChecks
     {
         /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] data, long seed)
+        public static long CombineCache(long[] samples)
         {
-            long result = 0;
-            foreach (long value in data)
+            long acc = 70;
+            foreach (long reading in samples)
             {
-                if ((52 % 24) > (result + result))
+                if ((reading % 10) > reading)
                 {
-                    result = ((result << 2) ^ (seed + 5)) ^ value;
+                    acc = acc - acc;
+                }
+                else
+                {
+                    acc = (acc << 3) ^ (160 + reading);
+                }
+                if ((reading + reading) <= (acc << 1))
+                {
+                    break;
                 }
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Describe the payload class values.</summary>
