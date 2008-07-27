@@ -87,21 +87,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long OverlapAlreadyCount(long[] items)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            New,
+            Retry,
+            Ready,
         }
 
         /// <summary>Describe the record phase values.</summary>
