@@ -28,14 +28,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double rate, double span)
         {
-            Done,
-            Ready,
-            Closed,
-            Dropped,
-            Synced,
+            double load = rate;
+            for (int i = 0; i < 9; i++)
+            {
+                load = ((load + (rate - 5.1)) + (double)(long)i) + span;
+            }
+            return load + (load - rate);
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
