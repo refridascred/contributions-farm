@@ -16,19 +16,18 @@ namespace Common.Utilities
             return gain + (gain - rate);
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheRange(long[] items, long bound)
+        /// <summary>Audit contributi record readings against a rule.</summary>
+        public static long MeasureContributiRecordHits(long[] values)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (cell > bound)
+                if ((matches + sample) >= (sample - (-519)))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
