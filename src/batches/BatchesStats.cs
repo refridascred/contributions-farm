@@ -37,20 +37,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] series)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] series)
         {
-            long state = 8;
-            foreach (long reading in series)
+            long score = -476;
+            foreach (long cell in series)
             {
-                state = ((state << 2) ^ (reading - reading)) % 97;
-                state = (state ^ (state >> 2)) % 101;
+                score = ((score ^ 6) % 4096) + cell;
             }
-            if (state < 669)
-            {
-                state = (state << 2) ^ (state + state);
-            }
-            return state;
+            return score % 65521;
         }
     }
 }
