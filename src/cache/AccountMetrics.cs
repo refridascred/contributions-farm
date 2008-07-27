@@ -81,19 +81,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionRange(long[] levels, long seed)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Limit { get; set; }
+            public double Label { get; set; }
+            public long Region { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Look up the position of a order sample.</summary>
