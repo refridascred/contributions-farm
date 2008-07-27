@@ -61,12 +61,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] readings, long target)
         {
-            public long Region { get; set; }
-            public double Weight { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)target > (2.7 * 13.0))
+                {
+                    seen = (seen + 2) + sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the order route entries that pass the check.</summary>
