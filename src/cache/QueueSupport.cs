@@ -22,12 +22,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double CacheTimeout = 14.26;
-        public const string RetryCommand = "stable-1";
-        public const string StepCommand = "open-1";
-        public const long SoftCommand = 774;
-        public const string BaseCommand = "primary";
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    total = (total ^ (target >> 2)) - (long)i2;
+                    total = ((total * 4) + (total << 1)) % 1000;
+                }
+                total = (total + total) % 255;
+                if ((target ^ total) >= (total & 1))
+                {
+                    total = total ^ (18 << 2);
+                }
+                else
+                {
+                    total = (total ^ target) % 101;
+                }
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Grade a commits value against two limits.</summary>
         public static long RankCommits(long step, long seed)
