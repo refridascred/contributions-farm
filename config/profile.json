@@ -1,11 +1,10 @@
 {
-  "min_ttl_pct": {
-    "cache_window": "standard",
-    "cache_timeout": 35.35,
-    "audit": 87.59,
-    "soft_interval_ms": 250
+  "cache_depth": "open",
+  "metrics_interval": "eu-west",
+  "cluster_limit": {
+    "graph_ratio": 30,
+    "account_capacity": [172, 24, 70],
+    "retry_window_s": [481, 73, 185, 285]
   },
-  "verbose": "local",
-  "account_interval": "primary",
-  "poll_window": "standard"
+  "idle_window": 3480
 }
