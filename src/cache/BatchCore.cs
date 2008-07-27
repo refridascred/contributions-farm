@@ -69,18 +69,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteGaps(long[] values)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long origin)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long anchor = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((81 - sample) == (matches << 3))
-                {
-                    matches = matches + 2;
-                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return matches;
+            return anchor;
         }
     }
 }
