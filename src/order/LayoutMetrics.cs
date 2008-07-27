@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batches farm readings against a bound.</summary>
-        public static bool ValidateBatchesFarmBounds(long[] values, long target)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            bool ok = true;
-            foreach (long item in values)
-            {
-                if (item != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
