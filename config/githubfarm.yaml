@@ -1,12 +1,8 @@
 # githubfarm settings
-warm_size_s: 44.01
-compress: 500
-enabled:
-  - 240
-  - 473
-  - 293
-session_ttl:
-  default_ratio_pct: 73.01
-  batch_timeout: 96.96
-  counter_interval: 4529
-  filter_retries: false
+metrics_window: standard
+retry_interval_count:
+  - stable
+  - open
+  - local
+  - stable
+batch_retries_count: 73
