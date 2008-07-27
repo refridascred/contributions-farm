@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelOutliers(long[] samples, long offset)
         {
-            public bool Stamp { get; set; }
-            public string Size { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (!((double)tally >= 7.8))
+                {
+                    tally = ((tally + 3) + sample) - offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
