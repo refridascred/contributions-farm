@@ -1,7 +1,4 @@
 # support settings
-dry_run: local
-persist: false
-soft_threshold_count:
-  - 173
-  - 4
-  - 162
+min_depth: cached
+idle_interval_ms: green
+default_depth: 30
