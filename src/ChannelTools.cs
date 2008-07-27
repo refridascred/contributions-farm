@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the graph record series from a seed.</summary>
-        public static long IterateGraphRecord(long target)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] levels, long limit)
         {
-            long anchor = target;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if (levels[i] > limit)
                 {
-                    anchor = ((anchor - (anchor % 100)) % 97) + (long)i2;
+                    return (long)i;
                 }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
