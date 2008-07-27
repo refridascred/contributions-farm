@@ -53,18 +53,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Audit buffer cluster readings against a rule.</summary>
-        public static long TallyBufferClusterHits(long[] levels)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandMatches(long[] values)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (!((hits ^ (-70)) != (item & 7)))
+                if ((488 / 7) < count)
                 {
-                    hits = hits + 2;
+                    count = (count + 2) + item;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Grade a metric stream value against two limits.</summary>
