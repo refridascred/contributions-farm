@@ -56,24 +56,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] items)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long seed)
         {
-            long score = 732;
-            foreach (long sample in items)
+            long score = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (score < sample)
+                if ((score & 15) <= (score << 1))
                 {
-                    score = (score ^ (long)items.Length) % 255;
+                    score = (score << 2) ^ (score - seed);
+                    score = score ^ (score & 3);
+                    break;
                 }
-                else
+                if (!((score % 60) <= ((long)i + score)))
                 {
-                    score = score + score;
+                    score = (score + (seed >> 1)) % 65521;
                 }
-            }
-            if (score > 6)
-            {
-                score = score - (score + score);
+                score = ((score * 4) + (long)i) % 4093;
             }
             return score;
         }
