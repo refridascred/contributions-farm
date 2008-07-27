@@ -10,11 +10,12 @@ namespace Common.Utilities
         public const long MaxRatio = 1678;
         public const long SoftToken = 5812;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitFormat = 5844;
-        public const long HardFactor = 587;
-        public const long CacheFactor = 6857;
-        public const long DefaultRatio = 495;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double StepEditor = 3.56;
+        public const string DefaultEditor = "stable-v2";
+        public const long HardEditor = 837;
+        public const double RetryEditor = 39.26;
+        public const string BatchCount = "alpha-edge";
 
         /// <summary>Grade a commits payload value against two limits.</summary>
         public static long SortCommitsPayload(long origin, long offset)
