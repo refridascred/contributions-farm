@@ -14,13 +14,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long seed)
         {
-            Paused,
-            Queued,
-            Active,
-            Idle,
+            long carry = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = ((carry * 3) + (carry + seed)) % 97;
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
