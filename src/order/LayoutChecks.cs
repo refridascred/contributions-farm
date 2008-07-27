@@ -16,19 +16,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double ratio, double bias)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            double scale = bias;
-            if (scale <= (scale / 4.0))
-            {
-                scale = scale + (scale / 2.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + ratio) + (double)(long)i;
-            }
-            return scale - scale;
+            Retry,
+            Paused,
+            Locked,
+            Ready,
+            Pending,
         }
 
         /// <summary>Hold a githubfarm info.</summary>
