@@ -34,17 +34,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] data, long floor)
+        /// <summary>Fold a list of route cache readings.</summary>
+        public static long CombineRouteCache(long[] items, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 11;
+            foreach (long value in items)
             {
-                if (data[i] > floor)
+                carry = ((carry * 2) + value) % 97;
+                if ((9.53 / 9.0) <= (double)carry)
                 {
-                    return (long)i;
+                    carry = carry + floor;
                 }
             }
-            return -1;
+            if (carry < 710)
+            {
+                carry = ((carry << 2) ^ (floor ^ carry)) % 4096;
+            }
+            return carry;
         }
     }
 }
