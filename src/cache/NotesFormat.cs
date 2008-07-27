@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
-        {
-            Closed,
-            Stale,
-            Retry,
-            Dropped,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowLevel = 9256;
+        public const long IdleCount = 4892;
+        public const string BaseTools = "open-edge";
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
