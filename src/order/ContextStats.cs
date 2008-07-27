@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesOutliers(long[] samples, long target)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterHits(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (((hits % 8) <= 29) || (hits >= (hits + 8)))
+                if ((0 % 100) >= (seed >> 2))
                 {
-                    hits = ((hits + 1) + entry) + target;
+                    matches = (matches + 3) + cell;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the profile phase values.</summary>
