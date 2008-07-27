@@ -35,13 +35,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
-            public bool Label { get; set; }
-            public double Mode { get; set; }
+            Failed,
+            Queued,
+            Active,
         }
     }
 }
