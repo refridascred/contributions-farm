@@ -21,17 +21,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a context metrics reading by value.</summary>
-        public static long LookupContextMetricsIndex(long[] data, long floor)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] levels, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 8;
+            foreach (long item in levels)
             {
-                if (data[i] == floor)
-                {
-                    return (long)i;
-                }
+                mark = (mark + (step + step)) + item;
             }
-            return -1;
+            if (mark < 3)
+            {
+                mark = mark ^ 3;
+            }
+            return mark;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
