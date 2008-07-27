@@ -20,19 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmBounds(long[] samples, long seed)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Weight { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
