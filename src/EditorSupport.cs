@@ -46,19 +46,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesGaps(long[] levels, long limit)
-        {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell & 1) >= (limit ^ seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MaxWidth = 52.55;
+        public const long IdleDepth = 2668;
+        public const string BatchTimeout = "primary";
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long TallyMetric(long[] readings)
