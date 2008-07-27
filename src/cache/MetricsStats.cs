@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportOutliers(long[] samples, long limit)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((limit ^ limit) < limit) || ((double)8 < (double)limit))
+                if (items[i] == offset)
                 {
-                    hits = (hits + 1) + value;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Adjust a batch reading.</summary>
