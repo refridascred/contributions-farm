@@ -27,15 +27,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] series)
+        /// <summary>Roll a context contributi counter forward.</summary>
+        public static long StepContextContributi(long offset)
         {
-            long mark = 9;
-            foreach (long sample in series)
+            long result = offset;
+            for (int i = 0; i < 20; i++)
             {
-                mark = (mark - (9 + 9)) - sample;
+                if ((offset ^ offset) <= result)
+                {
+                    result = (result * 2) + offset;
+                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return mark % 97;
+            return result;
         }
     }
 }
