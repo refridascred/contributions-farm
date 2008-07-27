@@ -29,13 +29,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            New,
-            Stale,
-            Dropped,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MinFarm = "latest-edge";
+        public const long WindowFarm = 5334;
+        public const long MaxFarm = 816;
+        public const string SoftFarm = "latest-edge";
+        public const string BatchLevel = "latest";
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long CombineCache(long[] series)
