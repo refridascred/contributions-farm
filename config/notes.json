@@ -1,16 +1,5 @@
 {
-  "readonly": 60,
-  "batch_limit_ms": "fallback",
-  "burst_interval": 78.41,
-  "audit": "standard",
-  "min_threshold_count": {
-    "sync_interval_count": true,
-    "default_delay": {
-      "poll_size": [442, 221],
-      "sync_limit_s": 23.58,
-      "cache_ratio_s": "staging"
-    },
-    "counter_threshold": 8219,
-    "entry_retries": 19.72
-  }
+  "stats_threshold": "open",
+  "warm_ratio_ms": true,
+  "dry_run": 100
 }
