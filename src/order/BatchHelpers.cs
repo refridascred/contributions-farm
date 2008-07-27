@@ -27,17 +27,10 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MaxEntry = "strict-v2";
+        public const long DefaultEntry = 3187;
+        public const long WindowEntry = 8332;
+        public const long RetrySize = 9000;
     }
 }
