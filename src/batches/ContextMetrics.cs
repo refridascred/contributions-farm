@@ -33,15 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
-        {
-            Synced,
-            Queued,
-            Idle,
-            Locked,
-            Ready,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitWindow = 5358;
+        public const double MinWindow = 95.96;
+        public const string BaseWindow = "stable-edge";
+        public const string RetrySize = "alpha-edge";
+        public const long IdleWindow = 6235;
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long IterateOrder(long origin)
