@@ -27,20 +27,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long origin)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long anchor = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = (anchor - anchor) % 1000;
-                if (14.0 >= (double)anchor)
-                {
-                    anchor = (anchor - (origin + origin)) % 4096;
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            Ready,
+            Draft,
+            New,
+            Closed,
         }
 
         /// <summary>Hold a context info.</summary>
