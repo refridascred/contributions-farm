@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryHits(long[] items)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileRange(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if ((double)reading == (9.68 - 9.85))
+                if (datum > target)
                 {
-                    hits = hits + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Describe the notes phase values.</summary>
