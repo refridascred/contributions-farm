@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long FindTokenIndex(long[] items, long offset)
         {
-            public long Weight { get; set; }
-            public bool Label { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine already values into a single score.</summary>
