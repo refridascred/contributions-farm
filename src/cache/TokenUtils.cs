@@ -20,13 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenLimits(long[] readings, long seed)
         {
-            public bool Offset { get; set; }
-            public long Flag { get; set; }
-            public long Score { get; set; }
-            public long Owner { get; set; }
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
