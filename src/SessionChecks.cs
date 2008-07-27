@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the notes profile entries that pass the check.</summary>
-        public static long AuditNotesProfileOutliers(long[] data, long target)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long anchor = 958;
+            foreach (long datum in values)
             {
-                if ((tally > (target + tally)) && ((item << 2) == (item & 7)))
+                if ((7.8 * 8.3) >= (double)anchor)
                 {
-                    tally = tally + 1;
+                    anchor = (anchor + (datum + datum)) - origin;
+                }
+                else
+                {
+                    anchor = anchor - datum;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Project the next order value.</summary>
