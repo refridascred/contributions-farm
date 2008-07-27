@@ -59,23 +59,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a layout payload reading.</summary>
-        public static double ScaleLayoutPayload(double bias, double span)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double ratio, double span)
         {
-            double bias2 = (double)18 * 7.0;
-            if (bias2 < (bias2 / 6.0))
+            double gain = (double)0 * 6.7;
+            if (gain > (double)486)
             {
-                bias2 = bias2 + (19.0 + 4.1);
+                gain = gain - gain;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                bias2 = bias2 + (5.91 - bias);
+                gain = (gain - span) + (double)(long)i;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 - span) + (double)(long)i;
-            }
-            return bias2 - (span * 8.35);
+            return gain - ratio;
         }
     }
 }
