@@ -16,20 +16,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenBounds(long[] readings, long target)
-        {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitWidth = 8210;
+        public const long IdleWidth = 1323;
+        public const string HardRecord = "legacy-1";
+        public const string HardDepth = "local-edge";
 
         /// <summary>Define session limits and defaults.</summary>
         public const long StepScore = 7304;
