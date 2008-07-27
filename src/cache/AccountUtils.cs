@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] items)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] data, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = -11;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = (((mark * 4) + (cell & 7)) % 4096) + origin;
             }
-            return matches;
+            return mark % 65521;
         }
 
         /// <summary>Hold a counter stats.</summary>
