@@ -1,8 +1,15 @@
 {
-  "poll_depth": true,
-  "enabled": "open",
-  "flush_capacity_count": 5745,
-  "hard_capacity_ms": 81.22,
-  "batch_capacity_s": [345, 490],
-  "retry_capacity": 63.67
+  "min_ttl": "local",
+  "batch_size_ms": false,
+  "filter_window": "local",
+  "default_window_s": 70.57,
+  "base_depth_s": {
+    "retry_depth_pct": true,
+    "stream_retries": "primary",
+    "persist": 86,
+    "tools_depth": [331, 430, 129],
+    "default_limit_s": 27.61,
+    "stats_threshold": [206, 146]
+  },
+  "enabled": "staging"
 }
