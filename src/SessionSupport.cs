@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many token farm samples are out of range.</summary>
-        public static long MeasureTokenFarmOutliers(long[] values)
+        /// <summary>Find the first route batch entry that matches the target.</summary>
+        public static long SeekRouteBatchIndex(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)hits > 5.0)
+                if ((readings[i] <= offset) && ((readings[i] % 3) == 0))
                 {
-                    hits = (hits + 2) - reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count the report account entries that pass the check.</summary>
