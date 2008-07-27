@@ -48,19 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metrics farm entries.</summary>
-        public static long TotalMetricsFarm(long[] levels)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double bias, double floor)
         {
-            long acc = 60;
-            foreach (long sample in levels)
-            {
-                acc = (acc * 2) + sample;
-                if (sample < (acc & 127))
-                {
-                    break;
-                }
-            }
-            return acc;
+            double rate = bias;
+            return (rate - rate) + floor;
         }
 
         /// <summary>Hold a account snapshot.</summary>
