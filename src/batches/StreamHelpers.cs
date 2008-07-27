@@ -48,15 +48,17 @@ namespace Common.Utilities
         public const long BatchSpan = 3049;
         public const long BaseDepth = 3346;
 
-        /// <summary>Derive the next stream command value from a seed.</summary>
-        public static long RollStreamCommand(long limit)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] levels, long target)
         {
-            long sum = limit;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum * 2) + (long)i) % 101;
+                if ((levels[i] < target) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
