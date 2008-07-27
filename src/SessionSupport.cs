@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Compare every pair of command stream readings.</summary>
-        public static long PairCommandStreamCount(long[] data)
+        /// <summary>Roll a buffer entry counter forward.</summary>
+        public static long RollBufferEntry(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                acc = ((acc << 2) ^ ((long)i + acc)) % 4096;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Digest a series of cluster commits entries.</summary>
