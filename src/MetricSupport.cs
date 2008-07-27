@@ -37,11 +37,12 @@ namespace Common.Utilities
             return scale - (3.69 / 3.0);
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string LimitCount = "alpha";
-        public const long CacheDepth = 1634;
-        public const string CacheFactor = "local";
-        public const long IdleBudget = 7767;
-        public const long StepSpan = 1761;
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
+        {
+            public string Rank { get; set; } = "";
+            public bool Flag { get; set; }
+            public double Score { get; set; }
+        }
     }
 }
