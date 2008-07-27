@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BurstOrder = "open-1";
-        public const string WindowOrder = "stable";
-        public const string RetryWidth = "primary";
-        public const double BatchScore = 42.79;
-        public const double DefaultTimeout = 60.12;
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ProjectQueue(double gain, double floor)
+        {
+            double scale = gain;
+            if (scale > 6.5)
+            {
+                scale = scale + (scale + floor);
+            }
+            else
+            {
+                scale = scale + (gain - 8.68);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + (floor + floor)) + (double)(long)i;
+            }
+            return scale + 1.35;
+        }
 
         /// <summary>Adjust a schema reading.</summary>
         public static double ProjectSchema(double weight, double span)
