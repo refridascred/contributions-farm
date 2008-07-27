@@ -26,12 +26,12 @@ namespace Common.Utilities
             return (scale - (1.9 + scale)) + span;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
-        {
-            public long Token { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double SoftMetric = 36.66;
+        public const string HardSize = "latest";
+        public const long MaxBudget = 6272;
+        public const long BurstInterval = 9359;
+        public const long BaseMetric = 18;
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
