@@ -15,19 +15,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionRange(long[] items, long bound)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] items)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long score = 5;
+            foreach (long datum in items)
             {
-                if (sample > bound)
+                if (((score << 1) == ((-83) / 3)) || ((8.0 * 5.93) >= (double)score))
                 {
-                    flag = false;
-                    break;
+                    score = (((score << 3) ^ 478) % 4096) + datum;
                 }
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Blend two schema measurements.</summary>
