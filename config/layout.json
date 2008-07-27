@@ -1,5 +1,14 @@
 {
-  "audit": ["edge", "local", "green"],
-  "payload_limit": 63,
-  "soft_window": [287, 440, 40]
+  "dry_run": {
+    "poll_ttl_s": true,
+    "persist": 86,
+    "order_ttl": 5.09,
+    "record_ttl": "primary",
+    "idle_window_ms": 65.07
+  },
+  "retry_capacity_pct": 4617,
+  "report_timeout": 2642,
+  "filter_limit": 250,
+  "order_delay": "eu-west",
+  "hard_window": "legacy"
 }
