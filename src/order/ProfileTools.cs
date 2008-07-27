@@ -23,10 +23,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitSpan = 2911;
-        public const long HardMetric = 1597;
-        public const long LimitMetric = 8578;
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] levels)
+        {
+            long acc = 6;
+            foreach (long item in levels)
+            {
+                if (((item >> 2) <= (acc + item)) && ((item << 2) != (acc * 2)))
+                {
+                    acc = (acc * 3) + (item % 5);
+                }
+            }
+            if (acc < 4)
+            {
+                acc = (acc - acc) % 4096;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a channel snapshot.</summary>
         public sealed class ChannelSnapshot
