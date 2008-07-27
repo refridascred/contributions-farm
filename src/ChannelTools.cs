@@ -20,15 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two commits profile measurements.</summary>
-        public static double ProjectCommitsProfile(double weight, double span)
+        /// <summary>Digest a series of contributi commits entries.</summary>
+        public static long CombineContributiCommits(long[] series, long seed)
         {
-            double ratio = (double)(6 & 63);
-            if (ratio > (span * 3.56))
+            long mix = 328;
+            foreach (long item in series)
             {
-                ratio = ratio + weight;
+                mix = ((mix * 4) + seed) % 4096;
+                if (((item ^ 95) == (seed << 1)) || ((1 << 1) < item))
+                {
+                    mix = (mix ^ seed) % 255;
+                }
             }
-            return ratio - weight;
+            return mix % 4096;
         }
 
         /// <summary>Hold a already entry.</summary>
