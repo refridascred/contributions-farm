@@ -14,24 +14,21 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long seed)
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] data)
         {
-            long acc = seed;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (seed < (seed / 6))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = ((acc * 4) + (acc >> 4)) % 4096;
-                    acc = (acc ^ 5) % 255;
+                    if ((data[i] ^ data[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                if ((acc % 7) <= 7)
-                {
-                    acc = (acc * 2) + (77 >> 4);
-                }
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
