@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
-        {
-            Queued,
-            Failed,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double LimitTimeout = 3.29;
+        public const long SoftScore = 8496;
+        public const long LimitLayout = 9685;
 
         /// <summary>Accumulate record samples.</summary>
         public static long TotalRecord(long[] values, long offset)
