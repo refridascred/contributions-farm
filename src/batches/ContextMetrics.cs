@@ -39,25 +39,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] items, long bound)
-        {
-            long carry = 22;
-            foreach (long value in items)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    carry = (carry ^ ((long)i / 2)) + value;
-                }
-                carry = carry - (86 & 1);
-                carry = (carry ^ (carry * 4)) % 1000;
-                if ((double)bound >= (0.03 - 3.0))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftFactor = 242;
+        public const double DefaultLayout = 28.33;
+        public const string WindowFactor = "standard-1";
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long CompareStreamCount(long[] samples)
