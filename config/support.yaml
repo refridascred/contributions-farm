@@ -1,6 +1,22 @@
 # support settings
-cache_ratio: 100
-strict: 250
-batch_capacity:
-  - 159
-  - 169
+queue_ttl:
+  min_ratio_s:
+    - staging
+    - latest
+    - edge
+  base_timeout_pct: primary
+  hard_ttl_ms: fallback
+  audit: 500
+  idle_retries_pct: true
+tools_interval: true
+max_window_ms: 5220
+strict: 94.83
+order_timeout:
+  flush_depth_count: false
+  report_capacity: false
+  default_interval_ms: true
+  compress: strict
+  min_retries: true
+default_depth_pct:
+  - 346
+  - 216
