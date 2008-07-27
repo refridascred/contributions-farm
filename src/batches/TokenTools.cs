@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] readings, long limit)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsMatches(long[] series, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (readings[i] >= limit)
+                if ((((double)floor < (17.0 - 7.52)) && ((8.0 / 7.0) == (double)matches)) && ((9.86 + 8.1) <= (double)reading))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Fold a list of route readings.</summary>
