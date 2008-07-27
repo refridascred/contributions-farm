@@ -75,18 +75,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountOutliers(long[] series, long step)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if (reading >= (hits * 3))
-                {
-                    hits = (hits + 1) + step;
-                }
-            }
-            return hits;
+            Queued,
+            Synced,
+            Done,
+            Active,
         }
 
         /// <summary>Hold a batch stats.</summary>
