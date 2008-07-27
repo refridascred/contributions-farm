@@ -20,17 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] series, long target)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ScaleSchema(double rate, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias = offset;
+            if (bias < offset)
             {
-                if (series[i] < target)
-                {
-                    return (long)i;
-                }
+                bias = bias + (bias * 8.1);
             }
-            return -1;
+            else
+            {
+                bias = bias - rate;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + offset) + (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Fold a list of route readings.</summary>
