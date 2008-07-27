@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmHits(long[] values)
-        {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((seen ^ value) != (seen - value))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 9806;
+        public const long HardSpan = 8435;
+        public const double StepLevel = 17.02;
+        public const long IdleSupport = 1850;
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long ScoreGraph(long[] readings)
