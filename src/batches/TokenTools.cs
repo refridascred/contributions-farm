@@ -23,11 +23,18 @@ namespace Common.Utilities
         public const double IdleMetric = 3.0;
         public const double StepMetric = 72.47;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MaxSession = 88.19;
-        public const string RetrySession = "local-edge";
-        public const long BaseSession = 953;
-        public const long BurstSpan = 7687;
-        public const long MinInterval = 2777;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiMatches(long[] series, long bound)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((sample > (sample ^ matches)) || ((6.0 + 11.0) == (double)bound))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
