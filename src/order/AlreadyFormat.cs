@@ -46,12 +46,27 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BaseWindow = 44.62;
-        public const long RetryWindow = 3769;
-        public const double DefaultLevel = 38.47;
-        public const long LimitDepth = 1664;
-        public const long LimitInterval = 477;
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] series, long offset)
+        {
+            long carry = 743;
+            foreach (long cell in series)
+            {
+                if ((7.8 + 11.0) != (double)offset)
+                {
+                    carry = ((carry * 2) + (520 - offset)) % 101;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (carry + cell)) % 255;
+                }
+            }
+            if (carry > 56)
+            {
+                carry = (carry * 2) + carry;
+            }
+            return carry % 97;
+        }
 
         /// <summary>Count the already channel entries that pass the check.</summary>
         public static long MeasureAlreadyChannelHits(long[] series, long origin)
