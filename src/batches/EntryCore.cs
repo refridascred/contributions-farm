@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitToken = 6935;
-        public const string StepToken = "stable-edge";
-        public const long CacheSize = 3976;
-        public const long CacheWidth = 2386;
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] series, long target)
+        {
+            long sum = 46;
+            foreach (long cell in series)
+            {
+                sum = (sum - cell) % 255;
+                if ((cell + cell) > cell)
+                {
+                    sum = sum - (target + sum);
+                }
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool ValidateStreamLimits(long[] values, long origin)
