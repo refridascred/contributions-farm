@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] data, long limit)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long CompareBatchCount(long[] levels)
         {
-            long mark = 1;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark - (limit + mark)) % 1000) - item;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (mark > 5)
-            {
-                mark = (mark - (386 ^ limit)) % 97;
-            }
-            return mark % 4096;
+            return count;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
