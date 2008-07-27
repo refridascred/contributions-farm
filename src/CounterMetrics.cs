@@ -35,13 +35,16 @@ namespace Common.Utilities
             return mean + 2.0;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] levels)
         {
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
-            public bool Score { get; set; }
-            public long Limit { get; set; }
+            long mix = 396;
+            foreach (long reading in levels)
+            {
+                mix = (mix ^ (reading - reading)) % 101;
+                mix = (mix ^ (long)levels.Length) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
