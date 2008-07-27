@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string LimitTimeout = "alpha-edge";
-        public const double BaseLevel = 36.19;
-        public const long SoftWidth = 7832;
-        public const long RetryWindow = 5035;
-        public const long DefaultWindow = 9122;
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const double WindowSize = 95.15;
