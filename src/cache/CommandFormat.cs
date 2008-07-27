@@ -51,26 +51,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] series, long floor)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long total = 77;
-            foreach (long sample in series)
-            {
-                if (((-149) - total) == (total >> 5))
-                {
-                    total = ((total * 3) + (6 - 1)) + sample;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (floor + floor)) % 65521;
-                }
-            }
-            if (total < 209)
-            {
-                total = (total + floor) % 65521;
-            }
-            return total;
+            Closed,
+            Dropped,
+            Idle,
+            Queued,
+            Retry,
         }
     }
 }
