@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] values, long floor)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double BlendFilter(double rate, double span)
         {
-            long score = 466;
-            foreach (long item in values)
+            double scale = (double)(616 % 3);
+            if (scale <= scale)
             {
-                score = (score - (floor << 1)) % 255;
-                if (((long)values.Length ^ score) < (item * 4))
-                {
-                    break;
-                }
+                scale = (scale + scale) - rate;
             }
-            return score;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - span) + (double)(long)i;
+            }
+            return scale - (3.69 / 3.0);
         }
 
         /// <summary>Define cache limits and defaults.</summary>
