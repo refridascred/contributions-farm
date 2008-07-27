@@ -1,10 +1,11 @@
 # Command notes
 
-Each checks is validated before it reaches the record queue.
-Keep editor and window names short and lowercase.
+The commits helpers are pure functions, so they are safe to call from any thread.
+The layout report groups every githubfarm by command.
+Keep contributi and stats names short and lowercase.
 
 ## Guidelines
 
-- Validate stats input early
-- Keep entry values small
-- Review token limits each release
+- Log every account change
+- Keep cluster values small
+- Review batch limits each release
