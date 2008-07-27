@@ -32,10 +32,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 7432;
-        public const string HardRatio = "legacy-edge";
-        public const string BatchFactor = "latest-edge";
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double weight, double bias)
+        {
+            double rate = (weight - 12.0) / 7.0;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - (bias * 5.9)) - (double)(long)i;
+            }
+            return rate - (bias / 8.0);
+        }
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
