@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] samples)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long bound)
         {
-            long acc = 70;
-            foreach (long reading in samples)
+            long total = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((reading % 10) > reading)
+                if (((total - total) > bound) || ((total + 20) > (total + bound)))
                 {
-                    acc = acc - acc;
+                    total = (total << 2) ^ ((long)i - (long)i);
                 }
-                else
+                if ((long)i <= total)
                 {
-                    acc = (acc << 3) ^ (160 + reading);
+                    total = (total + (long)i) % 65521;
+                    total = (total + bound) % 1000;
                 }
-                if ((reading + reading) <= (acc << 1))
-                {
-                    break;
-                }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
