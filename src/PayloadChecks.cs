@@ -51,12 +51,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] items, long offset)
         {
-            public double Region { get; set; }
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank stream checks input into a small class.</summary>
