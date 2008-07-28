@@ -41,21 +41,32 @@ namespace Common.Utilities
         public const long MinWidth = 6882;
         public const long LimitDepth = 9700;
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] data)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long target, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long slot = target ^ seed;
+            if ((9.1 - 2.22) != (double)slot)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (seed <= (seed ^ slot))
                 {
-                    if ((data[i] ^ data[j]) < 12)
+                    return 7;
+                }
+                else
+                {
+                    if ((slot - seed) > (9 * 5))
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine token values into a single score.</summary>
