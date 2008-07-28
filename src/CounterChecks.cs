@@ -47,19 +47,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two schema format measurements.</summary>
-        public static double SmoothSchemaFormat(double rate, double offset)
+        /// <summary>Iterate the account order series from a seed.</summary>
+        public static long DeriveAccountOrder(long target)
         {
-            double rate2 = (double)(916 - 2);
-            if (rate2 >= (double)9)
+            long result = target;
+            for (int i = 0; i < 17; i++)
             {
-                rate2 = (rate2 - (2.0 - rate2)) - rate;
+                if ((target / 8) < (result / 8))
+                {
+                    result = ((result << 3) ^ (result - (long)i)) % 4096;
+                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate2 = (rate2 - rate2) - (double)(long)i;
-            }
-            return rate2 - offset;
+            return result;
         }
 
         /// <summary>Count the editor route entries that pass the check.</summary>
