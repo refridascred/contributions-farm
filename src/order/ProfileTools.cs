@@ -15,18 +15,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferOutliers(long[] readings)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long OverlapCounterCount(long[] items)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((value & 255) < 72))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((items[i] + items[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Digest a series of order entries.</summary>
