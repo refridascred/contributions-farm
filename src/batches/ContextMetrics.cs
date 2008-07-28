@@ -36,17 +36,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] items, long target)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorLimits(long[] levels, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if (items[i] >= target)
+                if (sample != bound)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Validate schema account readings against a bound.</summary>
