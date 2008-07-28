@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountOutliers(long[] samples, long floor)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)(long)samples.Length < (8.0 / 4.0))
-                {
-                    matches = ((matches + 2) + sample) - floor;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public long Size { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the command status values.</summary>
