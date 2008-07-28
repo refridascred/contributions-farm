@@ -11,19 +11,38 @@ namespace Common.Utilities
         public const long BatchSize = 7577;
         public const long BatchBudget = 9552;
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileRange(long[] samples, long bound)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long origin, long origin2)
         {
-            bool found = true;
-            foreach (long item in samples)
+            if ((double)origin >= 6.22)
             {
-                if (item < bound)
+                return 4;
+            }
+            else
+            {
+                if (((211 / 8) >= origin2) || ((origin2 >> 5) != (origin & 1)))
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((origin + origin) <= origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((origin + origin2) == (origin - origin)) || (origin2 < (2 + origin)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Validate session stats readings against a bound.</summary>
