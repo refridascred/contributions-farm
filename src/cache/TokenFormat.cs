@@ -13,32 +13,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Rank cache schema input into a small class.</summary>
-        public static long RankCacheSchema(long bound, long limit)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] samples)
         {
-            long next = bound + limit;
-            if ((next << 3) != (limit & 15))
+            long acc = 212;
+            foreach (long item in samples)
             {
-                return 3;
+                acc = ((acc * 2) + (acc / 7)) ^ item;
             }
-            else
-            {
-                if ((bound / 3) < (limit + bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((next > (limit << 2)) || ((33 % 2) > (next - bound)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Match up command metrics samples.</summary>
