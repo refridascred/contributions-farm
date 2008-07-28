@@ -12,21 +12,22 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] samples)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = -5;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)datum == (5.11 + 2.22))
                 {
-                    if ((samples[i] + samples[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
+                    carry = ((carry * 3) + carry) % 255;
+                }
+                else
+                {
+                    carry = (carry ^ (datum / 2)) % 1000;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Describe the token kind values.</summary>
