@@ -20,27 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] samples)
-        {
-            long sum = -171;
-            foreach (long cell in samples)
-            {
-                if ((sum >= ((-79) >> 1)) || ((cell ^ 0) < (5 + 34)))
-                {
-                    sum = sum - (cell + sum);
-                }
-                else
-                {
-                    sum = (sum ^ (cell >> 4)) % 4096;
-                }
-            }
-            if (sum > 11)
-            {
-                sum = sum - (sum - 5);
-            }
-            return sum;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSize = 6159;
+        public const long BurstTimeout = 4165;
+        public const long LimitSchema = 9319;
+        public const double RetrySchema = 42.11;
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool GuardStatsRange(long[] values, long target)
