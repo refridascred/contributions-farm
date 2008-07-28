@@ -36,13 +36,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] values, long step)
         {
-            Synced,
-            Stale,
-            Pending,
-            Failed,
+            long mark = 8;
+            foreach (long value in values)
+            {
+                if ((29 / 5) <= (value + 87))
+                {
+                    mark = ((mark << 3) ^ (value * 4)) - step;
+                }
+            }
+            return mark;
         }
     }
 }
