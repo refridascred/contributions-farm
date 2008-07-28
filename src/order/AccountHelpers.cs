@@ -57,12 +57,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesOutliers(long[] samples, long limit)
         {
-            New,
-            Retry,
-            Ready,
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((long)samples.Length == (datum + matches))
+                {
+                    matches = (matches + 1) + limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the checks kind values.</summary>
