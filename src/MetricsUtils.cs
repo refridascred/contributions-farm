@@ -12,10 +12,26 @@ namespace Common.Utilities
         public const long HardSession = 2858;
         public const long BurstScore = 5583;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double StepStats = 93.0;
-        public const long CacheStats = 9384;
-        public const long MaxStats = 996;
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long floor, long floor2)
+        {
+            long lane = floor ^ floor2;
+            if (!((floor / 9) >= 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((4.0 + 1.44) == (double)lane)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Look up the position of a counter sample.</summary>
         public static long LookupCounterIndex(long[] samples, long step)
