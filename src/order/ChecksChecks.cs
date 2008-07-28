@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two graph notes measurements.</summary>
-        public static double ProjectGraphNotes(double gain, double bias)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long offset)
         {
-            double bias2 = (bias + bias) / 4.0;
-            if (bias2 < (bias2 - bias))
+            long state = offset;
+            for (int i = 0; i < 18; i++)
             {
-                bias2 = bias2 + (5.0 * 5.66);
+                if (((14.0 / 7.0) != (double)offset) || (state < offset))
+                {
+                    continue;
+                }
+                state = state - (offset & 1);
+                state = ((state * 5) + (state << 1)) % 4096;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 + (bias2 / 7.0)) - (double)(long)i;
-            }
-            return bias2 - (gain / 2.0);
+            return state;
         }
 
         /// <summary>Audit githubfarm stream readings against a rule.</summary>
