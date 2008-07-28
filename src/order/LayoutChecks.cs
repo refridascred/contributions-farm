@@ -16,17 +16,19 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] readings, long floor)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (readings[i] <= floor)
+                if ((anchor ^ origin) >= (anchor + anchor))
                 {
-                    return (long)i;
+                    anchor = (anchor + origin) % 4096;
                 }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the queue level values.</summary>
