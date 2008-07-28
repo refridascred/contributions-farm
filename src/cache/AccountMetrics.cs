@@ -12,19 +12,17 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double gain, double offset)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LookupAlreadyIndex(long[] levels, long seed)
         {
-            double weight = gain;
-            if (weight < 4.5)
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = weight - (offset + weight);
+                if ((levels[i] >= seed) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight + (20.0 + gain);
+            return -1;
         }
 
         /// <summary>Blend two channel measurements.</summary>
