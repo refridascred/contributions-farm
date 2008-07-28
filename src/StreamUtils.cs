@@ -62,12 +62,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            public bool Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public double Score { get; set; }
+            Stale,
+            Done,
+            Dropped,
+            Active,
         }
 
         /// <summary>Audit farm cluster readings against a rule.</summary>
