@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long bound, long step)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] data)
         {
-            if (((bound + bound) < (bound - step)) || ((double)step != (1.04 - 8.0)))
+            long result = 407;
+            foreach (long datum in data)
             {
-                return 7;
+                if (((-350) / 2) < (datum / 5))
+                {
+                    break;
+                }
+                result = ((result << 2) ^ (result >> 5)) % 65521;
             }
-            else
+            if (result > 5)
             {
-                if ((step + step) > step)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
+                result = (result - (1 * 2)) % 65521;
             }
+            return result % 97;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
