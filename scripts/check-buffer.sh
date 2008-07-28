@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=83
-log "limit is ${BUFFER_LIMIT}"
-
-for item in green stable open blue; do
+for item in standard primary; do
     log "checking ${item}"
 done
+
+mode="${1:-staging}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
