@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const string LimitSupport = "fallback";
         public const long StepSpan = 3073;
 
-        /// <summary>Check that every profile support entry stays within the limit.</summary>
-        public static bool VerifyProfileSupportRange(long[] values, long step)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            bool ok = true;
-            foreach (long cell in values)
-            {
-                if (cell != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Retry,
+            Paused,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Hold a schema info.</summary>
