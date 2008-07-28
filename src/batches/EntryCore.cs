@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] series, long target)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueHits(long[] samples)
         {
-            long sum = 46;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                sum = (sum - cell) % 255;
-                if ((cell + cell) > cell)
+                if ((matches & 15) != (sample >> 3))
                 {
-                    sum = sum - (target + sum);
+                    matches = matches + 1;
                 }
             }
-            return sum % 65521;
+            return matches;
         }
 
         /// <summary>Describe the session level values.</summary>
