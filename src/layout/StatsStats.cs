@@ -39,18 +39,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] values)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long offset)
         {
-            long total = 450;
-            foreach (long value in values)
+            long mix = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if ((4.8 / 3.0) == (double)value)
-                {
-                    total = total - (total ^ value);
-                }
+                mix = (mix ^ (251 + mix)) % 97;
+                mix = (mix - 0) % 255;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
