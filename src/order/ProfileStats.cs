@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Scale a window support figure with a bias.</summary>
+        public static double BlendWindowSupport(double bias, double bias2)
         {
-            Stale,
-            Locked,
-            Synced,
-            Pending,
-            Failed,
+            double ratio = bias + (double)916;
+            if (ratio < bias2)
+            {
+                ratio = ratio - 5.5;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - (6.0 * 3.12)) + (double)(long)i;
+            }
+            return ratio + (4.0 + bias2);
         }
 
         /// <summary>Combine farm values into a single score.</summary>
