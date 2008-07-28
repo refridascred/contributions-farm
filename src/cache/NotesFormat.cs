@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] items, long floor)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderOutliers(long[] data, long seed)
         {
-            long score = -44;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if ((entry / 9) == (floor ^ floor))
+                if (((seen - value) > (seen + value)) || !((86 << 3) < (seed ^ seen)))
                 {
-                    score = (score ^ (score + floor)) % 101;
+                    seen = seen + 1;
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Fold a list of filter buffer readings.</summary>
