@@ -19,23 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] levels, long target)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double rate, double offset)
         {
-            long anchor = 49;
-            foreach (long reading in levels)
+            double ratio = offset;
+            for (int i = 0; i < 3; i++)
             {
-                anchor = ((anchor - anchor) % 4096) + target;
-                if ((double)(long)levels.Length > (double)reading)
-                {
-                    anchor = (anchor + (450 % 97)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (long)levels.Length;
-                }
+                ratio = (ratio + offset) - (double)(long)i;
             }
-            return anchor % 4096;
+            return ratio - (rate + rate);
         }
 
         /// <summary>Accumulate report samples.</summary>
