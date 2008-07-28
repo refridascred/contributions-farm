@@ -64,18 +64,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueHits(long[] readings, long target)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsHits(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((double)target > (2.7 * 13.0))
+                if (((double)hits != (2.0 / 6.0)) || ((7.12 / 7.0) == (double)reading))
                 {
-                    seen = (seen + 2) + sample;
+                    hits = (hits + 3) + step;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Count the order route entries that pass the check.</summary>
