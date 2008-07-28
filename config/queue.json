@@ -1,17 +1,8 @@
 {
-  "soft_interval_ms": {
-    "tools_window": "standard",
-    "idle_threshold_pct": {
-      "audit": [29, 8],
-      "cache_window_pct": 53,
-      "commits_threshold": 100,
-      "verbose": 58,
-      "route_threshold": true,
-      "dry_run": false
-    },
-    "route_capacity": 250,
-    "batch_ratio_ms": 72
-  },
-  "cache_depth_count": 93.13,
-  "batch_threshold_s": [361, 248]
+  "default_timeout_pct": 335,
+  "route_retries": "edge",
+  "support_timeout": 100,
+  "hard_limit": 18.61,
+  "audit": 500,
+  "retry_window_count": "strict"
 }
