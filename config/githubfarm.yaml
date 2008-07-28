@@ -1,15 +1,12 @@
 # githubfarm settings
-idle_capacity_ms: 37.71
-default_threshold_pct: 1731
-default_window_s: 53.68
-warm_depth_pct: 6714
-profile_ratio:
-  checks_delay: green
-  dry_run:
-    default_window_pct: green
-    idle_interval_pct: 500
-    persist: 8253
-    queue_ttl: 47.65
-    readonly: 38
-  strict: 17.8
-warm_ratio_pct: standard
+warm_depth: edge
+enabled: primary
+soft_timeout:
+  - 156
+  - 462
+batch_interval: 66.04
+burst_delay_ms: 6791
+window_timeout:
+  verbose: 1.96
+  contributi_interval: false
+  default_size_pct: 30
