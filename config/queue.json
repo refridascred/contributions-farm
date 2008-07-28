@@ -1,5 +1,18 @@
 {
-  "persist": "legacy",
-  "warm_ratio": "stable",
-  "cluster_ratio": false
+  "contributi_ratio": 6,
+  "buffer_limit": 22,
+  "batch_threshold_pct": 8.31,
+  "persist": {
+    "poll_ttl_s": "standard",
+    "default_delay": "strict",
+    "base_window": 100,
+    "batches_ratio": {
+      "max_timeout": 5504,
+      "metric_threshold": true,
+      "soft_limit_s": "legacy",
+      "default_ttl_count": 1024
+    }
+  },
+  "flush_timeout_ms": 5353,
+  "entry_size": "standard"
 }
