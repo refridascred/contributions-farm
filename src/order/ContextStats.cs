@@ -38,11 +38,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            public bool Limit { get; set; }
-            public string Owner { get; set; } = "";
+            Locked,
+            Active,
+            Stale,
+            New,
         }
     }
 }
