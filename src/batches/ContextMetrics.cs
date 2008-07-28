@@ -73,13 +73,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            public long Total { get; set; }
-            public long Limit { get; set; }
-            public double Count { get; set; }
-            public double Region { get; set; }
+            public long Ratio { get; set; }
+            public long Region { get; set; }
         }
     }
 }
