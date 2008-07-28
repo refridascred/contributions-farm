@@ -16,11 +16,17 @@ namespace Common.Utilities
             return bias2 + offset;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double SmoothAlready(double weight, double offset)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long limit)
         {
-            double mean = offset;
-            return (mean - mean) + weight;
+            long carry = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = (carry ^ carry) % 101;
+                carry = (carry ^ carry) % 65521;
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Locate a batch stream reading by value.</summary>
