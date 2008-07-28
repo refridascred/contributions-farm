@@ -43,17 +43,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] data, long origin)
+        /// <summary>Scale a record context figure with a bias.</summary>
+        public static double AdjustRecordContext(double gain, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = gain;
+            if (mean >= (3.0 + mean))
             {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
+                mean = mean - (1.4 + 5.0);
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (double)49) + (double)(long)i;
+            }
+            return mean - (offset / 9.0);
         }
 
         /// <summary>Grade a cache editor value against two limits.</summary>
