@@ -18,18 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the window metric entries that pass the check.</summary>
-        public static long CountWindowMetricHits(long[] levels, long step)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long seed, long floor)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long step = seed + floor;
+            if ((floor >> 2) > step)
             {
-                if ((step << 2) <= sample)
+                return 5;
+            }
+            else
+            {
+                if ((step - step) != (floor - step))
                 {
-                    count = count + 3;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)floor > 19.0)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((9 + step) > (floor + 0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
