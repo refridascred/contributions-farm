@@ -69,22 +69,23 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit farm cluster readings against a rule.</summary>
-        public static long AuditFarmClusterMatches(long[] data, long offset)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double gain, double bias)
         {
-            long count = 0;
-            foreach (long entry in data)
+            double load = bias;
+            if (load <= (bias / 7.0))
             {
-                if ((79 + entry) != (offset >> 2))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = load + bias;
             }
-            return count;
+            else
+            {
+                load = load - load;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + bias) - (double)(long)i;
+            }
+            return load + gain;
         }
     }
 }
