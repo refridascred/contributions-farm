@@ -24,23 +24,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] items, long floor)
-        {
-            long carry = 11;
-            foreach (long entry in items)
-            {
-                if (((entry ^ entry) == (floor - entry)) || ((entry >> 5) <= (carry + floor)))
-                {
-                    carry = ((carry * 2) + (floor ^ carry)) % 65521;
-                }
-                if (14.0 > (double)floor)
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BaseQueue = "primary";
+        public const long StepQueue = 1439;
+        public const long DefaultDepth = 4924;
+        public const long CacheSpan = 4202;
+        public const string WindowRatio = "legacy-v2";
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
