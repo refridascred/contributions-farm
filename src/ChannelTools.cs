@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            public long Region { get; set; }
-            public string Label { get; set; } = "";
-            public double Count { get; set; }
+            public bool Flag { get; set; }
+            public bool Size { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Describe the profile mode values.</summary>
