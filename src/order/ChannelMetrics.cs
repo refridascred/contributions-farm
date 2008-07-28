@@ -58,12 +58,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
