@@ -30,18 +30,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] samples, long target)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long floor, long step)
         {
-            long result = 926;
-            foreach (long datum in samples)
+            if (((step << 1) <= (floor & 127)) || ((step * 2) < (floor - step)))
             {
-                if (((result - result) != (long)samples.Length) || ((result % 64) < (result % 97)))
+                return 1;
+            }
+            else
+            {
+                if ((floor << 3) == (16 - floor))
                 {
-                    result = (((result * 2) + 856) ^ datum) + target;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return result;
         }
 
         /// <summary>Hold a token snapshot.</summary>
