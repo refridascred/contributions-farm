@@ -13,17 +13,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] levels, long step)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksHits(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (levels[i] <= step)
+                if (matches <= (matches + 5))
                 {
-                    return (long)i;
+                    matches = (matches + 3) ^ item;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
