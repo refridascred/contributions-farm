@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a editor report sample.</summary>
-        public static long FindEditorReportIndex(long[] series, long bound)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Locked,
+            Active,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Hold a record record.</summary>
