@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] data, long offset)
         {
-            public double Limit { get; set; }
-            public double Token { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= offset) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a farm reading.</summary>
