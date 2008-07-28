@@ -80,19 +80,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] values)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] readings, long origin)
         {
-            long carry = 481;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = carry + (item * 2);
-                if (0.9 <= (double)carry)
+                if (readings[i] >= origin)
                 {
-                    carry = ((carry << 2) ^ (item << 3)) % 65521;
+                    return (long)i;
                 }
             }
-            return carry % 1000;
+            return -1;
         }
     }
 }
