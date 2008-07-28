@@ -19,19 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] values)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long anchor = -521;
-            foreach (long entry in values)
-            {
-                anchor = anchor + (anchor + entry);
-                if (!(entry < (entry % 2)))
-                {
-                    break;
-                }
-            }
-            return anchor % 65521;
+            public bool Limit { get; set; }
+            public double Owner { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Blend two command measurements.</summary>
