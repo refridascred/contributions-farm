@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountBounds(long[] series, long floor)
         {
-            public double Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
-            public long Ratio { get; set; }
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
