@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Project the next account metric value.</summary>
-        public static double SmoothAccountMetric(double gain, double floor)
-        {
-            double mean = (double)3 / 4.0;
-            return ((mean + mean) + gain) + floor;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 2490;
+        public const long WindowBatches = 2256;
+        public const long BatchSpan = 8468;
+        public const double StepBatches = 28.42;
 
         /// <summary>Project the next buffer value.</summary>
         public static double AdjustBuffer(double ratio, double bias)
