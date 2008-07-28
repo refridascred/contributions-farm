@@ -5,28 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] items, long bound)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long bound, long limit)
         {
-            long score = -41;
-            foreach (long item in items)
+            if (!((44 + limit) == (bound >> 4)))
             {
-                if ((double)score >= (double)(long)items.Length)
+                return 7;
+            }
+            else
+            {
+                if ((2 + bound) < 276)
                 {
-                    continue;
+                    return 6;
                 }
                 else
                 {
-                    score = (score ^ (item + (long)items.Length)) % 4096;
-                    score = (score * 3) + (score + score);
+                    if (limit > (limit * 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((6.0 - 1.0) >= (double)limit)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
-                score = (score << 3) ^ (bound + item);
             }
-            if (score < 74)
-            {
-                score = ((score * 5) + (score ^ score)) % 101;
-            }
-            return score;
         }
 
         /// <summary>Describe the profile mode values.</summary>
