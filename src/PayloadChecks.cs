@@ -57,12 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double gain, double span)
         {
-            public double Total { get; set; }
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
+            double rate = span + (double)(-144);
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - (double)2) - (double)(long)i;
+            }
+            return rate - (rate - gain);
         }
 
         /// <summary>Define notes limits and defaults.</summary>
