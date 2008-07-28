@@ -23,11 +23,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long seed, long floor)
         {
-            public bool Weight { get; set; }
-            public bool Size { get; set; }
+            if (7.8 <= (double)floor)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((seed % 7) >= floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Audit format readings against a rule.</summary>
