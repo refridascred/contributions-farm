@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long BatchSize = 7577;
         public const long BatchBudget = 9552;
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] values)
+        /// <summary>Validate queue order readings against a bound.</summary>
+        public static bool CheckQueueOrderRange(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long value in series)
             {
-                if ((tally - tally) <= (tally + tally))
+                if (value != step)
                 {
-                    tally = (tally + 1) + item;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Validate session stats readings against a bound.</summary>
