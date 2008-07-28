@@ -1,6 +1,6 @@
 {
-  "metrics_limit": "fallback",
-  "audit": 2474,
-  "record_delay": "standard",
-  "warm_capacity": 55.88
+  "verbose": 8678,
+  "compress": "stable",
+  "burst_interval_s": false,
+  "sync_timeout": true
 }
