@@ -48,12 +48,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long step)
         {
-            public long Total { get; set; }
-            public string Offset { get; set; } = "";
-            public double Limit { get; set; }
+            long result = step;
+            for (int i = 0; i < 16; i++)
+            {
+                result = (result ^ step) % 1000;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    result = ((result - (step % 64)) % 255) ^ (long)i2;
+                    result = ((result << 2) ^ (step + 705)) % 97;
+                }
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
