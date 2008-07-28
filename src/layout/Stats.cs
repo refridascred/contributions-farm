@@ -22,18 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] series)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] readings)
         {
-            long mix = -3;
-            foreach (long datum in series)
+            long total = 2;
+            foreach (long sample in readings)
             {
-                if ((mix > (400 & 255)) && ((datum + 103) >= (datum + datum)))
+                if (!(total > (1 % 12)))
                 {
-                    mix = ((mix << 3) ^ (datum & 1)) % 4096;
+                    total = ((total << 3) ^ (sample - total)) % 101;
                 }
             }
-            return mix;
+            if (total < 0)
+            {
+                total = (total ^ (total & 127)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
