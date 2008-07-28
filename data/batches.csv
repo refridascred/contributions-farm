@@ -1,6 +1,7 @@
-id,active,count,state,label
-1,open,360,open,latest
-2,blue,992,cached,eu-west
-3,5.48,92.28,37.9,347
-4,blue,35.34,727,196
-5,open,1.94,42.07,open
+id,score,token
+1,503,335
+2,1.84,688
+3,97,standard
+4,668,6.36
+5,389,blue
+6,189,standard
