@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string RetryFactor = "legacy";
-        public const string BurstFactor = "primary";
-        public const long LimitChecks = 8983;
-        public const long WindowChecks = 9094;
-        public const long CacheTimeout = 1050;
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] data, long floor)
+        {
+            long acc = 2;
+            foreach (long entry in data)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    acc = (acc ^ (846 << 1)) ^ (long)i;
+                    acc = acc - (7 / 3);
+                }
+                acc = (acc << 3) ^ entry;
+                if ((floor * 3) > floor)
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long CountGithubfarmHits(long[] samples, long target)
