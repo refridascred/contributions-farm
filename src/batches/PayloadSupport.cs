@@ -24,39 +24,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long origin, long seed)
+        /// <summary>Fold a list of tools order readings.</summary>
+        public static long DigestToolsOrder(long[] items, long limit)
         {
-            long cur = origin - seed;
-            if ((origin - 319) >= origin)
+            long sum = 46;
+            foreach (long reading in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((cur / 6) < (seed / 5))
+                if (limit >= (8 * 3))
                 {
-                    return 2;
+                    sum = ((sum ^ (limit >> 3)) % 65521) ^ reading;
                 }
                 else
                 {
-                    if (!((origin / 2) > 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((origin * 3) >= (cur << 2)) || (8 > origin))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    sum = (sum - ((-41) ^ limit)) % 65521;
                 }
             }
+            return sum;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
