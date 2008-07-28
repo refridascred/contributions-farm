@@ -1,4 +1,21 @@
 # support settings
-retry_delay_ms: staging
-hard_interval_s: 1399
-window_window: 8.57
+min_capacity:
+  dry_run: 100
+  persist:
+    tools_depth: blue
+    report_threshold:
+      - 239
+      - 245
+      - 42
+      - 347
+    enabled: 27
+    metric_capacity: true
+    soft_ratio_s: 68.07
+  account_depth: 60.58
+  soft_capacity:
+    - eu-west
+    - legacy
+  min_interval_ms: 66
+  audit: eu-west
+max_ttl: 70.45
+hard_ttl_count: 3.55
