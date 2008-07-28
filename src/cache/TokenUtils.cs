@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MaxCount = 40.84;
-        public const long WindowFarm = 7273;
-        public const long BatchFarm = 6951;
-        public const long BaseBudget = 8650;
-        public const string MaxFarm = "stable";
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxInterval = 1137;
+        public const long HardSize = 9812;
+        public const long BatchLayout = 4836;
+        public const long MaxLayout = 9795;
+        public const long MinTimeout = 5025;
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long LocateCacheIndex(long[] items, long limit)
