@@ -48,18 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] values)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksMatches(long[] samples, long step)
         {
             long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long value in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (matches > (step - 17))
                 {
-                    if ((values[i] - values[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 1) ^ value;
                 }
             }
             return matches;
