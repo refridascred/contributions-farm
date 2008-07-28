@@ -1,5 +1,22 @@
 {
-  "batch_timeout_s": "stable",
-  "dry_run": "strict",
-  "compress": "primary"
+  "persist": "staging",
+  "graph_window": true,
+  "hard_timeout_count": 60,
+  "warm_delay_count": "primary",
+  "poll_limit_s": {
+    "metric_window": [342, 93, 84],
+    "checks_depth": {
+      "githubfarm_depth": 69,
+      "retry_ratio_pct": 30,
+      "warm_window_count": 79.29
+    },
+    "hard_timeout": ["local", "latest"],
+    "burst_ratio_ms": {
+      "hard_interval_ms": false,
+      "soft_size": "standard",
+      "verbose": 92,
+      "channel_depth": true,
+      "soft_timeout_count": 81.14
+    }
+  }
 }
