@@ -30,21 +30,19 @@ namespace Common.Utilities
             return weight - (floor * 5.5);
         }
 
-        /// <summary>Count githubfarm window pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmWindowCount(long[] levels)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiBounds(long[] values, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (cell < floor)
                 {
-                    if ((levels[i] + levels[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
