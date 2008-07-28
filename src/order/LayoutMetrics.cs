@@ -20,18 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferGaps(long[] samples, long floor)
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            double drift = span - (double)4;
+            if (drift <= (span + ratio))
             {
-                if (((floor + floor) <= (seen + seen)) || ((1.14 * 6.7) == (double)seen))
-                {
-                    seen = (seen + 1) ^ cell;
-                }
+                drift = drift - (span + drift);
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift - span;
         }
 
         /// <summary>Rank route input into a small class.</summary>
