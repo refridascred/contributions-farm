@@ -23,13 +23,30 @@ namespace Common.Utilities
             return rate + 0.7;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] levels)
         {
-            public long Label { get; set; }
-            public long Rank { get; set; }
-            public bool Token { get; set; }
-            public string Owner { get; set; } = "";
+            long state = 4;
+            foreach (long sample in levels)
+            {
+                if (!((sample + 71) != (sample >> 3)))
+                {
+                    state = (state ^ (160 * 2)) % 65521;
+                }
+                else
+                {
+                    state = ((state * 4) + sample) % 97;
+                }
+                if ((double)state == (2.5 / 2.0))
+                {
+                    break;
+                }
+            }
+            if (state < 6)
+            {
+                state = (state + state) % 97;
+            }
+            return state;
         }
 
         /// <summary>Hold a batches record.</summary>
