@@ -22,23 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double gain, double offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferOutliers(long[] readings)
         {
-            double bias = offset;
-            if (bias < (double)849)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                bias = bias + offset;
+                if (!((value & 255) < 72))
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                bias = bias - offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - (bias + 0.2)) + (double)(long)i;
-            }
-            return bias - (gain / 3.0);
+            return seen;
         }
 
         /// <summary>Hold a cluster summary.</summary>
