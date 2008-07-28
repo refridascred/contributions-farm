@@ -39,14 +39,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] items, long origin)
         {
-            Ready,
-            Retry,
-            Synced,
-            Failed,
-            Pending,
+            long mix = 22;
+            foreach (long item in items)
+            {
+                mix = ((((mix << 2) ^ (mix + 84)) % 65521) - item) - origin;
+            }
+            return mix;
         }
 
         /// <summary>Blend two channel cluster measurements.</summary>
