@@ -22,24 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long seed, long floor)
+        /// <summary>Blend two channel window measurements.</summary>
+        public static double ProjectChannelWindow(double scale, double span)
         {
-            if ((seed ^ floor) >= seed)
+            double load = (span / 6.0) - (span - span);
+            for (int i = 0; i < 4; i++)
             {
-                return 3;
+                load = ((load - load) + (double)(long)i) - scale;
             }
-            else
-            {
-                if (!(seed > (floor * 4)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return load + (6.7 + load);
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
