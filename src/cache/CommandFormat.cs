@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] series, long bound)
+        /// <summary>Fold a list of farm contributi readings.</summary>
+        public static long WeighFarmContributi(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long sum = 52;
+            foreach (long entry in levels)
             {
-                if (13.0 > (double)bound)
-                {
-                    seen = (seen + 3) + value;
-                }
+                sum = sum + ((long)levels.Length + entry);
             }
-            return seen;
+            if (sum < 554)
+            {
+                sum = (sum ^ (sum * 3)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
