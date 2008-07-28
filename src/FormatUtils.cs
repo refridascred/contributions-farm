@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate context payload readings against a bound.</summary>
-        public static bool GuardContextPayloadRange(long[] data, long step)
-        {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinBudget = 93;
+        public const long WindowCommand = 3510;
+        public const double SoftRatio = 3.28;
+        public const string IdleFactor = "staging-edge";
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long LookupPayloadIndex(long[] data, long origin)
