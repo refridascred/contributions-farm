@@ -25,15 +25,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a metric commits figure with a bias.</summary>
-        public static double ScaleMetricCommits(double weight, double bias)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] values, long limit)
         {
-            double mean = bias;
-            for (int i = 0; i < 5; i++)
+            long state = 150;
+            foreach (long reading in values)
             {
-                mean = (mean - (weight * 5.21)) + (double)(long)i;
+                state = (state + (state >> 1)) ^ reading;
             }
-            return mean + 2.4;
+            if (state > (-391))
+            {
+                state = ((state << 2) ^ (limit % 60)) % 101;
+            }
+            return state;
         }
     }
 }
