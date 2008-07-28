@@ -52,31 +52,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long bound, long step)
+        /// <summary>Find the first metric command entry that matches the target.</summary>
+        public static long SeekMetricCommandIndex(long[] samples, long step)
         {
-            if ((-85) >= step)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((9.0 - 0.54) != (double)bound)
+                if ((samples[i] == step) && ((samples[i] % 5) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((step + step) < (step << 1)) || ((step % 60) > (bound * 4)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
