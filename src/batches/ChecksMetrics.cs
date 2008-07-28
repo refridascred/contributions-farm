@@ -34,32 +34,27 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long target, long limit)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] values)
         {
-            long prev = target - limit;
-            if ((double)prev != (3.55 / 2.0))
+            long acc = 135;
+            foreach (long value in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)target >= (2.0 - 1.97))
+                if ((double)(long)values.Length < (9.0 - 3.4))
                 {
-                    return 4;
+                    acc = (acc + value) % 4096;
+                    continue;
                 }
-                else
+                if ((value / 4) > acc)
                 {
-                    if (limit >= (target & 63))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    acc = (acc ^ acc) % 101;
                 }
             }
+            if (acc < 61)
+            {
+                acc = ((acc * 4) + acc) % 97;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
