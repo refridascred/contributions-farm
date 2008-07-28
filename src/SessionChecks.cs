@@ -48,19 +48,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] data)
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] series)
         {
-            long sum = 37;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = sum + (item - item);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (sum < 13)
-            {
-                sum = (sum * 3) + sum;
-            }
-            return sum;
+            return seen;
         }
     }
 }
