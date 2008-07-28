@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinCounter = 7674;
-        public const string SoftLevel = "alpha-1";
-        public const long LimitSize = 3341;
-        public const long BurstCounter = 6914;
-        public const double IdleScore = 48.01;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterOutliers(long[] series)
+        {
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((datum >> 3) < 49)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up contributi samples.</summary>
         public static long CompareContributiCount(long[] readings)
