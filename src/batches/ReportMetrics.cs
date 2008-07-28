@@ -32,24 +32,21 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Combine checks counter values into a single score.</summary>
-        public static long WeighChecksCounter(long[] samples)
+        /// <summary>Match up batches samples.</summary>
+        public static long MatchBatchesCount(long[] data)
         {
-            long mix = 2;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (72 >= mix)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = (mix << 2) ^ (cell ^ mix);
-                    break;
-                }
-                mix = ((mix << 2) ^ (cell - cell)) % 101;
-                if ((4.56 - 8.4) > (0.5 + 0.5))
-                {
-                    break;
+                    if ((data[i] + data[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mix % 1000;
+            return hits;
         }
     }
 }
