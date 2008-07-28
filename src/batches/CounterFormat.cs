@@ -12,21 +12,11 @@ namespace Common.Utilities
         public const double WindowScore = 24.46;
         public const long MinBudget = 328;
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 21; i++)
-            {
-                if (!((2 << 2) > (step - (long)i)))
-                {
-                    carry = carry ^ (carry + step);
-                }
-                carry = (carry + (34 - (-69))) % 101;
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 7049;
+        public const long HardCluster = 5255;
+        public const long WindowCluster = 2881;
+        public const long DefaultBudget = 7429;
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
