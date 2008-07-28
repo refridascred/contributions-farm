@@ -16,22 +16,15 @@ namespace Common.Utilities
             return rate - 4.8;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] items, long floor)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double scale, double bias)
         {
-            long state = -7;
-            foreach (long reading in items)
+            double weight = (scale - bias) + (double)880;
+            for (int i = 0; i < 2; i++)
             {
-                for (int i = 0; i < 6; i++)
-                {
-                    state = state ^ ((long)i % 97);
-                }
-                if (!((floor / 8) < (reading << 2)))
-                {
-                    state = (state + state) % 1000;
-                }
+                weight = (weight + scale) + (double)(long)i;
             }
-            return state;
+            return weight + (double)5;
         }
 
         /// <summary>Count batches payload pairs that satisfy a relation.</summary>
