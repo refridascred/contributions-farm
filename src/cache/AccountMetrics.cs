@@ -23,19 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ScaleChannel(double gain, double floor)
+        /// <summary>Project the next checks profile value.</summary>
+        public static double ProjectChecksProfile(double weight, double span)
         {
-            double gain2 = floor;
-            if (gain2 >= 9.88)
+            double bias = weight;
+            if (bias <= (bias * 2.53))
             {
-                gain2 = (gain2 - (1.71 + floor)) - gain;
+                bias = bias + span;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                gain2 = gain2 - (double)35;
+                bias = (bias - (weight + span)) + (double)(long)i;
             }
-            return gain2 - 6.8;
+            return bias + bias;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
