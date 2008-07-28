@@ -1,8 +1,7 @@
 {
-  "hard_retries_ms": false,
-  "batch_size": 5119,
-  "retry_limit_ms": true,
-  "burst_ttl_count": "local",
-  "schema_window": 1024,
-  "flush_window": 4961
+  "min_window": "latest",
+  "hard_ratio": false,
+  "dry_run": "legacy",
+  "batches_ratio": "standard",
+  "batch_timeout": 57
 }
