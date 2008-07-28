@@ -2,9 +2,8 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     region TEXT,
-    label TEXT,
-    score REAL NOT NULL DEFAULT 0,
     owner TEXT NOT NULL,
+    label TEXT,
     weight REAL
 );
 
