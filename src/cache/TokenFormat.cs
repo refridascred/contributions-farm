@@ -20,19 +20,13 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long step)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long mark = step;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!((long)i < (step ^ mark)))
-                {
-                    mark = (mark * 3) + step;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            public bool Stamp { get; set; }
+            public bool Count { get; set; }
+            public long Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a cache snapshot.</summary>
