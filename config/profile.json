@@ -1,5 +1,6 @@
 {
-  "default_ttl_count": 17.37,
-  "soft_ttl_count": true,
-  "soft_ratio_s": 30
+  "idle_delay_pct": [36, 378, 474, 445],
+  "sync_capacity_pct": [290, 6],
+  "readonly": "blue",
+  "layout_ttl": "stable"
 }
