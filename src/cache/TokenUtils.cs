@@ -28,17 +28,14 @@ namespace Common.Utilities
         public const double StepInterval = 85.7;
         public const string BatchReport = "local";
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] samples, long bound)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == bound) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Pending,
+            Synced,
+            Dropped,
+            Paused,
         }
     }
 }
