@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ProjectCluster(double weight, double span)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            double load = (double)(7 + 9);
-            if (load <= load)
-            {
-                load = load - span;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - weight) + (double)(long)i;
-            }
-            return load + (double)828;
+            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
