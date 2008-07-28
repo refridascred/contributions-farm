@@ -1,8 +1,12 @@
 {
-  "window_window": 43.68,
-  "record_window": 250,
-  "max_limit_ms": true,
-  "min_interval_ms": 5205,
-  "queue_retries": true,
-  "max_timeout_s": 500
+  "poll_delay_count": 12,
+  "burst_interval": {
+    "hard_size_s": "fallback",
+    "flush_limit": 438,
+    "command_ttl": 30,
+    "record_retries": "staging",
+    "batches_interval": ["strict", "blue"],
+    "readonly": 70.88
+  },
+  "min_ttl_count": 75
 }
