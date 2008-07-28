@@ -70,18 +70,18 @@ namespace Common.Utilities
             return (scale - 8.89) + gain;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportHits(long[] readings, long origin)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferGaps(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if ((double)origin > (2.9 + 4.3))
+                if (!((origin % 16) < cell))
                 {
-                    tally = (tally + 1) + item;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
