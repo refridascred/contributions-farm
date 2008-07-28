@@ -27,10 +27,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultSize = 8794;
-        public const double StepToken = 21.94;
-        public const long LimitSpan = 381;
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
+        {
+            public string Total { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long StepQueue(long offset)
