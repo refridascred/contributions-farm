@@ -68,10 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double IdleSpan = 43.06;
-        public const string StepLevel = "legacy-edge";
-        public const long CacheStats = 2348;
-        public const long HardStats = 8908;
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double weight, double offset)
+        {
+            double rate = offset;
+            if (rate < rate)
+            {
+                rate = rate + (offset + weight);
+            }
+            else
+            {
+                rate = rate - rate;
+            }
+            return rate - (weight - weight);
+        }
     }
 }
