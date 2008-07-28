@@ -1,12 +1,13 @@
 {
-  "readonly": 250,
-  "poll_timeout_s": "legacy",
-  "stream_limit": 8336,
-  "base_capacity": 81,
-  "warm_delay_s": {
-    "notes_threshold": 60,
-    "channel_size": 1024,
-    "retry_limit_pct": "local"
+  "default_retries_count": "local",
+  "schema_interval": 89.04,
+  "batch_interval_ms": {
+    "retry_limit_s": 52,
+    "batch_threshold_pct": 97,
+    "sync_capacity_s": "strict",
+    "poll_threshold_ms": 4861,
+    "min_window": [457, 457],
+    "flush_timeout": "local"
   },
-  "warm_size": "edge"
+  "flush_retries_ms": 8545
 }
