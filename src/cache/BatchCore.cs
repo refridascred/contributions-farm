@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long seed)
         {
-            Active,
-            Draft,
-            Ready,
-            Pending,
-            Stale,
+            long anchor = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                if (12.0 > (double)seed)
+                {
+                    continue;
+                }
+                anchor = ((anchor << 2) ^ (seed * 2)) % 255;
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next command channel value from a seed.</summary>
