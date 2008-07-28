@@ -1,8 +1,5 @@
 {
-  "channel_timeout": 8179,
-  "cluster_timeout": 98.81,
-  "min_interval_ms": "fallback",
-  "dry_run": "cached",
-  "verbose": 84.21,
-  "warm_timeout_ms": "cached"
+  "counter_limit": ["cached", "stable"],
+  "default_timeout_s": ["cached", "green"],
+  "enabled": 500
 }
