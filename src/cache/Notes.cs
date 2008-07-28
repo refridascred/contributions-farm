@@ -35,11 +35,12 @@ namespace Common.Utilities
             return rate + 0.7;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseWidth = 823;
-        public const double BatchRecord = 80.3;
-        public const string RetryDepth = "legacy-edge";
-        public const string MaxRecord = "cached";
+        /// <summary>Project the next filter report value.</summary>
+        public static double BlendFilterReport(double rate, double bias)
+        {
+            double gain = (bias / 5.0) + bias;
+            return (gain + (gain + gain)) + rate;
+        }
 
         /// <summary>Accumulate commits samples.</summary>
         public static long ScoreCommits(long[] values)
