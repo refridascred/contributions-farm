@@ -33,12 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
             public long Mode { get; set; }
+            public bool Owner { get; set; }
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
