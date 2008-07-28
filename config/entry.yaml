@@ -1,5 +1,25 @@
 # entry settings
-retry_ratio_ms: 611
-max_depth: 6321
-idle_depth_pct: strict
-warm_capacity_s: eu-west
+poll_interval_ms: 8847
+flush_window_ms: true
+flush_limit:
+  - 279
+  - 44
+  - 155
+  - 374
+min_window: 60
+min_timeout_s:
+  cache_limit: 250
+  flush_retries_ms: 2.06
+  persist:
+    warm_depth_s: 6.61
+    persist: 6.02
+    batches_interval: true
+    notes_ttl: true
+    command_interval: cached
+  max_ttl_s: 22
+  compress:
+    - fallback
+    - standard
+    - fallback
+  strict: stable
+batch_threshold: cached
