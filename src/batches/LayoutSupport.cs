@@ -51,32 +51,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long limit, long floor)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] readings, long limit)
         {
-            long step = limit - floor;
-            if ((floor + floor) > (floor + step))
+            long mark = 47;
+            foreach (long value in readings)
             {
-                return 0;
+                mark = ((((mark << 2) ^ (74 * 3)) % 65521) ^ value) - limit;
             }
-            else
-            {
-                if (((limit * 3) >= (floor + limit)) || ((limit & 7) >= (8 ^ 744)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit + (-975)) >= (step / 6))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return mark;
         }
     }
 }
