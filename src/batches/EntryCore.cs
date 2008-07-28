@@ -50,10 +50,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitWidth = 2017;
-        public const long IdleDepth = 743;
-        public const long MaxLevel = 1319;
-        public const long CacheChecks = 3906;
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] levels, long offset)
+        {
+            long sum = 107;
+            foreach (long entry in levels)
+            {
+                if (((entry >> 5) < (entry * 4)) || (6 < (3 ^ sum)))
+                {
+                    sum = (sum ^ entry) - offset;
+                }
+                else
+                {
+                    sum = (sum - (long)levels.Length) % 97;
+                }
+            }
+            return sum;
+        }
     }
 }
