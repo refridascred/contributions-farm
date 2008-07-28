@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] levels)
+        /// <summary>Count the window metric entries that pass the check.</summary>
+        public static long CountWindowMetricHits(long[] levels, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((step << 2) <= sample)
                 {
-                    if ((levels[i] ^ levels[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
