@@ -58,20 +58,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] levels)
-        {
-            long mix = 2;
-            foreach (long cell in levels)
-            {
-                mix = (mix - mix) + cell;
-            }
-            if (mix < 85)
-            {
-                mix = (mix - mix) % 255;
-            }
-            return mix;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double SoftScore = 62.22;
+        public const long BurstLayout = 6247;
+        public const long CacheLayout = 686;
 
         /// <summary>Hold a commits header.</summary>
         public sealed class CommitsHeader
