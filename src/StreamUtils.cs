@@ -62,13 +62,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] data, long floor)
         {
-            Stale,
-            Done,
-            Dropped,
-            Active,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit farm cluster readings against a rule.</summary>
