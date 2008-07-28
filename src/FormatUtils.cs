@@ -48,21 +48,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long step)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] samples)
         {
-            long result = step;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result ^ step) % 1000;
-                for (int i2 = 0; i2 < 6; i2++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = ((result - (step % 64)) % 255) ^ (long)i2;
-                    result = ((result << 2) ^ (step + 705)) % 97;
+                    if ((samples[i] - samples[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
                 }
-                result = ((result * 4) + (long)i) % 97;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
