@@ -41,18 +41,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] series, long limit)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelLimits(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if ((limit & 31) <= (count + count))
+                if (reading <= offset)
                 {
-                    count = (count + 1) + reading;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Classify a order entry pair into a bucket.</summary>
