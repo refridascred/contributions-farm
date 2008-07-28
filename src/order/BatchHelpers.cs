@@ -31,12 +31,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Find the first record commits entry that matches the target.</summary>
+        public static long LookupRecordCommitsIndex(long[] samples, long limit)
         {
-            Paused,
-            Dropped,
-            Locked,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= limit) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
