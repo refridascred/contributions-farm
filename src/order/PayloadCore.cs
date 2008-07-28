@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
-        {
-            Queued,
-            Synced,
-            Draft,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 6808;
+        public const string LimitSupport = "fallback";
+        public const long StepSpan = 3073;
 
         /// <summary>Check that every profile support entry stays within the limit.</summary>
         public static bool VerifyProfileSupportRange(long[] values, long step)
