@@ -57,19 +57,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a stream graph figure with a bias.</summary>
-        public static double ScaleStreamGraph(double gain, double floor)
+        /// <summary>Classify a batches githubfarm pair into a bucket.</summary>
+        public static long BucketBatchesGithubfarm(long floor, long origin)
         {
-            double weight = (double)(267 % 5);
-            if (weight > weight)
+            long prev = floor ^ origin;
+            if ((double)floor == (6.63 - 0.39))
             {
-                weight = weight - floor;
+                return 4;
             }
             else
             {
-                weight = weight - 9.0;
+                if ((floor + 47) < (prev << 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!(floor < (prev - origin)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return weight - (floor - gain);
         }
     }
 }
