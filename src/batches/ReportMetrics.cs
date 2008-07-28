@@ -19,19 +19,38 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Validate account queue readings against a bound.</summary>
-        public static bool ValidateAccountQueueLimits(long[] data, long offset)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long BucketStream(long origin, long offset)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            if ((offset << 1) < (origin * 4))
             {
-                if (cell > offset)
+                return 7;
+            }
+            else
+            {
+                if ((origin & 15) >= 2)
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (((offset - offset) <= (-6)) && ((20.0 * 4.4) >= (double)offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)origin <= 3.22)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Match up batches samples.</summary>
