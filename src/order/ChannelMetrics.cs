@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a cache buffer pair into a bucket.</summary>
-        public static long SortCacheBuffer(long seed, long target)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] levels, long floor)
         {
-            long cur = seed ^ target;
-            if (((6.6 + 9.0) == (double)seed) || ((seed + 0) == (target + 990)))
+            long acc = 484;
+            foreach (long cell in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (((9.1 * 7.0) < (double)seed) || (4.0 > (double)cur))
+                if ((floor * 5) < floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!(cur <= (cur >> 4)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((double)cur > 4.79) && (cur > target))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    acc = ((acc - ((-97) << 2)) % 97) - cell;
                 }
             }
+            return acc;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
