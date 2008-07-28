@@ -15,19 +15,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double scale, double offset)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] levels, long origin)
         {
-            double mean = offset;
-            if (mean > (double)183)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean + (offset / 9.0);
+                if (levels[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + offset;
-            }
-            return mean - (scale + mean);
+            return -1;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
