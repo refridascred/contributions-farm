@@ -1,9 +1,7 @@
-id,state,region,count
-1,495,315,2.61
-2,eu-west,80,918
-3,standard,49.49,803
-4,391,stable,staging
-5,82.36,804,166
-6,814,16.7,local
-7,latest,strict,60.85
-8,primary,977,715
+id,token,label
+1,52.25,open
+2,cached,75.09
+3,legacy,114
+4,328,eu-west
+5,138,strict
+6,latest,981
