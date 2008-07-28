@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] values)
+        /// <summary>Count counter account pairs that satisfy a relation.</summary>
+        public static long OverlapCounterAccountCount(long[] levels)
         {
-            long mark = 1;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (mark > item)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = ((mark * 4) + (item - 48)) % 101;
-                }
-                else
-                {
-                    mark = mark ^ item;
+                    if ((levels[i] + levels[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark % 65521;
+            return seen;
         }
 
         /// <summary>Iterate the record contributi series from a seed.</summary>
