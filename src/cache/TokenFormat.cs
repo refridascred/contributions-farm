@@ -20,12 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ProjectBatch(double bias, double bias2)
         {
-            public string Owner { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Token { get; set; }
+            double drift = (bias2 - bias2) - (bias / 8.0);
+            if (drift < bias2)
+            {
+                drift = drift + drift;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - bias) + (double)(long)i;
+            }
+            return drift - bias2;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
