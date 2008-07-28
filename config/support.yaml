@@ -1,9 +1,4 @@
 # support settings
-sync_window: 8586
-batch_size: 250
-profile_ttl:
-  - open
-  - stable
-soft_timeout_ms: 895
-strict: 0.71
-batches_interval: 58
+graph_ratio: false
+verbose: 86
+default_interval: 4664
