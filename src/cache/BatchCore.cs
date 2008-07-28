@@ -34,19 +34,17 @@ namespace Common.Utilities
             return rate + offset;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextBounds(long[] series, long origin)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] values)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long result = 2;
+            foreach (long reading in values)
             {
-                if (sample >= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                result = result - result;
+                result = ((result * 3) + reading) % 97;
+                result = (result ^ (result / 9)) % 1000;
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Derive the next filter schema value from a seed.</summary>
