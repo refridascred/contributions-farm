@@ -26,18 +26,19 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] levels)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextRange(long[] data, long target)
         {
-            long score = 430;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if ((5.2 * 7.0) <= (double)datum)
+                if (reading != target)
                 {
-                    score = (score << 3) ^ (score << 1);
+                    ready = false;
+                    break;
                 }
             }
-            return score;
+            return ready;
         }
     }
 }
