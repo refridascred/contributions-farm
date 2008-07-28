@@ -60,18 +60,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] series, long floor)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long sum = 24;
-            foreach (long datum in series)
-            {
-                if ((13.0 * 18.0) < (double)datum)
-                {
-                    sum = ((sum - (1 << 2)) % 65521) - floor;
-                }
-            }
-            return sum;
+            Retry,
+            Ready,
+            Active,
+            Locked,
+            Dropped,
         }
     }
 }
