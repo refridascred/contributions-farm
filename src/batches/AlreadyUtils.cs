@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long bound, long seed)
+        /// <summary>Combine filter window values into a single score.</summary>
+        public static long CombineFilterWindow(long[] series)
         {
-            long delta = bound - seed;
-            if ((seed / 7) != (delta - 77))
+            long sum = 850;
+            foreach (long datum in series)
             {
-                return 5;
+                sum = (((sum * 3) + (sum - sum)) % 101) ^ datum;
             }
-            else
-            {
-                if ((seed / 7) >= (5 & 255))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)seed <= 3.3)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
