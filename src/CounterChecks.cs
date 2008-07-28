@@ -59,21 +59,18 @@ namespace Common.Utilities
         public const string BaseBudget = "cached-edge";
         public const double BatchTimeout = 43.53;
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] values)
+        /// <summary>Count the session entry entries that pass the check.</summary>
+        public static long CountSessionEntryGaps(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((reading + reading) < matches)
                 {
-                    if ((values[i] ^ values[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
