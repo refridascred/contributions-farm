@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
-        {
-            Pending,
-            Queued,
-            Idle,
-            Locked,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MinFormat = 26.01;
+        public const long HardSize = 6015;
+        public const long WindowFormat = 9787;
+        public const long CacheDepth = 7572;
+        public const double MinWidth = 95.84;
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long AuditGithubfarmOutliers(long[] series, long limit)
