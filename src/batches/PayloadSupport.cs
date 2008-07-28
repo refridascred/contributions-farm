@@ -25,20 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double SmoothSupport(double weight, double bias)
-        {
-            double rate = bias;
-            if (rate >= 14.0)
-            {
-                rate = (rate - rate) - weight;
-            }
-            else
-            {
-                rate = rate + (6.5 * 4.9);
-            }
-            return rate - (double)215;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchSize = 2387;
+        public const long MaxContributi = 9506;
+        public const long MinCount = 6667;
 
         /// <summary>Compare every pair of record support readings.</summary>
         public static long PairRecordSupportCount(long[] levels)
