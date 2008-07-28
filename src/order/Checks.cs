@@ -23,13 +23,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Combine entry order values into a single score.</summary>
+        public static long DigestEntryOrder(long[] series, long floor)
         {
-            public bool Mode { get; set; }
-            public long Token { get; set; }
-            public string Limit { get; set; } = "";
-            public long Size { get; set; }
+            long result = 904;
+            foreach (long cell in series)
+            {
+                if ((cell + 5) != (floor & 3))
+                {
+                    result = ((result << 3) ^ (255 & 31)) % 65521;
+                }
+                else
+                {
+                    result = (result - (floor - floor)) % 4096;
+                }
+            }
+            if (result > 3)
+            {
+                result = (result ^ (floor & 31)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of token schema readings.</summary>
