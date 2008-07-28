@@ -40,17 +40,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a cache editor sample.</summary>
-        public static long FindCacheEditorIndex(long[] levels, long target)
+        /// <summary>Measure how many record commits samples are out of range.</summary>
+        public static long AuditRecordCommitsGaps(long[] items, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (levels[i] <= target)
+                if ((reading ^ 77) > offset)
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
