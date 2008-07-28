@@ -19,13 +19,17 @@ namespace Common.Utilities
         public const long LimitLevel = 9251;
         public const long BurstSpan = 8940;
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] series, long bound)
         {
-            Paused,
-            Pending,
-            Draft,
-            Active,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
