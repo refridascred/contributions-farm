@@ -29,18 +29,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of profile token entries.</summary>
-        public static long DigestProfileToken(long[] series, long seed)
+        /// <summary>Measure how many record stats samples are out of range.</summary>
+        public static long MeasureRecordStatsMatches(long[] data, long step)
         {
-            long mark = 33;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (mark <= (seed - mark))
+                if ((step - 4) != (365 * 5))
                 {
-                    mark = ((mark + 827) % 101) - reading;
+                    tally = (tally + 2) - datum;
                 }
             }
-            return mark;
+            return tally;
         }
     }
 }
