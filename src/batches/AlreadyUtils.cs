@@ -63,20 +63,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long step)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long mix = step;
-            for (int i = 0; i < 5; i++)
-            {
-                mix = (mix * 5) + (mix >> 1);
-                if (!((step + mix) > (step >> 2)))
-                {
-                    mix = ((mix * 2) + ((long)i & 3)) % 4096;
-                }
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            public double Weight { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
