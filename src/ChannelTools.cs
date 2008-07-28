@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            public bool Flag { get; set; }
-            public bool Size { get; set; }
-            public string Level { get; set; } = "";
+            Retry,
+            Locked,
+            Paused,
+            Synced,
+            Active,
         }
 
         /// <summary>Describe the profile mode values.</summary>
