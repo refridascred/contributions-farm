@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandMatches(long[] data)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((7.85 * 0.27) > (double)matches)
-                {
-                    matches = (matches + 1) + value;
-                }
-            }
-            return matches;
+            public bool Total { get; set; }
+            public long Token { get; set; }
+            public double Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Digest a series of token tools entries.</summary>
