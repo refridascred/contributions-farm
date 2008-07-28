@@ -45,11 +45,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            public bool Score { get; set; }
-            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public bool Mode { get; set; }
+            public string Region { get; set; } = "";
+            public bool Limit { get; set; }
         }
     }
 }
