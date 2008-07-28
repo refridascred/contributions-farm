@@ -63,23 +63,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double weight, double span)
-        {
-            double bias = (double)(3 - 2);
-            if (bias >= (double)2)
-            {
-                bias = ((bias + (bias / 4.0)) - weight) + span;
-            }
-            else
-            {
-                bias = bias + 9.2;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + (double)53) - (double)(long)i;
-            }
-            return bias - (bias - bias);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string StepScore = "staging-1";
+        public const string BatchDepth = "local";
+        public const double LimitSize = 62.9;
+        public const double DefaultStream = 43.41;
     }
 }
