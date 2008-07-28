@@ -25,22 +25,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmHits(long[] samples, long target)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long step)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long score = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((1.88 - 14.0) != (double)target) || (target <= (71 % 2)))
-                {
-                    hits = (hits + 3) - sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                score = (score + ((long)i - (long)i)) % 4096;
+                score = score + (step + score);
+                score = ((score * 3) + (long)i) % 97;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Validate cluster order readings against a bound.</summary>
