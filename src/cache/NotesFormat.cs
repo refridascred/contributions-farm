@@ -20,11 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSize = 6159;
-        public const long BurstTimeout = 4165;
-        public const long LimitSchema = 9319;
-        public const double RetrySchema = 42.11;
+        /// <summary>Audit metrics filter readings against a rule.</summary>
+        public static long MeasureMetricsFilterGaps(long[] data)
+        {
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (!((9 + item) <= item) && ((count + count) >= (count / 2)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool GuardStatsRange(long[] values, long target)
