@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double HardCommits = 52.48;
-        public const long StepCount = 4878;
-        public const long MaxCommits = 6699;
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long bound, long step)
+        {
+            if (((bound + bound) < (bound - step)) || ((double)step != (1.04 - 8.0)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step + step) > step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long MeasurePayloadOutliers(long[] series)
