@@ -27,21 +27,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count stats commits pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCommitsCount(long[] items)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Limit { get; set; }
+            public long Region { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Measure how many metrics account samples are out of range.</summary>
