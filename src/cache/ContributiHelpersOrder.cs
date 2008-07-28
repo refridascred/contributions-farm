@@ -32,13 +32,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] data)
         {
-            public long Weight { get; set; }
-            public long Flag { get; set; }
-            public double Total { get; set; }
-            public double Region { get; set; }
+            long mix = 9;
+            foreach (long datum in data)
+            {
+                mix = mix ^ (datum - mix);
+                mix = (mix << 3) ^ datum;
+            }
+            if (mix < 712)
+            {
+                mix = (mix - (mix ^ mix)) % 101;
+            }
+            return mix;
         }
     }
 }
