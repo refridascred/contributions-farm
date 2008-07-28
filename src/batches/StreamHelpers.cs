@@ -56,13 +56,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            public double Level { get; set; }
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public double Stamp { get; set; }
+            Pending,
+            Stale,
+            Ready,
         }
     }
 }
