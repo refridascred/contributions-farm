@@ -11,12 +11,17 @@ namespace Common.Utilities
         public const long BaseChannel = 7488;
         public const double BurstChannel = 68.08;
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] samples, long limit)
         {
-            public bool Token { get; set; }
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
