@@ -22,38 +22,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long bound, long offset)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            if ((offset - bound) > bound)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound - offset) >= (7 & 15))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound + bound) > offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((offset + bound) > (offset ^ bound)) || ((offset * 5) < offset))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Pending,
+            Paused,
+            Locked,
+            Ready,
         }
     }
 }
