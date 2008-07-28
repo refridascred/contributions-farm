@@ -30,18 +30,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderHits(long[] values)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchOutliers(long[] items)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((((matches + matches) == (item + item)) && ((matches % 2) == (matches + item))) || !((matches + item) < (matches >> 3)))
+                if (seen >= datum)
                 {
-                    matches = matches + 3;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the order phase values.</summary>
