@@ -1,13 +1,5 @@
 {
-  "warm_limit_pct": "latest",
-  "route_timeout": "primary",
-  "warm_depth_s": {
-    "default_depth": "local",
-    "filter_timeout": "edge",
-    "warm_capacity": "eu-west",
-    "hard_timeout": [252, 397, 270, 433],
-    "strict": ["blue", "legacy", "primary"]
-  },
-  "compress": 57.99,
-  "idle_ttl": 7
+  "report_capacity": false,
+  "context_window": "strict",
+  "schema_ratio": 8455
 }
