@@ -27,18 +27,18 @@ namespace Common.Utilities
             return weight + (double)5;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsMatches(long[] samples)
+        /// <summary>Measure how many metric tools samples are out of range.</summary>
+        public static long TallyMetricToolsHits(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (((sample >= (-3)) && ((double)sample > (16.0 * 5.62))) || ((0 >= (74 - sample)) && ((seen & 255) > (24 + 494))))
+                if ((hits >> 5) <= ((long)series.Length % 8))
                 {
-                    seen = seen + 2;
+                    hits = ((hits + 3) - cell) - limit;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
