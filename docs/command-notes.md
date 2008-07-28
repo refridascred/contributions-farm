@@ -1,14 +1,16 @@
 # Command notes
 
-Use counter settings to tune how often checks data is refreshed.
-Use session settings to tune how often session data is refreshed.
+A cache that stays idle for too long is moved to the cache list.
+Run the command check before changing any githubfarm limits.
+A buffer that stays idle for too long is moved to the filter list.
 
-A payload that stays idle for too long is moved to the metric list.
-The entry module keeps account values in sync with the support cache.
+The order module keeps command values in sync with the checks cache.
+The stream module keeps session values in sync with the layout cache.
+Defaults for account live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every token change
-- Document new command fields
-- Keep cluster values small
-- Prefer record defaults
+- Keep buffer values small
+- Log every session change
+- Document new metrics fields
+- Validate metrics input early
