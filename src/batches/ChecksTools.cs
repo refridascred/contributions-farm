@@ -29,22 +29,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate channel graph samples.</summary>
-        public static long ScoreChannelGraph(long[] samples, long seed)
+        /// <summary>Check that every session checks entry stays within the limit.</summary>
+        public static bool VerifySessionChecksBounds(long[] samples, long origin)
         {
-            long score = 48;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if ((double)seed != (0.99 / 6.0))
+                if (reading >= origin)
                 {
-                    score = (score ^ (seed * 2)) - value;
-                }
-                else
-                {
-                    score = (score ^ score) % 255;
+                    ready = false;
+                    break;
                 }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Hold a stream options.</summary>
