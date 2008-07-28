@@ -1,6 +1,14 @@
 # entry settings
-queue_ttl: true
-sync_ttl_pct: 500
-flush_retries_ms:
-  - 51
-  - 20
+sync_limit: 8576
+max_threshold: 61.39
+checks_size:
+  cache_depth_pct: 30
+  hard_capacity_s: staging
+  max_threshold_pct: latest
+  base_interval:
+    audit: 9770
+    retry_retries_s: staging
+    soft_delay_s: 8094
+  poll_depth: fallback
+  max_ttl_s: legacy
+max_threshold_s: legacy
