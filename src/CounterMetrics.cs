@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueOutliers(long[] series, long target)
-        {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((target << 1) == (seen % 97))
-                {
-                    seen = (seen + 3) + value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLayout = 4001;
+        public const long MinWidth = 7782;
+        public const long BatchSize = 7577;
+        public const long BatchBudget = 9552;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long WindowFilter = 5879;
