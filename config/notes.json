@@ -1,15 +1,14 @@
 {
-  "order_size": 65,
-  "min_retries": 23,
-  "strict": "staging",
-  "contributi_interval": {
-    "retry_size_count": 250,
-    "tools_window": 36,
-    "record_window": "latest",
-    "min_window": "blue",
-    "idle_delay": 100,
-    "persist": 99
+  "default_timeout_pct": 8013,
+  "retry_timeout": {
+    "queue_threshold": false,
+    "dry_run": 29,
+    "min_size_s": "fallback",
+    "context_size": 53.4,
+    "default_size": 250
   },
-  "payload_ttl": 48.2,
-  "max_retries_count": 28
+  "verbose": "legacy",
+  "sync_window_pct": [164, 264],
+  "dry_run": [423, 419, 120],
+  "batch_depth": "edge"
 }
