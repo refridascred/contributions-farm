@@ -22,12 +22,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long step)
         {
-            public double Region { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Mode { get; set; }
+            long result = step;
+            for (int i = 0; i < 19; i++)
+            {
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of entry stats readings.</summary>
