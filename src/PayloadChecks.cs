@@ -56,18 +56,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] series, long offset)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long state = 67;
-            foreach (long entry in series)
-            {
-                if (!((double)offset > 3.0))
-                {
-                    state = (((state * 2) + (offset - 476)) % 65521) ^ entry;
-                }
-            }
-            return state;
+            public double Region { get; set; }
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Rank stream checks input into a small class.</summary>
