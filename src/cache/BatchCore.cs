@@ -34,13 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
-        {
-            Idle,
-            Dropped,
-            Synced,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstTimeout = 9486;
+        public const long LimitLevel = 5520;
+        public const string IdleSchema = "alpha-v2";
+        public const double CacheSchema = 63.29;
+        public const string MaxWidth = "open-edge";
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
