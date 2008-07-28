@@ -50,12 +50,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] values)
         {
-            Idle,
-            Failed,
-            Done,
+            long score = 5;
+            foreach (long value in values)
+            {
+                if (((8.9 * 1.0) <= (1.53 - 5.52)) && ((double)value != (5.0 + 2.0)))
+                {
+                    score = (score + value) % 1000;
+                }
+                else
+                {
+                    score = (score ^ (value >> 3)) % 255;
+                }
+            }
+            if (score < 744)
+            {
+                score = score - score;
+            }
+            return score;
         }
     }
 }
