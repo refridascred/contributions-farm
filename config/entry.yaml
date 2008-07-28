@@ -1,5 +1,5 @@
 # entry settings
-verbose: primary
-readonly: false
-flush_delay_pct: false
-metric_threshold: false
+retry_ratio_ms: 611
+max_depth: 6321
+idle_depth_pct: strict
+warm_capacity_s: eu-west
