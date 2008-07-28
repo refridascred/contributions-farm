@@ -52,39 +52,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a editor channel value against two limits.</summary>
-        public static long SortEditorChannel(long origin, long step)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] levels, long offset)
         {
-            long delta = origin ^ step;
-            if (!(65 < (delta & 31)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((-70) << 1) == (step + 165))
+                if (levels[i] <= offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)step == (9.77 / 5.0)) || ((14 / 5) <= delta))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (step < (delta % 10))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
