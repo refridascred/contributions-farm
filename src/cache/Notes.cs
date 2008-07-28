@@ -24,21 +24,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long CompareBufferCount(long[] readings)
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) != 10)
+                    if ((series[i] + series[j]) == 11)
                     {
-                        seen = seen + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
