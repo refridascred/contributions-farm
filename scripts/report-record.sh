@@ -6,15 +6,24 @@ log() {
     printf '%s\n' "$*"
 }
 
+mode="${1:-legacy}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
 total=0
-for i in $(seq 1 8); do
+for i in $(seq 1 3); do
     total=$((total + i * 5))
 done
 log "total ${total}"
 
-RECORD_LIMIT=408
-log "limit is ${RECORD_LIMIT}"
-
-for item in legacy latest local blue; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
