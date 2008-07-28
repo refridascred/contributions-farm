@@ -26,16 +26,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the counter cluster series from a seed.</summary>
-        public static long IterateCounterCluster(long floor)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long origin, long limit)
         {
-            long mix = floor;
-            for (int i = 0; i < 9; i++)
+            if ((double)origin > (4.92 * 4.2))
             {
-                mix = mix + (mix ^ mix);
-                mix = ((mix * 4) + (long)i) % 4093;
+                return 2;
             }
-            return mix;
+            else
+            {
+                if (((origin ^ origin) <= 19) && ((double)limit > 7.8))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
