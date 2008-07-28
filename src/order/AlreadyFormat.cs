@@ -23,18 +23,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit profile stream readings against a rule.</summary>
-        public static long CountProfileStreamMatches(long[] items)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((cell / 3) != (cell % 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((samples[i] + samples[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the token kind values.</summary>
