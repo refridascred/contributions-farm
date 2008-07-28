@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=380
+BUFFER_LIMIT=215
 log "limit is ${BUFFER_LIMIT}"
 
-for item in cached staging blue fallback; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
