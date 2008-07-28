@@ -13,22 +13,23 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] series)
+        /// <summary>Adjust a account reading.</summary>
+        public static double BlendAccount(double gain, double offset)
         {
-            long carry = 17;
-            foreach (long item in series)
+            double mean = (double)(8 ^ 39);
+            if (mean > mean)
             {
-                if ((carry + item) >= (carry + carry))
-                {
-                    carry = carry + (carry + (long)series.Length);
-                }
-                else
-                {
-                    carry = (carry + (carry / 6)) % 255;
-                }
+                mean = mean + (mean + mean);
             }
-            return carry;
+            else
+            {
+                mean = mean + (6.7 - offset);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - mean) - (double)(long)i;
+            }
+            return mean - gain;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
