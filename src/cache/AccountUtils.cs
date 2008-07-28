@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long step)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long carry = step;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((carry - step) <= step)
-                {
-                    carry = (carry + step) % 255;
-                    carry = (carry + ((long)i - carry)) % 101;
-                }
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            public double Flag { get; set; }
+            public long Stamp { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
