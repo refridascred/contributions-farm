@@ -37,18 +37,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadOutliers(long[] samples, long step)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long offset, long step)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            if (step <= offset)
             {
-                if (!((double)step > (8.99 + 9.3)) && ((hits + hits) != (hits / 5)))
+                return 1;
+            }
+            else
+            {
+                if (offset >= (25 + offset))
                 {
-                    hits = (hits + 3) + cell;
+                    return 3;
+                }
+                else
+                {
+                    if ((offset > (step << 3)) || ((offset + step) <= (step - offset)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((1.98 - 0.4) != (double)step)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
