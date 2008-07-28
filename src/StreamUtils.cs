@@ -62,15 +62,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double bias, double span)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            double ratio = span;
-            if (ratio < span)
-            {
-                ratio = (ratio - (double)1) + bias;
-            }
-            return ratio - span;
+            public bool Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Audit farm cluster readings against a rule.</summary>
