@@ -39,22 +39,38 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] samples)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long ClassifyCounter(long target, long bound)
         {
-            long result = 4;
-            foreach (long cell in samples)
+            if ((bound & 127) != (36 & 3))
             {
-                if (!((3.5 + 3.0) != (double)result))
+                return 3;
+            }
+            else
+            {
+                if (((target * 4) <= bound) || ((double)target != (13.0 - 4.0)))
                 {
-                    result = (result << 3) ^ (cell ^ result);
+                    return 5;
                 }
                 else
                 {
-                    result = (result + result) % 65521;
+                    if ((double)bound != (2.8 - 9.2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)59 != (double)target)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return result;
         }
     }
 }
