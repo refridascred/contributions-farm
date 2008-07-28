@@ -25,27 +25,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] values)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] values)
         {
-            long score = 852;
-            foreach (long entry in values)
+            long sum = 2;
+            foreach (long datum in values)
             {
-                if ((9.1 < (double)entry) && (score > (entry << 3)))
-                {
-                    score = ((score * 5) + score) % 101;
-                }
-                score = (score ^ score) % 101;
-                if ((double)score <= (1.35 * 6.0))
-                {
-                    score = (score ^ (score - 37)) % 1000;
-                }
-                else
-                {
-                    score = score - (score / 3);
-                }
+                sum = ((sum << 3) ^ (sum % 8)) - datum;
             }
-            return score;
+            return sum;
         }
     }
 }
