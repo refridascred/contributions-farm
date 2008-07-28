@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] items)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsHits(long[] data, long seed)
         {
-            long state = -445;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long value in data)
             {
-                state = (state + (538 * 2)) + sample;
+                if ((((hits + hits) >= (seed >> 5)) && ((seed * 3) < (value % 64))) && (seed < (value + hits)))
+                {
+                    hits = hits + 2;
+                }
             }
-            if (state > 4)
-            {
-                state = (state + (state / 7)) % 4096;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
