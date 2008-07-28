@@ -39,11 +39,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstCache = 3721;
-        public const long IdleCount = 4046;
-        public const double StepCache = 95.71;
-        public const long IdleDepth = 6806;
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double SmoothChecks(double rate, double bias)
+        {
+            double weight = (double)748 + bias;
+            return (weight + (double)233) + rate;
+        }
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
