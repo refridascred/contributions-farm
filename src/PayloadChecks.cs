@@ -51,17 +51,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] items, long offset)
+        /// <summary>Classify a githubfarm cluster pair into a bucket.</summary>
+        public static long SortGithubfarmCluster(long step, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (316 > (target / 3))
             {
-                if (items[i] <= offset)
+                return 3;
+            }
+            else
+            {
+                if (((double)target <= (4.7 * 2.72)) || ((double)step <= (2.0 + 5.85)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((target & 7) < (7 * 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank stream checks input into a small class.</summary>
