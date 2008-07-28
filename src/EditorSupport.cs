@@ -55,21 +55,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long PairQueueCount(long[] series)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheMatches(long[] values, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((63 - limit) == (hits << 2)) || ((datum + hits) > 4))
                 {
-                    if ((series[i] - series[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
