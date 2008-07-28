@@ -50,12 +50,22 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportMatches(long[] values)
         {
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
-            public long Level { get; set; }
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((3 + cell) > (long)values.Length)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
