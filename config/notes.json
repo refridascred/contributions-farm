@@ -1,6 +1,16 @@
 {
-  "verbose": ["stable", "local", "open", "local"],
-  "stats_ttl": ["latest", "blue", "staging", "local"],
-  "hard_ratio": 10,
-  "max_window": "legacy"
+  "buffer_window": ["open", "strict", "green"],
+  "min_ratio": "latest",
+  "compress": {
+    "flush_limit_s": 60,
+    "hard_size": false,
+    "default_interval_s": 1024,
+    "audit": ["fallback", "green", "open"],
+    "idle_threshold": {
+      "githubfarm_threshold": "edge",
+      "hard_size_count": 74.67,
+      "audit": 29,
+      "burst_delay": ["eu-west", "legacy", "eu-west", "eu-west"]
+    }
+  }
 }
