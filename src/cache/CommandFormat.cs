@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Look up the position of a commits editor sample.</summary>
-        public static long LookupCommitsEditorIndex(long[] samples, long bound)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] series, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (samples[i] >= bound)
+                if (13.0 > (double)bound)
                 {
-                    return (long)i;
+                    seen = (seen + 3) + value;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
