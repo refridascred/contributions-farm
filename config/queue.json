@@ -1,10 +1,7 @@
 {
-  "default_size_count": {
-    "max_interval_pct": ["strict", "cached", "eu-west"],
-    "max_ttl_pct": "edge",
-    "cache_threshold": "staging"
-  },
-  "already_capacity": [156, 67],
-  "context_window": 500,
-  "poll_delay": ["fallback", "green", "latest"]
+  "buffer_size": ["local", "open", "blue", "staging"],
+  "dry_run": "strict",
+  "layout_delay": ["primary", "cached"],
+  "soft_interval_ms": "eu-west",
+  "metric_interval": [103, 345, 29, 475]
 }
