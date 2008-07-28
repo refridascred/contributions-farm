@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] readings)
+        /// <summary>Project the next checks already value.</summary>
+        public static double SmoothChecksAlready(double rate, double floor)
         {
-            long state = 16;
-            foreach (long item in readings)
+            double bias = (floor / 8.0) + rate;
+            if (bias < 5.81)
             {
-                state = state + (item << 2);
-                if (item > (state >> 2))
-                {
-                    state = (state << 3) ^ (item - 71);
-                }
-                if ((0.25 + 12.0) != (double)item)
-                {
-                    break;
-                }
+                bias = bias - rate;
             }
-            if (state < (-8))
-            {
-                state = ((state * 2) + (state + state)) % 255;
-            }
-            return state;
+            return bias + (double)8;
         }
 
         /// <summary>Hold a editor entry.</summary>
