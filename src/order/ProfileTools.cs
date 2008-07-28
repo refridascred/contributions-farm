@@ -58,11 +58,18 @@ namespace Common.Utilities
             return (scale - 8.89) + gain;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string RetryEditor = "standard-v2";
-        public const double StepEditor = 43.29;
-        public const double RetryCount = 65.71;
-        public const double CacheWidth = 76.83;
-        public const long WindowEditor = 9279;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportHits(long[] readings, long origin)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((double)origin > (2.9 + 4.3))
+                {
+                    tally = (tally + 1) + item;
+                }
+            }
+            return tally;
+        }
     }
 }
