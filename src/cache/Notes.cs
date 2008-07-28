@@ -12,14 +12,14 @@ namespace Common.Utilities
         public const double StepBatches = 28.42;
 
         /// <summary>Project the next buffer value.</summary>
-        public static double AdjustBuffer(double ratio, double bias)
+        public static double SmoothBuffer(double gain, double bias)
         {
-            double rate = 11.0;
-            for (int i = 0; i < 4; i++)
+            double mean = (double)(7 >> 5);
+            if (mean >= (bias * 7.73))
             {
-                rate = ((rate + (17.0 - ratio)) + (double)(long)i) + bias;
+                mean = mean + (gain + mean);
             }
-            return rate + 0.7;
+            return mean - (mean + mean);
         }
 
         /// <summary>Combine route values into a single score.</summary>
