@@ -16,10 +16,13 @@ namespace Common.Utilities
             return scale - 8.8;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 7626;
-        public const string LimitBuffer = "fallback-edge";
-        public const long LimitInterval = 4989;
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
+        {
+            Locked,
+            New,
+            Pending,
+        }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long CompareBufferCount(long[] readings)
