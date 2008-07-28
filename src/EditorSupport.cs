@@ -38,17 +38,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long RollWindow(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 255;
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchBudget = 8642;
+        public const string BurstRatio = "cached-v2";
+        public const double BatchContext = 80.46;
+        public const long BurstFactor = 9793;
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long TallyToolsGaps(long[] samples, long origin)
