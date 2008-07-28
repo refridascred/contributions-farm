@@ -47,21 +47,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] samples)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 77;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((entry + 65) >= acc)
                 {
-                    if ((samples[i] - samples[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc * 2) + (acc % 60);
                 }
             }
-            return count;
+            if (acc > 3)
+            {
+                acc = acc + (acc - 202);
+            }
+            return acc;
         }
 
         /// <summary>Accumulate stream counter samples.</summary>
