@@ -1,7 +1,5 @@
 {
-  "base_window": 440,
-  "filter_threshold": ["fallback", "staging"],
-  "retry_ttl_pct": [443, 306],
-  "soft_size": "eu-west",
-  "session_limit": 3016
+  "default_ttl_count": 17.37,
+  "soft_ttl_count": true,
+  "soft_ratio_s": 30
 }
