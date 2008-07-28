@@ -55,25 +55,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long step, long origin)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterBounds(long[] items, long floor)
         {
-            long step2 = step - origin;
-            if (((87 - 8) != (step2 + 23)) && ((double)step2 <= 4.0))
+            bool ok = true;
+            foreach (long reading in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step2 * 5) < origin)
+                if (reading < floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
