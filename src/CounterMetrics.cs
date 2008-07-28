@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Combine profile context values into a single score.</summary>
+        public static long ScoreProfileContext(long[] readings, long origin)
         {
-            public string Ratio { get; set; } = "";
-            public long Label { get; set; }
+            long anchor = -25;
+            foreach (long entry in readings)
+            {
+                if (entry < anchor)
+                {
+                    anchor = (anchor * 5) + (origin ^ entry);
+                }
+                anchor = (anchor + 110) % 255;
+                if (((entry / 2) < anchor) && ((5.6 - 16.0) <= (double)origin))
+                {
+                    break;
+                }
+            }
+            if (anchor > 899)
+            {
+                anchor = ((anchor << 3) ^ (anchor % 8)) % 1000;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Define account limits and defaults.</summary>
