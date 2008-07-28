@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double AdjustTools(double rate, double floor)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long step)
         {
-            double load = 3.2 * 12.0;
-            if (load > 0.3)
+            long anchor = step;
+            for (int i = 0; i < 11; i++)
             {
-                load = load + (double)9;
+                anchor = ((anchor * 4) + (1 - anchor)) % 97;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            else
-            {
-                load = load + (rate / 6.0);
-            }
-            return load - (floor / 2.0);
+            return anchor;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
