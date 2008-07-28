@@ -33,39 +33,15 @@ namespace Common.Utilities
         public const long IdleLevel = 561;
         public const long MaxGithubfarm = 8878;
 
-        /// <summary>Rank notes stats input into a small class.</summary>
-        public static long ClassifyNotesStats(long offset, long step)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] samples)
         {
-            long delta = offset ^ step;
-            if ((4.1 / 3.0) >= (double)delta)
+            long carry = 332;
+            foreach (long datum in samples)
             {
-                return 7;
+                carry = (carry + (datum - datum)) % 65521;
             }
-            else
-            {
-                if (((offset / 2) < (offset & 31)) || (step < (delta ^ delta)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((delta ^ delta) >= (step / 7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)offset != (10.0 + 7.7))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
     }
 }
