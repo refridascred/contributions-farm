@@ -69,23 +69,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ProjectCluster(double scale, double offset)
+        /// <summary>Scale a stream graph figure with a bias.</summary>
+        public static double ScaleStreamGraph(double gain, double floor)
         {
-            double load = (double)8 * 6.58;
-            if (load < offset)
+            double weight = (double)(267 % 5);
+            if (weight > weight)
             {
-                load = load + (offset + scale);
+                weight = weight - floor;
             }
             else
             {
-                load = load + (offset - offset);
+                weight = weight - 9.0;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + scale) + (double)(long)i;
-            }
-            return load - offset;
+            return weight - (floor - gain);
         }
     }
 }
