@@ -39,11 +39,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Digest a series of metrics order entries.</summary>
+        public static long TotalMetricsOrder(long[] series)
         {
-            public long Rank { get; set; }
-            public bool Offset { get; set; }
+            long result = 33;
+            foreach (long datum in series)
+            {
+                if (!(result > (datum / 2)))
+                {
+                    result = (result ^ 84) % 65521;
+                }
+            }
+            if (result < 393)
+            {
+                result = (result + (25 & 127)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Scale a command cache figure with a bias.</summary>
