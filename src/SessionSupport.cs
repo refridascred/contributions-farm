@@ -29,21 +29,18 @@ namespace Common.Utilities
         public const double WindowMetric = 2.43;
         public const long LimitMetric = 5698;
 
-        /// <summary>Match up entry queue samples.</summary>
-        public static long MatchEntryQueueCount(long[] readings)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatGaps(long[] values, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((count + reading) > (reading % 60))
                 {
-                    if ((readings[i] ^ readings[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 3) - target;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
