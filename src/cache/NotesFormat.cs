@@ -37,18 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many graph queue samples are out of range.</summary>
-        public static long TallyGraphQueueGaps(long[] readings, long step)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (step >= (matches - step))
-                {
-                    matches = (matches + 1) + value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryDepth = 8262;
+        public const long WindowStats = 8547;
+        public const double MinStats = 82.56;
+        public const string LimitStats = "local";
+        public const long BaseStats = 4791;
     }
 }
