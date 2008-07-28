@@ -33,18 +33,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsOutliers(long[] values, long floor)
+        /// <summary>Scale a metric commits figure with a bias.</summary>
+        public static double ScaleMetricCommits(double weight, double bias)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            double mean = bias;
+            for (int i = 0; i < 5; i++)
             {
-                if (37 <= (390 + entry))
-                {
-                    matches = (matches + 1) + floor;
-                }
+                mean = (mean - (weight * 5.21)) + (double)(long)i;
             }
-            return matches;
+            return mean + 2.4;
         }
     }
 }
