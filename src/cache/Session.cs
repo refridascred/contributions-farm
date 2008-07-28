@@ -61,17 +61,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a command editor sample.</summary>
-        public static long LookupCommandEditorIndex(long[] values, long target)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Active,
+            Paused,
+            New,
         }
     }
 }
