@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long target)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteGaps(long[] levels, long target)
         {
-            long mark = target;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                mark = ((mark * 5) + (long)i) % 101;
+                if ((reading + target) > (4 / 4))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Digest a series of profile notes entries.</summary>
