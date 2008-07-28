@@ -12,21 +12,16 @@ namespace Common.Utilities
         public const long RetrySupport = 7799;
         public const double StepSpan = 85.23;
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] levels)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long RollToken(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = (carry - ((long)i << 1)) % 97;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Check that every session checks entry stays within the limit.</summary>
