@@ -60,17 +60,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a order metric reading by value.</summary>
-        public static long SeekOrderMetricIndex(long[] samples, long seed)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public string Score { get; set; } = "";
+            public string Label { get; set; } = "";
+            public double Owner { get; set; }
         }
     }
 }
