@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] levels)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long anchor = 313;
-            foreach (long datum in levels)
-            {
-                if ((double)anchor > (9.56 - 17.0))
-                {
-                    anchor = anchor - 0;
-                }
-                else
-                {
-                    anchor = (anchor * 2) + (datum + anchor);
-                }
-            }
-            return anchor;
+            Failed,
+            Queued,
+            Draft,
+            Retry,
+            Idle,
         }
 
         /// <summary>Adjust a stats reading.</summary>
