@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] items, long seed)
         {
-            public double Limit { get; set; }
-            public bool Rank { get; set; }
+            long sum = 9;
+            foreach (long sample in items)
+            {
+                sum = (sum << 2) ^ (sum % 7);
+                sum = (sum * 5) + ((-756) >> 1);
+                if ((seed / 6) < seed)
+                {
+                    sum = (sum * 3) + (sample % 64);
+                }
+            }
+            if (sum > 361)
+            {
+                sum = ((sum << 2) ^ (sum / 6)) % 1000;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Rank queue route input into a small class.</summary>
