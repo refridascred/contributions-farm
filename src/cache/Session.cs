@@ -13,17 +13,38 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Look up the position of a githubfarm counter sample.</summary>
-        public static long LookupGithubfarmCounterIndex(long[] levels, long origin)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long bound, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (((bound >> 1) <= ((-48) << 1)) || ((target / 4) <= (501 ^ 95)))
             {
-                if (levels[i] > origin)
+                return 5;
+            }
+            else
+            {
+                if (target >= (target - bound))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)target >= 1.3)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((3.3 / 8.0) >= (double)bound)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
