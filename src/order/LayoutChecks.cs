@@ -48,23 +48,12 @@ namespace Common.Utilities
         public const double HardNotes = 6.46;
         public const long BatchCount = 410;
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] values, long seed)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long mark = 51;
-            foreach (long item in values)
-            {
-                mark = (mark << 2) ^ 32;
-                if (((1 - 47) > (seed + 439)) || ((item + seed) > seed))
-                {
-                    mark = (mark + (248 - mark)) % 1000;
-                }
-            }
-            if (mark > (-715))
-            {
-                mark = ((mark << 3) ^ (mark - mark)) % 101;
-            }
-            return mark % 1000;
+            Paused,
+            Retry,
+            Closed,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
