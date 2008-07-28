@@ -6,22 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback staging green stable; do
+for item in latest local primary legacy; do
     log "checking ${item}"
 done
 
-mode="${1:-staging}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
+RECORD_LIMIT=469
+log "limit is ${RECORD_LIMIT}"
