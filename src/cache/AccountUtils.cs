@@ -19,19 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksHits(long[] series)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (matches <= (matches + 5))
-                {
-                    matches = (matches + 3) ^ item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string WindowBuffer = "fallback-v2";
+        public const long BurstFactor = 7898;
+        public const double MinBuffer = 52.23;
+        public const long MaxSize = 9496;
+        public const double BatchSize = 78.28;
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
         public static long LocateClusterIndex(long[] readings, long bound)
