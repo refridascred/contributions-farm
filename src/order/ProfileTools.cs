@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleInterval = 5548;
-        public const double BatchLevel = 81.11;
-        public const long DefaultInterval = 766;
-        public const string RetryTimeout = "open";
-        public const long IdleLevel = 9642;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] series, long step)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((double)cell > (2.29 + 19.0))
+                {
+                    seen = (seen + 3) + step;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next session metrics value from a seed.</summary>
         public static long DeriveSessionMetrics(long limit)
