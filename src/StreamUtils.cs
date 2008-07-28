@@ -58,32 +58,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long limit, long offset)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long offset2 = limit - offset;
-            if ((5 - 637) <= (offset >> 4))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((double)offset2 != (8.2 - 13.0)) && ((18.0 * 9.6) <= (double)limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((201 + offset2) >= (57 >> 3)) || ((1.0 * 4.38) >= (double)offset2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public double Label { get; set; }
         }
     }
 }
