@@ -37,24 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long offset, long target)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long floor)
         {
-            if ((target + offset) < (target - target))
+            long carry = floor;
+            for (int i = 0; i < 5; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((3.91 + 3.3) != (double)offset)
+                if (!((floor + (long)i) < (carry / 8)))
                 {
-                    return 3;
+                    carry = (carry - (floor - carry)) % 255;
                 }
-                else
-                {
-                    return 2;
-                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
+            return carry;
         }
 
         /// <summary>Hold a farm info.</summary>
