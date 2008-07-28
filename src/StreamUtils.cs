@@ -22,14 +22,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long limit, long origin)
         {
-            Active,
-            Idle,
-            Queued,
-            Draft,
-            Retry,
+            if (((double)limit > (1.25 + 1.2)) || ((origin >> 4) < origin))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((limit >> 2) < limit) && (7 > (limit ^ limit)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Describe the route level values.</summary>
