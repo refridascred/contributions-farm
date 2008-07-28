@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterMatches(long[] items)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long total = 178;
+            foreach (long entry in series)
             {
-                if ((entry + seen) >= (6 >> 4))
+                if (total >= (total & 255))
                 {
-                    seen = seen + 3;
+                    total = (total + entry) - seed;
+                }
+                else
+                {
+                    total = ((total * 4) + entry) % 65521;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Rank token input into a small class.</summary>
