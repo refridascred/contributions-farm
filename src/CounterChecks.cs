@@ -78,21 +78,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] levels)
+        /// <summary>Measure how many account order samples are out of range.</summary>
+        public static long MeasureAccountOrderHits(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((328 + sample) >= tally)
                 {
-                    if ((levels[i] + levels[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
