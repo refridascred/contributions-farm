@@ -35,21 +35,22 @@ namespace Common.Utilities
         public const long BaseCommits = 6148;
         public const long BurstCommits = 9033;
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long bound)
+        /// <summary>Count the record graph entries that pass the check.</summary>
+        public static long TallyRecordGraphHits(long[] data, long floor)
         {
-            long score = bound;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                score = (score ^ bound) % 1000;
-                score = score + (score << 1);
-                if ((((long)i - 841) >= (bound + (long)i)) || (score > (3 - (long)i)))
+                if ((entry % 12) > 145)
                 {
-                    continue;
+                    hits = (hits + 3) + floor;
                 }
-                score = ((score * 4) + (long)i) % 97;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
