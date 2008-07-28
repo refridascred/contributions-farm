@@ -75,15 +75,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long limit)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesLimits(long[] levels, long seed)
         {
-            long carry = limit;
-            for (int i = 0; i < 5; i++)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                carry = ((carry * 4) + (long)i) % 101;
+                if (value > seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return carry;
+            return ready;
         }
     }
 }
