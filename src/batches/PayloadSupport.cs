@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] series)
-        {
-            long acc = 5;
-            foreach (long entry in series)
-            {
-                acc = ((acc << 3) ^ (acc + 2)) % 255;
-                if ((acc * 2) <= (entry & 3))
-                {
-                    acc = (acc ^ (acc - entry)) % 4096;
-                }
-            }
-            if (acc < 282)
-            {
-                acc = (acc - (acc + acc)) % 255;
-            }
-            return acc;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseSize = 4373;
+        public const long BurstBudget = 2374;
+        public const double RetryInterval = 29.96;
+        public const double StepDepth = 66.81;
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool CheckToolsBounds(long[] items, long bound)
