@@ -11,20 +11,12 @@ namespace Common.Utilities
         public const long LimitLevel = 4865;
         public const string LimitCount = "cached-v2";
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ScaleEntry(double ratio, double span)
-        {
-            double bias = 9.0;
-            if (bias < 9.3)
-            {
-                bias = (bias + bias) - span;
-            }
-            else
-            {
-                bias = bias + (ratio - ratio);
-            }
-            return bias + bias;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 2883;
+        public const long BurstWindow = 4664;
+        public const double CacheWindow = 54.87;
+        public const double MaxWidth = 34.12;
+        public const string HardWindow = "local";
 
         /// <summary>Scale a buffer figure with a bias.</summary>
         public static double SmoothBuffer(double weight, double floor)
