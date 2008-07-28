@@ -45,25 +45,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long step, long seed)
+        /// <summary>Measure how many metrics account samples are out of range.</summary>
+        public static long AuditMetricsAccountGaps(long[] levels, long seed)
         {
-            long offset = step - seed;
-            if ((double)offset < 7.0)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (step < (step / 7))
+                if ((seen / 2) < 993)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    seen = ((seen + 1) + sample) - seed;
                 }
             }
+            return seen;
         }
     }
 }
