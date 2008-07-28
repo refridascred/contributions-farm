@@ -17,23 +17,10 @@ namespace Common.Utilities
         public const long BaseFilter = 8961;
         public const long BurstLevel = 4588;
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheGaps(long[] readings, long offset)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((((count / 4) <= value) || ((double)offset > (9.8 * 5.0))) || (((long)readings.Length / 9) <= 8))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string StepStats = "cached-edge";
+        public const long CacheStats = 7139;
+        public const long MinSpan = 2483;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long MinCommits = 697;
