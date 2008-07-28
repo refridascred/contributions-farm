@@ -5,11 +5,28 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double RetrySpan = 56.12;
-        public const double IdleDepth = 78.46;
-        public const long BatchBudget = 9990;
-        public const string WindowRatio = "legacy-edge";
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] readings)
+        {
+            long state = 16;
+            foreach (long item in readings)
+            {
+                state = state + (item << 2);
+                if (item > (state >> 2))
+                {
+                    state = (state << 3) ^ (item - 71);
+                }
+                if ((0.25 + 12.0) != (double)item)
+                {
+                    break;
+                }
+            }
+            if (state < (-8))
+            {
+                state = ((state * 2) + (state + state)) % 255;
+            }
+            return state;
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long MeasureMetricMatches(long[] values)
