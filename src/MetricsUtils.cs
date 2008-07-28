@@ -67,13 +67,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long seed, long floor)
         {
-            Ready,
-            Active,
-            Synced,
-            Queued,
+            if ((floor & 3) > (988 >> 1))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed % 97) >= (964 - floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
