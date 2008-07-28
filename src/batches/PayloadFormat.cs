@@ -19,11 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftSize = 7802;
-        public const long BaseFormat = 8964;
-        public const long HardLevel = 3619;
-        public const long CacheLevel = 9018;
+        /// <summary>Measure how many metric farm samples are out of range.</summary>
+        public static long CountMetricFarmGaps(long[] levels, long limit)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((limit - entry) < seen)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit schema commits readings against a rule.</summary>
         public static long TallySchemaCommitsMatches(long[] levels)
