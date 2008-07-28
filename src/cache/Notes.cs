@@ -49,13 +49,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            public string Stamp { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Label { get; set; }
-            public long Total { get; set; }
+            public long Offset { get; set; }
+            public double Owner { get; set; }
+            public double Level { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
