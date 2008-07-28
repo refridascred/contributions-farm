@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double ratio, double offset)
+        /// <summary>Validate context payload readings against a bound.</summary>
+        public static bool GuardContextPayloadRange(long[] data, long step)
         {
-            double load = (double)736 + 7.24;
-            if (load >= (double)(-44))
+            bool ok = true;
+            foreach (long value in data)
             {
-                load = load - (double)57;
+                if (value < step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load + offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - ratio) + (double)(long)i;
-            }
-            return load + offset;
+            return ok;
         }
 
         /// <summary>Adjust a account reading.</summary>
