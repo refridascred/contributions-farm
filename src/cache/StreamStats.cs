@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] values, long target)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long limit, long limit2)
         {
-            for (int i = 0; i < values.Length; i++)
+            long next = limit - limit2;
+            if (next < (limit2 / 9))
             {
-                if ((values[i] <= target) && ((values[i] % 2) != 0))
+                return 3;
+            }
+            else
+            {
+                if (((4.36 * 15.0) < (double)limit) || (next <= (next >> 4)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
