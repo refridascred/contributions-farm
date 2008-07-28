@@ -5,30 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of notes format readings.</summary>
-        public static long TotalNotesFormat(long[] levels)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long seed, long step)
         {
-            long total = 0;
-            foreach (long datum in levels)
+            if (!(4.93 <= (double)step))
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                return 2;
+            }
+            else
+            {
+                if (((seed % 60) >= (step * 4)) || (((-8) % 10) > (80 + seed)))
                 {
-                    total = (total << 3) ^ ((long)i2 % 2);
-                }
-                if (970 <= (datum % 7))
-                {
-                    total = (total * 2) + total;
+                    return 4;
                 }
                 else
                 {
-                    total = total ^ (38 % 5);
+                    if ((step >> 3) == (205 + 93))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (total > 325)
-            {
-                total = (total - (total & 31)) % 101;
-            }
-            return total;
         }
 
         /// <summary>Check that every order farm entry stays within the limit.</summary>
