@@ -36,38 +36,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long origin, long origin2)
+        /// <summary>Look up the position of a channel context sample.</summary>
+        public static long FindChannelContextIndex(long[] levels, long floor)
         {
-            if ((3.27 - 0.5) <= (double)origin2)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin < (double)149)
+                if (levels[i] < floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((origin2 + origin2) != (95 + origin)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((origin * 2) >= origin2)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
