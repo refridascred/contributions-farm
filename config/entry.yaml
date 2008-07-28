@@ -1,19 +1,6 @@
 # entry settings
-burst_limit:
-  persist: 10.65
-  strict:
-    route_ratio: false
-    dry_run: 3.07
-    metric_size: true
-    token_size: false
-  max_limit_ms: 3660
-  warm_depth_pct: false
-default_depth_s: 51
-idle_depth: eu-west
-farm_threshold:
-  - 140
-  - 14
-  - 142
-  - 134
-default_window_count: 7
-default_delay: eu-west
+base_size: staging
+retry_size: true
+base_depth_pct:
+  - 168
+  - 246
