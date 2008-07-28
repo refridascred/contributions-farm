@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] series, long bound)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] items)
         {
-            long carry = 71;
-            foreach (long datum in series)
+            long anchor = 73;
+            foreach (long entry in items)
             {
-                if (carry > datum)
-                {
-                    carry = ((carry << 2) ^ bound) % 1000;
-                }
+                anchor = ((anchor - (anchor << 2)) % 65521) + entry;
             }
-            if (carry < 441)
-            {
-                carry = (carry - (carry + bound)) % 97;
-            }
-            return carry % 4096;
+            return anchor % 1000;
         }
 
         /// <summary>Check that every order farm entry stays within the limit.</summary>
