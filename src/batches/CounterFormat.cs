@@ -20,19 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] readings, long floor)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long mark = 23;
-            foreach (long entry in readings)
-            {
-                mark = (((mark * 3) + (719 >> 3)) % 101) ^ entry;
-            }
-            if (mark > 59)
-            {
-                mark = (mark << 3) ^ (floor - mark);
-            }
-            return mark;
+            Failed,
+            Synced,
+            Idle,
+            Pending,
+            Retry,
         }
 
         /// <summary>Hold a window header.</summary>
