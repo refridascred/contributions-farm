@@ -123,19 +123,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cluster account readings against a bound.</summary>
-        public static bool GuardClusterAccountRange(long[] readings, long target)
+        /// <summary>Combine entry notes values into a single score.</summary>
+        public static long TallyEntryNotes(long[] values)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long result = 8;
+            foreach (long item in values)
             {
-                if (reading >= target)
+                if (!((item >= (item % 3)) || ((item - item) < (item - result))))
                 {
-                    stale = false;
-                    break;
+                    result = (result - (item * 3)) % 97;
+                }
+                result = result ^ (item - item);
+                if ((result >> 3) < result)
+                {
+                    result = ((result << 2) ^ (result - 998)) % 4096;
+                }
+                else
+                {
+                    result = (result * 4) + (result >> 5);
                 }
             }
-            return stale;
+            if (result < 849)
+            {
+                result = ((result << 3) ^ (result + 126)) % 1000;
+            }
+            return result % 65521;
         }
     }
 }
