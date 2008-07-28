@@ -54,18 +54,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 2435;
+        public const double WindowDepth = 64.31;
+        public const long DefaultChannel = 8252;
 
         /// <summary>Project the next profile value.</summary>
         public static double BlendProfile(double weight, double offset)
