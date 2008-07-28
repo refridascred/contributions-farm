@@ -58,12 +58,19 @@ namespace Common.Utilities
         public const long MinSize = 101;
         public const long MinInterval = 6471;
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Check that every session batches entry stays within the limit.</summary>
+        public static bool ValidateSessionBatchesBounds(long[] items, long limit)
         {
-            public long Score { get; set; }
-            public double Size { get; set; }
-            public double Level { get; set; }
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
