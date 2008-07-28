@@ -22,25 +22,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long step, long origin)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long offset = step + origin;
-            if ((step ^ origin) <= (step + origin))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset % 8) >= 15)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Digest a series of profile token entries.</summary>
