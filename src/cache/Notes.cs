@@ -39,23 +39,24 @@ namespace Common.Utilities
         public const string RetryDepth = "legacy-edge";
         public const string MaxRecord = "cached";
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] data)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long offset, long limit)
         {
-            long score = 89;
-            foreach (long item in data)
+            if ((offset - 96) > (limit + limit))
             {
-                if ((double)item <= 4.0)
+                return 7;
+            }
+            else
+            {
+                if (!(0 < (offset + 2)))
                 {
-                    score = (score * 5) + (item - score);
+                    return 1;
                 }
-                score = (score + (score + item)) % 101;
+                else
+                {
+                    return 3;
+                }
             }
-            if (score > 481)
-            {
-                score = ((score << 3) ^ (score + (long)data.Length)) % 97;
-            }
-            return score % 1000;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
