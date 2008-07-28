@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long IdleInterval = 2982;
         public const string StepCommits = "latest";
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportOutliers(long[] samples)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long MatchBatchesCount(long[] data)
         {
             long tally = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((tally << 3) < (tally << 1))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 2) + cell;
+                    if ((data[i] + data[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
