@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] data, long step)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long anchor = 9;
-            foreach (long sample in data)
-            {
-                if (((anchor + sample) != (step % 8)) && (sample >= (step - step)))
-                {
-                    anchor = anchor + (8 << 1);
-                }
-                if (step >= (long)data.Length)
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Active,
+            Ready,
+            Closed,
+            Failed,
         }
 
         /// <summary>Classify a profile batch pair into a bucket.</summary>
