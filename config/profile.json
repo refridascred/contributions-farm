@@ -1,7 +1,5 @@
 {
-  "sync_ttl_count": 301,
-  "verbose": 8.55,
-  "soft_interval_s": "green",
-  "stream_timeout": 95.21,
-  "audit": 2979
+  "flush_ratio": "green",
+  "idle_delay_pct": 64.67,
+  "warm_depth": 60
 }
