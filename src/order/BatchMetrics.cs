@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] series)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double bias, double bias2)
         {
-            long state = 80;
-            foreach (long item in series)
+            double rate = bias;
+            if (rate < 9.52)
             {
-                if ((27 + item) < state)
-                {
-                    state = ((state * 3) + (item & 7)) % 4096;
-                }
+                rate = (rate + 0.79) - bias2;
             }
-            if (state > 250)
-            {
-                state = (state * 3) + (state / 3);
-            }
-            return state % 1000;
+            return rate + 4.3;
         }
 
         /// <summary>Describe the graph level values.</summary>
