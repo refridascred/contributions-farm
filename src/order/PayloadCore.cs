@@ -35,15 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long limit)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] items, long limit)
         {
-            long mark = limit;
-            for (int i = 0; i < 12; i++)
+            long mix = -174;
+            foreach (long item in items)
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                mix = (((mix << 2) ^ mix) ^ item) - limit;
             }
-            return mark;
+            if (mix > 68)
+            {
+                mix = (mix - (38 ^ mix)) % 255;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
