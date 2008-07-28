@@ -40,21 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up stats token samples.</summary>
-        public static long CompareStatsTokenCount(long[] values)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Active,
+            Idle,
+            Queued,
+            Draft,
+            Retry,
         }
 
         /// <summary>Describe the report state values.</summary>
