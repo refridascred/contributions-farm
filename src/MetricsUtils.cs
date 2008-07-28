@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSpan = 5371;
-        public const long StepSession = 3286;
-        public const long WindowInterval = 3799;
-        public const long HardSession = 2858;
-        public const long BurstScore = 5583;
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
+        {
+            public long Stamp { get; set; }
+            public long Label { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Rank notes input into a small class.</summary>
         public static long ClassifyNotes(long floor, long floor2)
