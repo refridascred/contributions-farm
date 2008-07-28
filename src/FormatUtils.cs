@@ -48,12 +48,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string RetryAlready = "stable-1";
-        public const long DefaultAlready = 1819;
-        public const long DefaultFactor = 5047;
-        public const double CacheAlready = 70.13;
-        public const double LimitAlready = 17.81;
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
+        {
+            Dropped,
+            Retry,
+            Active,
+        }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool GuardCommandLimits(long[] readings, long origin)
