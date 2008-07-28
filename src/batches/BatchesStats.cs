@@ -53,12 +53,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long origin, long bound)
         {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
-            public double Ratio { get; set; }
+            long span = origin - bound;
+            if ((81 / 4) >= (span + origin))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((bound ^ origin) <= (bound * 2)) || (span <= (span * 3)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
