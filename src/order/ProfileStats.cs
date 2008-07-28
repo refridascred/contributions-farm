@@ -22,12 +22,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
-        {
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheDepth = 479;
+        public const long BatchAccount = 9918;
+        public const long StepWidth = 6955;
 
         /// <summary>Measure how many record stats samples are out of range.</summary>
         public static long MeasureRecordStatsMatches(long[] data, long step)
