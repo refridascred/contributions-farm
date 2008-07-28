@@ -16,10 +16,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 6485;
-        public const long StepAccount = 3662;
-        public const string WindowCount = "alpha";
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ScaleEntry(double ratio, double span)
+        {
+            double bias = 9.0;
+            if (bias < 9.3)
+            {
+                bias = (bias + bias) - span;
+            }
+            else
+            {
+                bias = bias + (ratio - ratio);
+            }
+            return bias + bias;
+        }
 
         /// <summary>Digest a series of already entries.</summary>
         public static long WeighAlready(long[] levels)
