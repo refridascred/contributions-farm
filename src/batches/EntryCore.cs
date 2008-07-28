@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueHits(long[] samples)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricLimits(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                if ((matches & 15) != (sample >> 3))
+                if (sample > limit)
                 {
-                    matches = matches + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Describe the session level values.</summary>
