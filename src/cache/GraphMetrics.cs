@@ -75,18 +75,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine token channel values into a single score.</summary>
-        public static long FoldTokenChannel(long[] values)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long PairCommandCount(long[] readings)
         {
-            long score = -6;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((value * 2) < value)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = (score + (score + score)) % 255;
+                    if ((readings[i] + readings[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score;
+            return hits;
         }
     }
 }
