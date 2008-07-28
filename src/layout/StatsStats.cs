@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
-        {
-            Queued,
-            New,
-            Idle,
-            Retry,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstScore = 5126;
+        public const long CacheStream = 1012;
+        public const string DefaultStream = "local";
+        public const long HardStream = 3981;
+        public const long RetrySpan = 6678;
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long CountClusterOutliers(long[] items, long step)
