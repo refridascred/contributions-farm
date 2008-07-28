@@ -73,19 +73,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long floor)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long mark = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                if (floor > (floor + mark))
-                {
-                    break;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public double Count { get; set; }
+            public double Region { get; set; }
         }
     }
 }
