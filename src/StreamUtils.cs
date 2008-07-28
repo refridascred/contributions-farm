@@ -12,14 +12,14 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            Ready,
+            Done,
+            Paused,
             Active,
-            Stale,
-            Pending,
-            Retry,
+            Idle,
+            Ready,
         }
 
         /// <summary>Describe the counter class values.</summary>
