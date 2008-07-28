@@ -1,11 +1,6 @@
 {
-  "account_limit": 40.42,
-  "idle_retries_count": {
-    "min_ttl_s": 60,
-    "audit": 2,
-    "hard_capacity_pct": "legacy",
-    "readonly": [52, 485, 6, 463]
-  },
-  "sync_limit": "primary",
-  "readonly": false
+  "tools_ttl": 65.74,
+  "base_ratio_pct": 60,
+  "hard_depth": 25.86,
+  "retry_depth_count": 3767
 }
