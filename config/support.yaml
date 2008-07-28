@@ -1,6 +1,14 @@
 # support settings
-base_delay_ms: cached
-checks_threshold: 1766
-idle_timeout_pct: cached
-readonly: false
-base_interval_pct: 97.22
+readonly: staging
+base_limit_s: eu-west
+hard_retries_s: 27
+persist:
+  - staging
+  - blue
+support_depth:
+  - 245
+  - 74
+entry_size:
+  - 455
+  - 262
+  - 232
