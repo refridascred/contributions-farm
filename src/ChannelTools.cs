@@ -33,11 +33,9 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 2929;
-        public const long LimitCount = 4185;
-        public const string BaseDepth = "latest-1";
-        public const long BatchWindow = 5970;
-        public const double BurstFactor = 84.1;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultFactor = 4400;
+        public const long RetryEditor = 8982;
+        public const long BatchEditor = 9370;
     }
 }
