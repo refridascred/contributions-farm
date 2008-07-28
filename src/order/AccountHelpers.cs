@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string LimitTools = "open";
-        public const long StepTools = 2427;
-        public const long BatchDepth = 2784;
-        public const long RetryTools = 923;
-        public const double BatchSize = 47.8;
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= floor) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long TallyGithubfarmMatches(long[] items)
