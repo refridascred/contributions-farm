@@ -25,15 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two window counter measurements.</summary>
-        public static double ProjectWindowCounter(double rate, double offset)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long SeekProfileIndex(long[] data, long origin)
         {
-            double mean = rate;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = ((mean - (mean * 16.0)) + (double)(long)i) - offset;
+                if (data[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return mean - mean;
+            return -1;
         }
 
         /// <summary>Accumulate report route samples.</summary>
