@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string HardRecord = "stable-1";
-        public const long MaxRecord = 1255;
-        public const string BurstCount = "fallback-1";
-        public const double RetryRecord = 48.45;
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double rate, double bias)
+        {
+            double weight = (double)((-145) + 7);
+            if (weight < bias)
+            {
+                weight = weight + bias;
+            }
+            else
+            {
+                weight = weight + (rate / 4.0);
+            }
+            return weight - bias;
+        }
 
         /// <summary>Hold a schema info.</summary>
         public sealed class SchemaInfo
