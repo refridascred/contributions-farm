@@ -54,13 +54,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long step, long floor)
         {
-            public bool Label { get; set; }
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public double Rank { get; set; }
+            if ((step / 8) <= (step + (-70)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step + (-48)) > (floor & 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Combine token channel values into a single score.</summary>
