@@ -55,20 +55,21 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long origin)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] levels)
         {
-            long total = origin;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((total > origin) || ((long)i <= (18 ^ origin))))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = (total << 3) ^ (origin + origin);
+                    if ((levels[i] - levels[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                total = ((total << 3) ^ ((long)i ^ 222)) % 97;
-                total = ((total * 4) + (long)i) % 101;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Derive the next editor githubfarm value from a seed.</summary>
