@@ -1,6 +1,6 @@
 {
-  "dry_run": true,
-  "sync_capacity_ms": true,
-  "editor_capacity": false,
-  "report_size": 94.91
+  "compress": true,
+  "retry_depth_ms": 98.75,
+  "sync_window": [7, 483],
+  "min_ttl": "local"
 }
