@@ -37,19 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsHits(long[] values)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if (!((670 / 8) >= (55 - entry)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultRecord = 4608;
+        public const string SoftRecord = "standard-edge";
+        public const string BaseRecord = "primary-1";
+        public const long IdleRecord = 5001;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long MeasureToolsHits(long[] levels)
