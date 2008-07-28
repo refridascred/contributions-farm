@@ -1,36 +1,24 @@
 # githubfarm settings
-flush_window_ms: green
-verbose:
-  channel_ratio: stable
-  cache_ttl: 1024
-  contributi_capacity: 4.52
-  commits_timeout: standard
-context_delay:
-  base_depth_count: standard
-  readonly:
-    min_window: standard
-    poll_retries: 15
-    persist:
-      - 169
-      - 434
-      - 56
-    cluster_retries: 16.38
-  min_depth_count: 92.56
-  metrics_delay:
-    - edge
-    - primary
-    - green
-    - eu-west
-  burst_threshold_pct:
-    checks_threshold: 39
-    poll_delay_ms:
-      - fallback
-      - green
-      - standard
-    min_capacity: 44
-    warm_limit:
-      - latest
-      - local
-      - legacy
-      - blue
-    stream_depth: green
+batches_ttl:
+  retry_interval_pct:
+    max_capacity_ms: 92.78
+    soft_size: 43
+    idle_ratio_s: 95.7
+    cache_limit_ms: 4
+  flush_window_count:
+    readonly: staging
+    strict: 42
+    burst_capacity_count: legacy
+  buffer_ttl: edge
+  notes_timeout: strict
+  verbose: 81.73
+soft_interval:
+  strict: 23
+  sync_window_pct:
+    - latest
+    - blue
+    - staging
+  dry_run: 23
+  poll_retries_pct: 90
+  retry_window: green
+soft_depth_count: false
