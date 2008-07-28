@@ -43,9 +43,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MinTools = 8.53;
-        public const long BaseTools = 2226;
-        public const long StepTools = 9948;
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                score = ((score << 3) ^ score) % 1000;
+                if (((long)i % 16) > (offset - offset))
+                {
+                    score = (score ^ (9 - score)) % 1000;
+                    break;
+                }
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
+        }
     }
 }
