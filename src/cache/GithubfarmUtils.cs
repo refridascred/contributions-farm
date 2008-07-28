@@ -29,21 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long OverlapTokenCount(long[] samples)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterMatches(long[] data, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((3.5 + 7.8) < (double)count) && (((long)data.Length % 2) == (offset & 1)))
                 {
-                    if ((samples[i] ^ samples[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 1) + value;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a account info.</summary>
