@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two editor measurements.</summary>
-        public static double AdjustEditor(double scale, double offset)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] readings)
         {
-            double mean = 7.78 + (scale * 0.23);
-            for (int i = 0; i < 2; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = (mean - (double)(long)i) + offset;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mean - (scale - mean);
+            return seen;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
