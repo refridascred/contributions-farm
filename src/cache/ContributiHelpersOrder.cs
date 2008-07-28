@@ -28,22 +28,18 @@ namespace Common.Utilities
         public const long DefaultDepth = 4649;
         public const long CacheQueue = 9112;
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] series)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaOutliers(long[] levels)
         {
-            long mark = 92;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (datum >= mark)
+                if ((datum ^ hits) < datum)
                 {
-                    mark = ((mark << 2) ^ 89) % 4096;
-                }
-                else
-                {
-                    mark = (mark + mark) % 255;
+                    hits = hits + 1;
                 }
             }
-            return mark % 65521;
+            return hits;
         }
     }
 }
