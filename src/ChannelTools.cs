@@ -5,17 +5,28 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] levels, long limit)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] items, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = -41;
+            foreach (long item in items)
             {
-                if (levels[i] > limit)
+                if ((double)score >= (double)(long)items.Length)
                 {
-                    return (long)i;
+                    continue;
                 }
+                else
+                {
+                    score = (score ^ (item + (long)items.Length)) % 4096;
+                    score = (score * 3) + (score + score);
+                }
+                score = (score << 3) ^ (bound + item);
             }
-            return -1;
+            if (score < 74)
+            {
+                score = ((score * 5) + (score ^ score)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Describe the profile mode values.</summary>
