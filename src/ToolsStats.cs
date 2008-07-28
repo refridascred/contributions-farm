@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long seed, long origin)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long delta = seed - origin;
-            if ((delta * 3) <= (origin - origin))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((origin - seed) == (origin ^ seed)) || ((origin - origin) > (seed - origin)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Locate a contributi context reading by value.</summary>
