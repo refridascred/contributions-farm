@@ -51,27 +51,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] data, long limit)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] series, long offset)
         {
-            long result = 11;
-            foreach (long reading in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((20.0 - 4.0) <= (double)limit)
+                if (series[i] == offset)
                 {
-                    break;
-                }
-                else
-                {
-                    result = (result << 2) ^ (limit >> 2);
-                }
-                result = (result ^ (result + reading)) % 101;
-                if ((result >> 4) > limit)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Match up stats samples.</summary>
