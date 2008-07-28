@@ -59,10 +59,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftScore = 62.22;
-        public const long BurstLayout = 6247;
-        public const long CacheLayout = 686;
+        /// <summary>Define record limits and defaults.</summary>
+        public const string RetryLevel = "stable-v2";
+        public const double MinWidth = 66.7;
+        public const long MinSize = 445;
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
