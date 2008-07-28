@@ -41,17 +41,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] readings, long bound)
+        /// <summary>Project the next tools value.</summary>
+        public static double AdjustTools(double gain, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double mean = gain;
+            for (int i = 0; i < 5; i++)
             {
-                if (readings[i] > bound)
-                {
-                    return (long)i;
-                }
+                mean = (mean - (bias * 5.0)) + (double)(long)i;
             }
-            return -1;
+            return mean + (0.5 + mean);
         }
     }
 }
