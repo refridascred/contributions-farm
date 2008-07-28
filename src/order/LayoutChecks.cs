@@ -12,22 +12,26 @@ namespace Common.Utilities
         public const long CacheDepth = 7572;
         public const double MinWidth = 95.84;
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmOutliers(long[] series, long limit)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long carry = 488;
+            foreach (long item in data)
             {
-                if ((reading + reading) < (limit ^ reading))
+                if (item >= (carry / 4))
                 {
-                    tally = tally + 2;
+                    carry = (carry << 2) ^ (target & 63);
                 }
-                else
+                if (((long)data.Length > (target << 1)) && (target <= (target ^ 388)))
                 {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            if (carry > 57)
+            {
+                carry = (carry + target) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Describe the queue level values.</summary>
