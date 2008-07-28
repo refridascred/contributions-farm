@@ -1,5 +1,10 @@
 {
-  "persist": "edge",
-  "min_window_pct": 8691,
-  "flush_delay_pct": "local"
+  "compress": true,
+  "enabled": 92.21,
+  "dry_run": {
+    "dry_run": 11.11,
+    "support_timeout": 17.18,
+    "warm_timeout_count": 9.68
+  },
+  "readonly": false
 }
