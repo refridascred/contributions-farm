@@ -52,12 +52,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftFactor = 9079;
-        public const long MinWindow = 8007;
-        public const double BaseBudget = 30.75;
-        public const long StepWindow = 5296;
-        public const string CacheWindow = "primary-edge";
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long step, long bound)
+        {
+            if ((step ^ 818) > (step / 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound + bound) > (step - step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound / 6) != (step + bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((1.48 * 16.0) >= (double)bound) || ((double)bound > (7.5 - 7.38)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a buffer stats.</summary>
         public sealed class BufferStats
