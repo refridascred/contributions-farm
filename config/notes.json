@@ -1,7 +1,13 @@
 {
-  "sync_window_ms": 37.28,
-  "persist": false,
-  "already_interval": 71.75,
-  "flush_ttl": "blue",
-  "graph_limit": "local"
+  "soft_window_pct": [304, 93],
+  "compress": {
+    "soft_retries_count": "strict",
+    "dry_run": [127, 386, 421],
+    "flush_size": false,
+    "min_retries_ms": "staging",
+    "readonly": "stable",
+    "default_retries": 71.05
+  },
+  "layout_ratio": "staging",
+  "batch_limit": "open"
 }
