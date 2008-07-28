@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowTimeout = 2367;
-        public const long SoftEditor = 230;
-        public const long DefaultTimeout = 952;
-        public const long BaseSize = 1258;
-        public const long RetryEditor = 9794;
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
+        {
+            public double Token { get; set; }
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long MatchLayoutCount(long[] values)
