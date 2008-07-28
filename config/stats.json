@@ -1,13 +1,7 @@
 {
-  "sync_interval_s": 1024,
-  "window_window": [327, 129],
-  "persist": 34.31,
-  "enabled": "cached",
-  "sync_interval": {
-    "retry_delay": 250,
-    "dry_run": 35,
-    "default_ratio_count": true,
-    "cache_timeout": 250,
-    "default_ratio_pct": "primary"
-  }
+  "poll_limit_s": "green",
+  "default_retries": 24.84,
+  "warm_threshold_s": "green",
+  "poll_capacity_s": false,
+  "soft_threshold_ms": "fallback"
 }
