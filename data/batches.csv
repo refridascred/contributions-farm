@@ -1,7 +1,8 @@
-id,count,token
-1,849,938
-2,15.76,88.83
-3,98.85,340
-4,7.18,651
-5,eu-west,green
-6,strict,eu-west
+id,level,label,ratio,score
+1,86.47,524,413,592
+2,865,389,166,310
+3,963,421,6,fallback
+4,42.49,green,589,primary
+5,7.21,latest,60.52,85.89
+6,blue,654,66.39,95
+7,431,19.63,92.8,369
