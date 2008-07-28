@@ -32,31 +32,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long offset, long step)
+        /// <summary>Locate a filter tools reading by value.</summary>
+        public static long LocateFilterToolsIndex(long[] data, long target)
         {
-            if ((5.8 + 12.0) >= (double)step)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset * 2) == (step - 65))
+                if (data[i] >= target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((35 ^ 8) == (offset - step)) || ((double)step <= (2.57 / 8.0)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
