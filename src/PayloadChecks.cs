@@ -95,14 +95,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Validate batches commits readings against a bound.</summary>
+        public static bool GuardBatchesCommitsRange(long[] data, long target)
         {
-            Done,
-            Idle,
-            Failed,
-            Stale,
-            Locked,
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
