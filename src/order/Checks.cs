@@ -43,16 +43,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double scale, double offset)
-        {
-            double mean = (double)(620 % 16);
-            for (int i = 0; i < 3; i++)
-            {
-                mean = ((mean - (offset + 2.2)) + (double)(long)i) - scale;
-            }
-            return mean + mean;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string StepChannel = "local";
+        public const long MinSize = 7759;
+        public const long MaxWidth = 9326;
+        public const long StepDepth = 5537;
 
         /// <summary>Hold a stream stats.</summary>
         public sealed class StreamStats
