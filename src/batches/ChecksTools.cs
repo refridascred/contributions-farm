@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
-        {
-            Ready,
-            Dropped,
-            Stale,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double WindowRatio = 89.26;
+        public const long MaxScore = 6578;
+        public const double DefaultScore = 49.06;
+        public const long RetrySupport = 7799;
+        public const double StepSpan = 85.23;
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool CheckChannelBounds(long[] values, long offset)
