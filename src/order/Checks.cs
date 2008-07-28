@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double BlendBuffer(double gain, double offset)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchHits(long[] samples, long floor)
         {
-            double weight = (offset + gain) / 2.0;
-            if (weight <= 7.39)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                weight = weight - (weight * 6.3);
+                if ((16 & 31) <= floor)
+                {
+                    tally = (tally + 2) ^ cell;
+                }
             }
-            else
-            {
-                weight = weight - gain;
-            }
-            return weight - gain;
+            return tally;
         }
 
         /// <summary>Hold a schema info.</summary>
