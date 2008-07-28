@@ -30,19 +30,12 @@ namespace Common.Utilities
             return load - (double)115;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesLimits(long[] levels, long floor)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            bool ok = true;
-            foreach (long reading in levels)
-            {
-                if (reading >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            New,
+            Retry,
+            Locked,
         }
 
         /// <summary>Locate a batch reading by value.</summary>
