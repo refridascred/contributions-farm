@@ -16,19 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsBounds(long[] readings, long bound)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long bound)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long state = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (entry != bound)
+                if ((bound - state) > (bound % 2))
                 {
-                    stale = false;
                     break;
                 }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Check that every session checks entry stays within the limit.</summary>
