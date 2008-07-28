@@ -1,16 +1,6 @@
 {
-  "buffer_window": ["open", "strict", "green"],
-  "min_ratio": "latest",
-  "compress": {
-    "flush_limit_s": 60,
-    "hard_size": false,
-    "default_interval_s": 1024,
-    "audit": ["fallback", "green", "open"],
-    "idle_threshold": {
-      "githubfarm_threshold": "edge",
-      "hard_size_count": 74.67,
-      "audit": 29,
-      "burst_delay": ["eu-west", "legacy", "eu-west", "eu-west"]
-    }
-  }
+  "farm_ttl": 7908,
+  "default_depth": "strict",
+  "cache_threshold": "edge",
+  "retry_size_pct": 30
 }
