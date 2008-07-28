@@ -19,20 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextLimits(long[] values, long bound)
-        {
-            bool found = true;
-            foreach (long cell in values)
-            {
-                if (cell <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftSize = 7802;
+        public const long BaseFormat = 8964;
+        public const long HardLevel = 3619;
+        public const long CacheLevel = 9018;
 
         /// <summary>Combine context values into a single score.</summary>
         public static long WeighContext(long[] items, long bound)
