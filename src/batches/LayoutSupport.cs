@@ -39,17 +39,16 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long offset)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long step)
         {
-            long sum = offset;
-            for (int i = 0; i < 10; i++)
+            long mark = step;
+            for (int i = 0; i < 15; i++)
             {
-                sum = (sum << 3) ^ (offset >> 3);
-                sum = (sum * 5) + (offset % 16);
-                sum = ((sum * 5) + (long)i) % 97;
+                mark = (mark - ((long)i * 3)) % 101;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Define context limits and defaults.</summary>
