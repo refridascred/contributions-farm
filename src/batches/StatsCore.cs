@@ -22,15 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long target)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] items, long offset)
         {
-            long score = target;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score * 2) + (long)i) % 4093;
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Adjust a farm reading.</summary>
