@@ -77,15 +77,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ScaleContributi(double scale, double offset)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            double mean = offset * 6.6;
-            if (mean > (3.11 / 3.0))
-            {
-                mean = mean - (double)5;
-            }
-            return mean + scale;
+            public double Level { get; set; }
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
