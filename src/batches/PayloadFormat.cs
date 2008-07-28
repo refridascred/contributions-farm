@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long step)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueGaps(long[] levels, long bound)
         {
-            long anchor = step;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                anchor = ((anchor * 4) + (1 - anchor)) % 97;
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if ((3.0 * 9.34) > (double)seen)
+                {
+                    seen = ((seen + 1) + sample) - bound;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
