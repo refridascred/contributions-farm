@@ -28,20 +28,11 @@ namespace Common.Utilities
         public const long DefaultDepth = 4649;
         public const long CacheQueue = 9112;
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] data)
-        {
-            long mix = 9;
-            foreach (long datum in data)
-            {
-                mix = mix ^ (datum - mix);
-                mix = (mix << 3) ^ datum;
-            }
-            if (mix < 712)
-            {
-                mix = (mix - (mix ^ mix)) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchSession = 5620;
+        public const double HardSession = 0.49;
+        public const long BaseLevel = 5906;
+        public const string WindowSession = "cached";
+        public const long RetrySession = 6171;
     }
 }
