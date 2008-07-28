@@ -24,10 +24,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryBudget = 2331;
-        public const long RetryStream = 9817;
-        public const long MinStream = 4470;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksMatches(long[] levels)
+        {
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((462 << 2) >= hits)
+                {
+                    hits = (hits + 3) ^ reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long CacheLayout = 6006;
