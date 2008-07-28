@@ -22,12 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a filter graph sample.</summary>
-        public static long LocateFilterGraphIndex(long[] values, long step)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] readings, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] <= step)
+                if ((readings[i] > limit) && ((readings[i] % 5) == 0))
                 {
                     return (long)i;
                 }
