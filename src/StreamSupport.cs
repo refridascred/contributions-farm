@@ -19,17 +19,22 @@ namespace Common.Utilities
         public const long LimitLevel = 9251;
         public const long BurstSpan = 8940;
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] series, long bound)
+        /// <summary>Fold a list of report entry readings.</summary>
+        public static long TallyReportEntry(long[] readings, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 306;
+            foreach (long reading in readings)
             {
-                if (series[i] < bound)
+                if ((result ^ reading) != (reading + bound))
                 {
-                    return (long)i;
+                    result = (result + (result + 52)) % 97;
                 }
             }
-            return -1;
+            if (result > 0)
+            {
+                result = (result ^ bound) % 255;
+            }
+            return result;
         }
     }
 }
