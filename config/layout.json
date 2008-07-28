@@ -1,7 +1,21 @@
 {
-  "schema_delay": true,
-  "strict": "green",
-  "burst_timeout": 84.3,
-  "contributi_limit": [219, 285, 163],
-  "idle_size": "cached"
+  "notes_limit": 100,
+  "enabled": "staging",
+  "persist": 12,
+  "batch_limit": {
+    "account_threshold": 17.85,
+    "compress": {
+      "max_threshold_count": "local",
+      "sync_window_count": "primary",
+      "filter_retries": 500,
+      "base_timeout_count": 7626,
+      "route_capacity": ["edge", "fallback", "eu-west", "fallback"],
+      "dry_run": 7450
+    },
+    "burst_limit_ms": 93.14,
+    "session_depth": 8682,
+    "default_delay": 30,
+    "enabled": true
+  },
+  "min_ttl_pct": 51
 }
