@@ -41,11 +41,38 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ProjectMetric(double weight, double offset)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long floor, long origin)
         {
-            double scale = weight;
-            return (scale + weight) + offset;
+            if ((double)floor < (5.98 - 0.2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin >> 1) <= (origin - origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor << 2) <= (38 ^ floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((2.3 + 5.9) == (double)origin)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a account info.</summary>
