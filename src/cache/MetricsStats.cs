@@ -54,11 +54,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsHits(long[] levels)
         {
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (value < (tally - 6))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define support limits and defaults.</summary>
