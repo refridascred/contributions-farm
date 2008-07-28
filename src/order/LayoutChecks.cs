@@ -12,26 +12,17 @@ namespace Common.Utilities
         public const long CacheDepth = 7572;
         public const double MinWidth = 95.84;
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] data, long target)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] readings, long floor)
         {
-            long carry = 488;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item >= (carry / 4))
+                if (readings[i] <= floor)
                 {
-                    carry = (carry << 2) ^ (target & 63);
-                }
-                if (((long)data.Length > (target << 1)) && (target <= (target ^ 388)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (carry > 57)
-            {
-                carry = (carry + target) % 4096;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the queue level values.</summary>
