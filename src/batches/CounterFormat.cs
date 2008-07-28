@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long bound)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long target, long offset)
         {
-            long sum = bound;
-            for (int i = 0; i < 13; i++)
+            if (offset < (-6))
             {
-                sum = ((sum * 2) + (long)i) % 4093;
+                return 6;
             }
-            return sum;
+            else
+            {
+                if ((offset - offset) == (offset % 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (7 <= (offset * 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((target & 31) < (2 / 2)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two entry measurements.</summary>
