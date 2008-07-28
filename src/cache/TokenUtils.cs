@@ -13,11 +13,14 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string HardStats = "cached-1";
-        public const long StepStats = 6790;
-        public const string SoftStats = "stable-1";
-        public const double LimitLevel = 94.6;
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
+        {
+            public long Owner { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool ValidateCounterBounds(long[] data, long bound)
