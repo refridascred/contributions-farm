@@ -14,12 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandLimits(long[] levels, long origin)
         {
-            Retry,
-            Synced,
-            Dropped,
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the queue level values.</summary>
