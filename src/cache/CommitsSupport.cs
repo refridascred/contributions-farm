@@ -93,17 +93,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchFarm = 244;
+        public const string IdleBudget = "fallback-edge";
+        public const long WindowBudget = 6221;
+        public const long SoftTimeout = 8969;
+        public const double SoftLevel = 83.72;
     }
 }
