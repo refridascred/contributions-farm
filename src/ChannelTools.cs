@@ -19,12 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountHits(long[] readings, long origin)
         {
-            public bool Limit { get; set; }
-            public double Owner { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((5 / 7) > (origin >> 3))
+                {
+                    tally = (tally + 1) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two command measurements.</summary>
