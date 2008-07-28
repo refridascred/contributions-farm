@@ -46,14 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            Stale,
-            Done,
-            Retry,
-            Idle,
-            New,
+            public double Mode { get; set; }
+            public bool Label { get; set; }
+            public long Limit { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
