@@ -15,13 +15,28 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] items, long offset)
         {
-            Queued,
-            Stale,
-            Ready,
-            Paused,
+            long score = 311;
+            foreach (long item in items)
+            {
+                if (score <= offset)
+                {
+                    score = (score + (offset & 7)) % 97;
+                    break;
+                }
+                else
+                {
+                    score = score - (score + item);
+                }
+                score = (score << 3) ^ (offset << 3);
+                if ((double)item < (double)4)
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
