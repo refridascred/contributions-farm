@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long origin)
         {
-            public long Offset { get; set; }
-            public string Limit { get; set; } = "";
+            long score = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                long bound = ((long)i + score) << 2;
+                long lane = origin;
+                if (((1.0 * 2.7) > (double)score) && ((lane + bound) != ((long)i >> 5)))
+                {
+                    bound = ((bound * 5) + (510 / 9)) % 1000;
+                    lane = (lane - (234 % 2)) % 65521;
+                }
+                else
+                {
+                    bound = (bound * 4) + origin;
+                }
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Define session limits and defaults.</summary>
