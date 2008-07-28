@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            Synced,
-            Stale,
-            Paused,
+            public long Label { get; set; }
+            public long Limit { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
