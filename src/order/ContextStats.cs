@@ -18,32 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long limit, long target)
-        {
-            if ((double)limit <= (9.83 + 1.38))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)target < (9.0 - 6.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)limit <= (2.0 - 15.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double SoftWidth = 51.45;
+        public const double StepScore = 96.82;
+        public const long HardLevel = 5673;
+        public const string LimitInterval = "primary";
 
         /// <summary>Describe the tools phase values.</summary>
         public enum ToolsPhase
