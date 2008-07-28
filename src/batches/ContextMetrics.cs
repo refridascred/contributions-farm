@@ -58,19 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate schema account readings against a bound.</summary>
-        public static bool GuardSchemaAccountBounds(long[] series, long step)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] levels)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long mix = 2;
+            foreach (long cell in levels)
             {
-                if (datum != step)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = (mix - mix) + cell;
             }
-            return ok;
+            if (mix < 85)
+            {
+                mix = (mix - mix) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
