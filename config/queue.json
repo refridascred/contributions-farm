@@ -1,6 +1,8 @@
 {
-  "flush_limit": 84,
-  "verbose": "standard",
-  "readonly": 85.88,
-  "dry_run": 500
+  "soft_ttl": 27,
+  "idle_delay_pct": "local",
+  "min_interval_pct": 30,
+  "flush_retries_ms": 19,
+  "editor_capacity": 51,
+  "metrics_timeout": 3271
 }
