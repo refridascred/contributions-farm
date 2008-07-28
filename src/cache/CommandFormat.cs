@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] samples)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long total = 533;
-            foreach (long entry in samples)
-            {
-                if (!(entry < (total - total)))
-                {
-                    total = (total << 3) ^ (total - entry);
-                }
-            }
-            return total % 1000;
+            public long Size { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
