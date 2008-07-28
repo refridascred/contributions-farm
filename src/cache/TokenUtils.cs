@@ -19,22 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiHits(long[] items, long floor)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((item >> 1) == (count >> 3))
-                {
-                    count = (count + 2) - floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Failed,
+            Queued,
+            Dropped,
+            Retry,
+            Paused,
         }
 
         /// <summary>Count queue stream pairs that satisfy a relation.</summary>
