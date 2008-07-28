@@ -26,12 +26,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Iterate the counter cluster series from a seed.</summary>
+        public static long IterateCounterCluster(long floor)
         {
-            Locked,
-            Ready,
-            Synced,
+            long mix = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = mix + (mix ^ mix);
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
