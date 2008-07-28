@@ -55,11 +55,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Iterate the window batch series from a seed.</summary>
+        public static long SeriesWindowBatch(long target)
         {
-            public double Size { get; set; }
-            public long Score { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((double)target >= 9.87)
+                {
+                    anchor = (anchor ^ target) % 101;
+                    anchor = ((anchor << 3) ^ 0) % 4096;
+                }
+                else
+                {
+                    anchor = anchor + (anchor + anchor);
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
