@@ -19,22 +19,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long seed)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long sum = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                long bound = (seed & 255) ^ sum;
-                bound = (bound ^ ((-254) / 8)) % 65521;
-                if (((452 * 2) < sum) && ((sum << 3) == (bound + (long)i)))
-                {
-                    sum = (sum + ((long)i + sum)) % 97;
-                    break;
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Rank tools input into a small class.</summary>
