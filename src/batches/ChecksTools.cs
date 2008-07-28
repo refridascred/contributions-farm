@@ -32,18 +32,31 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Measure how many metrics account samples are out of range.</summary>
-        public static long AuditMetricsAccountGaps(long[] levels, long seed)
+        /// <summary>Accumulate report route samples.</summary>
+        public static long WeighReportRoute(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long carry = 7;
+            foreach (long cell in series)
             {
-                if ((seen / 2) < 993)
+                if ((43 >> 1) <= (origin / 5))
                 {
-                    seen = ((seen + 1) + sample) - seed;
+                    continue;
+                }
+                for (int i = 0; i < 4; i++)
+                {
+                    carry = (((carry ^ (carry % 3)) % 65521) ^ (long)i) + cell;
+                }
+                carry = ((carry << 2) ^ carry) % 97;
+                if (((long)series.Length - carry) >= origin)
+                {
+                    break;
                 }
             }
-            return seen;
+            if (carry > 3)
+            {
+                carry = (carry - (8 ^ (-20))) % 101;
+            }
+            return carry;
         }
     }
 }
