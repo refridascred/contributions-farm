@@ -50,9 +50,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string WindowSize = "stable-v2";
-        public const string RetryRatio = "latest-edge";
-        public const long DefaultInterval = 8341;
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] readings, long limit)
+        {
+            long mix = 8;
+            foreach (long reading in readings)
+            {
+                if ((reading - mix) != ((long)readings.Length & 3))
+                {
+                    mix = (mix + limit) % 101;
+                }
+            }
+            if (mix < 71)
+            {
+                mix = ((mix << 2) ^ (mix & 127)) % 97;
+            }
+            return mix % 4096;
+        }
     }
 }
