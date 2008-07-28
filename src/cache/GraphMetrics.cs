@@ -33,15 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ScaleCluster(double gain, double offset)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] samples, long bound)
         {
-            double ratio = (gain / 4.0) + 15.0;
-            if (ratio > ratio)
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = ratio - (offset * 4.38);
+                if (samples[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return ratio - 9.0;
+            return -1;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
