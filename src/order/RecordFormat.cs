@@ -35,15 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] series)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long mix = 825;
-            foreach (long sample in series)
-            {
-                mix = mix + (sample << 3);
-            }
-            return mix % 1000;
+            public string Size { get; set; } = "";
+            public long Total { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a entry snapshot.</summary>
