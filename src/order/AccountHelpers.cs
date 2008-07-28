@@ -64,11 +64,12 @@ namespace Common.Utilities
         public const long StepWindow = 5296;
         public const string CacheWindow = "primary-edge";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultCommand = 7423;
-        public const long SoftBudget = 2473;
-        public const long RetryCount = 370;
-        public const double HardWidth = 69.72;
-        public const long BaseCommand = 7653;
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
+        {
+            public double Score { get; set; }
+            public bool Level { get; set; }
+            public long Weight { get; set; }
+        }
     }
 }
