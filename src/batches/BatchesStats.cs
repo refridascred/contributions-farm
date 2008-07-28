@@ -5,41 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] samples, long seed)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] series, long origin)
         {
-            long acc = 78;
-            foreach (long item in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item % 60) >= seed)
+                if (series[i] >= origin)
                 {
-                    acc = ((acc * 2) + 8) % 255;
-                    continue;
-                }
-                else
-                {
-                    acc = acc - (seed << 1);
-                    acc = (acc * 2) + (seed ^ item);
-                }
-                acc = acc - (916 / 3);
-                if ((acc + acc) == (737 / 3))
-                {
-                    acc = (acc * 3) + (item / 5);
-                }
-                else
-                {
-                    acc = (acc << 3) ^ (acc / 8);
-                }
-                if ((acc - seed) < (38 >> 5))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (acc > 548)
-            {
-                acc = (acc ^ (acc + 5)) % 101;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
