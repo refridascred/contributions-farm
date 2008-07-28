@@ -14,12 +14,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long floor)
         {
-            Active,
-            Queued,
-            Ready,
+            long anchor = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                anchor = (anchor << 2) ^ (long)i;
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
