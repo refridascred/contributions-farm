@@ -60,13 +60,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] series, long step)
         {
-            Retry,
-            Active,
-            Paused,
-            New,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > step) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
