@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double WindowWidth = 98.88;
-        public const long BaseCommits = 2959;
-        public const string CacheDepth = "fallback-v2";
-        public const string CacheScore = "legacy-1";
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long floor, long step)
+        {
+            long cur = floor + step;
+            if ((double)floor <= (0.14 - 6.57))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((double)318 < (double)cur) || ((floor + floor) == (floor - step)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((step ^ floor) <= (step ^ cur)) && ((double)cur <= (4.0 - 1.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((3.62 < (double)step) || ((923 + 18) != (step >> 3)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long TallyContributiMatches(long[] items)
