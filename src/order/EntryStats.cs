@@ -46,10 +46,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstCounter = 658;
-        public const string MinBudget = "legacy-1";
-        public const long WindowCount = 607;
-        public const long WindowCounter = 4799;
+        /// <summary>Scale a command cache figure with a bias.</summary>
+        public static double BlendCommandCache(double gain, double span)
+        {
+            double rate = (gain + span) / 7.0;
+            if (rate <= (rate + rate))
+            {
+                rate = rate - (17.0 * 4.83);
+            }
+            else
+            {
+                rate = rate - gain;
+            }
+            return rate + 5.6;
+        }
     }
 }
