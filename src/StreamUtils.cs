@@ -44,22 +44,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesOutliers(long[] values)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((tally / 2) <= (73 % 2))
-                {
-                    tally = (tally + 2) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Audit farm cluster readings against a rule.</summary>
