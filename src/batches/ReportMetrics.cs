@@ -19,20 +19,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] series, long step)
+        /// <summary>Validate account queue readings against a bound.</summary>
+        public static bool ValidateAccountQueueLimits(long[] data, long offset)
         {
-            long score = 40;
-            foreach (long item in series)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                score = (score ^ (item - score)) % 255;
-                score = (score + (score & 127)) % 255;
+                if (cell > offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (score < 97)
-            {
-                score = score - (step ^ 0);
-            }
-            return score % 4096;
+            return ready;
         }
 
         /// <summary>Match up batches samples.</summary>
