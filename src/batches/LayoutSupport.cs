@@ -27,19 +27,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every notes commits entry stays within the limit.</summary>
-        public static bool VerifyNotesCommitsRange(long[] levels, long target)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Queued,
+            Retry,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Hold a checks snapshot.</summary>
