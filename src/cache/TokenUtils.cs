@@ -14,39 +14,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a profile batch pair into a bucket.</summary>
-        public static long ClassifyProfileBatch(long floor, long floor2)
-        {
-            if (floor < (floor2 + floor2))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor + floor) < floor2)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((9.0 / 6.0) < (double)floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)floor2 >= (4.7 - 6.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinWidth = 8239;
+        public const long IdleLevel = 561;
+        public const long MaxGithubfarm = 8878;
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long TallyChecksMatches(long[] samples, long step)
