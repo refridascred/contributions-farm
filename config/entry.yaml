@@ -1,25 +1,17 @@
 # entry settings
-warm_capacity_count: 70.04
-max_depth_ms: 40.04
-batch_threshold_ms: 5303
-cache_capacity:
-  order_depth: true
-  retry_timeout_count:
-    - 442
-    - 244
-    - 379
-  idle_threshold:
-    audit:
-      - cached
-      - staging
-    flush_limit_s: 8
-    tools_ratio: 13.83
-    cache_limit_s: 98.9
-    hard_capacity: 29.71
-    session_timeout: 250
-  compress:
-    - standard
-    - cached
+burst_threshold: false
+warm_window_pct:
+  - 124
+  - 479
+  - 202
+compress: legacy
+already_ratio:
+  max_depth_pct: 500
+  burst_threshold_pct:
+    - latest
+    - local
+    - fallback
     - open
-  flush_limit_pct: 60
-  cache_threshold: 12.06
+  max_delay: 500
+  min_threshold_ms: 95.88
+  cluster_ttl: 1024
