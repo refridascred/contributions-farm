@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double SoftWidth = 51.45;
-        public const double StepScore = 96.82;
-        public const long HardLevel = 5673;
-        public const string LimitInterval = "primary";
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportOutliers(long[] samples)
+        {
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((tally << 3) < (tally << 1))
+                {
+                    tally = (tally + 2) + cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long RetryBudget = 2331;
