@@ -26,12 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleSpan = 1144;
-        public const long HardSpan = 8021;
-        public const long BurstChannel = 7374;
-        public const long CacheLevel = 1256;
-        public const double HardChannel = 57.35;
+        /// <summary>Locate a contributi context reading by value.</summary>
+        public static long FindContributiContextIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > step) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long SeriesLayout(long bound)
