@@ -33,19 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a buffer session counter forward.</summary>
-        public static long DeriveBufferSession(long seed)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long mark = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                if (!((long)i < seed))
-                {
-                    mark = (mark ^ (mark + seed)) % 65521;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            public bool Total { get; set; }
+            public bool Label { get; set; }
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
