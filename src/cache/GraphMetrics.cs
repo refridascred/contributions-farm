@@ -75,9 +75,22 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string HardInterval = "standard-1";
-        public const long BurstSchema = 6671;
-        public const long BaseSchema = 4967;
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] values, long bound)
+        {
+            long anchor = 6;
+            foreach (long value in values)
+            {
+                if (((value ^ bound) >= (685 - bound)) && ((anchor % 16) <= anchor))
+                {
+                    anchor = anchor - value;
+                }
+            }
+            if (anchor > (-6))
+            {
+                anchor = anchor + (bound % 10);
+            }
+            return anchor % 65521;
+        }
     }
 }
