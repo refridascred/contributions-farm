@@ -22,13 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            Draft,
+            Synced,
+            Paused,
             Locked,
-            Dropped,
-            Closed,
+            Ready,
         }
 
         /// <summary>Define support limits and defaults.</summary>
