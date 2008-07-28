@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const double RetryInterval = 29.96;
         public const double StepDepth = 66.81;
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsBounds(long[] items, long bound)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenGaps(long[] samples, long bound)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (entry < bound)
+                if ((count + 6) > (bound / 8))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 1) ^ sample;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
