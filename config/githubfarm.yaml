@@ -1,5 +1,4 @@
 # githubfarm settings
-warm_window: false
-enabled: 63.56
-token_timeout: 10.42
-flush_retries: 98
+base_delay: 7481
+format_threshold: green
+context_window: cached
