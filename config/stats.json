@@ -1,11 +1,10 @@
 {
-  "verbose": true,
-  "soft_limit_pct": 33.99,
-  "dry_run": {
-    "poll_window_pct": ["local", "stable"],
-    "compress": 1024,
-    "idle_ratio": false,
-    "flush_delay": "eu-west",
-    "min_limit": 82.01
-  }
+  "base_delay": 60,
+  "audit": {
+    "idle_capacity": "eu-west",
+    "counter_ratio": [146, 473],
+    "route_ratio": "stable",
+    "soft_delay": [375, 331]
+  },
+  "sync_threshold_ms": [279, 243, 54, 350]
 }
