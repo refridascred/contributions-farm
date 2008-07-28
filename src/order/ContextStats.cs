@@ -24,14 +24,38 @@ namespace Common.Utilities
         public const long HardLevel = 5673;
         public const string LimitInterval = "primary";
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long SortNotes(long offset, long origin)
         {
-            Dropped,
-            Failed,
-            Retry,
-            Synced,
-            Closed,
+            if (offset <= (7 + origin))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((18.0 / 3.0) == (double)offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)895 == (double)origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (offset > (7 << 2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a window stats.</summary>
