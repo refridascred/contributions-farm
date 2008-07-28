@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueOutliers(long[] data)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (entry <= (entry / 6))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Done,
+            Locked,
+            Queued,
+            Failed,
+            Paused,
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
