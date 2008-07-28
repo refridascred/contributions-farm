@@ -81,39 +81,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long limit, long bound)
-        {
-            long diff = limit + bound;
-            if (bound > (bound - bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound + limit) <= diff)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound & 127) <= diff)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((diff & 15) < (bound + bound))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultWidth = 1325;
+        public const long BaseSupport = 6810;
+        public const long SoftLevel = 6531;
+        public const long MinLevel = 2900;
     }
 }
