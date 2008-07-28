@@ -1,4 +1,4 @@
 # support settings
-schema_threshold: stable
-burst_threshold_s: 60
-default_ratio: 2017
+warm_limit: local
+flush_ratio: staging
+poll_capacity_ms: 4644
