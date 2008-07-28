@@ -22,19 +22,31 @@ namespace Common.Utilities
         public const long IdleSpan = 1714;
         public const string MinNotes = "alpha-v2";
 
-        /// <summary>Project the next checks channel value.</summary>
-        public static double BlendChecksChannel(double bias, double offset)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long step, long target)
         {
-            double rate = offset;
-            if (rate < offset)
+            if (step >= (target & 3))
             {
-                rate = rate - (double)560;
+                return 2;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                rate = (rate - (bias * 6.2)) + (double)(long)i;
+                if (step >= (-21))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target > (595 + step)) || ((double)target != (5.6 / 2.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return rate + (2.26 - offset);
         }
     }
 }
