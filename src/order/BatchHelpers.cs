@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every farm graph entry stays within the limit.</summary>
-        public static bool VerifyFarmGraphLimits(long[] data, long limit)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            bool stale = true;
-            foreach (long entry in data)
-            {
-                if (entry > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Describe the cluster class values.</summary>
