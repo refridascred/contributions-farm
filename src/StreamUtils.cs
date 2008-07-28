@@ -53,11 +53,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            public bool Ratio { get; set; }
-            public long Size { get; set; }
+            Pending,
+            Retry,
+            Done,
+            Draft,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
