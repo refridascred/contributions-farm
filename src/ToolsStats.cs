@@ -19,17 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a contributi context reading by value.</summary>
-        public static long FindContributiContextIndex(long[] levels, long step)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > step) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Draft,
+            Retry,
+            Paused,
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
