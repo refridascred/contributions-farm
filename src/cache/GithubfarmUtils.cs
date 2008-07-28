@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long seed, long seed2)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long StepSchema(long limit)
         {
-            long cur = seed ^ seed2;
-            if (!(seed2 > seed))
+            long state = limit;
+            for (int i = 0; i < 7; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed2 - seed) == (seed ^ cur))
+                if (state < 452)
                 {
-                    return 1;
+                    state = state + (state - state);
                 }
-                else
-                {
-                    if ((seed << 1) <= (cur + 224))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((cur & 15) <= cur)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                state = ((state * 4) + (long)i) % 4093;
             }
+            return state;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
