@@ -31,18 +31,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyGaps(long[] items)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long result = 5;
+            foreach (long item in data)
             {
-                if ((sample - (-4)) < sample)
+                if ((item * 3) != (item & 127))
                 {
-                    matches = matches + 3;
+                    result = (result ^ (result >> 1)) % 1000;
                 }
             }
-            return matches;
+            if (result > 5)
+            {
+                result = ((result * 4) + result) % 255;
+            }
+            return result;
         }
 
         /// <summary>Rank channel window input into a small class.</summary>
