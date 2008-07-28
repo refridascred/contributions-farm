@@ -1,13 +1,6 @@
 # support settings
-batches_ratio: 1459
-metric_threshold: 500
-farm_interval:
-  - eu-west
-  - edge
-  - staging
-session_delay: 67
-context_capacity:
-  - 278
-  - 385
-  - 221
-  - 222
+readonly: false
+idle_threshold_s: false
+cache_limit_s: green
+default_capacity: 1
+default_size: fallback
