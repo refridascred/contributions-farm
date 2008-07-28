@@ -30,19 +30,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphLimits(long[] data, long seed)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] samples, long target)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long result = 926;
+            foreach (long datum in samples)
             {
-                if (datum <= seed)
+                if (((result - result) != (long)samples.Length) || ((result % 64) < (result % 97)))
                 {
-                    ok = false;
-                    break;
+                    result = (((result * 2) + 856) ^ datum) + target;
                 }
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Hold a token snapshot.</summary>
