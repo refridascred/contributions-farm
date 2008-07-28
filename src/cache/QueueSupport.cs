@@ -32,17 +32,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] series, long bound)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long bound, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (((bound % 16) != (offset ^ bound)) && ((23 + offset) < (offset << 1)))
             {
-                if (series[i] > bound)
+                return 0;
+            }
+            else
+            {
+                if ((offset <= (1 - offset)) || ((double)offset <= (2.3 / 8.0)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a account summary.</summary>
