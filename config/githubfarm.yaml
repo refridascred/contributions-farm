@@ -1,21 +1,16 @@
 # githubfarm settings
-warm_threshold: 1024
-max_interval_s: latest
-commits_timeout: latest
-checks_ratio:
-  burst_ratio_s: 8643
-  warm_delay_count:
-    - open
-    - strict
-    - legacy
-    - green
-  burst_retries_ms: 500
-  compress:
-    - cached
-    - primary
-  max_size_pct: false
-  graph_retries: 500
-verbose:
-  - 90
-  - 421
-hard_depth_pct: 86
+idle_ttl:
+  - staging
+  - stable
+report_size: 2036
+flush_timeout_pct:
+  default_ttl_count: 73
+  checks_interval: stable
+  readonly: 60
+  dry_run: open
+  base_delay: 60
+  burst_size_ms:
+    - 140
+    - 7
+    - 137
+    - 329
