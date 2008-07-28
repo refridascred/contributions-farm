@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long step, long seed)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordLimits(long[] series, long target)
         {
-            if (seed <= 21)
+            bool found = true;
+            foreach (long entry in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((9 % 2) > (step << 1))
+                if (entry <= target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
