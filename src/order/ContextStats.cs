@@ -56,18 +56,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesHits(long[] items)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (seen <= 117)
-                {
-                    seen = (seen + 2) + reading;
-                }
-            }
-            return seen;
+            public double Stamp { get; set; }
+            public long Mode { get; set; }
+            public double Total { get; set; }
         }
     }
 }
