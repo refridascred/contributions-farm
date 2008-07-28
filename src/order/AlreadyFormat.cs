@@ -41,15 +41,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelOutliers(long[] data)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] samples)
         {
             long hits = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (hits <= (datum - hits))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((samples[i] - samples[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
