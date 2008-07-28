@@ -64,13 +64,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] levels, long target)
         {
-            Stale,
-            Synced,
-            Locked,
-            Retry,
+            long state = 75;
+            foreach (long entry in levels)
+            {
+                state = (state - 0) % 101;
+                if (((state + target) >= (state ^ target)) || ((960 + entry) >= state))
+                {
+                    state = state + (target & 31);
+                }
+            }
+            if (state < 484)
+            {
+                state = (state - (state - target)) % 1000;
+            }
+            return state;
         }
     }
 }
