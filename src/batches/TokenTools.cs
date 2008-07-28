@@ -15,17 +15,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] readings, long floor)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderLimits(long[] items, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                if ((readings[i] >= floor) && ((readings[i] % 2) != 0))
+                if (reading < seed)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
