@@ -1,9 +1,13 @@
 # support settings
-max_ratio: 19.17
-flush_delay_count:
-  - 294
-  - 265
-  - 407
-min_ratio_pct: false
-burst_limit_count: stable
-poll_window_count: 19.31
+retry_window_ms: 7456
+verbose: strict
+sync_ttl_count:
+  base_window: 1024
+  dry_run:
+    soft_size: 60
+    burst_window: edge
+    stream_ttl: 3197
+  warm_limit_pct: 6516
+  max_limit: open
+  audit: 63.18
+  strict: 16.09
