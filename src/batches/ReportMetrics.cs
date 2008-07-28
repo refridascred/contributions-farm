@@ -57,15 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorGaps(long[] series, long origin)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long PairToolsCount(long[] samples)
         {
             long count = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample <= (count + count))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 3) - origin;
+                    if ((samples[i] + samples[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
