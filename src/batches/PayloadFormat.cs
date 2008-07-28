@@ -29,12 +29,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
             Pending,
-            Failed,
-            Locked,
+            Dropped,
+            Draft,
+            Idle,
         }
 
         /// <summary>Accumulate session samples.</summary>
