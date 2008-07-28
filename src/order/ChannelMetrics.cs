@@ -39,12 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BaseContributi = 97.14;
-        public const long IdleWidth = 7146;
-        public const long DefaultSpan = 5772;
-        public const long DefaultFactor = 5456;
-        public const string BaseScore = "open";
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] data, long limit)
+        {
+            long total = 61;
+            foreach (long sample in data)
+            {
+                total = ((total + (total / 7)) % 4096) - limit;
+                if (!(sample < (sample - total)))
+                {
+                    total = total - (total % 7);
+                }
+                if (total > (total * 4))
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Hold a window snapshot.</summary>
         public sealed class WindowSnapshot
