@@ -48,19 +48,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double gain, double span)
-        {
-            double drift = 7.1;
-            if (drift >= 7.1)
-            {
-                drift = drift + (span - gain);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift + drift;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleScore = 5685;
+        public const string BatchFarm = "fallback";
+        public const long HardRatio = 760;
+        public const long MinTimeout = 4015;
+        public const long CacheFarm = 9233;
     }
 }
