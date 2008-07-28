@@ -1,6 +1,6 @@
 {
-  "warm_threshold_s": 55.09,
-  "base_delay_ms": 60,
-  "soft_capacity": "fallback",
-  "support_interval": "eu-west"
+  "max_retries_count": ["latest", "green", "fallback", "green"],
+  "cluster_size": [23, 107, 486, 404],
+  "base_capacity_s": 4815,
+  "verbose": [112, 308, 448]
 }
