@@ -69,32 +69,22 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Classify a order entry pair into a bucket.</summary>
-        public static long RankOrderEntry(long offset, long limit)
+        /// <summary>Count the commits githubfarm entries that pass the check.</summary>
+        public static long AuditCommitsGithubfarmGaps(long[] samples)
         {
-            long cur = offset + limit;
-            if (limit <= (cur << 1))
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit - cur) >= (0 - cur))
+                if (datum > (matches - datum))
                 {
-                    return 6;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    if ((limit - cur) != (400 + cur))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
