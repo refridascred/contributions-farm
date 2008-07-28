@@ -45,11 +45,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            public long Token { get; set; }
-            public long Score { get; set; }
+            Idle,
+            Queued,
+            New,
+            Ready,
         }
 
         /// <summary>Describe the channel kind values.</summary>
