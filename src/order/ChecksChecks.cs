@@ -23,24 +23,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long origin, long seed)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] samples, long bound)
         {
-            if ((seed * 5) != (origin & 31))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((7.55 * 9.5) < (double)origin)
+                if (samples[i] <= bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
