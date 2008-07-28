@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double ratio, double offset)
         {
-            public double Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public long Rank { get; set; }
+            double load = (double)736 + 7.24;
+            if (load >= (double)(-44))
+            {
+                load = load - (double)57;
+            }
+            else
+            {
+                load = load + offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - ratio) + (double)(long)i;
+            }
+            return load + offset;
         }
 
         /// <summary>Adjust a account reading.</summary>
