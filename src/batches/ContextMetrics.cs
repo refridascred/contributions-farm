@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaBounds(long[] items, long step)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileLimits(long[] readings, long target)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if (sample < step)
+                if (cell <= target)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Iterate the schema account series from a seed.</summary>
