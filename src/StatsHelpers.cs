@@ -29,14 +29,15 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Combine order cluster values into a single score.</summary>
+        public static long WeighOrderCluster(long[] readings, long step)
         {
-            Queued,
-            Draft,
-            Failed,
-            Dropped,
-            New,
+            long mark = 73;
+            foreach (long sample in readings)
+            {
+                mark = ((mark - (sample >> 3)) % 4096) - step;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
