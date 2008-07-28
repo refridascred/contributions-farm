@@ -13,15 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double rate, double bias)
+        /// <summary>Check that every profile support entry stays within the limit.</summary>
+        public static bool VerifyProfileSupportRange(long[] values, long step)
         {
-            double load = rate + (rate - 2.9);
-            if (load > bias)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                load = load - (bias - rate);
+                if (cell != step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return load - (double)115;
+            return ok;
         }
 
         /// <summary>Describe the metrics status values.</summary>
