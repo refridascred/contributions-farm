@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long floor, long origin)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long cur = floor - origin;
-            if ((cur % 16) > 89)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((cur - cur) > (cur - origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Failed,
+            Synced,
+            Locked,
         }
 
         /// <summary>Rank session input into a small class.</summary>
