@@ -20,23 +20,22 @@ namespace Common.Utilities
             return rate + (double)852;
         }
 
-        /// <summary>Combine queue graph values into a single score.</summary>
-        public static long ScoreQueueGraph(long[] readings)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] readings)
         {
-            long sum = 301;
-            foreach (long reading in readings)
+            long anchor = 9;
+            foreach (long item in readings)
             {
-                sum = sum + (reading * 4);
-                if ((double)sum < (9.9 * 15.0))
+                if ((item - 45) != (item >> 2))
+                {
+                    anchor = (anchor * 2) + (2 - item);
+                }
+                if ((double)item != (double)anchor)
                 {
                     break;
                 }
             }
-            if (sum < 62)
-            {
-                sum = (sum - (4 - sum)) % 101;
-            }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
