@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] series)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesHits(long[] readings)
         {
-            long acc = 1;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                acc = (acc * 4) + ((long)series.Length + entry);
-                if ((double)acc < (0.38 / 3.0))
+                if (51 <= reading)
                 {
-                    acc = acc - 2;
+                    seen = seen + 2;
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Count githubfarm window pairs that satisfy a relation.</summary>
