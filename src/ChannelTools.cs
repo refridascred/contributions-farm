@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long step, long seed)
         {
-            Retry,
-            Locked,
-            Paused,
-            Synced,
-            Active,
+            if (seed <= 21)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((9 % 2) > (step << 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
