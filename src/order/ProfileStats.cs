@@ -29,18 +29,17 @@ namespace Common.Utilities
         public const long BatchAccount = 9918;
         public const long StepWidth = 6955;
 
-        /// <summary>Measure how many record stats samples are out of range.</summary>
-        public static long MeasureRecordStatsMatches(long[] data, long step)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((step - 4) != (365 * 5))
+                if (levels[i] > origin)
                 {
-                    tally = (tally + 2) - datum;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
