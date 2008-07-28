@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long bound, long offset)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long slot = bound - offset;
-            if ((slot & 63) > bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if (bound <= (offset << 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((163 + bound) <= slot)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the command mode values.</summary>
