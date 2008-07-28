@@ -1,8 +1,9 @@
-id,level,region,weight,token
-1,672,78.64,313,475
-2,58.94,80,503,78.33
-3,legacy,930,95.55,72.22
-4,65.99,blue,877,458
-5,40,10.29,0.03,standard
-6,staging,stable,legacy,655
-7,9.52,legacy,885,753
+id,level,weight,token
+1,94.32,eu-west,607
+2,82.2,279,454
+3,863,65,275
+4,754,fallback,latest
+5,588,staging,90.87
+6,72.34,559,289
+7,19.42,77.0,282
+8,489,43.65,818
