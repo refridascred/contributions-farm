@@ -20,19 +20,15 @@ namespace Common.Utilities
             return load + (double)989;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyLimits(long[] samples, long step)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] data, long target)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long sum = 544;
+            foreach (long reading in data)
             {
-                if (entry < step)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = ((sum - target) % 101) ^ reading;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
