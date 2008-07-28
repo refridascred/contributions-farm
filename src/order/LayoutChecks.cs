@@ -39,15 +39,14 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double scale, double offset)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            double rate = (offset + 1.0) - scale;
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + (double)2) + (double)(long)i;
-            }
-            return rate + (scale / 3.0);
+            Idle,
+            Stale,
+            Dropped,
+            Paused,
+            Active,
         }
 
         /// <summary>Describe the command level values.</summary>
