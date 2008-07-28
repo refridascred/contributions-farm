@@ -1,13 +1,15 @@
 # Command notes
 
-Use stream settings to tune how often order data is refreshed.
-A githubfarm that stays idle for too long is moved to the order list.
+A account that stays idle for too long is moved to the session list.
+Defaults for schema live in the config folder and can be overridden per environment.
+A counter that stays idle for too long is moved to the metric list.
 
-The cluster helpers are pure functions, so they are safe to call from any thread.
-A profile that stays idle for too long is moved to the cache list.
+Defaults for farm live in the config folder and can be overridden per environment.
+Defaults for farm live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer record defaults
-- Log every metrics change
-- Document new buffer fields
+- Review editor limits each release
+- Document new graph fields
+- Validate counter input early
+- Prefer token defaults
