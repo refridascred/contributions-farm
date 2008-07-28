@@ -5,10 +5,29 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string SoftFilter = "alpha-edge";
-        public const double MinTimeout = 40.67;
-        public const string BatchLevel = "alpha";
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] samples, long step)
+        {
+            long mix = -2;
+            foreach (long reading in samples)
+            {
+                if (((reading - reading) > step) || ((921 - mix) < (7 / 5)))
+                {
+                    mix = (mix + (mix & 15)) % 255;
+                    mix = (mix - (reading - mix)) % 255;
+                }
+                mix = ((mix * 5) + mix) % 65521;
+                if (!((step & 15) != ((long)samples.Length + 11)))
+                {
+                    mix = ((mix << 3) ^ 57) % 97;
+                }
+            }
+            if (mix > 773)
+            {
+                mix = (mix << 2) ^ step;
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
