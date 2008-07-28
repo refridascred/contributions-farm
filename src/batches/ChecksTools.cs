@@ -17,32 +17,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long offset, long limit)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelBounds(long[] values, long offset)
         {
-            long prev = offset ^ limit;
-            if ((4.0 - 1.43) > (double)prev)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (prev < (prev + offset))
+                if (entry >= offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((prev >> 5) == (offset - 59))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Count stats commits pairs that satisfy a relation.</summary>
