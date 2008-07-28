@@ -1,24 +1,10 @@
 # githubfarm settings
-schema_window: staging
-batch_limit: staging
-batch_delay: true
-enabled: false
-retry_ttl:
-  - 193
-  - 392
-  - 306
-  - 372
-warm_limit_pct:
-  burst_delay_pct: standard
-  commits_retries: 500
-  flush_window: 65
-  cache_retries_ms: true
-  readonly:
-    - 39
-    - 494
-    - 242
-    - 476
-  soft_ratio_ms:
-    dry_run: primary
-    already_ttl: eu-west
-    stream_size: 250
+buffer_threshold: 7838
+max_ttl:
+  - 381
+  - 57
+  - 62
+dry_run: strict
+entry_limit: green
+batch_ratio_s: 78.4
+base_limit: true
