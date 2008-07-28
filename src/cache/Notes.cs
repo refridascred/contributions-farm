@@ -24,22 +24,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long PairGraphCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseWidth = 823;
+        public const double BatchRecord = 80.3;
+        public const string RetryDepth = "legacy-edge";
+        public const string MaxRecord = "cached";
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long DeriveMetric(long step)
