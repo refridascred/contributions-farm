@@ -33,22 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] data)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long result = 5;
-            foreach (long item in data)
-            {
-                if ((item * 3) != (item & 127))
-                {
-                    result = (result ^ (result >> 1)) % 1000;
-                }
-            }
-            if (result > 5)
-            {
-                result = ((result * 4) + result) % 255;
-            }
-            return result;
+            public double Label { get; set; }
+            public double Mode { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Rank channel window input into a small class.</summary>
