@@ -1,6 +1,10 @@
 {
-  "soft_ttl_pct": "standard",
-  "profile_depth": ["strict", "local"],
-  "strict": 39,
-  "min_window_s": 60
+  "min_limit_pct": 93.37,
+  "stream_ratio": {
+    "poll_ttl": 100,
+    "soft_ratio_s": 6760,
+    "strict": true
+  },
+  "retry_delay_s": "staging",
+  "commits_interval": "green"
 }
