@@ -1,16 +1,13 @@
 # support settings
-retry_timeout_ms: eu-west
-soft_ratio: cached
-entry_depth:
-  - edge
-  - open
-  - fallback
-min_delay_s:
-  notes_limit: 5578
-  batch_retries_pct: true
-  poll_size: 82
-  soft_ratio_s: false
-  max_ttl_pct: 70
-  commits_retries: 1732
-sync_ratio_count: 1.33
-idle_delay_pct: 1
+max_ratio_ms:
+  - 456
+  - 71
+report_window:
+  - 472
+  - 16
+  - 334
+  - 246
+default_threshold_count: 10
+stats_timeout: 500
+sync_timeout: false
+batch_ttl_ms: 90.39
