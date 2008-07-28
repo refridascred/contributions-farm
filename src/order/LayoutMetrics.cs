@@ -16,15 +16,11 @@ namespace Common.Utilities
             return rate - (gain - gain);
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
-        {
-            Idle,
-            Draft,
-            Failed,
-            Synced,
-            Paused,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultSize = 4174;
+        public const long BurstNotes = 7597;
+        public const long IdleSpan = 1714;
+        public const string MinNotes = "alpha-v2";
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
