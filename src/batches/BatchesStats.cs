@@ -32,18 +32,12 @@ namespace Common.Utilities
         public const long BatchLevel = 3371;
         public const long CacheRatio = 4302;
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] data, long limit)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long result = 3;
-            foreach (long entry in data)
-            {
-                if (((limit - 371) < (result % 97)) || ((result & 7) > (result + entry)))
-                {
-                    result = (result ^ (result >> 2)) % 255;
-                }
-            }
-            return result;
+            Active,
+            Idle,
+            New,
         }
 
         /// <summary>Hold a support header.</summary>
