@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] readings)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long bound, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((4.35 / 9.0) <= (double)bound)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (!(5.7 < (double)target))
                 {
-                    if ((readings[i] - readings[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Blend two support measurements.</summary>
