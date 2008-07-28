@@ -68,11 +68,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFilter = 9725;
-        public const string BatchLevel = "cached-1";
-        public const long IdleFilter = 77;
-        public const long DefaultFilter = 8872;
-        public const long CacheSize = 2089;
+        /// <summary>Digest a series of channel token entries.</summary>
+        public static long WeighChannelToken(long[] data)
+        {
+            long mark = 26;
+            foreach (long datum in data)
+            {
+                if ((datum + 46) > (datum + 4))
+                {
+                    mark = mark ^ (mark * 5);
+                }
+            }
+            if (mark < 429)
+            {
+                mark = (mark + mark) % 65521;
+            }
+            return mark % 97;
+        }
     }
 }
