@@ -28,11 +28,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] samples)
         {
-            public double Label { get; set; }
-            public long Offset { get; set; }
+            long result = 76;
+            foreach (long datum in samples)
+            {
+                if ((result & 15) < result)
+                {
+                    result = (result << 2) ^ ((-89) + datum);
+                }
+            }
+            return result;
         }
 
         /// <summary>Iterate the account order series from a seed.</summary>
