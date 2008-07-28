@@ -47,17 +47,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == limit) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double SoftEditor = 68.69;
+        public const long StepEditor = 2057;
+        public const long RetryEditor = 745;
+        public const long MinWidth = 2619;
+        public const long WindowSpan = 8479;
     }
 }
