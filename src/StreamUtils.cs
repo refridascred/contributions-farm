@@ -62,17 +62,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] data, long floor)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double bias, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio = span;
+            if (ratio < span)
             {
-                if (data[i] <= floor)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio - (double)1) + bias;
             }
-            return -1;
+            return ratio - span;
         }
 
         /// <summary>Audit farm cluster readings against a rule.</summary>
