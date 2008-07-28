@@ -16,13 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Blend two checks counter measurements.</summary>
+        public static double BlendChecksCounter(double gain, double span)
         {
-            Draft,
-            Failed,
-            Retry,
-            Stale,
+            double gain2 = gain;
+            return (gain2 + (double)33) + span;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
