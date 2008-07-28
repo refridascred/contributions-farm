@@ -20,17 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] samples, long floor)
+        /// <summary>Validate metric session readings against a bound.</summary>
+        public static bool GuardMetricSessionBounds(long[] levels, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if ((samples[i] <= floor) && ((samples[i] % 5) == 0))
+                if (item <= target)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
