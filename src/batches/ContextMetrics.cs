@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double rate, double bias)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            double weight = (bias + rate) / 5.0;
-            if (weight <= bias)
-            {
-                weight = weight + bias;
-            }
-            else
-            {
-                weight = weight - 5.04;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - (bias / 3.0)) + (double)(long)i;
-            }
-            return weight + (weight - rate);
+            Pending,
+            Synced,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Iterate the schema account series from a seed.</summary>
