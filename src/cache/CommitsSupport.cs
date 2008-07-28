@@ -67,13 +67,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long CompareLayoutCount(long[] levels)
         {
-            public bool Level { get; set; }
-            public double Size { get; set; }
-            public bool Offset { get; set; }
-            public double Stamp { get; set; }
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
