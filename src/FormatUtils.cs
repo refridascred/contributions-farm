@@ -55,12 +55,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
-        {
-            public long Region { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string RetryAlready = "stable-1";
+        public const long DefaultAlready = 1819;
+        public const long DefaultFactor = 5047;
+        public const double CacheAlready = 70.13;
+        public const double LimitAlready = 17.81;
 
         /// <summary>Count layout cluster pairs that satisfy a relation.</summary>
         public static long OverlapLayoutClusterCount(long[] items)
