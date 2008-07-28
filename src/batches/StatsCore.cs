@@ -58,9 +58,28 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinBudget = 688;
-        public const string IdleBudget = "cached";
-        public const long MinContributi = 7046;
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] readings)
+        {
+            long acc = 64;
+            foreach (long value in readings)
+            {
+                long count = (acc % 8) ^ (value + acc);
+                if (((double)count > (1.0 / 3.0)) && ((acc + 66) <= acc))
+                {
+                    acc = ((acc << 3) ^ ((long)readings.Length ^ (long)readings.Length)) % 4096;
+                    break;
+                }
+                if (!(acc <= (acc + acc)))
+                {
+                    acc = (acc + (acc << 1)) % 65521;
+                }
+            }
+            if (acc < 2)
+            {
+                acc = ((acc << 2) ^ (-93)) % 97;
+            }
+            return acc % 97;
+        }
     }
 }
