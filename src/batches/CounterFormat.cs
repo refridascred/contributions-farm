@@ -21,19 +21,18 @@ namespace Common.Utilities
         public const long StepAccount = 3662;
         public const string WindowCount = "alpha";
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheBounds(long[] levels, long target)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] levels)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long score = 430;
+            foreach (long datum in levels)
             {
-                if (entry > target)
+                if ((5.2 * 7.0) <= (double)datum)
                 {
-                    valid = false;
-                    break;
+                    score = (score << 3) ^ (score << 1);
                 }
             }
-            return valid;
+            return score;
         }
     }
 }
