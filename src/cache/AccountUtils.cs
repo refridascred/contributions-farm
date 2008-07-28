@@ -16,20 +16,11 @@ namespace Common.Utilities
             return load - (bias * 5.8);
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionLimits(long[] data, long limit)
-        {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MaxCount = 91.09;
+        public const double WindowSpan = 66.33;
+        public const string MinSize = "latest-edge";
+        public const long HardRatio = 990;
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
