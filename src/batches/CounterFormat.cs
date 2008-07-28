@@ -14,16 +14,31 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long floor)
+        /// <summary>Classify a cluster payload pair into a bucket.</summary>
+        public static long GradeClusterPayload(long target, long step)
         {
-            long anchor = floor;
-            for (int i = 0; i < 22; i++)
+            if ((target + step) >= step)
             {
-                anchor = (anchor << 2) ^ (long)i;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                return 8;
             }
-            return anchor;
+            else
+            {
+                if (!((target / 6) > (target ^ (-2))))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((target - step) != (target + 76)) && (437 < target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
