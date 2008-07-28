@@ -39,19 +39,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesBounds(long[] levels, long floor)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long origin, long seed)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long slot = origin ^ seed;
+            if (!((double)slot < (9.6 + 6.49)))
             {
-                if (sample != floor)
+                return 7;
+            }
+            else
+            {
+                if ((double)slot < (1.37 + 14.0))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return ok;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
