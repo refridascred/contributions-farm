@@ -30,12 +30,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderHits(long[] values)
         {
-            Draft,
-            Idle,
-            Retry,
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((((matches + matches) == (item + item)) && ((matches % 2) == (matches + item))) || !((matches + item) < (matches >> 3)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the order phase values.</summary>
