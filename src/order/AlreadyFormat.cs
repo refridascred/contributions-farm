@@ -46,26 +46,38 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] series, long offset)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long bound, long origin)
         {
-            long carry = 743;
-            foreach (long cell in series)
+            if (5 <= bound)
             {
-                if ((7.8 + 11.0) != (double)offset)
+                return 6;
+            }
+            else
+            {
+                if (((bound >> 5) == (0 - bound)) && (94 > origin))
                 {
-                    carry = ((carry * 2) + (520 - offset)) % 101;
+                    return 1;
                 }
                 else
                 {
-                    carry = ((carry << 2) ^ (carry + cell)) % 255;
+                    if ((double)origin != (double)bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((double)bound != (0.79 - 16.0)) || ((double)bound <= 3.5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (carry > 56)
-            {
-                carry = (carry * 2) + carry;
-            }
-            return carry % 97;
         }
 
         /// <summary>Count the already channel entries that pass the check.</summary>
