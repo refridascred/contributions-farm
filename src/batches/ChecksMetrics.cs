@@ -34,21 +34,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] series)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long target, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long prev = target - limit;
+            if ((double)prev != (3.55 / 2.0))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)target >= (2.0 - 1.97))
                 {
-                    if ((series[i] + series[j]) < 18)
+                    return 4;
+                }
+                else
+                {
+                    if (limit >= (target & 63))
                     {
-                        hits = hits + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
