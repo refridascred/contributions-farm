@@ -82,21 +82,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of layout record readings.</summary>
-        public static long MatchLayoutRecordCount(long[] items)
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 865;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((item % 64) > (item << 2)))
                 {
-                    if ((items[i] - items[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = result - (item * 3);
+                }
+                else
+                {
+                    result = ((result << 3) ^ item) % 4096;
                 }
             }
-            return hits;
+            return result;
         }
     }
 }
