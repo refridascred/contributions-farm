@@ -13,31 +13,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long limit, long floor)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionBounds(long[] samples, long limit)
         {
-            if (floor < (floor / 5))
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((3.0 * 7.1) == (double)limit)
+                if (sample < limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)floor >= (2.7 * 2.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Rank order input into a small class.</summary>
