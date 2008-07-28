@@ -1,7 +1,9 @@
-id,owner,weight
-1,259,18.06
-2,34.44,782
-3,blue,primary
-4,staging,76.98
-5,92.56,primary
-6,29.1,457
+id,score,ratio,token
+1,staging,64.96,592
+2,stable,34.27,legacy
+3,158,open,open
+4,934,622,937
+5,75.95,66.21,stable
+6,44.36,221,edge
+7,879,98.37,59.22
+8,77.71,252,177
