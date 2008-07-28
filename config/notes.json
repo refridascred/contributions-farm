@@ -1,7 +1,5 @@
 {
-  "min_window": "latest",
-  "hard_ratio": false,
-  "dry_run": "legacy",
-  "batches_ratio": "standard",
-  "batch_timeout": 57
+  "burst_threshold_pct": 66.51,
+  "strict": 84.44,
+  "cache_interval_s": "legacy"
 }
