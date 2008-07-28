@@ -24,38 +24,17 @@ namespace Common.Utilities
         public const long HardLevel = 5673;
         public const string LimitInterval = "primary";
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long SortNotes(long offset, long origin)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] samples, long bound)
         {
-            if (offset <= (7 + origin))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((18.0 / 3.0) == (double)offset)
+                if (samples[i] >= bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)895 == (double)origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (offset > (7 << 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a window stats.</summary>
