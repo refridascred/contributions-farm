@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] data, long offset)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long bound, long offset)
         {
-            long state = 5;
-            foreach (long cell in data)
+            long slot = bound - offset;
+            if ((slot & 63) > bound)
             {
-                state = (((state << 3) ^ cell) % 1000) + offset;
-                state = ((state << 3) ^ cell) % 101;
-                state = ((state * 5) + (cell - 525)) % 4096;
+                return 1;
             }
-            return state % 97;
+            else
+            {
+                if (bound <= (offset << 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((163 + bound) <= slot)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the command mode values.</summary>
