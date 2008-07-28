@@ -32,18 +32,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many support record samples are out of range.</summary>
-        public static long AuditSupportRecordGaps(long[] readings, long floor)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long bound)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long result = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (!(((19.0 / 7.0) == (double)value) && ((6.69 / 6.0) == (double)floor)))
+                long seen = ((-446) % 5) << 2;
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    seen = seen + 2;
+                    seen = ((seen + (result << 1)) % 1000) ^ (long)i2;
+                    result = result ^ (seen ^ bound);
                 }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return seen;
+            return result;
         }
     }
 }
