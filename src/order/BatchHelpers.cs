@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every metrics notes entry stays within the limit.</summary>
-        public static bool CheckMetricsNotesRange(long[] data, long origin)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Synced,
+            Ready,
+            Pending,
+            Paused,
         }
 
         /// <summary>Validate payload window readings against a bound.</summary>
