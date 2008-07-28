@@ -64,13 +64,11 @@ namespace Common.Utilities
         public const long StepWindow = 5296;
         public const string CacheWindow = "primary-edge";
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
-        {
-            Locked,
-            Draft,
-            Active,
-            Failed,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultCommand = 7423;
+        public const long SoftBudget = 2473;
+        public const long RetryCount = 370;
+        public const double HardWidth = 69.72;
+        public const long BaseCommand = 7653;
     }
 }
