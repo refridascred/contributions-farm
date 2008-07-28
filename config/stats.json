@@ -1,5 +1,14 @@
 {
-  "dry_run": "green",
-  "cache_threshold_s": "open",
-  "persist": 89
+  "buffer_capacity": "fallback",
+  "cache_size_s": "green",
+  "poll_threshold_ms": {
+    "dry_run": "staging",
+    "cache_size": false,
+    "min_threshold_ms": 9272,
+    "cache_interval_count": 58,
+    "min_retries": 7943
+  },
+  "cluster_ratio": 250,
+  "readonly": ["eu-west", "green", "primary"],
+  "max_limit_count": ["legacy", "latest", "stable"]
 }
