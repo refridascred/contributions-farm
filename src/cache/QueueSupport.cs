@@ -13,22 +13,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferGaps(long[] data, long limit)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (seen >= (2 << 3))
+                if ((items[i] > bound) && ((items[i] % 3) != 0))
                 {
-                    seen = ((seen + 2) ^ sample) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the record status values.</summary>
