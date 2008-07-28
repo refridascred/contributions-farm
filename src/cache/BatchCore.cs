@@ -27,19 +27,38 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ScaleCommits(double bias, double offset)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long origin, long target)
         {
-            double rate = offset;
-            if (rate >= 7.9)
+            if (!((origin + target) >= (origin - 12)))
             {
-                rate = rate - (bias / 5.0);
+                return 1;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                rate = (rate - (rate + offset)) + (double)(long)i;
+                if ((origin + origin) > (origin ^ 782))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin < (origin << 1)) || ((target + target) != (target + (-96))))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (origin >= target)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return rate + offset;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
