@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double rate, double bias)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double BlendCache(double rate, double bias)
         {
-            double load = rate;
-            for (int i = 0; i < 3; i++)
+            double gain = (double)(372 - 64);
+            if (gain <= (double)1)
             {
-                load = (load - (double)32) - (double)(long)i;
+                gain = gain - bias;
             }
-            return load - (bias * 5.8);
+            for (int i = 0; i < 7; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain + rate;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
