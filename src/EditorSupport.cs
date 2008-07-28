@@ -31,15 +31,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double rate, double floor)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            double rate2 = 7.0;
-            for (int i = 0; i < 8; i++)
-            {
-                rate2 = ((rate2 + (rate * 8.55)) + (double)(long)i) - floor;
-            }
-            return rate2 + rate;
+            Paused,
+            Stale,
+            Pending,
+            New,
+            Idle,
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
