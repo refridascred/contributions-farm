@@ -59,19 +59,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorHits(long[] values)
-        {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((count - 91) <= datum)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double IdleWidth = 32.44;
+        public const long WindowSupport = 2344;
+        public const long CacheSupport = 402;
 
         /// <summary>Count the cluster schema entries that pass the check.</summary>
         public static long TallyClusterSchemaMatches(long[] series, long floor)
