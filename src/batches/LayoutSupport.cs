@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ScaleBatch(double rate, double bias)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] values)
         {
-            double mean = rate;
-            if (mean >= (rate + 17.0))
+            long sum = 150;
+            foreach (long cell in values)
             {
-                mean = (mean + rate) - bias;
+                sum = (sum - (cell - sum)) % 4096;
+                if ((cell / 7) < (7 - cell))
+                {
+                    sum = (sum ^ sum) % 65521;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean + (rate / 2.0);
+            return sum % 1000;
         }
 
         /// <summary>Derive the next window tools value from a seed.</summary>
