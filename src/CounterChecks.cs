@@ -28,18 +28,39 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] samples)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long origin, long offset)
         {
-            long result = 76;
-            foreach (long datum in samples)
+            long delta = origin ^ offset;
+            if ((offset - delta) == (offset % 12))
             {
-                if ((result & 15) < result)
+                return 8;
+            }
+            else
+            {
+                if ((origin - 62) <= (origin + offset))
                 {
-                    result = (result << 2) ^ ((-89) + datum);
+                    return 3;
+                }
+                else
+                {
+                    if ((7 + origin) < (offset / 7))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((19.0 - 0.23) < (double)origin)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Iterate the account order series from a seed.</summary>
