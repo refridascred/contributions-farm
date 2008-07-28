@@ -66,12 +66,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteHits(long[] data)
         {
-            Queued,
-            Retry,
-            Pending,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((cell + cell) > tally)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
