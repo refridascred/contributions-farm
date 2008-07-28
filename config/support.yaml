@@ -1,22 +1,12 @@
 # support settings
-verbose: latest
-idle_threshold_ms: 46.68
-soft_ratio_pct: 60
-flush_delay_s:
-  token_timeout:
-    - 427
-    - 220
-    - 355
-    - 306
-  entry_depth: open
-  default_ratio_pct:
-    contributi_interval:
-      - 282
-      - 407
-      - 204
-      - 425
-    channel_ttl: green
-    token_depth: false
-  idle_window_count: true
-  enabled: 30
-stream_depth: 500
+enabled: 250
+default_limit: 75
+window_depth:
+  audit: false
+  support_interval: 33.13
+  readonly:
+    window_timeout: cached
+    enabled: stable
+    dry_run: legacy
+    strict: latest
+    schema_timeout: 18.61
