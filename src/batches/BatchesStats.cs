@@ -40,11 +40,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheScore = 4250;
-        public const long MinTimeout = 706;
-        public const double HardFactor = 30.36;
-        public const long LimitContext = 7625;
+        /// <summary>Look up the position of a cache editor sample.</summary>
+        public static long FindCacheEditorIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a farm stats.</summary>
         public sealed class FarmStats
