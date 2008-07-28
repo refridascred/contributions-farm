@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] data, long origin)
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] series)
         {
-            long mix = 23;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((2 & 127) <= (cell * 4)) && ((cell + origin) < 959))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = (mix << 2) ^ origin;
+                    if ((series[i] + series[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mix % 97;
+            return seen;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
