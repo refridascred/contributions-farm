@@ -30,9 +30,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 7790;
-        public const long IdleTimeout = 2229;
-        public const long MaxRatio = 4516;
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
+        {
+            Draft,
+            Synced,
+            Ready,
+        }
     }
 }
