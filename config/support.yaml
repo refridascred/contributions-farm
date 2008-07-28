@@ -1,6 +1,15 @@
 # support settings
-readonly: false
-idle_threshold_s: false
-cache_limit_s: green
-default_capacity: 1
-default_size: fallback
+verbose: 60
+persist:
+  - eu-west
+  - standard
+  - open
+  - cached
+burst_window_pct: staging
+base_depth_pct:
+  - strict
+  - blue
+cache_retries_pct:
+  - latest
+  - strict
+retry_limit_count: stable
