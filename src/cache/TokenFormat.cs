@@ -28,12 +28,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
-        {
-            public long Token { get; set; }
-            public bool Label { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string HardFilter = "alpha-v2";
+        public const string CacheDepth = "stable-1";
+        public const long BaseFilter = 149;
     }
 }
