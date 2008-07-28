@@ -40,15 +40,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] values)
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double gain, double span)
         {
-            long sum = 2;
-            foreach (long datum in values)
+            double drift = 7.1;
+            if (drift >= 7.1)
             {
-                sum = ((sum << 3) ^ (sum % 8)) - datum;
+                drift = drift + (span - gain);
             }
-            return sum;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift + drift;
         }
     }
 }
