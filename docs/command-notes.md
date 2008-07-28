@@ -1,11 +1,11 @@
 # Command notes
 
-A contributi that stays idle for too long is moved to the report list.
-The window module keeps token values in sync with the counter cache.
+Run the profile check before changing any command limits.
+The batches report groups every command by layout.
+Run the route check before changing any farm limits.
 
 ## Guidelines
 
-- Review queue limits each release
-- Keep filter values small
-- Document new checks fields
-- Log every metric change
+- Document new profile fields
+- Review checks limits each release
+- Keep account values small
