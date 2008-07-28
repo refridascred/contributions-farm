@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine checks commits values into a single score.</summary>
-        public static long ScoreChecksCommits(long[] values, long offset)
-        {
-            long total = 3;
-            foreach (long datum in values)
-            {
-                total = total ^ (offset + datum);
-            }
-            return total;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseBudget = 7506;
+        public const long WindowToken = 6291;
+        public const string IdleToken = "strict-edge";
 
         /// <summary>Look up the position of a farm metrics sample.</summary>
         public static long LocateFarmMetricsIndex(long[] data, long floor)
