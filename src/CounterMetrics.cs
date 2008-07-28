@@ -60,11 +60,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 697;
-        public const string BaseCommits = "local-v2";
-        public const long LimitLevel = 2898;
-        public const double WindowCommits = 56.64;
-        public const long IdleBudget = 1618;
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
+        {
+            public double Score { get; set; }
+            public bool Total { get; set; }
+        }
     }
 }
