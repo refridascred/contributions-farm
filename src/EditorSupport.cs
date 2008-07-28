@@ -29,18 +29,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine payload cluster values into a single score.</summary>
-        public static long WeighPayloadCluster(long[] series, long target)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long limit)
         {
-            long mix = 0;
-            foreach (long entry in series)
+            long sum = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (((mix + entry) < (entry >> 5)) || ((mix ^ mix) <= 92))
-                {
-                    mix = (((mix << 2) ^ mix) % 4096) - target;
-                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Project the next session value.</summary>
