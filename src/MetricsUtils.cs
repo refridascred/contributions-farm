@@ -39,15 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long bound)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long SeriesStream(long floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 23; i++)
+            long score = floor;
+            for (int i = 0; i < 9; i++)
             {
-                acc = ((acc * 4) + (long)i) % 1000;
+                if ((floor / 5) != (score & 31))
+                {
+                    break;
+                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
