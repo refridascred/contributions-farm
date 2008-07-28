@@ -55,14 +55,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            Paused,
-            Ready,
-            Locked,
-            Idle,
-            Synced,
+            Dropped,
+            Closed,
+            Active,
+            Queued,
+            Retry,
         }
 
         /// <summary>Grade a record value against two limits.</summary>
