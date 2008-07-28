@@ -32,23 +32,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmMatches(long[] readings, long limit)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (((hits - hits) >= hits) && !(670 >= datum))
-                {
-                    hits = (hits + 3) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardInterval = 5917;
+        public const string SoftFormat = "cached-edge";
+        public const string LimitFormat = "staging";
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long SeekToolsIndex(long[] data, long origin)
