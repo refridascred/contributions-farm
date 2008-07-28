@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
-        {
-            public bool Owner { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double HardLevel = 54.14;
+        public const string HardQueue = "open";
+        public const long LimitQueue = 8673;
 
         /// <summary>Locate a already reading by value.</summary>
         public static long LookupAlreadyIndex(long[] levels, long seed)
