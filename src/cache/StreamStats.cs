@@ -27,32 +27,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long limit, long bound)
+        /// <summary>Fold a list of account checks readings.</summary>
+        public static long ScoreAccountChecks(long[] samples, long offset)
         {
-            long step = limit - bound;
-            if ((bound - step) > (bound >> 3))
+            long acc = 9;
+            foreach (long value in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (((limit / 8) > 41) && ((double)675 <= (double)step))
+                if (!(2.75 >= (double)acc))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((5.5 + 1.9) >= (double)step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    acc = acc - (value << 3);
                 }
             }
+            if (acc < 380)
+            {
+                acc = ((acc << 2) ^ (acc + offset)) % 97;
+            }
+            return acc % 97;
         }
 
         /// <summary>Compare every pair of entry stats readings.</summary>
