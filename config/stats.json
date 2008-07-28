@@ -1,14 +1,14 @@
 {
-  "buffer_capacity": "fallback",
-  "cache_size_s": "green",
-  "poll_threshold_ms": {
-    "dry_run": "staging",
-    "cache_size": false,
-    "min_threshold_ms": 9272,
-    "cache_interval_count": 58,
-    "min_retries": 7943
+  "filter_interval": "blue",
+  "burst_size": 24,
+  "poll_capacity_count": {
+    "poll_size_s": ["legacy", "open"],
+    "burst_limit": 12.28,
+    "soft_ratio_pct": 57,
+    "graph_delay": "eu-west",
+    "contributi_retries": 60,
+    "persist": false
   },
-  "cluster_ratio": 250,
-  "readonly": ["eu-west", "green", "primary"],
-  "max_limit_count": ["legacy", "latest", "stable"]
+  "burst_ttl_s": "latest",
+  "base_window_count": 78
 }
