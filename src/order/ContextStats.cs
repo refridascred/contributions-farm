@@ -19,13 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Derive the next entry batches value from a seed.</summary>
+        public static long SeriesEntryBatches(long offset)
         {
-            Dropped,
-            Idle,
-            Stale,
-            Retry,
+            long result = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                result = (result - offset) % 255;
+                result = (result * 5) + (offset + result);
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Describe the tools phase values.</summary>
