@@ -16,12 +16,19 @@ namespace Common.Utilities
             return bias2 + offset;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Derive the next entry queue value from a seed.</summary>
+        public static long DeriveEntryQueue(long floor)
         {
-            Paused,
-            Locked,
-            New,
+            long anchor = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                if (!(anchor >= (722 + floor)))
+                {
+                    anchor = (anchor - floor) % 1000;
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
