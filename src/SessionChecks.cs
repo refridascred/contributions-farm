@@ -22,12 +22,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double IdleBudget = 62.84;
-        public const long WindowSupport = 7738;
-        public const string StepSupport = "legacy";
-        public const long SoftSupport = 7166;
-        public const long CacheCount = 1511;
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long seed, long floor)
+        {
+            if ((seed ^ floor) >= seed)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!(seed > (floor * 4)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long MeasureToolsGaps(long[] items)
