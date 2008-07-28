@@ -40,12 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double bias, double bias2)
         {
-            Stale,
-            Paused,
-            Locked,
+            double ratio = (bias2 / 9.0) * 19.0;
+            if (ratio > (bias - 12.0))
+            {
+                ratio = ratio - ratio;
+            }
+            else
+            {
+                ratio = ratio - (bias2 + bias);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - (3.7 + bias)) + (double)(long)i;
+            }
+            return ratio - bias;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
