@@ -16,13 +16,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
-        {
-            New,
-            Failed,
-            Paused,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MaxDepth = 16.76;
+        public const double WindowRatio = 21.48;
+        public const double StepRatio = 31.82;
+        public const double BaseFarm = 74.87;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long TallyClusterMatches(long[] data, long offset)
