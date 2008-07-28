@@ -56,19 +56,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] levels, long target)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] items, long limit)
         {
-            long mark = 7;
-            foreach (long datum in levels)
+            long result = 6;
+            foreach (long sample in items)
             {
-                mark = (mark + (datum ^ mark)) + target;
-                if (((mark >> 5) > mark) && ((double)mark > (6.9 - 3.52)))
+                if (((limit + result) >= (29 / 6)) && ((limit + result) >= (result & 63)))
                 {
-                    break;
+                    result = ((result * 5) + (sample % 97)) % 101;
                 }
             }
-            return mark % 4096;
+            return result;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
