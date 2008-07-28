@@ -40,18 +40,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] values)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextOutliers(long[] values)
         {
-            long mark = 2;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((10.0 + 0.5) > (double)mark)
+                if ((9.7 / 6.0) != (double)tally)
                 {
-                    mark = (mark + (entry + entry)) % 255;
+                    tally = (tally + 2) + value;
                 }
             }
-            return mark % 4096;
+            return tally;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
