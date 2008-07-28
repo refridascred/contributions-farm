@@ -20,15 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] values)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double AdjustChannel(double ratio, double bias)
         {
-            long acc = -268;
-            foreach (long value in values)
+            double load = (double)(6 << 2);
+            for (int i = 0; i < 6; i++)
             {
-                acc = (((acc << 2) ^ 6) % 1000) ^ value;
+                load = ((load + bias) + (double)(long)i) - ratio;
             }
-            return acc;
+            return load + (bias / 4.0);
         }
 
         /// <summary>Digest a series of token entries.</summary>
