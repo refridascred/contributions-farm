@@ -24,15 +24,24 @@ namespace Common.Utilities
             return weight + floor;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double rate, double span)
+        /// <summary>Classify a filter queue pair into a bucket.</summary>
+        public static long ClassifyFilterQueue(long origin, long seed)
         {
-            double bias = (double)(301 - 653);
-            if (bias >= 19.0)
+            if (origin >= (seed - seed))
             {
-                bias = bias + span;
+                return 5;
             }
-            return bias - (rate + bias);
+            else
+            {
+                if ((seed << 3) <= origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define record limits and defaults.</summary>
