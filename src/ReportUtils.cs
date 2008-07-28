@@ -69,18 +69,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteMatches(long[] series)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((((matches - matches) <= (sample ^ sample)) || ((sample << 2) > (matches - sample))) && (matches <= ((-925) * 2)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
+            public long Level { get; set; }
         }
     }
 }
