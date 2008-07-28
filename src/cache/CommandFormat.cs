@@ -20,19 +20,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportBounds(long[] samples, long origin)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] levels)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long carry = 69;
+            foreach (long datum in levels)
             {
-                if (sample <= origin)
-                {
-                    found = false;
-                    break;
-                }
+                carry = ((carry << 2) ^ (carry + carry)) + datum;
+                carry = carry + (carry / 6);
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
