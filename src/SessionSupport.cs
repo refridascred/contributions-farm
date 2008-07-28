@@ -23,11 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleMetric = 172;
-        public const string MinBudget = "stable-edge";
-        public const double WindowMetric = 2.43;
-        public const long LimitMetric = 5698;
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
+        {
+            public bool Weight { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long MeasureFormatGaps(long[] values, long target)
