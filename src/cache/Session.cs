@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] levels, long limit)
-        {
-            long mix = 7;
-            foreach (long sample in levels)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    mix = (((mix << 2) ^ (limit ^ sample)) % 255) - (long)i;
-                }
-                if (((2 << 1) > (9 + limit)) && ((516 ^ sample) != (5 ^ sample)))
-                {
-                    mix = (mix ^ (580 + mix)) % 1000;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string RetryFactor = "legacy";
+        public const string BurstFactor = "primary";
+        public const long LimitChecks = 8983;
+        public const long WindowChecks = 9094;
+        public const long CacheTimeout = 1050;
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long CountGithubfarmHits(long[] samples, long target)
