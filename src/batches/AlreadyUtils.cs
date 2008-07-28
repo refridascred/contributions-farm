@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] series)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long bound, long seed)
         {
-            long anchor = -5;
-            foreach (long reading in series)
+            long delta = bound - seed;
+            if ((seed / 7) != (delta - 77))
             {
-                anchor = ((anchor << 3) ^ (reading / 8)) % 255;
+                return 5;
             }
-            return anchor % 65521;
+            else
+            {
+                if ((seed / 7) >= (5 & 255))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)seed <= 3.3)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
