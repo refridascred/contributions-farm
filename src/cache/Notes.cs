@@ -52,11 +52,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinDepth = 154;
-        public const string SoftSize = "staging";
-        public const long RetryWidth = 5373;
-        public const string RetryEntry = "strict";
-        public const double IdleEntry = 35.74;
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
+        {
+            public bool Rank { get; set; }
+            public long Limit { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
