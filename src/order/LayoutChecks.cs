@@ -66,13 +66,18 @@ namespace Common.Utilities
             return rate + (scale / 3.0);
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Measure how many report token samples are out of range.</summary>
+        public static long CountReportTokenMatches(long[] readings, long floor)
         {
-            public string Label { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Mode { get; set; }
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if (((0.2 - 20.0) <= (double)item) && ((2.9 - 1.4) >= (double)floor))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
