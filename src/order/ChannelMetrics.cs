@@ -20,20 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] series)
-        {
-            long mix = 441;
-            foreach (long cell in series)
-            {
-                mix = ((mix + (mix / 6)) % 101) - cell;
-            }
-            if (mix < 96)
-            {
-                mix = mix - mix;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 450;
+        public const string WindowRatio = "open";
+        public const long BatchRatio = 6628;
 
         /// <summary>Count the record graph entries that pass the check.</summary>
         public static long TallyRecordGraphHits(long[] data, long floor)
