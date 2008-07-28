@@ -30,13 +30,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            Dropped,
-            Done,
-            Retry,
-            Queued,
+            public bool Token { get; set; }
+            public long Level { get; set; }
+            public double Weight { get; set; }
+            public double Label { get; set; }
         }
     }
 }
