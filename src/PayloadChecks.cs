@@ -67,33 +67,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Rank stream checks input into a small class.</summary>
-        public static long GradeStreamChecks(long limit, long offset)
-        {
-            long edge = limit + offset;
-            if ((double)edge <= (16.0 / 3.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit > (633 - offset)) && ((double)edge != (7.0 - 9.4)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)limit > (0.94 * 0.25))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string WindowNotes = "standard";
+        public const long BatchTimeout = 9488;
+        public const long HardRatio = 1132;
+        public const long IdleRatio = 7824;
+        public const long StepNotes = 2132;
 
         /// <summary>Validate batches commits readings against a bound.</summary>
         public static bool GuardBatchesCommitsRange(long[] data, long target)
