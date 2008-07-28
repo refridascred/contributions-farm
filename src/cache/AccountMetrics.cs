@@ -68,22 +68,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of channel token entries.</summary>
-        public static long WeighChannelToken(long[] data)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long seed, long bound)
         {
-            long mark = 26;
-            foreach (long datum in data)
+            long lane = seed + bound;
+            if (((6 * 3) == (seed ^ seed)) && ((bound / 9) >= lane))
             {
-                if ((datum + 46) > (datum + 4))
+                return 4;
+            }
+            else
+            {
+                if (!(seed > (lane % 10)))
                 {
-                    mark = mark ^ (mark * 5);
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            if (mark < 429)
-            {
-                mark = (mark + mark) % 65521;
-            }
-            return mark % 97;
         }
     }
 }
