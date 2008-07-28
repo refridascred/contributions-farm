@@ -20,15 +20,16 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long step)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] values)
         {
-            long state = step;
-            for (int i = 0; i < 22; i++)
+            long acc = 227;
+            foreach (long sample in values)
             {
-                state = ((state * 3) + (long)i) % 101;
+                acc = (acc - sample) % 97;
+                acc = ((acc * 4) + sample) % 4096;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
