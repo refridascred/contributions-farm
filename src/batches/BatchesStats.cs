@@ -53,25 +53,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long origin, long bound)
-        {
-            long span = origin - bound;
-            if ((81 / 4) >= (span + origin))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((bound ^ origin) <= (bound * 2)) || (span <= (span * 3)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCommits = 3192;
+        public const double HardCommits = 57.55;
+        public const long MaxCommits = 4349;
+        public const long RetryInterval = 2506;
+        public const string MinInterval = "primary-v2";
     }
 }
