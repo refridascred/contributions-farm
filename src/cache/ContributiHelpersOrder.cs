@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long MaxScore = 1324;
         public const long CacheLevel = 1980;
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] levels, long floor)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsOutliers(long[] values)
         {
-            long total = 2;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long entry in values)
             {
-                total = (((total - 946) % 4096) ^ cell) - floor;
+                if ((count + count) == (entry / 2))
+                {
+                    count = count + 3;
+                }
             }
-            return total % 4096;
+            return count;
         }
 
         /// <summary>Blend two queue measurements.</summary>
