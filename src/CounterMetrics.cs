@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every counter stats entry stays within the limit.</summary>
-        public static bool VerifyCounterStatsRange(long[] items, long step)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ScaleMetrics(double weight, double span)
         {
-            bool ready = true;
-            foreach (long item in items)
+            double ratio = span;
+            if (ratio < (double)94)
             {
-                if (item < step)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio = ratio + weight;
             }
-            return ready;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio + weight;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
