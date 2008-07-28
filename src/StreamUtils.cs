@@ -43,14 +43,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            New,
-            Dropped,
-            Paused,
-            Queued,
-            Ready,
+            public bool Weight { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
