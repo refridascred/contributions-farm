@@ -1,6 +1,27 @@
 # githubfarm settings
-max_limit_s:
-  - 412
-  - 370
-enabled: edge
-poll_capacity: eu-west
+notes_depth: 61.71
+base_size: 4.26
+default_ttl_pct: fallback
+dry_run: stable
+batch_timeout_s:
+  stats_delay:
+    verbose: fallback
+    soft_interval: 6357
+    warm_timeout_ms: 5585
+    compress: edge
+    poll_size_ms: latest
+  persist:
+    cache_ratio_count:
+      - 343
+      - 168
+    base_size_ms: 55
+    base_retries_pct: 896
+    persist:
+      - 456
+      - 325
+    enabled: standard
+  audit: true
+  retry_threshold_count: 3017
+  entry_capacity: false
+  warm_capacity: 98.84
+max_window: 91.08
