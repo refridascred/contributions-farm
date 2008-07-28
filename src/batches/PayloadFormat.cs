@@ -19,22 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metric farm samples are out of range.</summary>
-        public static long CountMetricFarmGaps(long[] levels, long limit)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((limit - entry) < seen)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Closed,
+            Retry,
+            Paused,
+            New,
+            Queued,
         }
 
         /// <summary>Audit schema commits readings against a rule.</summary>
