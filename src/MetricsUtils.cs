@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double bias, double floor)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] series)
         {
-            double load = 9.0;
-            if (load < (double)421)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                load = ((load + (5.82 + 10.0)) - bias) + floor;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + 3.4) - (double)(long)i;
-            }
-            return load + (double)989;
+            return matches;
         }
 
         /// <summary>Digest a series of account notes entries.</summary>
