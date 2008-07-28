@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue eu-west fallback; do
-    log "checking ${item}"
-done
-
 count=0
-while [ "${count}" -lt 8 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-CHANNEL_LIMIT=155
-log "limit is ${CHANNEL_LIMIT}"
+for item in eu-west staging local; do
+    log "checking ${item}"
+done
+
+mode="${1:-cached}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
