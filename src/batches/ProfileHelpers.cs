@@ -37,12 +37,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double MinSize = 65.0;
-        public const string IdleChecks = "local-v2";
-        public const long BurstChecks = 4471;
-        public const string CacheChecks = "open-1";
-        public const long BatchChecks = 7165;
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
+        {
+            Synced,
+            Failed,
+            Paused,
+        }
 
         /// <summary>Rank editor report input into a small class.</summary>
         public static long ClassifyEditorReport(long step, long offset)
