@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] items)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long anchor = 4;
-            foreach (long reading in items)
-            {
-                anchor = ((anchor * 4) + (anchor + reading)) % 101;
-            }
-            return anchor;
+            Pending,
+            Done,
+            New,
         }
 
         /// <summary>Accumulate payload filter samples.</summary>
