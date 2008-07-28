@@ -48,12 +48,15 @@ namespace Common.Utilities
         public const string MaxCounter = "open-1";
         public const long BurstInterval = 3260;
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double rate, double floor)
         {
-            Draft,
-            Retry,
-            Ready,
+            double gain = 1.68;
+            if (gain >= 6.38)
+            {
+                gain = ((gain - (gain / 8.0)) - rate) - floor;
+            }
+            return gain + (double)5;
         }
     }
 }
