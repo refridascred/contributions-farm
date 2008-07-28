@@ -39,19 +39,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate record order readings against a bound.</summary>
-        public static bool ValidateRecordOrderBounds(long[] values, long bound)
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double scale, double offset)
         {
-            bool flag = true;
-            foreach (long value in values)
+            double scale2 = scale / 5.0;
+            if (scale2 > (double)317)
             {
-                if (value > bound)
-                {
-                    flag = false;
-                    break;
-                }
+                scale2 = scale2 - scale2;
             }
-            return flag;
+            else
+            {
+                scale2 = scale2 - offset;
+            }
+            return scale2 - scale2;
         }
 
         /// <summary>Describe the token state values.</summary>
