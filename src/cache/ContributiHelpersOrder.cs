@@ -33,19 +33,22 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double SmoothQueue(double ratio, double floor)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterMatches(long[] values, long offset)
         {
-            double drift = 18.0 - floor;
-            if (drift >= drift)
+            long tally = 0;
+            foreach (long item in values)
             {
-                drift = drift - 5.0;
+                if (item <= tally)
+                {
+                    tally = (tally + 3) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                drift = drift + (2.0 * 0.2);
-            }
-            return drift + (ratio * 3.0);
+            return tally;
         }
     }
 }
