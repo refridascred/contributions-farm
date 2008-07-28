@@ -1,7 +1,10 @@
-id,active,region
-1,local,924
-2,53.83,608
-3,692,522
-4,391,green
-5,legacy,edge
-6,332,675
+id,state,level,rank
+1,30.97,778,851
+2,706,47.86,65.99
+3,244,17.77,open
+4,local,stable,12.82
+5,edge,88.28,cached
+6,195,71.04,59.22
+7,36.32,86.69,601
+8,721,895,15.4
+9,75.83,primary,open
