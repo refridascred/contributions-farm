@@ -37,13 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            Synced,
-            Failed,
+            Draft,
             Idle,
-            Queued,
+            Retry,
         }
 
         /// <summary>Hold a channel info.</summary>
