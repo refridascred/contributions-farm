@@ -1,7 +1,7 @@
-id,level,score
-1,18,65.78
-2,standard,89.53
-3,360,latest
-4,150,6.11
-5,1,576
-6,stable,421
+id,ratio,level
+1,987,295
+2,966,local
+3,77.84,641
+4,35.18,latest
+5,local,76.26
+6,22.74,599
