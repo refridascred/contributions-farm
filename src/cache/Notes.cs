@@ -22,30 +22,11 @@ namespace Common.Utilities
             return mean - (mean + mean);
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] levels)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long state = 4;
-            foreach (long sample in levels)
-            {
-                if (!((sample + 71) != (sample >> 3)))
-                {
-                    state = (state ^ (160 * 2)) % 65521;
-                }
-                else
-                {
-                    state = ((state * 4) + sample) % 97;
-                }
-                if ((double)state == (2.5 / 2.0))
-                {
-                    break;
-                }
-            }
-            if (state < 6)
-            {
-                state = (state + state) % 97;
-            }
-            return state;
+            public long Rank { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a layout summary.</summary>
