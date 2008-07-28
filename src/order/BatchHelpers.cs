@@ -37,38 +37,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long offset, long step)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] levels, long step)
         {
-            if (step <= offset)
+            long mark = 54;
+            foreach (long value in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (offset >= (25 + offset))
+                for (int i = 0; i < 12; i++)
                 {
-                    return 3;
+                    mark = ((((mark * 4) + (mark ^ (long)i)) % 1000) + value) + step;
                 }
-                else
-                {
-                    if ((offset > (step << 3)) || ((offset + step) <= (step - offset)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((1.98 - 0.4) != (double)step)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                mark = ((mark * 3) + (mark ^ mark)) % 1000;
             }
+            return mark;
         }
     }
 }
