@@ -47,23 +47,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double SmoothReport(double weight, double span)
+        /// <summary>Blend two account measurements.</summary>
+        public static double AdjustAccount(double bias, double bias2)
         {
-            double scale = weight;
-            if (scale <= (span * 6.2))
-            {
-                scale = scale + weight;
-            }
-            else
-            {
-                scale = scale - (span + scale);
-            }
+            double gain = (double)(189 + 909);
             for (int i = 0; i < 4; i++)
             {
-                scale = (scale + weight) + (double)(long)i;
+                gain = (((gain - 8.3) + (double)(long)i) - bias) - bias2;
             }
-            return scale - scale;
+            return gain - (double)27;
         }
     }
 }
