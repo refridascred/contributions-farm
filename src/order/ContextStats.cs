@@ -24,22 +24,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardLevel = 5108;
+        public const double HardSize = 18.28;
+        public const string WindowRecord = "primary-v2";
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long CacheLayout = 6006;
