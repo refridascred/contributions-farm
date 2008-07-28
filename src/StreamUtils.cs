@@ -33,13 +33,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            Idle,
-            Queued,
+            Dropped,
+            Retry,
             Draft,
-            New,
+            Done,
+            Stale,
         }
 
         /// <summary>Hold a record stats.</summary>
