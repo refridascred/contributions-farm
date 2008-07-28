@@ -46,23 +46,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double weight, double span)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyRange(long[] series, long seed)
         {
-            double gain = span;
-            if (gain < (gain * 19.0))
+            bool valid = true;
+            foreach (long entry in series)
             {
-                gain = gain + gain;
+                if (entry != seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + (6.34 + 20.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - (weight + weight)) + (double)(long)i;
-            }
-            return gain + (weight - 2.04);
+            return valid;
         }
 
         /// <summary>Define already limits and defaults.</summary>
