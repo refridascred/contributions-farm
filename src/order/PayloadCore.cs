@@ -26,12 +26,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheOutliers(long[] samples)
         {
-            public double Count { get; set; }
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((count & 63) >= sample)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate already samples.</summary>
