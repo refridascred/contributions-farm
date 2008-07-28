@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenGaps(long[] series, long offset)
+        /// <summary>Iterate the metrics report series from a seed.</summary>
+        public static long IterateMetricsReport(long limit)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long sum = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (((long)series.Length - entry) <= (offset * 4))
+                if (limit <= sum)
                 {
-                    count = count + 1;
+                    sum = (sum - sum) % 1000;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Fold a list of report readings.</summary>
