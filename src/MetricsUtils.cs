@@ -53,19 +53,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyMatches(long[] levels)
-        {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (cell >= (seen + 735))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string RetryCounter = "cached-edge";
+        public const string LimitCounter = "strict-v2";
+        public const string MaxCounter = "open-1";
+        public const long BurstInterval = 3260;
 
         /// <summary>Derive the next editor githubfarm value from a seed.</summary>
         public static long StepEditorGithubfarm(long bound)
