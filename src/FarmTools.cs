@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            public double Token { get; set; }
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public double Weight { get; set; }
+            public bool Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
