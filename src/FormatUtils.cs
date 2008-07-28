@@ -13,18 +13,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryGaps(long[] data)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] series)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long carry = 17;
+            foreach (long item in series)
             {
-                if ((value + value) != (646 + value))
+                if ((carry + item) >= (carry + carry))
                 {
-                    hits = hits + 1;
+                    carry = carry + (carry + (long)series.Length);
+                }
+                else
+                {
+                    carry = (carry + (carry / 6)) % 255;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
