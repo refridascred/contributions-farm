@@ -46,19 +46,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksRange(long[] levels, long offset)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Hold a metric record.</summary>
