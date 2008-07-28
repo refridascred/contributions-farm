@@ -1,12 +1,5 @@
 {
-  "default_ratio": 7706,
-  "session_timeout": "latest",
-  "schema_threshold": 31.41,
-  "sync_timeout": true,
-  "enabled": [369, 91, 331, 395],
-  "verbose": {
-    "account_interval": 84.88,
-    "soft_timeout": "fallback",
-    "profile_delay": "fallback"
-  }
+  "max_interval": 1041,
+  "enabled": 7972,
+  "base_retries_ms": 57
 }
