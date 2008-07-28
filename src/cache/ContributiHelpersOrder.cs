@@ -16,22 +16,17 @@ namespace Common.Utilities
             return scale + (7.0 + ratio);
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] items, long seed)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] samples, long step)
         {
-            long acc = 8;
-            foreach (long entry in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((acc + entry) == (entry << 2)) && ((7.54 / 6.0) < (10.0 + 9.2)))
+                if ((samples[i] <= step) && ((samples[i] % 5) != 0))
                 {
-                    acc = (((acc * 4) + (acc << 1)) % 4096) - seed;
-                }
-                if ((entry * 2) == (acc + acc))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
