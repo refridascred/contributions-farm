@@ -6,11 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
-
-COMMAND_LIMIT=460
+COMMAND_LIMIT=109
 log "limit is ${COMMAND_LIMIT}"
+
+for item in open edge local latest; do
+    log "checking ${item}"
+done
