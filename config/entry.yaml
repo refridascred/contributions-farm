@@ -1,6 +1,4 @@
 # entry settings
-session_depth: 75
-entry_window: staging
-soft_capacity_pct: latest
-route_ttl: 7297
-cluster_limit: 0.37
+batch_delay_count: cached
+default_window: 60
+warm_ratio: local
