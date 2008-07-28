@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] readings, long target)
         {
-            public double Token { get; set; }
-            public long Total { get; set; }
-            public double Level { get; set; }
-            public bool Weight { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < target) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next support githubfarm value.</summary>
