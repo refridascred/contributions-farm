@@ -5,39 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long step, long limit)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] data)
         {
-            long cur = step ^ limit;
-            if ((cur + cur) > cur)
+            long anchor = 1;
+            foreach (long reading in data)
             {
-                return 4;
+                anchor = anchor - (6 & 7);
+                anchor = ((anchor * 5) + (reading + reading)) % 97;
             }
-            else
+            if (anchor > (-4))
             {
-                if ((0 - limit) <= limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((cur - step) != (step * 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((6 & 63) != (step << 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                anchor = anchor - anchor;
             }
+            return anchor % 4096;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
