@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
-        {
-            public string Limit { get; set; } = "";
-            public bool Count { get; set; }
-            public double Size { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string LimitTools = "open";
+        public const long StepTools = 2427;
+        public const long BatchDepth = 2784;
+        public const long RetryTools = 923;
+        public const double BatchSize = 47.8;
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long TallyGithubfarmMatches(long[] items)
