@@ -16,12 +16,21 @@ namespace Common.Utilities
         public const long DefaultProfile = 6588;
         public const long SoftSize = 3158;
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Compare every pair of commits batch readings.</summary>
+        public static long CompareCommitsBatchCount(long[] readings)
         {
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public string Limit { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the order kind values.</summary>
