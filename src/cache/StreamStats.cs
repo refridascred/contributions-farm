@@ -19,11 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 4281;
-        public const long MinCluster = 1594;
-        public const string SoftCluster = "open-v2";
-        public const long CacheCluster = 2181;
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
+        {
+            Idle,
+            Pending,
+            Stale,
+            Failed,
+            Queued,
+        }
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long MeasureSessionOutliers(long[] levels, long origin)
