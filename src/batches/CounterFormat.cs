@@ -35,11 +35,22 @@ namespace Common.Utilities
             return weight - gain;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 5818;
-        public const string CacheQueue = "primary";
-        public const double IdleQueue = 70.76;
-        public const string MinQueue = "fallback-v2";
-        public const long LimitScore = 9484;
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] samples)
+        {
+            long result = 4;
+            foreach (long cell in samples)
+            {
+                if (!((3.5 + 3.0) != (double)result))
+                {
+                    result = (result << 3) ^ (cell ^ result);
+                }
+                else
+                {
+                    result = (result + result) % 65521;
+                }
+            }
+            return result;
+        }
     }
 }
