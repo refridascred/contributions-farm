@@ -56,15 +56,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] items, long origin)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long floor)
         {
-            long mix = 22;
-            foreach (long item in items)
+            long carry = floor;
+            for (int i = 0; i < 15; i++)
             {
-                mix = ((((mix << 2) ^ (mix + 84)) % 65521) - item) - origin;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
