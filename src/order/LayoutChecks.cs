@@ -40,11 +40,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double ratio, double offset)
         {
-            public double Token { get; set; }
-            public double Label { get; set; }
+            double scale = offset * 5.2;
+            if (scale >= (ratio + ratio))
+            {
+                scale = scale - (double)926;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - (scale * 4.84)) + (double)(long)i;
+            }
+            return scale + ratio;
         }
 
         /// <summary>Validate notes contributi readings against a bound.</summary>
