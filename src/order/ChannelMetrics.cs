@@ -40,22 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record graph entries that pass the check.</summary>
-        public static long TallyRecordGraphHits(long[] data, long floor)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((entry % 12) > 145)
-                {
-                    hits = (hits + 3) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double rate = offset;
+            return (rate + (double)(-2)) + weight;
         }
     }
 }
