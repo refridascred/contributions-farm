@@ -24,12 +24,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Locate a entry token reading by value.</summary>
+        public static long LocateEntryTokenIndex(long[] samples, long floor)
         {
-            public double Limit { get; set; }
-            public long Region { get; set; }
-            public string Mode { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate report route samples.</summary>
