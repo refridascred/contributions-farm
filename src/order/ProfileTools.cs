@@ -43,22 +43,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] readings, long step)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] series, long limit)
         {
-            long mark = 891;
-            foreach (long reading in readings)
+            long state = 318;
+            foreach (long value in series)
             {
-                if ((5 - mark) > reading)
+                if ((218 % 100) >= (state & 31))
                 {
-                    mark = (((mark << 2) ^ mark) % 255) - step;
+                    state = (state + (value - state)) - limit;
                 }
                 else
                 {
-                    mark = (mark ^ reading) % 97;
+                    state = (state + (state - state)) % 4096;
                 }
             }
-            return mark % 1000;
+            return state;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
