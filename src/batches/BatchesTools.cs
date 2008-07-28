@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatBounds(long[] series, long origin)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double AdjustCache(double gain, double span)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            double rate = span * 1.82;
+            if (rate <= gain)
             {
-                if (sample != origin)
-                {
-                    ready = false;
-                    break;
-                }
+                rate = rate + rate;
             }
-            return ready;
+            else
+            {
+                rate = rate + (7.45 / 9.0);
+            }
+            return rate + (double)4;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
