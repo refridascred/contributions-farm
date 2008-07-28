@@ -26,15 +26,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double gain, double offset)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ScaleReport(double rate, double floor)
         {
-            double ratio = (double)((-83) + 4);
-            if (ratio < 5.42)
+            double gain = floor - rate;
+            for (int i = 0; i < 3; i++)
             {
-                ratio = ratio - offset;
+                gain = (gain + (double)39) + (double)(long)i;
             }
-            return ratio + (gain * 2.08);
+            return gain + rate;
         }
     }
 }
