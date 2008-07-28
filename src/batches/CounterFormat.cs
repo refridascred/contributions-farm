@@ -20,19 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ScaleQueue(double gain, double floor)
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double gain, double offset)
         {
-            double weight = (double)(66 % 2);
-            if (weight <= floor)
+            double bias = gain - gain;
+            if (bias > (gain / 8.0))
             {
-                weight = weight - (20.0 / 9.0);
+                bias = (bias - bias) - offset;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                weight = (weight - 3.73) - (double)(long)i;
+                bias = bias - bias;
             }
-            return weight - gain;
+            return bias - bias;
         }
 
         /// <summary>Accumulate window samples.</summary>
