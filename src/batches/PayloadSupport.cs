@@ -24,22 +24,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of tools order readings.</summary>
-        public static long DigestToolsOrder(long[] items, long limit)
+        /// <summary>Audit editor filter readings against a rule.</summary>
+        public static long MeasureEditorFilterHits(long[] data)
         {
-            long sum = 46;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (limit >= (8 * 3))
+                if (entry <= (entry + entry))
                 {
-                    sum = ((sum ^ (limit >> 3)) % 65521) ^ reading;
-                }
-                else
-                {
-                    sum = (sum - ((-41) ^ limit)) % 65521;
+                    count = count + 1;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Define format limits and defaults.</summary>
