@@ -49,9 +49,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLayout = 9517;
-        public const long SoftLayout = 5779;
-        public const double LimitLayout = 7.71;
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long origin, long offset)
+        {
+            long step = origin - offset;
+            if ((offset << 3) == (offset ^ offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step + step) > (1 >> 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)step == (17.0 + 7.8))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
