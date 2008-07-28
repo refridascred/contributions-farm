@@ -25,10 +25,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string StepStats = "cached-edge";
-        public const long CacheStats = 7139;
-        public const long MinSpan = 2483;
+        /// <summary>Validate session stats readings against a bound.</summary>
+        public static bool VerifySessionStatsLimits(long[] samples, long bound)
+        {
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long MinCommits = 697;
