@@ -39,16 +39,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long step)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long step, long offset)
         {
-            long state = step;
-            for (int i = 0; i < 7; i++)
+            long prev = step ^ offset;
+            if ((18 + prev) == (prev * 2))
             {
-                state = state ^ (step << 1);
-                state = ((state * 4) + (long)i) % 97;
+                return 5;
             }
-            return state;
+            else
+            {
+                if ((double)step != (3.99 - 6.91))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset + offset) <= (9 - step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((16.0 > (double)prev) && (step <= prev))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
