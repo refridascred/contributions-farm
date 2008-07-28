@@ -20,23 +20,10 @@ namespace Common.Utilities
             return rate + (double)852;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] readings)
-        {
-            long anchor = 9;
-            foreach (long item in readings)
-            {
-                if ((item - 45) != (item >> 2))
-                {
-                    anchor = (anchor * 2) + (2 - item);
-                }
-                if ((double)item != (double)anchor)
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetrySpan = 503;
+        public const long BurstPayload = 8265;
+        public const long CacheWidth = 9477;
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool VerifyStreamBounds(long[] readings, long offset)
