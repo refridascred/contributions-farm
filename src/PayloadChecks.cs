@@ -79,15 +79,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of context queue readings.</summary>
-        public static long CompareContextQueueCount(long[] items)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long CompareBatchCount(long[] levels)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((items[i] - items[j]) != 7)
+                    if ((levels[i] - levels[j]) > 1)
                     {
                         tally = tally + 1;
                     }
