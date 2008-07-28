@@ -61,10 +61,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double IdleLevel = 91.38;
-        public const string WindowTimeout = "fallback-edge";
-        public const long BaseOrder = 8359;
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
+        {
+            public double Rank { get; set; }
+            public double Mode { get; set; }
+            public double Stamp { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Digest a series of already stats entries.</summary>
         public static long TotalAlreadyStats(long[] series, long origin)
