@@ -32,18 +32,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextOutliers(long[] values)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((9.7 / 6.0) != (double)tally)
-                {
-                    tally = (tally + 2) + value;
-                }
-            }
-            return tally;
+            public string Stamp { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
