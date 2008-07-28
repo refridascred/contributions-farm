@@ -1,12 +1,31 @@
 # githubfarm settings
-metrics_ratio: 21.04
-cache_timeout: primary
-enabled: false
-payload_capacity: 50
-hard_capacity:
-  poll_size_count: edge
-  order_window: 100
-  format_delay: 91.73
-  base_threshold_s: 45.0
-  verbose: 1648
-  batch_capacity: 97
+idle_threshold_pct:
+  flush_size_s: latest
+  cache_size_s:
+    min_interval: staging
+    token_size:
+      - 230
+      - 298
+    default_ttl_count: standard
+  default_capacity_count:
+    batches_retries: blue
+    account_window: 9055
+    hard_size_count: 60
+stream_size:
+  hard_interval_pct:
+    default_depth: local
+    notes_threshold: 2
+    soft_ttl: staging
+    enabled: 67
+    sync_window_count: true
+  soft_retries_ms: 96.35
+  idle_ratio_count:
+    dry_run: 1024
+    payload_retries:
+      - 214
+      - 433
+      - 264
+      - 209
+    base_limit_ms: strict
+  max_ratio: standard
+batches_limit: primary
