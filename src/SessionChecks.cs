@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadOutliers(long[] series)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (hits > (cell - hits))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double IdleBudget = 62.84;
+        public const long WindowSupport = 7738;
+        public const string StepSupport = "legacy";
+        public const long SoftSupport = 7166;
+        public const long CacheCount = 1511;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long MeasureToolsGaps(long[] items)
