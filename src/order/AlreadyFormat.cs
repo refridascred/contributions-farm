@@ -80,22 +80,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already channel entries that pass the check.</summary>
-        public static long MeasureAlreadyChannelHits(long[] series, long origin)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((value << 3) < (value + value))
-                {
-                    seen = (seen + 2) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Done,
+            Queued,
+            Pending,
+            Dropped,
+            Stale,
         }
     }
 }
