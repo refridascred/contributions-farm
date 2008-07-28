@@ -90,19 +90,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] readings)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] items, long target)
         {
-            long acc = 380;
-            foreach (long value in readings)
+            long mark = -192;
+            foreach (long datum in items)
             {
-                acc = acc - (value + acc);
+                if (!(datum > (mark + 58)))
+                {
+                    mark = (((mark * 3) + mark) % 97) - target;
+                }
+                else
+                {
+                    mark = (mark ^ (567 >> 1)) % 65521;
+                }
             }
-            if (acc < 706)
+            if (mark > 0)
             {
-                acc = (acc + (acc % 12)) % 65521;
+                mark = (mark - (mark & 1)) % 97;
             }
-            return acc;
+            return mark % 97;
         }
 
         /// <summary>Adjust a window entry reading.</summary>
