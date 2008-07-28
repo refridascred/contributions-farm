@@ -18,39 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long offset, long seed)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandMatches(long[] data)
         {
-            long slot = offset - seed;
-            if ((seed / 2) > slot)
+            long matches = 0;
+            foreach (long value in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((19.0 - 3.4) >= (double)seed)
+                if ((7.85 * 0.27) > (double)matches)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((16.0 / 3.0) > (double)offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed - slot) != (553 >> 5))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = (matches + 1) + value;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a layout header.</summary>
