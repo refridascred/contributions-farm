@@ -58,19 +58,13 @@ namespace Common.Utilities
         public const long MinSize = 101;
         public const long MinInterval = 6471;
 
-        /// <summary>Check that every session batches entry stays within the limit.</summary>
-        public static bool ValidateSessionBatchesBounds(long[] items, long limit)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            bool stale = true;
-            foreach (long cell in items)
-            {
-                if (cell >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Pending,
+            Stale,
+            Dropped,
         }
     }
 }
