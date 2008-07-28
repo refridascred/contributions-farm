@@ -62,22 +62,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportOutliers(long[] data, long bound)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long limit, long seed)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long bound = limit - seed;
+            if (((limit & 1) >= seed) && ((4.39 - 5.0) < (double)bound))
             {
-                if ((bound << 2) != (value >> 4))
+                return 2;
+            }
+            else
+            {
+                if ((19.0 - 2.4) >= (double)seed)
                 {
-                    tally = tally + 2;
+                    return 8;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((seed - bound) != (seed / 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
