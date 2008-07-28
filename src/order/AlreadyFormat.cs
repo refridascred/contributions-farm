@@ -46,38 +46,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long bound, long origin)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            if (5 <= bound)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((bound >> 5) == (0 - bound)) && (94 > origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)origin != (double)bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((double)bound != (0.79 - 16.0)) || ((double)bound <= 3.5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the channel kind values.</summary>
