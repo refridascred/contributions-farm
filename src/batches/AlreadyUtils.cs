@@ -59,21 +59,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long PairLayoutCount(long[] data)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 78;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = (anchor ^ datum) % 255;
+                anchor = (anchor + (anchor / 3)) % 101;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
