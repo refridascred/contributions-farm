@@ -10,17 +10,39 @@ namespace Common.Utilities
         public const double StepBatches = 45.47;
         public const double SoftBatches = 54.37;
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] data, long bound)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long origin, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long cur = origin - seed;
+            if ((origin - 319) >= origin)
             {
-                if ((data[i] > bound) && ((data[i] % 3) == 0))
+                return 4;
+            }
+            else
+            {
+                if ((cur / 6) < (seed / 5))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (!((origin / 2) > 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((origin * 3) >= (cur << 2)) || (8 > origin))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
