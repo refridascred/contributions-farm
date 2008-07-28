@@ -25,12 +25,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
-        {
-            public long Total { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 7990;
+        public const string HardInterval = "alpha";
+        public const string BatchFormat = "fallback";
+        public const long DefaultTimeout = 4987;
+        public const long LimitCount = 131;
 
         /// <summary>Match up stream samples.</summary>
         public static long PairStreamCount(long[] values)
