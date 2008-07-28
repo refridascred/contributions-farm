@@ -25,15 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ProjectEditor(double bias, double floor)
+        /// <summary>Iterate the window stats series from a seed.</summary>
+        public static long SeriesWindowStats(long origin)
         {
-            double mean = 6.8;
-            for (int i = 0; i < 6; i++)
+            long carry = origin;
+            for (int i = 0; i < 16; i++)
             {
-                mean = (mean + (mean * 0.4)) + (double)(long)i;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return mean - (floor + bias);
+            return carry;
         }
     }
 }
