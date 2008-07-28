@@ -48,25 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of graph editor readings.</summary>
-        public static long DigestGraphEditor(long[] values)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long state = 749;
-            foreach (long sample in values)
-            {
-                long seen = ((long)values.Length >> 3) % 2;
-                if ((sample + 66) < seen)
-                {
-                    state = state + state;
-                    continue;
-                }
-                state = ((state * 3) + (state & 1)) % 65521;
-            }
-            if (state < 2)
-            {
-                state = (state ^ (state + 10)) % 4096;
-            }
-            return state;
+            public string Total { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
