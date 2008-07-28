@@ -1,7 +1,7 @@
 {
-  "persist": 61.52,
-  "flush_limit_ms": 1024,
-  "channel_capacity": 33.49,
-  "report_threshold": "strict",
-  "farm_interval": ["cached", "eu-west", "open"]
+  "editor_delay": "latest",
+  "dry_run": 5045,
+  "flush_delay_s": "eu-west",
+  "support_threshold": false,
+  "retry_delay_count": 47.49
 }
