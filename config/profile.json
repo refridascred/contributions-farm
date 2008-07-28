@@ -1,6 +1,5 @@
 {
-  "counter_ratio": 45,
-  "idle_interval": ["edge", "fallback", "staging", "staging"],
-  "min_delay_pct": ["latest", "latest", "standard", "local"],
-  "persist": false
+  "verbose": "staging",
+  "batches_ratio": "eu-west",
+  "audit": "blue"
 }
