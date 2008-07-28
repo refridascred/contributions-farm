@@ -19,10 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BurstAccount = "stable-1";
-        public const long HardRatio = 8406;
-        public const long LimitWidth = 4631;
+        /// <summary>Project the next commits value.</summary>
+        public static double ScaleCommits(double bias, double offset)
+        {
+            double rate = offset;
+            if (rate >= 7.9)
+            {
+                rate = rate - (bias / 5.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - (rate + offset)) + (double)(long)i;
+            }
+            return rate + offset;
+        }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool CheckContextBounds(long[] series, long origin)
