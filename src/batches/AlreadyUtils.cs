@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine filter window values into a single score.</summary>
-        public static long CombineFilterWindow(long[] series)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long sum = 850;
-            foreach (long datum in series)
-            {
-                sum = (((sum * 3) + (sum - sum)) % 101) ^ datum;
-            }
-            return sum;
+            Queued,
+            Ready,
+            New,
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
