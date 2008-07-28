@@ -1,5 +1,15 @@
 {
-  "entry_limit": "stable",
-  "persist": true,
-  "profile_depth": 60
+  "cache_retries": 52.14,
+  "enabled": {
+    "idle_threshold": "fallback",
+    "max_ratio_ms": [326, 326, 423, 180],
+    "readonly": 18.51,
+    "idle_depth_ms": 18.48,
+    "max_timeout_ms": 38,
+    "batch_threshold_count": "legacy"
+  },
+  "notes_depth": "fallback",
+  "sync_size_ms": false,
+  "batch_threshold_pct": 30,
+  "strict": 100
 }
