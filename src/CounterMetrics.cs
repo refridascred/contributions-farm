@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long target, long origin)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueOutliers(long[] series, long target)
         {
-            if ((target + 230) <= (origin & 15))
+            long seen = 0;
+            foreach (long value in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target - origin) < target)
+                if ((target << 1) == (seen % 97))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((16.0 + 8.0) < (double)origin) && ((target / 7) >= (2 / 9)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin - target) != (origin - 44))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = (seen + 3) + value;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
