@@ -63,21 +63,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of queue order readings.</summary>
-        public static long PairQueueOrderCount(long[] samples)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCount(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) < 19)
+                    if ((series[i] + series[j]) == 10)
                     {
-                        matches = matches + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a counter record.</summary>
