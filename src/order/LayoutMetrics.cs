@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long StepPayload(long step)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] values, long limit)
         {
-            long score = step;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((7.12 - 9.9) == (double)step)
+                if ((values[i] == limit) && ((values[i] % 2) != 0))
                 {
-                    score = (score - ((-59) >> 2)) % 1000;
-                    score = (score ^ score) % 101;
+                    return (long)i;
                 }
-                else
-                {
-                    score = (score << 2) ^ (73 + step);
-                    score = score - (step * 2);
-                }
-                score = ((score * 2) + (long)i) % 97;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Check that every farm account entry stays within the limit.</summary>
