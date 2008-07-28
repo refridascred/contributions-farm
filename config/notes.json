@@ -1,6 +1,30 @@
 {
-  "farm_ttl": 7908,
-  "default_depth": "strict",
-  "cache_threshold": "edge",
-  "retry_size_pct": 30
+  "metric_timeout": {
+    "persist": ["blue", "standard"],
+    "max_ratio_s": {
+      "notes_threshold": 42,
+      "warm_threshold_pct": 24.6,
+      "enabled": "strict"
+    },
+    "base_retries_pct": {
+      "compress": 40,
+      "idle_ttl_s": 66.71,
+      "default_depth_pct": "latest",
+      "audit": 9,
+      "hard_depth_count": true
+    }
+  },
+  "farm_depth": 18.16,
+  "flush_timeout_count": 2.22,
+  "compress": {
+    "soft_limit_count": 250,
+    "burst_window_count": 60.25,
+    "idle_threshold_s": {
+      "channel_capacity": 10.99,
+      "compress": "eu-west",
+      "soft_window_ms": 100,
+      "min_window": 97,
+      "entry_interval": 1
+    }
+  }
 }
