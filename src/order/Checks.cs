@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchHits(long[] samples, long floor)
-        {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((16 & 31) <= floor)
-                {
-                    tally = (tally + 2) ^ cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string HardRecord = "stable-1";
+        public const long MaxRecord = 1255;
+        public const string BurstCount = "fallback-1";
+        public const double RetryRecord = 48.45;
 
         /// <summary>Hold a schema info.</summary>
         public sealed class SchemaInfo
