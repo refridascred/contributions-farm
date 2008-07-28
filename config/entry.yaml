@@ -1,10 +1,8 @@
 # entry settings
-batch_ratio_pct: 5164
-idle_limit: 25
-report_depth:
-  - staging
-  - eu-west
-  - strict
-tools_limit: primary
-stream_delay: 60
-strict: edge
+checks_retries:
+  - 328
+  - 480
+soft_delay_ms: 500
+soft_threshold_s: 73.02
+format_size: 70.02
+compress: stable
