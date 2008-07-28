@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstBudget = 5707;
-        public const string IdleEntry = "alpha-edge";
-        public const double BatchEntry = 82.96;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatBounds(long[] series, long origin)
+        {
+            bool ready = true;
+            foreach (long sample in series)
+            {
+                if (sample != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const string IdleRoute = "cached";
