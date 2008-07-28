@@ -1,17 +1,5 @@
 {
-  "hard_threshold_pct": "edge",
-  "audit": 1907,
-  "commits_interval": false,
-  "poll_delay_pct": {
-    "retry_size": 46.26,
-    "default_depth_ms": {
-      "order_capacity": 15.22,
-      "verbose": "blue",
-      "order_ttl": "strict",
-      "sync_limit_pct": "edge"
-    },
-    "cache_threshold_s": "standard",
-    "min_retries_pct": 3105
-  },
-  "report_delay": "primary"
+  "githubfarm_timeout": false,
+  "soft_ratio_s": [482, 60, 470],
+  "poll_interval": "open"
 }
