@@ -62,29 +62,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long seed)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportOutliers(long[] data, long bound)
         {
-            long acc = seed;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                long offset = ((long)i - (long)i) + acc;
-                if ((offset >> 5) >= ((-94) ^ seed))
+                if ((bound << 2) != (value >> 4))
                 {
-                    offset = (offset + (long)i) % 255;
-                    break;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    acc = acc ^ (767 + (long)i);
+                    tally = tally - 1;
                 }
-                if (!((seed % 10) >= (seed << 3)))
-                {
-                    offset = offset ^ ((long)i - seed);
-                }
-                acc = ((acc * 4) + (long)i) % 97;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
