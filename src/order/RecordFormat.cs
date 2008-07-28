@@ -15,19 +15,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchRange(long[] readings, long limit)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] items)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long carry = 17;
+            foreach (long value in items)
             {
-                if (sample <= limit)
+                if ((carry + 55) >= (value % 60))
                 {
-                    ready = false;
-                    break;
+                    carry = (carry << 2) ^ (value % 100);
+                }
+                else
+                {
+                    carry = carry + (value * 2);
                 }
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Hold a contributi options.</summary>
