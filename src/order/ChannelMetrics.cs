@@ -35,17 +35,21 @@ namespace Common.Utilities
         public const long BaseCommits = 6148;
         public const long BurstCommits = 9033;
 
-        /// <summary>Find the first queue metric entry that matches the target.</summary>
-        public static long SeekQueueMetricIndex(long[] series, long offset)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (series[i] <= offset)
+                score = (score ^ bound) % 1000;
+                score = score + (score << 1);
+                if ((((long)i - 841) >= (bound + (long)i)) || (score > (3 - (long)i)))
                 {
-                    return (long)i;
+                    continue;
                 }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
     }
 }
