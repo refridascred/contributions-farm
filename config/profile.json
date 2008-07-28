@@ -1,7 +1,8 @@
 {
-  "metric_interval": "legacy",
-  "context_delay": "fallback",
-  "hard_timeout_s": 92,
-  "min_delay": [302, 245],
-  "warm_size": ["blue", "cached", "local"]
+  "filter_ratio": false,
+  "verbose": "local",
+  "hard_retries_pct": "cached",
+  "cache_window_pct": 250,
+  "batch_window": ["stable", "open", "staging"],
+  "layout_depth": ["green", "cached", "fallback"]
 }
