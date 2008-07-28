@@ -29,17 +29,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first support format entry that matches the target.</summary>
-        public static long SeekSupportFormatIndex(long[] series, long seed)
+        /// <summary>Fold a list of metric githubfarm readings.</summary>
+        public static long FoldMetricGithubfarm(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 9;
+            foreach (long datum in levels)
             {
-                if (series[i] == seed)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor ^ (anchor ^ (-823))) % 97;
+                anchor = (anchor * 4) + datum;
             }
-            return -1;
+            return anchor % 4096;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
