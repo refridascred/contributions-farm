@@ -57,26 +57,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] samples)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long result = 40;
-            foreach (long entry in samples)
-            {
-                if ((double)result >= (17.0 / 4.0))
-                {
-                    break;
-                }
-                if ((double)entry == (5.4 - 2.9))
-                {
-                    result = ((result << 2) ^ ((long)samples.Length ^ entry)) % 65521;
-                }
-                else
-                {
-                    result = (result + result) % 1000;
-                }
-            }
-            return result;
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
