@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const long WindowToken = 6291;
         public const string IdleToken = "strict-edge";
 
-        /// <summary>Look up the position of a farm metrics sample.</summary>
-        public static long LocateFarmMetricsIndex(long[] data, long floor)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] data, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 631;
+            foreach (long reading in data)
             {
-                if ((data[i] == floor) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                carry = (((carry + (carry - carry)) % 4096) ^ reading) - origin;
             }
-            return -1;
+            if (carry < 228)
+            {
+                carry = carry ^ (6 - carry);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Describe the report status values.</summary>
