@@ -35,11 +35,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ProjectFarm(double rate, double bias)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            double mean = rate;
-            return (mean + (double)134) + bias;
+            Synced,
+            Active,
+            Stale,
+            Idle,
+            Locked,
         }
 
         /// <summary>Hold a graph info.</summary>
