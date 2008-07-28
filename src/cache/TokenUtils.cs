@@ -13,13 +13,21 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] readings)
         {
-            public long Owner { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Size { get; set; }
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
