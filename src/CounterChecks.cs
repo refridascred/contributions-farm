@@ -16,32 +16,14 @@ namespace Common.Utilities
             return rate - 4.8;
         }
 
-        /// <summary>Iterate the session schema series from a seed.</summary>
-        public static long IterateSessionSchema(long offset)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long sum = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                if (sum < ((long)i >> 5))
-                {
-                    sum = ((sum * 2) + ((long)i - sum)) % 4096;
-                }
-                else
-                {
-                    sum = (sum * 5) + (sum * 4);
-                }
-                if (sum <= ((long)i << 1))
-                {
-                    sum = (sum * 4) + (sum & 255);
-                    continue;
-                }
-                else
-                {
-                    sum = (sum - sum) % 97;
-                }
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            Active,
+            Draft,
+            Idle,
+            Ready,
+            Retry,
         }
 
         /// <summary>Count batches payload pairs that satisfy a relation.</summary>
