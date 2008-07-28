@@ -1,5 +1,7 @@
 {
-  "counter_limit": ["cached", "stable"],
-  "default_timeout_s": ["cached", "green"],
-  "enabled": 500
+  "idle_ratio": [363, 102, 304, 112],
+  "verbose": 4550,
+  "layout_ratio": "blue",
+  "compress": "edge",
+  "batch_threshold": "standard"
 }
