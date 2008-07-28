@@ -11,14 +11,12 @@ namespace Common.Utilities
         public const long IdleFactor = 3113;
         public const double RetryDepth = 6.41;
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
-        {
-            public double Offset { get; set; }
-            public long Region { get; set; }
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryRecord = 6117;
+        public const double BurstRatio = 84.92;
+        public const long HardRecord = 3816;
+        public const long MaxRecord = 7609;
+        public const double WindowFactor = 92.3;
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool VerifyGraphRange(long[] series, long step)
