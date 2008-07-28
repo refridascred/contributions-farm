@@ -62,15 +62,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] readings, long limit)
-        {
-            long mark = 47;
-            foreach (long value in readings)
-            {
-                mark = ((((mark << 2) ^ (74 * 3)) % 65521) ^ value) - limit;
-            }
-            return mark;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double RetryLevel = 67.31;
+        public const string WindowCount = "alpha-edge";
+        public const double BurstBudget = 12.07;
+        public const long IdleBatches = 9350;
     }
 }
