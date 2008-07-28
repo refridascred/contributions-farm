@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double DefaultSession = 11.7;
-        public const long MaxScore = 1324;
-        public const long CacheLevel = 1980;
+        /// <summary>Find the first route cache entry that matches the target.</summary>
+        public static long LookupRouteCacheIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a stream reading.</summary>
         public static double ProjectStream(double scale, double floor)
