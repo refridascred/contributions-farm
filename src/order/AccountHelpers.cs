@@ -12,17 +12,18 @@ namespace Common.Utilities
             return (load - gain) + bias;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] items, long step)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmMatches(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((items[i] > step) && ((items[i] % 2) != 0))
+                if ((0 + matches) < (matches + matches))
                 {
-                    return (long)i;
+                    matches = (matches + 3) - datum;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
