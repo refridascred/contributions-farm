@@ -58,11 +58,12 @@ namespace Common.Utilities
         public const long MaxReport = 6492;
         public const string StepFactor = "stable-v2";
 
-        /// <summary>Project the next schema value.</summary>
-        public static double BlendSchema(double scale, double span)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            double scale2 = span;
-            return scale2 + (scale + scale);
+            public long Score { get; set; }
+            public double Size { get; set; }
+            public double Level { get; set; }
         }
     }
 }
