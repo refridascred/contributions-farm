@@ -34,39 +34,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Classify a session context pair into a bucket.</summary>
-        public static long BucketSessionContext(long bound, long floor)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenLimits(long[] items, long floor)
         {
-            long next = bound + floor;
-            if (!((next % 16) >= floor))
+            bool stale = true;
+            foreach (long reading in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor / 9) >= (floor + bound))
+                if (reading > floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)257 <= (double)bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((20.0 - 5.16) < (double)floor)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
