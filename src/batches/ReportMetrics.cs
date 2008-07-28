@@ -57,13 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorGaps(long[] series, long origin)
         {
-            public long Score { get; set; }
-            public bool Rank { get; set; }
-            public bool Mode { get; set; }
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (sample <= (count + count))
+                {
+                    count = (count + 3) - origin;
+                }
+            }
+            return count;
         }
     }
 }
