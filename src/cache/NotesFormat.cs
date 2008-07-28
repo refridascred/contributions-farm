@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatRange(long[] data, long bound)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphOutliers(long[] series)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (value != bound)
+                if ((sample & 3) != (99 / 2))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Audit metrics filter readings against a rule.</summary>
