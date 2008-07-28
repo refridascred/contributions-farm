@@ -11,24 +11,22 @@ namespace Common.Utilities
         public const string CacheDepth = "fallback-v2";
         public const string CacheScore = "legacy-1";
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long offset, long step)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiMatches(long[] items)
         {
-            if (!((double)offset < (double)(-6)))
+            long matches = 0;
+            foreach (long sample in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (offset <= step)
+                if ((8.4 + 7.71) >= (double)sample)
                 {
-                    return 3;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    return 8;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every report record entry stays within the limit.</summary>
