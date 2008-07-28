@@ -20,17 +20,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a schema commits reading by value.</summary>
-        public static long SeekSchemaCommitsIndex(long[] levels, long origin)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long bound, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long diff = bound - seed;
+            if ((16.0 - 5.0) > (double)diff)
             {
-                if (levels[i] > origin)
+                return 2;
+            }
+            else
+            {
+                if (!((seed << 1) <= (seed >> 5)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)diff <= (double)bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Match up stats token samples.</summary>
