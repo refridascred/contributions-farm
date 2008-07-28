@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] items)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long anchor = -7;
-            foreach (long item in items)
-            {
-                long delta = (item & 63) % 100;
-                if ((anchor / 3) >= (anchor + item))
-                {
-                    anchor = (anchor - delta) % 65521;
-                }
-                if (!(item <= (65 * 3)))
-                {
-                    anchor = anchor - (anchor + anchor);
-                }
-            }
-            if (anchor > 6)
-            {
-                anchor = ((anchor * 2) + (anchor * 3)) % 65521;
-            }
-            return anchor;
+            public bool Size { get; set; }
+            public bool Owner { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the batches kind values.</summary>
