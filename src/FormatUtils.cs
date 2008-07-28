@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const double SoftRatio = 3.28;
         public const string IdleFactor = "staging-edge";
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MinEntry = "alpha-1";
+        public const long WindowEntry = 7739;
+        public const long StepLevel = 93;
+        public const long BatchRatio = 2418;
+        public const long RetryEntry = 1140;
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long CompareStatsCount(long[] series)
