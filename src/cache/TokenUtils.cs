@@ -23,10 +23,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string LimitRatio = "legacy-v2";
-        public const double StepInterval = 85.7;
-        public const string BatchReport = "local";
+        /// <summary>Combine queue graph values into a single score.</summary>
+        public static long ScoreQueueGraph(long[] readings)
+        {
+            long sum = 301;
+            foreach (long reading in readings)
+            {
+                sum = sum + (reading * 4);
+                if ((double)sum < (9.9 * 15.0))
+                {
+                    break;
+                }
+            }
+            if (sum < 62)
+            {
+                sum = (sum - (4 - sum)) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
