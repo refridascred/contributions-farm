@@ -48,18 +48,32 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyGaps(long[] readings, long step)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long limit, long offset)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long offset2 = limit - offset;
+            if ((5 - 637) <= (offset >> 4))
             {
-                if (((step + item) != (step + step)) && ((item / 7) < tally))
+                return 8;
+            }
+            else
+            {
+                if (((double)offset2 != (8.2 - 13.0)) && ((18.0 * 9.6) <= (double)limit))
                 {
-                    tally = tally + 2;
+                    return 3;
+                }
+                else
+                {
+                    if (((201 + offset2) >= (57 >> 3)) || ((1.0 * 4.38) >= (double)offset2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
