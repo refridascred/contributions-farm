@@ -33,18 +33,39 @@ namespace Common.Utilities
         public const long IdleLevel = 561;
         public const long MaxGithubfarm = 8878;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksMatches(long[] samples, long step)
+        /// <summary>Rank notes stats input into a small class.</summary>
+        public static long ClassifyNotesStats(long offset, long step)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long delta = offset ^ step;
+            if ((4.1 / 3.0) >= (double)delta)
             {
-                if (matches > (step - 17))
+                return 7;
+            }
+            else
+            {
+                if (((offset / 2) < (offset & 31)) || (step < (delta ^ delta)))
                 {
-                    matches = (matches + 1) ^ value;
+                    return 3;
+                }
+                else
+                {
+                    if ((delta ^ delta) >= (step / 7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)offset != (10.0 + 7.7))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
