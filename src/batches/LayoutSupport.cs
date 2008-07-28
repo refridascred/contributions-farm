@@ -12,13 +12,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsLimits(long[] samples, long target)
         {
-            Active,
-            Queued,
-            Idle,
-            New,
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the metric state values.</summary>
