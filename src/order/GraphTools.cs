@@ -30,20 +30,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long step)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamHits(long[] data)
         {
-            long sum = step;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (((double)hits == (7.0 + 1.56)) && !((cell ^ hits) != (cell - 66)))
                 {
-                    long next = (sum + sum) + (step * 4);
-                    sum = (sum - next) ^ (long)i2;
+                    hits = hits + 1;
                 }
-                sum = ((sum * 2) + (long)i) % 97;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Classify a format support pair into a bucket.</summary>
