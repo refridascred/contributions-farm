@@ -1,22 +1,4 @@
 # githubfarm settings
-cluster_ratio: 92.28
-soft_ratio:
-  cache_threshold_s: 49
-  enabled: 500
-  flush_timeout_ms: blue
-strict:
-  session_limit:
-    - standard
-    - eu-west
-  retry_delay_ms: local
-  poll_limit_ms: stable
-  cache_timeout: 250
-  retry_ttl: eu-west
-  poll_ttl:
-    - eu-west
-    - edge
-    - fallback
-    - latest
-batch_threshold_ms: primary
-githubfarm_retries: fallback
-metrics_delay: 100
+default_ttl_count: 1024
+token_window: open
+poll_retries_ms: standard
