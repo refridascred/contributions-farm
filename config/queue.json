@@ -1,10 +1,5 @@
 {
-  "strict": true,
-  "report_ttl": 500,
-  "enabled": 4074,
-  "min_threshold": {
-    "cache_timeout_ms": [271, 136, 421, 222],
-    "base_interval_s": 3291,
-    "retry_depth_pct": "edge"
-  }
+  "sync_interval_count": "fallback",
+  "channel_window": [326, 314],
+  "checks_capacity": ["local", "strict", "cached", "edge"]
 }
