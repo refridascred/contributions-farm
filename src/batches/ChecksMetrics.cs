@@ -23,17 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] levels, long seed)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmOutliers(long[] samples, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (levels[i] <= seed)
+                if ((target <= 617) || (((4.6 * 4.3) > (double)seen) && ((0.16 - 8.32) <= (double)target)))
                 {
-                    return (long)i;
+                    seen = (seen + 2) ^ value;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
