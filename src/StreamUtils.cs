@@ -32,14 +32,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            Retry,
-            Synced,
-            Failed,
-            Locked,
-            Stale,
+            Idle,
+            Queued,
+            Draft,
+            New,
         }
 
         /// <summary>Hold a stats record.</summary>
