@@ -29,19 +29,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphBounds(long[] readings, long seed)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterOutliers(long[] data, long target)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (item > seed)
+                if (!!((0 - 1) < (target << 3)))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 3) + value;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
