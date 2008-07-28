@@ -1,6 +1,7 @@
-id,token,region,weight,score
-1,829,cached,81.32,89.77
-2,305,edge,stable,218
-3,67.25,strict,509,standard
-4,862,93.69,840,277
-5,green,18.89,cached,53.54
+id,owner,level,region,rank
+1,21.27,cached,blue,local
+2,green,eu-west,764,817
+3,350,cached,132,edge
+4,37.38,390,53.6,82.79
+5,784,staging,74.67,primary
+6,760,644,507,518
