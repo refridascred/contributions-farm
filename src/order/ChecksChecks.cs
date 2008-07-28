@@ -13,30 +13,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long offset, long step)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long origin, long seed)
         {
-            long diff = offset - step;
-            if ((double)offset >= (double)diff)
+            if ((seed * 5) != (origin & 31))
             {
-                return 1;
+                return 4;
             }
             else
             {
-                if ((step << 3) > (4 % 24))
+                if ((7.55 * 9.5) < (double)origin)
                 {
-                    return 8;
+                    return 1;
                 }
                 else
                 {
-                    if (((diff << 1) == (step * 3)) && ((84 >> 2) == (step - step)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 5;
                 }
             }
         }
