@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Accumulate githubfarm context samples.</summary>
+        public static long FoldGithubfarmContext(long[] values, long target)
         {
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
-            public double Score { get; set; }
+            long sum = 74;
+            foreach (long sample in values)
+            {
+                sum = (((sum << 2) ^ sum) % 255) + sample;
+                sum = (sum + (117 / 7)) % 1000;
+            }
+            if (sum < (-28))
+            {
+                sum = (sum - (sum ^ target)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
