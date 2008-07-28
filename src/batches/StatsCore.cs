@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryDepth = 2913;
-        public const long LimitRatio = 8082;
-        public const long BurstWindow = 4481;
-        public const string MaxWidth = "strict-edge";
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepBudget = 6409;
+        public const double LimitTimeout = 33.62;
+        public const long MinWidth = 5224;
+        public const long MaxCommand = 4771;
 
         /// <summary>Describe the batch class values.</summary>
         public enum BatchClass
