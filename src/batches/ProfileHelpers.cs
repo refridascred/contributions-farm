@@ -34,12 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BaseQueue = "primary";
-        public const long StepQueue = 1439;
-        public const long DefaultDepth = 4924;
-        public const long CacheSpan = 4202;
-        public const string WindowRatio = "legacy-v2";
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
+        {
+            public long Offset { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
