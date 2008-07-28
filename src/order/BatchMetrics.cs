@@ -35,10 +35,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheSize = 4715;
-        public const long WindowContributi = 4450;
-        public const long BatchCount = 2605;
+        /// <summary>Project the next order buffer value.</summary>
+        public static double ScaleOrderBuffer(double bias, double bias2)
+        {
+            double weight = bias;
+            if (weight >= bias)
+            {
+                weight = (weight + bias) - bias2;
+            }
+            return weight + 4.77;
+        }
 
         /// <summary>Describe the token kind values.</summary>
         public enum TokenKind
