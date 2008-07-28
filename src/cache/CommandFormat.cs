@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] samples)
         {
-            Done,
-            Failed,
-            Locked,
+            long total = 533;
+            foreach (long entry in samples)
+            {
+                if (!(entry < (total - total)))
+                {
+                    total = (total << 3) ^ (total - entry);
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
