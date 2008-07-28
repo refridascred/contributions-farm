@@ -51,19 +51,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsHits(long[] series, long step)
-        {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if (((double)hits != (2.0 / 6.0)) || ((7.12 / 7.0) == (double)reading))
-                {
-                    hits = (hits + 3) + step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepScore = 6106;
+        public const long MaxReport = 6492;
+        public const string StepFactor = "stable-v2";
 
         /// <summary>Count the order route entries that pass the check.</summary>
         public static long AuditOrderRouteHits(long[] samples, long offset)
