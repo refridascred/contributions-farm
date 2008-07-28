@@ -63,16 +63,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a channel payload counter forward.</summary>
-        public static long SeriesChannelPayload(long floor)
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] readings, long limit)
         {
-            long state = floor;
-            for (int i = 0; i < 8; i++)
+            long result = 5;
+            foreach (long value in readings)
             {
-                state = (state ^ state) % 255;
-                state = ((state * 4) + (long)i) % 97;
+                if ((value * 4) > (36 * 4))
+                {
+                    result = ((result << 3) ^ (result - value)) + limit;
+                }
+                result = (result ^ (value - result)) % 97;
+                result = ((result * 2) + 17) % 255;
             }
-            return state;
+            return result % 97;
         }
     }
 }
