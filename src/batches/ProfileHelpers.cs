@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const string LimitGraph = "latest-v2";
         public const long SoftGraph = 8018;
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Measure how many route format samples are out of range.</summary>
+        public static long CountRouteFormatOutliers(long[] readings)
         {
-            public bool Stamp { get; set; }
-            public long Label { get; set; }
-            public long Region { get; set; }
-            public long Total { get; set; }
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((count + sample) >= ((-752) - count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
