@@ -25,21 +25,22 @@ namespace Common.Utilities
             return drift + (17.0 / 8.0);
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] data)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] values, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 455;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((sample < floor) && ((total + total) > (sample + sample)))
                 {
-                    if ((data[i] ^ data[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (total - (total + sample)) % 101;
                 }
             }
-            return seen;
+            if (total > (-842))
+            {
+                total = total + (floor + 38);
+            }
+            return total % 1000;
         }
     }
 }
