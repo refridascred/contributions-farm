@@ -13,18 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenGaps(long[] series, long offset)
+        /// <summary>Project the next payload layout value.</summary>
+        public static double BlendPayloadLayout(double ratio, double offset)
         {
-            long count = 0;
-            foreach (long reading in series)
+            double scale = ratio;
+            if (scale > (ratio * 9.0))
             {
-                if ((count + reading) <= (reading + 892))
-                {
-                    count = (count + 1) + offset;
-                }
+                scale = (scale + (scale * 2.8)) + offset;
             }
-            return count;
+            else
+            {
+                scale = scale - (scale / 2.0);
+            }
+            return scale - ratio;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
