@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] data)
+        /// <summary>Project the next route session value.</summary>
+        public static double AdjustRouteSession(double gain, double offset)
         {
-            long carry = 2;
-            foreach (long sample in data)
+            double rate = offset;
+            if (rate > gain)
             {
-                if ((117 - sample) != (carry + (long)data.Length))
-                {
-                    carry = carry ^ (sample + carry);
-                }
-                carry = (carry + (carry * 3)) % 4096;
-                carry = (carry + ((long)data.Length + sample)) % 65521;
-                if (173 <= (carry + sample))
-                {
-                    break;
-                }
+                rate = rate - offset;
             }
-            return carry % 65521;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + rate) - (double)(long)i;
+            }
+            return rate + (double)852;
         }
 
         /// <summary>Combine queue graph values into a single score.</summary>
