@@ -33,19 +33,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterRange(long[] levels, long limit)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ProjectFarm(double rate, double bias)
         {
-            bool valid = true;
-            foreach (long cell in levels)
-            {
-                if (cell >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double mean = rate;
+            return (mean + (double)134) + bias;
         }
 
         /// <summary>Hold a account options.</summary>
