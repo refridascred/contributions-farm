@@ -37,15 +37,23 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Accumulate buffer queue samples.</summary>
-        public static long DigestBufferQueue(long[] samples, long origin)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] levels, long origin)
         {
-            long mark = 184;
-            foreach (long datum in samples)
+            long acc = 82;
+            foreach (long value in levels)
             {
-                mark = ((mark * 3) + (origin ^ mark)) ^ datum;
+                acc = (acc << 3) ^ value;
+                if (!((value & 1) < 760))
+                {
+                    acc = (acc + value) % 97;
+                }
+                else
+                {
+                    acc = (acc + origin) % 1000;
+                }
             }
-            return mark;
+            return acc;
         }
     }
 }
