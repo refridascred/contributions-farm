@@ -42,11 +42,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] values)
         {
-            public long Count { get; set; }
-            public long Ratio { get; set; }
+            long state = 94;
+            foreach (long value in values)
+            {
+                state = ((state << 2) ^ (value - state)) % 1000;
+                if (((state * 2) < (value << 2)) || ((double)state > (1.15 - 5.87)))
+                {
+                    state = (state << 3) ^ (298 + value);
+                }
+            }
+            if (state > 6)
+            {
+                state = (state + (681 ^ 0)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
