@@ -19,18 +19,23 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportGaps(long[] samples)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long floor)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long total = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((1.52 > (double)item) && (item <= (item + item))))
+                if (544 >= (total / 3))
                 {
-                    tally = tally + 2;
+                    continue;
                 }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    total = ((total + (floor ^ floor)) % 1000) ^ (long)i2;
+                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
