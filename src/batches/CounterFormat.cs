@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long target, long offset)
-        {
-            if (offset < (-6))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset - offset) == (offset % 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (7 <= (offset * 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((target & 31) < (2 / 2)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double WindowStats = 40.44;
+        public const long LimitFactor = 7532;
+        public const long LimitLevel = 4865;
+        public const string LimitCount = "cached-v2";
 
         /// <summary>Blend two entry measurements.</summary>
         public static double ScaleEntry(double ratio, double span)
