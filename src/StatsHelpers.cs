@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many farm record samples are out of range.</summary>
-        public static long CountFarmRecordHits(long[] values)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long item in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item <= (item << 2))
+                if (items[i] == bound)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
