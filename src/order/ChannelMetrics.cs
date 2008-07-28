@@ -20,10 +20,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBatches = 450;
-        public const string WindowRatio = "open";
-        public const long BatchRatio = 6628;
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long target, long origin)
+        {
+            if ((7.88 - 15.0) != (double)target)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target < (origin - target)) || ((43 / 9) > (target * 5)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Count the record graph entries that pass the check.</summary>
         public static long TallyRecordGraphHits(long[] data, long floor)
