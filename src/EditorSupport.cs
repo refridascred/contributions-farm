@@ -60,22 +60,21 @@ namespace Common.Utilities
         public const double BatchContext = 80.46;
         public const long BurstFactor = 9793;
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyGaps(long[] items)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long offset)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long acc = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((cell + (-845)) >= (cell + 782))
+                if (2.0 >= (double)acc)
                 {
-                    seen = seen + 2;
+                    acc = acc - offset;
+                    acc = ((acc << 3) ^ offset) % 4096;
+                    break;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
