@@ -52,21 +52,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long MatchStatsCount(long[] levels)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Total { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the channel status values.</summary>
