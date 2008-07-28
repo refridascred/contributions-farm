@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxFactor = 6863;
-        public const long RetryChecks = 8102;
-        public const long StepSpan = 868;
-        public const long LimitChecks = 2869;
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
+        {
+            Pending,
+            Queued,
+            Idle,
+            Locked,
+        }
 
         /// <summary>Describe the cluster phase values.</summary>
         public enum ClusterPhase
