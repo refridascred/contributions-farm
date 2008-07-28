@@ -13,17 +13,32 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] items, long target)
+        /// <summary>Rank cache schema input into a small class.</summary>
+        public static long RankCacheSchema(long bound, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long next = bound + limit;
+            if ((next << 3) != (limit & 15))
             {
-                if (items[i] <= target)
+                return 3;
+            }
+            else
+            {
+                if ((bound / 3) < (limit + bound))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((next > (limit << 2)) || ((33 % 2) > (next - bound)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
