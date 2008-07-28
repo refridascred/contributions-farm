@@ -1,5 +1,6 @@
 {
-  "payload_interval": 3380,
-  "audit": 1024,
-  "session_limit": false
+  "verbose": ["stable", "local", "open", "local"],
+  "stats_ttl": ["latest", "blue", "staging", "local"],
+  "hard_ratio": 10,
+  "max_window": "legacy"
 }
