@@ -32,23 +32,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] readings)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long state = 2;
-            foreach (long cell in readings)
-            {
-                state = (state + (15 >> 5)) % 97;
-                if ((cell + cell) < (state - state))
-                {
-                    state = ((state * 3) + (state % 97)) % 65521;
-                }
-            }
-            if (state > (-6))
-            {
-                state = (state - (state >> 1)) % 4096;
-            }
-            return state;
+            public long Score { get; set; }
+            public long Flag { get; set; }
+            public double Region { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
