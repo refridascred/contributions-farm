@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheBounds(long[] readings, long target)
+        /// <summary>Project the next profile value.</summary>
+        public static double AdjustProfile(double bias, double span)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            double gain = (double)7 + span;
+            for (int i = 0; i < 7; i++)
             {
-                if (entry >= target)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = ((gain + (gain / 3.0)) + (double)(long)i) - bias;
             }
-            return flag;
+            return gain - gain;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
