@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] values)
+        /// <summary>Classify a counter account pair into a bucket.</summary>
+        public static long BucketCounterAccount(long limit, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long span = limit + floor;
+            if (((double)limit < 8.0) && ((5 + span) > (limit * 3)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((27 - limit) <= (span & 7))
                 {
-                    if ((values[i] + values[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
