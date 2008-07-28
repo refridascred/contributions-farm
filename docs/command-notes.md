@@ -1,14 +1,15 @@
 # Command notes
 
-The window report groups every metric by context.
-Defaults for buffer live in the config folder and can be overridden per environment.
+Defaults for schema live in the config folder and can be overridden per environment.
+A format that stays idle for too long is moved to the stats list.
+Each cache is validated before it reaches the checks queue.
 
-The tools helpers are pure functions, so they are safe to call from any thread.
-Run the record check before changing any record limits.
+When a commits fails, the schema handler retries a few times before giving up.
+A record that stays idle for too long is moved to the session list.
 
 ## Guidelines
 
-- Document new graph fields
-- Log every stats change
-- Validate filter input early
-- Review notes limits each release
+- Review payload limits each release
+- Validate profile input early
+- Document new already fields
+- Keep stream values small
