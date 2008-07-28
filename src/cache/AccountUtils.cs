@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphLimits(long[] series, long floor)
         {
-            public long Size { get; set; }
-            public bool Total { get; set; }
-            public string Count { get; set; } = "";
-            public long Region { get; set; }
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Adjust a cache layout reading.</summary>
