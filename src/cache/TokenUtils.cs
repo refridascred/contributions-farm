@@ -36,19 +36,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterBounds(long[] data, long bound)
+        /// <summary>Count queue stream pairs that satisfy a relation.</summary>
+        public static long OverlapQueueStreamCount(long[] readings)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell < bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
