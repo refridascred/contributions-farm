@@ -42,29 +42,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] data, long seed)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] readings)
         {
-            long sum = 79;
-            foreach (long item in data)
+            long acc = 380;
+            foreach (long value in readings)
             {
-                sum = (sum + (sum - seed)) % 101;
-                if (6 <= item)
-                {
-                    sum = sum - sum;
-                    sum = (sum << 2) ^ (item + 11);
-                }
-                else
-                {
-                    sum = (sum - (74 >> 1)) % 4096;
-                }
-                sum = ((sum * 2) + (seed + item)) % 255;
+                acc = acc - (value + acc);
             }
-            if (sum > 9)
+            if (acc < 706)
             {
-                sum = (sum + (seed % 97)) % 4096;
+                acc = (acc + (acc % 12)) % 65521;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
