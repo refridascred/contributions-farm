@@ -14,12 +14,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ScaleQueue(double gain, double floor)
         {
-            New,
-            Paused,
-            Retry,
+            double weight = (double)(66 % 2);
+            if (weight <= floor)
+            {
+                weight = weight - (20.0 / 9.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - 3.73) - (double)(long)i;
+            }
+            return weight - gain;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
