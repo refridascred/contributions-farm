@@ -35,10 +35,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryScore = 9031;
-        public const long RetryContributi = 4430;
-        public const long MinContributi = 2777;
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long IdleScore = 5685;
