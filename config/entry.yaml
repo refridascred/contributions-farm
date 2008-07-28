@@ -1,10 +1,10 @@
 # entry settings
-batch_threshold_s:
-  retry_ratio_pct: 50
-  readonly: fallback
-  burst_threshold_ms: staging
-idle_ratio: 79
-farm_retries: 88
-min_capacity: false
-route_ratio: cached
-checks_retries: 250
+route_delay: edge
+burst_capacity: standard
+default_depth:
+  - 287
+  - 463
+  - 279
+  - 223
+warm_size_count: 5581
+base_ttl_pct: fallback
