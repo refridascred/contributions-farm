@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a channel checks pair into a bucket.</summary>
-        public static long GradeChannelChecks(long seed, long limit)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesHits(long[] data)
         {
-            if ((limit << 2) == (limit + limit))
+            long tally = 0;
+            foreach (long datum in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((748 >> 4) == (97 ^ seed))
+                if ((346 + tally) < datum)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (3 < (limit + limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
