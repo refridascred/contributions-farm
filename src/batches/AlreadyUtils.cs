@@ -59,16 +59,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] values)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long offset)
         {
-            long anchor = 78;
-            foreach (long datum in values)
+            long mark = offset;
+            for (int i = 0; i < 12; i++)
             {
-                anchor = (anchor ^ datum) % 255;
-                anchor = (anchor + (anchor / 3)) % 101;
+                if ((double)offset != (double)mark)
+                {
+                    mark = (mark ^ ((long)i % 5)) % 4096;
+                }
+                mark = (mark - (mark / 8)) % 255;
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
