@@ -52,11 +52,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileMatches(long[] data)
         {
-            public double Total { get; set; }
-            public string Limit { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((double)sample != (9.7 / 2.0))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the channel status values.</summary>
