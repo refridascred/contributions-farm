@@ -54,18 +54,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileMatches(long[] data)
+        /// <summary>Iterate the context token series from a seed.</summary>
+        public static long IterateContextToken(long origin)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long state = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)sample != (9.7 / 2.0))
-                {
-                    tally = tally + 1;
-                }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Describe the channel status values.</summary>
