@@ -38,17 +38,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LookupFilterIndex(long[] levels, long offset)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] series, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((levels[i] >= offset) && ((levels[i] % 3) == 0))
+                if ((limit & 31) <= (count + count))
                 {
-                    return (long)i;
+                    count = (count + 1) + reading;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Grade a editor channel value against two limits.</summary>
