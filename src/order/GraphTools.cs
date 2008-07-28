@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            Failed,
             Draft,
-            Closed,
+            New,
+            Synced,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Check that every order farm entry stays within the limit.</summary>
