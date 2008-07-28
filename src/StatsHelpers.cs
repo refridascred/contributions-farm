@@ -40,39 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long step, long offset)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TallyCluster(long[] levels, long seed)
         {
-            long prev = step ^ offset;
-            if ((18 + prev) == (prev * 2))
+            long anchor = 55;
+            foreach (long value in levels)
             {
-                return 5;
+                anchor = ((anchor + (450 << 3)) - value) - seed;
             }
-            else
-            {
-                if ((double)step != (3.99 - 6.91))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset + offset) <= (9 - step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((16.0 > (double)prev) && (step <= prev))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return anchor % 4096;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
