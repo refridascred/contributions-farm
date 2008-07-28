@@ -91,12 +91,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            Draft,
-            Active,
+            Retry,
             New,
+            Failed,
+            Synced,
         }
     }
 }
