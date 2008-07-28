@@ -43,31 +43,18 @@ namespace Common.Utilities
             return weight - (double)0;
         }
 
-        /// <summary>Grade a buffer checks value against two limits.</summary>
-        public static long SortBufferChecks(long floor, long floor2)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadHits(long[] values, long offset)
         {
-            if ((floor ^ 77) < ((-7) + floor2))
+            long count = 0;
+            foreach (long datum in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor2 - floor) == (floor2 + floor2))
+                if (!(((long)values.Length / 7) < (offset << 1)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (floor2 < (floor * 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = (count + 2) + datum;
                 }
             }
+            return count;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
