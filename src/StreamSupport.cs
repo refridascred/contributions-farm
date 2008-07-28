@@ -14,18 +14,10 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < seed) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultTimeout = 5101;
+        public const long LimitLevel = 9251;
+        public const long BurstSpan = 8940;
 
         /// <summary>Describe the filter level values.</summary>
         public enum FilterLevel
