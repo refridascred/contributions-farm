@@ -27,18 +27,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] items, long target)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((360 + matches) > (entry / 2))
+                if ((series[i] <= bound) && ((series[i] % 5) == 0))
                 {
-                    matches = (matches + 1) + target;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
