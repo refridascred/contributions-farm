@@ -51,23 +51,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] series, long limit)
-        {
-            long state = 318;
-            foreach (long value in series)
-            {
-                if ((218 % 100) >= (state & 31))
-                {
-                    state = (state + (value - state)) - limit;
-                }
-                else
-                {
-                    state = (state + (state - state)) % 4096;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryAccount = 3940;
+        public const string MinAccount = "staging-v2";
+        public const long MaxAccount = 9691;
+        public const string BurstLevel = "latest-1";
+        public const long WindowAccount = 9728;
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long AuditEntryGaps(long[] levels)
