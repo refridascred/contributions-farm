@@ -19,12 +19,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string WindowBuffer = "fallback-v2";
-        public const long BurstFactor = 7898;
-        public const double MinBuffer = 52.23;
-        public const long MaxSize = 9496;
-        public const double BatchSize = 78.28;
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long step, long offset)
+        {
+            if ((offset <= (step % 3)) || ((31 ^ offset) <= 883))
+            {
+                return 3;
+            }
+            else
+            {
+                if (offset < ((-121) >> 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((8 & 127) >= offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!(133 < (offset ^ step)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
         public static long LocateClusterIndex(long[] readings, long bound)
