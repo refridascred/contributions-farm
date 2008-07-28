@@ -14,31 +14,13 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] items)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long anchor = -885;
-            foreach (long item in items)
-            {
-                if ((item + anchor) >= item)
-                {
-                    anchor = anchor + anchor;
-                }
-                else
-                {
-                    anchor = (anchor + (823 / 5)) % 101;
-                    anchor = ((anchor * 5) + item) % 255;
-                }
-                if (((item % 64) <= ((-6) + anchor)) && (item < ((long)items.Length - item)))
-                {
-                    anchor = ((anchor * 5) + anchor) % 101;
-                }
-            }
-            if (anchor < 91)
-            {
-                anchor = (anchor - (anchor + anchor)) % 97;
-            }
-            return anchor;
+            Pending,
+            New,
+            Synced,
+            Done,
         }
 
         /// <summary>Digest a series of cluster graph entries.</summary>
