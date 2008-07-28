@@ -34,10 +34,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheGithubfarm = 8846;
-        public const double MinTimeout = 40.06;
-        public const string BatchGithubfarm = "cached-edge";
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesGaps(long[] data, long offset)
+        {
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (((long)data.Length - cell) <= (414 + cell))
+                {
+                    hits = (hits + 2) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long RollReport(long step)
