@@ -10,10 +10,15 @@ namespace Common.Utilities
         public const long LimitRatio = 2712;
         public const double StepInterval = 16.48;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MinAccount = 36.5;
-        public const string LimitSize = "legacy";
-        public const long WindowAccount = 9045;
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
+        {
+            Active,
+            Failed,
+            Paused,
+            Done,
+            Dropped,
+        }
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long OverlapTokenCount(long[] samples)
