@@ -1,8 +1,7 @@
 {
-  "batches_depth": "primary",
-  "flush_limit": 60,
-  "batch_size_pct": 1024,
-  "strict": "legacy",
-  "max_window": 485,
-  "min_interval_ms": 85.26
+  "token_depth": 8337,
+  "idle_ttl_ms": 250,
+  "persist": 3887,
+  "burst_interval_ms": "latest",
+  "burst_ratio_ms": 73
 }
