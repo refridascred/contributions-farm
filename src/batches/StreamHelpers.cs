@@ -77,12 +77,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenHits(long[] values)
         {
-            Pending,
-            Stale,
-            Ready,
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((matches / 9) <= datum)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
