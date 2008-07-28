@@ -19,23 +19,23 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long seed, long seed2)
+        /// <summary>Classify a batch queue pair into a bucket.</summary>
+        public static long BucketBatchQueue(long step, long step2)
         {
-            long gap = seed ^ seed2;
-            if ((seed2 * 5) >= (gap + 91))
+            long offset = step ^ step2;
+            if (9.0 > (double)step2)
             {
-                return 5;
+                return 3;
             }
             else
             {
-                if ((seed << 1) <= (seed + seed))
+                if ((offset & 31) != (offset % 2))
                 {
-                    return 6;
+                    return 0;
                 }
                 else
                 {
-                    return 3;
+                    return 4;
                 }
             }
         }
