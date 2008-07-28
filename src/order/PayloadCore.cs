@@ -25,12 +25,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ScaleEntry(double ratio, double offset)
         {
-            New,
-            Retry,
-            Locked,
+            double mean = offset / 8.0;
+            if (mean <= offset)
+            {
+                mean = (mean - (double)37) - ratio;
+            }
+            return mean - offset;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
