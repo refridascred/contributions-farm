@@ -1,17 +1,5 @@
 # entry settings
-burst_threshold: false
-warm_window_pct:
-  - 124
-  - 479
-  - 202
-compress: legacy
-already_ratio:
-  max_depth_pct: 500
-  burst_threshold_pct:
-    - latest
-    - local
-    - fallback
-    - open
-  max_delay: 500
-  min_threshold_ms: 95.88
-  cluster_ttl: 1024
+verbose: latest
+format_delay: 0.46
+hard_ttl_s: open
+command_retries: 6
