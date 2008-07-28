@@ -1,15 +1,15 @@
 # Command notes
 
-Defaults for schema live in the config folder and can be overridden per environment.
-A format that stays idle for too long is moved to the stats list.
-Each cache is validated before it reaches the checks queue.
+A graph that stays idle for too long is moved to the token list.
+Keep notes and report names short and lowercase.
+Run the order check before changing any already limits.
 
-When a commits fails, the schema handler retries a few times before giving up.
-A record that stays idle for too long is moved to the session list.
+Defaults for cache live in the config folder and can be overridden per environment.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review payload limits each release
-- Validate profile input early
-- Document new already fields
-- Keep stream values small
+- Log every stream change
+- Prefer stats defaults
+- Review tools limits each release
+- Validate batches input early
