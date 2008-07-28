@@ -1,15 +1,32 @@
 # githubfarm settings
-strict: false
-dry_run: edge
-schema_ratio: fallback
-enabled:
-  burst_capacity_ms: 16.45
-  compress:
-    strict: true
-    base_ratio_count: staging
-    burst_window_ms:
-      - 424
-      - 423
-  cluster_depth: 1272
-readonly: 48.77
-base_ratio_pct: 60
+burst_threshold_s: stable
+tools_ratio: 1024
+dry_run: 47.28
+enabled: 7.6
+min_delay_ms:
+  base_interval_pct:
+    audit: 78.71
+    sync_delay:
+      - 60
+      - 461
+    burst_size_pct: open
+    poll_ttl_ms: 30
+    readonly: 5.71
+  farm_interval: 28.81
+  metrics_threshold:
+    min_retries_pct: 250
+    default_retries: legacy
+    persist: 16
+    idle_interval_count:
+      - standard
+      - blue
+      - latest
+    soft_size: stable
+    base_depth_pct: 250
+  hard_size: 80.57
+  batch_interval_pct:
+    hard_interval: 24.02
+    batches_window: 60.34
+    counter_window: true
+    soft_depth_count: 30
+base_delay: 35.63
