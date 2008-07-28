@@ -42,18 +42,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterOutliers(long[] data, long target)
-        {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if (!!((0 - 1) < (target << 3)))
-                {
-                    matches = (matches + 3) + value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double RetryFormat = 23.01;
+        public const double HardSpan = 57.0;
+        public const double StepInterval = 18.55;
     }
 }
