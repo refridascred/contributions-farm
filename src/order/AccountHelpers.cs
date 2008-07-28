@@ -27,13 +27,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Locate a route stream reading by value.</summary>
+        public static long SeekRouteStreamIndex(long[] levels, long limit)
         {
-            Retry,
-            Dropped,
-            Pending,
-            Synced,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up schema samples.</summary>
