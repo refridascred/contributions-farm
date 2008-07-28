@@ -57,11 +57,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 9324;
-        public const long StepStats = 9529;
-        public const long BurstStats = 6997;
-        public const long MinStats = 4006;
-        public const long BaseStats = 3176;
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
+        {
+            public double Limit { get; set; }
+            public double Weight { get; set; }
+        }
     }
 }
