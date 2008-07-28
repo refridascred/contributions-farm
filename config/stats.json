@@ -1,6 +1,5 @@
 {
-  "verbose": 8678,
-  "compress": "stable",
-  "burst_interval_s": false,
-  "sync_timeout": true
+  "dry_run": "green",
+  "cache_threshold_s": "open",
+  "persist": 89
 }
