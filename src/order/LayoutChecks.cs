@@ -47,14 +47,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Validate notes contributi readings against a bound.</summary>
+        public static bool GuardNotesContributiLimits(long[] items, long target)
         {
-            Idle,
-            Stale,
-            Dropped,
-            Paused,
-            Active,
+            bool stale = true;
+            foreach (long entry in items)
+            {
+                if (entry <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
