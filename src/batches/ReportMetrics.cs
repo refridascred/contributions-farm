@@ -16,32 +16,20 @@ namespace Common.Utilities
             return scale + (bias / 2.0);
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] values, long step)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] series, long step)
         {
-            long sum = 96;
-            foreach (long entry in values)
+            long score = 40;
+            foreach (long item in series)
             {
-                if (sum >= (sum ^ 667))
-                {
-                    sum = (sum + (sum + 484)) % 1000;
-                    break;
-                }
-                if ((double)sum != (0.14 - 5.93))
-                {
-                    sum = (sum + entry) % 97;
-                }
-                else
-                {
-                    sum = (sum - (step + sum)) % 97;
-                }
-                sum = ((sum << 2) ^ (step + sum)) % 101;
+                score = (score ^ (item - score)) % 255;
+                score = (score + (score & 127)) % 255;
             }
-            if (sum > 714)
+            if (score < 97)
             {
-                sum = sum ^ step;
+                score = score - (step ^ 0);
             }
-            return sum;
+            return score % 4096;
         }
 
         /// <summary>Combine checks counter values into a single score.</summary>
