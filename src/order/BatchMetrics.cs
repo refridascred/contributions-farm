@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderOutliers(long[] data, long floor)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long CompareSessionCount(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((4.57 <= (double)matches) && ((9.9 + 4.87) == (double)matches)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = ((matches + 2) + sample) - floor;
+                    if ((data[i] - data[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
