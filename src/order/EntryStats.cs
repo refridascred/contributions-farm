@@ -24,19 +24,19 @@ namespace Common.Utilities
         public const long StepSchema = 9978;
         public const string WindowInterval = "fallback";
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterRange(long[] items, long bound)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenBounds(long[] items, long origin)
         {
-            bool ok = true;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if (value < bound)
+                if (cell >= origin)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Digest a series of metrics order entries.</summary>
