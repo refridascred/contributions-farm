@@ -30,11 +30,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
+            Locked,
+            Active,
             Draft,
-            Synced,
             Ready,
         }
     }
