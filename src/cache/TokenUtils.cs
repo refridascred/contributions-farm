@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine context filter values into a single score.</summary>
-        public static long WeighContextFilter(long[] readings)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] data)
         {
-            long mix = 96;
-            foreach (long sample in readings)
+            long result = 38;
+            foreach (long entry in data)
             {
-                mix = (mix << 2) ^ (sample / 9);
-                if (((double)sample <= (double)48) && ((mix & 7) < (mix + mix)))
+                if (!((result * 2) <= entry))
                 {
-                    mix = (mix ^ sample) % 255;
+                    result = result + 26;
                 }
-                if ((double)sample == (6.9 / 2.0))
+                else
                 {
-                    mix = (mix ^ (sample / 5)) % 101;
+                    result = result - (entry ^ result);
                 }
             }
-            if (mix < 652)
-            {
-                mix = ((mix * 5) + (mix >> 2)) % 101;
-            }
-            return mix;
+            return result;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
