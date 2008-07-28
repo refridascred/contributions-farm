@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyLimits(long[] readings, long floor)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderBounds(long[] values, long step)
         {
             bool flag = true;
-            foreach (long datum in readings)
+            foreach (long value in values)
             {
-                if (datum > floor)
+                if (value < step)
                 {
                     flag = false;
                     break;
