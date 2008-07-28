@@ -1,7 +1,7 @@
 {
-  "idle_ratio": [363, 102, 304, 112],
-  "verbose": 4550,
-  "layout_ratio": "blue",
-  "compress": "edge",
-  "batch_threshold": "standard"
+  "poll_ratio_ms": "latest",
+  "cache_size": ["eu-west", "blue"],
+  "cache_window_count": 7935,
+  "report_window": ["cached", "staging", "stable", "strict"],
+  "soft_window": true
 }
