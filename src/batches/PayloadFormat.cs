@@ -25,22 +25,22 @@ namespace Common.Utilities
         public const long HardLevel = 3619;
         public const long CacheLevel = 9018;
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] items, long bound)
+        /// <summary>Audit schema commits readings against a rule.</summary>
+        public static long TallySchemaCommitsMatches(long[] levels)
         {
-            long carry = 927;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((bound & 1) == (bound >> 5))
+                if ((cell - 984) <= (978 / 9))
                 {
-                    carry = (carry * 4) + (carry - reading);
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (carry > 44)
-            {
-                carry = (carry + 7) % 255;
-            }
-            return carry % 4096;
+            return tally;
         }
 
         /// <summary>Hold a counter summary.</summary>
