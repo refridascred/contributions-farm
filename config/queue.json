@@ -1,7 +1,16 @@
 {
-  "token_depth": 8337,
-  "idle_ttl_ms": 250,
-  "persist": 3887,
-  "burst_interval_ms": "latest",
-  "burst_ratio_ms": 73
+  "max_capacity_s": 500,
+  "idle_delay": "stable",
+  "order_threshold": {
+    "warm_delay": 72,
+    "cache_retries": {
+      "enabled": "stable",
+      "cache_retries_s": true,
+      "warm_threshold_count": false
+    },
+    "cluster_interval": "staging"
+  },
+  "batches_retries": 500,
+  "session_ttl": "blue",
+  "poll_threshold_s": [98, 376]
 }
