@@ -44,14 +44,15 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long origin)
         {
-            Dropped,
-            Closed,
-            Queued,
-            New,
-            Idle,
+            long mark = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
