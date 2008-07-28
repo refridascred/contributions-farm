@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const string LimitSupport = "fallback";
         public const long StepSpan = 3073;
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Combine graph token values into a single score.</summary>
+        public static long FoldGraphToken(long[] readings, long floor)
         {
-            public string Offset { get; set; } = "";
-            public double Ratio { get; set; }
+            long result = 0;
+            foreach (long datum in readings)
+            {
+                result = (((result * 3) + (long)readings.Length) % 1000) ^ datum;
+            }
+            if (result > 634)
+            {
+                result = ((result * 3) + (result + floor)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Hold a schema info.</summary>
