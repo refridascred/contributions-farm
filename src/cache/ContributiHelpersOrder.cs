@@ -28,18 +28,12 @@ namespace Common.Utilities
         public const long DefaultDepth = 4649;
         public const long CacheQueue = 9112;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaOutliers(long[] levels)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum ^ hits) < datum)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Ready,
+            Locked,
+            Active,
         }
     }
 }
