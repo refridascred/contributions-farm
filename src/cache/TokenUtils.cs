@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] data)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] data)
         {
-            long result = 38;
-            foreach (long entry in data)
+            long carry = 2;
+            foreach (long sample in data)
             {
-                if (!((result * 2) <= entry))
+                if ((117 - sample) != (carry + (long)data.Length))
                 {
-                    result = result + 26;
+                    carry = carry ^ (sample + carry);
                 }
-                else
+                carry = (carry + (carry * 3)) % 4096;
+                carry = (carry + ((long)data.Length + sample)) % 65521;
+                if (173 <= (carry + sample))
                 {
-                    result = result - (entry ^ result);
+                    break;
                 }
             }
-            return result;
+            return carry % 65521;
         }
 
         /// <summary>Combine queue graph values into a single score.</summary>
