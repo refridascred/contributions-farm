@@ -23,19 +23,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] data)
+        /// <summary>Compare every pair of checks metrics readings.</summary>
+        public static long OverlapChecksMetricsCount(long[] series)
         {
             long matches = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (matches < sample)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((series[i] + series[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
