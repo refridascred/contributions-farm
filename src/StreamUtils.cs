@@ -81,31 +81,18 @@ namespace Common.Utilities
             return rate - (bias + 4.0);
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long limit, long floor)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyGaps(long[] readings, long step)
         {
-            if ((limit >> 4) == (limit >> 5))
+            long tally = 0;
+            foreach (long item in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor / 7) < 687)
+                if (((step + item) != (step + step)) && ((item / 7) < tally))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit / 9) > (limit << 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
     }
 }
