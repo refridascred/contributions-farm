@@ -52,15 +52,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long step)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long carry = step;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            public string Total { get; set; } = "";
+            public long Rank { get; set; }
+            public long Token { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
