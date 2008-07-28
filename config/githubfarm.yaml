@@ -1,6 +1,6 @@
 # githubfarm settings
-cluster_ttl: staging
-base_retries_s:
-  - 184
-  - 319
-cache_timeout: open
+base_limit: legacy
+min_ttl:
+  - 163
+  - 443
+retry_capacity_ms: 250
