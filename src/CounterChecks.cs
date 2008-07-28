@@ -70,33 +70,10 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long origin, long seed)
-        {
-            long delta = origin - seed;
-            if ((double)delta <= 9.4)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((delta & 1) > (origin % 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed + origin) == (origin ^ delta))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double LimitFormat = 85.62;
+        public const long CacheRatio = 6175;
+        public const long DefaultFormat = 9912;
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long OverlapAlreadyCount(long[] values)
