@@ -70,19 +70,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate payload githubfarm readings against a bound.</summary>
-        public static bool ValidatePayloadGithubfarmRange(long[] readings, long step)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a filter record.</summary>
