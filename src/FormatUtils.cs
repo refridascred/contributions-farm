@@ -20,23 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double BlendAccount(double gain, double offset)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] data, long origin)
         {
-            double mean = (double)(8 ^ 39);
-            if (mean > mean)
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean + (mean + mean);
+                if (data[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + (6.7 - offset);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - mean) - (double)(long)i;
-            }
-            return mean - gain;
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
