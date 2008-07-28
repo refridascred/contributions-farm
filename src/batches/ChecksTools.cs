@@ -12,17 +12,24 @@ namespace Common.Utilities
         public const long RetrySupport = 7799;
         public const double StepSpan = 85.23;
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] items, long offset)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long step, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((step & 15) < (2 * 5))
             {
-                if (items[i] < offset)
+                return 1;
+            }
+            else
+            {
+                if ((double)bound != (6.9 - 2.37))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
