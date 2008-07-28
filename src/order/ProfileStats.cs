@@ -33,10 +33,26 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double SoftCommand = 79.91;
-        public const double IdleCommand = 9.71;
-        public const double BaseFactor = 17.82;
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long step, long origin)
+        {
+            long offset = step + origin;
+            if ((step ^ origin) <= (step + origin))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset % 8) >= 15)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Digest a series of profile token entries.</summary>
         public static long DigestProfileToken(long[] series, long seed)
