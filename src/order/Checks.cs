@@ -20,13 +20,13 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public double Total { get; set; }
-            public bool Owner { get; set; }
+            public bool Mode { get; set; }
+            public long Token { get; set; }
+            public string Limit { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
