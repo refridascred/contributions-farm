@@ -71,15 +71,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double BlendWindow(double gain, double bias)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            double rate = gain;
-            if (rate <= 6.94)
-            {
-                rate = rate - (double)(-507);
-            }
-            return rate - (bias + 4.0);
+            Closed,
+            Idle,
+            Queued,
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
