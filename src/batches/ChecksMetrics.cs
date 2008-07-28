@@ -62,22 +62,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the tools metrics entries that pass the check.</summary>
-        public static long MeasureToolsMetricsMatches(long[] items)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterOutliers(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((seen & 3) == (seen / 4))
+                if ((sample % 3) != (matches + 23))
                 {
-                    seen = (seen + 1) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
