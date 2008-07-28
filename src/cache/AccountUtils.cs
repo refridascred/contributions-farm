@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double BlendCache(double rate, double bias)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long step)
         {
-            double gain = (double)(372 - 64);
-            if (gain <= (double)1)
+            long carry = step;
+            for (int i = 0; i < 22; i++)
             {
-                gain = gain - bias;
+                if ((carry - step) <= step)
+                {
+                    carry = (carry + step) % 255;
+                    carry = (carry + ((long)i - carry)) % 101;
+                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain + rate;
+            return carry;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
