@@ -15,20 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderLimits(long[] items, long seed)
-        {
-            bool valid = true;
-            foreach (long reading in items)
-            {
-                if (reading < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 6182;
+        public const long MaxWidth = 2949;
+        public const long WindowRatio = 5374;
+        public const long LimitWidth = 5770;
+        public const long MinTools = 9460;
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long CombineProfile(long[] values, long limit)
