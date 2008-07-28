@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string CacheTimeout = "fallback-v2";
-        public const long IdleInterval = 2982;
-        public const string StepCommits = "latest";
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long limit, long seed)
+        {
+            if ((double)limit > (16.0 * 5.93))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)132 == (double)seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long MatchBatchesCount(long[] data)
