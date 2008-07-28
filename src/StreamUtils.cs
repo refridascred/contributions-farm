@@ -22,18 +22,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long step)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long state = step;
-            for (int i = 0; i < 11; i++)
-            {
-                state = ((state << 3) ^ (887 ^ (long)i)) % 4096;
-                state = (state - (200 ^ state)) % 4096;
-                state = (state - (state & 31)) % 1000;
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            public long Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the route level values.</summary>
