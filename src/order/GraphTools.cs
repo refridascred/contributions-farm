@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorMatches(long[] values, long bound)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long offset, long bound)
         {
-            long matches = 0;
-            foreach (long item in values)
+            if (bound >= (560 + bound))
             {
-                if ((((bound + item) < bound) || ((20.0 + 1.1) == (double)bound)) && ((8.0 >= (double)matches) || ((432 << 2) >= item)))
+                return 8;
+            }
+            else
+            {
+                if ((double)bound > (12.0 - 7.7))
                 {
-                    matches = matches + 2;
+                    return 0;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((bound + offset) <= 24)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound >= (offset - bound)) && ((offset & 31) < offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a batches entry.</summary>
