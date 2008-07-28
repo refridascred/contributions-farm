@@ -52,17 +52,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] levels, long offset)
+        /// <summary>Classify a order entry pair into a bucket.</summary>
+        public static long RankOrderEntry(long offset, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long cur = offset + limit;
+            if (limit <= (cur << 1))
             {
-                if (levels[i] <= offset)
+                return 8;
+            }
+            else
+            {
+                if ((limit - cur) >= (0 - cur))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((limit - cur) != (400 + cur))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
