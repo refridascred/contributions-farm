@@ -6,18 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-GITHUBFARM_LIMIT=35
+GITHUBFARM_LIMIT=418
 log "limit is ${GITHUBFARM_LIMIT}"
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 5))
+for item in cached edge; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-mode="${1:-fallback}"
+mode="${1:-open}"
 case "${mode}" in
-    blue)
+    fallback)
         log "fast path"
         ;;
     *)
