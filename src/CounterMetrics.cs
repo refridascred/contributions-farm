@@ -35,18 +35,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((tally ^ value) <= (long)series.Length)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 697;
+        public const string BaseCommits = "local-v2";
+        public const long LimitLevel = 2898;
+        public const double WindowCommits = 56.64;
+        public const long IdleBudget = 1618;
     }
 }
