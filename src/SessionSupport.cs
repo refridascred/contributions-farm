@@ -46,18 +46,9 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatGaps(long[] values, long target)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((count + reading) > (reading % 60))
-                {
-                    count = (count + 3) - target;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string WindowSize = "stable-v2";
+        public const string RetryRatio = "latest-edge";
+        public const long DefaultInterval = 8341;
     }
 }
