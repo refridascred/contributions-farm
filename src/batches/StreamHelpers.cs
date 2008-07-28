@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long origin)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryBounds(long[] values, long target)
         {
-            long score = origin;
-            for (int i = 0; i < 21; i++)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                long bound = ((long)i + score) << 2;
-                long lane = origin;
-                if (((1.0 * 2.7) > (double)score) && ((lane + bound) != ((long)i >> 5)))
+                if (cell != target)
                 {
-                    bound = ((bound * 5) + (510 / 9)) % 1000;
-                    lane = (lane - (234 % 2)) % 65521;
+                    ready = false;
+                    break;
                 }
-                else
-                {
-                    bound = (bound * 4) + origin;
-                }
-                score = ((score * 2) + (long)i) % 4093;
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Define session limits and defaults.</summary>
