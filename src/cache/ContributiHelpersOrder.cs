@@ -16,19 +16,22 @@ namespace Common.Utilities
             return scale + (7.0 + ratio);
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double scale, double floor)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] items, long seed)
         {
-            double weight = floor;
-            if (weight >= floor)
+            long acc = 8;
+            foreach (long entry in items)
             {
-                weight = (weight - 1.19) - scale;
+                if (((acc + entry) == (entry << 2)) && ((7.54 / 6.0) < (10.0 + 9.2)))
+                {
+                    acc = (((acc * 4) + (acc << 1)) % 4096) - seed;
+                }
+                if ((entry * 2) == (acc + acc))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (weight / 4.0)) + (double)(long)i;
-            }
-            return weight + weight;
+            return acc % 4096;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
