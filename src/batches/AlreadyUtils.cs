@@ -62,9 +62,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 1490;
-        public const long SoftGithubfarm = 8140;
-        public const long HardGithubfarm = 4252;
+        /// <summary>Adjust a farm buffer reading.</summary>
+        public static double AdjustFarmBuffer(double gain, double span)
+        {
+            double weight = span;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = ((weight + (span / 3.0)) + (double)(long)i) + gain;
+            }
+            return weight + weight;
+        }
     }
 }
