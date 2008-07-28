@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long offset, long seed)
         {
-            public long Stamp { get; set; }
-            public long Label { get; set; }
-            public double Rank { get; set; }
+            if (((double)431 <= (double)seed) || (offset >= (629 + offset)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!(seed < offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Rank notes input into a small class.</summary>
