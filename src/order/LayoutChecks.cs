@@ -32,18 +32,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] levels)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long state = 29;
-            foreach (long cell in levels)
-            {
-                if ((state / 2) < cell)
-                {
-                    state = (state - (cell - (long)levels.Length)) % 101;
-                }
-            }
-            return state;
+            public double Token { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Adjust a filter reading.</summary>
