@@ -24,20 +24,11 @@ namespace Common.Utilities
         public const long CacheBatches = 1089;
         public const double HardBatches = 75.95;
 
-        /// <summary>Check that every report record entry stays within the limit.</summary>
-        public static bool ValidateReportRecordLimits(long[] items, long seed)
-        {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MinTimeout = "staging-1";
+        public const long BatchWidth = 7787;
+        public const string BaseInterval = "local-1";
+        public const double SoftGithubfarm = 53.23;
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool ValidateGraphLimits(long[] levels, long seed)
