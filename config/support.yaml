@@ -1,15 +1,4 @@
 # support settings
-command_interval: 64.18
-farm_window: 1024
-batches_delay: 5317
-warm_timeout_s:
-  token_retries: 30
-  soft_depth: standard
-  poll_capacity: 500
-  contributi_depth: strict
-  format_ratio:
-    - 310
-    - 143
-  hard_limit_s: latest
-flush_timeout: true
-base_capacity_pct: standard
+batch_interval_ms: 500
+batch_interval_count: latest
+session_interval: 30
