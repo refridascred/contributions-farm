@@ -51,36 +51,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long offset, long step)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long origin, long limit)
         {
-            if ((offset >> 3) <= step)
+            long slot = origin - limit;
+            if (5.85 < (double)slot)
             {
-                return 6;
+                return 0;
             }
             else
             {
-                if (!((step / 2) < (offset + step)))
+                if ((14 * 5) >= (origin - origin))
                 {
-                    return 0;
+                    return 5;
                 }
                 else
                 {
-                    if (offset > (step << 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((step - step) > (offset - 187)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 4;
                 }
             }
         }
