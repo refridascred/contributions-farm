@@ -1,6 +1,23 @@
 {
-  "graph_ttl": "strict",
-  "compress": "open",
-  "idle_interval": true,
-  "max_window_count": 2456
+  "dry_run": 30,
+  "buffer_timeout": {
+    "metric_ttl": 27.81,
+    "dry_run": {
+      "readonly": 89.93,
+      "cache_capacity_s": 89.09,
+      "compress": "primary",
+      "sync_ttl": ["legacy", "stable", "local", "cached"]
+    },
+    "enabled": false,
+    "max_retries_ms": "open",
+    "filter_threshold": ["fallback", "eu-west"]
+  },
+  "default_retries": {
+    "base_limit_s": 40.81,
+    "min_window_ms": "staging",
+    "hard_capacity_count": "legacy",
+    "burst_limit_s": 2707
+  },
+  "hard_depth_s": 6752,
+  "warm_ttl_pct": "open"
 }
