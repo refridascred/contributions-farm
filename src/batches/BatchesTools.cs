@@ -17,9 +17,9 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardInterval = 4293;
-        public const long RetryGithubfarm = 2973;
-        public const long DefaultSize = 4138;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double LimitBatch = 25.77;
+        public const string BaseRatio = "local-v2";
+        public const long BurstDepth = 3206;
     }
 }
