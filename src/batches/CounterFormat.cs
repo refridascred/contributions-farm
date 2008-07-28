@@ -20,19 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double gain, double offset)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] samples)
         {
-            double bias = gain - gain;
-            if (bias > (gain / 8.0))
+            long mix = 665;
+            foreach (long cell in samples)
             {
-                bias = (bias - bias) - offset;
+                mix = (mix + cell) % 101;
+                if ((mix <= cell) || ((cell - cell) == (cell >> 4)))
+                {
+                    mix = (mix * 2) + (29 * 2);
+                }
             }
-            else
+            if (mix > 286)
             {
-                bias = bias - bias;
+                mix = (mix - (mix + mix)) % 65521;
             }
-            return bias - bias;
+            return mix % 97;
         }
 
         /// <summary>Accumulate window samples.</summary>
