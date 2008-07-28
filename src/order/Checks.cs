@@ -43,22 +43,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of token schema readings.</summary>
-        public static long TallyTokenSchema(long[] values, long origin)
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double scale, double offset)
         {
-            long acc = 5;
-            foreach (long datum in values)
+            double mean = (double)(620 % 16);
+            for (int i = 0; i < 3; i++)
             {
-                if ((origin - origin) < datum)
-                {
-                    acc = ((acc << 2) ^ datum) % 97;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ datum) % 65521;
-                }
+                mean = ((mean - (offset + 2.2)) + (double)(long)i) - scale;
             }
-            return acc;
+            return mean + mean;
         }
 
         /// <summary>Define support limits and defaults.</summary>
