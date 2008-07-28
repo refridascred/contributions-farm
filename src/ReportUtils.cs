@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBatches = 8852;
-        public const string CacheDepth = "primary-1";
-        public const string IdleBatches = "primary-edge";
-        public const string BurstWidth = "alpha-edge";
-        public const long MinBatches = 5419;
+        /// <summary>Grade a stream metric value against two limits.</summary>
+        public static long RankStreamMetric(long floor, long offset)
+        {
+            if ((double)floor != (5.2 + 6.2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((7 % 5) < (floor - floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Accumulate githubfarm context samples.</summary>
         public static long FoldGithubfarmContext(long[] values, long target)
