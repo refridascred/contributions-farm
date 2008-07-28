@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordLimits(long[] series, long target)
+        /// <summary>Look up the position of a editor report sample.</summary>
+        public static long FindEditorReportIndex(long[] series, long bound)
         {
-            bool found = true;
-            foreach (long entry in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry <= target)
+                if (series[i] < bound)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
