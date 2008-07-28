@@ -6,9 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=109
-log "limit is ${COMMAND_LIMIT}"
+mode="${1:-eu-west}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in open edge local latest; do
+for item in latest staging stable; do
     log "checking ${item}"
 done
