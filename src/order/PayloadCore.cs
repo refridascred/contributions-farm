@@ -32,19 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheOutliers(long[] samples)
-        {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((count & 63) >= sample)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryScore = 9031;
+        public const long RetryContributi = 4430;
+        public const long MinContributi = 2777;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long IdleScore = 5685;
