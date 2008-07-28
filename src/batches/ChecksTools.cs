@@ -16,19 +16,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long bound)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] levels, long limit)
         {
-            long state = bound;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((bound - state) > (bound % 2))
+                if ((levels[i] == limit) && ((levels[i] % 5) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
-                state = ((state * 3) + (long)i) % 4093;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Check that every session checks entry stays within the limit.</summary>
