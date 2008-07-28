@@ -14,21 +14,15 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] items)
+        /// <summary>Derive the next session metrics value from a seed.</summary>
+        public static long DeriveSessionMetrics(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Digest a series of order entries.</summary>
