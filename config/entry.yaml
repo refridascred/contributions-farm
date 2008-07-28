@@ -1,23 +1,25 @@
 # entry settings
-flush_threshold: 9603
-schema_retries: stable
-layout_interval: legacy
-sync_limit_s:
-  min_retries:
-    dry_run:
-      - 337
-      - 270
-      - 445
-    compress: blue
-    default_capacity: 61
-  retry_capacity_ms: 20.63
-  layout_capacity: false
-  tools_timeout:
-    audit: open
-    poll_ratio_s: legacy
-    verbose: edge
-    batches_capacity: true
-    cache_timeout: blue
-    burst_ttl_ms: latest
-  flush_threshold: 54.08
-  audit: 51
+warm_capacity_count: 70.04
+max_depth_ms: 40.04
+batch_threshold_ms: 5303
+cache_capacity:
+  order_depth: true
+  retry_timeout_count:
+    - 442
+    - 244
+    - 379
+  idle_threshold:
+    audit:
+      - cached
+      - staging
+    flush_limit_s: 8
+    tools_ratio: 13.83
+    cache_limit_s: 98.9
+    hard_capacity: 29.71
+    session_timeout: 250
+  compress:
+    - standard
+    - cached
+    - open
+  flush_limit_pct: 60
+  cache_threshold: 12.06
