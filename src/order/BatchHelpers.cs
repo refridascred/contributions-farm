@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LocateOrderIndex(long[] readings, long target)
+        /// <summary>Measure how many layout window samples are out of range.</summary>
+        public static long MeasureLayoutWindowHits(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((readings[i] < target) && ((readings[i] % 2) != 0))
+                if ((cell >= (cell % 3)) && ((seen * 4) > cell))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Project the next support githubfarm value.</summary>
