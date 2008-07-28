@@ -13,19 +13,23 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionBounds(long[] samples, long limit)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] values)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long carry = 902;
+            foreach (long item in values)
             {
-                if (sample < limit)
+                carry = (carry * 3) + (36 << 1);
+                if ((8.65 + 2.05) >= (double)item)
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            if (carry > 476)
+            {
+                carry = ((carry * 2) + 9) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Rank order input into a small class.</summary>
