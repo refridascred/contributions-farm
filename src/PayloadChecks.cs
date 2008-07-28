@@ -51,31 +51,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a githubfarm cluster pair into a bucket.</summary>
-        public static long SortGithubfarmCluster(long step, long target)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            if (316 > (target / 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)target <= (4.7 * 2.72)) || ((double)step <= (2.0 + 5.85)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target & 7) < (7 * 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Locked,
+            Paused,
+            Done,
+            Synced,
+            Ready,
         }
 
         /// <summary>Rank stream checks input into a small class.</summary>
