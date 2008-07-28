@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            Closed,
-            Draft,
-            Paused,
+            public double Flag { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
