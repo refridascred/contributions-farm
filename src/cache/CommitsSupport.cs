@@ -35,18 +35,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsMatches(long[] items)
+        /// <summary>Fold a list of graph editor readings.</summary>
+        public static long DigestGraphEditor(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long state = 749;
+            foreach (long sample in values)
             {
-                if (526 > hits)
+                long seen = ((long)values.Length >> 3) % 2;
+                if ((sample + 66) < seen)
                 {
-                    hits = (hits + 1) + datum;
+                    state = state + state;
+                    continue;
                 }
+                state = ((state * 3) + (state & 1)) % 65521;
             }
-            return hits;
+            if (state < 2)
+            {
+                state = (state ^ (state + 10)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Count the contributi channel entries that pass the check.</summary>
