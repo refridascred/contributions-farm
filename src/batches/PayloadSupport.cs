@@ -24,22 +24,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of command channel entries.</summary>
-        public static long TotalCommandChannel(long[] levels)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsBounds(long[] items, long bound)
         {
-            long result = -2;
-            foreach (long value in levels)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if ((value >> 3) == (result + result))
+                if (entry < bound)
                 {
-                    result = (result - (result % 16)) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            if (result > 0)
-            {
-                result = result - (result << 2);
-            }
-            return result;
+            return flag;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
