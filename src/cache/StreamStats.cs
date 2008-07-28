@@ -27,18 +27,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionOutliers(long[] levels, long origin)
+        /// <summary>Count the tools farm entries that pass the check.</summary>
+        public static long CountToolsFarmGaps(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((double)tally != (5.3 + 4.3))
+                if (!(reading > (69 << 1)))
                 {
-                    tally = ((tally + 3) + reading) - origin;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Compare every pair of entry stats readings.</summary>
