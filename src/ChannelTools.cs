@@ -34,19 +34,21 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] items, long floor)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading > floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
