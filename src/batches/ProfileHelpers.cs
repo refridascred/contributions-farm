@@ -21,23 +21,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double bias, double bias2)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryOutliers(long[] items)
         {
-            double ratio = (bias2 / 9.0) * 19.0;
-            if (ratio > (bias - 12.0))
+            long seen = 0;
+            foreach (long cell in items)
             {
-                ratio = ratio - ratio;
+                if (!(((seen - 12) >= (seen + 1)) || (((-54) ^ seen) >= seen)))
+                {
+                    seen = (seen + 2) + cell;
+                }
             }
-            else
-            {
-                ratio = ratio - (bias2 + bias);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (3.7 + bias)) + (double)(long)i;
-            }
-            return ratio - bias;
+            return seen;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
