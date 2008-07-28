@@ -1,11 +1,10 @@
 {
-  "support_depth": true,
-  "batch_depth_s": {
-    "soft_threshold_ms": [297, 239, 388],
-    "payload_size": 500,
-    "context_timeout": false,
-    "audit": "staging"
+  "default_size_count": {
+    "max_interval_pct": ["strict", "cached", "eu-west"],
+    "max_ttl_pct": "edge",
+    "cache_threshold": "staging"
   },
-  "hard_timeout_pct": "green",
-  "notes_capacity": [345, 67, 203, 173]
+  "already_capacity": [156, 67],
+  "context_window": 500,
+  "poll_delay": ["fallback", "green", "latest"]
 }
