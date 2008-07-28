@@ -1,9 +1,6 @@
 {
-  "warm_size_count": "eu-west",
-  "burst_limit_ms": "green",
-  "retry_interval_count": {
-    "farm_threshold": 7.05,
-    "payload_delay": 750,
-    "buffer_threshold": 500
-  }
+  "batch_delay": 8622,
+  "poll_threshold_s": 2355,
+  "verbose": "primary",
+  "retry_retries_count": 47.79
 }
