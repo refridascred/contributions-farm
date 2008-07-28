@@ -26,19 +26,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] levels)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long mix = 5;
-            foreach (long reading in levels)
-            {
-                mix = (mix << 2) ^ reading;
-            }
-            if (mix < 28)
-            {
-                mix = ((mix << 2) ^ mix) % 1000;
-            }
-            return mix;
+            Done,
+            Closed,
+            Idle,
+            Pending,
+            Paused,
         }
 
         /// <summary>Roll a command counter forward.</summary>
