@@ -26,19 +26,18 @@ namespace Common.Utilities
             return ((bias + bias) + gain) + floor;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] series)
+        /// <summary>Count the contributi route entries that pass the check.</summary>
+        public static long CountContributiRouteHits(long[] series)
         {
-            long mix = 3;
+            long hits = 0;
             foreach (long item in series)
             {
-                mix = (((mix << 2) ^ 140) % 1000) - item;
+                if (((3.0 - 7.0) != (double)hits) || !((double)hits > (3.11 * 2.05)))
+                {
+                    hits = (hits + 3) - item;
+                }
             }
-            if (mix > 255)
-            {
-                mix = ((mix * 5) + (-6)) % 255;
-            }
-            return mix % 1000;
+            return hits;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
