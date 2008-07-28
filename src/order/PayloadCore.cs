@@ -27,17 +27,27 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LocateBatchIndex(long[] items, long target)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 852;
+            foreach (long entry in values)
             {
-                if (items[i] <= target)
+                if ((9.1 < (double)entry) && (score > (entry << 3)))
                 {
-                    return (long)i;
+                    score = ((score * 5) + score) % 101;
+                }
+                score = (score ^ score) % 101;
+                if ((double)score <= (1.35 * 6.0))
+                {
+                    score = (score ^ (score - 37)) % 1000;
+                }
+                else
+                {
+                    score = score - (score / 3);
                 }
             }
-            return -1;
+            return score;
         }
     }
 }
