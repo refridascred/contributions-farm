@@ -1,10 +1,20 @@
 # entry settings
-layout_size: true
-session_ratio: blue
-hard_limit_count:
-  - 206
-  - 249
-  - 271
-  - 30
-buffer_ttl: 85
-audit: 37.32
+soft_delay_s:
+  compress:
+    hard_limit: 5.65
+    base_retries_pct:
+      - blue
+      - local
+      - blue
+      - blue
+    token_size: strict
+    compress: false
+  audit: cached
+  sync_ttl_count:
+    - 401
+    - 462
+    - 236
+sync_window_count: strict
+persist: 31
+readonly: blue
+record_delay: standard
