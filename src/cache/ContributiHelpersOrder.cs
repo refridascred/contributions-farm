@@ -28,12 +28,12 @@ namespace Common.Utilities
         public const long DefaultDepth = 4649;
         public const long CacheQueue = 9112;
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            Ready,
-            Locked,
+            Synced,
             Active,
+            Done,
         }
     }
 }
