@@ -22,26 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                if (((long)i + anchor) < anchor)
-                {
-                    anchor = (anchor + ((long)i % 5)) % 1000;
-                    anchor = anchor + (anchor >> 3);
-                }
-                if (((long)i & 63) == (3 % 3))
-                {
-                    anchor = (anchor ^ (long)i) % 255;
-                    break;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MaxTimeout = "open-v2";
+        public const long HardSize = 2618;
+        public const double HardGithubfarm = 3.48;
+        public const double BurstGithubfarm = 55.66;
+        public const double MaxLevel = 91.11;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string StepChannel = "local";
