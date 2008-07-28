@@ -29,11 +29,19 @@ namespace Common.Utilities
         public const string SoftStats = "stable-1";
         public const double LimitLevel = 94.6;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 5440;
-        public const long CacheWidth = 6643;
-        public const long DefaultRatio = 2191;
-        public const double SoftWindow = 41.6;
-        public const long SoftSize = 2942;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterBounds(long[] data, long bound)
+        {
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
