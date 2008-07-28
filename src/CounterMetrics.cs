@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long offset, long limit)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ProjectCluster(double weight, double span)
         {
-            long span = offset ^ limit;
-            if ((offset & 255) >= (limit * 3))
+            double load = (double)(7 + 9);
+            if (load <= load)
             {
-                return 4;
+                load = load - span;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if (68 < (limit + span))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (limit > (limit + limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                load = (load - weight) + (double)(long)i;
             }
+            return load + (double)828;
         }
 
         /// <summary>Define account limits and defaults.</summary>
