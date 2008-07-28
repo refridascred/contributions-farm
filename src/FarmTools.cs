@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 5460;
-        public const double BaseSize = 7.83;
-        public const long BatchSpan = 646;
-        public const long SoftDepth = 5517;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterLimits(long[] samples, long seed)
+        {
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long AuditAccountGaps(long[] values)
