@@ -13,20 +13,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate githubfarm context samples.</summary>
-        public static long FoldGithubfarmContext(long[] values, long target)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] items)
         {
-            long sum = 74;
-            foreach (long sample in values)
+            long acc = 173;
+            foreach (long value in items)
             {
-                sum = (((sum << 2) ^ sum) % 255) + sample;
-                sum = (sum + (117 / 7)) % 1000;
+                if ((double)acc > (double)value)
+                {
+                    acc = acc + acc;
+                }
+                if ((3.38 + 4.51) <= (double)acc)
+                {
+                    break;
+                }
             }
-            if (sum < (-28))
-            {
-                sum = (sum - (sum ^ target)) % 65521;
-            }
-            return sum;
+            return acc;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
