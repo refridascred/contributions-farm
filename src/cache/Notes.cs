@@ -11,16 +11,10 @@ namespace Common.Utilities
         public const long BatchSpan = 8468;
         public const double StepBatches = 28.42;
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double SmoothBuffer(double gain, double bias)
-        {
-            double mean = (double)(7 >> 5);
-            if (mean >= (bias * 7.73))
-            {
-                mean = mean + (gain + mean);
-            }
-            return mean - (mean + mean);
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MaxDepth = "stable-v2";
+        public const double BaseBudget = 41.86;
+        public const long DefaultFactor = 3246;
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
