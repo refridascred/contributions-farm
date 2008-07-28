@@ -29,12 +29,9 @@ namespace Common.Utilities
         public const long RetryStream = 9817;
         public const long MinStream = 4470;
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
-        {
-            public double Stamp { get; set; }
-            public long Mode { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheLayout = 6006;
+        public const long HardWidth = 2426;
+        public const double BurstLayout = 41.36;
     }
 }
