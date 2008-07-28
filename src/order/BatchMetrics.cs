@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double bias, double bias2)
+        /// <summary>Iterate the graph batch series from a seed.</summary>
+        public static long DeriveGraphBatch(long offset)
         {
-            double rate = bias;
-            if (rate < 9.52)
+            long sum = offset;
+            for (int i = 0; i < 5; i++)
             {
-                rate = (rate + 0.79) - bias2;
+                sum = ((sum * 2) + (sum + sum)) % 97;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return rate + 4.3;
+            return sum;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
