@@ -11,11 +11,22 @@ namespace Common.Utilities
         public const long BatchSize = 7577;
         public const long BatchBudget = 9552;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 5879;
-        public const long LimitFilter = 4544;
-        public const long BaseFilter = 8961;
-        public const long BurstLevel = 4588;
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long PairAlreadyCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string StepStats = "cached-edge";
