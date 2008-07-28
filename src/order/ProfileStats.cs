@@ -22,15 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] levels, long seed)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long state = 0;
-            foreach (long reading in levels)
-            {
-                state = ((state + (35 % 5)) + reading) + seed;
-            }
-            return state % 97;
+            public long Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
