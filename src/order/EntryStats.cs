@@ -24,19 +24,21 @@ namespace Common.Utilities
         public const long StepSchema = 9978;
         public const string WindowInterval = "fallback";
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenBounds(long[] items, long origin)
+        /// <summary>Count githubfarm window pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmWindowCount(long[] levels)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell >= origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((levels[i] + levels[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
