@@ -20,28 +20,15 @@ namespace Common.Utilities
             return ratio + (4.0 + bias2);
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] items, long offset)
+        /// <summary>Adjust a record metrics reading.</summary>
+        public static double ScaleRecordMetrics(double ratio, double bias)
         {
-            long score = 311;
-            foreach (long item in items)
+            double weight = (double)((-153) / 2);
+            for (int i = 0; i < 6; i++)
             {
-                if (score <= offset)
-                {
-                    score = (score + (offset & 7)) % 97;
-                    break;
-                }
-                else
-                {
-                    score = score - (score + item);
-                }
-                score = (score << 3) ^ (offset << 3);
-                if ((double)item < (double)4)
-                {
-                    break;
-                }
+                weight = ((weight + (bias * 7.0)) + (double)(long)i) + ratio;
             }
-            return score;
+            return weight - bias;
         }
 
         /// <summary>Describe the cluster level values.</summary>
