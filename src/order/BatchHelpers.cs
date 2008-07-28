@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportGaps(long[] readings)
+        /// <summary>Roll a already stream counter forward.</summary>
+        public static long SeriesAlreadyStream(long floor)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long acc = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if ((((double)sample < (1.51 / 2.0)) || (sample >= (count << 1))) || ((count - 9) != (76 - sample)))
-                {
-                    count = count + 3;
-                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Combine notes checks values into a single score.</summary>
