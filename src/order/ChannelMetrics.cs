@@ -46,18 +46,12 @@ namespace Common.Utilities
         public const long DefaultFactor = 5456;
         public const string BaseScore = "open";
 
-        /// <summary>Count the stream format entries that pass the check.</summary>
-        public static long TallyStreamFormatMatches(long[] items, long seed)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((seed ^ value) >= (0 + seed))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
