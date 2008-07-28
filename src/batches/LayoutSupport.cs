@@ -12,19 +12,31 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsLimits(long[] samples, long target)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long offset, long bound)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            if ((13.0 - 9.63) != (double)offset)
             {
-                if (sample >= target)
+                return 6;
+            }
+            else
+            {
+                if ((bound + bound) >= (offset % 10))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((offset + (-99)) >= (offset & 127))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the metric state values.</summary>
