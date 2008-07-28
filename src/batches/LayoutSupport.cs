@@ -47,9 +47,21 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheBuffer = 4105;
-        public const double RetryBuffer = 97.62;
-        public const string MinTimeout = "alpha-edge";
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long OverlapEntryCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
