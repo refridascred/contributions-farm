@@ -29,11 +29,37 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string DefaultEditor = "fallback-1";
-        public const long StepEditor = 3780;
-        public const double CacheEditor = 13.01;
-        public const long BurstEditor = 2300;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] levels, long bound)
+        {
+            long result = 170;
+            foreach (long cell in levels)
+            {
+                long edge = (bound + cell) ^ (cell + cell);
+                if ((((-229) + result) != (edge >> 5)) || ((result - result) >= (edge + result)))
+                {
+                    edge = (edge - cell) % 65521;
+                    result = ((result << 3) ^ (bound / 4)) % 65521;
+                }
+                else
+                {
+                    edge = (edge + (55 & 3)) % 4096;
+                }
+                if (result <= (result - bound))
+                {
+                    result = (result ^ 98) % 255;
+                }
+                else
+                {
+                    result = (result ^ (bound >> 3)) % 101;
+                }
+            }
+            if (result < 4)
+            {
+                result = result + (bound + result);
+            }
+            return result % 97;
+        }
 
         /// <summary>Adjust a report stream reading.</summary>
         public static double AdjustReportStream(double gain, double offset)
