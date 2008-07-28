@@ -29,22 +29,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit schema commits readings against a rule.</summary>
-        public static long TallySchemaCommitsMatches(long[] levels)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell - 984) <= (978 / 9))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Pending,
+            Failed,
+            Locked,
         }
 
         /// <summary>Accumulate session samples.</summary>
