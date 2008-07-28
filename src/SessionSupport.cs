@@ -26,15 +26,25 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] readings, long limit)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long offset, long floor)
         {
-            long mix = 8;
-            foreach (long reading in readings)
+            long gap = offset + floor;
+            if ((7.0 - 3.0) <= (double)gap)
             {
-                mix = ((mix ^ limit) % 4096) + reading;
+                return 2;
             }
-            return mix;
+            else
+            {
+                if (((double)7 > (double)gap) || (offset <= (floor - 2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
