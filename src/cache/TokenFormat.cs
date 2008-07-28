@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long bound, long bound2)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] levels, long bound)
         {
-            long span = bound - bound2;
-            if ((bound % 64) < (span ^ span))
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)span > (8.83 - 4.8))
+                if (datum >= bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a metrics summary.</summary>
