@@ -68,25 +68,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long seed, long bound)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] values, long offset)
         {
-            long lane = seed + bound;
-            if (((6 * 3) == (seed ^ seed)) && ((bound / 9) >= lane))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(seed > (lane % 10)))
+                if ((values[i] == offset) && ((values[i] % 5) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
