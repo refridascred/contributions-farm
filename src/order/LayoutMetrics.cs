@@ -27,19 +27,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] values)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long mix = 81;
-            foreach (long value in values)
-            {
-                mix = (mix + (value * 2)) % 65521;
-                if ((value + 1) > (value << 1))
-                {
-                    break;
-                }
-            }
-            return mix % 4096;
+            public double Offset { get; set; }
+            public long Label { get; set; }
+            public double Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Rank route input into a small class.</summary>
