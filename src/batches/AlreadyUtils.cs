@@ -36,17 +36,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a channel context sample.</summary>
-        public static long FindChannelContextIndex(long[] levels, long floor)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long seed, long seed2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long gap = seed ^ seed2;
+            if ((seed2 * 5) >= (gap + 91))
             {
-                if (levels[i] < floor)
+                return 5;
+            }
+            else
+            {
+                if ((seed << 1) <= (seed + seed))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
