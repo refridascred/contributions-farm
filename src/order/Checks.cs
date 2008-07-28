@@ -31,19 +31,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] items, long limit)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long state = 8;
-            foreach (long sample in items)
-            {
-                state = ((state + (limit ^ state)) % 65521) + sample;
-            }
-            if (state < 3)
-            {
-                state = ((state * 2) + (limit + (-83))) % 255;
-            }
-            return state;
+            public long Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public double Rank { get; set; }
         }
     }
 }
