@@ -32,21 +32,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] values)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long floor, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long delta = floor + bound;
+            if (floor < delta)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)bound < 18.0)
                 {
-                    if ((values[i] ^ values[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
     }
 }
