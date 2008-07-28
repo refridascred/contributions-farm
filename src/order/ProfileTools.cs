@@ -51,12 +51,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryAccount = 3940;
-        public const string MinAccount = "staging-v2";
-        public const long MaxAccount = 9691;
-        public const string BurstLevel = "latest-1";
-        public const long WindowAccount = 9728;
+        /// <summary>Adjust a report stream reading.</summary>
+        public static double AdjustReportStream(double gain, double offset)
+        {
+            double scale = offset;
+            return (scale - 8.89) + gain;
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long AuditEntryGaps(long[] levels)
