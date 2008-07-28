@@ -36,17 +36,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first record commits entry that matches the target.</summary>
-        public static long LookupRecordCommitsIndex(long[] samples, long limit)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long seed, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long gap = seed + floor;
+            if (((seed & 63) <= (30 + floor)) || ((782 << 1) >= (946 + gap)))
             {
-                if ((samples[i] <= limit) && ((samples[i] % 2) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((gap >> 1) < (seed + 1))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (seed > (seed + gap))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((floor - 486) > (gap - 1)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
