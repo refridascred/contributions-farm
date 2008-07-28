@@ -19,22 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit metrics filter readings against a rule.</summary>
-        public static long MeasureMetricsFilterGaps(long[] data)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (!((9 + item) <= item) && ((count + count) >= (count / 2)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Pending,
+            Done,
+            Paused,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
