@@ -42,13 +42,39 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long step, long bound)
         {
-            public string Total { get; set; } = "";
-            public long Rank { get; set; }
-            public long Token { get; set; }
-            public long Mode { get; set; }
+            long next = step ^ bound;
+            if ((double)bound == (double)step)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step % 16) <= (bound + step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (87 > (step ^ next))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((next ^ step) <= step)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
