@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 2250;
-        public const double WindowFactor = 31.98;
-        public const long IdleMetrics = 2521;
-        public const long SoftMetrics = 9811;
+        /// <summary>Measure how many metrics account samples are out of range.</summary>
+        public static long TallyMetricsAccountMatches(long[] data, long bound)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((double)154 < (double)value)
+                {
+                    matches = (matches + 2) + bound;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up contributi samples.</summary>
         public static long CompareContributiCount(long[] readings)
