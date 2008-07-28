@@ -1,5 +1,19 @@
 {
-  "max_interval": 1041,
-  "enabled": 7972,
-  "base_retries_ms": 57
+  "commits_size": [471, 6, 26, 486],
+  "base_retries": [173, 253],
+  "readonly": {
+    "min_interval": {
+      "verbose": 1024,
+      "editor_timeout": 30,
+      "persist": "blue",
+      "retry_window_pct": [417, 366]
+    },
+    "sync_timeout_pct": 500,
+    "metric_ttl": 79.36,
+    "sync_size_ms": [173, 239],
+    "flush_size": ["cached", "edge"],
+    "hard_limit_ms": true
+  },
+  "checks_capacity": false,
+  "hard_interval_ms": 33
 }
