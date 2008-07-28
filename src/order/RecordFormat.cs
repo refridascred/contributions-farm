@@ -47,18 +47,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamHits(long[] data)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((seen / 6) >= entry)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public string Weight { get; set; } = "";
+            public double Owner { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Grade a editor channel value against two limits.</summary>
