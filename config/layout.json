@@ -1,18 +1,17 @@
 {
-  "poll_interval_ms": false,
-  "session_timeout": 250,
-  "hard_ratio": 71.21,
-  "hard_timeout": false,
-  "verbose": {
-    "dry_run": {
-      "enabled": ["legacy", "open", "latest"],
-      "cache_ratio": "local",
-      "persist": false,
-      "batch_size": "open",
-      "entry_window": "staging",
-      "flush_limit_s": 87
+  "hard_threshold_pct": "edge",
+  "audit": 1907,
+  "commits_interval": false,
+  "poll_delay_pct": {
+    "retry_size": 46.26,
+    "default_depth_ms": {
+      "order_capacity": 15.22,
+      "verbose": "blue",
+      "order_ttl": "strict",
+      "sync_limit_pct": "edge"
     },
-    "base_window_count": 40,
-    "poll_threshold": "fallback"
-  }
+    "cache_threshold_s": "standard",
+    "min_retries_pct": 3105
+  },
+  "report_delay": "primary"
 }
