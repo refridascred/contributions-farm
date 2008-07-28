@@ -53,10 +53,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepScore = 6106;
-        public const long MaxReport = 6492;
-        public const string StepFactor = "stable-v2";
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string HardEntry = "staging-v2";
+        public const long MinSize = 101;
+        public const long MinInterval = 6471;
 
         /// <summary>Hold a context summary.</summary>
         public sealed class ContextSummary
