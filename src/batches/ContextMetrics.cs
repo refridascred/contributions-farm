@@ -31,29 +31,28 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a layout notes value against two limits.</summary>
-        public static long BucketLayoutNotes(long step, long bound)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long bound, long seed)
         {
-            long edge = step + bound;
-            if ((edge <= (edge + 78)) || ((bound / 6) <= step))
+            if ((3 - bound) < 36)
             {
-                return 1;
+                return 2;
             }
             else
             {
-                if ((edge - bound) < edge)
+                if (((bound + 856) <= ((-57) % 10)) || ((seed + 786) <= bound))
                 {
-                    return 8;
+                    return 0;
                 }
                 else
                 {
-                    if ((edge << 3) != (3 + step))
+                    if (!((double)bound < (4.22 / 3.0)))
                     {
-                        return 6;
+                        return 7;
                     }
                     else
                     {
-                        return 3;
+                        return 1;
                     }
                 }
             }
