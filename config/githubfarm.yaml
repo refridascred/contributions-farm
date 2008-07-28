@@ -1,16 +1,8 @@
 # githubfarm settings
-idle_ttl:
-  - staging
-  - stable
-report_size: 2036
-flush_timeout_pct:
-  default_ttl_count: 73
-  checks_interval: stable
-  readonly: 60
-  dry_run: open
-  base_delay: 60
-  burst_size_ms:
-    - 140
-    - 7
-    - 137
-    - 329
+max_ttl: primary
+poll_ratio_ms: 59.46
+audit:
+  - 82
+  - 134
+  - 150
+  - 344
