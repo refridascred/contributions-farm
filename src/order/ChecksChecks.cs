@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the checks notes series from a seed.</summary>
-        public static long RollChecksNotes(long limit)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long mix = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mix = (((mix * 5) + (5 << 3)) % 4096) + (long)i2;
-                }
-                if (!(((long)i + mix) > (mix - (long)i)))
-                {
-                    mix = ((mix << 2) ^ limit) % 1000;
-                    mix = ((mix << 3) ^ (1 * 4)) % 4096;
-                }
-                mix = (mix ^ (13 << 1)) % 255;
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
+            public double Label { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
