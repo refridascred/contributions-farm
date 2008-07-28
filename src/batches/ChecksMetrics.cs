@@ -57,10 +57,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 2435;
-        public const double WindowDepth = 64.31;
-        public const long DefaultChannel = 8252;
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
+        {
+            public bool Region { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Project the next profile value.</summary>
         public static double BlendProfile(double weight, double offset)
