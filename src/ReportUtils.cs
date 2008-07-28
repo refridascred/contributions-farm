@@ -12,17 +12,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Look up the position of a filter report sample.</summary>
-        public static long LocateFilterReportIndex(long[] items, long origin)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Measure how many buffer payload samples are out of range.</summary>
