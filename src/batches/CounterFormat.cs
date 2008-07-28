@@ -14,31 +14,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a cluster payload pair into a bucket.</summary>
-        public static long GradeClusterPayload(long target, long step)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            if ((target + step) >= step)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((target / 6) > (target ^ (-2))))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((target - step) != (target + 76)) && (437 < target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            New,
+            Paused,
+            Retry,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
