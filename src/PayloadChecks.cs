@@ -25,13 +25,38 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long target, long step)
         {
-            public long Offset { get; set; }
-            public double Flag { get; set; }
-            public string Total { get; set; } = "";
-            public string Weight { get; set; } = "";
+            if (7.36 >= (double)target)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((step + 0) == (target + step)) || ((4.8 / 8.0) >= 1.58))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target * 5) <= target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step > (target * 3)) && ((target * 4) >= (target + target)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a tools summary.</summary>
