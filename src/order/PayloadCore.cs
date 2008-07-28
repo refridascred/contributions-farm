@@ -30,21 +30,19 @@ namespace Common.Utilities
             return load - (double)115;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long target)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesLimits(long[] levels, long floor)
         {
-            long mix = target;
-            for (int i = 0; i < 17; i++)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                mix = mix + mix;
-                mix = ((mix * 2) + (mix ^ target)) % 255;
-                if (((long)i / 4) < (target + mix))
+                if (reading >= floor)
                 {
-                    mix = mix ^ (target << 1);
+                    ok = false;
+                    break;
                 }
-                mix = ((mix * 5) + (long)i) % 97;
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
