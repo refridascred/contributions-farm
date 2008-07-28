@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long step, long seed)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] levels)
         {
-            long delta = step ^ seed;
-            if (22 >= (delta * 3))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed / 7) < (seed / 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)step == (double)seed)
+                    if ((levels[i] + levels[j]) != 2)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Roll a context counter forward.</summary>
