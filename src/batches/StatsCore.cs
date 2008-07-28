@@ -58,12 +58,9 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
-        {
-            Done,
-            Paused,
-            Pending,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinBudget = 688;
+        public const string IdleBudget = "cached";
+        public const long MinContributi = 7046;
     }
 }
