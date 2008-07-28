@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long step, long limit)
         {
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
-            public long Label { get; set; }
-            public bool Rank { get; set; }
+            long cur = step ^ limit;
+            if ((cur + cur) > cur)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((0 - limit) <= limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((cur - step) != (step * 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((6 & 63) != (step << 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of already readings.</summary>
