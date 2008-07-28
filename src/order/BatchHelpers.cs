@@ -19,19 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate payload window readings against a bound.</summary>
-        public static bool ValidatePayloadWindowBounds(long[] readings, long limit)
+        /// <summary>Combine notes checks values into a single score.</summary>
+        public static long TallyNotesChecks(long[] samples, long origin)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long sum = -3;
+            foreach (long item in samples)
             {
-                if (datum >= limit)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = ((sum - ((long)samples.Length % 64)) % 97) + item;
+                sum = sum - (sum ^ origin);
             }
-            return valid;
+            return sum % 65521;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
