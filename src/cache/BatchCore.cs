@@ -32,15 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next command channel value from a seed.</summary>
-        public static long RollCommandChannel(long offset)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorHits(long[] levels, long limit)
         {
-            long anchor = offset;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                if ((limit + matches) <= (matches + item))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Look up the position of a layout order sample.</summary>
