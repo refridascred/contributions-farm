@@ -37,19 +37,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long floor)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long PairMetricsCount(long[] items)
         {
-            long carry = floor;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((floor + (long)i) < (carry / 8)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (carry - (floor - carry)) % 255;
+                    if ((items[i] - items[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Hold a farm info.</summary>
