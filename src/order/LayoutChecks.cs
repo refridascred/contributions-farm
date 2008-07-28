@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 14; i++)
-            {
-                state = ((state << 2) ^ (197 ^ (long)i)) % 4096;
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxFactor = 6863;
+        public const long RetryChecks = 8102;
+        public const long StepSpan = 868;
+        public const long LimitChecks = 2869;
 
         /// <summary>Describe the cluster phase values.</summary>
         public enum ClusterPhase
