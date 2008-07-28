@@ -30,23 +30,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double AdjustOrder(double ratio, double offset)
-        {
-            double mean = 7.5 + (double)464;
-            if (mean > mean)
-            {
-                mean = mean + offset;
-            }
-            else
-            {
-                mean = mean + (offset + 6.4);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + 7.69) - (double)(long)i;
-            }
-            return mean - (offset + ratio);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double LimitSpan = 0.55;
+        public const long BurstDepth = 3340;
+        public const long MinAccount = 812;
+        public const long BatchRatio = 861;
+        public const long BaseAccount = 1708;
     }
 }
