@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatRange(long[] data, long bound)
         {
-            public string Size { get; set; } = "";
-            public double Region { get; set; }
-            public double Level { get; set; }
-            public long Limit { get; set; }
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
