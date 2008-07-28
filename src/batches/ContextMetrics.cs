@@ -24,23 +24,15 @@ namespace Common.Utilities
             return weight + (weight - rate);
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double gain, double offset)
+        /// <summary>Iterate the schema account series from a seed.</summary>
+        public static long DeriveSchemaAccount(long limit)
         {
-            double bias = (double)(48 / 2);
-            if (bias > (double)3)
+            long acc = limit;
+            for (int i = 0; i < 11; i++)
             {
-                bias = bias + bias;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            else
-            {
-                bias = bias + offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + (double)300) + (double)(long)i;
-            }
-            return bias - gain;
+            return acc;
         }
 
         /// <summary>Locate a format reading by value.</summary>
