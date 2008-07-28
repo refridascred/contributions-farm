@@ -29,19 +29,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double weight, double floor)
-        {
-            double weight2 = (double)(47 + 56);
-            if (weight2 >= (weight + weight2))
-            {
-                weight2 = weight2 + (double)8;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight2 = (weight2 + weight) + (double)(long)i;
-            }
-            return weight2 + floor;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 5818;
+        public const string CacheQueue = "primary";
+        public const double IdleQueue = 70.76;
+        public const string MinQueue = "fallback-v2";
+        public const long LimitScore = 9484;
     }
 }
