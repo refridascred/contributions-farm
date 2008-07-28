@@ -65,22 +65,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenHits(long[] values)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long result = -62;
+            foreach (long entry in levels)
             {
-                if ((matches / 9) <= datum)
+                if (result <= (entry + result))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    result = (result - result) % 255;
                 }
             }
-            return matches;
+            return result;
         }
     }
 }
