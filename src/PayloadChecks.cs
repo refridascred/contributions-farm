@@ -37,18 +37,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamHits(long[] levels, long floor)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if (((hits >> 5) != (floor % 64)) && ((floor >> 2) > hits))
-                {
-                    hits = (hits + 1) ^ datum;
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public double Flag { get; set; }
+            public string Total { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a tools summary.</summary>
