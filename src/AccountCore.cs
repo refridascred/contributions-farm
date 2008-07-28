@@ -90,22 +90,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricMatches(long[] values, long origin)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long target)
         {
-            long count = 0;
-            foreach (long item in values)
+            long mark = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (!(((2 % 3) > origin) && (origin < (529 - count))))
+                mark = ((mark * 4) + mark) % 4096;
+                long matches = (mark + 349) % 2;
+                if (((long)i - 3) < (matches + 423))
                 {
-                    count = (count + 3) ^ item;
+                    mark = mark + (mark & 31);
+                    matches = (matches + (matches ^ mark)) % 101;
+                    continue;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return count;
+            return mark;
         }
     }
 }
