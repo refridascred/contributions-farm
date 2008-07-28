@@ -26,15 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long step)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] levels)
         {
-            long carry = step;
-            for (int i = 0; i < 22; i++)
+            long mix = 5;
+            foreach (long reading in levels)
             {
-                carry = ((carry * 3) + (long)i) % 4093;
+                mix = (mix << 2) ^ reading;
             }
-            return carry;
+            if (mix < 28)
+            {
+                mix = ((mix << 2) ^ mix) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Roll a command counter forward.</summary>
