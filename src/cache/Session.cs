@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] data, long floor)
-        {
-            long acc = 2;
-            foreach (long entry in data)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    acc = (acc ^ (846 << 1)) ^ (long)i;
-                    acc = acc - (7 / 3);
-                }
-                acc = (acc << 3) ^ entry;
-                if ((floor * 3) > floor)
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSchema = 953;
+        public const long MaxSchema = 822;
+        public const long BurstScore = 796;
+        public const long BatchScore = 7489;
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long IterateBatches(long step)
