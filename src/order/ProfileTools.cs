@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            Ready,
-            Retry,
-            Dropped,
-            Stale,
-            Queued,
+            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
