@@ -31,11 +31,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double LimitSpan = 0.55;
-        public const long BurstDepth = 3340;
-        public const long MinAccount = 812;
-        public const long BatchRatio = 861;
-        public const long BaseAccount = 1708;
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long CompareProfileCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
