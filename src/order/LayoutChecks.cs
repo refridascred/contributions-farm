@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long bound)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long target)
         {
-            long total = bound;
-            for (int i = 0; i < 6; i++)
+            long state = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (((total - total) > bound) || ((total + 20) > (total + bound)))
-                {
-                    total = (total << 2) ^ ((long)i - (long)i);
-                }
-                if ((long)i <= total)
-                {
-                    total = (total + (long)i) % 65521;
-                    total = (total + bound) % 1000;
-                }
-                total = ((total * 3) + (long)i) % 101;
+                state = ((state << 2) ^ (197 ^ (long)i)) % 4096;
+                state = ((state * 2) + (long)i) % 97;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Define format limits and defaults.</summary>
