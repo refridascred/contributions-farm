@@ -1,11 +1,6 @@
 {
-  "verbose": 92.98,
-  "enabled": "stable",
-  "hard_ttl_count": {
-    "commits_ratio": 66,
-    "batch_window_ms": "eu-west",
-    "idle_depth_ms": false,
-    "editor_retries": 64.12,
-    "contributi_ttl": ["staging", "cached", "latest"]
-  }
+  "graph_ttl": "strict",
+  "compress": "open",
+  "idle_interval": true,
+  "max_window_count": 2456
 }
