@@ -33,19 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryOutliers(long[] readings)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((count >> 2) > (cell << 3))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowCount = 922;
+        public const string IdleAccount = "primary-v2";
+        public const long MaxAccount = 1426;
 
         /// <summary>Classify a order token pair into a bucket.</summary>
         public static long GradeOrderToken(long origin, long target)
