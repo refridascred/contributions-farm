@@ -50,23 +50,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] values)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long MatchStatsCount(long[] levels)
         {
-            long state = 94;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state << 2) ^ (value - state)) % 1000;
-                if (((state * 2) < (value << 2)) || ((double)state > (1.15 - 5.87)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = (state << 3) ^ (298 + value);
+                    if ((levels[i] + levels[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (state > 6)
-            {
-                state = (state + (681 ^ 0)) % 65521;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Describe the channel status values.</summary>
