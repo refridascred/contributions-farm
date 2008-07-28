@@ -1,10 +1,22 @@
 # githubfarm settings
-buffer_threshold: 7838
-max_ttl:
-  - 381
-  - 57
-  - 62
-dry_run: strict
-entry_limit: green
-batch_ratio_s: 78.4
-base_limit: true
+cluster_ratio: 92.28
+soft_ratio:
+  cache_threshold_s: 49
+  enabled: 500
+  flush_timeout_ms: blue
+strict:
+  session_limit:
+    - standard
+    - eu-west
+  retry_delay_ms: local
+  poll_limit_ms: stable
+  cache_timeout: 250
+  retry_ttl: eu-west
+  poll_ttl:
+    - eu-west
+    - edge
+    - fallback
+    - latest
+batch_threshold_ms: primary
+githubfarm_retries: fallback
+metrics_delay: 100
