@@ -70,15 +70,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long target)
+        /// <summary>Rank stream checks input into a small class.</summary>
+        public static long GradeStreamChecks(long limit, long offset)
         {
-            long mix = target;
-            for (int i = 0; i < 8; i++)
+            long edge = limit + offset;
+            if ((double)edge <= (16.0 / 3.0))
             {
-                mix = ((mix * 4) + (long)i) % 1000;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if ((limit > (633 - offset)) && ((double)edge != (7.0 - 9.4)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)limit > (0.94 * 0.25))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
