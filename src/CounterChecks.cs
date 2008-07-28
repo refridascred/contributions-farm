@@ -61,10 +61,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheTimeout = 7589;
-        public const long WindowScore = 5886;
-        public const long LimitFactor = 4062;
+        /// <summary>Define order limits and defaults.</summary>
+        public const double IdleLevel = 91.38;
+        public const string WindowTimeout = "fallback-edge";
+        public const long BaseOrder = 8359;
 
         /// <summary>Hold a context header.</summary>
         public sealed class ContextHeader
