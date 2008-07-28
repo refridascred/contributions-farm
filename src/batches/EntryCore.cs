@@ -41,13 +41,21 @@ namespace Common.Utilities
         public const long MinWidth = 6882;
         public const long LimitDepth = 9700;
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCount(long[] data)
         {
-            Closed,
-            Synced,
-            Failed,
-            Stale,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine token values into a single score.</summary>
