@@ -22,22 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] data, long step)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long limit)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long state = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if ((((cell << 2) >= (cell + cell)) || ((18.0 - 5.03) >= (double)count)) || ((464 >> 2) <= step))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                state = state ^ (state & 1);
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
