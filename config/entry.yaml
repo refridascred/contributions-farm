@@ -1,10 +1,9 @@
 # entry settings
-route_delay: edge
-burst_capacity: standard
-default_depth:
-  - 287
-  - 463
-  - 279
-  - 223
-warm_size_count: 5581
-base_ttl_pct: fallback
+idle_depth_pct: 74.46
+dry_run: false
+cache_size_pct:
+  - 7
+  - 288
+burst_size_count: 30
+verbose: 100
+base_window_pct: 5688
