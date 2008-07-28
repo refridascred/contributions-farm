@@ -28,15 +28,19 @@ namespace Common.Utilities
             return ratio2 - ratio;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double AdjustTools(double gain, double bias)
+        /// <summary>Check that every cluster command entry stays within the limit.</summary>
+        public static bool VerifyClusterCommandLimits(long[] readings, long bound)
         {
-            double mean = gain;
-            for (int i = 0; i < 5; i++)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                mean = (mean - (bias * 5.0)) + (double)(long)i;
+                if (cell != bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mean + (0.5 + mean);
+            return ready;
         }
     }
 }
