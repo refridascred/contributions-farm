@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
-        {
-            public double Label { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BatchCount = "staging-1";
+        public const string WindowBuffer = "open-edge";
+        public const long MinSpan = 7132;
+        public const long BatchBuffer = 8282;
+        public const long SoftBuffer = 4913;
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long FindContributiIndex(long[] readings, long offset)
