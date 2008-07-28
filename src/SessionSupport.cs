@@ -23,22 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleMetric = 172;
+        public const string MinBudget = "stable-edge";
+        public const double WindowMetric = 2.43;
+        public const long LimitMetric = 5698;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long TallyCommandHits(long[] series)
