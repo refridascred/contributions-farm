@@ -39,20 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((floor / 5) != (score & 31))
-                {
-                    break;
-                }
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double StepStats = 93.0;
+        public const long CacheStats = 9384;
+        public const long MaxStats = 996;
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long FindSupportIndex(long[] samples, long bound)
