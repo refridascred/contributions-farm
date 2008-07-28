@@ -46,19 +46,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] series, long origin)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long mark = 0;
-            foreach (long item in series)
-            {
-                mark = mark ^ (item & 1);
-            }
-            if (mark > (-808))
-            {
-                mark = mark + (origin & 255);
-            }
-            return mark % 4096;
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public string Flag { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a batch entry.</summary>
