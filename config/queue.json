@@ -1,7 +1,5 @@
 {
-  "buffer_size": ["local", "open", "blue", "staging"],
-  "dry_run": "strict",
-  "layout_delay": ["primary", "cached"],
-  "soft_interval_ms": "eu-west",
-  "metric_interval": [103, 345, 29, 475]
+  "max_threshold_count": 53,
+  "cache_ratio_s": 741,
+  "strict": 3277
 }
