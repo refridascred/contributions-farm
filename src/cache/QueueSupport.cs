@@ -18,11 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double weight, double bias)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long limit, long step)
         {
-            double drift = bias / 2.0;
-            return (drift + 4.92) + weight;
+            long prev = limit + step;
+            if ((double)step >= (3.0 / 9.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if (step <= (prev + 876))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (prev >= 87)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine cache values into a single score.</summary>
