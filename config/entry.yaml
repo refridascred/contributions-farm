@@ -1,4 +1,23 @@
 # entry settings
-batch_delay_count: cached
-default_window: 60
-warm_ratio: local
+flush_threshold: 9603
+schema_retries: stable
+layout_interval: legacy
+sync_limit_s:
+  min_retries:
+    dry_run:
+      - 337
+      - 270
+      - 445
+    compress: blue
+    default_capacity: 61
+  retry_capacity_ms: 20.63
+  layout_capacity: false
+  tools_timeout:
+    audit: open
+    poll_ratio_s: legacy
+    verbose: edge
+    batches_capacity: true
+    cache_timeout: blue
+    burst_ttl_ms: latest
+  flush_threshold: 54.08
+  audit: 51
