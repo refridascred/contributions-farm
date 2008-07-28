@@ -39,10 +39,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryBudget = 8554;
-        public const double HardNotes = 6.46;
-        public const long BatchCount = 410;
+        /// <summary>Validate record order readings against a bound.</summary>
+        public static bool ValidateRecordOrderBounds(long[] values, long bound)
+        {
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
