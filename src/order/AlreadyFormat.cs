@@ -55,17 +55,25 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] levels, long seed)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long step, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long step2 = step - origin;
+            if (((87 - 8) != (step2 + 23)) && ((double)step2 <= 4.0))
             {
-                if ((levels[i] < seed) && ((levels[i] % 3) != 0))
+                return 2;
+            }
+            else
+            {
+                if ((step2 * 5) < origin)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
     }
 }
