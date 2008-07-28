@@ -19,15 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next window tools value from a seed.</summary>
-        public static long SeriesWindowTools(long limit)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long anchor = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            New,
+            Done,
+            Active,
         }
 
         /// <summary>Hold a route info.</summary>
