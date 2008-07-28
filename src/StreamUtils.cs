@@ -22,24 +22,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long limit, long origin)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long step)
         {
-            if (((double)limit > (1.25 + 1.2)) || ((origin >> 4) < origin))
+            long state = step;
+            for (int i = 0; i < 11; i++)
             {
-                return 6;
+                state = ((state << 3) ^ (887 ^ (long)i)) % 4096;
+                state = (state - (200 ^ state)) % 4096;
+                state = (state - (state & 31)) % 1000;
+                state = ((state * 3) + (long)i) % 97;
             }
-            else
-            {
-                if (((limit >> 2) < limit) && (7 > (limit ^ limit)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return state;
         }
 
         /// <summary>Describe the route level values.</summary>
