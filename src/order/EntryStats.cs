@@ -45,21 +45,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long PairFormatCount(long[] series)
+        /// <summary>Scale a githubfarm already figure with a bias.</summary>
+        public static double ScaleGithubfarmAlready(double scale, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale2 = floor;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale2 = (scale2 - scale) + (double)(long)i;
             }
-            return seen;
+            return scale2 + (scale2 + scale);
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
