@@ -71,21 +71,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 9725;
+        public const string BatchLevel = "cached-1";
+        public const long IdleFilter = 77;
+        public const long DefaultFilter = 8872;
+        public const long CacheSize = 2089;
     }
 }
