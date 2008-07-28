@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] readings)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long acc = 529;
-            foreach (long item in readings)
-            {
-                if ((double)item > (2.34 - 1.0))
-                {
-                    acc = ((acc << 3) ^ (acc + item)) % 65521;
-                }
-            }
-            if (acc < 43)
-            {
-                acc = ((acc << 2) ^ (acc << 1)) % 255;
-            }
-            return acc % 4096;
+            public long Limit { get; set; }
+            public bool Size { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
