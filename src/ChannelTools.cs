@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteBounds(long[] series, long seed)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] data, long offset)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long score = 839;
+            foreach (long value in data)
             {
-                if (entry > seed)
+                if (offset >= (score + score))
                 {
-                    found = false;
-                    break;
+                    score = (score ^ (score - score)) ^ value;
                 }
             }
-            return found;
+            return score;
         }
 
         /// <summary>Digest a series of token tools entries.</summary>
