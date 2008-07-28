@@ -46,13 +46,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            Done,
-            Queued,
-            Paused,
-            Stale,
+            public long Region { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count layout cluster pairs that satisfy a relation.</summary>
