@@ -5,25 +5,30 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long target, long floor)
+        /// <summary>Fold a list of notes format readings.</summary>
+        public static long TotalNotesFormat(long[] levels)
         {
-            long delta = target - floor;
-            if (((floor >> 5) == (floor + delta)) && (floor < (floor + 5)))
+            long total = 0;
+            foreach (long datum in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((0.5 + 20.0) != (double)target)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    return 5;
+                    total = (total << 3) ^ ((long)i2 % 2);
+                }
+                if (970 <= (datum % 7))
+                {
+                    total = (total * 2) + total;
                 }
                 else
                 {
-                    return 3;
+                    total = total ^ (38 % 5);
                 }
             }
+            if (total > 325)
+            {
+                total = (total - (total & 31)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Check that every order farm entry stays within the limit.</summary>
