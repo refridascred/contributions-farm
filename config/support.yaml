@@ -1,20 +1,22 @@
 # support settings
-cache_delay: 40.99
-report_limit: true
-retry_capacity_ms: 100
-hard_timeout_s:
-  persist:
-    - edge
-    - green
-    - strict
-  idle_size_s: local
-  cache_window_count: 88
-  base_delay_count:
-    - open
-    - local
-    - open
-  enabled: 40
-  batch_depth:
-    - green
-    - latest
-    - local
+verbose: latest
+idle_threshold_ms: 46.68
+soft_ratio_pct: 60
+flush_delay_s:
+  token_timeout:
+    - 427
+    - 220
+    - 355
+    - 306
+  entry_depth: open
+  default_ratio_pct:
+    contributi_interval:
+      - 282
+      - 407
+      - 204
+      - 425
+    channel_ttl: green
+    token_depth: false
+  idle_window_count: true
+  enabled: 30
+stream_depth: 500
