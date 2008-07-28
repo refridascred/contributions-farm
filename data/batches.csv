@@ -1,9 +1,6 @@
-id,weight,score
-1,194,blue
-2,cached,93.54
-3,58.05,10
-4,21.68,593
-5,277,66.14
-6,25.73,eu-west
-7,strict,550
-8,270,primary
+id,active,count,state,label
+1,open,360,open,latest
+2,blue,992,cached,eu-west
+3,5.48,92.28,37.9,347
+4,blue,35.34,727,196
+5,open,1.94,42.07,open
