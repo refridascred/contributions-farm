@@ -69,15 +69,12 @@ namespace Common.Utilities
             return (scale - 8.89) + gain;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long origin)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long state = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            Draft,
+            Active,
+            New,
         }
     }
 }
