@@ -48,22 +48,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] levels, long step)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesBounds(long[] levels, long floor)
         {
-            long score = 4;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if ((score - step) >= (score ^ 9))
+                if (sample != floor)
                 {
-                    score = (score * 4) + (5 + score);
-                }
-                if (((datum - 52) >= 9) || ((score / 4) < step))
-                {
+                    ok = false;
                     break;
                 }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
