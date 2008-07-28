@@ -20,15 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double AdjustChannel(double ratio, double bias)
+        /// <summary>Locate a schema commits reading by value.</summary>
+        public static long SeekSchemaCommitsIndex(long[] levels, long origin)
         {
-            double load = (double)(6 << 2);
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = ((load + bias) + (double)(long)i) - ratio;
+                if (levels[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return load + (bias / 4.0);
+            return -1;
         }
 
         /// <summary>Digest a series of token entries.</summary>
