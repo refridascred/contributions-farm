@@ -64,21 +64,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count command entry pairs that satisfy a relation.</summary>
-        public static long PairCommandEntryCount(long[] data)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Stale,
+            Synced,
+            Locked,
+            Retry,
         }
     }
 }
