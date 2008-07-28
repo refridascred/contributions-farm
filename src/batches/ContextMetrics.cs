@@ -73,17 +73,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] series, long offset)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (series[i] >= offset)
+                if (floor > (floor + mark))
                 {
-                    return (long)i;
+                    break;
                 }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
     }
 }
