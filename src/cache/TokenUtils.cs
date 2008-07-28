@@ -39,14 +39,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamBounds(long[] readings, long offset)
         {
-            Failed,
-            Locked,
-            Synced,
-            Idle,
-            Retry,
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
