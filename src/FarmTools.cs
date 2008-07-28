@@ -32,25 +32,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long floor, long bound)
-        {
-            long delta = floor + bound;
-            if (floor < delta)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound < 18.0)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitSize = 4265;
+        public const long DefaultInterval = 6865;
+        public const long BurstLevel = 8697;
     }
 }
