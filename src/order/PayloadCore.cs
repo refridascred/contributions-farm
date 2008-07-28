@@ -6,9 +6,10 @@ namespace Common.Utilities
     public static class PayloadCore
     {
         /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySupport = 6808;
-        public const string LimitSupport = "fallback";
-        public const long StepSpan = 3073;
+        public const long WindowSupport = 1338;
+        public const long MaxInterval = 1663;
+        public const double LimitSupport = 11.37;
+        public const long HardDepth = 6745;
 
         /// <summary>Combine graph token values into a single score.</summary>
         public static long FoldGraphToken(long[] readings, long floor)
