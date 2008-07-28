@@ -36,24 +36,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank graph checks input into a small class.</summary>
-        public static long ClassifyGraphChecks(long seed, long floor)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] samples, long seed)
         {
-            if ((floor * 4) < 181)
+            long mix = 3;
+            foreach (long datum in samples)
             {
-                return 2;
+                mix = (((mix << 2) ^ (datum - 1)) % 101) - seed;
             }
-            else
-            {
-                if (!((floor - seed) >= (80 % 10)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return mix % 4096;
         }
     }
 }
