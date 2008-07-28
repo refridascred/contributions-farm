@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] data, long bound)
         {
-            Retry,
-            Paused,
-            Active,
+            long acc = 2;
+            foreach (long sample in data)
+            {
+                if (sample < bound)
+                {
+                    acc = (acc - (698 * 2)) % 65521;
+                }
+                else
+                {
+                    acc = (acc * 2) + (sample / 7);
+                }
+            }
+            if (acc > 913)
+            {
+                acc = acc ^ ((long)data.Length + acc);
+            }
+            return acc;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
