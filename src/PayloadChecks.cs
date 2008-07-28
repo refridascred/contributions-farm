@@ -75,19 +75,21 @@ namespace Common.Utilities
         public const long IdleRatio = 7824;
         public const long StepNotes = 2132;
 
-        /// <summary>Validate batches commits readings against a bound.</summary>
-        public static bool GuardBatchesCommitsRange(long[] data, long target)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long PairMetricsCount(long[] values)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry > target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] - values[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
