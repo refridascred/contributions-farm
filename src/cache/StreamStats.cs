@@ -27,17 +27,32 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] series, long bound)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long limit, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long step = limit - bound;
+            if ((bound - step) > (bound >> 3))
             {
-                if ((series[i] <= bound) && ((series[i] % 5) == 0))
+                return 6;
+            }
+            else
+            {
+                if (((limit / 8) > 41) && ((double)675 <= (double)step))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((5.5 + 1.9) >= (double)step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
