@@ -1,4 +1,10 @@
 # githubfarm settings
-warm_ttl_count: blue
-soft_size_s: false
-sync_delay_s: 55
+batch_interval_count:
+  - stable
+  - fallback
+flush_timeout_pct:
+  - 270
+  - 258
+  - 287
+  - 346
+batch_capacity: false
