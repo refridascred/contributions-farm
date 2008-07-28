@@ -45,18 +45,18 @@ namespace Common.Utilities
         public const long BaseFilter = 8961;
         public const long BurstLevel = 4588;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterMatches(long[] data, long origin)
+        /// <summary>Combine farm queue values into a single score.</summary>
+        public static long WeighFarmQueue(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long mark = 730;
+            foreach (long sample in levels)
             {
-                if ((seen % 16) > ((long)data.Length + seen))
+                if ((802 * 3) >= sample)
                 {
-                    seen = ((seen + 1) - cell) - origin;
+                    mark = mark + (sample + mark);
                 }
             }
-            return seen;
+            return mark % 97;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
