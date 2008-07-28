@@ -19,19 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate metric session readings against a bound.</summary>
-        public static bool GuardMetricSessionBounds(long[] levels, long target)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] samples, long seed)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item <= target)
+                if (samples[i] < seed)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
