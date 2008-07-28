@@ -1,4 +1,4 @@
 # support settings
-retry_capacity_s: 19.36
-strict: 2439
-max_threshold_pct: 69
+schema_threshold: stable
+burst_threshold_s: 60
+default_ratio: 2017
