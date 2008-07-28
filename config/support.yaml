@@ -1,21 +1,22 @@
 # support settings
-min_capacity:
-  dry_run: 100
-  persist:
-    tools_depth: blue
-    report_threshold:
-      - 239
-      - 245
-      - 42
-      - 347
-    enabled: 27
-    metric_capacity: true
-    soft_ratio_s: 68.07
-  account_depth: 60.58
-  soft_capacity:
-    - eu-west
-    - legacy
-  min_interval_ms: 66
-  audit: eu-west
-max_ttl: 70.45
-hard_ttl_count: 3.55
+hard_size_s: legacy
+poll_depth_ms:
+  hard_ratio_count: 1210
+  metrics_depth: 80.2
+  soft_retries_ms:
+    base_depth_pct: strict
+    queue_window: 8872
+    persist: 4655
+  flush_interval_count:
+    audit: local
+    default_retries: eu-west
+    min_size: true
+    min_depth_pct:
+      - 443
+      - 133
+    persist: 500
+    strict: true
+  metric_window: 4959
+support_capacity: 90
+route_window: true
+idle_size_count: true
