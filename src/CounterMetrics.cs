@@ -28,10 +28,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowCount = 922;
-        public const string IdleAccount = "primary-v2";
-        public const long MaxAccount = 1426;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountGaps(long[] readings, long target)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (!(seen < (280 + datum)) || (target < (seen * 5)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long MinToken = 9297;
