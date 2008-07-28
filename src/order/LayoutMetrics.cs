@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterRange(long[] samples, long target)
         {
-            Stale,
-            Idle,
-            Ready,
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a editor options.</summary>
