@@ -22,10 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BaseBudget = "local-edge";
-        public const string IdleInterval = "open-edge";
-        public const string CacheScore = "stable-1";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string DefaultSize = "alpha";
+        public const long BaseTimeout = 1432;
+        public const double BaseCount = 17.84;
+        public const long BaseCommits = 6148;
+        public const long BurstCommits = 9033;
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool CheckBatchBounds(long[] levels, long bound)
