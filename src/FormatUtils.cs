@@ -79,12 +79,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowCommand = 2960;
-        public const long CacheSize = 6957;
-        public const double LimitCommand = 1.08;
-        public const long HardTimeout = 2928;
-        public const double BurstCommand = 48.0;
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Find the first entry batch entry that matches the target.</summary>
         public static long LocateEntryBatchIndex(long[] values, long floor)
