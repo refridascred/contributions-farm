@@ -1,5 +1,5 @@
 {
-  "max_threshold_count": 53,
-  "cache_ratio_s": 741,
-  "strict": 3277
+  "persist": "legacy",
+  "warm_ratio": "stable",
+  "cluster_ratio": false
 }
