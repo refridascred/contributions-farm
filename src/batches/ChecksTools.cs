@@ -44,11 +44,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Project the next already report value.</summary>
+        public static double SmoothAlreadyReport(double ratio, double span)
         {
-            public double Total { get; set; }
-            public long Ratio { get; set; }
+            double weight = ratio + span;
+            if (weight < (weight - weight))
+            {
+                weight = weight - weight;
+            }
+            return weight + ratio;
         }
     }
 }
