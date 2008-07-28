@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long BatchSize = 7577;
         public const long BatchBudget = 9552;
 
-        /// <summary>Validate queue order readings against a bound.</summary>
-        public static bool CheckQueueOrderRange(long[] series, long step)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileRange(long[] samples, long bound)
         {
-            bool valid = true;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if (value != step)
+                if (item < bound)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Validate session stats readings against a bound.</summary>
