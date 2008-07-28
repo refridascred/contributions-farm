@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long bound, long bound2)
         {
-            public bool Offset { get; set; }
-            public string Token { get; set; } = "";
-            public long Rank { get; set; }
+            long span = bound - bound2;
+            if ((bound % 64) < (span ^ span))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)span > (8.83 - 4.8))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a metrics summary.</summary>
