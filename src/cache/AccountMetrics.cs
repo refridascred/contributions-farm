@@ -60,24 +60,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a token stream value against two limits.</summary>
-        public static long BucketTokenStream(long origin, long limit)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] series, long floor)
         {
-            if ((limit & 63) != (4 / 9))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin + 62) > (origin + limit))
+                if (series[i] > floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
