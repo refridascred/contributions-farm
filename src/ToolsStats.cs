@@ -86,19 +86,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesLimits(long[] levels, long seed)
+        /// <summary>Validate cluster account readings against a bound.</summary>
+        public static bool GuardClusterAccountRange(long[] readings, long target)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if (value > seed)
+                if (reading >= target)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
     }
 }
