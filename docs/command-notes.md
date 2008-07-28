@@ -1,12 +1,11 @@
 # Command notes
 
-Run the channel check before changing any contributi limits.
-Keep batch and support names short and lowercase.
-Keep editor and cluster names short and lowercase.
+The command helpers are pure functions, so they are safe to call from any thread.
+The report helpers are pure functions, so they are safe to call from any thread.
+The window helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate metrics input early
-- Prefer order defaults
-- Document new contributi fields
-- Keep stats values small
+- Document new cluster fields
+- Review profile limits each release
+- Prefer window defaults
