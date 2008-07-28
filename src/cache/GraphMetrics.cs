@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphHits(long[] samples)
         {
-            public double Region { get; set; }
-            public long Stamp { get; set; }
-            public bool Count { get; set; }
-            public double Size { get; set; }
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if (((long)samples.Length - count) <= (datum + datum))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
