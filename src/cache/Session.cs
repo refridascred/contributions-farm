@@ -24,19 +24,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate cluster order readings against a bound.</summary>
-        public static bool VerifyClusterOrderBounds(long[] samples, long floor)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteRange(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if (cell >= floor)
+                if (datum != limit)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
