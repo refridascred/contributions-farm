@@ -57,11 +57,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            public double Limit { get; set; }
-            public double Weight { get; set; }
+            public bool Limit { get; set; }
+            public double Count { get; set; }
         }
     }
 }
