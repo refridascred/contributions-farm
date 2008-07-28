@@ -32,17 +32,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a filter tools reading by value.</summary>
-        public static long LocateFilterToolsIndex(long[] data, long target)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyRange(long[] items, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                if (data[i] >= target)
+                if (cell != limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
