@@ -23,17 +23,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a commits farm counter forward.</summary>
-        public static long DeriveCommitsFarm(long step)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] readings, long bound)
         {
-            long result = step;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (result << 2) ^ ((long)i + result);
-                result = (result + (result >> 5)) % 255;
-                result = ((result * 4) + (long)i) % 1000;
+                if ((readings[i] >= bound) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
