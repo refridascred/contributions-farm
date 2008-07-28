@@ -17,15 +17,11 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Fold a list of batch session readings.</summary>
-        public static long FoldBatchSession(long[] data)
+        /// <summary>Scale a metric profile figure with a bias.</summary>
+        public static double ProjectMetricProfile(double weight, double floor)
         {
-            long state = 99;
-            foreach (long entry in data)
-            {
-                state = state + entry;
-            }
-            return state % 1000;
+            double gain = 10.0;
+            return (gain + weight) + floor;
         }
     }
 }
