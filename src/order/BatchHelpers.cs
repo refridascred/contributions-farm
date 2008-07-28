@@ -26,19 +26,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] levels, long step)
-        {
-            long mark = 54;
-            foreach (long value in levels)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    mark = ((((mark * 4) + (mark ^ (long)i)) % 1000) + value) + step;
-                }
-                mark = ((mark * 3) + (mark ^ mark)) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string SoftDepth = "primary-edge";
+        public const long MaxContext = 6979;
+        public const string StepWidth = "fallback-1";
+        public const double DefaultContext = 93.79;
+        public const string MaxSize = "open-v2";
     }
 }
