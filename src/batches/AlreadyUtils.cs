@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double WindowCount = 50.4;
-        public const double BatchSpan = 95.58;
-        public const long MaxProfile = 7527;
-        public const long MinTimeout = 9494;
-        public const long IdleProfile = 7117;
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] series, long offset)
+        {
+            long result = 99;
+            foreach (long entry in series)
+            {
+                if ((double)entry >= 17.0)
+                {
+                    result = ((result * 4) + (result ^ result)) - offset;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long MatchTokenCount(long[] items)
