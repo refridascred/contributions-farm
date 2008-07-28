@@ -50,32 +50,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank editor report input into a small class.</summary>
-        public static long ClassifyEditorReport(long step, long offset)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] readings, long offset)
         {
-            long span = step + offset;
-            if (!(span < (step + span)))
+            long acc = 580;
+            foreach (long item in readings)
             {
-                return 2;
+                acc = acc - (offset - item);
             }
-            else
+            if (acc > 97)
             {
-                if (((double)span >= 4.86) && ((step + 276) >= (step >> 1)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((8.4 + 2.5) <= (double)step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                acc = (acc ^ offset) % 4096;
             }
+            return acc;
         }
 
         /// <summary>Audit stats route readings against a rule.</summary>
