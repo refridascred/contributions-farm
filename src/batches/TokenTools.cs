@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long target)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long acc = target;
-            for (int i = 0; i < 16; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            Pending,
+            Synced,
+            Dropped,
+            Draft,
+            Queued,
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
