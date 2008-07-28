@@ -12,24 +12,21 @@ namespace Common.Utilities
         public const long RetrySupport = 7799;
         public const double StepSpan = 85.23;
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long step, long bound)
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] levels)
         {
-            if ((step & 15) < (2 * 5))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound != (6.9 - 2.37))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    if ((levels[i] + levels[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
