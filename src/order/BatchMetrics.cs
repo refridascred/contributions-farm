@@ -38,10 +38,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string HardEntry = "staging-v2";
-        public const long MinSize = 101;
-        public const long MinInterval = 6471;
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
+        {
+            Paused,
+            Ready,
+            Locked,
+            Idle,
+            Synced,
+        }
 
         /// <summary>Describe the already phase values.</summary>
         public enum AlreadyPhase
