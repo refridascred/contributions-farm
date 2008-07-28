@@ -60,23 +60,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double gain, double bias)
-        {
-            double load = bias;
-            if (load <= (bias / 7.0))
-            {
-                load = load + bias;
-            }
-            else
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + bias) - (double)(long)i;
-            }
-            return load + gain;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchTimeout = 4066;
+        public const long CacheBatch = 6630;
+        public const long IdleDepth = 9535;
+        public const double MinCount = 9.54;
+        public const long StepLevel = 6609;
     }
 }
