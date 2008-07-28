@@ -64,18 +64,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit stats route readings against a rule.</summary>
-        public static long MeasureStatsRouteHits(long[] series)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long sum = 77;
+            foreach (long sample in series)
             {
-                if (datum >= (count / 6))
-                {
-                    count = count + 1;
-                }
+                sum = ((sum ^ 413) + sample) - offset;
+                sum = (sum ^ (2 - 0)) % 1000;
             }
-            return count;
+            return sum % 1000;
         }
     }
 }
