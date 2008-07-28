@@ -77,19 +77,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Adjust a window entry reading.</summary>
-        public static double ProjectWindowEntry(double gain, double bias)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long seed)
         {
-            double bias2 = gain;
-            if (bias2 < (bias + gain))
+            long sum = seed;
+            for (int i = 0; i < 4; i++)
             {
-                bias2 = bias2 + (0.31 * 6.1);
+                sum = sum + (sum / 5);
+                sum = ((sum << 2) ^ ((long)i >> 4)) % 4096;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            else
-            {
-                bias2 = bias2 - (double)6;
-            }
-            return bias2 - gain;
+            return sum;
         }
     }
 }
