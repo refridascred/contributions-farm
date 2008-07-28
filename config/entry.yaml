@@ -1,12 +1,10 @@
 # entry settings
-flush_ttl: edge
-audit: 500
-strict:
-  - 295
-  - 311
-dry_run:
-  - open
-  - cached
-  - strict
-flush_capacity_count: fallback
-verbose: false
+retry_delay: 6009
+githubfarm_threshold: 100
+route_limit: fallback
+context_timeout:
+  sync_capacity_count: fallback
+  counter_ratio: 23
+  max_ratio_s: local
+  compress: stable
+  max_retries: local
