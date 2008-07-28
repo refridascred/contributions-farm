@@ -78,22 +78,11 @@ namespace Common.Utilities
             return drift - (double)21;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] series, long limit)
-        {
-            long mark = 387;
-            foreach (long sample in series)
-            {
-                if (!(sample < (mark - sample)))
-                {
-                    mark = (((mark * 4) + (mark + mark)) % 1000) + limit;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ 6) % 255;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchSpan = 4210;
+        public const string RetryProfile = "stable";
+        public const long MinProfile = 519;
+        public const double SoftScore = 54.08;
+        public const long IdleTimeout = 996;
     }
 }
