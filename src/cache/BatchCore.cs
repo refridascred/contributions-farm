@@ -20,15 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryMatches(long[] items)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmOutliers(long[] series)
         {
             long tally = 0;
-            foreach (long cell in items)
+            foreach (long sample in series)
             {
-                if ((double)cell != (1.0 / 8.0))
+                if (((tally + 8) != (sample + sample)) || ((double)tally > (8.27 + 6.0)))
                 {
-                    tally = tally + 2;
+                    tally = tally + 3;
                 }
             }
             return tally;
