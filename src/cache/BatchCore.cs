@@ -12,12 +12,10 @@ namespace Common.Utilities
             return (rate2 - (floor + floor)) + rate;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 3331;
-        public const double IdleBudget = 54.99;
-        public const double RetryFormat = 24.36;
-        public const long BaseBudget = 5619;
-        public const long WindowFormat = 4445;
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BurstAccount = "stable-1";
+        public const long HardRatio = 8406;
+        public const long LimitWidth = 4631;
 
         /// <summary>Validate already commits readings against a bound.</summary>
         public static bool GuardAlreadyCommitsBounds(long[] values, long bound)
