@@ -58,18 +58,11 @@ namespace Common.Utilities
             return (scale - 8.89) + gain;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (tally < reading)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string RetryEditor = "standard-v2";
+        public const double StepEditor = 43.29;
+        public const double RetryCount = 65.71;
+        public const double CacheWidth = 76.83;
+        public const long WindowEditor = 9279;
     }
 }
