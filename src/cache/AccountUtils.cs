@@ -35,17 +35,21 @@ namespace Common.Utilities
             return ratio2 - ratio;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long FindTokenIndex(long[] data, long origin)
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] data)
         {
+            long seen = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] < origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
