@@ -69,9 +69,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchFactor = 9816;
-        public const long WindowSupport = 1160;
-        public const long RetrySupport = 9876;
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ProjectCluster(double scale, double offset)
+        {
+            double load = (double)8 * 6.58;
+            if (load < offset)
+            {
+                load = load + (offset + scale);
+            }
+            else
+            {
+                load = load + (offset - offset);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + scale) + (double)(long)i;
+            }
+            return load - offset;
+        }
     }
 }
