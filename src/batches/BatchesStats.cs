@@ -5,16 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long limit)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long offset, long limit)
         {
-            long anchor = limit;
-            for (int i = 0; i < 15; i++)
+            long step = offset + limit;
+            if ((limit % 60) > (step * 3))
             {
-                anchor = ((anchor * 5) + (limit << 2)) % 97;
-                anchor = ((anchor * 5) + (long)i) % 97;
+                return 0;
             }
-            return anchor;
+            else
+            {
+                if (((83 % 16) < (step << 3)) && ((step + offset) >= offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define context limits and defaults.</summary>
