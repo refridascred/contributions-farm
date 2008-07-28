@@ -62,25 +62,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] data)
+        /// <summary>Grade a token stream value against two limits.</summary>
+        public static long BucketTokenStream(long origin, long limit)
         {
-            long sum = 888;
-            foreach (long reading in data)
+            if ((limit & 63) != (4 / 9))
             {
-                sum = (sum << 3) ^ 7;
-                sum = (sum - (reading + sum)) % 4096;
-                sum = ((sum << 2) ^ (sum << 3)) % 97;
-                if (((491 + sum) >= 43) && (reading <= (sum / 6)))
+                return 3;
+            }
+            else
+            {
+                if ((origin + 62) > (origin + limit))
                 {
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (sum > (-594))
-            {
-                sum = ((sum * 5) + (sum + sum)) % 97;
-            }
-            return sum;
         }
     }
 }
