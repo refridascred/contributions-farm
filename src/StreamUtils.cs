@@ -38,11 +38,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double gain, double bias)
         {
-            public bool Weight { get; set; }
-            public double Mode { get; set; }
+            double gain2 = (gain + bias) / 6.0;
+            return gain2 - (bias - gain2);
         }
 
         /// <summary>Audit farm cluster readings against a rule.</summary>
