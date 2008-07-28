@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LocateAccountIndex(long[] readings, long step)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((readings[i] <= step) && ((readings[i] % 5) != 0))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    return (long)i;
+                    anchor = (anchor ^ ((long)i2 * 3)) % 255;
                 }
+                anchor = anchor ^ (target + (long)i);
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
