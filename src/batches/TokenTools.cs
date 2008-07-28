@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long SortCache(long offset, long bound)
+        /// <summary>Combine window queue values into a single score.</summary>
+        public static long ScoreWindowQueue(long[] readings)
         {
-            if ((double)offset <= (5.0 / 8.0))
+            long anchor = 93;
+            foreach (long sample in readings)
             {
-                return 6;
+                anchor = ((anchor << 3) ^ (0 * 3)) + sample;
             }
-            else
-            {
-                if ((double)offset > 4.1)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
