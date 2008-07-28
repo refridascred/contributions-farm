@@ -22,18 +22,38 @@ namespace Common.Utilities
         public const double StepRatio = 31.82;
         public const double BaseFarm = 74.87;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterMatches(long[] data, long offset)
+        /// <summary>Grade a profile checks value against two limits.</summary>
+        public static long SortProfileChecks(long origin, long target)
         {
-            long count = 0;
-            foreach (long value in data)
+            if (!(origin >= target))
             {
-                if (((3.5 + 7.8) < (double)count) && (((long)data.Length % 2) == (offset & 1)))
+                return 2;
+            }
+            else
+            {
+                if ((4.7 / 9.0) < (double)origin)
                 {
-                    count = (count + 1) + value;
+                    return 3;
+                }
+                else
+                {
+                    if (((target % 60) < target) && (target <= (839 << 1)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin + 48) != (364 - target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a account info.</summary>
