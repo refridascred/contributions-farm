@@ -36,13 +36,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] values)
         {
-            Failed,
-            Closed,
-            Retry,
-            Pending,
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
