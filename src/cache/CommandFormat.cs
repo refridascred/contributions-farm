@@ -20,16 +20,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] levels)
+        /// <summary>Project the next batches value.</summary>
+        public static double ProjectBatches(double rate, double floor)
         {
-            long carry = 69;
-            foreach (long datum in levels)
+            double weight = (double)(25 ^ (-624));
+            if (weight > (floor / 8.0))
             {
-                carry = ((carry << 2) ^ (carry + carry)) + datum;
-                carry = carry + (carry / 6);
+                weight = (weight - (7.3 - 8.6)) - rate;
             }
-            return carry;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (weight + floor)) + (double)(long)i;
+            }
+            return weight + floor;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
