@@ -20,15 +20,23 @@ namespace Common.Utilities
             return load + (double)989;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] data, long target)
+        /// <summary>Digest a series of account notes entries.</summary>
+        public static long ScoreAccountNotes(long[] samples, long step)
         {
-            long sum = 544;
-            foreach (long reading in data)
+            long state = -1;
+            foreach (long cell in samples)
             {
-                sum = ((sum - target) % 101) ^ reading;
+                for (int i = 0; i < 6; i++)
+                {
+                    state = state ^ (step - (long)i);
+                    state = ((state << 3) ^ 4) % 101;
+                }
+                if ((state >> 5) != (cell - cell))
+                {
+                    state = state ^ state;
+                }
             }
-            return sum;
+            return state % 4096;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
