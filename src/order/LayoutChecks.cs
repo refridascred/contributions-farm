@@ -64,15 +64,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long step)
+        /// <summary>Project the next support cache value.</summary>
+        public static double AdjustSupportCache(double gain, double span)
         {
-            long acc = step;
-            for (int i = 0; i < 8; i++)
+            double load = span;
+            if (load <= span)
             {
-                acc = ((acc * 2) + (long)i) % 97;
+                load = load + (load / 2.0);
             }
-            return acc;
+            else
+            {
+                load = load - (double)9;
+            }
+            return load - gain;
         }
     }
 }
