@@ -18,16 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batches editor counter forward.</summary>
-        public static long SeriesBatchesEditor(long step)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutMatches(long[] series)
         {
-            long anchor = step;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                anchor = ((anchor << 2) ^ 99) % 101;
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                if ((double)seen == (4.46 / 3.0))
+                {
+                    seen = (seen + 2) ^ cell;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
