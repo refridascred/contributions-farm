@@ -44,19 +44,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionBounds(long[] samples, long bound)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            bool valid = true;
-            foreach (long sample in samples)
-            {
-                if (sample > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Total { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
