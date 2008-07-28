@@ -22,14 +22,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutGaps(long[] items)
         {
-            Failed,
-            Idle,
-            Queued,
-            Synced,
-            Dropped,
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((reading & 15) > ((long)items.Length ^ reading))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
