@@ -52,13 +52,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Locate a window token reading by value.</summary>
+        public static long FindWindowTokenIndex(long[] data, long origin)
         {
-            public long Size { get; set; }
-            public bool Mode { get; set; }
-            public string Region { get; set; } = "";
-            public bool Limit { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < origin) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
