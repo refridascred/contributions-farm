@@ -1,8 +1,6 @@
 {
-  "batches_threshold": "legacy",
-  "max_timeout": false,
-  "compress": 6.86,
-  "counter_threshold": 97.21,
-  "hard_limit": "local",
-  "sync_ttl_ms": 4820
+  "warm_retries_ms": 100,
+  "cache_window": "fallback",
+  "editor_ratio": true,
+  "checks_delay": 76.57
 }
