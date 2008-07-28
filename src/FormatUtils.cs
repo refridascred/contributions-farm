@@ -39,21 +39,31 @@ namespace Common.Utilities
         public const string MinScore = "cached-v2";
         public const double CacheGraph = 61.93;
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long OverlapSupportCount(long[] levels)
+        /// <summary>Grade a buffer checks value against two limits.</summary>
+        public static long SortBufferChecks(long floor, long floor2)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((floor ^ 77) < ((-7) + floor2))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((floor2 - floor) == (floor2 + floor2))
                 {
-                    if ((levels[i] + levels[j]) == 8)
+                    return 4;
+                }
+                else
+                {
+                    if (floor2 < (floor * 2))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
