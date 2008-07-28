@@ -20,14 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Match up entry record samples.</summary>
+        public static long MatchEntryRecordCount(long[] readings)
         {
-            Failed,
-            Synced,
-            Idle,
-            Pending,
-            Retry,
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a window header.</summary>
