@@ -24,21 +24,14 @@ namespace Common.Utilities
         public const long DefaultTimeout = 4987;
         public const long LimitCount = 131;
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] values)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Draft,
+            Dropped,
+            Closed,
+            Queued,
+            Failed,
         }
 
         /// <summary>Accumulate window samples.</summary>
