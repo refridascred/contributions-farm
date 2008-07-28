@@ -39,13 +39,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long target, long offset)
         {
-            Queued,
-            Paused,
-            Locked,
-            Idle,
+            if ((target % 8) == (target & 7))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((offset % 97) < target) && ((offset - offset) == (offset + target)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
