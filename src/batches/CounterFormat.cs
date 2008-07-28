@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmLimits(long[] data, long offset)
-        {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BatchFarm = 5.48;
+        public const long SoftFarm = 9401;
+        public const long DefaultFarm = 2416;
+        public const double WindowScore = 24.46;
+        public const long MinBudget = 328;
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
