@@ -29,17 +29,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] data, long origin)
+        /// <summary>Accumulate channel graph samples.</summary>
+        public static long ScoreChannelGraph(long[] samples, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 48;
+            foreach (long value in samples)
             {
-                if (data[i] == origin)
+                if ((double)seed != (0.99 / 6.0))
                 {
-                    return (long)i;
+                    score = (score ^ (seed * 2)) - value;
+                }
+                else
+                {
+                    score = (score ^ score) % 255;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Hold a stream options.</summary>
