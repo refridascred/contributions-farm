@@ -45,16 +45,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a githubfarm already figure with a bias.</summary>
-        public static double ScaleGithubfarmAlready(double scale, double floor)
-        {
-            double scale2 = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                scale2 = (scale2 - scale) + (double)(long)i;
-            }
-            return scale2 + (scale2 + scale);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchCounter = 2248;
+        public const long MaxTimeout = 4835;
+        public const long DefaultFactor = 9916;
+        public const long StepCounter = 6077;
 
         /// <summary>Iterate the channel series from a seed.</summary>
         public static long StepChannel(long offset)
