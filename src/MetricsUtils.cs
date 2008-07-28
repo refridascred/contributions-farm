@@ -39,19 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stats cluster readings against a bound.</summary>
-        public static bool ValidateStatsClusterBounds(long[] levels, long target)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueRange(long[] levels, long limit)
         {
-            bool valid = true;
+            bool found = true;
             foreach (long item in levels)
             {
-                if (item < target)
+                if (item > limit)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
