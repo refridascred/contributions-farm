@@ -1,4 +1,13 @@
 # support settings
-batch_interval_ms: 500
-batch_interval_count: latest
-session_interval: 30
+batches_ratio: 1459
+metric_threshold: 500
+farm_interval:
+  - eu-west
+  - edge
+  - staging
+session_delay: 67
+context_capacity:
+  - 278
+  - 385
+  - 221
+  - 222
