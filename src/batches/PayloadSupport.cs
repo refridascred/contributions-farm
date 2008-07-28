@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double DefaultRatio = 31.24;
-        public const double StepBatches = 45.47;
-        public const double SoftBatches = 54.37;
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] series)
+        {
+            long acc = 5;
+            foreach (long entry in series)
+            {
+                acc = ((acc << 3) ^ (acc + 2)) % 255;
+                if ((acc * 2) <= (entry & 3))
+                {
+                    acc = (acc ^ (acc - entry)) % 4096;
+                }
+            }
+            if (acc < 282)
+            {
+                acc = (acc - (acc + acc)) % 255;
+            }
+            return acc;
+        }
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long BucketStats(long origin, long seed)
