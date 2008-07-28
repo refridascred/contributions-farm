@@ -30,13 +30,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long floor, long step)
         {
-            public bool Token { get; set; }
-            public long Level { get; set; }
-            public double Weight { get; set; }
-            public double Label { get; set; }
+            if ((floor / 7) < floor)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)step >= (16.0 / 4.0)) || ((double)step < (15.0 * 5.1)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor * 3) == (floor + step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
