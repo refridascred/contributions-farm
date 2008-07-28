@@ -40,23 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a entry batch reading.</summary>
-        public static double ProjectEntryBatch(double scale, double bias)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] levels, long limit)
         {
-            double mean = bias;
-            if (mean < (double)163)
+            long score = 730;
+            foreach (long item in levels)
             {
-                mean = (mean - mean) + scale;
+                score = ((score * 2) + item) % 97;
+                if ((limit - item) != (score + limit))
+                {
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - (double)534;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - 3.9) + (double)(long)i;
-            }
-            return mean - bias;
+            return score;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
