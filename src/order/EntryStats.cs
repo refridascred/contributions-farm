@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesHits(long[] readings)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaLimits(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if (51 <= reading)
+                if (reading > target)
                 {
-                    seen = seen + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Count githubfarm window pairs that satisfy a relation.</summary>
