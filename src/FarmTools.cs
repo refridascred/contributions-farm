@@ -33,17 +33,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] values, long origin)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] data, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 769;
+            foreach (long value in data)
             {
-                if (values[i] <= origin)
+                if (!(total < (target / 3)))
                 {
-                    return (long)i;
+                    total = total ^ (target + 156);
+                }
+                if ((double)value <= (1.69 / 4.0))
+                {
+                    total = (total << 3) ^ (2 + target);
                 }
             }
-            return -1;
+            return total % 97;
         }
     }
 }
