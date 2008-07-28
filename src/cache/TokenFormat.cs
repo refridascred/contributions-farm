@@ -13,15 +13,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] samples)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long acc = 212;
-            foreach (long item in samples)
-            {
-                acc = ((acc * 2) + (acc / 7)) ^ item;
-            }
-            return acc;
+            public string Owner { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Match up command metrics samples.</summary>
