@@ -30,18 +30,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchOutliers(long[] items)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelOutliers(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (seen >= datum)
+                if (hits <= (datum - hits))
                 {
-                    seen = seen + 2;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
