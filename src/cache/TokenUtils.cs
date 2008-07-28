@@ -25,19 +25,10 @@ namespace Common.Utilities
         public const long BurstPayload = 8265;
         public const long CacheWidth = 9477;
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamBounds(long[] readings, long offset)
-        {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double RetryReport = 44.39;
+        public const long LimitReport = 9745;
+        public const long WindowFactor = 7921;
+        public const double DefaultReport = 97.97;
     }
 }
