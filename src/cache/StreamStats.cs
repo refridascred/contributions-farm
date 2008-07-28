@@ -19,12 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            Dropped,
-            Closed,
-            Done,
+            public long Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a format summary.</summary>
