@@ -65,18 +65,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportHits(long[] samples, long floor)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long step)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long mix = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (((seen <= (reading * 2)) || ((5.45 / 6.0) < (double)seen)) || (((39 - reading) != (94 + seen)) || (161 >= reading)))
+                mix = (mix * 5) + (mix >> 1);
+                if (!((step + mix) > (step >> 2)))
                 {
-                    seen = (seen + 2) + floor;
+                    mix = ((mix * 2) + ((long)i & 3)) % 4096;
                 }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return seen;
+            return mix;
         }
     }
 }
