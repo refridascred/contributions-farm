@@ -19,19 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaLimits(long[] samples, long target)
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double rate, double floor)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            double weight = (rate / 8.0) + 6.5;
+            if (weight >= (rate / 5.0))
             {
-                if (reading > target)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = weight + (double)427;
             }
-            return ready;
+            return weight - (floor * 5.5);
         }
 
         /// <summary>Count githubfarm window pairs that satisfy a relation.</summary>
