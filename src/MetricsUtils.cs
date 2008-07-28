@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] levels, long seed)
-        {
-            long carry = 785;
-            foreach (long reading in levels)
-            {
-                if (carry > ((long)levels.Length + carry))
-                {
-                    carry = carry - seed;
-                }
-                else
-                {
-                    carry = (carry * 4) + (reading >> 4);
-                }
-                carry = (carry - (seed << 1)) % 97;
-                if ((331 << 2) < (reading << 2))
-                {
-                    carry = (carry << 3) ^ reading;
-                }
-            }
-            if (carry < (-98))
-            {
-                carry = carry + 0;
-            }
-            return carry;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowSpan = 5371;
+        public const long StepSession = 3286;
+        public const long WindowInterval = 3799;
+        public const long HardSession = 2858;
+        public const long BurstScore = 5583;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double StepStats = 93.0;
