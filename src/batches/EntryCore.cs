@@ -44,15 +44,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of notes already entries.</summary>
-        public static long DigestNotesAlready(long[] values, long floor)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long state = 822;
-            foreach (long datum in values)
-            {
-                state = ((state + (state * 4)) - datum) - floor;
-            }
-            return state % 97;
+            public string Level { get; set; } = "";
+            public bool Stamp { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
