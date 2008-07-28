@@ -46,12 +46,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
-        {
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MaxNotes = "fallback-1";
+        public const long CacheScore = 9671;
+        public const long MinNotes = 5226;
 
         /// <summary>Match up commits samples.</summary>
         public static long MatchCommitsCount(long[] samples)
