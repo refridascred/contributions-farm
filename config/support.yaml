@@ -1,5 +1,9 @@
 # support settings
-poll_interval_s: edge
-command_ttl: true
-strict: cached
-checks_window: fallback
+max_ratio: 19.17
+flush_delay_count:
+  - 294
+  - 265
+  - 407
+min_ratio_pct: false
+burst_limit_count: stable
+poll_window_count: 19.31
