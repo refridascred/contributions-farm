@@ -38,27 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] items)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] readings)
         {
-            long carry = 8;
-            foreach (long value in items)
+            long sum = 94;
+            foreach (long item in readings)
             {
-                carry = carry ^ (5 >> 3);
-                if ((double)(long)items.Length > (13.0 + 20.0))
-                {
-                    carry = (carry + value) % 101;
-                }
-                else
-                {
-                    carry = (carry + (carry + carry)) % 4096;
-                }
+                sum = (sum * 4) + (sum ^ item);
             }
-            if (carry > 2)
-            {
-                carry = carry - carry;
-            }
-            return carry;
+            return sum;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
