@@ -1,9 +1,7 @@
-id,token,active
-1,82.02,25
-2,211,standard
-3,97.96,198
-4,76.43,629
-5,42.28,27.02
-6,83.68,latest
-7,803,79.4
-8,16.9,eu-west
+id,active,label,level
+1,cached,cached,97.04
+2,78.04,745,staging
+3,83.35,eu-west,883
+4,512,81.44,50.48
+5,694,local,latest
+6,0.98,803,589
