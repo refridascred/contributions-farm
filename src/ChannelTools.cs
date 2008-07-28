@@ -32,18 +32,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of token tools entries.</summary>
-        public static long CombineTokenTools(long[] items, long origin)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphOutliers(long[] series)
         {
-            long score = 681;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((sample - sample) <= sample)
+                if (tally > entry)
                 {
-                    score = ((score + sample) % 255) - origin;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return score % 65521;
+            return tally;
         }
     }
 }
