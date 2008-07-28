@@ -80,12 +80,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] values)
         {
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
-            public bool Weight { get; set; }
+            long carry = 481;
+            foreach (long item in values)
+            {
+                carry = carry + (item * 2);
+                if (0.9 <= (double)carry)
+                {
+                    carry = ((carry << 2) ^ (item << 3)) % 65521;
+                }
+            }
+            return carry % 1000;
         }
     }
 }
