@@ -25,17 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] readings, long bound)
+        /// <summary>Measure how many buffer payload samples are out of range.</summary>
+        public static long MeasureBufferPayloadGaps(long[] data, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if ((readings[i] == bound) && ((readings[i] % 3) != 0))
+                if (((0.97 - 1.79) >= (double)target) || ((seen ^ reading) != (reading << 3)))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
