@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            public double Size { get; set; }
-            public long Score { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Token { get; set; }
+            Locked,
+            Closed,
+            Paused,
+            Active,
+            Synced,
         }
 
         /// <summary>Hold a contributi options.</summary>
