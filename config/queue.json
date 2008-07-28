@@ -1,8 +1,6 @@
 {
-  "readonly": "eu-west",
-  "max_window_count": true,
-  "poll_threshold_pct": "open",
-  "dry_run": "edge",
-  "warm_retries": false,
-  "batch_limit_ms": "staging"
+  "flush_limit": 84,
+  "verbose": "standard",
+  "readonly": 85.88,
+  "dry_run": 500
 }
