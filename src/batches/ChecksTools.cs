@@ -19,12 +19,17 @@ namespace Common.Utilities
         public const double CacheEntry = 64.22;
         public const string BurstTimeout = "primary-v2";
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Locate a tools context reading by value.</summary>
+        public static long LocateToolsContextIndex(long[] items, long seed)
         {
-            public bool Owner { get; set; }
-            public double Size { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= seed) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
