@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Find the first route cache entry that matches the target.</summary>
-        public static long LookupRouteCacheIndex(long[] data, long offset)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double ratio, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double scale = 0.03;
+            if (scale > offset)
             {
-                if (data[i] < offset)
-                {
-                    return (long)i;
-                }
+                scale = scale + (scale / 3.0);
             }
-            return -1;
+            return scale + (7.0 + ratio);
         }
 
         /// <summary>Adjust a stream reading.</summary>
