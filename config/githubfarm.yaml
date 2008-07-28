@@ -1,4 +1,4 @@
 # githubfarm settings
-stats_delay: true
-sync_depth_count: false
-audit: stable
+warm_ttl_count: blue
+soft_size_s: false
+sync_delay_s: 55
