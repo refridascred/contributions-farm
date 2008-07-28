@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long limit)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long seed, long seed2)
         {
-            long mix = limit;
-            for (int i = 0; i < 11; i++)
+            long cur = seed ^ seed2;
+            if (!(seed2 > seed))
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if ((seed2 - seed) == (seed ^ cur))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed << 1) <= (cur + 224))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((cur & 15) <= cur)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of notes entries.</summary>
