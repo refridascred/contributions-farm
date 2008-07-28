@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] levels)
         {
-            Locked,
-            Idle,
-            Failed,
-            Synced,
+            long total = 9;
+            foreach (long sample in levels)
+            {
+                if ((double)total != (19.0 / 5.0))
+                {
+                    total = ((total << 3) ^ 985) ^ sample;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
