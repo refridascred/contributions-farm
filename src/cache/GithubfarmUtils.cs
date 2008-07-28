@@ -15,21 +15,21 @@ namespace Common.Utilities
         public const string LimitSize = "legacy";
         public const long WindowAccount = 9045;
 
-        /// <summary>Compare every pair of commits batch readings.</summary>
-        public static long CompareCommitsBatchCount(long[] readings)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) != 11)
+                    if ((samples[i] ^ samples[j]) < 0)
                     {
-                        seen = seen + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a payload record.</summary>
