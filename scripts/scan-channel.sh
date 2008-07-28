@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=72
-log "limit is ${CHANNEL_LIMIT}"
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
-for item in edge standard; do
+for item in staging latest edge eu-west; do
     log "checking ${item}"
 done
+
+mode="${1:-primary}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
