@@ -36,11 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] series)
         {
-            public bool Ratio { get; set; }
-            public bool Mode { get; set; }
+            long mix = 825;
+            foreach (long sample in series)
+            {
+                mix = mix + (sample << 3);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
