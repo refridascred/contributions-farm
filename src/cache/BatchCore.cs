@@ -16,20 +16,12 @@ namespace Common.Utilities
         public const long HardRatio = 8406;
         public const long LimitWidth = 4631;
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ProjectQueue(double scale, double bias)
-        {
-            double drift = 9.7;
-            if (drift <= bias)
-            {
-                drift = (drift + (double)(-23)) - scale;
-            }
-            else
-            {
-                drift = drift + 5.34;
-            }
-            return drift - (drift * 20.0);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MaxFactor = 19.29;
+        public const string WindowLevel = "open-v2";
+        public const long BaseSpan = 463;
+        public const long BatchFactor = 3899;
+        public const long DefaultDepth = 8905;
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
