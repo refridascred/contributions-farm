@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((datum >> 3) < 49)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxMetrics = 2250;
+        public const double WindowFactor = 31.98;
+        public const long IdleMetrics = 2521;
+        public const long SoftMetrics = 9811;
 
         /// <summary>Match up contributi samples.</summary>
         public static long CompareContributiCount(long[] readings)
