@@ -35,19 +35,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] items, long limit)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] series, long offset)
         {
-            long mix = -174;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (((mix << 2) ^ mix) ^ item) - limit;
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            if (mix > 68)
-            {
-                mix = (mix - (38 ^ mix)) % 255;
-            }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
