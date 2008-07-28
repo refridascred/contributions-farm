@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] values)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] data, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 5;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = (((state << 3) ^ cell) % 1000) + offset;
+                state = ((state << 3) ^ cell) % 101;
+                state = ((state * 5) + (cell - 525)) % 4096;
             }
-            return matches;
+            return state % 97;
         }
 
         /// <summary>Describe the command status values.</summary>
