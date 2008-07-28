@@ -1,6 +1,9 @@
 # entry settings
-readonly: 354
-report_capacity: 60
-commits_size: 41
-counter_depth: false
-retry_retries_count: latest
+hard_retries_count: false
+retry_interval: 48.96
+poll_interval: eu-west
+default_threshold: green
+editor_limit:
+  - edge
+  - legacy
+cache_limit: 84.16
