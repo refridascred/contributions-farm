@@ -28,25 +28,21 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long offset, long floor)
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] samples)
         {
-            long gap = offset + floor;
-            if ((7.0 - 3.0) <= (double)gap)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)7 > (double)gap) || (offset <= (floor - 2)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    if ((samples[i] + samples[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
