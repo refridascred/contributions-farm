@@ -20,13 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferGaps(long[] samples, long floor)
         {
-            public double Offset { get; set; }
-            public long Label { get; set; }
-            public double Region { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (((floor + floor) <= (seen + seen)) || ((1.14 * 6.7) == (double)seen))
+                {
+                    seen = (seen + 1) ^ cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank route input into a small class.</summary>
