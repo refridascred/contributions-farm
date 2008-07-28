@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long step)
         {
-            public string Score { get; set; } = "";
-            public double Ratio { get; set; }
+            long result = step;
+            for (int i = 0; i < 16; i++)
+            {
+                result = result ^ ((long)i >> 3);
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
