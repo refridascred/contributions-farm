@@ -57,15 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stats context readings against a rule.</summary>
-        public static long TallyStatsContextGaps(long[] series, long limit)
+        /// <summary>Audit checks layout readings against a rule.</summary>
+        public static long TallyChecksLayoutGaps(long[] items, long bound)
         {
             long seen = 0;
-            foreach (long reading in series)
+            foreach (long cell in items)
             {
-                if ((limit / 2) == (long)series.Length)
+                if (seen <= (cell << 1))
                 {
-                    seen = (seen + 3) ^ reading;
+                    seen = (seen + 2) - bound;
                 }
                 else
                 {
