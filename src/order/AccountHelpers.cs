@@ -39,21 +39,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up commits queue samples.</summary>
-        public static long PairCommitsQueueCount(long[] items)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Failed,
+            Closed,
+            Retry,
+            Pending,
         }
 
         /// <summary>Define window limits and defaults.</summary>
