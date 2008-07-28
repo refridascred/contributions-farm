@@ -38,16 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long origin)
+        /// <summary>Validate schema account readings against a bound.</summary>
+        public static bool GuardSchemaAccountBounds(long[] series, long step)
         {
-            long state = origin;
-            for (int i = 0; i < 10; i++)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                state = state + state;
-                state = ((state * 3) + (long)i) % 1000;
+                if (datum != step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
