@@ -1,6 +1,6 @@
 {
-  "idle_delay_pct": [36, 378, 474, 445],
-  "sync_capacity_pct": [290, 6],
-  "readonly": "blue",
-  "layout_ttl": "stable"
+  "counter_ratio": 45,
+  "idle_interval": ["edge", "fallback", "staging", "staging"],
+  "min_delay_pct": ["latest", "latest", "standard", "local"],
+  "persist": false
 }
