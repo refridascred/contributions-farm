@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double SoftScore = 30.16;
-        public const double StepContributi = 55.32;
-        public const double DefaultDepth = 91.85;
-        public const string HardContributi = "legacy-1";
-        public const long StepDepth = 6991;
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
+        {
+            Stale,
+            Idle,
+            Ready,
+        }
 
         /// <summary>Hold a editor options.</summary>
         public sealed class EditorOptions
