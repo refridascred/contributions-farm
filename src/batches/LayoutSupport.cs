@@ -36,12 +36,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            public bool Score { get; set; }
-            public long Count { get; set; }
-            public double Label { get; set; }
+            public double Level { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
