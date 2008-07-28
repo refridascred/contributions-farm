@@ -69,12 +69,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            public long Weight { get; set; }
-            public string Level { get; set; } = "";
-            public string Size { get; set; } = "";
+            New,
+            Retry,
+            Ready,
+            Done,
+            Locked,
         }
     }
 }
