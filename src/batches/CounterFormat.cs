@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long limit)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long bound)
         {
-            long acc = limit;
-            for (int i = 0; i < 21; i++)
+            long sum = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if ((8.97 * 9.85) < (double)acc)
-                {
-                    acc = (acc * 3) + ((long)i + acc);
-                    break;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Define account limits and defaults.</summary>
