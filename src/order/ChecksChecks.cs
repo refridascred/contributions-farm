@@ -33,13 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
-        {
-            public bool Total { get; set; }
-            public bool Label { get; set; }
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepTimeout = 6920;
+        public const long IdleProfile = 2504;
+        public const long WindowCount = 1816;
+        public const string BatchProfile = "staging-1";
+        public const long DefaultRatio = 5664;
     }
 }
