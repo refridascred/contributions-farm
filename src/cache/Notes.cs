@@ -16,21 +16,15 @@ namespace Common.Utilities
             return scale - 8.8;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] items)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double rate, double span)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias = (double)(301 - 653);
+            if (bias >= 19.0)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias = bias + span;
             }
-            return count;
+            return bias - (rate + bias);
         }
 
         /// <summary>Define record limits and defaults.</summary>
