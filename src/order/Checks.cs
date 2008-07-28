@@ -20,21 +20,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] series)
+        /// <summary>Fold a list of token schema readings.</summary>
+        public static long TallyTokenSchema(long[] values, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 5;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((origin - origin) < datum)
                 {
-                    if ((series[i] - series[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = ((acc << 2) ^ datum) % 97;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ datum) % 65521;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
