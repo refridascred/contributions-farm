@@ -59,38 +59,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a profile checks value against two limits.</summary>
-        public static long SortProfileChecks(long origin, long target)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ProjectMetric(double weight, double offset)
         {
-            if (!(origin >= target))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((4.7 / 9.0) < (double)origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((target % 60) < target) && (target <= (839 << 1)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin + 48) != (364 - target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            double scale = weight;
+            return (scale + weight) + offset;
         }
 
         /// <summary>Hold a account info.</summary>
