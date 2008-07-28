@@ -33,15 +33,17 @@ namespace Common.Utilities
         public const long IdleLevel = 561;
         public const long MaxGithubfarm = 8878;
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] samples)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] samples, long bound)
         {
-            long carry = 332;
-            foreach (long datum in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (carry + (datum - datum)) % 65521;
+                if ((samples[i] == bound) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
