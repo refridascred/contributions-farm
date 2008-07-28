@@ -56,13 +56,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Grade a cache editor value against two limits.</summary>
+        public static long ClassifyCacheEditor(long floor, long step)
         {
-            Locked,
-            Queued,
-            Dropped,
-            Stale,
+            long edge = floor - step;
+            if ((double)edge < 2.7)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor & 7) <= (floor - (-658)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the token level values.</summary>
