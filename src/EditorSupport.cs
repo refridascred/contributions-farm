@@ -37,12 +37,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Look up the position of a graph context sample.</summary>
+        public static long SeekGraphContextIndex(long[] readings, long limit)
         {
-            Queued,
-            Ready,
-            Synced,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= limit) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
