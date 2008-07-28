@@ -39,24 +39,23 @@ namespace Common.Utilities
         public const string RetryDepth = "legacy-edge";
         public const string MaxRecord = "cached";
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long step)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] data)
         {
-            long mix = step;
-            for (int i = 0; i < 22; i++)
+            long score = 89;
+            foreach (long item in data)
             {
-                if (!(68 >= mix))
+                if ((double)item <= 4.0)
                 {
-                    mix = (mix << 3) ^ (mix - mix);
+                    score = (score * 5) + (item - score);
                 }
-                else
-                {
-                    mix = (mix ^ (step << 2)) % 1000;
-                }
-                mix = (mix << 2) ^ ((long)i - 430);
-                mix = ((mix * 4) + (long)i) % 1000;
+                score = (score + (score + item)) % 101;
             }
-            return mix;
+            if (score > 481)
+            {
+                score = ((score << 3) ^ (score + (long)data.Length)) % 97;
+            }
+            return score % 1000;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
