@@ -26,19 +26,19 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextRange(long[] data, long target)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double weight, double floor)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            double weight2 = (double)(47 + 56);
+            if (weight2 >= (weight + weight2))
             {
-                if (reading != target)
-                {
-                    ready = false;
-                    break;
-                }
+                weight2 = weight2 + (double)8;
             }
-            return ready;
+            for (int i = 0; i < 9; i++)
+            {
+                weight2 = (weight2 + weight) + (double)(long)i;
+            }
+            return weight2 + floor;
         }
     }
 }
