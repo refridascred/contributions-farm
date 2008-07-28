@@ -33,25 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long floor, long step)
-        {
-            if (((step << 1) <= (floor & 127)) || ((step * 2) < (floor - step)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor << 3) == (16 - floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 6089;
+        public const long BatchInterval = 7087;
+        public const string WindowFilter = "standard-v2";
+        public const long MinWidth = 6882;
+        public const long LimitDepth = 9700;
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
