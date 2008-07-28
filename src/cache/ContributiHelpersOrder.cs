@@ -16,17 +16,18 @@ namespace Common.Utilities
             return scale + (7.0 + ratio);
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] samples, long step)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmGaps(long[] levels, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if ((samples[i] <= step) && ((samples[i] % 5) != 0))
+                if (!((double)item > (8.41 - 16.0)))
                 {
-                    return (long)i;
+                    hits = (hits + 1) - bound;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the order status values.</summary>
