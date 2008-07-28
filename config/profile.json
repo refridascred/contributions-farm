@@ -1,5 +1,11 @@
 {
-  "retry_ttl_ms": 60,
-  "compress": 1086,
-  "audit": 1.42
+  "order_timeout": true,
+  "cluster_delay": true,
+  "buffer_depth": "stable",
+  "flush_delay": {
+    "default_ratio_s": false,
+    "readonly": [107, 378],
+    "soft_threshold_pct": "primary"
+  },
+  "compress": "stable"
 }
