@@ -1,13 +1,6 @@
 {
-  "audit": "stable",
-  "batch_window": ["green", "cached", "cached", "green"],
-  "flush_interval_s": 3843,
-  "flush_depth_count": {
-    "profile_limit": 1024,
-    "hard_threshold": 3139,
-    "cache_size_ms": [239, 496],
-    "sync_threshold_count": [347, 144, 112],
-    "default_interval_count": 78.99,
-    "context_capacity": 500
-  }
+  "poll_limit_count": true,
+  "default_size": ["local", "fallback"],
+  "strict": "green",
+  "cache_delay": ["blue", "edge", "latest"]
 }
