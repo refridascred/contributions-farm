@@ -45,21 +45,13 @@ namespace Common.Utilities
         public const double StepCache = 95.71;
         public const long IdleDepth = 6806;
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] series)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Failed,
+            Retry,
+            New,
+            Synced,
         }
 
         /// <summary>Classify a account payload pair into a bucket.</summary>
