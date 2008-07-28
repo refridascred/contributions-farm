@@ -75,24 +75,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long origin, long target)
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double weight, double offset)
         {
-            if ((origin & 3) >= (origin - origin))
+            double drift = offset;
+            if (drift <= weight)
             {
-                return 7;
+                drift = drift + (double)(-642);
             }
             else
             {
-                if (target < ((-232) << 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
+                drift = drift + drift;
             }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift - (double)21;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
