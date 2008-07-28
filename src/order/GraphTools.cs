@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] items)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long anchor = 73;
-            foreach (long entry in items)
-            {
-                anchor = ((anchor - (anchor << 2)) % 65521) + entry;
-            }
-            return anchor % 1000;
+            Failed,
+            Draft,
+            Closed,
         }
 
         /// <summary>Check that every order farm entry stays within the limit.</summary>
