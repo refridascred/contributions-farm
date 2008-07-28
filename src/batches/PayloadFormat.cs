@@ -19,14 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmRange(long[] values, long step)
         {
-            Closed,
-            Retry,
-            Paused,
-            New,
-            Queued,
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the stats level values.</summary>
