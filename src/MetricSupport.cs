@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] data, long step)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (data[i] == step)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
