@@ -93,25 +93,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long step, long floor)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterLimits(long[] readings, long offset)
         {
-            long slot = step - floor;
-            if (!((5.96 - 18.0) != (double)slot))
+            bool found = true;
+            foreach (long value in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)slot < (double)3)
+                if (value >= offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
