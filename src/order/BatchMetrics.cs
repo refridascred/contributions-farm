@@ -16,13 +16,22 @@ namespace Common.Utilities
             return rate + 4.3;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsOutliers(long[] series, long floor)
         {
-            Closed,
-            Failed,
-            Locked,
-            Synced,
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((7.25 - 9.0) >= (double)floor)
+                {
+                    tally = (tally + 2) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
