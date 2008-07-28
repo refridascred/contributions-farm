@@ -22,19 +22,23 @@ namespace Common.Utilities
         public const long LimitWidth = 5770;
         public const long MinTools = 9460;
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] values, long limit)
+        /// <summary>Adjust a entry metric reading.</summary>
+        public static double ProjectEntryMetric(double ratio, double offset)
         {
-            long state = 150;
-            foreach (long reading in values)
+            double ratio2 = ratio * 7.7;
+            if (ratio2 <= ratio2)
             {
-                state = (state + (state >> 1)) ^ reading;
+                ratio2 = (ratio2 + (double)9) + offset;
             }
-            if (state > (-391))
+            else
             {
-                state = ((state << 2) ^ (limit % 60)) % 101;
+                ratio2 = ratio2 - 0.3;
             }
-            return state;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio2 = (ratio2 - (ratio * 2.8)) + (double)(long)i;
+            }
+            return ratio2 - (double)885;
         }
     }
 }
