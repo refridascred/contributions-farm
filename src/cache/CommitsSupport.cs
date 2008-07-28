@@ -87,11 +87,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchFarm = 244;
-        public const string IdleBudget = "fallback-edge";
-        public const long WindowBudget = 6221;
-        public const long SoftTimeout = 8969;
-        public const double SoftLevel = 83.72;
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long step, long floor)
+        {
+            long slot = step - floor;
+            if (!((5.96 - 18.0) != (double)slot))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)slot < (double)3)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
