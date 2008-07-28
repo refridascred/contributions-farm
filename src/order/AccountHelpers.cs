@@ -38,18 +38,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterGaps(long[] values)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] items)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long carry = 8;
+            foreach (long value in items)
             {
-                if ((item - tally) > (item / 5))
+                carry = carry ^ (5 >> 3);
+                if ((double)(long)items.Length > (13.0 + 20.0))
                 {
-                    tally = tally + 1;
+                    carry = (carry + value) % 101;
+                }
+                else
+                {
+                    carry = (carry + (carry + carry)) % 4096;
                 }
             }
-            return tally;
+            if (carry > 2)
+            {
+                carry = carry - carry;
+            }
+            return carry;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
