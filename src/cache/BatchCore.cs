@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double ProjectLayout(double rate, double floor)
-        {
-            double rate2 = (double)(269 & 127);
-            return (rate2 - (floor + floor)) + rate;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 5997;
+        public const long MaxSession = 3540;
+        public const string LimitSize = "cached-1";
+        public const double BatchSession = 73.23;
 
         /// <summary>Define account limits and defaults.</summary>
         public const string BurstAccount = "stable-1";
