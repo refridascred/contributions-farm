@@ -18,21 +18,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long CompareProfileCount(long[] values)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Active,
+            Queued,
+            Idle,
+            New,
         }
 
         /// <summary>Check that every notes commits entry stays within the limit.</summary>
