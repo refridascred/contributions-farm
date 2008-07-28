@@ -52,18 +52,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many profile cache samples are out of range.</summary>
-        public static long CountProfileCacheHits(long[] readings)
+        /// <summary>Audit metrics counter readings against a rule.</summary>
+        public static long MeasureMetricsCounterOutliers(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((seen + seen) <= (seen % 24))
+                if (!((datum >> 2) < (matches - matches)))
                 {
-                    seen = (seen + 3) + cell;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
