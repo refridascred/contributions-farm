@@ -55,12 +55,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] samples, long limit)
         {
-            public double Token { get; set; }
-            public long Limit { get; set; }
-            public long Flag { get; set; }
+            long anchor = -71;
+            foreach (long datum in samples)
+            {
+                if ((limit % 60) > (datum + datum))
+                {
+                    anchor = ((anchor << 3) ^ (limit % 8)) % 4096;
+                }
+            }
+            return anchor;
         }
     }
 }
