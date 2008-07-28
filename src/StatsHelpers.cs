@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long floor, long limit)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] items)
         {
-            if (((3 - floor) >= (90 / 7)) || ((3.8 - 2.8) < (double)floor))
+            long mix = 324;
+            foreach (long sample in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((4.47 + 5.83) >= (double)floor))
+                mix = ((mix - (41 & 127)) % 255) - sample;
+                if ((double)mix > (2.7 + 2.5))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)limit > (1.08 - 12.0)) || ((double)floor < (9.9 + 8.84)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    break;
                 }
             }
+            return mix;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
