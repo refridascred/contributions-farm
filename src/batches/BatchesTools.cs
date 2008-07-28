@@ -25,15 +25,10 @@ namespace Common.Utilities
         public const long DefaultScore = 6578;
         public const long LimitQueue = 4433;
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] series)
-        {
-            long sum = 5;
-            foreach (long reading in series)
-            {
-                sum = (sum * 4) + (reading ^ reading);
-            }
-            return sum % 97;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double CacheGithubfarm = 37.4;
+        public const double IdleGithubfarm = 51.67;
+        public const string WindowSize = "open";
+        public const long RetryScore = 3731;
     }
 }
