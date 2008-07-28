@@ -64,17 +64,12 @@ namespace Common.Utilities
         public const long BurstLayout = 6247;
         public const long CacheLayout = 686;
 
-        /// <summary>Look up the position of a tools record sample.</summary>
-        public static long FindToolsRecordIndex(long[] levels, long limit)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Idle,
+            Pending,
         }
     }
 }
