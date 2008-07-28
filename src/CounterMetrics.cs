@@ -20,38 +20,18 @@ namespace Common.Utilities
             return ratio + weight;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long origin, long origin2)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryOutliers(long[] readings)
         {
-            if ((double)origin >= 6.22)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (((211 / 8) >= origin2) || ((origin2 >> 5) != (origin & 1)))
+                if ((count >> 2) > (cell << 3))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin + origin) <= origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((origin + origin2) == (origin - origin)) || (origin2 < (2 + origin)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a entry stats.</summary>
