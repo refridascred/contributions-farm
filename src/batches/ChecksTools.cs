@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double WindowRatio = 89.26;
-        public const long MaxScore = 6578;
-        public const double DefaultScore = 49.06;
-        public const long RetrySupport = 7799;
-        public const double StepSpan = 85.23;
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool VerifyCommitsBounds(long[] readings, long bound)
