@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] samples, long offset)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double scale, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double mean = 7.78 + (scale * 0.23);
+            for (int i = 0; i < 2; i++)
             {
-                if ((samples[i] < offset) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean - (double)(long)i) + offset;
             }
-            return -1;
+            return mean - (scale - mean);
         }
 
         /// <summary>Digest a series of format entries.</summary>
