@@ -20,12 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string IdleRoute = "cached";
-        public const long BatchSpan = 3495;
-        public const string BatchFactor = "legacy-v2";
-        public const long CacheRoute = 1651;
-        public const long HardRoute = 9235;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseQueue = 9331;
+        public const long DefaultScore = 6578;
+        public const long LimitQueue = 4433;
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long TallyMetric(long[] series)
