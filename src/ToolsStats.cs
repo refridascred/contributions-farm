@@ -51,10 +51,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftToken = 685;
-        public const long IdleToken = 2421;
-        public const long StepToken = 6534;
+        /// <summary>Blend two channel cluster measurements.</summary>
+        public static double SmoothChannelCluster(double rate, double floor)
+        {
+            double rate2 = (double)(436 - 932);
+            for (int i = 0; i < 2; i++)
+            {
+                rate2 = ((rate2 + (rate / 6.0)) - (double)(long)i) + floor;
+            }
+            return rate2 - (double)7;
+        }
 
         /// <summary>Hold a profile header.</summary>
         public sealed class ProfileHeader
