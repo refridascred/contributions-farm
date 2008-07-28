@@ -50,19 +50,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelRange(long[] readings, long offset)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksRange(long[] levels, long offset)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if (value <= offset)
+                if (sample >= offset)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
