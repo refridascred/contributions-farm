@@ -1,13 +1,9 @@
 # support settings
-max_ratio_ms:
-  - 456
-  - 71
-report_window:
-  - 472
-  - 16
-  - 334
-  - 246
-default_threshold_count: 10
-stats_timeout: 500
-sync_timeout: false
-batch_ttl_ms: 90.39
+strict: false
+sync_delay_pct: 1024
+poll_capacity_s: 32.34
+base_depth_count:
+  - 83
+  - 23
+  - 3
+  - 487
