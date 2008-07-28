@@ -1,4 +1,24 @@
 # support settings
-hard_retries_ms: edge
-schema_retries: true
-batch_depth_pct: false
+dry_run: 1024
+soft_interval:
+  default_size: 69.38
+  commits_limit:
+    poll_interval_s: eu-west
+    burst_threshold_s:
+      - 81
+      - 167
+    layout_threshold:
+      - 183
+      - 44
+      - 450
+      - 166
+    retry_threshold: 2771
+    max_limit_ms: 36.76
+  poll_timeout_s: true
+max_timeout:
+  verbose: green
+  token_ratio: false
+  soft_ratio: false
+  persist: 1024
+  flush_interval: 95
+  poll_interval: 4270
