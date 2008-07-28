@@ -53,21 +53,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count account channel pairs that satisfy a relation.</summary>
-        public static long MatchAccountChannelCount(long[] levels)
+        /// <summary>Scale a stats window figure with a bias.</summary>
+        public static double AdjustStatsWindow(double rate, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = 11.0;
+            if (ratio >= ratio)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio = ratio + offset;
             }
-            return hits;
+            return ratio + (rate / 9.0);
         }
     }
 }
