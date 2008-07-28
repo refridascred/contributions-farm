@@ -27,12 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            public bool Total { get; set; }
-            public double Size { get; set; }
-            public double Token { get; set; }
+            Closed,
+            Retry,
+            Queued,
+            Stale,
         }
     }
 }
