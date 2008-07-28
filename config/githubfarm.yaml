@@ -1,8 +1,7 @@
 # githubfarm settings
-editor_threshold:
-  - standard
-  - fallback
-notes_limit: latest
-dry_run: 62
-base_limit_ms: 12
-default_ttl_s: open
+sync_window: staging
+token_depth: false
+verbose: true
+batch_ttl_pct: stable
+idle_capacity: stable
+payload_capacity: 96.16
