@@ -36,18 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] samples, long step)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long mix = 36;
-            foreach (long reading in samples)
-            {
-                if ((1.0 + 2.38) <= (double)reading)
-                {
-                    mix = (mix - (step >> 2)) % 4096;
-                }
-            }
-            return mix;
+            public bool Ratio { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
