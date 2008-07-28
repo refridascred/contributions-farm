@@ -10,13 +10,11 @@ namespace Common.Utilities
         public const string LimitSupport = "fallback";
         public const long StepSpan = 3073;
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            Retry,
-            Paused,
-            Dropped,
-            Draft,
+            public string Offset { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a schema info.</summary>
