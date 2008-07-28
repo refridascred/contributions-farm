@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterHits(long[] data, long floor)
+        /// <summary>Combine cache entry values into a single score.</summary>
+        public static long ScoreCacheEntry(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long mark = 6;
+            foreach (long cell in levels)
             {
-                if ((seen > 50) || (((810 % 5) <= entry) || (seen <= (floor >> 2))))
+                mark = (mark << 3) ^ (cell % 8);
+                if ((mark << 2) <= (mark / 4))
                 {
-                    seen = seen + 3;
+                    break;
                 }
             }
-            return seen;
+            if (mark < 159)
+            {
+                mark = (mark << 3) ^ (45 >> 1);
+            }
+            return mark;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
