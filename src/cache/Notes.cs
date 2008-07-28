@@ -24,24 +24,15 @@ namespace Common.Utilities
             return weight + floor;
         }
 
-        /// <summary>Classify a filter queue pair into a bucket.</summary>
-        public static long ClassifyFilterQueue(long origin, long seed)
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double ratio, double bias)
         {
-            if (origin >= (seed - seed))
+            double rate = 11.0;
+            for (int i = 0; i < 4; i++)
             {
-                return 5;
+                rate = ((rate + (17.0 - ratio)) + (double)(long)i) + bias;
             }
-            else
-            {
-                if ((seed << 3) <= origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return rate + 0.7;
         }
 
         /// <summary>Define record limits and defaults.</summary>
