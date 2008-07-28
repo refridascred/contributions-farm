@@ -13,38 +13,17 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long offset, long step)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] levels, long step)
         {
-            if (!((step / 2) <= (step - offset)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset ^ 299) <= (1 - 90))
+                if (levels[i] <= step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((offset + offset) < step) || ((offset + step) >= step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (offset < (step * 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
