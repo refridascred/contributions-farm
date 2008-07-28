@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine window queue values into a single score.</summary>
-        public static long ScoreWindowQueue(long[] readings)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long target)
         {
-            long anchor = 93;
-            foreach (long sample in readings)
+            long acc = target;
+            for (int i = 0; i < 16; i++)
             {
-                anchor = ((anchor << 3) ^ (0 * 3)) + sample;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
