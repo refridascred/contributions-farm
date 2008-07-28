@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] readings, long floor)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 613;
+            foreach (long datum in values)
             {
-                if (readings[i] > floor)
+                if ((anchor - datum) > (datum & 31))
                 {
-                    return (long)i;
+                    anchor = anchor + (datum + anchor);
+                }
+                else
+                {
+                    anchor = (anchor ^ anchor) % 65521;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
