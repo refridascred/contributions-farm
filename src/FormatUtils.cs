@@ -66,32 +66,17 @@ namespace Common.Utilities
         public const long BurstSupport = 7649;
         public const long IdleSupport = 5022;
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long seed, long limit)
+        /// <summary>Find the first entry batch entry that matches the target.</summary>
+        public static long LocateEntryBatchIndex(long[] values, long floor)
         {
-            long next = seed + limit;
-            if (!((seed & 1) > (49 >> 2)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit << 3) < (limit % 100))
+                if (values[i] == floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((15.0 + 4.66) >= (double)next) || ((next ^ seed) < seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
