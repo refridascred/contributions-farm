@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] levels, long target)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
