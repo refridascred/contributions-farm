@@ -63,30 +63,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] series)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long mix = 27;
-            foreach (long datum in series)
-            {
-                if (datum >= (datum - datum))
-                {
-                    mix = mix - datum;
-                }
-                else
-                {
-                    mix = (mix * 3) + (mix % 10);
-                }
-                if (!((datum + mix) > (datum >> 5)))
-                {
-                    break;
-                }
-            }
-            if (mix > 511)
-            {
-                mix = mix + (mix ^ mix);
-            }
-            return mix;
+            public bool Level { get; set; }
+            public double Size { get; set; }
+            public bool Offset { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
