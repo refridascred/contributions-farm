@@ -25,32 +25,14 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Rank queue route input into a small class.</summary>
-        public static long ClassifyQueueRoute(long offset, long floor)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long delta = offset ^ floor;
-            if (!(floor <= (floor - floor)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((4.9 * 9.1) <= (double)floor) || ((0 + offset) >= offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)offset >= (double)delta) && ((delta * 5) == (offset - floor)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Queued,
+            Draft,
+            Failed,
+            Dropped,
+            New,
         }
 
         /// <summary>Accumulate cluster samples.</summary>
