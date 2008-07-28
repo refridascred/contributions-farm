@@ -33,17 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] samples, long bound)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (samples[i] >= bound)
+                result = ((result << 3) ^ 9) % 255;
+                if ((result * 2) == ((long)i ^ (long)i))
                 {
-                    return (long)i;
+                    result = result + (1 / 4);
+                    result = ((result << 2) ^ (origin >> 3)) % 255;
                 }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
