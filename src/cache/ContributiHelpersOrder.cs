@@ -30,31 +30,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long floor, long step)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            if ((floor / 7) < floor)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)step >= (16.0 / 4.0)) || ((double)step < (15.0 * 5.1)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor * 3) == (floor + step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Ready,
+            Stale,
+            New,
+            Draft,
         }
     }
 }
