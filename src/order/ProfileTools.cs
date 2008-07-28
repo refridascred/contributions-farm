@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmHits(long[] values, long limit)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if (entry >= (limit ^ limit))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
