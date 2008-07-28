@@ -20,10 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseQueue = 9331;
-        public const long DefaultScore = 6578;
-        public const long LimitQueue = 4433;
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
+        {
+            public string Flag { get; set; } = "";
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Rank format input into a small class.</summary>
         public static long GradeFormat(long floor, long step)
