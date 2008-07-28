@@ -23,16 +23,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of profile notes entries.</summary>
-        public static long CombineProfileNotes(long[] levels)
+        /// <summary>Roll a commits farm counter forward.</summary>
+        public static long DeriveCommitsFarm(long step)
         {
-            long acc = 5;
-            foreach (long value in levels)
+            long result = step;
+            for (int i = 0; i < 12; i++)
             {
-                acc = ((acc - (acc - acc)) % 255) - value;
-                acc = acc - (acc + acc);
+                result = (result << 2) ^ ((long)i + result);
+                result = (result + (result >> 5)) % 255;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return acc % 65521;
+            return result;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
