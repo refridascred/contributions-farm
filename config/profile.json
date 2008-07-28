@@ -1,5 +1,6 @@
 {
-  "record_window": 4,
-  "min_capacity": ["eu-west", "primary", "blue"],
-  "burst_delay_pct": [371, 113, 461, 7]
+  "dry_run": true,
+  "sync_capacity_ms": true,
+  "editor_capacity": false,
+  "report_size": 94.91
 }
