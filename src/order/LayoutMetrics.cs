@@ -20,10 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinScore = 4411;
-        public const long MinWidth = 5770;
-        public const long DefaultFilter = 102;
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Rank route input into a small class.</summary>
         public static long GradeRoute(long step, long bound)
