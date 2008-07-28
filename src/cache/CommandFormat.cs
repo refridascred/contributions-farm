@@ -46,17 +46,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] series, long bound)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Stale,
+            Synced,
         }
     }
 }
