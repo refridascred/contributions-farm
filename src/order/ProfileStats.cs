@@ -39,17 +39,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first metric command entry that matches the target.</summary>
-        public static long SeekMetricCommandIndex(long[] samples, long step)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] series, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 764;
+            foreach (long reading in series)
             {
-                if ((samples[i] == step) && ((samples[i] % 5) == 0))
+                result = ((result + result) % 1000) - reading;
+                if ((origin << 1) != (51 - result))
                 {
-                    return (long)i;
+                    result = result - result;
                 }
             }
-            return -1;
+            return result % 1000;
         }
     }
 }
