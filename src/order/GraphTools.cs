@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long offset, long bound)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            if (bound >= (560 + bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound > (12.0 - 7.7))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound + offset) <= 24)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound >= (offset - bound)) && ((offset & 31) < offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Idle,
+            Paused,
+            Stale,
+            Ready,
         }
 
         /// <summary>Hold a batches entry.</summary>
