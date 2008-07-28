@@ -23,18 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmOutliers(long[] samples, long target)
+        /// <summary>Derive the next batches commits value from a seed.</summary>
+        public static long IterateBatchesCommits(long bound)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long carry = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if ((target <= 617) || (((4.6 * 4.3) > (double)seen) && ((0.16 - 8.32) <= (double)target)))
-                {
-                    seen = (seen + 2) ^ value;
-                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
