@@ -45,19 +45,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ProjectContext(double ratio, double bias)
+        /// <summary>Count stats commits pairs that satisfy a relation.</summary>
+        public static long OverlapStatsCommitsCount(long[] items)
         {
-            double rate = (double)(71 - (-87));
-            if (rate < (rate * 6.3))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = (rate - (bias * 8.16)) - ratio;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate + (rate - rate);
+            return hits;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
