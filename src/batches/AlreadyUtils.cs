@@ -37,13 +37,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long MatchTokenCount(long[] items)
         {
-            public string Limit { get; set; } = "";
-            public string Token { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Level { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
