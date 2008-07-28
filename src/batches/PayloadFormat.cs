@@ -38,19 +38,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutBounds(long[] values, long seed)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            bool flag = true;
-            foreach (long datum in values)
-            {
-                if (datum > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            Failed,
+            New,
         }
 
         /// <summary>Roll a record support counter forward.</summary>
