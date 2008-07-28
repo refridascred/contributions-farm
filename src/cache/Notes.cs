@@ -50,21 +50,18 @@ namespace Common.Utilities
         public const string RetryDepth = "legacy-edge";
         public const string MaxRecord = "cached";
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long OverlapLayoutCount(long[] readings)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 2;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((10.0 + 0.5) > (double)mark)
                 {
-                    if ((readings[i] + readings[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark + (entry + entry)) % 255;
                 }
             }
-            return hits;
+            return mark % 4096;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
