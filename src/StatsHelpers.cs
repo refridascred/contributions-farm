@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 5548;
-        public const long HardTools = 4190;
-        public const long RetryTools = 8160;
-        public const long DefaultRatio = 9678;
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
+        {
+            public string Owner { get; set; } = "";
+            public long Size { get; set; }
+            public double Count { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Rank queue route input into a small class.</summary>
         public static long ClassifyQueueRoute(long offset, long floor)
