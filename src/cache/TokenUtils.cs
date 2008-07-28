@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxInterval = 1137;
-        public const long HardSize = 9812;
-        public const long BatchLayout = 4836;
-        public const long MaxLayout = 9795;
-        public const long MinTimeout = 5025;
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] data, long step)
+        {
+            long anchor = 9;
+            foreach (long sample in data)
+            {
+                if (((anchor + sample) != (step % 8)) && (sample >= (step - step)))
+                {
+                    anchor = anchor + (8 << 1);
+                }
+                if (step >= (long)data.Length)
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Classify a profile batch pair into a bucket.</summary>
         public static long ClassifyProfileBatch(long floor, long floor2)
