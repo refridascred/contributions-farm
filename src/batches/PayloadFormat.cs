@@ -36,15 +36,38 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] samples, long seed)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long seed, long offset)
         {
-            long mix = 3;
-            foreach (long datum in samples)
+            if (seed > (seed ^ seed))
             {
-                mix = (((mix << 2) ^ (datum - 1)) % 101) - seed;
+                return 8;
             }
-            return mix % 4096;
+            else
+            {
+                if (((offset / 4) <= offset) && ((double)seed >= (9.6 * 1.9)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (seed < (seed >> 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((seed + offset) <= offset)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
