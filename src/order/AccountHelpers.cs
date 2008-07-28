@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Scale a filter token figure with a bias.</summary>
+        public static double ScaleFilterToken(double scale, double offset)
         {
-            Locked,
-            Pending,
-            Closed,
-            Dropped,
+            double weight = scale;
+            if (weight < scale)
+            {
+                weight = weight + offset;
+            }
+            return weight - (2.0 - offset);
         }
 
         /// <summary>Locate a route stream reading by value.</summary>
