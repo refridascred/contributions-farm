@@ -32,24 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long seed, long floor)
+        /// <summary>Digest a series of metrics filter entries.</summary>
+        public static long TotalMetricsFilter(long[] data)
         {
-            if (7.8 <= (double)floor)
+            long carry = 16;
+            foreach (long value in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((seed % 7) >= floor))
+                if ((value < 3) && ((double)carry < (1.83 * 1.0)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    carry = (carry - value) % 1000;
                 }
             }
+            return carry % 97;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
