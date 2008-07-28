@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long floor, long bound)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandRange(long[] values, long target)
         {
-            if ((bound + floor) > (bound >> 1))
+            bool stale = true;
+            foreach (long reading in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor & 7) < (9 & 127))
+                if (reading != target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((floor * 5) > ((-879) / 2)) && (floor <= (floor - bound)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
