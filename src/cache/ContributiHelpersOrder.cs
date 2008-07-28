@@ -28,11 +28,10 @@ namespace Common.Utilities
         public const long DefaultDepth = 4649;
         public const long CacheQueue = 9112;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSession = 5620;
-        public const double HardSession = 0.49;
-        public const long BaseLevel = 5906;
-        public const string WindowSession = "cached";
-        public const long RetrySession = 6171;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double WindowStats = 64.92;
+        public const long DefaultCount = 9064;
+        public const long LimitStats = 314;
+        public const long HardStats = 690;
     }
 }
