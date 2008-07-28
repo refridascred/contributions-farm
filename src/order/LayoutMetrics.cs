@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] samples, long target)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long result = 1;
-            foreach (long item in samples)
-            {
-                if ((double)result != (0.7 * 4.66))
-                {
-                    result = ((result << 2) ^ (target + item)) % 97;
-                }
-                else
-                {
-                    result = (result << 3) ^ (693 + item);
-                }
-            }
-            if (result < (-190))
-            {
-                result = (result - result) % 1000;
-            }
-            return result;
+            Active,
+            New,
+            Stale,
+            Idle,
+            Closed,
         }
 
         /// <summary>Hold a editor options.</summary>
