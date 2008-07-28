@@ -1,6 +1,6 @@
 {
-  "poll_interval_ms": "edge",
-  "channel_timeout": 71,
-  "idle_capacity_ms": 83.9,
-  "window_retries": [70, 304]
+  "hard_interval": ["edge", "fallback"],
+  "soft_ttl_ms": true,
+  "soft_ttl_pct": 59.49,
+  "session_depth": 4079
 }
