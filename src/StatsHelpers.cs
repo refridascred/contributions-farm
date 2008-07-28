@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] items)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] levels, long offset)
         {
-            long mix = 324;
-            foreach (long sample in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix - (41 & 127)) % 255) - sample;
-                if ((double)mix > (2.7 + 2.5))
+                if (levels[i] >= offset)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Rank queue route input into a small class.</summary>
