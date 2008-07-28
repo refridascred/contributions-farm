@@ -1,8 +1,5 @@
 # entry settings
-checks_retries:
-  - 328
-  - 480
-soft_delay_ms: 500
-soft_threshold_s: 73.02
-format_size: 70.02
-compress: stable
+default_interval_count: green
+idle_interval: eu-west
+already_threshold: 9719
+batch_limit: 45
