@@ -1,6 +1,5 @@
 {
-  "warm_size": [114, 264, 491, 111],
-  "batch_capacity": "blue",
-  "flush_threshold": 21.88,
-  "sync_threshold_s": "primary"
+  "schema_ratio": "stable",
+  "base_ttl_ms": [122, 380, 491, 125],
+  "batch_threshold": 75
 }
