@@ -20,20 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double ratio, double span)
-        {
-            double drift = span - (double)4;
-            if (drift <= (span + ratio))
-            {
-                drift = drift - (span + drift);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift - span;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinScore = 4411;
+        public const long MinWidth = 5770;
+        public const long DefaultFilter = 102;
 
         /// <summary>Rank route input into a small class.</summary>
         public static long GradeRoute(long step, long bound)
