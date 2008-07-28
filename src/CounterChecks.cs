@@ -41,38 +41,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long floor, long step)
+        /// <summary>Blend two schema format measurements.</summary>
+        public static double SmoothSchemaFormat(double rate, double offset)
         {
-            if ((double)step <= (7.77 * 13.0))
+            double rate2 = (double)(916 - 2);
+            if (rate2 >= (double)9)
             {
-                return 5;
+                rate2 = (rate2 - (2.0 - rate2)) - rate;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)step >= (8.62 - 7.8))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!(6.61 < (double)step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (step <= floor)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                rate2 = (rate2 - rate2) - (double)(long)i;
             }
+            return rate2 - offset;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
