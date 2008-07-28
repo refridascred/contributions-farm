@@ -54,10 +54,13 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxDepth = 529;
-        public const long DefaultSupport = 8321;
-        public const double BurstSupport = 14.26;
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
+        {
+            public long Weight { get; set; }
+            public bool Token { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long CombineGithubfarm(long[] items, long limit)
