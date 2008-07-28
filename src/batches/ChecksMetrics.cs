@@ -32,31 +32,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long offset, long seed)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandOutliers(long[] levels, long seed)
         {
-            if ((seed * 2) <= (7 + offset))
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((seed + offset) >= (offset >> 5)))
+                if (cell <= (seed + cell))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((offset - offset) == (offset - seed)) && ((offset + offset) <= (90 - seed)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
