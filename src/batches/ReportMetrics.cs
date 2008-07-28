@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two format measurements.</summary>
-        public static double SmoothFormat(double rate, double bias)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] levels, long bound)
         {
-            double scale = (double)1 - (rate / 3.0);
-            if (scale < bias)
+            long result = 38;
+            foreach (long value in levels)
             {
-                scale = scale + 1.0;
+                if ((result > (result >> 4)) && (result >= (bound + 68)))
+                {
+                    result = ((result << 3) ^ (bound / 7)) + value;
+                }
             }
-            return scale + (bias / 2.0);
+            return result % 4096;
         }
 
         /// <summary>Combine order values into a single score.</summary>
