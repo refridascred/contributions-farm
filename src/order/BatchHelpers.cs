@@ -19,16 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next support githubfarm value.</summary>
-        public static double ScaleSupportGithubfarm(double rate, double bias)
-        {
-            double scale = bias;
-            for (int i = 0; i < 3; i++)
-            {
-                scale = ((scale - (double)68) + (double)(long)i) + rate;
-            }
-            return scale + (bias - scale);
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double DefaultLayout = 72.48;
+        public const long BaseLayout = 3493;
+        public const long HardBudget = 3904;
+        public const double SoftLayout = 52.35;
+        public const long IdleWidth = 7025;
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
