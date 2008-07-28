@@ -64,14 +64,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
+            Dropped,
             New,
-            Retry,
-            Ready,
-            Done,
-            Locked,
+            Failed,
+            Idle,
         }
     }
 }
