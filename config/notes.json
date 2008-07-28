@@ -1,14 +1,11 @@
 {
-  "default_timeout_pct": 8013,
-  "retry_timeout": {
-    "queue_threshold": false,
-    "dry_run": 29,
-    "min_size_s": "fallback",
-    "context_size": 53.4,
-    "default_size": 250
+  "cluster_window": [11, 279],
+  "readonly": [15, 206, 157, 136],
+  "strict": [48, 6],
+  "batch_interval": {
+    "audit": ["strict", "green"],
+    "entry_capacity": "open",
+    "cache_depth_count": "stable"
   },
-  "verbose": "legacy",
-  "sync_window_pct": [164, 264],
-  "dry_run": [423, 419, 120],
-  "batch_depth": "edge"
+  "verbose": true
 }
