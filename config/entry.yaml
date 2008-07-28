@@ -1,16 +1,12 @@
 # entry settings
-burst_depth_pct: false
-audit: 1024
-enabled: 43.34
-session_retries:
-  retry_size_s:
-    - stable
-    - eu-west
-    - standard
-    - fallback
-  default_size_count: false
-  report_retries: primary
-  hard_ttl: 20
-  sync_delay: primary
-  batch_delay: open
-sync_retries_ms: false
+token_interval:
+  warm_timeout_ms:
+    already_depth: 44.59
+    default_ratio: eu-west
+    base_delay_pct: 500
+    metric_size: edge
+  layout_ttl: 250
+  max_limit_count: green
+audit: 1
+batch_interval_pct: 250
+batch_threshold: 54.59
