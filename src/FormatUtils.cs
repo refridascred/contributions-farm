@@ -39,18 +39,11 @@ namespace Common.Utilities
             return mean - gain;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinInterval = 2792;
+        public const long SoftGraph = 3796;
+        public const string MinScore = "cached-v2";
+        public const double CacheGraph = 61.93;
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long OverlapSupportCount(long[] levels)
