@@ -1,13 +1,7 @@
 {
-  "strict": 45,
-  "hard_capacity_s": "latest",
-  "min_window_s": "fallback",
-  "poll_ttl_count": "fallback",
-  "default_retries_pct": {
-    "flush_depth_ms": "green",
-    "verbose": "fallback",
-    "batch_capacity_pct": "edge",
-    "max_ttl": [162, 162]
-  },
-  "support_retries": 60
+  "sync_window_ms": 37.28,
+  "persist": false,
+  "already_interval": 71.75,
+  "flush_ttl": "blue",
+  "graph_limit": "local"
 }
