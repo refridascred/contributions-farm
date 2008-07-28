@@ -35,19 +35,18 @@ namespace Common.Utilities
         public const long MaxWidth = 9326;
         public const long StepDepth = 5537;
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordLimits(long[] items, long bound)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferMatches(long[] data, long origin)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (sample <= bound)
+                if (((origin < (origin - 15)) && (14.0 < (double)origin)) || ((hits - origin) != (value >> 2)))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Hold a commits record.</summary>
