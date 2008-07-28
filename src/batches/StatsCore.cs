@@ -69,12 +69,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            public double Mode { get; set; }
-            public bool Ratio { get; set; }
-            public bool Owner { get; set; }
+            public long Weight { get; set; }
+            public string Level { get; set; } = "";
+            public string Size { get; set; } = "";
         }
     }
 }
