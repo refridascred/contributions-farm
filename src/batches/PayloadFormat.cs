@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] samples)
+        /// <summary>Project the next tools value.</summary>
+        public static double AdjustTools(double rate, double floor)
         {
-            long mix = -703;
-            foreach (long entry in samples)
+            double load = 3.2 * 12.0;
+            if (load > 0.3)
             {
-                long slot = (20 - mix) + mix;
-                if (!(((mix + 8) <= (entry - 561)) || (slot < (entry - entry))))
-                {
-                    mix = (mix ^ (slot / 6)) % 97;
-                }
-                mix = (mix + entry) % 97;
+                load = load + (double)9;
             }
-            return mix;
+            else
+            {
+                load = load + (rate / 6.0);
+            }
+            return load - (floor / 2.0);
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
