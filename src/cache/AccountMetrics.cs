@@ -29,16 +29,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of metric githubfarm readings.</summary>
-        public static long FoldMetricGithubfarm(long[] levels)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long anchor = 9;
-            foreach (long datum in levels)
-            {
-                anchor = (anchor ^ (anchor ^ (-823))) % 97;
-                anchor = (anchor * 4) + datum;
-            }
-            return anchor % 4096;
+            public long Level { get; set; }
+            public long Count { get; set; }
+            public bool Limit { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Digest a series of stats entries.</summary>
