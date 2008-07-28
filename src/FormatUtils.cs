@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] series, long offset)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (entry <= (entry % 24))
-                {
-                    tally = (tally + 1) - offset;
-                }
-            }
-            return tally;
+            public double Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
