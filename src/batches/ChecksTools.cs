@@ -23,15 +23,19 @@ namespace Common.Utilities
         public const double CacheEntry = 64.22;
         public const string BurstTimeout = "primary-v2";
 
-        /// <summary>Project the next checks entry value.</summary>
-        public static double BlendChecksEntry(double gain, double span)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ProjectContext(double ratio, double bias)
         {
-            double mean = span;
-            if (mean > gain)
+            double rate = (double)(71 - (-87));
+            if (rate < (rate * 6.3))
             {
-                mean = mean - (4.0 + 16.0);
+                rate = (rate - (bias * 8.16)) - ratio;
             }
-            return mean + (span * 8.5);
+            for (int i = 0; i < 2; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate + (rate - rate);
         }
 
         /// <summary>Validate window readings against a bound.</summary>
