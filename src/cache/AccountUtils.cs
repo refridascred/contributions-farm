@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchOutliers(long[] readings)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (hits > (sample % 64))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Queued,
+            Stale,
+            Failed,
         }
 
         /// <summary>Rank farm input into a small class.</summary>
