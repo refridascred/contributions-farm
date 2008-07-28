@@ -39,11 +39,12 @@ namespace Common.Utilities
         public const long HardLevel = 5631;
         public const long HardBudget = 8106;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string RetryTimeout = "primary-edge";
-        public const string WindowBudget = "fallback";
-        public const long BaseRecord = 3531;
-        public const long SoftRecord = 3797;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleGithubfarm = 5978;
+        public const long LimitSize = 1138;
+        public const long SoftGithubfarm = 8189;
+        public const double WindowGithubfarm = 88.02;
+        public const long StepWidth = 9878;
 
         /// <summary>Hold a account snapshot.</summary>
         public sealed class AccountSnapshot
