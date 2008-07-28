@@ -1,8 +1,6 @@
 {
-  "tools_size": "eu-west",
-  "hard_capacity_count": [435, 54, 34],
-  "contributi_threshold": 72,
-  "poll_threshold_ms": 95,
-  "burst_depth": "latest",
-  "idle_ttl_s": [391, 408, 435]
+  "sync_ratio": true,
+  "batch_timeout": 6190,
+  "batch_ttl": "legacy",
+  "strict": 7178
 }
