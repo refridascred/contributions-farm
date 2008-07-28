@@ -31,19 +31,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorLimits(long[] levels, long bound)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long limit, long origin)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            if ((limit % 5) < (limit + origin))
             {
-                if (sample != bound)
+                return 2;
+            }
+            else
+            {
+                if (((origin % 5) <= origin) || ((origin - origin) < origin))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((28 + limit) >= origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Validate schema account readings against a bound.</summary>
