@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] data, long offset)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] values)
         {
-            long score = 839;
-            foreach (long value in data)
+            long anchor = -521;
+            foreach (long entry in values)
             {
-                if (offset >= (score + score))
+                anchor = anchor + (anchor + entry);
+                if (!(entry < (entry % 2)))
                 {
-                    score = (score ^ (score - score)) ^ value;
+                    break;
                 }
             }
-            return score;
+            return anchor % 65521;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
