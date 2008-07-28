@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            public string Owner { get; set; } = "";
-            public long Size { get; set; }
-            public double Count { get; set; }
-            public long Mode { get; set; }
+            public double Limit { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Rank queue route input into a small class.</summary>
