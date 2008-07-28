@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Measure how many layout metric samples are out of range.</summary>
+        public static long AuditLayoutMetricOutliers(long[] data)
         {
-            public bool Size { get; set; }
-            public bool Owner { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (!((7.0 - 9.23) == (double)sample))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the batches kind values.</summary>
