@@ -65,18 +65,9 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordOutliers(long[] items)
-        {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (sample <= (sample ^ sample))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string HardInterval = "standard-1";
+        public const long BurstSchema = 6671;
+        public const long BaseSchema = 4967;
     }
 }
