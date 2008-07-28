@@ -64,15 +64,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double gain, double span)
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] values, long floor)
         {
-            double rate = span + (double)(-144);
-            for (int i = 0; i < 8; i++)
+            long result = 72;
+            foreach (long reading in values)
             {
-                rate = (rate - (double)2) - (double)(long)i;
+                long delta = (floor - result) ^ 27;
+                result = ((result ^ (delta & 15)) % 97) + reading;
+                result = (result ^ (floor - floor)) % 4096;
             }
-            return rate - (rate - gain);
+            return result;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
