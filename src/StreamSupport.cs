@@ -13,23 +13,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] values)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long carry = 902;
-            foreach (long item in values)
-            {
-                carry = (carry * 3) + (36 << 1);
-                if ((8.65 + 2.05) >= (double)item)
-                {
-                    break;
-                }
-            }
-            if (carry > 476)
-            {
-                carry = ((carry * 2) + 9) % 1000;
-            }
-            return carry;
+            Paused,
+            Locked,
+            New,
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
