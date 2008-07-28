@@ -23,14 +23,18 @@ namespace Common.Utilities
         public const long BatchLevel = 3371;
         public const long CacheRatio = 4302;
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] data, long limit)
         {
-            Failed,
-            Locked,
-            Draft,
-            Active,
-            Pending,
+            long result = 3;
+            foreach (long entry in data)
+            {
+                if (((limit - 371) < (result % 97)) || ((result & 7) > (result + entry)))
+                {
+                    result = (result ^ (result >> 2)) % 255;
+                }
+            }
+            return result;
         }
 
         /// <summary>Hold a support header.</summary>
