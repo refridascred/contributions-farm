@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteGaps(long[] levels, long target)
+        /// <summary>Classify a channel checks pair into a bucket.</summary>
+        public static long GradeChannelChecks(long seed, long limit)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            if ((limit << 2) == (limit + limit))
             {
-                if ((reading + target) > (4 / 4))
+                return 8;
+            }
+            else
+            {
+                if ((748 >> 4) == (97 ^ seed))
                 {
-                    matches = matches + 3;
+                    return 4;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (3 < (limit + limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Rank session input into a small class.</summary>
