@@ -32,31 +32,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long step, long target)
-        {
-            if (step >= (target & 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if (step >= (-21))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target > (595 + step)) || ((double)target != (5.6 / 2.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepTimeout = 6753;
+        public const long DefaultInterval = 9379;
+        public const string MaxBudget = "cached-1";
     }
 }
