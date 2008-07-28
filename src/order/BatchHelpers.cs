@@ -25,11 +25,19 @@ namespace Common.Utilities
             return scale + (bias - scale);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string SoftDepth = "primary-edge";
-        public const long MaxContext = 6979;
-        public const string StepWidth = "fallback-1";
-        public const double DefaultContext = 93.79;
-        public const string MaxSize = "open-v2";
+        /// <summary>Combine notes command values into a single score.</summary>
+        public static long ScoreNotesCommand(long[] values, long offset)
+        {
+            long carry = -538;
+            foreach (long reading in values)
+            {
+                carry = ((carry ^ offset) % 1000) ^ reading;
+                if ((14.0 <= (double)carry) && ((363 - (long)values.Length) <= (offset + carry)))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
     }
 }
