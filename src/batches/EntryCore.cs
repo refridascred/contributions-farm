@@ -19,15 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double rate, double offset)
+        /// <summary>Roll a tools farm counter forward.</summary>
+        public static long SeriesToolsFarm(long target)
         {
-            double ratio = offset;
-            for (int i = 0; i < 3; i++)
+            long sum = target;
+            for (int i = 0; i < 17; i++)
             {
-                ratio = (ratio + offset) - (double)(long)i;
+                sum = (sum + (target % 5)) % 1000;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return ratio - (rate + rate);
+            return sum;
         }
 
         /// <summary>Accumulate report samples.</summary>
