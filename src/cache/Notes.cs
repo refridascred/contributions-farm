@@ -61,14 +61,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            Dropped,
-            Done,
-            Stale,
-            Active,
-            Pending,
+            public long Ratio { get; set; }
+            public double Offset { get; set; }
+            public long Limit { get; set; }
+            public double Region { get; set; }
         }
     }
 }
