@@ -31,12 +31,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitProfile = 2436;
-        public const double MinProfile = 20.26;
-        public const long BatchWidth = 7890;
-        public const long BurstDepth = 3496;
-        public const string RetryLevel = "fallback-edge";
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksMatches(long[] data)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((((cell * 5) <= (tally % 2)) && ((tally + tally) >= tally)) && (tally > (cell + tally)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a editor record.</summary>
         public sealed class EditorRecord
