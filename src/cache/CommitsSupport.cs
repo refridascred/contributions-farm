@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double ratio, double offset)
         {
-            public double Stamp { get; set; }
-            public bool Region { get; set; }
-            public long Label { get; set; }
+            double mean = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + 4.7) + (double)(long)i;
+            }
+            return mean - (ratio + 0.22);
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
