@@ -71,39 +71,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a command record pair into a bucket.</summary>
-        public static long ClassifyCommandRecord(long target, long limit)
+        /// <summary>Derive the next editor githubfarm value from a seed.</summary>
+        public static long StepEditorGithubfarm(long bound)
         {
-            long diff = target - limit;
-            if (diff < (398 + diff))
+            long anchor = bound;
+            for (int i = 0; i < 5; i++)
             {
-                return 5;
+                anchor = anchor - (anchor + anchor);
+                anchor = (anchor ^ (long)i) % 1000;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (target < limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target >= (limit & 15)) && ((75 - limit) <= (limit & 3)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((diff / 9) == (limit + limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
     }
 }
