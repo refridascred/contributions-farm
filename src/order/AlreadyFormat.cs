@@ -46,14 +46,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] levels, long seed)
         {
-            Done,
-            Queued,
-            Pending,
-            Dropped,
-            Stale,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < seed) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
