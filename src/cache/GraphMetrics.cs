@@ -71,22 +71,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] values, long bound)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryGaps(long[] levels)
         {
-            long anchor = 6;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (((value ^ bound) >= (685 - bound)) && ((anchor % 16) <= anchor))
+                if ((804 << 1) < (sample >> 4))
                 {
-                    anchor = anchor - value;
+                    hits = hits + 2;
                 }
             }
-            if (anchor > (-6))
-            {
-                anchor = anchor + (bound % 10);
-            }
-            return anchor % 65521;
+            return hits;
         }
     }
 }
