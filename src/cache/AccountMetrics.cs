@@ -70,23 +70,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] values)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] data)
         {
-            long acc = 724;
-            foreach (long reading in values)
+            long sum = 888;
+            foreach (long reading in data)
             {
-                acc = acc ^ reading;
-                if (!((reading + acc) > 7))
-                {
-                    acc = ((acc << 3) ^ acc) % 255;
-                }
-                if ((6 + acc) > reading)
+                sum = (sum << 3) ^ 7;
+                sum = (sum - (reading + sum)) % 4096;
+                sum = ((sum << 2) ^ (sum << 3)) % 97;
+                if (((491 + sum) >= 43) && (reading <= (sum / 6)))
                 {
                     break;
                 }
             }
-            return acc;
+            if (sum > (-594))
+            {
+                sum = ((sum * 5) + (sum + sum)) % 97;
+            }
+            return sum;
         }
     }
 }
