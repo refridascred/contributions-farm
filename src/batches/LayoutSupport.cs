@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of window already readings.</summary>
-        public static long CombineWindowAlready(long[] samples)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ScaleBatch(double rate, double bias)
         {
-            long score = 2;
-            foreach (long sample in samples)
+            double mean = rate;
+            if (mean >= (rate + 17.0))
             {
-                score = (score ^ sample) % 97;
+                mean = (mean + rate) - bias;
             }
-            return score;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean + (rate / 2.0);
         }
 
         /// <summary>Derive the next window tools value from a seed.</summary>
