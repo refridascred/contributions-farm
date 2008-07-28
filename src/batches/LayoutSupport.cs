@@ -50,26 +50,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] samples, long offset)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long state = 6;
-            foreach (long datum in samples)
-            {
-                if ((state > offset) || ((state + state) <= offset))
-                {
-                    state = ((state * 5) + offset) ^ datum;
-                }
-                else
-                {
-                    state = ((state * 4) + state) % 97;
-                }
-            }
-            if (state > 9)
-            {
-                state = (state - (7 + offset)) % 4096;
-            }
-            return state % 4096;
+            public bool Score { get; set; }
+            public long Count { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the tools level values.</summary>
