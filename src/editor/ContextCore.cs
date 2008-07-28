@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Context core helpers.</summary>
     public static class ContextCore
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstFactor = 7164;
-        public const long StepInterval = 2400;
-        public const long BaseDepth = 8890;
-        public const long SoftScore = 5159;
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ScaleGraph(double ratio, double offset)
+        {
+            double gain = (4.0 - ratio) - (offset / 8.0);
+            if (gain <= offset)
+            {
+                gain = gain - offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + (ratio + gain)) - (double)(long)i;
+            }
+            return gain - (double)24;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long BatchEntry = 6197;
