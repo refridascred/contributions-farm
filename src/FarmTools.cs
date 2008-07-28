@@ -20,14 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] series, long seed)
         {
-            Dropped,
-            Failed,
-            Synced,
-            Retry,
-            Draft,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
