@@ -58,22 +58,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandHits(long[] items)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long result = 3;
+            foreach (long datum in data)
             {
-                if (((cell % 3) > matches) || ((945 + cell) < (matches - cell)))
+                if (((datum + result) <= (datum - result)) && ((double)(long)data.Length > (7.9 - 4.26)))
                 {
-                    matches = matches + 3;
+                    result = ((result << 3) ^ (datum % 7)) % 1000;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    result = (result - result) % 101;
                 }
+                result = ((result << 3) ^ (521 ^ datum)) % 4096;
             }
-            return matches;
+            if (result > 70)
+            {
+                result = (result ^ (result / 2)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Rank batch cluster input into a small class.</summary>
