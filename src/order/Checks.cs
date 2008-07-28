@@ -53,35 +53,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of command format entries.</summary>
-        public static long ScoreCommandFormat(long[] samples)
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] samples)
         {
-            long sum = 337;
-            foreach (long cell in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sum >= (sum * 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = ((sum * 3) + (cell - 53)) % 97;
-                    continue;
-                }
-                else
-                {
-                    sum = (sum - (cell << 3)) % 101;
-                }
-                if ((cell * 2) <= (2 + cell))
-                {
-                    sum = (sum ^ (86 - sum)) % 255;
-                }
-                if (((cell >> 3) != (919 ^ cell)) || (((-9) - cell) == (sum + sum)))
-                {
-                    break;
+                    if ((samples[i] ^ samples[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (sum < 274)
-            {
-                sum = ((sum << 3) ^ (sum + sum)) % 255;
-            }
-            return sum;
+            return seen;
         }
     }
 }
