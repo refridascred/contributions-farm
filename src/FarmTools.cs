@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 6526;
-        public const string MinSpan = "stable-1";
-        public const string CacheBuffer = "staging-1";
-        public const double StepBuffer = 77.79;
-        public const double RetryDepth = 0.45;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowTimeout = 2367;
+        public const long SoftEditor = 230;
+        public const long DefaultTimeout = 952;
+        public const long BaseSize = 1258;
+        public const long RetryEditor = 9794;
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long MatchLayoutCount(long[] values)
