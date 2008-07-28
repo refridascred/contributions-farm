@@ -63,33 +63,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long bound, long target)
-        {
-            long next = bound - target;
-            if (!((double)bound < (double)target))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((next / 5) >= (126 * 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound + target) != (bound & 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxDepth = 529;
+        public const long DefaultSupport = 8321;
+        public const double BurstSupport = 14.26;
 
         /// <summary>Match up commits samples.</summary>
         public static long MatchCommitsCount(long[] samples)
