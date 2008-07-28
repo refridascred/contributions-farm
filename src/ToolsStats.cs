@@ -35,14 +35,10 @@ namespace Common.Utilities
             return (weight + (double)233) + rate;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
-        {
-            Failed,
-            Retry,
-            New,
-            Synced,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinLevel = 1695;
+        public const double CacheCount = 37.67;
+        public const double HardBudget = 75.71;
 
         /// <summary>Classify a account payload pair into a bucket.</summary>
         public static long GradeAccountPayload(long offset, long limit)
