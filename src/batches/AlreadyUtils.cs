@@ -29,17 +29,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] values, long offset)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long origin, long origin2)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((3.27 - 0.5) <= (double)origin2)
             {
-                if ((values[i] < offset) && ((values[i] % 5) != 0))
+                return 5;
+            }
+            else
+            {
+                if ((double)origin < (double)149)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (!((origin2 + origin2) != (95 + origin)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((origin * 2) >= origin2)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
