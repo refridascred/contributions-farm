@@ -1,7 +1,5 @@
 {
-  "poll_ratio_ms": "latest",
-  "cache_size": ["eu-west", "blue"],
-  "cache_window_count": 7935,
-  "report_window": ["cached", "staging", "stable", "strict"],
-  "soft_window": true
+  "sync_window_ms": false,
+  "poll_size": "staging",
+  "counter_capacity": "latest"
 }
