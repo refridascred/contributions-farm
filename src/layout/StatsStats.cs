@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats stats helpers.</summary>
     public static class StatsStats
     {
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] readings, long origin)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LookupBatchesIndex(long[] series, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((readings[i] < origin) && ((readings[i] % 5) == 0))
+                if (series[i] >= offset)
                 {
                     return (long)i;
                 }
