@@ -20,21 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count command order pairs that satisfy a relation.</summary>
-        public static long PairCommandOrderCount(long[] data)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Define record limits and defaults.</summary>
