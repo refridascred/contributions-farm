@@ -38,18 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] items, long target)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterGaps(long[] values)
         {
-            long mark = 61;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if ((7 + reading) <= (46 - (long)items.Length))
+                if ((item - tally) > (item / 5))
                 {
-                    mark = (mark + (reading & 127)) - target;
+                    tally = tally + 1;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
