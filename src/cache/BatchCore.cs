@@ -15,19 +15,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every session graph entry stays within the limit.</summary>
-        public static bool CheckSessionGraphBounds(long[] items, long seed)
+        /// <summary>Derive the next command channel value from a seed.</summary>
+        public static long RollCommandChannel(long offset)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long anchor = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (reading != seed)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
