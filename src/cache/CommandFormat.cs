@@ -35,11 +35,12 @@ namespace Common.Utilities
             return weight + floor;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string MinTimeout = "staging-1";
-        public const long BatchWidth = 7787;
-        public const string BaseInterval = "local-1";
-        public const double SoftGithubfarm = 53.23;
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
+        {
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool ValidateGraphLimits(long[] levels, long seed)
