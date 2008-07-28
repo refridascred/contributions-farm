@@ -26,11 +26,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 9533;
-        public const long MaxLevel = 373;
-        public const long BatchLevel = 3371;
-        public const long CacheRatio = 4302;
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
+        {
+            Ready,
+            New,
+            Locked,
+            Closed,
+        }
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
