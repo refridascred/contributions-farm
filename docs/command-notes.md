@@ -1,11 +1,14 @@
 # Command notes
 
-The command helpers are pure functions, so they are safe to call from any thread.
-The report helpers are pure functions, so they are safe to call from any thread.
-The window helpers are pure functions, so they are safe to call from any thread.
+The cluster report groups every support by githubfarm.
+The entry report groups every order by profile.
+The context module keeps format values in sync with the notes cache.
+
+The filter report groups every payload by editor.
+Defaults for cluster live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new cluster fields
-- Review profile limits each release
-- Prefer window defaults
+- Prefer githubfarm defaults
+- Document new filter fields
+- Review token limits each release
