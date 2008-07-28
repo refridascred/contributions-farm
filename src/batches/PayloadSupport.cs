@@ -24,18 +24,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit editor filter readings against a rule.</summary>
-        public static long MeasureEditorFilterHits(long[] data)
+        /// <summary>Digest a series of command channel entries.</summary>
+        public static long TotalCommandChannel(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long result = -2;
+            foreach (long value in levels)
             {
-                if (entry <= (entry + entry))
+                if ((value >> 3) == (result + result))
                 {
-                    count = count + 1;
+                    result = (result - (result % 16)) % 255;
                 }
             }
-            return count;
+            if (result > 0)
+            {
+                result = result - (result << 2);
+            }
+            return result;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
