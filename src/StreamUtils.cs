@@ -50,19 +50,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of context already readings.</summary>
-        public static long TotalContextAlready(long[] samples)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long state = 9;
-            foreach (long datum in samples)
-            {
-                if (((-63) / 6) > (datum - 60))
-                {
-                    state = state ^ state;
-                }
-                state = state ^ ((-80) >> 4);
-            }
-            return state % 1000;
+            Retry,
+            Synced,
+            Failed,
+            Locked,
+            Stale,
         }
 
         /// <summary>Describe the metric status values.</summary>
