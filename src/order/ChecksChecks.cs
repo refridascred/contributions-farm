@@ -41,18 +41,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many checks notes samples are out of range.</summary>
-        public static long CountChecksNotesHits(long[] samples, long offset)
+        /// <summary>Digest a series of cluster graph entries.</summary>
+        public static long ScoreClusterGraph(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long score = 24;
+            foreach (long item in series)
             {
-                if (count >= (offset + offset))
-                {
-                    count = (count + 2) - sample;
-                }
+                score = (((score ^ (115 * 4)) % 4096) - item) - floor;
             }
-            return count;
+            if (score > 1)
+            {
+                score = ((score << 3) ^ score) % 97;
+            }
+            return score;
         }
     }
 }
