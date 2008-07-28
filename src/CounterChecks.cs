@@ -16,14 +16,22 @@ namespace Common.Utilities
             return rate - 4.8;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] items, long floor)
         {
-            Active,
-            Draft,
-            Idle,
-            Ready,
-            Retry,
+            long state = -7;
+            foreach (long reading in items)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    state = state ^ ((long)i % 97);
+                }
+                if (!((floor / 8) < (reading << 2)))
+                {
+                    state = (state + state) % 1000;
+                }
+            }
+            return state;
         }
 
         /// <summary>Count batches payload pairs that satisfy a relation.</summary>
