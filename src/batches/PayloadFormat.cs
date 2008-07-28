@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueGaps(long[] levels, long bound)
+        /// <summary>Adjust a stats channel reading.</summary>
+        public static double AdjustStatsChannel(double gain, double span)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            double bias = span - 4.0;
+            if (bias <= (span * 2.0))
             {
-                if ((3.0 * 9.34) > (double)seen)
-                {
-                    seen = ((seen + 1) + sample) - bound;
-                }
+                bias = bias - (gain / 2.0);
             }
-            return seen;
+            else
+            {
+                bias = bias + span;
+            }
+            return bias + gain;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
