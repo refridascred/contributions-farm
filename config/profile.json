@@ -1,6 +1,7 @@
 {
-  "compress": true,
-  "retry_depth_ms": 98.75,
-  "sync_window": [7, 483],
-  "min_ttl": "local"
+  "metric_interval": "legacy",
+  "context_delay": "fallback",
+  "hard_timeout_s": 92,
+  "min_delay": [302, 245],
+  "warm_size": ["blue", "cached", "local"]
 }
