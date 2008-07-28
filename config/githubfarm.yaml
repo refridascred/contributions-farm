@@ -1,15 +1,13 @@
 # githubfarm settings
-batch_size: 30
-strict:
-  githubfarm_threshold: stable
-  base_capacity_pct:
-    - 54
-    - 27
-  persist: true
-  filter_window: cached
-  soft_size: 5571
-  hard_ratio: 6007
-soft_delay: 99
-metrics_retries: 8525
-verbose: 62.5
-entry_window: false
+batches_retries: standard
+min_interval_count: 47.64
+soft_ttl_ms:
+  tools_interval: 24.85
+  persist: staging
+  min_size_ms:
+    max_ratio_pct: 73.19
+    strict: standard
+    verbose: 35
+    burst_interval: primary
+  warm_ttl: 12.18
+counter_timeout: 4293
