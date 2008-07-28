@@ -19,10 +19,14 @@ namespace Common.Utilities
         public const double MinSession = 32.8;
         public const long LimitSession = 377;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardInterval = 5917;
-        public const string SoftFormat = "cached-edge";
-        public const string LimitFormat = "staging";
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
+        {
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long SeekToolsIndex(long[] data, long origin)
