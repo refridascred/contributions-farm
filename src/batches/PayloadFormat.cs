@@ -54,18 +54,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryMatches(long[] values)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((1.92 / 8.0) > (double)matches)
-                {
-                    matches = (matches + 3) + cell;
-                }
-            }
-            return matches;
+            public double Token { get; set; }
+            public long Limit { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
