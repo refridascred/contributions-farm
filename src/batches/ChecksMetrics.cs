@@ -50,13 +50,31 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] samples, long offset)
         {
-            public long Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
-            public long Region { get; set; }
+            long sum = 5;
+            foreach (long value in samples)
+            {
+                sum = ((sum * 5) + (offset - 23)) % 1000;
+                if (offset >= (sum << 1))
+                {
+                    sum = sum - (54 << 1);
+                }
+                else
+                {
+                    sum = (sum ^ (11 ^ (-5))) % 65521;
+                }
+                if ((value < (81 + value)) || ((value + 5) <= value))
+                {
+                    break;
+                }
+            }
+            if (sum < 57)
+            {
+                sum = ((sum << 3) ^ (offset + sum)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
