@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            Retry,
-            Done,
-            Queued,
+            Failed,
+            Pending,
+            Paused,
+            Active,
+            Draft,
         }
 
         /// <summary>Look up the position of a format sample.</summary>
