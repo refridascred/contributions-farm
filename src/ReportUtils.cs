@@ -12,11 +12,31 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long offset, long target)
         {
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
+            if ((offset >> 3) < (target % 10))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)offset > (3.0 - 4.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!(((-333) << 3) < (target + 952)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
