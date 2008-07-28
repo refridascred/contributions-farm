@@ -24,17 +24,25 @@ namespace Common.Utilities
         public const long HardLevel = 5673;
         public const string LimitInterval = "primary";
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] samples, long bound)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if (samples[i] >= bound)
+                bool valid = (carry + seed) < ((long)i * 3);
+                if (valid)
                 {
-                    return (long)i;
+                    long delta = carry + seed;
+                    valid = !((seed >> 1) == (delta + carry));
                 }
+                else
+                {
+                    carry = (carry ^ (seed * 4)) % 65521;
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Hold a window stats.</summary>
