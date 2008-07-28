@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long target)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordMatches(long[] samples, long origin)
         {
-            long anchor = target;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((6.57 * 4.0) < (double)matches)
                 {
-                    anchor = (anchor ^ ((long)i2 * 3)) % 255;
+                    matches = ((matches + 1) - cell) - origin;
                 }
-                anchor = anchor ^ (target + (long)i);
-                anchor = ((anchor * 4) + (long)i) % 97;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
