@@ -29,22 +29,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorGaps(long[] levels)
+        /// <summary>Iterate the record contributi series from a seed.</summary>
+        public static long SeriesRecordContributi(long bound)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long sum = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)matches >= (1.79 * 8.14))
-                {
-                    matches = (matches + 2) ^ sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Count the contributi channel entries that pass the check.</summary>
