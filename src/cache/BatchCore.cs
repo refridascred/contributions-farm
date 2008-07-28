@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double AdjustGraph(double ratio, double bias)
+        /// <summary>Project the next layout value.</summary>
+        public static double ProjectLayout(double rate, double floor)
         {
-            double drift = (double)(101 + 598);
-            for (int i = 0; i < 2; i++)
-            {
-                drift = ((drift - 9.0) + (double)(long)i) + ratio;
-            }
-            return drift + bias;
+            double rate2 = (double)(269 & 127);
+            return (rate2 - (floor + floor)) + rate;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
