@@ -31,14 +31,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Roll a window counter forward.</summary>
+        public static long RollWindow(long limit)
         {
-            Paused,
-            Stale,
-            Pending,
-            New,
-            Idle,
+            long acc = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 255;
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
