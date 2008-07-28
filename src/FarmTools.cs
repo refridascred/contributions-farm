@@ -19,22 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate cache tools samples.</summary>
-        public static long CombineCacheTools(long[] levels, long origin)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountGaps(long[] values)
         {
-            long anchor = 150;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((double)origin == (double)anchor)
+                if ((double)count > (18.0 + 14.0))
                 {
-                    anchor = (((anchor * 5) + (anchor / 9)) % 255) - value;
+                    count = (count + 3) + sample;
                 }
             }
-            if (anchor < 17)
-            {
-                anchor = ((anchor * 4) + (288 % 2)) % 4096;
-            }
-            return anchor % 97;
+            return count;
         }
 
         /// <summary>Describe the notes level values.</summary>
