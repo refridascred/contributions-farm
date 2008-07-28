@@ -61,13 +61,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
-        {
-            Active,
-            Paused,
-            Failed,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheTimeout = 7589;
+        public const long WindowScore = 5886;
+        public const long LimitFactor = 4062;
 
         /// <summary>Hold a context header.</summary>
         public sealed class ContextHeader
