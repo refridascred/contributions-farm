@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long floor)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] values)
         {
-            long acc = floor;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (acc - acc) % 255;
-                acc = acc - (floor % 100);
-                acc = (acc ^ (floor + 8)) % 65521;
-                acc = ((acc * 3) + (long)i) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
