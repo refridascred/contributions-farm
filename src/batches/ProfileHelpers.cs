@@ -35,15 +35,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double weight, double span)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            double rate = weight;
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + (double)(long)i) - span;
-            }
-            return rate - (rate + 9.0);
+            public long Count { get; set; }
+            public bool Label { get; set; }
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the support kind values.</summary>
