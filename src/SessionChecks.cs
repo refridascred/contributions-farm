@@ -52,21 +52,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] items)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiOutliers(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((cell / 9) <= count)
                 {
-                    if ((items[i] + items[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
