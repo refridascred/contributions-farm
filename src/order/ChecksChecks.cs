@@ -43,11 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepTimeout = 6920;
-        public const long IdleProfile = 2504;
-        public const long WindowCount = 1816;
-        public const string BatchProfile = "staging-1";
-        public const long DefaultRatio = 5664;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferGaps(long[] series, long step)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((step % 2) < reading)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
