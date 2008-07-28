@@ -1,9 +1,7 @@
-id,count,rank,token,label
-1,694,84.19,247,46.36
-2,78.57,63.75,235,853
-3,45.93,299,731,70.8
-4,stable,788,49.37,10.78
-5,stable,395,85.88,strict
-6,fallback,6.39,latest,primary
-7,primary,50.99,blue,189
-8,stable,98.08,70.95,809
+id,count,rank
+1,edge,56
+2,657,340
+3,467,green
+4,61.08,816
+5,150,staging
+6,886,open
