@@ -19,15 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double scale, double bias)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchGaps(long[] data, long offset)
         {
-            double weight = (scale - bias) + (double)880;
-            for (int i = 0; i < 2; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                weight = (weight + scale) + (double)(long)i;
+                if ((count + 96) <= item)
+                {
+                    count = (count + 2) + offset;
+                }
             }
-            return weight + (double)5;
+            return count;
         }
 
         /// <summary>Measure how many metric tools samples are out of range.</summary>
