@@ -28,23 +28,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the profile account entries that pass the check.</summary>
-        public static long CountProfileAccountHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (!((matches - matches) > (matches - reading)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string DefaultEditor = "fallback-1";
+        public const long StepEditor = 3780;
+        public const double CacheEditor = 13.01;
+        public const long BurstEditor = 2300;
 
         /// <summary>Adjust a report stream reading.</summary>
         public static double AdjustReportStream(double gain, double offset)
