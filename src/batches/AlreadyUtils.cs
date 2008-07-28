@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit counter session readings against a rule.</summary>
-        public static long TallyCounterSessionMatches(long[] values, long target)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (matches > (matches - datum))
-                {
-                    matches = (matches + 1) - target;
-                }
-            }
-            return matches;
+            public string Total { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a session summary.</summary>
