@@ -62,32 +62,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long limit, long seed)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long bound = limit - seed;
-            if (((limit & 1) >= seed) && ((4.39 - 5.0) < (double)bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((19.0 - 2.4) >= (double)seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed - bound) != (seed / 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Owner { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Audit route readings against a rule.</summary>
