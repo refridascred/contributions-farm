@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank notes entry input into a small class.</summary>
-        public static long SortNotesEntry(long step, long limit)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] series, long bound)
         {
-            if (!(step <= (limit + step)))
+            long carry = 71;
+            foreach (long datum in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((8.96 - 13.0) >= (double)step)
+                if (carry > datum)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((step - step) == (limit >> 2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    carry = ((carry << 2) ^ bound) % 1000;
                 }
             }
+            if (carry < 441)
+            {
+                carry = (carry - (carry + bound)) % 97;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Check that every order farm entry stays within the limit.</summary>
