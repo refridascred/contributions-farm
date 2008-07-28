@@ -78,22 +78,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many account order samples are out of range.</summary>
-        public static long MeasureAccountOrderHits(long[] items)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((328 + sample) >= tally)
+                if (items[i] < floor)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
