@@ -45,18 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorGaps(long[] levels, long offset)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (!((reading % 10) < (count % 2)) || (360 >= (reading + count)))
-                {
-                    count = (count + 3) - offset;
-                }
-            }
-            return count;
+            public bool Score { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
