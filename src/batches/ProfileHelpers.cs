@@ -40,39 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a order graph value against two limits.</summary>
-        public static long BucketOrderGraph(long limit, long bound)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long slot = limit + bound;
-            if (((double)slot <= (2.0 + 9.82)) && ((slot + bound) <= bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit - 848) >= (limit >> 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)slot <= (10.0 - 3.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit - bound) < limit)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Paused,
+            Locked,
         }
 
         /// <summary>Hold a githubfarm header.</summary>
