@@ -1,5 +1,14 @@
 {
-  "dry_run": 23.86,
-  "audit": 500,
-  "strict": 2716
+  "batch_depth": {
+    "readonly": [361, 378, 233, 234],
+    "base_timeout_count": 8,
+    "base_retries": [404, 498, 492, 64],
+    "cluster_ratio": 68.28,
+    "min_capacity_ms": [471, 162, 275, 390]
+  },
+  "metrics_delay": "edge",
+  "batches_limit": [373, 194, 76, 7],
+  "poll_ttl_count": ["edge", "green", "green", "staging"],
+  "strict": 60,
+  "filter_depth": ["local", "legacy"]
 }
