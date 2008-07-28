@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the token entry entries that pass the check.</summary>
-        public static long CountTokenEntryGaps(long[] levels, long floor)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((3.29 - 1.85) < (double)count)
-                {
-                    count = ((count + 1) ^ sample) + floor;
-                }
-            }
-            return count;
+            public double Size { get; set; }
+            public long Score { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a contributi options.</summary>
