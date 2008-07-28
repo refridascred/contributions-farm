@@ -25,15 +25,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ScaleEntry(double ratio, double offset)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            double mean = offset / 8.0;
-            if (mean <= offset)
-            {
-                mean = (mean - (double)37) - ratio;
-            }
-            return mean - offset;
+            public double Count { get; set; }
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Locate a batch reading by value.</summary>
