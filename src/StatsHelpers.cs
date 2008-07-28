@@ -45,19 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatMatches(long[] items, long origin)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((reading + (long)items.Length) <= (30 + (long)items.Length))
-                {
-                    count = (count + 1) - origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheRatio = 9143;
+        public const long MinScore = 8706;
+        public const long HardLevel = 5631;
+        public const long HardBudget = 8106;
 
         /// <summary>Define record limits and defaults.</summary>
         public const string RetryTimeout = "primary-edge";
