@@ -48,12 +48,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            Dropped,
-            Retry,
-            Active,
+            public long Total { get; set; }
+            public string Offset { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
