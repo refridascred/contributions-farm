@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] levels, long offset)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatLimits(long[] levels, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if ((levels[i] >= offset) && ((levels[i] % 2) != 0))
+                if (datum >= bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Describe the context kind values.</summary>
