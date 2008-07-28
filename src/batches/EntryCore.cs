@@ -30,18 +30,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] data)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long carry = 414;
-            foreach (long item in data)
-            {
-                if ((carry - carry) >= (item << 3))
-                {
-                    carry = (carry - 940) % 101;
-                }
-            }
-            return carry;
+            public bool Size { get; set; }
+            public long Score { get; set; }
+            public long Flag { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a token snapshot.</summary>
