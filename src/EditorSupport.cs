@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseBudget = 7506;
-        public const long WindowToken = 6291;
-        public const string IdleToken = "strict-edge";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 4938;
+        public const string DefaultWidth = "stable-1";
+        public const double MaxGithubfarm = 76.01;
+        public const double CacheGithubfarm = 39.29;
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long TallyCache(long[] data, long origin)
