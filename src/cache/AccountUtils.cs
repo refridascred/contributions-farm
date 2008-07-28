@@ -16,11 +16,39 @@ namespace Common.Utilities
             return load - (bias * 5.8);
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MaxCount = 91.09;
-        public const double WindowSpan = 66.33;
-        public const string MinSize = "latest-edge";
-        public const long HardRatio = 990;
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long offset, long step)
+        {
+            if (!((step / 2) <= (step - offset)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset ^ 299) <= (1 - 90))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((offset + offset) < step) || ((offset + step) >= step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (offset < (step * 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
