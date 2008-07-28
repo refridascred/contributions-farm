@@ -18,39 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long seed, long floor)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] data, long target)
         {
-            long step = seed + floor;
-            if ((floor >> 2) > step)
+            long mark = 138;
+            foreach (long entry in data)
             {
-                return 5;
+                mark = ((mark - target) % 1000) + entry;
             }
-            else
-            {
-                if ((step - step) != (floor - step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)floor > 19.0)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((9 + step) > (floor + 0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return mark % 1000;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
