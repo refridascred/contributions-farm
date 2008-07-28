@@ -39,19 +39,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] series, long origin)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long result = 764;
-            foreach (long reading in series)
-            {
-                result = ((result + result) % 1000) - reading;
-                if ((origin << 1) != (51 - result))
-                {
-                    result = result - result;
-                }
-            }
-            return result % 1000;
+            Queued,
+            Paused,
+            Locked,
+            Idle,
         }
     }
 }
