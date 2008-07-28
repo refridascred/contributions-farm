@@ -1,8 +1,6 @@
 {
-  "warm_size_ms": ["primary", "green", "open", "eu-west"],
-  "sync_ttl_pct": 52,
-  "warm_capacity_pct": "eu-west",
-  "verbose": 1024,
-  "route_window": "standard",
-  "layout_interval": 60
+  "min_capacity_pct": ["primary", "eu-west"],
+  "base_timeout_pct": "strict",
+  "metric_interval": 42,
+  "tools_window": "staging"
 }
