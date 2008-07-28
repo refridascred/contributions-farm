@@ -37,18 +37,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the contributi route entries that pass the check.</summary>
-        public static long CountContributiRouteHits(long[] series)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long offset, long target)
         {
-            long hits = 0;
-            foreach (long item in series)
+            if ((target + offset) < (target - target))
             {
-                if (((3.0 - 7.0) != (double)hits) || !((double)hits > (3.11 * 2.05)))
+                return 6;
+            }
+            else
+            {
+                if ((3.91 + 3.3) != (double)offset)
                 {
-                    hits = (hits + 3) - item;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
