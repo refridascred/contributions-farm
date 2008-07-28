@@ -22,18 +22,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit githubfarm stream readings against a rule.</summary>
-        public static long AuditGithubfarmStreamGaps(long[] items)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long seed)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long carry = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if (((long)items.Length > (-919)) && ((double)seen < (9.67 - 9.7)))
+                if (((double)seed == (9.0 + 8.0)) || ((317 + carry) >= seed))
                 {
-                    seen = (seen + 1) ^ cell;
+                    carry = carry - carry;
                 }
+                carry = (carry + (carry / 9)) % 1000;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Define command limits and defaults.</summary>
