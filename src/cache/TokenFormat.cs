@@ -26,15 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] data)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaBounds(long[] levels, long offset)
         {
-            long carry = 13;
-            foreach (long sample in data)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                carry = carry ^ (sample - (long)data.Length);
+                if (sample > offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return carry % 1000;
+            return ready;
         }
     }
 }
