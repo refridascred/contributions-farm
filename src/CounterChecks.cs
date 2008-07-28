@@ -28,18 +28,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many metric tools samples are out of range.</summary>
-        public static long TallyMetricToolsHits(long[] series, long limit)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((hits >> 5) <= ((long)series.Length % 8))
-                {
-                    hits = ((hits + 3) - cell) - limit;
-                }
-            }
-            return hits;
+            public double Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Iterate the account order series from a seed.</summary>
