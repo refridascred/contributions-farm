@@ -12,14 +12,17 @@ namespace Common.Utilities
         public const long BaseBudget = 8650;
         public const string MaxFarm = "stable";
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] items, long limit)
         {
-            Failed,
-            Queued,
-            Dropped,
-            Retry,
-            Paused,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count queue stream pairs that satisfy a relation.</summary>
