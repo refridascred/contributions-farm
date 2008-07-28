@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Account core helpers.</summary>
     public static class AccountCore
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] items, long offset)
-        {
-            long sum = 809;
-            foreach (long datum in items)
-            {
-                if ((sum % 10) >= datum)
-                {
-                    sum = sum - datum;
-                }
-                sum = (sum ^ (offset & 63)) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinInterval = 5358;
+        public const double MinCounter = 43.63;
+        public const long WindowCounter = 2237;
+        public const long CacheCounter = 4910;
+        public const long CacheRatio = 107;
 
         /// <summary>Roll a already counter forward.</summary>
         public static long DeriveAlready(long origin)
