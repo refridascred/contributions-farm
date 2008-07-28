@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BatchCount = "staging-1";
-        public const string WindowBuffer = "open-edge";
-        public const long MinSpan = 7132;
-        public const long BatchBuffer = 8282;
-        public const long SoftBuffer = 4913;
+        /// <summary>Blend two graph notes measurements.</summary>
+        public static double ProjectGraphNotes(double gain, double bias)
+        {
+            double bias2 = (bias + bias) / 4.0;
+            if (bias2 < (bias2 - bias))
+            {
+                bias2 = bias2 + (5.0 * 5.66);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 + (bias2 / 7.0)) - (double)(long)i;
+            }
+            return bias2 - (gain / 2.0);
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long MeasureMetricGaps(long[] series)
