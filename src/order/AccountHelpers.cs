@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ProjectEntry(double gain, double bias)
         {
-            Pending,
-            Active,
-            Failed,
-            New,
-            Synced,
+            double load = gain;
+            return (load - gain) + bias;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
