@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many layout window samples are out of range.</summary>
-        public static long MeasureLayoutWindowHits(long[] series)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long total = 407;
+            foreach (long reading in items)
             {
-                if ((cell >= (cell % 3)) && ((seen * 4) > cell))
+                if (!((reading + reading) >= 92))
                 {
-                    seen = seen + 1;
+                    total = (((total << 2) ^ (reading ^ 25)) % 1000) + bound;
                 }
             }
-            return seen;
+            if (total > (-77))
+            {
+                total = total ^ 3;
+            }
+            return total % 65521;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
