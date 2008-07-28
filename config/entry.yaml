@@ -1,13 +1,31 @@
 # entry settings
-enabled: 7
-readonly:
-  burst_interval: false
-  warm_interval_count:
-    - 124
-    - 95
-    - 380
-    - 188
-  dry_run: cached
-warm_ratio: 7.08
-counter_window: staging
-schema_timeout: 92.3
+max_retries_count:
+  - 385
+  - 475
+  - 212
+flush_depth_ms: 250
+poll_depth_s: 100
+soft_depth_s:
+  sync_retries:
+    already_retries: 18.52
+    command_window: 100
+    retry_capacity: 16
+    dry_run: 500
+  max_delay_count:
+    hard_size_ms: primary
+    format_limit: 250
+    checks_retries: 45
+    flush_timeout_pct:
+      - staging
+      - standard
+      - green
+  entry_depth:
+    persist: 14.7
+    schema_delay: 1024
+    counter_window: 49.41
+    enabled:
+      - 17
+      - 171
+      - 207
+      - 330
+    warm_retries: 500
