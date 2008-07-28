@@ -1,15 +1,6 @@
 # githubfarm settings
-sync_size: false
-min_depth_s: local
-readonly:
-  payload_capacity:
-    cache_interval: 34
-    order_timeout: 48
-    dry_run: blue
-  idle_delay: false
-  max_interval_count: 30.01
-compress: true
-persist: edge
-route_interval:
-  - 294
-  - 221
+cluster_ttl: staging
+base_retries_s:
+  - 184
+  - 319
+cache_timeout: open
