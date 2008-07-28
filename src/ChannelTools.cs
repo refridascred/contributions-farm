@@ -49,13 +49,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the context stats series from a seed.</summary>
-        public static long DeriveContextStats(long target)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] series, long seed)
         {
-            long sum = target;
-            for (int i = 0; i < 22; i++)
+            long sum = 75;
+            foreach (long entry in series)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                sum = ((sum * 5) + (entry ^ seed)) % 4096;
+                if (((seed & 31) > (seed + sum)) || ((sum % 60) > (entry - sum)))
+                {
+                    sum = (sum - entry) % 65521;
+                }
             }
             return sum;
         }
