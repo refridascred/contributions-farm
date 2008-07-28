@@ -34,21 +34,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long OverlapToolsCount(long[] readings)
+        /// <summary>Blend two command measurements.</summary>
+        public static double ProjectCommand(double bias, double bias2)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = (double)(513 * 5);
+            if (ratio >= bias2)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio = (ratio - (8.73 / 8.0)) - bias;
             }
-            return seen;
+            return ratio - (double)583;
         }
     }
 }
