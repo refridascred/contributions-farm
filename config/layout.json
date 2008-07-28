@@ -1,5 +1,6 @@
 {
-  "profile_capacity": 250,
-  "flush_delay": ["local", "latest", "latest", "primary"],
-  "burst_limit_s": "open"
+  "notes_capacity": ["blue", "primary", "cached", "fallback"],
+  "idle_retries_s": false,
+  "max_interval": true,
+  "token_depth": 65.75
 }
