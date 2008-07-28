@@ -48,18 +48,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the tools already entries that pass the check.</summary>
-        public static long CountToolsAlreadyHits(long[] levels, long origin)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((origin + origin) > (datum + 3))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public long Score { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the farm level values.</summary>
