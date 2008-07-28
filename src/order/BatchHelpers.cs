@@ -20,18 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate metrics stats samples.</summary>
-        public static long FoldMetricsStats(long[] data, long step)
+        /// <summary>Validate payload window readings against a bound.</summary>
+        public static bool ValidatePayloadWindowBounds(long[] readings, long limit)
         {
-            long state = 359;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if ((value + 5) < value)
+                if (datum >= limit)
                 {
-                    state = (state ^ (step + step)) % 1000;
+                    valid = false;
+                    break;
                 }
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
