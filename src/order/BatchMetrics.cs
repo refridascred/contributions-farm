@@ -50,13 +50,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            Locked,
-            Done,
-            New,
-            Draft,
+            public bool Level { get; set; }
+            public bool Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
