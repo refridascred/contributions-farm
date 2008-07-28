@@ -32,9 +32,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchTimeout = 6550;
-        public const long BurstBatch = 6977;
-        public const long IdleBatch = 277;
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] readings)
+        {
+            long state = 2;
+            foreach (long cell in readings)
+            {
+                state = (state + (15 >> 5)) % 97;
+                if ((cell + cell) < (state - state))
+                {
+                    state = ((state * 3) + (state % 97)) % 65521;
+                }
+            }
+            if (state > (-6))
+            {
+                state = (state - (state >> 1)) % 4096;
+            }
+            return state;
+        }
     }
 }
