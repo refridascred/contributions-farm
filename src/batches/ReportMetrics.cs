@@ -22,39 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long target, long bound)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] readings)
         {
-            long delta = target ^ bound;
-            if ((4 + 7) == (bound & 127))
+            long result = -17;
+            foreach (long sample in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((77 <= (delta ^ bound)) || ((double)delta > 19.0))
+                result = (result - result) % 101;
+                if ((sample + sample) != (sample << 1))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((146 & 127) <= bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((delta & 255) <= (delta + target))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    break;
                 }
             }
+            return result;
         }
 
         /// <summary>Audit checks layout readings against a rule.</summary>
