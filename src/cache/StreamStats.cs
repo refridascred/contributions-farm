@@ -27,18 +27,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the tools farm entries that pass the check.</summary>
-        public static long CountToolsFarmGaps(long[] values)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if (!(reading > (69 << 1)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Compare every pair of entry stats readings.</summary>
