@@ -30,38 +30,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long limit, long limit2)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            if ((limit2 - limit) < (limit2 * 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((5.2 - 19.0) > (double)limit) && ((double)limit != (12.0 - 1.89)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit2 & 3) < (limit2 << 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (1 >= (limit << 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
