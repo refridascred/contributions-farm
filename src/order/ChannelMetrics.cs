@@ -19,18 +19,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferHits(long[] data, long offset)
+        /// <summary>Compare every pair of notes editor readings.</summary>
+        public static long PairNotesEditorCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)9 < (double)offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 1) ^ entry;
+                    if ((levels[i] + levels[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a batches options.</summary>
