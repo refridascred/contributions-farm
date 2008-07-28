@@ -22,14 +22,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] values, long step)
         {
-            Synced,
-            Pending,
-            Paused,
-            Locked,
-            Ready,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
