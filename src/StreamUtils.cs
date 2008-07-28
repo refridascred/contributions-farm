@@ -18,15 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
-        {
-            Done,
-            Paused,
-            Active,
-            Idle,
-            Ready,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWindow = 7235;
+        public const long IdleWindow = 9079;
+        public const double HardWindow = 41.24;
+        public const double MinBudget = 87.47;
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
