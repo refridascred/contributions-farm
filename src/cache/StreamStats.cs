@@ -27,22 +27,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of account checks readings.</summary>
-        public static long ScoreAccountChecks(long[] samples, long offset)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] items)
         {
-            long acc = 9;
-            foreach (long value in samples)
+            long result = 8;
+            foreach (long sample in items)
             {
-                if (!(2.75 >= (double)acc))
-                {
-                    acc = acc - (value << 3);
-                }
+                result = ((result + (61 & 255)) % 4096) - sample;
             }
-            if (acc < 380)
-            {
-                acc = ((acc << 2) ^ (acc + offset)) % 97;
-            }
-            return acc % 97;
+            return result;
         }
 
         /// <summary>Compare every pair of entry stats readings.</summary>
