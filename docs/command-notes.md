@@ -1,10 +1,12 @@
 # Command notes
 
-The cluster report groups every entry by stats.
-Each support is validated before it reaches the batch queue.
+Run the channel check before changing any contributi limits.
+Keep batch and support names short and lowercase.
+Keep editor and cluster names short and lowercase.
 
 ## Guidelines
 
-- Validate counter input early
-- Log every contributi change
-- Keep cluster values small
+- Validate metrics input early
+- Prefer order defaults
+- Document new contributi fields
+- Keep stats values small
