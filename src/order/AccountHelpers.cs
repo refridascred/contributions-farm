@@ -39,22 +39,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] series, long limit)
+        /// <summary>Match up commits queue samples.</summary>
+        public static long PairCommitsQueueCount(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((matches >> 5) <= (entry / 2)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 3) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((items[i] ^ items[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
