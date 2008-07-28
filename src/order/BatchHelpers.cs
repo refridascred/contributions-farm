@@ -14,16 +14,15 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Combine notes checks values into a single score.</summary>
-        public static long TallyNotesChecks(long[] samples, long origin)
+        /// <summary>Project the next support githubfarm value.</summary>
+        public static double ScaleSupportGithubfarm(double rate, double bias)
         {
-            long sum = -3;
-            foreach (long item in samples)
+            double scale = bias;
+            for (int i = 0; i < 3; i++)
             {
-                sum = ((sum - ((long)samples.Length % 64)) % 97) + item;
-                sum = sum - (sum ^ origin);
+                scale = ((scale - (double)68) + (double)(long)i) + rate;
             }
-            return sum % 65521;
+            return scale + (bias - scale);
         }
 
         /// <summary>Define context limits and defaults.</summary>
