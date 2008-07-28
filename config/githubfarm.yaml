@@ -1,31 +1,5 @@
 # githubfarm settings
-idle_threshold_pct:
-  flush_size_s: latest
-  cache_size_s:
-    min_interval: staging
-    token_size:
-      - 230
-      - 298
-    default_ttl_count: standard
-  default_capacity_count:
-    batches_retries: blue
-    account_window: 9055
-    hard_size_count: 60
-stream_size:
-  hard_interval_pct:
-    default_depth: local
-    notes_threshold: 2
-    soft_ttl: staging
-    enabled: 67
-    sync_window_count: true
-  soft_retries_ms: 96.35
-  idle_ratio_count:
-    dry_run: 1024
-    payload_retries:
-      - 214
-      - 433
-      - 264
-      - 209
-    base_limit_ms: strict
-  max_ratio: standard
-batches_limit: primary
+warm_window: false
+enabled: 63.56
+token_timeout: 10.42
+flush_retries: 98
