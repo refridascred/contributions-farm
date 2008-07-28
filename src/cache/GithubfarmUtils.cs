@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long target)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long limit)
         {
-            long acc = target;
-            for (int i = 0; i < 24; i++)
+            long mix = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if ((acc + 1) < ((-3) * 2))
-                {
-                    acc = ((acc << 2) ^ (target / 5)) % 4096;
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
