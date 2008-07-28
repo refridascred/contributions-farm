@@ -19,17 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long step)
+        /// <summary>Look up the position of a githubfarm counter sample.</summary>
+        public static long LookupGithubfarmCounterIndex(long[] levels, long origin)
         {
-            long score = step;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (score + ((long)i - (long)i)) % 4096;
-                score = score + (step + score);
-                score = ((score * 3) + (long)i) % 97;
+                if (levels[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
