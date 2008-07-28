@@ -33,17 +33,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LocateAccountIndex(long[] samples, long floor)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphLimits(long[] levels, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if ((samples[i] <= floor) && ((samples[i] % 3) == 0))
+                if (cell >= seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
