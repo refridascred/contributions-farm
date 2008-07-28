@@ -53,13 +53,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] samples, long offset)
         {
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public string Flag { get; set; } = "";
-            public long Mode { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank githubfarm cluster input into a small class.</summary>
