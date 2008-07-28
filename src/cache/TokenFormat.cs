@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmGaps(long[] values)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if (((item % 100) < (matches + 6)) && (((6 << 2) >= (item + item)) || ((item + item) == (long)values.Length)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Offset { get; set; }
+            public string Token { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the session mode values.</summary>
