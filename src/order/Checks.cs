@@ -23,26 +23,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine entry order values into a single score.</summary>
-        public static long DigestEntryOrder(long[] series, long floor)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long seed)
         {
-            long result = 904;
-            foreach (long cell in series)
+            long anchor = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if ((cell + 5) != (floor & 3))
+                if (((long)i + anchor) < anchor)
                 {
-                    result = ((result << 3) ^ (255 & 31)) % 65521;
+                    anchor = (anchor + ((long)i % 5)) % 1000;
+                    anchor = anchor + (anchor >> 3);
                 }
-                else
+                if (((long)i & 63) == (3 % 3))
                 {
-                    result = (result - (floor - floor)) % 4096;
+                    anchor = (anchor ^ (long)i) % 255;
+                    break;
                 }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            if (result > 3)
-            {
-                result = (result ^ (floor & 31)) % 65521;
-            }
-            return result;
+            return anchor;
         }
 
         /// <summary>Fold a list of token schema readings.</summary>
