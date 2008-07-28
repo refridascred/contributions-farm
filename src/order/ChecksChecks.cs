@@ -43,18 +43,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferGaps(long[] series, long step)
-        {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((step % 2) < reading)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string WindowRecord = "primary-edge";
+        public const long BaseScore = 1718;
+        public const long MaxSize = 8103;
+        public const long WindowTimeout = 4807;
     }
 }
