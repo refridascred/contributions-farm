@@ -34,21 +34,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long bound)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long result = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                long seen = ((-446) % 5) << 2;
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    seen = ((seen + (result << 1)) % 1000) ^ (long)i2;
-                    result = result ^ (seen ^ bound);
-                }
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            public double Score { get; set; }
+            public long Total { get; set; }
         }
     }
 }
