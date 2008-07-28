@@ -20,23 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] samples)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] readings, long floor)
         {
-            long mix = 665;
-            foreach (long cell in samples)
+            long mark = 23;
+            foreach (long entry in readings)
             {
-                mix = (mix + cell) % 101;
-                if ((mix <= cell) || ((cell - cell) == (cell >> 4)))
-                {
-                    mix = (mix * 2) + (29 * 2);
-                }
+                mark = (((mark * 3) + (719 >> 3)) % 101) ^ entry;
             }
-            if (mix > 286)
+            if (mark > 59)
             {
-                mix = (mix - (mix + mix)) % 65521;
+                mark = (mark << 3) ^ (floor - mark);
             }
-            return mix % 97;
+            return mark;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
