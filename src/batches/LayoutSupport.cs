@@ -43,21 +43,22 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] values)
+        /// <summary>Accumulate queue githubfarm samples.</summary>
+        public static long TallyQueueGithubfarm(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 46;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (anchor > (datum & 31))
                 {
-                    if ((values[i] + values[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = ((anchor << 3) ^ datum) % 101;
                 }
             }
-            return matches;
+            if (anchor > (-2))
+            {
+                anchor = ((anchor * 3) + (anchor >> 2)) % 255;
+            }
+            return anchor;
         }
     }
 }
