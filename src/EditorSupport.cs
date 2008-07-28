@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double StepWidth = 95.45;
-        public const string BaseWidth = "staging-v2";
-        public const double CacheSize = 48.95;
-        public const long MinCount = 2395;
-        public const long SoftBudget = 8129;
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = (acc - acc) % 255;
+                acc = acc - (floor % 100);
+                acc = (acc ^ (floor + 8)) % 65521;
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long TallySupportOutliers(long[] data, long step)
