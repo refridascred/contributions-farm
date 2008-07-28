@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long bound, long target)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long offset, long seed)
         {
-            if ((4.35 / 9.0) <= (double)bound)
+            long span = offset + seed;
+            if (!(seed > offset))
             {
-                return 3;
+                return 0;
             }
             else
             {
-                if (!(5.7 < (double)target))
+                if ((1.9 + 3.8) <= (double)span)
                 {
-                    return 5;
+                    return 6;
                 }
                 else
                 {
-                    return 8;
+                    return 2;
                 }
             }
         }
