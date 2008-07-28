@@ -31,15 +31,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ScaleReport(double rate, double floor)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] values)
         {
-            double gain = floor - rate;
-            for (int i = 0; i < 3; i++)
+            long acc = 38;
+            foreach (long value in values)
             {
-                gain = (gain + (double)39) + (double)(long)i;
+                if ((value + acc) == (value - acc))
+                {
+                    acc = ((acc * 4) + ((-88) + 4)) % 101;
+                }
+                else
+                {
+                    acc = acc ^ (acc << 1);
+                }
             }
-            return gain + rate;
+            return acc;
         }
     }
 }
