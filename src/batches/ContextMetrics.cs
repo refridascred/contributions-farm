@@ -31,18 +31,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the githubfarm session entries that pass the check.</summary>
-        public static long MeasureGithubfarmSessionHits(long[] data)
+        /// <summary>Grade a layout notes value against two limits.</summary>
+        public static long BucketLayoutNotes(long step, long bound)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long edge = step + bound;
+            if ((edge <= (edge + 78)) || ((bound / 6) <= step))
             {
-                if ((reading * 5) >= count)
+                return 1;
+            }
+            else
+            {
+                if ((edge - bound) < edge)
                 {
-                    count = count + 2;
+                    return 8;
+                }
+                else
+                {
+                    if ((edge << 3) != (3 + step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
