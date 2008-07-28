@@ -17,12 +17,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryRecord = 6117;
-        public const double BurstRatio = 84.92;
-        public const long HardRecord = 3816;
-        public const long MaxRecord = 7609;
-        public const double WindowFactor = 92.3;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 9533;
+        public const long MaxLevel = 373;
+        public const long BatchLevel = 3371;
+        public const long CacheRatio = 4302;
 
         /// <summary>Describe the account kind values.</summary>
         public enum AccountKind
