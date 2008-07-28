@@ -15,11 +15,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
+            Queued,
+            Stale,
+            Ready,
+            Paused,
         }
 
         /// <summary>Define account limits and defaults.</summary>
