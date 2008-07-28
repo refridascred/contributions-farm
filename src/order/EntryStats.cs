@@ -39,22 +39,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of metrics order entries.</summary>
-        public static long TotalMetricsOrder(long[] series)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long PairFormatCount(long[] series)
         {
-            long result = 33;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(result > (datum / 2)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = (result ^ 84) % 65521;
+                    if ((series[i] + series[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (result < 393)
-            {
-                result = (result + (25 & 127)) % 255;
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Scale a command cache figure with a bias.</summary>
