@@ -59,12 +59,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double AdjustMetrics(double bias, double floor)
-        {
-            double rate = bias;
-            return (rate - rate) + floor;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string RetryTimeout = "primary-edge";
+        public const string WindowBudget = "fallback";
+        public const long BaseRecord = 3531;
+        public const long SoftRecord = 3797;
 
         /// <summary>Hold a account snapshot.</summary>
         public sealed class AccountSnapshot
