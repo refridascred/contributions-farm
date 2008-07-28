@@ -16,11 +16,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MaxDepth = 16.76;
-        public const double WindowRatio = 21.48;
-        public const double StepRatio = 31.82;
-        public const double BaseFarm = 74.87;
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] data, long origin)
+        {
+            long anchor = 453;
+            foreach (long value in data)
+            {
+                anchor = (anchor ^ value) % 255;
+                if (((-402) - 7) > (anchor - value))
+                {
+                    anchor = (anchor - (0 + (-6))) % 1000;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (value - origin)) % 255;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Grade a profile checks value against two limits.</summary>
         public static long SortProfileChecks(long origin, long target)
