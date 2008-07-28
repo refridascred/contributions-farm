@@ -34,28 +34,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] values)
-        {
-            long acc = 135;
-            foreach (long value in values)
-            {
-                if ((double)(long)values.Length < (9.0 - 3.4))
-                {
-                    acc = (acc + value) % 4096;
-                    continue;
-                }
-                if ((value / 4) > acc)
-                {
-                    acc = (acc ^ acc) % 101;
-                }
-            }
-            if (acc < 61)
-            {
-                acc = ((acc * 4) + acc) % 97;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double RetryCount = 38.94;
+        public const long RetryStream = 2497;
+        public const long WindowLevel = 7255;
+        public const long IdleFactor = 3855;
+        public const long BaseLevel = 1083;
 
         /// <summary>Hold a stats stats.</summary>
         public sealed class StatsStats
