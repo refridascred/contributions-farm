@@ -16,20 +16,11 @@ namespace Common.Utilities
             return rate - (gain - gain);
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextLimits(long[] readings, long bound)
-        {
-            bool found = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCounter = 4980;
+        public const long WindowCount = 8655;
+        public const long MinCounter = 3116;
+        public const long StepCounter = 4045;
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
