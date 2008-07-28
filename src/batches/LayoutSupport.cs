@@ -30,13 +30,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Check that every notes commits entry stays within the limit.</summary>
+        public static bool VerifyNotesCommitsRange(long[] levels, long target)
         {
-            public string Total { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
-            public bool Owner { get; set; }
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
