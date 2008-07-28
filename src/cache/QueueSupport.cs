@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            Failed,
-            Pending,
-            Paused,
-            Active,
-            Draft,
+            public double Limit { get; set; }
+            public double Token { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Look up the position of a format sample.</summary>
