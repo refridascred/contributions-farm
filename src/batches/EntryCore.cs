@@ -53,12 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            public string Level { get; set; } = "";
-            public bool Stamp { get; set; }
-            public string Weight { get; set; } = "";
+            Closed,
+            Synced,
+            Failed,
+            Stale,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
