@@ -1,5 +1,23 @@
 # support settings
-max_threshold_ms: local
-soft_window_count: edge
-max_depth_pct: 60
-retry_ratio_s: 5
+hard_timeout:
+  max_threshold_count: 16.23
+  enabled: 69
+  burst_threshold_ms:
+    - 300
+    - 46
+    - 61
+    - 129
+audit:
+  - 95
+  - 207
+  - 237
+warm_size_count: edge
+batch_delay_s: 484
+flush_depth_s: 7028
+min_ratio_count:
+  poll_retries: strict
+  audit: 30
+  warm_limit_ms:
+    warm_ratio: green
+    soft_depth_pct: standard
+    tools_limit: 6197
