@@ -23,12 +23,20 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double DefaultLayout = 72.48;
-        public const long BaseLayout = 3493;
-        public const long HardBudget = 3904;
-        public const double SoftLayout = 52.35;
-        public const long IdleWidth = 7025;
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueLimits(long[] levels, long origin)
+        {
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
