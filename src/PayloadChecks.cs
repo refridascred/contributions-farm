@@ -34,22 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesGaps(long[] data, long offset)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (((long)data.Length - cell) <= (414 + cell))
-                {
-                    hits = (hits + 2) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Done,
+            Idle,
+            Draft,
         }
 
         /// <summary>Hold a graph options.</summary>
