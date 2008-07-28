@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] items, long bound)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutGaps(long[] series, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (items[i] == bound)
+                if ((double)hits != (double)entry)
                 {
-                    return (long)i;
+                    hits = (hits + 3) - origin;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
