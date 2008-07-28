@@ -12,17 +12,13 @@ namespace Common.Utilities
         public const long MaxLayout = 9795;
         public const long MinTimeout = 5025;
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LocateCacheIndex(long[] items, long limit)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            New,
+            Queued,
+            Failed,
         }
 
         /// <summary>Iterate the window stats series from a seed.</summary>
