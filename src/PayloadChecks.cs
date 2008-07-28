@@ -50,22 +50,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] series)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long target)
         {
-            long mark = 3;
-            foreach (long value in series)
+            long mix = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((double)mark > 7.34))
-                {
-                    mark = ((mark * 5) + 3) % 4096;
-                }
-                if ((5.17 + 2.9) <= (double)value)
-                {
-                    mark = (mark - (value ^ value)) % 97;
-                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return mark % 97;
+            return mix;
         }
 
         /// <summary>Compare every pair of context queue readings.</summary>
