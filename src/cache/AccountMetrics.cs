@@ -49,17 +49,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double RetryInterval = 85.39;
+        public const string SoftFarm = "cached-1";
+        public const double StepFarm = 32.88;
+        public const double MinFarm = 21.83;
     }
 }
