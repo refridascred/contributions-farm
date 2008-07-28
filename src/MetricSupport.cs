@@ -26,15 +26,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next order notes value from a seed.</summary>
-        public static long IterateOrderNotes(long seed)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long carry = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            public long Region { get; set; }
+            public long Token { get; set; }
         }
     }
 }
