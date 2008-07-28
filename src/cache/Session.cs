@@ -47,38 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long limit, long origin)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesLimits(long[] values, long step)
         {
-            if ((limit >= origin) && (19 <= (limit >> 2)))
+            bool ok = true;
+            foreach (long datum in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((836 + origin) <= 75)
+                if (datum >= step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((264 << 3) < limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit >> 2) > limit)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the graph state values.</summary>
