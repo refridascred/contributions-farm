@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenGaps(long[] series, long offset)
         {
-            public bool Score { get; set; }
-            public double Region { get; set; }
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (((long)series.Length - entry) <= (offset * 4))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of report readings.</summary>
