@@ -58,12 +58,22 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Audit farm cluster readings against a rule.</summary>
+        public static long AuditFarmClusterMatches(long[] data, long offset)
         {
-            public string Stamp { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public double Label { get; set; }
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((79 + entry) != (offset >> 2))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
