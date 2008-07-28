@@ -58,13 +58,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            Dropped,
-            New,
-            Failed,
-            Idle,
+            Done,
+            Paused,
+            Pending,
         }
     }
 }
