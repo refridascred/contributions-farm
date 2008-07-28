@@ -39,9 +39,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double LimitBatches = 75.18;
-        public const long DefaultBatches = 6276;
-        public const long SoftDepth = 1272;
+        /// <summary>Iterate the context stats series from a seed.</summary>
+        public static long DeriveContextStats(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 22; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
+        }
     }
 }
