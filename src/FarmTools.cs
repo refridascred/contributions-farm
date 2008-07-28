@@ -33,18 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long CompareProfileCount(long[] series)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordOutliers(long[] readings, long bound)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((bound >> 1) >= (86 - sample))
                 {
-                    if ((series[i] ^ series[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
             return seen;
