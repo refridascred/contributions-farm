@@ -1,15 +1,8 @@
 {
-  "soft_timeout": true,
-  "soft_ratio": "stable",
-  "dry_run": "latest",
-  "batch_size": {
-    "readonly": 85,
-    "default_delay": 86,
-    "metrics_ratio": {
-      "payload_threshold": "latest",
-      "schema_window": "local",
-      "schema_threshold": [473, 414, 142]
-    },
-    "batch_delay": true
-  }
+  "window_window": 43.68,
+  "record_window": 250,
+  "max_limit_ms": true,
+  "min_interval_ms": 5205,
+  "queue_retries": true,
+  "max_timeout_s": 500
 }
