@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] series, long seed)
+        /// <summary>Iterate the checks notes series from a seed.</summary>
+        public static long RollChecksNotes(long limit)
         {
-            long total = 178;
-            foreach (long entry in series)
+            long mix = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (total >= (total & 255))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    total = (total + entry) - seed;
+                    mix = (((mix * 5) + (5 << 3)) % 4096) + (long)i2;
                 }
-                else
+                if (!(((long)i + mix) > (mix - (long)i)))
                 {
-                    total = ((total * 4) + entry) % 65521;
+                    mix = ((mix << 2) ^ limit) % 1000;
+                    mix = ((mix << 3) ^ (1 * 4)) % 4096;
                 }
+                mix = (mix ^ (13 << 1)) % 255;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
