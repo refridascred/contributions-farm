@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] samples)
+        /// <summary>Check that every metrics notes entry stays within the limit.</summary>
+        public static bool CheckMetricsNotesRange(long[] data, long origin)
         {
-            long acc = 9;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if (((long)samples.Length + acc) == (sample / 2))
+                if (cell < origin)
                 {
-                    acc = ((acc << 3) ^ acc) % 255;
-                }
-                if ((sample + acc) >= 57)
-                {
-                    acc = (acc * 4) + (sample / 5);
+                    valid = false;
+                    break;
                 }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Accumulate metrics stats samples.</summary>
