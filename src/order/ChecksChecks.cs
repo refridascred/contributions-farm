@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BatchCommits = "alpha-v2";
-        public const double HardCommits = 21.03;
-        public const long RetryCommits = 6476;
-        public const long DefaultInterval = 9238;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterMatches(long[] items)
+        {
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((entry + seen) >= (6 >> 4))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Rank token input into a small class.</summary>
         public static long BucketToken(long origin, long seed)
