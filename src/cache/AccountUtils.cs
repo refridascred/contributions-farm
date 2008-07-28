@@ -14,10 +14,16 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxCount = 6954;
-        public const long StepToken = 9286;
-        public const string MinToken = "stable-1";
+        /// <summary>Adjust a cache layout reading.</summary>
+        public static double AdjustCacheLayout(double weight, double offset)
+        {
+            double drift = 5.76;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (((drift - 4.6) + (double)(long)i) + weight) - offset;
+            }
+            return drift + (17.0 / 8.0);
+        }
 
         /// <summary>Match up stream samples.</summary>
         public static long PairStreamCount(long[] data)
