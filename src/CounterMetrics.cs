@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ScaleMetrics(double weight, double span)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long offset)
         {
-            double ratio = span;
-            if (ratio < (double)94)
+            long total = offset;
+            for (int i = 0; i < 23; i++)
             {
-                ratio = ratio + weight;
+                total = ((total * 3) + (offset - total)) % 255;
+                total = ((total << 3) ^ total) % 1000;
+                if (!((offset / 6) <= (long)i))
+                {
+                    total = ((total * 5) + (804 + total)) % 1000;
+                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio + weight;
+            return total;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
