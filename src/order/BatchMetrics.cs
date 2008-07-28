@@ -30,12 +30,13 @@ namespace Common.Utilities
         public const long WindowContributi = 4450;
         public const long BatchCount = 2605;
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            public bool Level { get; set; }
-            public bool Mode { get; set; }
-            public long Weight { get; set; }
+            Synced,
+            Done,
+            Paused,
+            Pending,
         }
 
         /// <summary>Describe the session mode values.</summary>
