@@ -68,17 +68,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] values, long offset)
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 724;
+            foreach (long reading in values)
             {
-                if ((values[i] == offset) && ((values[i] % 5) != 0))
+                acc = acc ^ reading;
+                if (!((reading + acc) > 7))
                 {
-                    return (long)i;
+                    acc = ((acc << 3) ^ acc) % 255;
+                }
+                if ((6 + acc) > reading)
+                {
+                    break;
                 }
             }
-            return -1;
+            return acc;
         }
     }
 }
