@@ -36,12 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowBounds(long[] readings, long seed)
         {
-            Synced,
-            Stale,
-            New,
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
