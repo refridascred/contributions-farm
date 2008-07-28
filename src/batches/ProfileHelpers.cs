@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportRange(long[] items, long floor)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            Ready,
+            Active,
         }
 
         /// <summary>Measure how many route format samples are out of range.</summary>
