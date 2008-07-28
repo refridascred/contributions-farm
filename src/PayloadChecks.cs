@@ -82,18 +82,15 @@ namespace Common.Utilities
         public const long IdleRatio = 7824;
         public const long StepNotes = 2132;
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long PairMetricsCount(long[] values)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandHits(long[] data, long limit)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long datum in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((2 * 4) > (hits + 17)) && ((double)hits <= (4.0 / 2.0)))
                 {
-                    if ((values[i] - values[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = ((hits + 1) + datum) + limit;
                 }
             }
             return hits;
