@@ -51,20 +51,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] series, long limit)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] readings, long step)
         {
-            long carry = 28;
-            foreach (long reading in series)
+            long mark = 891;
+            foreach (long reading in readings)
             {
-                carry = (carry << 2) ^ (limit + 62);
-                carry = ((carry << 2) ^ (reading >> 5)) % 97;
+                if ((5 - mark) > reading)
+                {
+                    mark = (((mark << 2) ^ mark) % 255) - step;
+                }
+                else
+                {
+                    mark = (mark ^ reading) % 97;
+                }
             }
-            if (carry > 140)
-            {
-                carry = (carry + (limit ^ (long)series.Length)) % 1000;
-            }
-            return carry % 4096;
+            return mark % 1000;
         }
 
         /// <summary>Describe the profile level values.</summary>
