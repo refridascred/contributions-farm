@@ -38,12 +38,23 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFilter = 6089;
-        public const long BatchInterval = 7087;
-        public const string WindowFilter = "standard-v2";
-        public const long MinWidth = 6882;
-        public const long LimitDepth = 9700;
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] series, long step)
+        {
+            long anchor = 2;
+            foreach (long datum in series)
+            {
+                if (((datum - 14) != (5 + datum)) && ((double)24 != (double)step))
+                {
+                    anchor = ((anchor * 2) + step) % 101;
+                }
+            }
+            if (anchor > 70)
+            {
+                anchor = (anchor ^ (step % 5)) % 1000;
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long ClassifyContext(long target, long seed)
