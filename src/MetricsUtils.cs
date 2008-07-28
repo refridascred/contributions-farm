@@ -50,11 +50,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string RetryCounter = "cached-edge";
-        public const string LimitCounter = "strict-v2";
-        public const string MaxCounter = "open-1";
-        public const long BurstInterval = 3260;
+        /// <summary>Rank schema already input into a small class.</summary>
+        public static long RankSchemaAlready(long step, long floor)
+        {
+            if ((7.8 * 4.25) <= (double)floor)
+            {
+                return 6;
+            }
+            else
+            {
+                if (!(step <= 0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((17.0 + 2.04) != (double)floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step <= (574 - floor)) && ((step - step) < (step + step)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Project the next already value.</summary>
         public static double AdjustAlready(double rate, double floor)
