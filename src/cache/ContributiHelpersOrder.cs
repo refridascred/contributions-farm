@@ -16,18 +16,12 @@ namespace Common.Utilities
             return scale + (7.0 + ratio);
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmGaps(long[] levels, long bound)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (!((double)item > (8.41 - 16.0)))
-                {
-                    hits = (hits + 1) - bound;
-                }
-            }
-            return hits;
+            public bool Owner { get; set; }
+            public bool Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the session kind values.</summary>
