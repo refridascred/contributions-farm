@@ -26,10 +26,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxWidth = 4029;
-        public const long HardFactor = 4983;
-        public const double BatchCounter = 6.35;
+        /// <summary>Look up the position of a layout order sample.</summary>
+        public static long LookupLayoutOrderIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < floor) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a batches stats.</summary>
         public sealed class BatchesStats
