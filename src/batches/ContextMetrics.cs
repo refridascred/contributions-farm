@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] items)
+        /// <summary>Classify a contributi metrics pair into a bucket.</summary>
+        public static long GradeContributiMetrics(long floor, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (!((seed % 64) >= (floor & 63)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((17.0 * 7.4) == (double)seed)
                 {
-                    if ((items[i] ^ items[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Iterate the schema account series from a seed.</summary>
