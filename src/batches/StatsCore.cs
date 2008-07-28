@@ -42,11 +42,11 @@ namespace Common.Utilities
             return (mean + (double)134) + bias;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            public long Offset { get; set; }
-            public long Level { get; set; }
+            public string Level { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Roll a stream batches counter forward.</summary>
