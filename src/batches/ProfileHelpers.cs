@@ -40,19 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] series, long floor)
+        /// <summary>Adjust a entry batch reading.</summary>
+        public static double ProjectEntryBatch(double scale, double bias)
         {
-            long mix = 0;
-            foreach (long reading in series)
+            double mean = bias;
+            if (mean < (double)163)
             {
-                mix = (mix << 3) ^ (mix + mix);
-                if (((floor >> 1) >= (47 & 3)) || ((8.0 + 17.0) < (double)reading))
-                {
-                    break;
-                }
+                mean = (mean - mean) + scale;
             }
-            return mix % 65521;
+            else
+            {
+                mean = mean - (double)534;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - 3.9) + (double)(long)i;
+            }
+            return mean - bias;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
