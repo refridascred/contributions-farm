@@ -56,22 +56,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutMatches(long[] items)
+        /// <summary>Measure how many channel format samples are out of range.</summary>
+        public static long TallyChannelFormatHits(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (!((double)hits == (0.3 + 4.9)))
+                if ((double)matches == (6.0 * 0.41))
                 {
-                    hits = (hits + 3) ^ cell;
+                    matches = (matches + 1) - item;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
