@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 4938;
-        public const string DefaultWidth = "stable-1";
-        public const double MaxGithubfarm = 76.01;
-        public const double CacheGithubfarm = 39.29;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutGaps(long[] levels)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample + tally) >= sample)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double LimitTimeout = 55.82;
