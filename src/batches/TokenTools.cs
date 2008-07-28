@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many githubfarm window samples are out of range.</summary>
-        public static long CountGithubfarmWindowGaps(long[] values)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long SortCache(long offset, long bound)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            if ((double)offset <= (5.0 / 8.0))
             {
-                if ((datum + hits) < hits)
+                return 6;
+            }
+            else
+            {
+                if ((double)offset > 4.1)
                 {
-                    hits = hits + 3;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
