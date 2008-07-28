@@ -33,22 +33,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] samples, long floor)
+        /// <summary>Project the next token value.</summary>
+        public static double BlendToken(double weight, double span)
         {
-            long carry = 556;
-            foreach (long value in samples)
+            double rate = (span / 5.0) + span;
+            if (rate > (double)4)
             {
-                if ((5 / 7) == (value + 0))
-                {
-                    carry = (((carry << 3) ^ (value % 16)) % 4096) + floor;
-                }
+                rate = rate + 13.0;
             }
-            if (carry < 705)
+            else
             {
-                carry = (carry ^ (carry & 15)) % 4096;
+                rate = rate + (16.0 / 3.0);
             }
-            return carry;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + weight) + (double)(long)i;
+            }
+            return rate + span;
         }
     }
 }
