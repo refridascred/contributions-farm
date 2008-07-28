@@ -20,11 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 3720;
-        public const long StepBudget = 5920;
-        public const long LimitEditor = 882;
-        public const string StepEditor = "latest-v2";
+        /// <summary>Accumulate cache tools samples.</summary>
+        public static long CombineCacheTools(long[] levels, long origin)
+        {
+            long anchor = 150;
+            foreach (long value in levels)
+            {
+                if ((double)origin == (double)anchor)
+                {
+                    anchor = (((anchor * 5) + (anchor / 9)) % 255) - value;
+                }
+            }
+            if (anchor < 17)
+            {
+                anchor = ((anchor * 4) + (288 % 2)) % 4096;
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Describe the notes level values.</summary>
         public enum NotesLevel
