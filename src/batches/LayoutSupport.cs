@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] values)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountOutliers(long[] samples, long floor)
         {
-            long sum = 150;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                sum = (sum - (cell - sum)) % 4096;
-                if ((cell / 7) < (7 - cell))
+                if ((double)(long)samples.Length < (8.0 / 4.0))
                 {
-                    sum = (sum ^ sum) % 65521;
+                    matches = ((matches + 2) + sample) - floor;
                 }
             }
-            return sum % 1000;
+            return matches;
         }
 
         /// <summary>Derive the next window tools value from a seed.</summary>
