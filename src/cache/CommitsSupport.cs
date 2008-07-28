@@ -57,12 +57,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Count the contributi channel entries that pass the check.</summary>
+        public static long TallyContributiChannelGaps(long[] data, long target)
         {
-            Dropped,
-            Draft,
-            Synced,
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (((double)entry >= (17.0 + 0.2)) || (((target - target) <= tally) && ((double)target >= (7.74 - 9.68))))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a graph record.</summary>
