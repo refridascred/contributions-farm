@@ -25,12 +25,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamHits(long[] levels, long floor)
         {
-            Done,
-            Idle,
-            Draft,
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if (((hits >> 5) != (floor % 64)) && ((floor >> 2) > hits))
+                {
+                    hits = (hits + 1) ^ datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
