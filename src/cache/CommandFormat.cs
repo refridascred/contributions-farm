@@ -13,10 +13,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftSize = 3805;
-        public const long RetryInterval = 2438;
-        public const double MinAlready = 82.53;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BaseBatches = "cached";
+        public const long CacheBatches = 1089;
+        public const double HardBatches = 75.95;
 
         /// <summary>Check that every report record entry stays within the limit.</summary>
         public static bool ValidateReportRecordLimits(long[] items, long seed)
