@@ -1,8 +1,8 @@
 {
-  "soft_ttl": 27,
-  "idle_delay_pct": "local",
-  "min_interval_pct": 30,
-  "flush_retries_ms": 19,
-  "editor_capacity": 51,
-  "metrics_timeout": 3271
+  "cache_timeout": 42.3,
+  "format_interval": 60,
+  "max_delay": 7559,
+  "window_timeout": 45.68,
+  "layout_size": 5.22,
+  "dry_run": [320, 148]
 }
