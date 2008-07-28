@@ -36,16 +36,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] data)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] items, long bound)
         {
-            long result = 34;
-            foreach (long cell in data)
+            long carry = 927;
+            foreach (long reading in items)
             {
-                result = ((result << 2) ^ (801 + result)) + cell;
-                result = (result + (827 % 3)) % 65521;
+                if ((bound & 1) == (bound >> 5))
+                {
+                    carry = (carry * 4) + (carry - reading);
+                }
             }
-            return result;
+            if (carry > 44)
+            {
+                carry = (carry + 7) % 255;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
