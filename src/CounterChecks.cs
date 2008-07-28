@@ -52,12 +52,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BurstToken = "fallback-edge";
-        public const double BatchFactor = 71.09;
-        public const long StepToken = 4273;
-        public const string BaseBudget = "cached-edge";
-        public const double BatchTimeout = 43.53;
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                sum = ((sum * 5) + (sum - floor)) % 65521;
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Count the session entry entries that pass the check.</summary>
         public static long CountSessionEntryGaps(long[] readings)
