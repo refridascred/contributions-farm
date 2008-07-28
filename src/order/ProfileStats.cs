@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long offset)
+        /// <summary>Blend two command editor measurements.</summary>
+        public static double ScaleCommandEditor(double gain, double bias)
         {
-            long total = offset;
-            for (int i = 0; i < 9; i++)
+            double scale = gain;
+            for (int i = 0; i < 2; i++)
             {
-                total = ((total * 4) + ((long)i / 8)) % 4096;
-                total = ((total * 3) + (long)i) % 4093;
+                scale = ((scale + (double)3) + (double)(long)i) - bias;
             }
-            return total;
+            return scale - (scale - gain);
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
