@@ -54,11 +54,14 @@ namespace Common.Utilities
         public const double WindowGithubfarm = 88.02;
         public const long StepWidth = 9878;
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            public string Label { get; set; } = "";
-            public double Rank { get; set; }
+            Stale,
+            Locked,
+            Pending,
+            Closed,
+            Dropped,
         }
     }
 }
