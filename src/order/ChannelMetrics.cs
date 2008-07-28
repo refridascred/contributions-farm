@@ -40,22 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of window filter readings.</summary>
-        public static long TotalWindowFilter(long[] readings)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorGaps(long[] data)
         {
-            long state = 44;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (((1 - cell) > (cell ^ state)) || ((cell * 5) < state))
+                if (66 <= (tally + tally))
                 {
-                    state = (state ^ cell) % 101;
+                    tally = (tally + 1) - sample;
                 }
-                if ((9 >= (state << 1)) && ((double)cell <= (14.0 - 5.0)))
+                else
                 {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Hold a window info.</summary>
