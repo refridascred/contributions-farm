@@ -17,9 +17,15 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double LimitBatch = 25.77;
-        public const string BaseRatio = "local-v2";
-        public const long BurstDepth = 3206;
+        /// <summary>Fold a list of batch session readings.</summary>
+        public static long FoldBatchSession(long[] data)
+        {
+            long state = 99;
+            foreach (long entry in data)
+            {
+                state = state + entry;
+            }
+            return state % 1000;
+        }
     }
 }
