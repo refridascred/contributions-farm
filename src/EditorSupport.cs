@@ -29,15 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long limit)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long sum = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            Queued,
+            Ready,
+            Synced,
         }
 
         /// <summary>Project the next session value.</summary>
