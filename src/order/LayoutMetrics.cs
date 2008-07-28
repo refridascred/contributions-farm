@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long OverlapBufferCount(long[] items)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] samples, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 1;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)result != (0.7 * 4.66))
                 {
-                    if ((items[i] + items[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = ((result << 2) ^ (target + item)) % 97;
+                }
+                else
+                {
+                    result = (result << 3) ^ (693 + item);
                 }
             }
-            return seen;
+            if (result < (-190))
+            {
+                result = (result - result) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a batch commits sample.</summary>
