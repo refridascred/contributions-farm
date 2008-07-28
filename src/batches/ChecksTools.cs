@@ -42,31 +42,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate report route samples.</summary>
-        public static long WeighReportRoute(long[] series, long origin)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long carry = 7;
-            foreach (long cell in series)
-            {
-                if ((43 >> 1) <= (origin / 5))
-                {
-                    continue;
-                }
-                for (int i = 0; i < 4; i++)
-                {
-                    carry = (((carry ^ (carry % 3)) % 65521) ^ (long)i) + cell;
-                }
-                carry = ((carry << 2) ^ carry) % 97;
-                if (((long)series.Length - carry) >= origin)
-                {
-                    break;
-                }
-            }
-            if (carry > 3)
-            {
-                carry = (carry - (8 ^ (-20))) % 101;
-            }
-            return carry;
+            public bool Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Count { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
