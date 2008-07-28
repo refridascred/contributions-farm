@@ -27,11 +27,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionOutliers(long[] levels, long origin)
         {
-            public double Total { get; set; }
-            public bool Ratio { get; set; }
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)tally != (5.3 + 4.3))
+                {
+                    tally = ((tally + 3) + reading) - origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of entry stats readings.</summary>
