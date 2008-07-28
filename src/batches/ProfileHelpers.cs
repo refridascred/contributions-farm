@@ -40,19 +40,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] levels, long limit)
+        /// <summary>Grade a order graph value against two limits.</summary>
+        public static long BucketOrderGraph(long limit, long bound)
         {
-            long score = 730;
-            foreach (long item in levels)
+            long slot = limit + bound;
+            if (((double)slot <= (2.0 + 9.82)) && ((slot + bound) <= bound))
             {
-                score = ((score * 2) + item) % 97;
-                if ((limit - item) != (score + limit))
+                return 5;
+            }
+            else
+            {
+                if ((limit - 848) >= (limit >> 4))
                 {
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)slot <= (10.0 - 3.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit - bound) < limit)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
