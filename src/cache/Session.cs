@@ -47,23 +47,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ScaleMetric(double weight, double floor)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double weight, double offset)
         {
-            double ratio = weight;
-            if (ratio >= (weight - ratio))
+            double load = (double)14 * 0.5;
+            if (load <= weight)
             {
-                ratio = ratio + ratio;
+                load = load - load;
             }
             else
             {
-                ratio = ratio - floor;
+                load = load + offset;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio + floor;
+            return load - weight;
         }
     }
 }
