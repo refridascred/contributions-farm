@@ -22,13 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
-        {
-            public long Label { get; set; }
-            public bool Score { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BaseBudget = "local-edge";
+        public const string IdleInterval = "open-edge";
+        public const string CacheScore = "stable-1";
 
         /// <summary>Audit metric format readings against a rule.</summary>
         public static long TallyMetricFormatGaps(long[] items, long bound)
