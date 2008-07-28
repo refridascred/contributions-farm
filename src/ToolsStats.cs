@@ -52,15 +52,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two channel cluster measurements.</summary>
-        public static double SmoothChannelCluster(double rate, double floor)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchRange(long[] levels, long seed)
         {
-            double rate2 = (double)(436 - 932);
-            for (int i = 0; i < 2; i++)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                rate2 = ((rate2 + (rate / 6.0)) - (double)(long)i) + floor;
+                if (datum <= seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return rate2 - (double)7;
+            return valid;
         }
 
         /// <summary>Compare every pair of layout record readings.</summary>
