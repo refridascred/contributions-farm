@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] data, long bound)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueOutliers(long[] data)
         {
-            long acc = 2;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (sample < bound)
+                if (entry <= (entry / 6))
                 {
-                    acc = (acc - (698 * 2)) % 65521;
-                }
-                else
-                {
-                    acc = (acc * 2) + (sample / 7);
+                    matches = matches + 1;
                 }
             }
-            if (acc > 913)
-            {
-                acc = acc ^ ((long)data.Length + acc);
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
