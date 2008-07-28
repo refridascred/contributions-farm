@@ -10,11 +10,22 @@ namespace Common.Utilities
         public const long IdleLevel = 2122;
         public const long HardBatches = 871;
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] readings, long bound)
         {
-            public string Flag { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long total = -44;
+            foreach (long value in readings)
+            {
+                if ((bound + 96) < value)
+                {
+                    total = ((total << 3) ^ (73 + 8)) % 101;
+                }
+                if ((bound <= (1 << 2)) || ((double)total <= 19.0))
+                {
+                    break;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Scale a metric profile figure with a bias.</summary>
