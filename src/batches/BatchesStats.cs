@@ -40,22 +40,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long CompareBufferCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheScore = 4250;
+        public const long MinTimeout = 706;
+        public const double HardFactor = 30.36;
+        public const long LimitContext = 7625;
 
         /// <summary>Hold a farm stats.</summary>
         public sealed class FarmStats
