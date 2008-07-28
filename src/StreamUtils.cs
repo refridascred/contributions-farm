@@ -44,11 +44,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double gain, double bias)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesOutliers(long[] values)
         {
-            double gain2 = (gain + bias) / 6.0;
-            return gain2 - (bias - gain2);
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((tally / 2) <= (73 % 2))
+                {
+                    tally = (tally + 2) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit farm cluster readings against a rule.</summary>
