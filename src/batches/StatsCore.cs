@@ -45,11 +45,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] values, long bound)
         {
-            public string Level { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long anchor = 1;
+            foreach (long sample in values)
+            {
+                if (((39 % 3) < (sample ^ anchor)) || ((anchor / 3) <= anchor))
+                {
+                    anchor = (((anchor * 3) + (anchor / 2)) % 101) + bound;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Roll a stream batches counter forward.</summary>
