@@ -16,12 +16,19 @@ namespace Common.Utilities
             return bias + (double)8;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BatchWidth = 36.05;
-        public const long BurstWindow = 6895;
-        public const long MaxWindow = 2358;
-        public const long BatchWindow = 2156;
-        public const long StepSpan = 196;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiGaps(long[] readings, long seed)
+        {
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (item >= (hits + hits))
+                {
+                    hits = (hits + 1) - seed;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a layout value against two limits.</summary>
         public static long GradeLayout(long target, long step)
