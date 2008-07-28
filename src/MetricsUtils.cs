@@ -37,17 +37,22 @@ namespace Common.Utilities
         public const long CacheStats = 9384;
         public const long MaxStats = 996;
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] samples, long bound)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelHits(long[] data, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (samples[i] <= bound)
+                if ((reading % 64) >= (reading ^ count))
                 {
-                    return (long)i;
+                    count = (count + 2) + origin;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
