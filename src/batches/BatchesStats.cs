@@ -31,15 +31,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] series)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long score = -476;
-            foreach (long cell in series)
-            {
-                score = ((score ^ 6) % 4096) + cell;
-            }
-            return score % 65521;
+            public bool Score { get; set; }
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
