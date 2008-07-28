@@ -1,7 +1,15 @@
 {
-  "default_ratio_pct": "edge",
-  "counter_depth": 60,
-  "contributi_window": 88,
-  "readonly": "local",
-  "poll_timeout_s": "cached"
+  "max_limit_count": {
+    "dry_run": 70.34,
+    "readonly": 7.12,
+    "base_retries": 8.3,
+    "max_capacity_count": 6599,
+    "audit": 1024,
+    "strict": 15.98
+  },
+  "hard_retries": "cached",
+  "retry_ratio_s": 76.04,
+  "max_retries_count": 100,
+  "retry_depth_count": false,
+  "queue_interval": ["edge", "eu-west"]
 }
