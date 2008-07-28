@@ -40,21 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] values)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] items, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 61;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((7 + reading) <= (46 - (long)items.Length))
                 {
-                    if ((values[i] ^ values[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (mark + (reading & 127)) - target;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Define window limits and defaults.</summary>
