@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryCount = 9726;
-        public const double RetrySpan = 42.78;
-        public const long BaseChannel = 7488;
-        public const double BurstChannel = 68.08;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string IdleRoute = "staging-1";
+        public const long LimitRoute = 6390;
+        public const long IdleFactor = 3113;
+        public const double RetryDepth = 6.41;
 
         /// <summary>Hold a cache header.</summary>
         public sealed class CacheHeader
