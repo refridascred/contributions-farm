@@ -71,18 +71,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksMatches(long[] values, long target)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long WeighStats(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long anchor = 301;
+            foreach (long sample in items)
             {
-                if ((target + target) == (hits + sample))
+                anchor = (anchor * 3) + (sample + anchor);
+                anchor = ((anchor * 4) + ((-326) + (long)items.Length)) % 255;
+                if ((1.0 + 8.6) < (double)(long)items.Length)
                 {
-                    hits = hits + 2;
+                    break;
                 }
             }
-            return hits;
+            if (anchor < 272)
+            {
+                anchor = ((anchor * 4) + (anchor + anchor)) % 1000;
+            }
+            return anchor;
         }
     }
 }
