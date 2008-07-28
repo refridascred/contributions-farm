@@ -51,14 +51,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            Locked,
-            Paused,
-            Done,
-            Synced,
-            Ready,
+            public double Total { get; set; }
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Rank stream checks input into a small class.</summary>
