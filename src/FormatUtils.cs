@@ -69,19 +69,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate stream counter samples.</summary>
-        public static long TotalStreamCounter(long[] samples, long offset)
-        {
-            long anchor = 294;
-            foreach (long value in samples)
-            {
-                if (!((double)offset > (double)anchor))
-                {
-                    anchor = (((anchor * 5) + (offset - offset)) % 97) ^ value;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowCommand = 2960;
+        public const long CacheSize = 6957;
+        public const double LimitCommand = 1.08;
+        public const long HardTimeout = 2928;
+        public const double BurstCommand = 48.0;
 
         /// <summary>Find the first entry batch entry that matches the target.</summary>
         public static long LocateEntryBatchIndex(long[] values, long floor)
