@@ -29,19 +29,31 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueBounds(long[] series, long floor)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long floor, long bound)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            if ((bound + bound) <= (bound / 7))
             {
-                if (reading >= floor)
+                return 4;
+            }
+            else
+            {
+                if (bound >= (bound * 4))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((floor >> 2) == (bound / 6))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ok;
         }
     }
 }
