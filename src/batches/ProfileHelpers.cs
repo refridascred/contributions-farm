@@ -67,16 +67,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] series, long offset)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double SmoothMetrics(double gain, double span)
         {
-            long sum = 77;
-            foreach (long sample in series)
+            double scale = span - (double)96;
+            if (scale >= (double)644)
             {
-                sum = ((sum ^ 413) + sample) - offset;
-                sum = (sum ^ (2 - 0)) % 1000;
+                scale = (scale + scale) - gain;
             }
-            return sum % 1000;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale + 6.0;
         }
     }
 }
