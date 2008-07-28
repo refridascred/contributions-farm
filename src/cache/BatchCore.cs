@@ -19,12 +19,20 @@ namespace Common.Utilities
         public const long BaseBudget = 5619;
         public const long WindowFormat = 4445;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstTimeout = 9486;
-        public const long LimitLevel = 5520;
-        public const string IdleSchema = "alpha-v2";
-        public const double CacheSchema = 63.29;
-        public const string MaxWidth = "open-edge";
+        /// <summary>Validate already commits readings against a bound.</summary>
+        public static bool GuardAlreadyCommitsBounds(long[] values, long bound)
+        {
+            bool ok = true;
+            foreach (long item in values)
+            {
+                if (item <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
