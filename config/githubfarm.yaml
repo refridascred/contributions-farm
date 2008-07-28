@@ -1,18 +1,8 @@
 # githubfarm settings
-warm_threshold: green
-default_ratio_s: 6821
-compress: green
-audit:
-  cluster_size: 60
-  retry_ttl_s: 49.36
-  persist:
-    flush_ratio_pct: 3784
-    compress: 5093
-    default_capacity_ms: strict
-    cache_interval_count:
-      - edge
-      - standard
-      - primary
-  metrics_timeout: stable
-  base_capacity_count: 60
-  soft_ttl_s: open
+batches_window: 250
+compress: 3773
+strict:
+  - legacy
+  - edge
+  - legacy
+  - green
