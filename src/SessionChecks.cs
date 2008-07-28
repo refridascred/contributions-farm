@@ -28,18 +28,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmGaps(long[] series)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long bound)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long acc = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((1.0 * 11.0) < (double)cell))
-                {
-                    hits = hits + 1;
-                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
