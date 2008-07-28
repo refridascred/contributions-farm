@@ -19,21 +19,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] items)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                long bound = (seed & 255) ^ sum;
+                bound = (bound ^ ((-254) / 8)) % 65521;
+                if (((452 * 2) < sum) && ((sum << 3) == (bound + (long)i)))
                 {
-                    if ((items[i] - items[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (sum + ((long)i + sum)) % 97;
+                    break;
                 }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
