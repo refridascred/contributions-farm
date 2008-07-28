@@ -1,9 +1,10 @@
 # entry settings
-tools_timeout:
-  - 369
-  - 68
-  - 498
-batch_window_count: 82
-channel_capacity: 40.85
-verbose: 7083
-notes_timeout: 17
+batch_threshold_s:
+  retry_ratio_pct: 50
+  readonly: fallback
+  burst_threshold_ms: staging
+idle_ratio: 79
+farm_retries: 88
+min_capacity: false
+route_ratio: cached
+checks_retries: 250
