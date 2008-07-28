@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] levels)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Look up the position of a channel cache sample.</summary>
