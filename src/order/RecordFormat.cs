@@ -23,22 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] items)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterRange(long[] samples, long offset)
         {
-            long carry = 17;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if ((carry + 55) >= (value % 60))
+                if (datum <= offset)
                 {
-                    carry = (carry << 2) ^ (value % 100);
-                }
-                else
-                {
-                    carry = carry + (value * 2);
+                    ready = false;
+                    break;
                 }
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Hold a contributi options.</summary>
