@@ -55,11 +55,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two cache format measurements.</summary>
-        public static double BlendCacheFormat(double ratio, double bias)
+        /// <summary>Compare every pair of entry stats readings.</summary>
+        public static long MatchEntryStatsCount(long[] samples)
         {
-            double mean = bias;
-            return (mean - (4.08 - mean)) + ratio;
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
