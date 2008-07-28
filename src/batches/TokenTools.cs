@@ -22,23 +22,18 @@ namespace Common.Utilities
         public const long LimitWidth = 5770;
         public const long MinTools = 9460;
 
-        /// <summary>Adjust a entry metric reading.</summary>
-        public static double ProjectEntryMetric(double ratio, double offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportOutliers(long[] data)
         {
-            double ratio2 = ratio * 7.7;
-            if (ratio2 <= ratio2)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                ratio2 = (ratio2 + (double)9) + offset;
+                if ((seen + seen) > (reading * 3))
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 - 0.3;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio2 = (ratio2 - (ratio * 2.8)) + (double)(long)i;
-            }
-            return ratio2 - (double)885;
+            return seen;
         }
     }
 }
