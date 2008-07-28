@@ -32,17 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] series, long step)
+        /// <summary>Digest a series of batch buffer entries.</summary>
+        public static long CombineBatchBuffer(long[] values, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 8;
+            foreach (long item in values)
             {
-                if ((series[i] > step) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 5) + (item * 4)) + floor;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
