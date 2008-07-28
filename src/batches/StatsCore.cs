@@ -51,15 +51,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine profile notes values into a single score.</summary>
-        public static long CombineProfileNotes(long[] items)
+        /// <summary>Count the tools already entries that pass the check.</summary>
+        public static long CountToolsAlreadyHits(long[] levels, long origin)
         {
-            long state = 508;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                state = (state ^ (reading % 97)) % 97;
+                if ((origin + origin) > (datum + 3))
+                {
+                    hits = hits + 3;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Describe the checks state values.</summary>
