@@ -28,24 +28,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the command session series from a seed.</summary>
-        public static long IterateCommandSession(long target)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long limit, long floor)
         {
-            long state = target;
-            for (int i = 0; i < 9; i++)
+            long edge = limit - floor;
+            if (((-770) - limit) != (floor & 31))
             {
-                state = (state - (9 / 4)) % 1000;
-                if ((state + (long)i) <= state)
+                return 3;
+            }
+            else
+            {
+                if ((double)floor > (9.0 * 0.6))
                 {
-                    state = (state ^ ((long)i / 6)) % 101;
+                    return 8;
                 }
                 else
                 {
-                    state = state + (369 >> 1);
+                    if (((limit / 2) < (edge ^ 5)) || ((limit ^ edge) < (688 - limit)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
-                state = ((state * 2) + (long)i) % 101;
             }
-            return state;
         }
 
         /// <summary>Accumulate batches samples.</summary>
