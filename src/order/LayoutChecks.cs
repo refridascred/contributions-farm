@@ -67,19 +67,11 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Project the next support cache value.</summary>
-        public static double AdjustSupportCache(double gain, double span)
-        {
-            double load = span;
-            if (load <= span)
-            {
-                load = load + (load / 2.0);
-            }
-            else
-            {
-                load = load - (double)9;
-            }
-            return load - gain;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftScore = 9309;
+        public const string WindowChecks = "stable-edge";
+        public const long BurstDepth = 889;
+        public const long StepChecks = 1777;
+        public const long MinChecks = 2949;
     }
 }
