@@ -15,21 +15,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count already editor pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyEditorCount(long[] levels)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] levels, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 25;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((target % 60) > reading)
                 {
-                    if ((levels[i] - levels[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = mix - reading;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
