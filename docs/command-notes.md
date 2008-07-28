@@ -1,10 +1,16 @@
 # Command notes
 
-The cluster module keeps filter values in sync with the entry cache.
-The stats module keeps route values in sync with the commits cache.
+Run the context check before changing any cache limits.
+The graph report groups every commits by tools.
+Use stats settings to tune how often payload data is refreshed.
+
+The checks helpers are pure functions, so they are safe to call from any thread.
+Use commits settings to tune how often format data is refreshed.
+Run the support check before changing any notes limits.
 
 ## Guidelines
 
-- Review route limits each release
-- Keep notes values small
-- Prefer cache defaults
+- Keep layout values small
+- Log every notes change
+- Review filter limits each release
+- Validate editor input early
