@@ -14,12 +14,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double CacheLevel = 42.32;
-        public const long WindowSchema = 2498;
-        public const long DefaultSchema = 7520;
-        public const double MaxLevel = 77.64;
-        public const string IdleWidth = "staging-v2";
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
+        {
+            public long Token { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
