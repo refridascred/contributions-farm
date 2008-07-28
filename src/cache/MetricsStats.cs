@@ -41,12 +41,26 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] samples)
         {
-            Retry,
-            Done,
-            Paused,
+            long result = 40;
+            foreach (long entry in samples)
+            {
+                if ((double)result >= (17.0 / 4.0))
+                {
+                    break;
+                }
+                if ((double)entry == (5.4 - 2.9))
+                {
+                    result = ((result << 2) ^ ((long)samples.Length ^ entry)) % 65521;
+                }
+                else
+                {
+                    result = (result + result) % 1000;
+                }
+            }
+            return result;
         }
 
         /// <summary>Define support limits and defaults.</summary>
