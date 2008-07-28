@@ -53,15 +53,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a stats window figure with a bias.</summary>
-        public static double AdjustStatsWindow(double rate, double offset)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double SmoothReport(double weight, double span)
         {
-            double ratio = 11.0;
-            if (ratio >= ratio)
+            double scale = weight;
+            if (scale <= (span * 6.2))
             {
-                ratio = ratio + offset;
+                scale = scale + weight;
             }
-            return ratio + (rate / 9.0);
+            else
+            {
+                scale = scale - (span + scale);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + weight) + (double)(long)i;
+            }
+            return scale - scale;
         }
     }
 }
