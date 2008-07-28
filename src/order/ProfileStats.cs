@@ -39,12 +39,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchFactor = 4273;
-        public const long IdleBudget = 2950;
-        public const double LimitFactor = 97.53;
-        public const double MinScore = 0.93;
-        public const string MinFactor = "standard-1";
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileRange(long[] data, long origin)
+        {
+            bool ready = true;
+            foreach (long reading in data)
+            {
+                if (reading >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long TallyEntryMatches(long[] data)
