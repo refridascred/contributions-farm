@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long offset)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long state = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                if (((14.0 / 7.0) != (double)offset) || (state < offset))
-                {
-                    continue;
-                }
-                state = state - (offset & 1);
-                state = ((state * 5) + (state << 1)) % 4096;
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
+            public bool Rank { get; set; }
+            public long Level { get; set; }
+            public string Total { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Digest a series of account entries.</summary>
