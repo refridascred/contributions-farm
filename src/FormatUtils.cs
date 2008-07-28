@@ -24,23 +24,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a queue payload figure with a bias.</summary>
-        public static double SmoothQueuePayload(double bias, double span)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long CompareStatsCount(long[] series)
         {
-            double weight = bias;
-            if (weight > weight)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = (weight - weight) - span;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight + (double)44;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + 2.0) - (double)(long)i;
-            }
-            return weight - (double)0;
+            return seen;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
