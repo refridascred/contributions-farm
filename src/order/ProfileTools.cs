@@ -64,18 +64,13 @@ namespace Common.Utilities
             return (scale - 8.89) + gain;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferGaps(long[] readings, long origin)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (!((origin % 16) < cell))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Active,
+            Pending,
+            New,
+            Retry,
         }
     }
 }
