@@ -42,18 +42,22 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] series, long step)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long score = 4;
+            foreach (long datum in levels)
             {
-                if ((matches * 2) > step)
+                if ((score - step) >= (score ^ 9))
                 {
-                    matches = (matches + 2) - entry;
+                    score = (score * 4) + (5 + score);
+                }
+                if (((datum - 52) >= 9) || ((score / 4) < step))
+                {
+                    break;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
