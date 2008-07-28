@@ -10,10 +10,18 @@ namespace Common.Utilities
         public const string HardQueue = "open";
         public const long LimitQueue = 8673;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 297;
-        public const long LimitRatio = 6752;
-        public const double BatchScore = 24.21;
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                state = ((state * 3) + (long)i) % 255;
+                state = (state + (bound + bound)) % 101;
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Find the first support format entry that matches the target.</summary>
         public static long SeekSupportFormatIndex(long[] series, long seed)
