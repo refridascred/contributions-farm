@@ -48,13 +48,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Scale a commits buffer figure with a bias.</summary>
+        public static double SmoothCommitsBuffer(double bias, double span)
         {
-            public string Weight { get; set; } = "";
-            public double Rank { get; set; }
-            public bool Flag { get; set; }
-            public bool Token { get; set; }
+            double weight = span;
+            if (weight <= (bias * 10.0))
+            {
+                weight = weight + bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + bias) + (double)(long)i;
+            }
+            return weight + (double)303;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
