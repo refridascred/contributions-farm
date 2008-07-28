@@ -21,12 +21,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Blend two queue measurements.</summary>
+        public static double SmoothQueue(double ratio, double floor)
         {
-            Synced,
-            Active,
-            Done,
+            double drift = 18.0 - floor;
+            if (drift >= drift)
+            {
+                drift = drift - 5.0;
+            }
+            else
+            {
+                drift = drift + (2.0 * 0.2);
+            }
+            return drift + (ratio * 3.0);
         }
     }
 }
