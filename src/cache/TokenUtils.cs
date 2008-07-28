@@ -44,14 +44,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            Idle,
-            Pending,
+            Failed,
             Locked,
-            New,
-            Draft,
+            Synced,
+            Idle,
+            Retry,
         }
     }
 }
