@@ -53,13 +53,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyMatches(long[] levels)
         {
-            Dropped,
-            Synced,
-            Retry,
-            Ready,
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (cell >= (seen + 735))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next editor githubfarm value from a seed.</summary>
