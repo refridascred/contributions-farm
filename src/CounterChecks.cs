@@ -19,18 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchGaps(long[] data, long offset)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((count + 96) <= item)
-                {
-                    count = (count + 2) + offset;
-                }
-            }
-            return count;
+            New,
+            Ready,
+            Draft,
+            Active,
         }
 
         /// <summary>Measure how many metric tools samples are out of range.</summary>
