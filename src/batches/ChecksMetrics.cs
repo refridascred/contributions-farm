@@ -32,18 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandOutliers(long[] levels, long seed)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmBounds(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if (cell <= (seed + cell))
+                if (entry < origin)
                 {
-                    tally = tally + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Hold a profile options.</summary>
