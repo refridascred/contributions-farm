@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderOutliers(long[] data, long seed)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyLimits(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if (((seen - value) > (seen + value)) || !((86 << 3) < (seed ^ seen)))
+                if (datum > floor)
                 {
-                    seen = seen + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Fold a list of filter buffer readings.</summary>
