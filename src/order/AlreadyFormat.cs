@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double AdjustGraph(double gain, double offset)
+        /// <summary>Audit record format readings against a rule.</summary>
+        public static long MeasureRecordFormatOutliers(long[] levels)
         {
-            double rate = 5.0;
-            return ((rate + rate) + gain) + offset;
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample - seen) <= (sample % 24))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of report readings.</summary>
