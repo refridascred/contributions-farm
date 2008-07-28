@@ -2,10 +2,11 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     created_at TIMESTAMP,
-    weight REAL,
-    label TEXT
+    state TEXT NOT NULL DEFAULT 'new',
+    level INTEGER,
+    count INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_weight ON commits_records (weight);
+CREATE INDEX IF NOT EXISTS idx_commits_records_count ON commits_records (count);
 
-INSERT INTO commits_records (weight, label) VALUES (84.17, 'eu-west');
+INSERT INTO commits_records (state, level, count) VALUES ('staging', 39, 51);
