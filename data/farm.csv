@@ -1,10 +1,7 @@
-id,owner,active
-1,481,cached
-2,190,162
-3,667,809
-4,237,157
-5,stable,75.76
-6,314,staging
-7,eu-west,cached
-8,stable,856
-9,open,382
+id,active,owner
+1,legacy,9.87
+2,24.75,legacy
+3,852,166
+4,16.96,0
+5,94,open
+6,cached,20.25
