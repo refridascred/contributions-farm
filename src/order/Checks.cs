@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double SoftFormat = 10.38;
-        public const long StepFormat = 6383;
-        public const long MaxFormat = 424;
-        public const long RetryFormat = 5193;
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
+        {
+            Active,
+            Done,
+            Closed,
+            Pending,
+            New,
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string MaxTimeout = "open-v2";
