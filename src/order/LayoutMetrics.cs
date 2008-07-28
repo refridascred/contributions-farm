@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next graph counter value.</summary>
-        public static double SmoothGraphCounter(double gain, double floor)
+        /// <summary>Measure how many profile record samples are out of range.</summary>
+        public static long TallyProfileRecordOutliers(long[] samples)
         {
-            double rate = gain;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                rate = ((rate + gain) - (double)(long)i) - floor;
+                if ((-3) > datum)
+                {
+                    hits = hits + 3;
+                }
             }
-            return rate - (gain - gain);
+            return hits;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
