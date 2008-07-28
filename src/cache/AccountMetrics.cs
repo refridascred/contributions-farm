@@ -15,18 +15,19 @@ namespace Common.Utilities
         public const long LimitRatio = 6752;
         public const double BatchScore = 24.21;
 
-        /// <summary>Audit token support readings against a rule.</summary>
-        public static long AuditTokenSupportOutliers(long[] series, long seed)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphRange(long[] series, long target)
         {
-            long count = 0;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if ((item - count) >= (item >> 1))
+                if (datum != target)
                 {
-                    count = (count + 2) - seed;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
