@@ -35,9 +35,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepTimeout = 6753;
-        public const long DefaultInterval = 9379;
-        public const string MaxBudget = "cached-1";
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long step, long bound)
+        {
+            if ((double)bound == (9.36 - 6.66))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((step % 100) < (step - bound)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)bound != (5.22 + 2.2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (bound > (bound / 4))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
