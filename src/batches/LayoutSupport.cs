@@ -30,12 +30,17 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long offset)
         {
-            public long Rank { get; set; }
-            public long Level { get; set; }
-            public bool Token { get; set; }
+            long sum = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = (sum << 3) ^ (offset >> 3);
+                sum = (sum * 5) + (offset % 16);
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Define context limits and defaults.</summary>
