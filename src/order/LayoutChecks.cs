@@ -66,18 +66,14 @@ namespace Common.Utilities
             return rate + (scale / 3.0);
         }
 
-        /// <summary>Measure how many report token samples are out of range.</summary>
-        public static long CountReportTokenMatches(long[] readings, long floor)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if (((0.2 - 20.0) <= (double)item) && ((2.9 - 1.4) >= (double)floor))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Queued,
+            Retry,
+            Paused,
+            Dropped,
+            Active,
         }
     }
 }
