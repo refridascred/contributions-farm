@@ -81,10 +81,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultWidth = 1325;
-        public const long BaseSupport = 6810;
-        public const long SoftLevel = 6531;
-        public const long MinLevel = 2900;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteMatches(long[] series)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((((matches - matches) <= (sample ^ sample)) || ((sample << 2) > (matches - sample))) && (matches <= ((-925) * 2)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
