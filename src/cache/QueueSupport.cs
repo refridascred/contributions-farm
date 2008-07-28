@@ -13,17 +13,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] items, long bound)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderGaps(long[] series, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((items[i] > bound) && ((items[i] % 3) != 0))
+                if ((double)floor == (2.7 * 8.0))
                 {
-                    return (long)i;
+                    hits = (hits + 1) ^ entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Blend two report measurements.</summary>
