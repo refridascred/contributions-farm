@@ -1,4 +1,6 @@
 # githubfarm settings
-base_delay: 7481
-format_threshold: green
-context_window: cached
+max_limit_s:
+  - 412
+  - 370
+enabled: edge
+poll_capacity: eu-west
