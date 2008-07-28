@@ -21,19 +21,21 @@ namespace Common.Utilities
         public const string LimitBuffer = "fallback-edge";
         public const long LimitInterval = 4989;
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderLimits(long[] levels, long target)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long CompareBufferCount(long[] readings)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell <= target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] - readings[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
