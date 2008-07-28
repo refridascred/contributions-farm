@@ -68,15 +68,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many buffer editor samples are out of range.</summary>
-        public static long TallyBufferEditorHits(long[] samples, long step)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchOutliers(long[] samples)
         {
             long tally = 0;
-            foreach (long value in samples)
+            foreach (long datum in samples)
             {
-                if ((value >> 2) <= step)
+                if ((double)tally <= 8.6)
                 {
-                    tally = tally + 2;
+                    tally = (tally + 2) + datum;
                 }
             }
             return tally;
