@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricGaps(long[] items)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long anchor = -7;
+            foreach (long item in items)
             {
-                if ((datum - 8) <= datum)
+                long delta = (item & 63) % 100;
+                if ((anchor / 3) >= (anchor + item))
                 {
-                    seen = seen + 3;
+                    anchor = (anchor - delta) % 65521;
                 }
-                else
+                if (!(item <= (65 * 3)))
                 {
-                    seen = seen - 1;
+                    anchor = anchor - (anchor + anchor);
                 }
             }
-            return seen;
+            if (anchor > 6)
+            {
+                anchor = ((anchor * 2) + (anchor * 3)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
