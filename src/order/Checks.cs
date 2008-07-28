@@ -14,12 +14,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string MaxTimeout = "open-v2";
-        public const long HardSize = 2618;
-        public const double HardGithubfarm = 3.48;
-        public const double BurstGithubfarm = 55.66;
-        public const double MaxLevel = 91.11;
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderLimits(long[] data, long seed)
+        {
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string StepChannel = "local";
