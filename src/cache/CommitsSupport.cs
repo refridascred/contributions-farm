@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long target)
+        /// <summary>Audit channel graph readings against a rule.</summary>
+        public static long AuditChannelGraphHits(long[] data)
         {
-            long total = target;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if ((total - target) > total)
+                if (!(seen <= (cell + cell)) && ((double)cell > (6.3 * 2.47)))
                 {
-                    total = ((total * 5) + (target << 1)) % 1000;
+                    seen = seen + 2;
                 }
-                total = ((total * 3) + (long)i) % 97;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
