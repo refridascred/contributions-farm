@@ -51,18 +51,12 @@ namespace Common.Utilities
         public const double BatchContext = 80.46;
         public const long BurstFactor = 9793;
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsGaps(long[] samples, long origin)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)origin > (5.49 + 4.59))
-                {
-                    tally = (tally + 2) ^ entry;
-                }
-            }
-            return tally;
+            public bool Score { get; set; }
+            public bool Weight { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
