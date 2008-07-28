@@ -61,11 +61,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double HardRatio = 50.47;
-        public const long LimitCommits = 6493;
-        public const double LimitSpan = 34.41;
-        public const long RetryTimeout = 2324;
-        public const long WindowCount = 7535;
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
+        {
+            public string Token { get; set; } = "";
+            public bool Stamp { get; set; }
+            public bool Level { get; set; }
+        }
     }
 }
