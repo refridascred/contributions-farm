@@ -43,18 +43,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] samples, long limit)
+        /// <summary>Rank graph checks input into a small class.</summary>
+        public static long ClassifyGraphChecks(long seed, long floor)
         {
-            long anchor = -71;
-            foreach (long datum in samples)
+            if ((floor * 4) < 181)
             {
-                if ((limit % 60) > (datum + datum))
+                return 2;
+            }
+            else
+            {
+                if (!((floor - seed) >= (80 % 10)))
                 {
-                    anchor = ((anchor << 3) ^ (limit % 8)) % 4096;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return anchor;
         }
     }
 }
