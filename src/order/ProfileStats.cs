@@ -33,15 +33,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
-        {
-            Idle,
-            Pending,
-            Retry,
-            Dropped,
-            Queued,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double SoftCommand = 79.91;
+        public const double IdleCommand = 9.71;
+        public const double BaseFactor = 17.82;
 
         /// <summary>Roll a report counter forward.</summary>
         public static long IterateReport(long offset)
