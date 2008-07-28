@@ -33,12 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorGaps(long[] data)
         {
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
-            public double Score { get; set; }
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((double)(long)data.Length >= 0.4)
+                {
+                    tally = (tally + 3) ^ datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
