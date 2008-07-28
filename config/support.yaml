@@ -1,20 +1,20 @@
 # support settings
-flush_retries_ms: 10
-idle_window_pct:
-  commits_capacity:
-    - 414
-    - 454
-  strict: true
-  burst_delay_pct: local
-  cache_capacity_count:
+cache_delay: 40.99
+report_limit: true
+retry_capacity_ms: 100
+hard_timeout_s:
+  persist:
+    - edge
+    - green
     - strict
-    - staging
+  idle_size_s: local
+  cache_window_count: 88
+  base_delay_count:
     - open
     - local
-persist: cached
-dry_run:
-  - staging
-  - edge
-  - blue
-contributi_ttl: eu-west
-audit: 65.19
+    - open
+  enabled: 40
+  batch_depth:
+    - green
+    - latest
+    - local
