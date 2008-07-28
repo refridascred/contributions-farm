@@ -1,5 +1,7 @@
 {
-  "githubfarm_timeout": false,
-  "soft_ratio_s": [482, 60, 470],
-  "poll_interval": "open"
+  "strict": 30,
+  "retry_ttl_s": 500,
+  "record_depth": 4238,
+  "burst_timeout_s": 500,
+  "buffer_timeout": "standard"
 }
