@@ -19,13 +19,13 @@ namespace Common.Utilities
         public const long LimitLevel = 9251;
         public const long BurstSpan = 8940;
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            Closed,
-            Retry,
-            Queued,
-            Stale,
+            Paused,
+            Pending,
+            Draft,
+            Active,
         }
     }
 }
