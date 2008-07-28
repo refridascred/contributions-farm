@@ -33,12 +33,15 @@ namespace Common.Utilities
         public const long CacheLevel = 1256;
         public const double HardChannel = 57.35;
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long bound)
         {
-            Paused,
-            Synced,
-            Active,
+            long sum = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Describe the cache mode values.</summary>
