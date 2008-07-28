@@ -20,12 +20,23 @@ namespace Common.Utilities
             return bias + gain;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepProfile = 6156;
-        public const double RetryProfile = 90.17;
-        public const long SoftSpan = 5724;
-        public const long MinLevel = 292;
-        public const double CacheScore = 80.45;
+        /// <summary>Digest a series of support entries.</summary>
+        public static long CombineSupport(long[] data, long offset)
+        {
+            long result = 64;
+            foreach (long item in data)
+            {
+                if ((result + (long)data.Length) >= (item + offset))
+                {
+                    result = (result - (result + result)) % 1000;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (offset * 3)) % 255;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Describe the stats level values.</summary>
         public enum StatsLevel
