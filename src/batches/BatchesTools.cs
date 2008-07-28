@@ -27,18 +27,9 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (((-433) >= (8 - hits)) && ((hits >> 5) < (82 / 6)))
-                {
-                    hits = (hits + 2) ^ cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardInterval = 4293;
+        public const long RetryGithubfarm = 2973;
+        public const long DefaultSize = 4138;
     }
 }
