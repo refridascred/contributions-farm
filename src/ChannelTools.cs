@@ -20,18 +20,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsMatches(long[] levels, long step)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long offset, long seed)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long slot = offset - seed;
+            if ((seed / 2) > slot)
             {
-                if ((4.0 + 10.0) <= (double)step)
+                return 4;
+            }
+            else
+            {
+                if ((19.0 - 3.4) >= (double)seed)
                 {
-                    tally = (tally + 2) + sample;
+                    return 0;
+                }
+                else
+                {
+                    if (!((16.0 / 3.0) > (double)offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed - slot) != (553 >> 5))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a layout header.</summary>
