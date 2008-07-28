@@ -30,13 +30,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphLimits(long[] data, long seed)
         {
-            public bool Size { get; set; }
-            public long Score { get; set; }
-            public long Flag { get; set; }
-            public long Count { get; set; }
+            bool ok = true;
+            foreach (long datum in data)
+            {
+                if (datum <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a token snapshot.</summary>
