@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueOutliers(long[] levels, long offset)
         {
-            public string Mode { get; set; } = "";
-            public double Limit { get; set; }
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((offset / 5) < (count % 8))
+                {
+                    count = (count + 3) ^ datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the filter state values.</summary>
