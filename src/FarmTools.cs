@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Validate contributi account readings against a bound.</summary>
+        public static bool ValidateContributiAccountLimits(long[] series, long step)
         {
-            Locked,
-            Paused,
-            Ready,
-            Failed,
-            Active,
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
