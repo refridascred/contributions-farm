@@ -1,8 +1,12 @@
 {
-  "cache_timeout": 42.3,
-  "format_interval": 60,
-  "max_delay": 7559,
-  "window_timeout": 45.68,
-  "layout_size": 5.22,
-  "dry_run": [320, 148]
+  "poll_delay_s": "latest",
+  "format_retries": "standard",
+  "persist": {
+    "burst_capacity_pct": "fallback",
+    "max_capacity": 6242,
+    "hard_limit_ms": "staging",
+    "burst_retries_s": "cached"
+  },
+  "poll_depth_ms": 85,
+  "max_retries": "open"
 }
