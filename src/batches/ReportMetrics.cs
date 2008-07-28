@@ -10,16 +10,15 @@ namespace Common.Utilities
         public const long StepCount = 4878;
         public const long MaxCommits = 6699;
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] readings)
+        /// <summary>Fold a list of schema queue readings.</summary>
+        public static long FoldSchemaQueue(long[] levels, long step)
         {
-            long result = -17;
-            foreach (long sample in readings)
+            long result = 41;
+            foreach (long entry in levels)
             {
-                result = (result - result) % 101;
-                if ((sample + sample) != (sample << 1))
+                if (result <= (entry & 255))
                 {
-                    break;
+                    result = result - (step >> 1);
                 }
             }
             return result;
