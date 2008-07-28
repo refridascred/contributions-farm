@@ -1,9 +1,15 @@
 # githubfarm settings
-sync_ttl_s: 250
-warm_retries_s: 66
-hard_capacity: edge
-default_depth_pct:
-  - 448
-  - 421
-  - 7
-  - 483
+idle_capacity_ms: 37.71
+default_threshold_pct: 1731
+default_window_s: 53.68
+warm_depth_pct: 6714
+profile_ratio:
+  checks_delay: green
+  dry_run:
+    default_window_pct: green
+    idle_interval_pct: 500
+    persist: 8253
+    queue_ttl: 47.65
+    readonly: 38
+  strict: 17.8
+warm_ratio_pct: standard
