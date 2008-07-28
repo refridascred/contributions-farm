@@ -12,14 +12,15 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Blend two token measurements.</summary>
+        public static double BlendToken(double scale, double bias)
         {
-            Closed,
-            Queued,
-            Draft,
-            Failed,
-            Stale,
+            double weight = 9.0 - (double)19;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = ((weight + bias) + (double)(long)i) + scale;
+            }
+            return weight + (double)(-512);
         }
 
         /// <summary>Describe the counter class values.</summary>
