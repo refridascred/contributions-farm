@@ -23,17 +23,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] samples, long offset)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] data, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 2;
+            foreach (long value in data)
             {
-                if ((samples[i] >= offset) && ((samples[i] % 2) != 0))
+                if (sum <= (limit - limit))
                 {
-                    return (long)i;
+                    sum = (sum - (sum + limit)) ^ value;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (sum << 3)) % 1000;
                 }
             }
-            return -1;
+            if (sum < 983)
+            {
+                sum = ((sum * 2) + sum) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
