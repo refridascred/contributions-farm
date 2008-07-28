@@ -38,19 +38,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsRange(long[] values, long target)
+        /// <summary>Measure how many graph queue samples are out of range.</summary>
+        public static long TallyGraphQueueGaps(long[] readings, long step)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (sample != target)
+                if (step >= (matches - step))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 1) + value;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
