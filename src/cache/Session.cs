@@ -47,19 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesLimits(long[] values, long step)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportGaps(long[] samples)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (datum >= step)
+                if (!((1.52 > (double)item) && (item <= (item + item))))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Look up the position of a command editor sample.</summary>
