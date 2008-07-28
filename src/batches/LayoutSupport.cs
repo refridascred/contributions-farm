@@ -38,22 +38,9 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Accumulate queue githubfarm samples.</summary>
-        public static long TallyQueueGithubfarm(long[] readings)
-        {
-            long anchor = 46;
-            foreach (long datum in readings)
-            {
-                if (anchor > (datum & 31))
-                {
-                    anchor = ((anchor << 3) ^ datum) % 101;
-                }
-            }
-            if (anchor > (-2))
-            {
-                anchor = ((anchor * 3) + (anchor >> 2)) % 255;
-            }
-            return anchor;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchScore = 5615;
+        public const long BurstLevel = 9917;
+        public const long RetryWidth = 644;
     }
 }
