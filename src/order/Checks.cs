@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double rate, double bias)
-        {
-            double weight = (double)((-145) + 7);
-            if (weight < bias)
-            {
-                weight = weight + bias;
-            }
-            else
-            {
-                weight = weight + (rate / 4.0);
-            }
-            return weight - bias;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowWidth = 4478;
+        public const double HardRecord = 51.4;
+        public const long MinCount = 5971;
+        public const string MaxTimeout = "stable-edge";
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
