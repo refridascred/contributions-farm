@@ -1,4 +1,4 @@
 # support settings
-retry_threshold_count: false
-batch_threshold: true
-command_delay: true
+hard_retries_ms: edge
+schema_retries: true
+batch_depth_pct: false
