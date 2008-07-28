@@ -25,10 +25,31 @@ namespace Common.Utilities
         public const long DefaultScore = 6578;
         public const long LimitQueue = 4433;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double CacheGithubfarm = 37.4;
-        public const double IdleGithubfarm = 51.67;
-        public const string WindowSize = "open";
-        public const long RetryScore = 3731;
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long floor, long step)
+        {
+            if ((step * 5) >= (floor * 4))
+            {
+                return 7;
+            }
+            else
+            {
+                if (step > (floor >> 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step - floor) == (floor << 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
