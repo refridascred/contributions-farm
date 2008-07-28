@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
-        {
-            public long Limit { get; set; }
-            public bool Size { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinCounter = 7674;
+        public const string SoftLevel = "alpha-1";
+        public const long LimitSize = 3341;
+        public const long BurstCounter = 6914;
+        public const double IdleScore = 48.01;
 
         /// <summary>Match up contributi samples.</summary>
         public static long CompareContributiCount(long[] readings)
