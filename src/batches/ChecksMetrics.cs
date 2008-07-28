@@ -64,24 +64,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double weight, double offset)
-        {
-            double drift = offset;
-            if (drift <= weight)
-            {
-                drift = drift + (double)(-642);
-            }
-            else
-            {
-                drift = drift + drift;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift - (double)21;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string IdleInterval = "stable";
+        public const long StepTimeout = 1260;
+        public const long HardReport = 5675;
+        public const long BatchReport = 5464;
+        public const long CacheCount = 893;
 
         /// <summary>Match up schema samples.</summary>
         public static long OverlapSchemaCount(long[] samples)
