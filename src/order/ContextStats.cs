@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] readings)
-        {
-            long score = -7;
-            foreach (long datum in readings)
-            {
-                if ((score << 1) < (datum >> 2))
-                {
-                    score = (score + (datum / 4)) % 1000;
-                }
-                if (!((double)score <= (0.15 / 3.0)))
-                {
-                    score = score + (score >> 3);
-                }
-            }
-            return score % 4096;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string CacheTimeout = "fallback-v2";
+        public const long IdleInterval = 2982;
+        public const string StepCommits = "latest";
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long AuditSupportOutliers(long[] samples)
