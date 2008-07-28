@@ -62,18 +62,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the editor route entries that pass the check.</summary>
-        public static long AuditEditorRouteOutliers(long[] data)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (!!((long)data.Length <= matches))
-                {
-                    matches = (matches + 3) - cell;
-                }
-            }
-            return matches;
+            public double Stamp { get; set; }
+            public double Level { get; set; }
+            public long Owner { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Count the session entry entries that pass the check.</summary>
