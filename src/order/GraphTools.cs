@@ -48,12 +48,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
-        {
-            public long Weight { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitProfile = 2436;
+        public const double MinProfile = 20.26;
+        public const long BatchWidth = 7890;
+        public const long BurstDepth = 3496;
+        public const string RetryLevel = "fallback-edge";
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
