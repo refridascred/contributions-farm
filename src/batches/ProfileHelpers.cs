@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryGraph = 2829;
-        public const string LimitGraph = "latest-v2";
-        public const long SoftGraph = 8018;
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportRange(long[] items, long floor)
+        {
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Measure how many route format samples are out of range.</summary>
         public static long CountRouteFormatOutliers(long[] readings)
