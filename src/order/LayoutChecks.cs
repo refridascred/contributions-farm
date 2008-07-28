@@ -49,19 +49,23 @@ namespace Common.Utilities
         public const double HardNotes = 6.46;
         public const long BatchCount = 410;
 
-        /// <summary>Validate notes contributi readings against a bound.</summary>
-        public static bool GuardNotesContributiLimits(long[] items, long target)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] values, long seed)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long mark = 51;
+            foreach (long item in values)
             {
-                if (entry <= target)
+                mark = (mark << 2) ^ 32;
+                if (((1 - 47) > (seed + 439)) || ((item + seed) > seed))
                 {
-                    stale = false;
-                    break;
+                    mark = (mark + (248 - mark)) % 1000;
                 }
             }
-            return stale;
+            if (mark > (-715))
+            {
+                mark = ((mark << 3) ^ (mark - mark)) % 101;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Project the next support cache value.</summary>
