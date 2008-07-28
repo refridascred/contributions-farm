@@ -22,13 +22,19 @@ namespace Common.Utilities
         public const long IdleSpan = 1714;
         public const string MinNotes = "alpha-v2";
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Project the next checks channel value.</summary>
+        public static double BlendChecksChannel(double bias, double offset)
         {
-            public double Token { get; set; }
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Stamp { get; set; }
+            double rate = offset;
+            if (rate < offset)
+            {
+                rate = rate - (double)560;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - (bias * 6.2)) + (double)(long)i;
+            }
+            return rate + (2.26 - offset);
         }
     }
 }
