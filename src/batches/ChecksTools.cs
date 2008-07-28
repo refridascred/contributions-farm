@@ -44,13 +44,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionBounds(long[] samples, long bound)
         {
-            public bool Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Count { get; set; }
-            public long Stamp { get; set; }
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
