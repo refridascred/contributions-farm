@@ -28,9 +28,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string HardFilter = "alpha-v2";
-        public const string CacheDepth = "stable-1";
-        public const long BaseFilter = 149;
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long limit, long offset)
+        {
+            if (limit >= (limit * 4))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((20.0 - 5.9) > (double)offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
     }
 }
