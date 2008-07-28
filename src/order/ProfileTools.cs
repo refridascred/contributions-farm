@@ -36,11 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportBounds(long[] samples, long limit)
         {
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
