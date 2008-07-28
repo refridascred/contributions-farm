@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] readings)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 892;
+            foreach (long item in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)mark < (2.96 * 20.0))
                 {
-                    if ((readings[i] - readings[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark - (85 / 4)) % 255;
+                    mark = (mark + (item - item)) % 4096;
+                }
+                if ((mark * 5) != (item >> 2))
+                {
+                    mark = ((mark << 2) ^ item) % 65521;
                 }
             }
-            return hits;
+            if (mark > 689)
+            {
+                mark = ((mark << 2) ^ 6) % 255;
+            }
+            return mark % 97;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
