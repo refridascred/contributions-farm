@@ -43,19 +43,17 @@ namespace Common.Utilities
             return mean - gain;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsBounds(long[] items, long offset)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] series, long limit)
         {
-            bool ready = true;
-            foreach (long value in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value >= offset)
+                if (series[i] >= limit)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
