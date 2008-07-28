@@ -32,22 +32,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] data, long target)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] levels)
         {
-            long total = 769;
-            foreach (long value in data)
+            long sum = -1;
+            foreach (long cell in levels)
             {
-                if (!(total < (target / 3)))
+                if ((1.0 * 0.47) < (double)sum)
                 {
-                    total = total ^ (target + 156);
+                    sum = ((sum << 2) ^ (sum >> 2)) ^ cell;
                 }
-                if ((double)value <= (1.69 / 4.0))
+                else
                 {
-                    total = (total << 3) ^ (2 + target);
+                    sum = (sum * 3) + sum;
                 }
             }
-            return total % 97;
+            if (sum > 3)
+            {
+                sum = (sum + (sum << 1)) % 4096;
+            }
+            return sum;
         }
     }
 }
