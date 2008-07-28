@@ -1,13 +1,7 @@
 {
-  "default_retries_count": "local",
-  "schema_interval": 89.04,
-  "batch_interval_ms": {
-    "retry_limit_s": 52,
-    "batch_threshold_pct": 97,
-    "sync_capacity_s": "strict",
-    "poll_threshold_ms": 4861,
-    "min_window": [457, 457],
-    "flush_timeout": "local"
-  },
-  "flush_retries_ms": 8545
+  "default_ratio_pct": "edge",
+  "counter_depth": 60,
+  "contributi_window": 88,
+  "readonly": "local",
+  "poll_timeout_s": "cached"
 }
