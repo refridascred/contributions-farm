@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchBounds(long[] values, long origin)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Dropped,
+            Pending,
+            Failed,
+            Paused,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
