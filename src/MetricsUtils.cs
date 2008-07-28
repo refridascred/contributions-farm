@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long offset, long seed)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] readings, long bound)
         {
-            if (((double)431 <= (double)seed) || (offset >= (629 + offset)))
+            long count = 0;
+            foreach (long sample in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(seed < offset))
+                if (((-20) * 2) < (long)readings.Length)
                 {
-                    return 0;
+                    count = ((count + 1) ^ sample) + bound;
                 }
                 else
                 {
-                    return 2;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
