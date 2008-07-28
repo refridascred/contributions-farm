@@ -1,18 +1,8 @@
 {
-  "buffer_depth": "local",
-  "route_ttl": true,
-  "metrics_threshold": {
-    "warm_interval_s": 566,
-    "min_delay_ms": 27,
-    "idle_window_count": 88,
-    "cache_delay_ms": {
-      "route_capacity": 13,
-      "retry_interval": 11.39,
-      "poll_threshold_ms": "green",
-      "persist": 90.13
-    },
-    "token_retries": "strict"
-  },
-  "min_timeout": 55,
-  "min_delay": 58
+  "burst_ratio": 6707,
+  "command_window": "edge",
+  "persist": [53, 463, 459],
+  "strict": "edge",
+  "poll_size_count": ["green", "strict", "open"],
+  "farm_ttl": 60
 }
