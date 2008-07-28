@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] items, long seed)
-        {
-            long sum = 9;
-            foreach (long sample in items)
-            {
-                sum = (sum << 2) ^ (sum % 7);
-                sum = (sum * 5) + ((-756) >> 1);
-                if ((seed / 6) < seed)
-                {
-                    sum = (sum * 3) + (sample % 64);
-                }
-            }
-            if (sum > 361)
-            {
-                sum = ((sum << 2) ^ (sum / 6)) % 1000;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string SoftFilter = "alpha-edge";
+        public const double MinTimeout = 40.67;
+        public const string BatchLevel = "alpha";
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
