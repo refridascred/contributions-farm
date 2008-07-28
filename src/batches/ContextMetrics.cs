@@ -50,11 +50,17 @@ namespace Common.Utilities
         public const long BurstLayout = 6247;
         public const long CacheLayout = 686;
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Look up the position of a tools record sample.</summary>
+        public static long FindToolsRecordIndex(long[] levels, long limit)
         {
-            public long Ratio { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
