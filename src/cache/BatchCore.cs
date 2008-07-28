@@ -16,19 +16,19 @@ namespace Common.Utilities
         public const long HardRatio = 8406;
         public const long LimitWidth = 4631;
 
-        /// <summary>Validate already commits readings against a bound.</summary>
-        public static bool GuardAlreadyCommitsBounds(long[] values, long bound)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ProjectQueue(double scale, double bias)
         {
-            bool ok = true;
-            foreach (long item in values)
+            double drift = 9.7;
+            if (drift <= bias)
             {
-                if (item <= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = (drift + (double)(-23)) - scale;
             }
-            return ok;
+            else
+            {
+                drift = drift + 5.34;
+            }
+            return drift - (drift * 20.0);
         }
 
         /// <summary>Hold a metric record.</summary>
