@@ -1,22 +1,9 @@
 # support settings
-hard_size_s: legacy
-poll_depth_ms:
-  hard_ratio_count: 1210
-  metrics_depth: 80.2
-  soft_retries_ms:
-    base_depth_pct: strict
-    queue_window: 8872
-    persist: 4655
-  flush_interval_count:
-    audit: local
-    default_retries: eu-west
-    min_size: true
-    min_depth_pct:
-      - 443
-      - 133
-    persist: 500
-    strict: true
-  metric_window: 4959
-support_capacity: 90
-route_window: true
-idle_size_count: true
+sync_window: 8586
+batch_size: 250
+profile_ttl:
+  - open
+  - stable
+soft_timeout_ms: 895
+strict: 0.71
+batches_interval: 58
