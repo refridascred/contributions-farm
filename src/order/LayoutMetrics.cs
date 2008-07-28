@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many profile record samples are out of range.</summary>
-        public static long TallyProfileRecordOutliers(long[] samples)
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((-3) > datum)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((items[i] + items[j]) > 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Look up the position of a batch commits sample.</summary>
