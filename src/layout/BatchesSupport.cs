@@ -20,24 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long origin)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheLimits(long[] readings, long step)
         {
-            long state = origin;
-            for (int i = 0; i < 24; i++)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if ((state - state) <= (origin + (-649)))
+                if (item <= step)
                 {
-                    state = (state << 3) ^ (62 + state);
-                    continue;
+                    ok = false;
+                    break;
                 }
-                if ((6.75 / 9.0) != (double)state)
-                {
-                    state = state - state;
-                }
-                state = ((state * 4) + (long)i) % 4093;
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
