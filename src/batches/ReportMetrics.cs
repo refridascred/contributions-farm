@@ -53,21 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] data)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportBounds(long[] readings, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (reading > target)
                 {
-                    if ((data[i] + data[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
