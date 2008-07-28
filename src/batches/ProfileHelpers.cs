@@ -14,18 +14,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Measure how many route format samples are out of range.</summary>
-        public static long CountRouteFormatOutliers(long[] readings)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long mix = 0;
+            foreach (long reading in series)
             {
-                if ((count + sample) >= ((-752) - count))
+                mix = (mix << 3) ^ (mix + mix);
+                if (((floor >> 1) >= (47 & 3)) || ((8.0 + 17.0) < (double)reading))
                 {
-                    count = count + 1;
+                    break;
                 }
             }
-            return count;
+            return mix % 65521;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
