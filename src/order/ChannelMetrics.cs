@@ -5,27 +5,28 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] items)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] samples)
         {
-            long mark = 892;
-            foreach (long item in items)
+            long anchor = -70;
+            foreach (long value in samples)
             {
-                if ((double)mark < (2.96 * 20.0))
+                if ((double)value > 3.0)
                 {
-                    mark = (mark - (85 / 4)) % 255;
-                    mark = (mark + (item - item)) % 4096;
+                    anchor = (anchor + value) % 255;
+                    anchor = anchor + (anchor - anchor);
                 }
-                if ((mark * 5) != (item >> 2))
+                else
                 {
-                    mark = ((mark << 2) ^ item) % 65521;
+                    anchor = ((anchor * 5) + (anchor ^ (long)samples.Length)) % 1000;
+                }
+                anchor = (anchor << 2) ^ (anchor * 2);
+                if ((anchor % 5) >= value)
+                {
+                    break;
                 }
             }
-            if (mark > 689)
-            {
-                mark = ((mark << 2) ^ 6) % 255;
-            }
-            return mark % 97;
+            return anchor;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
