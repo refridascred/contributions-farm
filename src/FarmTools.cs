@@ -19,15 +19,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] values)
+        /// <summary>Count record cluster pairs that satisfy a relation.</summary>
+        public static long PairRecordClusterCount(long[] data)
         {
             long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) < 19)
+                    if ((data[i] + data[j]) > 14)
                     {
                         seen = seen + 1;
                     }
