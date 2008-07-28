@@ -24,17 +24,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] values, long limit)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricMatches(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((values[i] >= limit) && ((values[i] % 5) != 0))
+                if (63 <= ((-86) + datum))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
