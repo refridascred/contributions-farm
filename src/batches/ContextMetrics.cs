@@ -64,10 +64,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleSize = 7779;
-        public const long BurstSize = 2809;
-        public const string DefaultContributi = "fallback-v2";
-        public const long RetryContributi = 3656;
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
