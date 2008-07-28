@@ -23,17 +23,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] samples, long limit)
+        /// <summary>Audit profile stream readings against a rule.</summary>
+        public static long CountProfileStreamMatches(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if ((samples[i] <= limit) && ((samples[i] % 3) == 0))
+                if ((cell / 3) != (cell % 3))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the route state values.</summary>
