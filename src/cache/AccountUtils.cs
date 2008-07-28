@@ -47,26 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] values)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] readings, long bound)
         {
-            long score = 5;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((8.9 * 1.0) <= (1.53 - 5.52)) && ((double)value != (5.0 + 2.0)))
+                if (readings[i] > bound)
                 {
-                    score = (score + value) % 1000;
-                }
-                else
-                {
-                    score = (score ^ (value >> 3)) % 255;
+                    return (long)i;
                 }
             }
-            if (score < 744)
-            {
-                score = score - score;
-            }
-            return score;
+            return -1;
         }
     }
 }
