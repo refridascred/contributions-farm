@@ -11,21 +11,18 @@ namespace Common.Utilities
         public const long BatchSize = 7577;
         public const long BatchBudget = 9552;
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] values)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterOutliers(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((tally - tally) <= (tally + tally))
                 {
-                    if ((values[i] - values[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 1) + item;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
