@@ -51,11 +51,38 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long offset, long step)
         {
-            public double Level { get; set; }
-            public bool Size { get; set; }
+            if ((offset >> 3) <= step)
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((step / 2) < (offset + step)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (offset > (step << 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((step - step) > (offset - 187)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
