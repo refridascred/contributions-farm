@@ -16,18 +16,22 @@ namespace Common.Utilities
             return bias + (double)8;
         }
 
-        /// <summary>Audit tools window readings against a rule.</summary>
-        public static long MeasureToolsWindowOutliers(long[] values, long limit)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferHits(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((limit + datum) < datum)
+                if (!((double)value < (double)tally) || (((value << 2) < tally) || ((value - tally) != (value % 16))))
                 {
-                    matches = matches + 2;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
