@@ -62,12 +62,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Digest a series of counter batch entries.</summary>
+        public static long WeighCounterBatch(long[] series)
         {
-            Pending,
-            New,
-            Paused,
+            long acc = 0;
+            foreach (long cell in series)
+            {
+                if ((cell - 7) >= (20 + 475))
+                {
+                    acc = acc ^ (acc << 2);
+                }
+            }
+            return acc % 4096;
         }
     }
 }
