@@ -54,24 +54,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long step, long floor)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandHits(long[] items)
         {
-            if ((step / 8) <= (step + (-70)))
+            long matches = 0;
+            foreach (long cell in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step + (-48)) > (floor & 1))
+                if (((cell % 3) > matches) || ((945 + cell) < (matches - cell)))
                 {
-                    return 4;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    return 7;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Combine token channel values into a single score.</summary>
