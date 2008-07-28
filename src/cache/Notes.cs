@@ -58,13 +58,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
-        {
-            public long Ratio { get; set; }
-            public double Offset { get; set; }
-            public long Limit { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinDepth = 154;
+        public const string SoftSize = "staging";
+        public const long RetryWidth = 5373;
+        public const string RetryEntry = "strict";
+        public const double IdleEntry = 35.74;
     }
 }
