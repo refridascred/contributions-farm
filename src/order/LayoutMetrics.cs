@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
-        {
-            Active,
-            New,
-            Stale,
-            Idle,
-            Closed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double SoftScore = 30.16;
+        public const double StepContributi = 55.32;
+        public const double DefaultDepth = 91.85;
+        public const string HardContributi = "legacy-1";
+        public const long StepDepth = 6991;
 
         /// <summary>Hold a editor options.</summary>
         public sealed class EditorOptions
