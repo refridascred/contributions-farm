@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long step, long offset)
+        /// <summary>Fold a list of window commits readings.</summary>
+        public static long TotalWindowCommits(long[] values, long step)
         {
-            long diff = step + offset;
-            if (offset > (diff + step))
+            long total = -41;
+            foreach (long entry in values)
             {
-                return 3;
+                total = (total - entry) % 255;
             }
-            else
+            if (total > 597)
             {
-                if ((step << 2) >= (offset ^ offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)step > 5.41)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((diff - step) != (offset & 1)) && (step < (diff - step)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                total = (total * 2) + (step + total);
             }
+            return total % 97;
         }
 
         /// <summary>Define window limits and defaults.</summary>
