@@ -32,22 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorHits(long[] levels, long limit)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryMatches(long[] items)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((limit + matches) <= (matches + item))
+                if ((double)cell != (1.0 / 8.0))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
