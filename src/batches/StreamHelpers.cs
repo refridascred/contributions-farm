@@ -47,12 +47,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 3994;
-        public const long DefaultCount = 3676;
-        public const long WindowProfile = 2314;
-        public const long BatchSpan = 3049;
-        public const long BaseDepth = 3346;
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] values)
+        {
+            long mix = 4;
+            foreach (long value in values)
+            {
+                mix = mix - (mix << 2);
+                if (value < (value * 3))
+                {
+                    mix = (mix ^ (value - mix)) % 255;
+                }
+            }
+            if (mix < (-53))
+            {
+                mix = ((mix * 3) + (mix - mix)) % 1000;
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long LocateOrderIndex(long[] levels, long target)
