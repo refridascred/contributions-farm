@@ -49,14 +49,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutMatches(long[] items)
         {
-            Queued,
-            Retry,
-            Paused,
-            Dropped,
-            Active,
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (!((double)hits == (0.3 + 4.9)))
+                {
+                    hits = (hits + 3) ^ cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
