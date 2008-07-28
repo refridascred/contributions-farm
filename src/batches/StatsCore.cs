@@ -34,15 +34,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
-        {
-            Synced,
-            Active,
-            Stale,
-            Idle,
-            Locked,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double WindowCount = 95.74;
+        public const long BurstInterval = 3892;
+        public const long BatchSize = 1562;
+        public const string DefaultSpan = "standard-v2";
 
         /// <summary>Derive the next metric order value from a seed.</summary>
         public static long SeriesMetricOrder(long origin)
