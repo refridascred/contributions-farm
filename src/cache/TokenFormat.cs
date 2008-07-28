@@ -20,13 +20,12 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            public bool Stamp { get; set; }
-            public bool Count { get; set; }
-            public long Region { get; set; }
-            public long Size { get; set; }
+            Ready,
+            Idle,
+            Paused,
         }
 
         /// <summary>Hold a cache snapshot.</summary>
