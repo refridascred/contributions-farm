@@ -1,5 +1,10 @@
 # entry settings
-verbose: latest
-format_delay: 0.46
-hard_ttl_s: open
-command_retries: 6
+layout_size: true
+session_ratio: blue
+hard_limit_count:
+  - 206
+  - 249
+  - 271
+  - 30
+buffer_ttl: 85
+audit: 37.32
