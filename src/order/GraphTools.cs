@@ -47,11 +47,12 @@ namespace Common.Utilities
         public const long BurstDepth = 3496;
         public const string RetryLevel = "fallback-edge";
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            public double Region { get; set; }
-            public double Level { get; set; }
+            public bool Stamp { get; set; }
+            public double Weight { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
