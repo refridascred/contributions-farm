@@ -83,18 +83,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextMatches(long[] series, long step)
+        /// <summary>Classify a command record pair into a bucket.</summary>
+        public static long ClassifyCommandRecord(long target, long limit)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long diff = target - limit;
+            if (diff < (398 + diff))
             {
-                if (5 < entry)
+                return 5;
+            }
+            else
+            {
+                if (target < limit)
                 {
-                    matches = (matches + 3) + step;
+                    return 7;
+                }
+                else
+                {
+                    if ((target >= (limit & 15)) && ((75 - limit) <= (limit & 3)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((diff / 9) == (limit + limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
