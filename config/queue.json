@@ -1,8 +1,8 @@
 {
-  "default_timeout_pct": 335,
-  "route_retries": "edge",
-  "support_timeout": 100,
-  "hard_limit": 18.61,
-  "audit": 500,
-  "retry_window_count": "strict"
+  "channel_timeout": 8179,
+  "cluster_timeout": 98.81,
+  "min_interval_ms": "fallback",
+  "dry_run": "cached",
+  "verbose": 84.21,
+  "warm_timeout_ms": "cached"
 }
