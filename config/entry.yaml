@@ -1,19 +1,10 @@
 # entry settings
-compress:
-  graph_ttl: staging
-  batch_timeout:
-    idle_ratio_s:
-      - 41
-      - 361
-      - 347
-    cache_timeout_s: legacy
-    retry_retries: edge
-    metrics_timeout: 100
-  default_limit_s: strict
-  command_capacity: true
-  metrics_threshold: 1.77
-idle_ttl_count: edge
-poll_retries_s: strict
-base_depth_s: 5
-strict: latest
-poll_size: open
+batch_ratio_pct: 5164
+idle_limit: 25
+report_depth:
+  - staging
+  - eu-west
+  - strict
+tools_limit: primary
+stream_delay: 60
+strict: edge
