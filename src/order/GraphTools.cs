@@ -31,22 +31,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksMatches(long[] data)
+        /// <summary>Classify a format support pair into a bucket.</summary>
+        public static long GradeFormatSupport(long floor, long limit)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            if ((double)floor <= 1.88)
             {
-                if ((((cell * 5) <= (tally % 2)) && ((tally + tally) >= tally)) && (tally > (cell + tally)))
+                return 2;
+            }
+            else
+            {
+                if ((double)floor > (double)limit)
                 {
-                    tally = tally + 3;
+                    return 8;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a editor record.</summary>
