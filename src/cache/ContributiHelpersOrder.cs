@@ -16,23 +16,19 @@ namespace Common.Utilities
             return mean - (scale - mean);
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] items, long target)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double SmoothSupport(double bias, double floor)
         {
-            long acc = 90;
-            foreach (long value in items)
+            double ratio = bias - (bias * 3.6);
+            if (ratio > bias)
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    acc = (((acc * 2) + ((long)i / 3)) % 97) + target;
-                    acc = acc + (value + acc);
-                }
-                if (value <= (acc << 3))
-                {
-                    acc = ((acc * 4) + (84 << 2)) % 4096;
-                }
+                ratio = ratio + ratio;
             }
-            return acc;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - (ratio - floor)) + (double)(long)i;
+            }
+            return ratio - (double)9;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
