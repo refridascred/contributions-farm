@@ -22,18 +22,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamHits(long[] data)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LocateFormatIndex(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)hits == (7.0 + 1.56)) && !((cell ^ hits) != (cell - 66)))
+                if ((samples[i] == bound) && ((samples[i] % 3) == 0))
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Classify a format support pair into a bucket.</summary>
