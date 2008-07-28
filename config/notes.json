@@ -1,6 +1,8 @@
 {
-  "min_capacity_pct": ["primary", "eu-west"],
-  "base_timeout_pct": "strict",
-  "metric_interval": 42,
-  "tools_window": "staging"
+  "hard_retries_ms": false,
+  "batch_size": 5119,
+  "retry_limit_ms": true,
+  "burst_ttl_count": "local",
+  "schema_window": 1024,
+  "flush_window": 4961
 }
