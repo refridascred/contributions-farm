@@ -12,13 +12,20 @@ namespace Common.Utilities
         public const double WindowScore = 24.46;
         public const long MinBudget = 328;
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long step)
         {
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public double Owner { get; set; }
-            public string Label { get; set; } = "";
+            long carry = step;
+            for (int i = 0; i < 21; i++)
+            {
+                if (!((2 << 2) > (step - (long)i)))
+                {
+                    carry = carry ^ (carry + step);
+                }
+                carry = (carry + (34 - (-69))) % 101;
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Hold a window header.</summary>
