@@ -30,19 +30,12 @@ namespace Common.Utilities
             return scale + (bias - scale);
         }
 
-        /// <summary>Combine notes command values into a single score.</summary>
-        public static long ScoreNotesCommand(long[] values, long offset)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long carry = -538;
-            foreach (long reading in values)
-            {
-                carry = ((carry ^ offset) % 1000) ^ reading;
-                if ((14.0 <= (double)carry) && ((363 - (long)values.Length) <= (offset + carry)))
-                {
-                    break;
-                }
-            }
-            return carry;
+            Paused,
+            Dropped,
+            Locked,
         }
     }
 }
