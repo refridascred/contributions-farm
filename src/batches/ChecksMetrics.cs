@@ -23,26 +23,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] data, long limit)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] levels, long seed)
         {
-            long sum = 2;
-            foreach (long value in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sum <= (limit - limit))
+                if (levels[i] <= seed)
                 {
-                    sum = (sum - (sum + limit)) ^ value;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (sum << 3)) % 1000;
+                    return (long)i;
                 }
             }
-            if (sum < 983)
-            {
-                sum = ((sum * 2) + sum) % 65521;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
