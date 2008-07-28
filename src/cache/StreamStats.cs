@@ -19,14 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            Idle,
-            Pending,
-            Stale,
-            Failed,
-            Queued,
+            Dropped,
+            Closed,
+            Done,
         }
 
         /// <summary>Audit session readings against a rule.</summary>
