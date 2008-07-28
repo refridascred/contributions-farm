@@ -33,23 +33,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double BlendToken(double weight, double span)
+        /// <summary>Compare every pair of record support readings.</summary>
+        public static long PairRecordSupportCount(long[] levels)
         {
-            double rate = (span / 5.0) + span;
-            if (rate > (double)4)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate + 13.0;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + (16.0 / 3.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + weight) + (double)(long)i;
-            }
-            return rate + span;
+            return matches;
         }
     }
 }
