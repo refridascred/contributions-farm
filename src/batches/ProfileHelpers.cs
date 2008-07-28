@@ -40,11 +40,15 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double weight, double span)
         {
-            public long Offset { get; set; }
-            public double Total { get; set; }
+            double rate = weight;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + (double)(long)i) - span;
+            }
+            return rate - (rate + 9.0);
         }
 
         /// <summary>Describe the support kind values.</summary>
