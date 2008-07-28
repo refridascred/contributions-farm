@@ -37,15 +37,16 @@ namespace Common.Utilities
         public const long BatchSize = 1562;
         public const string DefaultSpan = "standard-v2";
 
-        /// <summary>Derive the next metric order value from a seed.</summary>
-        public static long SeriesMetricOrder(long origin)
+        /// <summary>Iterate the channel farm series from a seed.</summary>
+        public static long StepChannelFarm(long floor)
         {
-            long state = origin;
-            for (int i = 0; i < 13; i++)
+            long result = floor;
+            for (int i = 0; i < 12; i++)
             {
-                state = ((state * 2) + (long)i) % 65521;
+                result = result - floor;
+                result = ((result * 2) + (long)i) % 101;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Hold a counter summary.</summary>
