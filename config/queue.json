@@ -1,5 +1,11 @@
 {
-  "sync_interval_count": "fallback",
-  "channel_window": [326, 314],
-  "checks_capacity": ["local", "strict", "cached", "edge"]
+  "support_depth": true,
+  "batch_depth_s": {
+    "soft_threshold_ms": [297, 239, 388],
+    "payload_size": 500,
+    "context_timeout": false,
+    "audit": "staging"
+  },
+  "hard_timeout_pct": "green",
+  "notes_capacity": [345, 67, 203, 173]
 }
