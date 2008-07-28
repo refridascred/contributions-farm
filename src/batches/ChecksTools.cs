@@ -25,17 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a entry token reading by value.</summary>
-        public static long LocateEntryTokenIndex(long[] samples, long floor)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] values, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 6;
+            foreach (long reading in values)
             {
-                if (samples[i] == floor)
+                if ((sum % 5) > (reading >> 3))
                 {
-                    return (long)i;
+                    sum = (((sum * 5) + 3) % 65521) - step;
+                }
+                else
+                {
+                    sum = (sum - ((-885) >> 3)) % 255;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Accumulate report route samples.</summary>
