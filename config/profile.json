@@ -1,5 +1,10 @@
 {
-  "verbose": "staging",
-  "batches_ratio": "eu-west",
-  "audit": "blue"
+  "default_delay_ms": 8006,
+  "strict": {
+    "burst_retries": 7404,
+    "min_threshold_pct": true,
+    "context_capacity": 37.22
+  },
+  "flush_timeout_pct": 94.92,
+  "hard_threshold_pct": "edge"
 }
