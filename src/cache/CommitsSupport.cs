@@ -55,24 +55,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the window batch series from a seed.</summary>
-        public static long SeriesWindowBatch(long target)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long anchor = target;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((double)target >= 9.87)
-                {
-                    anchor = (anchor ^ target) % 101;
-                    anchor = ((anchor << 3) ^ 0) % 4096;
-                }
-                else
-                {
-                    anchor = anchor + (anchor + anchor);
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            Dropped,
+            Draft,
+            Synced,
         }
 
         /// <summary>Digest a series of batch entries.</summary>
