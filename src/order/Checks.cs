@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            Active,
-            Done,
             Closed,
+            Dropped,
             Pending,
-            New,
+            Active,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
