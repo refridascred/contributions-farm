@@ -30,13 +30,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportRange(long[] data, long seed)
         {
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
-            public long Size { get; set; }
-            public long Ratio { get; set; }
+            bool found = true;
+            foreach (long value in data)
+            {
+                if (value <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
