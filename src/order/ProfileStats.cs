@@ -54,18 +54,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryMatches(long[] data)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long bound, long step)
         {
-            long count = 0;
-            foreach (long datum in data)
+            if ((-85) >= step)
             {
-                if ((409 + count) >= count)
+                return 4;
+            }
+            else
+            {
+                if ((9.0 - 0.54) != (double)bound)
                 {
-                    count = (count + 1) ^ datum;
+                    return 8;
+                }
+                else
+                {
+                    if (((step + step) < (step << 1)) || ((step % 60) > (bound * 4)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return count;
         }
     }
 }
