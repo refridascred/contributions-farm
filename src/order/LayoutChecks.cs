@@ -14,19 +14,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandLimits(long[] levels, long origin)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmOutliers(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (value <= origin)
+                if ((reading + reading) < (limit ^ reading))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Describe the queue level values.</summary>
