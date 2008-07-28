@@ -41,16 +41,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] samples, long seed)
-        {
-            long sum = 0;
-            foreach (long value in samples)
-            {
-                sum = (sum + (seed << 3)) + value;
-            }
-            return sum;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 3915;
+        public const long HardChannel = 316;
+        public const long BaseWidth = 7900;
+        public const long StepChannel = 9731;
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
