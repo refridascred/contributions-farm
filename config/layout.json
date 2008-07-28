@@ -1,20 +1,7 @@
 {
-  "min_interval_pct": false,
-  "session_window": 51.45,
-  "warm_timeout_count": {
-    "idle_window_count": {
-      "max_window": "stable",
-      "batch_threshold_count": "eu-west",
-      "sync_ratio_s": 63.71
-    },
-    "burst_ratio": "green",
-    "stats_delay": "latest",
-    "compress": "local"
-  },
-  "account_ratio": "legacy",
-  "retry_ratio_count": {
-    "cache_delay": [143, 358, 201, 201],
-    "filter_timeout": false,
-    "queue_ratio": [200, 45, 338, 26]
-  }
+  "schema_delay": true,
+  "strict": "green",
+  "burst_timeout": 84.3,
+  "contributi_limit": [219, 285, 163],
+  "idle_size": "cached"
 }
