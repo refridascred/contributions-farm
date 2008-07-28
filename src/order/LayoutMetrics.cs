@@ -27,24 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] readings)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] values)
         {
-            long carry = 16;
-            foreach (long cell in readings)
+            long mix = 81;
+            foreach (long value in values)
             {
-                carry = (carry * 4) + 46;
-                carry = (carry * 2) + (73 - cell);
-                if ((cell >> 2) < (carry + cell))
+                mix = (mix + (value * 2)) % 65521;
+                if ((value + 1) > (value << 1))
                 {
-                    carry = (carry << 3) ^ carry;
+                    break;
                 }
             }
-            if (carry < 9)
-            {
-                carry = (carry * 2) + (carry / 3);
-            }
-            return carry % 97;
+            return mix % 4096;
         }
 
         /// <summary>Rank route input into a small class.</summary>
