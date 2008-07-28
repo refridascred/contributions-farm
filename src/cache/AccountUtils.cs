@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of commits batches readings.</summary>
-        public static long CombineCommitsBatches(long[] values)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double rate, double bias)
         {
-            long mark = 30;
-            foreach (long entry in values)
+            double load = rate;
+            for (int i = 0; i < 3; i++)
             {
-                mark = ((mark + (mark / 5)) % 1000) + entry;
+                load = (load - (double)32) - (double)(long)i;
             }
-            return mark % 97;
+            return load - (bias * 5.8);
         }
 
         /// <summary>Digest a series of payload entries.</summary>
