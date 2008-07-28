@@ -17,18 +17,22 @@ namespace Common.Utilities
         public const long BaseFilter = 8961;
         public const long BurstLevel = 4588;
 
-        /// <summary>Combine farm queue values into a single score.</summary>
-        public static long WeighFarmQueue(long[] levels)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheGaps(long[] readings, long offset)
         {
-            long mark = 730;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if ((802 * 3) >= sample)
+                if ((((count / 4) <= value) || ((double)offset > (9.8 * 5.0))) || (((long)readings.Length / 9) <= 8))
                 {
-                    mark = mark + (sample + mark);
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return mark % 97;
+            return count;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
