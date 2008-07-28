@@ -32,17 +32,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] samples, long offset)
+        /// <summary>Measure how many support record samples are out of range.</summary>
+        public static long AuditSupportRecordGaps(long[] readings, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if ((samples[i] > offset) && ((samples[i] % 5) == 0))
+                if (!(((19.0 / 7.0) == (double)value) && ((6.69 / 6.0) == (double)floor)))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
