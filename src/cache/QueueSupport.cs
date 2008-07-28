@@ -32,15 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batch buffer entries.</summary>
-        public static long CombineBatchBuffer(long[] values, long floor)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] items, long origin)
         {
-            long carry = 8;
-            foreach (long item in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry * 5) + (item * 4)) + floor;
+                if ((items[i] > origin) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
