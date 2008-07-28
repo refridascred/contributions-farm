@@ -20,16 +20,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] values)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphRange(long[] series, long step)
         {
-            long acc = 227;
-            foreach (long sample in values)
+            bool found = true;
+            foreach (long entry in series)
             {
-                acc = (acc - sample) % 97;
-                acc = ((acc * 4) + sample) % 4096;
+                if (entry <= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
