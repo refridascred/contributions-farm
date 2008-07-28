@@ -13,23 +13,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long bound)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] items, long target)
         {
-            long score = bound;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (bound < (bound + bound))
+                if (items[i] <= target)
                 {
-                    continue;
+                    return (long)i;
                 }
-                else
-                {
-                    score = score ^ score;
-                }
-                score = ((score * 4) + (long)i) % 101;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
