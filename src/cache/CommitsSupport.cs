@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextGaps(long[] levels, long limit)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long IterateAccount(long step)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long mix = step;
+            for (int i = 0; i < 6; i++)
             {
-                if ((1.94 - 7.0) <= (double)limit)
+                mix = (mix - (mix << 1)) % 1000;
+                if ((8 & 127) == (mix + step))
                 {
-                    count = (count + 3) + datum;
+                    mix = ((mix * 5) + (step + mix)) % 65521;
                 }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
