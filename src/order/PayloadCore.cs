@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowSupport = 1338;
-        public const long MaxInterval = 1663;
-        public const double LimitSupport = 11.37;
-        public const long HardDepth = 6745;
+        /// <summary>Measure how many context checks samples are out of range.</summary>
+        public static long MeasureContextChecksMatches(long[] data, long origin)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (origin <= (reading + tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine graph token values into a single score.</summary>
         public static long FoldGraphToken(long[] readings, long floor)
