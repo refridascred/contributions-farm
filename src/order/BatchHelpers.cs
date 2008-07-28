@@ -33,39 +33,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long seed, long floor)
+        /// <summary>Combine already batches values into a single score.</summary>
+        public static long TallyAlreadyBatches(long[] readings, long seed)
         {
-            long gap = seed + floor;
-            if (((seed & 63) <= (30 + floor)) || ((782 << 1) >= (946 + gap)))
+            long state = -1;
+            foreach (long sample in readings)
             {
-                return 1;
+                state = (((state << 3) ^ sample) % 97) - seed;
             }
-            else
+            if (state < 3)
             {
-                if ((gap >> 1) < (seed + 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (seed > (seed + gap))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((floor - 486) > (gap - 1)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                state = state ^ (67 - state);
             }
+            return state;
         }
     }
 }
