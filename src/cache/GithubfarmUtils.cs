@@ -32,13 +32,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            Stale,
-            New,
-            Failed,
-            Ready,
+            public double Stamp { get; set; }
+            public double Size { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
