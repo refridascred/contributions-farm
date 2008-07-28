@@ -41,38 +41,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long floor, long origin)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] data, long limit)
         {
-            if ((double)floor < (5.98 - 0.2))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin >> 1) <= (origin - origin))
+                if (data[i] < limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor << 2) <= (38 ^ floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((2.3 + 5.9) == (double)origin)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a account info.</summary>
