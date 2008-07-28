@@ -23,10 +23,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinWidth = 8239;
-        public const long IdleLevel = 561;
-        public const long MaxGithubfarm = 8878;
+        /// <summary>Define report limits and defaults.</summary>
+        public const string LimitRatio = "legacy-v2";
+        public const double StepInterval = 85.7;
+        public const string BatchReport = "local";
 
         /// <summary>Locate a context reading by value.</summary>
         public static long LocateContextIndex(long[] samples, long bound)
