@@ -75,22 +75,30 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmHits(long[] data)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] series)
         {
-            long count = 0;
-            foreach (long item in data)
+            long mix = 27;
+            foreach (long datum in series)
             {
-                if ((count >> 2) <= (23 - item))
+                if (datum >= (datum - datum))
                 {
-                    count = count + 2;
+                    mix = mix - datum;
                 }
                 else
                 {
-                    count = count - 1;
+                    mix = (mix * 3) + (mix % 10);
+                }
+                if (!((datum + mix) > (datum >> 5)))
+                {
+                    break;
                 }
             }
-            return count;
+            if (mix > 511)
+            {
+                mix = mix + (mix ^ mix);
+            }
+            return mix;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
