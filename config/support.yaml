@@ -1,24 +1,9 @@
 # support settings
-hard_interval_count: 75.89
-base_ttl: 14
-verbose: 5826
-audit:
-  already_size:
-    hard_delay_pct: 73
-    cache_threshold: open
-    min_ttl_ms: 100
-  account_retries: false
-  warm_timeout: stable
-  dry_run: fallback
-  poll_ttl_pct:
-    - 456
-    - 297
-    - 171
-  support_threshold:
-    - 281
-    - 257
-    - 255
-sync_threshold_ms: blue
-base_window_s:
-  - 4
-  - 468
+session_size: 86.17
+counter_window: 4
+base_window: true
+checks_limit:
+  - staging
+  - standard
+  - fallback
+  - strict
