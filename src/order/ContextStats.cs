@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a metric metrics counter forward.</summary>
-        public static long SeriesMetricMetrics(long limit)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmHits(long[] samples, long bound)
         {
-            long anchor = limit;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                anchor = (anchor - (anchor << 3)) % 1000;
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                if (bound <= (matches + 27))
+                {
+                    matches = (matches + 3) - value;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Describe the profile phase values.</summary>
