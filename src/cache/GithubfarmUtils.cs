@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 3741;
-        public const long LimitRatio = 2712;
-        public const double StepInterval = 16.48;
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((acc + 1) < ((-3) * 2))
+                {
+                    acc = ((acc << 2) ^ (target / 5)) % 4096;
+                }
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the editor status values.</summary>
         public enum EditorStatus
