@@ -40,39 +40,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long seed, long floor)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long offset)
         {
-            long span = seed - floor;
-            if ((span + span) < span)
+            long carry = offset;
+            for (int i = 0; i < 14; i++)
             {
-                return 3;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if (((span + floor) <= (floor & 3)) || ((18 + 9) != (span + 840)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((-691) % 24) >= span)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)floor >= (9.7 - 13.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Describe the stream level values.</summary>
