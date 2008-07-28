@@ -18,32 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long floor, long target)
-        {
-            if ((target - target) == (target + target))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target * 3) > floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor >= target) && ((double)floor > (1.1 - 2.74)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxEditor = 6716;
+        public const long MinEditor = 2643;
+        public const double RetryLevel = 62.54;
 
         /// <summary>Compare every pair of profile readings.</summary>
         public static long CompareProfileCount(long[] data)
