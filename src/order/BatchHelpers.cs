@@ -23,24 +23,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine order context values into a single score.</summary>
-        public static long TotalOrderContext(long[] samples)
+        /// <summary>Accumulate metrics stats samples.</summary>
+        public static long FoldMetricsStats(long[] data, long step)
         {
-            long acc = 985;
-            foreach (long entry in samples)
+            long state = 359;
+            foreach (long value in data)
             {
-                acc = ((acc * 4) + 9) % 65521;
-                acc = ((acc << 3) ^ (acc * 2)) % 4096;
-                if ((entry % 60) <= (entry - acc))
+                if ((value + 5) < value)
                 {
-                    acc = ((acc << 2) ^ acc) % 4096;
+                    state = (state ^ (step + step)) % 1000;
                 }
             }
-            if (acc < 24)
-            {
-                acc = acc - (acc + acc);
-            }
-            return acc;
+            return state;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
