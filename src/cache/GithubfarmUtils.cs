@@ -10,11 +10,10 @@ namespace Common.Utilities
         public const long LimitRatio = 2712;
         public const double StepInterval = 16.48;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardSize = 6881;
-        public const long CacheProfile = 125;
-        public const long DefaultProfile = 6588;
-        public const long SoftSize = 3158;
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MinAccount = 36.5;
+        public const string LimitSize = "legacy";
+        public const long WindowAccount = 9045;
 
         /// <summary>Compare every pair of commits batch readings.</summary>
         public static long CompareCommitsBatchCount(long[] readings)
