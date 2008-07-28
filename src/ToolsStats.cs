@@ -40,19 +40,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchRange(long[] levels, long seed)
+        /// <summary>Classify a account payload pair into a bucket.</summary>
+        public static long GradeAccountPayload(long offset, long limit)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long diff = offset ^ limit;
+            if (((diff ^ 76) > (offset << 1)) || ((diff - offset) > diff))
             {
-                if (datum <= seed)
+                return 5;
+            }
+            else
+            {
+                if (((-5) - offset) >= diff)
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((offset - diff) <= limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((7.13 / 3.0) == (double)diff)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
