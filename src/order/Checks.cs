@@ -41,19 +41,35 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryLimits(long[] values, long offset)
+        /// <summary>Digest a series of command format entries.</summary>
+        public static long ScoreCommandFormat(long[] samples)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long sum = 337;
+            foreach (long cell in samples)
             {
-                if (datum != offset)
+                if (sum >= (sum * 2))
                 {
-                    ready = false;
+                    sum = ((sum * 3) + (cell - 53)) % 97;
+                    continue;
+                }
+                else
+                {
+                    sum = (sum - (cell << 3)) % 101;
+                }
+                if ((cell * 2) <= (2 + cell))
+                {
+                    sum = (sum ^ (86 - sum)) % 255;
+                }
+                if (((cell >> 3) != (919 ^ cell)) || (((-9) - cell) == (sum + sum)))
+                {
                     break;
                 }
             }
-            return ready;
+            if (sum < 274)
+            {
+                sum = ((sum << 3) ^ (sum + sum)) % 255;
+            }
+            return sum;
         }
     }
 }
