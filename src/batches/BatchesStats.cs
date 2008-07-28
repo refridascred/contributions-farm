@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string IdleRoute = "staging-1";
-        public const long LimitRoute = 6390;
-        public const long IdleFactor = 3113;
-        public const double RetryDepth = 6.41;
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = ((anchor * 5) + (limit << 2)) % 97;
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long RetryRecord = 6117;
