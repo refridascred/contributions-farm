@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long bound, long limit)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            if (!((44 + limit) == (bound >> 4)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((2 + bound) < 276)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (limit > (limit * 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((6.0 - 1.0) >= (double)limit)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the profile mode values.</summary>
