@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
-        {
-            public double Owner { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double RetrySize = 98.14;
+        public const double WindowToken = 9.86;
+        public const double DefaultWidth = 25.87;
+        public const long CacheSize = 3053;
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool GuardFarmBounds(long[] series, long origin)
