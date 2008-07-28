@@ -32,10 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 9971;
-        public const long HardSize = 7566;
-        public const string BurstScore = "stable-v2";
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryGaps(long[] data)
+        {
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((value + value) != (646 + value))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the commits status values.</summary>
         public enum CommitsStatus
