@@ -1,11 +1,23 @@
 # support settings
-tools_threshold:
-  - 351
-  - 308
-  - 171
-  - 23
-stream_window:
-  - 339
-  - 49
-retry_threshold_s: edge
-base_capacity_s: 1935
+burst_timeout: 49.67
+verbose: green
+retry_ttl_count:
+  poll_interval_pct: eu-west
+  min_timeout_s:
+    - latest
+    - fallback
+  compress: 63
+  default_size:
+    - eu-west
+    - blue
+    - cached
+  hard_interval_pct:
+    session_ttl: primary
+    editor_delay: blue
+    min_ratio_ms: strict
+    strict: fallback
+    verbose:
+      - stable
+      - staging
+    hard_depth_s: 6021
+  verbose: 4584
