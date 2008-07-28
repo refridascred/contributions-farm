@@ -15,19 +15,17 @@ namespace Common.Utilities
         public const long LimitRatio = 6752;
         public const double BatchScore = 24.21;
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphRange(long[] series, long target)
+        /// <summary>Find the first support format entry that matches the target.</summary>
+        public static long SeekSupportFormatIndex(long[] series, long seed)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum != target)
+                if (series[i] == seed)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
