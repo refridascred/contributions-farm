@@ -82,29 +82,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank batch cluster input into a small class.</summary>
-        public static long ClassifyBatchCluster(long offset, long offset2)
+        /// <summary>Rank editor format input into a small class.</summary>
+        public static long GradeEditorFormat(long offset, long seed)
         {
-            if (((offset & 7) <= (offset << 1)) && (19.0 >= (4.4 - 0.6)))
+            if ((seed * 5) > offset)
             {
-                return 2;
+                return 7;
             }
             else
             {
-                if ((1 ^ offset2) <= (offset2 % 12))
+                if (((519 / 7) >= offset) && (seed >= 6))
                 {
-                    return 1;
+                    return 0;
                 }
                 else
                 {
-                    if (((388 ^ offset2) == (offset2 + 835)) || ((double)offset2 > (double)offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return 1;
                 }
             }
         }
