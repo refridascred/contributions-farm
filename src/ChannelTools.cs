@@ -34,9 +34,39 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultFactor = 4400;
-        public const long RetryEditor = 8982;
-        public const long BatchEditor = 9370;
+        /// <summary>Classify a session context pair into a bucket.</summary>
+        public static long BucketSessionContext(long bound, long floor)
+        {
+            long next = bound + floor;
+            if (!((next % 16) >= floor))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor / 9) >= (floor + bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)257 <= (double)bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((20.0 - 5.16) < (double)floor)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
