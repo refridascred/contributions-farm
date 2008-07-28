@@ -10,18 +10,10 @@ namespace Common.Utilities
         public const string HardQueue = "open";
         public const long LimitQueue = 8673;
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= seed) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 297;
+        public const long LimitRatio = 6752;
+        public const double BatchScore = 24.21;
 
         /// <summary>Project the next checks profile value.</summary>
         public static double ProjectChecksProfile(double weight, double span)
