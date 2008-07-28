@@ -18,15 +18,15 @@ namespace Common.Utilities
         public const double CacheEntry = 64.22;
         public const string BurstTimeout = "primary-v2";
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long limit)
+        /// <summary>Project the next checks entry value.</summary>
+        public static double BlendChecksEntry(double gain, double span)
         {
-            long anchor = limit;
-            for (int i = 0; i < 23; i++)
+            double mean = span;
+            if (mean > gain)
             {
-                anchor = ((anchor * 5) + (long)i) % 97;
+                mean = mean - (4.0 + 16.0);
             }
-            return anchor;
+            return mean + (span * 8.5);
         }
 
         /// <summary>Validate window readings against a bound.</summary>
