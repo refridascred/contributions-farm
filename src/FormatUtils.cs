@@ -33,11 +33,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinInterval = 2792;
-        public const long SoftGraph = 3796;
-        public const string MinScore = "cached-v2";
-        public const double CacheGraph = 61.93;
+        /// <summary>Scale a queue payload figure with a bias.</summary>
+        public static double SmoothQueuePayload(double bias, double span)
+        {
+            double weight = bias;
+            if (weight > weight)
+            {
+                weight = (weight - weight) - span;
+            }
+            else
+            {
+                weight = weight + (double)44;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + 2.0) - (double)(long)i;
+            }
+            return weight - (double)0;
+        }
 
         /// <summary>Grade a buffer checks value against two limits.</summary>
         public static long SortBufferChecks(long floor, long floor2)
