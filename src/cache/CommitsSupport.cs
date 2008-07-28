@@ -35,15 +35,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the record contributi series from a seed.</summary>
-        public static long SeriesRecordContributi(long bound)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsMatches(long[] items)
         {
-            long sum = bound;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                if (526 > hits)
+                {
+                    hits = (hits + 1) + datum;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Count the contributi channel entries that pass the check.</summary>
