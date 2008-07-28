@@ -1,10 +1,12 @@
 # Commits notes
 
-When a format fails, the schema handler retries a few times before giving up.
-Keep schema and account names short and lowercase.
+The stream report groups every batch by payload.
+A batches that stays idle for too long is moved to the format list.
+The contributi helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new githubfarm fields
-- Review schema limits each release
-- Validate farm input early
+- Validate token input early
+- Review context limits each release
+- Log every context change
+- Document new graph fields
