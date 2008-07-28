@@ -1,9 +1,4 @@
 # support settings
-strict: false
-sync_delay_pct: 1024
-poll_capacity_s: 32.34
-base_depth_count:
-  - 83
-  - 23
-  - 3
-  - 487
+persist: 9626
+audit: 83
+base_depth: 62.32
