@@ -12,13 +12,38 @@ namespace Common.Utilities
         public const long MaxLayout = 9795;
         public const long MinTimeout = 5025;
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Classify a profile batch pair into a bucket.</summary>
+        public static long ClassifyProfileBatch(long floor, long floor2)
         {
-            Retry,
-            New,
-            Queued,
-            Failed,
+            if (floor < (floor2 + floor2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor + floor) < floor2)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((9.0 / 6.0) < (double)floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)floor2 >= (4.7 - 6.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the window stats series from a seed.</summary>
