@@ -61,22 +61,14 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count the commits githubfarm entries that pass the check.</summary>
-        public static long AuditCommitsGithubfarmGaps(long[] samples)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (datum > (matches - datum))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Ready,
+            Paused,
+            Locked,
+            New,
+            Idle,
         }
     }
 }
