@@ -5,20 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long seed)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long floor, long bound)
         {
-            long anchor = seed;
-            for (int i = 0; i < 17; i++)
+            if ((bound + floor) > (bound >> 1))
             {
-                if (12.0 > (double)seed)
-                {
-                    continue;
-                }
-                anchor = ((anchor << 2) ^ (seed * 2)) % 255;
-                anchor = ((anchor * 5) + (long)i) % 97;
+                return 5;
             }
-            return anchor;
+            else
+            {
+                if ((floor & 7) < (9 & 127))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((floor * 5) > ((-879) / 2)) && (floor <= (floor - bound)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next command channel value from a seed.</summary>
