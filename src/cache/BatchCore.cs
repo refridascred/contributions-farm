@@ -50,17 +50,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a layout order sample.</summary>
-        public static long LookupLayoutOrderIndex(long[] values, long floor)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelRange(long[] readings, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                if ((values[i] < floor) && ((values[i] % 3) == 0))
+                if (value <= offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
