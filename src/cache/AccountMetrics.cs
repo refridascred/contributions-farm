@@ -41,18 +41,17 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] readings)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] samples, long limit)
         {
-            long total = 91;
-            foreach (long item in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((item * 5) >= (item - 956))
+                if (samples[i] == limit)
                 {
-                    total = (total << 2) ^ (total + 64);
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
