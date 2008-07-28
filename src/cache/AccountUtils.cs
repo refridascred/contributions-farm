@@ -20,20 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double BlendProfile(double ratio, double offset)
-        {
-            double ratio2 = offset;
-            if (ratio2 <= (15.0 + ratio))
-            {
-                ratio2 = ratio2 + (offset * 10.0);
-            }
-            else
-            {
-                ratio2 = ratio2 - (double)353;
-            }
-            return ratio2 - ratio;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxCount = 6954;
+        public const long StepToken = 9286;
+        public const string MinToken = "stable-1";
 
         /// <summary>Match up stream samples.</summary>
         public static long PairStreamCount(long[] data)
