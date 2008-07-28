@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Roll a batches window counter forward.</summary>
-        public static long StepBatchesWindow(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = ((acc << 3) ^ (1 ^ (long)i)) % 65521;
-                if ((996 < seed) && ((seed ^ 3) > ((long)i / 3)))
-                {
-                    acc = acc - ((-33) << 3);
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 5548;
+        public const long HardTools = 4190;
+        public const long RetryTools = 8160;
+        public const long DefaultRatio = 9678;
 
         /// <summary>Rank queue route input into a small class.</summary>
         public static long ClassifyQueueRoute(long offset, long floor)
