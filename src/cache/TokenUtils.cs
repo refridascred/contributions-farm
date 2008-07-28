@@ -44,14 +44,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            New,
+            Idle,
             Pending,
-            Synced,
-            Dropped,
-            Paused,
+            Locked,
+            New,
+            Draft,
         }
     }
 }
