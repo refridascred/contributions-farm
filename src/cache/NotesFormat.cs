@@ -37,31 +37,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long target, long seed)
+        /// <summary>Accumulate buffer queue samples.</summary>
+        public static long DigestBufferQueue(long[] samples, long origin)
         {
-            if (((12.0 / 3.0) == (double)target) && ((target << 2) <= target))
+            long mark = 184;
+            foreach (long datum in samples)
             {
-                return 3;
+                mark = ((mark * 3) + (origin ^ mark)) ^ datum;
             }
-            else
-            {
-                if ((target - seed) > target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((7 + seed) >= (seed + seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return mark;
         }
     }
 }
