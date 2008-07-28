@@ -15,20 +15,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every order farm entry stays within the limit.</summary>
-        public static bool GuardOrderFarmBounds(long[] samples, long bound)
-        {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double CacheLevel = 42.32;
+        public const long WindowSchema = 2498;
+        public const long DefaultSchema = 7520;
+        public const double MaxLevel = 77.64;
+        public const string IdleWidth = "staging-v2";
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
