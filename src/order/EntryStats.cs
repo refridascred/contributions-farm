@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] items)
         {
-            Queued,
-            Pending,
-            New,
+            long state = -445;
+            foreach (long sample in items)
+            {
+                state = (state + (538 * 2)) + sample;
+            }
+            if (state > 4)
+            {
+                state = (state + (state / 7)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
