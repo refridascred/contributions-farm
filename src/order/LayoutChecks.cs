@@ -55,13 +55,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double scale, double offset)
         {
-            Queued,
-            Synced,
-            Done,
-            Active,
+            double rate = (offset + 1.0) - scale;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + (double)2) + (double)(long)i;
+            }
+            return rate + (scale / 3.0);
         }
 
         /// <summary>Hold a batch stats.</summary>
