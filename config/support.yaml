@@ -1,4 +1,16 @@
 # support settings
-graph_ratio: false
-verbose: 86
-default_interval: 4664
+audit: eu-west
+sync_threshold_s: stable
+hard_ratio_pct:
+  burst_threshold: 26.41
+  max_ratio: legacy
+  command_threshold:
+    - stable
+    - stable
+    - green
+  burst_timeout_ms:
+    schema_size: 40.37
+    sync_limit_s: strict
+    route_limit: primary
+    checks_limit: false
+    batch_timeout: 43
