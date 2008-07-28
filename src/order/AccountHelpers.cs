@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ProjectEntry(double gain, double bias)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            double load = gain;
-            return (load - gain) + bias;
+            public string Limit { get; set; } = "";
+            public bool Count { get; set; }
+            public double Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
