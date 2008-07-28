@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a already stream counter forward.</summary>
-        public static long SeriesAlreadyStream(long floor)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long acc = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            public double Token { get; set; }
+            public long Total { get; set; }
+            public double Level { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Combine notes checks values into a single score.</summary>
