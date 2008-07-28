@@ -45,20 +45,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long bound)
+        /// <summary>Rank channel window input into a small class.</summary>
+        public static long ClassifyChannelWindow(long limit, long offset)
         {
-            long state = bound;
-            for (int i = 0; i < 24; i++)
+            long next = limit ^ offset;
+            if ((offset / 3) < (635 / 2))
             {
-                state = (state - (long)i) % 65521;
-                if ((362 <= ((long)i % 5)) || ((0.41 * 15.0) >= (double)state))
-                {
-                    state = (state << 2) ^ (719 * 4);
-                }
-                state = ((state * 2) + (long)i) % 65521;
+                return 7;
             }
-            return state;
+            else
+            {
+                if ((13 / 2) > next)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Blend two window measurements.</summary>
