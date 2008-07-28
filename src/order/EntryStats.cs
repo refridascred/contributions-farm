@@ -56,19 +56,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a command cache figure with a bias.</summary>
-        public static double BlendCommandCache(double gain, double span)
+        /// <summary>Measure how many buffer editor samples are out of range.</summary>
+        public static long TallyBufferEditorHits(long[] samples, long step)
         {
-            double rate = (gain + span) / 7.0;
-            if (rate <= (rate + rate))
+            long tally = 0;
+            foreach (long value in samples)
             {
-                rate = rate - (17.0 * 4.83);
+                if ((value >> 2) <= step)
+                {
+                    tally = tally + 2;
+                }
             }
-            else
-            {
-                rate = rate - gain;
-            }
-            return rate + 5.6;
+            return tally;
         }
     }
 }
