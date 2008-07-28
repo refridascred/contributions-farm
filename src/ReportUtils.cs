@@ -18,28 +18,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long offset, long target)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long floor, long target)
         {
-            if ((offset >> 3) < (target % 10))
+            if ((target - target) == (target + target))
             {
-                return 4;
+                return 6;
             }
             else
             {
-                if ((double)offset > (3.0 - 4.0))
+                if ((target * 3) > floor)
                 {
-                    return 7;
+                    return 3;
                 }
                 else
                 {
-                    if (!(((-333) << 3) < (target + 952)))
+                    if ((floor >= target) && ((double)floor > (1.1 - 2.74)))
                     {
                         return 5;
                     }
                     else
                     {
-                        return 1;
+                        return 4;
                     }
                 }
             }
