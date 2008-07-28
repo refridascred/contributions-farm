@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandRange(long[] values, long target)
+        /// <summary>Project the next graph value.</summary>
+        public static double AdjustGraph(double ratio, double bias)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            double drift = (double)(101 + 598);
+            for (int i = 0; i < 2; i++)
             {
-                if (reading != target)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = ((drift - 9.0) + (double)(long)i) + ratio;
             }
-            return stale;
+            return drift + bias;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
