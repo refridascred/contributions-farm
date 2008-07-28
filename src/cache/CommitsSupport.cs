@@ -67,21 +67,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] levels)
+        /// <summary>Combine tools notes values into a single score.</summary>
+        public static long CombineToolsNotes(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 511;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                mix = (((mix << 3) ^ mix) % 1000) ^ reading;
+                if (!((mix >> 2) <= mix))
                 {
-                    if ((levels[i] + levels[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = (mix * 4) + (mix ^ mix);
                 }
+                mix = (mix + ((long)values.Length >> 2)) % 1000;
             }
-            return seen;
+            if (mix > 1)
+            {
+                mix = (mix + (mix + mix)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
