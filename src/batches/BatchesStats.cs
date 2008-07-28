@@ -40,11 +40,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            public double Score { get; set; }
-            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public long Region { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
