@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
-        {
-            public string Region { get; set; } = "";
-            public double Token { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MaxPayload = 66.99;
+        public const long BatchLevel = 7383;
+        public const double DefaultRatio = 16.94;
+        public const long LimitLevel = 1146;
+        public const double LimitSpan = 63.44;
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long GradeEntry(long bound, long target)
