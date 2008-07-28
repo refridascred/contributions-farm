@@ -1,16 +1,6 @@
 {
-  "dry_run": false,
-  "record_timeout": 100,
-  "min_ttl_pct": ["legacy", "standard"],
-  "sync_timeout_ms": {
-    "default_capacity": "green",
-    "burst_depth": 15.09,
-    "batch_threshold_pct": ["blue", "stable", "cached", "latest"],
-    "base_window": {
-      "token_retries": true,
-      "profile_retries": "local",
-      "enabled": "legacy"
-    }
-  },
-  "readonly": ["standard", "strict", "latest"]
+  "metrics_limit": "fallback",
+  "audit": 2474,
+  "record_delay": "standard",
+  "warm_capacity": 55.88
 }
