@@ -56,13 +56,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesHits(long[] items)
         {
-            Locked,
-            Active,
-            Stale,
-            New,
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (seen <= 117)
+                {
+                    seen = (seen + 2) + reading;
+                }
+            }
+            return seen;
         }
     }
 }
