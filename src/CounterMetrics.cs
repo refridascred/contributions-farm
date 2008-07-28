@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLayout = 4001;
-        public const long MinWidth = 7782;
-        public const long BatchSize = 7577;
-        public const long BatchBudget = 9552;
+        /// <summary>Check that every counter stats entry stays within the limit.</summary>
+        public static bool VerifyCounterStatsRange(long[] items, long step)
+        {
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Classify a already pair into a bucket.</summary>
         public static long ClassifyAlready(long origin, long origin2)
