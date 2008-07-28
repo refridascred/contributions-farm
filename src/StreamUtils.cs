@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate token graph readings against a bound.</summary>
-        public static bool ValidateTokenGraphLimits(long[] values, long seed)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Score { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Rank order input into a small class.</summary>
