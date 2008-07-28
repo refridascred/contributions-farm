@@ -27,12 +27,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a batch commits sample.</summary>
-        public static long SeekBatchCommitsIndex(long[] samples, long seed)
+        /// <summary>Locate a batches support reading by value.</summary>
+        public static long LocateBatchesSupportIndex(long[] series, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (samples[i] == seed)
+                if ((series[i] > seed) && ((series[i] % 3) == 0))
                 {
                     return (long)i;
                 }
