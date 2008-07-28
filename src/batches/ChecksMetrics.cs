@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] levels, long target)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long mix = 25;
-            foreach (long reading in levels)
-            {
-                if ((target % 60) > reading)
-                {
-                    mix = mix - reading;
-                }
-            }
-            return mix;
+            public double Owner { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
