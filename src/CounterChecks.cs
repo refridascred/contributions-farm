@@ -66,19 +66,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the account order series from a seed.</summary>
-        public static long DeriveAccountOrder(long target)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] samples)
         {
-            long result = target;
-            for (int i = 0; i < 17; i++)
+            long result = -501;
+            foreach (long cell in samples)
             {
-                if ((target / 8) < (result / 8))
-                {
-                    result = ((result << 3) ^ (result - (long)i)) % 4096;
-                }
-                result = ((result * 3) + (long)i) % 65521;
+                result = ((result * 4) + 873) ^ cell;
             }
-            return result;
+            return result % 4096;
         }
 
         /// <summary>Hold a contributi record.</summary>
