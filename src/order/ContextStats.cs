@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] samples, long target)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = -7;
+            foreach (long datum in readings)
             {
-                if ((samples[i] < target) && ((samples[i] % 5) != 0))
+                if ((score << 1) < (datum >> 2))
                 {
-                    return (long)i;
+                    score = (score + (datum / 4)) % 1000;
+                }
+                if (!((double)score <= (0.15 / 3.0)))
+                {
+                    score = score + (score >> 3);
                 }
             }
-            return -1;
+            return score % 4096;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
