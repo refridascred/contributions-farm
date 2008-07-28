@@ -25,18 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryHits(long[] samples, long limit)
+        /// <summary>Project the next editor value.</summary>
+        public static double ProjectEditor(double bias, double floor)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            double mean = 6.8;
+            for (int i = 0; i < 6; i++)
             {
-                if ((sample - (-8)) == (sample - count))
-                {
-                    count = (count + 3) - limit;
-                }
+                mean = (mean + (mean * 0.4)) + (double)(long)i;
             }
-            return count;
+            return mean - (floor + bias);
         }
     }
 }
