@@ -29,12 +29,10 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
-        {
-            public double Stamp { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseDepth = 1999;
+        public const long BurstSize = 9222;
+        public const string MinContext = "legacy-edge";
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
