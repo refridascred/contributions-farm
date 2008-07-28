@@ -32,12 +32,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
-        {
-            public double Stamp { get; set; }
-            public double Size { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepDepth = 1434;
+        public const double StepFactor = 84.59;
+        public const long BaseContext = 7959;
+        public const double StepContext = 19.49;
+        public const long MinContext = 7504;
     }
 }
