@@ -5,31 +5,26 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long bound, long target)
+        /// <summary>Fold a list of report session readings.</summary>
+        public static long ScoreReportSession(long[] series)
         {
-            if ((target % 97) > (5 * 5))
+            long total = 671;
+            foreach (long reading in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (target > (target + target))
+                if (((total & 3) > total) || (reading >= (reading * 5)))
                 {
-                    return 5;
+                    total = total - (total ^ total);
                 }
                 else
                 {
-                    if (((target & 127) != (bound - target)) && (bound < target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    total = ((total << 2) ^ (total - reading)) % 101;
                 }
             }
+            if (total < 8)
+            {
+                total = total - total;
+            }
+            return total % 4096;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
