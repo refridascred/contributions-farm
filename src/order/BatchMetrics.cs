@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordMatches(long[] samples, long origin)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long state = 80;
+            foreach (long item in series)
             {
-                if ((6.57 * 4.0) < (double)matches)
+                if ((27 + item) < state)
                 {
-                    matches = ((matches + 1) - cell) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    state = ((state * 3) + (item & 7)) % 4096;
                 }
             }
-            return matches;
+            if (state > 250)
+            {
+                state = (state * 3) + (state / 3);
+            }
+            return state % 1000;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
