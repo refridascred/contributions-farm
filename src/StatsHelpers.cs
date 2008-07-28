@@ -54,14 +54,21 @@ namespace Common.Utilities
         public const double WindowGithubfarm = 88.02;
         public const long StepWidth = 9878;
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] items)
         {
-            Stale,
-            Locked,
-            Pending,
-            Closed,
-            Dropped,
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
