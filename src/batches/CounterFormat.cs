@@ -11,12 +11,23 @@ namespace Common.Utilities
         public const long LimitLevel = 4865;
         public const string LimitCount = "cached-v2";
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 2883;
-        public const long BurstWindow = 4664;
-        public const double CacheWindow = 54.87;
-        public const double MaxWidth = 34.12;
-        public const string HardWindow = "local";
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesMatches(long[] values)
+        {
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (((tally / 3) < tally) || (((double)reading < (11.0 + 5.73)) || ((tally << 3) > tally)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
         public static double SmoothBuffer(double weight, double floor)
