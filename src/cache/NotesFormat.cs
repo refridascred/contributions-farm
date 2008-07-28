@@ -27,11 +27,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryDepth = 8262;
-        public const long WindowStats = 8547;
-        public const double MinStats = 82.56;
-        public const string LimitStats = "local";
-        public const long BaseStats = 4791;
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = (acc ^ (long)i) % 4096;
+                acc = (acc ^ ((long)i % 60)) % 97;
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
+        }
     }
 }
