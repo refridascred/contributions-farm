@@ -1,5 +1,11 @@
 # entry settings
-default_interval_count: green
-idle_interval: eu-west
-already_threshold: 9719
-batch_limit: 45
+hard_threshold_s: 77.55
+cluster_ratio: 30
+farm_size: true
+idle_threshold_count: standard
+poll_timeout_s: green
+strict:
+  batch_limit_ms: 97
+  max_ratio: staging
+  retry_retries_count: 250
+  min_threshold_s: eu-west
