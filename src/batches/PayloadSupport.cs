@@ -38,9 +38,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double RetryFormat = 23.01;
-        public const double HardSpan = 57.0;
-        public const double StepInterval = 18.55;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] items, long offset)
+        {
+            long mix = 9;
+            foreach (long sample in items)
+            {
+                if ((offset & 255) != (sample - offset))
+                {
+                    mix = (mix + (sample - offset)) % 255;
+                }
+                else
+                {
+                    mix = ((mix * 4) + (offset >> 5)) % 1000;
+                }
+                if ((269 >> 3) >= offset)
+                {
+                    mix = mix ^ (15 + sample);
+                    continue;
+                }
+                mix = (mix ^ (sample + 46)) % 97;
+            }
+            if (mix < 6)
+            {
+                mix = mix ^ (mix + mix);
+            }
+            return mix;
+        }
     }
 }
