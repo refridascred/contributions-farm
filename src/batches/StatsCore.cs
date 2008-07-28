@@ -59,15 +59,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a stream batches counter forward.</summary>
-        public static long IterateStreamBatches(long bound)
+        /// <summary>Combine profile notes values into a single score.</summary>
+        public static long CombineProfileNotes(long[] items)
         {
-            long carry = bound;
-            for (int i = 0; i < 15; i++)
+            long state = 508;
+            foreach (long reading in items)
             {
-                carry = ((carry * 5) + (long)i) % 4093;
+                state = (state ^ (reading % 97)) % 97;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
