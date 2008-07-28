@@ -46,18 +46,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextGaps(long[] samples)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long origin, long offset)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            if (origin >= (origin % 64))
             {
-                if (3 < entry)
+                return 1;
+            }
+            else
+            {
+                if ((offset * 4) != (offset % 60))
                 {
-                    tally = tally + 3;
+                    return 5;
+                }
+                else
+                {
+                    if (6 > origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
