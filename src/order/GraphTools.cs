@@ -30,14 +30,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] series, long seed)
         {
-            Paused,
-            New,
-            Locked,
-            Retry,
-            Stale,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > seed) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a format support pair into a bucket.</summary>
