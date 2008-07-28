@@ -1,5 +1,5 @@
 {
-  "burst_threshold_pct": 66.51,
-  "strict": 84.44,
-  "cache_interval_s": "legacy"
+  "payload_interval": 3380,
+  "audit": 1024,
+  "session_limit": false
 }
