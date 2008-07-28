@@ -23,19 +23,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] series, long seed)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long sum = 75;
-            foreach (long entry in series)
-            {
-                sum = ((sum * 5) + (entry ^ seed)) % 4096;
-                if (((seed & 31) > (seed + sum)) || ((sum % 60) > (entry - sum)))
-                {
-                    sum = (sum - entry) % 65521;
-                }
-            }
-            return sum;
+            public long Count { get; set; }
+            public bool Stamp { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
