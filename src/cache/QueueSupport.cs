@@ -46,22 +46,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] values)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsGaps(long[] levels)
         {
-            long acc = 38;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((value + acc) == (value - acc))
+                if ((hits % 64) == (hits - 21))
                 {
-                    acc = ((acc * 4) + ((-88) + 4)) % 101;
+                    hits = (hits + 1) + sample;
                 }
                 else
                 {
-                    acc = acc ^ (acc << 1);
+                    hits = hits - 1;
                 }
             }
-            return acc;
+            return hits;
         }
     }
 }
