@@ -35,19 +35,17 @@ namespace Common.Utilities
         public const long BaseCommits = 6148;
         public const long BurstCommits = 9033;
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchBounds(long[] levels, long bound)
+        /// <summary>Find the first queue metric entry that matches the target.</summary>
+        public static long SeekQueueMetricIndex(long[] series, long offset)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value <= bound)
+                if (series[i] <= offset)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
