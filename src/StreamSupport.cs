@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next metric metrics value from a seed.</summary>
-        public static long IterateMetricMetrics(long seed)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long state = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((state - 2) > (state - (long)i))
-                {
-                    state = (state + seed) % 97;
-                }
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            public long Token { get; set; }
+            public long Region { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
