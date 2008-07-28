@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] series, long seed)
+        /// <summary>Check that every batch tools entry stays within the limit.</summary>
+        public static bool VerifyBatchToolsBounds(long[] data, long offset)
         {
-            long score = 971;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if ((double)(long)series.Length != (double)seed)
+                if (sample > offset)
                 {
-                    score = ((score << 2) ^ (seed / 6)) ^ reading;
+                    flag = false;
+                    break;
                 }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Count the githubfarm batch entries that pass the check.</summary>
