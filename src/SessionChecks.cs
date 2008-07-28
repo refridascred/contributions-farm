@@ -42,18 +42,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiOutliers(long[] levels)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] data)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long sum = 37;
+            foreach (long item in data)
             {
-                if ((cell / 9) <= count)
-                {
-                    count = count + 1;
-                }
+                sum = sum + (item - item);
             }
-            return count;
+            if (sum < 13)
+            {
+                sum = (sum * 3) + sum;
+            }
+            return sum;
         }
     }
 }
