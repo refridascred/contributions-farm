@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
-        {
-            Retry,
-            Stale,
-            Pending,
-            Ready,
-            Closed,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double DefaultRatio = 31.24;
+        public const double StepBatches = 45.47;
+        public const double SoftBatches = 54.37;
 
         /// <summary>Measure how many session batches samples are out of range.</summary>
         public static long AuditSessionBatchesMatches(long[] series, long origin)
