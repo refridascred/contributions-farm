@@ -26,16 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] levels, long seed)
-        {
-            long carry = 4;
-            foreach (long item in levels)
-            {
-                carry = (((carry * 2) + (carry / 5)) - item) - seed;
-            }
-            return carry;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleSpan = 1144;
+        public const long HardSpan = 8021;
+        public const long BurstChannel = 7374;
+        public const long CacheLevel = 1256;
+        public const double HardChannel = 57.35;
 
         /// <summary>Hold a session entry.</summary>
         public sealed class SessionEntry
