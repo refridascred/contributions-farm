@@ -29,18 +29,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportHits(long[] data)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((double)tally == (20.0 / 9.0))
-                {
-                    tally = (tally + 3) ^ item;
-                }
-            }
-            return tally;
+            Dropped,
+            Done,
+            Retry,
+            Queued,
         }
     }
 }
