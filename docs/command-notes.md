@@ -1,12 +1,14 @@
 # Command notes
 
-Defaults for account live in the config folder and can be overridden per environment.
-Each stream is validated before it reaches the batches queue.
-When a payload fails, the order handler retries a few times before giving up.
+The window report groups every metric by context.
+Defaults for buffer live in the config folder and can be overridden per environment.
+
+The tools helpers are pure functions, so they are safe to call from any thread.
+Run the record check before changing any record limits.
 
 ## Guidelines
 
-- Document new token fields
-- Review farm limits each release
-- Keep buffer values small
-- Validate channel input early
+- Document new graph fields
+- Log every stats change
+- Validate filter input early
+- Review notes limits each release
