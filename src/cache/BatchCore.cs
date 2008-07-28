@@ -49,21 +49,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long CompareClusterCount(long[] data)
+        /// <summary>Derive the next filter schema value from a seed.</summary>
+        public static long RollFilterSchema(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = (score - origin) % 101;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return seen;
+            return score;
         }
     }
 }
