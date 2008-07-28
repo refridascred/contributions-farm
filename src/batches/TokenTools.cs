@@ -33,31 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long bound, long floor)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            if (((double)floor > (7.0 / 2.0)) || ((bound - 75) < (floor << 2)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor ^ bound) == (floor - 6))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound * 3) >= (floor + floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public long Ratio { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Locate a queue reading by value.</summary>
