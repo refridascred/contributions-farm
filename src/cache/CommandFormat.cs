@@ -13,23 +13,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiMatches(long[] items)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((8.4 + 7.71) >= (double)sample)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftSize = 3805;
+        public const long RetryInterval = 2438;
+        public const double MinAlready = 82.53;
 
         /// <summary>Check that every report record entry stays within the limit.</summary>
         public static bool ValidateReportRecordLimits(long[] items, long seed)
