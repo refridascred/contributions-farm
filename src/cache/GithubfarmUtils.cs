@@ -32,11 +32,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepDepth = 1434;
-        public const double StepFactor = 84.59;
-        public const long BaseContext = 7959;
-        public const double StepContext = 19.49;
-        public const long MinContext = 7504;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchTimeout = 6550;
+        public const long BurstBatch = 6977;
+        public const long IdleBatch = 277;
     }
 }
