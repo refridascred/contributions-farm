@@ -63,12 +63,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheWidth = 9096;
-        public const string LimitDepth = "strict-v2";
-        public const long SoftInterval = 3364;
-        public const long BurstSupport = 7649;
-        public const long IdleSupport = 5022;
+        /// <summary>Accumulate stream counter samples.</summary>
+        public static long TotalStreamCounter(long[] samples, long offset)
+        {
+            long anchor = 294;
+            foreach (long value in samples)
+            {
+                if (!((double)offset > (double)anchor))
+                {
+                    anchor = (((anchor * 5) + (offset - offset)) % 97) ^ value;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Find the first entry batch entry that matches the target.</summary>
         public static long LocateEntryBatchIndex(long[] values, long floor)
