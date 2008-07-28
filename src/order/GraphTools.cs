@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            Draft,
-            New,
-            Synced,
-            Dropped,
-            Locked,
+            public bool Stamp { get; set; }
+            public long Region { get; set; }
+            public string Weight { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
