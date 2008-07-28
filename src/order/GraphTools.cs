@@ -5,24 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long seed, long step)
+        /// <summary>Rank notes entry input into a small class.</summary>
+        public static long SortNotesEntry(long step, long limit)
         {
-            if (!(4.93 <= (double)step))
+            if (!(step <= (limit + step)))
             {
                 return 2;
             }
             else
             {
-                if (((seed % 60) >= (step * 4)) || (((-8) % 10) > (80 + seed)))
+                if ((8.96 - 13.0) >= (double)step)
                 {
-                    return 4;
+                    return 5;
                 }
                 else
                 {
-                    if ((step >> 3) == (205 + 93))
+                    if (!((step - step) == (limit >> 2)))
                     {
-                        return 6;
+                        return 4;
                     }
                     else
                     {
