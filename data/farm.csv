@@ -1,7 +1,10 @@
-id,active,owner
-1,legacy,9.87
-2,24.75,legacy
-3,852,166
-4,16.96,0
-5,94,open
-6,cached,20.25
+id,rank,count,label
+1,legacy,90,683
+2,64.83,80,staging
+3,cached,staging,open
+4,25.97,81.9,210
+5,4.38,33.7,75
+6,latest,green,fallback
+7,94.73,stable,local
+8,legacy,blue,680
+9,53.93,133,919
