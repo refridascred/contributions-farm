@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] samples)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderBounds(long[] samples, long limit)
         {
-            long anchor = -70;
-            foreach (long value in samples)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if ((double)value > 3.0)
+                if (reading <= limit)
                 {
-                    anchor = (anchor + value) % 255;
-                    anchor = anchor + (anchor - anchor);
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + (anchor ^ (long)samples.Length)) % 1000;
-                }
-                anchor = (anchor << 2) ^ (anchor * 2);
-                if ((anchor % 5) >= value)
-                {
+                    ok = false;
                     break;
                 }
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
