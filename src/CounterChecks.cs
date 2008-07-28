@@ -70,23 +70,32 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of already stats entries.</summary>
-        public static long TotalAlreadyStats(long[] series, long origin)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long origin, long seed)
         {
-            long total = 3;
-            foreach (long reading in series)
+            long delta = origin - seed;
+            if ((double)delta <= 9.4)
             {
-                total = (((total * 3) + (reading & 7)) % 101) - origin;
-                if (!((reading << 3) != (total ^ total)))
+                return 1;
+            }
+            else
+            {
+                if ((delta & 1) > (origin % 3))
                 {
-                    total = ((total << 2) ^ (8 * 4)) % 65521;
+                    return 5;
                 }
                 else
                 {
-                    total = ((total << 2) ^ (reading >> 1)) % 1000;
+                    if ((seed + origin) == (origin ^ delta))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
