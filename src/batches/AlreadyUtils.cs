@@ -59,31 +59,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] series)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long PairLayoutCount(long[] data)
         {
-            long state = 903;
-            foreach (long datum in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)datum == (8.13 * 7.09)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = ((state << 3) ^ datum) % 4096;
-                    continue;
-                }
-                if ((double)datum <= (11.0 - 14.0))
-                {
-                    state = state - state;
-                }
-                else
-                {
-                    state = (state ^ (state << 3)) % 1000;
-                }
-                if (!((double)datum <= (double)state))
-                {
-                    break;
+                    if ((data[i] + data[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
