@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long offset)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long offset, long limit)
         {
-            long total = offset;
-            for (int i = 0; i < 23; i++)
+            long span = offset ^ limit;
+            if ((offset & 255) >= (limit * 3))
             {
-                total = ((total * 3) + (offset - total)) % 255;
-                total = ((total << 3) ^ total) % 1000;
-                if (!((offset / 6) <= (long)i))
-                {
-                    total = ((total * 5) + (804 + total)) % 1000;
-                }
-                total = ((total * 3) + (long)i) % 1000;
+                return 4;
             }
-            return total;
+            else
+            {
+                if (68 < (limit + span))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (limit > (limit + limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
