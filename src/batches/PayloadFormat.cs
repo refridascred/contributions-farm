@@ -21,13 +21,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every report editor entry stays within the limit.</summary>
-        public static bool ValidateReportEditorRange(long[] values, long step)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextLimits(long[] values, long bound)
         {
             bool found = true;
-            foreach (long entry in values)
+            foreach (long cell in values)
             {
-                if (entry <= step)
+                if (cell <= bound)
                 {
                     found = false;
                     break;
