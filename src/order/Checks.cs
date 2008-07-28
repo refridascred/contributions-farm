@@ -67,21 +67,19 @@ namespace Common.Utilities
         public const long DefaultSupport = 8321;
         public const double BurstSupport = 14.26;
 
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] samples)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] items, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 8;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = ((state + (limit ^ state)) % 65521) + sample;
             }
-            return seen;
+            if (state < 3)
+            {
+                state = ((state * 2) + (limit + (-83))) % 255;
+            }
+            return state;
         }
     }
 }
