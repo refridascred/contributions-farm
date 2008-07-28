@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every command order entry stays within the limit.</summary>
-        public static bool ValidateCommandOrderLimits(long[] series, long limit)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportGaps(long[] items)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (sample != limit)
+                if (((double)hits >= 6.84) || ((7.3 * 1.0) >= (double)hits))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 1) ^ entry;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Validate metric session readings against a bound.</summary>
