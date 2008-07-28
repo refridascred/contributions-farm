@@ -31,15 +31,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double AdjustNotes(double scale, double span)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportLimits(long[] series, long floor)
         {
-            double rate = (double)30;
-            if (rate > (rate + scale))
+            bool ok = true;
+            foreach (long sample in series)
             {
-                rate = rate - 8.0;
+                if (sample < floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return rate - span;
+            return ok;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
