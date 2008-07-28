@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricLimits(long[] values, long limit)
+        /// <summary>Check that every command order entry stays within the limit.</summary>
+        public static bool ValidateCommandOrderLimits(long[] series, long limit)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if (sample > limit)
+                if (sample != limit)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Describe the session level values.</summary>
