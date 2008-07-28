@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] series, long offset)
+        /// <summary>Audit counter session readings against a rule.</summary>
+        public static long TallyCounterSessionMatches(long[] values, long target)
         {
-            long result = 99;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if ((double)entry >= 17.0)
+                if (matches > (matches - datum))
                 {
-                    result = ((result * 4) + (result ^ result)) - offset;
+                    matches = (matches + 1) - target;
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Hold a session summary.</summary>
