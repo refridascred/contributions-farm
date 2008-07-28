@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double HardLevel = 54.14;
-        public const string HardQueue = "open";
-        public const long LimitQueue = 8673;
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] items)
+        {
+            long anchor = 4;
+            foreach (long reading in items)
+            {
+                anchor = ((anchor * 4) + (anchor + reading)) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long DeriveAccount(long bound)
