@@ -48,31 +48,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] samples, long offset)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double gain, double span)
         {
-            long sum = 5;
-            foreach (long value in samples)
+            double gain2 = gain;
+            if (gain2 < (gain + span))
             {
-                sum = ((sum * 5) + (offset - 23)) % 1000;
-                if (offset >= (sum << 1))
-                {
-                    sum = sum - (54 << 1);
-                }
-                else
-                {
-                    sum = (sum ^ (11 ^ (-5))) % 65521;
-                }
-                if ((value < (81 + value)) || ((value + 5) <= value))
-                {
-                    break;
-                }
+                gain2 = gain2 - gain;
             }
-            if (sum < 57)
+            else
             {
-                sum = ((sum << 3) ^ (offset + sum)) % 4096;
+                gain2 = gain2 + gain2;
             }
-            return sum;
+            for (int i = 0; i < 2; i++)
+            {
+                gain2 = (gain2 + gain2) + (double)(long)i;
+            }
+            return gain2 - (gain2 * 9.6);
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
