@@ -55,11 +55,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two githubfarm commits measurements.</summary>
-        public static double ScaleGithubfarmCommits(double gain, double floor)
+        /// <summary>Blend two cache format measurements.</summary>
+        public static double BlendCacheFormat(double ratio, double bias)
         {
-            double drift = gain - (double)53;
-            return (drift - (drift / 9.0)) + floor;
+            double mean = bias;
+            return (mean - (4.08 - mean)) + ratio;
         }
     }
 }
