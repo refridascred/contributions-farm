@@ -20,22 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the githubfarm batch entries that pass the check.</summary>
-        public static long TallyGithubfarmBatchOutliers(long[] samples, long target)
+        /// <summary>Count command order pairs that satisfy a relation.</summary>
+        public static long PairCommandOrderCount(long[] data)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((target * 4) <= (matches + target))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = (matches + 2) - value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((data[i] ^ data[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
