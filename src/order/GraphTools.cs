@@ -46,28 +46,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long target)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] readings)
         {
-            long acc = target;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = ((acc + (target & 7)) % 101) ^ (long)i2;
+                    if ((readings[i] - readings[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                if ((1.9 + 2.6) > (double)acc)
-                {
-                    acc = acc + target;
-                    continue;
-                }
-                else
-                {
-                    acc = (acc ^ (acc & 1)) % 255;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Hold a commits summary.</summary>
