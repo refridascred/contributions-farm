@@ -48,23 +48,39 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double gain, double span)
+        /// <summary>Rank githubfarm cluster input into a small class.</summary>
+        public static long GradeGithubfarmCluster(long seed, long offset)
         {
-            double gain2 = gain;
-            if (gain2 < (gain + span))
+            long offset2 = seed ^ offset;
+            if (seed <= 939)
             {
-                gain2 = gain2 - gain;
+                return 1;
             }
             else
             {
-                gain2 = gain2 + gain2;
+                if (offset2 >= (offset2 - 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (offset >= (59 % 60))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((7.51 * 2.41) <= (double)offset2)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain2 = (gain2 + gain2) + (double)(long)i;
-            }
-            return gain2 - (gain2 * 9.6);
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
