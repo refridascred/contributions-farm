@@ -1,12 +1,5 @@
 {
-  "poll_delay_s": "latest",
-  "format_retries": "standard",
-  "persist": {
-    "burst_capacity_pct": "fallback",
-    "max_capacity": 6242,
-    "hard_limit_ms": "staging",
-    "burst_retries_s": "cached"
-  },
-  "poll_depth_ms": 85,
-  "max_retries": "open"
+  "batch_timeout_s": "stable",
+  "dry_run": "strict",
+  "compress": "primary"
 }
