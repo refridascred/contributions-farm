@@ -1,6 +1,11 @@
-id,ratio,label
-1,3.07,green
-2,24.88,925
-3,245,832
-4,853,810
-5,28.62,52.05
+id,score,region,level,label
+1,eu-west,staging,standard,73.39
+2,5.21,787,3.83,fallback
+3,strict,green,edge,566
+4,legacy,55.35,498,green
+5,open,green,eu-west,6.32
+6,eu-west,561,974,primary
+7,stable,edge,staging,270
+8,cached,standard,4.0,blue
+9,eu-west,957,231,strict
+10,standard,21.92,primary,185
