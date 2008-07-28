@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample + tally) >= sample)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double StepWidth = 95.45;
+        public const string BaseWidth = "staging-v2";
+        public const double CacheSize = 48.95;
+        public const long MinCount = 2395;
+        public const long SoftBudget = 8129;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double LimitTimeout = 55.82;
