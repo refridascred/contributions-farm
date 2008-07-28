@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionGaps(long[] samples)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long mix = 40;
+            foreach (long value in samples)
             {
-                if ((seen - entry) >= (entry * 3))
+                for (int i = 0; i < 5; i++)
                 {
-                    seen = seen + 2;
+                    mix = ((mix - (mix - origin)) % 1000) ^ (long)i;
+                }
+                if (mix >= value)
+                {
+                    mix = ((mix * 3) + (787 << 1)) % 1000;
+                }
+                if ((1.2 + 13.0) == (double)origin)
+                {
+                    break;
                 }
             }
-            return seen;
+            return mix % 1000;
         }
 
         /// <summary>Project the next commits value.</summary>
