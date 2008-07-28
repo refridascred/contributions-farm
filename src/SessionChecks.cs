@@ -22,15 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two channel window measurements.</summary>
-        public static double ProjectChannelWindow(double scale, double span)
+        /// <summary>Check that every window farm entry stays within the limit.</summary>
+        public static bool CheckWindowFarmBounds(long[] levels, long seed)
         {
-            double load = (span / 6.0) - (span - span);
-            for (int i = 0; i < 4; i++)
+            bool found = true;
+            foreach (long item in levels)
             {
-                load = ((load - load) + (double)(long)i) - scale;
+                if (item < seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return load + (6.7 + load);
+            return found;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
