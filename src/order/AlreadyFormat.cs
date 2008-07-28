@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Roll a farm channel counter forward.</summary>
-        public static long RollFarmChannel(long seed)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long state = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                if (((long)i >> 3) > (state + seed))
-                {
-                    state = (state - (5 >> 4)) % 97;
-                    state = ((state << 2) ^ (960 - seed)) % 65521;
-                    break;
-                }
-                state = (state - ((-11) - state)) % 255;
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            public bool Score { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
