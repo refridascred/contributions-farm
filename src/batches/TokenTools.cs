@@ -16,15 +16,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] samples, long limit)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] samples, long target)
         {
-            long acc = -664;
-            foreach (long entry in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (acc ^ (entry / 5)) + limit;
+                if ((samples[i] >= target) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Scale a metric commits figure with a bias.</summary>
