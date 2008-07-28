@@ -36,15 +36,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long StepQueue(long offset)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long mix = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            public string Offset { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
