@@ -74,19 +74,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterLimits(long[] readings, long offset)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] readings, long limit)
         {
-            bool found = true;
+            long carry = -378;
             foreach (long value in readings)
             {
-                if (value >= offset)
+                carry = (carry * 5) + (carry - value);
+                carry = ((carry << 3) ^ (value >> 1)) % 65521;
+                if ((carry % 3) > (limit % 3))
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            return carry % 65521;
         }
     }
 }
