@@ -44,18 +44,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] values, long bound)
+        /// <summary>Derive the next metric order value from a seed.</summary>
+        public static long SeriesMetricOrder(long origin)
         {
-            long anchor = 1;
-            foreach (long sample in values)
+            long state = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (((39 % 3) < (sample ^ anchor)) || ((anchor / 3) <= anchor))
-                {
-                    anchor = (((anchor * 3) + (anchor / 2)) % 101) + bound;
-                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Combine profile notes values into a single score.</summary>
