@@ -54,11 +54,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchBudget = 8642;
-        public const string BurstRatio = "cached-v2";
-        public const double BatchContext = 80.46;
-        public const long BurstFactor = 9793;
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long PairQueueCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a notes counter forward.</summary>
         public static long SeriesNotes(long offset)
