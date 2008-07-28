@@ -86,15 +86,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double rate, double floor)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            double gain = 1.68;
-            if (gain >= 6.38)
-            {
-                gain = ((gain - (gain / 8.0)) - rate) - floor;
-            }
-            return gain + (double)5;
+            public string Total { get; set; } = "";
+            public long Region { get; set; }
+            public long Label { get; set; }
         }
     }
 }
