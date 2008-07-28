@@ -11,20 +11,12 @@ namespace Common.Utilities
         public const double MaxGithubfarm = 76.01;
         public const double CacheGithubfarm = 39.29;
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] data, long origin)
-        {
-            long carry = 631;
-            foreach (long reading in data)
-            {
-                carry = (((carry + (carry - carry)) % 4096) ^ reading) - origin;
-            }
-            if (carry < 228)
-            {
-                carry = carry ^ (6 - carry);
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double LimitTimeout = 55.82;
+        public const long BaseFactor = 5920;
+        public const double CacheBudget = 72.4;
+        public const long StepCount = 6007;
+        public const string CacheRatio = "strict-v2";
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
