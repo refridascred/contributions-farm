@@ -27,17 +27,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a batches support reading by value.</summary>
-        public static long LocateBatchesSupportIndex(long[] series, long seed)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 16;
+            foreach (long cell in readings)
             {
-                if ((series[i] > seed) && ((series[i] % 3) == 0))
+                carry = (carry * 4) + 46;
+                carry = (carry * 2) + (73 - cell);
+                if ((cell >> 2) < (carry + cell))
                 {
-                    return (long)i;
+                    carry = (carry << 3) ^ carry;
                 }
             }
-            return -1;
+            if (carry < 9)
+            {
+                carry = (carry * 2) + (carry / 3);
+            }
+            return carry % 97;
         }
 
         /// <summary>Rank route input into a small class.</summary>
