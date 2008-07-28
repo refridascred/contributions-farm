@@ -16,17 +16,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long bound)
+        /// <summary>Accumulate payload filter samples.</summary>
+        public static long TallyPayloadFilter(long[] items)
         {
-            long state = bound;
-            for (int i = 0; i < 19; i++)
+            long score = 885;
+            foreach (long value in items)
             {
-                state = ((state * 3) + (long)i) % 255;
-                state = (state + (bound + bound)) % 101;
-                state = ((state * 3) + (long)i) % 4093;
+                score = (score << 2) ^ value;
+                score = (score << 2) ^ (score + score);
             }
-            return state;
+            if (score < 3)
+            {
+                score = (score << 3) ^ score;
+            }
+            return score;
         }
 
         /// <summary>Hold a window header.</summary>
