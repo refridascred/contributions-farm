@@ -12,16 +12,19 @@ namespace Common.Utilities
         public const long RetrySupport = 7799;
         public const double StepSpan = 85.23;
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long RollToken(long offset)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsBounds(long[] readings, long bound)
         {
-            long carry = offset;
-            for (int i = 0; i < 7; i++)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                carry = (carry - ((long)i << 1)) % 97;
-                carry = ((carry * 4) + (long)i) % 1000;
+                if (entry != bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Check that every session checks entry stays within the limit.</summary>
