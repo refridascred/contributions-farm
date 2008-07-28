@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double bias, double offset)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long limit, long target)
         {
-            double bias2 = offset * 2.81;
-            for (int i = 0; i < 9; i++)
+            if ((8.0 - 3.5) >= (double)limit)
             {
-                bias2 = ((bias2 + (offset + bias2)) + (double)(long)i) - bias;
+                return 2;
             }
-            return bias2 + offset;
+            else
+            {
+                if (((target << 3) > (limit + limit)) || ((limit ^ target) >= (target - target)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (target > (target + target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((target % 64) < (limit - limit)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
