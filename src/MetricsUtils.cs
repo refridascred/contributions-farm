@@ -48,17 +48,12 @@ namespace Common.Utilities
         public const string MaxCounter = "open-1";
         public const long BurstInterval = 3260;
 
-        /// <summary>Derive the next editor githubfarm value from a seed.</summary>
-        public static long StepEditorGithubfarm(long bound)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long anchor = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                anchor = anchor - (anchor + anchor);
-                anchor = (anchor ^ (long)i) % 1000;
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            Draft,
+            Retry,
+            Ready,
         }
     }
 }
