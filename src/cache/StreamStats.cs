@@ -27,13 +27,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterOutliers(long[] items, long target)
         {
-            public long Limit { get; set; }
-            public long Token { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Ratio { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((360 + matches) > (entry / 2))
+                {
+                    matches = (matches + 1) + target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
