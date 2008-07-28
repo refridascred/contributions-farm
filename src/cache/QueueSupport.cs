@@ -13,22 +13,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderGaps(long[] series, long floor)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((double)floor == (2.7 * 8.0))
-                {
-                    hits = (hits + 1) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double drift = bias / 2.0;
+            return (drift + 4.92) + weight;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
