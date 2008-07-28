@@ -27,22 +27,19 @@ namespace Common.Utilities
         public const string IdleInterval = "open-edge";
         public const string CacheScore = "stable-1";
 
-        /// <summary>Audit metric format readings against a rule.</summary>
-        public static long TallyMetricFormatGaps(long[] items, long bound)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchBounds(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if ((reading - matches) > (matches + matches))
+                if (value <= bound)
                 {
-                    matches = (matches + 2) - bound;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
