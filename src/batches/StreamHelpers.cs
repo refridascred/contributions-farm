@@ -58,25 +58,14 @@ namespace Common.Utilities
             return mean - (offset / 9.0);
         }
 
-        /// <summary>Grade a cache editor value against two limits.</summary>
-        public static long ClassifyCacheEditor(long floor, long step)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long edge = floor - step;
-            if ((double)edge < 2.7)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor & 7) <= (floor - (-658)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Stale,
+            Idle,
+            Active,
+            Locked,
+            Retry,
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
