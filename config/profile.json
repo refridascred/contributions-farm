@@ -1,5 +1,7 @@
 {
-  "flush_ratio": "green",
-  "idle_delay_pct": 64.67,
-  "warm_depth": 60
+  "base_window": 440,
+  "filter_threshold": ["fallback", "staging"],
+  "retry_ttl_pct": [443, 306],
+  "soft_size": "eu-west",
+  "session_limit": 3016
 }
