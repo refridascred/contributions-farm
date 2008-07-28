@@ -39,24 +39,12 @@ namespace Common.Utilities
         public const string RetryDepth = "legacy-edge";
         public const string MaxRecord = "cached";
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long offset, long limit)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            if ((offset - 96) > (limit + limit))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!(0 < (offset + 2)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a queue snapshot.</summary>
