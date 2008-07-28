@@ -1,10 +1,18 @@
 {
-  "min_limit_pct": 93.37,
-  "stream_ratio": {
-    "poll_ttl": 100,
-    "soft_ratio_s": 6760,
-    "strict": true
-  },
-  "retry_delay_s": "staging",
-  "commits_interval": "green"
+  "hard_interval_pct": [305, 70],
+  "queue_size": true,
+  "readonly": 51.78,
+  "burst_capacity_s": {
+    "account_window": true,
+    "already_capacity": 8353,
+    "retry_interval_count": {
+      "default_size_s": "eu-west",
+      "format_depth": 77,
+      "context_ratio": "latest",
+      "channel_timeout": ["staging", "eu-west"],
+      "warm_delay": "primary"
+    },
+    "dry_run": ["stable", "standard", "fallback"],
+    "min_size_ms": "cached"
+  }
 }
