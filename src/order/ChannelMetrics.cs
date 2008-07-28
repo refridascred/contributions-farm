@@ -5,34 +5,35 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long origin, long step)
+        /// <summary>Classify a cache buffer pair into a bucket.</summary>
+        public static long SortCacheBuffer(long seed, long target)
         {
-            if (8.8 >= (double)origin)
+            long cur = seed ^ target;
+            if (((6.6 + 9.0) == (double)seed) || ((seed + 0) == (target + 990)))
             {
-                return 4;
+                return 3;
             }
             else
             {
-                if (((step / 8) < (step * 2)) || ((step / 3) > (6 & 15)))
+                if (((9.1 * 7.0) < (double)seed) || (4.0 > (double)cur))
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    if (((step / 2) == (origin % 24)) && (step > (origin + step)))
+                    if (!(cur <= (cur >> 4)))
                     {
-                        return 1;
+                        return 6;
                     }
                     else
                     {
-                        if (origin > (582 + origin))
+                        if (((double)cur > 4.79) && (cur > target))
                         {
-                            return 5;
+                            return 2;
                         }
                         else
                         {
-                            return 3;
+                            return 4;
                         }
                     }
                 }
