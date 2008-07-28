@@ -18,10 +18,40 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxEditor = 6716;
-        public const long MinEditor = 2643;
-        public const double RetryLevel = 62.54;
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long step, long offset)
+        {
+            long diff = step ^ offset;
+            if (((offset & 7) <= offset) || ((double)offset < (double)step))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)diff < 12.0) || ((3.8 / 7.0) > (double)offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (step >= (84 ^ step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!(step <= (offset - 420)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of profile readings.</summary>
         public static long CompareProfileCount(long[] data)
