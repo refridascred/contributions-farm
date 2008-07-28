@@ -1,12 +1,15 @@
 # Command notes
 
-The metrics report groups every record by record.
-Run the farm check before changing any support limits.
-The session helpers are pure functions, so they are safe to call from any thread.
+Use support settings to tune how often cluster data is refreshed.
+When a format fails, the counter handler retries a few times before giving up.
+
+Each payload is validated before it reaches the session queue.
+When a editor fails, the metrics handler retries a few times before giving up.
+The layout report groups every metrics by support.
 
 ## Guidelines
 
-- Document new layout fields
-- Keep context values small
-- Validate channel input early
-- Log every batches change
+- Validate contributi input early
+- Review notes limits each release
+- Prefer window defaults
+- Keep entry values small
