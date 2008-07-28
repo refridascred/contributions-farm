@@ -16,17 +16,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long origin)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long mix = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = (mix + ((long)i + mix)) % 97;
-                mix = (mix ^ (origin % 7)) % 65521;
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            Synced,
+            Pending,
+            Paused,
+            Queued,
+            Stale,
         }
 
         /// <summary>Scale a metric commits figure with a bias.</summary>
