@@ -33,11 +33,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleScore = 5685;
-        public const string BatchFarm = "fallback";
-        public const long HardRatio = 760;
-        public const long MinTimeout = 4015;
-        public const long CacheFarm = 9233;
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
+        {
+            public string Rank { get; set; } = "";
+            public long Mode { get; set; }
+        }
     }
 }
