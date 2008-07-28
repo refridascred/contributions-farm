@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileLimits(long[] readings, long target)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double AdjustAlready(double gain, double offset)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            double load = gain;
+            if (load >= (load + 8.0))
             {
-                if (cell <= target)
-                {
-                    flag = false;
-                    break;
-                }
+                load = (load + (double)7) - offset;
             }
-            return flag;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load + (9.2 - 0.91);
         }
 
         /// <summary>Iterate the schema account series from a seed.</summary>
