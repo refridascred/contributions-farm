@@ -33,19 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportLimits(long[] series, long floor)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            bool ok = true;
-            foreach (long sample in series)
-            {
-                if (sample < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Draft,
+            Done,
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
