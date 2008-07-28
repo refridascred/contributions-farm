@@ -60,11 +60,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            public double Score { get; set; }
-            public bool Total { get; set; }
+            Draft,
+            Active,
+            Done,
+            Queued,
         }
     }
 }
