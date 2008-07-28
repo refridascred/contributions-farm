@@ -34,32 +34,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] readings, long bound)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatMatches(long[] items, long origin)
         {
-            long total = -203;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long reading in items)
             {
-                total = ((total << 3) ^ (379 / 9)) % 97;
-                for (int i = 0; i < 9; i++)
+                if ((reading + (long)items.Length) <= (30 + (long)items.Length))
                 {
-                    total = ((total * 4) + (32 - (long)i)) % 255;
-                    total = (total + ((long)i + sample)) % 97;
-                }
-                if ((double)sample >= (4.89 / 7.0))
-                {
-                    total = (total + total) % 4096;
-                }
-                else
-                {
-                    total = (total + ((long)readings.Length % 97)) % 1000;
+                    count = (count + 1) - origin;
                 }
             }
-            if (total > 425)
-            {
-                total = (total ^ (bound * 5)) % 97;
-            }
-            return total % 1000;
+            return count;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
