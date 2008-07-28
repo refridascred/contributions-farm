@@ -1,14 +1,13 @@
 # entry settings
-flush_window_s: 500
-farm_limit: 76.77
-cache_depth_count: 68
-hard_window_pct: 65.19
-editor_threshold:
-  readonly:
-    - eu-west
-    - staging
-  dry_run: 6348
-  idle_capacity_count: 60
-  soft_threshold_count: 15.69
-  hard_retries: 4421
-  session_size: latest
+enabled: 7
+readonly:
+  burst_interval: false
+  warm_interval_count:
+    - 124
+    - 95
+    - 380
+    - 188
+  dry_run: cached
+warm_ratio: 7.08
+counter_window: staging
+schema_timeout: 92.3
