@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long bound)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double SmoothAccount(double weight, double span)
         {
-            long mark = bound;
-            for (int i = 0; i < 20; i++)
+            double scale = (weight * 8.4) - span;
+            if (scale >= weight)
             {
-                mark = (mark + (long)i) % 255;
-                mark = ((mark * 2) + (long)i) % 101;
+                scale = scale - weight;
             }
-            return mark;
+            return scale + scale;
         }
 
         /// <summary>Blend two notes measurements.</summary>
