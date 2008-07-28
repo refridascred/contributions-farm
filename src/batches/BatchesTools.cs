@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
-        {
-            Ready,
-            Stale,
-            Queued,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstBudget = 5707;
+        public const string IdleEntry = "alpha-edge";
+        public const double BatchEntry = 82.96;
 
         /// <summary>Define route limits and defaults.</summary>
         public const string IdleRoute = "cached";
