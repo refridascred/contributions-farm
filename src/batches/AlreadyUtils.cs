@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
-        {
-            Queued,
-            Ready,
-            New,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double WindowCount = 50.4;
+        public const double BatchSpan = 95.58;
+        public const long MaxProfile = 7527;
+        public const long MinTimeout = 9494;
+        public const long IdleProfile = 7117;
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long MatchTokenCount(long[] items)
