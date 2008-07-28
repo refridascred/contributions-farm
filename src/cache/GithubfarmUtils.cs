@@ -20,14 +20,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] samples, long seed)
         {
-            Active,
-            Failed,
-            Paused,
-            Done,
-            Dropped,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
