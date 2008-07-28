@@ -1,15 +1,7 @@
 {
-  "batch_size": {
-    "batch_window_ms": {
-      "poll_depth_s": ["staging", "staging", "eu-west"],
-      "sync_ratio_pct": true,
-      "retry_limit_ms": [414, 447, 162],
-      "sync_window_s": true,
-      "retry_timeout_ms": ["primary", "latest", "stable"]
-    },
-    "batch_interval": "strict",
-    "hard_ttl": "edge"
-  },
-  "flush_size": "latest",
-  "audit": false
+  "sync_ttl_count": 301,
+  "verbose": 8.55,
+  "soft_interval_s": "green",
+  "stream_timeout": 95.21,
+  "audit": 2979
 }
