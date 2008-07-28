@@ -57,22 +57,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many channel format samples are out of range.</summary>
-        public static long TallyChannelFormatHits(long[] series)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long step)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long acc = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)matches == (6.0 * 0.41))
-                {
-                    matches = (matches + 1) - item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return matches;
+            return acc;
         }
     }
 }
