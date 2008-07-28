@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double SmoothAccount(double weight, double span)
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] values)
         {
-            double scale = (weight * 8.4) - span;
-            if (scale >= weight)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = scale - weight;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return scale + scale;
+            return seen;
         }
 
         /// <summary>Blend two notes measurements.</summary>
