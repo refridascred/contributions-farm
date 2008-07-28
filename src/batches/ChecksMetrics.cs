@@ -81,11 +81,21 @@ namespace Common.Utilities
             return drift - (double)21;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchSpan = 4210;
-        public const string RetryProfile = "stable";
-        public const long MinProfile = 519;
-        public const double SoftScore = 54.08;
-        public const long IdleTimeout = 996;
+        /// <summary>Match up schema samples.</summary>
+        public static long OverlapSchemaCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
