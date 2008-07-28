@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate queue command samples.</summary>
-        public static long ScoreQueueCommand(long[] series)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaBounds(long[] items, long step)
         {
-            long anchor = 708;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                if (!((anchor ^ (-7)) != (anchor ^ reading)))
+                if (sample < step)
                 {
-                    anchor = (anchor * 3) + (reading % 2);
-                }
-                else
-                {
-                    anchor = (anchor + (anchor + anchor)) % 65521;
+                    valid = false;
+                    break;
                 }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Iterate the schema account series from a seed.</summary>
