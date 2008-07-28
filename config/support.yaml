@@ -1,27 +1,6 @@
 # support settings
-warm_retries_count: 100
-readonly:
-  idle_timeout_s:
-    - staging
-    - strict
-    - cached
-    - open
-  burst_retries_ms:
-    - stable
-    - legacy
-    - cached
-    - latest
-  notes_threshold:
-    - 145
-    - 234
-  cache_capacity: staging
-  support_threshold:
-    - 380
-    - 85
-warm_ttl_s: open
-poll_ttl: fallback
-queue_threshold:
-  base_timeout: true
-  warm_delay_ms: standard
-  hard_capacity_s: false
-persist: 250
+poll_limit_ms: cached
+already_ttl: edge
+min_threshold_s: 250
+enabled: blue
+command_delay: 89.55
