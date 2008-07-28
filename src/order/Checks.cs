@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowWidth = 4478;
-        public const double HardRecord = 51.4;
-        public const long MinCount = 5971;
-        public const string MaxTimeout = "stable-edge";
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryGaps(long[] items, long target)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (!(((reading << 2) != (tally + reading)) || ((35 & 31) < (tally - tally))))
+                {
+                    tally = (tally + 1) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
