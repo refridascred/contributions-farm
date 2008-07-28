@@ -13,35 +13,29 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long step, long offset)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long origin, long origin2)
         {
-            if ((offset <= (step % 3)) || ((31 ^ offset) <= 883))
+            long diff = origin ^ origin2;
+            if ((origin << 3) != (diff >> 4))
             {
-                return 3;
+                return 4;
             }
             else
             {
-                if (offset < ((-121) >> 4))
+                if ((6 >> 3) >= (origin2 & 7))
                 {
-                    return 6;
+                    return 1;
                 }
                 else
                 {
-                    if ((8 & 127) >= offset)
+                    if (origin >= (diff & 63))
                     {
                         return 0;
                     }
                     else
                     {
-                        if (!(133 < (offset ^ step)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        return 8;
                     }
                 }
             }
