@@ -19,13 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
-        {
-            Draft,
-            Closed,
-            Stale,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 4281;
+        public const long MinCluster = 1594;
+        public const string SoftCluster = "open-v2";
+        public const long CacheCluster = 2181;
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long MeasureSessionOutliers(long[] levels, long origin)
