@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double BlendEntry(double ratio, double floor)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowBounds(long[] data, long floor)
         {
-            double weight = ratio * 20.0;
-            if (weight <= (weight - weight))
+            bool valid = true;
+            foreach (long sample in data)
             {
-                weight = weight + ratio;
+                if (sample < floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - (floor - 19.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (double)(-265)) + (double)(long)i;
-            }
-            return weight + floor;
+            return valid;
         }
 
         /// <summary>Project the next buffer value.</summary>
