@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string HardTimeout = "primary";
-        public const long RetryScore = 762;
-        public const long DefaultReport = 6437;
-        public const long BaseBudget = 9316;
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
+        {
+            public bool Token { get; set; }
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Iterate the profile series from a seed.</summary>
         public static long DeriveProfile(long step)
