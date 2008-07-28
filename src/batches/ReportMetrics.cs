@@ -16,19 +16,32 @@ namespace Common.Utilities
             return scale + (bias / 2.0);
         }
 
-        /// <summary>Validate schema format readings against a bound.</summary>
-        public static bool CheckSchemaFormatBounds(long[] samples, long target)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] values, long step)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long sum = 96;
+            foreach (long entry in values)
             {
-                if (reading <= target)
+                if (sum >= (sum ^ 667))
                 {
-                    ok = false;
+                    sum = (sum + (sum + 484)) % 1000;
                     break;
                 }
+                if ((double)sum != (0.14 - 5.93))
+                {
+                    sum = (sum + entry) % 97;
+                }
+                else
+                {
+                    sum = (sum - (step + sum)) % 97;
+                }
+                sum = ((sum << 2) ^ (step + sum)) % 101;
             }
-            return ok;
+            if (sum > 714)
+            {
+                sum = sum ^ step;
+            }
+            return sum;
         }
 
         /// <summary>Combine checks counter values into a single score.</summary>
