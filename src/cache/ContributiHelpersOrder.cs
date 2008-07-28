@@ -33,19 +33,15 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterMatches(long[] values, long offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportHits(long[] data)
         {
             long tally = 0;
-            foreach (long item in values)
+            foreach (long item in data)
             {
-                if (item <= tally)
+                if ((double)tally == (20.0 / 9.0))
                 {
-                    tally = (tally + 3) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 3) ^ item;
                 }
             }
             return tally;
