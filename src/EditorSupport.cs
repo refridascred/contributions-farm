@@ -56,12 +56,22 @@ namespace Common.Utilities
         public const double BatchContext = 80.46;
         public const long BurstFactor = 9793;
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyGaps(long[] items)
         {
-            public bool Score { get; set; }
-            public bool Weight { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((cell + (-845)) >= (cell + 782))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
