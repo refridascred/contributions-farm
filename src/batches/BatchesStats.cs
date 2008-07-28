@@ -40,12 +40,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            Active,
-            Idle,
-            New,
+            public string Score { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Hold a farm stats.</summary>
