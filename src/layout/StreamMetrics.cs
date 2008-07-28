@@ -43,22 +43,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferMatches(long[] series, long bound)
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            double scale = 3.2;
+            for (int i = 0; i < 3; i++)
             {
-                if ((9.14 * 0.28) <= (13.0 * 0.8))
-                {
-                    matches = ((matches + 2) - reading) - bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                scale = ((scale + span) + (double)(long)i) + ratio;
             }
-            return matches;
+            return scale - (double)40;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
