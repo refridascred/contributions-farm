@@ -22,20 +22,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long seed)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] items)
         {
-            long carry = seed;
-            for (int i = 0; i < 9; i++)
+            long anchor = -885;
+            foreach (long item in items)
             {
-                if (((double)seed == (9.0 + 8.0)) || ((317 + carry) >= seed))
+                if ((item + anchor) >= item)
                 {
-                    carry = carry - carry;
+                    anchor = anchor + anchor;
                 }
-                carry = (carry + (carry / 9)) % 1000;
-                carry = ((carry * 4) + (long)i) % 4093;
+                else
+                {
+                    anchor = (anchor + (823 / 5)) % 101;
+                    anchor = ((anchor * 5) + item) % 255;
+                }
+                if (((item % 64) <= ((-6) + anchor)) && (item < ((long)items.Length - item)))
+                {
+                    anchor = ((anchor * 5) + anchor) % 101;
+                }
             }
-            return carry;
+            if (anchor < 91)
+            {
+                anchor = (anchor - (anchor + anchor)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define command limits and defaults.</summary>
