@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many context checks samples are out of range.</summary>
-        public static long MeasureContextChecksMatches(long[] data, long origin)
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (origin <= (reading + tally))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((levels[i] + levels[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Look up the position of a channel cache sample.</summary>
