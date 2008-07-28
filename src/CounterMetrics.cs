@@ -34,12 +34,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Classify a order token pair into a bucket.</summary>
+        public static long GradeOrderToken(long origin, long target)
         {
-            public bool Rank { get; set; }
-            public long Label { get; set; }
-            public string Total { get; set; } = "";
+            if ((target * 3) <= (target & 15))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((-89) > (origin << 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((20.0 / 6.0) <= (double)origin) || ((origin >> 3) >= (origin * 3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin + origin) < (origin - target))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
