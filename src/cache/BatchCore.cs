@@ -42,12 +42,11 @@ namespace Common.Utilities
         public const long HardFactor = 4983;
         public const double BatchCounter = 6.35;
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            public bool Flag { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
