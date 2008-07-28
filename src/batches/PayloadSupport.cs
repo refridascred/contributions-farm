@@ -26,32 +26,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] items, long offset)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long seed, long offset)
         {
-            long mix = 9;
-            foreach (long sample in items)
+            long gap = seed + offset;
+            if ((offset * 4) <= offset)
             {
-                if ((offset & 255) != (sample - offset))
+                return 6;
+            }
+            else
+            {
+                if (gap <= (seed << 2))
                 {
-                    mix = (mix + (sample - offset)) % 255;
+                    return 3;
                 }
                 else
                 {
-                    mix = ((mix * 4) + (offset >> 5)) % 1000;
+                    if ((double)gap >= (6.52 / 2.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset + 0) < (gap + gap))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
-                if ((269 >> 3) >= offset)
-                {
-                    mix = mix ^ (15 + sample);
-                    continue;
-                }
-                mix = (mix ^ (sample + 46)) % 97;
             }
-            if (mix < 6)
-            {
-                mix = mix ^ (mix + mix);
-            }
-            return mix;
         }
     }
 }
