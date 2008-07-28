@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double ratio, double bias)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long bound)
         {
-            double scale = (double)9 * 20.0;
-            for (int i = 0; i < 3; i++)
+            long mark = bound;
+            for (int i = 0; i < 20; i++)
             {
-                scale = ((scale + (ratio / 6.0)) - (double)(long)i) - bias;
+                mark = (mark + (long)i) % 255;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return scale - 8.8;
+            return mark;
         }
 
         /// <summary>Blend two notes measurements.</summary>
