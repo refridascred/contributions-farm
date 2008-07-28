@@ -26,11 +26,21 @@ namespace Common.Utilities
         public const double HardWindow = 41.24;
         public const double MinBudget = 87.47;
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long MatchPayloadCount(long[] values)
         {
-            public long Score { get; set; }
-            public long Offset { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the editor state values.</summary>
