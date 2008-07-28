@@ -69,11 +69,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BaseChecks = "primary-edge";
-        public const double RetryChecks = 25.82;
-        public const long HardChecks = 5582;
-        public const double BatchSize = 13.24;
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ScaleSupport(double ratio, double floor)
+        {
+            double ratio2 = ratio;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = (ratio2 - floor) + (double)(long)i;
+            }
+            return ratio2 + 0.9;
+        }
 
         /// <summary>Describe the record mode values.</summary>
         public enum RecordMode
