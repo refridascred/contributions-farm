@@ -1,12 +1,6 @@
 # entry settings
-token_interval:
-  warm_timeout_ms:
-    already_depth: 44.59
-    default_ratio: eu-west
-    base_delay_pct: 500
-    metric_size: edge
-  layout_ttl: 250
-  max_limit_count: green
-audit: 1
-batch_interval_pct: 250
-batch_threshold: 54.59
+session_depth: 75
+entry_window: staging
+soft_capacity_pct: latest
+route_ttl: 7297
+cluster_limit: 0.37
