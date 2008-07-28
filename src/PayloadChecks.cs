@@ -28,18 +28,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricMatches(long[] values)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((reading & 15) <= reading)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
+            public double Region { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
