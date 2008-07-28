@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatLimits(long[] levels, long bound)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsGaps(long[] levels)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (datum >= bound)
+                if ((reading + tally) >= (reading - tally))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Accumulate cache tools samples.</summary>
