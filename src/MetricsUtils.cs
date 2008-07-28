@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] readings, long bound)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double bias, double floor)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            double load = 9.0;
+            if (load < (double)421)
             {
-                if (((-20) * 2) < (long)readings.Length)
-                {
-                    count = ((count + 1) ^ sample) + bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = ((load + (5.82 + 10.0)) - bias) + floor;
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + 3.4) - (double)(long)i;
+            }
+            return load + (double)989;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
