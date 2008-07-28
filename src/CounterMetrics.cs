@@ -42,12 +42,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 9297;
-        public const long SoftScore = 7375;
-        public const long BaseLevel = 741;
-        public const long MaxTimeout = 87;
-        public const string MaxToken = "strict-edge";
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenGaps(long[] items, long target)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((matches << 3) != (target + 5))
+                {
+                    matches = (matches + 1) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a farm counter forward.</summary>
         public static long RollFarm(long floor)
