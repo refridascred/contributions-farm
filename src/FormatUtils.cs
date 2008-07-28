@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long floor, long seed)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferGaps(long[] series, long offset)
         {
-            if (19.0 >= (double)floor)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (((-672) - floor) != (floor ^ 0))
+                if (entry <= (entry % 24))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((floor - seed) != (seed & 255)) && (seed < 8))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = (tally + 1) - offset;
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
