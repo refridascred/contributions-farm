@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesHits(long[] series, long seed)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileHits(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if ((seed * 2) == (6 % 97))
+                if ((offset + value) > value)
                 {
-                    count = (count + 1) + sample;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
