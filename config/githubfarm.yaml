@@ -1,22 +1,4 @@
 # githubfarm settings
-base_limit_pct: open
-enabled:
-  - edge
-  - eu-west
-  - fallback
-hard_capacity_s: blue
-burst_retries_pct:
-  default_size_count: 14
-  retry_depth:
-    - edge
-    - edge
-  editor_interval: 1024
-  soft_ttl_count: true
-hard_ttl_s:
-  - 216
-  - 445
-cluster_size:
-  - eu-west
-  - local
-  - standard
-  - edge
+readonly: false
+enabled: 3.29
+flush_depth: 60
