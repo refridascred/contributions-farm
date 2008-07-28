@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterLimits(long[] samples, long seed)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Idle,
+            Failed,
+            Synced,
         }
 
         /// <summary>Audit payload farm readings against a rule.</summary>
