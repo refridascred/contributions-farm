@@ -26,19 +26,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every stats channel entry stays within the limit.</summary>
-        public static bool GuardStatsChannelLimits(long[] series, long limit)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Failed,
+            Retry,
+            Synced,
+            Closed,
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
