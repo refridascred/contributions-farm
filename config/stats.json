@@ -1,19 +1,16 @@
 {
-  "compress": [387, 406, 494, 296],
-  "hard_ttl": ["staging", "eu-west", "latest"],
-  "payload_retries": 60,
-  "idle_threshold_ms": {
-    "cache_window": "blue",
-    "warm_capacity_pct": "local",
-    "base_capacity": {
-      "idle_ratio_ms": 38.61,
-      "strict": ["staging", "staging", "latest"],
-      "dry_run": "staging",
-      "soft_retries_s": 500
-    },
-    "soft_delay_count": 4009,
-    "default_window_ms": 9260,
-    "hard_size_count": 56.9
+  "dry_run": false,
+  "record_timeout": 100,
+  "min_ttl_pct": ["legacy", "standard"],
+  "sync_timeout_ms": {
+    "default_capacity": "green",
+    "burst_depth": 15.09,
+    "batch_threshold_pct": ["blue", "stable", "cached", "latest"],
+    "base_window": {
+      "token_retries": true,
+      "profile_retries": "local",
+      "enabled": "legacy"
+    }
   },
-  "burst_window_s": [491, 183, 132]
+  "readonly": ["standard", "strict", "latest"]
 }
