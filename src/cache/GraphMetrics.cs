@@ -70,18 +70,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryGaps(long[] levels)
+        /// <summary>Combine token channel values into a single score.</summary>
+        public static long FoldTokenChannel(long[] values)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long score = -6;
+            foreach (long value in values)
             {
-                if ((804 << 1) < (sample >> 4))
+                if ((value * 2) < value)
                 {
-                    hits = hits + 2;
+                    score = (score + (score + score)) % 255;
                 }
             }
-            return hits;
+            return score;
         }
     }
 }
