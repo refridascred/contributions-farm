@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long origin, long step)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long gap = origin + step;
-            if (((origin % 16) < origin) && ((gap << 2) > (779 >> 4)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((gap & 255) >= gap)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((65 > (origin >> 3)) && (step >= (49 - step)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Stale,
+            Draft,
+            Closed,
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
