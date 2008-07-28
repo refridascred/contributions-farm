@@ -1,8 +1,8 @@
-id,weight,ratio
-1,98.36,standard
-2,fallback,strict
-3,88.77,27.9
-4,616,55.09
-5,open,34.25
-6,292,edge
-7,52.3,78.78
+id,level,region,weight,token
+1,672,78.64,313,475
+2,58.94,80,503,78.33
+3,legacy,930,95.55,72.22
+4,65.99,blue,877,458
+5,40,10.29,0.03,standard
+6,staging,stable,legacy,655
+7,9.52,legacy,885,753
