@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextGaps(long[] levels, long limit)
         {
-            Retry,
-            New,
-            Synced,
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((1.94 - 7.0) <= (double)limit)
+                {
+                    count = (count + 3) + datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
