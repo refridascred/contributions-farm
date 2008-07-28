@@ -86,12 +86,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Combine batch order values into a single score.</summary>
+        public static long TotalBatchOrder(long[] levels)
         {
-            public double Score { get; set; }
-            public bool Level { get; set; }
-            public long Weight { get; set; }
+            long anchor = 470;
+            foreach (long value in levels)
+            {
+                anchor = (((anchor << 3) ^ (anchor * 2)) % 1000) ^ value;
+            }
+            if (anchor > 50)
+            {
+                anchor = (anchor + anchor) % 255;
+            }
+            return anchor;
         }
     }
 }
