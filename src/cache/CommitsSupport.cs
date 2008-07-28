@@ -80,23 +80,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double ratio, double offset)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            double mean = 5.0;
-            if (mean >= (mean * 4.2))
-            {
-                mean = (mean + mean) - offset;
-            }
-            else
-            {
-                mean = mean - ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - 3.18) - (double)(long)i;
-            }
-            return mean + ratio;
+            public string Flag { get; set; } = "";
+            public long Level { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
