@@ -23,21 +23,13 @@ namespace Common.Utilities
             return rate + 0.7;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long target)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long mix = target;
-            for (int i = 0; i < 8; i++)
-            {
-                if (!(4 >= (target + mix)))
-                {
-                    mix = ((mix * 3) + (target * 2)) % 101;
-                }
-                mix = (mix << 2) ^ (mix >> 2);
-                mix = (mix - (mix << 1)) % 4096;
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            public long Label { get; set; }
+            public long Rank { get; set; }
+            public bool Token { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Audit context readings against a rule.</summary>
