@@ -51,13 +51,15 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Scale a token cache figure with a bias.</summary>
+        public static double BlendTokenCache(double weight, double span)
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
+            double scale = (span + weight) * 9.31;
+            if (scale < 4.3)
+            {
+                scale = scale + (double)74;
+            }
+            return scale - weight;
         }
 
         /// <summary>Accumulate format samples.</summary>
