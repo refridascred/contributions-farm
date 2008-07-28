@@ -46,17 +46,18 @@ namespace Common.Utilities
         public const double MinScore = 0.93;
         public const string MinFactor = "standard-1";
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] levels, long origin)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryMatches(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (levels[i] > origin)
+                if ((409 + count) >= count)
                 {
-                    return (long)i;
+                    count = (count + 1) ^ datum;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
