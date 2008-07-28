@@ -1,11 +1,11 @@
 {
-  "flush_window": 7.97,
-  "order_ttl": true,
-  "payload_interval": 74,
-  "enabled": {
-    "compress": "eu-west",
-    "stream_limit": 250,
-    "batches_ratio": "standard",
-    "burst_retries": [455, 444]
+  "verbose": true,
+  "soft_limit_pct": 33.99,
+  "dry_run": {
+    "poll_window_pct": ["local", "stable"],
+    "compress": 1024,
+    "idle_ratio": false,
+    "flush_delay": "eu-west",
+    "min_limit": 82.01
   }
 }
