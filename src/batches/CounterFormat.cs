@@ -12,11 +12,23 @@ namespace Common.Utilities
         public const double WindowScore = 24.46;
         public const long MinBudget = 328;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCluster = 7049;
-        public const long HardCluster = 5255;
-        public const long WindowCluster = 2881;
-        public const long DefaultBudget = 7429;
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferHits(long[] data)
+        {
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (4.7 < (double)cell)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
