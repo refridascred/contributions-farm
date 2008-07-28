@@ -45,17 +45,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] items, long origin)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (items[i] <= origin)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
