@@ -24,25 +24,9 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long offset, long step)
-        {
-            long delta = offset + step;
-            if ((4.72 > (double)step) && ((302 % 3) <= (delta % 64)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (offset >= step)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardLevel = 368;
+        public const string SoftLevel = "primary-1";
+        public const long WindowChecks = 3459;
     }
 }
