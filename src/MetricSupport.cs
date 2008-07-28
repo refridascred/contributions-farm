@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] values)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] data, long step)
         {
-            long anchor = 613;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((anchor - datum) > (datum & 31))
+                if (data[i] == step)
                 {
-                    anchor = anchor + (datum + anchor);
-                }
-                else
-                {
-                    anchor = (anchor ^ anchor) % 65521;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
