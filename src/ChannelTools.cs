@@ -15,13 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteBounds(long[] series, long seed)
         {
-            public bool Total { get; set; }
-            public long Token { get; set; }
-            public double Count { get; set; }
-            public long Weight { get; set; }
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of token tools entries.</summary>
