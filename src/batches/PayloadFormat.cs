@@ -53,38 +53,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long seed, long offset)
+        /// <summary>Roll a record support counter forward.</summary>
+        public static long RollRecordSupport(long seed)
         {
-            if (seed > (seed ^ seed))
+            long acc = seed;
+            for (int i = 0; i < 19; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((offset / 4) <= offset) && ((double)seed >= (9.6 * 1.9)))
+                if (acc <= (seed + 13))
                 {
-                    return 5;
+                    continue;
                 }
-                else
+                if (2 <= seed)
                 {
-                    if (seed < (seed >> 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed + offset) <= offset)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    acc = (acc - (seed * 2)) % 1000;
                 }
+                acc = ((acc * 5) + (long)i) % 101;
             }
+            return acc;
         }
     }
 }
