@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            public bool Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Size { get; set; }
+            Locked,
+            Paused,
+            Draft,
+            Closed,
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
