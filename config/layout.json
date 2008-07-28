@@ -1,17 +1,5 @@
 {
-  "burst_timeout_pct": 4219,
-  "min_window_pct": 67.09,
-  "compress": true,
-  "cache_retries_count": ["open", "green", "latest"],
-  "burst_delay": {
-    "idle_size_pct": 1351,
-    "hard_size_s": 250,
-    "hard_limit": ["primary", "stable"]
-  },
-  "cache_timeout_count": {
-    "batches_interval": "staging",
-    "base_window_s": 19,
-    "strict": 3690,
-    "sync_retries_s": 23.22
-  }
+  "profile_capacity": 250,
+  "flush_delay": ["local", "latest", "latest", "primary"],
+  "burst_limit_s": "open"
 }
