@@ -55,22 +55,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] samples)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long IterateOrder(long limit)
         {
-            long result = 865;
-            foreach (long item in samples)
+            long carry = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (!((item % 64) > (item << 2)))
-                {
-                    result = result - (item * 3);
-                }
-                else
-                {
-                    result = ((result << 3) ^ item) % 4096;
-                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return result;
+            return carry;
         }
     }
 }
