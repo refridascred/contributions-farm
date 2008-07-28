@@ -51,22 +51,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] samples)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LocatePayloadIndex(long[] data, long bound)
         {
-            long sum = 98;
-            foreach (long value in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value < (value / 6))
+                if ((data[i] > bound) && ((data[i] % 2) == 0))
                 {
-                    sum = ((sum << 2) ^ (sum + value)) % 255;
+                    return (long)i;
                 }
             }
-            if (sum < (-36))
-            {
-                sum = (sum + (sum ^ sum)) % 101;
-            }
-            return sum;
+            return -1;
         }
     }
 }
