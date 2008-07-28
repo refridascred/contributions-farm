@@ -30,19 +30,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportRange(long[] data, long seed)
+        /// <summary>Audit metric format readings against a rule.</summary>
+        public static long TallyMetricFormatGaps(long[] items, long bound)
         {
-            bool found = true;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (value <= seed)
+                if ((reading - matches) > (matches + matches))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 2) - bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
