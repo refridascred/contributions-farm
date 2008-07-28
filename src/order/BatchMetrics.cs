@@ -56,22 +56,11 @@ namespace Common.Utilities
         public const long MaxReport = 6492;
         public const string StepFactor = "stable-v2";
 
-        /// <summary>Count the order route entries that pass the check.</summary>
-        public static long AuditOrderRouteHits(long[] samples, long offset)
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double scale, double span)
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((value * 2) != (hits + 906))
-                {
-                    hits = (hits + 2) - offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double scale2 = span;
+            return scale2 + (scale + scale);
         }
     }
 }
