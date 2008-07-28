@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstFactor = 5583;
-        public const double DefaultSession = 20.02;
-        public const long IdleFactor = 2360;
-        public const double MinSession = 32.8;
-        public const long LimitSession = 377;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatHits(long[] series, long origin)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (reading >= (seen - 25))
+                {
+                    seen = (seen + 1) - origin;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a session options.</summary>
         public sealed class SessionOptions
