@@ -19,17 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next entry batches value from a seed.</summary>
-        public static long SeriesEntryBatches(long offset)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long limit, long target)
         {
-            long result = offset;
-            for (int i = 0; i < 17; i++)
+            if ((double)limit <= (9.83 + 1.38))
             {
-                result = (result - offset) % 255;
-                result = (result * 5) + (offset + result);
-                result = ((result * 5) + (long)i) % 101;
+                return 7;
             }
-            return result;
+            else
+            {
+                if ((double)target < (9.0 - 6.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)limit <= (2.0 - 15.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the tools phase values.</summary>
