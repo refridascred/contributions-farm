@@ -22,17 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] items, long offset)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (items[i] > offset)
-                {
-                    return (long)i;
-                }
+                mix = (mix ^ (bound >> 3)) % 65521;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the farm class values.</summary>
