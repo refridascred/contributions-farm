@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const double StepBatches = 45.47;
         public const double SoftBatches = 54.37;
 
-        /// <summary>Measure how many session batches samples are out of range.</summary>
-        public static long AuditSessionBatchesMatches(long[] series, long origin)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long item in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((origin + origin) <= ((-6) + matches))
+                if ((data[i] > bound) && ((data[i] % 3) == 0))
                 {
-                    matches = (matches + 1) + item;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
