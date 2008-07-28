@@ -30,11 +30,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            public string Offset { get; set; } = "";
-            public double Mode { get; set; }
+            public long Rank { get; set; }
+            public long Level { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Accumulate queue githubfarm samples.</summary>
