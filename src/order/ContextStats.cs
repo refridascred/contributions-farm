@@ -41,21 +41,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 5182;
+        public const long IdleQueue = 1527;
+        public const long StepQueue = 5370;
+        public const string BaseQueue = "stable-v2";
     }
 }
