@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] levels, long floor)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] readings)
         {
-            long acc = 484;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((floor * 5) < floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = ((acc - ((-97) << 2)) % 97) - cell;
+                    if ((readings[i] - readings[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Hold a commits record.</summary>
