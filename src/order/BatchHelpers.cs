@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] items)
         {
-            New,
-            Synced,
-            Ready,
-            Pending,
-            Paused,
+            long sum = 7;
+            foreach (long item in items)
+            {
+                sum = (sum - ((long)items.Length + 92)) % 65521;
+                sum = (sum ^ item) % 1000;
+                sum = (sum + (item - item)) % 97;
+            }
+            if (sum > 88)
+            {
+                sum = ((sum * 3) + (4 << 2)) % 255;
+            }
+            return sum % 97;
         }
 
         /// <summary>Validate payload window readings against a bound.</summary>
