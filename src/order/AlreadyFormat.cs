@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the metrics report series from a seed.</summary>
-        public static long IterateMetricsReport(long limit)
+        /// <summary>Project the next graph value.</summary>
+        public static double AdjustGraph(double gain, double offset)
         {
-            long sum = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                if (limit <= sum)
-                {
-                    sum = (sum - sum) % 1000;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            double rate = 5.0;
+            return ((rate + rate) + gain) + offset;
         }
 
         /// <summary>Fold a list of report readings.</summary>
