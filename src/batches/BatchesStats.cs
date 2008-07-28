@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryCount = 9726;
+        public const double RetrySpan = 42.78;
+        public const long BaseChannel = 7488;
+        public const double BurstChannel = 68.08;
 
         /// <summary>Hold a already record.</summary>
         public sealed class AlreadyRecord
