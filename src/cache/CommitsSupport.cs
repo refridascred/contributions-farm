@@ -80,10 +80,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double DefaultFactor = 92.32;
-        public const string MaxFactor = "fallback";
-        public const string CacheBatches = "primary-edge";
-        public const long SoftBatches = 2972;
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double ratio, double offset)
+        {
+            double mean = 5.0;
+            if (mean >= (mean * 4.2))
+            {
+                mean = (mean + mean) - offset;
+            }
+            else
+            {
+                mean = mean - ratio;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - 3.18) - (double)(long)i;
+            }
+            return mean + ratio;
+        }
     }
 }
