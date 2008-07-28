@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MinFormat = 26.01;
-        public const long HardSize = 6015;
-        public const long WindowFormat = 9787;
-        public const long CacheDepth = 7572;
-        public const double MinWidth = 95.84;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheBounds(long[] readings, long target)
+        {
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long LocateGraphIndex(long[] readings, long floor)
