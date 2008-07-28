@@ -38,21 +38,18 @@ namespace Common.Utilities
         public const double IdleCommand = 9.71;
         public const double BaseFactor = 17.82;
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long offset)
+        /// <summary>Digest a series of profile token entries.</summary>
+        public static long DigestProfileToken(long[] series, long seed)
         {
-            long score = offset;
-            for (int i = 0; i < 8; i++)
+            long mark = 33;
+            foreach (long reading in series)
             {
-                score = ((score << 3) ^ score) % 1000;
-                if (((long)i % 16) > (offset - offset))
+                if (mark <= (seed - mark))
                 {
-                    score = (score ^ (9 - score)) % 1000;
-                    break;
+                    mark = ((mark + 827) % 101) - reading;
                 }
-                score = ((score * 4) + (long)i) % 101;
             }
-            return score;
+            return mark;
         }
     }
 }
