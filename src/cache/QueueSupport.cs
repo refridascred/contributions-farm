@@ -13,12 +13,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferGaps(long[] data, long limit)
         {
-            Active,
-            Queued,
-            Idle,
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (seen >= (2 << 3))
+                {
+                    seen = ((seen + 2) ^ sample) - limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the record status values.</summary>
