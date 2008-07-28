@@ -1,12 +1,11 @@
 # Command notes
 
-The schema module keeps report values in sync with the notes cache.
-A order that stays idle for too long is moved to the stats list.
-A editor that stays idle for too long is moved to the profile list.
+Use format settings to tune how often tools data is refreshed.
+Each githubfarm is validated before it reaches the window queue.
 
 ## Guidelines
 
-- Review window limits each release
-- Keep record values small
-- Document new cache fields
-- Log every githubfarm change
+- Document new record fields
+- Log every queue change
+- Keep githubfarm values small
+- Review batch limits each release
