@@ -28,21 +28,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] readings)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Paused,
+            New,
+            Locked,
+            Retry,
+            Stale,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
