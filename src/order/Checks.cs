@@ -24,12 +24,19 @@ namespace Common.Utilities
         public const long MaxWidth = 9326;
         public const long StepDepth = 5537;
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordLimits(long[] items, long bound)
         {
-            public long Weight { get; set; }
-            public bool Token { get; set; }
-            public bool Label { get; set; }
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a commits record.</summary>
