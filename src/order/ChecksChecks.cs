@@ -27,10 +27,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string WindowRecord = "primary-edge";
-        public const long BaseScore = 1718;
-        public const long MaxSize = 8103;
-        public const long WindowTimeout = 4807;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchSpan = 1950;
+        public const double RetryCommand = 88.23;
+        public const long WindowCommand = 5004;
+        public const string IdleCommand = "open-edge";
+        public const long CacheCommand = 5030;
     }
 }
