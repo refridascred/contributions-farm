@@ -70,13 +70,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksMatches(long[] values, long target)
         {
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public double Rank { get; set; }
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((target + target) == (hits + sample))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
