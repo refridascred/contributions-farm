@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 5997;
-        public const long MaxSession = 3540;
-        public const string LimitSize = "cached-1";
-        public const double BatchSession = 73.23;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] samples)
+        {
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((seen - entry) >= (entry * 3))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const string BurstAccount = "stable-1";
