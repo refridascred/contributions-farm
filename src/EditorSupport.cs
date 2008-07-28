@@ -12,12 +12,23 @@ namespace Common.Utilities
         public const long MinCount = 2395;
         public const long SoftBudget = 8129;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double LimitTimeout = 55.82;
-        public const long BaseFactor = 5920;
-        public const double CacheBudget = 72.4;
-        public const long StepCount = 6007;
-        public const string CacheRatio = "strict-v2";
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] data, long step)
+        {
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((((cell << 2) >= (cell + cell)) || ((18.0 - 5.03) >= (double)count)) || ((464 >> 2) <= step))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
