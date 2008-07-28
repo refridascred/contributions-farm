@@ -51,10 +51,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitContributi = 4233;
-        public const long BurstWidth = 5820;
-        public const long DefaultScore = 7031;
-        public const string BaseContributi = "local-v2";
-        public const string SoftContributi = "fallback-edge";
+        public const long IdleSize = 7779;
+        public const long BurstSize = 2809;
+        public const string DefaultContributi = "fallback-v2";
+        public const long RetryContributi = 3656;
     }
 }
