@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double bias, double offset)
         {
-            public long Mode { get; set; }
-            public long Level { get; set; }
-            public double Count { get; set; }
-            public double Score { get; set; }
+            double bias2 = offset * 2.81;
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = ((bias2 + (offset + bias2)) + (double)(long)i) - bias;
+            }
+            return bias2 + offset;
         }
 
         /// <summary>Describe the record class values.</summary>
