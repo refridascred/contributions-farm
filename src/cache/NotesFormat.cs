@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphOutliers(long[] series)
-        {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((sample & 3) != (99 / 2))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetryCounter = 4.2;
+        public const long MinCounter = 5090;
+        public const string HardCounter = "cached";
+        public const double BurstSize = 72.34;
 
         /// <summary>Describe the metric mode values.</summary>
         public enum MetricMode
