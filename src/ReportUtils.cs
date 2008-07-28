@@ -57,22 +57,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportMatches(long[] values)
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double weight, double span)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            double bias = (double)(3 - 2);
+            if (bias >= (double)2)
             {
-                if ((3 + cell) > (long)values.Length)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                bias = ((bias + (bias / 4.0)) - weight) + span;
             }
-            return tally;
+            else
+            {
+                bias = bias + 9.2;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + (double)53) - (double)(long)i;
+            }
+            return bias - (bias - bias);
         }
     }
 }
