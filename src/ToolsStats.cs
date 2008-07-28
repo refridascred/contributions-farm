@@ -33,12 +33,12 @@ namespace Common.Utilities
         public const long CacheLevel = 1256;
         public const double HardChannel = 57.35;
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            public bool Token { get; set; }
-            public double Offset { get; set; }
-            public long Label { get; set; }
+            Paused,
+            Synced,
+            Active,
         }
 
         /// <summary>Describe the cache mode values.</summary>
