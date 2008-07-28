@@ -95,21 +95,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of layout profile readings.</summary>
-        public static long MatchLayoutProfileCount(long[] data)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Done,
+            Idle,
+            Failed,
+            Stale,
+            Locked,
         }
     }
 }
