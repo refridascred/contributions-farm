@@ -20,16 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a cache layout reading.</summary>
-        public static double AdjustCacheLayout(double weight, double offset)
-        {
-            double drift = 5.76;
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (((drift - 4.6) + (double)(long)i) + weight) - offset;
-            }
-            return drift + (17.0 / 8.0);
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchTimeout = 7283;
+        public const long IdleChannel = 7151;
+        public const long LimitSpan = 8791;
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long TallyMetricsMatches(long[] values, long offset)
