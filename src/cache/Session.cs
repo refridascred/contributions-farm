@@ -47,19 +47,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteRange(long[] series, long limit)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long seed, long offset)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            if ((offset - seed) > (seed / 8))
             {
-                if (datum != limit)
+                return 8;
+            }
+            else
+            {
+                if (((double)offset <= (9.87 * 15.0)) || ((offset >> 4) > (offset + 54)))
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the graph state values.</summary>
