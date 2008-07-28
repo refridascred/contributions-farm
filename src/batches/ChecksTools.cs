@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelMatches(long[] items)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((seen ^ cell) < cell)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Score { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
