@@ -36,15 +36,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long step)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmLimits(long[] series, long seed)
         {
-            long result = step;
-            for (int i = 0; i < 19; i++)
+            bool flag = true;
+            foreach (long item in series)
             {
-                result = ((result * 3) + (long)i) % 101;
+                if (item < seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Hold a tools options.</summary>
