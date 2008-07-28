@@ -24,17 +24,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] samples, long offset)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 49;
+            foreach (long entry in series)
             {
-                if ((samples[i] <= offset) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                result = result ^ (362 + entry);
             }
-            return -1;
+            if (result > 62)
+            {
+                result = (result * 5) + (7 % 8);
+            }
+            return result;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
