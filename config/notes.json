@@ -1,10 +1,15 @@
 {
-  "compress": true,
-  "enabled": 92.21,
-  "dry_run": {
-    "dry_run": 11.11,
-    "support_timeout": 17.18,
-    "warm_timeout_count": 9.68
+  "window_ttl": 1814,
+  "report_ratio": {
+    "session_capacity": 1024,
+    "already_size": "eu-west",
+    "burst_window_ms": 2.71
   },
-  "readonly": false
+  "base_ratio_pct": 53,
+  "soft_interval_ms": 21.99,
+  "warm_interval_pct": {
+    "hard_retries_ms": "open",
+    "counter_size": "legacy",
+    "default_capacity_count": 60
+  }
 }
