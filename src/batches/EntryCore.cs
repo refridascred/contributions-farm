@@ -30,19 +30,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of context schema readings.</summary>
-        public static long CombineContextSchema(long[] samples, long target)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] data)
         {
-            long result = 50;
-            foreach (long entry in samples)
+            long carry = 414;
+            foreach (long item in data)
             {
-                result = result ^ (target % 10);
-                if (entry < (4 - 0))
+                if ((carry - carry) >= (item << 3))
                 {
-                    break;
+                    carry = (carry - 940) % 101;
                 }
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Hold a token snapshot.</summary>
