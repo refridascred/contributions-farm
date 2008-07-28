@@ -5,38 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long target, long seed)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] levels, long seed)
         {
-            if (!((5.4 / 7.0) == (double)target))
+            long carry = 785;
+            foreach (long reading in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (((seed + target) >= 61) || ((208 / 4) >= target))
+                if (carry > ((long)levels.Length + carry))
                 {
-                    return 5;
+                    carry = carry - seed;
                 }
                 else
                 {
-                    if ((double)target > 8.72)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((732 << 1) <= (target & 1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    carry = (carry * 4) + (reading >> 4);
+                }
+                carry = (carry - (seed << 1)) % 97;
+                if ((331 << 2) < (reading << 2))
+                {
+                    carry = (carry << 3) ^ reading;
                 }
             }
+            if (carry < (-98))
+            {
+                carry = carry + 0;
+            }
+            return carry;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
