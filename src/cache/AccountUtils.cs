@@ -20,10 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchTimeout = 7283;
-        public const long IdleChannel = 7151;
-        public const long LimitSpan = 8791;
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmBounds(long[] readings, long offset)
+        {
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long TallyMetricsMatches(long[] values, long offset)
