@@ -33,11 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheRatio = 9143;
-        public const long MinScore = 8706;
-        public const long HardLevel = 5631;
-        public const long HardBudget = 8106;
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextGaps(long[] samples)
+        {
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (3 < entry)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long IdleGithubfarm = 5978;
