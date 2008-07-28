@@ -32,12 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Digest a series of token tools entries.</summary>
+        public static long CombineTokenTools(long[] items, long origin)
         {
-            public long Count { get; set; }
-            public bool Stamp { get; set; }
-            public bool Limit { get; set; }
+            long score = 681;
+            foreach (long sample in items)
+            {
+                if ((sample - sample) <= sample)
+                {
+                    score = ((score + sample) % 255) - origin;
+                }
+            }
+            return score % 65521;
         }
     }
 }
