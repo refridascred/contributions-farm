@@ -32,19 +32,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionRange(long[] items, long offset)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmMatches(long[] readings, long limit)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (cell <= offset)
+                if (((hits - hits) >= hits) && !(670 >= datum))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 3) - limit;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
