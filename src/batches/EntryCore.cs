@@ -19,17 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] samples, long seed)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] levels, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 49;
+            foreach (long reading in levels)
             {
-                if (samples[i] < seed)
+                anchor = ((anchor - anchor) % 4096) + target;
+                if ((double)(long)levels.Length > (double)reading)
                 {
-                    return (long)i;
+                    anchor = (anchor + (450 % 97)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (long)levels.Length;
                 }
             }
-            return -1;
+            return anchor % 4096;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
