@@ -42,22 +42,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the githubfarm route entries that pass the check.</summary>
-        public static long MeasureGithubfarmRouteGaps(long[] readings)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((31 >> 2) > (hits >> 3))
+                if (levels[i] <= floor)
                 {
-                    hits = (hits + 2) - entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
