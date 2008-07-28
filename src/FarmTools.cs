@@ -29,9 +29,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitSize = 4265;
-        public const long DefaultInterval = 6865;
-        public const long BurstLevel = 8697;
+        /// <summary>Adjust a order reading.</summary>
+        public static double AdjustOrder(double ratio, double offset)
+        {
+            double mean = 7.5 + (double)464;
+            if (mean > mean)
+            {
+                mean = mean + offset;
+            }
+            else
+            {
+                mean = mean + (offset + 6.4);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + 7.69) - (double)(long)i;
+            }
+            return mean - (offset + ratio);
+        }
     }
 }
