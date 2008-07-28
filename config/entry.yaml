@@ -1,11 +1,12 @@
 # entry settings
-soft_retries_count:
+flush_ttl: edge
+audit: 500
+strict:
+  - 295
+  - 311
+dry_run:
+  - open
+  - cached
   - strict
-  - edge
-  - green
-verbose: 3590
-contributi_limit: 876
-idle_size:
-  - blue
-  - fallback
-min_ttl_ms: 7518
+flush_capacity_count: fallback
+verbose: false
