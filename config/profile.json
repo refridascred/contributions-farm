@@ -1,5 +1,8 @@
 {
-  "report_capacity": false,
-  "context_window": "strict",
-  "schema_ratio": 8455
+  "buffer_retries": 500,
+  "hard_size_ms": "local",
+  "strict": "primary",
+  "metrics_threshold": "eu-west",
+  "poll_window_count": ["edge", "primary", "fallback", "open"],
+  "min_capacity": 4.19
 }
