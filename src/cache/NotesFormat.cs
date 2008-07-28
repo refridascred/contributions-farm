@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Roll a batches editor counter forward.</summary>
+        public static long SeriesBatchesEditor(long step)
         {
-            Pending,
-            Done,
-            Paused,
+            long anchor = step;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = ((anchor << 2) ^ 99) % 101;
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
