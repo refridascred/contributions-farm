@@ -19,20 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmRange(long[] values, long step)
-        {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepProfile = 6156;
+        public const double RetryProfile = 90.17;
+        public const long SoftSpan = 5724;
+        public const long MinLevel = 292;
+        public const double CacheScore = 80.45;
 
         /// <summary>Describe the stats level values.</summary>
         public enum StatsLevel
