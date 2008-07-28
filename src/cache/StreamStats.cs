@@ -55,18 +55,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionHits(long[] data)
+        /// <summary>Blend two githubfarm commits measurements.</summary>
+        public static double ScaleGithubfarmCommits(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((double)reading != (2.0 - 9.84))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            double drift = gain - (double)53;
+            return (drift - (drift / 9.0)) + floor;
         }
     }
 }
