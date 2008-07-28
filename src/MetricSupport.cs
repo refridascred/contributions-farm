@@ -26,11 +26,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            public long Region { get; set; }
-            public long Token { get; set; }
+            Locked,
+            Idle,
+            Synced,
+            Done,
         }
     }
 }
