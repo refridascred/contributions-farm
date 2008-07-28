@@ -39,19 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] levels, long limit)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long bound)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long acc = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (item > limit)
-                {
-                    found = false;
-                    break;
-                }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
