@@ -1,11 +1,6 @@
 {
-  "order_timeout": true,
-  "cluster_delay": true,
-  "buffer_depth": "stable",
-  "flush_delay": {
-    "default_ratio_s": false,
-    "readonly": [107, 378],
-    "soft_threshold_pct": "primary"
-  },
-  "compress": "stable"
+  "min_delay": "legacy",
+  "cache_ratio_pct": "green",
+  "min_interval_ms": "cached",
+  "max_limit_s": [106, 219, 454, 410]
 }
