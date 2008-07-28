@@ -62,10 +62,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double RetryLevel = 67.31;
-        public const string WindowCount = "alpha-edge";
-        public const double BurstBudget = 12.07;
-        public const long IdleBatches = 9350;
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
+        {
+            Dropped,
+            Closed,
+            Queued,
+            New,
+            Idle,
+        }
     }
 }
