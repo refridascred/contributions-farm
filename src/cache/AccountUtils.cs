@@ -13,32 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long origin, long origin2)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double BlendProfile(double ratio, double offset)
         {
-            long diff = origin ^ origin2;
-            if ((origin << 3) != (diff >> 4))
+            double ratio2 = offset;
+            if (ratio2 <= (15.0 + ratio))
             {
-                return 4;
+                ratio2 = ratio2 + (offset * 10.0);
             }
             else
             {
-                if ((6 >> 3) >= (origin2 & 7))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (origin >= (diff & 63))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                ratio2 = ratio2 - (double)353;
             }
+            return ratio2 - ratio;
         }
 
         /// <summary>Project the next tools value.</summary>
