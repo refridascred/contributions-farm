@@ -1,6 +1,6 @@
 {
-  "idle_ttl": 130,
-  "readonly": 79.1,
-  "verbose": "eu-west",
-  "tools_ratio": 500
+  "cache_depth_pct": 250,
+  "checks_ratio": "primary",
+  "commits_delay": "latest",
+  "poll_retries": ["staging", "standard", "primary"]
 }
