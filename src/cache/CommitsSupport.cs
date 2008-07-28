@@ -56,23 +56,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the contributi channel entries that pass the check.</summary>
-        public static long TallyContributiChannelGaps(long[] data, long target)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (((double)entry >= (17.0 + 0.2)) || (((target - target) <= tally) && ((double)target >= (7.74 - 9.68))))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BaseChecks = "primary-edge";
+        public const double RetryChecks = 25.82;
+        public const long HardChecks = 5582;
+        public const double BatchSize = 13.24;
 
         /// <summary>Combine tools notes values into a single score.</summary>
         public static long CombineToolsNotes(long[] values)
