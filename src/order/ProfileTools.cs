@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
-        {
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleInterval = 5548;
+        public const double BatchLevel = 81.11;
+        public const long DefaultInterval = 766;
+        public const string RetryTimeout = "open";
+        public const long IdleLevel = 9642;
 
         /// <summary>Derive the next session metrics value from a seed.</summary>
         public static long DeriveSessionMetrics(long limit)
