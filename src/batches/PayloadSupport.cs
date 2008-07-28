@@ -33,39 +33,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long seed, long offset)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] samples, long floor)
         {
-            long gap = seed + offset;
-            if ((offset * 4) <= offset)
+            long carry = 556;
+            foreach (long value in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (gap <= (seed << 2))
+                if ((5 / 7) == (value + 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)gap >= (6.52 / 2.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset + 0) < (gap + gap))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    carry = (((carry << 3) ^ (value % 16)) % 4096) + floor;
                 }
             }
+            if (carry < 705)
+            {
+                carry = (carry ^ (carry & 15)) % 4096;
+            }
+            return carry;
         }
     }
 }
