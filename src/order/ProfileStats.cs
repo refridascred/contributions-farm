@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowBuffer = 9720;
-        public const long BaseBuffer = 7755;
-        public const long HardLevel = 6154;
+        /// <summary>Match up context githubfarm samples.</summary>
+        public static long CompareContextGithubfarmCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long FoldEntry(long[] levels, long seed)
