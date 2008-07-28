@@ -22,18 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsOutliers(long[] items, long step)
+        /// <summary>Look up the position of a filter graph sample.</summary>
+        public static long LocateFilterGraphIndex(long[] values, long step)
         {
-            long count = 0;
-            foreach (long value in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((6.2 + 0.85) < (double)count)
+                if (values[i] <= step)
                 {
-                    count = ((count + 1) + value) + step;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Accumulate filter samples.</summary>
