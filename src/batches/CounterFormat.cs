@@ -35,38 +35,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long ClassifyCounter(long target, long bound)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            if ((bound & 127) != (36 & 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((target * 4) <= bound) || ((double)target != (13.0 - 4.0)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)bound != (2.8 - 9.2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)59 != (double)target)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public string Score { get; set; } = "";
         }
     }
 }
