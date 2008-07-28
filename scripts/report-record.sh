@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in edge green open; do
+    log "checking ${item}"
+done
 
-RECORD_LIMIT=124
+RECORD_LIMIT=341
 log "limit is ${RECORD_LIMIT}"
