@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double AdjustCache(double gain, double span)
-        {
-            double rate = span * 1.82;
-            if (rate <= gain)
-            {
-                rate = rate + rate;
-            }
-            else
-            {
-                rate = rate + (7.45 / 9.0);
-            }
-            return rate + (double)4;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BurstInterval = "latest-v2";
+        public const long IdleLevel = 2122;
+        public const long HardBatches = 871;
 
         /// <summary>Hold a githubfarm header.</summary>
         public sealed class GithubfarmHeader
