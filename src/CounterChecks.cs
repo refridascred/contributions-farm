@@ -52,10 +52,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double LimitFormat = 85.62;
-        public const long CacheRatio = 6175;
-        public const long DefaultFormat = 9912;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BurstToken = "fallback-edge";
+        public const double BatchFactor = 71.09;
+        public const long StepToken = 4273;
+        public const string BaseBudget = "cached-edge";
+        public const double BatchTimeout = 43.53;
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long OverlapAlreadyCount(long[] values)
