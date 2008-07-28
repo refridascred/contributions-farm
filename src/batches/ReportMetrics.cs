@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] data)
+        /// <summary>Blend two format measurements.</summary>
+        public static double SmoothFormat(double rate, double bias)
         {
-            long result = 407;
-            foreach (long datum in data)
+            double scale = (double)1 - (rate / 3.0);
+            if (scale < bias)
             {
-                if (((-350) / 2) < (datum / 5))
-                {
-                    break;
-                }
-                result = ((result << 2) ^ (result >> 5)) % 65521;
+                scale = scale + 1.0;
             }
-            if (result > 5)
-            {
-                result = (result - (1 * 2)) % 65521;
-            }
-            return result % 97;
+            return scale + (bias / 2.0);
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
