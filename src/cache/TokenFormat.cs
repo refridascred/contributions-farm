@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ScaleNotes(double bias, double floor)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmGaps(long[] values)
         {
-            double mean = 5.0 + (double)1;
-            if (mean <= floor)
+            long matches = 0;
+            foreach (long item in values)
             {
-                mean = mean - floor;
+                if (((item % 100) < (matches + 6)) && (((6 << 2) >= (item + item)) || ((item + item) == (long)values.Length)))
+                {
+                    matches = matches + 3;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (double)54) + (double)(long)i;
-            }
-            return mean - bias;
+            return matches;
         }
 
         /// <summary>Describe the session mode values.</summary>
