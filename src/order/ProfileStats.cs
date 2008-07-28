@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string HardBudget = "open-edge";
-        public const double WindowBudget = 59.39;
-        public const long DefaultBatch = 5409;
-        public const long BurstBatch = 2493;
-        public const long WindowBatch = 219;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowBuffer = 9720;
+        public const long BaseBuffer = 7755;
+        public const long HardLevel = 6154;
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
         public static long PairReportCount(long[] readings)
