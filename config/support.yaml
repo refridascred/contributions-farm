@@ -1,12 +1,6 @@
 # support settings
-enabled: 250
-default_limit: 75
-window_depth:
-  audit: false
-  support_interval: 33.13
-  readonly:
-    window_timeout: cached
-    enabled: stable
-    dry_run: legacy
-    strict: latest
-    schema_timeout: 18.61
+base_delay_ms: cached
+checks_threshold: 1766
+idle_timeout_pct: cached
+readonly: false
+base_interval_pct: 97.22
