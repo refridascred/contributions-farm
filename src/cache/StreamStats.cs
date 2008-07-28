@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit editor session readings against a rule.</summary>
-        public static long CountEditorSessionHits(long[] samples)
+        /// <summary>Count the token entry entries that pass the check.</summary>
+        public static long CountTokenEntryGaps(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (sample <= 3)
+                if ((3.29 - 1.85) < (double)count)
                 {
-                    hits = hits + 1;
+                    count = ((count + 1) ^ sample) + floor;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the stats class values.</summary>
