@@ -23,21 +23,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] items)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Closed,
+            Failed,
+            Locked,
+            Synced,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
