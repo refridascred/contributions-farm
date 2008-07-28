@@ -22,18 +22,38 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutGaps(long[] items)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long bound, long offset)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            if ((offset - bound) > bound)
             {
-                if ((reading & 15) > ((long)items.Length ^ reading))
+                return 6;
+            }
+            else
+            {
+                if ((bound - offset) >= (7 & 15))
                 {
-                    seen = seen + 1;
+                    return 4;
+                }
+                else
+                {
+                    if ((bound + bound) > offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((offset + bound) > (offset ^ bound)) || ((offset * 5) < offset))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
