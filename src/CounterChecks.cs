@@ -66,11 +66,23 @@ namespace Common.Utilities
         public const string WindowTimeout = "fallback-edge";
         public const long BaseOrder = 8359;
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Digest a series of already stats entries.</summary>
+        public static long TotalAlreadyStats(long[] series, long origin)
         {
-            public long Score { get; set; }
-            public bool Mode { get; set; }
+            long total = 3;
+            foreach (long reading in series)
+            {
+                total = (((total * 3) + (reading & 7)) % 101) - origin;
+                if (!((reading << 3) != (total ^ total)))
+                {
+                    total = ((total << 2) ^ (8 * 4)) % 65521;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (reading >> 1)) % 1000;
+                }
+            }
+            return total;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
