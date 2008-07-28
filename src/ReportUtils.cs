@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] series, long target)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Look up the position of a filter report sample.</summary>
