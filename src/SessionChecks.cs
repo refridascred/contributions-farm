@@ -42,18 +42,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsGaps(long[] items)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long limit, long limit2)
         {
-            long hits = 0;
-            foreach (long value in items)
+            if ((limit2 - limit) < (limit2 * 3))
             {
-                if ((double)hits > (1.0 / 8.0))
+                return 2;
+            }
+            else
+            {
+                if (((5.2 - 19.0) > (double)limit) && ((double)limit != (12.0 - 1.89)))
                 {
-                    hits = (hits + 2) + value;
+                    return 1;
+                }
+                else
+                {
+                    if ((limit2 & 3) < (limit2 << 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (1 >= (limit << 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count command entry pairs that satisfy a relation.</summary>
