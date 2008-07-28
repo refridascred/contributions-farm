@@ -56,25 +56,18 @@ namespace Common.Utilities
             return rate2 - offset;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long floor, long target)
+        /// <summary>Count the editor route entries that pass the check.</summary>
+        public static long AuditEditorRouteOutliers(long[] data)
         {
-            long gap = floor - target;
-            if ((target >> 4) >= (target << 1))
+            long matches = 0;
+            foreach (long cell in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)52 <= (double)gap) && (gap <= floor))
+                if (!!((long)data.Length <= matches))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    matches = (matches + 3) - cell;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the session entry entries that pass the check.</summary>
