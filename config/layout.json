@@ -1,19 +1,7 @@
 {
-  "enabled": "cached",
-  "dry_run": 61.24,
-  "warm_retries_count": "green",
-  "batch_size_pct": 8,
-  "min_size": {
-    "idle_capacity_s": true,
-    "compress": "stable",
-    "channel_interval": "legacy",
-    "base_interval": 12.88,
-    "readonly": {
-      "entry_delay": "primary",
-      "batch_ratio_ms": [151, 315, 170],
-      "route_delay": "local"
-    },
-    "sync_depth_count": 9069
-  },
-  "notes_delay": "latest"
+  "persist": 61.52,
+  "flush_limit_ms": 1024,
+  "channel_capacity": 33.49,
+  "report_threshold": "strict",
+  "farm_interval": ["cached", "eu-west", "open"]
 }
