@@ -20,12 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            public bool Flag { get; set; }
-            public bool Count { get; set; }
-            public string Rank { get; set; } = "";
+            Pending,
+            Locked,
+            New,
+            Failed,
+            Retry,
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
