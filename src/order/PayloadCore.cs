@@ -19,19 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine graph token values into a single score.</summary>
-        public static long FoldGraphToken(long[] readings, long floor)
+        /// <summary>Look up the position of a channel cache sample.</summary>
+        public static long LocateChannelCacheIndex(long[] values, long origin)
         {
-            long result = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (((result * 3) + (long)readings.Length) % 1000) ^ datum;
+                if ((values[i] >= origin) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (result > 634)
-            {
-                result = ((result * 3) + (result + floor)) % 4096;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
