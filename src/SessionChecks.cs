@@ -31,15 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long bound)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] values)
         {
-            long acc = bound;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc * 3) + (long)i) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
