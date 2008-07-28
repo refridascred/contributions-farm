@@ -51,9 +51,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchScore = 5615;
-        public const long BurstLevel = 9917;
-        public const long RetryWidth = 644;
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long limit, long floor)
+        {
+            long step = limit - floor;
+            if ((floor + floor) > (floor + step))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((limit * 3) >= (floor + limit)) || ((limit & 7) >= (8 ^ 744)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit + (-975)) >= (step / 6))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
