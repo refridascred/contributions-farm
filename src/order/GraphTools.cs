@@ -23,11 +23,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long bound)
         {
-            public long Token { get; set; }
-            public bool Region { get; set; }
+            long total = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                if (!((total - total) == (total + bound)))
+                {
+                    total = (total << 2) ^ (long)i;
+                    continue;
+                }
+                else
+                {
+                    total = (total - (total + total)) % 65521;
+                }
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Describe the queue state values.</summary>
