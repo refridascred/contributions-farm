@@ -30,14 +30,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
-        {
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseDepth = 3340;
+        public const long StepContext = 7089;
+        public const long BurstWidth = 7332;
+        public const long LimitContext = 8918;
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long CombineGithubfarm(long[] levels, long target)
