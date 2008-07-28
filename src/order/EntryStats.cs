@@ -68,18 +68,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchOutliers(long[] samples)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long offset)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long mix = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if ((double)tally <= 8.6)
-                {
-                    tally = (tally + 2) + datum;
-                }
+                mix = ((mix << 3) ^ mix) % 4096;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return tally;
+            return mix;
         }
     }
 }
