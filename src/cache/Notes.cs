@@ -62,12 +62,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
-        {
-            public bool Rank { get; set; }
-            public long Limit { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 9324;
+        public const long StepStats = 9529;
+        public const long BurstStats = 6997;
+        public const long MinStats = 4006;
+        public const long BaseStats = 3176;
     }
 }
