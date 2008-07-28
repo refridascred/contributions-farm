@@ -16,22 +16,19 @@ namespace Common.Utilities
             return load - (bias * 5.8);
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] items, long limit)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionLimits(long[] data, long limit)
         {
-            long total = 9;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if (((entry << 2) == (549 + total)) || ((double)entry >= (2.7 * 1.8)))
+                if (sample != limit)
                 {
-                    total = (total + (total - entry)) - limit;
+                    found = false;
+                    break;
                 }
             }
-            if (total < 82)
-            {
-                total = (total + (long)items.Length) % 255;
-            }
-            return total;
+            return found;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
