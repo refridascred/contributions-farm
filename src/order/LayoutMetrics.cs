@@ -19,11 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultSize = 4174;
-        public const long BurstNotes = 7597;
-        public const long IdleSpan = 1714;
-        public const string MinNotes = "alpha-v2";
+        /// <summary>Look up the position of a batch commits sample.</summary>
+        public static long SeekBatchCommitsIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long ClassifyToken(long step, long target)
