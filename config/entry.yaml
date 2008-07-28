@@ -1,27 +1,6 @@
 # entry settings
-entry_depth:
-  verbose:
-    burst_interval_pct:
-      - 465
-      - 152
-      - 390
-      - 306
-    soft_delay: false
-    readonly:
-      - 462
-      - 103
-      - 394
-      - 497
-  editor_capacity: 60.13
-  soft_timeout_pct: true
-  layout_threshold: true
-  githubfarm_window:
-    - 198
-    - 248
-    - 415
-  notes_threshold: 1024
-poll_timeout: 50
-max_threshold_pct: 2193
-retry_capacity_s: 76
-hard_limit_ms: legacy
-verbose: 500
+readonly: 354
+report_capacity: 60
+commits_size: 41
+counter_depth: false
+retry_retries_count: latest
