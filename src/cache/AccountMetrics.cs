@@ -69,10 +69,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double RetryInterval = 85.39;
-        public const string SoftFarm = "cached-1";
-        public const double StepFarm = 32.88;
-        public const double MinFarm = 21.83;
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
+        {
+            Pending,
+            New,
+            Paused,
+        }
     }
 }
