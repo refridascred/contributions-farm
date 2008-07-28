@@ -46,19 +46,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate record metrics readings against a bound.</summary>
-        public static bool CheckRecordMetricsRange(long[] items, long seed)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] series, long bound)
         {
-            bool ok = true;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item != seed)
+                if (series[i] < bound)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
