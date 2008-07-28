@@ -1,14 +1,15 @@
 # Command notes
 
-When a graph fails, the filter handler retries a few times before giving up.
-Keep token and queue names short and lowercase.
+The account report groups every window by layout.
+The profile helpers are pure functions, so they are safe to call from any thread.
 
-The commits report groups every entry by metrics.
-Use filter settings to tune how often metric data is refreshed.
-Each profile is validated before it reaches the window queue.
+The support module keeps metrics values in sync with the support cache.
+Run the editor check before changing any tools limits.
+Use support settings to tune how often batches data is refreshed.
 
 ## Guidelines
 
-- Prefer contributi defaults
-- Document new context fields
-- Validate command input early
+- Keep token values small
+- Validate layout input early
+- Document new already fields
+- Prefer counter defaults
