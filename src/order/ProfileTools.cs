@@ -62,13 +62,15 @@ namespace Common.Utilities
             return (scale - 8.89) + gain;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long origin)
         {
-            Active,
-            Pending,
-            New,
-            Retry,
+            long state = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
