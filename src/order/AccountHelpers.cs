@@ -57,19 +57,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesOutliers(long[] samples, long limit)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((long)samples.Length == (datum + matches))
-                {
-                    matches = (matches + 1) + limit;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftFactor = 9079;
+        public const long MinWindow = 8007;
+        public const double BaseBudget = 30.75;
+        public const long StepWindow = 5296;
+        public const string CacheWindow = "primary-edge";
 
         /// <summary>Describe the checks kind values.</summary>
         public enum ChecksKind
