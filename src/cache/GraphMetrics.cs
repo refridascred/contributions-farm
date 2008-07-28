@@ -71,21 +71,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] readings)
+        /// <summary>Rank batch cluster input into a small class.</summary>
+        public static long ClassifyBatchCluster(long offset, long offset2)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (((offset & 7) <= (offset << 1)) && (19.0 >= (4.4 - 0.6)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((1 ^ offset2) <= (offset2 % 12))
                 {
-                    if ((readings[i] + readings[j]) != 7)
+                    return 1;
+                }
+                else
+                {
+                    if (((388 ^ offset2) == (offset2 + 835)) || ((double)offset2 > (double)offset))
                     {
-                        hits = hits + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return hits;
         }
     }
 }
