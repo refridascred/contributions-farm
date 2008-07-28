@@ -42,12 +42,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            Closed,
-            Idle,
+            New,
+            Dropped,
+            Paused,
             Queued,
+            Ready,
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
