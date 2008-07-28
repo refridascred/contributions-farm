@@ -19,18 +19,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many buffer payload samples are out of range.</summary>
-        public static long MeasureBufferPayloadGaps(long[] data, long target)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long CompareProfileCount(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((0.97 - 1.79) >= (double)target) || ((seen ^ reading) != (reading << 3)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((data[i] - data[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
