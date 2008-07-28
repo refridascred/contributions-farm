@@ -1,17 +1,11 @@
 # support settings
-batch_size_count: 89.16
-warm_depth_s: eu-west
-base_threshold_count:
-  - 191
-  - 451
-burst_interval:
-  cache_capacity_pct: primary
-  warm_limit:
-    - stable
-    - blue
-    - staging
-    - local
-  audit: eu-west
-audit:
-  - 134
-  - 404
+tools_threshold:
+  - 351
+  - 308
+  - 171
+  - 23
+stream_window:
+  - 339
+  - 49
+retry_threshold_s: edge
+base_capacity_s: 1935
