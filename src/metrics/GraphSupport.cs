@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph support helpers.</summary>
     public static class GraphSupport
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamGaps(long[] items, long target)
         {
-            public long Stamp { get; set; }
-            public bool Size { get; set; }
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((datum - target) <= (35 + count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
