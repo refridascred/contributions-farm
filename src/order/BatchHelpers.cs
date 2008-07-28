@@ -23,19 +23,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueLimits(long[] levels, long origin)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Queued,
+            Draft,
         }
 
         /// <summary>Describe the tools level values.</summary>
