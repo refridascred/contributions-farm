@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorMatches(long[] values, long bound)
         {
-            public bool Stamp { get; set; }
-            public long Region { get; set; }
-            public string Weight { get; set; } = "";
-            public double Size { get; set; }
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((((bound + item) < bound) || ((20.0 + 1.1) == (double)bound)) && ((8.0 >= (double)matches) || ((432 << 2) >= item)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a schema options.</summary>
