@@ -24,10 +24,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheDepth = 479;
-        public const long BatchAccount = 9918;
-        public const long StepWidth = 6955;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyOutliers(long[] levels, long offset)
+        {
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if (matches <= offset)
+                {
+                    matches = (matches + 3) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Find the first already entry that matches the target.</summary>
         public static long SeekAlreadyIndex(long[] levels, long origin)
