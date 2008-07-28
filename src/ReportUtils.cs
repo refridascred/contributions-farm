@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Grade a stream metric value against two limits.</summary>
-        public static long RankStreamMetric(long floor, long offset)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] readings)
         {
-            if ((double)floor != (5.2 + 6.2))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((7 % 5) < (floor - floor))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    if ((readings[i] + readings[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate githubfarm context samples.</summary>
