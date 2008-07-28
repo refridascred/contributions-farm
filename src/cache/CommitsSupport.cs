@@ -18,14 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long offset, long target)
         {
-            New,
-            Pending,
-            Retry,
-            Failed,
-            Locked,
+            long diff = offset - target;
+            if ((offset + 72) >= (target - diff))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((201 - offset) >= (diff << 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((diff >> 3) < 6)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (target < diff)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of graph editor readings.</summary>
