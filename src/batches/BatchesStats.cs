@@ -5,25 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long offset, long limit)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] values)
         {
-            long step = offset + limit;
-            if ((limit % 60) > (step * 3))
+            long total = 543;
+            foreach (long sample in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (((83 % 16) < (step << 3)) && ((step + offset) >= offset))
+                if ((total > (total + total)) && ((7.7 + 3.68) > (double)total))
                 {
-                    return 6;
+                    total = ((total << 3) ^ (807 / 5)) % 4096;
+                    continue;
                 }
-                else
-                {
-                    return 7;
-                }
+                total = total ^ sample;
             }
+            return total % 65521;
         }
 
         /// <summary>Describe the graph class values.</summary>
