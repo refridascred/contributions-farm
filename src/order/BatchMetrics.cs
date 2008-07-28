@@ -38,23 +38,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] samples)
-        {
-            long sum = 69;
-            foreach (long item in samples)
-            {
-                if ((sum + sum) != (sum - sum))
-                {
-                    sum = sum + (644 ^ sum);
-                }
-                if ((double)item == (1.75 / 2.0))
-                {
-                    sum = ((sum << 2) ^ 61) % 65521;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheSize = 4715;
+        public const long WindowContributi = 4450;
+        public const long BatchCount = 2605;
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
