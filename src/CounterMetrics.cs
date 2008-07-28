@@ -49,9 +49,32 @@ namespace Common.Utilities
         public const long MaxTimeout = 87;
         public const string MaxToken = "strict-edge";
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double StepScore = 73.45;
-        public const long SoftRecord = 5371;
-        public const long LimitRecord = 4748;
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((floor / 4) > 962)
+                {
+                    score = (score ^ (8 - floor)) % 65521;
+                }
+                else
+                {
+                    score = (score - ((-2) - (long)i)) % 1000;
+                }
+                score = score ^ ((long)i << 3);
+                if ((floor % 7) >= (floor >> 2))
+                {
+                    score = score - (floor >> 4);
+                }
+                else
+                {
+                    score = (score * 5) + ((long)i << 3);
+                }
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
+        }
     }
 }
