@@ -49,11 +49,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchSpan = 1950;
-        public const double RetryCommand = 88.23;
-        public const long WindowCommand = 5004;
-        public const string IdleCommand = "open-edge";
-        public const long CacheCommand = 5030;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLayout = 9517;
+        public const long SoftLayout = 5779;
+        public const double LimitLayout = 7.71;
     }
 }
