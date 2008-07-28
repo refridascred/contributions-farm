@@ -19,15 +19,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next session metrics value from a seed.</summary>
-        public static long DeriveSessionMetrics(long limit)
+        /// <summary>Fold a list of metrics checks readings.</summary>
+        public static long TallyMetricsChecks(long[] series, long offset)
         {
-            long total = limit;
-            for (int i = 0; i < 4; i++)
+            long acc = 52;
+            foreach (long entry in series)
             {
-                total = ((total * 3) + (long)i) % 97;
+                if ((entry / 7) > (entry % 97))
+                {
+                    acc = (acc ^ (entry % 10)) % 255;
+                }
+                acc = (acc ^ (entry * 2)) % 255;
+                if ((double)offset < (double)acc)
+                {
+                    acc = (acc ^ (entry & 1)) % 1000;
+                }
             }
-            return total;
+            if (acc < 993)
+            {
+                acc = acc - (acc >> 4);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Digest a series of order entries.</summary>
