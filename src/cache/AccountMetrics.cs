@@ -52,18 +52,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] items, long limit)
+        /// <summary>Count the githubfarm route entries that pass the check.</summary>
+        public static long MeasureGithubfarmRouteGaps(long[] readings)
         {
-            long result = 6;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (((limit + result) >= (29 / 6)) && ((limit + result) >= (result & 63)))
+                if ((31 >> 2) > (hits >> 3))
                 {
-                    result = ((result * 5) + (sample % 97)) % 101;
+                    hits = (hits + 2) - entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Accumulate report samples.</summary>
