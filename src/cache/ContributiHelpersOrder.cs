@@ -24,13 +24,25 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long offset, long step)
         {
-            Locked,
-            Active,
-            Draft,
-            Ready,
+            long delta = offset + step;
+            if ((4.72 > (double)step) && ((302 % 3) <= (delta % 64)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (offset >= step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
