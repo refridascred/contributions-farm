@@ -24,19 +24,14 @@ namespace Common.Utilities
         public const long MaxRecord = 7609;
         public const double WindowFactor = 92.3;
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphRange(long[] series, long step)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Locked,
+            Draft,
+            Active,
+            Pending,
         }
 
         /// <summary>Roll a counter counter forward.</summary>
