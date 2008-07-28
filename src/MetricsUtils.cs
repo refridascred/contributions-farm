@@ -20,25 +20,19 @@ namespace Common.Utilities
             return load + (double)989;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long floor, long floor2)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyLimits(long[] samples, long step)
         {
-            long lane = floor ^ floor2;
-            if (!((floor / 9) >= 2))
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((4.0 + 1.44) == (double)lane)
+                if (entry < step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
