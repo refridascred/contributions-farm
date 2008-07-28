@@ -13,20 +13,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next payload layout value.</summary>
-        public static double BlendPayloadLayout(double ratio, double offset)
-        {
-            double scale = ratio;
-            if (scale > (ratio * 9.0))
-            {
-                scale = (scale + (scale * 2.8)) + offset;
-            }
-            else
-            {
-                scale = scale - (scale / 2.0);
-            }
-            return scale - ratio;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string IdleRoute = "cached";
+        public const long BatchSpan = 3495;
+        public const string BatchFactor = "legacy-v2";
+        public const long CacheRoute = 1651;
+        public const long HardRoute = 9235;
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long CompareNotesCount(long[] items)
