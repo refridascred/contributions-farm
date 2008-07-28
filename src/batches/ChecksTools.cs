@@ -49,19 +49,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowBounds(long[] readings, long seed)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long step, long seed)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long offset = step - seed;
+            if ((double)offset < 7.0)
             {
-                if (sample < seed)
+                return 7;
+            }
+            else
+            {
+                if (step < (step / 7))
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return ready;
         }
     }
 }
