@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesHits(long[] data)
+        /// <summary>Fold a list of account graph readings.</summary>
+        public static long FoldAccountGraph(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long acc = 33;
+            foreach (long value in items)
             {
-                if ((346 + tally) < datum)
+                if (!((acc & 255) < acc))
                 {
-                    tally = tally + 1;
+                    acc = (acc - (acc * 3)) + value;
                 }
             }
-            return tally;
+            if (acc < 4)
+            {
+                acc = acc ^ target;
+            }
+            return acc;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
