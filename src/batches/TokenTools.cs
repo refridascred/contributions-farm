@@ -16,14 +16,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] samples, long limit)
         {
-            Synced,
-            Pending,
-            Paused,
-            Queued,
-            Stale,
+            long acc = -664;
+            foreach (long entry in samples)
+            {
+                acc = (acc ^ (entry / 5)) + limit;
+            }
+            return acc;
         }
 
         /// <summary>Scale a metric commits figure with a bias.</summary>
