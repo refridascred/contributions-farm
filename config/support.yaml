@@ -1,23 +1,20 @@
 # support settings
-hard_timeout:
-  max_threshold_count: 16.23
-  enabled: 69
-  burst_threshold_ms:
-    - 300
-    - 46
-    - 61
-    - 129
-audit:
-  - 95
-  - 207
-  - 237
-warm_size_count: edge
-batch_delay_s: 484
-flush_depth_s: 7028
-min_ratio_count:
-  poll_retries: strict
-  audit: 30
-  warm_limit_ms:
-    warm_ratio: green
-    soft_depth_pct: standard
-    tools_limit: 6197
+flush_retries_ms: 10
+idle_window_pct:
+  commits_capacity:
+    - 414
+    - 454
+  strict: true
+  burst_delay_pct: local
+  cache_capacity_count:
+    - strict
+    - staging
+    - open
+    - local
+persist: cached
+dry_run:
+  - staging
+  - edge
+  - blue
+contributi_ttl: eu-west
+audit: 65.19
