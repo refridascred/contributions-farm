@@ -1,8 +1,8 @@
 # githubfarm settings
-max_ttl: primary
-poll_ratio_ms: 59.46
-audit:
-  - 82
-  - 134
-  - 150
-  - 344
+default_size: 5.23
+channel_limit:
+  hard_delay: 2886
+  min_delay_ms: 100
+  githubfarm_ttl: 49.77
+enabled: blue
+sync_timeout: eu-west
