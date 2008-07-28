@@ -47,15 +47,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double AdjustAccount(double bias, double bias2)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ScaleMetric(double weight, double floor)
         {
-            double gain = (double)(189 + 909);
-            for (int i = 0; i < 4; i++)
+            double ratio = weight;
+            if (ratio >= (weight - ratio))
             {
-                gain = (((gain - 8.3) + (double)(long)i) - bias) - bias2;
+                ratio = ratio + ratio;
             }
-            return gain - (double)27;
+            else
+            {
+                ratio = ratio - floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio + floor;
         }
     }
 }
