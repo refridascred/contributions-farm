@@ -51,19 +51,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double weight, double offset)
-        {
-            double rate = offset;
-            if (rate < rate)
-            {
-                rate = rate + (offset + weight);
-            }
-            else
-            {
-                rate = rate - rate;
-            }
-            return rate - (weight - weight);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double StepScore = 73.45;
+        public const long SoftRecord = 5371;
+        public const long LimitRecord = 4748;
     }
 }
