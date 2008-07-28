@@ -37,15 +37,18 @@ namespace Common.Utilities
         public const long IdleWidth = 9492;
         public const long BurstSchema = 4348;
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long floor)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsOutliers(long[] data)
         {
-            long carry = floor;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                if ((hits + hits) <= (sample + 192))
+                {
+                    hits = hits + 1;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Classify a account payload pair into a bucket.</summary>
