@@ -25,18 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count queue stream pairs that satisfy a relation.</summary>
-        public static long OverlapQueueStreamCount(long[] readings)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryHits(long[] samples, long limit)
         {
             long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((sample - (-8)) == (sample - count))
                 {
-                    if ((readings[i] ^ readings[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 3) - limit;
                 }
             }
             return count;
