@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Blend two command editor measurements.</summary>
-        public static double ScaleCommandEditor(double gain, double bias)
-        {
-            double scale = gain;
-            for (int i = 0; i < 2; i++)
-            {
-                scale = ((scale + (double)3) + (double)(long)i) - bias;
-            }
-            return scale - (scale - gain);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchTimeout = 4683;
+        public const double DefaultRatio = 78.1;
+        public const long MaxCounter = 6006;
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
         public static long PairReportCount(long[] readings)
