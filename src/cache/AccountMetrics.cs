@@ -51,15 +51,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the context token series from a seed.</summary>
-        public static long IterateContextToken(long origin)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long CompareToolsCount(long[] readings)
         {
-            long state = origin;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state * 4) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Digest a series of counter batch entries.</summary>
