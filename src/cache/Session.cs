@@ -50,19 +50,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double weight, double offset)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            double load = (double)14 * 0.5;
-            if (load <= weight)
-            {
-                load = load - load;
-            }
-            else
-            {
-                load = load + offset;
-            }
-            return load - weight;
+            Failed,
+            Idle,
+            Closed,
         }
     }
 }
