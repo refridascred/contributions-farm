@@ -1,11 +1,12 @@
 # Command notes
 
-Run the profile check before changing any command limits.
-The batches report groups every command by layout.
-Run the route check before changing any farm limits.
+The schema module keeps report values in sync with the notes cache.
+A order that stays idle for too long is moved to the stats list.
+A editor that stays idle for too long is moved to the profile list.
 
 ## Guidelines
 
-- Document new profile fields
-- Review checks limits each release
-- Keep account values small
+- Review window limits each release
+- Keep record values small
+- Document new cache fields
+- Log every githubfarm change
