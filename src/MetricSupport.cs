@@ -26,13 +26,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] data, long origin)
         {
-            Locked,
-            Idle,
-            Synced,
-            Done,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
