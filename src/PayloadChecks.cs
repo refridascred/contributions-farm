@@ -56,18 +56,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountMatches(long[] series, long step)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long state = 67;
+            foreach (long entry in series)
             {
-                if ((sample * 5) == (step + step))
+                if (!((double)offset > 3.0))
                 {
-                    count = count + 3;
+                    state = (((state * 2) + (offset - 476)) % 65521) ^ entry;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
