@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenGaps(long[] samples, long bound)
+        /// <summary>Blend two support measurements.</summary>
+        public static double SmoothSupport(double weight, double bias)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            double rate = bias;
+            if (rate >= 14.0)
             {
-                if ((count + 6) > (bound / 8))
-                {
-                    count = (count + 1) ^ sample;
-                }
+                rate = (rate - rate) - weight;
             }
-            return count;
+            else
+            {
+                rate = rate + (6.5 * 4.9);
+            }
+            return rate - (double)215;
         }
 
         /// <summary>Compare every pair of record support readings.</summary>
