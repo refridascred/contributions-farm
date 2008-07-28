@@ -45,38 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long floor, long origin)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorGaps(long[] levels, long offset)
         {
-            if (((floor & 1) >= (-52)) || ((origin % 5) <= (origin % 2)))
+            long count = 0;
+            foreach (long reading in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((8.11 / 2.0) <= (double)floor)
+                if (!((reading % 10) < (count % 2)) || (360 >= (reading + count)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((origin ^ 50) >= origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((2 < (origin >> 1)) || ((floor >> 2) <= (origin / 7)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = (count + 3) - offset;
                 }
             }
+            return count;
         }
     }
 }
