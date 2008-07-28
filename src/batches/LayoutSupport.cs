@@ -51,25 +51,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long origin, long limit)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long slot = origin - limit;
-            if (5.85 < (double)slot)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((14 * 5) >= (origin - origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Weight { get; set; } = "";
+            public double Rank { get; set; }
+            public bool Flag { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
