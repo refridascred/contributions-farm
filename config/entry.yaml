@@ -1,31 +1,19 @@
 # entry settings
-max_retries_count:
-  - 385
-  - 475
-  - 212
-flush_depth_ms: 250
-poll_depth_s: 100
-soft_depth_s:
-  sync_retries:
-    already_retries: 18.52
-    command_window: 100
-    retry_capacity: 16
-    dry_run: 500
-  max_delay_count:
-    hard_size_ms: primary
-    format_limit: 250
-    checks_retries: 45
-    flush_timeout_pct:
-      - staging
-      - standard
-      - green
-  entry_depth:
-    persist: 14.7
-    schema_delay: 1024
-    counter_window: 49.41
-    enabled:
-      - 17
-      - 171
-      - 207
-      - 330
-    warm_retries: 500
+compress:
+  graph_ttl: staging
+  batch_timeout:
+    idle_ratio_s:
+      - 41
+      - 361
+      - 347
+    cache_timeout_s: legacy
+    retry_retries: edge
+    metrics_timeout: 100
+  default_limit_s: strict
+  command_capacity: true
+  metrics_threshold: 1.77
+idle_ttl_count: edge
+poll_retries_s: strict
+base_depth_s: 5
+strict: latest
+poll_size: open
