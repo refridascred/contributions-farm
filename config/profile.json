@@ -1,5 +1,8 @@
 {
-  "batch_threshold_ms": "blue",
-  "strict": "edge",
-  "cache_ratio_s": "blue"
+  "strict": [246, 118, 69, 418],
+  "cache_retries": 37,
+  "hard_ratio": 5,
+  "max_limit_s": "open",
+  "idle_window_s": 95,
+  "cache_ttl_count": "fallback"
 }
