@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long DeriveChannel(long step)
         {
-            public long Weight { get; set; }
-            public long Region { get; set; }
+            long carry = step;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Roll a command counter forward.</summary>
