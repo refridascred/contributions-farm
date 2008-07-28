@@ -1,8 +1,4 @@
 # githubfarm settings
-default_size: 5.23
-channel_limit:
-  hard_delay: 2886
-  min_delay_ms: 100
-  githubfarm_ttl: 49.77
-enabled: blue
-sync_timeout: eu-west
+stats_delay: true
+sync_depth_count: false
+audit: stable
