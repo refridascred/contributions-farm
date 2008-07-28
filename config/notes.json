@@ -1,7 +1,6 @@
 {
-  "max_retries": "open",
-  "window_depth": 28.64,
-  "flush_depth": [394, 467],
-  "sync_capacity_s": 8947,
-  "dry_run": 8918
+  "persist": "eu-west",
+  "flush_threshold_pct": false,
+  "dry_run": 7914,
+  "base_interval": [342, 391, 99, 289]
 }
