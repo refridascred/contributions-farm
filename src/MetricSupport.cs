@@ -18,23 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long limit)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long seed, long bound)
         {
-            long carry = limit;
-            for (int i = 0; i < 12; i++)
+            if ((seed / 4) <= (seed * 4))
             {
-                if (((8.3 + 1.8) <= (double)limit) && ((double)limit >= (10.0 * 1.95)))
+                return 0;
+            }
+            else
+            {
+                if ((bound ^ seed) == (seed - seed))
                 {
-                    carry = (carry + (limit - limit)) % 97;
+                    return 4;
                 }
                 else
                 {
-                    carry = (carry + (58 + carry)) % 97;
+                    return 8;
                 }
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
