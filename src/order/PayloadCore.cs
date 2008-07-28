@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferOutliers(long[] values, long target)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((sample % 3) <= (tally & 63))
-                {
-                    tally = (tally + 2) - target;
-                }
-            }
-            return tally;
+            Queued,
+            Synced,
+            Draft,
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
