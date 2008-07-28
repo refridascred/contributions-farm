@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long MaxScore = 1324;
         public const long CacheLevel = 1980;
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsOutliers(long[] values)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double scale, double floor)
         {
-            long count = 0;
-            foreach (long entry in values)
+            double weight = floor;
+            if (weight >= floor)
             {
-                if ((count + count) == (entry / 2))
-                {
-                    count = count + 3;
-                }
+                weight = (weight - 1.19) - scale;
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (weight / 4.0)) + (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Blend two queue measurements.</summary>
