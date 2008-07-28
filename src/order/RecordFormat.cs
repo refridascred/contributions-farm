@@ -41,19 +41,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelLimits(long[] data, long offset)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] items, long target)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long anchor = 45;
+            foreach (long datum in items)
             {
-                if (reading <= offset)
+                anchor = ((anchor * 5) + (target + 552)) % 4096;
+                if (!((target ^ anchor) >= anchor))
                 {
-                    valid = false;
-                    break;
+                    anchor = (anchor - (anchor ^ datum)) % 97;
                 }
             }
-            return valid;
+            return anchor % 65521;
         }
 
         /// <summary>Classify a order entry pair into a bucket.</summary>
