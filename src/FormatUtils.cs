@@ -58,22 +58,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] values)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long OverlapSupportCount(long[] levels)
         {
-            long acc = 77;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((entry + 65) >= acc)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = (acc * 2) + (acc % 60);
+                    if ((levels[i] + levels[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (acc > 3)
-            {
-                acc = acc + (acc - 202);
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Accumulate stream counter samples.</summary>
