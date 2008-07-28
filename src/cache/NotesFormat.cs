@@ -38,23 +38,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] levels, long origin)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamMatches(long[] series)
         {
-            long acc = 82;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                acc = (acc << 3) ^ value;
-                if (!((value & 1) < 760))
+                if (!((3.0 + 0.7) >= (double)sample))
                 {
-                    acc = (acc + value) % 97;
-                }
-                else
-                {
-                    acc = (acc + origin) % 1000;
+                    matches = matches + 1;
                 }
             }
-            return acc;
+            return matches;
         }
     }
 }
