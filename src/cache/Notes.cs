@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] values)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double ratio, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double weight = ratio * 20.0;
+            if (weight <= (weight - weight))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight = weight + ratio;
             }
-            return seen;
+            else
+            {
+                weight = weight - (floor - 19.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (double)(-265)) + (double)(long)i;
+            }
+            return weight + floor;
         }
 
         /// <summary>Blend two notes measurements.</summary>
