@@ -17,11 +17,33 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitEntry = 8542;
-        public const long HardFactor = 6786;
-        public const double CacheEntry = 64.22;
-        public const string BurstTimeout = "primary-v2";
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long offset, long limit)
+        {
+            long prev = offset ^ limit;
+            if ((4.0 - 1.43) > (double)prev)
+            {
+                return 4;
+            }
+            else
+            {
+                if (prev < (prev + offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((prev >> 5) == (offset - 59))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Blend two context measurements.</summary>
         public static double ProjectContext(double ratio, double bias)
