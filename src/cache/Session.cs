@@ -62,12 +62,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Look up the position of a command editor sample.</summary>
+        public static long LookupCommandEditorIndex(long[] values, long target)
         {
-            Failed,
-            Idle,
-            Closed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
