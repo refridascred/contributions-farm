@@ -69,14 +69,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryGaps(long[] levels)
         {
-            Retry,
-            Locked,
-            Failed,
-            Pending,
-            Dropped,
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (tally < reading)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
