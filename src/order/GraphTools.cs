@@ -66,13 +66,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
-        {
-            public long Level { get; set; }
-            public string Score { get; set; } = "";
-            public string Label { get; set; } = "";
-            public double Owner { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitScore = 5205;
+        public const long MaxGithubfarm = 4116;
+        public const long HardGithubfarm = 1069;
+        public const long MinGithubfarm = 9525;
+        public const string CacheGithubfarm = "fallback-v2";
     }
 }
