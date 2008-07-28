@@ -25,22 +25,18 @@ namespace Common.Utilities
             return drift + (17.0 / 8.0);
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] values, long floor)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsMatches(long[] values, long offset)
         {
-            long total = 455;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((sample < floor) && ((total + total) > (sample + sample)))
+                if ((double)offset != (double)datum)
                 {
-                    total = (total - (total + sample)) % 101;
+                    tally = tally + 2;
                 }
             }
-            if (total > (-842))
-            {
-                total = total + (floor + 38);
-            }
-            return total % 1000;
+            return tally;
         }
     }
 }
