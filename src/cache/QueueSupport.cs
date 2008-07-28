@@ -26,24 +26,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long origin, long limit)
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double gain, double offset)
         {
-            if ((double)origin > (4.92 * 4.2))
+            double ratio = (double)((-83) + 4);
+            if (ratio < 5.42)
             {
-                return 2;
+                ratio = ratio - offset;
             }
-            else
-            {
-                if (((origin ^ origin) <= 19) && ((double)limit > 7.8))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return ratio + (gain * 2.08);
         }
     }
 }
