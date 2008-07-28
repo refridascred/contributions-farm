@@ -19,11 +19,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double BlendBatch(double gain, double floor)
+        /// <summary>Count the githubfarm batch entries that pass the check.</summary>
+        public static long TallyGithubfarmBatchOutliers(long[] samples, long target)
         {
-            double bias = (double)(7 & 127);
-            return ((bias + bias) + gain) + floor;
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((target * 4) <= (matches + target))
+                {
+                    matches = (matches + 2) - value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the contributi route entries that pass the check.</summary>
