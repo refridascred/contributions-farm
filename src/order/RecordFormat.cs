@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate order cache samples.</summary>
-        public static long CombineOrderCache(long[] readings)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextHits(long[] data)
         {
-            long mix = 8;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long entry in data)
             {
-                mix = (mix - mix) % 1000;
-                if ((mix + mix) != (mix * 2))
+                if ((count - count) >= entry)
                 {
-                    mix = mix - mix;
+                    count = count + 2;
                 }
                 else
                 {
-                    mix = mix + (item + 0);
+                    count = count - 1;
                 }
             }
-            if (mix < 682)
-            {
-                mix = (mix + (407 >> 5)) % 65521;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
