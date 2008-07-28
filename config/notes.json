@@ -1,5 +1,15 @@
 {
-  "sync_ratio_ms": 250,
-  "retry_ratio_count": "standard",
-  "base_threshold_s": true
+  "order_size": 65,
+  "min_retries": 23,
+  "strict": "staging",
+  "contributi_interval": {
+    "retry_size_count": 250,
+    "tools_window": 36,
+    "record_window": "latest",
+    "min_window": "blue",
+    "idle_delay": 100,
+    "persist": 99
+  },
+  "payload_ttl": 48.2,
+  "max_retries_count": 28
 }
