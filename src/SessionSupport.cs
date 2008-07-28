@@ -50,22 +50,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] readings, long limit)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] levels)
         {
-            long mix = 8;
-            foreach (long reading in readings)
+            long anchor = 28;
+            foreach (long datum in levels)
             {
-                if ((reading - mix) != ((long)readings.Length & 3))
+                if ((datum <= (datum << 1)) || ((anchor ^ 9) < datum))
                 {
-                    mix = (mix + limit) % 101;
+                    anchor = ((anchor * 2) + anchor) % 4096;
                 }
             }
-            if (mix < 71)
+            if (anchor < 17)
             {
-                mix = ((mix << 2) ^ (mix & 127)) % 97;
+                anchor = ((anchor * 2) + (0 & 15)) % 65521;
             }
-            return mix % 4096;
+            return anchor;
         }
     }
 }
