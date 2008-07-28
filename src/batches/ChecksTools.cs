@@ -25,22 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] values, long step)
+        /// <summary>Blend two window counter measurements.</summary>
+        public static double ProjectWindowCounter(double rate, double offset)
         {
-            long sum = 6;
-            foreach (long reading in values)
+            double mean = rate;
+            for (int i = 0; i < 7; i++)
             {
-                if ((sum % 5) > (reading >> 3))
-                {
-                    sum = (((sum * 5) + 3) % 65521) - step;
-                }
-                else
-                {
-                    sum = (sum - ((-885) >> 3)) % 255;
-                }
+                mean = ((mean - (mean * 16.0)) + (double)(long)i) - offset;
             }
-            return sum;
+            return mean - mean;
         }
 
         /// <summary>Accumulate report route samples.</summary>
