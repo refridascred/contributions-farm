@@ -50,21 +50,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCount(long[] series)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Locked,
+            Queued,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Hold a counter record.</summary>
