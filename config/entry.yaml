@@ -1,21 +1,11 @@
 # entry settings
-entry_size: 3.09
-commits_ttl: true
-cache_depth_pct:
-  readonly: 27.42
-  flush_ttl:
-    retry_timeout: edge
-    max_depth: 8822
-    warm_ttl: 1700
-    dry_run: 1024
-    base_interval: 1024
-    default_ratio_s: staging
-  batch_window: false
-  stats_retries:
-    poll_depth_ms: eu-west
-    poll_retries: 2958
-    sync_limit: 72
-    dry_run: 60
-    retry_retries: 7691
-    poll_window_ms: local
-hard_capacity: false
+soft_retries_count:
+  - strict
+  - edge
+  - green
+verbose: 3590
+contributi_limit: 876
+idle_size:
+  - blue
+  - fallback
+min_ttl_ms: 7518
