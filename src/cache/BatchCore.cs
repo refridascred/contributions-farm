@@ -12,19 +12,12 @@ namespace Common.Utilities
             return (rate2 - (floor + floor)) + rate;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (((tally + 8) != (sample + sample)) || ((double)tally > (8.27 + 6.0)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 3331;
+        public const double IdleBudget = 54.99;
+        public const double RetryFormat = 24.36;
+        public const long BaseBudget = 5619;
+        public const long WindowFormat = 4445;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long BurstTimeout = 9486;
