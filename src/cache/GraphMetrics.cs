@@ -19,21 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long origin)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] values, long limit)
         {
-            long result = origin;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result << 3) ^ 9) % 255;
-                if ((result * 2) == ((long)i ^ (long)i))
+                if ((values[i] >= limit) && ((values[i] % 5) != 0))
                 {
-                    result = result + (1 / 4);
-                    result = ((result << 2) ^ (origin >> 3)) % 255;
+                    return (long)i;
                 }
-                result = ((result * 3) + (long)i) % 101;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
