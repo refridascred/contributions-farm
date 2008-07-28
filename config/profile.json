@@ -1,8 +1,6 @@
 {
-  "filter_ratio": false,
-  "verbose": "local",
-  "hard_retries_pct": "cached",
-  "cache_window_pct": 250,
-  "batch_window": ["stable", "open", "staging"],
-  "layout_depth": ["green", "cached", "fallback"]
+  "warm_size": [114, 264, 491, 111],
+  "batch_capacity": "blue",
+  "flush_threshold": 21.88,
+  "sync_threshold_s": "primary"
 }
