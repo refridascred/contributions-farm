@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterHits(long[] samples, long target)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((9.98 + 1.0) > (double)target)
-                {
-                    seen = (seen + 1) + value;
-                }
-            }
-            return seen;
+            public string Mode { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the filter state values.</summary>
