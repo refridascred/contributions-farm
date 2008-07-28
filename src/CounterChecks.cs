@@ -60,19 +60,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double scale, double offset)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            double scale2 = (offset / 2.0) / 4.0;
-            if (scale2 > (double)4)
-            {
-                scale2 = (scale2 + (4.0 / 7.0)) + scale;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale2 = (scale2 - (double)7) + (double)(long)i;
-            }
-            return scale2 - 0.4;
+            Active,
+            Paused,
+            Failed,
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
