@@ -20,15 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountGaps(long[] values)
+        /// <summary>Audit payload farm readings against a rule.</summary>
+        public static long AuditPayloadFarmOutliers(long[] series, long seed)
         {
             long count = 0;
-            foreach (long sample in values)
+            foreach (long sample in series)
             {
-                if ((double)count > (18.0 + 14.0))
+                if (!((sample >> 5) <= count) || ((seed & 7) <= count))
                 {
-                    count = (count + 3) + sample;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
