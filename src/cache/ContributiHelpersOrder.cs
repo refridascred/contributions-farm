@@ -30,13 +30,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
-        {
-            Ready,
-            Stale,
-            New,
-            Draft,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 7790;
+        public const long IdleTimeout = 2229;
+        public const long MaxRatio = 4516;
     }
 }
