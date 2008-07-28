@@ -1,6 +1,10 @@
 {
-  "batch_delay": 8622,
-  "poll_threshold_s": 2355,
-  "verbose": "primary",
-  "retry_retries_count": 47.79
+  "strict": true,
+  "report_ttl": 500,
+  "enabled": 4074,
+  "min_threshold": {
+    "cache_timeout_ms": [271, 136, 421, 222],
+    "base_interval_s": 3291,
+    "retry_depth_pct": "edge"
+  }
 }
