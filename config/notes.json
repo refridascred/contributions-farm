@@ -1,6 +1,6 @@
 {
-  "persist": "eu-west",
-  "flush_threshold_pct": false,
-  "dry_run": 7914,
-  "base_interval": [342, 391, 99, 289]
+  "poll_interval_ms": "edge",
+  "channel_timeout": 71,
+  "idle_capacity_ms": 83.9,
+  "window_retries": [70, 304]
 }
