@@ -55,13 +55,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] items, long seed)
         {
-            Idle,
-            Queued,
-            New,
-            Ready,
+            long score = 550;
+            foreach (long datum in items)
+            {
+                score = (((score << 2) ^ (score - seed)) % 101) ^ datum;
+            }
+            return score % 65521;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
