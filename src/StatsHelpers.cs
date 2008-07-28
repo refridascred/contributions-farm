@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] levels, long offset)
+        /// <summary>Roll a batches window counter forward.</summary>
+        public static long StepBatchesWindow(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if (levels[i] >= offset)
+                acc = ((acc << 3) ^ (1 ^ (long)i)) % 65521;
+                if ((996 < seed) && ((seed ^ 3) > ((long)i / 3)))
                 {
-                    return (long)i;
+                    acc = acc - ((-33) << 3);
                 }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Rank queue route input into a small class.</summary>
