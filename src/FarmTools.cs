@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading + tally) >= (reading - tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 5460;
+        public const double BaseSize = 7.83;
+        public const long BatchSpan = 646;
+        public const long SoftDepth = 5517;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long AuditAccountGaps(long[] values)
