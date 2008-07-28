@@ -44,15 +44,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next already report value.</summary>
-        public static double SmoothAlreadyReport(double ratio, double span)
-        {
-            double weight = ratio + span;
-            if (weight < (weight - weight))
-            {
-                weight = weight - weight;
-            }
-            return weight + ratio;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinFactor = 522;
+        public const long BatchToken = 8138;
+        public const double BurstInterval = 34.88;
+        public const long CacheTimeout = 9374;
     }
 }
