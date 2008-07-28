@@ -90,17 +90,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first entry batch entry that matches the target.</summary>
-        public static long LocateEntryBatchIndex(long[] values, long floor)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Retry,
+            Pending,
         }
     }
 }
