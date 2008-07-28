@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            Paused,
-            Ready,
-            Active,
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
+            public long Label { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Measure how many route format samples are out of range.</summary>
