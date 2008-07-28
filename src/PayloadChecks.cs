@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchLimits(long[] items, long seed)
-        {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double RetrySpan = 56.12;
+        public const double IdleDepth = 78.46;
+        public const long BatchBudget = 9990;
+        public const string WindowRatio = "legacy-edge";
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long MeasureMetricMatches(long[] values)
