@@ -22,20 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double SmoothSupport(double bias, double floor)
-        {
-            double ratio = bias - (bias * 3.6);
-            if (ratio > bias)
-            {
-                ratio = ratio + ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - (ratio - floor)) + (double)(long)i;
-            }
-            return ratio - (double)9;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string RetryQueue = "open-v2";
+        public const double SoftQueue = 48.79;
+        public const long DefaultDepth = 4649;
+        public const long CacheQueue = 9112;
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long CombineContributi(long[] data)
