@@ -19,10 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BaseSchema = 57.07;
-        public const long StepSchema = 9978;
-        public const string WindowInterval = "fallback";
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] series)
+        {
+            long acc = 1;
+            foreach (long entry in series)
+            {
+                acc = (acc * 4) + ((long)series.Length + entry);
+                if ((double)acc < (0.38 / 3.0))
+                {
+                    acc = acc - 2;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Count githubfarm window pairs that satisfy a relation.</summary>
         public static long CompareGithubfarmWindowCount(long[] levels)
