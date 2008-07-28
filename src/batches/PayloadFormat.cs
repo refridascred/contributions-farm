@@ -38,12 +38,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheHits(long[] items, long origin)
         {
-            Retry,
-            Failed,
-            New,
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (((cell < (11 / 9)) || ((double)count != (2.26 - 6.2))) && ((4 >> 1) < (cell << 3)))
+                {
+                    count = (count + 3) - origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a record support counter forward.</summary>
