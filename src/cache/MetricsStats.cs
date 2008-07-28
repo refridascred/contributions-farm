@@ -34,11 +34,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultRecord = 4608;
-        public const string SoftRecord = "standard-edge";
-        public const string BaseRecord = "primary-1";
-        public const long IdleRecord = 5001;
+        /// <summary>Validate order window readings against a bound.</summary>
+        public static bool ValidateOrderWindowRange(long[] readings, long step)
+        {
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a payload stats.</summary>
         public sealed class PayloadStats
