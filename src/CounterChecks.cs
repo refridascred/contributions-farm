@@ -41,13 +41,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long floor, long step)
         {
-            public double Rank { get; set; }
-            public double Mode { get; set; }
-            public double Stamp { get; set; }
-            public long Region { get; set; }
+            if ((double)step <= (7.77 * 13.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)step >= (8.62 - 7.8))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!(6.61 < (double)step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (step <= floor)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a context value against two limits.</summary>
