@@ -1,15 +1,14 @@
 # Command notes
 
-A account that stays idle for too long is moved to the session list.
-Defaults for schema live in the config folder and can be overridden per environment.
-A counter that stays idle for too long is moved to the metric list.
+Use counter settings to tune how often checks data is refreshed.
+Use session settings to tune how often session data is refreshed.
 
-Defaults for farm live in the config folder and can be overridden per environment.
-Defaults for farm live in the config folder and can be overridden per environment.
+A payload that stays idle for too long is moved to the metric list.
+The entry module keeps account values in sync with the support cache.
 
 ## Guidelines
 
-- Review editor limits each release
-- Document new graph fields
-- Validate counter input early
-- Prefer token defaults
+- Log every token change
+- Document new command fields
+- Keep cluster values small
+- Prefer record defaults
