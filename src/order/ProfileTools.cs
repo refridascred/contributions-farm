@@ -36,19 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportBounds(long[] samples, long limit)
+        /// <summary>Count the profile account entries that pass the check.</summary>
+        public static long CountProfileAccountHits(long[] levels)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (reading <= limit)
+                if (!((matches - matches) > (matches - reading)))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Adjust a report stream reading.</summary>
