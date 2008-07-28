@@ -36,18 +36,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchGaps(long[] values)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (!((double)hits != (9.9 / 7.0)))
-                {
-                    hits = (hits + 1) + entry;
-                }
-            }
-            return hits;
+            public bool Limit { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
