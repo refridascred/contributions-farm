@@ -21,17 +21,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] series, long seed)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == seed) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Ready,
+            Synced,
         }
     }
 }
