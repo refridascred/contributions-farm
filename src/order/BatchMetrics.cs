@@ -48,13 +48,39 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long limit, long origin)
         {
-            Closed,
-            Pending,
-            Stale,
-            Dropped,
+            long gap = limit ^ origin;
+            if (gap > (origin >> 1))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)4 <= (double)limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit ^ 44) == (origin / 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((1.0 - 3.1) == (double)origin))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
