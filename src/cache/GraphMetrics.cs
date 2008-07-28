@@ -5,30 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] readings)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long mix = 533;
-            foreach (long item in readings)
-            {
-                if ((double)item < 0.3)
-                {
-                    mix = (mix - (item - item)) % 255;
-                }
-                if ((1.0 / 3.0) != (double)mix)
-                {
-                    mix = (mix + (mix ^ 49)) % 65521;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (item * 2)) % 65521;
-                }
-                if (((8 & 3) >= mix) && (mix > (item >> 3)))
-                {
-                    break;
-                }
-            }
-            return mix;
+            public double Region { get; set; }
+            public long Stamp { get; set; }
+            public bool Count { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
