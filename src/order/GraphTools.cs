@@ -60,12 +60,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Locate a order metric reading by value.</summary>
+        public static long SeekOrderMetricIndex(long[] samples, long seed)
         {
-            public bool Stamp { get; set; }
-            public double Weight { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
