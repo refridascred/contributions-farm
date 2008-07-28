@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphHits(long[] samples)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long state = 107;
+            foreach (long item in levels)
             {
-                if (((long)samples.Length - count) <= (datum + datum))
+                state = (((state * 4) + (origin / 8)) % 4096) + item;
+                if ((double)origin > (8.5 - 5.2))
                 {
-                    count = count + 1;
+                    break;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
