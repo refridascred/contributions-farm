@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            public long Token { get; set; }
-            public long Region { get; set; }
-            public long Rank { get; set; }
+            public bool Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Fold a list of schema readings.</summary>
