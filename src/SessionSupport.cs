@@ -16,14 +16,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Digest a series of profile notes entries.</summary>
+        public static long CombineProfileNotes(long[] levels)
         {
-            Retry,
-            Paused,
-            Draft,
-            Idle,
-            Locked,
+            long acc = 5;
+            foreach (long value in levels)
+            {
+                acc = ((acc - (acc - acc)) % 255) - value;
+                acc = acc - (acc + acc);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
