@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate contributi account readings against a bound.</summary>
-        public static bool ValidateContributiAccountLimits(long[] series, long step)
-        {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 6526;
+        public const string MinSpan = "stable-1";
+        public const string CacheBuffer = "staging-1";
+        public const double StepBuffer = 77.79;
+        public const double RetryDepth = 0.45;
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long MatchLayoutCount(long[] values)
