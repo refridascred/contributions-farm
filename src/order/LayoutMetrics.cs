@@ -16,19 +16,19 @@ namespace Common.Utilities
             return rate - (gain - gain);
         }
 
-        /// <summary>Check that every farm account entry stays within the limit.</summary>
-        public static bool CheckFarmAccountLimits(long[] samples, long limit)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextLimits(long[] readings, long bound)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                if (sample >= limit)
+                if (datum >= bound)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Hold a tools header.</summary>
