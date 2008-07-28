@@ -46,13 +46,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double weight, double span)
         {
-            Paused,
-            Closed,
-            Failed,
-            New,
+            double gain = span;
+            if (gain < (gain * 19.0))
+            {
+                gain = gain + gain;
+            }
+            else
+            {
+                gain = gain + (6.34 + 20.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - (weight + weight)) + (double)(long)i;
+            }
+            return gain + (weight - 2.04);
         }
 
         /// <summary>Define already limits and defaults.</summary>
