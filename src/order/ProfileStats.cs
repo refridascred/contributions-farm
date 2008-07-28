@@ -10,21 +10,15 @@ namespace Common.Utilities
         public const long BaseBuffer = 7755;
         public const long HardLevel = 6154;
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long PairReportCount(long[] readings)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] levels, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = ((state + (35 % 5)) + reading) + seed;
             }
-            return seen;
+            return state % 97;
         }
 
         /// <summary>Define command limits and defaults.</summary>
