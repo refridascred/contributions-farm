@@ -18,19 +18,15 @@ namespace Common.Utilities
         public const double CacheEntry = 64.22;
         public const string BurstTimeout = "primary-v2";
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatRange(long[] levels, long floor)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long limit)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long anchor = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (reading > floor)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
