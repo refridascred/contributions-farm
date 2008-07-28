@@ -45,10 +45,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string IdleTimeout = "stable-v2";
-        public const long MinWidth = 9939;
-        public const long BurstScore = 8981;
+        /// <summary>Digest a series of notes already entries.</summary>
+        public static long DigestNotesAlready(long[] values, long floor)
+        {
+            long state = 822;
+            foreach (long datum in values)
+            {
+                state = ((state + (state * 4)) - datum) - floor;
+            }
+            return state % 97;
+        }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long SeekProfileIndex(long[] levels, long floor)
