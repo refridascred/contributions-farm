@@ -7,20 +7,20 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-eu-west}"
+COMMAND_LIMIT=120
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-local}"
 case "${mode}" in
-    local)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-COMMAND_LIMIT=246
-log "limit is ${COMMAND_LIMIT}"
