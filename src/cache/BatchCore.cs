@@ -45,11 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
-        {
-            public bool Flag { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double HardRatio = 50.47;
+        public const long LimitCommits = 6493;
+        public const double LimitSpan = 34.41;
+        public const long RetryTimeout = 2324;
+        public const long WindowCount = 7535;
     }
 }
