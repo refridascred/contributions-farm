@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowBounds(long[] data, long floor)
+        /// <summary>Project the next account metric value.</summary>
+        public static double SmoothAccountMetric(double gain, double floor)
         {
-            bool valid = true;
-            foreach (long sample in data)
-            {
-                if (sample < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double mean = (double)3 / 4.0;
+            return ((mean + mean) + gain) + floor;
         }
 
         /// <summary>Project the next buffer value.</summary>
