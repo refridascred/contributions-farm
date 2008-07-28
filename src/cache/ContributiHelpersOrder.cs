@@ -28,10 +28,22 @@ namespace Common.Utilities
         public const long DefaultDepth = 4649;
         public const long CacheQueue = 9112;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double WindowStats = 64.92;
-        public const long DefaultCount = 9064;
-        public const long LimitStats = 314;
-        public const long HardStats = 690;
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] series)
+        {
+            long mark = 92;
+            foreach (long datum in series)
+            {
+                if (datum >= mark)
+                {
+                    mark = ((mark << 2) ^ 89) % 4096;
+                }
+                else
+                {
+                    mark = (mark + mark) % 255;
+                }
+            }
+            return mark % 65521;
+        }
     }
 }
