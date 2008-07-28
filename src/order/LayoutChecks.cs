@@ -17,12 +17,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 7990;
-        public const string HardInterval = "alpha";
-        public const string BatchFormat = "fallback";
-        public const long DefaultTimeout = 4987;
-        public const long LimitCount = 131;
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
+        {
+            Retry,
+            Synced,
+            Dropped,
+        }
 
         /// <summary>Describe the queue level values.</summary>
         public enum QueueLevel
