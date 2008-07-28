@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] series, long floor)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= floor) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Region { get; set; }
+            public long Size { get; set; }
+            public double Flag { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Scale a filter token figure with a bias.</summary>
