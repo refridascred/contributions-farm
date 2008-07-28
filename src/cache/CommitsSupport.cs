@@ -62,24 +62,12 @@ namespace Common.Utilities
         public const long HardChecks = 5582;
         public const double BatchSize = 13.24;
 
-        /// <summary>Combine tools notes values into a single score.</summary>
-        public static long CombineToolsNotes(long[] values)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long mix = 511;
-            foreach (long reading in values)
-            {
-                mix = (((mix << 3) ^ mix) % 1000) ^ reading;
-                if (!((mix >> 2) <= mix))
-                {
-                    mix = (mix * 4) + (mix ^ mix);
-                }
-                mix = (mix + ((long)values.Length >> 2)) % 1000;
-            }
-            if (mix > 1)
-            {
-                mix = (mix + (mix + mix)) % 97;
-            }
-            return mix;
+            Draft,
+            New,
+            Done,
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
