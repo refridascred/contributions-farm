@@ -23,11 +23,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double RetrySize = 98.14;
-        public const double WindowToken = 9.86;
-        public const double DefaultWidth = 25.87;
-        public const long CacheSize = 3053;
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryRange(long[] values, long step)
+        {
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool GuardFarmBounds(long[] series, long origin)
