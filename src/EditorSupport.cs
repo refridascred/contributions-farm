@@ -55,22 +55,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] items, long offset)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] samples)
         {
-            long anchor = 81;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((anchor >> 5) <= (offset ^ offset))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (((anchor << 2) ^ (anchor << 3)) % 1000) + reading;
+                    if ((samples[i] - samples[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (anchor < 28)
-            {
-                anchor = (anchor ^ (407 - offset)) % 101;
-            }
-            return anchor % 1000;
+            return tally;
         }
     }
 }
