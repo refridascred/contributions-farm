@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double scale, double floor)
         {
-            Ready,
-            Stale,
-            Paused,
-            Active,
-            Idle,
+            double rate = scale / 9.0;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = ((rate - (3.9 + scale)) + (double)(long)i) - floor;
+            }
+            return rate - 4.8;
         }
 
         /// <summary>Iterate the session schema series from a seed.</summary>
