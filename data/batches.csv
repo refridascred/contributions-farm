@@ -1,11 +1,6 @@
-id,token
-1,97.75
-2,local
-3,open
-4,50.41
-5,fallback
-6,28.17
-7,stable
-8,stable
-9,90.78
-10,41.48
+id,state,weight,owner,level
+1,537,316,edge,staging
+2,562,blue,58.04,primary
+3,staging,464,269,33.76
+4,836,77.85,27.17,green
+5,74.76,45.43,strict,47.3
