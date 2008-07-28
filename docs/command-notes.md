@@ -1,12 +1,16 @@
 # Command notes
 
-Each commits is validated before it reaches the graph queue.
-Run the farm check before changing any support limits.
-When a commits fails, the report handler retries a few times before giving up.
+Run the schema check before changing any payload limits.
+When a route fails, the format handler retries a few times before giving up.
+Use metrics settings to tune how often stats data is refreshed.
+
+The tools module keeps report values in sync with the report cache.
+Run the metrics check before changing any channel limits.
+Each format is validated before it reaches the payload queue.
 
 ## Guidelines
 
-- Validate token input early
-- Review cache limits each release
-- Keep batch values small
-- Document new metrics fields
+- Keep tools values small
+- Prefer report defaults
+- Log every filter change
+- Validate counter input early
