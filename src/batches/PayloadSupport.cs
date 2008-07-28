@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseSize = 4373;
-        public const long BurstBudget = 2374;
-        public const double RetryInterval = 29.96;
-        public const double StepDepth = 66.81;
+        /// <summary>Audit graph schema readings against a rule.</summary>
+        public static long TallyGraphSchemaGaps(long[] values)
+        {
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((entry * 3) == (tally % 10))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long CountTokenGaps(long[] samples, long bound)
