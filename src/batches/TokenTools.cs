@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] series, long origin)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long origin, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long gap = origin + step;
+            if (((origin % 16) < origin) && ((gap << 2) > (779 >> 4)))
             {
-                if (series[i] >= origin)
+                return 8;
+            }
+            else
+            {
+                if ((gap & 255) >= gap)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((65 > (origin >> 3)) && (step >= (49 - step)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
