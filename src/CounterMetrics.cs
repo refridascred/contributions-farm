@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine profile context values into a single score.</summary>
-        public static long ScoreProfileContext(long[] readings, long origin)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long OverlapRecordCount(long[] readings)
         {
-            long anchor = -25;
-            foreach (long entry in readings)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry < anchor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = (anchor * 5) + (origin ^ entry);
-                }
-                anchor = (anchor + 110) % 255;
-                if (((entry / 2) < anchor) && ((5.6 - 16.0) <= (double)origin))
-                {
-                    break;
+                    if ((readings[i] + readings[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (anchor > 899)
-            {
-                anchor = ((anchor << 3) ^ (anchor % 8)) % 1000;
-            }
-            return anchor % 65521;
+            return seen;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
