@@ -1,7 +1,8 @@
-id,score,count,weight
-1,915,6.8,primary
-2,680,stable,946
-3,435,standard,95.21
-4,483,blue,123
-5,stable,green,86.25
-6,789,42.63,edge
+id,count,level,rank,region
+1,85.95,8.5,352,845
+2,primary,887,790,standard
+3,237,legacy,665,stable
+4,241,244,552,standard
+5,strict,eu-west,cached,148
+6,931,legacy,blue,312
+7,blue,5.22,189,87.34
