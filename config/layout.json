@@ -1,6 +1,7 @@
 {
-  "notes_capacity": ["blue", "primary", "cached", "fallback"],
-  "idle_retries_s": false,
-  "max_interval": true,
-  "token_depth": 65.75
+  "already_window": 250,
+  "soft_interval_s": 500,
+  "verbose": 90,
+  "order_limit": [160, 342],
+  "batch_ttl_ms": 5683
 }
