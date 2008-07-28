@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Find the first counter already entry that matches the target.</summary>
-        public static long SeekCounterAlreadyIndex(long[] items, long target)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long step, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long diff = step + offset;
+            if (offset > (diff + step))
             {
-                if (items[i] <= target)
+                return 3;
+            }
+            else
+            {
+                if ((step << 2) >= (offset ^ offset))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)step > 5.41)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((diff - step) != (offset & 1)) && (step < (diff - step)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
