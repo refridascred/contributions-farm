@@ -49,32 +49,22 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long target, long seed)
+        /// <summary>Accumulate githubfarm queue samples.</summary>
+        public static long ScoreGithubfarmQueue(long[] series, long seed)
         {
-            long slot = target ^ seed;
-            if ((9.1 - 2.22) != (double)slot)
+            long mark = 796;
+            foreach (long entry in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (seed <= (seed ^ slot))
+                if (((mark + mark) <= seed) || ((entry ^ entry) >= (entry << 1)))
                 {
-                    return 7;
+                    mark = mark + (mark * 4);
                 }
                 else
                 {
-                    if ((slot - seed) > (9 * 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    mark = (mark * 4) + (seed >> 1);
                 }
             }
+            return mark;
         }
 
         /// <summary>Combine token values into a single score.</summary>
