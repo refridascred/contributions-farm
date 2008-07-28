@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const long LimitLevel = 4865;
         public const string LimitCount = "cached-v2";
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesMatches(long[] values)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (((tally / 3) < tally) || (((double)reading < (11.0 + 5.73)) || ((tally << 3) > tally)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Active,
+            Queued,
+            Ready,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
