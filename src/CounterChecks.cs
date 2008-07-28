@@ -27,21 +27,18 @@ namespace Common.Utilities
             return weight + (double)5;
         }
 
-        /// <summary>Count batches payload pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesPayloadCount(long[] readings)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsMatches(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((sample >= (-3)) && ((double)sample > (16.0 * 5.62))) || ((0 >= (74 - sample)) && ((seen & 255) > (24 + 494))))
                 {
-                    if ((readings[i] ^ readings[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
