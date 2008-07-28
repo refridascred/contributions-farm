@@ -47,22 +47,36 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long seed, long offset)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long limit, long origin)
         {
-            if ((offset - seed) > (seed / 8))
+            if ((limit >= origin) && (19 <= (limit >> 2)))
             {
-                return 8;
+                return 7;
             }
             else
             {
-                if (((double)offset <= (9.87 * 15.0)) || ((offset >> 4) > (offset + 54)))
+                if ((836 + origin) <= 75)
                 {
                     return 4;
                 }
                 else
                 {
-                    return 3;
+                    if ((264 << 3) < limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit >> 2) > limit)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
         }
