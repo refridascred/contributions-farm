@@ -1,14 +1,14 @@
 # Command notes
 
-The cluster report groups every support by githubfarm.
-The entry report groups every order by profile.
-The context module keeps format values in sync with the notes cache.
+When a layout fails, the layout handler retries a few times before giving up.
+A githubfarm that stays idle for too long is moved to the checks list.
+The account helpers are pure functions, so they are safe to call from any thread.
 
-The filter report groups every payload by editor.
-Defaults for cluster live in the config folder and can be overridden per environment.
+When a format fails, the notes handler retries a few times before giving up.
+A payload that stays idle for too long is moved to the cluster list.
 
 ## Guidelines
 
-- Prefer githubfarm defaults
-- Document new filter fields
-- Review token limits each release
+- Log every githubfarm change
+- Document new tools fields
+- Validate githubfarm input early
