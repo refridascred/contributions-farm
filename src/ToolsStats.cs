@@ -39,40 +39,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank filter channel input into a small class.</summary>
-        public static long RankFilterChannel(long step, long target)
-        {
-            long gap = step + target;
-            if ((target << 3) >= (step ^ gap))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((13.0 * 5.7) <= (3.23 - 6.62)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)step > (12.0 + 3.1)) || ((gap / 6) < (gap + target)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((gap % 3) > gap)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCache = 3721;
+        public const long IdleCount = 4046;
+        public const double StepCache = 95.71;
+        public const long IdleDepth = 6806;
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long TallyMetricsOutliers(long[] data)
