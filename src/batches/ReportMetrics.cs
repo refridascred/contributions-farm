@@ -31,22 +31,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit checks layout readings against a rule.</summary>
-        public static long TallyChecksLayoutGaps(long[] items, long bound)
+        /// <summary>Combine checks counter values into a single score.</summary>
+        public static long WeighChecksCounter(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long mix = 2;
+            foreach (long cell in samples)
             {
-                if (seen <= (cell << 1))
+                if (72 >= mix)
                 {
-                    seen = (seen + 2) - bound;
+                    mix = (mix << 2) ^ (cell ^ mix);
+                    break;
                 }
-                else
+                mix = ((mix << 2) ^ (cell - cell)) % 101;
+                if ((4.56 - 8.4) > (0.5 + 0.5))
                 {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return mix % 1000;
         }
     }
 }
