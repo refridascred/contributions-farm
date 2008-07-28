@@ -45,18 +45,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter command entries that pass the check.</summary>
-        public static long MeasureCounterCommandGaps(long[] readings, long step)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long floor, long origin)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            if (((floor & 1) >= (-52)) || ((origin % 5) <= (origin % 2)))
             {
-                if (((tally & 3) != (step - step)) && ((tally << 1) <= (80 - (-55))))
+                return 7;
+            }
+            else
+            {
+                if ((8.11 / 2.0) <= (double)floor)
                 {
-                    tally = (tally + 3) + cell;
+                    return 6;
+                }
+                else
+                {
+                    if (!((origin ^ 50) >= origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((2 < (origin >> 1)) || ((floor >> 2) <= (origin / 7)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
