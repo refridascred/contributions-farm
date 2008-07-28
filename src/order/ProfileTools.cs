@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountBounds(long[] series, long floor)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            bool valid = true;
-            foreach (long reading in series)
-            {
-                if (reading >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            Retry,
+            Dropped,
+            Stale,
+            Queued,
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
