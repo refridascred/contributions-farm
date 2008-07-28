@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] values, long limit)
+        /// <summary>Project the next graph counter value.</summary>
+        public static double SmoothGraphCounter(double gain, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate = gain;
+            for (int i = 0; i < 5; i++)
             {
-                if ((values[i] == limit) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                rate = ((rate + gain) - (double)(long)i) - floor;
             }
-            return -1;
+            return rate - (gain - gain);
         }
 
         /// <summary>Check that every farm account entry stays within the limit.</summary>
