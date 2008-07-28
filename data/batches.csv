@@ -1,6 +1,10 @@
-id,weight,region
-1,strict,27.13
-2,36,8.69
-3,78.14,stable
-4,232,82.1
-5,414,390
+id,region,label
+1,374,staging
+2,234,41.09
+3,737,strict
+4,97.12,111
+5,54.07,fallback
+6,84.87,750
+7,latest,eu-west
+8,strict,474
+9,621,22.1
