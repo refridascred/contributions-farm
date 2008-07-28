@@ -1,12 +1,16 @@
 # githubfarm settings
-warm_depth: edge
-enabled: primary
-soft_timeout:
-  - 156
-  - 462
-batch_interval: 66.04
-burst_delay_ms: 6791
-window_timeout:
-  verbose: 1.96
-  contributi_interval: false
-  default_size_pct: 30
+poll_size_pct: 18.12
+idle_capacity_s:
+  entry_ratio: blue
+  verbose:
+    persist: latest
+    batch_interval_count: 98.83
+    warm_interval: 2745
+  hard_ratio:
+    - 300
+    - 20
+poll_capacity_s:
+  - 107
+  - 210
+  - 419
+  - 283
