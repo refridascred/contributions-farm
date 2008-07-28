@@ -20,17 +20,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] series, long seed)
+        /// <summary>Rank queue route input into a small class.</summary>
+        public static long ClassifyQueueRoute(long offset, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long delta = offset ^ floor;
+            if (!(floor <= (floor - floor)))
             {
-                if (series[i] == seed)
+                return 8;
+            }
+            else
+            {
+                if (((4.9 * 9.1) <= (double)floor) || ((0 + offset) >= offset))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (((double)offset >= (double)delta) && ((delta * 5) == (offset - floor)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
