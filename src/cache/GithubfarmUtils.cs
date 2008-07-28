@@ -10,13 +10,11 @@ namespace Common.Utilities
         public const long LimitRatio = 2712;
         public const double StepInterval = 16.48;
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
-        {
-            Done,
-            Retry,
-            Draft,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardSize = 6881;
+        public const long CacheProfile = 125;
+        public const long DefaultProfile = 6588;
+        public const long SoftSize = 3158;
 
         /// <summary>Hold a window entry.</summary>
         public sealed class WindowEntry
