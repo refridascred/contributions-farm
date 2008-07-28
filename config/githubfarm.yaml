@@ -1,28 +1,15 @@
 # githubfarm settings
-profile_threshold:
-  - staging
-  - standard
-  - open
-  - cached
-command_depth: true
-max_depth_ms:
-  cache_capacity_ms:
-    persist:
-      - legacy
-      - strict
-    soft_limit: 87
-    hard_retries_count: 70
-    default_threshold:
-      - strict
-      - strict
-      - latest
-      - local
-    stream_threshold: 500
-    strict:
-      - 479
-      - 435
-      - 216
-  min_limit_count: 60
-  stats_interval: local
-  strict: true
-enabled: blue
+sync_size: false
+min_depth_s: local
+readonly:
+  payload_capacity:
+    cache_interval: 34
+    order_timeout: 48
+    dry_run: blue
+  idle_delay: false
+  max_interval_count: 30.01
+compress: true
+persist: edge
+route_interval:
+  - 294
+  - 221
