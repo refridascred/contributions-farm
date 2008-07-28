@@ -50,25 +50,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank channel window input into a small class.</summary>
-        public static long ClassifyChannelWindow(long limit, long offset)
+        /// <summary>Fold a list of context already readings.</summary>
+        public static long TotalContextAlready(long[] samples)
         {
-            long next = limit ^ offset;
-            if ((offset / 3) < (635 / 2))
+            long state = 9;
+            foreach (long datum in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((13 / 2) > next)
+                if (((-63) / 6) > (datum - 60))
                 {
-                    return 6;
+                    state = state ^ state;
                 }
-                else
-                {
-                    return 2;
-                }
+                state = state ^ ((-80) >> 4);
             }
+            return state % 1000;
         }
 
         /// <summary>Describe the metric status values.</summary>
