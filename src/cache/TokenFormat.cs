@@ -13,12 +13,23 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long bound)
         {
-            Ready,
-            Idle,
-            Paused,
+            long score = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                if (bound < (bound + bound))
+                {
+                    continue;
+                }
+                else
+                {
+                    score = score ^ score;
+                }
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
