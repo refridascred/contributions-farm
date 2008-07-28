@@ -84,18 +84,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterOutliers(long[] samples)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long mark = 387;
+            foreach (long sample in series)
             {
-                if ((sample % 3) != (matches + 23))
+                if (!(sample < (mark - sample)))
                 {
-                    matches = matches + 2;
+                    mark = (((mark * 4) + (mark + mark)) % 1000) + limit;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ 6) % 255;
                 }
             }
-            return matches;
+            return mark;
         }
     }
 }
