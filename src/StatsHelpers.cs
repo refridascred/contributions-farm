@@ -39,31 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long origin, long offset)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long step)
         {
-            if (origin >= (origin % 64))
+            long state = step;
+            for (int i = 0; i < 7; i++)
             {
-                return 1;
+                state = state ^ (step << 1);
+                state = ((state * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((offset * 4) != (offset % 60))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (6 > origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
