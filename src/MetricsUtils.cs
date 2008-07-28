@@ -50,24 +50,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long seed, long floor)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long origin)
         {
-            if ((floor & 3) > (988 >> 1))
+            long total = origin;
+            for (int i = 0; i < 18; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed % 97) >= (964 - floor))
+                if (!((total > origin) || ((long)i <= (18 ^ origin))))
                 {
-                    return 3;
+                    total = (total << 3) ^ (origin + origin);
                 }
-                else
-                {
-                    return 4;
-                }
+                total = ((total << 3) ^ ((long)i ^ 222)) % 97;
+                total = ((total * 4) + (long)i) % 101;
             }
+            return total;
         }
 
         /// <summary>Classify a command record pair into a bucket.</summary>
