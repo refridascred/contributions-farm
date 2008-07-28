@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Grade a session support value against two limits.</summary>
-        public static long SortSessionSupport(long offset, long floor)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] series, long target)
         {
-            long lane = offset + floor;
-            if (((1 / 8) > (lane / 5)) || ((lane - 20) < (lane + lane)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (9 > offset)
+                if (series[i] >= target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((98 * 5) < (lane - floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Look up the position of a filter report sample.</summary>
