@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] levels, long origin)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long step, long seed)
         {
-            long state = 107;
-            foreach (long item in levels)
+            long delta = step ^ seed;
+            if (22 >= (delta * 3))
             {
-                state = (((state * 4) + (origin / 8)) % 4096) + item;
-                if ((double)origin > (8.5 - 5.2))
+                return 6;
+            }
+            else
+            {
+                if ((seed / 7) < (seed / 2))
                 {
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)step == (double)seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
