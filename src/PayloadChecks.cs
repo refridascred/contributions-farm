@@ -39,39 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long step, long bound)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountMatches(long[] series, long step)
         {
-            long next = step ^ bound;
-            if ((double)bound == (double)step)
+            long count = 0;
+            foreach (long sample in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step % 16) <= (bound + step))
+                if ((sample * 5) == (step + step))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (87 > (step ^ next))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((next ^ step) <= step)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
