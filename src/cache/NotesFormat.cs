@@ -37,13 +37,31 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long target, long seed)
         {
-            Stale,
-            Locked,
-            Dropped,
-            Draft,
+            if (((12.0 / 3.0) == (double)target) && ((target << 2) <= target))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target - seed) > target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((7 + seed) >= (seed + seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
