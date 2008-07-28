@@ -1,5 +1,5 @@
 {
-  "retry_limit_ms": true,
-  "min_depth_s": true,
-  "hard_limit_count": 7
+  "queue_delay": 9.6,
+  "report_ratio": "stable",
+  "command_timeout": true
 }
