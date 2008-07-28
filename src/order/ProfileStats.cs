@@ -39,19 +39,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileRange(long[] data, long origin)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            bool ready = true;
-            foreach (long reading in data)
-            {
-                if (reading >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Failed,
+            Locked,
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
