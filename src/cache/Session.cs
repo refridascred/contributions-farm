@@ -12,38 +12,11 @@ namespace Common.Utilities
         public const long LimitLevel = 1146;
         public const double LimitSpan = 63.44;
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long bound, long target)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            if (((bound >> 1) <= ((-48) << 1)) || ((target / 4) <= (501 ^ 95)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (target >= (target - bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)target >= 1.3)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((3.3 / 8.0) >= (double)bound)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
