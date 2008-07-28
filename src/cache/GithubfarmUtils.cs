@@ -20,23 +20,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] data, long origin)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long anchor = 453;
-            foreach (long value in data)
-            {
-                anchor = (anchor ^ value) % 255;
-                if (((-402) - 7) > (anchor - value))
-                {
-                    anchor = (anchor - (0 + (-6))) % 1000;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (value - origin)) % 255;
-                }
-            }
-            return anchor;
+            Ready,
+            Done,
+            Dropped,
         }
 
         /// <summary>Blend two metric measurements.</summary>
