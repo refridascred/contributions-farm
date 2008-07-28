@@ -27,24 +27,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long bound, long offset)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            if (((bound % 16) != (offset ^ bound)) && ((23 + offset) < (offset << 1)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset <= (1 - offset)) || ((double)offset <= (2.3 / 8.0)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Active,
+            Queued,
+            Idle,
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
