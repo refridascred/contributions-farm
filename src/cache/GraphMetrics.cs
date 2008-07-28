@@ -33,18 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaOutliers(long[] series)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ScaleCluster(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            double ratio = (gain / 4.0) + 15.0;
+            if (ratio > ratio)
             {
-                if ((99 % 10) <= (long)series.Length)
-                {
-                    matches = (matches + 3) ^ reading;
-                }
+                ratio = ratio - (offset * 4.38);
             }
-            return matches;
+            return ratio - 9.0;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
