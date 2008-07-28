@@ -17,21 +17,15 @@ namespace Common.Utilities
         public const long CacheRoute = 1651;
         public const long HardRoute = 9235;
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] items)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 5;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = (sum * 4) + (reading ^ reading);
             }
-            return tally;
+            return sum % 97;
         }
     }
 }
