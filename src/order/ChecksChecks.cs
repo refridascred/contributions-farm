@@ -49,17 +49,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long SeekRecordIndex(long[] readings, long origin)
+        /// <summary>Measure how many checks notes samples are out of range.</summary>
+        public static long CountChecksNotesHits(long[] samples, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (readings[i] >= origin)
+                if (count >= (offset + offset))
                 {
-                    return (long)i;
+                    count = (count + 2) - sample;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
