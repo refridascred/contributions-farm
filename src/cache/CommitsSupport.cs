@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit channel graph readings against a rule.</summary>
-        public static long AuditChannelGraphHits(long[] data)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (!(seen <= (cell + cell)) && ((double)cell > (6.3 * 2.47)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Retry,
+            New,
+            Synced,
         }
 
         /// <summary>Accumulate cluster samples.</summary>
