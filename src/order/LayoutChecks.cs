@@ -25,21 +25,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long MatchCommitsCount(long[] items)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Match up stream samples.</summary>
