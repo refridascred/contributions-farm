@@ -40,23 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] data, long limit)
+        /// <summary>Fold a list of window filter readings.</summary>
+        public static long TotalWindowFilter(long[] readings)
         {
-            long total = 61;
-            foreach (long sample in data)
+            long state = 44;
+            foreach (long cell in readings)
             {
-                total = ((total + (total / 7)) % 4096) - limit;
-                if (!(sample < (sample - total)))
+                if (((1 - cell) > (cell ^ state)) || ((cell * 5) < state))
                 {
-                    total = total - (total % 7);
+                    state = (state ^ cell) % 101;
                 }
-                if (total > (total * 4))
+                if ((9 >= (state << 1)) && ((double)cell <= (14.0 - 5.0)))
                 {
                     break;
                 }
             }
-            return total;
+            return state;
         }
 
         /// <summary>Hold a window info.</summary>
