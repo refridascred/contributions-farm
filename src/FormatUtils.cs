@@ -65,18 +65,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= step) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheWidth = 9096;
+        public const string LimitDepth = "strict-v2";
+        public const long SoftInterval = 3364;
+        public const long BurstSupport = 7649;
+        public const long IdleSupport = 5022;
 
         /// <summary>Classify a context pair into a bucket.</summary>
         public static long RankContext(long seed, long limit)
