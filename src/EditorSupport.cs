@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long CompareBatchCount(long[] levels)
+        /// <summary>Combine checks commits values into a single score.</summary>
+        public static long ScoreChecksCommits(long[] values, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 3;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = total ^ (offset + datum);
             }
-            return count;
+            return total;
         }
 
         /// <summary>Look up the position of a farm metrics sample.</summary>
