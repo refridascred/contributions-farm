@@ -24,23 +24,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyOutliers(long[] levels, long offset)
-        {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (matches <= offset)
-                {
-                    matches = (matches + 3) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchFactor = 4273;
+        public const long IdleBudget = 2950;
+        public const double LimitFactor = 97.53;
+        public const double MinScore = 0.93;
+        public const string MinFactor = "standard-1";
 
         /// <summary>Find the first already entry that matches the target.</summary>
         public static long SeekAlreadyIndex(long[] levels, long origin)
