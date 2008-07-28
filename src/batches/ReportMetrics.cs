@@ -10,18 +10,22 @@ namespace Common.Utilities
         public const long StepCount = 4878;
         public const long MaxCommits = 6699;
 
-        /// <summary>Fold a list of schema queue readings.</summary>
-        public static long FoldSchemaQueue(long[] levels, long step)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadOutliers(long[] series)
         {
-            long result = 41;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (result <= (entry & 255))
+                if ((datum << 3) > (hits ^ hits))
                 {
-                    result = result - (step >> 1);
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Audit checks layout readings against a rule.</summary>
