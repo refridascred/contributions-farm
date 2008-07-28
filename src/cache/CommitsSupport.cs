@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long IterateAccount(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = (mix - (mix << 1)) % 1000;
-                if ((8 & 127) == (mix + step))
-                {
-                    mix = ((mix * 5) + (step + mix)) % 65521;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLayout = 7413;
+        public const string BaseTimeout = "standard-1";
+        public const long StepFactor = 6699;
+        public const long MaxDepth = 6482;
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long TotalCluster(long[] values)
