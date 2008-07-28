@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const long BatchBuffer = 8282;
         public const long SoftBuffer = 4913;
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] readings, long offset)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricGaps(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (readings[i] < offset)
+                if (count < 141)
                 {
-                    return (long)i;
+                    count = (count + 2) - entry;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
