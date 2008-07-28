@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] items)
         {
-            public double Flag { get; set; }
-            public double Stamp { get; set; }
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((seen ^ cell) < cell)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
