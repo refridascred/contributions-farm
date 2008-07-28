@@ -42,18 +42,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamMatches(long[] series)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsRange(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if (!((3.0 + 0.7) >= (double)sample))
+                if (sample != target)
                 {
-                    matches = matches + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
