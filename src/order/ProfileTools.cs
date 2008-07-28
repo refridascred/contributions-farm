@@ -62,11 +62,21 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Adjust a report stream reading.</summary>
-        public static double AdjustReportStream(double gain, double offset)
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] samples)
         {
-            double scale = offset;
-            return (scale - 8.89) + gain;
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the record status values.</summary>
