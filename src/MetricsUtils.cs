@@ -41,13 +41,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] samples, long seed)
         {
-            public double Mode { get; set; }
-            public bool Label { get; set; }
-            public long Limit { get; set; }
-            public double Total { get; set; }
+            long sum = 0;
+            foreach (long value in samples)
+            {
+                sum = (sum + (seed << 3)) + value;
+            }
+            return sum;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
