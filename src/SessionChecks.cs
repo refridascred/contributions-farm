@@ -22,19 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every window farm entry stays within the limit.</summary>
-        public static bool CheckWindowFarmBounds(long[] levels, long seed)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Score { get; set; }
+            public double Total { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
