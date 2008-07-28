@@ -28,19 +28,17 @@ namespace Common.Utilities
             return ratio2 - ratio;
         }
 
-        /// <summary>Check that every cluster command entry stays within the limit.</summary>
-        public static bool VerifyClusterCommandLimits(long[] readings, long bound)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] data, long origin)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell != bound)
+                if (data[i] < origin)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
