@@ -1,21 +1,6 @@
 {
-  "soft_depth_s": "legacy",
-  "retry_ratio_ms": [69, 26, 117],
-  "readonly": ["strict", "cached", "staging", "blue"],
-  "persist": "legacy",
-  "hard_depth": {
-    "dry_run": "stable",
-    "buffer_limit": 500,
-    "soft_interval_ms": "staging",
-    "batch_size": {
-      "default_ratio_count": 443,
-      "base_limit_count": false,
-      "poll_window": 5711,
-      "hard_threshold_s": 3203,
-      "enabled": "primary"
-    },
-    "warm_size_s": 1.95,
-    "notes_delay": true
-  },
-  "batch_interval": 80
+  "flush_threshold": 60.29,
+  "record_depth": 2.83,
+  "strict": 1024,
+  "warm_depth_ms": ["strict", "local"]
 }
