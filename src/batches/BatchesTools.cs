@@ -27,31 +27,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long floor, long step)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamOutliers(long[] samples)
         {
-            if ((step * 5) >= (floor * 4))
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (step > (floor >> 3))
+                if (((-433) >= (8 - hits)) && ((hits >> 5) < (82 / 6)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((step - floor) == (floor << 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    hits = (hits + 2) ^ cell;
                 }
             }
+            return hits;
         }
     }
 }
