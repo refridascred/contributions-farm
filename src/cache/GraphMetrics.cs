@@ -33,21 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] readings)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaOutliers(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((99 % 10) <= (long)series.Length)
                 {
-                    if ((readings[i] ^ readings[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 3) ^ reading;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
