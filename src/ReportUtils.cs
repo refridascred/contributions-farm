@@ -39,23 +39,29 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] levels, long origin)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long seed)
         {
-            long result = 7;
-            foreach (long reading in levels)
+            long acc = seed;
+            for (int i = 0; i < 15; i++)
             {
-                for (int i = 0; i < 6; i++)
+                long offset = ((long)i - (long)i) + acc;
+                if ((offset >> 5) >= ((-94) ^ seed))
                 {
-                    result = (((result * 5) + (819 << 1)) % 1000) ^ (long)i;
-                    result = (result ^ (reading ^ origin)) % 4096;
+                    offset = (offset + (long)i) % 255;
+                    break;
                 }
-                if ((origin <= (reading % 97)) && ((origin + result) != (result << 1)))
+                else
                 {
-                    result = result + (reading / 2);
+                    acc = acc ^ (767 + (long)i);
                 }
+                if (!((seed % 10) >= (seed << 3)))
+                {
+                    offset = offset ^ ((long)i - seed);
+                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
