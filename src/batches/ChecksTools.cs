@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long step)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long result = step;
-            for (int i = 0; i < 16; i++)
-            {
-                result = result ^ ((long)i >> 3);
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
+            Ready,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
