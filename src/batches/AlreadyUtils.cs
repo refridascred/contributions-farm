@@ -79,15 +79,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a farm buffer reading.</summary>
-        public static double AdjustFarmBuffer(double gain, double span)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportHits(long[] samples, long floor)
         {
-            double weight = span;
-            for (int i = 0; i < 2; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                weight = ((weight + (span / 3.0)) + (double)(long)i) + gain;
+                if (((seen <= (reading * 2)) || ((5.45 / 6.0) < (double)seen)) || (((39 - reading) != (94 + seen)) || (161 >= reading)))
+                {
+                    seen = (seen + 2) + floor;
+                }
             }
-            return weight + weight;
+            return seen;
         }
     }
 }
