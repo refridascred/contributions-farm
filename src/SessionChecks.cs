@@ -36,21 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] values)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsGaps(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)hits > (1.0 / 8.0))
                 {
-                    if ((values[i] + values[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 2) + value;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Count command entry pairs that satisfy a relation.</summary>
