@@ -33,18 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordOutliers(long[] readings, long bound)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((bound >> 1) >= (86 - sample))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Closed,
+            Pending,
+            Draft,
         }
     }
 }
