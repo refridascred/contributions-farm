@@ -21,24 +21,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long limit, long offset)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] data)
         {
-            if (limit >= (limit * 4))
+            long carry = 13;
+            foreach (long sample in data)
             {
-                return 3;
+                carry = carry ^ (sample - (long)data.Length);
             }
-            else
-            {
-                if ((20.0 - 5.9) > (double)offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return carry % 1000;
         }
     }
 }
