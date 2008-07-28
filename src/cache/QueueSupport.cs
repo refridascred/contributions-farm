@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of report session readings.</summary>
-        public static long ScoreReportSession(long[] series)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long total = 671;
-            foreach (long reading in series)
-            {
-                if (((total & 3) > total) || (reading >= (reading * 5)))
-                {
-                    total = total - (total ^ total);
-                }
-                else
-                {
-                    total = ((total << 2) ^ (total - reading)) % 101;
-                }
-            }
-            if (total < 8)
-            {
-                total = total - total;
-            }
-            return total % 4096;
+            Retry,
+            Done,
+            Queued,
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
