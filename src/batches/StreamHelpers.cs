@@ -32,13 +32,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
-            public long Owner { get; set; }
-            public long Flag { get; set; }
+            public long Count { get; set; }
+            public string Weight { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Scale a record context figure with a bias.</summary>
