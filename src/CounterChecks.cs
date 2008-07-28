@@ -52,16 +52,25 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long floor)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long floor, long target)
         {
-            long sum = floor;
-            for (int i = 0; i < 5; i++)
+            long gap = floor - target;
+            if ((target >> 4) >= (target << 1))
             {
-                sum = ((sum * 5) + (sum - floor)) % 65521;
-                sum = ((sum * 5) + (long)i) % 4093;
+                return 6;
             }
-            return sum;
+            else
+            {
+                if (((double)52 <= (double)gap) && (gap <= floor))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Count the session entry entries that pass the check.</summary>
