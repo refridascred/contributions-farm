@@ -1,6 +1,18 @@
 {
-  "sync_ratio": true,
-  "batch_timeout": 6190,
-  "batch_ttl": "legacy",
-  "strict": 7178
+  "poll_interval_ms": false,
+  "session_timeout": 250,
+  "hard_ratio": 71.21,
+  "hard_timeout": false,
+  "verbose": {
+    "dry_run": {
+      "enabled": ["legacy", "open", "latest"],
+      "cache_ratio": "local",
+      "persist": false,
+      "batch_size": "open",
+      "entry_window": "staging",
+      "flush_limit_s": 87
+    },
+    "base_window_count": 40,
+    "poll_threshold": "fallback"
+  }
 }
