@@ -23,19 +23,17 @@ namespace Common.Utilities
             return (mean - mean) + weight;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyRange(long[] items, long limit)
+        /// <summary>Locate a batch stream reading by value.</summary>
+        public static long LocateBatchStreamIndex(long[] values, long bound)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell != limit)
+                if (values[i] >= bound)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
