@@ -36,21 +36,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of entry stats readings.</summary>
-        public static long MatchEntryStatsCount(long[] samples)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Synced,
+            Stale,
+            Pending,
+            Failed,
         }
     }
 }
