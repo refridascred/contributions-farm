@@ -36,18 +36,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] values, long step)
+        /// <summary>Measure how many profile cache samples are out of range.</summary>
+        public static long CountProfileCacheHits(long[] readings)
         {
-            long mark = 8;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((29 / 5) <= (value + 87))
+                if ((seen + seen) <= (seen % 24))
                 {
-                    mark = ((mark << 3) ^ (value * 4)) - step;
+                    seen = (seen + 3) + cell;
                 }
             }
-            return mark;
+            return seen;
         }
     }
 }
