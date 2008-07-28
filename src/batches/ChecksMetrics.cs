@@ -64,37 +64,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank githubfarm cluster input into a small class.</summary>
-        public static long GradeGithubfarmCluster(long seed, long offset)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long origin, long target)
         {
-            long offset2 = seed ^ offset;
-            if (seed <= 939)
+            if ((origin & 3) >= (origin - origin))
             {
-                return 1;
+                return 7;
             }
             else
             {
-                if (offset2 >= (offset2 - 1))
+                if (target < ((-232) << 1))
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    if (offset >= (59 % 60))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((7.51 * 2.41) <= (double)offset2)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return 6;
                 }
             }
         }
