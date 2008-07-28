@@ -62,14 +62,10 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
-        {
-            Retry,
-            Ready,
-            Active,
-            Locked,
-            Dropped,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double IdleSpan = 43.06;
+        public const string StepLevel = "legacy-edge";
+        public const long CacheStats = 2348;
+        public const long HardStats = 8908;
     }
 }
