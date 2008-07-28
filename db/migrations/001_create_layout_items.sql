@@ -2,10 +2,11 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     created_at TIMESTAMP,
-    level INTEGER,
-    token TEXT
+    owner TEXT NOT NULL,
+    region TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_created_at ON layout_items (created_at);
+CREATE INDEX IF NOT EXISTS idx_layout_items_region ON layout_items (region);
 
-INSERT INTO layout_items (level, token) VALUES (32, 'staging');
+INSERT INTO layout_items (owner, region) VALUES ('strict', 'stable');
+INSERT INTO layout_items (owner, region) VALUES ('legacy', 'eu-west');
