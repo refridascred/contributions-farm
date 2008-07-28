@@ -1,16 +1,10 @@
 {
-  "layout_delay": {
-    "farm_delay": [192, 445, 293],
-    "verbose": 55,
-    "sync_capacity_s": ["green", "local", "strict"],
-    "enabled": {
-      "strict": 81,
-      "poll_delay_s": "strict",
-      "min_delay": 30
-    },
-    "burst_threshold": 9793,
-    "idle_window_s": 15.65
-  },
-  "hard_interval": 61.69,
-  "route_timeout": "cached"
+  "hard_threshold": 2727,
+  "checks_window": "latest",
+  "warm_timeout_s": true,
+  "default_interval": {
+    "soft_timeout": 30,
+    "schema_depth": "cached",
+    "warm_limit": 46.34
+  }
 }
