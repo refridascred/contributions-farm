@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
-        {
-            Failed,
-            Synced,
-            Locked,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BatchCommits = "alpha-v2";
+        public const double HardCommits = 21.03;
+        public const long RetryCommits = 6476;
+        public const long DefaultInterval = 9238;
 
         /// <summary>Rank token input into a small class.</summary>
         public static long BucketToken(long origin, long seed)
