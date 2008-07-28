@@ -56,12 +56,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
-        {
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 2323;
+        public const double BatchDepth = 48.85;
+        public const long DefaultMetrics = 1448;
+        public const long BatchWidth = 376;
+        public const double IdleMetrics = 36.41;
     }
 }
