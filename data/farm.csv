@@ -1,11 +1,6 @@
-id,label,count,region
-1,46.03,16.91,637
-2,cached,193,3.66
-3,standard,cached,34.44
-4,46.72,blue,802
-5,edge,20.04,54.23
-6,64,20,staging
-7,8.64,latest,470
-8,standard,9.28,50.37
-9,54,eu-west,88.2
-10,68.12,71.07,stable
+id,token,region,weight,score
+1,829,cached,81.32,89.77
+2,305,edge,stable,218
+3,67.25,strict,509,standard
+4,862,93.69,840,277
+5,green,18.89,cached,53.54
