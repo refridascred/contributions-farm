@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Find the first stream batch entry that matches the target.</summary>
-        public static long LookupStreamBatchIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == offset) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheBatches = 8852;
+        public const string CacheDepth = "primary-1";
+        public const string IdleBatches = "primary-edge";
+        public const string BurstWidth = "alpha-edge";
+        public const long MinBatches = 5419;
 
         /// <summary>Accumulate githubfarm context samples.</summary>
         public static long FoldGithubfarmContext(long[] values, long target)
