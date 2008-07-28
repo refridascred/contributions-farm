@@ -35,18 +35,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] samples)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandHits(long[] series)
         {
             long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long entry in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((entry & 15) > (entry ^ (-7)))
                 {
-                    if ((samples[i] + samples[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
             return matches;
