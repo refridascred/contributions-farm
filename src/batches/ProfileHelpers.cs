@@ -89,19 +89,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double SmoothMetrics(double gain, double span)
+        /// <summary>Adjust a window entry reading.</summary>
+        public static double ProjectWindowEntry(double gain, double bias)
         {
-            double scale = span - (double)96;
-            if (scale >= (double)644)
+            double bias2 = gain;
+            if (bias2 < (bias + gain))
             {
-                scale = (scale + scale) - gain;
+                bias2 = bias2 + (0.31 * 6.1);
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                scale = (scale + scale) + (double)(long)i;
+                bias2 = bias2 - (double)6;
             }
-            return scale + 6.0;
+            return bias2 - gain;
         }
     }
 }
