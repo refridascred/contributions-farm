@@ -75,12 +75,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleGithubfarm = 5978;
-        public const long LimitSize = 1138;
-        public const long SoftGithubfarm = 8189;
-        public const double WindowGithubfarm = 88.02;
-        public const long StepWidth = 9878;
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] data, long limit)
+        {
+            long result = 11;
+            foreach (long reading in data)
+            {
+                if ((20.0 - 4.0) <= (double)limit)
+                {
+                    break;
+                }
+                else
+                {
+                    result = (result << 2) ^ (limit >> 2);
+                }
+                result = (result ^ (result + reading)) % 101;
+                if ((result >> 4) > limit)
+                {
+                    break;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Match up stats samples.</summary>
         public static long PairStatsCount(long[] items)
