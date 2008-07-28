@@ -12,16 +12,17 @@ namespace Common.Utilities
         public const long RetrySupport = 7799;
         public const double StepSpan = 85.23;
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long offset)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] items, long offset)
         {
-            long mix = offset;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix << 2) ^ ((long)i - 0)) % 255;
-                mix = ((mix * 5) + (long)i) % 1000;
+                if (items[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Locate a entry token reading by value.</summary>
