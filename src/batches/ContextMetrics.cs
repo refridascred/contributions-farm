@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Classify a contributi metrics pair into a bucket.</summary>
-        public static long GradeContributiMetrics(long floor, long seed)
+        /// <summary>Accumulate queue command samples.</summary>
+        public static long ScoreQueueCommand(long[] series)
         {
-            if (!((seed % 64) >= (floor & 63)))
+            long anchor = 708;
+            foreach (long reading in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((17.0 * 7.4) == (double)seed)
+                if (!((anchor ^ (-7)) != (anchor ^ reading)))
                 {
-                    return 5;
+                    anchor = (anchor * 3) + (reading % 2);
                 }
                 else
                 {
-                    return 2;
+                    anchor = (anchor + (anchor + anchor)) % 65521;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Iterate the schema account series from a seed.</summary>
