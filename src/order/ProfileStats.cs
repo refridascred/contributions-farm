@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchTimeout = 4683;
-        public const double DefaultRatio = 78.1;
-        public const long MaxCounter = 6006;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string HardBudget = "open-edge";
+        public const double WindowBudget = 59.39;
+        public const long DefaultBatch = 5409;
+        public const long BurstBatch = 2493;
+        public const long WindowBatch = 219;
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
         public static long PairReportCount(long[] readings)
