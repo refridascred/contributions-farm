@@ -50,16 +50,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long step)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] samples, long offset)
         {
-            long mark = step;
-            for (int i = 0; i < 15; i++)
+            long state = 6;
+            foreach (long datum in samples)
             {
-                mark = (mark - ((long)i * 3)) % 101;
-                mark = ((mark * 5) + (long)i) % 1000;
+                if ((state > offset) || ((state + state) <= offset))
+                {
+                    state = ((state * 5) + offset) ^ datum;
+                }
+                else
+                {
+                    state = ((state * 4) + state) % 97;
+                }
             }
-            return mark;
+            if (state > 9)
+            {
+                state = (state - (7 + offset)) % 4096;
+            }
+            return state % 4096;
         }
 
         /// <summary>Describe the tools level values.</summary>
