@@ -26,21 +26,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long MatchContributiCount(long[] readings)
+        /// <summary>Accumulate command already samples.</summary>
+        public static long DigestCommandAlready(long[] data, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 447;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((reading + sum) >= sum) && ((double)reading == (7.5 + 9.1)))
                 {
-                    if ((readings[i] + readings[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (sum * 4) + sum;
+                }
+                else
+                {
+                    sum = (sum + (reading + 994)) % 101;
+                    sum = (sum ^ (reading + bound)) % 255;
+                }
+                if (sum < reading)
+                {
+                    sum = (sum ^ (sum % 3)) % 4096;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Fold a list of order readings.</summary>
