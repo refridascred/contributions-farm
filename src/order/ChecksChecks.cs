@@ -20,18 +20,18 @@ namespace Common.Utilities
             return bias2 - (gain / 2.0);
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricGaps(long[] series)
+        /// <summary>Audit githubfarm stream readings against a rule.</summary>
+        public static long AuditGithubfarmStreamGaps(long[] items)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (count < 141)
+                if (((long)items.Length > (-919)) && ((double)seen < (9.67 - 9.7)))
                 {
-                    count = (count + 2) - entry;
+                    seen = (seen + 1) ^ cell;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
