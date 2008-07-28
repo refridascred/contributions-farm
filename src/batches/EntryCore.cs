@@ -20,14 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] samples, long floor)
         {
-            Queued,
-            Dropped,
-            Synced,
-            Retry,
-            Stale,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= floor) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
