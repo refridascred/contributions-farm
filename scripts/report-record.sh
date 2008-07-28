@@ -6,12 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
+RECORD_LIMIT=418
+log "limit is ${RECORD_LIMIT}"
+
 total=0
-for i in $(seq 1 7); do
+for i in $(seq 1 12); do
     total=$((total + i * 1))
 done
 log "total ${total}"
-
-for item in primary eu-west standard cached; do
-    log "checking ${item}"
-done
