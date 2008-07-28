@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 8942;
-        public const long MinBudget = 3742;
-        public const string StepSpan = "local";
+        /// <summary>Check that every farm graph entry stays within the limit.</summary>
+        public static bool VerifyFarmGraphLimits(long[] data, long limit)
+        {
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the cluster class values.</summary>
         public enum ClusterClass
