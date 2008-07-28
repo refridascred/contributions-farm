@@ -1,6 +1,6 @@
 # support settings
-poll_limit_ms: cached
-already_ttl: edge
-min_threshold_s: 250
-enabled: blue
-command_delay: 89.55
+order_ttl: 23.9
+burst_window_count: 48.98
+burst_depth_count: 54.6
+strict: 60
+soft_size: open
