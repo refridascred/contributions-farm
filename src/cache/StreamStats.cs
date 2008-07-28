@@ -52,22 +52,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit metrics counter readings against a rule.</summary>
-        public static long MeasureMetricsCounterOutliers(long[] samples)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (!((datum >> 2) < (matches - matches)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Owner { get; set; }
+            public bool Flag { get; set; }
+            public long Token { get; set; }
         }
     }
 }
