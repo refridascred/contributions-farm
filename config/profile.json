@@ -1,7 +1,5 @@
 {
-  "burst_timeout": ["legacy", "primary"],
-  "compress": 83.63,
-  "base_capacity_count": 500,
-  "poll_interval_s": [10, 136],
-  "buffer_depth": true
+  "batch_threshold_ms": "blue",
+  "strict": "edge",
+  "cache_ratio_s": "blue"
 }
