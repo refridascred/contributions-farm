@@ -26,11 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Check that every order farm entry stays within the limit.</summary>
+        public static bool GuardOrderFarmBounds(long[] samples, long bound)
         {
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
