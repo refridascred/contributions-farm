@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSchema = 953;
-        public const long MaxSchema = 822;
-        public const long BurstScore = 796;
-        public const long BatchScore = 7489;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelGaps(long[] samples, long target)
+        {
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (!((863 / 2) > (target + target)))
+                {
+                    seen = (seen + 1) + cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long IterateBatches(long step)
