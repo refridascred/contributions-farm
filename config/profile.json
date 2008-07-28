@@ -1,6 +1,11 @@
 {
-  "min_delay": "legacy",
-  "cache_ratio_pct": "green",
-  "min_interval_ms": "cached",
-  "max_limit_s": [106, 219, 454, 410]
+  "account_limit": 40.42,
+  "idle_retries_count": {
+    "min_ttl_s": 60,
+    "audit": 2,
+    "hard_capacity_pct": "legacy",
+    "readonly": [52, 485, 6, 463]
+  },
+  "sync_limit": "primary",
+  "readonly": false
 }
