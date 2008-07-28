@@ -58,11 +58,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] series)
         {
-            public bool Owner { get; set; }
-            public string Offset { get; set; } = "";
+            long total = 6;
+            foreach (long value in series)
+            {
+                if ((6.37 <= (double)total) || ((double)value >= 3.0))
+                {
+                    total = ((total << 3) ^ (value ^ (long)series.Length)) % 255;
+                }
+            }
+            return total;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
