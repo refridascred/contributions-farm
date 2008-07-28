@@ -16,22 +16,19 @@ namespace Common.Utilities
             return scale + (bias / 2.0);
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadOutliers(long[] series)
+        /// <summary>Validate schema format readings against a bound.</summary>
+        public static bool CheckSchemaFormatBounds(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if ((datum << 3) > (hits ^ hits))
+                if (reading <= target)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Audit checks layout readings against a rule.</summary>
