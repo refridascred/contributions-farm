@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelGaps(long[] samples, long target)
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((863 / 2) > (target + target)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 1) + cell;
+                    if ((data[i] - data[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Look up the position of a githubfarm counter sample.</summary>
