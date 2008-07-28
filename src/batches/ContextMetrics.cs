@@ -31,31 +31,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long limit, long origin)
+        /// <summary>Count the githubfarm session entries that pass the check.</summary>
+        public static long MeasureGithubfarmSessionHits(long[] data)
         {
-            if ((limit % 5) < (limit + origin))
+            long count = 0;
+            foreach (long reading in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (((origin % 5) <= origin) || ((origin - origin) < origin))
+                if ((reading * 5) >= count)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((28 + limit) >= origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
