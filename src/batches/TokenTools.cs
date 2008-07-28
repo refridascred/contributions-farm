@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Measure how many githubfarm window samples are out of range.</summary>
+        public static long CountGithubfarmWindowGaps(long[] values)
         {
-            Stale,
-            Draft,
-            Closed,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((datum + hits) < hits)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
