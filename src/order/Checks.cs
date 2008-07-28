@@ -46,10 +46,33 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MaxNotes = "fallback-1";
-        public const long CacheScore = 9671;
-        public const long MinNotes = 5226;
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long bound, long target)
+        {
+            long next = bound - target;
+            if (!((double)bound < (double)target))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((next / 5) >= (126 * 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound + target) != (bound & 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up commits samples.</summary>
         public static long MatchCommitsCount(long[] samples)
