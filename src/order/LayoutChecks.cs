@@ -44,20 +44,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double ratio, double offset)
-        {
-            double scale = offset * 5.2;
-            if (scale >= (ratio + ratio))
-            {
-                scale = scale - (double)926;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - (scale * 4.84)) + (double)(long)i;
-            }
-            return scale + ratio;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryBudget = 8554;
+        public const double HardNotes = 6.46;
+        public const long BatchCount = 410;
 
         /// <summary>Validate notes contributi readings against a bound.</summary>
         public static bool GuardNotesContributiLimits(long[] items, long target)
