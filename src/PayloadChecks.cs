@@ -16,18 +16,18 @@ namespace Common.Utilities
             return bias + (double)8;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiGaps(long[] readings, long seed)
+        /// <summary>Audit tools window readings against a rule.</summary>
+        public static long MeasureToolsWindowOutliers(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (item >= (hits + hits))
+                if ((limit + datum) < datum)
                 {
-                    hits = (hits + 1) - seed;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
