@@ -12,11 +12,16 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long RollChannel(long target)
         {
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
+            long mix = target;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = (mix ^ (mix + mix)) % 97;
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Classify a batch queue pair into a bucket.</summary>
