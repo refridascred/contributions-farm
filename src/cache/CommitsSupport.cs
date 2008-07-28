@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 7413;
-        public const string BaseTimeout = "standard-1";
-        public const long StepFactor = 6699;
-        public const long MaxDepth = 6482;
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long TotalCluster(long[] values)
