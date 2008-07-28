@@ -27,15 +27,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] items)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long result = 8;
-            foreach (long sample in items)
-            {
-                result = ((result + (61 & 255)) % 4096) - sample;
-            }
-            return result;
+            public double Total { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Compare every pair of entry stats readings.</summary>
