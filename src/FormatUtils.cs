@@ -33,19 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyRange(long[] series, long seed)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsBounds(long[] items, long offset)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if (entry != seed)
+                if (value >= offset)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
