@@ -1,7 +1,9 @@
-id,count,active
-1,26.48,98.22
-2,blue,941
-3,61.95,stable
-4,778,staging
-5,open,86.09
-6,78.37,813
+id,token,state,count,region
+1,87,756,69.98,49.67
+2,91.87,green,strict,cached
+3,984,210,staging,469
+4,10.01,latest,cached,eu-west
+5,local,127,461,957
+6,48.66,595,85.06,stable
+7,375,latest,216,local
+8,29.73,32.51,824,5.28
