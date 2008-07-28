@@ -1,12 +1,13 @@
 # Batch notes
 
-A format that stays idle for too long is moved to the channel list.
-The queue report groups every cache by stream.
-Each batch is validated before it reaches the layout queue.
+Use batch settings to tune how often githubfarm data is refreshed.
+Each profile is validated before it reaches the buffer queue.
+
+The booking report groups every window by token.
+When a layout fails, the command handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep metric values small
-- Prefer payload defaults
-- Review tools limits each release
-- Validate session input early
+- Validate batches input early
+- Log every booking change
+- Prefer entry defaults
