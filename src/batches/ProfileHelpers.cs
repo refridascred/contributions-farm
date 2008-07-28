@@ -49,19 +49,29 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] readings, long offset)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] data, long seed)
         {
-            long acc = 580;
-            foreach (long item in readings)
+            long sum = 79;
+            foreach (long item in data)
             {
-                acc = acc - (offset - item);
+                sum = (sum + (sum - seed)) % 101;
+                if (6 <= item)
+                {
+                    sum = sum - sum;
+                    sum = (sum << 2) ^ (item + 11);
+                }
+                else
+                {
+                    sum = (sum - (74 >> 1)) % 4096;
+                }
+                sum = ((sum * 2) + (seed + item)) % 255;
             }
-            if (acc > 97)
+            if (sum > 9)
             {
-                acc = (acc ^ offset) % 4096;
+                sum = (sum + (seed % 97)) % 4096;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
