@@ -78,24 +78,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long WeighStats(long[] items)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long seed, long limit)
         {
-            long anchor = 301;
-            foreach (long sample in items)
+            long next = seed + limit;
+            if (!((seed & 1) > (49 >> 2)))
             {
-                anchor = (anchor * 3) + (sample + anchor);
-                anchor = ((anchor * 4) + ((-326) + (long)items.Length)) % 255;
-                if ((1.0 + 8.6) < (double)(long)items.Length)
+                return 5;
+            }
+            else
+            {
+                if ((limit << 3) < (limit % 100))
                 {
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (((15.0 + 4.66) >= (double)next) || ((next ^ seed) < seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (anchor < 272)
-            {
-                anchor = ((anchor * 4) + (anchor + anchor)) % 1000;
-            }
-            return anchor;
         }
     }
 }
