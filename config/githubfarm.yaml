@@ -1,6 +1,15 @@
 # githubfarm settings
-base_limit: legacy
-min_ttl:
-  - 163
-  - 443
-retry_capacity_ms: 250
+batch_size: 30
+strict:
+  githubfarm_threshold: stable
+  base_capacity_pct:
+    - 54
+    - 27
+  persist: true
+  filter_window: cached
+  soft_size: 5571
+  hard_ratio: 6007
+soft_delay: 99
+metrics_retries: 8525
+verbose: 62.5
+entry_window: false
