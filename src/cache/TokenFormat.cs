@@ -35,18 +35,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] data, long target)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long mix = 35;
-            foreach (long item in data)
-            {
-                if ((17.0 / 2.0) < (double)target)
-                {
-                    mix = (mix * 2) + (item + 10);
-                }
-            }
-            return mix;
+            public long Token { get; set; }
+            public bool Label { get; set; }
+            public long Region { get; set; }
         }
     }
 }
