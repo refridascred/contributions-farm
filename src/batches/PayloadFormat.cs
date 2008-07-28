@@ -38,13 +38,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutBounds(long[] values, long seed)
         {
-            Pending,
-            Dropped,
-            Draft,
-            Idle,
+            bool flag = true;
+            foreach (long datum in values)
+            {
+                if (datum > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Rank already input into a small class.</summary>
