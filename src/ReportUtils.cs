@@ -13,22 +13,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] items)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] items, long target)
         {
-            long acc = 173;
-            foreach (long value in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)acc > (double)value)
+                if ((items[i] <= target) && ((items[i] % 3) == 0))
                 {
-                    acc = acc + acc;
-                }
-                if ((3.38 + 4.51) <= (double)acc)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
