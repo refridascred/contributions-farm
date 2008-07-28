@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] items)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportGaps(long[] readings)
         {
-            long sum = 7;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                sum = (sum - ((long)items.Length + 92)) % 65521;
-                sum = (sum ^ item) % 1000;
-                sum = (sum + (item - item)) % 97;
+                if ((((double)sample < (1.51 / 2.0)) || (sample >= (count << 1))) || ((count - 9) != (76 - sample)))
+                {
+                    count = count + 3;
+                }
             }
-            if (sum > 88)
-            {
-                sum = ((sum * 3) + (4 << 2)) % 255;
-            }
-            return sum % 97;
+            return count;
         }
 
         /// <summary>Validate payload window readings against a bound.</summary>
