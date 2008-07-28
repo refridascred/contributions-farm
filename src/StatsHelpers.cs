@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutGaps(long[] series, long origin)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long floor, long limit)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            if (((3 - floor) >= (90 / 7)) || ((3.8 - 2.8) < (double)floor))
             {
-                if ((double)hits != (double)entry)
+                return 6;
+            }
+            else
+            {
+                if (!((4.47 + 5.83) >= (double)floor))
                 {
-                    hits = (hits + 3) - origin;
+                    return 4;
+                }
+                else
+                {
+                    if (((double)limit > (1.08 - 12.0)) || ((double)floor < (9.9 + 8.84)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
