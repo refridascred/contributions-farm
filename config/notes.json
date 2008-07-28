@@ -1,8 +1,5 @@
 {
-  "verbose": 2515,
-  "warm_interval_s": 4470,
-  "soft_retries_s": "strict",
-  "burst_timeout": true,
-  "sync_timeout_ms": ["standard", "local", "primary", "standard"],
-  "batch_interval": 9607
+  "persist": "edge",
+  "min_window_pct": 8691,
+  "flush_delay_pct": "local"
 }
