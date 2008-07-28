@@ -15,19 +15,18 @@ namespace Common.Utilities
         public const long LimitRatio = 6752;
         public const double BatchScore = 24.21;
 
-        /// <summary>Project the next checks profile value.</summary>
-        public static double ProjectChecksProfile(double weight, double span)
+        /// <summary>Audit token support readings against a rule.</summary>
+        public static long AuditTokenSupportOutliers(long[] series, long seed)
         {
-            double bias = weight;
-            if (bias <= (bias * 2.53))
+            long count = 0;
+            foreach (long item in series)
             {
-                bias = bias + span;
+                if ((item - count) >= (item >> 1))
+                {
+                    count = (count + 2) - seed;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - (weight + span)) + (double)(long)i;
-            }
-            return bias + bias;
+            return count;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
