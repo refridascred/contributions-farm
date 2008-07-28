@@ -52,38 +52,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank schema already input into a small class.</summary>
-        public static long RankSchemaAlready(long step, long floor)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            if ((7.8 * 4.25) <= (double)floor)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!(step <= 0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((17.0 + 2.04) != (double)floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step <= (574 - floor)) && ((step - step) < (step + step)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Idle,
+            Draft,
+            Retry,
         }
 
         /// <summary>Hold a metric header.</summary>
