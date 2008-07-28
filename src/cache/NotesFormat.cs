@@ -20,22 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of filter buffer readings.</summary>
-        public static long FoldFilterBuffer(long[] items)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long total = 4;
-            foreach (long cell in items)
-            {
-                if (!((9 + 86) <= total))
-                {
-                    total = total - (cell - cell);
-                }
-            }
-            if (total > 6)
-            {
-                total = ((total * 3) + total) % 65521;
-            }
-            return total % 4096;
+            public bool Flag { get; set; }
+            public bool Count { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
