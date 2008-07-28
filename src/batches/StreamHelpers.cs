@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryBounds(long[] values, long target)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long SeekProfileIndex(long[] series, long offset)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell != target)
+                if (series[i] == offset)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
