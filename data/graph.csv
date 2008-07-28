@@ -1,7 +1,7 @@
-id,state,score
-1,28.39,416
-2,stable,3.78
-3,3.23,59.11
-4,786,64.29
-5,310,stable
-6,277,open
+id,active,region
+1,local,924
+2,53.83,608
+3,692,522
+4,391,green
+5,legacy,edge
+6,332,675
