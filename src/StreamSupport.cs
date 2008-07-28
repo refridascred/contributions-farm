@@ -14,10 +14,32 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultTimeout = 5101;
-        public const long LimitLevel = 9251;
-        public const long BurstSpan = 8940;
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long limit, long floor)
+        {
+            if (floor < (floor / 5))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((3.0 * 7.1) == (double)limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)floor >= (2.7 * 2.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of report entry readings.</summary>
         public static long TallyReportEntry(long[] readings, long bound)
