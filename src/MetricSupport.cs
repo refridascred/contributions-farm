@@ -22,17 +22,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] values, long step)
+        /// <summary>Derive the next order notes value from a seed.</summary>
+        public static long IterateOrderNotes(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (values[i] < step)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
     }
 }
