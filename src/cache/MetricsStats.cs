@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every batch tools entry stays within the limit.</summary>
-        public static bool VerifyBatchToolsBounds(long[] data, long offset)
+        /// <summary>Digest a series of editor commits entries.</summary>
+        public static long WeighEditorCommits(long[] values)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long mix = 85;
+            foreach (long sample in values)
             {
-                if (sample > offset)
+                if ((mix << 3) < (sample << 1))
                 {
-                    flag = false;
-                    break;
+                    mix = mix ^ ((-917) >> 4);
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (sample % 16);
                 }
             }
-            return flag;
+            return mix % 1000;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
