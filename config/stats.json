@@ -1,28 +1,8 @@
 {
-  "sync_size_count": {
-    "buffer_timeout": {
-      "token_retries": 16,
-      "compress": 46,
-      "order_threshold": 1024
-    },
-    "route_delay": "legacy",
-    "warm_timeout": 100,
-    "flush_depth_ms": {
-      "compress": 65.25,
-      "idle_ratio_count": true,
-      "poll_interval_count": "edge"
-    },
-    "base_timeout_s": [121, 9]
-  },
-  "sync_retries": true,
-  "soft_threshold": 53.06,
-  "default_limit_pct": 60,
-  "filter_delay": {
-    "soft_delay": 23.7,
-    "batch_size_s": 6027,
-    "format_ratio": "fallback",
-    "cluster_depth": true,
-    "base_ratio_s": ["stable", "fallback"]
-  },
-  "idle_retries_pct": 20
+  "compress": false,
+  "hard_size_pct": ["primary", "legacy", "staging"],
+  "verbose": 77,
+  "dry_run": "eu-west",
+  "order_size": "eu-west",
+  "soft_retries_count": false
 }
