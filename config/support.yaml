@@ -1,23 +1,7 @@
 # support settings
-contributi_window:
-  min_ttl: 79.12
-  idle_limit: false
-  context_ratio:
-    - primary
-    - latest
-    - standard
-    - edge
-  warm_window: 42.94
-stats_depth: open
-enabled: latest
-base_interval_s: 60
-cache_window_s:
-  sync_window_ms: 70
-  strict: 7984
-  enabled: blue
-  editor_depth:
-    verbose: primary
-    tools_size: stable
-    hard_depth_count: 6252
-  soft_ratio: 250
-  commits_threshold: latest
+window_depth:
+  - open
+  - local
+  - open
+warm_threshold: 92
+base_window: primary
