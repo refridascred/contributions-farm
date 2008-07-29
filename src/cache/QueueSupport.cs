@@ -36,17 +36,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] items, long limit)
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] items)
         {
+            long seen = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] >= limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] + items[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
