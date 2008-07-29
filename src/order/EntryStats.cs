@@ -60,17 +60,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first session entry entry that matches the target.</summary>
-        public static long SeekSessionEntryIndex(long[] samples, long step)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryLimits(long[] data, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if ((samples[i] < step) && ((samples[i] % 3) != 0))
+                if (entry <= floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
