@@ -55,22 +55,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportOutliers(long[] readings, long step)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double BlendChannel(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            double drift = rate * 1.42;
+            if (drift > drift)
             {
-                if ((1.53 * 2.0) >= (double)matches)
-                {
-                    matches = ((matches + 2) ^ sample) - step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                drift = (drift + (double)99) - bias;
             }
-            return matches;
+            else
+            {
+                drift = drift + (rate + rate);
+            }
+            return drift + (double)651;
         }
     }
 }
