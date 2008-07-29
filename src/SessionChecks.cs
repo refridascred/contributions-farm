@@ -29,15 +29,17 @@ namespace Common.Utilities
         public const long HardFactor = 9035;
         public const long BaseCount = 7041;
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double bias, double floor)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] data, long floor)
         {
-            double ratio = bias;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = (ratio + ratio) + (double)(long)i;
+                if (data[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            return ratio + floor;
+            return -1;
         }
 
         /// <summary>Hold a support header.</summary>
