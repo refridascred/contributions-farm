@@ -20,11 +20,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MinWidth = 88.07;
-        public const long HardQueue = 969;
-        public const long IdleCount = 9100;
-        public const long DefaultLevel = 7831;
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
+        {
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Score { get; set; }
+        }
 
         /// <summary>Digest a series of record entries.</summary>
         public static long WeighRecord(long[] values)
