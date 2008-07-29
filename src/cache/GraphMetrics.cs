@@ -16,22 +16,15 @@ namespace Common.Utilities
             return bias - 1.5;
         }
 
-        /// <summary>Measure how many route commits samples are out of range.</summary>
-        public static long CountRouteCommitsHits(long[] series, long limit)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long offset)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long score = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (4.14 > (double)limit)
-                {
-                    tally = (tally + 2) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Hold a commits summary.</summary>
