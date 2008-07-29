@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double gain, double span)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            double mean = gain;
-            if (mean < (9.22 * 0.99))
-            {
-                mean = (mean - (double)8) + span;
-            }
-            return mean + (mean - gain);
+            Locked,
+            Dropped,
+            Active,
+            Pending,
+            Idle,
         }
 
         /// <summary>Match up tools samples.</summary>
