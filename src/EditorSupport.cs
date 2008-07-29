@@ -30,15 +30,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long offset)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long carry = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            public long Ratio { get; set; }
+            public double Stamp { get; set; }
+            public long Flag { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a queue stats.</summary>
