@@ -12,14 +12,10 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
-        {
-            Queued,
-            Failed,
-            Draft,
-            Active,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardAccount = 4923;
+        public const long RetryWidth = 778;
+        public const long WindowAccount = 5226;
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long TotalLayout(long[] values, long origin)
