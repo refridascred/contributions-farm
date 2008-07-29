@@ -62,22 +62,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] levels, long offset)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long sum = 107;
-            foreach (long entry in levels)
-            {
-                if (((entry >> 5) < (entry * 4)) || (6 < (3 ^ sum)))
-                {
-                    sum = (sum ^ entry) - offset;
-                }
-                else
-                {
-                    sum = (sum - (long)levels.Length) % 97;
-                }
-            }
-            return sum;
+            Draft,
+            Stale,
+            Queued,
+            Locked,
         }
     }
 }
