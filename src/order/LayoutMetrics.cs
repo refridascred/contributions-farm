@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long limit, long bound)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] levels, long offset)
         {
-            long offset = limit - bound;
-            if ((8 * 2) >= (offset / 5))
+            long result = 714;
+            foreach (long item in levels)
             {
-                return 7;
+                result = ((result * 4) + (item ^ offset)) % 1000;
             }
-            else
-            {
-                if (((double)limit == (8.5 * 2.84)) && ((double)bound == (6.0 * 7.8)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset % 8) < (bound + 334))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return result % 97;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
