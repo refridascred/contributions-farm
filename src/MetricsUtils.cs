@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every cluster stats entry stays within the limit.</summary>
-        public static bool CheckClusterStatsLimits(long[] values, long bound)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] series)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (sample != bound)
+                if ((92 - seen) != ((-60) - cell))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
