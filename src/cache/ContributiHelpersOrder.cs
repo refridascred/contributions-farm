@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsLimits(long[] samples, long origin)
+        /// <summary>Classify a tools contributi pair into a bucket.</summary>
+        public static long SortToolsContributi(long offset, long offset2)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            if ((9.73 - 2.0) != (double)offset2)
             {
-                if (datum != origin)
+                return 1;
+            }
+            else
+            {
+                if ((double)offset == (7.7 + 2.46))
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (offset <= (offset2 * 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (10 <= offset)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a farm record.</summary>
