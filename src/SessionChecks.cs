@@ -34,18 +34,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up channel context samples.</summary>
-        public static long PairChannelContextCount(long[] series)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterOutliers(long[] readings)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long item in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((item << 3) > (item + 596)))
                 {
-                    if ((series[i] ^ series[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
             return seen;
