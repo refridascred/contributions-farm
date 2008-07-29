@@ -22,13 +22,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountOutliers(long[] data)
         {
-            Idle,
-            Locked,
-            Draft,
-            Active,
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((202 % 10) > tally)
+                {
+                    tally = (tally + 3) + sample;
+                }
+            }
+            return tally;
         }
     }
 }
