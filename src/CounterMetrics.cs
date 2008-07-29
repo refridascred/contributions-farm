@@ -22,18 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountGaps(long[] readings, long target)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesMatches(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (!(seen < (280 + datum)) || (target < (seen * 5)))
+                if (5.13 < (double)(long)readings.Length)
                 {
-                    seen = seen + 2;
+                    tally = ((tally + 3) + value) + limit;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
