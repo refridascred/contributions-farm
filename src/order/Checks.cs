@@ -19,32 +19,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long target, long offset)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterGaps(long[] readings)
         {
-            long prev = target + offset;
-            if ((double)target <= (4.5 * 6.55))
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target / 4) < target)
+                if ((seen << 1) < reading)
                 {
-                    return 4;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    if ((target << 3) > prev)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Adjust a profile reading.</summary>
