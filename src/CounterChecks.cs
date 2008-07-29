@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
-        {
-            public double Score { get; set; }
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitStats = 7139;
+        public const long CacheStats = 7822;
+        public const long WindowStats = 781;
+        public const long MaxScore = 2875;
+        public const long LimitTimeout = 3225;
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long CountFarmMatches(long[] levels)
