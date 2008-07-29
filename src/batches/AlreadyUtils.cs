@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long origin, long origin2)
+        /// <summary>Blend two already command measurements.</summary>
+        public static double AdjustAlreadyCommand(double bias, double span)
         {
-            long edge = origin + origin2;
-            if ((20.0 * 5.35) == (double)origin2)
+            double bias2 = (double)(3 % 8);
+            if (bias2 <= span)
             {
-                return 7;
+                bias2 = bias2 + (double)21;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if (((double)edge < (9.3 + 1.7)) || ((origin >> 4) < (81 - origin)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (origin >= (origin << 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                bias2 = (bias2 - bias) - (double)(long)i;
             }
+            return bias2 + (double)51;
         }
 
         /// <summary>Describe the checks state values.</summary>
