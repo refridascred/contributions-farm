@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BaseRatio = "standard-v2";
-        public const long IdleSession = 8965;
-        public const double IdleRatio = 18.89;
-        public const double DefaultRatio = 56.33;
-        public const double BurstSession = 66.95;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesGaps(long[] data)
+        {
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((((double)seen <= (6.3 - 20.0)) || ((seen % 7) <= (datum / 9))) || ((seen + datum) != (datum - seen)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many record commits samples are out of range.</summary>
         public static long AuditRecordCommitsGaps(long[] items, long offset)
