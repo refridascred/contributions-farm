@@ -33,11 +33,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] levels, long bound)
         {
-            public string Region { get; set; } = "";
-            public bool Owner { get; set; }
+            long acc = 43;
+            foreach (long cell in levels)
+            {
+                acc = (acc - cell) - bound;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate githubfarm queue samples.</summary>
