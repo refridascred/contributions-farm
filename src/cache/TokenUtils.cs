@@ -34,11 +34,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double DefaultTimeout = 11.53;
-        public const long StepLevel = 1612;
-        public const long IdleFactor = 9982;
-        public const long BatchFactor = 257;
-        public const long CacheMetrics = 5006;
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
+        {
+            public long Owner { get; set; }
+            public bool Total { get; set; }
+            public string Stamp { get; set; } = "";
+        }
     }
 }
