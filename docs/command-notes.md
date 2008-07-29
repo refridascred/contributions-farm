@@ -1,11 +1,13 @@
 # Command notes
 
-The batch report groups every channel by editor.
-Each buffer is validated before it reaches the report queue.
-When a contributi fails, the already handler retries a few times before giving up.
+Keep layout and profile names short and lowercase.
+Defaults for layout live in the config folder and can be overridden per environment.
+
+A report that stays idle for too long is moved to the command list.
+The channel helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep context values small
-- Review filter limits each release
-- Prefer cache defaults
+- Prefer report defaults
+- Document new support fields
+- Keep cluster values small
