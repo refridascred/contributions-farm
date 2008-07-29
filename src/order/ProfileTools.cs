@@ -69,14 +69,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchBounds(long[] series, long target)
         {
-            Failed,
-            Queued,
-            Draft,
-            Pending,
-            Synced,
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
