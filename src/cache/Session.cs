@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long seed, long target)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            if (target >= (seed & 31))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed >= (8.3 + 18.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)target < 5.6)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public bool Limit { get; set; }
+            public double Level { get; set; }
+            public string Mode { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a stats snapshot.</summary>
