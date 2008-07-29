@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
-        {
-            Draft,
-            Synced,
-            Retry,
-            Queued,
-            Idle,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 9109;
+        public const string SoftLevel = "cached-edge";
+        public const long WindowReport = 7477;
+        public const string RetryScore = "primary-1";
 
         /// <summary>Hold a farm record.</summary>
         public sealed class FarmRecord
