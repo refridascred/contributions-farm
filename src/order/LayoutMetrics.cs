@@ -19,31 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank farm stats input into a small class.</summary>
-        public static long SortFarmStats(long floor, long bound)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] levels, long origin)
         {
-            if ((bound << 2) > floor)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((bound ^ floor) <= bound) || ((4.0 / 8.0) < (1.1 - 0.7)))
+                if (levels[i] == origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)floor > (13.0 + 5.6))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
