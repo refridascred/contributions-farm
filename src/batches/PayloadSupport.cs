@@ -38,21 +38,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of record support readings.</summary>
-        public static long PairRecordSupportCount(long[] levels)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) == 10)
+                    if ((samples[i] ^ samples[j]) < 17)
                     {
-                        matches = matches + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
