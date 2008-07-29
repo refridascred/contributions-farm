@@ -1,7 +1,8 @@
 # support settings
-window_depth:
-  - open
-  - local
-  - open
-warm_threshold: 92
-base_window: primary
+strict:
+  - 126
+  - 255
+  - 453
+  - 204
+commits_ttl: staging
+flush_limit_pct: false
