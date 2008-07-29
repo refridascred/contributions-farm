@@ -84,22 +84,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterHits(long[] samples)
+        /// <summary>Audit window metrics readings against a rule.</summary>
+        public static long TallyWindowMetricsOutliers(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (3 <= tally)
+                if ((double)item > (8.39 * 9.8))
                 {
-                    tally = (tally + 2) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = (count + 3) + step;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
