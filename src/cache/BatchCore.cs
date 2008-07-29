@@ -43,19 +43,12 @@ namespace Common.Utilities
         public const long MinProfile = 8658;
         public const string RetryProfile = "latest-v2";
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double weight, double offset)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            double gain = weight;
-            if (gain > (gain / 2.0))
-            {
-                gain = (gain + weight) + offset;
-            }
-            else
-            {
-                gain = gain + 4.0;
-            }
-            return gain - weight;
+            Closed,
+            Pending,
+            Active,
         }
     }
 }
