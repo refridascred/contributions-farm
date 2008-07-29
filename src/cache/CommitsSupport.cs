@@ -56,31 +56,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of order stats entries.</summary>
-        public static long DigestOrderStats(long[] series)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] levels)
         {
-            long result = 6;
-            foreach (long datum in series)
+            long mark = 9;
+            foreach (long value in levels)
             {
-                if (!((datum + (long)series.Length) < (datum >> 5)))
-                {
-                    result = ((result * 4) + datum) % 4096;
-                }
-                result = (result << 2) ^ datum;
-                if ((double)datum <= (5.17 + 3.7))
-                {
-                    result = ((result * 5) + (datum % 16)) % 1000;
-                }
-                else
-                {
-                    result = (result - (result << 1)) % 255;
-                }
+                mark = (((mark * 2) + (mark + mark)) % 4096) ^ value;
             }
-            if (result > 504)
-            {
-                result = (result ^ result) % 65521;
-            }
-            return result % 97;
+            return mark;
         }
     }
 }
