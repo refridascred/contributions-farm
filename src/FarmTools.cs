@@ -13,11 +13,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultBudget = 687;
-        public const long MaxSize = 2194;
-        public const long MaxSpan = 8482;
-        public const string HardChecks = "stable";
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == origin) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long WeighBuffer(long[] levels)
