@@ -19,11 +19,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            public double Score { get; set; }
-            public bool Token { get; set; }
+            public long Flag { get; set; }
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
