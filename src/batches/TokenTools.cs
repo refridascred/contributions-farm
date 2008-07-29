@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
-        {
-            Locked,
-            Synced,
-            Done,
-            Stale,
-            Active,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultSpan = 9918;
+        public const long MinRatio = 8916;
+        public const long IdleMetrics = 2679;
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
