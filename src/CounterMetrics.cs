@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long step, long seed)
-        {
-            long offset = step + seed;
-            if ((offset * 4) >= (seed ^ step))
-            {
-                return 2;
-            }
-            else
-            {
-                if (offset <= (offset % 100))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string RetryReport = "legacy-v2";
+        public const long HardReport = 4381;
+        public const double MinReport = 2.62;
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long RollEditor(long step)
