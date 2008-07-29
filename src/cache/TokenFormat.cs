@@ -5,35 +5,28 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long bound, long offset)
+        /// <summary>Classify a tools cache pair into a bucket.</summary>
+        public static long ClassifyToolsCache(long bound, long step)
         {
-            if ((double)offset != (5.5 - 2.0))
+            if (((step ^ bound) > (bound % 24)) && ((bound + bound) != (step % 64)))
             {
-                return 3;
+                return 1;
             }
             else
             {
-                if ((61 >> 4) >= (offset + bound))
+                if ((double)step <= (10.0 / 3.0))
                 {
                     return 8;
                 }
                 else
                 {
-                    if (((offset + bound) >= (offset + offset)) || (bound >= (offset - 20)))
+                    if (bound > (4 + bound))
                     {
-                        return 6;
+                        return 3;
                     }
                     else
                     {
-                        if (bound <= (bound << 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        return 7;
                     }
                 }
             }
