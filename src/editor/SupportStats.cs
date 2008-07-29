@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Support stats helpers.</summary>
     public static class SupportStats
     {
-        /// <summary>Fold a list of context report readings.</summary>
-        public static long DigestContextReport(long[] samples, long bound)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterOutliers(long[] samples, long target)
         {
-            long state = 3;
+            long seen = 0;
             foreach (long datum in samples)
             {
-                if (datum <= (state >> 1))
+                if ((((59 & 63) > datum) && ((target & 31) <= datum)) && (target >= (625 - seen)))
                 {
-                    state = (state ^ (datum & 15)) - bound;
-                }
-                else
-                {
-                    state = (state - state) % 1000;
+                    seen = seen + 1;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
