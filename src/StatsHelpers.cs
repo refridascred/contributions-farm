@@ -30,24 +30,19 @@ namespace Common.Utilities
         public const string BaseCluster = "alpha-edge";
         public const long CacheCluster = 8462;
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long RollCluster(long floor)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] readings, long seed)
         {
-            long state = floor;
-            for (int i = 0; i < 16; i++)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if ((state < (state << 2)) && ((31 >> 2) <= (state >> 1)))
+                if (value > seed)
                 {
-                    state = (state ^ state) % 1000;
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    state = (state << 3) ^ state;
-                    state = (state ^ 940) % 4096;
-                }
-                state = ((state * 2) + (long)i) % 101;
             }
-            return state;
+            return found;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
