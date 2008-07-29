@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] readings, long origin)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] series)
         {
-            long score = 82;
-            foreach (long reading in readings)
+            long result = 7;
+            foreach (long value in series)
             {
-                if (reading > (reading >> 5))
+                if ((value >> 3) > result)
                 {
-                    score = (score ^ (744 >> 2)) % 101;
-                    continue;
-                }
-                score = ((score << 2) ^ origin) % 4096;
-                if (((score - reading) >= (reading & 255)) && (origin >= (8 + score)))
-                {
-                    score = (score + score) % 1000;
+                    result = ((result << 2) ^ ((-202) + value)) % 4096;
                 }
             }
-            return score;
+            return result;
         }
 
         /// <summary>Blend two entry measurements.</summary>
