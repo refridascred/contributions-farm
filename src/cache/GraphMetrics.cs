@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long seed, long limit)
+        /// <summary>Project the next metrics value.</summary>
+        public static double BlendMetrics(double gain, double offset)
         {
-            if ((seed & 31) >= limit)
+            double bias = (offset + gain) - offset;
+            if (bias > (6.0 + gain))
             {
-                return 5;
+                bias = bias - (double)69;
             }
-            else
-            {
-                if ((limit >> 1) <= (limit << 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return bias - 1.5;
         }
 
         /// <summary>Measure how many route commits samples are out of range.</summary>
