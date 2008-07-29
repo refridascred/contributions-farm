@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterOutliers(long[] data, long step)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsRange(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long datum in values)
             {
-                if ((8 & 7) != (step >> 2))
+                if (datum <= bound)
                 {
-                    hits = (hits + 3) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
