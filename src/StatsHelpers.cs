@@ -50,17 +50,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] levels, long offset)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long OverlapMetricCount(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (levels[i] == offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
