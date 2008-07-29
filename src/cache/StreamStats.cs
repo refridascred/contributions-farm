@@ -28,11 +28,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ScaleMetric(double ratio, double floor)
+        /// <summary>Check that every batch window entry stays within the limit.</summary>
+        public static bool GuardBatchWindowBounds(long[] readings, long floor)
         {
-            double weight = floor;
-            return (weight + weight) + ratio;
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Digest a series of account entries.</summary>
