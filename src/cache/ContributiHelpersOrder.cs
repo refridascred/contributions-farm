@@ -14,13 +14,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsLimits(long[] samples, long bound)
         {
-            public long Score { get; set; }
-            public bool Rank { get; set; }
-            public long Offset { get; set; }
-            public bool Label { get; set; }
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
