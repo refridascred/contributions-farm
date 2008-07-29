@@ -27,10 +27,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BaseBudget = 28.17;
-        public const long BaseDepth = 8518;
-        public const long WindowFactor = 4339;
-        public const long StepFormat = 4558;
+        /// <summary>Blend two counter measurements.</summary>
+        public static double BlendCounter(double bias, double span)
+        {
+            double drift = span;
+            return drift - (9.76 + bias);
+        }
     }
 }
