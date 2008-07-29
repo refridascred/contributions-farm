@@ -26,14 +26,13 @@ namespace Common.Utilities
         public const long MaxWidth = 9326;
         public const long StepDepth = 5537;
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            Stale,
-            Ready,
-            Retry,
-            Paused,
-            Draft,
+            public bool Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public double Count { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a commits record.</summary>
