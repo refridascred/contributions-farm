@@ -74,19 +74,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit command batches readings against a rule.</summary>
-        public static long TallyCommandBatchesMatches(long[] values)
-        {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((3 * 2) > (sample >> 2))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowCount = 4145;
+        public const double CacheContext = 85.35;
+        public const long LimitCount = 1554;
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
