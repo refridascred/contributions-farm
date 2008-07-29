@@ -67,11 +67,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 1321;
-        public const long IdleMetric = 4817;
-        public const long HardMetric = 8916;
-        public const string HardFactor = "stable-1";
-        public const long MinFactor = 6354;
+        /// <summary>Measure how many command token samples are out of range.</summary>
+        public static long CountCommandTokenOutliers(long[] data, long offset)
+        {
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (((offset - cell) < (count / 5)) || (0.63 >= (double)count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
