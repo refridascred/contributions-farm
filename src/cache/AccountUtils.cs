@@ -50,23 +50,31 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] levels, long floor)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long bound, long seed)
         {
-            long carry = 1;
-            foreach (long sample in levels)
+            if ((2 / 5) >= (bound - bound))
             {
-                carry = ((carry * 3) + (sample & 31)) % 1000;
-                if ((4 - floor) > (carry - sample))
+                return 2;
+            }
+            else
+            {
+                if (bound <= (seed >> 2))
                 {
-                    carry = ((carry << 2) ^ sample) % 4096;
+                    return 1;
                 }
                 else
                 {
-                    carry = carry + (4 + sample);
+                    if (((seed + bound) <= (bound + seed)) && ((7.35 + 7.5) <= (double)bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return carry % 1000;
         }
     }
 }
