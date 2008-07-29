@@ -58,15 +58,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double rate, double floor)
+        /// <summary>Audit notes channel readings against a rule.</summary>
+        public static long MeasureNotesChannelGaps(long[] data)
         {
-            double drift = rate;
-            if (drift <= rate)
+            long count = 0;
+            foreach (long reading in data)
             {
-                drift = drift + (floor - 3.27);
+                if ((reading % 3) == (28 - reading))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return drift - rate;
+            return count;
         }
     }
 }
