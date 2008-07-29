@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Iterate the graph batch series from a seed.</summary>
-        public static long DeriveGraphBatch(long offset)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] readings, long origin)
         {
-            long sum = offset;
-            for (int i = 0; i < 5; i++)
+            long acc = 436;
+            foreach (long value in readings)
             {
-                sum = ((sum * 2) + (sum + sum)) % 97;
-                sum = ((sum * 2) + (long)i) % 97;
+                if (acc >= (value << 1))
+                {
+                    acc = (acc + 7) % 1000;
+                }
             }
-            return sum;
+            if (acc < 77)
+            {
+                acc = ((acc * 3) + (origin ^ acc)) % 65521;
+            }
+            return acc % 97;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
