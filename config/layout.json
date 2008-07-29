@@ -1,8 +1,7 @@
 {
-  "checks_limit": 8464,
-  "stats_limit": ["blue", "open"],
-  "cache_window": "green",
-  "editor_interval": "staging",
-  "base_threshold": 24.11,
-  "record_ttl": 77
+  "poll_threshold_ms": 4517,
+  "audit": [258, 192, 339],
+  "session_ratio": "local",
+  "channel_size": "eu-west",
+  "retry_ratio_ms": 9403
 }
