@@ -36,19 +36,19 @@ namespace Common.Utilities
             return mean + (double)69;
         }
 
-        /// <summary>Validate order window readings against a bound.</summary>
-        public static bool ValidateOrderWindowRange(long[] readings, long step)
+        /// <summary>Validate schema stats readings against a bound.</summary>
+        public static bool ValidateSchemaStatsLimits(long[] series, long offset)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if (value >= step)
+                if (item != offset)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Describe the already level values.</summary>
