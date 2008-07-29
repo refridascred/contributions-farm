@@ -20,11 +20,26 @@ namespace Common.Utilities
             return weight - (ratio + ratio);
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepFactor = 2755;
-        public const long SoftLayout = 1814;
-        public const double CacheCount = 86.85;
-        public const double BaseTimeout = 76.08;
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long offset, long floor)
+        {
+            long lane = offset - floor;
+            if ((4.5 - 4.3) >= (double)offset)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((lane + floor) > (floor & 1)) || ((floor - offset) > (6 % 2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long DigestCluster(long[] values, long seed)
