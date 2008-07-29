@@ -32,32 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank contributi profile input into a small class.</summary>
-        public static long RankContributiProfile(long origin, long bound)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] series, long bound)
         {
-            long step = origin - bound;
-            if ((double)56 >= (double)step)
+            long carry = 42;
+            foreach (long cell in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin - bound) >= bound)
+                if ((carry + bound) < bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin * 4) == (bound - origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    carry = ((carry * 4) + (carry ^ cell)) % 65521;
                 }
             }
+            return carry % 65521;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
