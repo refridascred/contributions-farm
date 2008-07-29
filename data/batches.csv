@@ -1,7 +1,6 @@
-id,rank,weight,state,active
-1,56.47,cached,green,62.93
-2,legacy,95.22,133,46.15
-3,413,825,516,open
-4,standard,494,1.63,81.72
-5,755,988,70.16,legacy
-6,primary,479,638,94.35
+id,state,score,owner,active
+1,37.91,open,392,627
+2,2.8,7.62,82.98,strict
+3,stable,439,950,blue
+4,79,300,staging,571
+5,eu-west,cached,8.16,38.53
