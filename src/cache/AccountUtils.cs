@@ -42,23 +42,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next route layout value.</summary>
-        public static double ProjectRouteLayout(double weight, double floor)
+        /// <summary>Iterate the entry githubfarm series from a seed.</summary>
+        public static long DeriveEntryGithubfarm(long bound)
         {
-            double gain = (double)48 * 1.6;
-            if (gain > 3.0)
+            long mix = bound;
+            for (int i = 0; i < 7; i++)
             {
-                gain = gain + 7.9;
+                if (((double)bound <= 2.43) && ((long)i >= (bound / 9)))
+                {
+                    mix = mix + (mix >> 3);
+                    break;
+                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            else
-            {
-                gain = gain + (gain * 6.75);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - floor) + (double)(long)i;
-            }
-            return gain + weight;
+            return mix;
         }
     }
 }
