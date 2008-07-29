@@ -39,10 +39,12 @@ namespace Common.Utilities
             return (bias2 + (double)210) + span;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBatches = 1331;
-        public const long MinCount = 1066;
-        public const long BaseBatches = 166;
+        /// <summary>Project the next entry value.</summary>
+        public static double AdjustEntry(double ratio, double bias)
+        {
+            double load = (ratio / 8.0) / 6.0;
+            return load - bias;
+        }
 
         /// <summary>Fold a list of session profile readings.</summary>
         public static long FoldSessionProfile(long[] levels, long offset)
