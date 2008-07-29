@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a support record figure with a bias.</summary>
-        public static double SmoothSupportRecord(double gain, double floor)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long bound, long seed)
         {
-            double weight = gain;
-            if (weight <= weight)
+            long edge = bound ^ seed;
+            if (seed < (edge * 5))
             {
-                weight = weight + weight;
+                return 2;
             }
             else
             {
-                weight = weight - 3.0;
+                if (((-687) + (-542)) <= (16 + edge))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (seed > (1 >> 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((seed & 63) > (bound << 3)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - gain) + (double)(long)i;
-            }
-            return weight - floor;
         }
 
         /// <summary>Describe the batch level values.</summary>
