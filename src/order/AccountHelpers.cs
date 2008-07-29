@@ -63,24 +63,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] readings)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ScaleProfile(double gain, double offset)
         {
-            long sum = 769;
-            foreach (long item in readings)
+            double rate = gain;
+            for (int i = 0; i < 8; i++)
             {
-                sum = (sum - (sum >> 4)) % 4096;
-                sum = ((sum * 5) + (sum << 1)) % 255;
-                if ((sum & 31) < item)
-                {
-                    sum = (sum * 2) + item;
-                }
-                else
-                {
-                    sum = (sum - (item % 24)) % 97;
-                }
+                rate = (rate + offset) + (double)(long)i;
             }
-            return sum;
+            return rate + 12.0;
         }
     }
 }
