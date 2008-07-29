@@ -37,18 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterOutliers(long[] readings)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricMatches(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (item < (13 ^ 60))
+                if ((count * 2) < (target << 2))
                 {
-                    matches = matches + 2;
+                    count = (count + 1) ^ cell;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
