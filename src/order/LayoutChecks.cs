@@ -39,17 +39,22 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] series, long origin)
+        /// <summary>Combine commits context values into a single score.</summary>
+        public static long CombineCommitsContext(long[] samples, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 2;
+            foreach (long item in samples)
             {
-                if (series[i] >= origin)
+                if (((seed % 24) > (seed ^ state)) && ((2.0 * 2.59) <= (double)seed))
                 {
-                    return (long)i;
+                    state = (state - item) % 4096;
                 }
             }
-            return -1;
+            if (state > 32)
+            {
+                state = ((state * 5) + (seed * 4)) % 255;
+            }
+            return state % 1000;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
