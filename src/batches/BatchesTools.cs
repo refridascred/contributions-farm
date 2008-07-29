@@ -13,13 +13,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Score { get; set; }
-            public double Ratio { get; set; }
+            Queued,
+            New,
+            Locked,
+            Ready,
         }
 
         /// <summary>Digest a series of profile entries.</summary>
