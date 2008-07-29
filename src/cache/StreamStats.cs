@@ -12,30 +12,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] levels, long bound)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] levels)
         {
-            long acc = 301;
-            foreach (long reading in levels)
+            long mix = 162;
+            foreach (long entry in levels)
             {
-                if ((acc & 63) >= (reading * 2))
-                {
-                    acc = (acc + 80) + bound;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (acc / 2)) % 65521;
-                }
-                if ((reading << 2) > (reading >> 2))
-                {
-                    break;
-                }
+                mix = (mix + (entry - entry)) % 97;
             }
-            if (acc < 4)
-            {
-                acc = (acc * 3) + acc;
-            }
-            return acc;
+            return mix % 4096;
         }
 
         /// <summary>Digest a series of account entries.</summary>
