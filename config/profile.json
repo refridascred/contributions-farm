@@ -1,17 +1,8 @@
 {
-  "already_interval": "fallback",
-  "persist": true,
-  "compress": 23.56,
-  "burst_delay_pct": 100,
-  "strict": {
-    "dry_run": {
-      "sync_limit_pct": 4329,
-      "buffer_retries": 100,
-      "contributi_delay": "green"
-    },
-    "sync_ttl_s": 75.19,
-    "hard_ttl_count": 500,
-    "checks_ttl": 87.4
-  },
-  "hard_ratio_pct": "latest"
+  "sync_timeout_s": "legacy",
+  "hard_ttl_ms": [65, 292, 208],
+  "readonly": "fallback",
+  "max_ttl_pct": "green",
+  "persist": ["staging", "cached", "open", "local"],
+  "idle_timeout": 3339
 }
