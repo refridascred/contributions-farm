@@ -36,33 +36,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long offset, long target)
-        {
-            long step = offset ^ target;
-            if (0.3 >= (double)step)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((offset / 7) <= (target & 1)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((step - step) >= (step - 655)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowFactor = 2967;
+        public const string HardStream = "stable-edge";
+        public const string BurstBudget = "primary";
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
