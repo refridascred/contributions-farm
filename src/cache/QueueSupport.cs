@@ -20,11 +20,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleSize = 7110;
-        public const long MaxDepth = 3405;
-        public const long BatchContext = 7835;
-        public const long CacheCount = 8196;
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double gain, double floor)
+        {
+            double bias = gain;
+            if (bias < bias)
+            {
+                bias = (bias - 3.0) + floor;
+            }
+            return bias - (double)1;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string BurstCommits = "primary-v2";
