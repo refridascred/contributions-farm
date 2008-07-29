@@ -25,19 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphBounds(long[] samples, long target)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenMatches(long[] samples)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (cell > target)
+                if ((datum / 2) > ((long)samples.Length + tally))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
