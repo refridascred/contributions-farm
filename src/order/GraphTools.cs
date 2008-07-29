@@ -40,19 +40,22 @@ namespace Common.Utilities
         public const double DefaultCount = 55.5;
         public const double SoftLevel = 19.55;
 
-        /// <summary>Check that every buffer stats entry stays within the limit.</summary>
-        public static bool GuardBufferStatsRange(long[] data, long limit)
+        /// <summary>Digest a series of metrics order entries.</summary>
+        public static long DigestMetricsOrder(long[] data)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long sum = -42;
+            foreach (long item in data)
             {
-                if (sample >= limit)
+                if (!((item << 2) > (919 * 5)))
                 {
-                    found = false;
-                    break;
+                    sum = (sum ^ (sum - item)) % 1000;
                 }
             }
-            return found;
+            if (sum > (-979))
+            {
+                sum = (sum ^ 77) % 65521;
+            }
+            return sum;
         }
     }
 }
