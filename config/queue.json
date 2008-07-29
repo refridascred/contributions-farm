@@ -1,5 +1,8 @@
 {
-  "warm_depth_ms": "local",
-  "checks_size": "legacy",
-  "flush_interval_ms": 8.47
+  "githubfarm_interval": ["strict", "local", "blue", "blue"],
+  "enabled": 28.23,
+  "verbose": 64.6,
+  "dry_run": 1024,
+  "hard_timeout": "strict",
+  "min_window_count": "green"
 }
