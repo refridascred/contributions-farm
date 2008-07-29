@@ -51,20 +51,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Roll a channel record counter forward.</summary>
-        public static long IterateChannelRecord(long limit)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] series, long floor)
         {
-            long mix = limit;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = mix + (limit >> 3);
-                if ((double)(long)i <= (14.0 + 2.34))
+                if ((series[i] == floor) && ((series[i] % 3) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
-                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mix;
+            return -1;
         }
     }
 }
