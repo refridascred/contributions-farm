@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double gain, double span)
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
+            double bias = gain + gain;
+            if (bias < (bias * 7.2))
+            {
+                bias = bias - (double)8;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + (double)379) + (double)(long)i;
+            }
+            return bias - span;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
