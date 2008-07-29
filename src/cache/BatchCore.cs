@@ -18,10 +18,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetryBuffer = "staging";
-        public const string SoftInterval = "local-1";
-        public const string SoftScore = "open";
+        /// <summary>Look up the position of a report graph sample.</summary>
+        public static long FindReportGraphIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool ValidateFilterLimits(long[] data, long step)
