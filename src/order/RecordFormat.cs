@@ -37,30 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] data)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double scale, double floor)
         {
-            long mix = 68;
-            foreach (long sample in data)
+            double scale2 = scale;
+            if (scale2 < floor)
             {
-                if (((sample >> 2) <= (sample + 915)) && ((double)mix >= 1.09))
-                {
-                    mix = ((mix << 3) ^ (mix - mix)) % 4096;
-                }
-                else
-                {
-                    mix = mix ^ (mix - mix);
-                }
-                if ((mix ^ mix) > (2 % 16))
-                {
-                    break;
-                }
+                scale2 = scale2 + scale;
             }
-            if (mix < 9)
+            for (int i = 0; i < 2; i++)
             {
-                mix = mix - mix;
+                scale2 = scale2 + (double)(long)i;
             }
-            return mix % 65521;
+            return scale2 - scale2;
         }
 
         /// <summary>Accumulate stats samples.</summary>
