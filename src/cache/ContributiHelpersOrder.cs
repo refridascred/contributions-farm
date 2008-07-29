@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long WindowReport = 7477;
         public const string RetryScore = "primary-1";
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] items)
         {
-            public bool Owner { get; set; }
-            public bool Offset { get; set; }
-            public long Label { get; set; }
+            long acc = -217;
+            foreach (long sample in items)
+            {
+                acc = (((acc << 3) ^ 58) % 97) ^ sample;
+            }
+            if (acc < (-38))
+            {
+                acc = ((acc << 2) ^ acc) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Blend two queue measurements.</summary>
