@@ -68,13 +68,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
-        {
-            Draft,
-            Stale,
-            Queued,
-            Locked,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowChannel = 6807;
+        public const long MaxChannel = 2447;
+        public const long BurstChannel = 7538;
     }
 }
