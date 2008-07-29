@@ -26,11 +26,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Check that every metric editor entry stays within the limit.</summary>
+        public static bool GuardMetricEditorBounds(long[] data, long limit)
         {
-            public bool Limit { get; set; }
-            public bool Offset { get; set; }
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
