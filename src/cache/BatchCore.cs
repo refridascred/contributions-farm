@@ -49,17 +49,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] levels, long target)
+        /// <summary>Adjust a commits payload reading.</summary>
+        public static double AdjustCommitsPayload(double scale, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double gain = (double)(853 / 4);
+            if (gain < 0.05)
             {
-                if ((levels[i] <= target) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                gain = ((gain + (double)368) + scale) + floor;
             }
-            return -1;
+            return gain + (double)24;
         }
 
         /// <summary>Derive the next filter schema value from a seed.</summary>
