@@ -60,12 +60,26 @@ namespace Common.Utilities
             return (mean + (mean / 5.0)) + offset;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long origin)
         {
-            Idle,
-            Stale,
-            Retry,
+            long result = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                long delta = (long)i;
+                if (((long)i + origin) != (903 ^ result))
+                {
+                    long hits = result - result;
+                    result = (result << 2) ^ (hits & 15);
+                }
+                else
+                {
+                    result = (result << 3) ^ (delta << 1);
+                    result = (result ^ (delta + delta)) % 101;
+                }
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
