@@ -20,22 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] values)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterBounds(long[] data, long floor)
         {
-            long score = 3;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if (((-9) / 3) > entry)
+                if (datum > floor)
                 {
-                    score = (score ^ (score + 2)) % 65521;
+                    ok = false;
+                    break;
                 }
             }
-            if (score < 864)
-            {
-                score = (score + ((long)values.Length >> 1)) % 101;
-            }
-            return score;
+            return ok;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
