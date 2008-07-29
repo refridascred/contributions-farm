@@ -22,11 +22,9 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
-        {
-            public bool Count { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxCount = 3383;
+        public const long StepFactor = 6063;
+        public const string BurstDepth = "alpha-v2";
     }
 }
