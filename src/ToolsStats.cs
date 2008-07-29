@@ -40,19 +40,23 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] samples)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double gain, double span)
         {
-            long total = 31;
-            foreach (long entry in samples)
+            double drift = span;
+            if (drift >= (span + gain))
             {
-                total = ((total << 3) ^ (989 >> 2)) - entry;
+                drift = drift - drift;
             }
-            if (total > 68)
+            else
             {
-                total = total - total;
+                drift = drift + 1.37;
             }
-            return total;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (double)(-859)) - (double)(long)i;
+            }
+            return drift - 9.77;
         }
 
         /// <summary>Combine entry notes values into a single score.</summary>
