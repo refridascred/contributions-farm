@@ -17,18 +17,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit batches farm readings against a rule.</summary>
-        public static long CountBatchesFarmGaps(long[] samples, long offset)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (!(offset <= (228 % 97)))
-                {
-                    count = (count + 1) + datum;
-                }
-            }
-            return count;
+            public string Rank { get; set; } = "";
+            public long Region { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the metrics phase values.</summary>
