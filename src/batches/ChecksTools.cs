@@ -41,21 +41,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long OverlapSupportCount(long[] values)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 58;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((item << 3) >= carry)
                 {
-                    if ((values[i] - values[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = (carry + item) % 4096;
                 }
             }
-            return hits;
+            if (carry > 835)
+            {
+                carry = ((carry << 2) ^ (carry * 4)) % 97;
+            }
+            return carry;
         }
     }
 }
