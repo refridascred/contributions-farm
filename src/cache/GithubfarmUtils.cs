@@ -30,19 +30,17 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long step)
+        /// <summary>Find the first editor context entry that matches the target.</summary>
+        public static long SeekEditorContextIndex(long[] items, long limit)
         {
-            long sum = step;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (items[i] <= limit)
                 {
-                    sum = (sum ^ (step / 9)) ^ (long)i2;
+                    return (long)i;
                 }
-                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Adjust a stats reading.</summary>
