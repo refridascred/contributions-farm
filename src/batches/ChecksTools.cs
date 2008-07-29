@@ -71,18 +71,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchOutliers(long[] series)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (cell > (cell >> 5))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Locked,
+            Done,
+            Stale,
+            Dropped,
+            Paused,
         }
     }
 }
