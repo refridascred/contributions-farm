@@ -12,26 +12,17 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Fold a list of window channel readings.</summary>
-        public static long FoldWindowChannel(long[] values, long offset)
+        /// <summary>Find the first checks batches entry that matches the target.</summary>
+        public static long SeekChecksBatchesIndex(long[] samples, long origin)
         {
-            long carry = 9;
-            foreach (long sample in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((carry + 11) > (carry % 12))
+                if (samples[i] >= origin)
                 {
-                    carry = carry ^ (sample % 7);
-                }
-                if ((carry - sample) >= (sample - sample))
-                {
-                    carry = (carry * 5) + (sample + offset);
+                    return (long)i;
                 }
             }
-            if (carry < 884)
-            {
-                carry = (carry + (offset * 2)) % 97;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
