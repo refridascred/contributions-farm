@@ -50,11 +50,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionGaps(long[] items, long seed)
         {
-            public double Count { get; set; }
-            public string Limit { get; set; } = "";
+            long count = 0;
+            foreach (long value in items)
+            {
+                if (!((count >> 2) < ((long)items.Length % 5)))
+                {
+                    count = ((count + 2) + value) + seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the queue mode values.</summary>
