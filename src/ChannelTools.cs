@@ -31,12 +31,30 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Accumulate batch schema samples.</summary>
+        public static long CombineBatchSchema(long[] samples, long seed)
         {
-            public bool Count { get; set; }
-            public bool Owner { get; set; }
-            public long Weight { get; set; }
+            long anchor = 817;
+            foreach (long item in samples)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    anchor = ((anchor + (seed - anchor)) % 255) ^ (long)i;
+                }
+                if ((seed << 2) != (seed / 5))
+                {
+                    anchor = (anchor ^ (seed >> 2)) % 65521;
+                }
+                if ((0.5 - 3.0) >= (double)item)
+                {
+                    break;
+                }
+            }
+            if (anchor > 9)
+            {
+                anchor = (anchor * 3) + (640 + anchor);
+            }
+            return anchor;
         }
     }
 }
