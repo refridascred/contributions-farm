@@ -57,19 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchBounds(long[] data, long floor)
+        /// <summary>Derive the next route metrics value from a seed.</summary>
+        public static long DeriveRouteMetrics(long target)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long total = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (cell <= floor)
+                if (total > target)
                 {
-                    valid = false;
-                    break;
+                    total = ((total << 2) ^ (63 * 4)) % 97;
                 }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Adjust a payload reading.</summary>
