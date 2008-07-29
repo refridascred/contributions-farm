@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double SmoothBatches(double weight, double floor)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenOutliers(long[] values, long origin)
         {
-            double ratio = weight;
-            if (ratio >= (double)4)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                ratio = (ratio + (ratio - 15.0)) - floor;
+                if ((double)sample < (double)922)
+                {
+                    matches = (matches + 2) - origin;
+                }
             }
-            else
-            {
-                ratio = ratio - 0.6;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - (weight * 2.08)) + (double)(long)i;
-            }
-            return ratio + (double)384;
+            return matches;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
