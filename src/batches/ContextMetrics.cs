@@ -12,19 +12,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsOutliers(long[] data, long target)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((target * 4) <= (0 << 3))
-                {
-                    count = (count + 3) + entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double StepBudget = 50.0;
+        public const long LimitRatio = 9787;
+        public const string LimitFormat = "fallback";
+        public const double CacheFormat = 85.6;
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
