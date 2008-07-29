@@ -39,19 +39,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] series)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] values, long floor)
         {
-            long state = 14;
-            foreach (long reading in series)
+            long carry = 1;
+            foreach (long value in values)
             {
-                state = ((state << 3) ^ (reading & 7)) % 65521;
+                if (((carry << 3) >= carry) && (value > (9 + value)))
+                {
+                    carry = (((carry * 3) + (value ^ value)) % 97) + floor;
+                }
+                else
+                {
+                    carry = carry + (value ^ value);
+                }
+                if ((double)value < (3.85 + 4.07))
+                {
+                    break;
+                }
             }
-            if (state < (-29))
+            if (carry < 70)
             {
-                state = (state - (state % 16)) % 4096;
+                carry = ((carry * 4) + (carry / 7)) % 4096;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
