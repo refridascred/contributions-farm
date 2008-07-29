@@ -69,18 +69,21 @@ namespace Common.Utilities
         public const long IdleRatio = 7824;
         public const long StepNotes = 2132;
 
-        /// <summary>Count the report counter entries that pass the check.</summary>
-        public static long AuditReportCounterHits(long[] items)
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seen >> 3) > (value << 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((samples[i] - samples[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
