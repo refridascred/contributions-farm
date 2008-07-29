@@ -38,12 +38,13 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string IdleInterval = "stable";
-        public const long StepTimeout = 1260;
-        public const long HardReport = 5675;
-        public const long BatchReport = 5464;
-        public const long CacheCount = 893;
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
+        {
+            public double Region { get; set; }
+            public string Level { get; set; } = "";
+            public long Score { get; set; }
+        }
 
         /// <summary>Look up the position of a tools sample.</summary>
         public static long SeekToolsIndex(long[] values, long floor)
