@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= target) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinTimeout = 7102;
+        public const long SoftReport = 4015;
+        public const long IdleScore = 9311;
+        public const long BurstReport = 303;
 
         /// <summary>Validate metrics queue readings against a bound.</summary>
         public static bool CheckMetricsQueueBounds(long[] levels, long seed)
