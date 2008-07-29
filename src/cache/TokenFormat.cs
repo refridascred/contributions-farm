@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const long HardDepth = 3970;
         public const long LimitRecord = 6119;
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] series, long bound)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long carry = 42;
-            foreach (long cell in series)
-            {
-                if ((carry + bound) < bound)
-                {
-                    carry = ((carry * 4) + (carry ^ cell)) % 65521;
-                }
-            }
-            return carry % 65521;
+            public double Count { get; set; }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
