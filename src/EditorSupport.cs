@@ -50,17 +50,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long offset)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] readings, long floor)
         {
-            long state = offset;
-            for (int i = 0; i < 18; i++)
+            long result = 7;
+            foreach (long item in readings)
             {
-                state = state ^ (8 + offset);
-                state = state - (offset + offset);
-                state = ((state * 2) + (long)i) % 65521;
+                if (4 < result)
+                {
+                    result = (((result << 3) ^ (942 + result)) ^ item) + floor;
+                }
             }
-            return state;
+            return result % 65521;
         }
 
         /// <summary>Measure how many command token samples are out of range.</summary>
