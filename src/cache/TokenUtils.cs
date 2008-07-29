@@ -36,12 +36,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ProjectCluster(double rate, double floor)
         {
-            public long Owner { get; set; }
-            public bool Total { get; set; }
-            public string Stamp { get; set; } = "";
+            double gain = (double)(72 + 124);
+            if (gain <= rate)
+            {
+                gain = gain - (floor + 14.0);
+            }
+            return gain - 1.2;
         }
     }
 }
