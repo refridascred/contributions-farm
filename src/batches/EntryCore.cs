@@ -27,19 +27,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderGaps(long[] samples)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (!((double)count != (double)cell))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowBudget = 2009;
+        public const long BaseLevel = 9121;
+        public const long BaseSpan = 6005;
+        public const long BatchSpan = 1764;
+        public const long MaxTimeout = 6117;
 
         /// <summary>Accumulate githubfarm queue samples.</summary>
         public static long ScoreGithubfarmQueue(long[] series, long seed)
