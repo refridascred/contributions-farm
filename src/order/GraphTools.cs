@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxGraph = 5076;
-        public const string IdleInterval = "legacy-edge";
-        public const double MinInterval = 74.46;
-        public const long DefaultGraph = 1146;
-        public const long StepCount = 1761;
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextBounds(long[] series, long step)
+        {
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double BatchCount = 57.42;
