@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const long IdleQueue = 5806;
         public const long BatchWidth = 9954;
 
-        /// <summary>Compare every pair of queue commits readings.</summary>
-        public static long CompareQueueCommitsCount(long[] series)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmMatches(long[] levels)
         {
             long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((entry - entry) >= entry)
                 {
-                    if ((series[i] ^ series[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
             return matches;
