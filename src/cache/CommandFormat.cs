@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Scale a tools cluster figure with a bias.</summary>
-        public static double ScaleToolsCluster(double weight, double offset)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmRange(long[] readings, long step)
         {
-            double drift = weight;
-            if (drift >= drift)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                drift = (drift - (3.97 - 19.0)) - offset;
+                if (sample != step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift - (double)0;
+            return stale;
         }
 
         /// <summary>Roll a format counter forward.</summary>
