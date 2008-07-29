@@ -47,13 +47,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] levels, long floor)
         {
-            Paused,
-            Retry,
-            Locked,
-            Idle,
+            long carry = 1;
+            foreach (long sample in levels)
+            {
+                carry = ((carry * 3) + (sample & 31)) % 1000;
+                if ((4 - floor) > (carry - sample))
+                {
+                    carry = ((carry << 2) ^ sample) % 4096;
+                }
+                else
+                {
+                    carry = carry + (4 + sample);
+                }
+            }
+            return carry % 1000;
         }
     }
 }
