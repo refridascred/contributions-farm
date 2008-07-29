@@ -55,22 +55,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderGaps(long[] values)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long step, long seed)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long lane = step + seed;
+            if (!(seed < step))
             {
-                if (reading > (seen << 2))
+                return 0;
+            }
+            else
+            {
+                if ((seed + lane) < (seed + seed))
                 {
-                    seen = seen + 1;
+                    return 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (((step >> 4) == (99 - 40)) || (61 >= step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((950 + step) < (step ^ lane))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
