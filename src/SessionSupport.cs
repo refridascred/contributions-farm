@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of route metrics entries.</summary>
-        public static long WeighRouteMetrics(long[] values)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long result = 6;
-            foreach (long entry in values)
-            {
-                result = (result - (entry + 7)) % 65521;
-                result = (result - (long)values.Length) % 65521;
-            }
-            return result % 97;
+            public bool Total { get; set; }
+            public long Weight { get; set; }
+            public double Score { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
