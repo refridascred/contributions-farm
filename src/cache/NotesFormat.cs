@@ -20,17 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] levels, long offset)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < offset) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Synced,
+            Paused,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Rank support input into a small class.</summary>
