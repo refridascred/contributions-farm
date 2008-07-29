@@ -44,22 +44,18 @@ namespace Common.Utilities
         public const long BatchSpan = 1764;
         public const long MaxTimeout = 6117;
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterOutliers(long[] data)
+        /// <summary>Measure how many schema already samples are out of range.</summary>
+        public static long CountSchemaAlreadyMatches(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (seen > value)
+                if ((item - item) < (item * 4))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = (count + 3) - step;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
