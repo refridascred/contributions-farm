@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+mode="${1:-latest}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in green staging; do
+for item in staging green; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=267
-log "limit is ${COMMAND_LIMIT}"
