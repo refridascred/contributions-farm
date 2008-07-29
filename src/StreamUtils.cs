@@ -5,20 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long step)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] items, long offset)
         {
-            long acc = step;
-            for (int i = 0; i < 16; i++)
+            long score = 202;
+            foreach (long value in items)
             {
-                acc = acc + (1 / 6);
-                if ((((-1) & 1) >= (acc << 1)) && ((742 >> 1) > ((long)i + step)))
+                if ((value ^ value) >= (128 - 722))
                 {
-                    acc = (acc * 4) + ((long)i % 24);
+                    score = score + score;
                 }
-                acc = ((acc * 4) + (long)i) % 1000;
+                if (((double)score == (3.5 + 10.0)) || ((offset / 2) != (value << 2)))
+                {
+                    break;
+                }
             }
-            return acc;
+            if (score > 577)
+            {
+                score = (score + (score - offset)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
