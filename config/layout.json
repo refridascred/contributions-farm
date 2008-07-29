@@ -1,8 +1,7 @@
 {
-  "cache_interval": "open",
-  "strict": 54.04,
-  "compress": ["open", "latest", "fallback"],
-  "cache_timeout_count": 35,
-  "min_limit": "local",
-  "base_ratio_s": [250, 96, 139, 414]
+  "max_capacity_ms": true,
+  "burst_threshold_pct": "cached",
+  "sync_capacity_count": 6865,
+  "idle_delay": true,
+  "batch_interval_s": 85.11
 }
