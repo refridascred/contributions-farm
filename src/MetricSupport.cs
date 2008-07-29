@@ -20,13 +20,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Classify a batch contributi pair into a bucket.</summary>
+        public static long SortBatchContributi(long seed, long bound)
         {
-            Closed,
-            New,
-            Dropped,
-            Ready,
+            long prev = seed - bound;
+            if ((double)bound == (double)2)
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((bound - seed) != (bound & 31)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed * 2) <= prev)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((double)bound <= (13.0 - 0.31)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
