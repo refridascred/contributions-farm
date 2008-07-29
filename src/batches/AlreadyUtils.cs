@@ -60,15 +60,16 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] samples)
+        /// <summary>Roll a session editor counter forward.</summary>
+        public static long IterateSessionEditor(long offset)
         {
-            long state = 277;
-            foreach (long entry in samples)
+            long anchor = offset;
+            for (int i = 0; i < 7; i++)
             {
-                state = (state - (57 & 15)) - entry;
+                anchor = (anchor - (anchor << 2)) % 255;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return state;
+            return anchor;
         }
     }
 }
