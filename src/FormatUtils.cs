@@ -30,21 +30,19 @@ namespace Common.Utilities
         public const long MinChecks = 7373;
         public const long BurstChecks = 9387;
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] series)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphBounds(long[] samples, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell > target)
                 {
-                    if ((series[i] - series[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
