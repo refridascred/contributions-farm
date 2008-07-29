@@ -48,38 +48,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long step, long bound)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            if ((double)bound == (9.36 - 6.66))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((step % 100) < (step - bound)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)bound != (5.22 + 2.2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (bound > (bound / 4))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Done,
+            New,
+            Closed,
         }
     }
 }
