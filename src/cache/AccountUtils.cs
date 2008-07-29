@@ -18,22 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batch token samples.</summary>
-        public static long TotalBatchToken(long[] items)
+        /// <summary>Accumulate payload githubfarm samples.</summary>
+        public static long ScorePayloadGithubfarm(long[] readings)
         {
-            long acc = 8;
-            foreach (long reading in items)
+            long sum = 16;
+            foreach (long entry in readings)
             {
-                if ((double)acc <= (3.94 * 2.0))
-                {
-                    acc = (acc * 4) + (5 + reading);
-                }
-                if (65 >= acc)
-                {
-                    break;
-                }
+                sum = ((sum * 4) + (270 ^ entry)) % 101;
+                sum = sum - (entry / 6);
             }
-            return acc % 4096;
+            if (sum < 85)
+            {
+                sum = ((sum * 3) + (sum + sum)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
