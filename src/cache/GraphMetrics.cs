@@ -16,15 +16,17 @@ namespace Common.Utilities
             return bias - 1.5;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long offset)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] levels, long target)
         {
-            long score = offset;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = ((score * 4) + (long)i) % 65521;
+                if (levels[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Hold a commits summary.</summary>
