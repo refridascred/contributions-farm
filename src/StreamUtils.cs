@@ -28,19 +28,17 @@ namespace Common.Utilities
         public const string RetryRatio = "legacy";
         public const long CacheChannel = 772;
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] samples)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] samples, long offset)
         {
-            long anchor = 529;
-            foreach (long datum in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = anchor - datum;
-                if ((1 << 2) >= anchor)
+                if (samples[i] > offset)
                 {
-                    anchor = anchor ^ 2;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Hold a account snapshot.</summary>
