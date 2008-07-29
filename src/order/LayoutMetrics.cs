@@ -29,13 +29,14 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long floor)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long target)
         {
-            long sum = floor;
-            for (int i = 0; i < 16; i++)
+            long sum = target;
+            for (int i = 0; i < 8; i++)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                sum = (sum - sum) % 101;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
             return sum;
         }
