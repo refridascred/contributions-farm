@@ -55,21 +55,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long PairFarmCount(long[] samples)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Level { get; set; }
+            public double Offset { get; set; }
+            public bool Total { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Measure how many editor githubfarm samples are out of range.</summary>
