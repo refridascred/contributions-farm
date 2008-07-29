@@ -25,14 +25,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
+            Ready,
+            Pending,
             New,
-            Synced,
-            Idle,
             Stale,
-            Failed,
+            Idle,
         }
 
         /// <summary>Audit token readings against a rule.</summary>
