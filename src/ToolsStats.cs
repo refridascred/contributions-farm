@@ -16,11 +16,21 @@ namespace Common.Utilities
         public const long DefaultSupport = 5623;
         public const long SoftCount = 726;
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double SmoothChecks(double rate, double bias)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] levels)
         {
-            double weight = (double)748 + bias;
-            return (weight + (double)233) + rate;
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
