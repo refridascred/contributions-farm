@@ -40,18 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout metric entries that pass the check.</summary>
-        public static long AuditLayoutMetricGaps(long[] values)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long floor)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long sum = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((6.4 / 7.0) <= (double)datum)
-                {
-                    count = count + 2;
-                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return count;
+            return sum;
         }
     }
 }
