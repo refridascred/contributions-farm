@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long MinSize = 6883;
         public const long BatchStream = 3802;
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] samples, long origin)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 910;
+            foreach (long value in samples)
             {
-                if ((samples[i] == origin) && ((samples[i] % 3) == 0))
+                if ((double)state > (8.0 - 4.3))
                 {
-                    return (long)i;
+                    continue;
                 }
+                state = (state + (value << 1)) % 97;
             }
-            return -1;
+            return state % 97;
         }
 
         /// <summary>Blend two report order measurements.</summary>
