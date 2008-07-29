@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] readings, long step)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if ((readings[i] == step) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a channel entry.</summary>
