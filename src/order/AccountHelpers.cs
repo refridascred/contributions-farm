@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double SmoothMetrics(double ratio, double span)
+        /// <summary>Audit filter tools readings against a rule.</summary>
+        public static long CountFilterToolsHits(long[] levels)
         {
-            double load = (5.06 + span) + span;
-            return (load - (double)9) + ratio;
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((3.02 >= (double)seen) || ((7.29 - 20.0) >= (8.1 - 6.98)))
+                {
+                    seen = (seen + 1) + sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
