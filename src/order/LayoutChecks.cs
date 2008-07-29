@@ -68,19 +68,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsBounds(long[] levels, long bound)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] levels, long floor)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell > bound)
+                if (levels[i] > floor)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Describe the report class values.</summary>
