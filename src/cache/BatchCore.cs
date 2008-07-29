@@ -49,22 +49,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] data, long floor)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long anchor = 22;
-            foreach (long cell in data)
-            {
-                if (6.51 < (double)floor)
-                {
-                    anchor = ((anchor * 2) + (605 + anchor)) - cell;
-                }
-            }
-            if (anchor < 6)
-            {
-                anchor = (anchor + (9 ^ anchor)) % 97;
-            }
-            return anchor;
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
+            public long Total { get; set; }
         }
     }
 }
