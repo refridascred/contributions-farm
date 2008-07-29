@@ -32,11 +32,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstScore = 2334;
-        public const long CacheWidth = 5578;
-        public const long MinContext = 8959;
-        public const long BurstBudget = 6162;
-        public const long LimitFactor = 8838;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandOutliers(long[] samples)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((double)count >= 10.0)
+                {
+                    count = (count + 2) + value;
+                }
+            }
+            return count;
+        }
     }
 }
