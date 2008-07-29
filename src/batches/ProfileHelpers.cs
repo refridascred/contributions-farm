@@ -26,18 +26,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first stream metrics entry that matches the target.</summary>
-        public static long LookupStreamMetricsIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < bound) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseInterval = 8651;
+        public const long BatchOrder = 8762;
+        public const string SoftOrder = "strict-edge";
+        public const long StepOrder = 9308;
+        public const long MaxOrder = 5747;
 
         /// <summary>Describe the support phase values.</summary>
         public enum SupportPhase
