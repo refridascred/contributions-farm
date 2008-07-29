@@ -81,17 +81,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] series, long step)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueBounds(long[] series, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                if ((series[i] > step) && ((series[i] % 5) == 0))
+                if (entry > origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
