@@ -1,25 +1,10 @@
 # githubfarm settings
-max_ttl_s: false
-batch_timeout_pct: 2489
-default_capacity_ms:
-  audit: standard
-  warm_ratio_count:
-    retry_size: 94.16
-    warm_interval: false
-    hard_window: latest
-    batches_timeout: fallback
-  min_ratio_s:
-    audit: 753
-    dry_run: local
-    githubfarm_window:
-      - 68
-      - 305
-      - 113
-      - 1
-    sync_limit:
-      - 283
-      - 484
-    enabled: staging
-  idle_ratio_ms: true
-  warm_depth: 250
-buffer_delay: false
+editor_window:
+  - legacy
+  - blue
+warm_threshold_pct:
+  - 19
+  - 9
+  - 254
+  - 22
+enabled: primary
