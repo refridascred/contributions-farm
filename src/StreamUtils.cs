@@ -64,14 +64,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordGaps(long[] data, long limit)
         {
-            New,
-            Retry,
-            Synced,
-            Ready,
-            Done,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((tally / 5) == (cell + limit))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
