@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long floor, long limit)
         {
-            public bool Limit { get; set; }
-            public double Level { get; set; }
-            public string Mode { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long span = floor ^ limit;
+            if ((89 % 24) > limit)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((span << 3) < 31)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)limit >= 2.56)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a stats snapshot.</summary>
