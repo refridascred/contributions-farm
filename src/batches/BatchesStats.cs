@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Adjust a schema account reading.</summary>
+        public static double SmoothSchemaAccount(double bias, double span)
         {
-            public long Token { get; set; }
-            public bool Count { get; set; }
-            public double Label { get; set; }
+            double gain = span + (span * 8.8);
+            if (gain < (bias - gain))
+            {
+                gain = gain - (gain / 5.0);
+            }
+            else
+            {
+                gain = gain - bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - (bias / 4.0)) + (double)(long)i;
+            }
+            return gain + span;
         }
 
         /// <summary>Project the next order value.</summary>
