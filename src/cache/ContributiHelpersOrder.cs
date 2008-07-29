@@ -29,15 +29,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesHits(long[] data)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long MatchLayoutCount(long[] series)
         {
             long seen = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((entry ^ seen) > seen)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((series[i] + series[j]) > 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
