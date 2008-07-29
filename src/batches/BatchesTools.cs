@@ -23,13 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountOutliers(long[] series)
         {
-            Ready,
-            New,
-            Pending,
-            Locked,
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((cell <= (cell % 16)) && ((cell - cell) > (cell - 12)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
