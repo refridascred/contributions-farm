@@ -12,30 +12,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] levels, long step)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long sum = -343;
-            foreach (long entry in levels)
-            {
-                if (!!((entry + 33) >= (sum << 2)))
-                {
-                    sum = sum ^ (sum % 3);
-                }
-                for (int i = 0; i < 7; i++)
-                {
-                    sum = ((sum << 2) ^ ((long)i % 3)) % 101;
-                }
-                if (((sum - step) <= entry) && ((446 - entry) >= (entry - sum)))
-                {
-                    sum = ((sum * 3) + 0) % 255;
-                }
-            }
-            if (sum > (-38))
-            {
-                sum = sum + (sum << 1);
-            }
-            return sum;
+            Dropped,
+            Locked,
+            Failed,
         }
 
         /// <summary>Audit command readings against a rule.</summary>
