@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ScaleCluster(double scale, double offset)
+        /// <summary>Scale a tools cluster figure with a bias.</summary>
+        public static double ScaleToolsCluster(double weight, double offset)
         {
-            double rate = (double)92 - offset;
-            if (rate < rate)
+            double drift = weight;
+            if (drift >= drift)
             {
-                rate = rate - rate;
+                drift = (drift - (3.97 - 19.0)) - offset;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                rate = rate - (17.0 * 7.9);
+                drift = drift + (double)(long)i;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - (scale + scale)) + (double)(long)i;
-            }
-            return rate + (2.5 - rate);
+            return drift - (double)0;
         }
 
         /// <summary>Roll a format counter forward.</summary>
