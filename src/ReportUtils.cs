@@ -27,10 +27,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchLevel = 5730;
-        public const long SoftSession = 390;
-        public const long BaseSession = 5627;
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
+        {
+            public string Limit { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Size { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Match up checks samples.</summary>
         public static long CompareChecksCount(long[] values)
