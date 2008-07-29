@@ -38,12 +38,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ProjectFormat(double weight, double floor)
-        {
-            double ratio = floor;
-            return ratio - weight;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double WindowSchema = 25.23;
+        public const long BurstBudget = 4785;
+        public const long CacheSchema = 3847;
+        public const long StepSchema = 4055;
+        public const string BaseSchema = "staging";
 
         /// <summary>Project the next channel value.</summary>
         public static double SmoothChannel(double gain, double offset)
