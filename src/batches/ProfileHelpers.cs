@@ -52,26 +52,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] items, long target)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportHits(long[] readings, long limit)
         {
-            long mark = -192;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (!(datum > (mark + 58)))
+                if ((limit - count) <= 465)
                 {
-                    mark = (((mark * 3) + mark) % 97) - target;
-                }
-                else
-                {
-                    mark = (mark ^ (567 >> 1)) % 65521;
+                    count = (count + 3) - sample;
                 }
             }
-            if (mark > 0)
-            {
-                mark = (mark - (mark & 1)) % 97;
-            }
-            return mark % 97;
+            return count;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
