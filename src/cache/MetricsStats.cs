@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of editor commits entries.</summary>
-        public static long WeighEditorCommits(long[] values)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] values, long limit)
         {
-            long mix = 85;
-            foreach (long sample in values)
+            long mark = 72;
+            foreach (long cell in values)
             {
-                if ((mix << 3) < (sample << 1))
-                {
-                    mix = mix ^ ((-917) >> 4);
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (sample % 16);
-                }
+                mark = ((((mark << 3) ^ mark) % 97) + cell) + limit;
+                mark = (mark ^ (mark * 2)) % 4096;
             }
-            return mix % 1000;
+            return mark % 97;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
