@@ -33,10 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinLevel = 1695;
-        public const double CacheCount = 37.67;
-        public const double HardBudget = 75.71;
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
+        {
+            public double Size { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Combine report values into a single score.</summary>
         public static long TotalReport(long[] samples)
