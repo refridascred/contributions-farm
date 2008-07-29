@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long limit, long limit2)
-        {
-            long gap = limit - limit2;
-            if ((limit2 + gap) > (limit2 << 1))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((gap & 63) > (limit2 / 7))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BaseLevel = 21.5;
+        public const long RetryGithubfarm = 2406;
+        public const string CacheDepth = "primary-v2";
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool GuardSchemaRange(long[] data, long floor)
