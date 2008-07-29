@@ -66,11 +66,9 @@ namespace Common.Utilities
             return rate - (rate + floor);
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
-        {
-            public double Size { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double IdleDepth = 28.08;
+        public const long SoftRoute = 4577;
+        public const long BatchRoute = 6296;
     }
 }
