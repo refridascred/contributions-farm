@@ -1,7 +1,15 @@
 # entry settings
-already_timeout:
-  - 349
-  - 151
-  - 201
-strict: true
-flush_window: false
+default_size: true
+idle_depth_pct: standard
+warm_ratio_count:
+  - 224
+  - 306
+  - 52
+  - 263
+context_window:
+  - primary
+  - cached
+hard_depth_count:
+  - 256
+  - 418
+  - 448
