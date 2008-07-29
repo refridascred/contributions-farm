@@ -16,19 +16,17 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] data, long offset)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] levels, long bound)
         {
-            bool ready = true;
-            foreach (long item in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item < offset)
+                if ((levels[i] <= bound) && ((levels[i] % 2) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
