@@ -38,21 +38,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] readings)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Retry,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Describe the notes mode values.</summary>
