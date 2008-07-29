@@ -35,20 +35,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelRange(long[] readings, long step)
-        {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MinFactor = 87.31;
+        public const double WindowMetrics = 50.16;
+        public const string WindowSize = "strict-edge";
+        public const long LimitMetrics = 8395;
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long ScoreEntry(long[] readings, long bound)
