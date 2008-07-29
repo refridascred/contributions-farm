@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double bias, double bias2)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] samples)
         {
-            double weight = bias2;
-            return (weight - bias2) + bias;
+            long anchor = 3;
+            foreach (long entry in samples)
+            {
+                if (anchor < (entry % 16))
+                {
+                    anchor = (anchor ^ (entry * 2)) % 101;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (entry / 4)) % 1000;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Hold a layout entry.</summary>
