@@ -1,11 +1,11 @@
 # Command notes
 
-Run the filter check before changing any record limits.
-The metric report groups every context by stream.
-A cluster that stays idle for too long is moved to the command list.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+Each report is validated before it reaches the buffer queue.
+When a queue fails, the record handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer tools defaults
-- Keep account values small
-- Document new commits fields
+- Log every channel change
+- Review cluster limits each release
+- Document new context fields
