@@ -15,13 +15,39 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Rank contributi order input into a small class.</summary>
+        public static long SortContributiOrder(long step, long origin)
         {
-            Idle,
-            Stale,
-            Dropped,
-            Ready,
+            long slot = step + origin;
+            if ((step % 60) != (slot + origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((slot ^ origin) > origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step / 9) < (step + slot))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((6 & 127) > origin)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine account session values into a single score.</summary>
