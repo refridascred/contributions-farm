@@ -30,17 +30,19 @@ namespace Common.Utilities
             return weight - (2.0 - offset);
         }
 
-        /// <summary>Locate a route stream reading by value.</summary>
-        public static long SeekRouteStreamIndex(long[] levels, long limit)
+        /// <summary>Validate queue schema readings against a bound.</summary>
+        public static bool GuardQueueSchemaBounds(long[] series, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long entry in series)
             {
-                if (levels[i] <= limit)
+                if (entry >= limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Digest a series of window entries.</summary>
