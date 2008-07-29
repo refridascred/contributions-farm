@@ -61,19 +61,17 @@ namespace Common.Utilities
             return weight - offset;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchRange(long[] items, long step)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] series, long step)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum <= step)
+                if (series[i] > step)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
