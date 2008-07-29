@@ -47,13 +47,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long bound, long origin)
         {
-            public long Count { get; set; }
-            public string Size { get; set; } = "";
-            public string Level { get; set; } = "";
-            public bool Label { get; set; }
+            long next = bound - origin;
+            if ((origin - origin) != (next % 60))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((bound >> 2) > next))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (next > (bound % 10))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
