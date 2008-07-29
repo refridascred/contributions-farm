@@ -28,26 +28,19 @@ namespace Common.Utilities
         public const string RetryRatio = "legacy";
         public const long CacheChannel = 772;
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long origin)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] samples)
         {
-            long sum = origin;
-            for (int i = 0; i < 7; i++)
+            long anchor = 529;
+            foreach (long datum in samples)
             {
-                long cur = (51 & 255) + (73 << 3);
-                if (sum <= (32 - 629))
+                anchor = anchor - datum;
+                if ((1 << 2) >= anchor)
                 {
-                    sum = (sum + ((long)i / 7)) % 101;
-                    sum = ((sum << 2) ^ (sum + sum)) % 1000;
-                    break;
+                    anchor = anchor ^ 2;
                 }
-                if (!(((sum % 8) > (cur % 3)) && ((origin & 15) < ((long)i << 2))))
-                {
-                    cur = cur - (cur + (long)i);
-                }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
