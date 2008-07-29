@@ -33,18 +33,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many record commits samples are out of range.</summary>
-        public static long AuditRecordCommitsGaps(long[] items, long offset)
+        /// <summary>Rank stats filter input into a small class.</summary>
+        public static long GradeStatsFilter(long origin, long limit)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long slot = origin - limit;
+            if ((origin - origin) == (limit - (-9)))
             {
-                if ((reading ^ 77) > offset)
+                return 8;
+            }
+            else
+            {
+                if (origin > slot)
                 {
-                    tally = tally + 1;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the route class values.</summary>
