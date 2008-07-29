@@ -1,15 +1,5 @@
 {
-  "base_ratio_count": "eu-west",
-  "idle_capacity_count": 63.05,
-  "verbose": "cached",
-  "hard_window_s": "fallback",
-  "warm_threshold": {
-    "verbose": 16.29,
-    "compress": 8996,
-    "hard_delay_count": "primary",
-    "base_threshold": true,
-    "cache_retries": "staging",
-    "batch_ratio": false
-  },
-  "commits_ratio": "open"
+  "default_threshold_s": "fallback",
+  "batch_ttl_pct": 333,
+  "sync_ratio_ms": true
 }
