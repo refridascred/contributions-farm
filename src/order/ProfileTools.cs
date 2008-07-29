@@ -56,22 +56,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryBudget = 432;
+        public const long LimitLevel = 9675;
+        public const long MaxContributi = 832;
+        public const string WindowContributi = "stable-edge";
 
         /// <summary>Describe the support phase values.</summary>
         public enum SupportPhase
