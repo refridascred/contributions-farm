@@ -45,32 +45,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long seed, long step)
-        {
-            if (step >= (step / 7))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed & 127) > (seed << 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed + seed) < ((-7) / 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define booking limits and defaults.</summary>
+        public const double MinBooking = 76.73;
+        public const double BaseRatio = 16.66;
+        public const string CacheFactor = "fallback-edge";
 
         /// <summary>Measure how many githubfarm order samples are out of range.</summary>
         public static long CountGithubfarmOrderOutliers(long[] values)
