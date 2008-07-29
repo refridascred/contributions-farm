@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] series)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double gain, double offset)
         {
-            long result = 7;
-            foreach (long value in series)
+            double ratio = (offset - 14.0) * 3.8;
+            if (ratio > offset)
             {
-                if ((value >> 3) > result)
-                {
-                    result = ((result << 2) ^ ((-202) + value)) % 4096;
-                }
+                ratio = (ratio + (double)11) - gain;
             }
-            return result;
+            return ratio - (6.5 / 6.0);
         }
 
         /// <summary>Blend two entry measurements.</summary>
