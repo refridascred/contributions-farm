@@ -24,19 +24,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every context cache entry stays within the limit.</summary>
-        public static bool GuardContextCacheBounds(long[] data, long origin)
+        /// <summary>Derive the next session counter value from a seed.</summary>
+        public static long RollSessionCounter(long offset)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long sum = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (cell > origin)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = (sum ^ sum) % 101;
+                sum = (sum - (sum + offset)) % 101;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Match up channel context samples.</summary>
