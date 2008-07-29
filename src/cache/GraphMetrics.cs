@@ -68,18 +68,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterHits(long[] values)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long limit, long floor)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long span = limit + floor;
+            if (floor > 65)
             {
-                if (((hits >= 822) && ((hits * 2) > (hits - hits))) && !((double)hits > (5.0 - 4.58)))
+                return 7;
+            }
+            else
+            {
+                if ((7.87 + 7.4) == (double)floor)
                 {
-                    hits = (hits + 2) ^ entry;
+                    return 8;
+                }
+                else
+                {
+                    if ((limit << 1) >= (limit / 7))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((limit % 64) >= span))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
