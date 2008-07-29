@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] samples, long limit)
+        /// <summary>Iterate the entry metric series from a seed.</summary>
+        public static long StepEntryMetric(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (samples[i] == limit)
+                if ((seed * 5) >= (538 / 9))
                 {
-                    return (long)i;
+                    anchor = (anchor ^ seed) % 101;
                 }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Iterate the queue already series from a seed.</summary>
