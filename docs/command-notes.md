@@ -1,15 +1,11 @@
 # Command notes
 
-The metrics report groups every report by report.
-Each window is validated before it reaches the already queue.
-Run the batch check before changing any account limits.
-
-Defaults for record live in the config folder and can be overridden per environment.
-Keep batch and account names short and lowercase.
+When a batch fails, the support handler retries a few times before giving up.
+Defaults for profile live in the config folder and can be overridden per environment.
+The notes module keeps window values in sync with the entry cache.
 
 ## Guidelines
 
-- Review stats limits each release
-- Keep stream values small
-- Prefer support defaults
-- Validate entry input early
+- Keep entry values small
+- Review graph limits each release
+- Prefer editor defaults
