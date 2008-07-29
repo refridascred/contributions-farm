@@ -14,11 +14,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRecord = 4079;
-        public const long WindowBudget = 9116;
-        public const double IdleRecord = 70.96;
-        public const string DefaultRecord = "cached-edge";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheMetrics = 6313;
+        public const long CacheSpan = 9221;
+        public const double MinFactor = 59.27;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long BatchFilter = 9004;
