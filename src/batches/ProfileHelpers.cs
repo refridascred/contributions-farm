@@ -51,18 +51,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportHits(long[] readings, long limit)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long offset)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long total = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((limit - count) <= 465)
-                {
-                    count = (count + 3) - sample;
-                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
