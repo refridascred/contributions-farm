@@ -32,14 +32,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            Pending,
+            Closed,
+            Retry,
             Paused,
-            New,
-            Queued,
-            Active,
+            Draft,
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
