@@ -51,10 +51,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultQueue = 5182;
-        public const long IdleQueue = 1527;
-        public const long StepQueue = 5370;
-        public const string BaseQueue = "stable-v2";
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
+        {
+            Retry,
+            Queued,
+            Draft,
+        }
     }
 }
