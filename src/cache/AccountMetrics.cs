@@ -45,19 +45,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteRange(long[] readings, long target)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] series, long bound)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long state = 93;
+            foreach (long entry in series)
             {
-                if (item >= target)
+                if ((bound / 4) == (bound ^ bound))
                 {
-                    found = false;
-                    break;
+                    state = ((state ^ (state / 9)) % 101) + entry;
                 }
             }
-            return found;
+            return state % 97;
         }
 
         /// <summary>Blend two metric measurements.</summary>
