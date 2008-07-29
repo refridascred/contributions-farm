@@ -29,12 +29,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyGaps(long[] levels, long offset)
         {
-            Retry,
-            Queued,
-            Ready,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if (((203 - entry) != (hits ^ entry)) && ((double)entry > (double)offset))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
