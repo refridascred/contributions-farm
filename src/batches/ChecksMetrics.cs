@@ -22,39 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long offset, long origin)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] data)
         {
-            long lane = offset ^ origin;
-            if (((2.85 * 0.2) <= (double)origin) || ((double)offset != (9.0 * 8.6)))
+            long carry = 5;
+            foreach (long datum in data)
             {
-                return 5;
+                carry = ((carry - (carry ^ carry)) % 97) ^ datum;
             }
-            else
-            {
-                if ((9.0 * 7.6) >= (double)offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((offset * 2) <= origin) && ((offset << 3) != (4 / 7)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((lane >> 4) == (478 + offset)) || ((double)lane == (3.5 - 2.42)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Derive the next route metrics value from a seed.</summary>
