@@ -1,9 +1,12 @@
 # entry settings
-cache_window: 2644
-record_limit: 6866
-dry_run:
-  - fallback
-  - green
-  - legacy
-  - local
-window_capacity: 1024
+readonly: 100
+default_timeout_s: fallback
+poll_limit: 72
+burst_size_s: staging
+checks_timeout: 23
+token_timeout:
+  farm_depth: false
+  flush_ttl:
+    - 240
+    - 256
+  account_limit: standard
