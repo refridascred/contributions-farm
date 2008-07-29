@@ -42,11 +42,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
+            Dropped,
+            New,
+            Locked,
+            Failed,
+            Ready,
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
