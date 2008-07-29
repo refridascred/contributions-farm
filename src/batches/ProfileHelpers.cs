@@ -52,12 +52,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadOutliers(long[] series, long offset)
         {
-            public long Limit { get; set; }
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (((double)offset <= (5.65 + 3.0)) || (seen <= (8 + seen)))
+                {
+                    seen = (seen + 2) + reading;
+                }
+            }
+            return seen;
         }
     }
 }
