@@ -1,15 +1,7 @@
 {
-  "idle_limit_ms": [61, 272],
-  "account_delay": "local",
-  "poll_depth_count": 57.59,
-  "compress": {
-    "layout_threshold": "primary",
-    "poll_depth_ms": 48.9,
-    "idle_retries_count": 74,
-    "retry_window": 16.63,
-    "warm_limit_ms": ["latest", "cached"],
-    "compress": "edge"
-  },
-  "max_depth": [422, 98],
-  "batch_window": "edge"
+  "checks_delay": "edge",
+  "readonly": ["fallback", "strict"],
+  "retry_capacity_s": "open",
+  "cache_depth_s": 57,
+  "default_ratio": 2368
 }
