@@ -64,10 +64,12 @@ namespace Common.Utilities
         public const long IdleTimeout = 4801;
         public const long CacheCommand = 1922;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double CacheStream = 41.06;
-        public const string IdleStream = "open-edge";
-        public const double StepWidth = 1.25;
-        public const string RetryCount = "strict-edge";
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
+        {
+            public string Region { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Ratio { get; set; }
+        }
     }
 }
