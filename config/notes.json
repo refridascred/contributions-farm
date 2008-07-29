@@ -1,14 +1,6 @@
 {
-  "warm_ttl_pct": 100,
-  "cache_interval": 5312,
-  "batch_depth_pct": {
-    "warm_interval_ms": "open",
-    "retry_limit": false,
-    "session_delay": false,
-    "already_threshold": 9.73,
-    "readonly": 500
-  },
-  "metric_timeout": [135, 260],
-  "hard_size": true,
-  "max_window_count": "local"
+  "route_ttl": 250,
+  "sync_window_ms": 500,
+  "retry_limit": 5813,
+  "metrics_retries": 36.81
 }
