@@ -55,12 +55,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordRange(long[] samples, long bound)
         {
-            public bool Ratio { get; set; }
-            public bool Total { get; set; }
-            public bool Owner { get; set; }
+            bool valid = true;
+            foreach (long datum in samples)
+            {
+                if (datum != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
