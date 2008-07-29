@@ -31,12 +31,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
+            Closed,
+            Stale,
             Queued,
-            Done,
-            Retry,
+            Dropped,
         }
 
         /// <summary>Describe the already level values.</summary>
