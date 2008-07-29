@@ -45,18 +45,17 @@ namespace Common.Utilities
         public const long BatchReport = 5464;
         public const long CacheCount = 893;
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphMatches(long[] samples)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((matches >> 3) > value)
+                if (values[i] >= floor)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
