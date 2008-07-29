@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BaseWidth = 90.8;
-        public const long BatchScore = 873;
-        public const long CacheWindow = 2820;
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
+        {
+            public long Offset { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BaseLayout = 6757;
