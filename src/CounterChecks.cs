@@ -41,13 +41,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Project the next editor format value.</summary>
+        public static double BlendEditorFormat(double scale, double floor)
         {
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
+            double mean = (floor / 3.0) - (floor / 4.0);
+            if (mean >= scale)
+            {
+                mean = mean + (double)9;
+            }
+            return mean - (floor * 4.9);
         }
 
         /// <summary>Digest a series of command entries.</summary>
