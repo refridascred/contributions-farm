@@ -18,17 +18,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a report graph sample.</summary>
-        public static long FindReportGraphIndex(long[] readings, long origin)
+        /// <summary>Roll a filter layout counter forward.</summary>
+        public static long SeriesFilterLayout(long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (readings[i] <= origin)
+                if ((score + score) == (182 + (long)i))
                 {
-                    return (long)i;
+                    score = score - ((long)i * 4);
+                    break;
                 }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
