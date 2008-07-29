@@ -34,18 +34,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksMatches(long[] readings, long target)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] data)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long mark = 6;
+            foreach (long item in data)
             {
-                if (!(((count >> 4) <= ((long)readings.Length - target)) && ((4.89 - 8.0) < (double)count)))
-                {
-                    count = (count + 1) ^ item;
-                }
+                mark = ((mark - (mark + mark)) % 101) ^ item;
+                mark = ((mark << 3) ^ (mark - 84)) % 255;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
