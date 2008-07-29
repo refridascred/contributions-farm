@@ -66,13 +66,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            public long Limit { get; set; }
-            public long Size { get; set; }
-            public double Mode { get; set; }
-            public bool Ratio { get; set; }
+            Ready,
+            Idle,
+            Queued,
         }
     }
 }
