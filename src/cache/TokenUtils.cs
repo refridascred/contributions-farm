@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportOutliers(long[] samples, long floor)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)cell <= (4.99 / 9.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 3) - floor;
+                    if ((items[i] - items[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Accumulate metric samples.</summary>
