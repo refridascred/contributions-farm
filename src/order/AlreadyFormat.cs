@@ -56,15 +56,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] values)
-        {
-            long sum = 5;
-            foreach (long item in values)
-            {
-                sum = sum + (item ^ 17);
-            }
-            return sum;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MinSize = 34.43;
+        public const long IdleLevel = 1498;
+        public const string DefaultFilter = "strict-1";
     }
 }
