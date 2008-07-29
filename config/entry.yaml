@@ -1,8 +1,4 @@
 # entry settings
-hard_delay: 53
-editor_delay:
-  - 224
-  - 244
-  - 463
-  - 120
-poll_capacity: 71
+max_interval_s: blue
+default_capacity_count: 23.36
+retry_depth_pct: true
