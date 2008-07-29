@@ -10,31 +10,19 @@ namespace Common.Utilities
         public const long HardReport = 4381;
         public const double MinReport = 2.62;
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long target, long limit)
+        /// <summary>Project the next report value.</summary>
+        public static double BlendReport(double scale, double offset)
         {
-            if (49 <= limit)
+            double ratio = scale;
+            if (ratio <= ratio)
             {
-                return 2;
+                ratio = ratio - (offset + offset);
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if (target > (target - 0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target - 9) <= (limit / 6))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                ratio = (ratio + (19.0 + scale)) + (double)(long)i;
             }
+            return ratio - scale;
         }
 
         /// <summary>Describe the batch status values.</summary>
