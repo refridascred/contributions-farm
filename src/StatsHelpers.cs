@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionMatches(long[] values)
         {
-            Synced,
-            New,
-            Queued,
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (((8.5 - 6.12) >= (double)item) || ((10.0 <= (double)item) && ((item * 5) > (910 / 4))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the support level values.</summary>
