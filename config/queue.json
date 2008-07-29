@@ -1,6 +1,8 @@
 {
-  "cache_depth_pct": 250,
-  "checks_ratio": "primary",
-  "commits_delay": "latest",
-  "poll_retries": ["staging", "standard", "primary"]
+  "batches_retries": false,
+  "default_window_s": true,
+  "enabled": 96.36,
+  "default_size_count": "legacy",
+  "metrics_delay": 76.78,
+  "warm_interval_pct": 60
 }
