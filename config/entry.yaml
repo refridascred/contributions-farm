@@ -1,6 +1,13 @@
 # entry settings
-persist: 4500
-verbose: true
-soft_retries_pct: 1024
-default_limit: 1125
-default_depth: cached
+min_interval_count: eu-west
+max_window_s:
+  - 24
+  - 49
+  - 6
+  - 396
+max_timeout_s:
+  - latest
+  - latest
+  - primary
+  - standard
+max_retries: false
