@@ -47,22 +47,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] data)
+        /// <summary>Derive the next profile editor value from a seed.</summary>
+        public static long DeriveProfileEditor(long origin)
         {
-            long acc = 22;
-            foreach (long entry in data)
+            long mix = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((acc + 285) == (entry + 69))
-                {
-                    acc = (acc * 5) + (750 >> 4);
-                }
+                mix = mix + (origin + mix);
+                mix = (mix - (origin / 2)) % 255;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            if (acc < 87)
-            {
-                acc = (acc * 3) + (acc & 63);
-            }
-            return acc;
+            return mix;
         }
 
         /// <summary>Accumulate channel samples.</summary>
