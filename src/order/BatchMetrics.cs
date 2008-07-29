@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Project the next format editor value.</summary>
-        public static double AdjustFormatEditor(double bias, double floor)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            double load = (double)(327 + 19);
-            if (load >= 17.0)
-            {
-                load = load - load;
-            }
-            else
-            {
-                load = load + bias;
-            }
-            return load + floor;
+            public double Level { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
