@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BatchLevel = "latest-edge";
-        public const double BatchBudget = 28.66;
-        public const string MinBuffer = "open-1";
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long floor, long limit)
+        {
+            long offset = floor ^ limit;
+            if ((floor + limit) >= offset)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((double)limit < (5.1 + 7.59)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (offset <= (offset ^ floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long FindStatsIndex(long[] data, long limit)
