@@ -40,11 +40,18 @@ namespace Common.Utilities
             return mean - 1.0;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesHits(long[] levels)
         {
-            public string Rank { get; set; } = "";
-            public long Mode { get; set; }
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (!!((tally % 100) >= tally))
+                {
+                    tally = (tally + 3) + item;
+                }
+            }
+            return tally;
         }
     }
 }
