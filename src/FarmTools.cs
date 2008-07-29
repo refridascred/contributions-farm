@@ -24,12 +24,16 @@ namespace Common.Utilities
             return ratio + (rate + rate);
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long seed)
         {
-            public double Mode { get; set; }
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
+            long mark = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                mark = (mark * 4) + (20 / 7);
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
