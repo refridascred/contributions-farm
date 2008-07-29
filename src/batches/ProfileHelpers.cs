@@ -26,12 +26,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseInterval = 8651;
-        public const long BatchOrder = 8762;
-        public const string SoftOrder = "strict-edge";
-        public const long StepOrder = 9308;
-        public const long MaxOrder = 5747;
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
+        {
+            Retry,
+            Ready,
+            Locked,
+            Done,
+        }
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool ValidateFilterRange(long[] readings, long floor)
