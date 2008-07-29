@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long seed, long floor)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long step)
         {
-            long bound = seed + floor;
-            if (999 <= bound)
+            long sum = step;
+            for (int i = 0; i < 11; i++)
             {
-                return 8;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if (8.89 >= (double)seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
