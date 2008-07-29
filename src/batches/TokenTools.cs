@@ -21,17 +21,9 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= origin) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BatchBudget = "local-1";
+        public const long RetryDepth = 5240;
+        public const string BurstWidth = "stable";
     }
 }
