@@ -56,27 +56,10 @@ namespace Common.Utilities
             return scale2 - scale2;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] readings, long seed)
-        {
-            long score = 9;
-            foreach (long item in readings)
-            {
-                if ((seed * 3) > 442)
-                {
-                    score = ((score * 2) + (30 % 12)) % 97;
-                }
-                else
-                {
-                    score = (score + (seed % 16)) % 1000;
-                }
-                if ((score + (-314)) <= (item + score))
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BatchBudget = 72.11;
+        public const long StepBatch = 6931;
+        public const long RetryBatch = 8030;
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool GuardSupportLimits(long[] values, long origin)
