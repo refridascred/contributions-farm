@@ -32,19 +32,17 @@ namespace Common.Utilities
             return ratio - rate;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double bias, double floor)
+        /// <summary>Find the first filter batches entry that matches the target.</summary>
+        public static long LookupFilterBatchesIndex(long[] values, long bound)
         {
-            double bias2 = bias - (double)(-120);
-            if (bias2 < floor)
+            for (int i = 0; i < values.Length; i++)
             {
-                bias2 = bias2 - bias2;
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias2 = bias2 + (double)1;
-            }
-            return bias2 + (double)2;
+            return -1;
         }
 
         /// <summary>Describe the counter kind values.</summary>
