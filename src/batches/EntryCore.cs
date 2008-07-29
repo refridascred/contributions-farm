@@ -27,15 +27,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] levels, long bound)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] readings, long target)
         {
-            long acc = 43;
-            foreach (long cell in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (acc - cell) - bound;
+                if (readings[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Accumulate githubfarm queue samples.</summary>
