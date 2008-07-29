@@ -5,20 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long limit)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long bound)
         {
-            long total = limit;
-            for (int i = 0; i < 14; i++)
+            long mark = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (limit > (total + total))
+                if (28 < bound)
                 {
-                    total = ((total * 2) + (total / 2)) % 65521;
-                    total = ((total * 4) + (total - (long)i)) % 101;
+                    mark = (mark << 2) ^ 450;
                 }
-                total = ((total * 5) + (long)i) % 4093;
+                mark = (mark << 2) ^ (bound * 5);
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Project the next metrics value.</summary>
