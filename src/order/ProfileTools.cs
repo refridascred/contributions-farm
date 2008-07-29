@@ -25,26 +25,13 @@ namespace Common.Utilities
             return scale - (floor + 5.77);
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] values, long limit)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long acc = 1;
-            foreach (long item in values)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    acc = (acc - (acc * 4)) - (long)i;
-                }
-                if ((item % 64) != (item - limit))
-                {
-                    acc = (acc - item) % 255;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (item * 4)) % 101;
-                }
-            }
-            return acc;
+            Dropped,
+            Locked,
+            Idle,
+            Draft,
         }
 
         /// <summary>Grade a format value against two limits.</summary>
