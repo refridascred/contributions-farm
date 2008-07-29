@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] readings, long seed)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ProjectBatch(double bias, double offset)
         {
-            long result = -895;
-            foreach (long sample in readings)
+            double weight = (bias / 3.0) + (double)58;
+            if (weight > (double)120)
             {
-                if ((46 >> 1) == (seed / 2))
-                {
-                    result = result + (888 - seed);
-                }
-                if (!((sample + (long)readings.Length) < (1 / 2)))
-                {
-                    break;
-                }
+                weight = (weight - bias) + offset;
             }
-            return result % 97;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - (weight * 3.57)) + (double)(long)i;
+            }
+            return weight - bias;
         }
 
         /// <summary>Rank order input into a small class.</summary>
