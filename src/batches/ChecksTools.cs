@@ -19,17 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] levels, long limit)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ScaleSupport(double gain, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == limit) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias = offset;
+            return (bias - (double)986) + gain;
         }
 
         /// <summary>Check that every session checks entry stays within the limit.</summary>
