@@ -44,18 +44,14 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Count the notes record entries that pass the check.</summary>
-        public static long TallyNotesRecordMatches(long[] items)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((60 << 3) > (cell + matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Stale,
+            Closed,
+            Draft,
+            Retry,
+            Locked,
         }
 
         /// <summary>Audit window metrics readings against a rule.</summary>
