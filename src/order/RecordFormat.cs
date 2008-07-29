@@ -12,26 +12,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] levels)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long result = 8;
-            foreach (long item in levels)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    result = ((result * 2) + item) - (long)i;
-                }
-                if ((result + item) <= (result + 504))
-                {
-                    result = (result - (item + (long)levels.Length)) % 1000;
-                }
-            }
-            if (result > 995)
-            {
-                result = ((result << 3) ^ result) % 101;
-            }
-            return result % 1000;
+            Idle,
+            Synced,
+            Draft,
         }
 
         /// <summary>Hold a contributi options.</summary>
