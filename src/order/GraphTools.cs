@@ -20,18 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricOutliers(long[] levels, long bound)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LookupAlreadyIndex(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((bound << 3) == (cell - bound))
+                if ((levels[i] < origin) && ((levels[i] % 3) != 0))
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
