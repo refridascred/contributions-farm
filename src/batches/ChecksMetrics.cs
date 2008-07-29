@@ -40,19 +40,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next route metrics value from a seed.</summary>
-        public static long DeriveRouteMetrics(long target)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] series, long limit)
         {
-            long total = target;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (total > target)
+                if ((series[i] > limit) && ((series[i] % 5) != 0))
                 {
-                    total = ((total << 2) ^ (63 * 4)) % 97;
+                    return (long)i;
                 }
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Adjust a payload reading.</summary>
