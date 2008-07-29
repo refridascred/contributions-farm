@@ -1,5 +1,9 @@
 # entry settings
-strict: 4791
-flush_window_s: false
-warm_timeout_count: true
-audit: 36.09
+stats_ratio: 53.69
+strict: 68
+channel_window: 100
+batch_retries_s:
+  - legacy
+  - legacy
+  - open
+sync_delay: legacy
