@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string RetryCount = "open-1";
-        public const long CacheScore = 6241;
-        public const string CacheAccount = "staging-edge";
-        public const long StepAccount = 2634;
-        public const long CacheSpan = 726;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksHits(long[] readings, long floor)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((94 + floor) == (value - floor))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool GuardSupportBounds(long[] levels, long step)
