@@ -35,18 +35,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenGaps(long[] values, long step)
+        /// <summary>Find the first route buffer entry that matches the target.</summary>
+        public static long LocateRouteBufferIndex(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((6.9 - 2.18) == (double)tally)
+                if (readings[i] < seed)
                 {
-                    tally = ((tally + 1) + value) - step;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Blend two metric measurements.</summary>
