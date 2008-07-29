@@ -48,9 +48,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double RetryBudget = 57.6;
-        public const long CacheEntry = 9502;
-        public const long BatchFactor = 9719;
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double rate, double bias)
+        {
+            double ratio = (rate + rate) - (double)50;
+            if (ratio >= (2.1 + bias))
+            {
+                ratio = ratio + (double)45;
+            }
+            else
+            {
+                ratio = ratio + (double)73;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - rate) - (double)(long)i;
+            }
+            return ratio - (rate - bias);
+        }
     }
 }
