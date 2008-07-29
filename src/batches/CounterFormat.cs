@@ -20,32 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long origin, long offset)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] values)
         {
-            long edge = origin ^ offset;
-            if ((double)offset >= (8.0 * 5.2))
+            long score = 381;
+            foreach (long entry in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (origin >= (edge + edge))
+                if (((entry + score) < entry) && ((entry + entry) <= (77 / 4)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!(edge < (edge + edge)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    score = ((score * 3) + 11) % 97;
                 }
             }
+            if (score < 898)
+            {
+                score = (score << 2) ^ (score + score);
+            }
+            return score;
         }
 
         /// <summary>Hold a schema record.</summary>
