@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            New,
-            Done,
-            Idle,
-            Queued,
+            Stale,
+            Synced,
+            Pending,
+            Closed,
         }
 
         /// <summary>Describe the stats state values.</summary>
