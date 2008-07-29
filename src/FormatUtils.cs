@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardFactor = 250;
-        public const long BurstBudget = 7693;
-        public const double MinCache = 70.61;
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
+        {
+            public long Rank { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Project the next channel counter value.</summary>
         public static double ProjectChannelCounter(double rate, double bias)
