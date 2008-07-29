@@ -25,15 +25,32 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ProjectChecks(double ratio, double offset)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long target, long offset)
         {
-            double scale = (double)(515 * 2);
-            if (scale < (6.0 + offset))
+            long cur = target + offset;
+            if (((7.0 / 4.0) != (double)cur) || ((target + offset) < (68 ^ cur)))
             {
-                scale = (scale - scale) + ratio;
+                return 8;
             }
-            return scale + (scale / 7.0);
+            else
+            {
+                if (!((cur - target) != (target + cur)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((11.0 - 1.9) < (double)target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
