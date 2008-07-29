@@ -87,12 +87,12 @@ namespace Common.Utilities
             return mean - (gain - bias);
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            public double Region { get; set; }
-            public string Level { get; set; } = "";
-            public long Score { get; set; }
+            public long Limit { get; set; }
+            public double Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the stats state values.</summary>
