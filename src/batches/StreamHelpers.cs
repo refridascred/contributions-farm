@@ -53,16 +53,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a farm context figure with a bias.</summary>
-        public static double ProjectFarmContext(double scale, double bias)
-        {
-            double rate = bias / 3.0;
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - (double)(long)i) + scale;
-            }
-            return rate - bias;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryBudget = 5745;
+        public const long IdleSpan = 2164;
+        public const long CacheCount = 688;
+        public const double MaxAlready = 80.92;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long RetryFilter = 7275;
