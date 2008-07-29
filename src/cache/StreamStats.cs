@@ -20,21 +20,22 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] series)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 4;
+            foreach (long value in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((2.3 / 5.0) != (double)value)
                 {
-                    if ((series[i] ^ series[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = ((sum << 2) ^ sum) % 97;
                 }
             }
-            return hits;
+            if (sum < 31)
+            {
+                sum = sum ^ (sum * 5);
+            }
+            return sum;
         }
 
         /// <summary>Describe the window status values.</summary>
