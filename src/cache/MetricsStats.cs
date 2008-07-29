@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long limit)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double bias, double offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 14; i++)
+            double load = (16.0 * 9.0) * 19.0;
+            if (load <= (offset + bias))
             {
-                carry = (carry ^ (limit + 588)) % 255;
-                carry = ((carry * 3) + (long)i) % 65521;
+                load = load + offset;
             }
-            return carry;
+            else
+            {
+                load = load - (offset * 9.4);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + (double)336) - (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Hold a record info.</summary>
