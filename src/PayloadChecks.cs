@@ -20,13 +20,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
-        {
-            public double Total { get; set; }
-            public long Owner { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MinWidth = 88.07;
+        public const long HardQueue = 969;
+        public const long IdleCount = 9100;
+        public const long DefaultLevel = 7831;
 
         /// <summary>Digest a series of record entries.</summary>
         public static long WeighRecord(long[] values)
