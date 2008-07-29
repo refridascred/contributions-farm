@@ -36,19 +36,15 @@ namespace Common.Utilities
         public const long BatchRatio = 939;
         public const long BaseRatio = 8840;
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double AdjustChannel(double gain, double floor)
+        /// <summary>Roll a token queue counter forward.</summary>
+        public static long DeriveTokenQueue(long target)
         {
-            double weight = floor;
-            if (weight >= floor)
+            long mark = target;
+            for (int i = 0; i < 14; i++)
             {
-                weight = weight - weight;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - gain) - (double)(long)i;
-            }
-            return weight + (double)385;
+            return mark;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
