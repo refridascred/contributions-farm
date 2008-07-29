@@ -1,20 +1,21 @@
 # githubfarm settings
-hard_interval_pct:
-  - 337
-  - 455
-  - 419
-enabled:
-  min_timeout_count: local
-  retry_ttl: 93.32
-  idle_retries:
-    default_interval: false
-    max_ttl_pct: 7281
-    record_retries: 60
-    soft_limit: primary
-    cache_delay_count: 7993
-    queue_timeout: open
-  burst_window_ms: eu-west
-  verbose: 5074
-  layout_interval: 82.47
-cache_ttl_count: false
-poll_ratio: 15.21
+readonly: true
+soft_capacity_count:
+  flush_interval: 92.94
+  readonly: 250
+  cache_window_s: standard
+  burst_delay_count:
+    hard_delay: false
+    hard_ttl_ms: true
+    poll_interval_count:
+      - 492
+      - 441
+    layout_interval:
+      - 170
+      - 298
+    burst_retries: 1196
+    soft_timeout_ms: green
+poll_delay_count: edge
+notes_threshold: 78.29
+warm_timeout_ms: fallback
+sync_ratio: 93.57
