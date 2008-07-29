@@ -50,19 +50,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] samples, long seed)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] readings)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long sum = 2;
+            foreach (long sample in readings)
             {
-                if (datum != seed)
+                if ((double)sample < (double)sum)
                 {
-                    found = false;
-                    break;
+                    sum = ((sum * 2) + sum) % 101;
                 }
             }
-            return found;
+            return sum % 65521;
         }
 
         /// <summary>Combine support payload values into a single score.</summary>
