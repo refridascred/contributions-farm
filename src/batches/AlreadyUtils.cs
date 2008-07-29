@@ -41,18 +41,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] items)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long result = 751;
-            foreach (long reading in items)
-            {
-                if ((10.0 + 2.18) == (double)result)
-                {
-                    result = (result - (reading ^ reading)) % 97;
-                }
-            }
-            return result % 97;
+            public long Mode { get; set; }
+            public bool Ratio { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
