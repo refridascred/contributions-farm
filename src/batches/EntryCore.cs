@@ -36,12 +36,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowBudget = 2009;
-        public const long BaseLevel = 9121;
-        public const long BaseSpan = 6005;
-        public const long BatchSpan = 1764;
-        public const long MaxTimeout = 6117;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] readings, long seed)
+        {
+            long score = 325;
+            foreach (long item in readings)
+            {
+                score = ((score << 3) ^ score) % 255;
+                score = (score ^ (seed + item)) % 97;
+            }
+            if (score > 59)
+            {
+                score = (score - (0 + seed)) % 97;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Measure how many schema already samples are out of range.</summary>
         public static long CountSchemaAlreadyMatches(long[] levels, long step)
