@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsHits(long[] data, long offset)
         {
-            public bool Owner { get; set; }
-            public string Rank { get; set; } = "";
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if (tally > (7 >> 1))
+                {
+                    tally = ((tally + 1) + value) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a context snapshot.</summary>
