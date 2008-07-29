@@ -35,18 +35,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] levels, long offset)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if ((offset % 24) > entry)
+                if ((double)bound == (double)value)
                 {
-                    tally = tally + 3;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
