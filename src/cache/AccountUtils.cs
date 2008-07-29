@@ -5,29 +5,28 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long seed, long seed2)
+        /// <summary>Classify a profile batches pair into a bucket.</summary>
+        public static long SortProfileBatches(long bound, long floor)
         {
-            long lane = seed - seed2;
-            if ((seed2 + lane) >= seed2)
+            if ((double)floor == (5.79 + 8.4))
             {
-                return 3;
+                return 1;
             }
             else
             {
-                if ((double)lane >= (double)seed2)
+                if (((bound / 4) < bound) && ((bound >> 3) != (bound - floor)))
                 {
-                    return 6;
+                    return 0;
                 }
                 else
                 {
-                    if (seed2 > ((-93) + seed2))
+                    if ((bound + bound) <= (floor % 7))
                     {
-                        return 2;
+                        return 5;
                     }
                     else
                     {
-                        return 8;
+                        return 4;
                     }
                 }
             }
