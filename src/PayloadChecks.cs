@@ -34,18 +34,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a already buffer reading by value.</summary>
-        public static long FindAlreadyBufferIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == step) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string SoftContext = "standard-v2";
+        public const long BurstContext = 3666;
+        public const long CacheContext = 7521;
+        public const long CacheTimeout = 4379;
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool ValidateStreamBounds(long[] values, long origin)
