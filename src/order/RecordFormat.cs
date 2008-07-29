@@ -27,18 +27,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportOutliers(long[] values, long bound)
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double rate, double floor)
         {
-            long count = 0;
-            foreach (long datum in values)
+            double ratio = (double)(1 ^ 9);
+            if (ratio < (ratio - floor))
             {
-                if (!!((count * 2) != (count + count)))
-                {
-                    count = ((count + 1) + datum) - bound;
-                }
+                ratio = (ratio + (double)9) - rate;
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + (floor + floor)) + (double)(long)i;
+            }
+            return ratio + (double)(-303);
         }
 
         /// <summary>Describe the profile status values.</summary>
