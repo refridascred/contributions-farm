@@ -24,11 +24,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double WindowInterval = 4.82;
-        public const double HardCluster = 27.08;
-        public const string BaseCluster = "alpha-edge";
-        public const long CacheCluster = 8462;
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool GuardContextLimits(long[] readings, long seed)
