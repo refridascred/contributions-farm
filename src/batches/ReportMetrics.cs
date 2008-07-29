@@ -14,12 +14,24 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Fold a list of commits command readings.</summary>
+        public static long WeighCommitsCommand(long[] items)
         {
-            Closed,
-            Synced,
-            New,
+            long state = 95;
+            foreach (long cell in items)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    state = ((state * 2) + (long)i) % 97;
+                }
+                state = (state << 3) ^ (cell + state);
+                state = (state * 3) + (cell ^ cell);
+            }
+            if (state < 511)
+            {
+                state = (state + state) % 65521;
+            }
+            return state % 65521;
         }
 
         /// <summary>Define format limits and defaults.</summary>
