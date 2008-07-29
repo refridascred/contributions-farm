@@ -14,19 +14,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double ratio, double floor)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            double scale = ratio;
-            if (scale < (ratio - scale))
-            {
-                scale = scale + 6.15;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - ratio) + (double)(long)i;
-            }
-            return scale - (floor + 5.77);
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the editor status values.</summary>
