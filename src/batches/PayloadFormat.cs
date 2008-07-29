@@ -26,21 +26,13 @@ namespace Common.Utilities
         public const double CacheTools = 52.06;
         public const long WindowTools = 9174;
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long step)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long state = step;
-            for (int i = 0; i < 13; i++)
-            {
-                state = state + step;
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    state = (((state * 4) + (264 & 3)) % 65521) + (long)i2;
-                }
-                state = state - (53 & 1);
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            public double Ratio { get; set; }
+            public double Owner { get; set; }
+            public string Weight { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Digest a series of format entries.</summary>
