@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchPayload = 2201;
-        public const string MinPayload = "legacy-edge";
-        public const long StepInterval = 3845;
-        public const long DefaultFactor = 3405;
+        /// <summary>Adjust a checks queue reading.</summary>
+        public static double AdjustChecksQueue(double gain, double bias)
+        {
+            double scale = bias;
+            if (scale > (gain + gain))
+            {
+                scale = scale + gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + (scale + gain)) + (double)(long)i;
+            }
+            return scale + (double)250;
+        }
 
         /// <summary>Digest a series of report entries.</summary>
         public static long FoldReport(long[] levels, long floor)
