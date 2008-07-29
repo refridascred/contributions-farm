@@ -33,12 +33,19 @@ namespace Common.Utilities
         public const long StepOrder = 9308;
         public const long MaxOrder = 5747;
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterRange(long[] readings, long floor)
         {
-            Idle,
-            Pending,
-            Queued,
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
