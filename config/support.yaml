@@ -1,9 +1,9 @@
 # support settings
-audit: green
-flush_capacity_count: 9980
 readonly:
-  - 210
-  - 89
-  - 151
-  - 244
-sync_timeout: 67
+  cache_delay: true
+  route_retries: true
+  min_limit_ms: legacy
+idle_size_s: 1024
+default_depth_ms: true
+cache_ratio: latest
+commits_depth: 2425
