@@ -37,16 +37,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] data, long target)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long mark = -45;
-            foreach (long entry in data)
-            {
-                mark = (mark + (6 * 3)) ^ entry;
-                mark = ((mark << 3) ^ (4 + target)) % 4096;
-            }
-            return mark;
+            Dropped,
+            Pending,
+            Idle,
         }
 
         /// <summary>Hold a entry snapshot.</summary>
