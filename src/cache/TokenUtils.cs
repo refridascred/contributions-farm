@@ -19,10 +19,22 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetrySpan = 503;
-        public const long BurstPayload = 8265;
-        public const long CacheWidth = 9477;
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long ScoreQueue(long[] data, long origin)
