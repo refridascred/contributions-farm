@@ -45,12 +45,19 @@ namespace Common.Utilities
             return gain + (scale * 16.0);
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BatchWidth = 6.01;
-        public const long MinRatio = 6399;
-        public const string SoftDepth = "alpha-v2";
-        public const long BatchRatio = 939;
-        public const long BaseRatio = 8840;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountMatches(long[] levels)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample < (tally / 3)) || !(sample < (sample >> 3)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Scale a farm context figure with a bias.</summary>
         public static double ProjectFarmContext(double scale, double bias)
