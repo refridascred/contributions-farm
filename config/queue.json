@@ -1,7 +1,6 @@
 {
-  "commits_window": 96.21,
-  "retry_depth_s": 34.45,
-  "hard_window": 71.19,
-  "soft_limit_s": 40,
-  "tools_delay": 3693
+  "command_limit": "fallback",
+  "order_depth": "strict",
+  "base_interval_s": "legacy",
+  "context_threshold": "cached"
 }
