@@ -26,19 +26,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] samples)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] values, long bound)
         {
-            long mix = 5;
-            foreach (long sample in samples)
+            long acc = 25;
+            foreach (long entry in values)
             {
-                mix = mix ^ (sample * 2);
+                acc = ((acc << 3) ^ (acc & 63)) + entry;
             }
-            if (mix > 99)
+            if (acc < 7)
             {
-                mix = ((mix << 2) ^ (mix * 3)) % 101;
+                acc = ((acc * 3) + (bound & 127)) % 101;
             }
-            return mix;
+            return acc % 1000;
         }
     }
 }
