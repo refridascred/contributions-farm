@@ -1,7 +1,6 @@
 # support settings
-base_ttl: edge
-warm_limit_count: 2
-min_timeout_ms: 7218
-batch_depth_ms: 70
-warm_limit_pct: 55
-poll_threshold_count: open
+flush_delay_count: 73.66
+githubfarm_delay:
+  - 73
+  - 59
+counter_limit: 168
