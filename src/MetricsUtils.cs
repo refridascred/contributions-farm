@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferMatches(long[] series, long limit)
+        /// <summary>Check that every cluster stats entry stays within the limit.</summary>
+        public static bool CheckClusterStatsLimits(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if ((tally & 255) >= tally)
+                if (sample != bound)
                 {
-                    tally = ((tally + 1) - cell) - limit;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Hold a checks header.</summary>
