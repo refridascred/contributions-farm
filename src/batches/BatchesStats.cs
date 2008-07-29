@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheBounds(long[] items, long origin)
-        {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MaxSize = "alpha";
+        public const long IdleStream = 1143;
+        public const double StepBudget = 44.25;
+        public const long BaseTimeout = 3079;
+        public const long StepLevel = 4544;
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
