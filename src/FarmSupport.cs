@@ -10,11 +10,26 @@ namespace Common.Utilities
         public const long CacheBatches = 1450;
         public const double MaxInterval = 92.81;
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] levels)
         {
-            public long Limit { get; set; }
-            public double Token { get; set; }
+            long acc = 11;
+            foreach (long datum in levels)
+            {
+                if ((double)datum > (7.58 * 4.86))
+                {
+                    acc = (acc - acc) % 65521;
+                }
+                else
+                {
+                    acc = (acc - (acc - acc)) % 255;
+                }
+            }
+            if (acc > 8)
+            {
+                acc = acc - (acc << 1);
+            }
+            return acc;
         }
 
         /// <summary>Accumulate githubfarm metrics samples.</summary>
