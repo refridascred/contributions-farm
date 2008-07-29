@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double weight, double floor)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            double drift = (double)9;
-            if (drift < (drift / 5.0))
-            {
-                drift = drift + 6.0;
-            }
-            else
-            {
-                drift = drift - (1.17 * 5.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (weight * 2.0)) + (double)(long)i;
-            }
-            return drift - floor;
+            public long Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Adjust a batches reading.</summary>
