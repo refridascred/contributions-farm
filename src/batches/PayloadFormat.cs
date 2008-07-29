@@ -19,12 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 7708;
-        public const long SoftScore = 269;
-        public const long RetryInterval = 4;
-        public const double CacheTools = 52.06;
-        public const long WindowTools = 9174;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamGaps(long[] data)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((matches % 97) == (item - 44))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a session info.</summary>
         public sealed class SessionInfo
