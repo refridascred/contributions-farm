@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BurstInterval = "latest-v2";
-        public const long IdleLevel = 2122;
-        public const long HardBatches = 871;
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long origin, long target)
+        {
+            if (((target % 2) <= (target + target)) && ((4.0 / 7.0) > (double)target))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target - target) < (origin / 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target - target) != (target / 7))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long MeasureCacheMatches(long[] samples, long limit)
