@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string SoftGraph = "open-v2";
-        public const long BurstFactor = 5017;
-        public const long LimitFactor = 2422;
-        public const double StepScore = 10.91;
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
+        {
+            Retry,
+            Synced,
+            Idle,
+        }
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
