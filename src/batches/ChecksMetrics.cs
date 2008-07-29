@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Scale a support schema figure with a bias.</summary>
-        public static double ScaleSupportSchema(double weight, double bias)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileRange(long[] readings, long origin)
         {
-            double gain = (double)66 - 8.95;
-            if (gain > (double)548)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                gain = ((gain - (double)75) + weight) + bias;
+                if (reading > origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return gain + (6.14 + 1.0);
+            return flag;
         }
 
         /// <summary>Derive the next batches commits value from a seed.</summary>
