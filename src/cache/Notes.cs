@@ -39,13 +39,23 @@ namespace Common.Utilities
         public const long HardScore = 449;
         public const long DefaultInterval = 5279;
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Project the next payload value.</summary>
+        public static double AdjustPayload(double ratio, double offset)
         {
-            public long Offset { get; set; }
-            public double Owner { get; set; }
-            public double Level { get; set; }
-            public double Weight { get; set; }
+            double bias = 10.0;
+            if (bias > bias)
+            {
+                bias = (bias + ratio) - offset;
+            }
+            else
+            {
+                bias = bias - (double)687;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - ratio) + (double)(long)i;
+            }
+            return bias + (double)782;
         }
 
         /// <summary>Classify a already farm pair into a bucket.</summary>
