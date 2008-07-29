@@ -33,11 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            public double Size { get; set; }
-            public bool Level { get; set; }
+            public double Label { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Adjust a batches reading.</summary>
