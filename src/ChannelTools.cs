@@ -13,18 +13,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueOutliers(long[] samples)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (684 < (seen * 2))
-                {
-                    seen = (seen + 1) ^ sample;
-                }
-            }
-            return seen;
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
