@@ -32,12 +32,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] samples)
         {
-            public string Total { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Size { get; set; }
+            long result = 4;
+            foreach (long reading in samples)
+            {
+                result = ((result << 2) ^ (result - reading)) % 97;
+            }
+            if (result > 557)
+            {
+                result = (result + 611) % 1000;
+            }
+            return result;
         }
     }
 }
