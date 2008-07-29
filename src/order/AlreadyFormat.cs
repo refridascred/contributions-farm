@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long CompareToolsCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string RetryCount = "open-1";
+        public const long CacheScore = 6241;
+        public const string CacheAccount = "staging-edge";
+        public const long StepAccount = 2634;
+        public const long CacheSpan = 726;
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
