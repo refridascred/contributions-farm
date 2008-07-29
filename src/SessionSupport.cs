@@ -14,18 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit command entry readings against a rule.</summary>
-        public static long MeasureCommandEntryGaps(long[] values, long origin)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((origin >> 1) < 74)
-                {
-                    seen = (seen + 2) ^ sample;
-                }
-            }
-            return seen;
+            public double Label { get; set; }
+            public long Count { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the session class values.</summary>
