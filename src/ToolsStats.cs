@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardCache = 8904;
-        public const long SoftCache = 3562;
-        public const long HardSpan = 1963;
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double SmoothLayout(double ratio, double offset)
+        {
+            double load = ratio - (ratio / 8.0);
+            return (load - (double)900) + offset;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double BurstTools = 79.54;
