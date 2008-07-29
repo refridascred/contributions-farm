@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextHits(long[] data)
+        /// <summary>Look up the position of a format stats sample.</summary>
+        public static long LocateFormatStatsIndex(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((count - count) >= entry)
+                if (readings[i] <= offset)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
