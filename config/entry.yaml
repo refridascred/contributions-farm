@@ -1,15 +1,30 @@
 # entry settings
-default_size: true
-idle_depth_pct: standard
-warm_ratio_count:
-  - 224
-  - 306
-  - 52
-  - 263
-context_window:
-  - primary
+flush_capacity_pct: 4171
+default_ttl_ms: true
+base_interval:
+  dry_run: green
+  retry_ratio_s: eu-west
+  cache_threshold: 94.2
+  min_limit_pct: fallback
+  default_delay_pct:
+    - 484
+    - 446
+hard_capacity_s: edge
+batch_depth:
+  strict:
+    - stable
+    - latest
+  persist: false
+  max_window_ms: local
+  flush_depth:
+    - green
+    - cached
+    - cached
+    - green
+  hard_interval: 88.67
+  window_limit:
+    - cached
+    - stable
+burst_ratio:
+  - fallback
   - cached
-hard_depth_count:
-  - 256
-  - 418
-  - 448
