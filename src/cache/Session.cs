@@ -42,16 +42,19 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long floor)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferBounds(long[] data, long offset)
         {
-            long mix = floor;
-            for (int i = 0; i < 9; i++)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                mix = ((mix << 2) ^ (mix - mix)) % 4096;
-                mix = ((mix * 5) + (long)i) % 1000;
+                if (sample < offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mix;
+            return ok;
         }
     }
 }
