@@ -52,12 +52,13 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            Synced,
-            Dropped,
-            Stale,
+            public long Label { get; set; }
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+            public double Level { get; set; }
         }
     }
 }
