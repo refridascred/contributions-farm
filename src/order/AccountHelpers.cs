@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueGaps(long[] readings, long step)
         {
-            public double Region { get; set; }
-            public long Size { get; set; }
-            public double Flag { get; set; }
-            public double Owner { get; set; }
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((step << 3) >= (tally << 1))
+                {
+                    tally = (tally + 1) + item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a filter token figure with a bias.</summary>
