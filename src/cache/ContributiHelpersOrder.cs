@@ -23,18 +23,15 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Compare every pair of stream queue readings.</summary>
-        public static long CompareStreamQueueCount(long[] items)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesHits(long[] data)
         {
             long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((entry ^ seen) > seen)
                 {
-                    if ((items[i] - items[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
             return seen;
