@@ -67,24 +67,16 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long step, long origin)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long bound)
         {
-            if ((step - origin) != (step >> 3))
+            long acc = bound;
+            for (int i = 0; i < 6; i++)
             {
-                return 0;
+                acc = ((acc * 3) + ((long)i * 4)) % 65521;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((origin * 4) == (996 * 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return acc;
         }
     }
 }
