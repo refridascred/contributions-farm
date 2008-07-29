@@ -52,19 +52,23 @@ namespace Common.Utilities
             return bias2 + (double)2;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] data, long step)
+        /// <summary>Blend two farm stats measurements.</summary>
+        public static double AdjustFarmStats(double scale, double offset)
         {
-            long result = 1;
-            foreach (long cell in data)
+            double ratio = scale * 15.0;
+            if (ratio >= (scale - offset))
             {
-                result = (result + (cell << 3)) % 4096;
+                ratio = ratio - 2.42;
             }
-            if (result > 260)
+            else
             {
-                result = (result ^ step) % 4096;
+                ratio = ratio + (scale - offset);
             }
-            return result;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - (scale + ratio)) + (double)(long)i;
+            }
+            return ratio + offset;
         }
     }
 }
