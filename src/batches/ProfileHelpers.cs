@@ -61,17 +61,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long seed)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long offset, long bound)
         {
-            long sum = seed;
-            for (int i = 0; i < 4; i++)
+            long edge = offset ^ bound;
+            if ((bound + offset) > edge)
             {
-                sum = sum + (sum / 5);
-                sum = ((sum << 2) ^ ((long)i >> 4)) % 4096;
-                sum = ((sum * 5) + (long)i) % 65521;
+                return 2;
             }
-            return sum;
+            else
+            {
+                if ((edge - offset) <= (3 + bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound - 9) != (edge - offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!(bound > 55))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
