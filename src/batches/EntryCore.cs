@@ -52,20 +52,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long origin)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long mark = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((6.92 - 1.1) > (double)(long)i)
-                {
-                    mark = (mark - (long)i) % 4096;
-                    break;
-                }
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            public long Mode { get; set; }
+            public long Score { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
