@@ -47,13 +47,21 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long floor)
         {
-            public bool Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public double Count { get; set; }
-            public double Total { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((floor + floor) <= (acc + floor))
+                {
+                    acc = acc + (floor - acc);
+                    acc = (acc ^ 88) % 1000;
+                }
+                acc = (acc ^ (acc >> 4)) % 4096;
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
