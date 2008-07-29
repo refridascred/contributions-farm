@@ -35,9 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double HardCount = 91.06;
-        public const long BurstTimeout = 3529;
-        public const long SoftMetric = 890;
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
+        {
+            public bool Score { get; set; }
+            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
