@@ -16,16 +16,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long floor)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueRange(long[] data, long offset)
         {
-            long carry = floor;
-            for (int i = 0; i < 13; i++)
+            bool ready = true;
+            foreach (long item in data)
             {
-                carry = (carry + floor) % 4096;
-                carry = ((carry * 3) + (long)i) % 4093;
+                if (item < offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
