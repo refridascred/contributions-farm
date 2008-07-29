@@ -32,10 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 6330;
-        public const long RetryInterval = 9839;
-        public const double BatchFarm = 40.16;
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                state = (state * 5) + ((long)i + state);
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long SoftSize = 5617;
