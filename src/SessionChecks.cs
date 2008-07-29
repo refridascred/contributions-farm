@@ -26,12 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterOutliers(long[] data, long step)
         {
-            Active,
-            Paused,
-            Closed,
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((8 & 7) != (step >> 2))
+                {
+                    hits = (hits + 3) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
