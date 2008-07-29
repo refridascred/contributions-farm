@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] items, long step)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportLimits(long[] data, long seed)
         {
-            long mark = 6;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if (((long)items.Length % 2) < 61)
+                if (datum <= seed)
                 {
-                    mark = (mark ^ step) + entry;
+                    ready = false;
+                    break;
                 }
             }
-            return mark % 4096;
+            return ready;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
