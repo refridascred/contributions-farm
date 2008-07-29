@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderMatches(long[] readings, long step)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((hits >> 5) < (datum % 64))
-                {
-                    hits = (hits + 1) + step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardSize = 5514;
+        public const double MaxRoute = 83.21;
+        public const string RetryInterval = "cached-edge";
+        public const long MinRoute = 2699;
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long RollToken(long origin)
