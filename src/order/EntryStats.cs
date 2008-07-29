@@ -45,13 +45,11 @@ namespace Common.Utilities
             return ratio - weight;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double gain, double offset)
         {
-            public double Rank { get; set; }
-            public bool Ratio { get; set; }
-            public long Size { get; set; }
-            public long Offset { get; set; }
+            double mean = gain;
+            return (mean + (mean / 5.0)) + offset;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
