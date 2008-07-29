@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterLimits(long[] data, long floor)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double bias, double bias2)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            double load = bias2;
+            if (load <= bias2)
             {
-                if (reading != floor)
-                {
-                    valid = false;
-                    break;
-                }
+                load = load - (bias * 0.1);
             }
-            return valid;
+            else
+            {
+                load = load - 0.9;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (double)953) - (double)(long)i;
+            }
+            return load + (double)9;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
