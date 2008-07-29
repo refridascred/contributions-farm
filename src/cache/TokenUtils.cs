@@ -19,21 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesCount(long[] data)
+        /// <summary>Fold a list of context farm readings.</summary>
+        public static long TallyContextFarm(long[] readings, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 400;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((datum / 3) != (step % 12))
                 {
-                    if ((data[i] + data[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = mix ^ (mix / 5);
                 }
             }
-            return matches;
+            if (mix > 95)
+            {
+                mix = mix ^ mix;
+            }
+            return mix;
         }
 
         /// <summary>Describe the metric level values.</summary>
