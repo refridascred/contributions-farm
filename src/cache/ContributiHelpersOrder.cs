@@ -24,10 +24,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxSize = 1303;
-        public const long StepFormat = 8053;
-        public const long DefaultFormat = 8830;
-        public const string WindowFormat = "staging";
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((double)state <= (double)bound)
+                {
+                    state = (state ^ ((long)i + state)) % 65521;
+                    state = (state ^ bound) % 97;
+                    break;
+                }
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
+        }
     }
 }
