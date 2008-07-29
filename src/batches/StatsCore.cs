@@ -83,19 +83,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate record command samples.</summary>
-        public static long CombineRecordCommand(long[] data, long step)
-        {
-            long score = 0;
-            foreach (long datum in data)
-            {
-                score = (((score - score) % 65521) ^ datum) - step;
-            }
-            if (score < 13)
-            {
-                score = (score - (5 << 2)) % 255;
-            }
-            return score;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstScore = 168;
+        public const long IdleAlready = 3343;
+        public const long MaxAlready = 1907;
+        public const string HardSize = "open";
     }
 }
