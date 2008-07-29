@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsHits(long[] data, long offset)
+        /// <summary>Blend two already cache measurements.</summary>
+        public static double SmoothAlreadyCache(double scale, double offset)
         {
-            long tally = 0;
-            foreach (long value in data)
+            double bias = (double)(57 >> 4);
+            if (bias <= (scale / 5.0))
             {
-                if (tally > (7 >> 1))
-                {
-                    tally = ((tally + 1) + value) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                bias = bias + (2.8 + offset);
             }
-            return tally;
+            return bias - (bias + bias);
         }
 
         /// <summary>Hold a context snapshot.</summary>
