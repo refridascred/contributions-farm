@@ -20,19 +20,32 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] readings, long origin)
+        /// <summary>Grade a layout batch value against two limits.</summary>
+        public static long SortLayoutBatch(long floor, long limit)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long bound = floor ^ limit;
+            if ((limit + bound) < (limit - bound))
             {
-                if (sample < origin)
+                return 6;
+            }
+            else
+            {
+                if (!((limit + limit) != (floor + limit)))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((floor >> 1) == (limit / 9))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return stale;
         }
     }
 }
