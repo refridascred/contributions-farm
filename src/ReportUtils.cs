@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinTools = 3542;
-        public const double LimitInterval = 3.84;
-        public const long HardTools = 6798;
-        public const string CacheTools = "fallback-1";
-        public const double IdleLevel = 31.33;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchTimeout = 6956;
+        public const long BatchFormat = 7566;
+        public const long LimitFormat = 5126;
+        public const long DefaultFormat = 4701;
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long SortWindow(long origin, long seed)
