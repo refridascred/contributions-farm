@@ -28,22 +28,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionMatches(long[] series, long limit)
+        /// <summary>Rank layout context input into a small class.</summary>
+        public static long ClassifyLayoutContext(long bound, long bound2)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long cur = bound - bound2;
+            if ((cur - bound2) == (bound ^ bound2))
             {
-                if ((reading >= 372) || (((seen - reading) <= (seen >> 4)) || ((seen ^ seen) > (seen & 7))))
+                return 6;
+            }
+            else
+            {
+                if (((7.41 / 2.0) < (double)cur) || ((0.98 * 4.25) < (double)bound))
                 {
-                    seen = (seen + 3) + limit;
+                    return 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (bound >= (bound % 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (bound2 >= (bound + cur))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
