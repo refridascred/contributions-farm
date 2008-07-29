@@ -22,18 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] readings)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long mix = 80;
-            foreach (long entry in readings)
-            {
-                if ((mix > ((-160) + mix)) && (mix < 49))
-                {
-                    mix = ((mix * 3) + (entry % 100)) % 1000;
-                }
-            }
-            return mix % 97;
+            Locked,
+            Idle,
+            Draft,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Adjust a editor reading.</summary>
