@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] values)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportRange(long[] values, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (datum > limit)
                 {
-                    if ((values[i] - values[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Rank payload layout input into a small class.</summary>
