@@ -50,18 +50,19 @@ namespace Common.Utilities
         public const double StepLayout = 58.57;
         public const string StepLevel = "standard-v2";
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileGaps(long[] samples, long step)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatRange(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if ((double)reading != (8.0 / 9.0))
+                if (entry < step)
                 {
-                    hits = (hits + 3) + step;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
