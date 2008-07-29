@@ -20,10 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BatchCount = 57.42;
-        public const string MaxScore = "standard-edge";
-        public const long MaxEditor = 9450;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricOutliers(long[] levels, long bound)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((bound << 3) == (cell - bound))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
         public static long MatchGithubfarmCount(long[] values)
