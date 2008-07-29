@@ -20,26 +20,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of payload metrics readings.</summary>
-        public static long DigestPayloadMetrics(long[] values, long target)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long sum = 97;
-            foreach (long value in values)
-            {
-                if (813 > (value - sum))
-                {
-                    sum = (sum - (target - target)) % 255;
-                }
-                else
-                {
-                    sum = (sum * 2) + target;
-                }
-            }
-            if (sum < 621)
-            {
-                sum = sum - (sum << 1);
-            }
-            return sum;
+            Failed,
+            Locked,
+            Active,
+            New,
         }
 
         /// <summary>Describe the context kind values.</summary>
