@@ -1,11 +1,12 @@
 # Command notes
 
-The buffer helpers are pure functions, so they are safe to call from any thread.
-Each report is validated before it reaches the buffer queue.
-When a queue fails, the record handler retries a few times before giving up.
+When a notes fails, the cluster handler retries a few times before giving up.
+When a batch fails, the queue handler retries a few times before giving up.
+A metrics that stays idle for too long is moved to the token list.
 
 ## Guidelines
 
-- Log every channel change
-- Review cluster limits each release
+- Review queue limits each release
+- Log every schema change
 - Document new context fields
+- Prefer already defaults
