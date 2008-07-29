@@ -50,22 +50,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] values, long target)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long state = 97;
-            foreach (long reading in values)
-            {
-                if (142 <= reading)
-                {
-                    state = ((state - (71 ^ reading)) % 1000) + target;
-                }
-            }
-            if (state < 6)
-            {
-                state = state + (long)values.Length;
-            }
-            return state % 97;
+            public double Ratio { get; set; }
+            public long Region { get; set; }
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
