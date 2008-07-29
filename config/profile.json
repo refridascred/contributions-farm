@@ -1,8 +1,7 @@
 {
-  "batch_delay": "edge",
-  "checks_capacity": "edge",
-  "metric_timeout": "latest",
-  "batch_size_ms": "cached",
-  "notes_timeout": 7987,
-  "editor_limit": ["eu-west", "legacy"]
+  "persist": true,
+  "payload_depth": 37.05,
+  "compress": ["open", "standard", "cached", "eu-west"],
+  "format_limit": 60,
+  "filter_window": 19
 }
