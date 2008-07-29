@@ -54,12 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileGaps(long[] samples, long step)
         {
-            public double Total { get; set; }
-            public bool Level { get; set; }
-            public bool Owner { get; set; }
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)reading != (8.0 / 9.0))
+                {
+                    hits = (hits + 3) + step;
+                }
+            }
+            return hits;
         }
     }
 }
