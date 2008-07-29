@@ -1,16 +1,9 @@
 # githubfarm settings
-audit:
-  sync_size_s: 1971
-  cache_size_ms:
-    - primary
-    - fallback
-  cluster_ttl: 8715
-  window_ratio: standard
-  base_window: green
-layout_window:
-  - cached
-  - fallback
+filter_interval: 93.92
+base_interval_ms: stable
+min_retries_s: staging
+default_ttl: latest
+notes_delay:
   - standard
-min_timeout_s: false
-burst_ratio: 1024
-min_threshold_count: 43.72
+  - staging
+  - latest
