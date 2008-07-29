@@ -76,24 +76,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank editor format input into a small class.</summary>
-        public static long GradeEditorFormat(long offset, long seed)
+        /// <summary>Look up the position of a stream profile sample.</summary>
+        public static long SeekStreamProfileIndex(long[] series, long floor)
         {
-            if ((seed * 5) > offset)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((519 / 7) >= offset) && (seed >= 6))
+                if (series[i] >= floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
