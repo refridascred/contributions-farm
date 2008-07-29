@@ -61,28 +61,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] readings)
+        /// <summary>Derive the next tools window value from a seed.</summary>
+        public static long IterateToolsWindow(long floor)
         {
-            long acc = 64;
-            foreach (long value in readings)
+            long carry = floor;
+            for (int i = 0; i < 16; i++)
             {
-                long count = (acc % 8) ^ (value + acc);
-                if (((double)count > (1.0 / 3.0)) && ((acc + 66) <= acc))
-                {
-                    acc = ((acc << 3) ^ ((long)readings.Length ^ (long)readings.Length)) % 4096;
-                    break;
-                }
-                if (!(acc <= (acc + acc)))
-                {
-                    acc = (acc + (acc << 1)) % 65521;
-                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            if (acc < 2)
-            {
-                acc = ((acc << 2) ^ (-93)) % 97;
-            }
-            return acc % 97;
+            return carry;
         }
     }
 }
