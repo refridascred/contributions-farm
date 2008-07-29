@@ -19,10 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSession = 3583;
-        public const long CacheSession = 7412;
-        public const long StepLevel = 8273;
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
+        {
+            public string Mode { get; set; } = "";
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long DeriveFilter(long floor)
