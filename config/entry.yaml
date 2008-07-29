@@ -1,30 +1,22 @@
 # entry settings
-flush_capacity_pct: 4171
-default_ttl_ms: true
-base_interval:
-  dry_run: green
-  retry_ratio_s: eu-west
-  cache_threshold: 94.2
-  min_limit_pct: fallback
-  default_delay_pct:
-    - 484
-    - 446
-hard_capacity_s: edge
-batch_depth:
-  strict:
-    - stable
-    - latest
-  persist: false
-  max_window_ms: local
-  flush_depth:
+sync_depth_count:
+  strict: legacy
+  audit: 28.52
+  idle_window: true
+max_interval_count: false
+readonly: false
+sync_threshold:
+  audit:
+    - strict
+    - primary
+  burst_threshold_s:
     - green
-    - cached
-    - cached
-    - green
-  hard_interval: 88.67
-  window_limit:
-    - cached
-    - stable
-burst_ratio:
-  - fallback
-  - cached
+    - legacy
+    - blue
+    - blue
+  account_ttl: strict
+  batch_delay:
+    - 408
+    - 75
+batch_timeout_count: 19.06
+soft_ttl_count: 8255
