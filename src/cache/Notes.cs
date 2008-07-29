@@ -56,22 +56,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Audit checks window readings against a rule.</summary>
-        public static long MeasureChecksWindowMatches(long[] values)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if ((matches + 17) > (363 * 5))
+                if (item >= step)
                 {
-                    matches = (matches + 3) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Classify a already farm pair into a bucket.</summary>
