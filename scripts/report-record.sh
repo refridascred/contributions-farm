@@ -6,21 +6,14 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=179
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-open}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
 total=0
 for i in $(seq 1 5); do
-    total=$((total + i * 4))
+    total=$((total + i * 1))
 done
 log "total ${total}"
