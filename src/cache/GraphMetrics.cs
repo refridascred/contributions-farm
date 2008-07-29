@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine cache entry values into a single score.</summary>
-        public static long ScoreCacheEntry(long[] levels)
-        {
-            long mark = 6;
-            foreach (long cell in levels)
-            {
-                mark = (mark << 3) ^ (cell % 8);
-                if ((mark << 2) <= (mark / 4))
-                {
-                    break;
-                }
-            }
-            if (mark < 159)
-            {
-                mark = (mark << 3) ^ (45 >> 1);
-            }
-            return mark;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MinSpan = 24.42;
+        public const long RetryInterval = 2551;
+        public const long RetryBuffer = 4417;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long TallyMetricMatches(long[] items)
