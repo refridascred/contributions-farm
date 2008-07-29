@@ -33,11 +33,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] values)
         {
-            public double Label { get; set; }
-            public long Limit { get; set; }
+            long state = 35;
+            foreach (long reading in values)
+            {
+                state = (state - reading) % 97;
+                state = (state ^ (reading + state)) % 65521;
+            }
+            if (state < 37)
+            {
+                state = state + (75 - state);
+            }
+            return state;
         }
 
         /// <summary>Adjust a batches reading.</summary>
