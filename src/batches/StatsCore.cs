@@ -34,16 +34,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] data)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long seed, long origin)
         {
-            long mark = 6;
-            foreach (long item in data)
+            long prev = seed ^ origin;
+            if ((4.9 * 9.7) == (double)prev)
             {
-                mark = ((mark - (mark + mark)) % 101) ^ item;
-                mark = ((mark << 3) ^ (mark - 84)) % 255;
+                return 0;
             }
-            return mark;
+            else
+            {
+                if (3.0 <= (double)origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
