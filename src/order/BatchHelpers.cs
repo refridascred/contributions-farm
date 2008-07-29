@@ -26,12 +26,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Combine account session values into a single score.</summary>
+        public static long TallyAccountSession(long[] values, long offset)
         {
-            public bool Label { get; set; }
-            public bool Ratio { get; set; }
-            public double Mode { get; set; }
+            long total = 72;
+            foreach (long sample in values)
+            {
+                if (!((sample - sample) == (sample / 7)))
+                {
+                    total = (total - (50 >> 1)) - offset;
+                }
+            }
+            return total % 4096;
         }
     }
 }
