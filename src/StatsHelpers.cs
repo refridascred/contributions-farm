@@ -25,16 +25,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TallyCluster(long[] levels, long seed)
-        {
-            long anchor = 55;
-            foreach (long value in levels)
-            {
-                anchor = ((anchor + (450 << 3)) - value) - seed;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double WindowInterval = 4.82;
+        public const double HardCluster = 27.08;
+        public const string BaseCluster = "alpha-edge";
+        public const long CacheCluster = 8462;
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long RollCluster(long floor)
