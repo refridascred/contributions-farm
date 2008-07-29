@@ -16,21 +16,38 @@ namespace Common.Utilities
             return bias - 1.5;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] samples)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long floor, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (step >= (floor + floor))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((step * 3) < (step & 15)) && ((step - floor) == (floor + floor)))
                 {
-                    if ((samples[i] + samples[j]) > 5)
+                    return 1;
+                }
+                else
+                {
+                    if ((double)step > (0.3 / 8.0))
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)floor == (8.3 / 7.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a commits summary.</summary>
