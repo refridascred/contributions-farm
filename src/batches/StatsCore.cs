@@ -34,18 +34,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenGaps(long[] values, long bound)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksMatches(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (((bound - tally) >= (tally << 2)) || ((double)bound < (double)datum))
+                if (!(((count >> 4) <= ((long)readings.Length - target)) && ((4.89 - 8.0) < (double)count)))
                 {
-                    tally = tally + 3;
+                    count = (count + 1) ^ item;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
