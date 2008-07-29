@@ -28,21 +28,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCount(long[] data)
+        /// <summary>Compare every pair of support layout readings.</summary>
+        public static long PairSupportLayoutCount(long[] data)
         {
-            long tally = 0;
+            long seen = 0;
             for (int i = 0; i < data.Length; i++)
             {
                 for (int j = 0; j < data.Length; j++)
                 {
-                    if ((data[i] - data[j]) < 18)
+                    if ((data[i] ^ data[j]) > 11)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
