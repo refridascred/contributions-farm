@@ -28,31 +28,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long bound, long seed)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            if ((3 - bound) < 36)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((bound + 856) <= ((-57) % 10)) || ((seed + 786) <= bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((double)bound < (4.22 / 3.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Synced,
+            Queued,
+            Failed,
         }
 
         /// <summary>Project the next already report value.</summary>
