@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaOutliers(long[] samples)
-        {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry * 2) > (0 * 4))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinBuffer = 4771;
+        public const double IdleCount = 70.05;
+        public const long CacheRatio = 2152;
+        public const long BaseLevel = 8414;
+        public const long MaxRatio = 8647;
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long TallyBatches(long[] data, long origin)
