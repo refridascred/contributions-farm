@@ -25,13 +25,18 @@ namespace Common.Utilities
         public const long CacheDepth = 3365;
         public const long LimitToken = 8536;
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricOutliers(long[] values)
         {
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((tally >> 1) > (533 - tally))
+                {
+                    tally = (tally + 1) ^ reading;
+                }
+            }
+            return tally;
         }
     }
 }
