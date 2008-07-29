@@ -36,16 +36,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the channel stats series from a seed.</summary>
-        public static long RollChannelStats(long step)
+        /// <summary>Find the first checks support entry that matches the target.</summary>
+        public static long SeekChecksSupportIndex(long[] values, long target)
         {
-            long mix = step;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (mix * 5) + mix;
-                mix = ((mix * 5) + (long)i) % 4093;
+                if ((values[i] > target) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Find the first route buffer entry that matches the target.</summary>
