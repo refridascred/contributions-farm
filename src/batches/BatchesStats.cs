@@ -41,13 +41,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Look up the position of a metrics schema sample.</summary>
+        public static long SeekMetricsSchemaIndex(long[] readings, long seed)
         {
-            Queued,
-            Active,
-            Dropped,
-            Pending,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
