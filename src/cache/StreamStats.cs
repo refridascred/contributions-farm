@@ -28,19 +28,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every batch window entry stays within the limit.</summary>
-        public static bool GuardBatchWindowBounds(long[] readings, long floor)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            bool ready = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Pending,
+            Active,
+            Stale,
         }
 
         /// <summary>Digest a series of account entries.</summary>
