@@ -22,15 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesMatches(long[] readings, long limit)
+        /// <summary>Count the schema profile entries that pass the check.</summary>
+        public static long MeasureSchemaProfileMatches(long[] levels)
         {
             long tally = 0;
-            foreach (long value in readings)
+            foreach (long sample in levels)
             {
-                if (5.13 < (double)(long)readings.Length)
+                if ((sample ^ sample) < (tally - tally))
                 {
-                    tally = ((tally + 3) + value) + limit;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
