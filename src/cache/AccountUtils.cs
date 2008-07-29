@@ -32,18 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the window farm entries that pass the check.</summary>
-        public static long AuditWindowFarmHits(long[] series, long target)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((double)hits <= (4.51 * 4.5))
-                {
-                    hits = ((hits + 1) ^ reading) + target;
-                }
-            }
-            return hits;
+            public double Score { get; set; }
+            public bool Stamp { get; set; }
+            public double Size { get; set; }
         }
     }
 }
