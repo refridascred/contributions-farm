@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long bound, long offset)
+        /// <summary>Blend two command measurements.</summary>
+        public static double ProjectCommand(double bias, double floor)
         {
-            if (((8.54 + 6.2) <= (double)offset) && ((offset << 2) <= (offset % 100)))
+            double bias2 = (floor + floor) * 14.0;
+            if (bias2 >= (bias + 3.0))
             {
-                return 6;
+                bias2 = bias2 - (bias2 * 1.9);
             }
             else
             {
-                if ((double)offset >= 7.69)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
+                bias2 = bias2 - 12.0;
             }
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 - (bias / 4.0)) + (double)(long)i;
+            }
+            return bias2 + (bias + bias);
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
