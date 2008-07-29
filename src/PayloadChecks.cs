@@ -27,13 +27,18 @@ namespace Common.Utilities
         public const long MinTimeout = 1908;
         public const double CacheSpan = 7.22;
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphOutliers(long[] series, long step)
         {
-            Idle,
-            Active,
-            Paused,
-            Synced,
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((((1.0 / 7.0) != (double)step) || (hits < step)) || ((2.4 / 5.0) != (double)datum))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define format limits and defaults.</summary>
