@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] values, long step)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double AdjustBatch(double rate, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double scale = offset;
+            if (scale < (rate - scale))
             {
-                if ((values[i] == step) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                scale = scale + (double)973;
             }
-            return -1;
+            return scale - (scale + offset);
         }
 
         /// <summary>Hold a support options.</summary>
