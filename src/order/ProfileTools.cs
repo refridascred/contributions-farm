@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadGaps(long[] series, long step)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)cell > (2.29 + 19.0))
+                if ((levels[i] >= limit) && ((levels[i] % 2) != 0))
                 {
-                    seen = (seen + 3) + step;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Match up order samples.</summary>
