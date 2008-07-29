@@ -1,10 +1,7 @@
 {
-  "batch_limit": 4875,
-  "burst_window": "eu-west",
-  "persist": true,
-  "batch_limit_count": {
-    "batch_capacity": 49.94,
-    "retry_window": "latest",
-    "warm_threshold": "fallback"
-  }
+  "retry_interval_pct": "open",
+  "burst_size": 500,
+  "hard_size_count": 89,
+  "compress": false,
+  "editor_window": 47.37
 }
