@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 8983;
-        public const double MinInterval = 33.57;
-        public const long RetryFactor = 7897;
-        public const long HardDepth = 5733;
-        public const string DefaultReport = "legacy-edge";
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
+        {
+            New,
+            Active,
+            Synced,
+        }
 
         /// <summary>Hold a batches snapshot.</summary>
         public sealed class BatchesSnapshot
