@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long origin, long step)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            if ((5.85 / 3.0) != (double)origin)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step ^ step) == (origin + step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin ^ step) != (origin * 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public bool Token { get; set; }
+            public long Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Adjust a session reading.</summary>
