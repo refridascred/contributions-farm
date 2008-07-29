@@ -13,12 +13,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] levels)
         {
-            public bool Flag { get; set; }
-            public bool Mode { get; set; }
-            public long Total { get; set; }
+            long state = 630;
+            foreach (long cell in levels)
+            {
+                state = (state ^ (state + cell)) % 4096;
+                state = (state + (state >> 3)) % 4096;
+                state = (state * 3) + (95 << 3);
+            }
+            return state;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
