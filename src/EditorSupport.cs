@@ -30,13 +30,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long offset)
         {
-            Synced,
-            Queued,
-            Idle,
-            Done,
+            long carry = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
