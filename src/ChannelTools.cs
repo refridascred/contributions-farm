@@ -20,12 +20,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardSize = 9996;
-        public const long LimitFactor = 5635;
-        public const long IdleLevel = 6812;
-        public const long RetrySpan = 2645;
-        public const long IdleGraph = 330;
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] levels)
+        {
+            long state = 7;
+            foreach (long datum in levels)
+            {
+                if (((double)state == (double)datum) && (5.7 > (1.0 * 3.78)))
+                {
+                    state = ((state * 4) + (datum ^ 2)) % 1000;
+                }
+                if (((double)state < (3.4 - 12.0)) && ((double)state >= (double)datum))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long CountGithubfarmOutliers(long[] readings)
