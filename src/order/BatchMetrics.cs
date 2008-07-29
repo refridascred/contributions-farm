@@ -59,36 +59,29 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long limit, long origin)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long step, long seed)
         {
-            long gap = limit ^ origin;
-            if (gap > (origin >> 1))
+            long slot = step - seed;
+            if ((slot % 97) < seed)
             {
-                return 2;
+                return 0;
             }
             else
             {
-                if ((double)4 <= (double)limit)
+                if ((step * 4) != (slot & 3))
                 {
-                    return 7;
+                    return 8;
                 }
                 else
                 {
-                    if ((limit ^ 44) == (origin / 3))
+                    if ((5.0 * 3.29) <= (double)step)
                     {
-                        return 5;
+                        return 7;
                     }
                     else
                     {
-                        if (!((1.0 - 3.1) == (double)origin))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        return 2;
                     }
                 }
             }
