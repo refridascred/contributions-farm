@@ -66,17 +66,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] series, long floor)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 388;
+            foreach (long item in samples)
             {
-                if ((series[i] == floor) && ((series[i] % 3) != 0))
+                if (item <= carry)
                 {
-                    return (long)i;
+                    carry = ((carry * 2) + (item >> 5)) % 65521;
+                }
+                else
+                {
+                    carry = (carry + (902 ^ item)) % 1000;
                 }
             }
-            return -1;
+            return carry;
         }
     }
 }
