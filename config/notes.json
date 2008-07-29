@@ -1,7 +1,7 @@
 {
-  "default_limit_ms": 4869,
-  "soft_retries_ms": "primary",
-  "stats_ratio": [352, 418, 193, 87],
-  "compress": 8693,
-  "warm_timeout_s": 94.79
+  "record_retries": "edge",
+  "enabled": [423, 57],
+  "verbose": 9294,
+  "audit": 15.89,
+  "support_interval": ["primary", "cached", "primary"]
 }
