@@ -69,19 +69,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterBounds(long[] items, long floor)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Flag { get; set; }
+            public double Total { get; set; }
         }
     }
 }
