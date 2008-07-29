@@ -32,31 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] samples, long step)
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] levels)
         {
-            long acc = 65;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(step >= (item * 2)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = (acc << 3) ^ (acc + 93);
-                }
-                acc = (acc << 2) ^ (acc % 5);
-                if ((step - acc) > (acc - acc))
-                {
-                    acc = acc - (step + acc);
-                }
-                if (((step ^ acc) <= step) && (((long)samples.Length + step) > (acc - item)))
-                {
-                    break;
+                    if ((levels[i] + levels[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (acc < 633)
-            {
-                acc = ((acc * 3) + (acc - acc)) % 4096;
-            }
-            return acc;
+            return tally;
         }
     }
 }
