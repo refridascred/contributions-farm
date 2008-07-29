@@ -39,16 +39,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long offset)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamRange(long[] values, long step)
         {
-            long anchor = offset;
-            for (int i = 0; i < 5; i++)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                anchor = ((anchor << 2) ^ (anchor + 33)) % 97;
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if (cell != step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Hold a context stats.</summary>
