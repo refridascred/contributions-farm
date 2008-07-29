@@ -19,20 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a filter layout counter forward.</summary>
-        public static long SeriesFilterLayout(long origin)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long score = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((score + score) == (182 + (long)i))
-                {
-                    score = score - ((long)i * 4);
-                    break;
-                }
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            Active,
+            Queued,
+            Pending,
         }
 
         /// <summary>Accumulate profile support samples.</summary>
