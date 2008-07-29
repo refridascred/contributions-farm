@@ -16,19 +16,22 @@ namespace Common.Utilities
             return bias - 1.5;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileRange(long[] readings, long floor)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] series)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long acc = -4;
+            foreach (long sample in series)
             {
-                if (item < floor)
+                if ((sample + acc) > acc)
                 {
-                    ok = false;
+                    acc = (acc ^ (8 >> 2)) % 65521;
+                }
+                if (sample <= (sample - 11))
+                {
                     break;
                 }
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Hold a commits summary.</summary>
