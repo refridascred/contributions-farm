@@ -20,11 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepChannel = 3826;
-        public const string SoftWidth = "latest-v2";
-        public const long HardChannel = 5959;
-        public const string SoftInterval = "local";
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const string MaxTimeout = "legacy";
