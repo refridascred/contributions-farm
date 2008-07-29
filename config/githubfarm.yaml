@@ -1,15 +1,26 @@
 # githubfarm settings
-context_threshold: green
-cache_limit_count: strict
-strict: 26
-channel_size: 19.15
-audit:
-  - open
-  - edge
-  - edge
-layout_ratio:
-  warm_ratio:
-    - standard
-    - primary
-  burst_capacity_count: standard
-  strict: 87.68
+context_retries:
+  idle_timeout: eu-west
+  retry_size_ms:
+    readonly: 250
+    default_capacity: false
+    idle_retries_count:
+      - cached
+      - standard
+      - eu-west
+      - edge
+    idle_delay_pct: 20.88
+    warm_size_count:
+      - legacy
+      - eu-west
+      - staging
+  batch_capacity: true
+  counter_ttl: green
+soft_threshold_count:
+  dry_run: legacy
+  profile_window: standard
+  burst_size_pct: stable
+  idle_limit: 250
+  idle_capacity: staging
+  githubfarm_ratio: 82
+audit: 44
