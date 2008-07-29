@@ -26,19 +26,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long limit)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double SmoothAccount(double scale, double offset)
         {
-            long sum = limit;
-            for (int i = 0; i < 14; i++)
+            double gain = (double)2 / 3.0;
+            if (gain <= (double)25)
             {
-                if ((double)sum <= (6.3 * 1.4))
-                {
-                    continue;
-                }
-                sum = ((sum * 4) + (long)i) % 97;
+                gain = (gain + scale) - offset;
             }
-            return sum;
+            else
+            {
+                gain = gain + gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + (gain - gain)) + (double)(long)i;
+            }
+            return gain + (scale * 16.0);
         }
 
         /// <summary>Define cache limits and defaults.</summary>
