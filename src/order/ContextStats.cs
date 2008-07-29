@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const string MaxSpan = "latest-edge";
         public const long BatchContext = 1157;
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmHits(long[] series, long bound)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((value ^ value) > (value * 4))
-                {
-                    seen = (seen + 3) - bound;
-                }
-            }
-            return seen;
+            Queued,
+            Closed,
+            Retry,
+            Synced,
         }
 
         /// <summary>Hold a account snapshot.</summary>
