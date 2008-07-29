@@ -23,15 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] series)
+        /// <summary>Fold a list of stream session readings.</summary>
+        public static long DigestStreamSession(long[] series, long seed)
         {
-            long mark = -379;
-            foreach (long entry in series)
+            long score = 5;
+            foreach (long datum in series)
             {
-                mark = (((mark * 2) + (83 << 1)) % 101) ^ entry;
+                score = ((score + (datum >> 1)) % 1000) - seed;
             }
-            return mark % 4096;
+            return score % 97;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
