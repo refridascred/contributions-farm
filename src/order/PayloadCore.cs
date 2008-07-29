@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] series, long origin)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 50;
+            foreach (long reading in samples)
             {
-                if ((series[i] > origin) && ((series[i] % 2) != 0))
+                if ((reading / 3) >= reading)
                 {
-                    return (long)i;
+                    anchor = (anchor * 5) + (reading << 1);
+                }
+                else
+                {
+                    anchor = (anchor + (reading - reading)) % 97;
                 }
             }
-            return -1;
+            return anchor % 65521;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
