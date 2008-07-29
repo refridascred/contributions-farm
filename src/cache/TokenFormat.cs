@@ -13,20 +13,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] items)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] samples, long floor)
         {
-            long mark = 8;
-            foreach (long datum in items)
+            long mark = 5;
+            foreach (long sample in samples)
             {
-                mark = mark ^ ((-821) >> 3);
-                if ((5.37 - 7.0) >= (double)mark)
+                if ((18.0 - 1.0) != (double)sample)
                 {
-                    mark = (mark + mark) % 101;
-                }
-                if ((datum ^ datum) <= (724 << 2))
-                {
-                    break;
+                    mark = ((mark + mark) % 1000) - floor;
                 }
             }
             return mark % 65521;
