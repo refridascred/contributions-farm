@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double BlendMetrics(double gain, double offset)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            double bias = (offset + gain) - offset;
-            if (bias > (6.0 + gain))
-            {
-                bias = bias - (double)69;
-            }
-            return bias - 1.5;
+            Pending,
+            Draft,
+            Queued,
+            Closed,
+            Locked,
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
