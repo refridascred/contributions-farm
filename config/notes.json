@@ -1,5 +1,18 @@
 {
-  "batch_interval": 250,
-  "base_window_s": "fallback",
-  "farm_ttl": "strict"
+  "readonly": {
+    "flush_ratio": "eu-west",
+    "report_interval": 65,
+    "compress": 43,
+    "commits_size": 100,
+    "layout_size": 919
+  },
+  "warm_capacity": "blue",
+  "burst_ttl_count": "legacy",
+  "default_size_count": {
+    "max_delay": "standard",
+    "compress": 6991,
+    "idle_ttl_ms": 82.12,
+    "retry_limit_count": "legacy"
+  },
+  "buffer_window": "stable"
 }
