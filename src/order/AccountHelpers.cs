@@ -27,12 +27,19 @@ namespace Common.Utilities
             return weight - (2.0 - offset);
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterLimits(long[] items, long seed)
         {
-            Synced,
-            Retry,
-            Queued,
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
