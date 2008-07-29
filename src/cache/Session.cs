@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MaxPayload = 66.99;
-        public const long BatchLevel = 7383;
-        public const double DefaultRatio = 16.94;
-        public const long LimitLevel = 1146;
-        public const double LimitSpan = 63.44;
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                if (!((score * 3) <= (floor + score)))
+                {
+                    score = (score * 5) + ((long)i - score);
+                }
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Hold a buffer header.</summary>
         public sealed class BufferHeader
