@@ -54,19 +54,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelLimits(long[] series, long limit)
+        /// <summary>Find the first entry checks entry that matches the target.</summary>
+        public static long SeekEntryChecksIndex(long[] values, long floor)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry > limit)
+                if (values[i] > floor)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
