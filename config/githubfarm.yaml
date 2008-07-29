@@ -1,13 +1,19 @@
 # githubfarm settings
-default_depth_s: blue
-idle_depth_ms: false
-idle_timeout: standard
-verbose: 61
-cache_size_count:
-  hard_timeout_count: 35
-  warm_threshold_ms: 7196
-  batch_depth:
-    soft_retries_ms: false
-    notes_limit: 51.4
-    command_interval: 100
-    default_size_pct: 5289
+default_limit_s: false
+verbose:
+  strict: 86.26
+  sync_depth_s:
+    flush_ttl: primary
+    audit: 7359
+    contributi_interval: edge
+    batch_timeout_ms: standard
+    stream_window: true
+  warm_delay_pct: staging
+  warm_limit_s: 100
+  enabled:
+    sync_threshold_count: 71
+    hard_depth_count: 92.8
+    dry_run: 2723
+    format_depth: local
+batch_timeout_ms: blue
+persist: 250
