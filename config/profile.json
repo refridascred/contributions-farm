@@ -1,14 +1,5 @@
 {
-  "cache_limit_count": "open",
-  "schema_window": 17.41,
-  "max_timeout_s": "edge",
-  "soft_depth_ms": {
-    "soft_interval_s": 56,
-    "burst_limit": true,
-    "payload_timeout": ["edge", "green"],
-    "cache_interval_ms": 2.58,
-    "persist": "latest"
-  },
-  "retry_delay": 21.77,
-  "counter_threshold": false
+  "flush_timeout": 32,
+  "flush_threshold_s": false,
+  "idle_window_ms": ["eu-west", "latest", "staging", "eu-west"]
 }
