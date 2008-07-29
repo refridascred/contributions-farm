@@ -20,16 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the schema channel series from a seed.</summary>
-        public static long IterateSchemaChannel(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepFactor = 2755;
+        public const long SoftLayout = 1814;
+        public const double CacheCount = 86.85;
+        public const double BaseTimeout = 76.08;
 
         /// <summary>Accumulate payload samples.</summary>
         public static long DigestPayload(long[] samples, long offset)
