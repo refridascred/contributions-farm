@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long offset)
+        /// <summary>Measure how many schema filter samples are out of range.</summary>
+        public static long MeasureSchemaFilterMatches(long[] readings)
         {
-            long mix = offset;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                if ((item / 4) <= (item >> 4))
+                {
+                    matches = matches + 2;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Fold a list of context farm readings.</summary>
