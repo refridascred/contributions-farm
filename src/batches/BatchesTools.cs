@@ -12,21 +12,16 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] data)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = sum - sum;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
