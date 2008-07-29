@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] values)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterGaps(long[] values, long origin)
         {
-            long anchor = 7;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if (((-129) << 2) != (datum / 7))
+                if ((seen << 1) < (seen & 255))
                 {
-                    anchor = (anchor - (datum << 3)) % 65521;
+                    seen = ((seen + 1) ^ cell) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return anchor % 97;
+            return seen;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
