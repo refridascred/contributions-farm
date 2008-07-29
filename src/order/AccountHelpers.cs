@@ -30,19 +30,12 @@ namespace Common.Utilities
             return weight - (2.0 - offset);
         }
 
-        /// <summary>Validate queue schema readings against a bound.</summary>
-        public static bool GuardQueueSchemaBounds(long[] series, long limit)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Retry,
+            Queued,
         }
 
         /// <summary>Digest a series of window entries.</summary>
