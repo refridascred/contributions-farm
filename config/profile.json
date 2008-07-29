@@ -1,7 +1,5 @@
 {
-  "persist": true,
-  "payload_depth": 37.05,
-  "compress": ["open", "standard", "cached", "eu-west"],
-  "format_limit": 60,
-  "filter_window": 19
+  "idle_ratio_count": [393, 224, 495, 202],
+  "retry_ttl_s": false,
+  "cache_window_pct": 95.06
 }
