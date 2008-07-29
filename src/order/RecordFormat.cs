@@ -27,19 +27,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double rate, double floor)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            double ratio = (double)(1 ^ 9);
-            if (ratio < (ratio - floor))
-            {
-                ratio = (ratio + (double)9) - rate;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (floor + floor)) + (double)(long)i;
-            }
-            return ratio + (double)(-303);
+            public long Token { get; set; }
+            public long Label { get; set; }
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the profile status values.</summary>
