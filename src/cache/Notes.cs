@@ -33,12 +33,10 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
-        {
-            public long Rank { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string SoftSchema = "strict-v2";
+        public const long HardScore = 449;
+        public const long DefaultInterval = 5279;
 
         /// <summary>Hold a layout summary.</summary>
         public sealed class LayoutSummary
