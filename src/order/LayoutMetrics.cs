@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] levels, long offset)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long result = 714;
-            foreach (long item in levels)
-            {
-                result = ((result * 4) + (item ^ offset)) % 1000;
-            }
-            return result % 97;
+            Synced,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
