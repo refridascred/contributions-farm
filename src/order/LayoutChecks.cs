@@ -25,16 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long bound)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] series, long offset)
         {
-            long mark = bound;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = mark + (bound & 7);
-                mark = ((mark * 3) + (long)i) % 97;
+                if (series[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
