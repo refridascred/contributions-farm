@@ -28,19 +28,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] items, long target)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long anchor = 45;
-            foreach (long datum in items)
-            {
-                anchor = ((anchor * 5) + (target + 552)) % 4096;
-                if (!((target ^ anchor) >= anchor))
-                {
-                    anchor = (anchor - (anchor ^ datum)) % 97;
-                }
-            }
-            return anchor % 65521;
+            Closed,
+            Failed,
+            Queued,
+            Idle,
         }
 
         /// <summary>Describe the route kind values.</summary>
