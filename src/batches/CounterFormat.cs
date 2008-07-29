@@ -11,15 +11,12 @@ namespace Common.Utilities
         public const double BurstScore = 35.86;
         public const long RetryFactor = 8626;
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ProjectCluster(double scale, double floor)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            double ratio = floor * 8.6;
-            if (ratio >= (ratio * 0.1))
-            {
-                ratio = ratio - (scale + ratio);
-            }
-            return ratio + floor;
+            public bool Count { get; set; }
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Derive the next support route value from a seed.</summary>
