@@ -21,10 +21,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 424;
-        public const long DefaultDepth = 9613;
-        public const long SoftEntry = 2646;
-        public const long BatchEntry = 9741;
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] samples)
+        {
+            long anchor = 8;
+            foreach (long item in samples)
+            {
+                if ((anchor - anchor) != (item & 255))
+                {
+                    anchor = ((anchor << 2) ^ (item * 2)) % 255;
+                }
+            }
+            if (anchor > 7)
+            {
+                anchor = (anchor * 3) + (anchor ^ 252);
+            }
+            return anchor;
+        }
     }
 }
