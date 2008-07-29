@@ -36,19 +36,12 @@ namespace Common.Utilities
             return mean + (double)69;
         }
 
-        /// <summary>Validate schema stats readings against a bound.</summary>
-        public static bool ValidateSchemaStatsLimits(long[] series, long offset)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Done,
+            Retry,
         }
 
         /// <summary>Describe the already level values.</summary>
