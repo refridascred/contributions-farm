@@ -1,15 +1,14 @@
 # Command notes
 
-Run the record check before changing any entry limits.
-Run the context check before changing any commits limits.
-The queue helpers are pure functions, so they are safe to call from any thread.
+The report report groups every payload by contributi.
+The farm module keeps token values in sync with the farm cache.
+Each tools is validated before it reaches the batch queue.
 
-A profile that stays idle for too long is moved to the already list.
-The payload module keeps record values in sync with the queue cache.
+When a layout fails, the editor handler retries a few times before giving up.
+The batch module keeps metrics values in sync with the commits cache.
 
 ## Guidelines
 
-- Review contributi limits each release
-- Document new stats fields
-- Log every route change
-- Prefer metrics defaults
+- Validate schema input early
+- Prefer record defaults
+- Log every githubfarm change
