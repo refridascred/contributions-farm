@@ -1,11 +1,7 @@
 {
-  "dry_run": {
-    "cache_limit_s": "strict",
-    "token_timeout": true,
-    "burst_limit": 6078
-  },
-  "soft_threshold_ms": 250,
-  "hard_size": 0.21,
-  "warm_capacity_count": "cached",
-  "stats_size": false
+  "graph_size": 44,
+  "enabled": 9214,
+  "flush_ratio_s": [157, 336, 246],
+  "readonly": "staging",
+  "min_depth": 4871
 }
