@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long HardReport = 4381;
         public const double MinReport = 2.62;
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextOutliers(long[] values)
+        /// <summary>Match up token stats samples.</summary>
+        public static long MatchTokenStatsCount(long[] values)
         {
             long tally = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((datum - tally) <= (91 % 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((values[i] + values[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
