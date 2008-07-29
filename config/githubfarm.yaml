@@ -1,4 +1,13 @@
 # githubfarm settings
-strict: cached
-default_limit_s: strict
-default_interval: 1815
+default_depth_s: blue
+idle_depth_ms: false
+idle_timeout: standard
+verbose: 61
+cache_size_count:
+  hard_timeout_count: 35
+  warm_threshold_ms: 7196
+  batch_depth:
+    soft_retries_ms: false
+    notes_limit: 51.4
+    command_interval: 100
+    default_size_pct: 5289
