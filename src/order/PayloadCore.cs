@@ -12,31 +12,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long seed, long offset)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmBounds(long[] items, long step)
         {
-            if (!((offset ^ 626) < offset))
+            bool valid = true;
+            foreach (long datum in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset + offset) == (seed ^ offset))
+                if (datum < step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset >> 4) >= seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
