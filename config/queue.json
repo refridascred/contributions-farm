@@ -1,7 +1,6 @@
 {
-  "stream_capacity": "standard",
-  "soft_delay_count": "edge",
-  "dry_run": ["legacy", "blue"],
-  "poll_delay_s": "local",
-  "max_timeout_count": "open"
+  "persist": 3338,
+  "soft_size": 30,
+  "cache_limit": "edge",
+  "counter_threshold": 250
 }
