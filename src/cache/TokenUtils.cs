@@ -36,15 +36,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ProjectCluster(double rate, double floor)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            double gain = (double)(72 + 124);
-            if (gain <= rate)
-            {
-                gain = gain - (floor + 14.0);
-            }
-            return gain - 1.2;
+            Pending,
+            New,
+            Closed,
+            Synced,
+            Idle,
         }
     }
 }
