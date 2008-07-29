@@ -1,22 +1,6 @@
 {
-  "record_depth": false,
-  "context_ratio": {
-    "cache_ttl_s": ["strict", "eu-west", "primary", "blue"],
-    "soft_timeout": ["stable", "fallback", "green", "edge"],
-    "max_limit_count": 45,
-    "idle_limit": {
-      "default_capacity_s": ["staging", "blue"],
-      "audit": 40.61,
-      "base_retries_pct": 250
-    },
-    "retry_threshold": {
-      "support_ttl": "strict",
-      "token_capacity": 8611,
-      "poll_threshold_s": "fallback",
-      "hard_threshold_count": ["stable", "staging"],
-      "cache_ratio_count": "latest"
-    }
-  },
-  "verbose": "legacy",
-  "base_ratio_s": 25
+  "verbose": 1659,
+  "base_ratio_pct": "green",
+  "counter_limit": 28,
+  "base_limit_count": true
 }
