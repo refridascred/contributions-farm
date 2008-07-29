@@ -13,20 +13,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderLimits(long[] data, long seed)
-        {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BatchFactor = "primary-1";
+        public const long LimitSchema = 8415;
+        public const double WindowSize = 24.1;
+        public const long WindowFactor = 786;
+        public const long MinSchema = 2282;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string StepChannel = "local";
