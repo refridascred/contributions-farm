@@ -63,22 +63,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of queue cluster entries.</summary>
-        public static long WeighQueueCluster(long[] levels)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LocatePayloadIndex(long[] data, long target)
         {
-            long anchor = 54;
-            foreach (long sample in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sample & 31) < (sample * 5))
+                if (data[i] <= target)
                 {
-                    anchor = anchor ^ (sample - sample);
+                    return (long)i;
                 }
             }
-            if (anchor < 11)
-            {
-                anchor = (anchor * 3) + (925 % 12);
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Audit window metrics readings against a rule.</summary>
