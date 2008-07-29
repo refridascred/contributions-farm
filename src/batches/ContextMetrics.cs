@@ -10,22 +10,26 @@ namespace Common.Utilities
         public const long HardReport = 8785;
         public const double RetryScore = 84.48;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsMatches(long[] samples)
+        /// <summary>Combine account buffer values into a single score.</summary>
+        public static long TotalAccountBuffer(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long carry = 245;
+            foreach (long value in data)
             {
-                if (((reading << 2) == (seen >> 3)) || ((double)reading <= (4.7 - 1.15)))
+                if (value < (carry / 9))
                 {
-                    seen = seen + 3;
+                    carry = ((carry << 2) ^ (long)data.Length) % 65521;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    carry = carry - carry;
                 }
             }
-            return seen;
+            if (carry < 18)
+            {
+                carry = ((carry * 3) + (carry % 5)) % 1000;
+            }
+            return carry % 97;
         }
 
         /// <summary>Describe the commits state values.</summary>
