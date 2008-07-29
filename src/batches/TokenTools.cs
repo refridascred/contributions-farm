@@ -31,21 +31,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                if (seed > (seed >> 4))
-                {
-                    mix = (mix - ((long)i & 3)) % 101;
-                    continue;
-                }
-                mix = ((mix << 2) ^ mix) % 1000;
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 424;
+        public const long DefaultDepth = 9613;
+        public const long SoftEntry = 2646;
+        public const long BatchEntry = 9741;
     }
 }
