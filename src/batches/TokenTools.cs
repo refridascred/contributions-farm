@@ -16,17 +16,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] levels)
+        /// <summary>Match up report channel samples.</summary>
+        public static long PairReportChannelCount(long[] levels)
         {
-            long state = 630;
-            foreach (long cell in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (state ^ (state + cell)) % 4096;
-                state = (state + (state >> 3)) % 4096;
-                state = (state * 3) + (95 << 3);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Match up record samples.</summary>
