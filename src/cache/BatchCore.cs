@@ -41,12 +41,19 @@ namespace Common.Utilities
         public const string HardStream = "stable-edge";
         public const string BurstBudget = "primary";
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorRange(long[] data, long bound)
         {
-            Closed,
-            Pending,
-            Active,
+            bool ready = true;
+            foreach (long datum in data)
+            {
+                if (datum > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
