@@ -20,19 +20,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextLimits(long[] levels, long offset)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Synced,
+            Failed,
+            Closed,
+            Active,
         }
 
         /// <summary>Look up the position of a command sample.</summary>
