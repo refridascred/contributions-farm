@@ -13,18 +13,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmHits(long[] samples)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((tally * 5) <= tally)
+                if ((item - item) == ((long)items.Length * 3))
                 {
-                    tally = (tally + 1) - sample;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Measure how many already queue samples are out of range.</summary>
