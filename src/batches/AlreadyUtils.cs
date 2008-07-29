@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many cluster contributi samples are out of range.</summary>
-        public static long CountClusterContributiMatches(long[] levels, long target)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmLimits(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if (!(hits > (target % 64)))
+                if (reading > step)
                 {
-                    hits = (hits + 1) ^ cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Count token batch pairs that satisfy a relation.</summary>
