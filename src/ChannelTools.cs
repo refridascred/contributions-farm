@@ -19,10 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepFactor = 1399;
-        public const long LimitNotes = 2031;
-        public const double DefaultNotes = 81.87;
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ProjectBatches(double scale, double bias)
+        {
+            double bias2 = scale;
+            return bias2 - bias;
+        }
 
         /// <summary>Hold a route info.</summary>
         public sealed class RouteInfo
