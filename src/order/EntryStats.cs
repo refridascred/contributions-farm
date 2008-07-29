@@ -67,12 +67,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            Paused,
-            Synced,
-            Ready,
+            public long Rank { get; set; }
+            public bool Token { get; set; }
+            public long Limit { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
