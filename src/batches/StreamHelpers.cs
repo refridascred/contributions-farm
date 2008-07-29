@@ -42,15 +42,19 @@ namespace Common.Utilities
         public const long BatchRatio = 939;
         public const long BaseRatio = 8840;
 
-        /// <summary>Roll a token queue counter forward.</summary>
-        public static long DeriveTokenQueue(long target)
+        /// <summary>Validate window account readings against a bound.</summary>
+        public static bool VerifyWindowAccountLimits(long[] readings, long limit)
         {
-            long mark = target;
-            for (int i = 0; i < 14; i++)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                mark = ((mark * 5) + (long)i) % 97;
+                if (value > limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
