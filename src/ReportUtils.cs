@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long PairFarmCount(long[] items)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double rate, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale = (7.18 - bias) * 5.5;
+            if (scale <= (scale / 8.0))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = (scale + scale) - rate;
             }
-            return count;
+            else
+            {
+                scale = scale - (bias / 5.0);
+            }
+            return scale + (9.6 * 19.0);
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
