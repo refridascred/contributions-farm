@@ -1,7 +1,6 @@
 # support settings
-default_ratio: staging
-already_window: 90
-max_ttl_ms: 39
-report_interval:
-  - open
-  - blue
+burst_size: 44
+record_threshold: edge
+hard_threshold: 7191
+readonly: 100
+account_limit: 34.26
