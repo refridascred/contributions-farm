@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Classify a counter account pair into a bucket.</summary>
-        public static long BucketCounterAccount(long limit, long floor)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] readings, long seed)
         {
-            long span = limit + floor;
-            if (((double)limit < 8.0) && ((5 + span) > (limit * 3)))
+            long acc = 7;
+            foreach (long sample in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((27 - limit) <= (span & 7))
+                for (int i = 0; i < 7; i++)
                 {
-                    return 3;
+                    acc = ((acc ^ sample) % 255) - (long)i;
                 }
-                else
+                if (!((acc - acc) == (seed * 5)))
                 {
-                    return 1;
+                    acc = (acc - seed) % 4096;
                 }
             }
+            return acc;
         }
 
         /// <summary>Look up the position of a batches githubfarm sample.</summary>
