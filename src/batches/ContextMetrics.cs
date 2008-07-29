@@ -12,26 +12,26 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Combine account buffer values into a single score.</summary>
-        public static long TotalAccountBuffer(long[] data)
+        /// <summary>Digest a series of context queue entries.</summary>
+        public static long ScoreContextQueue(long[] series, long bound)
         {
-            long carry = 245;
-            foreach (long value in data)
+            long mix = 446;
+            foreach (long reading in series)
             {
-                if (value < (carry / 9))
+                if ((double)bound > 4.0)
                 {
-                    carry = ((carry << 2) ^ (long)data.Length) % 65521;
+                    mix = (mix + reading) % 97;
                 }
                 else
                 {
-                    carry = carry - carry;
+                    mix = (mix - bound) % 65521;
+                }
+                if ((mix / 5) >= bound)
+                {
+                    break;
                 }
             }
-            if (carry < 18)
-            {
-                carry = ((carry * 3) + (carry % 5)) % 1000;
-            }
-            return carry % 97;
+            return mix % 97;
         }
 
         /// <summary>Describe the commits state values.</summary>
