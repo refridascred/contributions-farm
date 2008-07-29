@@ -1,21 +1,6 @@
 {
-  "burst_delay": {
-    "buffer_threshold": ["strict", "standard"],
-    "cache_size": {
-      "soft_size_s": 41,
-      "already_ratio": [54, 17, 168],
-      "min_retries": 93,
-      "batch_retries_ms": 7145,
-      "retry_size": "legacy",
-      "cache_ttl": "strict"
-    },
-    "verbose": true,
-    "report_delay": "eu-west",
-    "soft_ratio_count": "legacy"
-  },
-  "min_window": true,
-  "base_timeout_ms": true,
-  "burst_depth_ms": [232, 198],
-  "counter_limit": "stable",
-  "idle_retries_s": "eu-west"
+  "cache_interval_count": "fallback",
+  "payload_window": 35,
+  "poll_ratio_ms": 1024,
+  "base_threshold_pct": "fallback"
 }
