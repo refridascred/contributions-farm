@@ -34,19 +34,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterLimits(long[] data, long step)
+        /// <summary>Accumulate profile support samples.</summary>
+        public static long DigestProfileSupport(long[] data)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long score = 0;
+            foreach (long sample in data)
             {
-                if (value < step)
-                {
-                    flag = false;
-                    break;
-                }
+                score = (((score * 4) + (score + 945)) % 101) - sample;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
