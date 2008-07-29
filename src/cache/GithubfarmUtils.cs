@@ -39,13 +39,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            public long Score { get; set; }
-            public long Flag { get; set; }
-            public double Region { get; set; }
-            public string Mode { get; set; } = "";
+            Paused,
+            Queued,
+            New,
         }
     }
 }
