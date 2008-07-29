@@ -21,19 +21,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandLimits(long[] readings, long target)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] data, long target)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample > target)
+                if (data[i] <= target)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
