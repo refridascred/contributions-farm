@@ -30,18 +30,11 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Find the first editor context entry that matches the target.</summary>
-        public static long SeekEditorContextIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultInterval = 1786;
+        public const long IdleReport = 4838;
+        public const long MinCount = 5163;
+        public const long RetryInterval = 9377;
 
         /// <summary>Adjust a stats reading.</summary>
         public static double SmoothStats(double rate, double bias)
