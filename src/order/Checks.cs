@@ -23,15 +23,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ScaleCommand(double rate, double offset)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsHits(long[] samples, long floor)
         {
-            double ratio = offset;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                ratio = (ratio - (16.0 * 20.0)) + (double)(long)i;
+                if ((floor << 1) <= item)
+                {
+                    seen = seen + 3;
+                }
             }
-            return ratio - rate;
+            return seen;
         }
 
         /// <summary>Find the first filter batches entry that matches the target.</summary>
