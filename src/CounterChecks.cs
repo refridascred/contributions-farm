@@ -64,28 +64,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Combine support payload values into a single score.</summary>
-        public static long WeighSupportPayload(long[] items)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] data, long limit)
         {
-            long result = -858;
-            foreach (long cell in items)
+            long state = 20;
+            foreach (long reading in data)
             {
-                result = result ^ (cell % 3);
-                for (int i = 0; i < 10; i++)
-                {
-                    result = ((result ^ (cell + cell)) % 97) ^ (long)i;
-                    result = result + (result * 4);
-                }
-                if ((result & 127) <= (result % 16))
-                {
-                    result = (result * 2) + (result ^ 3);
-                }
+                state = (state - (5 - state)) + reading;
             }
-            if (result < 1)
+            if (state > 881)
             {
-                result = (result ^ (result ^ result)) % 65521;
+                state = ((state * 3) + limit) % 65521;
             }
-            return result % 4096;
+            return state;
         }
     }
 }
