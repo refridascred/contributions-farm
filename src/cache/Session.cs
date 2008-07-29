@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] samples, long target)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long seed, long target)
         {
-            long mark = 25;
-            foreach (long entry in samples)
+            if (target >= (seed & 31))
             {
-                mark = ((mark * 3) + (entry & 3)) % 1000;
-                if (mark <= (target >> 5))
+                return 5;
+            }
+            else
+            {
+                if ((double)seed >= (8.3 + 18.0))
                 {
-                    mark = mark ^ (target - entry);
+                    return 8;
+                }
+                else
+                {
+                    if ((double)target < 5.6)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (mark < 518)
-            {
-                mark = (mark * 3) + (mark & 15);
-            }
-            return mark;
         }
 
         /// <summary>Hold a buffer header.</summary>
