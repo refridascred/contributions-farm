@@ -34,15 +34,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] values, long step)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] data, long origin)
         {
-            long carry = 8;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = (((carry * 3) + (step & 7)) % 255) ^ datum;
+                if ((data[i] < origin) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry % 4096;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
