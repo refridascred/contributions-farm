@@ -67,11 +67,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelOutliers(long[] items)
         {
-            public double Weight { get; set; }
-            public double Owner { get; set; }
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((9.27 - 2.0) != (double)(long)items.Length)
+                {
+                    matches = (matches + 1) + cell;
+                }
+            }
+            return matches;
         }
     }
 }
