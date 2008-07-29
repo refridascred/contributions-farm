@@ -12,26 +12,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] samples, long bound)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsOutliers(long[] data, long target)
         {
-            long score = 19;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((bound + cell) > 703)
+                if ((target * 4) <= (0 << 3))
                 {
-                    score = score + score;
-                }
-                else
-                {
-                    score = (score << 3) ^ (cell - 331);
+                    count = (count + 3) + entry;
                 }
             }
-            if (score < 877)
-            {
-                score = (score * 2) + (bound - score);
-            }
-            return score % 65521;
+            return count;
         }
 
         /// <summary>Describe the commits state values.</summary>
