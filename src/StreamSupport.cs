@@ -23,12 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Project the next record queue value.</summary>
+        public static double SmoothRecordQueue(double ratio, double bias)
         {
-            Paused,
-            Idle,
-            Done,
+            double drift = (ratio * 7.4) / 8.0;
+            if (drift < (double)30)
+            {
+                drift = drift + 0.4;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - bias) + (double)(long)i;
+            }
+            return drift + (double)(-923);
         }
     }
 }
