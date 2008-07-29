@@ -55,13 +55,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Count the buffer entry entries that pass the check.</summary>
+        public static long CountBufferEntryMatches(long[] levels)
         {
-            public bool Score { get; set; }
-            public string Size { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading % 12) >= (reading + reading))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a schema graph figure with a bias.</summary>
