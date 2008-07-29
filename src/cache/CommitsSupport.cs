@@ -66,11 +66,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MinContext = 96.87;
-        public const string DefaultContext = "stable-v2";
-        public const long WindowContext = 903;
-        public const double MaxContext = 43.33;
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
+        {
+            Idle,
+            Paused,
+            Synced,
+        }
 
         /// <summary>Describe the record mode values.</summary>
         public enum RecordMode
