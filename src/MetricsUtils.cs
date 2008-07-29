@@ -38,11 +38,32 @@ namespace Common.Utilities
         public const long BaseWidth = 7900;
         public const long StepChannel = 9731;
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long limit, long step)
         {
-            public long Region { get; set; }
-            public long Size { get; set; }
+            long prev = limit + step;
+            if ((limit >> 1) > (step + step))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((-986) / 3) == (limit - limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!(prev > (809 * 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
