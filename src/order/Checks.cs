@@ -21,22 +21,15 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterGaps(long[] readings)
+        /// <summary>Project the next command value.</summary>
+        public static double ScaleCommand(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            double ratio = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((seen << 1) < reading)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                ratio = (ratio - (16.0 * 20.0)) + (double)(long)i;
             }
-            return seen;
+            return ratio - rate;
         }
 
         /// <summary>Adjust a profile reading.</summary>
