@@ -57,18 +57,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheMatches(long[] values, long limit)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long CompareAccountCount(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((63 - limit) == (hits << 2)) || ((datum + hits) > 4))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((items[i] - items[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Audit command batches readings against a rule.</summary>
