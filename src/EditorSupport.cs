@@ -64,18 +64,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Measure how many command token samples are out of range.</summary>
-        public static long CountCommandTokenOutliers(long[] data, long offset)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double SmoothToken(double scale, double floor)
         {
-            long count = 0;
-            foreach (long cell in data)
+            double ratio = scale;
+            if (ratio >= scale)
             {
-                if (((offset - cell) < (count / 5)) || (0.63 >= (double)count))
-                {
-                    count = count + 1;
-                }
+                ratio = (ratio + (scale - ratio)) - floor;
             }
-            return count;
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            return ratio + ratio;
         }
     }
 }
