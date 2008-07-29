@@ -13,18 +13,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] items)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((item - item) == ((long)items.Length * 3))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Validate route readings against a bound.</summary>
