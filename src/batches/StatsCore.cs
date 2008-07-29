@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepBudget = 6409;
-        public const double LimitTimeout = 33.62;
-        public const long MinWidth = 5224;
-        public const long MaxCommand = 4771;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (((double)seen == (7.86 * 19.0)) || (((3.1 - 14.0) <= (double)seen) && (seen < 78)))
+                {
+                    seen = (seen + 2) + item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of command entries.</summary>
         public static long CombineCommand(long[] samples)
