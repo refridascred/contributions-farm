@@ -66,25 +66,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long floor, long seed)
+        /// <summary>Digest a series of queue cluster entries.</summary>
+        public static long WeighQueueCluster(long[] levels)
         {
-            long diff = floor + seed;
-            if ((diff + seed) <= seed)
+            long anchor = 54;
+            foreach (long sample in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (diff <= (floor * 2))
+                if ((sample & 31) < (sample * 5))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    anchor = anchor ^ (sample - sample);
                 }
             }
+            if (anchor < 11)
+            {
+                anchor = (anchor * 3) + (925 % 12);
+            }
+            return anchor;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
