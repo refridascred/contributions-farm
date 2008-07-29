@@ -88,18 +88,17 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Count the session entry entries that pass the check.</summary>
-        public static long CountSessionEntryGaps(long[] readings)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LookupClusterIndex(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading + reading) < matches)
+                if ((series[i] > step) && ((series[i] % 5) == 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
