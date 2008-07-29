@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double SmoothLayout(double ratio, double offset)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] readings, long step)
         {
-            double load = ratio - (ratio / 8.0);
-            return (load - (double)900) + offset;
+            long state = 2;
+            foreach (long reading in readings)
+            {
+                if (((139 % 10) == (reading / 6)) && ((double)960 > (double)step))
+                {
+                    state = ((state * 4) + (reading - 14)) % 4096;
+                }
+                if (!((double)step > (0.2 / 4.0)))
+                {
+                    break;
+                }
+            }
+            if (state > 5)
+            {
+                state = (state - (step - step)) % 97;
+            }
+            return state % 97;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
