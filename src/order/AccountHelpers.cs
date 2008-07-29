@@ -42,18 +42,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] series, long bound)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] values)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((double)bound == (double)value)
+                if (!((hits ^ hits) <= datum))
                 {
-                    seen = seen + 2;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Fold a list of command readings.</summary>
