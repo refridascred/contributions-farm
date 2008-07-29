@@ -34,8 +34,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define context limits and defaults.</summary>
-        public const string MaxTimeout = "legacy";
-        public const long MaxContext = 6638;
-        public const double MinDepth = 47.0;
+        public const long BurstScore = 2334;
+        public const long CacheWidth = 5578;
+        public const long MinContext = 8959;
+        public const long BurstBudget = 6162;
+        public const long LimitFactor = 8838;
     }
 }
