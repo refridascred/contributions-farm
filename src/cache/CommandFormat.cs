@@ -27,14 +27,19 @@ namespace Common.Utilities
             return (scale + (weight + scale)) + span;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorBounds(long[] series, long offset)
         {
-            Dropped,
-            New,
-            Locked,
-            Failed,
-            Ready,
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
