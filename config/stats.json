@@ -1,8 +1,8 @@
 {
-  "dry_run": [242, 438],
-  "burst_delay_ms": 29,
-  "account_delay": "latest",
-  "enabled": true,
-  "account_interval": "standard",
-  "burst_size": 38
+  "min_delay": true,
+  "sync_timeout": "blue",
+  "max_timeout_pct": [247, 271, 457],
+  "flush_size": "staging",
+  "contributi_window": true,
+  "entry_threshold": ["local", "green"]
 }
