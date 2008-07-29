@@ -69,11 +69,38 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string DefaultRoute = "strict-v2";
-        public const long HardFactor = 7185;
-        public const long DefaultRatio = 6532;
-        public const long SoftTimeout = 8693;
-        public const long DefaultLevel = 2563;
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long limit, long seed)
+        {
+            if ((7.97 - 6.9) != (double)limit)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)seed >= (1.2 * 0.8)) && ((seed + seed) <= seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)limit != (double)93)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)seed == (1.0 / 4.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
