@@ -20,21 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] readings)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyRange(long[] samples, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item >= seed)
                 {
-                    if ((readings[i] - readings[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Check that every metric editor entry stays within the limit.</summary>
