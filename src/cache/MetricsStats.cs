@@ -49,12 +49,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
+            public string Size { get; set; } = "";
+            public string Token { get; set; } = "";
             public bool Count { get; set; }
-            public long Total { get; set; }
-            public long Owner { get; set; }
         }
 
         /// <summary>Classify a batches githubfarm pair into a bucket.</summary>
