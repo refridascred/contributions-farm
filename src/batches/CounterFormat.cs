@@ -20,12 +20,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long origin, long offset)
         {
-            public bool Count { get; set; }
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
+            long edge = origin ^ offset;
+            if ((double)offset >= (8.0 * 5.2))
+            {
+                return 3;
+            }
+            else
+            {
+                if (origin >= (edge + edge))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!(edge < (edge + edge)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a stats reading.</summary>
