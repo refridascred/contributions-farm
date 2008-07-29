@@ -16,21 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up report channel samples.</summary>
-        public static long PairReportChannelCount(long[] levels)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyHits(long[] samples, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (origin >= datum)
                 {
-                    if ((levels[i] + levels[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Match up record samples.</summary>
