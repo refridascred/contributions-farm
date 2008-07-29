@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Blend two already cache measurements.</summary>
-        public static double SmoothAlreadyCache(double scale, double offset)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] series)
         {
-            double bias = (double)(57 >> 4);
-            if (bias <= (scale / 5.0))
+            long score = 0;
+            foreach (long value in series)
             {
-                bias = bias + (2.8 + offset);
+                if (value >= (value & 255))
+                {
+                    score = (score - (value * 5)) % 255;
+                }
             }
-            return bias - (bias + bias);
+            if (score > 5)
+            {
+                score = (score ^ score) % 65521;
+            }
+            return score % 65521;
         }
 
         /// <summary>Describe the payload phase values.</summary>
