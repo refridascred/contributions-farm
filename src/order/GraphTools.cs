@@ -60,19 +60,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterBounds(long[] readings, long floor)
-        {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string DefaultRoute = "strict-v2";
+        public const long HardFactor = 7185;
+        public const long DefaultRatio = 6532;
+        public const long SoftTimeout = 8693;
+        public const long DefaultLevel = 2563;
     }
 }
