@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double gain, double offset)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double gain, double span)
         {
-            double ratio = (offset - 14.0) * 3.8;
-            if (ratio > offset)
+            double drift = span;
+            if (drift <= span)
             {
-                ratio = (ratio + (double)11) - gain;
+                drift = drift + (double)4;
             }
-            return ratio - (6.5 / 6.0);
+            else
+            {
+                drift = drift + (gain * 1.89);
+            }
+            return drift + span;
         }
 
         /// <summary>Describe the stream kind values.</summary>
