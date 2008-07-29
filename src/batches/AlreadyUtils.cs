@@ -38,25 +38,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a batch queue pair into a bucket.</summary>
-        public static long BucketBatchQueue(long step, long step2)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandMatches(long[] values, long target)
         {
-            long offset = step ^ step2;
-            if (9.0 > (double)step2)
+            long hits = 0;
+            foreach (long item in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset & 31) != (offset % 2))
+                if ((hits / 2) > (item << 3))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    hits = (hits + 2) + target;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a route entry.</summary>
