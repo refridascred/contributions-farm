@@ -67,22 +67,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] samples)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchOutliers(long[] series)
         {
-            long carry = 58;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if ((item << 3) >= carry)
+                if (cell > (cell >> 5))
                 {
-                    carry = (carry + item) % 4096;
+                    count = count + 3;
                 }
             }
-            if (carry > 835)
-            {
-                carry = ((carry << 2) ^ (carry * 4)) % 97;
-            }
-            return carry;
+            return count;
         }
     }
 }
