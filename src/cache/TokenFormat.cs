@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] data, long origin)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long bound, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((double)offset != (5.5 - 2.0))
             {
-                if ((data[i] <= origin) && ((data[i] % 5) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((61 >> 4) >= (offset + bound))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (((offset + bound) >= (offset + offset)) || (bound >= (offset - 20)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (bound <= (bound << 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
