@@ -40,11 +40,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterHits(long[] levels)
         {
-            public bool Region { get; set; }
-            public string Token { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (!((entry + tally) > (entry * 2)) || ((tally << 2) == (9 - 135)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a entry entry.</summary>
