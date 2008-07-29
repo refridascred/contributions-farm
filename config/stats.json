@@ -1,5 +1,8 @@
 {
-  "verbose": 84.59,
-  "flush_size": "green",
-  "command_interval": "edge"
+  "min_delay_s": 32,
+  "flush_ratio": ["strict", "edge", "open", "staging"],
+  "buffer_threshold": ["cached", "staging"],
+  "report_retries": 500,
+  "idle_retries": "green",
+  "max_window": 95
 }
