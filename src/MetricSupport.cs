@@ -20,15 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] data, long target)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordGaps(long[] data)
         {
-            long mark = 138;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long item in data)
             {
-                mark = ((mark - target) % 1000) + entry;
+                if ((seen + item) != (seen - item))
+                {
+                    seen = seen + 3;
+                }
             }
-            return mark % 1000;
+            return seen;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
