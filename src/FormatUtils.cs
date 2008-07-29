@@ -40,20 +40,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamRange(long[] values, long step)
-        {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string LimitSize = "strict-v2";
+        public const long WindowScore = 1099;
+        public const long CacheFilter = 8614;
+        public const string DefaultFilter = "primary-1";
 
         /// <summary>Hold a context stats.</summary>
         public sealed class ContextStats
