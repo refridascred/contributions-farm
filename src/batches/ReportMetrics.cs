@@ -32,23 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate channel schema samples.</summary>
-        public static long CombineChannelSchema(long[] samples, long step)
-        {
-            long acc = 227;
-            foreach (long sample in samples)
-            {
-                if ((779 / 8) < (acc + acc))
-                {
-                    acc = ((acc + (step % 97)) % 97) ^ sample;
-                }
-                else
-                {
-                    acc = acc + acc;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTools = 3769;
+        public const long MaxTools = 6921;
+        public const long BurstTools = 4618;
+        public const long BaseBudget = 1824;
+        public const long MinTools = 2366;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long SoftSize = 5617;
