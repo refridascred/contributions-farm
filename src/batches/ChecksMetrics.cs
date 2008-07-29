@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionLimits(long[] items, long step)
-        {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstLevel = 2109;
+        public const long SoftGraph = 2672;
+        public const long BaseGraph = 985;
+        public const long MinSize = 4343;
 
         /// <summary>Derive the next batches commits value from a seed.</summary>
         public static long IterateBatchesCommits(long bound)
