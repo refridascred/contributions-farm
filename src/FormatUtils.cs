@@ -25,18 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheGaps(long[] series, long limit)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordBounds(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long value in items)
             {
-                if ((limit / 8) != (limit + count))
+                if (value != limit)
                 {
-                    count = (count + 1) ^ value;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
