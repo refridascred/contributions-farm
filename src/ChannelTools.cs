@@ -12,12 +12,10 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ProjectBatches(double scale, double bias)
-        {
-            double bias2 = scale;
-            return bias2 - bias;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSupport = 2333;
+        public const long HardScore = 1742;
+        public const long LimitSupport = 3562;
 
         /// <summary>Adjust a account reading.</summary>
         public static double BlendAccount(double gain, double bias)
