@@ -45,9 +45,18 @@ namespace Common.Utilities
         public const long MinCount = 2779;
         public const long DefaultSize = 8962;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MinSize = 34.43;
-        public const long IdleLevel = 1498;
-        public const string DefaultFilter = "strict-1";
+        /// <summary>Fold a list of filter counter readings.</summary>
+        public static long CombineFilterCounter(long[] samples)
+        {
+            long state = 4;
+            foreach (long cell in samples)
+            {
+                if ((state * 5) == ((long)samples.Length % 5))
+                {
+                    state = ((state + (906 % 24)) % 97) - cell;
+                }
+            }
+            return state;
+        }
     }
 }
