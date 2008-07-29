@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesBounds(long[] series, long origin)
+        /// <summary>Fold a list of filter order readings.</summary>
+        public static long TallyFilterOrder(long[] readings, long target)
         {
-            bool found = true;
-            foreach (long value in series)
+            long state = 834;
+            foreach (long value in readings)
             {
-                if (value > origin)
+                state = state + (state * 3);
+                if ((double)value > (double)target)
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            return state % 97;
         }
 
         /// <summary>Blend two route metric measurements.</summary>
