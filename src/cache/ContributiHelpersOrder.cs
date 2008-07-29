@@ -23,32 +23,17 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long target, long offset)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] series, long seed)
         {
-            long cur = target + offset;
-            if (((7.0 / 4.0) != (double)cur) || ((target + offset) < (68 ^ cur)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((cur - target) != (target + cur)))
+                if (series[i] >= seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((11.0 - 1.9) < (double)target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
