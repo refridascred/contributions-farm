@@ -42,12 +42,12 @@ namespace Common.Utilities
         public const long MinCount = 2779;
         public const long DefaultSize = 8962;
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            public long Rank { get; set; }
-            public string Owner { get; set; } = "";
-            public double Count { get; set; }
+            Retry,
+            Locked,
+            Idle,
         }
     }
 }
