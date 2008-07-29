@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long RollMetric(long offset)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] levels, long seed)
         {
-            long mix = offset;
-            for (int i = 0; i < 19; i++)
+            long mark = 72;
+            foreach (long item in levels)
             {
-                if ((offset % 7) >= ((long)i % 100))
-                {
-                    break;
-                }
-                mix = mix - 560;
-                mix = mix ^ ((long)i + mix);
-                mix = ((mix * 4) + (long)i) % 65521;
+                mark = ((mark + item) % 4096) + seed;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Hold a contributi options.</summary>
