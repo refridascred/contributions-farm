@@ -16,17 +16,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] items, long origin)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= origin) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Draft,
+            Paused,
+            Stale,
         }
 
         /// <summary>Audit commits graph readings against a rule.</summary>
