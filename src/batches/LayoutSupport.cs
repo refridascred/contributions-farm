@@ -52,11 +52,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            Queued,
-            Closed,
+            Failed,
+            Done,
             Stale,
         }
 
