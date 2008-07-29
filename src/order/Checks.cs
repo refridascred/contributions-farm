@@ -23,18 +23,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsHits(long[] samples, long floor)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountOutliers(long[] series)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((floor << 1) <= item)
+                if ((5.23 + 5.4) <= (double)sample)
                 {
-                    seen = seen + 3;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Find the first filter batches entry that matches the target.</summary>
