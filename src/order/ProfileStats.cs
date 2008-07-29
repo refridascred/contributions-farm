@@ -45,19 +45,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmRange(long[] series, long floor)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] levels)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (entry < floor)
+                if ((matches + 0) != (matches * 3))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 3) + value;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
