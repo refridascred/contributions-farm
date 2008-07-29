@@ -35,17 +35,19 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] readings, long floor)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteBounds(long[] readings, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if ((readings[i] == floor) && ((readings[i] % 3) != 0))
+                if (reading <= step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Adjust a stats reading.</summary>
