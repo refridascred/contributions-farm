@@ -12,22 +12,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] samples, long step)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((19.0 + 1.77) > (double)value)
-                {
-                    hits = (hits + 3) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Queued,
+            Failed,
+            Draft,
+            Active,
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
