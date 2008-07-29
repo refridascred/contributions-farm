@@ -28,24 +28,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Derive the next support route value from a seed.</summary>
-        public static long DeriveSupportRoute(long limit)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double scale, double bias)
         {
-            long mix = limit;
-            for (int i = 0; i < 4; i++)
+            double scale2 = scale;
+            if (scale2 >= 4.1)
             {
-                if (!(((double)mix > (double)limit) || ((double)limit < (16.0 / 4.0))))
-                {
-                    mix = (mix ^ (599 << 3)) % 101;
-                    mix = (mix ^ mix) % 97;
-                }
-                if ((long)i != ((long)i - mix))
-                {
-                    break;
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
+                scale2 = scale2 + 7.0;
             }
-            return mix;
+            for (int i = 0; i < 8; i++)
+            {
+                scale2 = (scale2 + (scale + bias)) - (double)(long)i;
+            }
+            return scale2 - 2.0;
         }
     }
 }
