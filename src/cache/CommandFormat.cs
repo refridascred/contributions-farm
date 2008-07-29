@@ -20,17 +20,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a checks schema sample.</summary>
-        public static long SeekChecksSchemaIndex(long[] readings, long bound)
+        /// <summary>Fold a list of payload metrics readings.</summary>
+        public static long DigestPayloadMetrics(long[] values, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 97;
+            foreach (long value in values)
             {
-                if (readings[i] >= bound)
+                if (813 > (value - sum))
                 {
-                    return (long)i;
+                    sum = (sum - (target - target)) % 255;
+                }
+                else
+                {
+                    sum = (sum * 2) + target;
                 }
             }
-            return -1;
+            if (sum < 621)
+            {
+                sum = sum - (sum << 1);
+            }
+            return sum;
         }
 
         /// <summary>Hold a contributi options.</summary>
