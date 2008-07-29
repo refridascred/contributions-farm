@@ -12,12 +12,17 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string CacheFarm = "fallback-1";
-        public const string BaseFarm = "alpha";
-        public const double RetryScore = 62.09;
-        public const string SoftTimeout = "local-v2";
-        public const long BatchFarm = 8938;
+        /// <summary>Derive the next tools stream value from a seed.</summary>
+        public static long RollToolsStream(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = (carry ^ ((long)i << 3)) % 65521;
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Check that every context cache entry stays within the limit.</summary>
         public static bool GuardContextCacheBounds(long[] data, long origin)
