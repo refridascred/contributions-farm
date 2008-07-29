@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long CompareToolsCount(long[] data)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long PairCounterCount(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((data[i] + data[j]) == 16)
+                    if ((samples[i] - samples[j]) != 7)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
