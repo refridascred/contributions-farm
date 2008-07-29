@@ -30,16 +30,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long target)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] series, long limit)
         {
-            long sum = target;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum - sum) % 101;
-                sum = ((sum * 2) + (long)i) % 1000;
+                if (series[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
