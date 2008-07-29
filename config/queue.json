@@ -1,13 +1,8 @@
 {
-  "cache_delay_pct": 1024,
-  "retry_limit_pct": 31.77,
-  "flush_delay_count": {
-    "hard_capacity_ms": 1024,
-    "min_window": [127, 24, 319, 355],
-    "poll_delay_pct": 96.54,
-    "buffer_capacity": "fallback",
-    "enabled": 30,
-    "base_size_pct": ["strict", "blue"]
-  },
-  "warm_ttl_ms": "standard"
+  "retry_depth_s": [97, 169, 220, 459],
+  "retry_limit_s": "cached",
+  "batch_depth_s": 500,
+  "sync_interval_ms": "green",
+  "compress": true,
+  "min_ttl": "latest"
 }
