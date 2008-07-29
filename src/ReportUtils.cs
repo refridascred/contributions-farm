@@ -46,24 +46,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a farm format pair into a bucket.</summary>
-        public static long GradeFarmFormat(long seed, long seed2)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            if (seed2 >= (seed2 & 1))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed2 + seed2) > seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Active,
+            Closed,
+            Done,
+            Idle,
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
