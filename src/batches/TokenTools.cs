@@ -34,18 +34,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteMatches(long[] data, long origin)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordLimits(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if (item > (origin ^ (long)data.Length))
+                if (cell >= floor)
                 {
-                    hits = hits + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
