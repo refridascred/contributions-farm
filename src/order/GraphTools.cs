@@ -35,24 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a format support pair into a bucket.</summary>
-        public static long GradeFormatSupport(long floor, long limit)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterHits(long[] items)
         {
-            if ((double)floor <= 1.88)
+            long seen = 0;
+            foreach (long item in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor > (double)limit)
+                if (((seen ^ item) >= (219 / 8)) && ((double)item > (16.0 + 19.0)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
