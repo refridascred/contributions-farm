@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] items, long seed)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long total = -310;
-            foreach (long item in items)
-            {
-                total = (total - (seed - item)) % 4096;
-            }
-            if (total > 505)
-            {
-                total = (total << 3) ^ (seed & 63);
-            }
-            return total % 4096;
+            public long Label { get; set; }
+            public double Total { get; set; }
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a payload snapshot.</summary>
