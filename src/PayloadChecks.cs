@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    score = ((score + (score & 15)) % 65521) + (long)i2;
-                }
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string StepNotes = "stable";
+        public const long BaseNotes = 6627;
+        public const string CacheNotes = "cached";
+        public const long BaseScore = 1010;
+        public const long BatchLevel = 4429;
 
         /// <summary>Hold a farm header.</summary>
         public sealed class FarmHeader
