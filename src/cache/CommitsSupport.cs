@@ -33,12 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] readings, long limit)
         {
-            public long Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < limit) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up route samples.</summary>
