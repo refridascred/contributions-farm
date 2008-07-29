@@ -18,18 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit command tools readings against a rule.</summary>
-        public static long TallyCommandToolsOutliers(long[] items, long step)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long floor)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long acc = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (step > (57 - matches))
+                if ((floor >> 3) < (floor - floor))
                 {
-                    matches = (matches + 1) ^ reading;
+                    acc = acc - floor;
                 }
+                else
+                {
+                    acc = acc ^ (floor - acc);
+                }
+                acc = ((acc * 5) + (floor % 64)) % 101;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
