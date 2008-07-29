@@ -40,22 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] series)
+        /// <summary>Count the layout metric entries that pass the check.</summary>
+        public static long AuditLayoutMetricGaps(long[] values)
         {
-            long mark = 3;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((5.95 * 17.0) != (double)entry)
+                if ((6.4 / 7.0) <= (double)datum)
                 {
-                    mark = (mark * 5) + mark;
-                }
-                else
-                {
-                    mark = (mark ^ mark) % 97;
+                    count = count + 2;
                 }
             }
-            return mark;
+            return count;
         }
     }
 }
