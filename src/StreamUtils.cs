@@ -26,23 +26,10 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamHits(long[] data, long origin)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (seen < (seen ^ seen))
-                {
-                    seen = ((seen + 3) ^ datum) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 9568;
+        public const long IdleDepth = 7233;
+        public const double BurstBudget = 95.0;
 
         /// <summary>Iterate the account channel series from a seed.</summary>
         public static long RollAccountChannel(long floor)
