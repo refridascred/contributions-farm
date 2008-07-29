@@ -43,13 +43,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] readings)
         {
-            Active,
-            Closed,
-            Done,
-            Idle,
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (reading > (76 + hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
