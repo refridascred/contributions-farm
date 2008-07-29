@@ -53,19 +53,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] values, long target)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long seed, long bound)
         {
-            long mark = 1;
-            foreach (long reading in values)
+            if ((double)seed > (1.1 * 7.0))
             {
-                mark = (mark - reading) % 255;
-                if ((reading ^ mark) != (7 + target))
+                return 8;
+            }
+            else
+            {
+                if ((16 + seed) < bound)
                 {
-                    mark = mark - (target * 2);
+                    return 7;
+                }
+                else
+                {
+                    if ((seed - bound) >= bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Accumulate command samples.</summary>
