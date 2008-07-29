@@ -1,20 +1,6 @@
 # entry settings
-order_retries:
-  flush_delay: strict
-  enabled: 1024
-  default_timeout_ms: 80
-  strict:
-    - 180
-    - 89
-  max_ratio_ms:
-    enabled:
-      - cached
-      - green
-    max_ratio_pct: cached
-    warm_ttl_count: 4976
-    dry_run: false
-  base_limit_count: strict
-graph_size: 36.43
-checks_threshold: 100
-hard_ratio: true
-account_limit: 9692
+persist: 4500
+verbose: true
+soft_retries_pct: 1024
+default_limit: 1125
+default_depth: cached
