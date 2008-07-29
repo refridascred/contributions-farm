@@ -20,11 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 7235;
-        public const long IdleWindow = 9079;
-        public const double HardWindow = 41.24;
-        public const double MinBudget = 87.47;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchScore = 2496;
+        public const long StepChannel = 8880;
+        public const long BaseInterval = 8217;
+        public const string RetryRatio = "legacy";
+        public const long CacheChannel = 772;
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool GuardSessionBounds(long[] items, long step)
