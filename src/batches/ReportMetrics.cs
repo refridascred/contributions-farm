@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MaxBuffer = "local";
-        public const long BaseBuffer = 493;
-        public const long RetryBuffer = 2185;
+        /// <summary>Compare every pair of buffer counter readings.</summary>
+        public static long OverlapBufferCounterCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long TallyBatches(long[] data, long origin)
