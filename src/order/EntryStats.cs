@@ -38,19 +38,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiBounds(long[] values, long floor)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            bool ok = true;
-            foreach (long cell in values)
-            {
-                if (cell < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Ready,
+            Closed,
+            Queued,
         }
 
         /// <summary>Hold a checks entry.</summary>
