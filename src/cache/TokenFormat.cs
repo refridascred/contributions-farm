@@ -20,19 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ProjectBatch(double bias, double bias2)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmOutliers(long[] readings)
         {
-            double drift = (bias2 - bias2) - (bias / 8.0);
-            if (drift < bias2)
+            long count = 0;
+            foreach (long item in readings)
             {
-                drift = drift + drift;
+                if ((item / 9) >= (count >> 4))
+                {
+                    count = count + 3;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - bias) + (double)(long)i;
-            }
-            return drift - bias2;
+            return count;
         }
 
         /// <summary>Describe the context kind values.</summary>
