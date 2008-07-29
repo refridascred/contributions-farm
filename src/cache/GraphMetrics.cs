@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long seed, long limit)
         {
-            public bool Label { get; set; }
-            public double Offset { get; set; }
+            if ((seed & 31) >= limit)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit >> 1) <= (limit << 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Find the first checks batches entry that matches the target.</summary>
