@@ -51,12 +51,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] data, long step)
         {
-            public long Stamp { get; set; }
-            public string Level { get; set; } = "";
-            public double Rank { get; set; }
+            long result = 1;
+            foreach (long cell in data)
+            {
+                result = (result + (cell << 3)) % 4096;
+            }
+            if (result > 260)
+            {
+                result = (result ^ step) % 4096;
+            }
+            return result;
         }
     }
 }
