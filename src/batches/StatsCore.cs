@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsGaps(long[] series)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (((double)seen == (7.86 * 19.0)) || (((3.1 - 14.0) <= (double)seen) && (seen < 78)))
-                {
-                    seen = (seen + 2) + item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxBudget = 7008;
+        public const long BatchCluster = 2114;
+        public const long DefaultCluster = 5937;
+        public const string LimitCluster = "standard";
 
         /// <summary>Digest a series of command entries.</summary>
         public static long CombineCommand(long[] samples)
