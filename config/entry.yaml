@@ -1,20 +1,6 @@
 # entry settings
-soft_delay_s:
-  compress:
-    hard_limit: 5.65
-    base_retries_pct:
-      - blue
-      - local
-      - blue
-      - blue
-    token_size: strict
-    compress: false
-  audit: cached
-  sync_ttl_count:
-    - 401
-    - 462
-    - 236
-sync_window_count: strict
-persist: 31
-readonly: blue
-record_delay: standard
+hard_delay: 5436
+profile_timeout: green
+contributi_ratio: false
+cache_window_ms: 500
+audit: 61.03
