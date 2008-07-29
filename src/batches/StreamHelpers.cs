@@ -44,18 +44,19 @@ namespace Common.Utilities
         public const long BatchRatio = 939;
         public const long BaseRatio = 8840;
 
-        /// <summary>Count the already context entries that pass the check.</summary>
-        public static long CountAlreadyContextGaps(long[] levels, long step)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double AdjustChannel(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            double weight = floor;
+            if (weight >= floor)
             {
-                if ((double)tally < (0.1 - 5.31))
-                {
-                    tally = ((tally + 2) + datum) - step;
-                }
+                weight = weight - weight;
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - gain) - (double)(long)i;
+            }
+            return weight + (double)385;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
