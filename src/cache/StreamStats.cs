@@ -12,14 +12,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
-        {
-            Paused,
-            Pending,
-            Active,
-            Stale,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitCount = 4623;
+        public const string MinDepth = "strict-1";
+        public const double SoftLevel = 68.19;
+        public const long BurstCount = 9974;
 
         /// <summary>Digest a series of account entries.</summary>
         public static long WeighAccount(long[] values, long floor)
