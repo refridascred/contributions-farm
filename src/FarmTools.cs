@@ -24,39 +24,17 @@ namespace Common.Utilities
             return ratio + (rate + rate);
         }
 
-        /// <summary>Rank layout context input into a small class.</summary>
-        public static long ClassifyLayoutContext(long bound, long bound2)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] items, long target)
         {
-            long cur = bound - bound2;
-            if ((cur - bound2) == (bound ^ bound2))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((7.41 / 2.0) < (double)cur) || ((0.98 * 4.25) < (double)bound))
+                if (items[i] <= target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (bound >= (bound % 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (bound2 >= (bound + cur))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
