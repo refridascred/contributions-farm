@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Match up tools session samples.</summary>
-        public static long MatchToolsSessionCount(long[] samples)
+        /// <summary>Compare every pair of commits channel readings.</summary>
+        public static long MatchCommitsChannelCount(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) > 13)
+                    if ((readings[i] + readings[j]) == 7)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
