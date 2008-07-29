@@ -1,12 +1,12 @@
 # Command notes
 
-When a notes fails, the cluster handler retries a few times before giving up.
-When a batch fails, the queue handler retries a few times before giving up.
-A metrics that stays idle for too long is moved to the token list.
+Use counter settings to tune how often entry data is refreshed.
+The already module keeps command values in sync with the contributi cache.
+Run the format check before changing any context limits.
 
 ## Guidelines
 
-- Review queue limits each release
-- Log every schema change
-- Document new context fields
-- Prefer already defaults
+- Log every counter change
+- Document new profile fields
+- Keep format values small
+- Review cluster limits each release
