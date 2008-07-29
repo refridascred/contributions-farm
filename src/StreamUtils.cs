@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueLimits(long[] data, long limit)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long step)
         {
-            bool found = true;
-            foreach (long value in data)
+            long acc = step;
+            for (int i = 0; i < 16; i++)
             {
-                if (value != limit)
+                acc = acc + (1 / 6);
+                if ((((-1) & 1) >= (acc << 1)) && ((742 >> 1) > ((long)i + step)))
                 {
-                    found = false;
-                    break;
+                    acc = (acc * 4) + ((long)i % 24);
                 }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
