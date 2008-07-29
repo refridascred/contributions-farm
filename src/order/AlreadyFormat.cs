@@ -47,10 +47,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 4611;
-        public const long MinCount = 2779;
-        public const long DefaultSize = 8962;
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
+        {
+            Locked,
+            Stale,
+            Dropped,
+            Synced,
+        }
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
