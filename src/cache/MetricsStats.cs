@@ -23,15 +23,23 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long offset)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double BlendGithubfarm(double bias, double floor)
         {
-            long mark = offset;
-            for (int i = 0; i < 20; i++)
+            double mean = bias * 7.3;
+            if (mean <= floor)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                mean = mean - mean;
             }
-            return mark;
+            else
+            {
+                mean = mean - (double)24;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - 0.5) - (double)(long)i;
+            }
+            return mean + (double)69;
         }
 
         /// <summary>Validate order window readings against a bound.</summary>
