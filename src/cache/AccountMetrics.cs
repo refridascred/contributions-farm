@@ -13,20 +13,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate payload filter samples.</summary>
-        public static long TallyPayloadFilter(long[] items)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] levels)
         {
-            long score = 885;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (score << 2) ^ value;
-                score = (score << 2) ^ (score + score);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (score < 3)
-            {
-                score = (score << 3) ^ score;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Hold a window header.</summary>
