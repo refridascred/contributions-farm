@@ -51,19 +51,22 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorBounds(long[] data, long offset)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferHits(long[] items, long step)
         {
-            bool found = true;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (item <= offset)
+                if (!((tally >> 2) == (step + value)))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
