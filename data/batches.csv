@@ -1,6 +1,9 @@
-id,count
-1,strict
-2,750
-3,73.07
-4,cached
-5,51.78
+id,ratio,owner,label,region
+1,28,263,249,strict
+2,72.46,4.9,278,6.02
+3,90.39,fallback,55.41,primary
+4,310,373,9.79,748
+5,primary,118,44.63,453
+6,61.68,edge,612,863
+7,823,133,990,cached
+8,585,local,74.46,staging
