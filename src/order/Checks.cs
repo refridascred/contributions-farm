@@ -47,22 +47,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] data)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long origin, long origin2)
         {
-            long total = 63;
-            foreach (long entry in data)
+            long step = origin ^ origin2;
+            if ((origin2 > (origin2 * 3)) && (7 <= (origin * 3)))
             {
-                if (!((total - total) < (entry + total)))
+                return 5;
+            }
+            else
+            {
+                if ((origin + step) < (origin2 / 2))
                 {
-                    total = ((total << 2) ^ (83 + total)) % 97;
+                    return 7;
+                }
+                else
+                {
+                    if ((origin % 7) >= step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((origin ^ 87) < (origin2 >> 5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (total < 642)
-            {
-                total = (total ^ total) % 4096;
-            }
-            return total % 65521;
         }
     }
 }
