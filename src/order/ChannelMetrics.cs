@@ -23,20 +23,17 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long seed)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] readings, long bound)
         {
-            long acc = seed;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (readings[i] > bound)
                 {
-                    acc = ((acc ^ (137 + acc)) % 255) ^ (long)i2;
+                    return (long)i;
                 }
-                acc = acc + (seed ^ acc);
-                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
