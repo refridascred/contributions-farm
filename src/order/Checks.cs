@@ -13,12 +13,22 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BatchFactor = "primary-1";
-        public const long LimitSchema = 8415;
-        public const double WindowSize = 24.1;
-        public const long WindowFactor = 786;
-        public const long MinSchema = 2282;
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long PairChecksCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string StepChannel = "local";
