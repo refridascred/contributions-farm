@@ -33,26 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] samples)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long score = 714;
-            foreach (long entry in samples)
-            {
-                if ((entry ^ entry) >= (entry + entry))
-                {
-                    score = (score * 5) + 86;
-                }
-                else
-                {
-                    score = ((score * 5) + ((-38) >> 1)) % 65521;
-                }
-            }
-            if (score < 5)
-            {
-                score = score - (score ^ score);
-            }
-            return score % 1000;
+            Closed,
+            Failed,
+            Synced,
+            Idle,
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
