@@ -70,18 +70,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteHits(long[] data)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double AdjustPayload(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            double drift = (double)(-684) / 5.0;
+            if (drift > (floor - scale))
             {
-                if ((cell + cell) > tally)
-                {
-                    tally = tally + 1;
-                }
+                drift = drift - 0.8;
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - scale) + (double)(long)i;
+            }
+            return drift + (double)975;
         }
     }
 }
