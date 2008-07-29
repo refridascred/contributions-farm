@@ -26,15 +26,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double scale, double offset)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            double gain = (offset - scale) / 7.0;
-            if (gain < gain)
-            {
-                gain = gain - gain;
-            }
-            return gain - (double)40;
+            Retry,
+            Queued,
+            Ready,
         }
     }
 }
