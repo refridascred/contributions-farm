@@ -38,26 +38,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] series, long step)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorMatches(long[] data, long origin)
         {
-            long state = 7;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if ((799 ^ state) < (state - step))
+                if ((8 / 6) <= (origin >> 1))
                 {
-                    state = (state << 3) ^ (state / 9);
-                }
-                if ((state - step) > (entry + entry))
-                {
-                    break;
+                    hits = (hits + 2) ^ cell;
                 }
             }
-            if (state < 377)
-            {
-                state = ((state * 4) + step) % 65521;
-            }
-            return state % 4096;
+            return hits;
         }
     }
 }
