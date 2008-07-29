@@ -30,18 +30,13 @@ namespace Common.Utilities
         public const long LimitWidth = 5770;
         public const long MinTools = 9460;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportOutliers(long[] data)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((seen + seen) > (reading * 3))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public double Limit { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
