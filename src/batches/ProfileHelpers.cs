@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long target)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long mark = target;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            public bool Owner { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a context snapshot.</summary>
