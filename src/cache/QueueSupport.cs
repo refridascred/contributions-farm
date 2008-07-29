@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long seed)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamBounds(long[] values, long origin)
         {
-            long sum = seed;
-            for (int i = 0; i < 10; i++)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                sum = ((sum * 2) + (long)i) % 4093;
+                if (reading > origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
