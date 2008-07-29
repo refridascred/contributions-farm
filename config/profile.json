@@ -1,5 +1,13 @@
 {
-  "flush_timeout": 32,
-  "flush_threshold_s": false,
-  "idle_window_ms": ["eu-west", "latest", "staging", "eu-west"]
+  "warm_timeout": "blue",
+  "max_limit_ms": "fallback",
+  "persist": "stable",
+  "hard_threshold_count": 500,
+  "warm_ttl_s": {
+    "sync_delay_pct": "local",
+    "queue_delay": false,
+    "metric_size": ["primary", "latest", "stable"],
+    "counter_delay": [362, 83, 266, 39]
+  },
+  "account_threshold": "green"
 }
