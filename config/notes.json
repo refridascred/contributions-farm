@@ -1,7 +1,7 @@
 {
-  "record_retries": "edge",
-  "enabled": [423, 57],
-  "verbose": 9294,
-  "audit": 15.89,
-  "support_interval": ["primary", "cached", "primary"]
+  "burst_timeout_ms": false,
+  "retry_capacity_ms": true,
+  "retry_ratio_pct": [239, 247, 401, 328],
+  "burst_interval_pct": [326, 74, 350],
+  "schema_retries": 39.89
 }
