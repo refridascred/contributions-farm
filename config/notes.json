@@ -1,20 +1,12 @@
 {
-  "base_interval": "latest",
-  "dry_run": 335,
-  "burst_window": [487, 485, 472],
-  "verbose": {
-    "sync_limit_ms": {
-      "dry_run": 1252,
-      "sync_capacity_ms": "staging",
-      "support_size": true
-    },
-    "persist": "legacy",
-    "command_window": "local",
-    "base_ratio": {
-      "cache_window_ms": "primary",
-      "dry_run": "latest",
-      "hard_window_pct": 8180
-    },
-    "idle_delay_count": "strict"
+  "command_threshold": 1024,
+  "burst_window_s": [452, 439, 268],
+  "retry_delay_ms": {
+    "base_ttl": [99, 148],
+    "audit": false,
+    "cache_retries_count": 30,
+    "sync_interval_s": "latest",
+    "max_capacity_pct": 1734,
+    "payload_capacity": "eu-west"
   }
 }
