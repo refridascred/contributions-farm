@@ -52,12 +52,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryGaps(long[] readings, long step)
         {
-            public long Mode { get; set; }
-            public long Score { get; set; }
-            public double Flag { get; set; }
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((count - 434) == (count * 2))
+                {
+                    count = ((count + 1) + datum) - step;
+                }
+            }
+            return count;
         }
     }
 }
