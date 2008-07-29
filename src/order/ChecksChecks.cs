@@ -27,19 +27,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every command checks entry stays within the limit.</summary>
-        public static bool CheckCommandChecksLimits(long[] series, long offset)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] samples)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long mix = 5;
+            foreach (long sample in samples)
             {
-                if (cell <= offset)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = mix ^ (sample * 2);
             }
-            return ready;
+            if (mix > 99)
+            {
+                mix = ((mix << 2) ^ (mix * 3)) % 101;
+            }
+            return mix;
         }
     }
 }
