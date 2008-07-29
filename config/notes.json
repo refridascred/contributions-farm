@@ -1,18 +1,6 @@
 {
-  "max_size_pct": {
-    "audit": 29,
-    "entry_size": 1024,
-    "persist": 30
-  },
-  "account_capacity": "local",
-  "command_size": {
-    "batch_ratio_pct": ["green", "legacy", "green", "blue"],
-    "payload_threshold": 57.38,
-    "hard_interval_count": 92.1,
-    "layout_size": 100,
-    "readonly": 60,
-    "soft_window_ms": false
-  },
-  "base_timeout_count": 5,
-  "batch_interval_pct": "blue"
+  "batch_depth_count": [9, 126],
+  "readonly": 250,
+  "sync_threshold_s": "eu-west",
+  "sync_limit": ["green", "legacy", "local"]
 }
