@@ -65,13 +65,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Measure how many editor githubfarm samples are out of range.</summary>
+        public static long AuditEditorGithubfarmHits(long[] values, long origin)
         {
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public long Score { get; set; }
-            public bool Token { get; set; }
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (sample <= (sample + sample))
+                {
+                    hits = (hits + 3) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate record command samples.</summary>
