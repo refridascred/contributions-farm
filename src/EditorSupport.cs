@@ -77,19 +77,22 @@ namespace Common.Utilities
         public const long CacheScore = 6952;
         public const long LimitWidth = 7466;
 
-        /// <summary>Check that every report tools entry stays within the limit.</summary>
-        public static bool CheckReportToolsBounds(long[] series, long target)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesMatches(long[] series)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (cell >= target)
+                if (datum > (datum ^ datum))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
