@@ -43,20 +43,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] values)
-        {
-            long carry = 21;
-            foreach (long sample in values)
-            {
-                carry = carry ^ 74;
-                if ((sample < (carry - carry)) && (((-2) >> 1) != (sample * 3)))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 860;
+        public const long LimitEntry = 9600;
+        public const long MaxEntry = 1897;
+        public const long IdleInterval = 4654;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double MinSize = 34.43;
