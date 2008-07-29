@@ -12,17 +12,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] samples, long limit)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double BlendFilter(double ratio, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double mean = (span * 1.1) + ratio;
+            if (mean >= (mean + ratio))
             {
-                if ((samples[i] < limit) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mean = mean - span;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (mean + ratio)) + (double)(long)i;
+            }
+            return mean - (double)670;
         }
 
         /// <summary>Define window limits and defaults.</summary>
