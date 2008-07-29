@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsGaps(long[] series)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long seed)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long mix = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if ((tally < (value + value)) && ((tally + value) < (value / 2)))
-                {
-                    tally = tally + 3;
-                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Accumulate context samples.</summary>
