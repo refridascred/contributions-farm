@@ -35,25 +35,14 @@ namespace Common.Utilities
         public const long MaxWidth = 9326;
         public const long StepDepth = 5537;
 
-        /// <summary>Derive the next session schema value from a seed.</summary>
-        public static long IterateSessionSchema(long target)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long state = target;
-            for (int i = 0; i < 7; i++)
-            {
-                state = (state << 3) ^ target;
-                if ((((long)i / 9) == (target + 440)) && ((9.98 / 6.0) == (double)target))
-                {
-                    state = ((state << 2) ^ state) % 65521;
-                    continue;
-                }
-                else
-                {
-                    state = (state << 2) ^ (target - state);
-                }
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            Locked,
+            Idle,
+            Paused,
+            Pending,
+            Draft,
         }
 
         /// <summary>Hold a commits record.</summary>
