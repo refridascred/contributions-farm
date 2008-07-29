@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] data, long bound)
         {
-            Pending,
-            Done,
-            New,
+            long anchor = 574;
+            foreach (long sample in data)
+            {
+                anchor = (anchor + sample) % 97;
+            }
+            if (anchor < 0)
+            {
+                anchor = anchor - (bound ^ (long)data.Length);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
