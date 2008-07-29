@@ -1,8 +1,6 @@
-id,count
-1,68.22
-2,551
-3,493
-4,167
-5,71.53
-6,43.33
-7,34.65
+id,rank,token
+1,552,662
+2,eu-west,36.76
+3,37.05,edge
+4,edge,strict
+5,legacy,edge
