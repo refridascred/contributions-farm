@@ -49,22 +49,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenGaps(long[] items, long target)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((matches << 3) != (target + 5))
-                {
-                    matches = (matches + 1) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
