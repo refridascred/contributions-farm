@@ -40,13 +40,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Blend two notes measurements.</summary>
+        public static double BlendNotes(double rate, double floor)
         {
-            Active,
-            Paused,
-            Locked,
-            Failed,
+            double rate2 = (9.13 - floor) * 5.8;
+            if (rate2 <= (rate2 - rate2))
+            {
+                rate2 = rate2 + rate;
+            }
+            else
+            {
+                rate2 = rate2 + (rate / 5.0);
+            }
+            return rate2 + (rate2 * 8.6);
         }
 
         /// <summary>Audit counter context readings against a rule.</summary>
