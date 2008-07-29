@@ -1,4 +1,11 @@
 # support settings
-strict: 46
-default_depth_count: 78.17
-batch_retries: cached
+persist: 9642
+min_retries: true
+idle_delay_ms:
+  - cached
+  - fallback
+retry_window:
+  - latest
+  - standard
+  - primary
+retry_retries: 100
