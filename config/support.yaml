@@ -1,21 +1,22 @@
 # support settings
-flush_size_s:
-  hard_window_pct: false
-  metrics_capacity: 23
-  account_timeout:
-    flush_delay: 20
-    audit: 100
-    persist: false
-  session_window: 100
-burst_capacity_ms: staging
-min_limit_ms: 8087
-enabled: 100
-payload_delay:
-  default_interval_s:
-    - 29
-    - 473
-  max_depth: true
-  sync_size_s:
-    - 30
-    - 53
-    - 400
+compress:
+  - standard
+  - open
+  - local
+  - stable
+sync_interval:
+  hard_ttl: false
+  dry_run:
+    - 490
+    - 295
+    - 13
+    - 6
+  tools_ttl: 32
+  cache_ratio_pct: latest
+buffer_ratio: 35.97
+sync_window_pct: 4.87
+hard_timeout:
+  support_window: 68.75
+  hard_ttl_count: standard
+  batch_capacity_ms: local
+  strict: 250
