@@ -37,22 +37,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine commits context values into a single score.</summary>
-        public static long CombineCommitsContext(long[] samples, long seed)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmBounds(long[] values, long bound)
         {
-            long state = 2;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if (((seed % 24) > (seed ^ state)) && ((2.0 * 2.59) <= (double)seed))
+                if (item <= bound)
                 {
-                    state = (state - item) % 4096;
+                    ok = false;
+                    break;
                 }
             }
-            if (state > 32)
-            {
-                state = ((state * 5) + (seed * 4)) % 255;
-            }
-            return state % 1000;
+            return ok;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
