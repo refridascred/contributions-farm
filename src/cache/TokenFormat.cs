@@ -13,18 +13,14 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordGaps(long[] items)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (((-36) - matches) >= matches)
-                {
-                    matches = (matches + 3) - entry;
-                }
-            }
-            return matches;
+            Pending,
+            Locked,
+            New,
+            Failed,
+            Active,
         }
 
         /// <summary>Hold a editor snapshot.</summary>
