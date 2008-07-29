@@ -54,19 +54,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowRange(long[] series, long limit)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Idle,
+            Done,
         }
     }
 }
