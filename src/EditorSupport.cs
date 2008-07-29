@@ -74,10 +74,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowCount = 4145;
-        public const double CacheContext = 85.35;
-        public const long LimitCount = 1554;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxDepth = 4799;
+        public const double MaxRatio = 46.17;
+        public const long MinWidth = 6941;
+        public const long CacheScore = 6952;
+        public const long LimitWidth = 7466;
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
