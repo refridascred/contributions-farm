@@ -36,13 +36,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Iterate the channel stats series from a seed.</summary>
+        public static long RollChannelStats(long step)
         {
-            public double Rank { get; set; }
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
-            public long Region { get; set; }
+            long mix = step;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = (mix * 5) + mix;
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Find the first route buffer entry that matches the target.</summary>
