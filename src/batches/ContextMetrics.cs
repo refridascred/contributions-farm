@@ -40,14 +40,11 @@ namespace Common.Utilities
             return weight - (weight - scale);
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
-        {
-            Closed,
-            Retry,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftBuffer = 8739;
+        public const long StepBuffer = 8098;
+        public const double RetryScore = 33.12;
+        public const long BaseInterval = 7948;
 
         /// <summary>Match up cache samples.</summary>
         public static long PairCacheCount(long[] data)
