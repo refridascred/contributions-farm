@@ -1,7 +1,7 @@
 {
-  "channel_size": "eu-west",
-  "farm_retries": "strict",
-  "cache_limit": "standard",
-  "commits_size": 19,
-  "format_threshold": true
+  "max_window_s": "local",
+  "max_threshold_pct": 59,
+  "filter_limit": 500,
+  "stats_interval": 65.57,
+  "strict": 54.84
 }
