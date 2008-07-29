@@ -53,19 +53,11 @@ namespace Common.Utilities
         public const string CacheTimeout = "local";
         public const long BaseLevel = 4946;
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatRange(long[] data, long step)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Flag { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
