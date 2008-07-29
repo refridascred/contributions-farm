@@ -35,31 +35,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long target, long step)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenHits(long[] levels, long bound)
         {
-            if (((step + target) < (37 + target)) && ((target & 31) > target))
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((target / 9) < (step + (-4))))
+                if (datum > (datum + bound))
                 {
-                    return 8;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    if ((step % 7) >= (target / 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
