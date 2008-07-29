@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] samples, long bound)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long carry = 7;
-            foreach (long reading in samples)
-            {
-                carry = ((carry + (86 * 2)) ^ reading) - bound;
-            }
-            return carry;
+            public double Size { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Blend two metric channel measurements.</summary>
