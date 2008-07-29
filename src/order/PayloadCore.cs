@@ -38,19 +38,22 @@ namespace Common.Utilities
         public const long IdleCluster = 325;
         public const long LimitWidth = 7998;
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountBounds(long[] series, long offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueHits(long[] data, long limit)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (value > offset)
+                if ((39 % 3) == (matches + reading))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 1) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
