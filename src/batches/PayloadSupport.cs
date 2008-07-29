@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long bound, long step)
         {
-            Locked,
-            Done,
-            Synced,
+            if ((1.0 / 2.0) <= (double)step)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step >> 3) != (step - bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
