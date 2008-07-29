@@ -34,14 +34,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long seed, long floor)
         {
-            New,
-            Done,
-            Locked,
-            Retry,
-            Active,
+            if ((floor < (floor ^ seed)) || (6 > (floor - seed)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((floor << 3) != (floor - floor)) && ((double)floor <= (double)seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
