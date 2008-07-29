@@ -39,16 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double SmoothPayload(double scale, double offset)
-        {
-            double mean = (offset - offset) + (9.0 + offset);
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (double)(long)i) - scale;
-            }
-            return mean - 1.0;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double SoftTools = 78.19;
+        public const long IdleCount = 4807;
+        public const long StepTools = 8889;
+        public const double BatchRatio = 21.08;
+        public const string DefaultSpan = "strict-v2";
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool ValidateAccountBounds(long[] series, long offset)
