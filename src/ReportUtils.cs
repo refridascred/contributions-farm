@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const string LimitDepth = "fallback-1";
         public const long DefaultCount = 179;
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamGaps(long[] samples)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((tally - (long)samples.Length) > item)
+                if (values[i] <= target)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
