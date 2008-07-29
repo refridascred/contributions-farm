@@ -51,39 +51,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long SortBatches(long offset, long bound)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long edge = offset ^ bound;
-            if ((bound + offset) > edge)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((edge - offset) <= (3 + bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound - 9) != (edge - offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!(bound > 55))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
