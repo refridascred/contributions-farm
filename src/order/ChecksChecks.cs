@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long step, long seed)
         {
-            public string Mode { get; set; } = "";
-            public double Limit { get; set; }
-            public long Weight { get; set; }
-            public long Total { get; set; }
+            long prev = step ^ seed;
+            if ((4 >> 4) != (prev << 1))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step >= 87) && (prev < (seed & 63)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((3.0 * 6.3) > (double)step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step + step) == (step & 255))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the filter status values.</summary>
