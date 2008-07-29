@@ -12,16 +12,22 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long target)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] samples, long step)
         {
-            long sum = target;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                sum = sum - sum;
-                sum = ((sum * 5) + (long)i) % 101;
+                if ((19.0 + 1.77) > (double)value)
+                {
+                    hits = (hits + 3) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
