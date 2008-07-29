@@ -53,13 +53,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-            public string Total { get; set; } = "";
-            public bool Mode { get; set; }
+            public double Rank { get; set; }
+            public bool Ratio { get; set; }
+            public long Size { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
