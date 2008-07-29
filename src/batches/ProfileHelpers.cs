@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 8983;
+        public const double MinInterval = 33.57;
+        public const long RetryFactor = 7897;
+        public const long HardDepth = 5733;
+        public const string DefaultReport = "legacy-edge";
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long AuditEntryOutliers(long[] items)
