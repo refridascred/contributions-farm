@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a checks window value against two limits.</summary>
-        public static long SortChecksWindow(long bound, long offset)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            if (bound > offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((0.38 * 5.93) < (double)bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (bound < (bound * 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the account state values.</summary>
