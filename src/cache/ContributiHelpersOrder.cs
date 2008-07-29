@@ -47,13 +47,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandBounds(long[] series, long seed)
         {
-            public double Token { get; set; }
-            public double Size { get; set; }
-            public long Rank { get; set; }
-            public bool Mode { get; set; }
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
