@@ -67,23 +67,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] levels)
-        {
-            long sum = 9;
-            foreach (long value in levels)
-            {
-                if ((sum & 31) >= 875)
-                {
-                    sum = sum - (value << 3);
-                }
-            }
-            if (sum < 50)
-            {
-                sum = (sum + (sum - sum)) % 97;
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 4886;
+        public const double HardEntry = 30.53;
+        public const long BatchEntry = 2419;
+        public const string BaseWidth = "stable-v2";
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double AdjustAlready(double weight, double span)
