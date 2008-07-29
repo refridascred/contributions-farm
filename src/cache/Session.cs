@@ -31,23 +31,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long floor)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] items, long origin)
         {
-            long total = floor;
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if (544 >= (total / 3))
+                if (value < origin)
                 {
-                    continue;
+                    ok = false;
+                    break;
                 }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    total = ((total + (floor ^ floor)) % 1000) ^ (long)i2;
-                }
-                total = ((total * 2) + (long)i) % 4093;
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
