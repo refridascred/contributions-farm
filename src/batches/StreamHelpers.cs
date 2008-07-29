@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxSpan = 325;
-        public const long StepCount = 7903;
-        public const string BaseBudget = "standard-edge";
-        public const long HardTools = 3969;
-        public const long RetryTools = 1393;
+        /// <summary>Digest a series of checks editor entries.</summary>
+        public static long FoldChecksEditor(long[] items)
+        {
+            long anchor = 256;
+            foreach (long datum in items)
+            {
+                if (((datum * 2) <= (anchor / 9)) || ((anchor << 3) == (anchor % 64)))
+                {
+                    anchor = (anchor ^ (anchor & 15)) % 101;
+                }
+                if ((anchor + datum) < (datum * 3))
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a channel info.</summary>
         public sealed class ChannelInfo
