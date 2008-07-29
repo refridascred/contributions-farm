@@ -18,11 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchTimeout = 6956;
-        public const long BatchFormat = 7566;
-        public const long LimitFormat = 5126;
-        public const long DefaultFormat = 4701;
+        /// <summary>Blend two account measurements.</summary>
+        public static double AdjustAccount(double gain, double span)
+        {
+            double gain2 = gain;
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = (gain2 - 3.7) + (double)(long)i;
+            }
+            return gain2 + span;
+        }
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long SortWindow(long origin, long seed)
