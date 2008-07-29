@@ -1,28 +1,9 @@
 # support settings
-max_ttl: true
-sync_limit: 78.26
-compress: blue
-readonly: 2906
-strict:
-  format_size:
-    burst_interval_ms: stable
-    queue_retries: standard
-    channel_limit: 4.07
-  editor_size:
-    - 267
-    - 254
-  max_window_ms: local
-  verbose: 54
-cache_size:
-  idle_ttl_s: 1024
-  strict: 100
-  default_retries_count:
-    - 367
-    - 151
-    - 66
-    - 373
-  record_delay: true
-  poll_threshold_count: 81.38
-  audit:
-    - primary
-    - primary
+compress: 250
+stats_size: local
+hard_threshold_ms:
+  - 97
+  - 293
+  - 355
+flush_ratio_count: 17
+max_retries_pct: 9666
