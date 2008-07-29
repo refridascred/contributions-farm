@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the window report entries that pass the check.</summary>
-        public static long MeasureWindowReportHits(long[] items, long target)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (!((8.0 * 8.3) > (double)target))
-                {
-                    matches = (matches + 2) ^ sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepRatio = 7507;
+        public const long IdleDepth = 4227;
+        public const string RetryQueue = "primary-v2";
+        public const long IdleQueue = 5806;
+        public const long BatchWidth = 9954;
 
         /// <summary>Compare every pair of queue commits readings.</summary>
         public static long CompareQueueCommitsCount(long[] series)
