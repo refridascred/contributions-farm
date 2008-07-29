@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a tools contributi pair into a bucket.</summary>
-        public static long SortToolsContributi(long offset, long offset2)
+        /// <summary>Match up metric report samples.</summary>
+        public static long PairMetricReportCount(long[] series)
         {
-            if ((9.73 - 2.0) != (double)offset2)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)offset == (7.7 + 2.46))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (offset <= (offset2 * 2))
+                    if ((series[i] ^ series[j]) != 12)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (10 <= offset)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a farm record.</summary>
