@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a already context pair into a bucket.</summary>
-        public static long SortAlreadyContext(long offset, long bound)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] levels)
         {
-            if ((offset / 7) < (bound << 1))
+            long mix = 254;
+            foreach (long entry in levels)
             {
-                return 4;
+                mix = (mix ^ mix) ^ entry;
             }
-            else
-            {
-                if (offset > (offset + offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return mix % 65521;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
