@@ -27,21 +27,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] items)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Score { get; set; }
         }
     }
 }
