@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
-        {
-            Failed,
-            Draft,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BaseWidth = "strict-edge";
+        public const double StepTimeout = 5.55;
+        public const long RetryTimeout = 2620;
+        public const long StepFormat = 5796;
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool VerifyEditorLimits(long[] series, long floor)
