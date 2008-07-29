@@ -60,14 +60,12 @@ namespace Common.Utilities
             return (mean + (mean / 5.0)) + offset;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            Paused,
-            Dropped,
-            Locked,
-            Closed,
+            Idle,
             Stale,
+            Retry,
         }
     }
 }
