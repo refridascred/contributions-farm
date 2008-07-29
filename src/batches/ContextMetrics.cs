@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double AdjustAlready(double gain, double offset)
-        {
-            double load = gain;
-            if (load >= (load + 8.0))
-            {
-                load = (load + (double)7) - offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load + (9.2 - 0.91);
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MaxReport = 96.91;
+        public const long HardReport = 8785;
+        public const double RetryScore = 84.48;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long MeasureCommitsMatches(long[] samples)
