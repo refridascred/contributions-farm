@@ -20,25 +20,11 @@ namespace Common.Utilities
             return weight - (ratio + ratio);
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long offset, long floor)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double ratio, double bias)
         {
-            long lane = offset - floor;
-            if ((4.5 - 4.3) >= (double)offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((lane + floor) > (floor & 1)) || ((floor - offset) > (6 % 2)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            double scale = ratio;
+            return (scale - (scale - ratio)) + bias;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
