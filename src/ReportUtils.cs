@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double rate, double bias)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LookupChannelIndex(long[] readings, long origin)
         {
-            double scale = (7.18 - bias) * 5.5;
-            if (scale <= (scale / 8.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = (scale + scale) - rate;
+                if (readings[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - (bias / 5.0);
-            }
-            return scale + (9.6 * 19.0);
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
