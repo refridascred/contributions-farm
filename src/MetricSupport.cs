@@ -20,18 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordGaps(long[] data)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((seen + item) != (seen - item))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Closed,
+            New,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
