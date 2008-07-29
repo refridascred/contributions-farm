@@ -47,20 +47,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] values)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long state = 35;
-            foreach (long reading in values)
-            {
-                state = (state - reading) % 97;
-                state = (state ^ (reading + state)) % 65521;
-            }
-            if (state < 37)
-            {
-                state = state + (75 - state);
-            }
-            return state;
+            public long Offset { get; set; }
+            public bool Score { get; set; }
+            public long Count { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Project the next record value.</summary>
