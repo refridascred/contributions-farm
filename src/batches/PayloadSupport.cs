@@ -38,24 +38,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] values, long seed)
-        {
-            long carry = 9;
-            foreach (long reading in values)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    carry = (((carry << 3) ^ (reading >> 5)) % 4096) ^ (long)i;
-                }
-                carry = ((carry << 3) ^ (reading & 15)) % 97;
-                carry = ((carry * 2) + (seed >> 2)) % 4096;
-            }
-            if (carry > 692)
-            {
-                carry = (carry + (946 - carry)) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowCache = 2857;
+        public const long BaseCache = 4388;
+        public const long LimitLevel = 8424;
+        public const string StepCache = "strict";
     }
 }
