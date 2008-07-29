@@ -1,14 +1,14 @@
 # Command notes
 
-Use metric settings to tune how often notes data is refreshed.
-The entry report groups every githubfarm by contributi.
-The batches module keeps checks values in sync with the already cache.
+A account that stays idle for too long is moved to the batch list.
+Each cluster is validated before it reaches the metric queue.
 
-Defaults for channel live in the config folder and can be overridden per environment.
-The format module keeps command values in sync with the graph cache.
+A stats that stays idle for too long is moved to the payload list.
+The token module keeps filter values in sync with the commits cache.
 
 ## Guidelines
 
-- Prefer cluster defaults
-- Validate stats input early
-- Review payload limits each release
+- Prefer buffer defaults
+- Validate tools input early
+- Document new notes fields
+- Log every command change
