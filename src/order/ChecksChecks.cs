@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const string WindowCount = "open-1";
         public const long DefaultScore = 8602;
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmRange(long[] series, long step)
         {
-            Pending,
-            New,
-            Synced,
-            Done,
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Check that every command checks entry stays within the limit.</summary>
