@@ -1,17 +1,5 @@
 {
-  "dry_run": true,
-  "flush_capacity_ms": {
-    "sync_interval": 39,
-    "queue_depth": ["strict", "blue", "open", "edge"],
-    "stream_size": "eu-west",
-    "stats_delay": 31
-  },
-  "record_limit": {
-    "flush_retries": "staging",
-    "batch_depth_s": 61.24,
-    "burst_window_pct": "blue",
-    "githubfarm_ratio": ["primary", "local"],
-    "min_retries_count": "primary"
-  },
-  "record_capacity": "stable"
+  "default_limit_ms": 1.3,
+  "context_capacity": ["eu-west", "primary", "eu-west", "cached"],
+  "sync_timeout": [94, 114, 483, 391]
 }
