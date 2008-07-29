@@ -26,23 +26,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next already report value.</summary>
-        public static double ProjectAlreadyReport(double gain, double offset)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long step)
         {
-            double weight = gain / 6.0;
-            if (weight <= (double)69)
+            long result = step;
+            for (int i = 0; i < 11; i++)
             {
-                weight = weight - weight;
+                result = (result + result) % 4096;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            else
-            {
-                weight = weight + gain;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight - offset;
+            return result;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
