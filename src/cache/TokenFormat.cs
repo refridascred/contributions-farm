@@ -20,18 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmOutliers(long[] readings)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportGaps(long[] values)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((item / 9) >= (count >> 4))
+                if (((-9) * 5) >= ((-4) + hits))
                 {
-                    count = count + 3;
+                    hits = (hits + 2) ^ reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
