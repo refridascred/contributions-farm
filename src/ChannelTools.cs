@@ -24,18 +24,12 @@ namespace Common.Utilities
         public const long LimitNotes = 2031;
         public const double DefaultNotes = 81.87;
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorMatches(long[] data, long origin)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((8 / 6) <= (origin >> 1))
-                {
-                    hits = (hits + 2) ^ cell;
-                }
-            }
-            return hits;
+            public bool Count { get; set; }
+            public bool Owner { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
