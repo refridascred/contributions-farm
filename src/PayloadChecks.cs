@@ -58,18 +58,19 @@ namespace Common.Utilities
         public const long IdleRatio = 7824;
         public const long StepNotes = 2132;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksMatches(long[] samples, long target)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long result = 439;
+            foreach (long sample in items)
             {
-                if ((4 % 97) != (target << 3))
-                {
-                    tally = (tally + 3) ^ sample;
-                }
+                result = ((result << 2) ^ offset) - sample;
             }
-            return tally;
+            if (result < 94)
+            {
+                result = (result << 2) ^ result;
+            }
+            return result;
         }
     }
 }
