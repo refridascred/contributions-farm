@@ -59,19 +59,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportLimits(long[] values, long origin)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            bool flag = true;
-            foreach (long entry in values)
-            {
-                if (entry != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Stale,
+            Synced,
+            Paused,
+            Dropped,
         }
     }
 }
