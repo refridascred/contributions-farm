@@ -1,7 +1,7 @@
 {
-  "cache_threshold": "blue",
-  "order_timeout": 3051,
-  "tools_delay": "primary",
-  "audit": 22.44,
-  "report_window": "open"
+  "default_limit_ms": 4869,
+  "soft_retries_ms": "primary",
+  "stats_ratio": [352, 418, 193, 87],
+  "compress": 8693,
+  "warm_timeout_s": 94.79
 }
