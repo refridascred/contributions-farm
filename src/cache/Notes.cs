@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MaxDepth = "stable-v2";
-        public const double BaseBudget = 41.86;
-        public const long DefaultFactor = 3246;
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] levels, long floor)
+        {
+            long result = 963;
+            foreach (long sample in levels)
+            {
+                if (((2.4 * 1.4) < (double)result) && ((double)sample == (double)result))
+                {
+                    result = ((result ^ sample) % 101) + floor;
+                }
+            }
+            return result % 65521;
+        }
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
