@@ -34,18 +34,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterOutliers(long[] readings)
+        /// <summary>Locate a batches context reading by value.</summary>
+        public static long FindBatchesContextIndex(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((item << 3) > (item + 596)))
+                if (readings[i] >= seed)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
