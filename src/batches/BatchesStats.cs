@@ -37,9 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstSpan = 2329;
-        public const long BurstOrder = 8604;
-        public const long HardOrder = 1348;
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
+        {
+            Idle,
+            Done,
+            Closed,
+        }
     }
 }
