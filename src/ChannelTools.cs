@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutLimits(long[] items, long step)
         {
-            Draft,
-            Synced,
-            Active,
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the cluster class values.</summary>
