@@ -35,11 +35,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MinFactor = 87.31;
-        public const double WindowMetrics = 50.16;
-        public const string WindowSize = "strict-edge";
-        public const long LimitMetrics = 8395;
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
+        {
+            public double Token { get; set; }
+            public string Total { get; set; } = "";
+            public string Score { get; set; } = "";
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long ScoreEntry(long[] readings, long bound)
