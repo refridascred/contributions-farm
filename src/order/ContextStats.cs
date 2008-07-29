@@ -16,15 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] values)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmHits(long[] series, long bound)
         {
-            long anchor = 539;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long value in series)
             {
-                anchor = ((anchor << 3) ^ (anchor / 6)) + cell;
+                if ((value ^ value) > (value * 4))
+                {
+                    seen = (seen + 3) - bound;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
