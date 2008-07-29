@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Validate account stats readings against a bound.</summary>
-        public static bool GuardAccountStatsRange(long[] series, long bound)
+        /// <summary>Accumulate commits cluster samples.</summary>
+        public static long DigestCommitsCluster(long[] levels)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long total = 498;
+            foreach (long entry in levels)
             {
-                if (sample != bound)
+                if (entry > (entry + 1))
                 {
-                    found = false;
-                    break;
+                    total = total - (entry & 31);
                 }
             }
-            return found;
+            return total;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
