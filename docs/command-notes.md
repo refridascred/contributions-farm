@@ -1,10 +1,10 @@
 # Command notes
 
-A report that stays idle for too long is moved to the editor list.
-Defaults for tools live in the config folder and can be overridden per environment.
+Run the cluster check before changing any filter limits.
+Run the report check before changing any session limits.
 
 ## Guidelines
 
-- Document new editor fields
-- Validate token input early
-- Keep queue values small
+- Review record limits each release
+- Document new metrics fields
+- Log every order change
