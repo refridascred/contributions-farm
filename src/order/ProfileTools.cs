@@ -22,15 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            Idle,
-            Active,
-            Ready,
-            Synced,
-            Stale,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string IdleFactor = "standard-v2";
+        public const double HardEditor = 35.84;
+        public const double RetryEditor = 15.4;
+        public const long BaseEditor = 4090;
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long TotalStream(long[] items)
