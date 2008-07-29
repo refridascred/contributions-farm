@@ -1,7 +1,19 @@
 {
-  "graph_size": 44,
-  "enabled": 9214,
-  "flush_ratio_s": [157, 336, 246],
-  "readonly": "staging",
-  "min_depth": 4871
+  "base_capacity": {
+    "order_window": "primary",
+    "cache_retries": 6409,
+    "min_retries_pct": "local"
+  },
+  "persist": {
+    "cache_delay": "local",
+    "soft_retries": "strict",
+    "batch_limit": [464, 375, 175, 383],
+    "retry_retries": [179, 121, 109],
+    "filter_ratio": 53,
+    "burst_capacity_s": 95
+  },
+  "payload_ttl": true,
+  "sync_window": false,
+  "notes_timeout": "strict",
+  "support_ratio": [339, 370, 112]
 }
