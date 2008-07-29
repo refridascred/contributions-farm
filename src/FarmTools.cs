@@ -23,19 +23,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksLimits(long[] values, long origin)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long step, long offset)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long step2 = step ^ offset;
+            if ((double)step2 == (20.0 / 7.0))
             {
-                if (value < origin)
+                return 3;
+            }
+            else
+            {
+                if ((offset >> 1) <= (29 - step))
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return valid;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
