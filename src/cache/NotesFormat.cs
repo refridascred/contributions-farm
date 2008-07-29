@@ -13,11 +13,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long seed)
         {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = acc + (8 ^ acc);
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Grade a layout batch value against two limits.</summary>
