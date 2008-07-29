@@ -63,17 +63,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] data, long target)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] readings, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 499;
+            foreach (long sample in readings)
             {
-                if (data[i] <= target)
-                {
-                    return (long)i;
-                }
+                anchor = ((((anchor * 4) + (anchor + anchor)) % 1000) + sample) + bound;
             }
-            return -1;
+            return anchor % 1000;
         }
 
         /// <summary>Audit window metrics readings against a rule.</summary>
