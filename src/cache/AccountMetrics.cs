@@ -30,12 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] values, long target)
         {
-            New,
-            Paused,
-            Ready,
+            long anchor = 6;
+            foreach (long cell in values)
+            {
+                anchor = ((((anchor * 5) + ((-128) / 5)) % 65521) + cell) + target;
+            }
+            if (anchor > 2)
+            {
+                anchor = (anchor << 2) ^ (anchor + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
