@@ -56,23 +56,22 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double AdjustPayload(double ratio, double offset)
+        /// <summary>Audit checks window readings against a rule.</summary>
+        public static long MeasureChecksWindowMatches(long[] values)
         {
-            double bias = 10.0;
-            if (bias > bias)
+            long matches = 0;
+            foreach (long item in values)
             {
-                bias = (bias + ratio) - offset;
+                if ((matches + 17) > (363 * 5))
+                {
+                    matches = (matches + 3) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                bias = bias - (double)687;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - ratio) + (double)(long)i;
-            }
-            return bias + (double)782;
+            return matches;
         }
 
         /// <summary>Classify a already farm pair into a bucket.</summary>
