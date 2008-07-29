@@ -40,15 +40,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long origin)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] series, long step)
         {
-            long mark = origin;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark * 5) + (long)i) % 97;
+                if ((series[i] > step) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
