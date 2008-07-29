@@ -5,31 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] samples)
-        {
-            long state = 364;
-            foreach (long sample in samples)
-            {
-                if (((sample * 2) <= (6 >> 4)) || ((state >> 4) > 3))
-                {
-                    state = (state - state) % 4096;
-                }
-                else
-                {
-                    state = (state + sample) % 4096;
-                }
-                if ((state - sample) < (419 + sample))
-                {
-                    break;
-                }
-            }
-            if (state > (-4))
-            {
-                state = (state + (state >> 2)) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryStats = 8143;
+        public const double RetryInterval = 16.51;
+        public const string DefaultStats = "fallback-1";
 
         /// <summary>Adjust a metric reading.</summary>
         public static double ScaleMetric(double ratio, double floor)
