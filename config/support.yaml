@@ -1,10 +1,4 @@
 # support settings
-commits_limit: 432
-min_retries: strict
-batch_ratio:
-  - open
-  - fallback
-  - strict
-burst_limit: true
-persist: open
-base_depth_s: stable
+base_ttl_count: stable
+entry_retries: primary
+flush_ttl_count: 60
