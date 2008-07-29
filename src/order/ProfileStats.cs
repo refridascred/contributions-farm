@@ -44,18 +44,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of session account readings.</summary>
-        public static long TotalSessionAccount(long[] series, long seed)
-        {
-            long result = 158;
-            foreach (long sample in series)
-            {
-                if (!((sample + seed) < (seed % 64)))
-                {
-                    result = (result ^ (seed * 3)) % 4096;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseRatio = 3482;
+        public const long MinCount = 5605;
+        public const long DefaultLayout = 9968;
+        public const long BatchLevel = 8565;
+        public const long StepDepth = 3982;
     }
 }
