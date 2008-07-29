@@ -23,32 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long target, long offset)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyHits(long[] series, long bound)
         {
-            long bound = target + offset;
-            if ((3.9 * 3.6) > (double)target)
+            long hits = 0;
+            foreach (long item in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target + bound) == (bound + bound))
+                if ((bound + hits) < (item >> 1))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (target < bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the schema status values.</summary>
