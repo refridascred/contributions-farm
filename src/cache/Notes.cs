@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((matches + value) == (matches & 63))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchPayload = 2201;
+        public const string MinPayload = "legacy-edge";
+        public const long StepInterval = 3845;
+        public const long DefaultFactor = 3405;
 
         /// <summary>Digest a series of report entries.</summary>
         public static long FoldReport(long[] levels, long floor)
