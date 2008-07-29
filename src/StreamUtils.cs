@@ -51,39 +51,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of metrics account entries.</summary>
-        public static long TotalMetricsAccount(long[] levels, long origin)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] items)
         {
-            long score = 278;
-            foreach (long cell in levels)
+            long carry = 673;
+            foreach (long value in items)
             {
-                if ((double)score != (17.0 - 7.6))
+                if ((double)(long)items.Length != (1.03 - 8.2))
                 {
-                    score = score + (cell % 16);
-                    score = (score << 3) ^ (36 % 16);
+                    carry = (carry * 4) + (carry - carry);
+                    carry = carry + (carry - value);
                 }
-                else
-                {
-                    score = (score * 4) + (origin + cell);
-                }
-                if ((double)(-5) < (double)score)
-                {
-                    score = (score << 3) ^ (15 * 2);
-                }
-                else
-                {
-                    score = score ^ (origin >> 1);
-                }
-                if (!(7.96 >= (8.0 - 9.5)))
-                {
-                    break;
-                }
+                carry = ((carry * 5) + carry) % 4096;
             }
-            if (score > 343)
+            if (carry > 640)
             {
-                score = ((score << 3) ^ (long)levels.Length) % 101;
+                carry = carry + (556 * 4);
             }
-            return score % 1000;
+            return carry;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
