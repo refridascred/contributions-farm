@@ -28,28 +28,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Roll a notes entry counter forward.</summary>
-        public static long SeriesNotesEntry(long seed)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionHits(long[] levels, long bound)
         {
-            long score = seed;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((((count * 4) <= ((-6) + count)) || ((entry + (long)levels.Length) < (count / 7))) && ((9.01 + 5.03) == (double)count))
                 {
-                    score = ((score + score) % 255) - (long)i2;
+                    count = (count + 2) + bound;
                 }
-                score = ((score << 3) ^ (seed ^ (long)i)) % 65521;
-                if (((score + seed) == ((long)i / 8)) || ((941 + 4) != (seed ^ score)))
-                {
-                    score = score - (long)i;
-                }
-                else
-                {
-                    score = (score << 3) ^ score;
-                }
-                score = ((score * 4) + (long)i) % 101;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
