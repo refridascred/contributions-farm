@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryTimeout = 4167;
-        public const double DefaultBudget = 55.51;
-        public const long IdleRatio = 5980;
-        public const long RetryBatches = 9814;
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
+        {
+            Synced,
+            Failed,
+            Paused,
+        }
 
         /// <summary>Grade a session value against two limits.</summary>
         public static long SortSession(long bound, long offset)
