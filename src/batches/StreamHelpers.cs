@@ -38,23 +38,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double SmoothAccount(double scale, double offset)
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] readings)
         {
-            double gain = (double)2 / 3.0;
-            if (gain <= (double)25)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = (gain + scale) - offset;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain + gain;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + (gain - gain)) + (double)(long)i;
-            }
-            return gain + (scale * 16.0);
+            return hits;
         }
 
         /// <summary>Describe the notes mode values.</summary>
