@@ -1,10 +1,20 @@
 # githubfarm settings
-editor_window:
-  - legacy
-  - blue
-warm_threshold_pct:
-  - 19
-  - 9
-  - 254
-  - 22
-enabled: primary
+hard_interval_pct:
+  - 337
+  - 455
+  - 419
+enabled:
+  min_timeout_count: local
+  retry_ttl: 93.32
+  idle_retries:
+    default_interval: false
+    max_ttl_pct: 7281
+    record_retries: 60
+    soft_limit: primary
+    cache_delay_count: 7993
+    queue_timeout: open
+  burst_window_ms: eu-west
+  verbose: 5074
+  layout_interval: 82.47
+cache_ttl_count: false
+poll_ratio: 15.21
