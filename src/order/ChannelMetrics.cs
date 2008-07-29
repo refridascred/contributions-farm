@@ -19,17 +19,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Find the first token context entry that matches the target.</summary>
-        public static long LocateTokenContextIndex(long[] items, long floor)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= floor) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Score { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
