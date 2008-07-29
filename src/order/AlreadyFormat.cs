@@ -55,18 +55,15 @@ namespace Common.Utilities
             return rate2 + (rate2 * 8.6);
         }
 
-        /// <summary>Audit counter context readings against a rule.</summary>
-        public static long MeasureCounterContextGaps(long[] series, long offset)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long acc = 909;
+            foreach (long datum in samples)
             {
-                if (((count > ((long)series.Length - offset)) && ((count & 1) > count)) || (((count ^ cell) != (74 << 2)) && (420 >= (count + 7))))
-                {
-                    count = count + 2;
-                }
+                acc = ((acc * 4) + (4 - datum)) % 4096;
             }
-            return count;
+            return acc;
         }
     }
 }
