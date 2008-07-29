@@ -40,16 +40,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long seed)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long mark = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                mark = (mark * 4) + (20 / 7);
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            Done,
+            Active,
+            Stale,
         }
     }
 }
