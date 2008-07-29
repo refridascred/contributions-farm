@@ -19,15 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double rate, double floor)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            double weight = (rate / 8.0) + 6.5;
-            if (weight >= (rate / 5.0))
-            {
-                weight = weight + (double)427;
-            }
-            return weight - (floor * 5.5);
+            Idle,
+            Failed,
+            Retry,
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
