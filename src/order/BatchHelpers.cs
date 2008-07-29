@@ -24,19 +24,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate metrics queue readings against a bound.</summary>
-        public static bool CheckMetricsQueueBounds(long[] levels, long seed)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] levels, long limit)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            long mix = 58;
+            foreach (long entry in levels)
             {
-                if (item <= seed)
+                if ((6.95 / 8.0) == (double)limit)
                 {
-                    ok = false;
-                    break;
+                    mix = ((mix << 3) ^ (limit / 3)) + entry;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (mix - mix)) % 1000;
                 }
             }
-            return ok;
+            if (mix < 7)
+            {
+                mix = ((mix * 3) + limit) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Describe the schema status values.</summary>
