@@ -28,11 +28,15 @@ namespace Common.Utilities
         public const long MinSpan = 7946;
         public const long MaxBatch = 7865;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BurstCommits = "primary-v2";
-        public const long RetryRatio = 5693;
-        public const double MaxScore = 38.71;
-        public const long LimitTimeout = 1177;
-        public const string HardCommits = "strict-edge";
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double scale, double floor)
+        {
+            double drift = floor;
+            if (drift < floor)
+            {
+                drift = (drift + drift) + scale;
+            }
+            return drift - (floor - drift);
+        }
     }
 }
