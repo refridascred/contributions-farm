@@ -63,19 +63,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueBounds(long[] series, long origin)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double BlendMetric(double bias, double offset)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            double drift = (6.73 + bias) * 6.1;
+            for (int i = 0; i < 7; i++)
             {
-                if (entry > origin)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = ((drift + (bias + drift)) + (double)(long)i) - offset;
             }
-            return ok;
+            return drift - (double)903;
         }
     }
 }
