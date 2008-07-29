@@ -25,13 +25,24 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long origin, long floor)
         {
-            Closed,
-            Stale,
-            Queued,
-            Dropped,
+            if ((double)floor >= (2.0 * 0.3))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin % 10) == (floor << 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Adjust a order reading.</summary>
