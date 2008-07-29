@@ -20,11 +20,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheFarm = 506;
-        public const string StepLevel = "open-1";
-        public const long MaxInterval = 5393;
-        public const long DefaultWidth = 3170;
-        public const string WindowRatio = "legacy-1";
+        /// <summary>Iterate the entry report series from a seed.</summary>
+        public static long StepEntryReport(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((80 + mix) > mix)
+                {
+                    mix = (mix - mix) % 65521;
+                    mix = ((mix * 5) + mix) % 1000;
+                }
+                mix = mix ^ (13 << 2);
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
+        }
     }
 }
