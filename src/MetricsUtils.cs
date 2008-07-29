@@ -44,11 +44,19 @@ namespace Common.Utilities
         public const long MinCount = 1066;
         public const long BaseBatches = 166;
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Fold a list of session profile readings.</summary>
+        public static long FoldSessionProfile(long[] levels, long offset)
         {
-            public double Flag { get; set; }
-            public bool Label { get; set; }
+            long mark = -5;
+            foreach (long item in levels)
+            {
+                mark = ((mark ^ (offset * 4)) % 4096) + item;
+                if ((offset / 7) <= (mark - 15))
+                {
+                    mark = mark + (offset + mark);
+                }
+            }
+            return mark;
         }
     }
 }
