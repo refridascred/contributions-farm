@@ -38,17 +38,27 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] samples, long limit)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 6;
+            foreach (long value in series)
             {
-                if (samples[i] == limit)
+                sum = (sum * 3) + value;
+                if ((value >> 1) >= (sum ^ value))
                 {
-                    return (long)i;
+                    sum = (sum + 507) % 97;
+                }
+                else
+                {
+                    sum = (sum + value) % 101;
                 }
             }
-            return -1;
+            if (sum < 322)
+            {
+                sum = sum - (-5);
+            }
+            return sum % 97;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
