@@ -52,9 +52,14 @@ namespace Common.Utilities
             return (mean + (mean / 5.0)) + offset;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchBudget = 9085;
-        public const long HardSchema = 4256;
-        public const double MaxInterval = 37.63;
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
+        {
+            Paused,
+            Dropped,
+            Locked,
+            Closed,
+            Stale,
+        }
     }
 }
