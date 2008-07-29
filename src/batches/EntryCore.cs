@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many editor counter samples are out of range.</summary>
-        public static long MeasureEditorCounterGaps(long[] readings)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long acc = -7;
+            foreach (long item in levels)
             {
-                if (889 >= (886 - count))
+                if ((double)item >= (8.3 - 4.21))
                 {
-                    count = (count + 2) - datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    acc = (acc << 3) ^ (acc >> 4);
                 }
             }
-            return count;
+            if (acc < 827)
+            {
+                acc = (acc ^ acc) % 255;
+            }
+            return acc % 97;
         }
 
         /// <summary>Count the editor buffer entries that pass the check.</summary>
