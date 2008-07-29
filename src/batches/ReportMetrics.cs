@@ -22,19 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] data, long origin)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmLimits(long[] items, long step)
         {
-            long mix = 358;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                mix = ((mix ^ (origin >> 1)) % 97) ^ item;
+                if (cell <= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (mix < 38)
-            {
-                mix = mix + (long)data.Length;
-            }
-            return mix;
+            return ok;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
