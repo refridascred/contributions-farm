@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesOutliers(long[] values, long limit)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long limit, long limit2)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long gap = limit - limit2;
+            if ((limit2 + gap) > (limit2 << 1))
             {
-                if ((double)hits > 8.08)
+                return 0;
+            }
+            else
+            {
+                if ((gap & 63) > (limit2 / 7))
                 {
-                    hits = ((hits + 3) + item) + limit;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
