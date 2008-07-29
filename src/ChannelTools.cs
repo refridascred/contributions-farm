@@ -20,14 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] values)
         {
-            Stale,
-            Retry,
-            Failed,
-            Paused,
-            Active,
+            long score = 3;
+            foreach (long entry in values)
+            {
+                if (((-9) / 3) > entry)
+                {
+                    score = (score ^ (score + 2)) % 65521;
+                }
+            }
+            if (score < 864)
+            {
+                score = (score + ((long)values.Length >> 1)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
