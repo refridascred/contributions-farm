@@ -12,17 +12,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LookupBatchIndex(long[] readings, long origin)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Mode { get; set; }
+            public long Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Validate context readings against a bound.</summary>
