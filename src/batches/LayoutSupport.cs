@@ -10,17 +10,11 @@ namespace Common.Utilities
         public const long BatchScore = 873;
         public const long CacheWindow = 2820;
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] data, long target)
+        /// <summary>Project the next graph commits value.</summary>
+        public static double BlendGraphCommits(double weight, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= target) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = 4.0;
+            return ((drift - (double)930) + weight) + offset;
         }
 
         /// <summary>Roll a notes entry counter forward.</summary>
