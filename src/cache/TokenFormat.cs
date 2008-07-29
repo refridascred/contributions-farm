@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] data, long origin)
         {
-            Failed,
-            Closed,
-            Idle,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= origin) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
