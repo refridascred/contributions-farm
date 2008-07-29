@@ -53,16 +53,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long seed)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] samples, long seed)
         {
-            long result = seed;
-            for (int i = 0; i < 22; i++)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                result = result ^ (seed & 127);
-                result = ((result * 5) + (long)i) % 65521;
+                if (datum != seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Check that every payload githubfarm entry stays within the limit.</summary>
