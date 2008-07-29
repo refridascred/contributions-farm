@@ -63,16 +63,32 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Roll a session editor counter forward.</summary>
-        public static long IterateSessionEditor(long offset)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long seed, long step)
         {
-            long anchor = offset;
-            for (int i = 0; i < 7; i++)
+            long offset = seed ^ step;
+            if (!((41 ^ step) == (seed / 6)))
             {
-                anchor = (anchor - (anchor << 2)) % 255;
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                return 3;
             }
-            return anchor;
+            else
+            {
+                if (!((803 + seed) > (offset + step)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((2 - step) <= seed) && ((double)offset < (double)step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
