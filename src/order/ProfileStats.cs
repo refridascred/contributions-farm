@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a window support figure with a bias.</summary>
-        public static double BlendWindowSupport(double bias, double bias2)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            double ratio = bias + (double)916;
-            if (ratio < bias2)
-            {
-                ratio = ratio - 5.5;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - (6.0 * 3.12)) + (double)(long)i;
-            }
-            return ratio + (4.0 + bias2);
+            public string Label { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Adjust a record metrics reading.</summary>
