@@ -39,14 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
-        {
-            New,
-            Ready,
-            Draft,
-            Active,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftWidth = 3131;
+        public const long MinStream = 9546;
+        public const long BurstStream = 440;
 
         /// <summary>Scale a layout batches figure with a bias.</summary>
         public static double ScaleLayoutBatches(double weight, double floor)
