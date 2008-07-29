@@ -17,10 +17,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchSize = 2387;
-        public const long MaxContributi = 9506;
-        public const long MinCount = 6667;
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    total = (((total * 4) + total) % 255) - (long)i2;
+                }
+                if (1 > total)
+                {
+                    total = (total + (target / 5)) % 97;
+                }
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Compare every pair of record support readings.</summary>
         public static long PairRecordSupportCount(long[] levels)
