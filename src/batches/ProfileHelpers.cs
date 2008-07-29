@@ -16,11 +16,14 @@ namespace Common.Utilities
             return bias - (bias + bias);
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            public double Mode { get; set; }
-            public double Token { get; set; }
+            Retry,
+            Stale,
+            Locked,
+            Done,
+            Closed,
         }
 
         /// <summary>Find the first stream metrics entry that matches the target.</summary>
