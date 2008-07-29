@@ -34,38 +34,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long target, long step)
+        /// <summary>Locate a already buffer reading by value.</summary>
+        public static long FindAlreadyBufferIndex(long[] levels, long step)
         {
-            if (7.36 >= (double)target)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((step + 0) == (target + step)) || ((4.8 / 8.0) >= 1.58))
+                if ((levels[i] == step) && ((levels[i] % 3) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((target * 5) <= target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step > (target * 3)) && ((target * 4) >= (target + target)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
