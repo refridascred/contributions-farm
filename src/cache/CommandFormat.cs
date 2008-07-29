@@ -20,17 +20,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a buffer counter reading by value.</summary>
-        public static long SeekBufferCounterIndex(long[] data, long floor)
+        /// <summary>Validate context checks readings against a bound.</summary>
+        public static bool GuardContextChecksLimits(long[] items, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if (data[i] >= floor)
+                if (reading > seed)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Hold a contributi options.</summary>
