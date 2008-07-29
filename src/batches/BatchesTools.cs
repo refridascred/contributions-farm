@@ -10,22 +10,18 @@ namespace Common.Utilities
         public const long IdleLevel = 2122;
         public const long HardBatches = 871;
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] readings, long bound)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheMatches(long[] samples, long limit)
         {
-            long total = -44;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((bound + 96) < value)
+                if (!!((cell / 4) <= (cell >> 1)))
                 {
-                    total = ((total << 3) ^ (73 + 8)) % 101;
-                }
-                if ((bound <= (1 << 2)) || ((double)total <= 19.0))
-                {
-                    break;
+                    seen = (seen + 2) - limit;
                 }
             }
-            return total % 4096;
+            return seen;
         }
 
         /// <summary>Scale a metric profile figure with a bias.</summary>
