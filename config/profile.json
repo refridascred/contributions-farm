@@ -1,8 +1,6 @@
 {
-  "sync_timeout_s": "legacy",
-  "hard_ttl_ms": [65, 292, 208],
-  "readonly": "fallback",
-  "max_ttl_pct": "green",
-  "persist": ["staging", "cached", "open", "local"],
-  "idle_timeout": 3339
+  "cache_delay_count": false,
+  "flush_window_ms": "edge",
+  "record_threshold": [282, 375, 62, 153],
+  "compress": 4609
 }
