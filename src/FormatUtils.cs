@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MinEntry = "alpha-1";
-        public const long WindowEntry = 7739;
-        public const long StepLevel = 93;
-        public const long BatchRatio = 2418;
-        public const long RetryEntry = 1140;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaRange(long[] readings, long limit)
+        {
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long CompareStatsCount(long[] series)
