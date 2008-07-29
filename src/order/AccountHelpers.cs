@@ -56,11 +56,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 5685;
-        public const long MinLevel = 744;
-        public const string LimitReport = "stable";
-        public const long MinSpan = 2735;
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] values, long target)
+        {
+            long mark = 1;
+            foreach (long reading in values)
+            {
+                mark = (mark - reading) % 255;
+                if ((reading ^ mark) != (7 + target))
+                {
+                    mark = mark - (target * 2);
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Accumulate command samples.</summary>
         public static long DigestCommand(long[] readings)
