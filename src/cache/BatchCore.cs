@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the stats record series from a seed.</summary>
-        public static long IterateStatsRecord(long target)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long MatchEditorCount(long[] series)
         {
-            long carry = target;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (carry - (target / 9)) % 4096;
-                carry = ((carry << 3) ^ (carry * 2)) % 4096;
-                carry = ((carry * 4) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Roll a filter layout counter forward.</summary>
