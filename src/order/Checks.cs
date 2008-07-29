@@ -19,21 +19,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] data)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long RollToken(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                bool valid = (double)sum < 19.0;
+                if (valid)
                 {
-                    if ((data[i] - data[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = (long)i <= origin;
                 }
+                if ((18.0 < (double)origin) && ((12.0 - 3.0) <= (double)sum))
+                {
+                    sum = sum ^ (76 >> 2);
+                    valid = (origin + 98) != ((long)i + 1);
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
