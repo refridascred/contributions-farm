@@ -29,19 +29,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] samples)
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] items)
         {
-            long result = 4;
-            foreach (long reading in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result << 2) ^ (result - reading)) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (result > 557)
-            {
-                result = (result + 611) % 1000;
-            }
-            return result;
+            return seen;
         }
     }
 }
