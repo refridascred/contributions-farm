@@ -45,10 +45,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLevel = 8378;
-        public const double StepLayout = 58.57;
-        public const string StepLevel = "standard-v2";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BatchStats = 32.38;
+        public const long WindowScore = 5743;
+        public const string CacheTimeout = "local";
+        public const long BaseLevel = 4946;
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool GuardFormatRange(long[] data, long step)
