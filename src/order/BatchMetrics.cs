@@ -44,15 +44,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] readings, long bound)
+        /// <summary>Count the notes record entries that pass the check.</summary>
+        public static long TallyNotesRecordMatches(long[] items)
         {
-            long anchor = 499;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                anchor = ((((anchor * 4) + (anchor + anchor)) % 1000) + sample) + bound;
+                if ((60 << 3) > (cell + matches))
+                {
+                    matches = matches + 2;
+                }
             }
-            return anchor % 1000;
+            return matches;
         }
 
         /// <summary>Audit window metrics readings against a rule.</summary>
