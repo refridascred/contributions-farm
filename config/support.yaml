@@ -1,7 +1,10 @@
 # support settings
-readonly: fallback
-verbose: 41
-min_timeout: 1278
-cluster_size: 1024
-enabled: true
-hard_ratio: false
+commits_limit: 432
+min_retries: strict
+batch_ratio:
+  - open
+  - fallback
+  - strict
+burst_limit: true
+persist: open
+base_depth_s: stable
