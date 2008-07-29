@@ -47,24 +47,20 @@ namespace Common.Utilities
             return (weight - scale) + floor;
         }
 
-        /// <summary>Classify a metric window pair into a bucket.</summary>
-        public static long GradeMetricWindow(long floor, long offset)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long offset)
         {
-            if (!((32 + floor) == (offset & 63)))
+            long state = offset;
+            for (int i = 0; i < 17; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset >> 2) >= (-905))
+                if ((state - state) <= (-8))
                 {
-                    return 5;
+                    state = ((state * 2) + state) % 4096;
+                    continue;
                 }
-                else
-                {
-                    return 4;
-                }
+                state = ((state * 3) + (long)i) % 4093;
             }
+            return state;
         }
     }
 }
