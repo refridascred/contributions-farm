@@ -20,20 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] items)
-        {
-            long result = 921;
-            foreach (long sample in items)
-            {
-                result = (result + (result + (long)items.Length)) - sample;
-                if ((double)result <= (20.0 + 2.7))
-                {
-                    result = result + (result & 7);
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleSize = 7110;
+        public const long MaxDepth = 3405;
+        public const long BatchContext = 7835;
+        public const long CacheCount = 8196;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string BurstCommits = "primary-v2";
