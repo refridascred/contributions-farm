@@ -1,7 +1,16 @@
 # githubfarm settings
-burst_timeout_pct:
-  - cached
-  - legacy
-  - latest
-min_capacity_count: 14.73
-hard_delay_ms: 16
+min_window:
+  counter_window: staging
+  checks_interval: false
+  flush_window_s:
+    soft_delay_pct: legacy
+    flush_limit_s: eu-west
+    support_limit: latest
+    filter_interval: 55.61
+  route_threshold: 3714
+  token_retries: 90
+strict: 20.95
+readonly: legacy
+poll_retries_ms: 31.72
+order_size: 62
+sync_ratio_ms: 500
