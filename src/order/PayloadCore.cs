@@ -12,21 +12,31 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] samples)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long seed, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (!((offset ^ 626) < offset))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((offset + offset) == (seed ^ offset))
                 {
-                    if ((samples[i] + samples[j]) < 11)
+                    return 3;
+                }
+                else
+                {
+                    if ((offset >> 4) >= seed)
                     {
-                        hits = hits + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Project the next payload value.</summary>
