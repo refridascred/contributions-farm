@@ -85,9 +85,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowLevel = 3925;
-        public const double StepLevel = 65.39;
-        public const double IdleBatch = 59.2;
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportLimits(long[] values, long origin)
+        {
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
