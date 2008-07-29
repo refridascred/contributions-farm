@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double gain, double span)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long floor, long bound)
         {
-            double bias = gain + gain;
-            if (bias < (bias * 7.2))
+            long span = floor - bound;
+            if ((floor + floor) != (bound + 38))
             {
-                bias = bias - (double)8;
+                return 8;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                bias = (bias + (double)379) + (double)(long)i;
+                if (((span ^ bound) < (bound & 31)) && (6.0 > (double)bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return bias - span;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
