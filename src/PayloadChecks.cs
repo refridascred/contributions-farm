@@ -28,21 +28,23 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] values)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 51;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                carry = ((carry * 3) + (carry - carry)) % 97;
+                if ((double)datum != (15.0 / 5.0))
                 {
-                    if ((values[i] + values[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (carry * 4) + (carry ^ datum);
+                }
+                else
+                {
+                    carry = carry ^ (datum / 7);
                 }
             }
-            return seen;
+            return carry % 97;
         }
 
         /// <summary>Define format limits and defaults.</summary>
