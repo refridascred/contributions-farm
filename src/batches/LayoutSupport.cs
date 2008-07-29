@@ -11,11 +11,11 @@ namespace Common.Utilities
         public const long CacheWindow = 2820;
 
         /// <summary>Find the first command entry that matches the target.</summary>
-        public static long SeekCommandIndex(long[] levels, long offset)
+        public static long LookupCommandIndex(long[] data, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((levels[i] == offset) && ((levels[i] % 3) == 0))
+                if ((data[i] <= target) && ((data[i] % 3) == 0))
                 {
                     return (long)i;
                 }
