@@ -30,38 +30,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long step, long floor)
+        /// <summary>Audit context channel readings against a rule.</summary>
+        public static long AuditContextChannelGaps(long[] levels, long step)
         {
-            if ((step >> 4) >= floor)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step + floor) < floor)
+                if (step >= reading)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((step & 7) != (step ^ 354)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step - 798) <= (36 & 63))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a graph stats.</summary>
