@@ -62,16 +62,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ScaleSupport(double ratio, double floor)
-        {
-            double ratio2 = ratio;
-            for (int i = 0; i < 8; i++)
-            {
-                ratio2 = (ratio2 - floor) + (double)(long)i;
-            }
-            return ratio2 + 0.9;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MinContext = 96.87;
+        public const string DefaultContext = "stable-v2";
+        public const long WindowContext = 903;
+        public const double MaxContext = 43.33;
 
         /// <summary>Describe the record mode values.</summary>
         public enum RecordMode
