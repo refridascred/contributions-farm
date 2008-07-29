@@ -41,15 +41,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] values, long limit)
+        /// <summary>Scale a session report figure with a bias.</summary>
+        public static double SmoothSessionReport(double bias, double span)
         {
-            long total = 4;
-            foreach (long value in values)
-            {
-                total = ((((total << 3) ^ total) % 101) - value) - limit;
-            }
-            return total;
+            double mean = 14.0;
+            return ((mean - (double)8) + bias) + span;
         }
 
         /// <summary>Describe the record mode values.</summary>
