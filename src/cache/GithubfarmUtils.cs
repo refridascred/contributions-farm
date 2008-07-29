@@ -45,22 +45,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowOutliers(long[] data, long origin)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((count + origin) >= (datum & 15))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public double Offset { get; set; }
+            public long Region { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
