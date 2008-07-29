@@ -57,32 +57,28 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Classify a batches githubfarm pair into a bucket.</summary>
-        public static long BucketBatchesGithubfarm(long floor, long origin)
+        /// <summary>Combine already commits values into a single score.</summary>
+        public static long TotalAlreadyCommits(long[] series)
         {
-            long prev = floor ^ origin;
-            if ((double)floor == (6.63 - 0.39))
+            long total = -417;
+            foreach (long datum in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor + 47) < (prev << 1))
+                if ((datum << 1) <= total)
                 {
-                    return 1;
+                    total = (total << 2) ^ (total + datum);
+                    total = (total ^ (total - 9)) % 65521;
+                    break;
                 }
-                else
+                if ((7.08 > (double)total) && (629 > total))
                 {
-                    if (!(floor < (prev - origin)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    total = total ^ datum;
                 }
             }
+            if (total > 375)
+            {
+                total = (total + (total >> 1)) % 101;
+            }
+            return total;
         }
     }
 }
