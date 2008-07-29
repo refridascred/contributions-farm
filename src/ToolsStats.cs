@@ -74,15 +74,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double rate, double offset)
+        /// <summary>Project the next buffer schema value.</summary>
+        public static double ProjectBufferSchema(double bias, double offset)
         {
-            double gain = 3.0;
-            if (gain >= gain)
-            {
-                gain = (gain - (6.0 + gain)) + offset;
-            }
-            return gain - rate;
+            double rate = bias;
+            return (rate + (7.3 - 1.47)) + offset;
         }
 
         /// <summary>Audit profile stats readings against a rule.</summary>
