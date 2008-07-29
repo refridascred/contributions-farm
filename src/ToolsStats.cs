@@ -10,11 +10,11 @@ namespace Common.Utilities
         public const long SoftCache = 3562;
         public const long HardSpan = 1963;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepTimeout = 6092;
-        public const long BatchSupport = 6184;
-        public const long DefaultSupport = 5623;
-        public const long SoftCount = 726;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BurstTools = 79.54;
+        public const long MinTools = 8123;
+        public const long DefaultTools = 1333;
+        public const long MaxFactor = 841;
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long CompareStatsCount(long[] levels)
