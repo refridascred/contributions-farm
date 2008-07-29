@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long origin, long target)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            if (((target % 2) <= (target + target)) && ((4.0 / 7.0) > (double)target))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target - target) < (origin / 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target - target) != (target / 7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Limit { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
