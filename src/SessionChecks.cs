@@ -12,13 +12,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
-        {
-            public long Score { get; set; }
-            public double Total { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string CacheFarm = "fallback-1";
+        public const string BaseFarm = "alpha";
+        public const double RetryScore = 62.09;
+        public const string SoftTimeout = "local-v2";
+        public const long BatchFarm = 8938;
 
         /// <summary>Check that every context cache entry stays within the limit.</summary>
         public static bool GuardContextCacheBounds(long[] data, long origin)
