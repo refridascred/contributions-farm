@@ -12,14 +12,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountHits(long[] samples)
         {
-            Done,
-            Stale,
-            Failed,
-            Pending,
-            Dropped,
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((878 + cell) < cell)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a batch record.</summary>
