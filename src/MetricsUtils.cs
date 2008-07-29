@@ -38,13 +38,11 @@ namespace Common.Utilities
         public const long BaseWidth = 7900;
         public const long StepChannel = 9731;
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            public string Total { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
+            public long Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
