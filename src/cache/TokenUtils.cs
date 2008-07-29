@@ -19,19 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of filter order readings.</summary>
-        public static long TallyFilterOrder(long[] readings, long target)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesCount(long[] data)
         {
-            long state = 834;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = state + (state * 3);
-                if ((double)value > (double)target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    break;
+                    if ((data[i] + data[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state % 97;
+            return matches;
         }
 
         /// <summary>Hold a session header.</summary>
