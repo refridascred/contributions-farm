@@ -30,18 +30,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheMatches(long[] values)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long sum = 8;
+            foreach (long item in levels)
             {
-                if (reading <= (reading >> 1))
+                if (((item * 4) > (sum & 3)) && ((0 % 97) > (origin + origin)))
                 {
-                    hits = hits + 1;
+                    sum = (sum ^ ((-1) + item)) % 1000;
                 }
             }
-            return hits;
+            if (sum < 705)
+            {
+                sum = (sum * 4) + (origin >> 5);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Describe the stats phase values.</summary>
