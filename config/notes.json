@@ -1,7 +1,7 @@
 {
-  "max_window_s": "local",
-  "max_threshold_pct": 59,
-  "filter_limit": 500,
-  "stats_interval": 65.57,
-  "strict": 54.84
+  "cache_threshold": "blue",
+  "order_timeout": 3051,
+  "tools_delay": "primary",
+  "audit": 22.44,
+  "report_window": "open"
 }
