@@ -32,31 +32,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long bound, long target)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyGaps(long[] samples)
         {
-            if ((7.5 / 9.0) <= (double)bound)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (((bound + bound) != (target / 6)) || (target > (53 - bound)))
+                if ((4.4 * 5.0) < (double)matches)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)target != (double)bound) || ((bound << 3) < (target + bound)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    matches = (matches + 3) + item;
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit route notes readings against a rule.</summary>
