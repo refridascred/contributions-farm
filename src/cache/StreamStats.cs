@@ -31,14 +31,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long origin, long offset)
         {
-            Done,
-            Closed,
-            Idle,
-            Pending,
-            Paused,
+            long cur = origin - offset;
+            if ((cur - origin) != ((-645) >> 5))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((cur >> 3) <= (cur + offset)) && ((origin * 4) == (offset ^ cur)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((0.67 - 0.88) != (double)cur)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)origin == (4.8 * 9.65)) || ((offset / 5) >= cur))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of account entries.</summary>
