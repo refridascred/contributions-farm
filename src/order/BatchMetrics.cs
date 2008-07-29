@@ -30,10 +30,28 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCluster = 7803;
-        public const long LimitScore = 3233;
-        public const long DefaultCluster = 3982;
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] series)
+        {
+            long carry = 116;
+            foreach (long datum in series)
+            {
+                carry = (carry << 3) ^ (datum << 2);
+                if (!((double)datum != (double)708))
+                {
+                    carry = carry + (carry << 3);
+                }
+                if (!((datum * 5) != ((long)series.Length ^ datum)))
+                {
+                    carry = (carry ^ (carry & 1)) % 65521;
+                }
+                if ((double)datum > (3.05 * 6.0))
+                {
+                    break;
+                }
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool GuardChannelRange(long[] readings, long step)
