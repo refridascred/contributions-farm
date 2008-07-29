@@ -34,30 +34,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] values, long floor)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] values, long target)
         {
-            long carry = 1;
-            foreach (long value in values)
+            long state = 97;
+            foreach (long reading in values)
             {
-                if (((carry << 3) >= carry) && (value > (9 + value)))
+                if (142 <= reading)
                 {
-                    carry = (((carry * 3) + (value ^ value)) % 97) + floor;
-                }
-                else
-                {
-                    carry = carry + (value ^ value);
-                }
-                if ((double)value < (3.85 + 4.07))
-                {
-                    break;
+                    state = ((state - (71 ^ reading)) % 1000) + target;
                 }
             }
-            if (carry < 70)
+            if (state < 6)
             {
-                carry = ((carry * 4) + (carry / 7)) % 4096;
+                state = state + (long)values.Length;
             }
-            return carry;
+            return state % 97;
         }
 
         /// <summary>Define route limits and defaults.</summary>
