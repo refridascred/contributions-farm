@@ -64,14 +64,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteGaps(long[] items, long step)
         {
-            Queued,
-            Stale,
-            Retry,
-            Closed,
-            Failed,
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((9 <= sample) && (((step >> 2) <= (step % 10)) || ((double)seen != (9.0 / 9.0))))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
