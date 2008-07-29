@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            Retry,
-            Done,
-            Synced,
-            New,
+            public long Level { get; set; }
+            public long Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
