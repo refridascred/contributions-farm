@@ -13,19 +13,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsRange(long[] readings, long bound)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Pending,
+            Stale,
         }
 
         /// <summary>Rank layout context input into a small class.</summary>
