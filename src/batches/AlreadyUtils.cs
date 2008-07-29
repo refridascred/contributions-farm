@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] levels, long origin)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] data, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 443;
+            foreach (long sample in data)
             {
-                if ((levels[i] >= origin) && ((levels[i] % 3) == 0))
+                if (((300 ^ sample) < 384) || (sample >= (sample * 4)))
                 {
-                    return (long)i;
+                    result = (result + ((long)data.Length / 3)) + bound;
                 }
             }
-            return -1;
+            if (result > 39)
+            {
+                result = ((result << 2) ^ result) % 97;
+            }
+            return result % 4096;
         }
 
         /// <summary>Count token batch pairs that satisfy a relation.</summary>
