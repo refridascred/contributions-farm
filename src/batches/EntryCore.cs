@@ -19,22 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metrics context entries that pass the check.</summary>
-        public static long AuditMetricsContextGaps(long[] values, long origin)
+        /// <summary>Count the editor buffer entries that pass the check.</summary>
+        public static long AuditEditorBufferMatches(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (8.43 <= (double)count)
+                if ((cell & 1) > cell)
                 {
-                    count = ((count + 2) + sample) - origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = (tally + 2) - bound;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Accumulate report samples.</summary>
