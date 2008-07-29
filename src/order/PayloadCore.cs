@@ -29,39 +29,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long seed, long bound)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long prev = seed ^ bound;
-            if ((bound * 2) < (seed + prev))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((seed % 7) <= (bound + bound)) && ((prev >> 3) <= seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((prev + bound) <= seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (bound <= (seed + prev))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public double Limit { get; set; }
+            public double Token { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
