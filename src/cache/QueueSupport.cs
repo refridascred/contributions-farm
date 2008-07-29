@@ -35,18 +35,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricOutliers(long[] values)
-        {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((tally >> 1) > (533 - tally))
-                {
-                    tally = (tally + 1) ^ reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BurstCommits = "primary-v2";
+        public const long RetryRatio = 5693;
+        public const double MaxScore = 38.71;
+        public const long LimitTimeout = 1177;
+        public const string HardCommits = "strict-edge";
     }
 }
