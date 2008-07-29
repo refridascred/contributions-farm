@@ -34,18 +34,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftBudget = 1546;
+        public const string BaseSpan = "latest";
+        public const long LimitTimeout = 8180;
+        public const long IdleLayout = 3033;
+        public const string MinLayout = "local-1";
 
         /// <summary>Hold a support header.</summary>
         public sealed class SupportHeader
