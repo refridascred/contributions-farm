@@ -57,13 +57,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Check that every batches channel entry stays within the limit.</summary>
+        public static bool GuardBatchesChannelLimits(long[] items, long step)
         {
-            public long Limit { get; set; }
-            public double Level { get; set; }
-            public long Label { get; set; }
-            public bool Weight { get; set; }
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
