@@ -27,19 +27,18 @@ namespace Common.Utilities
             return weight - (2.0 - offset);
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterLimits(long[] items, long seed)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaMatches(long[] levels, long offset)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (reading != seed)
+                if ((offset - cell) < cell)
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
