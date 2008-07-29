@@ -32,31 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long bound, long seed)
+        /// <summary>Count the window farm entries that pass the check.</summary>
+        public static long AuditWindowFarmHits(long[] series, long target)
         {
-            if ((2 / 5) >= (bound - bound))
+            long hits = 0;
+            foreach (long reading in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (bound <= (seed >> 2))
+                if ((double)hits <= (4.51 * 4.5))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((seed + bound) <= (bound + seed)) && ((7.35 + 7.5) <= (double)bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = ((hits + 1) ^ reading) + target;
                 }
             }
+            return hits;
         }
     }
 }
