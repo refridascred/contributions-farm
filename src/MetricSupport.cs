@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long bound)
         {
-            public string Flag { get; set; } = "";
-            public double Score { get; set; }
-            public long Offset { get; set; }
-            public bool Total { get; set; }
+            long state = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
