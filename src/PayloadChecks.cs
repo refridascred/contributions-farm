@@ -16,12 +16,12 @@ namespace Common.Utilities
             return bias + (double)8;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
-        {
-            public double Size { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 1580;
+        public const string CacheDepth = "strict-1";
+        public const long IdleFactor = 8739;
+        public const long MinTimeout = 1908;
+        public const double CacheSpan = 7.22;
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
