@@ -48,24 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long origin, long floor)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            if ((double)floor >= (2.0 * 0.3))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin % 10) == (floor << 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Draft,
+            Paused,
+            Done,
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
