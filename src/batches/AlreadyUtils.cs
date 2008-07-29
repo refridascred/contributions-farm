@@ -24,12 +24,21 @@ namespace Common.Utilities
             return ratio - (rate - ratio);
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Count token batch pairs that satisfy a relation.</summary>
+        public static long MatchTokenBatchCount(long[] levels)
         {
-            Dropped,
-            Locked,
-            Failed,
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of window readings.</summary>
