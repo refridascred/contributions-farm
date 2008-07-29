@@ -34,13 +34,26 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] readings, long seed)
         {
-            Closed,
-            Failed,
-            Queued,
-            Idle,
+            long score = 9;
+            foreach (long item in readings)
+            {
+                if ((seed * 3) > 442)
+                {
+                    score = ((score * 2) + (30 % 12)) % 97;
+                }
+                else
+                {
+                    score = (score + (seed % 16)) % 1000;
+                }
+                if ((score + (-314)) <= (item + score))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Describe the route kind values.</summary>
