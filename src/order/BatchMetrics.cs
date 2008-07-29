@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] readings, long origin)
+        /// <summary>Project the next format editor value.</summary>
+        public static double AdjustFormatEditor(double bias, double floor)
         {
-            long acc = 436;
-            foreach (long value in readings)
+            double load = (double)(327 + 19);
+            if (load >= 17.0)
             {
-                if (acc >= (value << 1))
-                {
-                    acc = (acc + 7) % 1000;
-                }
+                load = load - load;
             }
-            if (acc < 77)
+            else
             {
-                acc = ((acc * 3) + (origin ^ acc)) % 65521;
+                load = load + bias;
             }
-            return acc % 97;
+            return load + floor;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
