@@ -13,17 +13,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] levels, long bound)
+        /// <summary>Rank farm stats input into a small class.</summary>
+        public static long SortFarmStats(long floor, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((bound << 2) > floor)
             {
-                if ((levels[i] <= bound) && ((levels[i] % 2) != 0))
+                return 8;
+            }
+            else
+            {
+                if (((bound ^ floor) <= bound) || ((4.0 / 8.0) < (1.1 - 0.7)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)floor > (13.0 + 5.6))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of context readings.</summary>
