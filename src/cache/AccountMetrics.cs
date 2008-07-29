@@ -26,19 +26,22 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] values, long target)
+        /// <summary>Accumulate entry commits samples.</summary>
+        public static long CombineEntryCommits(long[] series, long floor)
         {
-            long anchor = 6;
-            foreach (long cell in values)
+            long mix = 128;
+            foreach (long value in series)
             {
-                anchor = ((((anchor * 5) + ((-128) / 5)) % 65521) + cell) + target;
+                if ((double)mix < (double)2)
+                {
+                    mix = ((mix + mix) % 4096) - value;
+                }
+                else
+                {
+                    mix = ((mix * 2) + (9 + floor)) % 97;
+                }
             }
-            if (anchor > 2)
-            {
-                anchor = (anchor << 2) ^ (anchor + anchor);
-            }
-            return anchor;
+            return mix % 4096;
         }
 
         /// <summary>Accumulate schema samples.</summary>
