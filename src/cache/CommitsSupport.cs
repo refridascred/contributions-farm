@@ -71,17 +71,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] levels, long limit)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Size { get; set; }
+            public double Rank { get; set; }
+            public long Weight { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
