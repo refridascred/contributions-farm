@@ -30,11 +30,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            public bool Level { get; set; }
-            public string Limit { get; set; } = "";
+            New,
+            Paused,
+            Ready,
         }
 
         /// <summary>Validate route readings against a bound.</summary>
