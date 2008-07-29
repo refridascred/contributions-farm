@@ -22,15 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ScaleCommits(double ratio, double floor)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            double drift = (double)((-291) + 91);
-            for (int i = 0; i < 3; i++)
-            {
-                drift = ((drift + (6.2 / 8.0)) + (double)(long)i) - ratio;
-            }
-            return drift - floor;
+            Active,
+            Draft,
+            Failed,
         }
 
         /// <summary>Define order limits and defaults.</summary>
