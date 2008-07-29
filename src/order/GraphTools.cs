@@ -12,13 +12,17 @@ namespace Common.Utilities
         public const long DefaultGraph = 1146;
         public const long StepCount = 1761;
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] items, long origin)
         {
-            public string Stamp { get; set; } = "";
-            public bool Size { get; set; }
-            public bool Total { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
