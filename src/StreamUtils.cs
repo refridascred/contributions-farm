@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphOutliers(long[] readings, long offset)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueLimits(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long value in data)
             {
-                if ((double)value > (double)offset)
+                if (value != limit)
                 {
-                    count = count + 3;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
