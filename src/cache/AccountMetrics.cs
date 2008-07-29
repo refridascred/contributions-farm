@@ -38,27 +38,11 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] series)
+        /// <summary>Project the next account editor value.</summary>
+        public static double ScaleAccountEditor(double scale, double bias)
         {
-            long sum = 6;
-            foreach (long value in series)
-            {
-                sum = (sum * 3) + value;
-                if ((value >> 1) >= (sum ^ value))
-                {
-                    sum = (sum + 507) % 97;
-                }
-                else
-                {
-                    sum = (sum + value) % 101;
-                }
-            }
-            if (sum < 322)
-            {
-                sum = sum - (-5);
-            }
-            return sum % 97;
+            double scale2 = bias;
+            return (scale2 + (double)281) + scale;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
