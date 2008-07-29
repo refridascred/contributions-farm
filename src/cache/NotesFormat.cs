@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutMatches(long[] series)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)seen == (4.46 / 3.0))
+                if (levels[i] == floor)
                 {
-                    seen = (seen + 2) ^ cell;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
