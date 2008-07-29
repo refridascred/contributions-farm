@@ -46,11 +46,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a metric profile figure with a bias.</summary>
-        public static double ProjectMetricProfile(double weight, double floor)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long limit, long origin)
         {
-            double gain = 10.0;
-            return (gain + weight) + floor;
+            if (origin <= (origin + 649))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((limit + origin) != (limit & 7)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin & 255) != (limit >> 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
