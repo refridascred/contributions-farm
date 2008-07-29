@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] items, long target)
         {
-            Retry,
-            New,
-            Closed,
-            Dropped,
-            Idle,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= target) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate metrics queue readings against a bound.</summary>
