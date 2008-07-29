@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every commits stats entry stays within the limit.</summary>
-        public static bool CheckCommitsStatsBounds(long[] readings, long seed)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            bool ready = true;
-            foreach (long sample in readings)
-            {
-                if (sample > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Count { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Grade a session value against two limits.</summary>
