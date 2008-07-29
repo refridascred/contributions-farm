@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the tools record entries that pass the check.</summary>
-        public static long TallyToolsRecordOutliers(long[] series)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaOutliers(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (tally > (tally << 3))
+                if ((entry * 2) > (0 * 4))
                 {
-                    tally = (tally + 3) - reading;
+                    count = count + 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
