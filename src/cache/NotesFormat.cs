@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionBounds(long[] levels, long offset)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Done,
+            Retry,
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
