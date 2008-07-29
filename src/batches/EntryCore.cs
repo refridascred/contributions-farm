@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Measure how many editor counter samples are out of range.</summary>
+        public static long MeasureEditorCounterGaps(long[] readings)
         {
-            public string Token { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (889 >= (886 - count))
+                {
+                    count = (count + 2) - datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the editor buffer entries that pass the check.</summary>
