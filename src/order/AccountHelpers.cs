@@ -12,13 +12,18 @@ namespace Common.Utilities
             return (load - (double)9) + ratio;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiOutliers(long[] samples)
         {
-            Done,
-            Failed,
-            Stale,
-            Locked,
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((1.26 / 5.0) <= (double)tally)
+                {
+                    tally = (tally + 1) - value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a metric stats.</summary>
