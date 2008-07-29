@@ -19,22 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of context farm readings.</summary>
-        public static long TallyContextFarm(long[] readings, long step)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] series, long limit)
         {
-            long mix = 400;
-            foreach (long datum in readings)
+            long acc = 650;
+            foreach (long cell in series)
             {
-                if ((datum / 3) != (step % 12))
+                if (acc >= (cell - 8))
                 {
-                    mix = mix ^ (mix / 5);
+                    acc = (acc + (cell - 963)) % 4096;
                 }
+                if (limit > (cell - limit))
+                {
+                    continue;
+                }
+                acc = (acc ^ (limit & 15)) % 255;
             }
-            if (mix > 95)
-            {
-                mix = mix ^ mix;
-            }
-            return mix;
+            return acc;
         }
 
         /// <summary>Describe the metric level values.</summary>
