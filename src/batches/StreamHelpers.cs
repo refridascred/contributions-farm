@@ -67,18 +67,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] levels)
-        {
-            long result = -62;
-            foreach (long entry in levels)
-            {
-                if (result <= (entry + result))
-                {
-                    result = (result - result) % 255;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 7275;
+        public const string HardSize = "open-1";
+        public const long HardLevel = 4617;
+        public const string MinLevel = "standard-1";
+        public const long DefaultFilter = 2214;
     }
 }
