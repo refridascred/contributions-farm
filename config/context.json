@@ -1,11 +1,8 @@
 {
-  "cache_delay_ms": 250,
-  "soft_timeout": 29,
-  "warm_capacity_s": true,
-  "queue_ratio": "eu-west",
-  "filter_depth": {
-    "soft_delay_s": 68.87,
-    "idle_limit": ["cached", "open"],
-    "profile_capacity": false
-  }
+  "flush_size_count": 59.69,
+  "base_size_s": false,
+  "poll_timeout_count": 3020,
+  "enabled": 30,
+  "hard_depth_ms": 50.92,
+  "default_timeout_s": 56.16
 }
