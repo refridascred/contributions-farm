@@ -23,12 +23,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 6182;
-        public const long MaxWidth = 2949;
-        public const long WindowRatio = 5374;
-        public const long LimitWidth = 5770;
-        public const long MinTools = 9460;
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] series)
+        {
+            long mark = -379;
+            foreach (long entry in series)
+            {
+                mark = (((mark * 2) + (83 << 1)) % 101) ^ entry;
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long TallyRouteMatches(long[] data, long origin)
