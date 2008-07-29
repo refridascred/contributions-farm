@@ -23,24 +23,19 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long target, long step)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphLimits(long[] data, long bound)
         {
-            if ((38 + 651) == (step + step))
+            bool found = true;
+            foreach (long datum in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((3.66 + 1.0) == (double)step)
+                if (datum > bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Rank already input into a small class.</summary>
