@@ -15,13 +15,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] data, long floor)
         {
-            public bool Level { get; set; }
-            public bool Label { get; set; }
-            public string Limit { get; set; } = "";
-            public double Stamp { get; set; }
+            long total = 33;
+            foreach (long entry in data)
+            {
+                if ((entry >> 5) >= (total >> 2))
+                {
+                    total = ((total - (entry ^ entry)) % 255) + floor;
+                    total = total + ((long)data.Length << 2);
+                }
+                total = total + (total % 100);
+            }
+            return total;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
