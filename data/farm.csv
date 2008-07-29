@@ -1,7 +1,8 @@
-id,owner,level,region,rank
-1,21.27,cached,blue,local
-2,green,eu-west,764,817
-3,350,cached,132,edge
-4,37.38,390,53.6,82.79
-5,784,staging,74.67,primary
-6,760,644,507,518
+id,region,rank,token,state
+1,primary,31.95,984,456
+2,871,964,589,522
+3,875,standard,49.25,36.1
+4,latest,cached,legacy,32.68
+5,60.1,720,strict,209
+6,legacy,57.79,709,462
+7,340,79,484,612
