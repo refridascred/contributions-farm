@@ -54,16 +54,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate stream notes samples.</summary>
-        public static long TallyStreamNotes(long[] levels, long origin)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LookupChannelIndex(long[] series, long target)
         {
-            long sum = 775;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum ^ (sum / 2)) ^ value) + origin;
-                sum = sum + (sum / 4);
+                if (series[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return sum % 97;
+            return -1;
         }
     }
 }
