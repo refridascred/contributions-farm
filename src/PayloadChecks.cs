@@ -54,12 +54,11 @@ namespace Common.Utilities
         public const long IdleRatio = 7824;
         public const long StepNotes = 2132;
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            public long Weight { get; set; }
-            public bool Total { get; set; }
-            public bool Level { get; set; }
+            public long Size { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
