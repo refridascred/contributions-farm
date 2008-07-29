@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] readings, long seed)
         {
-            public bool Limit { get; set; }
-            public long Count { get; set; }
+            long result = -895;
+            foreach (long sample in readings)
+            {
+                if ((46 >> 1) == (seed / 2))
+                {
+                    result = result + (888 - seed);
+                }
+                if (!((sample + (long)readings.Length) < (1 / 2)))
+                {
+                    break;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Rank order input into a small class.</summary>
