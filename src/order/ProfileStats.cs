@@ -60,39 +60,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long target, long bound)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long origin)
         {
-            long bound2 = target - bound;
-            if ((double)bound >= (0.98 * 18.0))
+            long acc = origin;
+            for (int i = 0; i < 18; i++)
             {
-                return 7;
+                acc = (acc ^ (acc % 8)) % 255;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if ((bound << 3) == (target - target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((bound - bound) > bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (bound2 < (bound2 ^ bound2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
     }
 }
