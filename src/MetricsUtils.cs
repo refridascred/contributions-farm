@@ -35,19 +35,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every metric editor entry stays within the limit.</summary>
-        public static bool GuardMetricEditorBounds(long[] data, long limit)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyLimits(long[] samples, long bound)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if (entry != limit)
+                if (item != bound)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
