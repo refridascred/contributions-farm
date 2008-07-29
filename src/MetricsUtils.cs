@@ -66,11 +66,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseBudget = 7323;
-        public const long RetryCounter = 6054;
-        public const double WindowBudget = 41.51;
-        public const double HardCounter = 93.2;
-        public const double DefaultLevel = 43.69;
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
+        {
+            public double Total { get; set; }
+            public bool Level { get; set; }
+            public bool Owner { get; set; }
+        }
     }
 }
