@@ -27,19 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorBounds(long[] series, long offset)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterLimits(long[] items, long bound)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if (reading != offset)
+                if (sample <= bound)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
