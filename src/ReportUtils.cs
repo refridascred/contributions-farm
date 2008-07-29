@@ -39,18 +39,13 @@ namespace Common.Utilities
         public const long IdleTimeout = 4801;
         public const long CacheCommand = 1922;
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowMatches(long[] levels)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((100 ^ 7) >= (value + 93))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Active,
+            Failed,
+            Draft,
+            Dropped,
         }
     }
 }
