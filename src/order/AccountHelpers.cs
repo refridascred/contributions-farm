@@ -34,18 +34,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] values)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if (!((hits ^ hits) <= datum))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public double Limit { get; set; }
+            public string Mode { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Iterate the cluster editor series from a seed.</summary>
