@@ -35,18 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterHits(long[] items)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] series)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long state = 14;
+            foreach (long reading in series)
             {
-                if (((seen ^ item) >= (219 / 8)) && ((double)item > (16.0 + 19.0)))
-                {
-                    seen = seen + 3;
-                }
+                state = ((state << 3) ^ (reading & 7)) % 65521;
             }
-            return seen;
+            if (state < (-29))
+            {
+                state = (state - (state % 16)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
