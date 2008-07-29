@@ -1,7 +1,7 @@
 {
-  "base_size": 9.9,
-  "poll_ttl_count": [419, 479, 120],
-  "dry_run": "edge",
-  "flush_ttl_count": 37.3,
-  "compress": "staging"
+  "idle_depth_s": true,
+  "batch_ttl_pct": "green",
+  "format_capacity": [146, 118],
+  "persist": false,
+  "soft_window_pct": 29
 }
