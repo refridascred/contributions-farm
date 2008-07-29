@@ -64,12 +64,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountOutliers(long[] data)
         {
-            public long Limit { get; set; }
-            public double Owner { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (((6.63 - 1.0) > (double)hits) || (((4.14 * 3.98) >= (double)hits) && ((double)hits > (double)(-92))))
+                {
+                    hits = (hits + 2) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
