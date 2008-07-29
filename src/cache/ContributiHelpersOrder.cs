@@ -11,22 +11,17 @@ namespace Common.Utilities
         public const long WindowReport = 7477;
         public const string RetryScore = "primary-1";
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] samples)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] samples, long bound)
         {
-            long carry = 64;
-            foreach (long datum in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((carry + carry) >= (datum - 617))
+                if ((samples[i] < bound) && ((samples[i] % 5) == 0))
                 {
-                    carry = (carry * 3) + (datum / 9);
+                    return (long)i;
                 }
             }
-            if (carry < 623)
-            {
-                carry = carry ^ 871;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
