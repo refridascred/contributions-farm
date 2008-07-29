@@ -42,25 +42,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long offset, long target)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamHits(long[] data, long origin)
         {
-            long bound = offset - target;
-            if (((4.13 / 3.0) != (double)target) && ((target & 63) >= (bound - target)))
+            long seen = 0;
+            foreach (long datum in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound != (1.0 * 7.0))
+                if (seen < (seen ^ seen))
                 {
-                    return 6;
+                    seen = ((seen + 3) ^ datum) + origin;
                 }
                 else
                 {
-                    return 7;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Iterate the account channel series from a seed.</summary>
