@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadOutliers(long[] items, long floor)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((11.0 / 3.0) == (double)floor)
-                {
-                    count = (count + 3) + sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Offset { get; set; }
+            public double Limit { get; set; }
+            public long Region { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
