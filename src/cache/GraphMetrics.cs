@@ -16,22 +16,21 @@ namespace Common.Utilities
             return bias - 1.5;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] series)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long MatchPayloadCount(long[] samples)
         {
-            long acc = -4;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sample + acc) > acc)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (acc ^ (8 >> 2)) % 65521;
-                }
-                if (sample <= (sample - 11))
-                {
-                    break;
+                    if ((samples[i] + samples[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Hold a commits summary.</summary>
