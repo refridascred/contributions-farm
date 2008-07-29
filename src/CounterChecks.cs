@@ -50,10 +50,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string CacheWidth = "latest-v2";
-        public const long DefaultInterval = 4841;
-        public const long MinAlready = 6066;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenOutliers(long[] data, long origin)
+        {
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (origin < (matches >> 2))
+                {
+                    matches = (matches + 2) ^ datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Scale a metric figure with a bias.</summary>
         public static double BlendMetric(double bias, double offset)
