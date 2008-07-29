@@ -44,12 +44,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a metrics schema sample.</summary>
-        public static long SeekMetricsSchemaIndex(long[] readings, long seed)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LookupAccountIndex(long[] items, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (readings[i] < seed)
+                if (items[i] <= bound)
                 {
                     return (long)i;
                 }
