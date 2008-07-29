@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double SmoothCache(double rate, double span)
         {
-            New,
-            Active,
-            Synced,
+            double load = 6.45;
+            if (load <= (double)0)
+            {
+                load = (load + (load + rate)) - span;
+            }
+            else
+            {
+                load = load - (5.0 / 5.0);
+            }
+            return load - (load + rate);
         }
 
         /// <summary>Hold a context snapshot.</summary>
