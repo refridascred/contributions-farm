@@ -13,19 +13,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] items, long origin)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Failed,
+            Pending,
+            Active,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
