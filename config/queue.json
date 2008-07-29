@@ -1,6 +1,23 @@
 {
-  "command_limit": "fallback",
-  "order_depth": "strict",
-  "base_interval_s": "legacy",
-  "context_threshold": "cached"
+  "batch_capacity_ms": {
+    "poll_capacity_s": {
+      "burst_capacity": 46.66,
+      "warm_retries": 88,
+      "channel_ttl": 38,
+      "cache_timeout": 995,
+      "compress": 54.25
+    },
+    "persist": {
+      "cache_threshold_pct": 31,
+      "cache_ttl": [256, 6, 348],
+      "compress": "fallback",
+      "contributi_retries": 6
+    },
+    "cache_timeout": false,
+    "retry_delay_s": "standard"
+  },
+  "support_delay": 2,
+  "retry_limit_ms": 6461,
+  "account_size": "strict",
+  "default_interval_s": 4513
 }
