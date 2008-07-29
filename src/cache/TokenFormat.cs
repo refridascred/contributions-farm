@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a tools cache pair into a bucket.</summary>
-        public static long ClassifyToolsCache(long bound, long step)
-        {
-            if (((step ^ bound) > (bound % 24)) && ((bound + bound) != (step % 64)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)step <= (10.0 / 3.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (bound > (4 + bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowRecord = 6730;
+        public const long DefaultRecord = 1568;
+        public const long HardDepth = 3970;
+        public const long LimitRecord = 6119;
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long WeighGithubfarm(long[] series, long bound)
