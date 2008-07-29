@@ -1,6 +1,6 @@
-id,count,weight
-1,16.03,491
-2,legacy,edge
-3,582,27.3
-4,344,768
-5,64,746
+id,label,region,weight
+1,96.07,501,289
+2,eu-west,124,7.33
+3,70.22,51.62,895
+4,fallback,eu-west,828
+5,733,554,20.64
