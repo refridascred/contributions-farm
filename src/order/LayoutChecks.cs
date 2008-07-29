@@ -64,12 +64,23 @@ namespace Common.Utilities
             return scale2 - scale2;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long seed)
         {
-            Paused,
-            Retry,
-            Closed,
+            long mark = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                if (mark < (243 & 15))
+                {
+                    mark = (mark + (long)i) % 65521;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ ((long)i ^ seed)) % 97;
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
