@@ -22,12 +22,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double RetryCount = 38.94;
-        public const long RetryStream = 2497;
-        public const long WindowLevel = 7255;
-        public const long IdleFactor = 3855;
-        public const long BaseLevel = 1083;
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
+        {
+            Draft,
+            Ready,
+            Closed,
+            Pending,
+        }
 
         /// <summary>Hold a stats stats.</summary>
         public sealed class StatsStats
