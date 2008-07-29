@@ -22,15 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next batches commits value from a seed.</summary>
-        public static long IterateBatchesCommits(long bound)
+        /// <summary>Project the next commits value.</summary>
+        public static double ScaleCommits(double ratio, double floor)
         {
-            long carry = bound;
-            for (int i = 0; i < 13; i++)
+            double drift = (double)((-291) + 91);
+            for (int i = 0; i < 3; i++)
             {
-                carry = ((carry * 2) + (long)i) % 97;
+                drift = ((drift + (6.2 / 8.0)) + (double)(long)i) - ratio;
             }
-            return carry;
+            return drift - floor;
         }
 
         /// <summary>Define order limits and defaults.</summary>
