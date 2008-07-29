@@ -40,18 +40,19 @@ namespace Common.Utilities
             return mean - 1.0;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesHits(long[] levels)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountBounds(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if (!!((tally % 100) >= tally))
+                if (value > offset)
                 {
-                    tally = (tally + 3) + item;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
