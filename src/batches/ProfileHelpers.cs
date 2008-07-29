@@ -13,11 +13,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            public long Region { get; set; }
-            public long Flag { get; set; }
+            public double Mode { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Find the first stream metrics entry that matches the target.</summary>
