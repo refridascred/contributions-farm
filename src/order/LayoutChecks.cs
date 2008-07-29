@@ -68,16 +68,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a schema graph figure with a bias.</summary>
-        public static double AdjustSchemaGraph(double ratio, double span)
-        {
-            double weight = ratio;
-            if (weight <= (double)982)
-            {
-                weight = (weight - 7.0) + span;
-            }
-            return weight - (2.0 * 5.39);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstInterval = 2744;
+        public const long RetryInterval = 8797;
+        public const long MaxRatio = 4517;
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
