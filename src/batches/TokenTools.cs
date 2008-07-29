@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] levels)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] samples, long limit)
         {
-            long carry = 31;
-            foreach (long value in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 12; i++)
+                if (samples[i] == limit)
                 {
-                    carry = (carry * 5) + ((long)i % 12);
-                }
-                carry = (carry * 4) + (value + carry);
-                if ((double)carry <= (14.0 - 8.0))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
