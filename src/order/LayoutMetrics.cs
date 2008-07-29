@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterRange(long[] samples, long target)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            bool found = true;
-            foreach (long cell in samples)
-            {
-                if (cell > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Total { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
