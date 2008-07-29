@@ -21,18 +21,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string RetryBuffer = "staging";
+        public const string SoftInterval = "local-1";
+        public const string SoftScore = "open";
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long WindowFactor = 2967;
