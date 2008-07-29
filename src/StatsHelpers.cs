@@ -73,11 +73,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Audit route notes readings against a rule.</summary>
+        public static long AuditRouteNotesOutliers(long[] levels, long origin)
         {
-            public string Total { get; set; } = "";
-            public bool Region { get; set; }
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((value >> 5) > (origin >> 5))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
