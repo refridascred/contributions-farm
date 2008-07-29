@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterMatches(long[] samples)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double SmoothCounter(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)hits > (double)18)
-                {
-                    hits = (hits + 2) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double load = gain;
+            return (load - (6.0 + gain)) + offset;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
