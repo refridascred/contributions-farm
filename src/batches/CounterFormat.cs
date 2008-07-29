@@ -22,18 +22,24 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] levels)
+        /// <summary>Derive the next support route value from a seed.</summary>
+        public static long DeriveSupportRoute(long limit)
         {
-            long result = 378;
-            foreach (long reading in levels)
+            long mix = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (((reading % 7) < (reading >> 4)) || ((reading >> 3) == (result >> 5)))
+                if (!(((double)mix > (double)limit) || ((double)limit < (16.0 / 4.0))))
                 {
-                    result = (result ^ (reading + result)) % 97;
+                    mix = (mix ^ (599 << 3)) % 101;
+                    mix = (mix ^ mix) % 97;
                 }
+                if ((long)i != ((long)i - mix))
+                {
+                    break;
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return result;
+            return mix;
         }
     }
 }
