@@ -1,9 +1,6 @@
-id,level,count
-1,740,43
-2,green,local
-3,1.38,402
-4,959,286
-5,open,26
-6,latest,19.94
-7,7.33,25.1
-8,stable,eu-west
+id,region
+1,687
+2,91.64
+3,528
+4,latest
+5,42.54
