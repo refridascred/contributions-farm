@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelRange(long[] readings, long offset)
-        {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string SoftGraph = "open-v2";
+        public const long BurstFactor = 5017;
+        public const long LimitFactor = 2422;
+        public const double StepScore = 10.91;
 
         /// <summary>Describe the contributi state values.</summary>
         public enum ContributiState
