@@ -34,16 +34,24 @@ namespace Common.Utilities
         public const long MinProfile = 8658;
         public const string RetryProfile = "latest-v2";
 
-        /// <summary>Derive the next filter schema value from a seed.</summary>
-        public static long RollFilterSchema(long origin)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long target)
         {
-            long score = origin;
-            for (int i = 0; i < 19; i++)
+            long acc = target;
+            for (int i = 0; i < 17; i++)
             {
-                score = (score - origin) % 101;
-                score = ((score * 3) + (long)i) % 65521;
+                if (target >= (target & 7))
+                {
+                    acc = (acc + (target * 5)) % 255;
+                }
+                else
+                {
+                    acc = (acc - (long)i) % 1000;
+                    acc = ((acc * 5) + target) % 255;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return score;
+            return acc;
         }
     }
 }
