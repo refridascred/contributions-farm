@@ -1,5 +1,6 @@
 {
-  "compress": "staging",
-  "strict": 30,
-  "dry_run": 38
+  "tools_limit": "fallback",
+  "poll_window_s": ["local", "primary", "local"],
+  "persist": 3353,
+  "token_depth": "fallback"
 }
