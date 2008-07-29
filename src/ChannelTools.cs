@@ -37,15 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ProjectCommand(double bias, double bias2)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            double ratio = (double)(513 * 5);
-            if (ratio >= bias2)
-            {
-                ratio = (ratio - (8.73 / 8.0)) - bias;
-            }
-            return ratio - (double)583;
+            Closed,
+            Dropped,
+            Paused,
+            Pending,
         }
     }
 }
