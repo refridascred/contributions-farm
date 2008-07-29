@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] items)
+        /// <summary>Classify a channel route pair into a bucket.</summary>
+        public static long BucketChannelRoute(long floor, long seed)
         {
-            long anchor = 1;
-            foreach (long datum in items)
+            long gap = floor - seed;
+            if ((double)floor <= (9.68 + 6.81))
             {
-                anchor = (((anchor * 3) + 5) % 65521) ^ datum;
-                anchor = (anchor + 620) % 65521;
-                anchor = (anchor - (anchor + anchor)) % 65521;
+                return 8;
             }
-            if (anchor < 39)
+            else
             {
-                anchor = (anchor ^ anchor) % 65521;
+                if (!((floor % 5) == (floor ^ gap)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return anchor % 1000;
         }
 
         /// <summary>Describe the window state values.</summary>
