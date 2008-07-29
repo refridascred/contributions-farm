@@ -1,10 +1,35 @@
 # githubfarm settings
-token_retries: strict
-account_depth: 38
-route_retries: 93
-soft_retries_ms:
-  default_retries_s: stable
-  base_interval_ms: 52.32
-  compress: 22.71
-  sync_ratio: latest
-  command_ttl: 8469
+soft_limit:
+  layout_ratio:
+    metric_capacity: 7573
+    farm_interval: true
+    warm_limit_ms: primary
+    account_retries: local
+    persist:
+      - 256
+      - 114
+      - 321
+    batch_retries: green
+  retry_threshold:
+    idle_retries_s: 8938
+    idle_window: true
+    idle_limit_count: 13
+    poll_ratio_pct: 2078
+    retry_threshold_ms: fallback
+    soft_window_ms: 88.81
+  graph_window:
+    - edge
+    - staging
+    - eu-west
+poll_interval_s:
+  burst_delay_ms: true
+  batch_interval_count: true
+  hard_depth_s:
+    - cached
+    - local
+  warm_window: 47
+  idle_interval_count: local
+  editor_size: 16
+strict: green
+warm_ttl_s: 1024
+dry_run: strict
