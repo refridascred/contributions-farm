@@ -19,18 +19,13 @@ namespace Common.Utilities
         public const long CacheSpan = 9221;
         public const double MinFactor = 59.27;
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaOutliers(long[] samples, long offset)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (!((6.6 + 9.6) >= (double)offset))
-                {
-                    hits = (hits + 3) ^ reading;
-                }
-            }
-            return hits;
+            Idle,
+            Locked,
+            Draft,
+            Active,
         }
     }
 }
