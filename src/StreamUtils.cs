@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TotalCluster(long[] series, long origin)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextRange(long[] items, long origin)
         {
-            long result = 897;
-            foreach (long cell in series)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                result = ((result << 3) ^ (result + result)) % 97;
-                result = result + (origin + cell);
-                if ((origin ^ origin) < (origin + 7))
+                if (sample <= origin)
                 {
-                    result = (result + (cell >> 4)) % 4096;
-                }
-                else
-                {
-                    result = (result * 5) + (cell + cell);
+                    valid = false;
+                    break;
                 }
             }
-            return result % 1000;
+            return valid;
         }
 
         /// <summary>Define window limits and defaults.</summary>
