@@ -23,14 +23,25 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long target, long step)
         {
-            Dropped,
-            Active,
-            Draft,
-            Failed,
-            Retry,
+            long span = target ^ step;
+            if (((target + span) > span) || ((step & 15) > (span % 7)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((20.0 * 9.0) < (double)target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
