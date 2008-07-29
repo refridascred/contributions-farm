@@ -44,13 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatBounds(long[] series, long target)
         {
-            Retry,
-            Ready,
-            Locked,
-            Done,
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
