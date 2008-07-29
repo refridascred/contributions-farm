@@ -1,5 +1,15 @@
 # githubfarm settings
-idle_ttl_s: 35
-idle_interval: standard
-cache_ratio: 83.93
-context_interval: 250
+context_threshold: green
+cache_limit_count: strict
+strict: 26
+channel_size: 19.15
+audit:
+  - open
+  - edge
+  - edge
+layout_ratio:
+  warm_ratio:
+    - standard
+    - primary
+  burst_capacity_count: standard
+  strict: 87.68
