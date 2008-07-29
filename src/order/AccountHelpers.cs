@@ -25,18 +25,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaMatches(long[] levels, long offset)
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double rate, double floor)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            double load = rate;
+            for (int i = 0; i < 2; i++)
             {
-                if ((offset - cell) < cell)
-                {
-                    tally = tally + 2;
-                }
+                load = ((load - rate) + (double)(long)i) + floor;
             }
-            return tally;
+            return load - 7.73;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
