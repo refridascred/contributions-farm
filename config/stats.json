@@ -1,11 +1,6 @@
 {
-  "poll_threshold": 98,
-  "base_capacity": ["edge", "open", "local"],
-  "min_threshold_ms": [104, 156, 205, 377],
-  "strict": {
-    "readonly": "standard",
-    "batch_window": "standard",
-    "flush_limit_count": "edge"
-  },
-  "metric_threshold": 15
+  "persist": true,
+  "readonly": 711,
+  "warm_retries_pct": "fallback",
+  "strict": true
 }
