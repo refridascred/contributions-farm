@@ -71,14 +71,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ProjectTools(double bias, double bias2)
         {
-            Locked,
-            Done,
-            Stale,
-            Dropped,
-            Paused,
+            double drift = bias;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = ((drift + (drift + bias)) + (double)(long)i) + bias2;
+            }
+            return drift - (8.1 - drift);
         }
     }
 }
