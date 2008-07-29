@@ -1,13 +1,7 @@
 # support settings
-retry_window_ms: 7456
-verbose: strict
-sync_ttl_count:
-  base_window: 1024
-  dry_run:
-    soft_size: 60
-    burst_window: edge
-    stream_ttl: 3197
-  warm_limit_pct: 6516
-  max_limit: open
-  audit: 63.18
-  strict: 16.09
+default_ratio: staging
+already_window: 90
+max_ttl_ms: 39
+report_interval:
+  - open
+  - blue
