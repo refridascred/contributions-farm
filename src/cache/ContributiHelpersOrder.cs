@@ -28,9 +28,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardLevel = 368;
-        public const string SoftLevel = "primary-1";
-        public const long WindowChecks = 3459;
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
+        {
+            public double Token { get; set; }
+            public double Size { get; set; }
+            public long Rank { get; set; }
+            public bool Mode { get; set; }
+        }
     }
 }
