@@ -23,23 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] values)
-        {
-            long carry = -5;
-            foreach (long datum in values)
-            {
-                if ((double)datum == (5.11 + 2.22))
-                {
-                    carry = ((carry * 3) + carry) % 255;
-                }
-                else
-                {
-                    carry = (carry ^ (datum / 2)) % 1000;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 5591;
+        public const double HardTimeout = 51.85;
+        public const long LimitTimeout = 1945;
+        public const long BaseAlready = 9796;
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long PairBatchesCount(long[] samples)
