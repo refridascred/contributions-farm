@@ -24,22 +24,11 @@ namespace Common.Utilities
             return ratio + (double)384;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long CombineSupport(long[] data, long offset)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long result = 64;
-            foreach (long item in data)
-            {
-                if ((result + (long)data.Length) >= (item + offset))
-                {
-                    result = (result - (result + result)) % 1000;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (offset * 3)) % 255;
-                }
-            }
-            return result;
+            public bool Token { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
