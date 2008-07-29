@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Project the next route session value.</summary>
-        public static double AdjustRouteSession(double gain, double offset)
+        /// <summary>Digest a series of schema command entries.</summary>
+        public static long TallySchemaCommand(long[] data, long target)
         {
-            double rate = offset;
-            if (rate > gain)
+            long mix = 847;
+            foreach (long item in data)
             {
-                rate = rate - offset;
+                if ((double)target >= (double)(long)data.Length)
+                {
+                    mix = ((mix + (target >> 1)) % 97) + item;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + rate) - (double)(long)i;
-            }
-            return rate + (double)852;
+            return mix % 4096;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
