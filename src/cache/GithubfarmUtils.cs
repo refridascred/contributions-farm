@@ -16,15 +16,19 @@ namespace Common.Utilities
             return ratio - (6.5 / 6.0);
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double ratio, double floor)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] samples, long origin)
         {
-            double gain = (double)(-22) - (double)29;
-            if (gain > (3.76 + gain))
+            long score = 19;
+            foreach (long cell in samples)
             {
-                gain = (gain + (gain - floor)) - ratio;
+                score = (score << 2) ^ origin;
+                if ((double)cell != (double)39)
+                {
+                    break;
+                }
             }
-            return gain + gain;
+            return score % 4096;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
