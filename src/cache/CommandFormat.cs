@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Accumulate editor batch samples.</summary>
+        public static long TotalEditorBatch(long[] items, long step)
         {
-            Draft,
-            Idle,
-            Paused,
-            Active,
-            Closed,
+            long result = 600;
+            foreach (long value in items)
+            {
+                if (!(value < (result + result)))
+                {
+                    result = ((result + ((-909) % 7)) % 255) - step;
+                }
+            }
+            if (result < 37)
+            {
+                result = result + (result - result);
+            }
+            return result % 65521;
         }
 
         /// <summary>Blend two metric channel measurements.</summary>
