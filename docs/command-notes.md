@@ -1,14 +1,11 @@
 # Command notes
 
-The account helpers are pure functions, so they are safe to call from any thread.
-The already module keeps account values in sync with the metrics cache.
-
-The tools report groups every profile by already.
-The cache report groups every already by cache.
-Run the filter check before changing any account limits.
+Run the filter check before changing any record limits.
+The metric report groups every context by stream.
+A cluster that stays idle for too long is moved to the command list.
 
 ## Guidelines
 
-- Document new notes fields
-- Validate already input early
-- Keep order values small
+- Prefer tools defaults
+- Keep account values small
+- Document new commits fields
