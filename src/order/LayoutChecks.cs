@@ -68,10 +68,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstInterval = 2744;
-        public const long RetryInterval = 8797;
-        public const long MaxRatio = 4517;
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsBounds(long[] levels, long bound)
+        {
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
