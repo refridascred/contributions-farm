@@ -13,12 +13,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            public bool Size { get; set; }
+            public bool Flag { get; set; }
             public bool Mode { get; set; }
-            public double Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
