@@ -45,22 +45,24 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Measure how many editor githubfarm samples are out of range.</summary>
-        public static long AuditEditorGithubfarmHits(long[] values, long origin)
+        /// <summary>Rank batch batches input into a small class.</summary>
+        public static long GradeBatchBatches(long bound, long offset)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            if ((offset / 7) < offset)
             {
-                if (sample <= (sample + sample))
+                return 8;
+            }
+            else
+            {
+                if ((-237) < (offset - bound))
                 {
-                    hits = (hits + 3) + origin;
+                    return 4;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
