@@ -23,17 +23,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] data, long step)
+        /// <summary>Project the next channel counter value.</summary>
+        public static double ProjectChannelCounter(double rate, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = bias;
+            if (drift < rate)
             {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
+                drift = drift - (rate * 4.68);
             }
-            return -1;
+            else
+            {
+                drift = drift - (16.0 - drift);
+            }
+            return drift - (bias + drift);
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
