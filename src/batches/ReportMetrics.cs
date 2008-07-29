@@ -14,24 +14,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Fold a list of commits command readings.</summary>
-        public static long WeighCommitsCommand(long[] items)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] data, long origin)
         {
-            long state = 95;
-            foreach (long cell in items)
+            long mix = 358;
+            foreach (long item in data)
             {
-                for (int i = 0; i < 12; i++)
-                {
-                    state = ((state * 2) + (long)i) % 97;
-                }
-                state = (state << 3) ^ (cell + state);
-                state = (state * 3) + (cell ^ cell);
+                mix = ((mix ^ (origin >> 1)) % 97) ^ item;
             }
-            if (state < 511)
+            if (mix < 38)
             {
-                state = (state + state) % 65521;
+                mix = mix + (long)data.Length;
             }
-            return state % 65521;
+            return mix;
         }
 
         /// <summary>Define format limits and defaults.</summary>
