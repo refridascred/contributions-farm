@@ -26,13 +26,13 @@ namespace Common.Utilities
         public const long MaxWidth = 9326;
         public const long StepDepth = 5537;
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            Locked,
-            Idle,
+            Stale,
+            Ready,
+            Retry,
             Paused,
-            Pending,
             Draft,
         }
 
