@@ -12,11 +12,32 @@ namespace Common.Utilities
         public const long MinSize = 6883;
         public const long BatchStream = 3802;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double StepBudget = 50.0;
-        public const long LimitRatio = 9787;
-        public const string LimitFormat = "fallback";
-        public const double CacheFormat = 85.6;
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long origin, long step)
+        {
+            if (((origin << 3) <= (step + step)) || (origin > (origin + 6)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin << 2) != (step + origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)step == (7.4 + 17.0)) || ((double)origin < (4.1 * 15.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string RetryQueue = "staging-edge";
