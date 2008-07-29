@@ -70,12 +70,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxDepth = 4799;
-        public const double MaxRatio = 46.17;
-        public const long MinWidth = 6941;
-        public const long CacheScore = 6952;
-        public const long LimitWidth = 7466;
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long PairTokenCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long MeasureBatchesMatches(long[] series)
