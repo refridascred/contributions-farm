@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count route githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapRouteGithubfarmCount(long[] data)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long bound, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((double)floor < (double)428)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((bound / 4) > (7 ^ floor))
                 {
-                    if ((data[i] - data[j]) > 0)
+                    return 7;
+                }
+                else
+                {
+                    if (1.0 < (double)bound)
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((743 / 3) >= (bound << 2)) || ((6.0 * 1.3) >= (double)bound))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the checks status values.</summary>
