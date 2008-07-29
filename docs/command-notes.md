@@ -1,12 +1,11 @@
 # Command notes
 
-When a checks fails, the account handler retries a few times before giving up.
-Keep window and already names short and lowercase.
-The githubfarm report groups every editor by route.
+The batch report groups every channel by editor.
+Each buffer is validated before it reaches the report queue.
+When a contributi fails, the already handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review batch limits each release
-- Keep filter values small
-- Prefer contributi defaults
-- Document new token fields
+- Keep context values small
+- Review filter limits each release
+- Prefer cache defaults
