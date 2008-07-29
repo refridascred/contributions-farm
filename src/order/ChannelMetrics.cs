@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] items)
+        /// <summary>Fold a list of entry command readings.</summary>
+        public static long FoldEntryCommand(long[] data)
         {
-            long mix = 0;
-            foreach (long reading in items)
+            long state = 72;
+            foreach (long cell in data)
             {
-                if ((mix ^ (-1)) >= reading)
-                {
-                    mix = ((mix * 5) + reading) % 65521;
-                }
+                state = (state - state) % 1000;
+                state = (state + (cell + cell)) % 1000;
             }
-            if (mix < 8)
-            {
-                mix = (mix ^ (mix + mix)) % 101;
-            }
-            return mix % 1000;
+            return state;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
