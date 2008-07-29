@@ -1,19 +1,8 @@
 {
-  "max_ttl_count": 1024,
-  "persist": 85.0,
-  "poll_retries_s": "stable",
-  "default_capacity": 28,
-  "min_retries": 5678,
-  "entry_capacity": {
-    "route_retries": 250,
-    "soft_timeout": false,
-    "poll_window_count": {
-      "editor_ratio": 72.04,
-      "soft_ttl_s": true,
-      "min_window": 67.65,
-      "warm_timeout_count": false,
-      "strict": ["stable", "local"],
-      "base_capacity_ms": 100
-    }
-  }
+  "warm_timeout_s": false,
+  "soft_ttl": 73,
+  "idle_ratio_s": 250,
+  "soft_ttl_s": [360, 260],
+  "default_delay_pct": 70.59,
+  "githubfarm_ratio": ["latest", "local", "edge", "latest"]
 }
