@@ -64,13 +64,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            public bool Level { get; set; }
-            public double Offset { get; set; }
-            public bool Total { get; set; }
-            public double Ratio { get; set; }
+            public long Count { get; set; }
+            public double Stamp { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Measure how many editor githubfarm samples are out of range.</summary>
