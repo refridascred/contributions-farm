@@ -42,13 +42,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long bound, long offset)
         {
-            public double Mode { get; set; }
-            public bool Total { get; set; }
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
+            long step = bound - offset;
+            if ((step >> 5) < (offset - bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((bound + 5) == (step ^ step)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((step & 7) > offset) || ((offset - 34) <= (offset * 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (offset < step)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
