@@ -20,10 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitInterval = 4047;
-        public const long MaxLevel = 3718;
-        public const string SoftScore = "latest";
+        /// <summary>Count the notes cluster entries that pass the check.</summary>
+        public static long MeasureNotesClusterOutliers(long[] items)
+        {
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (datum >= hits)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
         public static long MatchBatchCount(long[] items)
