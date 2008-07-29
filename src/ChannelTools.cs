@@ -27,13 +27,18 @@ namespace Common.Utilities
         public const long RetrySpan = 2645;
         public const long IdleGraph = 330;
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmOutliers(long[] readings)
         {
-            Stale,
-            Queued,
-            Draft,
-            Pending,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (3.0 > (double)hits)
+                {
+                    hits = (hits + 2) ^ datum;
+                }
+            }
+            return hits;
         }
     }
 }
