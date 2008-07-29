@@ -26,10 +26,20 @@ namespace Common.Utilities
         public const string SoftInterval = "local-1";
         public const string SoftScore = "open";
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowFactor = 2967;
-        public const string HardStream = "stable-edge";
-        public const string BurstBudget = "primary";
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterLimits(long[] data, long step)
+        {
+            bool flag = true;
+            foreach (long value in data)
+            {
+                if (value < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long ClassifyReport(long limit, long bound)
