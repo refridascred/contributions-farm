@@ -30,11 +30,27 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultInterval = 1786;
-        public const long IdleReport = 4838;
-        public const long MinCount = 5163;
-        public const long RetryInterval = 9377;
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] readings, long limit)
+        {
+            long anchor = 871;
+            foreach (long reading in readings)
+            {
+                if ((limit < (reading + limit)) && (limit < (limit % 3)))
+                {
+                    anchor = ((anchor << 2) ^ limit) % 101;
+                }
+                else
+                {
+                    anchor = (anchor - anchor) % 101;
+                }
+            }
+            if (anchor > 3)
+            {
+                anchor = anchor - (limit >> 3);
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Adjust a stats reading.</summary>
         public static double SmoothStats(double rate, double bias)
