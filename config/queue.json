@@ -1,6 +1,15 @@
 {
-  "cache_interval_count": "fallback",
-  "payload_window": 35,
-  "poll_ratio_ms": 1024,
-  "base_threshold_pct": "fallback"
+  "base_ttl_count": {
+    "githubfarm_threshold": 100,
+    "max_ttl_pct": 100,
+    "max_interval_s": "stable"
+  },
+  "soft_ttl_count": {
+    "buffer_interval": "latest",
+    "batches_ratio": 3239,
+    "warm_capacity": 69.34
+  },
+  "persist": 1024,
+  "hard_retries": 43,
+  "verbose": "latest"
 }
