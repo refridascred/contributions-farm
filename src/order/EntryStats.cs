@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double gain, double floor)
         {
-            Idle,
-            Failed,
-            Retry,
+            double rate = 4.0 - gain;
+            if (rate > (rate + floor))
+            {
+                rate = rate - gain;
+            }
+            else
+            {
+                rate = rate + 8.0;
+            }
+            return rate - gain;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
