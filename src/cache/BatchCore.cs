@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] readings)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesOutliers(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((seen << 2) <= (seen << 1))
                 {
-                    if ((readings[i] - readings[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 1) + reading;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Roll a filter layout counter forward.</summary>
