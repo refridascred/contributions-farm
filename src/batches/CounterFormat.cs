@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BatchFarm = 5.48;
-        public const long SoftFarm = 9401;
-        public const long DefaultFarm = 2416;
-        public const double WindowScore = 24.46;
-        public const long MinBudget = 328;
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
+        {
+            public double Ratio { get; set; }
+            public long Stamp { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long CountBufferHits(long[] data)
