@@ -1,13 +1,8 @@
 {
-  "cache_window_ms": "legacy",
-  "retry_timeout": 6651,
-  "sync_depth_ms": 18,
-  "compress": ["green", "open", "open"],
-  "batches_retries": 100,
-  "context_retries": {
-    "window_capacity": 6008,
-    "burst_depth": 10.17,
-    "burst_size_pct": "latest",
-    "burst_ttl": true
-  }
+  "cache_interval": "open",
+  "strict": 54.04,
+  "compress": ["open", "latest", "fallback"],
+  "cache_timeout_count": 35,
+  "min_limit": "local",
+  "base_ratio_s": [250, 96, 139, 414]
 }
