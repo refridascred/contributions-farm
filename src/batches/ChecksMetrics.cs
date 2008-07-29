@@ -78,14 +78,27 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] readings, long step)
         {
-            Queued,
-            New,
-            Synced,
-            Stale,
-            Dropped,
+            long sum = 4;
+            foreach (long datum in readings)
+            {
+                sum = sum + sum;
+                if ((sum / 7) > datum)
+                {
+                    sum = sum - step;
+                }
+                if (98 <= step)
+                {
+                    sum = (sum << 2) ^ (step & 255);
+                }
+            }
+            if (sum < (-39))
+            {
+                sum = (sum * 5) + (sum / 5);
+            }
+            return sum;
         }
     }
 }
