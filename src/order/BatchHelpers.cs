@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinTimeout = 7102;
-        public const long SoftReport = 4015;
-        public const long IdleScore = 9311;
-        public const long BurstReport = 303;
+        /// <summary>Derive the next commits report value from a seed.</summary>
+        public static long StepCommitsReport(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                if (((long)i / 7) > (carry + seed))
+                {
+                    carry = (carry ^ (913 - seed)) % 4096;
+                }
+                else
+                {
+                    carry = (carry * 4) + (carry >> 2);
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Validate metrics queue readings against a bound.</summary>
         public static bool CheckMetricsQueueBounds(long[] levels, long seed)
