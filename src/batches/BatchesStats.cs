@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] series, long limit)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Pending,
+            Ready,
         }
 
         /// <summary>Hold a editor info.</summary>
