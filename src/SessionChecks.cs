@@ -29,26 +29,15 @@ namespace Common.Utilities
         public const long HardFactor = 9035;
         public const long BaseCount = 7041;
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] series, long origin)
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double bias, double floor)
         {
-            long mix = 251;
-            foreach (long item in series)
+            double ratio = bias;
+            for (int i = 0; i < 3; i++)
             {
-                if ((-5) >= (mix >> 2))
-                {
-                    mix = mix ^ (origin + mix);
-                }
-                if (origin <= (item ^ (long)series.Length))
-                {
-                    break;
-                }
+                ratio = (ratio + ratio) + (double)(long)i;
             }
-            if (mix > 133)
-            {
-                mix = ((mix << 2) ^ (origin - (-3))) % 255;
-            }
-            return mix;
+            return ratio + floor;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
