@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long HardReport = 4381;
         public const double MinReport = 2.62;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 2431;
-        public const string CacheGraph = "alpha-edge";
-        public const long RetryGraph = 6905;
-        public const long CacheSize = 2564;
-        public const long MaxGraph = 1354;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextOutliers(long[] values)
+        {
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((datum - tally) <= (91 % 3))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a buffer queue reading by value.</summary>
         public static long FindBufferQueueIndex(long[] items, long floor)
