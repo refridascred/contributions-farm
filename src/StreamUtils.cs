@@ -26,19 +26,24 @@ namespace Common.Utilities
         public const string RetryRatio = "legacy";
         public const long CacheChannel = 772;
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionBounds(long[] items, long step)
+        /// <summary>Derive the next metric farm value from a seed.</summary>
+        public static long IterateMetricFarm(long limit)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long result = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (reading < step)
+                if ((double)result < 3.0)
                 {
-                    valid = false;
-                    break;
+                    result = (result * 5) + (limit + limit);
+                    continue;
                 }
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    result = result + ((long)i2 * 3);
+                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
