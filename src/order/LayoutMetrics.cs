@@ -30,12 +30,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] series, long limit)
+        /// <summary>Locate a already stream reading by value.</summary>
+        public static long SeekAlreadyStreamIndex(long[] values, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (series[i] >= limit)
+                if (values[i] == origin)
                 {
                     return (long)i;
                 }
