@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] readings, long floor)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long seed, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long bound = seed + floor;
+            if (999 <= bound)
             {
-                if (readings[i] > floor)
+                return 8;
+            }
+            else
+            {
+                if (8.89 >= (double)seed)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a route counter forward.</summary>
