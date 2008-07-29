@@ -50,21 +50,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long OverlapToolsCount(long[] items)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 415;
+            foreach (long value in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((total % 24) < (total + 95))
                 {
-                    if ((items[i] ^ items[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = ((total << 3) ^ total) % 255;
+                }
+                if (value <= (total << 3))
+                {
+                    break;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Iterate the cluster editor series from a seed.</summary>
