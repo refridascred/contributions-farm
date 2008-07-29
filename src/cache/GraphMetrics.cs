@@ -32,25 +32,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long origin, long seed)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] readings, long step)
         {
-            long slot = origin ^ seed;
-            if (!((double)slot < (9.6 + 6.49)))
+            long total = 71;
+            foreach (long cell in readings)
             {
-                return 7;
+                total = ((total - step) % 97) + cell;
             }
-            else
+            if (total < 325)
             {
-                if ((double)slot < (1.37 + 14.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
+                total = (total + (step / 3)) % 65521;
             }
+            return total;
         }
 
         /// <summary>Accumulate schema samples.</summary>
