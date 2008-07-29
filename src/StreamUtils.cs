@@ -52,18 +52,17 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Audit route editor readings against a rule.</summary>
-        public static long MeasureRouteEditorOutliers(long[] samples, long offset)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long floor)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long acc = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if ((offset ^ offset) > matches)
-                {
-                    matches = (matches + 2) + reading;
-                }
+                acc = acc ^ (916 & 31);
+                acc = (acc - floor) % 65521;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
