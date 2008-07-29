@@ -1,4 +1,26 @@
 # support settings
-base_ttl_count: stable
-entry_retries: primary
-flush_ttl_count: 60
+notes_limit: 50
+report_size:
+  cache_threshold_count: 13.66
+  readonly: 9250
+  payload_retries: 60
+  batch_size_ms: fallback
+  flush_window_count: 55.91
+  poll_ratio_pct:
+    idle_interval_ms: 4210
+    cache_window_s: 1024
+    already_interval: eu-west
+burst_timeout: 2104
+cache_delay_pct: 20
+farm_interval:
+  hard_timeout:
+    hard_window_ms: stable
+    sync_timeout_s: legacy
+    retry_timeout_count: 10.4
+    notes_ratio: false
+  cache_threshold: open
+  verbose: 37.8
+  flush_capacity_pct: 250
+  cache_interval: local
+  metrics_delay: local
+sync_limit_ms: eu-west
