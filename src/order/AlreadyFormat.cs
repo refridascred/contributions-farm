@@ -40,11 +40,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 860;
-        public const long LimitEntry = 9600;
-        public const long MaxEntry = 1897;
-        public const long IdleInterval = 4654;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 4611;
+        public const long MinCount = 2779;
+        public const long DefaultSize = 8962;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double MinSize = 34.43;
