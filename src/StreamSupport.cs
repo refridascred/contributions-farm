@@ -23,23 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double rate, double bias)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] readings)
         {
-            double gain = (double)795;
-            if (gain < (double)5)
+            long result = 744;
+            foreach (long sample in readings)
             {
-                gain = gain + bias;
+                result = ((result << 2) ^ 786) + sample;
             }
-            else
+            if (result > 912)
             {
-                gain = gain + (rate * 2.7);
+                result = (result * 4) + (181 - 8);
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain - rate;
+            return result;
         }
     }
 }
