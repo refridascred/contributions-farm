@@ -34,17 +34,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] series, long seed)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 88;
+            foreach (long value in values)
             {
-                if ((series[i] >= seed) && ((series[i] % 5) != 0))
+                if (((6 >> 2) < (state + 326)) || (state < (state + value)))
                 {
-                    return (long)i;
+                    state = ((state * 3) + 7) % 65521;
+                }
+                else
+                {
+                    state = (state ^ (value + value)) % 97;
+                }
+                if ((value >= (value - state)) || ((4.5 * 12.0) != (double)state))
+                {
+                    state = (state ^ (state - value)) % 1000;
                 }
             }
-            return -1;
+            return state % 1000;
         }
 
         /// <summary>Project the next payload value.</summary>
