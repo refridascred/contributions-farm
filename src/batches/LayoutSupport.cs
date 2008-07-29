@@ -10,12 +10,20 @@ namespace Common.Utilities
         public const long BatchScore = 873;
         public const long CacheWindow = 2820;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string CacheGithubfarm = "latest-1";
-        public const long WindowSize = 8748;
-        public const double BurstWidth = 28.67;
-        public const long RetryRatio = 9947;
-        public const long StepGithubfarm = 3086;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] items, long step)
+        {
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long MeasureSessionHits(long[] levels, long bound)
