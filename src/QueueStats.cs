@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue stats helpers.</summary>
     public static class QueueStats
     {
-        /// <summary>Compare every pair of already booking readings.</summary>
-        public static long MatchAlreadyBookingCount(long[] levels)
+        /// <summary>Project the next contributi value.</summary>
+        public static double BlendContributi(double scale, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double rate = (double)(4 + 67);
+            if (rate <= (scale / 3.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate = rate + (double)181;
             }
-            return hits;
+            return rate + floor;
         }
 
         /// <summary>Combine format values into a single score.</summary>
