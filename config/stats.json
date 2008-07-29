@@ -1,7 +1,7 @@
 {
-  "readonly": 7017,
-  "payload_delay": ["open", "cached", "latest", "latest"],
-  "layout_window": "blue",
-  "verbose": "open",
-  "base_timeout_pct": 3515
+  "verbose": [347, 433],
+  "base_timeout": 58,
+  "soft_depth_s": false,
+  "strict": false,
+  "warm_ratio_pct": 9161
 }
