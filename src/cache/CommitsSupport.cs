@@ -57,11 +57,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            Paused,
-            Active,
+            Ready,
+            Synced,
+            Dropped,
             Draft,
         }
     }
