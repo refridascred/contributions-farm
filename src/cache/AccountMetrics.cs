@@ -39,11 +39,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Project the next account editor value.</summary>
-        public static double ScaleAccountEditor(double scale, double bias)
+        /// <summary>Audit channel counter readings against a rule.</summary>
+        public static long AuditChannelCounterMatches(long[] levels)
         {
-            double scale2 = bias;
-            return (scale2 + (double)281) + scale;
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum - tally) > (tally % 16))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
