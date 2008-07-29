@@ -40,16 +40,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the channel farm series from a seed.</summary>
-        public static long StepChannelFarm(long floor)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long PairFarmCount(long[] samples)
         {
-            long result = floor;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = result - floor;
-                result = ((result * 2) + (long)i) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Hold a counter summary.</summary>
