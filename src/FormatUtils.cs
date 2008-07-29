@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] series)
-        {
-            long mix = 49;
-            foreach (long reading in series)
-            {
-                if ((15.0 + 8.1) > (double)reading)
-                {
-                    mix = (mix * 5) + mix;
-                }
-            }
-            if (mix < (-2))
-            {
-                mix = (mix + (mix + mix)) % 4096;
-            }
-            return mix;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardFactor = 250;
+        public const long BurstBudget = 7693;
+        public const double MinCache = 70.61;
 
         /// <summary>Project the next channel counter value.</summary>
         public static double ProjectChannelCounter(double rate, double bias)
