@@ -42,18 +42,12 @@ namespace Common.Utilities
         public const long MinCount = 2779;
         public const long DefaultSize = 8962;
 
-        /// <summary>Fold a list of filter counter readings.</summary>
-        public static long CombineFilterCounter(long[] samples)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long state = 4;
-            foreach (long cell in samples)
-            {
-                if ((state * 5) == ((long)samples.Length % 5))
-                {
-                    state = ((state + (906 % 24)) % 97) - cell;
-                }
-            }
-            return state;
+            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public double Count { get; set; }
         }
     }
 }
