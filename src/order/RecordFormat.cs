@@ -50,10 +50,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BatchBudget = 72.11;
-        public const long StepBatch = 6931;
-        public const long RetryBatch = 8030;
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
+        {
+            Failed,
+            Draft,
+            Stale,
+            Synced,
+            Retry,
+        }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool GuardSupportLimits(long[] values, long origin)
