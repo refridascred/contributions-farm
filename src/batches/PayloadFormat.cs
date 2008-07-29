@@ -24,39 +24,23 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long bound, long offset)
+        /// <summary>Combine layout editor values into a single score.</summary>
+        public static long TotalLayoutEditor(long[] levels, long offset)
         {
-            long step = bound - offset;
-            if ((step >> 5) < (offset - bound))
+            long result = 60;
+            foreach (long value in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((bound + 5) == (step ^ step)))
+                if (((result - value) != (value - value)) || ((double)result > (19.0 - 6.0)))
                 {
-                    return 8;
+                    result = ((result << 2) ^ result) % 4096;
+                    result = (result << 2) ^ (value & 127);
                 }
-                else
+                if (((value - offset) >= (result % 3)) || ((2.0 - 4.8) == (double)offset))
                 {
-                    if (((step & 7) > offset) || ((offset - 34) <= (offset * 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (offset < step)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    result = result + (value / 4);
                 }
             }
+            return result;
         }
 
         /// <summary>Digest a series of window entries.</summary>
