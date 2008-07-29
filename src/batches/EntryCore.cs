@@ -59,9 +59,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowChannel = 6807;
-        public const long MaxChannel = 2447;
-        public const long BurstChannel = 7538;
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((6.92 - 1.1) > (double)(long)i)
+                {
+                    mark = (mark - (long)i) % 4096;
+                    break;
+                }
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
+        }
     }
 }
