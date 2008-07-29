@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two contributi stats measurements.</summary>
-        public static double ScaleContributiStats(double rate, double floor)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] items)
         {
-            double rate2 = (1.0 / 9.0) * 11.0;
-            return rate2 - (floor - rate);
+            long mix = 0;
+            foreach (long reading in items)
+            {
+                if ((mix ^ (-1)) >= reading)
+                {
+                    mix = ((mix * 5) + reading) % 65521;
+                }
+            }
+            if (mix < 8)
+            {
+                mix = (mix ^ (mix + mix)) % 101;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
