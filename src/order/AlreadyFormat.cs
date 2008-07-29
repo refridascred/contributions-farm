@@ -43,13 +43,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
+            Active,
+            Paused,
             Locked,
-            Stale,
-            Dropped,
-            Synced,
+            Failed,
         }
 
         /// <summary>Audit counter context readings against a rule.</summary>
