@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const long HardDepth = 5733;
         public const string DefaultReport = "legacy-edge";
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryOutliers(long[] items)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (!(((seen - 12) >= (seen + 1)) || (((-54) ^ seen) >= seen)))
-                {
-                    seen = (seen + 2) + cell;
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a context header.</summary>
