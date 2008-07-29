@@ -37,32 +37,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long bound, long floor)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long delta = bound ^ floor;
-            if (!((floor - floor) >= 924))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)delta == (6.3 - 3.27)) && ((bound / 4) != (floor / 3)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor >> 3) != (floor + bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Stale,
+            Queued,
+            Draft,
+            Pending,
         }
     }
 }
