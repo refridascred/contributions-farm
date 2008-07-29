@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long limit)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsLimits(long[] samples, long bound)
         {
-            long total = limit;
-            for (int i = 0; i < 23; i++)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                total = ((total * 5) + (long)i) % 1000;
+                if (cell > bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Describe the payload status values.</summary>
