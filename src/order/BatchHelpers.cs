@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Look up the position of a metrics batches sample.</summary>
+        public static long LocateMetricsBatchesIndex(long[] levels, long limit)
         {
-            public long Rank { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
