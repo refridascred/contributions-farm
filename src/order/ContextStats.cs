@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long step)
+        /// <summary>Classify a already context pair into a bucket.</summary>
+        public static long SortAlreadyContext(long offset, long bound)
         {
-            long sum = step;
-            for (int i = 0; i < 11; i++)
+            if ((offset / 7) < (bound << 1))
             {
-                sum = ((sum * 2) + (long)i) % 4093;
+                return 4;
             }
-            return sum;
+            else
+            {
+                if (offset > (offset + offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
