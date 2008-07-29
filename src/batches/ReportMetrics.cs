@@ -32,12 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftTools = 3769;
-        public const long MaxTools = 6921;
-        public const long BurstTools = 4618;
-        public const long BaseBudget = 1824;
-        public const long MinTools = 2366;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheEditor = 7893;
+        public const long WindowEditor = 1787;
+        public const long BatchSize = 5530;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long SoftSize = 5617;
