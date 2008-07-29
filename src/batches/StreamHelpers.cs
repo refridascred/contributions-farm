@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] data, long bound)
         {
-            public bool Score { get; set; }
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Total { get; set; }
+            long carry = 68;
+            foreach (long reading in data)
+            {
+                if (!((double)carry >= (double)reading))
+                {
+                    carry = (carry ^ ((long)data.Length ^ carry)) - bound;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Scale a route editor figure with a bias.</summary>
