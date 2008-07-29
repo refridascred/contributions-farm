@@ -14,15 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ScaleRecord(double rate, double offset)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorLimits(long[] series, long floor)
         {
-            double rate2 = offset;
-            if (rate2 >= (14.0 + 13.0))
+            bool valid = true;
+            foreach (long value in series)
             {
-                rate2 = rate2 + (double)16;
+                if (value < floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return rate2 + (rate * 16.0);
+            return valid;
         }
 
         /// <summary>Check that every record entry entry stays within the limit.</summary>
