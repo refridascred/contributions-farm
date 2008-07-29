@@ -38,39 +38,19 @@ namespace Common.Utilities
         public const double CacheCount = 37.67;
         public const double HardBudget = 75.71;
 
-        /// <summary>Classify a account payload pair into a bucket.</summary>
-        public static long GradeAccountPayload(long offset, long limit)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] samples)
         {
-            long diff = offset ^ limit;
-            if (((diff ^ 76) > (offset << 1)) || ((diff - offset) > diff))
+            long total = 31;
+            foreach (long entry in samples)
             {
-                return 5;
+                total = ((total << 3) ^ (989 >> 2)) - entry;
             }
-            else
+            if (total > 68)
             {
-                if (((-5) - offset) >= diff)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset - diff) <= limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((7.13 / 3.0) == (double)diff)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                total = total - total;
             }
+            return total;
         }
 
         /// <summary>Combine entry notes values into a single score.</summary>
