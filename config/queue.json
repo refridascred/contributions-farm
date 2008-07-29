@@ -1,15 +1,5 @@
 {
-  "batch_retries": 16.15,
-  "default_retries_s": 3.8,
-  "persist": [56, 419],
-  "verbose": "primary",
-  "warm_interval": {
-    "persist": 522,
-    "max_ratio_s": true,
-    "default_delay_ms": 98,
-    "githubfarm_size": 60,
-    "hard_limit": 4,
-    "order_limit": "stable"
-  },
-  "idle_threshold_ms": "local"
+  "warm_depth_ms": "local",
+  "checks_size": "legacy",
+  "flush_interval_ms": 8.47
 }
