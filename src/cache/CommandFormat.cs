@@ -37,19 +37,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphLimits(long[] levels, long seed)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelLimits(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if (cell >= seed)
+                if (entry > limit)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
     }
 }
