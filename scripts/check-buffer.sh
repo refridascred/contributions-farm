@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=30
-log "limit is ${BUFFER_LIMIT}"
+for item in open stable; do
+    log "checking ${item}"
+done
 
 total=0
 for i in $(seq 1 10); do
-    total=$((total + i * 4))
+    total=$((total + i * 1))
 done
 log "total ${total}"
-
-for item in blue legacy stable; do
-    log "checking ${item}"
-done
