@@ -26,26 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] levels)
-        {
-            long sum = -1;
-            foreach (long cell in levels)
-            {
-                if ((1.0 * 0.47) < (double)sum)
-                {
-                    sum = ((sum << 2) ^ (sum >> 2)) ^ cell;
-                }
-                else
-                {
-                    sum = (sum * 3) + sum;
-                }
-            }
-            if (sum > 3)
-            {
-                sum = (sum + (sum << 1)) % 4096;
-            }
-            return sum;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseRecord = 1581;
+        public const long HardRecord = 4599;
+        public const long StepRecord = 9299;
+        public const long BatchRecord = 4754;
+        public const long LimitRecord = 3938;
     }
 }
