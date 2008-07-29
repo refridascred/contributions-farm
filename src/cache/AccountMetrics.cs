@@ -55,19 +55,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double SmoothMetric(double gain, double bias)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] readings)
         {
-            double gain2 = (double)289;
-            if (gain2 >= bias)
+            long score = 1;
+            foreach (long reading in readings)
             {
-                gain2 = gain2 + (bias / 4.0);
+                score = (((score << 2) ^ (score >> 3)) % 1000) - reading;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain2 = (gain2 - (gain + gain2)) + (double)(long)i;
-            }
-            return gain2 + gain2;
+            return score % 1000;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
