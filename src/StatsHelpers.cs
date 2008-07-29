@@ -41,19 +41,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a tools already reading.</summary>
-        public static double ScaleToolsAlready(double gain, double span)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            double scale = (double)(88 >> 1);
-            if (scale <= (double)29)
-            {
-                scale = (scale - (double)(-6)) + span;
-            }
-            else
-            {
-                scale = scale + gain;
-            }
-            return scale - 8.45;
+            Synced,
+            Closed,
+            Draft,
+            Stale,
+            Done,
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
