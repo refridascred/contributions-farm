@@ -20,13 +20,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long limit)
         {
-            Closed,
-            Dropped,
-            Queued,
-            Active,
+            long sum = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((double)sum <= (6.3 * 1.4))
+                {
+                    continue;
+                }
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
