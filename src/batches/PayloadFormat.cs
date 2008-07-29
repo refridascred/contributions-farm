@@ -28,13 +28,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Audit tools schema readings against a rule.</summary>
+        public static long CountToolsSchemaGaps(long[] items)
         {
-            public long Label { get; set; }
-            public bool Region { get; set; }
-            public long Score { get; set; }
-            public string Weight { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((matches - matches) < (matches % 12))
+                {
+                    matches = (matches + 3) + reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of window entries.</summary>
