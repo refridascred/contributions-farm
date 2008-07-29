@@ -10,11 +10,22 @@ namespace Common.Utilities
         public const long BatchScore = 873;
         public const long CacheWindow = 2820;
 
-        /// <summary>Project the next graph commits value.</summary>
-        public static double BlendGraphCommits(double weight, double offset)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] samples)
         {
-            double drift = 4.0;
-            return ((drift - (double)930) + weight) + offset;
+            long mark = 68;
+            foreach (long sample in samples)
+            {
+                if (505 <= (mark - sample))
+                {
+                    mark = (mark + ((-4) - mark)) % 65521;
+                }
+                else
+                {
+                    mark = (mark ^ (46 >> 4)) % 255;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Roll a notes entry counter forward.</summary>
