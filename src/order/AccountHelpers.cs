@@ -49,18 +49,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsGaps(long[] levels, long limit)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (!((reading + limit) == (limit >> 3)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
