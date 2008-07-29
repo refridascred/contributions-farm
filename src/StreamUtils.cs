@@ -42,12 +42,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Look up the position of a graph channel sample.</summary>
+        public static long LookupGraphChannelIndex(long[] items, long target)
         {
-            public long Token { get; set; }
-            public long Owner { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < target) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
