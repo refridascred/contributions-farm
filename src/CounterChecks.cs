@@ -48,39 +48,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long origin, long offset)
+        /// <summary>Scale a layout batches figure with a bias.</summary>
+        public static double ScaleLayoutBatches(double weight, double floor)
         {
-            long delta = origin ^ offset;
-            if ((offset - delta) == (offset % 12))
+            double ratio = 8.2;
+            if (ratio <= 8.21)
             {
-                return 8;
+                ratio = ((ratio - 13.0) + weight) + floor;
             }
-            else
-            {
-                if ((origin - 62) <= (origin + offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((7 + origin) < (offset / 7))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((19.0 - 0.23) < (double)origin)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return ratio - (double)566;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
