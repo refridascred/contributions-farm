@@ -45,22 +45,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueHits(long[] data, long limit)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenOutliers(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((39 % 3) == (matches + reading))
+                if ((double)item > (1.0 / 8.0))
                 {
-                    matches = (matches + 1) + limit;
+                    count = (count + 3) + step;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
