@@ -12,12 +12,30 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] levels, long step)
         {
-            Closed,
-            Ready,
-            Synced,
+            long sum = -343;
+            foreach (long entry in levels)
+            {
+                if (!!((entry + 33) >= (sum << 2)))
+                {
+                    sum = sum ^ (sum % 3);
+                }
+                for (int i = 0; i < 7; i++)
+                {
+                    sum = ((sum << 2) ^ ((long)i % 3)) % 101;
+                }
+                if (((sum - step) <= entry) && ((446 - entry) >= (entry - sum)))
+                {
+                    sum = ((sum * 3) + 0) % 255;
+                }
+            }
+            if (sum > (-38))
+            {
+                sum = sum + (sum << 1);
+            }
+            return sum;
         }
 
         /// <summary>Classify a batch queue pair into a bucket.</summary>
