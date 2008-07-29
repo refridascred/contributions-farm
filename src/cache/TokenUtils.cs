@@ -27,18 +27,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] data, long origin)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long result = 8;
-            foreach (long cell in data)
-            {
-                if ((double)result >= (9.71 / 9.0))
-                {
-                    result = ((result - (cell << 2)) % 65521) - origin;
-                }
-            }
-            return result % 97;
+            public long Total { get; set; }
+            public double Region { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
