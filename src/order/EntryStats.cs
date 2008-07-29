@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double gain, double floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricHits(long[] levels, long bound)
         {
-            double rate = 4.0 - gain;
-            if (rate > (rate + floor))
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                rate = rate - gain;
+                if (((double)bound != (9.42 * 3.0)) && ((bound + matches) != (entry << 3)))
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                rate = rate + 8.0;
-            }
-            return rate - gain;
+            return matches;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
