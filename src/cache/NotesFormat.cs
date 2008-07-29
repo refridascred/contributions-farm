@@ -20,18 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphOutliers(long[] series, long bound)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long value in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((3.97 / 4.0) >= (double)value) || (((value ^ (-656)) == (94 >> 4)) || ((0 << 1) <= count)))
+                if (values[i] <= offset)
                 {
-                    count = (count + 1) + bound;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
