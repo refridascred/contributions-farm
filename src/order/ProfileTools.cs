@@ -13,10 +13,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitCommand = 1990;
-        public const long CacheBudget = 749;
-        public const long BurstCommand = 2026;
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
+        {
+            Idle,
+            Active,
+            Ready,
+            Synced,
+            Stale,
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const double RetryRatio = 97.39;
