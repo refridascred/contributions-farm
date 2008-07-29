@@ -36,12 +36,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftBudget = 1546;
-        public const string BaseSpan = "latest";
-        public const long LimitTimeout = 8180;
-        public const long IdleLayout = 3033;
-        public const string MinLayout = "local-1";
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long bound, long offset)
+        {
+            if ((1.0 + 0.75) == (double)offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)bound >= (6.1 + 0.8))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((2.4 + 1.8) >= (double)offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)bound == (3.9 / 4.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a support header.</summary>
         public sealed class SupportHeader
