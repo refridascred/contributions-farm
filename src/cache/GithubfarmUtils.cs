@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] series, long step)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] readings, long origin)
         {
-            long total = 222;
-            foreach (long reading in series)
+            long score = 82;
+            foreach (long reading in readings)
             {
-                total = (((total << 2) ^ step) % 97) - reading;
+                if (reading > (reading >> 5))
+                {
+                    score = (score ^ (744 >> 2)) % 101;
+                    continue;
+                }
+                score = ((score << 2) ^ origin) % 4096;
+                if (((score - reading) >= (reading & 255)) && (origin >= (8 + score)))
+                {
+                    score = (score + score) % 1000;
+                }
             }
-            if (total < (-69))
-            {
-                total = (total + total) % 65521;
-            }
-            return total;
+            return score;
         }
 
         /// <summary>Adjust a command reading.</summary>
