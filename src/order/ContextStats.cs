@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long limit, long seed)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] items, long limit)
         {
-            if ((double)limit > (16.0 * 5.93))
+            long mark = 9;
+            foreach (long value in items)
             {
-                return 8;
+                mark = (((mark << 3) ^ (value ^ mark)) % 4096) - limit;
             }
-            else
+            if (mark > 233)
             {
-                if ((double)132 == (double)seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
+                mark = ((mark * 2) + mark) % 65521;
             }
+            return mark;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
