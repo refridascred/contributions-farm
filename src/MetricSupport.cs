@@ -22,12 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] readings, long offset)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] readings, long origin)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if ((readings[i] > offset) && ((readings[i] % 5) != 0))
+                if (readings[i] < origin)
                 {
                     return (long)i;
                 }
