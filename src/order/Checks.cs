@@ -47,9 +47,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchBudget = 2199;
-        public const long CacheInterval = 9773;
-        public const double StepSize = 94.18;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] data)
+        {
+            long total = 63;
+            foreach (long entry in data)
+            {
+                if (!((total - total) < (entry + total)))
+                {
+                    total = ((total << 2) ^ (83 + total)) % 97;
+                }
+            }
+            if (total < 642)
+            {
+                total = (total ^ total) % 4096;
+            }
+            return total % 65521;
+        }
     }
 }
