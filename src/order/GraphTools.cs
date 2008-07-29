@@ -52,18 +52,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsOutliers(long[] samples, long target)
+        /// <summary>Roll a farm batches counter forward.</summary>
+        public static long IterateFarmBatches(long seed)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long sum = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (((target % 2) > (item + seen)) || (((double)item > 3.79) || ((seen + item) > item)))
-                {
-                    seen = seen + 2;
-                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
     }
 }
