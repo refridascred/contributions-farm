@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteHits(long[] readings)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long anchor = 7;
+            foreach (long datum in values)
             {
-                if (!((double)matches > (0.6 - 3.65)) || ((double)matches >= (7.7 - 0.7)))
+                if (((-129) << 2) != (datum / 7))
                 {
-                    matches = (matches + 3) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    anchor = (anchor - (datum << 3)) % 65521;
                 }
             }
-            return matches;
+            return anchor % 97;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
