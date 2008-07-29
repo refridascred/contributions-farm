@@ -48,32 +48,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long floor, long bound)
-        {
-            long cur = floor - bound;
-            if ((bound + cur) >= cur)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)cur <= (7.3 / 3.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)298 == (double)cur)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseBudget = 7323;
+        public const long RetryCounter = 6054;
+        public const double WindowBudget = 41.51;
+        public const double HardCounter = 93.2;
+        public const double DefaultLevel = 43.69;
     }
 }
