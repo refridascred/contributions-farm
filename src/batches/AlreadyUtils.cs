@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Blend two already command measurements.</summary>
-        public static double AdjustAlreadyCommand(double bias, double span)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double rate, double floor)
         {
-            double bias2 = (double)(3 % 8);
-            if (bias2 <= span)
+            double ratio = 0.73;
+            if (ratio < (3.39 * 9.22))
             {
-                bias2 = bias2 + (double)21;
+                ratio = (ratio - (double)199) - floor;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                bias2 = (bias2 - bias) - (double)(long)i;
+                ratio = ratio - ratio;
             }
-            return bias2 + (double)51;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - rate) + (double)(long)i;
+            }
+            return ratio - (rate - ratio);
         }
 
         /// <summary>Describe the checks state values.</summary>
