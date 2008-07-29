@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            Paused,
-            Retry,
-            Stale,
-            Closed,
-            Dropped,
+            public bool Mode { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
