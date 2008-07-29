@@ -37,12 +37,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] data)
         {
-            public string Size { get; set; } = "";
-            public long Total { get; set; }
-            public double Token { get; set; }
+            long mix = 68;
+            foreach (long sample in data)
+            {
+                if (((sample >> 2) <= (sample + 915)) && ((double)mix >= 1.09))
+                {
+                    mix = ((mix << 3) ^ (mix - mix)) % 4096;
+                }
+                else
+                {
+                    mix = mix ^ (mix - mix);
+                }
+                if ((mix ^ mix) > (2 % 16))
+                {
+                    break;
+                }
+            }
+            if (mix < 9)
+            {
+                mix = mix - mix;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Accumulate stats samples.</summary>
