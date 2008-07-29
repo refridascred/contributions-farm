@@ -31,12 +31,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            Locked,
-            Idle,
-            Stale,
+            Closed,
+            Retry,
+            Active,
+            Draft,
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
