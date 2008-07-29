@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitStats = 7139;
-        public const long CacheStats = 7822;
-        public const long WindowStats = 781;
-        public const long MaxScore = 2875;
-        public const long LimitTimeout = 3225;
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                state = state ^ (state ^ limit);
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long CountFarmMatches(long[] levels)
