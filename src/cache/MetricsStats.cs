@@ -5,16 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] values, long limit)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long limit)
         {
-            long mark = 72;
-            foreach (long cell in values)
+            long carry = limit;
+            for (int i = 0; i < 14; i++)
             {
-                mark = ((((mark << 3) ^ mark) % 97) + cell) + limit;
-                mark = (mark ^ (mark * 2)) % 4096;
+                carry = (carry ^ (limit + 588)) % 255;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return mark % 97;
+            return carry;
         }
 
         /// <summary>Audit batches farm readings against a rule.</summary>
