@@ -47,18 +47,24 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueHits(long[] values)
+        /// <summary>Classify a already farm pair into a bucket.</summary>
+        public static long RankAlreadyFarm(long limit, long bound)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            if (((bound ^ limit) != (95 + bound)) && (59 > limit))
             {
-                if (((long)values.Length ^ (long)values.Length) < (8 % 2))
+                return 3;
+            }
+            else
+            {
+                if ((bound >> 3) == (limit - limit))
                 {
-                    hits = (hits + 3) + reading;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
     }
 }
