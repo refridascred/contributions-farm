@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] readings)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long step, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long offset = step + seed;
+            if ((offset * 4) >= (seed ^ step))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (offset <= (offset % 100))
                 {
-                    if ((readings[i] + readings[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
