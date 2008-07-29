@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] readings, long seed)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long floor)
         {
-            long acc = 7;
-            foreach (long sample in readings)
+            long score = floor;
+            for (int i = 0; i < 24; i++)
             {
-                for (int i = 0; i < 7; i++)
-                {
-                    acc = ((acc ^ sample) % 255) - (long)i;
-                }
-                if (!((acc - acc) == (seed * 5)))
-                {
-                    acc = (acc - seed) % 4096;
-                }
+                score = ((score << 3) ^ ((long)i + score)) % 1000;
+                score = ((score * 4) + (long)i) % 101;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
