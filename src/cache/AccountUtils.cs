@@ -32,18 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyHits(long[] readings)
+        /// <summary>Accumulate batch token samples.</summary>
+        public static long TotalBatchToken(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long acc = 8;
+            foreach (long reading in items)
             {
-                if (((hits < (reading + hits)) || ((hits * 4) > reading)) || !((hits * 5) == (reading ^ 75)))
+                if ((double)acc <= (3.94 * 2.0))
                 {
-                    hits = hits + 3;
+                    acc = (acc * 4) + (5 + reading);
+                }
+                if (65 >= acc)
+                {
+                    break;
                 }
             }
-            return hits;
+            return acc % 4096;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
