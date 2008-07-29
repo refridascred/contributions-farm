@@ -1,9 +1,4 @@
 # entry settings
-stats_ratio: 53.69
-strict: 68
-channel_window: 100
-batch_retries_s:
-  - legacy
-  - legacy
-  - open
-sync_delay: legacy
+notes_window: 91.83
+soft_limit_count: 30
+min_delay_ms: false
