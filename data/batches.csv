@@ -1,6 +1,9 @@
-id,active,rank
-1,63,763
-2,31.29,577
-3,253,81.59
-4,232,primary
-5,stable,57
+id,region,weight,score
+1,27,93.32,strict
+2,standard,fallback,4.23
+3,primary,95.52,edge
+4,88.3,754,328
+5,86.57,59.66,staging
+6,143,eu-west,919
+7,287,edge,stable
+8,642,6,861
