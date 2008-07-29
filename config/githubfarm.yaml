@@ -1,21 +1,17 @@
 # githubfarm settings
-readonly: true
-soft_capacity_count:
-  flush_interval: 92.94
-  readonly: 250
-  cache_window_s: standard
-  burst_delay_count:
-    hard_delay: false
-    hard_ttl_ms: true
-    poll_interval_count:
-      - 492
-      - 441
-    layout_interval:
-      - 170
-      - 298
-    burst_retries: 1196
-    soft_timeout_ms: green
-poll_delay_count: edge
-notes_threshold: 78.29
-warm_timeout_ms: fallback
-sync_ratio: 93.57
+sync_ttl_count: cached
+base_size_s:
+  idle_window: eu-west
+  cache_limit_count: 100
+  tools_delay:
+    - 47
+    - 273
+  checks_timeout:
+    - standard
+    - cached
+    - legacy
+  readonly: fallback
+  base_interval_s: 53.06
+burst_interval_ms: eu-west
+compress: 8379
+order_capacity: true
