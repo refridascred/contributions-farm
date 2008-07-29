@@ -63,18 +63,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of counter batch entries.</summary>
-        public static long WeighCounterBatch(long[] series)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long acc = 0;
-            foreach (long cell in series)
-            {
-                if ((cell - 7) >= (20 + 475))
-                {
-                    acc = acc ^ (acc << 2);
-                }
-            }
-            return acc % 4096;
+            Done,
+            Locked,
+            Queued,
         }
     }
 }
