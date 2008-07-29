@@ -1,6 +1,8 @@
 {
-  "enabled": ["legacy", "blue", "local"],
-  "cache_depth_ms": false,
-  "batch_timeout": 7859,
-  "hard_limit_ms": 60
+  "persist": "local",
+  "buffer_window": 54.91,
+  "schema_delay": "cached",
+  "base_delay_s": 47.35,
+  "burst_depth_count": [58, 128, 14],
+  "sync_ratio_s": 12
 }
