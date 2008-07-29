@@ -1,9 +1,18 @@
 # support settings
-compress: 250
-stats_size: local
-hard_threshold_ms:
-  - 97
-  - 293
-  - 355
-flush_ratio_count: 17
-max_retries_pct: 9666
+idle_delay_pct: 3
+default_window_pct:
+  - 36
+  - 174
+  - 168
+  - 321
+hard_depth:
+  cache_window_s: 6982
+  tools_threshold:
+    - strict
+    - green
+    - eu-west
+    - edge
+  context_timeout: true
+farm_window: 60
+enabled: primary
+poll_limit_pct: 9886
