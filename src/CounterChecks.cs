@@ -74,17 +74,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a checks metric reading by value.</summary>
-        public static long SeekChecksMetricIndex(long[] series, long origin)
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double bias, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double drift = (double)(948 >> 1);
+            if (drift < (double)(-91))
             {
-                if (series[i] >= origin)
-                {
-                    return (long)i;
-                }
+                drift = (drift - drift) - bias;
             }
-            return -1;
+            return drift - (19.0 + floor);
         }
     }
 }
