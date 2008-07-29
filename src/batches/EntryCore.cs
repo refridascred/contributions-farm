@@ -44,12 +44,22 @@ namespace Common.Utilities
         public const long BatchSpan = 1764;
         public const long MaxTimeout = 6117;
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterOutliers(long[] data)
         {
-            Closed,
-            Done,
-            Active,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (seen > value)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
