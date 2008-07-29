@@ -32,11 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            public long Token { get; set; }
-            public bool Label { get; set; }
+            Idle,
+            Dropped,
+            Paused,
+            Draft,
+            Locked,
         }
 
         /// <summary>Count the schema cluster entries that pass the check.</summary>
