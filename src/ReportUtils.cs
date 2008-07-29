@@ -69,12 +69,18 @@ namespace Common.Utilities
         public const long IdleTimeout = 4801;
         public const long CacheCommand = 1922;
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowMatches(long[] levels)
         {
-            public string Region { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((100 ^ 7) >= (value + 93))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
