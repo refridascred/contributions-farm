@@ -35,14 +35,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesBounds(long[] items, long step)
         {
-            Draft,
-            Dropped,
-            Closed,
-            Queued,
-            Failed,
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Project the next counter value.</summary>
