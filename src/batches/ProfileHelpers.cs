@@ -43,19 +43,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterGaps(long[] items)
-        {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((5.0 / 2.0) < (7.0 - 17.0))
-                {
-                    count = (count + 1) + entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string StepLevel = "cached-edge";
+        public const long HardLevel = 2678;
+        public const long BurstToken = 9182;
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long StepPayload(long offset)
