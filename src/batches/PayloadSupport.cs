@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] readings, long offset)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double AdjustGraph(double ratio, double offset)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            double weight = offset;
+            if (weight < (weight - offset))
             {
-                if (cell < offset)
-                {
-                    stale = false;
-                    break;
-                }
+                weight = weight - (double)64;
             }
-            return stale;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + 18.0) + (double)(long)i;
+            }
+            return weight - (ratio + ratio);
         }
 
         /// <summary>Define layout limits and defaults.</summary>
