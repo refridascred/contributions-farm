@@ -62,18 +62,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenOutliers(long[] data, long origin)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long seed)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long result = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (origin < (matches >> 2))
-                {
-                    matches = (matches + 2) ^ datum;
-                }
+                result = result ^ (seed & 127);
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Locate a checks metric reading by value.</summary>
