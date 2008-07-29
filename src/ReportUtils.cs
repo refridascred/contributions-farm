@@ -25,22 +25,38 @@ namespace Common.Utilities
         public const string CacheTools = "fallback-1";
         public const double IdleLevel = 31.33;
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheGaps(long[] items)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long origin, long seed)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            if (((origin % 16) != (origin >> 1)) && (seed <= (seed << 3)))
             {
-                if ((matches % 3) < (matches - 266))
+                return 8;
+            }
+            else
+            {
+                if (!(origin >= (seed + (-645))))
                 {
-                    matches = (matches + 2) ^ datum;
+                    return 5;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((origin > (origin + origin)) || ((origin ^ origin) != (8 & 7)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)origin >= (8.9 * 1.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
