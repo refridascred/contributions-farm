@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit record format readings against a rule.</summary>
-        public static long MeasureRecordFormatOutliers(long[] levels)
-        {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample - seen) <= (sample % 24))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTimeout = 8214;
+        public const string BatchTools = "latest-edge";
+        public const long BaseTools = 9250;
+        public const string BurstTools = "stable-edge";
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long WeighBatches(long[] data, long bound)
