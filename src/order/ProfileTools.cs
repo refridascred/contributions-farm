@@ -45,21 +45,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] readings)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long step, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((step - origin) != (step >> 3))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((origin * 4) == (996 * 4))
                 {
-                    if ((readings[i] ^ readings[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
     }
 }
