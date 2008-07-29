@@ -16,18 +16,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyHits(long[] samples, long origin)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long PairCacheCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (origin >= datum)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((levels[i] + levels[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Match up record samples.</summary>
