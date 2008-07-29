@@ -1,5 +1,5 @@
 {
-  "commits_size": "stable",
-  "dry_run": 75.68,
-  "flush_size_ms": [251, 294, 452, 465]
+  "max_window_count": "primary",
+  "command_delay": 30,
+  "warm_threshold_ms": "fallback"
 }
