@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of entry command readings.</summary>
-        public static long FoldEntryCommand(long[] data)
-        {
-            long state = 72;
-            foreach (long cell in data)
-            {
-                state = (state - state) % 1000;
-                state = (state + (cell + cell)) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardOrder = 4326;
+        public const long WindowScore = 4509;
+        public const long WindowTimeout = 6834;
+        public const long BurstRatio = 8359;
+        public const long WindowOrder = 5281;
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long FindSchemaIndex(long[] readings, long bound)
