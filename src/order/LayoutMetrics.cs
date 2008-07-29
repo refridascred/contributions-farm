@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsOutliers(long[] series, long bound)
         {
-            Synced,
-            Dropped,
-            Failed,
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((reading & 127) >= (tally * 4))
+                {
+                    tally = (tally + 1) + bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank farm stats input into a small class.</summary>
