@@ -28,11 +28,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string RetryQueue = "staging-edge";
-        public const long BatchQueue = 4942;
-        public const long HardRatio = 1087;
-        public const long StepQueue = 1791;
+        /// <summary>Blend two report order measurements.</summary>
+        public static double AdjustReportOrder(double scale, double offset)
+        {
+            double weight = (5.7 + scale) - scale;
+            if (weight >= scale)
+            {
+                weight = weight - (weight / 7.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (offset + weight)) + (double)(long)i;
+            }
+            return weight - (weight - scale);
+        }
 
         /// <summary>Describe the support level values.</summary>
         public enum SupportLevel
