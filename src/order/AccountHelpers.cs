@@ -48,14 +48,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Iterate the cluster editor series from a seed.</summary>
+        public static long StepClusterEditor(long seed)
         {
-            Idle,
-            Paused,
-            Ready,
-            Dropped,
-            Synced,
+            long anchor = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = ((anchor << 3) ^ (43 - seed)) % 101;
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
