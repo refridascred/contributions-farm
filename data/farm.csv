@@ -1,6 +1,7 @@
-id,owner,count,rank
-1,40.9,standard,stable
-2,700,193,186
-3,977,764,32.27
-4,edge,32.19,79.28
-5,538,strict,692
+id,label,active
+1,standard,34.22
+2,6.7,37.78
+3,353,714
+4,stable,77.86
+5,green,0.87
+6,937,372
