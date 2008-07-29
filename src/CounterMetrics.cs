@@ -30,32 +30,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long step, long seed)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] data, long floor)
         {
-            long delta = step + seed;
-            if ((7.0 - 7.21) < (double)delta)
+            long anchor = 91;
+            foreach (long sample in data)
             {
-                return 3;
+                anchor = ((anchor << 2) ^ (anchor & 127)) % 97;
+                anchor = ((anchor * 4) + sample) % 1000;
+                anchor = (anchor ^ (sample - floor)) % 4096;
             }
-            else
+            if (anchor > 70)
             {
-                if ((delta + delta) != (29 % 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((step + step) <= (step * 2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                anchor = ((anchor << 2) ^ anchor) % 4096;
             }
+            return anchor;
         }
     }
 }
