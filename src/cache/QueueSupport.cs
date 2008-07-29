@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamBounds(long[] values, long origin)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long limit)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long mark = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (reading > origin)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = mark - (99 + (long)i);
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Project the next buffer value.</summary>
