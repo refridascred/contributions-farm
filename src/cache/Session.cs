@@ -35,12 +35,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            Failed,
-            Closed,
+            Dropped,
+            Ready,
             Queued,
+            Synced,
+            Active,
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
