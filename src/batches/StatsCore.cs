@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double gain, double offset)
-        {
-            double ratio = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - (offset - gain)) + (double)(long)i;
-            }
-            return ratio - ratio;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string HardInterval = "staging-edge";
+        public const long RetryInterval = 2147;
+        public const double MinFactor = 61.62;
 
         /// <summary>Digest a series of command entries.</summary>
         public static long CombineCommand(long[] samples)
