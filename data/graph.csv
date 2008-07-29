@@ -1,7 +1,10 @@
-id,label,owner
-1,63.93,29
-2,67.7,blue
-3,942,44.78
-4,fallback,green
-5,green,cached
-6,latest,167
+id,score,state,token
+1,latest,eu-west,884
+2,780,local,142
+3,616,261,133
+4,32.88,198,171
+5,933,103,53.17
+6,397,689,513
+7,970,72.19,799
+8,strict,eu-west,617
+9,open,377,strict
