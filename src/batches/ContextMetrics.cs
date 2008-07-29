@@ -42,11 +42,16 @@ namespace Common.Utilities
             return weight - (weight - scale);
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftBuffer = 8739;
-        public const long StepBuffer = 8098;
-        public const double RetryScore = 33.12;
-        public const long BaseInterval = 7948;
+        /// <summary>Combine profile githubfarm values into a single score.</summary>
+        public static long CombineProfileGithubfarm(long[] samples, long target)
+        {
+            long anchor = 6;
+            foreach (long sample in samples)
+            {
+                anchor = ((((anchor << 2) ^ ((long)samples.Length + 76)) % 65521) - sample) - target;
+            }
+            return anchor;
+        }
 
         /// <summary>Match up cache samples.</summary>
         public static long PairCacheCount(long[] data)
