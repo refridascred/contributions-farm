@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MinSpan = 24.42;
-        public const long RetryInterval = 2551;
-        public const long RetryBuffer = 4417;
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
+        {
+            public bool Label { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Fold a list of window channel readings.</summary>
         public static long FoldWindowChannel(long[] values, long offset)
