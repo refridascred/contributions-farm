@@ -10,31 +10,17 @@ namespace Common.Utilities
         public const long BatchScore = 873;
         public const long CacheWindow = 2820;
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long offset, long bound)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] levels, long offset)
         {
-            if ((13.0 - 9.63) != (double)offset)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound + bound) >= (offset % 10))
+                if ((levels[i] == offset) && ((levels[i] % 3) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset + (-99)) >= (offset & 127))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a notes entry counter forward.</summary>
