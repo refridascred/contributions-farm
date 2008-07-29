@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long limit)
+        /// <summary>Adjust a checks report reading.</summary>
+        public static double BlendChecksReport(double rate, double bias)
         {
-            long mark = limit;
-            for (int i = 0; i < 12; i++)
+            double gain = rate;
+            for (int i = 0; i < 2; i++)
             {
-                mark = mark - (99 + (long)i);
-                mark = ((mark * 3) + (long)i) % 4093;
+                gain = (gain + 5.88) - (double)(long)i;
             }
-            return mark;
+            return gain - (bias - 7.18);
         }
 
         /// <summary>Project the next buffer value.</summary>
