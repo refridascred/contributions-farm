@@ -47,19 +47,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandBounds(long[] series, long seed)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double scale, double offset)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            double gain = (offset - scale) / 7.0;
+            if (gain < gain)
             {
-                if (sample != seed)
-                {
-                    stale = false;
-                    break;
-                }
+                gain = gain - gain;
             }
-            return stale;
+            return gain - (double)40;
         }
     }
 }
