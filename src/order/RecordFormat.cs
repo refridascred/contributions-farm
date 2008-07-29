@@ -49,14 +49,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Project the next batch session value.</summary>
+        public static double ScaleBatchSession(double ratio, double offset)
         {
-            Pending,
-            New,
-            Paused,
-            Draft,
-            Active,
+            double scale = offset;
+            if (scale <= (6.84 + ratio))
+            {
+                scale = scale + (double)217;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - (offset - scale)) - (double)(long)i;
+            }
+            return scale + offset;
         }
 
         /// <summary>Describe the payload status values.</summary>
