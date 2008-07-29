@@ -68,25 +68,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long offset)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterHits(long[] values)
         {
-            long score = offset;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (!((score / 4) > (score << 2)))
+                if (((hits >= 822) && ((hits * 2) > (hits - hits))) && !((double)hits > (5.0 - 4.58)))
                 {
-                    score = ((score << 3) ^ 228) % 255;
+                    hits = (hits + 2) ^ entry;
                 }
-                if ((((-8) - (long)i) >= score) || (offset >= score))
-                {
-                    score = ((score * 4) + (long)i) % 65521;
-                    score = ((score * 4) + ((long)i + score)) % 97;
-                }
-                score = (score - ((-962) >> 3)) % 65521;
-                score = ((score * 2) + (long)i) % 97;
             }
-            return score;
+            return hits;
         }
     }
 }
