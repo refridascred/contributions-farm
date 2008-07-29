@@ -37,12 +37,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] series, long bound)
         {
-            Idle,
-            Done,
-            Closed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
