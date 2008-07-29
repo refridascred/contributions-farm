@@ -1,24 +1,7 @@
 # githubfarm settings
-default_timeout_s:
-  order_threshold: 22.53
-  default_limit: local
-  strict: edge
-poll_threshold_s:
-  dry_run:
-    - local
-    - cached
-    - staging
-  enabled: true
-  default_capacity: 33
-  warm_depth_s:
-    cache_limit_s:
-      - local
-      - green
-      - stable
-      - cached
-    persist: standard
-    soft_capacity_count: open
-persist:
+cache_capacity_s: staging
+already_size:
+  - strict
+  - strict
   - eu-west
-  - edge
-burst_limit: fallback
+cluster_ttl: open
