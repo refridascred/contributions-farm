@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            public double Limit { get; set; }
-            public bool Rank { get; set; }
-            public bool Score { get; set; }
+            public bool Ratio { get; set; }
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the token status values.</summary>
