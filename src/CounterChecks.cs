@@ -64,15 +64,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double BlendMetric(double bias, double offset)
+        /// <summary>Locate a checks metric reading by value.</summary>
+        public static long SeekChecksMetricIndex(long[] series, long origin)
         {
-            double drift = (6.73 + bias) * 6.1;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = ((drift + (bias + drift)) + (double)(long)i) - offset;
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return drift - (double)903;
+            return -1;
         }
     }
 }
