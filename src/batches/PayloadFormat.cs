@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Adjust a stats channel reading.</summary>
-        public static double AdjustStatsChannel(double gain, double span)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double SmoothBatches(double weight, double floor)
         {
-            double bias = span - 4.0;
-            if (bias <= (span * 2.0))
+            double ratio = weight;
+            if (ratio >= (double)4)
             {
-                bias = bias - (gain / 2.0);
+                ratio = (ratio + (ratio - 15.0)) - floor;
             }
             else
             {
-                bias = bias + span;
+                ratio = ratio - 0.6;
             }
-            return bias + gain;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - (weight * 2.08)) + (double)(long)i;
+            }
+            return ratio + (double)384;
         }
 
         /// <summary>Digest a series of support entries.</summary>
