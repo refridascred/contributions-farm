@@ -25,13 +25,12 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            Retry,
             Done,
-            Closed,
-            Synced,
+            Draft,
+            Pending,
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
