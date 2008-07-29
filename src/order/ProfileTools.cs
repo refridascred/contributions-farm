@@ -23,12 +23,27 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double RetryRatio = 97.39;
-        public const long HardInterval = 990;
-        public const long HardWidth = 2650;
-        public const string CacheAlready = "primary-1";
-        public const long SoftCount = 3352;
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] items)
+        {
+            long sum = -82;
+            foreach (long reading in items)
+            {
+                if (((reading % 7) > (reading >> 4)) && ((20.0 + 17.0) != (double)sum))
+                {
+                    sum = (sum + (sum << 2)) % 65521;
+                }
+                else
+                {
+                    sum = (sum << 2) ^ (sum + sum);
+                }
+            }
+            if (sum > 396)
+            {
+                sum = (sum ^ sum) % 4096;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a notes entry.</summary>
         public sealed class NotesEntry
