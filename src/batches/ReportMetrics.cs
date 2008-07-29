@@ -18,38 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long BucketStream(long origin, long offset)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            if ((offset << 1) < (origin * 4))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin & 15) >= 2)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((offset - offset) <= (-6)) && ((20.0 * 4.4) >= (double)offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)origin <= 3.22)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Audit queue cluster readings against a rule.</summary>
