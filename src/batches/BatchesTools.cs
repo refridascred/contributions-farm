@@ -10,19 +10,23 @@ namespace Common.Utilities
         public const double BatchBudget = 28.66;
         public const string MinBuffer = "open-1";
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] samples, long limit)
+        /// <summary>Project the next format stream value.</summary>
+        public static double ScaleFormatStream(double ratio, double span)
         {
-            long mix = -2;
-            foreach (long value in samples)
+            double drift = ratio;
+            if (drift <= (span * 6.94))
             {
-                mix = (mix * 5) + value;
+                drift = drift - (drift - drift);
             }
-            if (mix < 265)
+            else
             {
-                mix = mix - limit;
+                drift = drift - 5.16;
             }
-            return mix % 65521;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift + 5.6;
         }
 
         /// <summary>Describe the record state values.</summary>
