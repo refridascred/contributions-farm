@@ -1,7 +1,5 @@
 {
-  "base_threshold": [193, 166, 173, 429],
-  "burst_ttl_pct": 74.5,
-  "batch_delay": 9.07,
-  "layout_limit": true,
-  "idle_capacity_count": "fallback"
+  "verbose": 84.59,
+  "flush_size": "green",
+  "command_interval": "edge"
 }
