@@ -55,13 +55,19 @@ namespace Common.Utilities
             return ratio - (double)566;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Check that every support tools entry stays within the limit.</summary>
+        public static bool CheckSupportToolsLimits(long[] series, long offset)
         {
-            public string Label { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Weight { get; set; }
-            public bool Score { get; set; }
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Match up farm samples.</summary>
