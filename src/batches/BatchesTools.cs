@@ -11,14 +11,13 @@ namespace Common.Utilities
         public const long LimitFactor = 2422;
         public const double StepScore = 10.91;
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            Dropped,
-            Stale,
-            Pending,
-            Failed,
-            New,
+            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Score { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
