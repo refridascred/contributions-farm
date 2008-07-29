@@ -38,19 +38,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmBounds(long[] values, long bound)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            bool ok = true;
-            foreach (long item in values)
-            {
-                if (item <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            Ready,
+            Stale,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Hold a metric record.</summary>
