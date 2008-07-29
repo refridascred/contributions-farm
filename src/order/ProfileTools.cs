@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double WindowBudget = 73.69;
-        public const long RetryReport = 1384;
-        public const double HardReport = 44.99;
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
+        {
+            Ready,
+            New,
+            Locked,
+            Synced,
+        }
 
         /// <summary>Project the next cluster value.</summary>
         public static double AdjustCluster(double ratio, double floor)
