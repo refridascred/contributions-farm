@@ -40,15 +40,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] levels, long offset)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long target, long offset)
         {
-            long carry = 9;
-            foreach (long sample in levels)
+            if ((offset + offset) > (offset / 5))
             {
-                carry = (((carry * 2) + (948 - offset)) % 255) ^ sample;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if ((offset + offset) >= (2 ^ target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target >> 4) >= (target & 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of batch readings.</summary>
