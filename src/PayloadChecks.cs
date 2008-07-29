@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double SmoothQueue(double rate, double bias)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] levels, long origin)
         {
-            double drift = (bias - rate) * 5.2;
-            if (drift <= rate)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                drift = drift + (drift + drift);
+                if (cell < origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - (rate - drift);
-            }
-            return drift + (drift + bias);
+            return flag;
         }
 
         /// <summary>Hold a token info.</summary>
