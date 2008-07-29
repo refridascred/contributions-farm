@@ -13,11 +13,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double BlendFarm(double ratio, double bias)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            double scale = ratio;
-            return (scale - (scale - ratio)) + bias;
+            Idle,
+            Done,
+            Retry,
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
