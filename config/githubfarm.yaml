@@ -1,19 +1,5 @@
 # githubfarm settings
-stats_threshold: blue
-compress: blue
-batches_ratio:
-  hard_ttl_ms: 25.7
-  min_capacity_count: edge
-  retry_delay_pct:
-    - latest
-    - blue
-    - green
-  persist: 28.48
-  soft_size_count:
-    - standard
-    - staging
-schema_timeout: strict
-readonly: true
-sync_depth_ms:
-  - 478
-  - 158
+idle_ttl_s: 35
+idle_interval: standard
+cache_ratio: 83.93
+context_interval: 250
