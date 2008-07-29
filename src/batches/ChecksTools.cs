@@ -49,11 +49,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BurstEditor = 11.95;
-        public const string BaseDepth = "primary-edge";
-        public const long MinEditor = 1006;
-        public const long LimitEditor = 793;
-        public const long IdleEditor = 4319;
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
+        {
+            public bool Flag { get; set; }
+            public long Region { get; set; }
+            public long Score { get; set; }
+            public bool Rank { get; set; }
+        }
     }
 }
