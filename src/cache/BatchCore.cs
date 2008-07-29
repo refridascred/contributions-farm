@@ -43,24 +43,12 @@ namespace Common.Utilities
         public const long MinProfile = 8658;
         public const string RetryProfile = "latest-v2";
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long target)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long acc = target;
-            for (int i = 0; i < 17; i++)
-            {
-                if (target >= (target & 7))
-                {
-                    acc = (acc + (target * 5)) % 255;
-                }
-                else
-                {
-                    acc = (acc - (long)i) % 1000;
-                    acc = ((acc * 5) + target) % 255;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            public long Count { get; set; }
+            public double Token { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
