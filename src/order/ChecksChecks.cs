@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterLimits(long[] levels, long origin)
         {
-            public bool Rank { get; set; }
-            public long Level { get; set; }
-            public string Total { get; set; } = "";
-            public bool Score { get; set; }
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the stats status values.</summary>
