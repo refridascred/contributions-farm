@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=435
-log "limit is ${RECORD_LIMIT}"
-
-for item in eu-west legacy; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
+
+RECORD_LIMIT=377
+log "limit is ${RECORD_LIMIT}"
