@@ -38,15 +38,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ProjectEditor(double rate, double span)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] levels, long offset)
         {
-            double scale = (rate + rate) - span;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = (scale - (scale / 3.0)) + (double)(long)i;
+                if ((levels[i] > offset) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale + (rate * 7.91);
+            return -1;
         }
     }
 }
