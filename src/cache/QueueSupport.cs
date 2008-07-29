@@ -14,18 +14,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] samples, long step)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long limit)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long total = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (96 >= (sample + sample))
-                {
-                    matches = (matches + 2) - step;
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
