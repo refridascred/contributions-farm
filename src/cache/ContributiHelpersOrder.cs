@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsLimits(long[] samples, long bound)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Score { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
