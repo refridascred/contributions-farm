@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
-        {
-            public bool Count { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryTimeout = 4167;
+        public const double DefaultBudget = 55.51;
+        public const long IdleRatio = 5980;
+        public const long RetryBatches = 9814;
 
         /// <summary>Grade a session value against two limits.</summary>
         public static long SortSession(long bound, long offset)
