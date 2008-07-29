@@ -34,19 +34,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double AdjustTools(double rate, double span)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] items, long origin)
         {
-            double ratio = (rate + rate) / 9.0;
-            if (ratio >= ratio)
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ratio - (span + ratio);
+                if (items[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio - (3.9 * 8.99);
-            }
-            return ratio - rate;
+            return -1;
         }
     }
 }
