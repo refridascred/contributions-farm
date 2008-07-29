@@ -20,11 +20,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double WindowCount = 95.74;
-        public const long BurstInterval = 3892;
-        public const long BatchSize = 1562;
-        public const string DefaultSpan = "standard-v2";
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenGaps(long[] values, long bound)
+        {
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (((bound - tally) >= (tally << 2)) || ((double)bound < (double)datum))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the channel farm series from a seed.</summary>
         public static long StepChannelFarm(long floor)
