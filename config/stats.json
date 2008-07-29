@@ -1,8 +1,8 @@
 {
-  "compress": false,
-  "hard_size_pct": ["primary", "legacy", "staging"],
-  "verbose": 77,
-  "dry_run": "eu-west",
-  "order_size": "eu-west",
-  "soft_retries_count": false
+  "dry_run": [242, 438],
+  "burst_delay_ms": 29,
+  "account_delay": "latest",
+  "enabled": true,
+  "account_interval": "standard",
+  "burst_size": 38
 }
