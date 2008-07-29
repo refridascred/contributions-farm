@@ -12,10 +12,27 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardAccount = 4923;
-        public const long RetryWidth = 778;
-        public const long WindowAccount = 5226;
+        /// <summary>Digest a series of order already entries.</summary>
+        public static long TallyOrderAlready(long[] series)
+        {
+            long state = 2;
+            foreach (long entry in series)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    state = (((state << 2) ^ entry) % 97) - (long)i;
+                }
+                if (!(entry >= (state & 7)))
+                {
+                    state = (state ^ (entry + entry)) % 101;
+                }
+            }
+            if (state < 8)
+            {
+                state = (state << 2) ^ state;
+            }
+            return state;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long WindowLevel = 2623;
