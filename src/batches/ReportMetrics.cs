@@ -32,16 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long origin)
+        /// <summary>Accumulate channel schema samples.</summary>
+        public static long CombineChannelSchema(long[] samples, long step)
         {
-            long state = origin;
-            for (int i = 0; i < 12; i++)
+            long acc = 227;
+            foreach (long sample in samples)
             {
-                state = (state * 5) + ((long)i + state);
-                state = ((state * 5) + (long)i) % 4093;
+                if ((779 / 8) < (acc + acc))
+                {
+                    acc = ((acc + (step % 97)) % 97) ^ sample;
+                }
+                else
+                {
+                    acc = acc + acc;
+                }
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
