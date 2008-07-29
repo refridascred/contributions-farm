@@ -30,18 +30,11 @@ namespace Common.Utilities
         public const string CacheAlready = "primary-1";
         public const long SoftCount = 3352;
 
-        /// <summary>Count the window route entries that pass the check.</summary>
-        public static long MeasureWindowRouteOutliers(long[] items)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((8 >> 5) == (reading ^ 75))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Mode { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
