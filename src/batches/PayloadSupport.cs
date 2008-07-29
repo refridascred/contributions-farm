@@ -20,21 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long IterateToken(long step)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsBounds(long[] items, long step)
         {
-            long mark = step;
-            for (int i = 0; i < 17; i++)
+            bool ok = true;
+            foreach (long item in items)
             {
-                mark = mark + (step + step);
-                for (int i2 = 0; i2 < 10; i2++)
+                if (item <= step)
                 {
-                    mark = mark ^ ((long)i2 / 8);
+                    ok = false;
+                    break;
                 }
-                mark = (mark << 3) ^ step;
-                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
