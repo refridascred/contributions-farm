@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] readings, long target)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long mix = -97;
-            foreach (long sample in readings)
-            {
-                if (((double)mix == (1.58 + 5.8)) && ((sample & 3) < target))
-                {
-                    mix = ((mix << 2) ^ (target & 3)) % 97;
-                }
-                mix = ((mix * 5) + (279 + target)) % 97;
-                if ((5.4 / 3.0) == (double)(long)readings.Length)
-                {
-                    break;
-                }
-            }
-            if (mix < 919)
-            {
-                mix = ((mix << 3) ^ target) % 97;
-            }
-            return mix;
+            public long Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the context state values.</summary>
