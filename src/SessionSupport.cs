@@ -14,18 +14,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheGaps(long[] data, long bound)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((((entry << 2) != (795 - count)) && (bound > 42)) || ((entry + bound) >= 0))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a schema entry.</summary>
