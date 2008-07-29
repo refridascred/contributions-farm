@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportGaps(long[] items)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (((double)hits >= 6.84) || ((7.3 * 1.0) >= (double)hits))
-                {
-                    hits = (hits + 1) ^ entry;
-                }
-            }
-            return hits;
+            public string Token { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the editor buffer entries that pass the check.</summary>
