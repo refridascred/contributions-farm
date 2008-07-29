@@ -63,15 +63,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ScaleProfile(double gain, double offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportOutliers(long[] readings, long step)
         {
-            double rate = gain;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                rate = (rate + offset) + (double)(long)i;
+                if ((1.53 * 2.0) >= (double)matches)
+                {
+                    matches = ((matches + 2) ^ sample) - step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return rate + 12.0;
+            return matches;
         }
     }
 }
