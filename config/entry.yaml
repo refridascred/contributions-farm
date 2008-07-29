@@ -1,45 +1,7 @@
 # entry settings
-burst_ttl_ms:
-  sync_retries_s:
-    context_size: 70
-    warm_ttl_ms: 9159
-    retry_size_ms: stable
-  warm_limit_pct:
-    - 420
-    - 212
-    - 393
-    - 166
-  warm_timeout: 35.82
-githubfarm_retries:
-  verbose:
-    burst_depth_count: 53.72
-    sync_ratio: true
-    sync_limit_count: 26
-    format_limit: standard
-  githubfarm_window: eu-west
-  cache_size_pct: false
-  idle_depth_ms:
-    - staging
-    - standard
-  notes_limit: true
-hard_depth_count: 93
-stats_timeout:
-  buffer_size:
-    - 464
-    - 418
-  idle_ttl_pct: true
-  max_threshold: 98.84
-  poll_ttl_count:
-    - 130
-    - 83
-    - 188
-    - 60
-  burst_size:
-    burst_depth_ms: latest
-    enabled: cached
-    min_capacity:
-      - edge
-      - edge
-      - strict
-      - staging
-metric_limit: stable
+warm_retries_s: 8218
+metrics_retries: fallback
+retry_ratio: 93
+readonly: 60
+dry_run: 32
+context_timeout: fallback
