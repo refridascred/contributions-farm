@@ -5,28 +5,28 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long origin, long target)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long step, long limit)
         {
-            if (((9.0 + 5.9) > (7.8 - 2.0)) && ((5.9 * 6.1) >= (double)origin))
+            if (step >= limit)
             {
-                return 1;
+                return 4;
             }
             else
             {
-                if ((3 ^ target) != (origin + target))
+                if (((step % 2) > (limit - limit)) && ((limit + 54) == (step - step)))
                 {
-                    return 3;
+                    return 5;
                 }
                 else
                 {
-                    if (((origin ^ origin) != (origin - target)) || (target <= origin))
+                    if (step > limit)
                     {
                         return 0;
                     }
                     else
                     {
-                        return 2;
+                        return 8;
                     }
                 }
             }
