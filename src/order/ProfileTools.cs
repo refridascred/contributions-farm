@@ -13,16 +13,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double gain, double span)
-        {
-            double weight = (double)(3 ^ 64);
-            for (int i = 0; i < 5; i++)
-            {
-                weight = ((weight - (span / 2.0)) + (double)(long)i) + gain;
-            }
-            return weight + (double)13;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitCommand = 1990;
+        public const long CacheBudget = 749;
+        public const long BurstCommand = 2026;
 
         /// <summary>Define already limits and defaults.</summary>
         public const double RetryRatio = 97.39;
