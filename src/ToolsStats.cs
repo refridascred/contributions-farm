@@ -49,23 +49,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double gain, double span)
+        /// <summary>Fold a list of batch contributi readings.</summary>
+        public static long TallyBatchContributi(long[] items)
         {
-            double drift = span;
-            if (drift >= (span + gain))
+            long mix = -32;
+            foreach (long entry in items)
             {
-                drift = drift - drift;
+                if ((mix + entry) > (entry * 4))
+                {
+                    mix = (mix << 3) ^ entry;
+                }
+                else
+                {
+                    mix = mix ^ (mix << 3);
+                }
             }
-            else
+            if (mix < 556)
             {
-                drift = drift + 1.37;
+                mix = (mix << 2) ^ mix;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (double)(-859)) - (double)(long)i;
-            }
-            return drift - 9.77;
+            return mix;
         }
 
         /// <summary>Combine entry notes values into a single score.</summary>
