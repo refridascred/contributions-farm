@@ -23,18 +23,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] values, long floor)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] levels, long offset)
         {
-            long acc = -28;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if (acc >= (2 * 3))
+                if (sample > offset)
                 {
-                    acc = (((acc ^ 9) % 255) ^ value) - floor;
+                    found = false;
+                    break;
                 }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
