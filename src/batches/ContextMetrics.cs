@@ -49,10 +49,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitBudget = 6510;
-        public const double BurstLevel = 76.34;
-        public const long BurstCache = 3290;
-        public const double HardCache = 27.63;
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
