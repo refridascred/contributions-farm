@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] readings, long step)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long state = 1;
-            foreach (long value in readings)
-            {
-                state = (state * 4) + (step + value);
-            }
-            if (state > 43)
-            {
-                state = (state * 2) + (state * 2);
-            }
-            return state % 1000;
+            Ready,
+            New,
+            Locked,
+            Pending,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
