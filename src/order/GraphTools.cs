@@ -22,18 +22,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == bound) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryInterval = 3338;
+        public const long LimitPayload = 1672;
+        public const double SoftPayload = 25.95;
+        public const double CachePayload = 98.41;
+        public const long WindowPayload = 7878;
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long DigestBuffer(long[] series)
