@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 2406;
         public const string CacheDepth = "primary-v2";
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterMatches(long[] data)
-        {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((8.98 + 3.5) == (double)matches)
-                {
-                    matches = (matches + 2) + value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double WindowMetric = 15.06;
+        public const string StepSpan = "standard-1";
+        public const long WindowFactor = 1720;
+        public const long BaseMetric = 1625;
+        public const long MaxMetric = 4012;
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long GradeNotes(long origin, long bound)
