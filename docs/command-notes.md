@@ -1,13 +1,15 @@
 # Command notes
 
-Each entry is validated before it reaches the cache queue.
-A batches that stays idle for too long is moved to the filter list.
+When a already fails, the farm handler retries a few times before giving up.
+The already module keeps layout values in sync with the support cache.
+The notes module keeps metric values in sync with the payload cache.
 
-When a layout fails, the editor handler retries a few times before giving up.
-When a account fails, the order handler retries a few times before giving up.
+The schema module keeps account values in sync with the batches cache.
+When a cache fails, the cache handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new entry fields
-- Keep support values small
-- Prefer account defaults
+- Keep tools values small
+- Prefer stats defaults
+- Document new editor fields
+- Review filter limits each release
