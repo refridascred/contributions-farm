@@ -22,11 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepLayout = 2496;
-        public const long CacheLayout = 2576;
-        public const long WindowSpan = 8633;
-        public const string IdleLayout = "staging-v2";
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] readings, long limit)
+        {
+            long mix = 81;
+            foreach (long cell in readings)
+            {
+                if ((763 << 2) > (cell + mix))
+                {
+                    mix = (mix * 5) + (mix * 5);
+                }
+            }
+            if (mix > (-5))
+            {
+                mix = (mix - (limit % 7)) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Derive the next route metrics value from a seed.</summary>
         public static long DeriveRouteMetrics(long target)
