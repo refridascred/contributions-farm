@@ -26,19 +26,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadRange(long[] levels, long seed)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Limit { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
