@@ -20,17 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = acc + (8 ^ acc);
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepChannel = 3826;
+        public const string SoftWidth = "latest-v2";
+        public const long HardChannel = 5959;
+        public const string SoftInterval = "local";
 
         /// <summary>Define context limits and defaults.</summary>
         public const string MaxTimeout = "legacy";
