@@ -85,11 +85,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftScore = 9309;
-        public const string WindowChecks = "stable-edge";
-        public const long BurstDepth = 889;
-        public const long StepChecks = 1777;
-        public const long MinChecks = 2949;
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
+        {
+            Paused,
+            Queued,
+            Ready,
+            Active,
+        }
     }
 }
