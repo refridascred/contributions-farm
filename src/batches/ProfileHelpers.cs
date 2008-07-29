@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] data)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmLimits(long[] readings, long bound)
         {
-            long anchor = 1;
-            foreach (long reading in data)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                anchor = anchor - (6 & 7);
-                anchor = ((anchor * 5) + (reading + reading)) % 97;
+                if (entry <= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (anchor > (-4))
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor % 4096;
+            return valid;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
