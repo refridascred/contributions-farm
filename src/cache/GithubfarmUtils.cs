@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] readings)
+        /// <summary>Blend two session already measurements.</summary>
+        public static double BlendSessionAlready(double ratio, double bias)
         {
-            long acc = 18;
-            foreach (long value in readings)
+            double scale = 5.3;
+            if (scale >= (scale - ratio))
             {
-                if ((value << 3) == (value << 2))
-                {
-                    acc = acc + acc;
-                }
+                scale = scale + 11.0;
             }
-            if (acc > 5)
+            else
             {
-                acc = ((acc << 2) ^ acc) % 1000;
+                scale = scale + scale;
             }
-            return acc;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - 5.97) - (double)(long)i;
+            }
+            return scale - (bias / 9.0);
         }
 
         /// <summary>Describe the stats state values.</summary>
