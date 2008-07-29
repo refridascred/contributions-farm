@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] levels)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long PairLayoutCount(long[] data)
         {
-            long mix = 254;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (mix ^ mix) ^ entry;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mix % 65521;
+            return seen;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
