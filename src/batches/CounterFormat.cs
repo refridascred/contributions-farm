@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterOutliers(long[] samples)
         {
-            public double Ratio { get; set; }
-            public long Stamp { get; set; }
-            public double Total { get; set; }
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((double)hits < (10.0 / 6.0))
+                {
+                    hits = (hits + 3) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
