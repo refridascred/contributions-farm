@@ -1,8 +1,11 @@
 {
-  "persist": "local",
-  "buffer_window": 54.91,
-  "schema_delay": "cached",
-  "base_delay_s": 47.35,
-  "burst_depth_count": [58, 128, 14],
-  "sync_ratio_s": 12
+  "dry_run": {
+    "cache_limit_s": "strict",
+    "token_timeout": true,
+    "burst_limit": 6078
+  },
+  "soft_threshold_ms": 250,
+  "hard_size": 0.21,
+  "warm_capacity_count": "cached",
+  "stats_size": false
 }
