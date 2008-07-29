@@ -20,21 +20,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] data)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorMatches(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((((double)count == (double)entry) && ((count - count) <= (entry % 100))) && ((count + 532) <= entry))
                 {
-                    if ((data[i] + data[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the payload status values.</summary>
