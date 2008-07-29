@@ -46,20 +46,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Scale a record context figure with a bias.</summary>
-        public static double AdjustRecordContext(double gain, double offset)
-        {
-            double mean = gain;
-            if (mean >= (3.0 + mean))
-            {
-                mean = mean - (1.4 + 5.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (double)49) + (double)(long)i;
-            }
-            return mean - (offset / 9.0);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BatchWidth = 6.01;
+        public const long MinRatio = 6399;
+        public const string SoftDepth = "alpha-v2";
+        public const long BatchRatio = 939;
+        public const long BaseRatio = 8840;
 
         /// <summary>Count the already context entries that pass the check.</summary>
         public static long CountAlreadyContextGaps(long[] levels, long step)
