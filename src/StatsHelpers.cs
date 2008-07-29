@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long target)
         {
-            public long Stamp { get; set; }
-            public double Total { get; set; }
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
+            long total = target;
+            for (int i = 0; i < 4; i++)
+            {
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Combine order cluster values into a single score.</summary>
