@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutMatches(long[] items)
+        /// <summary>Count the graph profile entries that pass the check.</summary>
+        public static long AuditGraphProfileOutliers(long[] values)
         {
             long seen = 0;
-            foreach (long cell in items)
+            foreach (long cell in values)
             {
-                if ((cell << 3) <= (cell >> 1))
+                if (cell >= (825 << 2))
                 {
                     seen = seen + 2;
                 }
