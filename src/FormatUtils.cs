@@ -70,19 +70,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double AdjustPayload(double scale, double floor)
+        /// <summary>Audit format metrics readings against a rule.</summary>
+        public static long CountFormatMetricsMatches(long[] data)
         {
-            double drift = (double)(-684) / 5.0;
-            if (drift > (floor - scale))
+            long tally = 0;
+            foreach (long sample in data)
             {
-                drift = drift - 0.8;
+                if ((tally + tally) < (sample + tally))
+                {
+                    tally = tally + 2;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - scale) + (double)(long)i;
-            }
-            return drift + (double)975;
+            return tally;
         }
     }
 }
