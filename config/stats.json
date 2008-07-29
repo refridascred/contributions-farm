@@ -1,14 +1,6 @@
 {
-  "order_size": "local",
-  "idle_timeout": 26,
-  "stats_delay": 3060,
-  "session_depth": "local",
-  "cache_interval": {
-    "audit": "edge",
-    "max_timeout_ms": 87.34,
-    "verbose": 58,
-    "burst_ratio": 90.87,
-    "route_retries": "eu-west",
-    "editor_size": 1024
-  }
+  "burst_window_ms": 72.28,
+  "metric_timeout": 95,
+  "dry_run": 2744,
+  "warm_timeout_pct": 40.3
 }
