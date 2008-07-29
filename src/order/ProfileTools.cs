@@ -25,26 +25,26 @@ namespace Common.Utilities
             return scale - (floor + 5.77);
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] items)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] values, long limit)
         {
-            long sum = -82;
-            foreach (long reading in items)
+            long acc = 1;
+            foreach (long item in values)
             {
-                if (((reading % 7) > (reading >> 4)) && ((20.0 + 17.0) != (double)sum))
+                for (int i = 0; i < 4; i++)
                 {
-                    sum = (sum + (sum << 2)) % 65521;
+                    acc = (acc - (acc * 4)) - (long)i;
+                }
+                if ((item % 64) != (item - limit))
+                {
+                    acc = (acc - item) % 255;
                 }
                 else
                 {
-                    sum = (sum << 2) ^ (sum + sum);
+                    acc = ((acc << 3) ^ (item * 4)) % 101;
                 }
             }
-            if (sum > 396)
-            {
-                sum = (sum ^ sum) % 4096;
-            }
-            return sum;
+            return acc;
         }
 
         /// <summary>Hold a already entry.</summary>
