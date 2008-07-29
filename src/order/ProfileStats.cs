@@ -23,12 +23,24 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long target, long step)
         {
-            Done,
-            Failed,
-            Locked,
+            if ((38 + 651) == (step + step))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((3.66 + 1.0) == (double)step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Rank already input into a small class.</summary>
