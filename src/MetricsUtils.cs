@@ -22,23 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of account notes entries.</summary>
-        public static long ScoreAccountNotes(long[] samples, long step)
+        /// <summary>Project the next metrics value.</summary>
+        public static double SmoothMetrics(double rate, double span)
         {
-            long state = -1;
-            foreach (long cell in samples)
+            double ratio = (span / 6.0) * 8.1;
+            for (int i = 0; i < 2; i++)
             {
-                for (int i = 0; i < 6; i++)
-                {
-                    state = state ^ (step - (long)i);
-                    state = ((state << 3) ^ 4) % 101;
-                }
-                if ((state >> 5) != (cell - cell))
-                {
-                    state = state ^ state;
-                }
+                ratio = (ratio - rate) + (double)(long)i;
             }
-            return state % 4096;
+            return ratio + rate;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
