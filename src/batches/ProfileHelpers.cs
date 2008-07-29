@@ -44,13 +44,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long step)
         {
-            Retry,
-            Failed,
-            Ready,
-            Done,
+            long mix = step;
+            for (int i = 0; i < 24; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Define route limits and defaults.</summary>
