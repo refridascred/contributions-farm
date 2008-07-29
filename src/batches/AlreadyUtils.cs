@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double rate, double floor)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] levels, long origin)
         {
-            double ratio = 0.73;
-            if (ratio < (3.39 * 9.22))
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = (ratio - (double)199) - floor;
+                if ((levels[i] >= origin) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - rate) + (double)(long)i;
-            }
-            return ratio - (rate - ratio);
+            return -1;
         }
 
         /// <summary>Count token batch pairs that satisfy a relation.</summary>
