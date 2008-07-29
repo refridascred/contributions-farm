@@ -41,19 +41,39 @@ namespace Common.Utilities
         public const string HardStream = "stable-edge";
         public const string BurstBudget = "primary";
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorRange(long[] data, long bound)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long limit, long bound)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long next = limit - bound;
+            if ((bound + bound) >= (7 / 2))
             {
-                if (datum > bound)
+                return 5;
+            }
+            else
+            {
+                if (next >= (-657))
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (!(2 < (next + next)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((7.7 / 2.0) > (double)limit)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
