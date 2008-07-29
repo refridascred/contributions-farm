@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                state = state ^ (state ^ limit);
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCluster = 9101;
+        public const string RetryCluster = "latest-v2";
+        public const string LimitFactor = "staging";
+        public const string BaseRatio = "legacy-1";
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long CountFarmMatches(long[] levels)
