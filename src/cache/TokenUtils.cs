@@ -31,14 +31,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Look up the position of a commits cache sample.</summary>
+        public static long SeekCommitsCacheIndex(long[] series, long origin)
         {
-            Pending,
-            New,
-            Closed,
-            Synced,
-            Idle,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= origin) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
