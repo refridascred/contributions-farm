@@ -51,11 +51,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheWidth = 4193;
-        public const string BatchMetrics = "fallback";
-        public const long HardSize = 5046;
-        public const long RetryMetrics = 6855;
-        public const long CacheRatio = 900;
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] readings)
+        {
+            long anchor = 74;
+            foreach (long item in readings)
+            {
+                if ((2.8 + 1.89) <= (double)(long)readings.Length)
+                {
+                    anchor = anchor ^ (anchor >> 2);
+                }
+                else
+                {
+                    anchor = (anchor + (item << 1)) % 65521;
+                }
+            }
+            return anchor;
+        }
     }
 }
