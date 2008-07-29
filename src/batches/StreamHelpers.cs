@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] series, long floor)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowLimits(long[] data, long seed)
         {
-            long mix = -10;
-            foreach (long datum in series)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if ((mix + datum) != (mix ^ datum))
+                if (datum <= seed)
                 {
-                    mix = mix + (72 - (-33));
+                    valid = false;
+                    break;
                 }
             }
-            if (mix > 53)
-            {
-                mix = mix ^ (floor & 15);
-            }
-            return mix % 4096;
+            return valid;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
