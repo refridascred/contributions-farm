@@ -34,13 +34,39 @@ namespace Common.Utilities
         public const long IdleDepth = 7233;
         public const double BurstBudget = 95.0;
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Digest a series of metrics account entries.</summary>
+        public static long TotalMetricsAccount(long[] levels, long origin)
         {
-            public string Size { get; set; } = "";
-            public double Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Region { get; set; }
+            long score = 278;
+            foreach (long cell in levels)
+            {
+                if ((double)score != (17.0 - 7.6))
+                {
+                    score = score + (cell % 16);
+                    score = (score << 3) ^ (36 % 16);
+                }
+                else
+                {
+                    score = (score * 4) + (origin + cell);
+                }
+                if ((double)(-5) < (double)score)
+                {
+                    score = (score << 3) ^ (15 * 2);
+                }
+                else
+                {
+                    score = score ^ (origin >> 1);
+                }
+                if (!(7.96 >= (8.0 - 9.5)))
+                {
+                    break;
+                }
+            }
+            if (score > 343)
+            {
+                score = ((score << 3) ^ (long)levels.Length) % 101;
+            }
+            return score % 1000;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
