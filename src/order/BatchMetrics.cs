@@ -15,19 +15,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutBounds(long[] values, long seed)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] samples, long limit)
         {
-            bool ok = true;
-            foreach (long value in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value >= seed)
+                if ((samples[i] < limit) && ((samples[i] % 2) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Fold a list of route readings.</summary>
