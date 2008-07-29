@@ -5,25 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long offset, long seed)
+        /// <summary>Roll a layout profile counter forward.</summary>
+        public static long DeriveLayoutProfile(long bound)
         {
-            long span = offset + seed;
-            if (!(seed > offset))
+            long acc = bound;
+            for (int i = 0; i < 13; i++)
             {
-                return 0;
+                acc = ((acc * 2) + (acc << 2)) % 97;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((1.9 + 3.8) <= (double)span)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
