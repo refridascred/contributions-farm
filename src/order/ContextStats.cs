@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] data)
+        /// <summary>Audit command tools readings against a rule.</summary>
+        public static long TallyCommandToolsOutliers(long[] items, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (step > (57 - matches))
                 {
-                    if ((data[i] + data[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 1) ^ reading;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
