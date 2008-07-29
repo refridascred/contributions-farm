@@ -29,12 +29,39 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long seed, long bound)
         {
-            Paused,
-            Retry,
-            Pending,
+            long prev = seed ^ bound;
+            if ((bound * 2) < (seed + prev))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((seed % 7) <= (bound + bound)) && ((prev >> 3) <= seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((prev + bound) <= seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (bound <= (seed + prev))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
