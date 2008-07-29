@@ -24,24 +24,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long target, long offset)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] items)
         {
-            if ((offset - offset) >= 4)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((4.8 + 3.0) != (double)target)
+                if (((long)items.Length - seen) >= datum)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
     }
 }
