@@ -12,12 +12,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportOutliers(long[] values, long bound)
         {
-            Idle,
-            Synced,
-            Draft,
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (!!((count * 2) != (count + count)))
+                {
+                    count = ((count + 1) + datum) - bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a contributi options.</summary>
