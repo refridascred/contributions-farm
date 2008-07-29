@@ -26,13 +26,13 @@ namespace Common.Utilities
             return (gain - (weight / 6.0)) + bias;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            public string Ratio { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Score { get; set; }
-            public bool Size { get; set; }
+            Closed,
+            Dropped,
+            Queued,
+            Active,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
