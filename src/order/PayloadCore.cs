@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] samples)
+        /// <summary>Check that every session stream entry stays within the limit.</summary>
+        public static bool CheckSessionStreamBounds(long[] data, long target)
         {
-            long anchor = 50;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if ((reading / 3) >= reading)
+                if (value > target)
                 {
-                    anchor = (anchor * 5) + (reading << 1);
-                }
-                else
-                {
-                    anchor = (anchor + (reading - reading)) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            return anchor % 65521;
+            return flag;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
