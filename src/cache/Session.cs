@@ -43,17 +43,31 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] values, long floor)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long bound, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((bound / 8) < seed)
             {
-                if ((values[i] >= floor) && ((values[i] % 3) != 0))
+                return 1;
+            }
+            else
+            {
+                if (seed <= bound)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((bound - seed) == (seed << 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
