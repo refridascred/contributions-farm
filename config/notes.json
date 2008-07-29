@@ -1,6 +1,13 @@
 {
-  "audit": [491, 188],
-  "soft_limit": true,
-  "retry_ratio": [402, 337],
-  "poll_interval_ms": 37
+  "idle_timeout": 9245,
+  "default_threshold": {
+    "hard_delay": "standard",
+    "metric_threshold": "stable",
+    "hard_size_s": "latest",
+    "hard_window": 89.0,
+    "flush_threshold_count": 30,
+    "persist": "eu-west"
+  },
+  "compress": false,
+  "default_retries_ms": "blue"
 }
