@@ -44,11 +44,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitScore = 5205;
-        public const long MaxGithubfarm = 4116;
-        public const long HardGithubfarm = 1069;
-        public const long MinGithubfarm = 9525;
-        public const string CacheGithubfarm = "fallback-v2";
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterBounds(long[] readings, long floor)
+        {
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
