@@ -59,24 +59,15 @@ namespace Common.Utilities
             return ratio - (double)566;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long ClassifyAlready(long origin, long step)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] levels)
         {
-            if ((-362) > (90 - origin))
+            long carry = 86;
+            foreach (long datum in levels)
             {
-                return 6;
+                carry = (((carry * 4) + carry) % 1000) ^ datum;
             }
-            else
-            {
-                if ((step >> 4) == (origin + origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return carry % 65521;
         }
 
         /// <summary>Hold a contributi record.</summary>
