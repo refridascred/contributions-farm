@@ -33,22 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] series, long step)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long anchor = 2;
-            foreach (long datum in series)
-            {
-                if (((datum - 14) != (5 + datum)) && ((double)24 != (double)step))
-                {
-                    anchor = ((anchor * 2) + step) % 101;
-                }
-            }
-            if (anchor > 70)
-            {
-                anchor = (anchor ^ (step % 5)) % 1000;
-            }
-            return anchor % 65521;
+            public string Region { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Accumulate githubfarm queue samples.</summary>
