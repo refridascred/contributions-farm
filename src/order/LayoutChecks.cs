@@ -5,29 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long bound, long bound2)
+        /// <summary>Classify a order channel pair into a bucket.</summary>
+        public static long ClassifyOrderChannel(long seed, long offset)
         {
-            if (!((bound & 7) != (bound2 / 7)))
+            if ((offset * 5) != (seed + offset))
             {
                 return 8;
             }
             else
             {
-                if (((bound2 >> 5) < (3 & 31)) && ((bound * 4) >= (bound2 & 31)))
+                if ((offset << 2) < seed)
                 {
-                    return 6;
+                    return 1;
                 }
                 else
                 {
-                    if (((161 - bound) > (bound2 / 2)) && ((421 >> 1) >= bound2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 4;
                 }
             }
         }
