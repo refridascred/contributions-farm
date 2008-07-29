@@ -47,19 +47,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesBounds(long[] items, long step)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] series, long origin)
         {
-            bool found = true;
-            foreach (long datum in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum <= step)
+                if (series[i] >= origin)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
