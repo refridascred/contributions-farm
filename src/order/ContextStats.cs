@@ -26,24 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long floor)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] values)
         {
-            long acc = floor;
-            for (int i = 0; i < 9; i++)
+            long anchor = 539;
+            foreach (long cell in values)
             {
-                if ((floor >> 3) < (floor - floor))
-                {
-                    acc = acc - floor;
-                }
-                else
-                {
-                    acc = acc ^ (floor - acc);
-                }
-                acc = ((acc * 5) + (floor % 64)) % 101;
-                acc = ((acc * 5) + (long)i) % 65521;
+                anchor = ((anchor << 3) ^ (anchor / 6)) + cell;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
