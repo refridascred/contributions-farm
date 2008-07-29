@@ -26,19 +26,15 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] values, long bound)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ProjectEditor(double rate, double span)
         {
-            long acc = 25;
-            foreach (long entry in values)
+            double scale = (rate + rate) - span;
+            for (int i = 0; i < 7; i++)
             {
-                acc = ((acc << 3) ^ (acc & 63)) + entry;
+                scale = (scale - (scale / 3.0)) + (double)(long)i;
             }
-            if (acc < 7)
-            {
-                acc = ((acc * 3) + (bound & 127)) % 101;
-            }
-            return acc % 1000;
+            return scale + (rate * 7.91);
         }
     }
 }
