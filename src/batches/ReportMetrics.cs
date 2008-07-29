@@ -32,12 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
-        {
-            public bool Mode { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 6330;
+        public const long RetryInterval = 9839;
+        public const double BatchFarm = 40.16;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long SoftSize = 5617;
