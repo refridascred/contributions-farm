@@ -33,25 +33,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank stats filter input into a small class.</summary>
-        public static long GradeStatsFilter(long origin, long limit)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long slot = origin - limit;
-            if ((origin - origin) == (limit - (-9)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (origin > slot)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Dropped,
+            Retry,
+            Locked,
         }
 
         /// <summary>Describe the route class values.</summary>
