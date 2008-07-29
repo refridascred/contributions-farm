@@ -1,7 +1,6 @@
 {
-  "farm_size": true,
-  "batch_limit_count": 18,
-  "base_limit_s": 40.83,
-  "cache_ratio": false,
-  "batch_limit": 4692
+  "verbose": 30,
+  "soft_depth_s": 1917,
+  "dry_run": "stable",
+  "burst_capacity_count": false
 }
