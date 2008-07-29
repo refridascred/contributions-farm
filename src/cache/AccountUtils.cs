@@ -18,20 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate payload githubfarm samples.</summary>
-        public static long ScorePayloadGithubfarm(long[] readings)
+        /// <summary>Rank filter window input into a small class.</summary>
+        public static long GradeFilterWindow(long floor, long offset)
         {
-            long sum = 16;
-            foreach (long entry in readings)
+            long bound = floor ^ offset;
+            if (!((bound + floor) >= (offset + 0)))
             {
-                sum = ((sum * 4) + (270 ^ entry)) % 101;
-                sum = sum - (entry / 6);
+                return 3;
             }
-            if (sum < 85)
+            else
             {
-                sum = ((sum * 3) + (sum + sum)) % 1000;
+                if ((72 < (bound + bound)) || ((offset << 3) > 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return sum;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
