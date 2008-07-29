@@ -81,18 +81,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamOutliers(long[] levels, long limit)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((limit + seen) <= seen)
-                {
-                    seen = (seen + 3) ^ cell;
-                }
-            }
-            return seen;
+            Stale,
+            Active,
+            Closed,
+            Queued,
         }
     }
 }
