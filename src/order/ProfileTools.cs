@@ -73,19 +73,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchBounds(long[] series, long target)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long limit, long floor)
         {
-            bool found = true;
-            foreach (long reading in series)
+            if (((limit + floor) > (limit >> 1)) || ((double)limit >= (5.07 * 7.8)))
             {
-                if (reading != target)
+                return 7;
+            }
+            else
+            {
+                if ((2.0 * 2.8) > (double)limit)
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((floor >> 3) <= (limit - floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor / 3) <= (floor << 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return found;
         }
     }
 }
