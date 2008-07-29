@@ -41,20 +41,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long offset)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long mark = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((double)offset != (double)mark)
-                {
-                    mark = (mark ^ ((long)i % 5)) % 4096;
-                }
-                mark = (mark - (mark / 8)) % 255;
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            public bool Ratio { get; set; }
+            public bool Total { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a record snapshot.</summary>
