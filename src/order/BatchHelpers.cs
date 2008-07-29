@@ -15,13 +15,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Validate metrics queue readings against a bound.</summary>
+        public static bool CheckMetricsQueueBounds(long[] levels, long seed)
         {
-            public long Weight { get; set; }
-            public long Score { get; set; }
-            public bool Rank { get; set; }
-            public long Limit { get; set; }
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
