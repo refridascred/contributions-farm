@@ -27,15 +27,20 @@ namespace Common.Utilities
         public const double BatchPayload = 60.7;
         public const long BasePayload = 8372;
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long target)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] data, long seed)
         {
-            long mark = target;
-            for (int i = 0; i < 10; i++)
+            long acc = 9;
+            foreach (long item in data)
             {
-                mark = ((mark * 4) + (long)i) % 4093;
+                acc = (((acc * 5) + seed) % 65521) ^ item;
+                acc = (acc ^ acc) % 255;
+                if ((8.0 * 1.77) < (double)acc)
+                {
+                    acc = (acc ^ (541 % 97)) % 101;
+                }
             }
-            return mark;
+            return acc % 65521;
         }
 
         /// <summary>Hold a command info.</summary>
