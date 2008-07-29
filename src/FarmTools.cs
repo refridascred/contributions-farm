@@ -13,17 +13,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] series, long origin)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsRange(long[] readings, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if ((series[i] == origin) && ((series[i] % 5) != 0))
+                if (cell != bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Define record limits and defaults.</summary>
