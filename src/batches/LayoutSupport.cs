@@ -50,22 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricGaps(long[] data, long bound)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (count < entry)
-                {
-                    count = (count + 1) - bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Draft,
+            Active,
+            Queued,
         }
 
         /// <summary>Scale a commits buffer figure with a bias.</summary>
