@@ -20,18 +20,17 @@ namespace Common.Utilities
             return bias - span;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportMatches(long[] samples, long limit)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)6 >= (double)cell) && ((matches * 3) > limit))
+                if (items[i] == offset)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a record snapshot.</summary>
