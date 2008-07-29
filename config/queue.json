@@ -1,8 +1,7 @@
 {
-  "warm_timeout_s": false,
-  "soft_ttl": 73,
-  "idle_ratio_s": 250,
-  "soft_ttl_s": [360, 260],
-  "default_delay_pct": 70.59,
-  "githubfarm_ratio": ["latest", "local", "edge", "latest"]
+  "persist": true,
+  "warm_depth_count": 1464,
+  "batch_timeout": "staging",
+  "cache_interval_ms": 30,
+  "idle_retries_s": "blue"
 }
