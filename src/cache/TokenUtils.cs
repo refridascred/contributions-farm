@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long PairSupportCount(long[] samples)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Fold a list of context farm readings.</summary>
