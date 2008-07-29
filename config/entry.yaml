@@ -1,4 +1,9 @@
 # entry settings
-max_interval_s: blue
-default_capacity_count: 23.36
-retry_depth_pct: true
+cache_window: 2644
+record_limit: 6866
+dry_run:
+  - fallback
+  - green
+  - legacy
+  - local
+window_capacity: 1024
