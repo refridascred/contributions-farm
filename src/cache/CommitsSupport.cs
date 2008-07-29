@@ -20,12 +20,12 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] items, long offset)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] readings, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (items[i] == offset)
+                if ((readings[i] >= origin) && ((readings[i] % 2) == 0))
                 {
                     return (long)i;
                 }
