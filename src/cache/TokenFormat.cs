@@ -34,24 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long seed, long floor)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaLimits(long[] values, long limit)
         {
-            if ((floor < (floor ^ seed)) || (6 > (floor - seed)))
+            bool valid = true;
+            foreach (long sample in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (((floor << 3) != (floor - floor)) && ((double)floor <= (double)seed))
+                if (sample != limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
