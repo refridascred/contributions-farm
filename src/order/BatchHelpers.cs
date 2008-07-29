@@ -31,12 +31,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double AdjustCluster(double rate, double span)
         {
-            New,
-            Dropped,
-            Closed,
+            double rate2 = rate;
+            if (rate2 > (rate2 * 19.0))
+            {
+                rate2 = rate2 - rate;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate2 = (rate2 + (span + span)) - (double)(long)i;
+            }
+            return rate2 + span;
         }
     }
 }
