@@ -18,16 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next batches stream value from a seed.</summary>
-        public static long StepBatchesStream(long offset)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long CompareToolsCount(long[] levels)
         {
-            long mix = offset;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (mix * 2) + (offset * 4);
-                mix = ((mix * 5) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Hold a batches options.</summary>
