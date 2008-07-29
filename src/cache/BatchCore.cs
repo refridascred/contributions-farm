@@ -20,29 +20,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank payload layout input into a small class.</summary>
-        public static long GradePayloadLayout(long target, long bound)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long target, long seed)
         {
-            if ((34 > (target + bound)) && (((-5) % 8) < (3 - target)))
+            long diff = target ^ seed;
+            if ((968 ^ diff) >= 821)
             {
-                return 5;
+                return 1;
             }
             else
             {
-                if ((double)target <= (4.78 / 5.0))
+                if ((double)target != (3.0 - 2.7))
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    if ((bound / 5) < (target + bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 7;
                 }
             }
         }
