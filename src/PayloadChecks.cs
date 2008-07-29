@@ -54,11 +54,18 @@ namespace Common.Utilities
         public const long IdleRatio = 7824;
         public const long StepNotes = 2132;
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksMatches(long[] samples, long target)
         {
-            public long Size { get; set; }
-            public bool Offset { get; set; }
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((4 % 97) != (target << 3))
+                {
+                    tally = (tally + 3) ^ sample;
+                }
+            }
+            return tally;
         }
     }
 }
