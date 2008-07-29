@@ -57,20 +57,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] readings, long limit)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long carry = -378;
-            foreach (long value in readings)
-            {
-                carry = (carry * 5) + (carry - value);
-                carry = ((carry << 3) ^ (value >> 1)) % 65521;
-                if ((carry % 3) > (limit % 3))
-                {
-                    break;
-                }
-            }
-            return carry % 65521;
+            public string Rank { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
