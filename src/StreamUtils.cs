@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextRange(long[] items, long origin)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountHits(long[] levels, long seed)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (sample <= origin)
+                if (((hits / 5) <= (value + 63)) || ((12 + value) < value))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 1) + seed;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
