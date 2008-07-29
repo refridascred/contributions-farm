@@ -20,25 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long target, long seed)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandLimits(long[] readings, long target)
         {
-            long diff = target ^ seed;
-            if ((968 ^ diff) >= 821)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)target != (3.0 - 2.7))
+                if (sample > target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
