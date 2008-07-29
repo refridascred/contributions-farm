@@ -28,19 +28,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesRange(long[] data, long origin)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] data)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (sample != origin)
+                if (!(((value * 3) != (value & 255)) && ((13 / 8) > tally)))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
