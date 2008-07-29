@@ -22,22 +22,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] levels, long target)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long mix = 558;
-            foreach (long value in levels)
-            {
-                if (((value + target) > (target - mix)) || (target <= (value ^ 44)))
-                {
-                    mix = ((mix * 5) + (508 * 5)) % 4096;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (mix - 30);
-                }
-            }
-            return mix % 4096;
+            Locked,
+            Active,
+            Idle,
         }
 
         /// <summary>Rank session input into a small class.</summary>
