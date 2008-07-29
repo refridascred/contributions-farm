@@ -26,9 +26,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BatchBudget = "local-1";
-        public const long RetryDepth = 5240;
-        public const string BurstWidth = "stable";
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
+        {
+            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Size { get; set; }
+        }
     }
 }
