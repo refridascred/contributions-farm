@@ -20,18 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the notes cluster entries that pass the check.</summary>
-        public static long MeasureNotesClusterOutliers(long[] items)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (datum >= hits)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Retry,
+            Stale,
+            Ready,
         }
 
         /// <summary>Hold a batch record.</summary>
