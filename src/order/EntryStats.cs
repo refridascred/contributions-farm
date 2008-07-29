@@ -38,12 +38,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double WindowSchema = 25.23;
-        public const long BurstBudget = 4785;
-        public const long CacheSchema = 3847;
-        public const long StepSchema = 4055;
-        public const string BaseSchema = "staging";
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowLimits(long[] series, long offset)
+        {
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Project the next channel value.</summary>
         public static double SmoothChannel(double gain, double offset)
