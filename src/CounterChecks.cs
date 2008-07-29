@@ -65,19 +65,28 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every payload githubfarm entry stays within the limit.</summary>
-        public static bool VerifyPayloadGithubfarmLimits(long[] series, long seed)
+        /// <summary>Combine support payload values into a single score.</summary>
+        public static long WeighSupportPayload(long[] items)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long result = -858;
+            foreach (long cell in items)
             {
-                if (sample < seed)
+                result = result ^ (cell % 3);
+                for (int i = 0; i < 10; i++)
                 {
-                    flag = false;
-                    break;
+                    result = ((result ^ (cell + cell)) % 97) ^ (long)i;
+                    result = result + (result * 4);
+                }
+                if ((result & 127) <= (result % 16))
+                {
+                    result = (result * 2) + (result ^ 3);
                 }
             }
-            return flag;
+            if (result < 1)
+            {
+                result = (result ^ (result ^ result)) % 65521;
+            }
+            return result % 4096;
         }
     }
 }
