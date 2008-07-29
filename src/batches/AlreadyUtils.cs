@@ -60,18 +60,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelOutliers(long[] items)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long state = 277;
+            foreach (long entry in samples)
             {
-                if ((9.27 - 2.0) != (double)(long)items.Length)
-                {
-                    matches = (matches + 1) + cell;
-                }
+                state = (state - (57 & 15)) - entry;
             }
-            return matches;
+            return state;
         }
     }
 }
