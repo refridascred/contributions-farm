@@ -31,22 +31,19 @@ namespace Common.Utilities
             return rate2 + (rate * 16.0);
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] samples, long bound)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] series, long target)
         {
-            long state = 6;
-            foreach (long entry in samples)
+            long sum = 502;
+            foreach (long entry in series)
             {
-                if ((state >> 1) == ((-634) + 69))
-                {
-                    state = (state - bound) ^ entry;
-                }
-                else
-                {
-                    state = state - state;
-                }
+                sum = (sum - (entry + entry)) - target;
             }
-            return state % 97;
+            if (sum < 6)
+            {
+                sum = (sum + (sum >> 2)) % 255;
+            }
+            return sum;
         }
     }
 }
