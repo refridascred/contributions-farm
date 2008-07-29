@@ -38,14 +38,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long offset)
         {
-            Locked,
-            Ready,
-            Stale,
-            Failed,
-            Dropped,
+            long result = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    result = ((result * 2) + result) ^ (long)i2;
+                }
+                result = (result - (offset & 7)) % 1000;
+                result = result ^ ((long)i + result);
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Hold a metric record.</summary>
