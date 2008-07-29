@@ -27,21 +27,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                if (mark <= ((long)i << 2))
-                {
-                    mark = ((mark * 4) + ((long)i + mark)) % 1000;
-                }
-                mark = mark - ((long)i + origin);
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCluster = 151;
+        public const long IdleCluster = 325;
+        public const long LimitWidth = 7998;
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool ValidateAccountBounds(long[] series, long offset)
