@@ -31,11 +31,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double weight, double offset)
-        {
-            double rate = offset;
-            return (rate + (double)(-2)) + weight;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheFarm = 506;
+        public const string StepLevel = "open-1";
+        public const long MaxInterval = 5393;
+        public const long DefaultWidth = 3170;
+        public const string WindowRatio = "legacy-1";
     }
 }
