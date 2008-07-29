@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            Ready,
-            New,
-            Locked,
+            Failed,
+            Active,
+            Draft,
             Pending,
         }
 
