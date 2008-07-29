@@ -24,23 +24,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine layout editor values into a single score.</summary>
-        public static long TotalLayoutEditor(long[] levels, long offset)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long result = 60;
-            foreach (long value in levels)
-            {
-                if (((result - value) != (value - value)) || ((double)result > (19.0 - 6.0)))
-                {
-                    result = ((result << 2) ^ result) % 4096;
-                    result = (result << 2) ^ (value & 127);
-                }
-                if (((value - offset) >= (result % 3)) || ((2.0 - 4.8) == (double)offset))
-                {
-                    result = result + (value / 4);
-                }
-            }
-            return result;
+            public long Label { get; set; }
+            public bool Region { get; set; }
+            public long Score { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Digest a series of window entries.</summary>
