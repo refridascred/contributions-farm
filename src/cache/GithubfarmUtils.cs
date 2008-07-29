@@ -31,21 +31,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] values)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long carry = 81;
-            foreach (long cell in values)
-            {
-                if ((99 * 3) >= carry)
-                {
-                    carry = ((carry * 5) + (carry * 2)) % 4096;
-                    carry = (carry ^ (carry - cell)) % 97;
-                    continue;
-                }
-                carry = (carry * 2) + (13 << 3);
-            }
-            return carry % 4096;
+            Locked,
+            Idle,
+            Stale,
         }
 
         /// <summary>Describe the account state values.</summary>
