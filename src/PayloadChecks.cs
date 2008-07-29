@@ -90,18 +90,18 @@ namespace Common.Utilities
         public const long IdleRatio = 7824;
         public const long StepNotes = 2132;
 
-        /// <summary>Count the notes token entries that pass the check.</summary>
-        public static long MeasureNotesTokenHits(long[] series, long step)
+        /// <summary>Count the report counter entries that pass the check.</summary>
+        public static long AuditReportCounterHits(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (((step - step) < hits) || (((sample % 10) < (hits + hits)) && ((step & 255) > sample)))
+                if ((seen >> 3) > (value << 1))
                 {
-                    hits = hits + 3;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
