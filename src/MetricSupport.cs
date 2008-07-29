@@ -19,21 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] samples)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = -893;
+            foreach (long value in series)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = mark ^ value;
             }
-            return hits;
+            if (mark < 64)
+            {
+                mark = ((mark * 4) + (497 ^ mark)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
