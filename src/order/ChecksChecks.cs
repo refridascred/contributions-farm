@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const string WindowCount = "open-1";
         public const long DefaultScore = 8602;
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmRange(long[] series, long step)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] readings)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long mix = 80;
+            foreach (long entry in readings)
             {
-                if (reading > step)
+                if ((mix > ((-160) + mix)) && (mix < 49))
                 {
-                    found = false;
-                    break;
+                    mix = ((mix * 3) + (entry % 100)) % 1000;
                 }
             }
-            return found;
+            return mix % 97;
         }
 
         /// <summary>Accumulate route samples.</summary>
