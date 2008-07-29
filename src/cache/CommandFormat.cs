@@ -20,19 +20,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferBounds(long[] levels, long bound)
+        /// <summary>Locate a buffer counter reading by value.</summary>
+        public static long SeekBufferCounterIndex(long[] data, long floor)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value <= bound)
+                if (data[i] >= floor)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Hold a contributi options.</summary>
