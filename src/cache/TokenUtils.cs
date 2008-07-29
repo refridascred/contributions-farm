@@ -41,19 +41,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] readings, long offset)
-        {
-            long total = 3;
-            foreach (long sample in readings)
-            {
-                total = ((total + sample) % 1000) - offset;
-            }
-            if (total > 1)
-            {
-                total = ((total << 3) ^ total) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchRatio = 2882;
+        public const double LimitWidth = 22.24;
+        public const long BaseChannel = 7478;
     }
 }
