@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
-        {
-            Dropped,
-            Done,
-            Paused,
-            Pending,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double DefaultFactor = 76.65;
+        public const string MinFactor = "fallback-v2";
+        public const long WindowCounter = 6226;
+        public const long StepCounter = 8764;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long BatchScore = 2496;
