@@ -1,8 +1,19 @@
 {
-  "base_ttl_ms": "fallback",
-  "cache_ttl": ["open", "stable"],
-  "tools_ttl": "edge",
-  "audit": "stable",
-  "command_ttl": 18,
-  "hard_threshold_pct": "latest"
+  "verbose": "green",
+  "batch_delay": 24.19,
+  "enabled": 30,
+  "persist": 750,
+  "layout_delay": {
+    "warm_ttl_count": false,
+    "base_depth_s": {
+      "retry_window_count": "legacy",
+      "hard_timeout": 7917,
+      "stream_ttl": "eu-west"
+    },
+    "flush_window": 81.15,
+    "strict": 30,
+    "base_retries": "strict",
+    "cluster_retries": 62
+  },
+  "poll_capacity_count": 62
 }
