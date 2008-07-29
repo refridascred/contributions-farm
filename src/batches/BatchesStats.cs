@@ -13,11 +13,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Project the next order value.</summary>
+        public static double BlendOrder(double ratio, double bias)
         {
-            public bool Label { get; set; }
-            public long Count { get; set; }
+            double scale = (double)4 / 6.0;
+            if (scale > (double)(-13))
+            {
+                scale = scale + (ratio - bias);
+            }
+            return scale + (2.0 - 1.0);
         }
 
         /// <summary>Locate a channel layout reading by value.</summary>
