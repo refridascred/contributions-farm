@@ -1,6 +1,19 @@
 {
-  "persist": 3338,
-  "soft_size": 30,
-  "cache_limit": "edge",
-  "counter_threshold": 250
+  "session_timeout": 1543,
+  "retry_window_pct": "standard",
+  "soft_ratio": 28.99,
+  "strict": {
+    "persist": [99, 35, 407, 383],
+    "stream_ratio": {
+      "min_timeout": true,
+      "batch_delay_pct": "latest",
+      "order_timeout": "strict",
+      "max_size": 1605
+    },
+    "warm_retries": 30,
+    "compress": 67.52,
+    "cache_threshold_pct": 20.02
+  },
+  "default_timeout_ms": 66,
+  "persist": 55.16
 }
