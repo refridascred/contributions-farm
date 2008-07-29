@@ -67,25 +67,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] data, long origin)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] data)
         {
-            long total = 262;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((total + origin) <= (total & 63))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = (((total * 2) + (7 << 1)) % 1000) + value;
-                    break;
+                    if ((data[i] - data[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                if ((total * 2) <= (210 * 5))
-                {
-                    total = ((total * 2) + (89 ^ origin)) % 1000;
-                    break;
-                }
-                total = total + (total / 2);
             }
-            return total % 65521;
+            return tally;
         }
     }
 }
