@@ -56,14 +56,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
-        {
-            Ready,
-            Paused,
-            Locked,
-            New,
-            Idle,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxRatio = 7989;
+        public const double HardSize = 12.47;
+        public const double HardGithubfarm = 35.4;
     }
 }
