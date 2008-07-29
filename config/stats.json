@@ -1,7 +1,15 @@
 {
-  "verbose": [347, 433],
-  "base_timeout": 58,
-  "soft_depth_s": false,
-  "strict": false,
-  "warm_ratio_pct": 9161
+  "base_ratio_count": "eu-west",
+  "idle_capacity_count": 63.05,
+  "verbose": "cached",
+  "hard_window_s": "fallback",
+  "warm_threshold": {
+    "verbose": 16.29,
+    "compress": 8996,
+    "hard_delay_count": "primary",
+    "base_threshold": true,
+    "cache_retries": "staging",
+    "batch_ratio": false
+  },
+  "commits_ratio": "open"
 }
