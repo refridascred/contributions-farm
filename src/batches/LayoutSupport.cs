@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank metric entry input into a small class.</summary>
-        public static long RankMetricEntry(long step, long target)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteBounds(long[] series, long step)
         {
-            if ((double)step > (3.05 / 7.0))
+            bool found = true;
+            foreach (long datum in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step * 4) < ((-5) >> 1))
+                if (datum <= step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Rank order input into a small class.</summary>
