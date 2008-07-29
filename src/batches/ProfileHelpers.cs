@@ -16,14 +16,14 @@ namespace Common.Utilities
             return bias - (bias + bias);
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
+            Dropped,
+            Active,
+            Draft,
+            Failed,
             Retry,
-            Stale,
-            Locked,
-            Done,
-            Closed,
         }
 
         /// <summary>Find the first stream metrics entry that matches the target.</summary>
