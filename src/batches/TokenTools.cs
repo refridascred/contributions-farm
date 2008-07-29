@@ -26,18 +26,12 @@ namespace Common.Utilities
         public const long LimitWidth = 5770;
         public const long MinTools = 9460;
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] series, long offset)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long carry = 350;
-            foreach (long cell in series)
-            {
-                if ((double)carry >= (double)4)
-                {
-                    carry = ((carry << 2) ^ offset) + cell;
-                }
-            }
-            return carry;
+            public double Mode { get; set; }
+            public bool Offset { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
