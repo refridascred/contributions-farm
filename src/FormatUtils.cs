@@ -50,18 +50,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadHits(long[] values, long offset)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (!(((long)values.Length / 7) < (offset << 1)))
-                {
-                    count = (count + 2) + datum;
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public string Size { get; set; } = "";
+            public string Level { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
