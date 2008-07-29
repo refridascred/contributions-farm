@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 484;
-        public const string StepBatch = "primary-v2";
-        public const long SoftSize = 4506;
-        public const long DefaultBatch = 3631;
-        public const double BaseScore = 44.81;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandHits(long[] samples, long target)
+        {
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((target << 2) > (seen << 1))
+                {
+                    seen = (seen + 2) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long SoftRecord = 4079;
