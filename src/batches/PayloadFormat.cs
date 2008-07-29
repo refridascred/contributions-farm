@@ -66,22 +66,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] samples)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long carry = 388;
-            foreach (long item in samples)
-            {
-                if (item <= carry)
-                {
-                    carry = ((carry * 2) + (item >> 5)) % 65521;
-                }
-                else
-                {
-                    carry = (carry + (902 ^ item)) % 1000;
-                }
-            }
-            return carry;
+            Done,
+            Queued,
+            Retry,
         }
     }
 }
