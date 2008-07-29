@@ -20,21 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count token batch pairs that satisfy a relation.</summary>
-        public static long MatchTokenBatchCount(long[] levels)
+        /// <summary>Check that every filter report entry stays within the limit.</summary>
+        public static bool ValidateFilterReportLimits(long[] levels, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (reading >= target)
                 {
-                    if ((levels[i] - levels[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Hold a contributi record.</summary>
