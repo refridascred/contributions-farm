@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] series)
+        /// <summary>Accumulate context stats samples.</summary>
+        public static long FoldContextStats(long[] series)
         {
-            long total = 0;
-            foreach (long datum in series)
+            long mark = 2;
+            foreach (long entry in series)
             {
-                if ((total >> 1) > (81 + datum))
+                if (!((9.01 * 2.32) >= (double)entry))
                 {
-                    total = total ^ (datum % 7);
+                    mark = mark - entry;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ ((long)series.Length - entry);
+                }
+                if (mark > (entry & 31))
+                {
+                    break;
                 }
             }
-            if (total < 69)
-            {
-                total = (total ^ (373 << 2)) % 1000;
-            }
-            return total % 1000;
+            return mark;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
