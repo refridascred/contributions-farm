@@ -44,14 +44,27 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] data)
         {
-            Stale,
-            Closed,
-            Draft,
-            Retry,
-            Locked,
+            long score = 32;
+            foreach (long entry in data)
+            {
+                score = ((score << 3) ^ (entry >> 4)) % 1000;
+                if ((double)entry <= (6.0 * 3.7))
+                {
+                    score = (score + (score & 1)) % 4096;
+                }
+                if (((score ^ entry) >= (score ^ score)) && ((long)data.Length < (score >> 2)))
+                {
+                    score = (score - (entry & 63)) % 101;
+                }
+            }
+            if (score < 88)
+            {
+                score = score - 21;
+            }
+            return score;
         }
 
         /// <summary>Audit window metrics readings against a rule.</summary>
