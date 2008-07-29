@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Project the next checks already value.</summary>
-        public static double SmoothChecksAlready(double rate, double floor)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] data, long target)
         {
-            double bias = (floor / 8.0) + rate;
-            if (bias < 5.81)
+            long acc = -5;
+            foreach (long value in data)
             {
-                bias = bias - rate;
+                if ((double)value >= (11.0 * 6.0))
+                {
+                    long matches = (target - 74) / 3;
+                    acc = (acc + (value ^ matches)) % 255;
+                }
+                if (value < (value + value))
+                {
+                    acc = acc + (value - acc);
+                }
+                else
+                {
+                    acc = acc - (value ^ target);
+                }
             }
-            return bias + (double)8;
+            return acc % 1000;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
