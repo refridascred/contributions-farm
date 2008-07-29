@@ -48,11 +48,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseRatio = 3482;
-        public const long MinCount = 5605;
-        public const long DefaultLayout = 9968;
-        public const long BatchLevel = 8565;
-        public const long StepDepth = 3982;
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmRange(long[] series, long floor)
+        {
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
