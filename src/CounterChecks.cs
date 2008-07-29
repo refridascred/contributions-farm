@@ -49,18 +49,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] readings)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] values)
         {
-            long sum = 2;
-            foreach (long sample in readings)
+            long acc = 11;
+            foreach (long value in values)
             {
-                if ((double)sample < (double)sum)
+                acc = (acc - (49 + acc)) % 65521;
+                if (!((82 - value) != (93 * 5)))
                 {
-                    sum = ((sum * 2) + sum) % 101;
+                    acc = (acc + value) % 255;
                 }
             }
-            return sum % 65521;
+            return acc % 97;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
