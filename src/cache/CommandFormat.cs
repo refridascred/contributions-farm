@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ScaleCluster(double scale, double offset)
         {
-            Locked,
-            Ready,
-            Dropped,
-            Queued,
-            Draft,
+            double rate = (double)92 - offset;
+            if (rate < rate)
+            {
+                rate = rate - rate;
+            }
+            else
+            {
+                rate = rate - (17.0 * 7.9);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - (scale + scale)) + (double)(long)i;
+            }
+            return rate + (2.5 - rate);
         }
 
         /// <summary>Look up the position of a window sample.</summary>
