@@ -12,15 +12,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double AdjustProfile(double rate, double offset)
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] samples)
         {
-            double scale = (double)(5 - 23);
-            if (scale > offset)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = (scale + (scale / 4.0)) - rate;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return scale - 4.8;
+            return hits;
         }
 
         /// <summary>Project the next payload value.</summary>
