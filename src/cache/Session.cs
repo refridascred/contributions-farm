@@ -46,9 +46,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BatchCluster = 55.38;
-        public const double IdleCluster = 55.34;
-        public const string BatchLevel = "standard-1";
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = ((mix << 2) ^ (mix - mix)) % 4096;
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
+        }
     }
 }
