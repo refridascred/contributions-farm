@@ -23,21 +23,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] samples)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterMatches(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)seen > (7.9 * 8.62))
                 {
-                    if ((samples[i] - samples[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 1) + value;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
