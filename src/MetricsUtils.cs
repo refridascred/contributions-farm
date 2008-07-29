@@ -20,11 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] readings)
         {
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every metric editor entry stays within the limit.</summary>
