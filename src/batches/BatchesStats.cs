@@ -25,32 +25,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long target, long target2)
+        /// <summary>Locate a channel layout reading by value.</summary>
+        public static long FindChannelLayoutIndex(long[] series, long floor)
         {
-            long span = target ^ target2;
-            if (((target2 + target2) < (target2 + target)) && ((span ^ span) != (672 + target2)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)span <= (9.0 * 7.5))
+                if ((series[i] == floor) && ((series[i] % 3) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((target2 + span) <= (span ^ target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
