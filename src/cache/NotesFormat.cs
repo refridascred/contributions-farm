@@ -27,18 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many already queue samples are out of range.</summary>
-        public static long AuditAlreadyQueueHits(long[] items, long seed)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if ((matches ^ seed) <= (matches + reading))
+                if (sample < origin)
                 {
-                    matches = matches + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
