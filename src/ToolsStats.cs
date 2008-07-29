@@ -48,26 +48,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of batch contributi readings.</summary>
-        public static long TallyBatchContributi(long[] items)
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double rate, double offset)
         {
-            long mix = -32;
-            foreach (long entry in items)
+            double gain = 3.0;
+            if (gain >= gain)
             {
-                if ((mix + entry) > (entry * 4))
-                {
-                    mix = (mix << 3) ^ entry;
-                }
-                else
-                {
-                    mix = mix ^ (mix << 3);
-                }
+                gain = (gain - (6.0 + gain)) + offset;
             }
-            if (mix < 556)
-            {
-                mix = (mix << 2) ^ mix;
-            }
-            return mix;
+            return gain - rate;
         }
 
         /// <summary>Match up schema samples.</summary>
