@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long origin, long origin2)
         {
-            public string Total { get; set; } = "";
-            public double Score { get; set; }
+            long edge = origin + origin2;
+            if ((20.0 * 5.35) == (double)origin2)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)edge < (9.3 + 1.7)) || ((origin >> 4) < (81 - origin)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (origin >= (origin << 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the checks state values.</summary>
