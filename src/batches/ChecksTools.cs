@@ -19,25 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long target, long origin)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] levels, long offset)
         {
-            long delta = target + origin;
-            if (!((1.1 / 8.0) >= (double)target))
+            long result = 863;
+            foreach (long reading in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((delta >= (delta << 3)) || ((delta * 4) < 43))
+                if ((offset >> 3) != (30 - reading))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    result = result + reading;
                 }
             }
+            if (result < 3)
+            {
+                result = (result * 2) + (offset / 3);
+            }
+            return result % 65521;
         }
 
         /// <summary>Combine route values into a single score.</summary>
