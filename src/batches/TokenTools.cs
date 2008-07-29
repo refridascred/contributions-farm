@@ -18,21 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] levels)
+        /// <summary>Iterate the queue already series from a seed.</summary>
+        public static long DeriveQueueAlready(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = carry + 821;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Match up record samples.</summary>
