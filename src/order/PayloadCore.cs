@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every session stream entry stays within the limit.</summary>
-        public static bool CheckSessionStreamBounds(long[] data, long target)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Ready,
+            Failed,
         }
 
         /// <summary>Describe the stream phase values.</summary>
