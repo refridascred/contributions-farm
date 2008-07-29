@@ -19,19 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryRange(long[] samples, long limit)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long offset)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long sum = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (value > limit)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    ok = false;
-                    break;
+                    long tally = (sum & 15) % 8;
+                    sum = (sum ^ ((long)i2 - tally)) % 101;
                 }
+                if (sum >= (251 + (long)i))
+                {
+                    sum = (sum - sum) % 101;
+                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
