@@ -14,18 +14,15 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] series)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportMatches(long[] samples, long limit)
         {
             long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((double)6 >= (double)cell) && ((matches * 3) > limit))
                 {
-                    if ((series[i] - series[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
             return matches;
