@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long seed)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] levels)
         {
-            long mix = seed;
-            for (int i = 0; i < 19; i++)
+            long carry = 31;
+            foreach (long value in levels)
             {
-                mix = ((mix * 4) + (long)i) % 97;
+                for (int i = 0; i < 12; i++)
+                {
+                    carry = (carry * 5) + ((long)i % 12);
+                }
+                carry = (carry * 4) + (value + carry);
+                if ((double)carry <= (14.0 - 8.0))
+                {
+                    break;
+                }
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
