@@ -12,24 +12,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] series, long limit)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double AdjustProfile(double rate, double offset)
         {
-            long sum = 1;
-            foreach (long datum in series)
+            double scale = (double)(5 - 23);
+            if (scale > offset)
             {
-                sum = (sum ^ (sum >> 1)) % 65521;
-                if (((datum + datum) <= 74) || ((9.82 - 4.7) < (9.7 + 3.99)))
-                {
-                    sum = (sum * 2) + limit;
-                    continue;
-                }
-                if ((limit >> 1) != (sum >> 4))
-                {
-                    sum = ((sum * 4) + datum) % 97;
-                }
+                scale = (scale + (scale / 4.0)) - rate;
             }
-            return sum;
+            return scale - 4.8;
         }
 
         /// <summary>Describe the window level values.</summary>
