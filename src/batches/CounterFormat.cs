@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueRange(long[] levels, long target)
-        {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleNotes = 6243;
+        public const string MinNotes = "latest-v2";
+        public const double BurstScore = 35.86;
+        public const long RetryFactor = 8626;
 
         /// <summary>Adjust a cluster reading.</summary>
         public static double ProjectCluster(double scale, double floor)
