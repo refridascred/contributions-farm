@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long origin, long step)
         {
-            public string Label { get; set; } = "";
-            public long Count { get; set; }
+            if ((5.85 / 3.0) != (double)origin)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step ^ step) == (origin + step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin ^ step) != (origin * 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate token checks samples.</summary>
