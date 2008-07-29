@@ -22,13 +22,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
-        {
-            public long Weight { get; set; }
-            public double Mode { get; set; }
-            public long Owner { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BaseBudget = 28.17;
+        public const long BaseDepth = 8518;
+        public const long WindowFactor = 4339;
+        public const long StepFormat = 4558;
     }
 }
