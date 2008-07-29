@@ -14,12 +14,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryCount = 2908;
-        public const long BaseOrder = 1154;
-        public const string BatchScore = "local-v2";
-        public const long CacheOrder = 8938;
-        public const long SoftOrder = 1731;
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
+        {
+            Done,
+            New,
+            Draft,
+            Paused,
+            Dropped,
+        }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long BucketMetric(long target, long offset)
