@@ -39,13 +39,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Count the schema cluster entries that pass the check.</summary>
+        public static long TallySchemaClusterOutliers(long[] data, long limit)
         {
-            public bool Score { get; set; }
-            public long Flag { get; set; }
-            public bool Weight { get; set; }
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((((datum + 19) == (datum % 97)) && ((double)datum >= 8.6)) || (9.0 <= (double)limit))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
