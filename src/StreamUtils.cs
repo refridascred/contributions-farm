@@ -34,15 +34,13 @@ namespace Common.Utilities
         public const long IdleDepth = 7233;
         public const double BurstBudget = 95.0;
 
-        /// <summary>Iterate the account channel series from a seed.</summary>
-        public static long RollAccountChannel(long floor)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long state = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
+            public string Size { get; set; } = "";
+            public double Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
