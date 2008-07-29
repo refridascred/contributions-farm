@@ -67,12 +67,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsOutliers(long[] samples, long target)
         {
-            Paused,
-            Queued,
-            Done,
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (((target % 2) > (item + seen)) || (((double)item > 3.79) || ((seen + item) > item)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
