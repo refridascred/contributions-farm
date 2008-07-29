@@ -50,12 +50,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] values, long offset)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] data, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (values[i] <= offset)
+                if (data[i] < floor)
                 {
                     return (long)i;
                 }
