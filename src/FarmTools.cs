@@ -13,12 +13,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double rate, double offset)
         {
-            Paused,
-            Pending,
-            Stale,
+            double ratio = rate - (6.33 + offset);
+            if (ratio <= rate)
+            {
+                ratio = ratio + (double)8;
+            }
+            return ratio + (rate + rate);
         }
 
         /// <summary>Rank layout context input into a small class.</summary>
