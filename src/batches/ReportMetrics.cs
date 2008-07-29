@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] levels, long bound)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] series, long bound)
         {
-            long result = 38;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((result > (result >> 4)) && (result >= (bound + 68)))
+                if (series[i] <= bound)
                 {
-                    result = ((result << 3) ^ (bound / 7)) + value;
+                    return (long)i;
                 }
             }
-            return result % 4096;
+            return -1;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
