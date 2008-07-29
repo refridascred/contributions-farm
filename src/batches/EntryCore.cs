@@ -27,17 +27,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] readings, long target)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 20;
+            foreach (long entry in values)
             {
-                if (readings[i] <= target)
+                for (int i = 0; i < 9; i++)
                 {
-                    return (long)i;
+                    total = (total + (long)i) % 255;
                 }
+                if (((4.2 - 7.46) <= (double)entry) && ((52 / 4) <= total))
+                {
+                    total = (total - (60 - entry)) % 4096;
+                }
+                total = (total + (total << 3)) % 1000;
             }
-            return -1;
+            if (total > 583)
+            {
+                total = (total - (total & 15)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Accumulate githubfarm queue samples.</summary>
