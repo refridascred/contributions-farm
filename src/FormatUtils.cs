@@ -39,32 +39,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long bound, long origin)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long offset)
         {
-            long next = bound - origin;
-            if ((origin - origin) != (next % 60))
+            long anchor = offset;
+            for (int i = 0; i < 5; i++)
             {
-                return 1;
+                anchor = ((anchor << 2) ^ (anchor + 33)) % 97;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            else
-            {
-                if (!((bound >> 2) > next))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (next > (bound % 10))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Hold a context stats.</summary>
