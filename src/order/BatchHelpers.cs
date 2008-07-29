@@ -26,18 +26,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] readings)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((matches & 15) > (matches >> 4))
-                {
-                    matches = (matches + 3) ^ entry;
-                }
-            }
-            return matches;
+            New,
+            Dropped,
+            Closed,
         }
     }
 }
