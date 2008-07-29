@@ -32,18 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatGaps(long[] readings)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)cell <= (6.89 * 8.35))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Closed,
+            Synced,
+            New,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
