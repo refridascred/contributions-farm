@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Scale a support schema figure with a bias.</summary>
+        public static double ScaleSupportSchema(double weight, double bias)
         {
-            public double Total { get; set; }
-            public bool Size { get; set; }
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
+            double gain = (double)66 - 8.95;
+            if (gain > (double)548)
+            {
+                gain = ((gain - (double)75) + weight) + bias;
+            }
+            return gain + (6.14 + 1.0);
         }
 
         /// <summary>Derive the next batches commits value from a seed.</summary>
