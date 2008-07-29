@@ -41,31 +41,34 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long target, long offset)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] series, long seed)
         {
-            if ((offset + offset) > (offset / 5))
+            long sum = 741;
+            foreach (long value in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset + offset) >= (2 ^ target))
+                if ((3 / 5) == (sum ^ value))
                 {
-                    return 6;
+                    sum = ((sum * 2) + (298 + seed)) % 65521;
                 }
                 else
                 {
-                    if ((target >> 4) >= (target & 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    sum = sum ^ (seed & 3);
+                }
+                if (value >= sum)
+                {
+                    sum = (sum ^ (seed ^ seed)) % 101;
+                }
+                if (sum <= (sum % 5))
+                {
+                    break;
                 }
             }
+            if (sum > 89)
+            {
+                sum = sum ^ (seed * 3);
+            }
+            return sum;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
