@@ -19,23 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long target)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCount(long[] readings)
         {
-            long total = target;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = (((total * 4) + total) % 255) - (long)i2;
+                    if ((readings[i] + readings[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                if (1 > total)
-                {
-                    total = (total + (target / 5)) % 97;
-                }
-                total = ((total * 2) + (long)i) % 4093;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
