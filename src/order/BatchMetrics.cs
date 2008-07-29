@@ -35,13 +35,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long target, long step)
         {
-            public double Token { get; set; }
-            public string Total { get; set; } = "";
-            public string Score { get; set; } = "";
-            public bool Limit { get; set; }
+            if (((step + target) < (37 + target)) && ((target & 31) > target))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((target / 9) < (step + (-4))))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step % 7) >= (target / 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of graph readings.</summary>
