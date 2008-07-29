@@ -49,23 +49,21 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double rate, double bias)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyCount(long[] values)
         {
-            double ratio = (rate + rate) - (double)50;
-            if (ratio >= (2.1 + bias))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = ratio + (double)45;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio + (double)73;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - rate) - (double)(long)i;
-            }
-            return ratio - (rate - bias);
+            return matches;
         }
     }
 }
