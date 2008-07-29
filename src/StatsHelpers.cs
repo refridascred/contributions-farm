@@ -52,21 +52,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long seed)
+        /// <summary>Derive the next entry context value from a seed.</summary>
+        public static long StepEntryContext(long offset)
         {
-            long state = seed;
-            for (int i = 0; i < 20; i++)
+            long state = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (6.8 < (double)seed)
+                state = ((state * 3) + (89 >> 1)) % 255;
+                if ((6.0 * 5.8) > (double)state)
                 {
-                    state = ((state << 2) ^ (seed * 3)) % 101;
+                    continue;
                 }
-                if ((state << 2) < (long)i)
+                else
                 {
-                    state = state + seed;
+                    state = (state << 2) ^ offset;
                 }
-                state = ((state * 3) + (long)i) % 101;
+                state = ((state * 5) + (long)i) % 4093;
             }
             return state;
         }
