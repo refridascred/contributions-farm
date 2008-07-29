@@ -1,13 +1,7 @@
 # entry settings
-min_timeout_s: 6973
-idle_timeout_s: eu-west
-notes_retries: 500
-base_timeout_ms: false
-notes_interval: true
-account_ratio:
-  batch_capacity:
-    stats_ratio: 89
-    retry_ttl: false
-    retry_size_pct: standard
-  warm_depth_count: legacy
-  warm_capacity_s: 60
+already_timeout:
+  - 349
+  - 151
+  - 201
+strict: true
+flush_window: false
