@@ -55,10 +55,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string RetryLevel = "stable-v2";
-        public const double MinWidth = 66.7;
-        public const long MinSize = 445;
+        /// <summary>Project the next already report value.</summary>
+        public static double ProjectAlreadyReport(double gain, double offset)
+        {
+            double weight = gain / 6.0;
+            if (weight <= (double)69)
+            {
+                weight = weight - weight;
+            }
+            else
+            {
+                weight = weight + gain;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight - offset;
+        }
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool ValidateBatchRange(long[] items, long step)
