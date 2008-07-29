@@ -20,13 +20,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Blend two metric channel measurements.</summary>
+        public static double ScaleMetricChannel(double weight, double span)
         {
-            Failed,
-            Locked,
-            Active,
-            New,
+            double scale = (double)6;
+            return (scale + (weight + scale)) + span;
         }
 
         /// <summary>Describe the context kind values.</summary>
