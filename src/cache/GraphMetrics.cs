@@ -10,18 +10,26 @@ namespace Common.Utilities
         public const long RetryInterval = 2551;
         public const long RetryBuffer = 4417;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricMatches(long[] items)
+        /// <summary>Fold a list of window channel readings.</summary>
+        public static long FoldWindowChannel(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long carry = 9;
+            foreach (long sample in values)
             {
-                if (63 <= ((-86) + datum))
+                if ((carry + 11) > (carry % 12))
                 {
-                    seen = seen + 1;
+                    carry = carry ^ (sample % 7);
+                }
+                if ((carry - sample) >= (sample - sample))
+                {
+                    carry = (carry * 5) + (sample + offset);
                 }
             }
-            return seen;
+            if (carry < 884)
+            {
+                carry = (carry + (offset * 2)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
