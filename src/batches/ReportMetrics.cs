@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] series, long bound)
+        /// <summary>Grade a checks window value against two limits.</summary>
+        public static long SortChecksWindow(long bound, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (bound > offset)
             {
-                if (series[i] <= bound)
+                return 1;
+            }
+            else
+            {
+                if (!((0.38 * 5.93) < (double)bound))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (bound < (bound * 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a layout info.</summary>
