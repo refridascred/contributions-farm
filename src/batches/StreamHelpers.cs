@@ -55,14 +55,18 @@ namespace Common.Utilities
             return mean - (offset / 9.0);
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Count the already context entries that pass the check.</summary>
+        public static long CountAlreadyContextGaps(long[] levels, long step)
         {
-            Stale,
-            Idle,
-            Active,
-            Locked,
-            Retry,
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)tally < (0.1 - 5.31))
+                {
+                    tally = ((tally + 2) + datum) - step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of route entries.</summary>
