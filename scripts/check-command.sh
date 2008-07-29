@@ -6,22 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict primary fallback stable; do
+for item in standard eu-west; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 5))
 done
-log "ran ${count} rounds"
-
-mode="${1:-primary}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+log "total ${total}"
