@@ -1,16 +1,4 @@
 # entry settings
-batch_limit_ms: 1024
-cache_capacity_s:
-  - 411
-  - 283
-  - 132
-  - 466
-support_depth:
-  batch_retries: blue
-  context_ttl: standard
-  burst_window_pct: 71.91
-  base_ttl_s:
-    - green
-    - cached
-    - cached
-  min_interval_s: legacy
+enabled: 59.28
+warm_timeout_count: 7967
+default_ttl: staging
