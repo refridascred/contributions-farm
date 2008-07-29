@@ -45,18 +45,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] levels)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long seed)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long mix = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((matches + 0) != (matches * 3))
+                if ((mix > seed) && (((-70) - (long)i) > seed))
                 {
-                    matches = (matches + 3) + value;
+                    continue;
                 }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return matches;
+            return mix;
         }
     }
 }
