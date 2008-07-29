@@ -37,9 +37,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string DefaultWidth = "staging-edge";
-        public const string CacheSize = "fallback-1";
-        public const string SoftSize = "primary-edge";
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
