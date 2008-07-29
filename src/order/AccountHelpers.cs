@@ -56,13 +56,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
-        {
-            public long Level { get; set; }
-            public long Region { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 5685;
+        public const long MinLevel = 744;
+        public const string LimitReport = "stable";
+        public const long MinSpan = 2735;
 
         /// <summary>Accumulate command samples.</summary>
         public static long DigestCommand(long[] readings)
