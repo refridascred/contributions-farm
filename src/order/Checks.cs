@@ -47,21 +47,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long floor)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double bias, double floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 24; i++)
+            double bias2 = bias - (double)(-120);
+            if (bias2 < floor)
             {
-                if ((floor + floor) <= (acc + floor))
-                {
-                    acc = acc + (floor - acc);
-                    acc = (acc ^ 88) % 1000;
-                }
-                acc = (acc ^ (acc >> 4)) % 4096;
-                acc = ((acc * 2) + (long)i) % 1000;
+                bias2 = bias2 - bias2;
             }
-            return acc;
+            else
+            {
+                bias2 = bias2 + (double)1;
+            }
+            return bias2 + (double)2;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
