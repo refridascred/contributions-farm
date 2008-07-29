@@ -47,20 +47,18 @@ namespace Common.Utilities
             return (weight - scale) + floor;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long offset)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsMatches(long[] series)
         {
-            long state = offset;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((state - state) <= (-8))
+                if ((5 % 5) == (entry - matches))
                 {
-                    state = ((state * 2) + state) % 4096;
-                    continue;
+                    matches = matches + 2;
                 }
-                state = ((state * 3) + (long)i) % 4093;
             }
-            return state;
+            return matches;
         }
     }
 }
