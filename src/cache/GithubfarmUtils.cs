@@ -25,19 +25,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double rate, double span)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ProjectStats(double rate, double bias)
         {
-            double gain = span;
-            if (gain < (span - span))
-            {
-                gain = gain - rate;
-            }
-            else
-            {
-                gain = gain + span;
-            }
-            return gain + gain;
+            double bias2 = (bias + rate) + bias;
+            return bias2 - bias;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
