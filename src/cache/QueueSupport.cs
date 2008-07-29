@@ -14,16 +14,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryCount = 2908;
+        public const long BaseOrder = 1154;
+        public const string BatchScore = "local-v2";
+        public const long CacheOrder = 8938;
+        public const long SoftOrder = 1731;
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long BucketMetric(long target, long offset)
