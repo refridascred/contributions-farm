@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of notes queue entries.</summary>
-        public static long TotalNotesQueue(long[] readings, long bound)
-        {
-            long score = 63;
-            foreach (long reading in readings)
-            {
-                score = ((score * 2) + reading) + bound;
-                for (int i = 0; i < 9; i++)
-                {
-                    score = ((score - (reading * 2)) % 4096) - (long)i;
-                }
-                score = (score << 3) ^ (reading & 3);
-            }
-            if (score < (-26))
-            {
-                score = (score << 3) ^ (score + 672);
-            }
-            return score % 4096;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MaxInterval = "latest-edge";
+        public const string SoftTimeout = "cached-1";
+        public const long LimitDepth = 5054;
+        public const double RetryCount = 41.22;
 
         /// <summary>Describe the queue status values.</summary>
         public enum QueueStatus
