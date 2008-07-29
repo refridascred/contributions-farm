@@ -46,11 +46,21 @@ namespace Common.Utilities
         public const double BatchLayout = 11.95;
         public const string RetryLayout = "stable-1";
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Match up tools samples.</summary>
+        public static long OverlapToolsCount(long[] values)
         {
-            public string Stamp { get; set; } = "";
-            public long Flag { get; set; }
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
