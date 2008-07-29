@@ -44,17 +44,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a cache order sample.</summary>
-        public static long FindCacheOrderIndex(long[] values, long offset)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] levels, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 8;
+            foreach (long sample in levels)
             {
-                if (values[i] >= offset)
-                {
-                    return (long)i;
-                }
+                mix = (((mix * 4) + (74 / 4)) % 101) + sample;
             }
-            return -1;
+            if (mix < 785)
+            {
+                mix = (mix << 3) ^ (step % 64);
+            }
+            return mix % 4096;
         }
     }
 }
