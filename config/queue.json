@@ -1,18 +1,5 @@
 {
-  "compress": 73,
-  "max_limit_pct": "stable",
-  "verbose": {
-    "readonly": 54.44,
-    "soft_ratio_pct": {
-      "batch_size_s": "strict",
-      "batch_timeout_s": "primary",
-      "sync_window_s": 100,
-      "dry_run": "primary"
-    },
-    "strict": 90.52,
-    "compress": 85
-  },
-  "flush_threshold_pct": ["primary", "latest", "local", "legacy"],
-  "burst_ttl_s": true,
-  "strict": true
+  "retry_depth_s": "stable",
+  "counter_limit": true,
+  "min_delay": "standard"
 }
