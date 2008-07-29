@@ -55,19 +55,38 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordRange(long[] samples, long bound)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long step, long limit)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            if (((step + limit) < (step - limit)) && (step <= (limit - step)))
             {
-                if (datum != bound)
+                return 6;
+            }
+            else
+            {
+                if (((limit + limit) < limit) && (limit > step))
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((step & 127) <= (7 - step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit ^ step) <= 7)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
