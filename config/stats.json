@@ -1,8 +1,7 @@
 {
-  "min_delay": true,
-  "sync_timeout": "blue",
-  "max_timeout_pct": [247, 271, 457],
-  "flush_size": "staging",
-  "contributi_window": true,
-  "entry_threshold": ["local", "green"]
+  "already_timeout": 89.69,
+  "schema_timeout": false,
+  "poll_interval_s": 30,
+  "strict": [33, 465],
+  "audit": 60
 }
