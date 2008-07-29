@@ -40,21 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] data, long floor)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaHits(long[] series, long offset)
         {
-            long anchor = 91;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long sample in series)
             {
-                anchor = ((anchor << 2) ^ (anchor & 127)) % 97;
-                anchor = ((anchor * 4) + sample) % 1000;
-                anchor = (anchor ^ (sample - floor)) % 4096;
+                if (16.0 >= (double)count)
+                {
+                    count = ((count + 3) - sample) - offset;
+                }
             }
-            if (anchor > 70)
-            {
-                anchor = ((anchor << 2) ^ anchor) % 4096;
-            }
-            return anchor;
+            return count;
         }
     }
 }
