@@ -43,17 +43,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a schema already sample.</summary>
-        public static long LookupSchemaAlreadyIndex(long[] readings, long origin)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 21;
+            foreach (long sample in values)
             {
-                if (readings[i] > origin)
+                carry = carry ^ 74;
+                if ((sample < (carry - carry)) && (((-2) >> 1) != (sample * 3)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
