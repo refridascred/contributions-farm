@@ -27,19 +27,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteBounds(long[] readings, long step)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
