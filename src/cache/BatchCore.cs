@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the farm buffer entries that pass the check.</summary>
-        public static long TallyFarmBufferMatches(long[] series, long seed)
-        {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((11.0 + 11.0) < (double)reading)
-                {
-                    tally = (tally + 2) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 809;
+        public const string StepInterval = "primary-1";
+        public const long WindowQueue = 2668;
+        public const long SoftQueue = 6012;
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool CheckCommandLimits(long[] readings, long target)
