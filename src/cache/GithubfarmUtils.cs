@@ -31,26 +31,21 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] readings, long limit)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long MatchContextCount(long[] series)
         {
-            long anchor = 871;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((limit < (reading + limit)) && (limit < (limit % 3)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = ((anchor << 2) ^ limit) % 101;
-                }
-                else
-                {
-                    anchor = (anchor - anchor) % 101;
+                    if ((series[i] ^ series[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (anchor > 3)
-            {
-                anchor = anchor - (limit >> 3);
-            }
-            return anchor % 97;
+            return seen;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
