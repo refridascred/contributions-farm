@@ -24,13 +24,11 @@ namespace Common.Utilities
             return scale + (2.0 - 1.0);
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
-        {
-            Queued,
-            Active,
-            Synced,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double IdleBudget = 80.45;
+        public const string DefaultFarm = "fallback-v2";
+        public const long MinSpan = 414;
+        public const string HardFarm = "staging";
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long TallyMetricMatches(long[] values, long target)
