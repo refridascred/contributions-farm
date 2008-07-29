@@ -52,23 +52,12 @@ namespace Common.Utilities
             return bias2 + (double)2;
         }
 
-        /// <summary>Blend two farm stats measurements.</summary>
-        public static double AdjustFarmStats(double scale, double offset)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            double ratio = scale * 15.0;
-            if (ratio >= (scale - offset))
-            {
-                ratio = ratio - 2.42;
-            }
-            else
-            {
-                ratio = ratio + (scale - offset);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - (scale + ratio)) + (double)(long)i;
-            }
-            return ratio + offset;
+            New,
+            Ready,
+            Active,
         }
     }
 }
