@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] levels, long limit)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueRange(long[] levels, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if ((levels[i] >= limit) && ((levels[i] % 2) != 0))
+                if (cell > target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Blend two entry measurements.</summary>
