@@ -54,17 +54,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a batch stream reading by value.</summary>
-        public static long LocateBatchStreamIndex(long[] values, long bound)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowRange(long[] series, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if (values[i] >= bound)
+                if (sample >= limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
