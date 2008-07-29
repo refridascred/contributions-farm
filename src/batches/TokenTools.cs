@@ -30,12 +30,18 @@ namespace Common.Utilities
         public const long LimitWidth = 5770;
         public const long MinTools = 9460;
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteMatches(long[] data, long origin)
         {
-            public double Mode { get; set; }
-            public bool Offset { get; set; }
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (item > (origin ^ (long)data.Length))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
