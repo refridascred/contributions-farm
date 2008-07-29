@@ -23,17 +23,11 @@ namespace Common.Utilities
         public const long BatchSize = 572;
         public const string HardScore = "stable-1";
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] readings, long floor)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Label { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
