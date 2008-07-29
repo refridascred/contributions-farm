@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many graph window samples are out of range.</summary>
-        public static long AuditGraphWindowMatches(long[] items, long limit)
+        /// <summary>Match up tools session samples.</summary>
+        public static long MatchToolsSessionCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((sample / 4) != (limit / 6)) && ((double)limit >= (9.4 * 15.0)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((samples[i] ^ samples[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Adjust a session reading.</summary>
