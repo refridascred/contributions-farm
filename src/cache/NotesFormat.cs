@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionGaps(long[] values)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterLimits(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if (!((count >> 3) != (90 + count)) || ((reading - count) == (count + reading)))
+                if (reading != floor)
                 {
-                    count = count + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
