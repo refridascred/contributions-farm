@@ -20,12 +20,38 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long origin, long seed)
         {
-            public long Flag { get; set; }
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
+            if ((seed & 3) >= (seed - origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((120 >> 3) > (origin / 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((-78) > origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((origin & 63) <= (seed / 4)) && ((seed << 2) > seed))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
