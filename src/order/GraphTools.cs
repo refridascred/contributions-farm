@@ -20,22 +20,10 @@ namespace Common.Utilities
         public const double LimitInterval = 75.22;
         public const long IdleChecks = 4084;
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long MatchGithubfarmCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string WindowAlready = "alpha-1";
+        public const long RetrySpan = 1421;
+        public const long LimitTimeout = 8249;
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool CheckCacheRange(long[] readings, long step)
