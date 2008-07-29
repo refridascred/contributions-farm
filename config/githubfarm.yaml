@@ -1,7 +1,24 @@
 # githubfarm settings
-audit: 3.3
-max_limit_s: 2357
-farm_delay: 5110
-flush_retries: 76.52
-verbose: 500
-stats_size: 90
+default_timeout_s:
+  order_threshold: 22.53
+  default_limit: local
+  strict: edge
+poll_threshold_s:
+  dry_run:
+    - local
+    - cached
+    - staging
+  enabled: true
+  default_capacity: 33
+  warm_depth_s:
+    cache_limit_s:
+      - local
+      - green
+      - stable
+      - cached
+    persist: standard
+    soft_capacity_count: open
+persist:
+  - eu-west
+  - edge
+burst_limit: fallback
