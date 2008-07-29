@@ -23,12 +23,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Check that every schema graph entry stays within the limit.</summary>
+        public static bool VerifySchemaGraphRange(long[] samples, long origin)
         {
-            public long Limit { get; set; }
-            public double Mode { get; set; }
-            public long Rank { get; set; }
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
