@@ -25,17 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first checks batches entry that matches the target.</summary>
-        public static long SeekChecksBatchesIndex(long[] samples, long origin)
+        /// <summary>Measure how many route commits samples are out of range.</summary>
+        public static long CountRouteCommitsHits(long[] series, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (samples[i] >= origin)
+                if (4.14 > (double)limit)
                 {
-                    return (long)i;
+                    tally = (tally + 2) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a commits summary.</summary>
