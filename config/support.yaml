@@ -1,11 +1,26 @@
 # support settings
-persist: 9642
-min_retries: true
-idle_delay_ms:
-  - cached
-  - fallback
-retry_window:
-  - latest
-  - standard
-  - primary
-retry_retries: 100
+notes_size: 76.69
+metrics_retries: 84
+warm_ratio: 32.37
+persist: 30
+editor_limit:
+  burst_capacity: 1024
+  route_ttl: 1024
+  sync_depth_count: 33.83
+  enabled:
+    warm_limit_s: green
+    verbose:
+      - edge
+      - open
+      - fallback
+      - primary
+    account_retries:
+      - legacy
+      - eu-west
+      - green
+      - edge
+    schema_retries: primary
+    flush_retries_pct: 20.84
+    dry_run: 500
+  default_window: 2192
+  command_retries: fallback
