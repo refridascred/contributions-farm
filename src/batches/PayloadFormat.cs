@@ -42,18 +42,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheHits(long[] items, long origin)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if (((cell < (11 / 9)) || ((double)count != (2.26 - 6.2))) && ((4 >> 1) < (cell << 3)))
-                {
-                    count = (count + 3) - origin;
-                }
-            }
-            return count;
+            public double Mode { get; set; }
+            public bool Total { get; set; }
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Roll a record support counter forward.</summary>
