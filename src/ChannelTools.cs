@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next metric record value from a seed.</summary>
-        public static long SeriesMetricRecord(long step)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesOutliers(long[] items, long target)
         {
-            long result = step;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (!(((double)result != (8.0 / 8.0)) && (result <= (result >> 5))))
+                if ((target - target) <= target)
                 {
-                    result = ((result * 3) + (step + result)) % 255;
+                    matches = (matches + 2) + entry;
                 }
-                result = ((result * 4) + (long)i) % 101;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
