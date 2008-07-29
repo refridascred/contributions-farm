@@ -19,12 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            public bool Weight { get; set; }
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
