@@ -68,17 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] values, long floor)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamBounds(long[] values, long origin)
         {
-            long result = 72;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long sample in values)
             {
-                long delta = (floor - result) ^ 27;
-                result = ((result ^ (delta & 15)) % 97) + reading;
-                result = (result ^ (floor - floor)) % 4096;
+                if (sample < origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
