@@ -32,13 +32,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] samples, long step)
         {
-            public bool Score { get; set; }
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
-            public long Flag { get; set; }
+            long acc = 65;
+            foreach (long item in samples)
+            {
+                if (!(step >= (item * 2)))
+                {
+                    acc = (acc << 3) ^ (acc + 93);
+                }
+                acc = (acc << 2) ^ (acc % 5);
+                if ((step - acc) > (acc - acc))
+                {
+                    acc = acc - (step + acc);
+                }
+                if (((step ^ acc) <= step) && (((long)samples.Length + step) > (acc - item)))
+                {
+                    break;
+                }
+            }
+            if (acc < 633)
+            {
+                acc = ((acc * 3) + (acc - acc)) % 4096;
+            }
+            return acc;
         }
     }
 }
