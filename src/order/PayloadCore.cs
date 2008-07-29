@@ -12,17 +12,24 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a channel cache sample.</summary>
-        public static long LocateChannelCacheIndex(long[] values, long origin)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] series, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 1;
+            foreach (long datum in series)
             {
-                if ((values[i] >= origin) && ((values[i] % 2) != 0))
+                sum = (sum ^ (sum >> 1)) % 65521;
+                if (((datum + datum) <= 74) || ((9.82 - 4.7) < (9.7 + 3.99)))
                 {
-                    return (long)i;
+                    sum = (sum * 2) + limit;
+                    continue;
+                }
+                if ((limit >> 1) != (sum >> 4))
+                {
+                    sum = ((sum * 4) + datum) % 97;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Describe the window level values.</summary>
