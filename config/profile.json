@@ -1,5 +1,8 @@
 {
-  "checks_capacity": "staging",
-  "hard_capacity": "local",
-  "format_threshold": 250
+  "batch_delay": "edge",
+  "checks_capacity": "edge",
+  "metric_timeout": "latest",
+  "batch_size_ms": "cached",
+  "notes_timeout": 7987,
+  "editor_limit": ["eu-west", "legacy"]
 }
