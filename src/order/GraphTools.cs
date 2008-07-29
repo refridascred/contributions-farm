@@ -65,38 +65,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long limit, long seed)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] data, long origin)
         {
-            if ((7.97 - 6.9) != (double)limit)
+            long total = 262;
+            foreach (long value in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)seed >= (1.2 * 0.8)) && ((seed + seed) <= seed))
+                if ((total + origin) <= (total & 63))
                 {
-                    return 3;
+                    total = (((total * 2) + (7 << 1)) % 1000) + value;
+                    break;
                 }
-                else
+                if ((total * 2) <= (210 * 5))
                 {
-                    if ((double)limit != (double)93)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)seed == (1.0 / 4.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    total = ((total * 2) + (89 ^ origin)) % 1000;
+                    break;
                 }
+                total = total + (total / 2);
             }
+            return total % 65521;
         }
     }
 }
