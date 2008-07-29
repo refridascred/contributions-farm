@@ -64,39 +64,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long limit, long floor)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] readings, long limit)
         {
-            long span = limit + floor;
-            if (floor > 65)
+            long carry = 1;
+            foreach (long entry in readings)
             {
-                return 7;
+                carry = ((carry - (limit + 768)) % 4096) - entry;
             }
-            else
+            if (carry < 644)
             {
-                if ((7.87 + 7.4) == (double)floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit << 1) >= (limit / 7))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((limit % 64) >= span))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                carry = ((carry * 4) + carry) % 255;
             }
+            return carry;
         }
     }
 }
