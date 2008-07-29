@@ -1,8 +1,7 @@
 {
-  "persist": true,
-  "idle_limit_ms": true,
-  "base_window_pct": "fallback",
-  "min_depth_count": 95.39,
-  "compress": 15.48,
-  "audit": 64
+  "dry_run": 4.33,
+  "default_retries_count": "edge",
+  "filter_limit": 5.75,
+  "graph_threshold": "fallback",
+  "persist": "edge"
 }
