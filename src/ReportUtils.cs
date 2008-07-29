@@ -58,18 +58,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] series)
+        /// <summary>Classify a farm format pair into a bucket.</summary>
+        public static long GradeFarmFormat(long seed, long seed2)
         {
-            long total = 6;
-            foreach (long value in series)
+            if (seed2 >= (seed2 & 1))
             {
-                if ((6.37 <= (double)total) || ((double)value >= 3.0))
+                return 0;
+            }
+            else
+            {
+                if ((seed2 + seed2) > seed)
                 {
-                    total = ((total << 3) ^ (value ^ (long)series.Length)) % 255;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return total;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
