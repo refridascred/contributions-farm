@@ -40,15 +40,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a farm batches counter forward.</summary>
-        public static long IterateFarmBatches(long seed)
+        /// <summary>Check that every buffer stats entry stays within the limit.</summary>
+        public static bool GuardBufferStatsRange(long[] data, long limit)
         {
-            long sum = seed;
-            for (int i = 0; i < 20; i++)
+            bool found = true;
+            foreach (long sample in data)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                if (sample >= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum;
+            return found;
         }
     }
 }
