@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long origin)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long sum = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((sum < (sum << 3)) || ((1.14 / 4.0) < (double)sum))
-                {
-                    sum = (sum - sum) % 97;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
+            public bool Token { get; set; }
+            public long Weight { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the support phase values.</summary>
