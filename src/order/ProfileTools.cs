@@ -63,13 +63,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportRange(long[] series, long floor)
         {
-            Retry,
-            New,
-            Failed,
-            Synced,
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
