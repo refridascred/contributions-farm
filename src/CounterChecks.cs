@@ -44,15 +44,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] samples)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long state = 12;
-            foreach (long entry in samples)
-            {
-                state = ((state << 3) ^ entry) % 255;
-            }
-            return state;
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
+            public long Token { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
