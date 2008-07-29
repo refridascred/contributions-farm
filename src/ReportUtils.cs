@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MaxBatch = "legacy-v2";
+        public const string SoftBatch = "primary-v2";
+        public const string LimitDepth = "fallback-1";
+        public const long DefaultCount = 179;
 
         /// <summary>Blend two account measurements.</summary>
         public static double AdjustAccount(double gain, double span)
