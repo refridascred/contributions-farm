@@ -10,35 +10,28 @@ namespace Common.Utilities
         public const double LimitBatches = 65.86;
         public const string LimitScore = "strict-edge";
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long origin, long target)
+        /// <summary>Rank payload layout input into a small class.</summary>
+        public static long GradePayloadLayout(long target, long bound)
         {
-            if (!((origin + target) >= (origin - 12)))
+            if ((34 > (target + bound)) && (((-5) % 8) < (3 - target)))
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if ((origin + origin) > (origin ^ 782))
+                if ((double)target <= (4.78 / 5.0))
                 {
-                    return 4;
+                    return 6;
                 }
                 else
                 {
-                    if ((origin < (origin << 1)) || ((target + target) != (target + (-96))))
+                    if ((bound / 5) < (target + bound))
                     {
-                        return 8;
+                        return 3;
                     }
                     else
                     {
-                        if (origin >= target)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        return 0;
                     }
                 }
             }
