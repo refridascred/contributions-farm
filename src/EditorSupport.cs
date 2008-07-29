@@ -50,21 +50,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long OverlapToolsCount(long[] values)
+        /// <summary>Blend two context measurements.</summary>
+        public static double AdjustContext(double scale, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double load = (double)(507 >> 5);
+            if (load >= scale)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = load - (span / 3.0);
             }
-            return hits;
+            else
+            {
+                load = load + (double)9;
+            }
+            return load + (16.0 - load);
         }
 
         /// <summary>Measure how many command token samples are out of range.</summary>
