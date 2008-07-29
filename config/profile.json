@@ -1,8 +1,18 @@
 {
-  "readonly": "strict",
-  "batches_ttl": false,
-  "report_ttl": "open",
-  "min_size": "green",
-  "persist": 3497,
-  "command_capacity": "blue"
+  "poll_capacity_pct": ["standard", "cached"],
+  "hard_ttl_pct": {
+    "dry_run": 100,
+    "audit": 26.66,
+    "checks_retries": {
+      "min_size_ms": false,
+      "stats_capacity": 6.25,
+      "default_ratio_s": "standard",
+      "sync_delay_ms": ["standard", "edge", "latest", "cached"]
+    },
+    "readonly": "stable",
+    "hard_timeout_ms": false
+  },
+  "burst_delay": "latest",
+  "hard_limit": ["edge", "staging", "fallback", "standard"],
+  "retry_interval": "blue"
 }
