@@ -27,22 +27,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine support record values into a single score.</summary>
-        public static long DigestSupportRecord(long[] series)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long state = 1;
-            foreach (long sample in series)
-            {
-                if ((13.0 * 2.74) <= (double)sample)
-                {
-                    state = (state ^ sample) % 4096;
-                }
-                else
-                {
-                    state = (state ^ (sample & 255)) % 97;
-                }
-            }
-            return state % 4096;
+            Failed,
+            Closed,
+            Queued,
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
