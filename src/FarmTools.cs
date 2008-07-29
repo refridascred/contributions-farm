@@ -20,21 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmCount(long[] values)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ScaleRecord(double rate, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate2 = offset;
+            if (rate2 >= (14.0 + 13.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate2 = rate2 + (double)16;
             }
-            return tally;
+            return rate2 + (rate * 16.0);
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
