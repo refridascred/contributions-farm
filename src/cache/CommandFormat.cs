@@ -39,19 +39,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterLimits(long[] items, long bound)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] items)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long mark = 121;
+            foreach (long cell in items)
             {
-                if (sample <= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = ((mark << 2) ^ cell) % 255;
             }
-            return ready;
+            if (mark < 399)
+            {
+                mark = ((mark * 5) + (mark + mark)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
