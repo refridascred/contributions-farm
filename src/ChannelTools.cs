@@ -13,22 +13,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountHits(long[] readings, long origin)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueOutliers(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((5 / 7) > (origin >> 3))
+                if (684 < (seen * 2))
                 {
-                    tally = (tally + 1) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = (seen + 1) ^ sample;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
