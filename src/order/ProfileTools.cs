@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] samples)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)acc <= (11.0 * 9.16))
                 {
-                    if ((samples[i] - samples[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Combine metric command values into a single score.</summary>
