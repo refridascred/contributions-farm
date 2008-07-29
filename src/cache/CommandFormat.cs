@@ -28,19 +28,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] items)
+        /// <summary>Count the window route entries that pass the check.</summary>
+        public static long CountWindowRouteGaps(long[] readings, long seed)
         {
-            long mark = 121;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                mark = ((mark << 2) ^ cell) % 255;
+                if (!((seen + (-916)) > (seed + 90)))
+                {
+                    seen = (seen + 3) - entry;
+                }
             }
-            if (mark < 399)
-            {
-                mark = ((mark * 5) + (mark + mark)) % 255;
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Find the first entry checks entry that matches the target.</summary>
