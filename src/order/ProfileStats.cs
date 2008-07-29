@@ -22,18 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadGaps(long[] levels)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsOutliers(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (((9.5 * 8.6) == (double)hits) && (((28 / 9) > (hits % 8)) && ((double)reading <= (7.0 - 16.0))))
+                if ((reading > (reading + tally)) || ((reading * 4) != (reading + 28)))
                 {
-                    hits = hits + 3;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
