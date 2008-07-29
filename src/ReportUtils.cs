@@ -55,20 +55,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    total = ((total << 2) ^ (total >> 5)) ^ (long)i2;
-                    total = (total - (total + target)) % 97;
-                }
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double CacheStream = 41.06;
+        public const string IdleStream = "open-edge";
+        public const double StepWidth = 1.25;
+        public const string RetryCount = "strict-edge";
     }
 }
