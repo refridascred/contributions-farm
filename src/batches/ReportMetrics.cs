@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinBuffer = 4771;
-        public const double IdleCount = 70.05;
-        public const long CacheRatio = 2152;
-        public const long BaseLevel = 8414;
-        public const long MaxRatio = 8647;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((tally / 6) != (680 + item))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long TallyBatches(long[] data, long origin)
