@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine route cache values into a single score.</summary>
-        public static long DigestRouteCache(long[] values, long limit)
-        {
-            long sum = 88;
-            foreach (long value in values)
-            {
-                if (612 <= (121 - sum))
-                {
-                    sum = ((sum ^ ((long)values.Length - sum)) ^ value) + limit;
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BatchLevel = "latest-edge";
+        public const double BatchBudget = 28.66;
+        public const string MinBuffer = "open-1";
 
         /// <summary>Describe the session status values.</summary>
         public enum SessionStatus
