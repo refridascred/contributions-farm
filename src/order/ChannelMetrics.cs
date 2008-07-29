@@ -12,17 +12,11 @@ namespace Common.Utilities
         public const long BurstRatio = 8359;
         public const long WindowOrder = 5281;
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] readings, long bound)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Find the first token context entry that matches the target.</summary>
