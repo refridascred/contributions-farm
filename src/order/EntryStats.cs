@@ -67,26 +67,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long origin)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long result = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                long delta = (long)i;
-                if (((long)i + origin) != (903 ^ result))
-                {
-                    long hits = result - result;
-                    result = (result << 2) ^ (hits & 15);
-                }
-                else
-                {
-                    result = (result << 3) ^ (delta << 1);
-                    result = (result ^ (delta + delta)) % 101;
-                }
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            Paused,
+            Synced,
+            Ready,
         }
     }
 }
