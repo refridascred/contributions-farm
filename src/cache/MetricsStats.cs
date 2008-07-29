@@ -51,12 +51,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            public string Size { get; set; } = "";
-            public string Token { get; set; } = "";
-            public bool Count { get; set; }
+            Stale,
+            Synced,
+            Ready,
         }
 
         /// <summary>Describe the payload level values.</summary>
