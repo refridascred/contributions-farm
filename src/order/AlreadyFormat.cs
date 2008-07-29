@@ -55,15 +55,18 @@ namespace Common.Utilities
             return rate2 + (rate2 * 8.6);
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] samples)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] values, long floor)
         {
-            long acc = 909;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long cell in values)
             {
-                acc = ((acc * 4) + (4 - datum)) % 4096;
+                if ((((floor & 63) < floor) || ((45 & 255) < (count >> 4))) && (((0 & 3) <= (60 - cell)) && ((cell + cell) >= count)))
+                {
+                    count = count + 3;
+                }
             }
-            return acc;
+            return count;
         }
     }
 }
