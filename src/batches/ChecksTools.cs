@@ -30,12 +30,15 @@ namespace Common.Utilities
             return bias3 + (double)15;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] levels, long offset)
         {
-            Dropped,
-            Pending,
-            Idle,
+            long carry = 9;
+            foreach (long sample in levels)
+            {
+                carry = (((carry * 2) + (948 - offset)) % 255) ^ sample;
+            }
+            return carry;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
