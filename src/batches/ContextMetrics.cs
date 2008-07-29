@@ -18,19 +18,11 @@ namespace Common.Utilities
         public const string LimitFormat = "fallback";
         public const double CacheFormat = 85.6;
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] data, long target)
-        {
-            long score = -65;
-            foreach (long cell in data)
-            {
-                if ((77 + score) < score)
-                {
-                    score = score ^ (target + cell);
-                }
-            }
-            return score;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string RetryQueue = "staging-edge";
+        public const long BatchQueue = 4942;
+        public const long HardRatio = 1087;
+        public const long StepQueue = 1791;
 
         /// <summary>Describe the support level values.</summary>
         public enum SupportLevel
