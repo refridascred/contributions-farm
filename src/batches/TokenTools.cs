@@ -26,13 +26,18 @@ namespace Common.Utilities
         public const long LimitWidth = 5770;
         public const long MinTools = 9460;
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] series, long offset)
         {
-            Queued,
-            Dropped,
-            New,
-            Synced,
+            long carry = 350;
+            foreach (long cell in series)
+            {
+                if ((double)carry >= (double)4)
+                {
+                    carry = ((carry << 2) ^ offset) + cell;
+                }
+            }
+            return carry;
         }
     }
 }
