@@ -24,21 +24,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] readings)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmMatches(long[] items, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((2.0 * 2.4) >= (double)entry)
                 {
-                    if ((readings[i] ^ readings[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 3) + target;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the support state values.</summary>
