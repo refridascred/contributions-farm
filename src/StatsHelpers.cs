@@ -73,24 +73,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next entry context value from a seed.</summary>
-        public static long StepEntryContext(long offset)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long state = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                state = ((state * 3) + (89 >> 1)) % 255;
-                if ((6.0 * 5.8) > (double)state)
-                {
-                    continue;
-                }
-                else
-                {
-                    state = (state << 2) ^ offset;
-                }
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            public string Total { get; set; } = "";
+            public bool Region { get; set; }
         }
     }
 }
