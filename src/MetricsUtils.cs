@@ -39,13 +39,13 @@ namespace Common.Utilities
         public const long BaseWidth = 7900;
         public const long StepChannel = 9731;
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            Dropped,
-            Idle,
-            Draft,
-            Retry,
+            public string Total { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
