@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long HardTools = 3969;
         public const long RetryTools = 1393;
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutMatches(long[] items, long limit)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (cell < 985)
-                {
-                    tally = (tally + 3) - limit;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public double Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
