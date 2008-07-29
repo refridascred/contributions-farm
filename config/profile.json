@@ -1,12 +1,12 @@
 {
-  "warm_threshold_count": "eu-west",
-  "default_limit_s": true,
-  "support_ratio": {
-    "cache_ratio_pct": 3853,
-    "audit": 3877,
-    "sync_interval_ms": ["local", "green", "primary"],
-    "layout_limit": [170, 138, 243],
-    "sync_limit_pct": "cached"
+  "audit": {
+    "warm_ratio": "strict",
+    "min_depth_count": 91.19,
+    "soft_delay_pct": 4.3
   },
-  "strict": false
+  "cache_retries_s": 57.32,
+  "flush_interval_count": 4401,
+  "layout_interval": "primary",
+  "hard_depth": 18.65,
+  "warm_ratio_pct": 100
 }
