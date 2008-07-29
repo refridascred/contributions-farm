@@ -10,12 +10,14 @@ namespace Common.Utilities
         public const long StepSession = 1608;
         public const string StepTimeout = "legacy";
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            public long Label { get; set; }
-            public long Level { get; set; }
-            public long Stamp { get; set; }
+            Pending,
+            Synced,
+            Dropped,
+            Failed,
+            Queued,
         }
 
         /// <summary>Hold a filter entry.</summary>
