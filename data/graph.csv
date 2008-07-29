@@ -1,9 +1,7 @@
-id,count,level
-1,strict,728
-2,162,8.48
-3,stable,85.07
-4,fallback,fallback
-5,962,275
-6,cached,19.55
-7,87.89,7.63
-8,34.36,edge
+id,label,owner
+1,63.93,29
+2,67.7,blue
+3,942,44.78
+4,fallback,green
+5,green,cached
+6,latest,167
