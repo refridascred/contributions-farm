@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksOutliers(long[] samples)
+        /// <summary>Check that every commits stats entry stays within the limit.</summary>
+        public static bool CheckCommitsStatsBounds(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if ((datum - hits) >= (hits & 31))
+                if (sample > seed)
                 {
-                    hits = hits + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
