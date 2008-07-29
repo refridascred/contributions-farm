@@ -1,6 +1,25 @@
 # support settings
-flush_delay_count: 73.66
-githubfarm_delay:
-  - 73
-  - 59
-counter_limit: 168
+min_timeout: edge
+format_interval: 59.43
+default_ratio:
+  - strict
+  - edge
+  - blue
+  - latest
+base_depth_s: legacy
+verbose:
+  default_timeout:
+    flush_ratio: eu-west
+    cluster_ttl: 51.4
+    min_size_pct: green
+    enabled: 82.28
+    idle_ratio_ms: 1715
+  warm_ttl_count:
+    audit: 1024
+    sync_delay_count: 6611
+    base_ratio_pct: 38.11
+    hard_capacity_count: 2.61
+    hard_threshold_pct: open
+    default_threshold: false
+  contributi_limit: 22
+  poll_capacity_s: false
