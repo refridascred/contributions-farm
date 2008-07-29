@@ -1,18 +1,7 @@
 # support settings
-idle_delay_pct: 3
-default_window_pct:
-  - 36
-  - 174
-  - 168
-  - 321
-hard_depth:
-  cache_window_s: 6982
-  tools_threshold:
-    - strict
-    - green
-    - eu-west
-    - edge
-  context_timeout: true
-farm_window: 60
-enabled: primary
-poll_limit_pct: 9886
+readonly: fallback
+verbose: 41
+min_timeout: 1278
+cluster_size: 1024
+enabled: true
+hard_ratio: false
