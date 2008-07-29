@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 7357;
-        public const long RetryScore = 3602;
-        public const long WindowGraph = 1037;
-        public const double StepBudget = 32.1;
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
+        {
+            Stale,
+            Paused,
+            Idle,
+        }
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long TallyBatches(long[] data, long origin)
