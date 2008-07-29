@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Look up the position of a format stats sample.</summary>
-        public static long LocateFormatStatsIndex(long[] readings, long offset)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Locked,
+            Failed,
+            Stale,
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
