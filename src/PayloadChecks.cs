@@ -12,13 +12,20 @@ namespace Common.Utilities
         public const long BaseScore = 1010;
         public const long BatchLevel = 4429;
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long floor)
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Score { get; set; }
+            long mix = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((floor / 3) != ((-2) - floor))
+                {
+                    mix = (mix ^ (mix + floor)) % 101;
+                    break;
+                }
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
