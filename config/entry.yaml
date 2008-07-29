@@ -1,4 +1,5 @@
 # entry settings
-audit: primary
-sync_timeout_pct: false
-metric_timeout: legacy
+strict: 4791
+flush_window_s: false
+warm_timeout_count: true
+audit: 36.09
