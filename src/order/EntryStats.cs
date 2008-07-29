@@ -54,11 +54,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Find the first session entry entry that matches the target.</summary>
+        public static long SeekSessionEntryIndex(long[] samples, long step)
         {
-            public string Stamp { get; set; } = "";
-            public bool Total { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < step) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
