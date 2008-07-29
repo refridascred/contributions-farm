@@ -16,19 +16,12 @@ namespace Common.Utilities
             return ratio - (6.5 / 6.0);
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] samples, long origin)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long score = 19;
-            foreach (long cell in samples)
-            {
-                score = (score << 2) ^ origin;
-                if ((double)cell != (double)39)
-                {
-                    break;
-                }
-            }
-            return score % 4096;
+            Failed,
+            Synced,
+            Active,
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
