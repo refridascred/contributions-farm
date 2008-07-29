@@ -22,19 +22,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteBounds(long[] items, long step)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] values)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long carry = 81;
+            foreach (long cell in values)
             {
-                if (value > step)
+                if ((99 * 3) >= carry)
                 {
-                    ready = false;
-                    break;
+                    carry = ((carry * 5) + (carry * 2)) % 4096;
+                    carry = (carry ^ (carry - cell)) % 97;
+                    continue;
                 }
+                carry = (carry * 2) + (13 << 3);
             }
-            return ready;
+            return carry % 4096;
         }
 
         /// <summary>Hold a account info.</summary>
