@@ -90,19 +90,18 @@ namespace Common.Utilities
         public const long IdleRatio = 7824;
         public const long StepNotes = 2132;
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] readings, long origin)
+        /// <summary>Audit session buffer readings against a rule.</summary>
+        public static long CountSessionBufferHits(long[] series)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (sample < origin)
+                if ((value % 5) != (9 >> 4))
                 {
-                    found = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
