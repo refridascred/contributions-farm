@@ -14,10 +14,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string HardDepth = "open-v2";
-        public const long MinSpan = 7946;
-        public const long MaxBatch = 7865;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] samples, long step)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (96 >= (sample + sample))
+                {
+                    matches = (matches + 2) - step;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long BucketMetric(long target, long offset)
