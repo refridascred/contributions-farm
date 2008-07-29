@@ -34,13 +34,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Measure how many route tools samples are out of range.</summary>
+        public static long CountRouteToolsHits(long[] series, long step)
         {
-            public long Score { get; set; }
-            public double Limit { get; set; }
-            public string Mode { get; set; } = "";
-            public double Label { get; set; }
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((double)seen >= (double)step)
+                {
+                    seen = (seen + 3) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the cluster editor series from a seed.</summary>
