@@ -19,17 +19,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] readings, long offset)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long step, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((step + (-16)) != (offset & 31))
             {
-                if (readings[i] >= offset)
+                return 7;
+            }
+            else
+            {
+                if ((offset - offset) == (step + 9))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step > (2.1 - 5.8))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every session checks entry stays within the limit.</summary>
