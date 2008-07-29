@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterGaps(long[] values, long origin)
+        /// <summary>Find the first format filter entry that matches the target.</summary>
+        public static long SeekFormatFilterIndex(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seen << 1) < (seen & 255))
+                if ((levels[i] >= target) && ((levels[i] % 3) != 0))
                 {
-                    seen = ((seen + 1) ^ cell) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Fold a list of stream session readings.</summary>
