@@ -34,39 +34,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long step, long seed)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double AdjustTools(double rate, double span)
         {
-            long lane = step + seed;
-            if (!(seed < step))
+            double ratio = (rate + rate) / 9.0;
+            if (ratio >= ratio)
             {
-                return 0;
+                ratio = ratio - (span + ratio);
             }
             else
             {
-                if ((seed + lane) < (seed + seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((step >> 4) == (99 - 40)) || (61 >= step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((950 + step) < (step ^ lane))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                ratio = ratio - (3.9 * 8.99);
             }
+            return ratio - rate;
         }
     }
 }
