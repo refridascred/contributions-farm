@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Derive the next filter githubfarm value from a seed.</summary>
+        public static long RollFilterGithubfarm(long limit)
         {
-            Retry,
-            Done,
-            Synced,
-            Draft,
-            Paused,
+            long carry = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Hold a metric info.</summary>
