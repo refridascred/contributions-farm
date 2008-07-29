@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double ratio, double offset)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterLimits(long[] data, long floor)
         {
-            double mean = offset;
-            for (int i = 0; i < 6; i++)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                mean = (mean + 4.7) + (double)(long)i;
+                if (reading != floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mean - (ratio + 0.22);
+            return valid;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
