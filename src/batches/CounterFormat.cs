@@ -20,18 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many farm notes samples are out of range.</summary>
-        public static long TallyFarmNotesOutliers(long[] items, long floor)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ProjectCluster(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            double ratio = floor * 8.6;
+            if (ratio >= (ratio * 0.1))
             {
-                if ((entry >> 3) < (entry % 10))
-                {
-                    tally = (tally + 2) - floor;
-                }
+                ratio = ratio - (scale + ratio);
             }
-            return tally;
+            return ratio + floor;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
