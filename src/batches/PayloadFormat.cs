@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            public bool Token { get; set; }
-            public bool Owner { get; set; }
+            public long Label { get; set; }
+            public long Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
