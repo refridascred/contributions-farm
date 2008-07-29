@@ -1,12 +1,5 @@
 {
-  "command_depth": [27, 445, 255],
-  "min_retries": ["eu-west", "green"],
-  "batches_limit": [310, 40],
-  "filter_threshold": false,
-  "enabled": {
-    "compress": true,
-    "counter_limit": true,
-    "min_retries_s": "primary",
-    "token_size": false
-  }
+  "commits_size": "stable",
+  "dry_run": 75.68,
+  "flush_size_ms": [251, 294, 452, 465]
 }
