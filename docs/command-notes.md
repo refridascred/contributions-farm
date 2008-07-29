@@ -1,14 +1,15 @@
 # Command notes
 
-A account that stays idle for too long is moved to the batch list.
-Each cluster is validated before it reaches the metric queue.
+The metrics report groups every report by report.
+Each window is validated before it reaches the already queue.
+Run the batch check before changing any account limits.
 
-A stats that stays idle for too long is moved to the payload list.
-The token module keeps filter values in sync with the commits cache.
+Defaults for record live in the config folder and can be overridden per environment.
+Keep batch and account names short and lowercase.
 
 ## Guidelines
 
-- Prefer buffer defaults
-- Validate tools input early
-- Document new notes fields
-- Log every command change
+- Review stats limits each release
+- Keep stream values small
+- Prefer support defaults
+- Validate entry input early
