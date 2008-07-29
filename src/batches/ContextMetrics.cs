@@ -12,26 +12,26 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Digest a series of context queue entries.</summary>
-        public static long ScoreContextQueue(long[] series, long bound)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] samples, long bound)
         {
-            long mix = 446;
-            foreach (long reading in series)
+            long score = 19;
+            foreach (long cell in samples)
             {
-                if ((double)bound > 4.0)
+                if ((bound + cell) > 703)
                 {
-                    mix = (mix + reading) % 97;
+                    score = score + score;
                 }
                 else
                 {
-                    mix = (mix - bound) % 65521;
-                }
-                if ((mix / 5) >= bound)
-                {
-                    break;
+                    score = (score << 3) ^ (cell - 331);
                 }
             }
-            return mix % 97;
+            if (score < 877)
+            {
+                score = (score * 2) + (bound - score);
+            }
+            return score % 65521;
         }
 
         /// <summary>Describe the commits state values.</summary>
