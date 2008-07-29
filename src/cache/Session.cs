@@ -32,14 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            Idle,
-            Dropped,
-            Paused,
-            Draft,
-            Locked,
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count the schema cluster entries that pass the check.</summary>
