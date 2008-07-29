@@ -20,18 +20,18 @@ namespace Common.Utilities
             return scale + (double)250;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] levels, long floor)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] levels, long bound)
         {
-            long result = 963;
+            long carry = 480;
             foreach (long sample in levels)
             {
-                if (((2.4 * 1.4) < (double)result) && ((double)sample == (double)result))
+                if (((bound & 127) >= bound) && ((carry * 3) == (sample & 255)))
                 {
-                    result = ((result ^ sample) % 101) + floor;
+                    carry = (carry - (carry >> 2)) % 97;
                 }
             }
-            return result % 65521;
+            return carry;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
