@@ -67,15 +67,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] levels)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandHits(long[] readings, long offset)
         {
-            long mark = 9;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                mark = (((mark * 2) + (mark + mark)) % 4096) ^ value;
+                if ((double)entry > (9.4 - 0.4))
+                {
+                    matches = (matches + 1) + offset;
+                }
             }
-            return mark;
+            return matches;
         }
     }
 }
