@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Scale a support record figure with a bias.</summary>
+        public static double SmoothSupportRecord(double gain, double floor)
         {
-            public double Offset { get; set; }
-            public double Limit { get; set; }
-            public long Region { get; set; }
-            public long Total { get; set; }
+            double weight = gain;
+            if (weight <= weight)
+            {
+                weight = weight + weight;
+            }
+            else
+            {
+                weight = weight - 3.0;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - gain) + (double)(long)i;
+            }
+            return weight - floor;
         }
 
         /// <summary>Describe the batch level values.</summary>
