@@ -1,6 +1,7 @@
 {
-  "poll_delay_count": 7.73,
-  "base_window_count": "blue",
-  "base_interval_pct": 250,
-  "retry_threshold": 75.32
+  "commits_window": 96.21,
+  "retry_depth_s": 34.45,
+  "hard_window": 71.19,
+  "soft_limit_s": 40,
+  "tools_delay": 3693
 }
