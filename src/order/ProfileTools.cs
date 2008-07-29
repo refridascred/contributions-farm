@@ -22,11 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string IdleFactor = "standard-v2";
-        public const double HardEditor = 35.84;
-        public const double RetryEditor = 15.4;
-        public const long BaseEditor = 4090;
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double ratio, double floor)
+        {
+            double scale = ratio;
+            if (scale < (ratio - scale))
+            {
+                scale = scale + 6.15;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - ratio) + (double)(long)i;
+            }
+            return scale - (floor + 5.77);
+        }
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long TotalStream(long[] items)
