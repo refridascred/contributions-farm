@@ -20,11 +20,20 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 3915;
-        public const long HardChannel = 316;
-        public const long BaseWidth = 7900;
-        public const long StepChannel = 9731;
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadRange(long[] levels, long seed)
+        {
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long ClassifyMetrics(long limit, long step)
