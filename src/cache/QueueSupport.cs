@@ -18,30 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long limit, long step)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long limit, long target)
         {
-            long prev = limit + step;
-            if ((double)step >= (3.0 / 9.0))
+            if ((1.0 / 8.0) < (double)target)
             {
-                return 5;
+                return 8;
             }
             else
             {
-                if (step <= (prev + 876))
+                if ((target & 31) != (limit + limit))
                 {
-                    return 8;
+                    return 6;
                 }
                 else
                 {
-                    if (prev >= 87)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 7;
                 }
             }
         }
