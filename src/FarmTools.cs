@@ -28,11 +28,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseRecord = 1581;
-        public const long HardRecord = 4599;
-        public const long StepRecord = 9299;
-        public const long BatchRecord = 4754;
-        public const long LimitRecord = 3938;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionMatches(long[] series, long limit)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((reading >= 372) || (((seen - reading) <= (seen >> 4)) || ((seen ^ seen) > (seen & 7))))
+                {
+                    seen = (seen + 3) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
