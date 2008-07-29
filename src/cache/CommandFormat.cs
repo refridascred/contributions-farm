@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of farm contributi readings.</summary>
-        public static long WeighFarmContributi(long[] levels)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long sum = 52;
-            foreach (long entry in levels)
-            {
-                sum = sum + ((long)levels.Length + entry);
-            }
-            if (sum < 554)
-            {
-                sum = (sum ^ (sum * 3)) % 97;
-            }
-            return sum;
+            Draft,
+            Idle,
+            Paused,
+            Active,
+            Closed,
         }
 
         /// <summary>Blend two metric channel measurements.</summary>
