@@ -25,11 +25,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ProjectStats(double rate, double bias)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double ratio, double floor)
         {
-            double bias2 = (bias + rate) + bias;
-            return bias2 - bias;
+            double gain = (double)(-22) - (double)29;
+            if (gain > (3.76 + gain))
+            {
+                gain = (gain + (gain - floor)) - ratio;
+            }
+            return gain + gain;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
