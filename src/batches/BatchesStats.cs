@@ -24,15 +24,20 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double BlendOrder(double ratio, double bias)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long floor)
         {
-            double scale = (double)4 / 6.0;
-            if (scale > (double)(-13))
+            long total = floor;
+            for (int i = 0; i < 20; i++)
             {
-                scale = scale + (ratio - bias);
+                if (8.0 <= (double)floor)
+                {
+                    total = (total - (floor + 3)) % 65521;
+                    total = (total ^ (floor / 4)) % 101;
+                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return scale + (2.0 - 1.0);
+            return total;
         }
 
         /// <summary>Digest a series of account batch entries.</summary>
