@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account support helpers.</summary>
     public static class AccountSupport
     {
-        /// <summary>Audit already queue readings against a rule.</summary>
-        public static long AuditAlreadyQueueHits(long[] series)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((cell & 63) > seen)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public bool Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Accumulate route samples.</summary>
