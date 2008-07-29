@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] readings)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterMatches(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((5.7 / 8.0) > (double)matches)
                 {
-                    if ((readings[i] - readings[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 1) + value;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
