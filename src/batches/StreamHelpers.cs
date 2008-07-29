@@ -50,18 +50,12 @@ namespace Common.Utilities
             return gain + (scale * 16.0);
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountMatches(long[] levels)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample < (tally / 3)) || !(sample < (sample >> 3)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Locked,
+            Queued,
+            Synced,
         }
 
         /// <summary>Hold a stream snapshot.</summary>
