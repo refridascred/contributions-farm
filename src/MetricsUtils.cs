@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] samples)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferMatches(long[] series, long limit)
         {
-            long anchor = 3;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (anchor < (entry % 16))
+                if ((tally & 255) >= tally)
                 {
-                    anchor = (anchor ^ (entry * 2)) % 101;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (entry / 4)) % 1000;
+                    tally = ((tally + 1) - cell) - limit;
                 }
             }
-            return anchor % 1000;
+            return tally;
         }
 
         /// <summary>Hold a layout entry.</summary>
