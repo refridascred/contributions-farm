@@ -28,10 +28,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string SoftCommand = "alpha";
-        public const long RetryTimeout = 9539;
-        public const long WindowCommand = 4968;
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
+        {
+            Idle,
+            Pending,
+            Queued,
+        }
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long StepPayload(long offset)
