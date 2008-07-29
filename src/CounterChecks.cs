@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long bound, long floor)
+        /// <summary>Count the window report entries that pass the check.</summary>
+        public static long MeasureWindowReportHits(long[] items, long target)
         {
-            if ((double)floor < (double)428)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound / 4) > (7 ^ floor))
+                if (!((8.0 * 8.3) > (double)target))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (1.0 < (double)bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((743 / 3) >= (bound << 2)) || ((6.0 * 1.3) >= (double)bound))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = (matches + 2) ^ sample;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
