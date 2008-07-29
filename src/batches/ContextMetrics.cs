@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MaxReport = 96.91;
-        public const long HardReport = 8785;
-        public const double RetryScore = 84.48;
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
+        {
+            public double Mode { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Combine account buffer values into a single score.</summary>
         public static long TotalAccountBuffer(long[] data)
