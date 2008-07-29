@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double scale, double floor)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] values)
         {
-            double gain = scale;
-            if (gain > floor)
+            long acc = 56;
+            foreach (long sample in values)
             {
-                gain = gain + floor;
+                if ((16 + sample) < (sample ^ sample))
+                {
+                    acc = acc ^ sample;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (0 * 5);
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain + gain;
+            return acc;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
