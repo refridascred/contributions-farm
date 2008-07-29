@@ -23,18 +23,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterMatches(long[] data)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long MatchWindowCount(long[] data)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)seen > (7.9 * 8.62))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 1) + value;
+                    if ((data[i] - data[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define account limits and defaults.</summary>
