@@ -1,5 +1,7 @@
 {
-  "min_depth": "open",
-  "record_ttl": false,
-  "stats_size": 7619
+  "burst_size_s": "latest",
+  "max_limit": 3782,
+  "already_ttl": 100,
+  "sync_limit_count": 250,
+  "dry_run": 79
 }
