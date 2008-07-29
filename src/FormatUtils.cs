@@ -12,19 +12,17 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Project the next channel counter value.</summary>
-        public static double ProjectChannelCounter(double rate, double bias)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] levels, long bound)
         {
-            double drift = bias;
-            if (drift < rate)
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift - (rate * 4.68);
+                if (levels[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - (16.0 - drift);
-            }
-            return drift - (bias + drift);
+            return -1;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
