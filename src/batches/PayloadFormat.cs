@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenOutliers(long[] values, long origin)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((double)sample < (double)922)
-                {
-                    matches = (matches + 2) - origin;
-                }
-            }
-            return matches;
+            Dropped,
+            Paused,
+            Idle,
+            Pending,
         }
 
         /// <summary>Hold a layout snapshot.</summary>
