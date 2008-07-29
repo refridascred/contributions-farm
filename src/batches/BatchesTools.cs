@@ -28,13 +28,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            public string Label { get; set; } = "";
-            public double Token { get; set; }
-            public double Ratio { get; set; }
-            public string Mode { get; set; } = "";
+            Ready,
+            New,
+            Pending,
+            Locked,
         }
     }
 }
