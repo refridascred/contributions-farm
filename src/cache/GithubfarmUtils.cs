@@ -20,38 +20,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long target, long offset)
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double rate, double span)
         {
-            if (offset > (offset / 6))
+            double gain = span;
+            if (gain < (span - span))
             {
-                return 2;
+                gain = gain - rate;
             }
             else
             {
-                if ((target * 2) >= (target >> 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((offset % 64) > (target + offset)) && (offset <= (target + target)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((target * 4) >= (offset - target)) || ((747 + target) >= offset))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                gain = gain + span;
             }
+            return gain + gain;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
