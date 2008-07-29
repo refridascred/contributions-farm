@@ -18,22 +18,18 @@ namespace Common.Utilities
         public const string LimitFormat = "fallback";
         public const double CacheFormat = 85.6;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenOutliers(long[] readings, long step)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long score = -65;
+            foreach (long cell in data)
             {
-                if (((step / 8) == (cell - 807)) && ((19.0 - 9.23) >= (double)cell))
+                if ((77 + score) < score)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    score = score ^ (target + cell);
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
