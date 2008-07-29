@@ -76,15 +76,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the contributi farm series from a seed.</summary>
-        public static long RollContributiFarm(long offset)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long target)
         {
-            long sum = offset;
-            for (int i = 0; i < 21; i++)
+            long total = target;
+            for (int i = 0; i < 6; i++)
             {
-                sum = ((sum * 3) + (long)i) % 1000;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    total = ((total << 2) ^ (total >> 5)) ^ (long)i2;
+                    total = (total - (total + target)) % 97;
+                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return sum;
+            return total;
         }
     }
 }
