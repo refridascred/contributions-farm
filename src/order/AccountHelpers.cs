@@ -53,31 +53,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long seed, long bound)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            if ((double)seed > (1.1 * 7.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((16 + seed) < bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed - bound) >= bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Idle,
+            Paused,
+            Ready,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Accumulate command samples.</summary>
