@@ -30,13 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            public long Level { get; set; }
-            public long Count { get; set; }
-            public bool Limit { get; set; }
-            public string Stamp { get; set; } = "";
+            public bool Level { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Validate route readings against a bound.</summary>
