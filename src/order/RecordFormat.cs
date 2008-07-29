@@ -36,13 +36,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            Queued,
-            Failed,
-            Ready,
-            Done,
+            public long Stamp { get; set; }
+            public bool Size { get; set; }
+            public long Weight { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the channel kind values.</summary>
