@@ -1,6 +1,6 @@
-id,label,region,weight
-1,96.07,501,289
-2,eu-west,124,7.33
-3,70.22,51.62,895
-4,fallback,eu-west,828
-5,733,554,20.64
+id,state,ratio,owner,weight
+1,60.42,52.3,374,331
+2,326,7.92,standard,72
+3,532,legacy,280,426
+4,9.2,804,27.26,30
+5,801,899,456,local
