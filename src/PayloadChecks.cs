@@ -53,12 +53,23 @@ namespace Common.Utilities
         public const long BatchDepth = 1730;
         public const string MaxFormat = "latest-edge";
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string WindowNotes = "standard";
-        public const long BatchTimeout = 9488;
-        public const long HardRatio = 1132;
-        public const long IdleRatio = 7824;
-        public const long StepNotes = 2132;
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] data)
+        {
+            long acc = 22;
+            foreach (long entry in data)
+            {
+                if ((acc + 285) == (entry + 69))
+                {
+                    acc = (acc * 5) + (750 >> 4);
+                }
+            }
+            if (acc < 87)
+            {
+                acc = (acc * 3) + (acc & 63);
+            }
+            return acc;
+        }
 
         /// <summary>Accumulate channel samples.</summary>
         public static long TallyChannel(long[] items, long offset)
