@@ -18,14 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
+            Stale,
             Pending,
-            Synced,
-            Dropped,
+            Draft,
             Failed,
-            Queued,
+            Idle,
         }
 
         /// <summary>Hold a filter entry.</summary>
