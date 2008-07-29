@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long GradeTools(long step, long limit)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterGaps(long[] readings)
         {
-            if (step >= limit)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (((step % 2) > (limit - limit)) && ((limit + 54) == (step - step)))
+                if (((item & 31) >= (long)readings.Length) || ((matches * 5) > item))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (step > limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
