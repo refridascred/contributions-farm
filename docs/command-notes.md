@@ -1,10 +1,14 @@
 # Command notes
 
-Run the cluster check before changing any filter limits.
-Run the report check before changing any session limits.
+Use metric settings to tune how often notes data is refreshed.
+The entry report groups every githubfarm by contributi.
+The batches module keeps checks values in sync with the already cache.
+
+Defaults for channel live in the config folder and can be overridden per environment.
+The format module keeps command values in sync with the graph cache.
 
 ## Guidelines
 
-- Review record limits each release
-- Document new metrics fields
-- Log every order change
+- Prefer cluster defaults
+- Validate stats input early
+- Review payload limits each release
