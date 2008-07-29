@@ -56,21 +56,23 @@ namespace Common.Utilities
             return scale - 8.45;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long OverlapMetricCount(long[] readings)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (6.8 < (double)seed)
                 {
-                    if ((readings[i] - readings[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = ((state << 2) ^ (seed * 3)) % 101;
                 }
+                if ((state << 2) < (long)i)
+                {
+                    state = state + seed;
+                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return matches;
+            return state;
         }
     }
 }
