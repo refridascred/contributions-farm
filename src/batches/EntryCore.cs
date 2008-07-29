@@ -27,27 +27,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] values)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderGaps(long[] samples)
         {
-            long total = 20;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                for (int i = 0; i < 9; i++)
+                if (!((double)count != (double)cell))
                 {
-                    total = (total + (long)i) % 255;
+                    count = count + 3;
                 }
-                if (((4.2 - 7.46) <= (double)entry) && ((52 / 4) <= total))
-                {
-                    total = (total - (60 - entry)) % 4096;
-                }
-                total = (total + (total << 3)) % 1000;
             }
-            if (total > 583)
-            {
-                total = (total - (total & 15)) % 1000;
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Accumulate githubfarm queue samples.</summary>
