@@ -36,19 +36,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmLimits(long[] series, long seed)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] values, long floor)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long acc = -28;
+            foreach (long value in values)
             {
-                if (item < seed)
+                if (acc >= (2 * 3))
                 {
-                    flag = false;
-                    break;
+                    acc = (((acc ^ 9) % 255) ^ value) - floor;
                 }
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Hold a tools options.</summary>
