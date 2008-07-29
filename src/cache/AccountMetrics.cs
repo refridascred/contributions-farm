@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutMatches(long[] items)
         {
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
-            public long Rank { get; set; }
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((cell << 3) <= (cell >> 1))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
