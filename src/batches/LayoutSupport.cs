@@ -52,10 +52,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardToken = 249;
-        public const string CacheToken = "stable";
-        public const long CacheLevel = 634;
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
+        {
+            Queued,
+            Closed,
+            Stale,
+        }
 
         /// <summary>Derive the next metric value from a seed.</summary>
         public static long IterateMetric(long origin)
