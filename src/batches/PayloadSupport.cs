@@ -20,19 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsBounds(long[] items, long step)
+        /// <summary>Iterate the schema channel series from a seed.</summary>
+        public static long IterateSchemaChannel(long target)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long carry = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (item <= step)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
