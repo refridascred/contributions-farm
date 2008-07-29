@@ -51,22 +51,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesMatches(long[] series)
-        {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if (datum > (datum ^ datum))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 1321;
+        public const long IdleMetric = 4817;
+        public const long HardMetric = 8916;
+        public const string HardFactor = "stable-1";
+        public const long MinFactor = 6354;
     }
 }
