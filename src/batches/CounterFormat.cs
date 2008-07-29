@@ -34,18 +34,21 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Audit commits graph readings against a rule.</summary>
-        public static long TallyCommitsGraphOutliers(long[] data, long step)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long PairCounterCount(long[] values)
         {
-            long count = 0;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((count + (long)data.Length) == (count - item)) && ((item & 31) <= (step >> 5))))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 2;
+                    if ((values[i] + values[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
