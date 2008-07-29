@@ -1,8 +1,7 @@
 {
-  "strict": 36.81,
-  "verbose": 82.5,
-  "warm_delay_ms": "open",
-  "hard_limit_pct": 2946,
-  "checks_timeout": "blue",
-  "cache_ratio": [450, 459, 47]
+  "poll_timeout_pct": "staging",
+  "poll_depth_ms": "fallback",
+  "farm_timeout": ["blue", "green", "primary"],
+  "default_timeout": false,
+  "max_threshold_pct": [421, 13, 230]
 }
