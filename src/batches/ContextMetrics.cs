@@ -32,16 +32,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long step)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long result = step;
-            for (int i = 0; i < 11; i++)
-            {
-                result = (result + result) % 4096;
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            Pending,
+            Paused,
+            New,
+            Queued,
+            Active,
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
