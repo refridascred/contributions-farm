@@ -59,18 +59,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesGaps(long[] items)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] values)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long sum = 5;
+            foreach (long item in values)
             {
-                if ((item + 34) == (item - item))
-                {
-                    tally = tally + 2;
-                }
+                sum = sum + (item ^ 17);
             }
-            return tally;
+            return sum;
         }
     }
 }
