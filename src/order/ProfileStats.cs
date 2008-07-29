@@ -29,19 +29,22 @@ namespace Common.Utilities
             return load + ratio;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphLimits(long[] data, long bound)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricHits(long[] values)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (datum > bound)
+                if ((count + 2) >= item)
                 {
-                    found = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
