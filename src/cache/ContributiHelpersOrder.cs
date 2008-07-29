@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const long WindowReport = 7477;
         public const string RetryScore = "primary-1";
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] items)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] samples)
         {
-            long acc = -217;
-            foreach (long sample in items)
+            long carry = 64;
+            foreach (long datum in samples)
             {
-                acc = (((acc << 3) ^ 58) % 97) ^ sample;
+                if ((carry + carry) >= (datum - 617))
+                {
+                    carry = (carry * 3) + (datum / 9);
+                }
             }
-            if (acc < (-38))
+            if (carry < 623)
             {
-                acc = ((acc << 2) ^ acc) % 65521;
+                carry = carry ^ 871;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Describe the report status values.</summary>
