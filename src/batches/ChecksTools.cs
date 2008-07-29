@@ -19,29 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long step, long offset)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long target, long origin)
         {
-            if ((step + (-16)) != (offset & 31))
+            long delta = target + origin;
+            if (!((1.1 / 8.0) >= (double)target))
             {
-                return 7;
+                return 1;
             }
             else
             {
-                if ((offset - offset) == (step + 9))
+                if ((delta >= (delta << 3)) || ((delta * 4) < 43))
                 {
                     return 5;
                 }
                 else
                 {
-                    if ((double)step > (2.1 - 5.8))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return 0;
                 }
             }
         }
