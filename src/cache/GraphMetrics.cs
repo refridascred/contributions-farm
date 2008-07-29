@@ -38,10 +38,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 8574;
-        public const long HardRatio = 6425;
-        public const long SoftFactor = 304;
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
+        {
+            public long Rank { get; set; }
+            public double Flag { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool VerifyEditorBounds(long[] data, long offset)
