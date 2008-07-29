@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] data, long bound)
+        /// <summary>Measure how many cluster contributi samples are out of range.</summary>
+        public static long CountClusterContributiMatches(long[] levels, long target)
         {
-            long result = 443;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (((300 ^ sample) < 384) || (sample >= (sample * 4)))
+                if (!(hits > (target % 64)))
                 {
-                    result = (result + ((long)data.Length / 3)) + bound;
+                    hits = (hits + 1) ^ cell;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (result > 39)
-            {
-                result = ((result << 2) ^ result) % 97;
-            }
-            return result % 4096;
+            return hits;
         }
 
         /// <summary>Count token batch pairs that satisfy a relation.</summary>
