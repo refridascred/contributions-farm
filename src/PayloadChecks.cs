@@ -21,24 +21,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] values)
-        {
-            long carry = 51;
-            foreach (long datum in values)
-            {
-                carry = ((carry * 3) + (carry - carry)) % 97;
-                if ((double)datum != (15.0 / 5.0))
-                {
-                    carry = (carry * 4) + (carry ^ datum);
-                }
-                else
-                {
-                    carry = carry ^ (datum / 7);
-                }
-            }
-            return carry % 97;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdleScore = 2905;
+        public const long SoftPayload = 3273;
+        public const long DefaultDepth = 6063;
+        public const long HardScore = 6518;
 
         /// <summary>Hold a buffer header.</summary>
         public sealed class BufferHeader
