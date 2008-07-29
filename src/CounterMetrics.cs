@@ -49,11 +49,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            public double Offset { get; set; }
-            public long Count { get; set; }
+            Retry,
+            Done,
+            Closed,
+            Synced,
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
