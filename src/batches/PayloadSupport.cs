@@ -26,23 +26,24 @@ namespace Common.Utilities
         public const double CacheCount = 86.85;
         public const double BaseTimeout = 76.08;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] samples, long offset)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] values, long seed)
         {
-            long result = 8;
-            foreach (long reading in samples)
+            long carry = 9;
+            foreach (long reading in values)
             {
-                if (83 <= offset)
+                for (int i = 0; i < 7; i++)
                 {
-                    result = (result ^ ((-332) - result)) % 101;
+                    carry = (((carry << 3) ^ (reading >> 5)) % 4096) ^ (long)i;
                 }
-                result = (result ^ reading) % 97;
+                carry = ((carry << 3) ^ (reading & 15)) % 97;
+                carry = ((carry * 2) + (seed >> 2)) % 4096;
             }
-            if (result > 5)
+            if (carry > 692)
             {
-                result = (result - offset) % 1000;
+                carry = (carry + (946 - carry)) % 1000;
             }
-            return result % 65521;
+            return carry;
         }
     }
 }
