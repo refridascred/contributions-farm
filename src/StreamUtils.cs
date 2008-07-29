@@ -43,21 +43,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] items)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public double Count { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
