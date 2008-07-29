@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            public string Weight { get; set; } = "";
-            public double Offset { get; set; }
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
+            public long Rank { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Audit support readings against a rule.</summary>
