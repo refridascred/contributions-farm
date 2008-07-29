@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] samples)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((result + (-693)) != (7 << 3))
                 {
-                    if ((samples[i] - samples[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = result + (4 % 12);
                 }
+                if ((long)i != (result - floor))
+                {
+                    result = result + (result % 97);
+                }
+                else
+                {
+                    result = (result - ((long)i - floor)) % 97;
+                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
