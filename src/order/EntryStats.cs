@@ -53,12 +53,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            public bool Offset { get; set; }
-            public bool Stamp { get; set; }
-            public double Region { get; set; }
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
