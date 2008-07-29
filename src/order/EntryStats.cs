@@ -67,13 +67,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
-        {
-            public long Rank { get; set; }
-            public bool Token { get; set; }
-            public long Limit { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BurstFilter = "standard-v2";
+        public const long StepCount = 9428;
+        public const long IdleScore = 1612;
     }
 }
