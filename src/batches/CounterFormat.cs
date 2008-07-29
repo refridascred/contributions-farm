@@ -48,19 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double scale, double bias)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            double scale2 = scale;
-            if (scale2 >= 4.1)
-            {
-                scale2 = scale2 + 7.0;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale2 = (scale2 + (scale + bias)) - (double)(long)i;
-            }
-            return scale2 - 2.0;
+            public double Flag { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
