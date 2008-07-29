@@ -40,11 +40,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string LimitSize = "strict-v2";
-        public const long WindowScore = 1099;
-        public const long CacheFilter = 8614;
-        public const string DefaultFilter = "primary-1";
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
+        {
+            Idle,
+            New,
+            Draft,
+            Paused,
+            Locked,
+        }
 
         /// <summary>Hold a context stats.</summary>
         public sealed class ContextStats
