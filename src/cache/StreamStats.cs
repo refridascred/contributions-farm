@@ -49,12 +49,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
-        {
-            public double Owner { get; set; }
-            public bool Flag { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string DefaultWidth = "staging-edge";
+        public const string CacheSize = "fallback-1";
+        public const string SoftSize = "primary-edge";
     }
 }
