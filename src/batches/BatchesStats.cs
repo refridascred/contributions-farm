@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesGaps(long[] data)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheBounds(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if ((((double)seen <= (6.3 - 20.0)) || ((seen % 7) <= (datum / 9))) || ((seen + datum) != (datum - seen)))
+                if (sample <= origin)
                 {
-                    seen = seen + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Measure how many record commits samples are out of range.</summary>
