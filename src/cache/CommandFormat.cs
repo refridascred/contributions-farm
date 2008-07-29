@@ -20,19 +20,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long seed)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long mix = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                if (!((mix << 3) > mix))
-                {
-                    mix = (mix ^ (mix - (long)i)) % 1000;
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            Active,
+            New,
+            Done,
+            Locked,
         }
 
         /// <summary>Fold a list of entry readings.</summary>
