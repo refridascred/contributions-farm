@@ -1,12 +1,10 @@
 {
-  "audit": {
-    "warm_ratio": "strict",
-    "min_depth_count": 91.19,
-    "soft_delay_pct": 4.3
-  },
-  "cache_retries_s": 57.32,
-  "flush_interval_count": 4401,
-  "layout_interval": "primary",
-  "hard_depth": 18.65,
-  "warm_ratio_pct": 100
+  "batch_limit": 4875,
+  "burst_window": "eu-west",
+  "persist": true,
+  "batch_limit_count": {
+    "batch_capacity": 49.94,
+    "retry_window": "latest",
+    "warm_threshold": "fallback"
+  }
 }
