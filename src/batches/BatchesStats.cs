@@ -43,18 +43,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricMatches(long[] values, long target)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((count * 2) < (target << 2))
-                {
-                    count = (count + 1) ^ cell;
-                }
-            }
-            return count;
+            public bool Ratio { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
