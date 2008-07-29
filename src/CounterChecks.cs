@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepRatio = 7507;
-        public const long IdleDepth = 4227;
-        public const string RetryQueue = "primary-v2";
-        public const long IdleQueue = 5806;
-        public const long BatchWidth = 9954;
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
+        {
+            public double Score { get; set; }
+            public string Flag { get; set; } = "";
+            public long Level { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long CountFarmMatches(long[] levels)
