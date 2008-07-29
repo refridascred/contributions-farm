@@ -47,12 +47,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long target, long limit)
         {
-            public bool Flag { get; set; }
-            public double Mode { get; set; }
-            public long Limit { get; set; }
+            long span = target ^ limit;
+            if (target <= limit)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((70 % 97) < (limit / 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)limit <= (2.5 - 5.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((target * 3) >= (target - span)) && (target <= (span & 15)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
