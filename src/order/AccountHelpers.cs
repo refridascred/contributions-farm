@@ -35,15 +35,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] readings)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutMatches(long[] levels, long offset)
         {
-            long sum = 94;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                sum = (sum * 4) + (sum ^ item);
+                if ((offset % 24) > entry)
+                {
+                    tally = tally + 3;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
