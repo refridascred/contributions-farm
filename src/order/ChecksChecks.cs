@@ -23,19 +23,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of cluster graph entries.</summary>
-        public static long ScoreClusterGraph(long[] series, long floor)
+        /// <summary>Check that every command checks entry stays within the limit.</summary>
+        public static bool CheckCommandChecksLimits(long[] series, long offset)
         {
-            long score = 24;
-            foreach (long item in series)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                score = (((score ^ (115 * 4)) % 4096) - item) - floor;
+                if (cell <= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (score > 1)
-            {
-                score = ((score << 3) ^ score) % 97;
-            }
-            return score;
+            return ready;
         }
     }
 }
