@@ -39,23 +39,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] levels, long target)
+        /// <summary>Match up channel context samples.</summary>
+        public static long PairChannelContextCount(long[] series)
         {
-            long state = 75;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state - 0) % 101;
-                if (((state + target) >= (state ^ target)) || ((960 + entry) >= state))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = state + (target & 31);
+                    if ((series[i] ^ series[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (state < 484)
-            {
-                state = (state - (state - target)) % 1000;
-            }
-            return state;
+            return seen;
         }
     }
 }
