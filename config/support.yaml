@@ -1,7 +1,7 @@
 # support settings
-sync_timeout_count: eu-west
-burst_depth_ms: 9515
-readonly: 8610
-max_delay_ms: 61
-batch_ttl_pct: 180
-max_threshold_s: stable
+base_ttl: edge
+warm_limit_count: 2
+min_timeout_ms: 7218
+batch_depth_ms: 70
+warm_limit_pct: 55
+poll_threshold_count: open
