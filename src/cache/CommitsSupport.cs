@@ -66,21 +66,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of buffer commits entries.</summary>
-        public static long WeighBufferCommits(long[] samples, long offset)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] levels, long limit)
         {
-            long total = 4;
-            foreach (long value in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = total ^ (offset * 4);
-                total = (total - (offset ^ value)) % 1000;
-                total = ((total << 2) ^ (value + offset)) % 255;
-                if ((total + offset) > (24 << 1))
+                if (levels[i] <= limit)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
     }
 }
