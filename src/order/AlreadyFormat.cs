@@ -23,22 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountGaps(long[] items, long limit)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long mark = 412;
+            foreach (long sample in data)
             {
-                if ((datum - datum) >= (datum - limit))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = (((mark + mark) % 255) + sample) + bound;
             }
-            return count;
+            if (mark > 122)
+            {
+                mark = (mark - (mark << 2)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
