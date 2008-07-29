@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] levels, long origin)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long seed)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long score = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (cell < origin)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    flag = false;
-                    break;
+                    score = ((score + (score & 15)) % 65521) + (long)i2;
                 }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Hold a token info.</summary>
