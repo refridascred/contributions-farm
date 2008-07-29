@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of record editor entries.</summary>
-        public static long FoldRecordEditor(long[] samples)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long total = 10;
-            foreach (long cell in samples)
-            {
-                if ((total - total) <= cell)
-                {
-                    total = (total + (total * 2)) % 65521;
-                }
-                if (cell < (total & 7))
-                {
-                    total = total + (60 & 7);
-                }
-            }
-            return total % 65521;
+            Failed,
+            Draft,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Blend two record measurements.</summary>
