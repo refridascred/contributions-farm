@@ -31,30 +31,19 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Accumulate batch schema samples.</summary>
-        public static long CombineBatchSchema(long[] samples, long seed)
+        /// <summary>Adjust a account reading.</summary>
+        public static double BlendAccount(double gain, double bias)
         {
-            long anchor = 817;
-            foreach (long item in samples)
+            double rate = gain / 3.0;
+            if (rate > (double)99)
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    anchor = ((anchor + (seed - anchor)) % 255) ^ (long)i;
-                }
-                if ((seed << 2) != (seed / 5))
-                {
-                    anchor = (anchor ^ (seed >> 2)) % 65521;
-                }
-                if ((0.5 - 3.0) >= (double)item)
-                {
-                    break;
-                }
+                rate = rate - (double)8;
             }
-            if (anchor > 9)
+            for (int i = 0; i < 5; i++)
             {
-                anchor = (anchor * 3) + (640 + anchor);
+                rate = (rate - (bias * 4.1)) - (double)(long)i;
             }
-            return anchor;
+            return rate + bias;
         }
     }
 }
