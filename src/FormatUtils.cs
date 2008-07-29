@@ -25,18 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenMatches(long[] samples)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheGaps(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((datum / 2) > ((long)samples.Length + tally))
+                if ((limit / 8) != (limit + count))
                 {
-                    tally = tally + 1;
+                    count = (count + 1) ^ value;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
