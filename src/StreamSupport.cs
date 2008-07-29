@@ -39,15 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long limit)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] samples, long origin)
         {
-            long carry = limit;
-            for (int i = 0; i < 23; i++)
+            long carry = 39;
+            foreach (long item in samples)
             {
-                carry = (carry ^ carry) % 101;
-                carry = (carry ^ carry) % 65521;
-                carry = ((carry * 5) + (long)i) % 4093;
+                carry = (((carry + carry) % 255) + item) + origin;
+            }
+            if (carry > 755)
+            {
+                carry = (carry - carry) % 97;
             }
             return carry;
         }
