@@ -33,19 +33,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine already batches values into a single score.</summary>
-        public static long TallyAlreadyBatches(long[] readings, long seed)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long state = -1;
-            foreach (long sample in readings)
-            {
-                state = (((state << 3) ^ sample) % 97) - seed;
-            }
-            if (state < 3)
-            {
-                state = state ^ (67 - state);
-            }
-            return state;
+            public bool Label { get; set; }
+            public bool Ratio { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
