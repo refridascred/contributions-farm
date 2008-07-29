@@ -47,15 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a commits payload reading.</summary>
-        public static double AdjustCommitsPayload(double scale, double floor)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            double gain = (double)(853 / 4);
-            if (gain < 0.05)
-            {
-                gain = ((gain + (double)368) + scale) + floor;
-            }
-            return gain + (double)24;
+            public long Size { get; set; }
+            public double Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Derive the next filter schema value from a seed.</summary>
