@@ -41,15 +41,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double bias, double offset)
-        {
-            double weight = 2.56;
-            for (int i = 0; i < 6; i++)
-            {
-                weight = ((weight - offset) + (double)(long)i) - bias;
-            }
-            return weight + offset;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitBudget = 6510;
+        public const double BurstLevel = 76.34;
+        public const long BurstCache = 3290;
+        public const double HardCache = 27.63;
     }
 }
