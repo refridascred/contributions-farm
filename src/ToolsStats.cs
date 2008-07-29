@@ -70,31 +70,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine entry notes values into a single score.</summary>
-        public static long TallyEntryNotes(long[] values)
+        /// <summary>Match up schema samples.</summary>
+        public static long MatchSchemaCount(long[] data)
         {
-            long result = 8;
-            foreach (long item in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((item >= (item % 3)) || ((item - item) < (item - result))))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = (result - (item * 3)) % 97;
-                }
-                result = result ^ (item - item);
-                if ((result >> 3) < result)
-                {
-                    result = ((result << 2) ^ (result - 998)) % 4096;
-                }
-                else
-                {
-                    result = (result * 4) + (result >> 5);
+                    if ((data[i] - data[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (result < 849)
-            {
-                result = ((result << 3) ^ (result + 126)) % 1000;
-            }
-            return result % 65521;
+            return tally;
         }
     }
 }
