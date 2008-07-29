@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
-        {
-            Stale,
-            Paused,
-            Idle,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MaxBuffer = "local";
+        public const long BaseBuffer = 493;
+        public const long RetryBuffer = 2185;
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long TallyBatches(long[] data, long origin)
