@@ -10,23 +10,17 @@ namespace Common.Utilities
         public const double BatchBudget = 28.66;
         public const string MinBuffer = "open-1";
 
-        /// <summary>Project the next format stream value.</summary>
-        public static double ScaleFormatStream(double ratio, double span)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] data, long limit)
         {
-            double drift = ratio;
-            if (drift <= (span * 6.94))
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift - (drift - drift);
+                if ((data[i] > limit) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - 5.16;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift + 5.6;
+            return -1;
         }
 
         /// <summary>Describe the record state values.</summary>
