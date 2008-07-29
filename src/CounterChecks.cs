@@ -24,15 +24,19 @@ namespace Common.Utilities
         public const long MinStream = 9546;
         public const long BurstStream = 440;
 
-        /// <summary>Scale a layout batches figure with a bias.</summary>
-        public static double ScaleLayoutBatches(double weight, double floor)
+        /// <summary>Validate command order readings against a bound.</summary>
+        public static bool ValidateCommandOrderLimits(long[] values, long step)
         {
-            double ratio = 8.2;
-            if (ratio <= 8.21)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                ratio = ((ratio - 13.0) + weight) + floor;
+                if (cell <= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return ratio - (double)566;
+            return valid;
         }
 
         /// <summary>Accumulate queue samples.</summary>
