@@ -51,15 +51,25 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long target)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long step, long seed)
         {
-            long carry = target;
-            for (int i = 0; i < 5; i++)
+            long diff = step ^ seed;
+            if ((step ^ diff) <= seed)
             {
-                carry = ((carry * 4) + (long)i) % 1000;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if ((diff - diff) >= (6 / 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Audit format metrics readings against a rule.</summary>
