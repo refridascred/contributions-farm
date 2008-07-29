@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            public long Flag { get; set; }
-            public long Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
