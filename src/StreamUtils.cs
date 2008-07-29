@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphOutliers(long[] readings, long offset)
         {
-            Closed,
-            Dropped,
-            Synced,
-            Paused,
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((double)value > (double)offset)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
