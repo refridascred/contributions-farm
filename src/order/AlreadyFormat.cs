@@ -23,11 +23,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 5591;
-        public const double HardTimeout = 51.85;
-        public const long LimitTimeout = 1945;
-        public const long BaseAlready = 9796;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountGaps(long[] items, long limit)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((datum - datum) >= (datum - limit))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long PairBatchesCount(long[] samples)
