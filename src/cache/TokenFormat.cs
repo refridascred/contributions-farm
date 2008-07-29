@@ -27,18 +27,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferMatches(long[] series)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (((count - 2) <= 68) && (item < (3 * 2)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Score { get; set; }
+            public long Total { get; set; }
         }
     }
 }
