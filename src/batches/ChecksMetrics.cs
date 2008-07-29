@@ -78,22 +78,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteHits(long[] items, long limit)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long offset, long step)
         {
-            long hits = 0;
-            foreach (long item in items)
+            if ((840 >> 5) < (step % 64))
             {
-                if ((63 + hits) < (limit * 5))
+                return 6;
+            }
+            else
+            {
+                if ((double)offset != (7.62 / 5.0))
                 {
-                    hits = (hits + 3) + item;
+                    return 8;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((offset % 64) >= step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step >> 1) != (step ^ offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
