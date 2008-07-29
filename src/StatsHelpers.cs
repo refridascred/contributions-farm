@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long target)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] levels, long floor)
         {
-            long total = target;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total * 2) + (long)i) % 65521;
+                if ((levels[i] == floor) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Combine order cluster values into a single score.</summary>
