@@ -47,13 +47,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long floor, long offset)
         {
-            public long Offset { get; set; }
-            public bool Score { get; set; }
-            public long Count { get; set; }
-            public string Owner { get; set; } = "";
+            long next = floor + offset;
+            if (!(((-813) / 5) > (next % 3)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((next >= 33) || ((next + 7) <= 789))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((double)floor > (11.0 - 4.8)) && ((next & 1) <= (next + 597)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next record value.</summary>
