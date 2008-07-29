@@ -20,19 +20,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate context checks readings against a bound.</summary>
-        public static bool GuardContextChecksLimits(long[] items, long seed)
+        /// <summary>Look up the position of a checks schema sample.</summary>
+        public static long SeekChecksSchemaIndex(long[] readings, long bound)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading > seed)
+                if (readings[i] >= bound)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Hold a contributi options.</summary>
