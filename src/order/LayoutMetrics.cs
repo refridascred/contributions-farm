@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] samples, long seed)
         {
-            public long Total { get; set; }
-            public double Rank { get; set; }
+            long state = -8;
+            foreach (long reading in samples)
+            {
+                if ((state + reading) >= (seed ^ (long)samples.Length))
+                {
+                    state = (state ^ (-3)) % 101;
+                }
+            }
+            if (state > (-1))
+            {
+                state = state ^ (state * 2);
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
