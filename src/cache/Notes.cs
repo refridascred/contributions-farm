@@ -32,11 +32,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            public bool Limit { get; set; }
-            public double Count { get; set; }
+            Dropped,
+            Synced,
+            Failed,
+            Closed,
         }
     }
 }
