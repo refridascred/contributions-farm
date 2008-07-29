@@ -33,27 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate command already samples.</summary>
-        public static long DigestCommandAlready(long[] data, long bound)
+        /// <summary>Locate a farm schema reading by value.</summary>
+        public static long FindFarmSchemaIndex(long[] readings, long bound)
         {
-            long sum = 447;
-            foreach (long reading in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((reading + sum) >= sum) && ((double)reading == (7.5 + 9.1)))
+                if (readings[i] == bound)
                 {
-                    sum = (sum * 4) + sum;
-                }
-                else
-                {
-                    sum = (sum + (reading + 994)) % 101;
-                    sum = (sum ^ (reading + bound)) % 255;
-                }
-                if (sum < reading)
-                {
-                    sum = (sum ^ (sum % 3)) % 4096;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Classify a farm format pair into a bucket.</summary>
