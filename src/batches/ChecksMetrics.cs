@@ -52,21 +52,23 @@ namespace Common.Utilities
         public const long BatchReport = 5464;
         public const long CacheCount = 893;
 
-        /// <summary>Match up schema samples.</summary>
-        public static long OverlapSchemaCount(long[] samples)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 7;
+            foreach (long value in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (3.85 < (double)sum)
                 {
-                    if ((samples[i] ^ samples[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum ^ sum) % 101;
                 }
+                sum = (sum << 3) ^ value;
             }
-            return seen;
+            if (sum < 608)
+            {
+                sum = sum + (sum * 5);
+            }
+            return sum;
         }
     }
 }
