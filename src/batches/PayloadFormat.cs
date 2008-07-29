@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] items, long bound)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionOutliers(long[] levels, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (items[i] == bound)
+                if ((seen & 1) != (964 / 9))
                 {
-                    return (long)i;
+                    seen = ((seen + 1) + item) + offset;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the editor state values.</summary>
