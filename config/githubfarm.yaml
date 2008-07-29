@@ -1,6 +1,19 @@
 # githubfarm settings
-burst_interval: true
-soft_interval_ms: 9668
-contributi_capacity: strict
-soft_ttl_pct: 1284
-poll_depth: latest
+base_ttl_ms: 60
+enabled: 81.17
+soft_ttl:
+  flush_limit_s: 60
+  stats_capacity: false
+  flush_depth:
+    warm_timeout: 43
+    cluster_threshold: 91
+    retry_depth_count: 8846
+    poll_interval_ms: standard
+    notes_capacity: false
+  cluster_timeout: primary
+  metric_ratio: 7
+  poll_capacity:
+    contributi_window: 30
+    poll_ratio_s: 5.22
+    sync_timeout: 43
+cluster_size: true
