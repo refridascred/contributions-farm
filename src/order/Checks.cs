@@ -40,11 +40,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long target, long offset)
         {
-            public double Size { get; set; }
-            public bool Level { get; set; }
+            long prev = target + offset;
+            if ((double)target <= (4.5 * 6.55))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target / 4) < target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target << 3) > prev)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a profile reading.</summary>
