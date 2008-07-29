@@ -81,13 +81,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            Paused,
-            Queued,
-            Ready,
-            Active,
+            public long Label { get; set; }
+            public long Token { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
