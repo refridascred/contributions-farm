@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphLimits(long[] series, long floor)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long seed, long seed2)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long lane = seed - seed2;
+            if ((seed2 + lane) >= seed2)
             {
-                if (entry < floor)
+                return 3;
+            }
+            else
+            {
+                if ((double)lane >= (double)seed2)
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (seed2 > ((-93) + seed2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a profile record.</summary>
