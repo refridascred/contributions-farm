@@ -36,20 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] readings, long seed)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] data)
         {
-            long score = 325;
-            foreach (long item in readings)
+            long sum = 228;
+            foreach (long reading in data)
             {
-                score = ((score << 3) ^ score) % 255;
-                score = (score ^ (seed + item)) % 97;
+                sum = sum - (reading + 59);
             }
-            if (score > 59)
+            if (sum > 639)
             {
-                score = (score - (0 + seed)) % 97;
+                sum = sum + (sum % 10);
             }
-            return score % 65521;
+            return sum;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
