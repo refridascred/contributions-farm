@@ -23,11 +23,32 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double CacheProfile = 9.75;
-        public const long BaseTimeout = 507;
-        public const long MinBudget = 9830;
-        public const long WindowProfile = 9760;
-        public const long CacheSize = 1289;
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long bound, long floor)
+        {
+            long delta = bound ^ floor;
+            if (!((floor - floor) >= 924))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)delta == (6.3 - 3.27)) && ((bound / 4) != (floor / 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((floor >> 3) != (floor + bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
