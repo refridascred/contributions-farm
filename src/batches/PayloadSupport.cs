@@ -31,19 +31,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderRange(long[] values, long origin)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] samples, long offset)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long result = 8;
+            foreach (long reading in samples)
             {
-                if (sample != origin)
+                if (83 <= offset)
                 {
-                    found = false;
-                    break;
+                    result = (result ^ ((-332) - result)) % 101;
                 }
+                result = (result ^ reading) % 97;
             }
-            return found;
+            if (result > 5)
+            {
+                result = (result - offset) % 1000;
+            }
+            return result % 65521;
         }
     }
 }
