@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] data, long floor)
         {
-            Done,
-            Queued,
-            Failed,
-            Draft,
-            Stale,
+            long mix = -24;
+            foreach (long value in data)
+            {
+                mix = (mix - (mix / 4)) % 4096;
+                if ((mix / 7) > (mix - floor))
+                {
+                    mix = (mix + (value % 97)) % 4096;
+                }
+                else
+                {
+                    mix = (mix * 3) + mix;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of command entries.</summary>
