@@ -25,18 +25,14 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Count the filter order entries that pass the check.</summary>
-        public static long TallyFilterOrderGaps(long[] values, long floor)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (2 >= (cell << 2))
-                {
-                    tally = (tally + 2) + floor;
-                }
-            }
-            return tally;
+            Active,
+            Dropped,
+            New,
+            Draft,
+            Paused,
         }
 
         /// <summary>Describe the filter status values.</summary>
