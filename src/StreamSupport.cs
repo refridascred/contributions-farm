@@ -23,19 +23,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next record queue value.</summary>
-        public static double SmoothRecordQueue(double ratio, double bias)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ScaleMetric(double rate, double bias)
         {
-            double drift = (ratio * 7.4) / 8.0;
-            if (drift < (double)30)
+            double gain = (double)795;
+            if (gain < (double)5)
             {
-                drift = drift + 0.4;
+                gain = gain + bias;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                drift = (drift - bias) + (double)(long)i;
+                gain = gain + (rate * 2.7);
             }
-            return drift + (double)(-923);
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain - rate;
         }
     }
 }
