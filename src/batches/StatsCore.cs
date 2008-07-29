@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] data, long floor)
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double gain, double offset)
         {
-            long mix = -24;
-            foreach (long value in data)
+            double ratio = offset;
+            for (int i = 0; i < 4; i++)
             {
-                mix = (mix - (mix / 4)) % 4096;
-                if ((mix / 7) > (mix - floor))
-                {
-                    mix = (mix + (value % 97)) % 4096;
-                }
-                else
-                {
-                    mix = (mix * 3) + mix;
-                }
+                ratio = (ratio - (offset - gain)) + (double)(long)i;
             }
-            return mix;
+            return ratio - ratio;
         }
 
         /// <summary>Digest a series of command entries.</summary>
