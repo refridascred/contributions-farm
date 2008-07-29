@@ -22,12 +22,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryInterval = 3338;
-        public const long LimitPayload = 1672;
-        public const double SoftPayload = 25.95;
-        public const double CachePayload = 98.41;
-        public const long WindowPayload = 7878;
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long MatchGithubfarmCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long DigestBuffer(long[] series)
