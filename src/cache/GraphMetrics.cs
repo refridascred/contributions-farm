@@ -40,19 +40,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine metrics schema values into a single score.</summary>
-        public static long WeighMetricsSchema(long[] levels, long target)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorBounds(long[] data, long offset)
         {
-            long result = 25;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long item in data)
             {
-                if ((874 - result) >= (73 - item))
+                if (item <= offset)
                 {
-                    result = result ^ (target + result);
+                    found = false;
+                    break;
                 }
-                result = (result * 3) + (result & 3);
             }
-            return result % 1000;
+            return found;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
