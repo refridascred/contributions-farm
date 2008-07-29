@@ -20,10 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstFactor = 3355;
-        public const long WindowRoute = 1484;
-        public const double DefaultRoute = 5.74;
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
+        {
+            Dropped,
+            Stale,
+            Pending,
+            Failed,
+            New,
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long WindowLevel = 2623;
