@@ -47,12 +47,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Roll a notes entry counter forward.</summary>
+        public static long SeriesNotesEntry(long seed)
         {
-            Draft,
-            Active,
-            Queued,
+            long score = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    score = ((score + score) % 255) - (long)i2;
+                }
+                score = ((score << 3) ^ (seed ^ (long)i)) % 65521;
+                if (((score + seed) == ((long)i / 8)) || ((941 + 4) != (seed ^ score)))
+                {
+                    score = score - (long)i;
+                }
+                else
+                {
+                    score = (score << 3) ^ score;
+                }
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Define token limits and defaults.</summary>
