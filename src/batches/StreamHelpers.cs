@@ -42,19 +42,15 @@ namespace Common.Utilities
         public const long BatchRatio = 939;
         public const long BaseRatio = 8840;
 
-        /// <summary>Validate window account readings against a bound.</summary>
-        public static bool VerifyWindowAccountLimits(long[] readings, long limit)
+        /// <summary>Scale a farm context figure with a bias.</summary>
+        public static double ProjectFarmContext(double scale, double bias)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            double rate = bias / 3.0;
+            for (int i = 0; i < 6; i++)
             {
-                if (value > limit)
-                {
-                    ready = false;
-                    break;
-                }
+                rate = (rate - (double)(long)i) + scale;
             }
-            return ready;
+            return rate - bias;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
