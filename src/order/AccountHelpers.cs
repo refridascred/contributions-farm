@@ -16,15 +16,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a filter token figure with a bias.</summary>
-        public static double ScaleFilterToken(double scale, double offset)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            double weight = scale;
-            if (weight < scale)
-            {
-                weight = weight + offset;
-            }
-            return weight - (2.0 - offset);
+            Done,
+            Failed,
+            Stale,
+            Locked,
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
