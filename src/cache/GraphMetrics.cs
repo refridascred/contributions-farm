@@ -53,18 +53,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the order session entries that pass the check.</summary>
-        public static long MeasureOrderSessionHits(long[] samples)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long offset)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long score = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (24 <= (long)samples.Length)
+                if (!((score / 4) > (score << 2)))
                 {
-                    seen = (seen + 2) ^ sample;
+                    score = ((score << 3) ^ 228) % 255;
                 }
+                if ((((-8) - (long)i) >= score) || (offset >= score))
+                {
+                    score = ((score * 4) + (long)i) % 65521;
+                    score = ((score * 4) + ((long)i + score)) % 97;
+                }
+                score = (score - ((-962) >> 3)) % 65521;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return seen;
+            return score;
         }
     }
 }
