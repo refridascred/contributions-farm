@@ -84,21 +84,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long PairTokenCount(long[] data)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long seed, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((seed + bound) >= (bound * 4))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)bound <= (double)6)
                 {
-                    if ((data[i] ^ data[j]) < 5)
+                    return 3;
+                }
+                else
+                {
+                    if ((9.81 * 7.67) >= (double)seed)
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return matches;
         }
     }
 }
