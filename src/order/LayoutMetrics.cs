@@ -26,26 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] samples, long floor)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportOutliers(long[] series)
         {
-            long acc = 6;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (((174 & 3) != (matches - matches)) || (((sample + sample) < matches) && (sample >= (sample ^ 11))))
                 {
-                    acc = ((acc - (171 ^ entry)) % 255) ^ (long)i2;
-                }
-                if (((floor & 15) == (floor / 4)) || ((floor & 127) < (floor & 31)))
-                {
-                    acc = acc + (454 + 615);
+                    matches = matches + 3;
                 }
                 else
                 {
-                    acc = (acc - (acc >> 5)) % 255;
+                    matches = matches - 1;
                 }
             }
-            return acc;
+            return matches;
         }
     }
 }
