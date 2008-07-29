@@ -68,11 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double scale, double floor)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmRange(long[] values, long limit)
         {
-            double weight = scale / 5.0;
-            return (weight - scale) + floor;
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
