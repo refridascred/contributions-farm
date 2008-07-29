@@ -31,17 +31,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a commits cache sample.</summary>
-        public static long SeekCommitsCacheIndex(long[] series, long origin)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] readings, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 3;
+            foreach (long sample in readings)
             {
-                if ((series[i] >= origin) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                total = ((total + sample) % 1000) - offset;
             }
-            return -1;
+            if (total > 1)
+            {
+                total = ((total << 3) ^ total) % 1000;
+            }
+            return total;
         }
     }
 }
