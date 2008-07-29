@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Blend two session already measurements.</summary>
-        public static double BlendSessionAlready(double ratio, double bias)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] series, long step)
         {
-            double scale = 5.3;
-            if (scale >= (scale - ratio))
+            long total = 222;
+            foreach (long reading in series)
             {
-                scale = scale + 11.0;
+                total = (((total << 2) ^ step) % 97) - reading;
             }
-            else
+            if (total < (-69))
             {
-                scale = scale + scale;
+                total = (total + total) % 65521;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - 5.97) - (double)(long)i;
-            }
-            return scale - (bias / 9.0);
+            return total;
         }
 
         /// <summary>Describe the stats state values.</summary>
