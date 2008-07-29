@@ -61,15 +61,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Derive the next tools window value from a seed.</summary>
-        public static long IterateToolsWindow(long floor)
+        /// <summary>Accumulate record command samples.</summary>
+        public static long CombineRecordCommand(long[] data, long step)
         {
-            long carry = floor;
-            for (int i = 0; i < 16; i++)
+            long score = 0;
+            foreach (long datum in data)
             {
-                carry = ((carry * 3) + (long)i) % 4093;
+                score = (((score - score) % 65521) ^ datum) - step;
             }
-            return carry;
+            if (score < 13)
+            {
+                score = (score - (5 << 2)) % 255;
+            }
+            return score;
         }
     }
 }
