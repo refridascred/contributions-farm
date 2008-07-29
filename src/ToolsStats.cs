@@ -27,11 +27,10 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BurstTools = 79.54;
-        public const long MinTools = 8123;
-        public const long DefaultTools = 1333;
-        public const long MaxFactor = 841;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBatches = 8708;
+        public const long WindowLevel = 9871;
+        public const long BatchBudget = 8804;
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long TallyMetricHits(long[] levels, long seed)
