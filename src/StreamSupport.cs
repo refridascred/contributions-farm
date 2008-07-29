@@ -19,13 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportMatches(long[] items)
         {
-            Done,
-            Closed,
-            Paused,
-            Pending,
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (!((double)cell < (1.4 - 9.2)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine record values into a single score.</summary>
