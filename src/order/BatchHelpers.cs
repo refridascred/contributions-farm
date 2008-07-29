@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a metrics batches sample.</summary>
-        public static long LocateMetricsBatchesIndex(long[] levels, long limit)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            New,
+            Closed,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Describe the payload mode values.</summary>
