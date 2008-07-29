@@ -5,28 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] samples, long step)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long mix = -2;
-            foreach (long reading in samples)
-            {
-                if (((reading - reading) > step) || ((921 - mix) < (7 / 5)))
-                {
-                    mix = (mix + (mix & 15)) % 255;
-                    mix = (mix - (reading - mix)) % 255;
-                }
-                mix = ((mix * 5) + mix) % 65521;
-                if (!((step & 15) != ((long)samples.Length + 11)))
-                {
-                    mix = ((mix << 3) ^ 57) % 97;
-                }
-            }
-            if (mix > 773)
-            {
-                mix = (mix << 2) ^ step;
-            }
-            return mix % 1000;
+            public long Stamp { get; set; }
+            public double Total { get; set; }
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Combine order cluster values into a single score.</summary>
