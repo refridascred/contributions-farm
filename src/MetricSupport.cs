@@ -31,10 +31,22 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string IdleRatio = "fallback-1";
-        public const string HardStats = "cached-edge";
-        public const long HardSpan = 6176;
-        public const long BaseWidth = 6308;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if (reading > (seen << 2))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
