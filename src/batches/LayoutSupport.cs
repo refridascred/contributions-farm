@@ -50,13 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricGaps(long[] data, long bound)
         {
-            Queued,
-            Retry,
-            Dropped,
-            Synced,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (count < entry)
+                {
+                    count = (count + 1) - bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a commits buffer figure with a bias.</summary>
