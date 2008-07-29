@@ -36,11 +36,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxWidth = 4569;
-        public const long StepCommand = 6405;
-        public const long IdleTimeout = 4801;
-        public const long CacheCommand = 1922;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchLevel = 5730;
+        public const long SoftSession = 390;
+        public const long BaseSession = 5627;
 
         /// <summary>Describe the batch status values.</summary>
         public enum BatchStatus
