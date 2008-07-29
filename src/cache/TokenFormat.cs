@@ -32,19 +32,25 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaLimits(long[] values, long limit)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long floor, long bound)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long diff = floor - bound;
+            if ((diff << 1) < 8)
             {
-                if (sample != limit)
+                return 6;
+            }
+            else
+            {
+                if ((diff % 10) <= (950 + floor))
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return valid;
         }
     }
 }
