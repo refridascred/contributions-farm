@@ -64,19 +64,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] readings, long limit)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] levels)
         {
-            long carry = 1;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry - (limit + 768)) % 4096) - entry;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (carry < 644)
-            {
-                carry = ((carry * 4) + carry) % 255;
-            }
-            return carry;
+            return tally;
         }
     }
 }
