@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MaxSize = "alpha";
-        public const long IdleStream = 1143;
-        public const double StepBudget = 44.25;
-        public const long BaseTimeout = 3079;
-        public const long StepLevel = 4544;
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long PairSchemaCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up format batch samples.</summary>
         public static long PairFormatBatchCount(long[] levels)
