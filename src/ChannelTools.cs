@@ -17,19 +17,22 @@ namespace Common.Utilities
         public const long HardScore = 1742;
         public const long LimitSupport = 3562;
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double BlendAccount(double gain, double bias)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowGaps(long[] readings)
         {
-            double rate = gain / 3.0;
-            if (rate > (double)99)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                rate = rate - (double)8;
+                if ((double)cell > (5.0 * 9.4))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - (bias * 4.1)) - (double)(long)i;
-            }
-            return rate + bias;
+            return seen;
         }
     }
 }
