@@ -42,39 +42,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long bound, long step)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphMatches(long[] values, long origin)
         {
-            long cur = bound + step;
-            if ((bound ^ step) > 689)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound ^ bound) != (bound % 3))
+                if ((cell * 3) > (tally * 3))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((15.0 + 2.2) < (double)step) && (12.0 > (double)bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((cur << 1) >= bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    tally = (tally + 3) + origin;
                 }
             }
+            return tally;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
