@@ -1,9 +1,7 @@
-id,ratio,owner,label,region
-1,28,263,249,strict
-2,72.46,4.9,278,6.02
-3,90.39,fallback,55.41,primary
-4,310,373,9.79,748
-5,primary,118,44.63,453
-6,61.68,edge,612,863
-7,823,133,990,cached
-8,585,local,74.46,staging
+id,rank,weight,state,active
+1,56.47,cached,green,62.93
+2,legacy,95.22,133,46.15
+3,413,825,516,open
+4,standard,494,1.63,81.72
+5,755,988,70.16,legacy
+6,primary,479,638,94.35
