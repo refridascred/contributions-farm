@@ -17,19 +17,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] series)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long state = 62;
-            foreach (long datum in series)
-            {
-                state = ((state + state) % 4096) + datum;
-            }
-            if (state > 37)
-            {
-                state = (state ^ (state + state)) % 101;
-            }
-            return state % 1000;
+            New,
+            Stale,
+            Locked,
+            Synced,
         }
 
         /// <summary>Hold a contributi info.</summary>
