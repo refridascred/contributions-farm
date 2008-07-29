@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long MinWidth = 5224;
         public const long MaxCommand = 4771;
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] samples)
         {
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            long mix = 120;
+            foreach (long sample in samples)
+            {
+                mix = mix + sample;
+                if ((double)mix == (0.83 - 18.0))
+                {
+                    mix = (mix + (mix & 7)) % 4096;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
