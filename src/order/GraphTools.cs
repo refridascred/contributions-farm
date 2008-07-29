@@ -50,13 +50,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheRange(long[] readings, long step)
         {
-            public double Ratio { get; set; }
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
