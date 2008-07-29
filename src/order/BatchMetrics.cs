@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            public double Level { get; set; }
-            public string Flag { get; set; } = "";
+            Paused,
+            Retry,
+            Stale,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
