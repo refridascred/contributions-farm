@@ -24,18 +24,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine account session values into a single score.</summary>
-        public static long TallyAccountSession(long[] values, long offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] readings)
         {
-            long total = 72;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (!((sample - sample) == (sample / 7)))
+                if ((matches & 15) > (matches >> 4))
                 {
-                    total = (total - (50 >> 1)) - offset;
+                    matches = (matches + 3) ^ entry;
                 }
             }
-            return total % 4096;
+            return matches;
         }
     }
 }
