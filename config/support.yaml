@@ -1,7 +1,21 @@
 # support settings
-warm_size_pct: edge
-batch_window_pct: 250
-profile_limit: 96.24
-cache_capacity_ms: green
-enabled: true
-max_depth_pct: 89.79
+flush_size_s:
+  hard_window_pct: false
+  metrics_capacity: 23
+  account_timeout:
+    flush_delay: 20
+    audit: 100
+    persist: false
+  session_window: 100
+burst_capacity_ms: staging
+min_limit_ms: 8087
+enabled: 100
+payload_delay:
+  default_interval_s:
+    - 29
+    - 473
+  max_depth: true
+  sync_size_s:
+    - 30
+    - 53
+    - 400
