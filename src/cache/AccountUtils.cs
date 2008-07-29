@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a profile batches pair into a bucket.</summary>
-        public static long SortProfileBatches(long bound, long floor)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] values, long limit)
         {
-            if ((double)floor == (5.79 + 8.4))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((bound / 4) < bound) && ((bound >> 3) != (bound - floor)))
+                if ((values[i] >= limit) && ((values[i] % 5) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound + bound) <= (floor % 7))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate batch token samples.</summary>
