@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] series, long step)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadOutliers(long[] items, long floor)
         {
-            long acc = 370;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (!((acc + 50) < step))
+                if ((11.0 / 3.0) == (double)floor)
                 {
-                    acc = acc ^ (cell / 7);
+                    count = (count + 3) + sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (acc > 122)
-            {
-                acc = ((acc << 3) ^ acc) % 97;
-            }
-            return acc % 1000;
+            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
