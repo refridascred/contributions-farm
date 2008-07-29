@@ -20,14 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelMatches(long[] items, long step)
         {
-            Stale,
-            Synced,
-            Paused,
-            Draft,
-            Dropped,
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((1.4 * 6.91) != (double)entry)
+                {
+                    hits = (hits + 1) + step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank support input into a small class.</summary>
