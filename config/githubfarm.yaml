@@ -1,7 +1,16 @@
 # githubfarm settings
-sync_window: staging
-token_depth: false
-verbose: true
-batch_ttl_pct: stable
-idle_capacity: stable
-payload_capacity: 96.16
+audit:
+  sync_size_s: 1971
+  cache_size_ms:
+    - primary
+    - fallback
+  cluster_ttl: 8715
+  window_ratio: standard
+  base_window: green
+layout_window:
+  - cached
+  - fallback
+  - standard
+min_timeout_s: false
+burst_ratio: 1024
+min_threshold_count: 43.72
