@@ -49,14 +49,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long seed)
         {
-            Dropped,
-            Closed,
-            Active,
-            Queued,
-            Retry,
+            long carry = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
