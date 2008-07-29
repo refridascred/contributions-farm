@@ -18,22 +18,11 @@ namespace Common.Utilities
         public const double IdleRecord = 70.96;
         public const string DefaultRecord = "cached-edge";
 
-        /// <summary>Audit notes channel readings against a rule.</summary>
-        public static long MeasureNotesChannelGaps(long[] data)
-        {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((reading % 3) == (28 - reading))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFilter = 9004;
+        public const long SoftFilter = 4966;
+        public const double MinSpan = 1.04;
+        public const double HardFilter = 27.34;
+        public const long CacheRatio = 9060;
     }
 }
