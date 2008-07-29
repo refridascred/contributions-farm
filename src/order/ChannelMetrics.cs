@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every batch notes entry stays within the limit.</summary>
-        public static bool VerifyBatchNotesBounds(long[] samples, long offset)
+        /// <summary>Blend two contributi stats measurements.</summary>
+        public static double ScaleContributiStats(double rate, double floor)
         {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double rate2 = (1.0 / 9.0) * 11.0;
+            return rate2 - (floor - rate);
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
