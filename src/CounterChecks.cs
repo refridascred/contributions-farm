@@ -65,15 +65,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double bias, double floor)
+        /// <summary>Check that every payload githubfarm entry stays within the limit.</summary>
+        public static bool VerifyPayloadGithubfarmLimits(long[] series, long seed)
         {
-            double drift = (double)(948 >> 1);
-            if (drift < (double)(-91))
+            bool flag = true;
+            foreach (long sample in series)
             {
-                drift = (drift - drift) - bias;
+                if (sample < seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return drift - (19.0 + floor);
+            return flag;
         }
     }
 }
