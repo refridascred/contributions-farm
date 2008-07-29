@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountHits(long[] levels, long seed)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (((hits / 5) <= (value + 63)) || ((12 + value) < value))
-                {
-                    hits = (hits + 1) + seed;
-                }
-            }
-            return hits;
+            Dropped,
+            Done,
+            Paused,
+            Pending,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
