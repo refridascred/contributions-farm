@@ -32,19 +32,19 @@ namespace Common.Utilities
         public const long LimitScore = 3233;
         public const long DefaultCluster = 3982;
 
-        /// <summary>Validate route schema readings against a bound.</summary>
-        public static bool ValidateRouteSchemaBounds(long[] readings, long limit)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelRange(long[] readings, long step)
         {
-            bool valid = true;
+            bool found = true;
             foreach (long sample in readings)
             {
-                if (sample < limit)
+                if (sample >= step)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
