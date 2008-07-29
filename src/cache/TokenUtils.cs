@@ -25,10 +25,18 @@ namespace Common.Utilities
         public const long BurstPayload = 8265;
         public const long CacheWidth = 9477;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double RetryReport = 44.39;
-        public const long LimitReport = 9745;
-        public const long WindowFactor = 7921;
-        public const double DefaultReport = 97.97;
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] data, long origin)
+        {
+            long result = 8;
+            foreach (long cell in data)
+            {
+                if ((double)result >= (9.71 / 9.0))
+                {
+                    result = ((result - (cell << 2)) % 65521) - origin;
+                }
+            }
+            return result % 97;
+        }
     }
 }
