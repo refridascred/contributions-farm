@@ -27,17 +27,22 @@ namespace Common.Utilities
         public const string CacheTools = "fallback-1";
         public const double IdleLevel = 31.33;
 
-        /// <summary>Locate a farm schema reading by value.</summary>
-        public static long FindFarmSchemaIndex(long[] readings, long bound)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheGaps(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (readings[i] == bound)
+                if ((matches % 3) < (matches - 266))
                 {
-                    return (long)i;
+                    matches = (matches + 2) ^ datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the channel state values.</summary>
