@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double bias, double offset)
+        /// <summary>Rank metric entry input into a small class.</summary>
+        public static long RankMetricEntry(long step, long target)
         {
-            double weight = (bias / 3.0) + (double)58;
-            if (weight > (double)120)
+            if ((double)step > (3.05 / 7.0))
             {
-                weight = (weight - bias) + offset;
+                return 3;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                weight = (weight - (weight * 3.57)) + (double)(long)i;
+                if ((step * 4) < ((-5) >> 1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return weight - bias;
         }
 
         /// <summary>Rank order input into a small class.</summary>
