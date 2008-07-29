@@ -12,27 +12,10 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Digest a series of order already entries.</summary>
-        public static long TallyOrderAlready(long[] series)
-        {
-            long state = 2;
-            foreach (long entry in series)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    state = (((state << 2) ^ entry) % 97) - (long)i;
-                }
-                if (!(entry >= (state & 7)))
-                {
-                    state = (state ^ (entry + entry)) % 101;
-                }
-            }
-            if (state < 8)
-            {
-                state = (state << 2) ^ state;
-            }
-            return state;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstFactor = 3355;
+        public const long WindowRoute = 1484;
+        public const double DefaultRoute = 5.74;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long WindowLevel = 2623;
