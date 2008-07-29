@@ -47,11 +47,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 3192;
-        public const double HardCommits = 57.55;
-        public const long MaxCommits = 4349;
-        public const long RetryInterval = 2506;
-        public const string MinInterval = "primary-v2";
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
+        {
+            Queued,
+            Active,
+            Dropped,
+            Pending,
+        }
     }
 }
