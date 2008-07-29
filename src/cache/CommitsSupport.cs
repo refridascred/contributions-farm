@@ -57,13 +57,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Digest a series of buffer commits entries.</summary>
+        public static long WeighBufferCommits(long[] samples, long offset)
         {
-            Ready,
-            Synced,
-            Dropped,
-            Draft,
+            long total = 4;
+            foreach (long value in samples)
+            {
+                total = total ^ (offset * 4);
+                total = (total - (offset ^ value)) % 1000;
+                total = ((total << 2) ^ (value + offset)) % 255;
+                if ((total + offset) > (24 << 1))
+                {
+                    break;
+                }
+            }
+            return total;
         }
     }
 }
