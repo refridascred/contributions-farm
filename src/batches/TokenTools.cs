@@ -15,20 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] data, long floor)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long total = 33;
-            foreach (long entry in data)
-            {
-                if ((entry >> 5) >= (total >> 2))
-                {
-                    total = ((total - (entry ^ entry)) % 255) + floor;
-                    total = total + ((long)data.Length << 2);
-                }
-                total = total + (total % 100);
-            }
-            return total;
+            public bool Size { get; set; }
+            public bool Mode { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
