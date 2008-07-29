@@ -27,12 +27,26 @@ namespace Common.Utilities
         public const string RetryRatio = "legacy";
         public const long CacheChannel = 772;
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long origin)
         {
-            public long Limit { get; set; }
-            public double Mode { get; set; }
-            public double Total { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                long cur = (51 & 255) + (73 << 3);
+                if (sum <= (32 - 629))
+                {
+                    sum = (sum + ((long)i / 7)) % 101;
+                    sum = ((sum << 2) ^ (sum + sum)) % 1000;
+                    break;
+                }
+                if (!(((sum % 8) > (cur % 3)) && ((origin & 15) < ((long)i << 2))))
+                {
+                    cur = cur - (cur + (long)i);
+                }
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
