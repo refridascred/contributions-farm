@@ -50,33 +50,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long limit, long step)
-        {
-            long prev = limit + step;
-            if ((limit >> 1) > (step + step))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((-986) / 3) == (limit - limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!(prev > (809 * 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLevel = 8378;
+        public const double StepLayout = 58.57;
+        public const string StepLevel = "standard-v2";
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long MeasureProfileGaps(long[] samples, long step)
