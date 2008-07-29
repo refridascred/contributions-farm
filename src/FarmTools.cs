@@ -36,12 +36,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] samples, long bound)
         {
-            Done,
-            Active,
-            Stale,
+            long state = 6;
+            foreach (long entry in samples)
+            {
+                if ((state >> 1) == ((-634) + 69))
+                {
+                    state = (state - bound) ^ entry;
+                }
+                else
+                {
+                    state = state - state;
+                }
+            }
+            return state % 97;
         }
     }
 }
