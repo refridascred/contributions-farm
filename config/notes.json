@@ -1,16 +1,7 @@
 {
-  "poll_timeout": ["standard", "blue", "standard", "standard"],
-  "strict": {
-    "base_timeout_s": {
-      "batch_delay": "legacy",
-      "contributi_limit": ["blue", "strict", "blue", "strict"],
-      "cache_limit": 7024
-    },
-    "report_ratio": "open",
-    "poll_retries_ms": "edge",
-    "format_interval": 7324,
-    "stream_ratio": [432, 422],
-    "burst_timeout_ms": "fallback"
-  },
-  "audit": 4123
+  "farm_size": true,
+  "batch_limit_count": 18,
+  "base_limit_s": 40.83,
+  "cache_ratio": false,
+  "batch_limit": 4692
 }
