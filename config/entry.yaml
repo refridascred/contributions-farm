@@ -1,22 +1,4 @@
 # entry settings
-sync_depth_count:
-  strict: legacy
-  audit: 28.52
-  idle_window: true
-max_interval_count: false
-readonly: false
-sync_threshold:
-  audit:
-    - strict
-    - primary
-  burst_threshold_s:
-    - green
-    - legacy
-    - blue
-    - blue
-  account_ttl: strict
-  batch_delay:
-    - 408
-    - 75
-batch_timeout_count: 19.06
-soft_ttl_count: 8255
+flush_size_s: latest
+poll_depth: latest
+retry_ratio: standard
