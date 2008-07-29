@@ -32,12 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MinInterval = 50.72;
-        public const long CacheSpan = 5431;
-        public const long IdleCount = 6513;
-        public const double MinWidth = 72.36;
-        public const string HardQueue = "alpha-edge";
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double ratio, double floor)
+        {
+            double load = (floor / 3.0) * 0.3;
+            if (load > (floor - 14.0))
+            {
+                load = load - (floor - 6.3);
+            }
+            return load + ratio;
+        }
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool ValidateGraphLimits(long[] data, long bound)
