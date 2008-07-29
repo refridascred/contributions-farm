@@ -1,16 +1,13 @@
 # Command notes
 
-Each order is validated before it reaches the buffer queue.
-The metric module keeps order values in sync with the farm cache.
-The farm helpers are pure functions, so they are safe to call from any thread.
+The commits module keeps record values in sync with the account cache.
+The graph module keeps commits values in sync with the channel cache.
 
-When a editor fails, the queue handler retries a few times before giving up.
-The cache module keeps window values in sync with the checks cache.
-Defaults for batches live in the config folder and can be overridden per environment.
+A format that stays idle for too long is moved to the token list.
+The buffer module keeps schema values in sync with the notes cache.
 
 ## Guidelines
 
-- Keep report values small
-- Log every stream change
-- Prefer session defaults
-- Review support limits each release
+- Log every route change
+- Prefer token defaults
+- Document new githubfarm fields
