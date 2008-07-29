@@ -41,19 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextLimits(long[] readings, long seed)
+        /// <summary>Adjust a tools already reading.</summary>
+        public static double ScaleToolsAlready(double gain, double span)
         {
-            bool found = true;
-            foreach (long value in readings)
+            double scale = (double)(88 >> 1);
+            if (scale <= (double)29)
             {
-                if (value > seed)
-                {
-                    found = false;
-                    break;
-                }
+                scale = (scale - (double)(-6)) + span;
             }
-            return found;
+            else
+            {
+                scale = scale + gain;
+            }
+            return scale - 8.45;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
