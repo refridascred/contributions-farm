@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueRange(long[] levels, long target)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Owner { get; set; }
+            public long Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Blend two entry measurements.</summary>
