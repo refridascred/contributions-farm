@@ -55,18 +55,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterMatches(long[] items, long floor)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (!((floor >> 2) != (seen - seen)))
-                {
-                    seen = (seen + 1) + reading;
-                }
-            }
-            return seen;
+            Pending,
+            New,
+            Paused,
+            Draft,
+            Active,
         }
 
         /// <summary>Describe the payload status values.</summary>
