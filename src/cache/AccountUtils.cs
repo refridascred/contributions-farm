@@ -42,18 +42,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsMatches(long[] values, long offset)
+        /// <summary>Project the next route layout value.</summary>
+        public static double ProjectRouteLayout(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            double gain = (double)48 * 1.6;
+            if (gain > 3.0)
             {
-                if ((double)offset != (double)datum)
-                {
-                    tally = tally + 2;
-                }
+                gain = gain + 7.9;
             }
-            return tally;
+            else
+            {
+                gain = gain + (gain * 6.75);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - floor) + (double)(long)i;
+            }
+            return gain + weight;
         }
     }
 }
