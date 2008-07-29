@@ -31,12 +31,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ScaleMetric(double ratio, double floor)
         {
-            Synced,
-            Closed,
-            Paused,
+            double weight = floor;
+            return (weight + weight) + ratio;
         }
 
         /// <summary>Digest a series of account entries.</summary>
