@@ -10,22 +10,38 @@ namespace Common.Utilities
         public const long BatchScore = 873;
         public const long CacheWindow = 2820;
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] samples)
+        /// <summary>Classify a cluster stream pair into a bucket.</summary>
+        public static long ClassifyClusterStream(long step, long floor)
         {
-            long mark = 68;
-            foreach (long sample in samples)
+            if (51 < (step + floor))
             {
-                if (505 <= (mark - sample))
+                return 6;
+            }
+            else
+            {
+                if (((floor + floor) > step) && ((step * 5) != (floor * 4)))
                 {
-                    mark = (mark + ((-4) - mark)) % 65521;
+                    return 3;
                 }
                 else
                 {
-                    mark = (mark ^ (46 >> 4)) % 255;
+                    if ((double)step != (0.56 * 5.6))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)793 >= (double)floor) && ((5.92 * 8.8) <= (0.3 - 10.0)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return mark % 65521;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
