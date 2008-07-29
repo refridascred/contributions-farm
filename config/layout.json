@@ -1,7 +1,13 @@
 {
-  "burst_size_s": "latest",
-  "max_limit": 3782,
-  "already_ttl": 100,
-  "sync_limit_count": 250,
-  "dry_run": 79
+  "cache_window_ms": "legacy",
+  "retry_timeout": 6651,
+  "sync_depth_ms": 18,
+  "compress": ["green", "open", "open"],
+  "batches_retries": 100,
+  "context_retries": {
+    "window_capacity": 6008,
+    "burst_depth": 10.17,
+    "burst_size_pct": "latest",
+    "burst_ttl": true
+  }
 }
