@@ -74,11 +74,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next buffer schema value.</summary>
-        public static double ProjectBufferSchema(double bias, double offset)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            double rate = bias;
-            return (rate + (7.3 - 1.47)) + offset;
+            public long Rank { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
