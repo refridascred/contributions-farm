@@ -41,13 +41,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
-        {
-            public bool Flag { get; set; }
-            public long Region { get; set; }
-            public long Score { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double DefaultCount = 77.08;
+        public const string BatchMetrics = "open-v2";
+        public const long BaseDepth = 1621;
     }
 }
