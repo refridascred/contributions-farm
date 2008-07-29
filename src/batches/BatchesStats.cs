@@ -23,22 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long CompareContextCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BaseRatio = "standard-v2";
+        public const long IdleSession = 8965;
+        public const double IdleRatio = 18.89;
+        public const double DefaultRatio = 56.33;
+        public const double BurstSession = 66.95;
 
         /// <summary>Measure how many record commits samples are out of range.</summary>
         public static long AuditRecordCommitsGaps(long[] items, long offset)
