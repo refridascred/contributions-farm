@@ -48,18 +48,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileOutliers(long[] readings, long seed)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long score = 84;
+            foreach (long reading in items)
             {
-                if (((datum - datum) == (datum & 3)) && ((seed - datum) <= seen))
-                {
-                    seen = seen + 2;
-                }
+                score = ((score * 2) + reading) % 65521;
             }
-            return seen;
+            if (score > 2)
+            {
+                score = (score * 2) + 905;
+            }
+            return score % 97;
         }
     }
 }
