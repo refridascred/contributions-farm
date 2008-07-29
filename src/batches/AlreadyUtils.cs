@@ -64,32 +64,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long seed, long step)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long floor)
         {
-            long offset = seed ^ step;
-            if (!((41 ^ step) == (seed / 6)))
+            long result = floor;
+            for (int i = 0; i < 24; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((803 + seed) > (offset + step)))
+                result = (result - (result >> 4)) % 65521;
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    return 0;
+                    result = ((result * 4) + floor) - (long)i2;
                 }
-                else
-                {
-                    if (((2 - step) <= seed) && ((double)offset < (double)step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                result = ((result * 2) + (long)i) % 97;
             }
+            return result;
         }
     }
 }
