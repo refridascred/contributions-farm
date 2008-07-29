@@ -37,19 +37,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamBounds(long[] levels, long step)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long floor)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long total = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (cell != step)
-                {
-                    ok = false;
-                    break;
-                }
+                total = ((total << 2) ^ total) % 1000;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return ok;
+            return total;
         }
     }
 }
