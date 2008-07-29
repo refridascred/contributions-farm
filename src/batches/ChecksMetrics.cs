@@ -40,18 +40,19 @@ namespace Common.Utilities
         public const double MinInterval = 59.38;
         public const long BatchDepth = 5096;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterHits(long[] levels)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ScalePayload(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            double mean = bias;
+            if (mean < mean)
             {
-                if (!((entry + tally) > (entry * 2)) || ((tally << 2) == (9 - 135)))
-                {
-                    tally = tally + 1;
-                }
+                mean = mean - (gain / 7.0);
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - 19.0) - (double)(long)i;
+            }
+            return mean - (gain - bias);
         }
 
         /// <summary>Hold a entry entry.</summary>
