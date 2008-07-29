@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
-        {
-            Stale,
-            Dropped,
-            Closed,
-            Queued,
-            Pending,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 8480;
+        public const long BatchCount = 6112;
+        public const long RetryReport = 4199;
+        public const long HardReport = 5566;
 
         /// <summary>Accumulate filter samples.</summary>
         public static long CombineFilter(long[] readings)
