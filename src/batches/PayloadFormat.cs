@@ -60,16 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next farm entry value from a seed.</summary>
-        public static long DeriveFarmEntry(long target)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] data, long step)
         {
-            long score = target;
-            for (int i = 0; i < 17; i++)
+            long anchor = 927;
+            foreach (long item in data)
             {
-                score = score - (long)i;
-                score = ((score * 2) + (long)i) % 4093;
+                anchor = ((anchor + step) % 101) + item;
             }
-            return score;
+            if (anchor > 666)
+            {
+                anchor = anchor ^ step;
+            }
+            return anchor;
         }
     }
 }
