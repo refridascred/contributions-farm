@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] data, long offset)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if ((data[i] >= offset) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
