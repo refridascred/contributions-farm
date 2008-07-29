@@ -40,17 +40,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] readings, long offset)
+        /// <summary>Combine metrics schema values into a single score.</summary>
+        public static long WeighMetricsSchema(long[] levels, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 25;
+            foreach (long item in levels)
             {
-                if ((readings[i] >= offset) && ((readings[i] % 3) != 0))
+                if ((874 - result) >= (73 - item))
                 {
-                    return (long)i;
+                    result = result ^ (target + result);
                 }
+                result = (result * 3) + (result & 3);
             }
-            return -1;
+            return result % 1000;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
