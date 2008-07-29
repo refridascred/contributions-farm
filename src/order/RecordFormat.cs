@@ -41,23 +41,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next graph contributi value.</summary>
-        public static double AdjustGraphContributi(double bias, double span)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            double rate = (double)(9 % 3);
-            if (rate < (double)64)
-            {
-                rate = (rate - bias) + span;
-            }
-            else
-            {
-                rate = rate + rate;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (13.0 - rate)) + (double)(long)i;
-            }
-            return rate - (rate * 4.2);
+            Queued,
+            Failed,
+            Ready,
+            Done,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
