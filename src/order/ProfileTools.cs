@@ -56,11 +56,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryBudget = 432;
-        public const long LimitLevel = 9675;
-        public const long MaxContributi = 832;
-        public const string WindowContributi = "stable-edge";
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
+        {
+            public bool Label { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Describe the support phase values.</summary>
         public enum SupportPhase
