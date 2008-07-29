@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string WindowFactor = "standard-v2";
-        public const double MinRatio = 41.56;
-        public const long HardLayout = 6046;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardCache = 8904;
+        public const long SoftCache = 3562;
+        public const long HardSpan = 1963;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long StepTimeout = 6092;
