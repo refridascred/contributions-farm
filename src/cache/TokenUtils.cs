@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterHits(long[] series)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((hits - sample) > (sample - hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Fold a list of context farm readings.</summary>
