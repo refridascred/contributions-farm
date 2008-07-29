@@ -65,11 +65,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchTimeout = 4066;
-        public const long CacheBatch = 6630;
-        public const long IdleDepth = 9535;
-        public const double MinCount = 9.54;
-        public const long StepLevel = 6609;
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
+        {
+            New,
+            Retry,
+            Synced,
+            Ready,
+            Done,
+        }
     }
 }
