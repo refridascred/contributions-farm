@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] series)
         {
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
-            public long Rank { get; set; }
-            public bool Score { get; set; }
+            long total = 0;
+            foreach (long datum in series)
+            {
+                if ((total >> 1) > (81 + datum))
+                {
+                    total = total ^ (datum % 7);
+                }
+            }
+            if (total < 69)
+            {
+                total = (total ^ (373 << 2)) % 1000;
+            }
+            return total % 1000;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
