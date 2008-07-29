@@ -63,19 +63,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine batch order values into a single score.</summary>
-        public static long TotalBatchOrder(long[] levels)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmBounds(long[] items, long offset)
         {
-            long anchor = 470;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                anchor = (((anchor << 3) ^ (anchor * 2)) % 1000) ^ value;
+                if (datum < offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (anchor > 50)
-            {
-                anchor = (anchor + anchor) % 255;
-            }
-            return anchor;
+            return valid;
         }
     }
 }
