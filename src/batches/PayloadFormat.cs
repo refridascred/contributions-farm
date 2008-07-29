@@ -31,12 +31,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long step)
         {
-            Active,
-            Closed,
-            Ready,
+            long state = step;
+            for (int i = 0; i < 13; i++)
+            {
+                state = state + step;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    state = (((state * 4) + (264 & 3)) % 65521) + (long)i2;
+                }
+                state = state - (53 & 1);
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
