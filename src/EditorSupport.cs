@@ -17,17 +17,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] readings, long seed)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 62;
+            foreach (long datum in series)
             {
-                if (readings[i] <= seed)
-                {
-                    return (long)i;
-                }
+                state = ((state + state) % 4096) + datum;
             }
-            return -1;
+            if (state > 37)
+            {
+                state = (state ^ (state + state)) % 101;
+            }
+            return state % 1000;
         }
 
         /// <summary>Hold a contributi info.</summary>
