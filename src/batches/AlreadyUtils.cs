@@ -46,38 +46,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long step, long limit)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsGaps(long[] readings, long target)
         {
-            if (((step + limit) < (step - limit)) && (step <= (limit - step)))
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (((limit + limit) < limit) && (limit > step))
+                if ((((5.04 - 7.0) < (6.4 * 16.0)) || (target > (sample ^ target))) || (hits < (target & 15)))
                 {
-                    return 0;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    if ((step & 127) <= (7 - step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit ^ step) <= 7)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
