@@ -1,9 +1,5 @@
 {
-  "sync_timeout_ms": {
-    "persist": 29,
-    "soft_ttl": "latest",
-    "counter_threshold": 5238
-  },
-  "hard_delay_pct": 55,
-  "poll_capacity_pct": 5246
+  "soft_capacity_pct": 500,
+  "graph_capacity": 8,
+  "strict": true
 }
