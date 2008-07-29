@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate commits cluster samples.</summary>
-        public static long DigestCommitsCluster(long[] levels)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long bound, long bound2)
         {
-            long total = 498;
-            foreach (long entry in levels)
+            if (!((bound & 7) != (bound2 / 7)))
             {
-                if (entry > (entry + 1))
+                return 8;
+            }
+            else
+            {
+                if (((bound2 >> 5) < (3 & 31)) && ((bound * 4) >= (bound2 & 31)))
                 {
-                    total = total - (entry & 31);
+                    return 6;
+                }
+                else
+                {
+                    if (((161 - bound) > (bound2 / 2)) && ((421 >> 1) >= bound2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
