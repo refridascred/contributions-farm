@@ -32,17 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a token report reading by value.</summary>
-        public static long FindTokenReportIndex(long[] data, long floor)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((data[i] > floor) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mark = mark + (bound & 7);
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Combine commits context values into a single score.</summary>
