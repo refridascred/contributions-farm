@@ -54,31 +54,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long step, long step2)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            if ((9.0 - 6.19) <= (double)step2)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step + step) < step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step + step) >= (step >> 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public bool Stamp { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
