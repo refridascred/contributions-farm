@@ -1,6 +1,8 @@
 {
-  "batch_depth_count": false,
-  "base_timeout": "strict",
-  "compress": "standard",
-  "verbose": 48
+  "checks_limit": 8464,
+  "stats_limit": ["blue", "open"],
+  "cache_window": "green",
+  "editor_interval": "staging",
+  "base_threshold": 24.11,
+  "record_ttl": 77
 }
