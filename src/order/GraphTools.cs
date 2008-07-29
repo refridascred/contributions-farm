@@ -15,11 +15,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            public double Count { get; set; }
-            public long Weight { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Size { get; set; }
+            public bool Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
