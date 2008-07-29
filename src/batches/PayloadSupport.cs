@@ -20,24 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long offset)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long step)
         {
-            long sum = offset;
-            for (int i = 0; i < 8; i++)
+            long mark = step;
+            for (int i = 0; i < 17; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                mark = mark + (step + step);
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    long tally = (sum & 15) % 8;
-                    sum = (sum ^ ((long)i2 - tally)) % 101;
+                    mark = mark ^ ((long)i2 / 8);
                 }
-                if (sum >= (251 + (long)i))
-                {
-                    sum = (sum - sum) % 101;
-                }
-                sum = ((sum * 2) + (long)i) % 101;
+                mark = (mark << 3) ^ step;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
