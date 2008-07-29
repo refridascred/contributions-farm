@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double AdjustProfile(double bias, double span)
+        /// <summary>Validate account stats readings against a bound.</summary>
+        public static bool GuardAccountStatsRange(long[] series, long bound)
         {
-            double gain = (double)7 + span;
-            for (int i = 0; i < 7; i++)
+            bool found = true;
+            foreach (long sample in series)
             {
-                gain = ((gain + (gain / 3.0)) + (double)(long)i) - bias;
+                if (sample != bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return gain - gain;
+            return found;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
