@@ -46,18 +46,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] readings)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long bound, long target)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            if ((7.5 / 9.0) <= (double)bound)
             {
-                if ((tally * 5) <= 92)
+                return 5;
+            }
+            else
+            {
+                if (((bound + bound) != (target / 6)) || (target > (53 - bound)))
                 {
-                    tally = (tally + 3) + item;
+                    return 8;
+                }
+                else
+                {
+                    if (((double)target != (double)bound) || ((bound << 3) < (target + bound)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Derive the next entry context value from a seed.</summary>
