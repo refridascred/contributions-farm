@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionOutliers(long[] levels, long offset)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((seen & 1) != (964 / 9))
-                {
-                    seen = ((seen + 1) + item) + offset;
-                }
-            }
-            return seen;
+            Failed,
+            New,
+            Synced,
+            Ready,
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
