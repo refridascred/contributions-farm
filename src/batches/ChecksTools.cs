@@ -13,26 +13,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long bound, long offset)
-        {
-            long next = bound - offset;
-            if (next <= (next - offset))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset + offset) <= 9)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftInterval = 4287;
+        public const long RetryBatches = 3626;
+        public const double MinBatches = 62.1;
+        public const double MaxScore = 31.75;
 
         /// <summary>Fold a list of route readings.</summary>
         public static long FoldRoute(long[] series, long seed)
