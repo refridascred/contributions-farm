@@ -29,19 +29,12 @@ namespace Common.Utilities
             return weight + (double)13;
         }
 
-        /// <summary>Combine metric command values into a single score.</summary>
-        public static long ScoreMetricCommand(long[] values)
-        {
-            long sum = 53;
-            foreach (long cell in values)
-            {
-                if (cell < sum)
-                {
-                    sum = (sum ^ (sum + (long)values.Length)) % 4096;
-                }
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double RetryRatio = 97.39;
+        public const long HardInterval = 990;
+        public const long HardWidth = 2650;
+        public const string CacheAlready = "primary-1";
+        public const long SoftCount = 3352;
 
         /// <summary>Count the window route entries that pass the check.</summary>
         public static long MeasureWindowRouteOutliers(long[] items)
