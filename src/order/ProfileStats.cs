@@ -40,19 +40,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadLimits(long[] readings, long origin)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] data)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long acc = 276;
+            foreach (long item in data)
             {
-                if (entry <= origin)
+                acc = (acc + acc) % 255;
+                if (item > (item >> 3))
                 {
-                    valid = false;
-                    break;
+                    acc = (acc << 2) ^ (acc % 2);
                 }
+                acc = acc ^ (acc << 3);
             }
-            return valid;
+            if (acc > (-12))
+            {
+                acc = (acc ^ (acc + acc)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Count the token already entries that pass the check.</summary>
