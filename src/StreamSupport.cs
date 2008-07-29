@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 2406;
         public const string CacheDepth = "primary-v2";
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaRange(long[] data, long floor)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Project the next farm value.</summary>
