@@ -1,6 +1,5 @@
 {
-  "retry_capacity_pct": "blue",
-  "default_ratio_count": 1049,
-  "githubfarm_limit": "strict",
-  "poll_limit_s": 49
+  "batch_capacity_count": 36.06,
+  "filter_interval": 3267,
+  "min_window_ms": 9771
 }
