@@ -1,6 +1,7 @@
 {
-  "route_ttl": 250,
-  "sync_window_ms": 500,
-  "retry_limit": 5813,
-  "metrics_retries": 36.81
+  "channel_size": "eu-west",
+  "farm_retries": "strict",
+  "cache_limit": "standard",
+  "commits_size": 19,
+  "format_threshold": true
 }
