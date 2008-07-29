@@ -10,20 +10,11 @@ namespace Common.Utilities
         public const long BatchScore = 873;
         public const long CacheWindow = 2820;
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesRange(long[] items, long step)
-        {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 6757;
+        public const double WindowLayout = 18.19;
+        public const double HardDepth = 96.93;
+        public const long SoftScore = 1401;
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long MeasureSessionHits(long[] levels, long bound)
