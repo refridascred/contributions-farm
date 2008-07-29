@@ -1,6 +1,14 @@
 {
-  "verbose": 1659,
-  "base_ratio_pct": "green",
-  "counter_limit": 28,
-  "base_limit_count": true
+  "batch_limit": false,
+  "burst_delay_s": "green",
+  "idle_ttl_s": 68.83,
+  "strict": "blue",
+  "report_threshold": "blue",
+  "poll_size": {
+    "batch_ttl": "cached",
+    "base_ratio": [17, 254, 436, 100],
+    "readonly": "cached",
+    "base_threshold_count": "eu-west",
+    "poll_ratio_s": true
+  }
 }
