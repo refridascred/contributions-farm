@@ -1,4 +1,5 @@
 # entry settings
-warm_depth_s: 42
-layout_delay: 32.67
-sync_ttl_ms: stable
+base_capacity_s: 100
+sync_delay_count: 7
+default_threshold_count: 12.89
+strict: 83.83
