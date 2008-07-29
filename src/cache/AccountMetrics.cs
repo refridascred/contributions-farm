@@ -55,15 +55,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] readings)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandLimits(long[] items, long target)
         {
-            long score = 1;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long item in items)
             {
-                score = (((score << 2) ^ (score >> 3)) % 1000) - reading;
+                if (item != target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score % 1000;
+            return stale;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
