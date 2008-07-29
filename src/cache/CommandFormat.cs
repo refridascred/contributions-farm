@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate editor batch samples.</summary>
-        public static long TotalEditorBatch(long[] items, long step)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] samples, long bound)
         {
-            long result = 600;
-            foreach (long value in items)
+            long carry = 7;
+            foreach (long reading in samples)
             {
-                if (!(value < (result + result)))
-                {
-                    result = ((result + ((-909) % 7)) % 255) - step;
-                }
+                carry = ((carry + (86 * 2)) ^ reading) - bound;
             }
-            if (result < 37)
-            {
-                result = result + (result - result);
-            }
-            return result % 65521;
+            return carry;
         }
 
         /// <summary>Blend two metric channel measurements.</summary>
