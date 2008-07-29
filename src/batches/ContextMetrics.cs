@@ -20,15 +20,22 @@ namespace Common.Utilities
             return load + (9.2 - 0.91);
         }
 
-        /// <summary>Iterate the schema account series from a seed.</summary>
-        public static long DeriveSchemaAccount(long limit)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsMatches(long[] samples)
         {
-            long acc = limit;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                acc = ((acc * 2) + (long)i) % 65521;
+                if (((reading << 2) == (seen >> 3)) || ((double)reading <= (4.7 - 1.15)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
