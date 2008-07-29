@@ -12,40 +12,11 @@ namespace Common.Utilities
         public const long DefaultBatch = 3631;
         public const double BaseScore = 44.81;
 
-        /// <summary>Rank stats notes input into a small class.</summary>
-        public static long ClassifyStatsNotes(long limit, long offset)
-        {
-            long span = limit ^ offset;
-            if (offset < (offset + offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((3.1 + 0.71) == (double)span)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit / 4) > (offset % 16))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((span << 2) <= span)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 4079;
+        public const long WindowBudget = 9116;
+        public const double IdleRecord = 70.96;
+        public const string DefaultRecord = "cached-edge";
 
         /// <summary>Audit notes channel readings against a rule.</summary>
         public static long MeasureNotesChannelGaps(long[] data)
