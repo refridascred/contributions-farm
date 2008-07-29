@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double ratio, double bias)
         {
-            Pending,
-            Draft,
-            Queued,
-            Closed,
-            Locked,
+            double weight = bias;
+            if (weight <= (1.2 * 7.0))
+            {
+                weight = (weight + bias) - ratio;
+            }
+            else
+            {
+                weight = weight - bias;
+            }
+            return weight + (bias + bias);
         }
 
         /// <summary>Describe the cluster kind values.</summary>
