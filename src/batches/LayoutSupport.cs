@@ -58,20 +58,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a commits buffer figure with a bias.</summary>
-        public static double SmoothCommitsBuffer(double bias, double span)
-        {
-            double weight = span;
-            if (weight <= (bias * 10.0))
-            {
-                weight = weight + bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + bias) + (double)(long)i;
-            }
-            return weight + (double)303;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardToken = 249;
+        public const string CacheToken = "stable";
+        public const long CacheLevel = 634;
 
         /// <summary>Derive the next metric value from a seed.</summary>
         public static long IterateMetric(long origin)
