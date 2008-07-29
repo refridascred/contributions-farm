@@ -1,5 +1,14 @@
 {
-  "burst_limit": false,
-  "cache_limit": 34.2,
-  "default_interval_s": true
+  "cache_ttl": 20.8,
+  "schema_retries": "staging",
+  "burst_retries": {
+    "readonly": 7068,
+    "max_capacity_count": {
+      "idle_limit": [300, 75],
+      "idle_ratio_count": [438, 447],
+      "batch_delay": false
+    },
+    "max_timeout_ms": true,
+    "githubfarm_interval": "standard"
+  }
 }
