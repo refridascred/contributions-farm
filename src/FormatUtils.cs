@@ -74,18 +74,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit format metrics readings against a rule.</summary>
-        public static long CountFormatMetricsMatches(long[] data)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((tally + tally) < (sample + tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Paused,
+            Synced,
+            Done,
         }
     }
 }
