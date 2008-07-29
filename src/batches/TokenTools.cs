@@ -21,22 +21,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] samples)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] readings, long origin)
         {
-            long anchor = 8;
-            foreach (long item in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((anchor - anchor) != (item & 255))
+                if ((readings[i] <= origin) && ((readings[i] % 5) == 0))
                 {
-                    anchor = ((anchor << 2) ^ (item * 2)) % 255;
+                    return (long)i;
                 }
             }
-            if (anchor > 7)
-            {
-                anchor = (anchor * 3) + (anchor ^ 252);
-            }
-            return anchor;
+            return -1;
         }
     }
 }
