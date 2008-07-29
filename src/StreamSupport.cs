@@ -26,22 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesOutliers(long[] readings)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaRange(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if ((20 + 773) != (hits - hits))
+                if (datum > floor)
                 {
-                    hits = (hits + 2) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Project the next farm value.</summary>
