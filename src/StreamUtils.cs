@@ -45,17 +45,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a graph channel sample.</summary>
-        public static long LookupGraphChannelIndex(long[] items, long target)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenRange(long[] values, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if ((items[i] < target) && ((items[i] % 3) == 0))
+                if (item <= offset)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
