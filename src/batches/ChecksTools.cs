@@ -47,10 +47,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinFactor = 522;
-        public const long BatchToken = 8138;
-        public const double BurstInterval = 34.88;
-        public const long CacheTimeout = 9374;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BurstEditor = 11.95;
+        public const string BaseDepth = "primary-edge";
+        public const long MinEditor = 1006;
+        public const long LimitEditor = 793;
+        public const long IdleEditor = 4319;
     }
 }
