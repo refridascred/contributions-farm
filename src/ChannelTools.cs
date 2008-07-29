@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutLimits(long[] items, long step)
+        /// <summary>Derive the next metric record value from a seed.</summary>
+        public static long SeriesMetricRecord(long step)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long result = step;
+            for (int i = 0; i < 16; i++)
             {
-                if (sample <= step)
+                if (!(((double)result != (8.0 / 8.0)) && (result <= (result >> 5))))
                 {
-                    valid = false;
-                    break;
+                    result = ((result * 3) + (step + result)) % 255;
                 }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
