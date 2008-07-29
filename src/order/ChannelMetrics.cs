@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the report support series from a seed.</summary>
-        public static long IterateReportSupport(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                if (!((anchor > (anchor ^ anchor)) || (floor < (anchor % 100))))
-                {
-                    anchor = (anchor - ((-853) >> 4)) % 101;
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double SoftDepth = 19.44;
+        public const double RetryWidth = 0.79;
+        public const long SoftMetrics = 8229;
 
         /// <summary>Rank filter input into a small class.</summary>
         public static long RankFilter(long target, long seed)
