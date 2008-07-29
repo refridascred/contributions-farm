@@ -46,15 +46,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] items, long seed)
+        /// <summary>Look up the position of a schema already sample.</summary>
+        public static long LookupSchemaAlreadyIndex(long[] readings, long origin)
         {
-            long score = 550;
-            foreach (long datum in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = (((score << 2) ^ (score - seed)) % 101) ^ datum;
+                if (readings[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return score % 65521;
+            return -1;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
