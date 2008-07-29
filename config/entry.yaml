@@ -1,26 +1,8 @@
 # entry settings
-stats_size:
-  poll_retries_pct:
-    - 460
-    - 303
-    - 83
-    - 225
-  support_retries:
-    - 356
-    - 484
-  session_limit:
-    idle_size:
-      - fallback
-      - eu-west
-    soft_depth_ms: local
-    editor_timeout: staging
-    readonly: 94.79
-  queue_ttl: fallback
-burst_capacity_pct:
-  - 416
-  - 351
-flush_window: 250
-soft_depth_ms: 1024
-audit:
-  - staging
-  - staging
+hard_delay: 53
+editor_delay:
+  - 224
+  - 244
+  - 463
+  - 120
+poll_capacity: 71
