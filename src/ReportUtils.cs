@@ -29,38 +29,15 @@ namespace Common.Utilities
             return gain2 + span;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long origin, long seed)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long target)
         {
-            if (((origin % 16) != (origin >> 1)) && (seed <= (seed << 3)))
+            long mark = target;
+            for (int i = 0; i < 10; i++)
             {
-                return 8;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if (!(origin >= (seed + (-645))))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin > (origin + origin)) || ((origin ^ origin) != (8 & 7)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)origin >= (8.9 * 1.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Define command limits and defaults.</summary>
