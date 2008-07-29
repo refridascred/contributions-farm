@@ -84,31 +84,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long seed, long bound)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long step)
         {
-            if ((seed + bound) >= (bound * 4))
+            long total = step;
+            for (int i = 0; i < 22; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound <= (double)6)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    return 3;
+                    total = ((total + (step + 5)) % 4096) ^ (long)i2;
                 }
-                else
-                {
-                    if ((9.81 * 7.67) >= (double)seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                total = (total - (total << 2)) % 97;
+                total = ((total * 2) + (long)i) % 65521;
             }
+            return total;
         }
     }
 }
