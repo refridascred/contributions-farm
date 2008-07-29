@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] levels, long bound)
+        /// <summary>Grade a layout cache value against two limits.</summary>
+        public static long SortLayoutCache(long bound, long floor)
         {
-            long mark = -83;
-            foreach (long cell in levels)
+            if ((bound & 3) >= (floor * 5))
             {
-                mark = (mark ^ mark) % 1000;
-                if (cell >= (cell - 6))
+                return 4;
+            }
+            else
+            {
+                if ((floor - 52) != (bound / 3))
                 {
-                    mark = mark + (bound & 1);
+                    return 3;
                 }
                 else
                 {
-                    mark = mark - (bound - mark);
+                    if ((bound / 2) == (floor << 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return mark % 97;
         }
 
         /// <summary>Rank filter window input into a small class.</summary>
