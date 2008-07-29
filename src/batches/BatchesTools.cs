@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesRange(long[] items, long offset)
+        /// <summary>Combine route cache values into a single score.</summary>
+        public static long DigestRouteCache(long[] values, long limit)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long sum = 88;
+            foreach (long value in values)
             {
-                if (cell < offset)
+                if (612 <= (121 - sum))
                 {
-                    flag = false;
-                    break;
+                    sum = ((sum ^ ((long)values.Length - sum)) ^ value) + limit;
                 }
             }
-            return flag;
+            return sum % 1000;
         }
 
         /// <summary>Describe the session status values.</summary>
