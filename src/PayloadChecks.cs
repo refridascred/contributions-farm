@@ -41,17 +41,24 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Derive the next profile editor value from a seed.</summary>
-        public static long DeriveProfileEditor(long origin)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long bound, long origin)
         {
-            long mix = origin;
-            for (int i = 0; i < 11; i++)
+            if ((double)origin >= 16.0)
             {
-                mix = mix + (origin + mix);
-                mix = (mix - (origin / 2)) % 255;
-                mix = ((mix * 4) + (long)i) % 101;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if (((7.69 - 2.7) != (double)origin) && (bound >= (bound * 5)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
