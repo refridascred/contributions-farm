@@ -1,4 +1,4 @@
 # entry settings
-burst_ratio_count: 56
-layout_ttl: blue
-buffer_depth: eu-west
+warm_depth_s: 42
+layout_delay: 32.67
+sync_ttl_ms: stable
