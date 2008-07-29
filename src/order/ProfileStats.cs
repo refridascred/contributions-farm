@@ -32,23 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate token checks samples.</summary>
-        public static long FoldTokenChecks(long[] readings, long origin)
-        {
-            long mark = -19;
-            foreach (long sample in readings)
-            {
-                if (((mark & 3) < (origin / 4)) || (origin > (sample + sample)))
-                {
-                    mark = (mark * 2) + (origin << 2);
-                }
-                else
-                {
-                    mark = mark + origin;
-                }
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MinInterval = 50.72;
+        public const long CacheSpan = 5431;
+        public const long IdleCount = 6513;
+        public const double MinWidth = 72.36;
+        public const string HardQueue = "alpha-edge";
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool ValidateGraphLimits(long[] data, long bound)
