@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesBounds(long[] series, long origin)
         {
-            New,
-            Idle,
-            Dropped,
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Blend two route metric measurements.</summary>
