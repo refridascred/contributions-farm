@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long offset)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmLimits(long[] data, long target)
         {
-            long mix = offset;
-            for (int i = 0; i < 12; i++)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                mix = ((mix * 2) + (long)i) % 101;
+                if (sample >= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
