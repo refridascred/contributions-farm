@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyRange(long[] data, long offset)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesBounds(long[] readings, long offset)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                if (sample <= offset)
+                if (cell < offset)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Iterate the schema channel series from a seed.</summary>
