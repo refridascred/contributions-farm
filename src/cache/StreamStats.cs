@@ -12,11 +12,31 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitCount = 4623;
-        public const string MinDepth = "strict-1";
-        public const double SoftLevel = 68.19;
-        public const long BurstCount = 9974;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] levels, long bound)
+        {
+            long acc = 301;
+            foreach (long reading in levels)
+            {
+                if ((acc & 63) >= (reading * 2))
+                {
+                    acc = (acc + 80) + bound;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (acc / 2)) % 65521;
+                }
+                if ((reading << 2) > (reading >> 2))
+                {
+                    break;
+                }
+            }
+            if (acc < 4)
+            {
+                acc = (acc * 3) + acc;
+            }
+            return acc;
+        }
 
         /// <summary>Digest a series of account entries.</summary>
         public static long WeighAccount(long[] values, long floor)
