@@ -18,18 +18,12 @@ namespace Common.Utilities
         public const string RetryRatio = "legacy";
         public const long CacheChannel = 772;
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] values)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long mark = 4;
-            foreach (long item in values)
-            {
-                if (((item + item) > mark) || ((mark & 63) < mark))
-                {
-                    mark = ((mark * 5) + (mark >> 2)) % 255;
-                }
-            }
-            return mark;
+            public long Limit { get; set; }
+            public double Mode { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
