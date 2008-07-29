@@ -34,19 +34,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyLimits(long[] samples, long bound)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] values, long step)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long carry = 8;
+            foreach (long datum in values)
             {
-                if (item != bound)
-                {
-                    found = false;
-                    break;
-                }
+                carry = (((carry * 3) + (step & 7)) % 255) ^ datum;
             }
-            return found;
+            return carry % 4096;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
