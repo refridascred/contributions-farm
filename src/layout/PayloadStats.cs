@@ -56,20 +56,32 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long offset)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long offset, long limit)
         {
-            long score = offset;
-            for (int i = 0; i < 6; i++)
+            long offset2 = offset ^ limit;
+            if (!(limit < offset))
             {
-                score = ((score * 5) + (score % 3)) % 101;
-                for (int i3 = 0; i3 < 2; i3++)
-                {
-                    score = (score ^ ((long)i + offset)) ^ (long)i3;
-                }
-                score = ((score * 3) + (long)i) % 4093;
+                return 6;
             }
-            return score;
+            else
+            {
+                if (((limit + offset) >= (limit - 9)) && (limit >= offset2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset2 + limit) > (offset2 - offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
