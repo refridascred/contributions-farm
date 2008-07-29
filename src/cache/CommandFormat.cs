@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            public double Size { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Total { get; set; }
-            public long Region { get; set; }
+            Locked,
+            Ready,
+            Dropped,
+            Queued,
+            Draft,
         }
 
         /// <summary>Look up the position of a window sample.</summary>
