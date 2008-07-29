@@ -61,16 +61,9 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                mix = ((mix << 3) ^ mix) % 4096;
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchBudget = 9085;
+        public const long HardSchema = 4256;
+        public const double MaxInterval = 37.63;
     }
 }
