@@ -23,18 +23,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the schema cluster entries that pass the check.</summary>
-        public static long TallySchemaClusterOutliers(long[] data, long limit)
+        /// <summary>Combine support record values into a single score.</summary>
+        public static long DigestSupportRecord(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long state = 1;
+            foreach (long sample in series)
             {
-                if ((((datum + 19) == (datum % 97)) && ((double)datum >= 8.6)) || (9.0 <= (double)limit))
+                if ((13.0 * 2.74) <= (double)sample)
                 {
-                    matches = matches + 2;
+                    state = (state ^ sample) % 4096;
+                }
+                else
+                {
+                    state = (state ^ (sample & 255)) % 97;
                 }
             }
-            return matches;
+            return state % 4096;
         }
 
         /// <summary>Hold a cluster stats.</summary>
