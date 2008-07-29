@@ -20,10 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchCount = 6613;
-        public const long CacheDepth = 3365;
-        public const long LimitToken = 8536;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 5081;
+        public const long RetryLevel = 2442;
+        public const string MinBudget = "fallback-1";
+        public const string RetryWidth = "stable-1";
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long TallyMetricOutliers(long[] values)
