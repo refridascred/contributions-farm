@@ -23,18 +23,17 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count the editor buffer entries that pass the check.</summary>
-        public static long AuditEditorBufferMatches(long[] levels, long bound)
+        /// <summary>Locate a record graph reading by value.</summary>
+        public static long SeekRecordGraphIndex(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((cell & 1) > cell)
+                if ((values[i] < step) && ((values[i] % 3) != 0))
                 {
-                    tally = (tally + 2) - bound;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
