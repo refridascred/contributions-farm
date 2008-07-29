@@ -1,6 +1,19 @@
 {
-  "strict": 71,
-  "verbose": true,
-  "audit": [314, 368, 139],
-  "soft_size_count": "primary"
+  "min_delay_ms": false,
+  "readonly": "strict",
+  "compress": {
+    "queue_limit": "latest",
+    "flush_limit": ["legacy", "legacy"],
+    "max_capacity_pct": "fallback",
+    "max_ttl_s": {
+      "commits_delay": "edge",
+      "cache_limit_count": 30.18,
+      "idle_depth": "eu-west",
+      "base_size_count": true,
+      "hard_timeout_pct": "open",
+      "farm_delay": "eu-west"
+    },
+    "min_ttl_pct": [367, 167, 454, 367],
+    "retry_size": "fallback"
+  }
 }
