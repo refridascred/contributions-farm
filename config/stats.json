@@ -1,6 +1,8 @@
 {
-  "warm_retries_ms": 100,
-  "cache_window": "fallback",
-  "editor_ratio": true,
-  "checks_delay": 76.57
+  "base_ttl_ms": "fallback",
+  "cache_ttl": ["open", "stable"],
+  "tools_ttl": "edge",
+  "audit": "stable",
+  "command_ttl": 18,
+  "hard_threshold_pct": "latest"
 }
