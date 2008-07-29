@@ -12,15 +12,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] levels)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] readings, long origin)
         {
-            long mix = 162;
-            foreach (long entry in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (mix + (entry - entry)) % 97;
+                if (readings[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return mix % 4096;
+            return -1;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
