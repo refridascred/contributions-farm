@@ -48,13 +48,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] samples, long floor)
         {
-            Failed,
-            Done,
-            New,
-            Closed,
+            long acc = 6;
+            foreach (long entry in samples)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    acc = ((acc - (171 ^ entry)) % 255) ^ (long)i2;
+                }
+                if (((floor & 15) == (floor / 4)) || ((floor & 127) < (floor & 31)))
+                {
+                    acc = acc + (454 + 615);
+                }
+                else
+                {
+                    acc = (acc - (acc >> 5)) % 255;
+                }
+            }
+            return acc;
         }
     }
 }
