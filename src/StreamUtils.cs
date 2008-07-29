@@ -47,13 +47,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
-        {
-            public long Total { get; set; }
-            public double Count { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseDepth = 4563;
+        public const string HardRatio = "standard-v2";
+        public const long IdleCounter = 8303;
+        public const string StepFactor = "legacy-edge";
+        public const long WindowDepth = 1710;
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long FoldGithubfarm(long[] items)
