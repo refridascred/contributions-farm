@@ -31,13 +31,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
-        {
-            public long Level { get; set; }
-            public long Limit { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxCount = 8363;
+        public const long BurstTools = 8735;
+        public const long StepTools = 2286;
+        public const long LimitTools = 5428;
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
