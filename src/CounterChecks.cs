@@ -83,15 +83,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] samples)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long origin, long step)
         {
-            long result = -501;
-            foreach (long cell in samples)
+            if ((-362) > (90 - origin))
             {
-                result = ((result * 4) + 873) ^ cell;
+                return 6;
             }
-            return result % 4096;
+            else
+            {
+                if ((step >> 4) == (origin + origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Hold a contributi record.</summary>
