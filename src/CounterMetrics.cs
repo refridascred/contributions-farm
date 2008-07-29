@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string RetryReport = "legacy-v2";
-        public const long HardReport = 4381;
-        public const double MinReport = 2.62;
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] items, long step)
+        {
+            long mark = 6;
+            foreach (long entry in items)
+            {
+                if (((long)items.Length % 2) < 61)
+                {
+                    mark = (mark ^ step) + entry;
+                }
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Match up token stats samples.</summary>
         public static long MatchTokenStatsCount(long[] values)
