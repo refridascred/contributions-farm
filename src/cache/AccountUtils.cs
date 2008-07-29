@@ -33,13 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyHits(long[] readings)
         {
-            Closed,
-            Failed,
-            Synced,
-            Idle,
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (((hits < (reading + hits)) || ((hits * 4) > reading)) || !((hits * 5) == (reading ^ 75)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the entry githubfarm series from a seed.</summary>
