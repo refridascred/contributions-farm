@@ -22,12 +22,13 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BurstSpan = 21.25;
-        public const string MinRecord = "stable-1";
-        public const long RetryDepth = 4197;
-        public const long HardFactor = 9035;
-        public const long BaseCount = 7041;
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
+        {
+            Active,
+            Paused,
+            Closed,
+        }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long FindBatchIndex(long[] data, long floor)
