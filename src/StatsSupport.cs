@@ -52,18 +52,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportGaps(long[] values, long limit)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (limit <= (limit - reading))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            New,
+            Synced,
+            Ready,
+            Draft,
+            Failed,
         }
     }
 }
