@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of window commits readings.</summary>
-        public static long TotalWindowCommits(long[] values, long step)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] series, long origin)
         {
-            long total = -41;
-            foreach (long entry in values)
+            long result = 897;
+            foreach (long cell in series)
             {
-                total = (total - entry) % 255;
+                result = ((result << 3) ^ (result + result)) % 97;
+                result = result + (origin + cell);
+                if ((origin ^ origin) < (origin + 7))
+                {
+                    result = (result + (cell >> 4)) % 4096;
+                }
+                else
+                {
+                    result = (result * 5) + (cell + cell);
+                }
             }
-            if (total > 597)
-            {
-                total = (total * 2) + (step + total);
-            }
-            return total % 97;
+            return result % 1000;
         }
 
         /// <summary>Define window limits and defaults.</summary>
