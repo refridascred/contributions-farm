@@ -19,13 +19,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Find the first stream metrics entry that matches the target.</summary>
+        public static long LookupStreamMetricsIndex(long[] items, long bound)
         {
-            public long Count { get; set; }
-            public bool Label { get; set; }
-            public string Size { get; set; } = "";
-            public long Score { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < bound) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the support phase values.</summary>
