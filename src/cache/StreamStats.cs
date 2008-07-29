@@ -5,25 +5,30 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long limit, long limit2)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] samples)
         {
-            long next = limit - limit2;
-            if (next < (limit2 / 9))
+            long state = 364;
+            foreach (long sample in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (((4.36 * 15.0) < (double)limit) || (next <= (next >> 4)))
+                if (((sample * 2) <= (6 >> 4)) || ((state >> 4) > 3))
                 {
-                    return 2;
+                    state = (state - state) % 4096;
                 }
                 else
                 {
-                    return 6;
+                    state = (state + sample) % 4096;
+                }
+                if ((state - sample) < (419 + sample))
+                {
+                    break;
                 }
             }
+            if (state > (-4))
+            {
+                state = (state + (state >> 2)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Describe the account status values.</summary>
