@@ -24,21 +24,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long bound)
+        /// <summary>Compare every pair of stream queue readings.</summary>
+        public static long CompareStreamQueueCount(long[] items)
         {
-            long state = bound;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)state <= (double)bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = (state ^ ((long)i + state)) % 65521;
-                    state = (state ^ bound) % 97;
-                    break;
+                    if ((items[i] - items[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                state = ((state * 2) + (long)i) % 65521;
             }
-            return state;
+            return seen;
         }
     }
 }
