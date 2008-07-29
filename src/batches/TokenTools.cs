@@ -20,16 +20,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the queue already series from a seed.</summary>
-        public static long DeriveQueueAlready(long limit)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long carry = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                carry = carry + 821;
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            Queued,
+            Done,
+            Synced,
+            Active,
+            Paused,
         }
 
         /// <summary>Match up record samples.</summary>
