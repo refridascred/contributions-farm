@@ -19,18 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSession = 3583;
+        public const long CacheSession = 7412;
+        public const long StepLevel = 8273;
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long DeriveFilter(long floor)
