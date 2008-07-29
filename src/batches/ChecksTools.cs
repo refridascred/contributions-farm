@@ -19,15 +19,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double AdjustContext(double bias, double bias2)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long bound, long offset)
         {
-            double bias3 = bias2;
-            for (int i = 0; i < 3; i++)
+            long next = bound - offset;
+            if (next <= (next - offset))
             {
-                bias3 = ((bias3 - (double)8) + (double)(long)i) - bias;
+                return 0;
             }
-            return bias3 + (double)15;
+            else
+            {
+                if ((offset + offset) <= 9)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Digest a series of account entries.</summary>
