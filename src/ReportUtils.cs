@@ -11,18 +11,10 @@ namespace Common.Utilities
         public const string LimitDepth = "fallback-1";
         public const long DefaultCount = 179;
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double CachePayload = 86.52;
+        public const double BatchPayload = 60.7;
+        public const long BasePayload = 8372;
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long SeriesOrder(long target)
