@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double SmoothCounter(double gain, double offset)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutOutliers(long[] values, long step)
         {
-            double load = gain;
-            return (load - (6.0 + gain)) + offset;
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (((cell >> 4) >= (tally % 64)) || (((2.62 / 9.0) < (double)cell) && ((tally & 127) > (tally % 100))))
+                {
+                    tally = (tally + 1) - step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
