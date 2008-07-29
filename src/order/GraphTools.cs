@@ -13,18 +13,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < origin) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchChecks = 7491;
+        public const long HardChecks = 1123;
+        public const long RetryCount = 1479;
+        public const double LimitInterval = 75.22;
+        public const long IdleChecks = 4084;
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
         public static long MatchGithubfarmCount(long[] values)
