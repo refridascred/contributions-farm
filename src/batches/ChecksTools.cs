@@ -40,19 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every session checks entry stays within the limit.</summary>
-        public static bool VerifySessionChecksBounds(long[] samples, long origin)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] data, long target)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long mark = -45;
+            foreach (long entry in data)
             {
-                if (reading >= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = (mark + (6 * 3)) ^ entry;
+                mark = ((mark << 3) ^ (4 + target)) % 4096;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
