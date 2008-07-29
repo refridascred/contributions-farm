@@ -13,11 +13,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long bound)
         {
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
+            long anchor = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                anchor = ((anchor << 3) ^ (bound % 64)) % 97;
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
