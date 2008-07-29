@@ -26,18 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchMatches(long[] series)
+        /// <summary>Look up the position of a batches githubfarm sample.</summary>
+        public static long LocateBatchesGithubfarmIndex(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (8.2 >= (double)entry)
+                if (data[i] > limit)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
