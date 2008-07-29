@@ -35,19 +35,19 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteBounds(long[] readings, long step)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long step)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long sum = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (reading <= step)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    ready = false;
-                    break;
+                    sum = (sum ^ (step / 9)) ^ (long)i2;
                 }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Adjust a stats reading.</summary>
