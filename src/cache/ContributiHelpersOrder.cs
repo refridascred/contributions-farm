@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double ratio, double offset)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsLimits(long[] samples, long origin)
         {
-            double scale = 0.03;
-            if (scale > offset)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                scale = scale + (scale / 3.0);
+                if (datum != origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return scale + (7.0 + ratio);
+            return stale;
         }
 
         /// <summary>Hold a farm record.</summary>
