@@ -68,15 +68,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long seed)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long floor, long seed)
         {
-            long carry = seed;
-            for (int i = 0; i < 12; i++)
+            long diff = floor + seed;
+            if ((diff + seed) <= seed)
             {
-                carry = ((carry * 2) + (long)i) % 65521;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if (diff <= (floor * 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
