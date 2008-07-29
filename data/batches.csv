@@ -1,7 +1,9 @@
-id,state,owner
-1,edge,91.49
-2,869,53.08
-3,19.78,standard
-4,open,43
-5,93.1,cached
-6,187,69.19
+id,state,level,weight
+1,cached,515,403
+2,323,391,70.89
+3,58.66,834,732
+4,48.54,729,cached
+5,88.39,401,fallback
+6,edge,staging,291
+7,628,998,57.3
+8,strict,edge,17.98
