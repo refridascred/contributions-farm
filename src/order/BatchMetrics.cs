@@ -59,32 +59,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long step, long seed)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterHits(long[] samples)
         {
-            long slot = step - seed;
-            if ((slot % 97) < seed)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step * 4) != (slot & 3))
+                if (3 <= tally)
                 {
-                    return 8;
+                    tally = (tally + 2) + reading;
                 }
                 else
                 {
-                    if ((5.0 * 3.29) <= (double)step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
