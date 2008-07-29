@@ -41,11 +41,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Scale a session report figure with a bias.</summary>
-        public static double SmoothSessionReport(double bias, double span)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            double mean = 14.0;
-            return ((mean - (double)8) + bias) + span;
+            public string Token { get; set; } = "";
+            public bool Size { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the record mode values.</summary>
