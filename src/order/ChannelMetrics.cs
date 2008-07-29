@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 4851;
-        public const long MaxSpan = 8992;
-        public const long IdleBudget = 128;
-        public const long LimitTimeout = 542;
+        /// <summary>Iterate the report support series from a seed.</summary>
+        public static long IterateReportSupport(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                if (!((anchor > (anchor ^ anchor)) || (floor < (anchor % 100))))
+                {
+                    anchor = (anchor - ((-853) >> 4)) % 101;
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the graph phase values.</summary>
         public enum GraphPhase
