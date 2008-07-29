@@ -55,18 +55,24 @@ namespace Common.Utilities
             return rate2 + (rate2 * 8.6);
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] values, long floor)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long bound)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long total = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if ((((floor & 63) < floor) || ((45 & 255) < (count >> 4))) && (((0 & 3) <= (60 - cell)) && ((cell + cell) >= count)))
+                if (!(total < (total + total)))
                 {
-                    count = count + 3;
+                    total = (total << 3) ^ ((long)i + 24);
+                    total = total + bound;
                 }
+                if ((total - bound) > (89 - total))
+                {
+                    continue;
+                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return count;
+            return total;
         }
     }
 }
