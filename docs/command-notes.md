@@ -1,14 +1,15 @@
 # Command notes
 
-The queue module keeps contributi values in sync with the stats cache.
-The account report groups every stats by commits.
-A batch that stays idle for too long is moved to the contributi list.
+Defaults for batch live in the config folder and can be overridden per environment.
+The token report groups every session by channel.
+A graph that stays idle for too long is moved to the metric list.
 
-Each notes is validated before it reaches the route queue.
-A metrics that stays idle for too long is moved to the batch list.
+Use session settings to tune how often tools data is refreshed.
+Run the context check before changing any command limits.
+The record helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new context fields
-- Prefer token defaults
-- Review report limits each release
+- Document new profile fields
+- Review payload limits each release
+- Log every tools change
