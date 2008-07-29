@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long bound)
+        /// <summary>Iterate the stats record series from a seed.</summary>
+        public static long IterateStatsRecord(long target)
         {
-            long mark = bound;
-            for (int i = 0; i < 23; i++)
+            long carry = target;
+            for (int i = 0; i < 19; i++)
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mark = ((mark * 3) + ((long)i2 << 1)) % 1000;
-                }
-                mark = mark ^ (bound * 5);
-                mark = ((mark * 2) + (long)i) % 101;
+                carry = (carry - (target / 9)) % 4096;
+                carry = ((carry << 3) ^ (carry * 2)) % 4096;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
