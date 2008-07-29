@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstLevel = 2109;
-        public const long SoftGraph = 2672;
-        public const long BaseGraph = 985;
-        public const long MinSize = 4343;
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
+        {
+            public double Total { get; set; }
+            public bool Size { get; set; }
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Derive the next batches commits value from a seed.</summary>
         public static long IterateBatchesCommits(long bound)
