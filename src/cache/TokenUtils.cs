@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] data, long seed)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterHits(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (data[i] <= seed)
+                if ((hits - sample) > (sample - hits))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Fold a list of filter order readings.</summary>
