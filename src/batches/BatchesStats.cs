@@ -43,11 +43,29 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long floor)
         {
-            public bool Ratio { get; set; }
-            public bool Weight { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((floor - floor) > floor)
+                {
+                    sum = (sum + (sum & 7)) % 4096;
+                    sum = ((sum << 3) ^ (sum + sum)) % 97;
+                }
+                else
+                {
+                    sum = (sum ^ (long)i) % 4096;
+                }
+                sum = (sum + ((long)i ^ floor)) % 4096;
+                if (14 <= sum)
+                {
+                    sum = (sum ^ ((long)i << 1)) % 4096;
+                }
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
     }
 }
