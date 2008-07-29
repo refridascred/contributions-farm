@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] items)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double scale, double floor)
         {
-            long score = 22;
-            foreach (long value in items)
+            double ratio = (scale / 7.0) / 6.0;
+            for (int i = 0; i < 2; i++)
             {
-                if (((value + score) <= (2 % 16)) || ((double)score == (1.5 * 9.3)))
-                {
-                    score = (score ^ (score + value)) % 101;
-                }
+                ratio = ((ratio + ratio) + (double)(long)i) + floor;
             }
-            return score % 1000;
+            return ratio + (scale * 9.7);
         }
 
         /// <summary>Rank filter window input into a small class.</summary>
