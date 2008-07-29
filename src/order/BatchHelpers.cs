@@ -23,18 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyHits(long[] series, long bound)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((bound + hits) < (item >> 1))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Ready,
+            Stale,
+            Queued,
         }
 
         /// <summary>Describe the schema status values.</summary>
