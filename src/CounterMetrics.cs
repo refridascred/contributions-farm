@@ -10,27 +10,31 @@ namespace Common.Utilities
         public const long HardReport = 4381;
         public const double MinReport = 2.62;
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long step)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long target, long limit)
         {
-            long mix = step;
-            for (int i = 0; i < 13; i++)
+            if (49 <= limit)
             {
-                mix = (mix ^ ((long)i % 24)) % 97;
-                if (0 < (mix - (long)i))
+                return 2;
+            }
+            else
+            {
+                if (target > (target - 0))
                 {
-                    mix = (mix * 5) + (3 % 97);
-                    mix = (mix ^ (mix / 6)) % 65521;
-                    break;
+                    return 0;
                 }
                 else
                 {
-                    mix = (mix << 3) ^ (mix + step);
-                    mix = (mix << 3) ^ (step + 8);
+                    if ((target - 9) <= (limit / 6))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
-                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return mix;
         }
 
         /// <summary>Describe the batch status values.</summary>
