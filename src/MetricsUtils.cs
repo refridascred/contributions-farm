@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] series)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (limit > (total + total))
                 {
-                    if ((series[i] ^ series[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = ((total * 2) + (total / 2)) % 65521;
+                    total = ((total * 4) + (total - (long)i)) % 101;
                 }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Project the next metrics value.</summary>
