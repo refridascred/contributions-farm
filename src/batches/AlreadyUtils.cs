@@ -41,18 +41,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandMatches(long[] values, long target)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] items)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long result = 751;
+            foreach (long reading in items)
             {
-                if ((hits / 2) > (item << 3))
+                if ((10.0 + 2.18) == (double)result)
                 {
-                    hits = (hits + 2) + target;
+                    result = (result - (reading ^ reading)) % 97;
                 }
             }
-            return hits;
+            return result % 97;
         }
 
         /// <summary>Hold a route entry.</summary>
