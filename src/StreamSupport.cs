@@ -40,22 +40,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] values, long target)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] items, long floor)
         {
-            long result = 530;
-            foreach (long cell in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((long)values.Length < (target >> 2))
+                if ((items[i] < floor) && ((items[i] % 3) != 0))
                 {
-                    result = ((result - (result & 1)) % 65521) - cell;
-                }
-                else
-                {
-                    result = (result + 12) % 4096;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
