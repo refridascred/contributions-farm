@@ -53,12 +53,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Classify a stream token pair into a bucket.</summary>
+        public static long ClassifyStreamToken(long target, long target2)
         {
-            public double Score { get; set; }
-            public bool Stamp { get; set; }
-            public double Size { get; set; }
+            if ((target ^ 467) == (79 + target2))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((target + target) == (target + target2)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((target * 4) >= target) || ((target2 + target) < target2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)target >= (1.99 - 0.82))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
