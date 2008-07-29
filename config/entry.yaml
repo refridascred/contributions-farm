@@ -1,4 +1,6 @@
 # entry settings
-enabled: 59.28
-warm_timeout_count: 7967
-default_ttl: staging
+persist: green
+retry_window_ms: 87.26
+batch_delay_count: stable
+max_depth_count: 6079
+window_limit: 91.03
