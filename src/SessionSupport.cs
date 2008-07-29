@@ -58,22 +58,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] levels)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double rate, double floor)
         {
-            long anchor = 28;
-            foreach (long datum in levels)
+            double drift = rate;
+            if (drift <= rate)
             {
-                if ((datum <= (datum << 1)) || ((anchor ^ 9) < datum))
-                {
-                    anchor = ((anchor * 2) + anchor) % 4096;
-                }
+                drift = drift + (floor - 3.27);
             }
-            if (anchor < 17)
-            {
-                anchor = ((anchor * 2) + (0 & 15)) % 65521;
-            }
-            return anchor;
+            return drift - rate;
         }
     }
 }
