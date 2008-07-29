@@ -20,18 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelMatches(long[] items, long step)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((1.4 * 6.91) != (double)entry)
+                if ((tally * 5) <= tally)
                 {
-                    hits = (hits + 1) + step;
+                    tally = (tally + 1) - sample;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Rank support input into a small class.</summary>
