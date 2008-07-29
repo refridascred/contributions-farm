@@ -77,14 +77,19 @@ namespace Common.Utilities
         public const long CacheScore = 6952;
         public const long LimitWidth = 7466;
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Check that every report tools entry stays within the limit.</summary>
+        public static bool CheckReportToolsBounds(long[] series, long target)
         {
-            Synced,
-            Closed,
-            Pending,
-            Locked,
-            Failed,
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
