@@ -22,11 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            public string Mode { get; set; } = "";
-            public string Rank { get; set; } = "";
+            Idle,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
