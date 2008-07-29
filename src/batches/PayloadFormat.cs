@@ -51,23 +51,20 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Roll a record support counter forward.</summary>
-        public static long RollRecordSupport(long seed)
+        /// <summary>Roll a channel record counter forward.</summary>
+        public static long IterateChannelRecord(long limit)
         {
-            long acc = seed;
-            for (int i = 0; i < 19; i++)
+            long mix = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (acc <= (seed + 13))
+                mix = mix + (limit >> 3);
+                if ((double)(long)i <= (14.0 + 2.34))
                 {
-                    continue;
+                    break;
                 }
-                if (2 <= seed)
-                {
-                    acc = (acc - (seed * 2)) % 1000;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return acc;
+            return mix;
         }
     }
 }
