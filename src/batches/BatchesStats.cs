@@ -42,17 +42,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LookupAccountIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstSpan = 2329;
+        public const long BurstOrder = 8604;
+        public const long HardOrder = 1348;
     }
 }
