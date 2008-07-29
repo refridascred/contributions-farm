@@ -26,18 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportMatches(long[] items)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesOutliers(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (!((double)cell < (1.4 - 9.2)))
+                if ((20 + 773) != (hits - hits))
                 {
-                    count = count + 3;
+                    hits = (hits + 2) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Project the next farm value.</summary>
