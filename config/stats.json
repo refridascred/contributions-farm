@@ -1,24 +1,11 @@
 {
-  "batch_delay": "blue",
-  "min_interval_ms": {
-    "readonly": false,
-    "dry_run": "fallback",
-    "strict": {
-      "base_depth": 67.81,
-      "soft_interval": 49.88,
-      "min_retries_count": "open",
-      "verbose": 22.8,
-      "enabled": "fallback"
-    },
-    "hard_ratio": "latest"
+  "poll_threshold": 98,
+  "base_capacity": ["edge", "open", "local"],
+  "min_threshold_ms": [104, 156, 205, 377],
+  "strict": {
+    "readonly": "standard",
+    "batch_window": "standard",
+    "flush_limit_count": "edge"
   },
-  "cache_delay": {
-    "base_ttl_count": 97.78,
-    "burst_capacity": false,
-    "queue_retries": "stable",
-    "flush_retries_ms": 37
-  },
-  "batches_interval": "eu-west",
-  "verbose": 14.12,
-  "idle_capacity": 92.07
+  "metric_threshold": 15
 }
