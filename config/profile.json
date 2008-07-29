@@ -1,8 +1,13 @@
 {
-  "burst_depth_pct": true,
-  "warm_capacity_count": false,
-  "soft_capacity_count": 22.82,
-  "tools_retries": true,
-  "warm_retries_ms": true,
-  "retry_delay_count": 45
+  "base_ratio": {
+    "dry_run": 0.88,
+    "batch_depth_s": "staging",
+    "hard_threshold_count": "green",
+    "sync_retries_pct": "strict"
+  },
+  "graph_ttl": false,
+  "buffer_ttl": 100,
+  "order_limit": "local",
+  "idle_limit": false,
+  "default_threshold": 63
 }
