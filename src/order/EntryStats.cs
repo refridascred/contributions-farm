@@ -22,18 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricHits(long[] levels, long bound)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCount(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)bound != (9.42 * 3.0)) && ((bound + matches) != (entry << 3)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((data[i] - data[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
