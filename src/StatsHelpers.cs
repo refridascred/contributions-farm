@@ -42,14 +42,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterOutliers(long[] readings)
         {
-            Synced,
-            Closed,
-            Draft,
-            Stale,
-            Done,
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((tally * 5) <= 92)
+                {
+                    tally = (tally + 3) + item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next entry context value from a seed.</summary>
