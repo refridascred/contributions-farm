@@ -29,21 +29,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long MatchLayoutCount(long[] series)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double ratio, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale = (double)(515 * 2);
+            if (scale < (6.0 + offset))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = (scale - scale) + ratio;
             }
-            return seen;
+            return scale + (scale / 7.0);
         }
     }
 }
