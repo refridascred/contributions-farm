@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaRange(long[] readings, long limit)
-        {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitBudget = 6615;
+        public const long RetryWidth = 8741;
+        public const string MaxChecks = "stable-v2";
+        public const long MinChecks = 7373;
+        public const long BurstChecks = 9387;
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long CompareStatsCount(long[] series)
