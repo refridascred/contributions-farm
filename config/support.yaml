@@ -1,9 +1,22 @@
 # support settings
-batch_capacity_pct: true
-payload_ttl:
-  - fallback
+audit:
+  - 483
+  - 308
+  - 250
+strict:
+  metric_limit: 38
+  soft_window_s: 5556
+  compress:
+    - legacy
+    - primary
+hard_size_count:
   - local
-  - stable
-  - blue
-burst_window: 100
-dry_run: 6721
+  - staging
+  - strict
+  - standard
+record_timeout:
+  format_retries: legacy
+  warm_window_s: 30
+  poll_ttl_ms: 500
+poll_depth: latest
+soft_limit_pct: open
