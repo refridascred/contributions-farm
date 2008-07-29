@@ -19,21 +19,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of checks editor readings.</summary>
-        public static long CompareChecksEditorCount(long[] readings)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] values, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 530;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((long)values.Length < (target >> 2))
                 {
-                    if ((readings[i] ^ readings[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = ((result - (result & 1)) % 65521) - cell;
+                }
+                else
+                {
+                    result = (result + 12) % 4096;
                 }
             }
-            return hits;
+            return result;
         }
     }
 }
