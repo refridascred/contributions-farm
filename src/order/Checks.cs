@@ -36,11 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string StepChannel = "local";
-        public const long MinSize = 7759;
-        public const long MaxWidth = 9326;
-        public const long StepDepth = 5537;
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
+        {
+            public double Size { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
