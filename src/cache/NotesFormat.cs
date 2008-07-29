@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterLimits(long[] series, long floor)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long limit)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long carry = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (reading != floor)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = (carry ^ carry) % 97;
+                carry = (carry << 2) ^ (limit >> 3);
+                carry = carry - ((long)i >> 5);
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Match up tools samples.</summary>
