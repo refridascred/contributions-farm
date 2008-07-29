@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] readings)
         {
-            Stale,
-            Synced,
-            Pending,
-            Closed,
+            long acc = 18;
+            foreach (long value in readings)
+            {
+                if ((value << 3) == (value << 2))
+                {
+                    acc = acc + acc;
+                }
+            }
+            if (acc > 5)
+            {
+                acc = ((acc << 2) ^ acc) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Describe the stats state values.</summary>
