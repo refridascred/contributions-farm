@@ -29,10 +29,22 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 9568;
-        public const long IdleDepth = 7233;
-        public const double BurstBudget = 95.0;
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of metrics account entries.</summary>
         public static long TotalMetricsAccount(long[] levels, long origin)
