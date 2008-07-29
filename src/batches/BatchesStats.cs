@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            Ready,
-            Closed,
-            Locked,
-            Done,
+            public bool Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Match up format batch samples.</summary>
