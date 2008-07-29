@@ -1,10 +1,4 @@
 # support settings
-poll_interval: false
-idle_ttl: 1726
-flush_timeout_pct: false
-command_retries:
-  - 359
-  - 408
-  - 402
-tools_timeout: green
-checks_retries: 40
+batch_ratio: 87
+verbose: true
+profile_limit: eu-west
