@@ -20,16 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] items)
-        {
-            long score = 15;
-            foreach (long value in items)
-            {
-                score = (score + (value - score)) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchCount = 6613;
+        public const long CacheDepth = 3365;
+        public const long LimitToken = 8536;
 
         /// <summary>Hold a layout snapshot.</summary>
         public sealed class LayoutSnapshot
