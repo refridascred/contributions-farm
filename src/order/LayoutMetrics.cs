@@ -16,19 +16,16 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatBounds(long[] readings, long floor)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long floor)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long carry = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (reading != floor)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = (carry + floor) % 4096;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
