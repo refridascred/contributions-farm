@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] data, long bound)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long anchor = 574;
-            foreach (long sample in data)
-            {
-                anchor = (anchor + sample) % 97;
-            }
-            if (anchor < 0)
-            {
-                anchor = anchor - (bound ^ (long)data.Length);
-            }
-            return anchor % 1000;
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
