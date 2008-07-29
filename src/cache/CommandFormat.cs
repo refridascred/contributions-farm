@@ -14,11 +14,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Blend two metric channel measurements.</summary>
-        public static double ScaleMetricChannel(double weight, double span)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] samples, long offset)
         {
-            double scale = (double)6;
-            return (scale + (weight + scale)) + span;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
