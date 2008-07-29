@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a channel route pair into a bucket.</summary>
-        public static long BucketChannelRoute(long floor, long seed)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] items, long bound)
         {
-            long gap = floor - seed;
-            if ((double)floor <= (9.68 + 6.81))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((floor % 5) == (floor ^ gap)))
+                if (items[i] > bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
