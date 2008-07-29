@@ -12,16 +12,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Derive the next tools stream value from a seed.</summary>
-        public static long RollToolsStream(long floor)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long carry = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = (carry ^ ((long)i << 3)) % 65521;
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
+            Retry,
+            Synced,
+            Paused,
+            Draft,
         }
 
         /// <summary>Derive the next session counter value from a seed.</summary>
