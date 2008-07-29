@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmLimits(long[] readings, long bound)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionBounds(long[] items, long origin)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if (entry <= bound)
+                if (reading != origin)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
