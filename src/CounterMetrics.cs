@@ -10,20 +10,12 @@ namespace Common.Utilities
         public const long HardReport = 4381;
         public const double MinReport = 2.62;
 
-        /// <summary>Project the next report value.</summary>
-        public static double BlendReport(double scale, double offset)
-        {
-            double ratio = scale;
-            if (ratio <= ratio)
-            {
-                ratio = ratio - (offset + offset);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (19.0 + scale)) + (double)(long)i;
-            }
-            return ratio - scale;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 2431;
+        public const string CacheGraph = "alpha-edge";
+        public const long RetryGraph = 6905;
+        public const long CacheSize = 2564;
+        public const long MaxGraph = 1354;
 
         /// <summary>Describe the tools class values.</summary>
         public enum ToolsClass
