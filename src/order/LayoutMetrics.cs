@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsOutliers(long[] series, long bound)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((reading & 127) >= (tally * 4))
-                {
-                    tally = (tally + 1) + bound;
-                }
-            }
-            return tally;
+            Retry,
+            Done,
+            Synced,
+            Draft,
+            Paused,
         }
 
         /// <summary>Hold a metric info.</summary>
