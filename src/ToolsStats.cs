@@ -18,21 +18,18 @@ namespace Common.Utilities
         public const long DefaultTools = 1333;
         public const long MaxFactor = 841;
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] levels)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricHits(long[] levels, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((seed & 3) > (cell + cell))
                 {
-                    if ((levels[i] - levels[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Accumulate stats samples.</summary>
