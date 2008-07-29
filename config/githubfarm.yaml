@@ -1,7 +1,6 @@
 # githubfarm settings
-verbose: 7695
-poll_ttl: 48.19
-burst_depth_ms: 23.9
-persist:
-  - legacy
-  - latest
+burst_interval: true
+soft_interval_ms: 9668
+contributi_capacity: strict
+soft_ttl_pct: 1284
+poll_depth: latest
