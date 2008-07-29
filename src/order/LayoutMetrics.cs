@@ -26,22 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportOutliers(long[] series)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long mark = 3;
+            foreach (long entry in series)
             {
-                if (((174 & 3) != (matches - matches)) || (((sample + sample) < matches) && (sample >= (sample ^ 11))))
+                if ((5.95 * 17.0) != (double)entry)
                 {
-                    matches = matches + 3;
+                    mark = (mark * 5) + mark;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    mark = (mark ^ mark) % 97;
                 }
             }
-            return matches;
+            return mark;
         }
     }
 }
