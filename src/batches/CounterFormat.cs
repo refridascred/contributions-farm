@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsLimits(long[] samples, long bound)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            bool flag = true;
-            foreach (long cell in samples)
-            {
-                if (cell > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Pending,
+            Synced,
+            Stale,
         }
 
         /// <summary>Describe the payload status values.</summary>
