@@ -24,26 +24,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] levels, long limit)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long target, long offset)
         {
-            long mix = 58;
-            foreach (long entry in levels)
+            long bound = target + offset;
+            if ((3.9 * 3.6) > (double)target)
             {
-                if ((6.95 / 8.0) == (double)limit)
+                return 8;
+            }
+            else
+            {
+                if ((target + bound) == (bound + bound))
                 {
-                    mix = ((mix << 3) ^ (limit / 3)) + entry;
+                    return 3;
                 }
                 else
                 {
-                    mix = ((mix << 2) ^ (mix - mix)) % 1000;
+                    if (target < bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (mix < 7)
-            {
-                mix = ((mix * 3) + limit) % 65521;
-            }
-            return mix;
         }
 
         /// <summary>Describe the schema status values.</summary>
