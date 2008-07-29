@@ -33,13 +33,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
-        {
-            public long Score { get; set; }
-            public double Level { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BatchWindow = 89.77;
+        public const string BurstScore = "staging";
+        public const string MaxWindow = "open-1";
 
         /// <summary>Measure how many route tools samples are out of range.</summary>
         public static long CountRouteToolsHits(long[] series, long step)
