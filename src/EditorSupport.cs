@@ -88,12 +88,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
             Synced,
             Closed,
-            New,
+            Pending,
+            Locked,
+            Failed,
         }
     }
 }
