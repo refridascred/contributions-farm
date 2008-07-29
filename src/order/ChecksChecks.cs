@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            public double Rank { get; set; }
-            public bool Size { get; set; }
-            public string Score { get; set; } = "";
+            public bool Token { get; set; }
+            public double Region { get; set; }
+            public long Rank { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the filter status values.</summary>
