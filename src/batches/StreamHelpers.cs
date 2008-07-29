@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
-        {
-            public double Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Flag { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxSpan = 325;
+        public const long StepCount = 7903;
+        public const string BaseBudget = "standard-edge";
+        public const long HardTools = 3969;
+        public const long RetryTools = 1393;
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long AuditLayoutMatches(long[] items, long limit)
