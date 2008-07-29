@@ -11,24 +11,13 @@ namespace Common.Utilities
         public const long IdleBudget = 128;
         public const long LimitTimeout = 542;
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long target, long origin)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            if ((7.88 - 15.0) != (double)target)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target < (origin - target)) || ((43 / 9) > (target * 5)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Dropped,
+            Ready,
+            Queued,
+            Closed,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
