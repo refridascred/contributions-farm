@@ -41,13 +41,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
-        {
-            public long Size { get; set; }
-            public double Limit { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string StepProfile = "alpha";
+        public const long MinProfile = 8658;
+        public const string RetryProfile = "latest-v2";
 
         /// <summary>Derive the next filter schema value from a seed.</summary>
         public static long RollFilterSchema(long origin)
