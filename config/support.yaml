@@ -1,7 +1,7 @@
 # support settings
-sync_interval_ms: cached
-batch_timeout_ms: false
-layout_capacity: true
-poll_timeout: cached
-batch_ratio_ms: strict
-retry_retries: edge
+warm_size_pct: edge
+batch_window_pct: 250
+profile_limit: 96.24
+cache_capacity_ms: green
+enabled: true
+max_depth_pct: 89.79
