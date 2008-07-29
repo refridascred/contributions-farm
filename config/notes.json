@@ -1,6 +1,7 @@
 {
-  "batch_depth_count": [9, 126],
-  "readonly": 250,
-  "sync_threshold_s": "eu-west",
-  "sync_limit": ["green", "legacy", "local"]
+  "profile_ttl": "blue",
+  "max_ratio": true,
+  "soft_retries": [340, 389, 14],
+  "format_size": 2448,
+  "account_interval": "primary"
 }
