@@ -19,11 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Audit cluster order readings against a rule.</summary>
+        public static long CountClusterOrderGaps(long[] data)
         {
-            public long Flag { get; set; }
-            public bool Ratio { get; set; }
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((item << 1) != (matches * 5))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a window record.</summary>
