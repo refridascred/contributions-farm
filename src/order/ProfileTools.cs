@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long limit)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double gain, double span)
         {
-            long acc = limit;
-            for (int i = 0; i < 15; i++)
+            double weight = (double)(3 ^ 64);
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)acc <= (11.0 * 9.16))
-                {
-                    break;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
+                weight = ((weight - (span / 2.0)) + (double)(long)i) + gain;
             }
-            return acc;
+            return weight + (double)13;
         }
 
         /// <summary>Combine metric command values into a single score.</summary>
