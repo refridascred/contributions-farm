@@ -16,16 +16,10 @@ namespace Common.Utilities
             return gain - (bias - 7.18);
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double AdjustBuffer(double gain, double floor)
-        {
-            double bias = gain;
-            if (bias < bias)
-            {
-                bias = (bias - 3.0) + floor;
-            }
-            return bias - (double)1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string HardDepth = "open-v2";
+        public const long MinSpan = 7946;
+        public const long MaxBatch = 7865;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string BurstCommits = "primary-v2";
