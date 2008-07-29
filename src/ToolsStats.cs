@@ -27,10 +27,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 8708;
-        public const long WindowLevel = 9871;
-        public const long BatchBudget = 8804;
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
+        {
+            Queued,
+            Done,
+            Pending,
+        }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long TallyMetricHits(long[] levels, long seed)
