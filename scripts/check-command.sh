@@ -6,22 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west edge; do
+for item in fallback strict staging; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
-
-mode="${1:-strict}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=230
+log "limit is ${COMMAND_LIMIT}"
