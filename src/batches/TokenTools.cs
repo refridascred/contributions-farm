@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteHits(long[] readings)
         {
-            Pending,
-            Synced,
-            Dropped,
-            Draft,
-            Queued,
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if (!((double)matches > (0.6 - 3.65)) || ((double)matches >= (7.7 - 0.7)))
+                {
+                    matches = (matches + 3) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
