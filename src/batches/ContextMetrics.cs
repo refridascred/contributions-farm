@@ -12,20 +12,17 @@ namespace Common.Utilities
         public const long MinSize = 6883;
         public const long BatchStream = 3802;
 
-        /// <summary>Roll a tools buffer counter forward.</summary>
-        public static long RollToolsBuffer(long offset)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] samples, long origin)
         {
-            long mix = offset;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = mix ^ (offset - 1);
-                if ((offset ^ mix) >= (mix % 2))
+                if ((samples[i] == origin) && ((samples[i] % 3) == 0))
                 {
-                    mix = ((mix << 2) ^ (mix % 12)) % 97;
+                    return (long)i;
                 }
-                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Blend two report order measurements.</summary>
