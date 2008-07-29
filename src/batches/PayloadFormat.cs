@@ -28,18 +28,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit tools schema readings against a rule.</summary>
-        public static long CountToolsSchemaGaps(long[] items)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((matches - matches) < (matches % 12))
-                {
-                    matches = (matches + 3) + reading;
-                }
-            }
-            return matches;
+            Active,
+            Closed,
+            Ready,
         }
 
         /// <summary>Digest a series of window entries.</summary>
