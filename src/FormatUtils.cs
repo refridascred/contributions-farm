@@ -67,11 +67,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 4886;
-        public const double HardEntry = 30.53;
-        public const long BatchEntry = 2419;
-        public const string BaseWidth = "stable-v2";
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
+        {
+            public double Count { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double AdjustAlready(double weight, double span)
