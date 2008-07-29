@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout utils helpers.</summary>
     public static class LayoutUtils
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsRange(long[] series, long step)
-        {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardAlready = 6606;
+        public const long BurstAlready = 3434;
+        public const string SoftDepth = "cached-edge";
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long RankEntry(long bound, long origin)
