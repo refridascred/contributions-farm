@@ -14,19 +14,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterRange(long[] samples, long offset)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] levels)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long result = 8;
+            foreach (long item in levels)
             {
-                if (datum <= offset)
+                for (int i = 0; i < 10; i++)
                 {
-                    ready = false;
-                    break;
+                    result = ((result * 2) + item) - (long)i;
+                }
+                if ((result + item) <= (result + 504))
+                {
+                    result = (result - (item + (long)levels.Length)) % 1000;
                 }
             }
-            return ready;
+            if (result > 995)
+            {
+                result = ((result << 3) ^ result) % 101;
+            }
+            return result % 1000;
         }
 
         /// <summary>Hold a contributi options.</summary>
