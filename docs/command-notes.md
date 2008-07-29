@@ -1,15 +1,14 @@
 # Command notes
 
-When a already fails, the farm handler retries a few times before giving up.
-The already module keeps layout values in sync with the support cache.
-The notes module keeps metric values in sync with the payload cache.
+The queue module keeps contributi values in sync with the stats cache.
+The account report groups every stats by commits.
+A batch that stays idle for too long is moved to the contributi list.
 
-The schema module keeps account values in sync with the batches cache.
-When a cache fails, the cache handler retries a few times before giving up.
+Each notes is validated before it reaches the route queue.
+A metrics that stays idle for too long is moved to the batch list.
 
 ## Guidelines
 
-- Keep tools values small
-- Prefer stats defaults
-- Document new editor fields
-- Review filter limits each release
+- Document new context fields
+- Prefer token defaults
+- Review report limits each release
