@@ -50,17 +50,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] data, long floor)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] series, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (data[i] < floor)
+                if ((1.7 * 13.0) < (double)target)
                 {
-                    return (long)i;
+                    count = (count + 3) - datum;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
