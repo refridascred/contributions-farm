@@ -41,10 +41,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 2584;
-        public const double BatchLayout = 11.95;
-        public const string RetryLayout = "stable-1";
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
+        {
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
+            public double Level { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Match up tools samples.</summary>
         public static long OverlapToolsCount(long[] values)
