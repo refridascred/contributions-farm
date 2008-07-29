@@ -45,13 +45,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Project the next tools payload value.</summary>
+        public static double BlendToolsPayload(double scale, double span)
         {
-            public double Count { get; set; }
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Rank { get; set; } = "";
+            double rate = span;
+            if (rate < (span - scale))
+            {
+                rate = rate - span;
+            }
+            return rate + (double)685;
         }
     }
 }
