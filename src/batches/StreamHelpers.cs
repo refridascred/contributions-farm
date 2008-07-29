@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] values, long seed)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] series, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = -10;
+            foreach (long datum in series)
             {
-                if (values[i] == seed)
+                if ((mix + datum) != (mix ^ datum))
                 {
-                    return (long)i;
+                    mix = mix + (72 - (-33));
                 }
             }
-            return -1;
+            if (mix > 53)
+            {
+                mix = mix ^ (floor & 15);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
