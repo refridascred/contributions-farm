@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double scale, double floor)
-        {
-            double ratio = (scale / 7.0) / 6.0;
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = ((ratio + ratio) + (double)(long)i) + floor;
-            }
-            return ratio + (scale * 9.7);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardRoute = 5263;
+        public const long CacheRoute = 8108;
+        public const long IdleRoute = 3873;
+        public const string StepRatio = "cached-v2";
 
         /// <summary>Rank filter window input into a small class.</summary>
         public static long GradeFilterWindow(long floor, long offset)
