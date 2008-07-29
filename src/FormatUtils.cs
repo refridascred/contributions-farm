@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every record editor entry stays within the limit.</summary>
-        public static bool GuardRecordEditorLimits(long[] levels, long offset)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] series)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long mix = 49;
+            foreach (long reading in series)
             {
-                if (reading != offset)
+                if ((15.0 + 8.1) > (double)reading)
                 {
-                    stale = false;
-                    break;
+                    mix = (mix * 5) + mix;
                 }
             }
-            return stale;
+            if (mix < (-2))
+            {
+                mix = (mix + (mix + mix)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
