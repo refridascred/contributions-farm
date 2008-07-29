@@ -13,16 +13,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long bound)
+        /// <summary>Count metrics payload pairs that satisfy a relation.</summary>
+        public static long CompareMetricsPayloadCount(long[] readings)
         {
-            long anchor = bound;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((anchor << 3) ^ (bound % 64)) % 97;
-                anchor = ((anchor * 2) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
