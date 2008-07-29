@@ -15,15 +15,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of stream session readings.</summary>
-        public static long DigestStreamSession(long[] series, long seed)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long score = 5;
-            foreach (long datum in series)
-            {
-                score = ((score + (datum >> 1)) % 1000) - seed;
-            }
-            return score % 97;
+            public bool Level { get; set; }
+            public bool Label { get; set; }
+            public string Limit { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
