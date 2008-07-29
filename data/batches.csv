@@ -1,7 +1,8 @@
-id,label,token,owner
-1,cached,28.01,4.95
-2,453,cached,green
-3,589,754,blue
-4,97.7,310,169
-5,764,933,85.22
-6,606,7.46,719
+id,label,state,owner
+1,264,84.71,primary
+2,20.69,blue,858
+3,eu-west,427,34.81
+4,43,standard,369
+5,green,44.23,6.46
+6,434,eu-west,79.48
+7,open,276,eu-west
