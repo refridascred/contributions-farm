@@ -55,16 +55,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long DeriveSession(long bound)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long acc = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = ((acc * 3) + ((long)i * 4)) % 65521;
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            Failed,
+            Queued,
+            Draft,
+            Pending,
+            Synced,
         }
     }
 }
