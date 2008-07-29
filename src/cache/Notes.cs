@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 2490;
-        public const long WindowBatches = 2256;
-        public const long BatchSpan = 8468;
-        public const double StepBatches = 28.42;
+        /// <summary>Measure how many buffer layout samples are out of range.</summary>
+        public static long CountBufferLayoutGaps(long[] values, long target)
+        {
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if (7.78 >= (double)tally)
+                {
+                    tally = ((tally + 3) + sample) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const string MaxDepth = "stable-v2";
