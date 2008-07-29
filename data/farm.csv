@@ -1,8 +1,6 @@
-id,level,label,region
-1,stable,green,local
-2,364,staging,legacy
-3,blue,767,latest
-4,53.6,491,legacy
-5,28.84,81.96,11
-6,938,local,fallback
-7,fallback,2.06,eu-west
+id,owner,count,rank
+1,40.9,standard,stable
+2,700,193,186
+3,977,764,32.27
+4,edge,32.19,79.28
+5,538,strict,692
