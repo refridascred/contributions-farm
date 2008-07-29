@@ -86,12 +86,15 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double AdjustAlready(double weight, double span)
         {
-            Paused,
-            Synced,
-            Done,
+            double scale = (span + 1.2) * 8.4;
+            if (scale >= scale)
+            {
+                scale = (scale - 0.02) - weight;
+            }
+            return scale - (scale * 1.1);
         }
     }
 }
