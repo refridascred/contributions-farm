@@ -11,13 +11,11 @@ namespace Common.Utilities
         public const long MinWidth = 5224;
         public const long MaxCommand = 4771;
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            Synced,
-            Paused,
-            Locked,
-            Ready,
+            public long Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
