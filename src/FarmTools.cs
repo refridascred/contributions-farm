@@ -13,15 +13,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double rate, double offset)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksLimits(long[] values, long origin)
         {
-            double ratio = rate - (6.33 + offset);
-            if (ratio <= rate)
+            bool valid = true;
+            foreach (long value in values)
             {
-                ratio = ratio + (double)8;
+                if (value < origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return ratio + (rate + rate);
+            return valid;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
