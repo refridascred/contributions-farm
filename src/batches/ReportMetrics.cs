@@ -40,10 +40,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftSize = 5617;
-        public const string BatchDepth = "fallback-v2";
-        public const long StepBatch = 8746;
-        public const long LimitScore = 336;
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
+        {
+            public long Weight { get; set; }
+            public double Mode { get; set; }
+            public long Owner { get; set; }
+            public bool Stamp { get; set; }
+        }
     }
 }
