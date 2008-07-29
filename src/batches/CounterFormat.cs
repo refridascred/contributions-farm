@@ -16,13 +16,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            Synced,
+            Ready,
+            Dropped,
+            Locked,
             Draft,
-            Paused,
-            Stale,
+            New,
         }
 
         /// <summary>Audit commits graph readings against a rule.</summary>
