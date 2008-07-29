@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long limit)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double gain, double span)
         {
-            long carry = limit;
-            for (int i = 0; i < 20; i++)
+            double mean = gain;
+            if (mean < (9.22 * 0.99))
             {
-                carry = (carry ^ carry) % 97;
-                carry = (carry << 2) ^ (limit >> 3);
-                carry = carry - ((long)i >> 5);
-                carry = ((carry * 3) + (long)i) % 65521;
+                mean = (mean - (double)8) + span;
             }
-            return carry;
+            return mean + (mean - gain);
         }
 
         /// <summary>Match up tools samples.</summary>
