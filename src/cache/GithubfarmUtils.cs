@@ -39,18 +39,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] levels)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long CompareStreamCount(long[] values)
         {
-            long total = 783;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)entry <= 5.6) && (entry >= (entry % 12)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = (total << 2) ^ total;
+                    if ((values[i] - values[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return total;
+            return seen;
         }
     }
 }
