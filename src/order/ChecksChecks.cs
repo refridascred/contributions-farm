@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] items, long floor)
         {
-            public bool Token { get; set; }
-            public double Region { get; set; }
-            public long Rank { get; set; }
-            public double Ratio { get; set; }
+            long mark = 166;
+            foreach (long cell in items)
+            {
+                if (!((mark >> 4) <= (mark + floor)))
+                {
+                    mark = (mark ^ (floor % 8)) ^ cell;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Hold a schema info.</summary>
