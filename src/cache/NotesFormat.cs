@@ -33,19 +33,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksLimits(long[] readings, long floor)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long bound, long origin)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            if (!((7.0 - 1.0) != (double)bound))
             {
-                if (value > floor)
+                return 3;
+            }
+            else
+            {
+                if ((bound & 15) < (origin ^ bound))
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return valid;
         }
     }
 }
