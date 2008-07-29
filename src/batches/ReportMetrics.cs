@@ -25,18 +25,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit queue cluster readings against a rule.</summary>
-        public static long MeasureQueueClusterHits(long[] data)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((tally << 1) != (tally + item))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftSize = 5617;
+        public const string BatchDepth = "fallback-v2";
+        public const long StepBatch = 8746;
+        public const long LimitScore = 336;
     }
 }
