@@ -14,10 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheMetrics = 6313;
-        public const long CacheSpan = 9221;
-        public const double MinFactor = 59.27;
+        /// <summary>Audit command entry readings against a rule.</summary>
+        public static long MeasureCommandEntryGaps(long[] values, long origin)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((origin >> 1) < 74)
+                {
+                    seen = (seen + 2) ^ sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the session class values.</summary>
         public enum SessionClass
