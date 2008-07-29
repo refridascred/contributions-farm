@@ -14,22 +14,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 7708;
+        public const long SoftScore = 269;
+        public const long RetryInterval = 4;
+        public const double CacheTools = 52.06;
+        public const long WindowTools = 9174;
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long DeriveFilter(long step)
