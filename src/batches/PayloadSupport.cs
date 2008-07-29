@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a layout profile counter forward.</summary>
-        public static long DeriveLayoutProfile(long bound)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterOutliers(long[] readings)
         {
-            long acc = bound;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                acc = ((acc * 2) + (acc << 2)) % 97;
-                acc = ((acc * 3) + (long)i) % 65521;
+                if ((0 % 5) >= count)
+                {
+                    count = (count + 1) ^ sample;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
