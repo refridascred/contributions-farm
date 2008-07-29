@@ -31,15 +31,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next session counter value from a seed.</summary>
-        public static long RollSessionCounter(long offset)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] series, long limit)
         {
-            long sum = offset;
-            for (int i = 0; i < 20; i++)
+            long sum = 13;
+            foreach (long sample in series)
             {
-                sum = (sum ^ sum) % 101;
-                sum = (sum - (sum + offset)) % 101;
-                sum = ((sum * 4) + (long)i) % 65521;
+                sum = (sum << 3) ^ (sample + 4);
+                sum = (sum - (sample - limit)) % 1000;
             }
             return sum;
         }
