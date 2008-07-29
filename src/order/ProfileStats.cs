@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long FindOrderIndex(long[] values, long bound)
+        /// <summary>Measure how many graph window samples are out of range.</summary>
+        public static long AuditGraphWindowMatches(long[] items, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (values[i] == bound)
+                if (((sample / 4) != (limit / 6)) && ((double)limit >= (9.4 * 15.0)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Adjust a session reading.</summary>
