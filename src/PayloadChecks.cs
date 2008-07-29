@@ -60,19 +60,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] items, long offset)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double SmoothSupport(double weight, double floor)
         {
-            long result = 439;
-            foreach (long sample in items)
+            double scale = floor * 12.0;
+            for (int i = 0; i < 7; i++)
             {
-                result = ((result << 2) ^ offset) - sample;
+                scale = ((scale - scale) + (double)(long)i) - weight;
             }
-            if (result < 94)
-            {
-                result = (result << 2) ^ result;
-            }
-            return result;
+            return scale + floor;
         }
     }
 }
