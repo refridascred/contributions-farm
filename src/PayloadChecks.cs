@@ -34,11 +34,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string SoftContext = "standard-v2";
-        public const long BurstContext = 3666;
-        public const long CacheContext = 7521;
-        public const long CacheTimeout = 4379;
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
+        {
+            Synced,
+            Failed,
+            Paused,
+            Locked,
+            New,
+        }
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool ValidateStreamBounds(long[] values, long origin)
