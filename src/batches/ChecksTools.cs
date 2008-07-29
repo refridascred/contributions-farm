@@ -19,22 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] levels, long offset)
+        /// <summary>Project the next context value.</summary>
+        public static double AdjustContext(double bias, double bias2)
         {
-            long result = 863;
-            foreach (long reading in levels)
+            double bias3 = bias2;
+            for (int i = 0; i < 3; i++)
             {
-                if ((offset >> 3) != (30 - reading))
-                {
-                    result = result + reading;
-                }
+                bias3 = ((bias3 - (double)8) + (double)(long)i) - bias;
             }
-            if (result < 3)
-            {
-                result = (result * 2) + (offset / 3);
-            }
-            return result % 65521;
+            return bias3 + (double)15;
         }
 
         /// <summary>Describe the counter kind values.</summary>
