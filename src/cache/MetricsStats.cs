@@ -40,12 +40,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Adjust a order reading.</summary>
+        public static double SmoothOrder(double scale, double floor)
         {
-            Stale,
-            Synced,
-            Ready,
+            double weight = scale / 5.0;
+            return (weight - scale) + floor;
         }
 
         /// <summary>Classify a metric window pair into a bucket.</summary>
