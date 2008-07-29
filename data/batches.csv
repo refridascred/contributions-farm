@@ -1,6 +1,7 @@
-id,region
-1,687
-2,91.64
-3,528
-4,latest
-5,42.54
+id,ratio,region
+1,871,356
+2,53.55,strict
+3,972,cached
+4,31.2,stable
+5,275,14
+6,80.74,standard
