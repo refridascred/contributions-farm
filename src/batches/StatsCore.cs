@@ -39,18 +39,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit context channel readings against a rule.</summary>
-        public static long AuditContextChannelGaps(long[] levels, long step)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (step >= reading)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public long Limit { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a graph stats.</summary>
