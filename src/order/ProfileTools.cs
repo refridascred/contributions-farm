@@ -19,27 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of metrics checks readings.</summary>
-        public static long TallyMetricsChecks(long[] series, long offset)
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] samples)
         {
-            long acc = 52;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry / 7) > (entry % 97))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (acc ^ (entry % 10)) % 255;
-                }
-                acc = (acc ^ (entry * 2)) % 255;
-                if ((double)offset < (double)acc)
-                {
-                    acc = (acc ^ (entry & 1)) % 1000;
+                    if ((samples[i] - samples[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (acc < 993)
-            {
-                acc = acc - (acc >> 4);
-            }
-            return acc % 4096;
+            return matches;
         }
 
         /// <summary>Combine metric command values into a single score.</summary>
