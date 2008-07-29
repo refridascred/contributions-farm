@@ -53,17 +53,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] data, long seed)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double gain, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double gain2 = (double)289;
+            if (gain2 >= bias)
             {
-                if (data[i] == seed)
-                {
-                    return (long)i;
-                }
+                gain2 = gain2 + (bias / 4.0);
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                gain2 = (gain2 - (gain + gain2)) + (double)(long)i;
+            }
+            return gain2 + gain2;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
