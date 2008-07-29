@@ -20,11 +20,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            public string Owner { get; set; } = "";
-            public string Weight { get; set; } = "";
+            public long Score { get; set; }
+            public bool Rank { get; set; }
+            public long Offset { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Compare every pair of stream queue readings.</summary>
