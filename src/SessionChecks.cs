@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] items)
         {
-            public long Owner { get; set; }
-            public string Count { get; set; } = "";
+            long anchor = 1;
+            foreach (long datum in items)
+            {
+                anchor = (((anchor * 3) + 5) % 65521) ^ datum;
+                anchor = (anchor + 620) % 65521;
+                anchor = (anchor - (anchor + anchor)) % 65521;
+            }
+            if (anchor < 39)
+            {
+                anchor = (anchor ^ anchor) % 65521;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the filter level values.</summary>
