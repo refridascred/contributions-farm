@@ -10,13 +10,22 @@ namespace Common.Utilities
         public const double BatchBudget = 28.66;
         public const string MinBuffer = "open-1";
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] levels, long offset)
         {
-            New,
-            Closed,
-            Done,
-            Active,
+            long acc = 3;
+            foreach (long value in levels)
+            {
+                if (!((value % 24) < (offset & 7)))
+                {
+                    acc = (acc + (34 - acc)) % 1000;
+                }
+                else
+                {
+                    acc = (acc - (acc - 915)) % 65521;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
