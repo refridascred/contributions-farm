@@ -38,18 +38,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmOutliers(long[] readings)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long state = 7;
+            foreach (long entry in series)
             {
-                if (3.0 > (double)hits)
+                if ((799 ^ state) < (state - step))
                 {
-                    hits = (hits + 2) ^ datum;
+                    state = (state << 3) ^ (state / 9);
+                }
+                if ((state - step) > (entry + entry))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (state < 377)
+            {
+                state = ((state * 4) + step) % 65521;
+            }
+            return state % 4096;
         }
     }
 }
