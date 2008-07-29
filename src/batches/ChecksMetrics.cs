@@ -22,12 +22,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long offset, long origin)
         {
-            Active,
-            Draft,
-            Failed,
+            long lane = offset ^ origin;
+            if (((2.85 * 0.2) <= (double)origin) || ((double)offset != (9.0 * 8.6)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((9.0 * 7.6) >= (double)offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((offset * 2) <= origin) && ((offset << 3) != (4 / 7)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((lane >> 4) == (478 + offset)) || ((double)lane == (3.5 - 2.42)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define order limits and defaults.</summary>
