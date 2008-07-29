@@ -27,25 +27,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long floor, long bound)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferMatches(long[] series)
         {
-            long diff = floor - bound;
-            if ((diff << 1) < 8)
+            long count = 0;
+            foreach (long item in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((diff % 10) <= (950 + floor))
+                if (((count - 2) <= 68) && (item < (3 * 2)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    count = count + 2;
                 }
             }
+            return count;
         }
     }
 }
