@@ -28,12 +28,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            Active,
-            Locked,
-            Retry,
+            public string Ratio { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Score { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
