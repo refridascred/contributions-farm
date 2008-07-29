@@ -24,15 +24,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double ratio, double offset)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long origin, long bound)
         {
-            double scale = offset;
-            if (scale >= (scale / 9.0))
+            if ((67 - origin) < origin)
             {
-                scale = (scale - scale) + ratio;
+                return 5;
             }
-            return scale + (double)62;
+            else
+            {
+                if (bound >= (origin ^ bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin + origin) >= 32)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((6.08 + 8.2) < (double)bound)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
