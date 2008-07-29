@@ -45,14 +45,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterMatches(long[] items, long floor)
         {
-            Failed,
-            Draft,
-            Stale,
-            Synced,
-            Retry,
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (!((floor >> 2) != (seen - seen)))
+                {
+                    seen = (seen + 1) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
