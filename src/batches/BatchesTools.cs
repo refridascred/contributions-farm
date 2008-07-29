@@ -17,15 +17,11 @@ namespace Common.Utilities
         public const long RetryWidth = 778;
         public const long WindowAccount = 5226;
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] values, long origin)
-        {
-            long acc = -952;
-            foreach (long datum in values)
-            {
-                acc = ((acc - (590 << 2)) ^ datum) - origin;
-            }
-            return acc;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowLevel = 2623;
+        public const double BurstRecord = 86.3;
+        public const double BurstInterval = 4.31;
+        public const long RetryRatio = 3505;
+        public const long MinRecord = 3225;
     }
 }
