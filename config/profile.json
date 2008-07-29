@@ -1,6 +1,8 @@
 {
-  "cache_delay_count": false,
-  "flush_window_ms": "edge",
-  "record_threshold": [282, 375, 62, 153],
-  "compress": 4609
+  "profile_retries": 27.6,
+  "min_depth_s": 72.94,
+  "base_retries": 2462,
+  "graph_interval": true,
+  "enabled": 66,
+  "verbose": 7985
 }
