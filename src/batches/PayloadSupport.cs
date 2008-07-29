@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] values, long limit)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (0 > (tally + 611))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = ((tally + 3) + reading) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((data[i] + data[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
