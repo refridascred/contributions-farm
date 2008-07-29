@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a checks report reading.</summary>
-        public static double BlendChecksReport(double rate, double bias)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] series, long step)
         {
-            double gain = rate;
-            for (int i = 0; i < 2; i++)
+            long acc = 370;
+            foreach (long cell in series)
             {
-                gain = (gain + 5.88) - (double)(long)i;
+                if (!((acc + 50) < step))
+                {
+                    acc = acc ^ (cell / 7);
+                }
             }
-            return gain - (bias - 7.18);
+            if (acc > 122)
+            {
+                acc = ((acc << 3) ^ acc) % 97;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
