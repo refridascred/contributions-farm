@@ -48,19 +48,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] levels, long step)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileOutliers(long[] readings, long seed)
         {
-            long mix = 8;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                mix = (((mix * 4) + (74 / 4)) % 101) + sample;
+                if (((datum - datum) == (datum & 3)) && ((seed - datum) <= seen))
+                {
+                    seen = seen + 2;
+                }
             }
-            if (mix < 785)
-            {
-                mix = (mix << 3) ^ (step % 64);
-            }
-            return mix % 4096;
+            return seen;
         }
     }
 }
