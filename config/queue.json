@@ -1,7 +1,6 @@
 {
-  "base_capacity": 18.78,
-  "poll_capacity": 4794,
-  "soft_capacity": 5949,
-  "batch_ratio": "blue",
-  "cache_ttl": 9037
+  "default_interval_pct": "stable",
+  "strict": false,
+  "cache_ttl_s": 90.58,
+  "flush_size_count": 500
 }
