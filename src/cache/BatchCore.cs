@@ -61,17 +61,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] values)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] levels, long target)
         {
-            long result = 2;
-            foreach (long reading in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = result - result;
-                result = ((result * 3) + reading) % 97;
-                result = (result ^ (result / 9)) % 1000;
+                if ((levels[i] <= target) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Derive the next filter schema value from a seed.</summary>
