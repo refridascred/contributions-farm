@@ -45,11 +45,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            public bool Mode { get; set; }
-            public string Level { get; set; } = "";
+            public bool Flag { get; set; }
+            public double Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
