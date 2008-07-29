@@ -43,31 +43,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long bound, long seed)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            if ((bound / 8) < seed)
-            {
-                return 1;
-            }
-            else
-            {
-                if (seed <= bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound - seed) == (seed << 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Ready,
+            Draft,
+            Paused,
+            Queued,
+            Pending,
         }
     }
 }
