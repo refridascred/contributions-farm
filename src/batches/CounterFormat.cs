@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleNotes = 6243;
-        public const string MinNotes = "latest-v2";
-        public const double BurstScore = 35.86;
-        public const long RetryFactor = 8626;
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long RollMetric(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((offset % 7) >= ((long)i % 100))
+                {
+                    break;
+                }
+                mix = mix - 560;
+                mix = mix ^ ((long)i + mix);
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
