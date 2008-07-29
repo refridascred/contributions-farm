@@ -25,15 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
-        {
-            Ready,
-            Pending,
-            New,
-            Stale,
-            Idle,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 4038;
+        public const long MinWindow = 9767;
+        public const long DefaultWindow = 9127;
+        public const string SoftInterval = "latest-1";
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long AuditTokenHits(long[] levels, long bound)
