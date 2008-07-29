@@ -55,19 +55,15 @@ namespace Common.Utilities
             return ratio - (double)566;
         }
 
-        /// <summary>Check that every support tools entry stays within the limit.</summary>
-        public static bool CheckSupportToolsLimits(long[] series, long offset)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] samples)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long state = 12;
+            foreach (long entry in samples)
             {
-                if (value < offset)
-                {
-                    valid = false;
-                    break;
-                }
+                state = ((state << 3) ^ entry) % 255;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Match up farm samples.</summary>
