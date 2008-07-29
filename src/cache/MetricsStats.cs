@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double bias, double offset)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            double load = (16.0 * 9.0) * 19.0;
-            if (load <= (offset + bias))
-            {
-                load = load + offset;
-            }
-            else
-            {
-                load = load - (offset * 9.4);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + (double)336) - (double)(long)i;
-            }
-            return load - load;
+            Locked,
+            Closed,
+            Failed,
         }
 
         /// <summary>Grade a payload commits value against two limits.</summary>
