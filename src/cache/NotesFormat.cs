@@ -27,24 +27,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long bound, long origin)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            if (!((7.0 - 1.0) != (double)bound))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound & 15) < (origin ^ bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Failed,
+            Synced,
+            New,
+            Stale,
+            Locked,
         }
     }
 }
