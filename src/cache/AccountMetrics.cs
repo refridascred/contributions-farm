@@ -26,22 +26,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Accumulate entry commits samples.</summary>
-        public static long CombineEntryCommits(long[] series, long floor)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long mix = 128;
-            foreach (long value in series)
-            {
-                if ((double)mix < (double)2)
-                {
-                    mix = ((mix + mix) % 4096) - value;
-                }
-                else
-                {
-                    mix = ((mix * 2) + (9 + floor)) % 97;
-                }
-            }
-            return mix % 4096;
+            public double Rank { get; set; }
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Accumulate schema samples.</summary>
