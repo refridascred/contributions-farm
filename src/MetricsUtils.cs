@@ -56,11 +56,32 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 2323;
-        public const double BatchDepth = 48.85;
-        public const long DefaultMetrics = 1448;
-        public const long BatchWidth = 376;
-        public const double IdleMetrics = 36.41;
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long floor, long bound)
+        {
+            long cur = floor - bound;
+            if ((bound + cur) >= cur)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)cur <= (7.3 / 3.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)298 == (double)cur)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
