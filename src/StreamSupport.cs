@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate channel already samples.</summary>
-        public static long TallyChannelAlready(long[] samples, long seed)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesOutliers(long[] values, long limit)
         {
-            long total = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long item in values)
             {
-                total = ((total + (value - total)) % 4096) + seed;
-                if ((total >> 1) < (value * 3))
+                if ((double)hits > 8.08)
                 {
-                    break;
+                    hits = ((hits + 3) + item) + limit;
                 }
             }
-            return total % 65521;
+            return hits;
         }
 
         /// <summary>Describe the filter status values.</summary>
