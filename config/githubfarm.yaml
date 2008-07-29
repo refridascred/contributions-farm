@@ -1,16 +1,10 @@
 # githubfarm settings
-min_window:
-  counter_window: staging
-  checks_interval: false
-  flush_window_s:
-    soft_delay_pct: legacy
-    flush_limit_s: eu-west
-    support_limit: latest
-    filter_interval: 55.61
-  route_threshold: 3714
-  token_retries: 90
-strict: 20.95
-readonly: legacy
-poll_retries_ms: 31.72
-order_size: 62
-sync_ratio_ms: 500
+token_retries: strict
+account_depth: 38
+route_retries: 93
+soft_retries_ms:
+  default_retries_s: stable
+  base_interval_ms: 52.32
+  compress: 22.71
+  sync_ratio: latest
+  command_ttl: 8469
