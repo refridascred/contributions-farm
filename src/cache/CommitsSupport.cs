@@ -41,22 +41,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextGaps(long[] samples)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long total = 4;
+            foreach (long value in values)
             {
-                if ((double)2 >= (double)item)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                total = ((((total << 3) ^ total) % 101) - value) - limit;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Describe the record mode values.</summary>
