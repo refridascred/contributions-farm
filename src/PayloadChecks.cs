@@ -33,20 +33,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamBounds(long[] values, long origin)
-        {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BaseFormat = 10.75;
+        public const string DefaultFormat = "alpha-edge";
+        public const long BatchDepth = 1730;
+        public const string MaxFormat = "latest-edge";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string WindowNotes = "standard";
