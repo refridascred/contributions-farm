@@ -26,10 +26,33 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string StepProfile = "alpha";
-        public const long MinProfile = 8658;
-        public const string RetryProfile = "latest-v2";
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long offset, long target)
+        {
+            long step = offset ^ target;
+            if (0.3 >= (double)step)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((offset / 7) <= (target & 1)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((step - step) >= (step - 655)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
