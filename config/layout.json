@@ -1,21 +1,5 @@
 {
-  "verbose": 42,
-  "strict": {
-    "commits_size": "blue",
-    "base_window": 94.56,
-    "flush_interval": 5955,
-    "burst_ratio": ["legacy", "cached", "strict", "legacy"],
-    "route_ratio": "staging",
-    "cache_threshold_s": "local"
-  },
-  "compress": "blue",
-  "batch_capacity_count": {
-    "warm_size_ms": 30,
-    "enabled": "open",
-    "poll_size_count": 5487,
-    "graph_threshold": ["edge", "legacy", "strict"],
-    "support_interval": 56.64,
-    "cache_delay_ms": false
-  },
-  "soft_interval_count": "edge"
+  "compress": "staging",
+  "strict": 30,
+  "dry_run": 38
 }
