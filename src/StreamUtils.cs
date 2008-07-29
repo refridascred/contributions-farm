@@ -43,14 +43,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Blend two session editor measurements.</summary>
+        public static double AdjustSessionEditor(double bias, double offset)
         {
-            Dropped,
-            Retry,
-            Draft,
-            Done,
-            Stale,
+            double load = bias;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (double)700) + (double)(long)i;
+            }
+            return load + offset;
         }
 
         /// <summary>Audit route editor readings against a rule.</summary>
