@@ -72,27 +72,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] readings, long step)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteHits(long[] items, long limit)
         {
-            long sum = 4;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long item in items)
             {
-                sum = sum + sum;
-                if ((sum / 7) > datum)
+                if ((63 + hits) < (limit * 5))
                 {
-                    sum = sum - step;
+                    hits = (hits + 3) + item;
                 }
-                if (98 <= step)
+                else
                 {
-                    sum = (sum << 2) ^ (step & 255);
+                    hits = hits - 1;
                 }
             }
-            if (sum < (-39))
-            {
-                sum = (sum * 5) + (sum / 5);
-            }
-            return sum;
+            return hits;
         }
     }
 }
