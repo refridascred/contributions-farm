@@ -1,13 +1,4 @@
 # entry settings
-burst_capacity_s: true
-burst_capacity:
-  - green
-  - legacy
-  - local
-  - edge
-sync_delay_count:
-  - cached
-  - open
-  - local
-burst_size_count: 83.46
-default_limit_ms: 69.05
+audit: primary
+sync_timeout_pct: false
+metric_timeout: legacy
