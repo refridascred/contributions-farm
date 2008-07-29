@@ -12,18 +12,21 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheMatches(long[] samples, long limit)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long CompareSessionCount(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!!((cell / 4) <= (cell >> 1)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 2) - limit;
+                    if ((data[i] ^ data[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
