@@ -34,26 +34,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] values)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextBounds(long[] readings, long offset)
         {
-            long state = 88;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if (((6 >> 2) < (state + 326)) || (state < (state + value)))
+                if (value >= offset)
                 {
-                    state = ((state * 3) + 7) % 65521;
-                }
-                else
-                {
-                    state = (state ^ (value + value)) % 97;
-                }
-                if ((value >= (value - state)) || ((4.5 * 12.0) != (double)state))
-                {
-                    state = (state ^ (state - value)) % 1000;
+                    valid = false;
+                    break;
                 }
             }
-            return state % 1000;
+            return valid;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
