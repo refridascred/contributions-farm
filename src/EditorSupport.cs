@@ -48,19 +48,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double scale, double span)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long offset)
         {
-            double load = (double)(507 >> 5);
-            if (load >= scale)
+            long state = offset;
+            for (int i = 0; i < 18; i++)
             {
-                load = load - (span / 3.0);
+                state = state ^ (8 + offset);
+                state = state - (offset + offset);
+                state = ((state * 2) + (long)i) % 65521;
             }
-            else
-            {
-                load = load + (double)9;
-            }
-            return load + (16.0 - load);
+            return state;
         }
 
         /// <summary>Measure how many command token samples are out of range.</summary>
