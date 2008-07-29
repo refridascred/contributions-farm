@@ -1,5 +1,6 @@
 {
-  "order_ttl": 46.56,
-  "schema_retries": false,
-  "verbose": 7518
+  "enabled": ["legacy", "blue", "local"],
+  "cache_depth_ms": false,
+  "batch_timeout": 7859,
+  "hard_limit_ms": 60
 }
