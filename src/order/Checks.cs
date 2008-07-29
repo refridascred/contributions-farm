@@ -50,12 +50,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
-        {
-            New,
-            Ready,
-            Active,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchBudget = 2199;
+        public const long CacheInterval = 9773;
+        public const double StepSize = 94.18;
     }
 }
