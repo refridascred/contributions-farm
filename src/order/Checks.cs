@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardSize = 5514;
-        public const double MaxRoute = 83.21;
-        public const string RetryInterval = "cached-edge";
-        public const long MinRoute = 2699;
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
+        {
+            Failed,
+            Locked,
+            Pending,
+        }
 
         /// <summary>Hold a graph record.</summary>
         public sealed class GraphRecord
