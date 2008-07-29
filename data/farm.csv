@@ -1,8 +1,8 @@
-id,token,score,level,region
-1,273,298,44.09,open
-2,0.53,blue,stable,primary
-3,open,35.4,16.22,legacy
-4,948,22.31,primary,latest
-5,latest,63,strict,67.97
-6,86,57.52,737,45.67
-7,85.87,944,74,571
+id,state,score,rank,count
+1,cached,latest,963,51.54
+2,9.34,41.04,574,latest
+3,859,699,299,56.24
+4,544,17.31,100,314
+5,666,green,780,8.15
+6,11.31,fallback,eu-west,547
+7,8.81,688,open,69.37
