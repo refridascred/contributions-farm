@@ -17,23 +17,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double BlendGithubfarm(double bias, double floor)
+        /// <summary>Audit batches farm readings against a rule.</summary>
+        public static long CountBatchesFarmGaps(long[] samples, long offset)
         {
-            double mean = bias * 7.3;
-            if (mean <= floor)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                mean = mean - mean;
+                if (!(offset <= (228 % 97)))
+                {
+                    count = (count + 1) + datum;
+                }
             }
-            else
-            {
-                mean = mean - (double)24;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - 0.5) - (double)(long)i;
-            }
-            return mean + (double)69;
+            return count;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
