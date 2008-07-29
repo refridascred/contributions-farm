@@ -27,31 +27,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long floor, long bound)
+        /// <summary>Adjust a stream session reading.</summary>
+        public static double ProjectStreamSession(double weight, double offset)
         {
-            if ((bound + bound) <= (bound / 7))
+            double scale = offset * 12.0;
+            if (scale > (double)(-86))
             {
-                return 4;
+                scale = (scale + offset) + weight;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if (bound >= (bound * 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor >> 2) == (bound / 6))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                scale = (scale - scale) + (double)(long)i;
             }
+            return scale - scale;
         }
     }
 }
