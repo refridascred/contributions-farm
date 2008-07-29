@@ -26,13 +26,13 @@ namespace Common.Utilities
         public const long LimitWidth = 5770;
         public const long MinTools = 9460;
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public double Limit { get; set; }
-            public bool Total { get; set; }
+            Queued,
+            Dropped,
+            New,
+            Synced,
         }
     }
 }
