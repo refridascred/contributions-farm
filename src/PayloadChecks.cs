@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] data, long target)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double SmoothQueue(double rate, double bias)
         {
-            long acc = -5;
-            foreach (long value in data)
+            double drift = (bias - rate) * 5.2;
+            if (drift <= rate)
             {
-                if ((double)value >= (11.0 * 6.0))
-                {
-                    long matches = (target - 74) / 3;
-                    acc = (acc + (value ^ matches)) % 255;
-                }
-                if (value < (value + value))
-                {
-                    acc = acc + (value - acc);
-                }
-                else
-                {
-                    acc = acc - (value ^ target);
-                }
+                drift = drift + (drift + drift);
             }
-            return acc % 1000;
+            else
+            {
+                drift = drift - (rate - drift);
+            }
+            return drift + (drift + bias);
         }
 
         /// <summary>Define cache limits and defaults.</summary>
