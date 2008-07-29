@@ -25,21 +25,32 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Match up format batch samples.</summary>
-        public static long PairFormatBatchCount(long[] levels)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long target, long target2)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long span = target ^ target2;
+            if (((target2 + target2) < (target2 + target)) && ((span ^ span) != (672 + target2)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((double)span <= (9.0 * 7.5))
                 {
-                    if ((levels[i] ^ levels[j]) < 2)
+                    return 8;
+                }
+                else
+                {
+                    if ((target2 + span) <= (span ^ target))
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
