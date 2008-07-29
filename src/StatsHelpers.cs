@@ -22,22 +22,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmMatches(long[] items, long target)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long mix = 558;
+            foreach (long value in levels)
             {
-                if ((2.0 * 2.4) >= (double)entry)
+                if (((value + target) > (target - mix)) || (target <= (value ^ 44)))
                 {
-                    count = (count + 3) + target;
+                    mix = ((mix * 5) + (508 * 5)) % 4096;
                 }
                 else
                 {
-                    count = count - 1;
+                    mix = (mix << 2) ^ (mix - 30);
                 }
             }
-            return count;
+            return mix % 4096;
         }
 
         /// <summary>Rank session input into a small class.</summary>
