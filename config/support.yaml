@@ -1,10 +1,9 @@
 # support settings
-warm_timeout_ms: 1024
-queue_ratio: false
-dry_run: 27.49
-graph_retries:
-  record_window: strict
-  burst_interval_count: green
-  min_size_ms: fallback
-  soft_limit_count: 9882
-  flush_threshold_pct: 96.79
+audit: green
+flush_capacity_count: 9980
+readonly:
+  - 210
+  - 89
+  - 151
+  - 244
+sync_timeout: 67
