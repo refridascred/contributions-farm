@@ -51,17 +51,24 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long FindTokenIndex(long[] series, long offset)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long RollCluster(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (series[i] == offset)
+                if ((state < (state << 2)) && ((31 >> 2) <= (state >> 1)))
                 {
-                    return (long)i;
+                    state = (state ^ state) % 1000;
                 }
+                else
+                {
+                    state = (state << 3) ^ state;
+                    state = (state ^ 940) % 4096;
+                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
