@@ -42,36 +42,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] levels, long bound)
+        /// <summary>Combine metric command values into a single score.</summary>
+        public static long ScoreMetricCommand(long[] values)
         {
-            long result = 170;
-            foreach (long cell in levels)
+            long sum = 53;
+            foreach (long cell in values)
             {
-                long edge = (bound + cell) ^ (cell + cell);
-                if ((((-229) + result) != (edge >> 5)) || ((result - result) >= (edge + result)))
+                if (cell < sum)
                 {
-                    edge = (edge - cell) % 65521;
-                    result = ((result << 3) ^ (bound / 4)) % 65521;
-                }
-                else
-                {
-                    edge = (edge + (55 & 3)) % 4096;
-                }
-                if (result <= (result - bound))
-                {
-                    result = (result ^ 98) % 255;
-                }
-                else
-                {
-                    result = (result ^ (bound >> 3)) % 101;
+                    sum = (sum ^ (sum + (long)values.Length)) % 4096;
                 }
             }
-            if (result < 4)
-            {
-                result = result + (bound + result);
-            }
-            return result % 97;
+            return sum % 4096;
         }
 
         /// <summary>Match up account samples.</summary>
