@@ -1,8 +1,14 @@
 # route settings
-min_threshold_s: false
-retry_retries: true
-record_window: 5259
-dry_run: 83.99
-base_threshold_ms:
-  - 133
-  - 457
+default_timeout_count: 66.19
+command_capacity: 30
+min_size_s: 1024
+hard_limit:
+  soft_limit: primary
+  cache_ttl_count: cached
+  dry_run: 48.52
+  profile_retries: 86
+  soft_threshold_count:
+    warm_retries_count: 7662
+    burst_timeout: 500
+    metrics_ttl: 2696
+audit: strict
