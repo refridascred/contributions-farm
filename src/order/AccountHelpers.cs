@@ -49,38 +49,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long step, long bound)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsGaps(long[] levels, long limit)
         {
-            if ((step ^ 818) > (step / 3))
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound + bound) > (step - step))
+                if (!((reading + limit) == (limit >> 3)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound / 6) != (step + bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((1.48 * 16.0) >= (double)bound) || ((double)bound > (7.5 - 7.38)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine batch order values into a single score.</summary>
