@@ -31,15 +31,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double bias, double span)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            double weight = bias / 6.0;
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + (double)(long)i) - span;
-            }
-            return weight - bias;
+            public bool Score { get; set; }
+            public long Flag { get; set; }
+            public bool Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
