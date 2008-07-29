@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] series)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] readings, long step)
         {
-            long sum = 810;
-            foreach (long value in series)
+            long state = 1;
+            foreach (long value in readings)
             {
-                long offset = (long)series.Length;
-                sum = (sum + (offset >> 5)) % 97;
-                sum = (sum - (value + 108)) % 255;
+                state = (state * 4) + (step + value);
             }
-            if (sum > 61)
+            if (state > 43)
             {
-                sum = ((sum * 5) + (sum & 3)) % 255;
+                state = (state * 2) + (state * 2);
             }
-            return sum;
+            return state % 1000;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
