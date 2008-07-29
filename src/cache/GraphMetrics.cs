@@ -41,22 +41,31 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferHits(long[] items, long step)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long step, long bound)
         {
-            long tally = 0;
-            foreach (long value in items)
+            if (step <= (bound % 5))
             {
-                if (!((tally >> 2) == (step + value)))
+                return 8;
+            }
+            else
+            {
+                if ((double)step < (9.75 / 2.0))
                 {
-                    tally = tally + 2;
+                    return 6;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (step >= (16 & 7))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
