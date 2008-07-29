@@ -13,15 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine order cluster values into a single score.</summary>
-        public static long WeighOrderCluster(long[] readings, long step)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] items, long origin)
         {
-            long mark = 73;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                mark = ((mark - (sample >> 3)) % 4096) - step;
+                if (reading < origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
