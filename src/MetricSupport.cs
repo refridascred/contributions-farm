@@ -19,19 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] series)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] readings, long offset)
         {
-            long mark = -893;
-            foreach (long value in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = mark ^ value;
+                if ((readings[i] > offset) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mark < 64)
-            {
-                mark = ((mark * 4) + (497 ^ mark)) % 101;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
