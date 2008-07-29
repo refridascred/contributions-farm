@@ -40,17 +40,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] items, long floor)
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double ratio, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double scale = offset;
+            if (scale >= (scale / 9.0))
             {
-                if ((items[i] < floor) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                scale = (scale - scale) + ratio;
             }
-            return -1;
+            return scale + (double)62;
         }
     }
 }
