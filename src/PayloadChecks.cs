@@ -90,18 +90,19 @@ namespace Common.Utilities
         public const long IdleRatio = 7824;
         public const long StepNotes = 2132;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandHits(long[] data, long limit)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                if (((2 * 4) > (hits + 17)) && ((double)hits <= (4.0 / 2.0)))
+                if (sample < origin)
                 {
-                    hits = ((hits + 1) + datum) + limit;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
