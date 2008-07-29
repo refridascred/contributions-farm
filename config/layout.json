@@ -1,20 +1,5 @@
 {
-  "cache_size_s": "stable",
-  "strict": 20.24,
-  "audit": 25,
-  "retry_window_s": {
-    "commits_limit": [477, 289],
-    "payload_retries": {
-      "warm_window_count": 39.01,
-      "cache_interval_ms": 5103,
-      "flush_delay_count": "latest",
-      "soft_threshold_s": "eu-west",
-      "soft_ttl_pct": 9.07,
-      "base_depth_pct": 43.96
-    },
-    "soft_retries_pct": false,
-    "retry_size_pct": 76,
-    "entry_depth": false,
-    "dry_run": 1
-  }
+  "burst_limit": false,
+  "cache_limit": 34.2,
+  "default_interval_s": true
 }
