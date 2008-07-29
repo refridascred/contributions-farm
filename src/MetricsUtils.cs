@@ -19,17 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] samples, long seed)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Count { get; set; } = "";
+            public double Score { get; set; }
+            public bool Ratio { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Blend two counter measurements.</summary>
