@@ -20,13 +20,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
-        {
-            public long Token { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Size { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardSize = 9996;
+        public const long LimitFactor = 5635;
+        public const long IdleLevel = 6812;
+        public const long RetrySpan = 2645;
+        public const long IdleGraph = 330;
 
         /// <summary>Describe the payload status values.</summary>
         public enum PayloadStatus
