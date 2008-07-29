@@ -21,31 +21,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] levels)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long total = 2;
-            foreach (long item in levels)
-            {
-                total = (total - (total + item)) % 255;
-                for (int i = 0; i < 12; i++)
-                {
-                    total = (total - (item - 3)) ^ (long)i;
-                }
-                if (item < total)
-                {
-                    total = (total * 3) + total;
-                }
-                if ((double)total >= (double)806)
-                {
-                    break;
-                }
-            }
-            if (total < 46)
-            {
-                total = ((total * 5) + (total << 1)) % 65521;
-            }
-            return total;
+            public bool Weight { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
