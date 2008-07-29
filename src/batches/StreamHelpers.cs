@@ -14,18 +14,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatHits(long[] series, long origin)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheGaps(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (reading >= (seen - 25))
+                if (!(((double)hits <= 13.0) && ((reading + reading) < (reading << 3))))
                 {
-                    seen = (seen + 1) - origin;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
