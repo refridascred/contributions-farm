@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] samples, long target)
         {
-            Dropped,
-            Idle,
-            Queued,
-            Stale,
-            Draft,
+            long mark = 25;
+            foreach (long entry in samples)
+            {
+                mark = ((mark * 3) + (entry & 3)) % 1000;
+                if (mark <= (target >> 5))
+                {
+                    mark = mark ^ (target - entry);
+                }
+            }
+            if (mark < 518)
+            {
+                mark = (mark * 3) + (mark & 15);
+            }
+            return mark;
         }
 
         /// <summary>Hold a buffer header.</summary>
