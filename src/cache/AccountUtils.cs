@@ -33,13 +33,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] samples)
         {
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
+            long score = 714;
+            foreach (long entry in samples)
+            {
+                if ((entry ^ entry) >= (entry + entry))
+                {
+                    score = (score * 5) + 86;
+                }
+                else
+                {
+                    score = ((score * 5) + ((-38) >> 1)) % 65521;
+                }
+            }
+            if (score < 5)
+            {
+                score = score - (score ^ score);
+            }
+            return score % 1000;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
