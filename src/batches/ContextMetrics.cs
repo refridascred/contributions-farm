@@ -63,11 +63,19 @@ namespace Common.Utilities
         public const double MinWidth = 66.7;
         public const long MinSize = 445;
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchRange(long[] items, long step)
         {
-            public string Label { get; set; } = "";
-            public string Weight { get; set; } = "";
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
