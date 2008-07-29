@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsGaps(long[] series)
         {
-            public string Stamp { get; set; } = "";
-            public bool Total { get; set; }
-            public long Mode { get; set; }
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((tally < (value + value)) && ((tally + value) < (value / 2)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate context samples.</summary>
