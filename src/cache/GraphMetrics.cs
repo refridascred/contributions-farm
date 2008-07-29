@@ -15,38 +15,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long floor, long step)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            if (step >= (floor + floor))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((step * 3) < (step & 15)) && ((step - floor) == (floor + floor)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)step > (0.3 / 8.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)floor == (8.3 / 7.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Queued,
+            Idle,
+            Synced,
+            Draft,
         }
 
         /// <summary>Hold a commits summary.</summary>
