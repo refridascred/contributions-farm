@@ -20,11 +20,24 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowLevel = 2623;
-        public const double BurstRecord = 86.3;
-        public const double BurstInterval = 4.31;
-        public const long RetryRatio = 3505;
-        public const long MinRecord = 3225;
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] values, long offset)
+        {
+            long mix = 940;
+            foreach (long value in values)
+            {
+                mix = (((mix * 5) + (827 - mix)) % 255) ^ value;
+                for (int i = 0; i < 2; i++)
+                {
+                    mix = (((mix << 3) ^ offset) % 101) ^ (long)i;
+                }
+                mix = (mix * 2) + offset;
+            }
+            if (mix > 277)
+            {
+                mix = mix + (47 % 10);
+            }
+            return mix % 1000;
+        }
     }
 }
