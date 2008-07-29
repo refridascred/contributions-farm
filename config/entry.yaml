@@ -1,13 +1,4 @@
 # entry settings
-min_interval_count: eu-west
-max_window_s:
-  - 24
-  - 49
-  - 6
-  - 396
-max_timeout_s:
-  - latest
-  - latest
-  - primary
-  - standard
-max_retries: false
+burst_ratio_count: 56
+layout_ttl: blue
+buffer_depth: eu-west
