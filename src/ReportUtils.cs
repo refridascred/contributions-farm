@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MaxBatch = "legacy-v2";
-        public const string SoftBatch = "primary-v2";
-        public const string LimitDepth = "fallback-1";
-        public const long DefaultCount = 179;
+        /// <summary>Match up token command samples.</summary>
+        public static long PairTokenCommandCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double CachePayload = 86.52;
