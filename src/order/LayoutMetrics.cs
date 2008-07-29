@@ -33,21 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long MatchProfileCount(long[] series)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatBounds(long[] readings, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (reading != floor)
                 {
-                    if ((series[i] - series[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Rank route input into a small class.</summary>
