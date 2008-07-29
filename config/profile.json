@@ -1,13 +1,21 @@
 {
-  "warm_timeout": "blue",
-  "max_limit_ms": "fallback",
-  "persist": "stable",
-  "hard_threshold_count": 500,
-  "warm_ttl_s": {
-    "sync_delay_pct": "local",
-    "queue_delay": false,
-    "metric_size": ["primary", "latest", "stable"],
-    "counter_delay": [362, 83, 266, 39]
+  "command_window": {
+    "idle_timeout": {
+      "support_capacity": [188, 444, 305],
+      "retry_retries": [192, 328],
+      "cache_ttl_s": "legacy",
+      "min_ratio": false,
+      "stream_delay": true
+    },
+    "readonly": 97,
+    "cache_threshold_s": "local",
+    "record_capacity": 36,
+    "channel_timeout": 50.07,
+    "audit": 30
   },
-  "account_threshold": "green"
+  "cache_interval": 70.98,
+  "soft_size": "staging",
+  "cache_timeout": "green",
+  "base_limit": 1166,
+  "burst_size": 270
 }
