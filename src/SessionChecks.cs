@@ -34,17 +34,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a batches context reading by value.</summary>
-        public static long FindBatchesContextIndex(long[] readings, long seed)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long origin, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long slot = origin ^ bound;
+            if ((origin + 265) > (origin ^ 7))
             {
-                if (readings[i] >= seed)
+                return 7;
+            }
+            else
+            {
+                if (((162 + bound) != (bound ^ slot)) || ((0.87 / 4.0) < (7.15 * 15.0)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)origin != (18.0 / 4.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
