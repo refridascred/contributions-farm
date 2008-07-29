@@ -29,17 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] samples, long floor)
+        /// <summary>Audit commits graph readings against a rule.</summary>
+        public static long TallyCommitsGraphOutliers(long[] data, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (samples[i] >= floor)
+                if (!(((count + (long)data.Length) == (count - item)) && ((item & 31) <= (step >> 5))))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
