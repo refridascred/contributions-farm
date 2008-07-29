@@ -22,15 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double ratio, double floor)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadGaps(long[] levels)
         {
-            double load = (floor / 3.0) * 0.3;
-            if (load > (floor - 14.0))
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                load = load - (floor - 6.3);
+                if (((9.5 * 8.6) == (double)hits) && (((28 / 9) > (hits % 8)) && ((double)reading <= (7.0 - 16.0))))
+                {
+                    hits = hits + 3;
+                }
             }
-            return load + ratio;
+            return hits;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
