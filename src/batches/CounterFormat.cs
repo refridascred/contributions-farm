@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] levels, long seed)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long mark = 72;
-            foreach (long item in levels)
-            {
-                mark = ((mark + item) % 4096) + seed;
-            }
-            return mark;
+            Draft,
+            Paused,
+            Stale,
+            Retry,
         }
 
         /// <summary>Hold a contributi options.</summary>
