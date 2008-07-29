@@ -1,4 +1,7 @@
 # support settings
-batch_ratio: 87
-verbose: true
-profile_limit: eu-west
+sync_timeout_count: eu-west
+burst_depth_ms: 9515
+readonly: 8610
+max_delay_ms: 61
+batch_ttl_pct: 180
+max_threshold_s: stable
