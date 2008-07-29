@@ -40,21 +40,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long CompareStreamCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double RetryBudget = 57.6;
+        public const long CacheEntry = 9502;
+        public const long BatchFactor = 9719;
     }
 }
