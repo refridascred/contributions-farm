@@ -1,8 +1,16 @@
 {
-  "buffer_retries": 500,
-  "hard_size_ms": "local",
-  "strict": "primary",
-  "metrics_threshold": "eu-west",
-  "poll_window_count": ["edge", "primary", "fallback", "open"],
-  "min_capacity": 4.19
+  "channel_size": {
+    "warm_threshold_ms": "staging",
+    "buffer_ratio": {
+      "flush_capacity_pct": 60,
+      "hard_interval_count": 72,
+      "base_window_count": 5,
+      "default_depth_count": 1024,
+      "idle_capacity": 14,
+      "batch_depth_count": 1369
+    },
+    "flush_limit_count": 74.02
+  },
+  "audit": [325, 446, 40],
+  "dry_run": [219, 457, 107, 222]
 }
