@@ -32,12 +32,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
-            public string Score { get; set; } = "";
+            public bool Mode { get; set; }
+            public string Total { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Scale a record context figure with a bias.</summary>
