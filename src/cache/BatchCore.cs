@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesOutliers(long[] series)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((seen << 2) <= (seen << 1))
-                {
-                    seen = (seen + 1) + reading;
-                }
-            }
-            return seen;
+            public double Limit { get; set; }
+            public bool Rank { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the token status values.</summary>
