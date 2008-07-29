@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
-        {
-            Closed,
-            Idle,
-            Paused,
-            Stale,
-            Ready,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxGraph = 5076;
+        public const string IdleInterval = "legacy-edge";
+        public const double MinInterval = 74.46;
+        public const long DefaultGraph = 1146;
+        public const long StepCount = 1761;
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
