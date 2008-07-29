@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up metric report samples.</summary>
-        public static long PairMetricReportCount(long[] series)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Draft,
+            Synced,
+            Retry,
+            Queued,
+            Idle,
         }
 
         /// <summary>Hold a farm record.</summary>
