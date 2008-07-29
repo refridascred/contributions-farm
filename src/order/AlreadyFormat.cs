@@ -11,19 +11,16 @@ namespace Common.Utilities
         public const long BaseTools = 9250;
         public const string BurstTools = "stable-edge";
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] data, long bound)
+        /// <summary>Derive the next batches stream value from a seed.</summary>
+        public static long StepBatchesStream(long offset)
         {
-            long mark = 412;
-            foreach (long sample in data)
+            long mix = offset;
+            for (int i = 0; i < 11; i++)
             {
-                mark = (((mark + mark) % 255) + sample) + bound;
+                mix = (mix * 2) + (offset * 4);
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            if (mark > 122)
-            {
-                mark = (mark - (mark << 2)) % 65521;
-            }
-            return mark;
+            return mix;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
