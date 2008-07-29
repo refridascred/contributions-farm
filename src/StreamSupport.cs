@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 2406;
         public const string CacheDepth = "primary-v2";
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterMatches(long[] data)
         {
-            public long Ratio { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Weight { get; set; }
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((8.98 + 3.5) == (double)matches)
+                {
+                    matches = (matches + 2) + value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next farm value.</summary>
