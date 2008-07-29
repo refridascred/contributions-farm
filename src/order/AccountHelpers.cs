@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueGaps(long[] readings, long step)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long limit)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long acc = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((step << 3) >= (tally << 1))
-                {
-                    tally = (tally + 1) + item;
-                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Scale a filter token figure with a bias.</summary>
