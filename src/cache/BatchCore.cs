@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] samples, long origin)
-        {
-            long mix = 40;
-            foreach (long value in samples)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    mix = ((mix - (mix - origin)) % 1000) ^ (long)i;
-                }
-                if (mix >= value)
-                {
-                    mix = ((mix * 3) + (787 << 1)) % 1000;
-                }
-                if ((1.2 + 13.0) == (double)origin)
-                {
-                    break;
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string LimitBudget = "fallback";
+        public const double LimitBatches = 65.86;
+        public const string LimitScore = "strict-edge";
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long GradeProfile(long origin, long target)
