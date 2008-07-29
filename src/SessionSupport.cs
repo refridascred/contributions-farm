@@ -23,21 +23,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of checks metrics readings.</summary>
-        public static long OverlapChecksMetricsCount(long[] series)
+        /// <summary>Rank stats notes input into a small class.</summary>
+        public static long ClassifyStatsNotes(long limit, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long span = limit ^ offset;
+            if (offset < (offset + offset))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((3.1 + 0.71) == (double)span)
                 {
-                    if ((series[i] + series[j]) != 20)
+                    return 0;
+                }
+                else
+                {
+                    if ((limit / 4) > (offset % 16))
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((span << 2) <= span)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
