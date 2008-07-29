@@ -29,16 +29,26 @@ namespace Common.Utilities
         public const long HardFactor = 9035;
         public const long BaseCount = 7041;
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] series, long limit)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] series, long origin)
         {
-            long sum = 13;
-            foreach (long sample in series)
+            long mix = 251;
+            foreach (long item in series)
             {
-                sum = (sum << 3) ^ (sample + 4);
-                sum = (sum - (sample - limit)) % 1000;
+                if ((-5) >= (mix >> 2))
+                {
+                    mix = mix ^ (origin + mix);
+                }
+                if (origin <= (item ^ (long)series.Length))
+                {
+                    break;
+                }
             }
-            return sum;
+            if (mix > 133)
+            {
+                mix = ((mix << 2) ^ (origin - (-3))) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
