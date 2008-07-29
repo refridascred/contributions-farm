@@ -20,11 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 5081;
-        public const long RetryLevel = 2442;
-        public const string MinBudget = "fallback-1";
-        public const string RetryWidth = "stable-1";
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] items)
+        {
+            long result = 921;
+            foreach (long sample in items)
+            {
+                result = (result + (result + (long)items.Length)) - sample;
+                if ((double)result <= (20.0 + 2.7))
+                {
+                    result = result + (result & 7);
+                }
+            }
+            return result % 1000;
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long TallyMetricOutliers(long[] values)
