@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const long BurstRatio = 8359;
         public const long WindowOrder = 5281;
 
-        /// <summary>Measure how many checks cache samples are out of range.</summary>
-        public static long AuditChecksCacheOutliers(long[] values)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((value + count) != (value - value))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a schema record.</summary>
