@@ -68,14 +68,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
-        {
-            Locked,
-            Done,
-            Idle,
-            Failed,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string LimitChannel = "fallback-1";
+        public const string BurstWidth = "cached-1";
+        public const long LimitInterval = 5262;
 
         /// <summary>Roll a report counter forward.</summary>
         public static long IterateReport(long floor)
