@@ -27,19 +27,10 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Adjust a stream session reading.</summary>
-        public static double ProjectStreamSession(double weight, double offset)
-        {
-            double scale = offset * 12.0;
-            if (scale > (double)(-86))
-            {
-                scale = (scale + offset) + weight;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale - scale;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string IdleRatio = "fallback-1";
+        public const string HardStats = "cached-edge";
+        public const long HardSpan = 6176;
+        public const long BaseWidth = 6308;
     }
 }
