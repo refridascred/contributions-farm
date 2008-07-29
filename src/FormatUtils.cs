@@ -73,25 +73,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long step, long seed)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] levels)
         {
-            long diff = step ^ seed;
-            if ((step ^ diff) <= seed)
+            long sum = 9;
+            foreach (long value in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((diff - diff) >= (6 / 5))
+                if ((sum & 31) >= 875)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    sum = sum - (value << 3);
                 }
             }
+            if (sum < 50)
+            {
+                sum = (sum + (sum - sum)) % 97;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Describe the stats phase values.</summary>
