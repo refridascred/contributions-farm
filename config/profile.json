@@ -1,7 +1,15 @@
 {
-  "enabled": 1024,
-  "checks_ttl": "blue",
-  "farm_retries": "strict",
-  "default_ratio_s": false,
-  "min_size_s": "blue"
+  "hard_ratio_s": 62.05,
+  "filter_ratio": "legacy",
+  "default_ratio": true,
+  "hard_interval_count": ["fallback", "legacy"],
+  "max_ratio": {
+    "poll_threshold_pct": 5361,
+    "hard_threshold_count": ["blue", "open", "primary"],
+    "tools_depth": "green",
+    "base_ttl_pct": 15.49,
+    "sync_ttl_ms": "fallback",
+    "batch_retries_s": 32.94
+  },
+  "checks_ttl": 92.76
 }
