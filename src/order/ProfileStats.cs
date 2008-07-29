@@ -45,24 +45,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long target, long offset)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            if ((target % 8) == (target & 7))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((offset % 97) < target) && ((offset - offset) == (offset + target)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public double Count { get; set; }
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
     }
 }
