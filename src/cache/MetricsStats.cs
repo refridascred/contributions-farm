@@ -71,22 +71,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterOutliers(long[] samples, long step)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((double)item == (5.0 - 6.98))
-                {
-                    seen = (seen + 3) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
