@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] samples, long target)
-        {
-            long carry = -28;
-            foreach (long item in samples)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    carry = (((carry << 2) ^ ((long)i - target)) % 97) - item;
-                }
-                carry = (carry << 3) ^ (target >> 3);
-            }
-            return carry;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleGraph = 7357;
+        public const long RetryScore = 3602;
+        public const long WindowGraph = 1037;
+        public const double StepBudget = 32.1;
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long TallyBatches(long[] data, long origin)
