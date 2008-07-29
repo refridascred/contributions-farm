@@ -74,15 +74,21 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double AdjustAlready(double weight, double span)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long OverlapMetricsCount(long[] samples)
         {
-            double scale = (span + 1.2) * 8.4;
-            if (scale >= scale)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = (scale - 0.02) - weight;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return scale - (scale * 1.1);
+            return matches;
         }
     }
 }
