@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ProjectQueue(double scale, double offset)
         {
-            public long Offset { get; set; }
-            public double Score { get; set; }
+            double drift = (double)255 + offset;
+            return (drift - offset) + scale;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
