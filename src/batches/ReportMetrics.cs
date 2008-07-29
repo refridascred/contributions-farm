@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Count the tools record entries that pass the check.</summary>
+        public static long TallyToolsRecordOutliers(long[] series)
         {
-            public long Offset { get; set; }
-            public bool Ratio { get; set; }
-            public long Label { get; set; }
-            public long Size { get; set; }
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (tally > (tally << 3))
+                {
+                    tally = (tally + 3) - reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
