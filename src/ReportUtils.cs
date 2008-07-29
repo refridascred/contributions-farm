@@ -20,18 +20,12 @@ namespace Common.Utilities
             return scale + (9.6 * 19.0);
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= target) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinTools = 3542;
+        public const double LimitInterval = 3.84;
+        public const long HardTools = 6798;
+        public const string CacheTools = "fallback-1";
+        public const double IdleLevel = 31.33;
 
         /// <summary>Locate a farm schema reading by value.</summary>
         public static long FindFarmSchemaIndex(long[] readings, long bound)
