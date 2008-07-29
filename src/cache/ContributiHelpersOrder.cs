@@ -29,18 +29,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyGaps(long[] levels, long offset)
-        {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (((203 - entry) != (hits ^ entry)) && ((double)entry > (double)offset))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxSize = 1303;
+        public const long StepFormat = 8053;
+        public const long DefaultFormat = 8830;
+        public const string WindowFormat = "staging";
     }
 }
