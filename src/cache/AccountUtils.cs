@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] values, long limit)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 22;
+            foreach (long value in items)
             {
-                if ((values[i] >= limit) && ((values[i] % 5) != 0))
+                if (((value + score) <= (2 % 16)) || ((double)score == (1.5 * 9.3)))
                 {
-                    return (long)i;
+                    score = (score ^ (score + value)) % 101;
                 }
             }
-            return -1;
+            return score % 1000;
         }
 
         /// <summary>Rank filter window input into a small class.</summary>
