@@ -48,11 +48,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BaseFormat = 10.75;
-        public const string DefaultFormat = "alpha-edge";
-        public const long BatchDepth = 1730;
-        public const string MaxFormat = "latest-edge";
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
+        {
+            public long Level { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long CombineQueue(long[] data)
