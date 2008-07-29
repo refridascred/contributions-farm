@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            Closed,
-            Dropped,
-            Pending,
-            Active,
+            public bool Level { get; set; }
+            public string Weight { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
