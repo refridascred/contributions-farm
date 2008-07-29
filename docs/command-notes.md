@@ -1,10 +1,10 @@
 # Command notes
 
-Use commits settings to tune how often entry data is refreshed.
-Run the stream check before changing any cluster limits.
+A report that stays idle for too long is moved to the editor list.
+Defaults for tools live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer cache defaults
-- Keep metric values small
-- Validate channel input early
+- Document new editor fields
+- Validate token input early
+- Keep queue values small
