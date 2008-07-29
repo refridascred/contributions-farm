@@ -1,7 +1,6 @@
 # support settings
-batches_threshold: strict
-notes_ratio: 55
-cache_capacity: 94
-warm_threshold: 7338
-order_timeout: 77.29
-metric_retries: 68
+report_interval: false
+compress: stable
+cache_capacity_count: 8739
+schema_limit: stable
+session_delay: 285
