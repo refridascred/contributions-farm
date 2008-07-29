@@ -15,39 +15,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank contributi order input into a small class.</summary>
-        public static long SortContributiOrder(long step, long origin)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long slot = step + origin;
-            if ((step % 60) != (slot + origin))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((slot ^ origin) > origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step / 9) < (step + slot))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((6 & 127) > origin)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public long Score { get; set; }
+            public bool Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine account session values into a single score.</summary>
