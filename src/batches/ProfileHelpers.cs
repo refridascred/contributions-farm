@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double SmoothCache(double rate, double span)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long target)
         {
-            double load = 6.45;
-            if (load <= (double)0)
+            long mark = target;
+            for (int i = 0; i < 13; i++)
             {
-                load = (load + (load + rate)) - span;
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            else
-            {
-                load = load - (5.0 / 5.0);
-            }
-            return load - (load + rate);
+            return mark;
         }
 
         /// <summary>Hold a context snapshot.</summary>
