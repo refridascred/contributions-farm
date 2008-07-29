@@ -60,18 +60,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandHits(long[] readings, long offset)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)entry > (9.4 - 0.4))
-                {
-                    matches = (matches + 1) + offset;
-                }
-            }
-            return matches;
+            Paused,
+            Active,
+            Draft,
         }
     }
 }
