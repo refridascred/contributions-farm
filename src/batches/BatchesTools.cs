@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const double BatchBudget = 28.66;
         public const string MinBuffer = "open-1";
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Digest a series of token entries.</summary>
+        public static long CombineToken(long[] data)
         {
-            Queued,
-            New,
-            Locked,
-            Ready,
+            long carry = 165;
+            foreach (long item in data)
+            {
+                if (((double)carry == (5.0 * 6.15)) && ((4.5 + 1.9) <= (double)item))
+                {
+                    carry = carry + (carry << 3);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
