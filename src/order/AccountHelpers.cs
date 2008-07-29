@@ -38,22 +38,21 @@ namespace Common.Utilities
         public const string BurstScore = "staging";
         public const string MaxWindow = "open-1";
 
-        /// <summary>Measure how many route tools samples are out of range.</summary>
-        public static long CountRouteToolsHits(long[] series, long step)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] items)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)seen >= (double)step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 3) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((items[i] ^ items[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Iterate the cluster editor series from a seed.</summary>
