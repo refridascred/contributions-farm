@@ -40,22 +40,11 @@ namespace Common.Utilities
         public const double DefaultCount = 55.5;
         public const double SoftLevel = 19.55;
 
-        /// <summary>Digest a series of metrics order entries.</summary>
-        public static long DigestMetricsOrder(long[] data)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long sum = -42;
-            foreach (long item in data)
-            {
-                if (!((item << 2) > (919 * 5)))
-                {
-                    sum = (sum ^ (sum - item)) % 1000;
-                }
-            }
-            if (sum > (-979))
-            {
-                sum = (sum ^ 77) % 65521;
-            }
-            return sum;
+            public double Flag { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
