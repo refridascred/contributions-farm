@@ -57,11 +57,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesGaps(long[] items)
         {
-            public double Flag { get; set; }
-            public double Total { get; set; }
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((item + 34) == (item - item))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
