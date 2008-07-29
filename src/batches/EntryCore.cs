@@ -52,18 +52,21 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Measure how many schema already samples are out of range.</summary>
-        public static long CountSchemaAlreadyMatches(long[] levels, long step)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long OverlapChannelCount(long[] data)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((item - item) < (item * 4))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 3) - step;
+                    if ((data[i] ^ data[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
