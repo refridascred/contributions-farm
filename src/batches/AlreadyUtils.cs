@@ -45,22 +45,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsGaps(long[] readings, long target)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((((5.04 - 7.0) < (6.4 * 16.0)) || (target > (sample ^ target))) || (hits < (target & 15)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a schema stats.</summary>
