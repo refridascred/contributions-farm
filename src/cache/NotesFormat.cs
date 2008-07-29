@@ -27,17 +27,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] levels, long floor)
+        /// <summary>Measure how many already queue samples are out of range.</summary>
+        public static long AuditAlreadyQueueHits(long[] items, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((levels[i] <= floor) && ((levels[i] % 5) == 0))
+                if ((matches ^ seed) <= (matches + reading))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
