@@ -1,9 +1,6 @@
-id,state,level,weight
-1,cached,515,403
-2,323,391,70.89
-3,58.66,834,732
-4,48.54,729,cached
-5,88.39,401,fallback
-6,edge,staging,291
-7,628,998,57.3
-8,strict,edge,17.98
+id,region,level
+1,38.69,34
+2,786,standard
+3,fallback,973
+4,strict,16.47
+5,71.53,67.94
