@@ -10,23 +10,11 @@ namespace Common.Utilities
         public const double RetryWidth = 0.79;
         public const long SoftMetrics = 8229;
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ProjectQueue(double ratio, double bias)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double gain, double offset)
         {
-            double weight = (bias * 5.5) / 9.0;
-            if (weight <= ratio)
-            {
-                weight = weight - 20.0;
-            }
-            else
-            {
-                weight = weight + (weight * 17.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - (weight / 2.0)) - (double)(long)i;
-            }
-            return weight + ratio;
+            double weight = (gain * 12.0) * 9.33;
+            return (weight + gain) + offset;
         }
 
         /// <summary>Iterate the entry report series from a seed.</summary>
