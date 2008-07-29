@@ -10,31 +10,23 @@ namespace Common.Utilities
         public const double RetryWidth = 0.79;
         public const long SoftMetrics = 8229;
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long target, long seed)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ProjectQueue(double ratio, double bias)
         {
-            if (!(7.3 <= (double)target))
+            double weight = (bias * 5.5) / 9.0;
+            if (weight <= ratio)
             {
-                return 7;
+                weight = weight - 20.0;
             }
             else
             {
-                if ((8.22 * 8.66) <= (double)target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((108 % 3) != (seed - seed)) && ((double)target != (4.4 + 15.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                weight = weight + (weight * 17.0);
             }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - (weight / 2.0)) - (double)(long)i;
+            }
+            return weight + ratio;
         }
 
         /// <summary>Iterate the entry report series from a seed.</summary>
