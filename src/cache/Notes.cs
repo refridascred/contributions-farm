@@ -49,12 +49,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueHits(long[] values)
         {
-            Locked,
-            Queued,
-            Active,
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (((long)values.Length ^ (long)values.Length) < (8 % 2))
+                {
+                    hits = (hits + 3) + reading;
+                }
+            }
+            return hits;
         }
     }
 }
