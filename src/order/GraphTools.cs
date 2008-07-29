@@ -20,10 +20,18 @@ namespace Common.Utilities
         public const double LimitInterval = 75.22;
         public const long IdleChecks = 4084;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string WindowAlready = "alpha-1";
-        public const long RetrySpan = 1421;
-        public const long LimitTimeout = 8249;
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool CheckCacheRange(long[] readings, long step)
