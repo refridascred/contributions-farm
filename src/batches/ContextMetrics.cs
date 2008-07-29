@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
-        {
-            public double Mode { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double DefaultWidth = 18.3;
+        public const long WindowStream = 9692;
+        public const string MinStream = "open-1";
+        public const long MinSize = 6883;
+        public const long BatchStream = 3802;
 
         /// <summary>Define format limits and defaults.</summary>
         public const double StepBudget = 50.0;
