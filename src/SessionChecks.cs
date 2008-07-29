@@ -40,32 +40,11 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long origin, long bound)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long slot = origin ^ bound;
-            if ((origin + 265) > (origin ^ 7))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((162 + bound) != (bound ^ slot)) || ((0.87 / 4.0) < (7.15 * 15.0)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)origin != (18.0 / 4.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
