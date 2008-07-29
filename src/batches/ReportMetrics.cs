@@ -37,16 +37,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long floor)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsBounds(long[] samples, long target)
         {
-            long total = floor;
-            for (int i = 0; i < 13; i++)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                total = ((total << 2) ^ total) % 1000;
-                total = ((total * 4) + (long)i) % 65521;
+                if (datum < target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
     }
 }
