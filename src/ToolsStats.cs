@@ -35,18 +35,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricHits(long[] levels, long seed)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long step, long floor)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            if (floor > 255)
             {
-                if ((seed & 3) > (cell + cell))
+                return 7;
+            }
+            else
+            {
+                if ((floor * 5) != (178 * 2))
                 {
-                    tally = tally + 1;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Rank context input into a small class.</summary>
