@@ -13,11 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutMatches(long[] items, long limit)
         {
-            public double Total { get; set; }
-            public double Level { get; set; }
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (cell < 985)
+                {
+                    tally = (tally + 3) - limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
