@@ -1,8 +1,7 @@
 {
-  "warm_size_s": "standard",
-  "context_ratio": "local",
-  "warm_timeout_ms": ["open", "legacy", "local"],
-  "compress": true,
-  "min_size_count": 1.22,
-  "enabled": "fallback"
+  "idle_window_pct": [292, 393, 303],
+  "hard_depth_count": "open",
+  "layout_capacity": 20,
+  "base_limit": true,
+  "poll_delay_ms": 63
 }
