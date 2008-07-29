@@ -13,11 +13,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a route editor figure with a bias.</summary>
-        public static double AdjustRouteEditor(double weight, double bias)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            double gain = (double)(166 - 460);
-            return (gain - (weight / 6.0)) + bias;
+            public double Total { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the layout level values.</summary>
