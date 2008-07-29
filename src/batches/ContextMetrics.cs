@@ -12,31 +12,26 @@ namespace Common.Utilities
         public const long MinSize = 6883;
         public const long BatchStream = 3802;
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long origin, long step)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] values)
         {
-            if (((origin << 3) <= (step + step)) || (origin > (origin + 6)))
+            long state = -211;
+            foreach (long reading in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin << 2) != (step + origin))
+                if ((reading > (739 << 1)) && ((reading / 8) >= (74 & 15)))
                 {
-                    return 6;
+                    state = ((state << 3) ^ (state + state)) % 101;
                 }
                 else
                 {
-                    if (((double)step == (7.4 + 17.0)) || ((double)origin < (4.1 * 15.0)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    state = ((state << 3) ^ 59) % 1000;
+                }
+                if ((reading % 3) < (state + state))
+                {
+                    break;
                 }
             }
+            return state;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
