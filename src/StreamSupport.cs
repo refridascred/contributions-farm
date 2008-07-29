@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const long BatchRatio = 3539;
         public const long SoftLevel = 8600;
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] samples, long origin)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] items, long target)
         {
-            long carry = 39;
-            foreach (long item in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (((carry + carry) % 255) + item) + origin;
+                if ((items[i] <= target) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (carry > 755)
-            {
-                carry = (carry - carry) % 97;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the notes class values.</summary>
