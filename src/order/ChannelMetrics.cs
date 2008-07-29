@@ -20,13 +20,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long target, long seed)
         {
-            Dropped,
-            Ready,
-            Queued,
-            Closed,
+            if (!(7.3 <= (double)target))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((8.22 * 8.66) <= (double)target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((108 % 3) != (seed - seed)) && ((double)target != (4.4 + 15.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the entry report series from a seed.</summary>
