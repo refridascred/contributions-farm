@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionMatches(long[] values)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (((8.5 - 6.12) >= (double)item) || ((10.0 <= (double)item) && ((item * 5) > (910 / 4))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Draft,
+            Retry,
+            Queued,
+            Synced,
+            Pending,
         }
 
         /// <summary>Describe the support level values.</summary>
