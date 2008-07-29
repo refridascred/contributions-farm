@@ -64,13 +64,21 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] readings)
         {
-            public double Stamp { get; set; }
-            public double Level { get; set; }
-            public long Owner { get; set; }
-            public bool Count { get; set; }
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
