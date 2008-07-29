@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long offset)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksOutliers(long[] samples)
         {
-            long carry = offset;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                carry = ((carry * 4) + (long)i) % 65521;
+                if ((datum - hits) >= (hits & 31))
+                {
+                    hits = hits + 1;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
