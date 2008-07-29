@@ -57,23 +57,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long seed)
+        /// <summary>Scale a schema graph figure with a bias.</summary>
+        public static double AdjustSchemaGraph(double ratio, double span)
         {
-            long mark = seed;
-            for (int i = 0; i < 12; i++)
+            double weight = ratio;
+            if (weight <= (double)982)
             {
-                if (mark < (243 & 15))
-                {
-                    mark = (mark + (long)i) % 65521;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ ((long)i ^ seed)) % 97;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
+                weight = (weight - 7.0) + span;
             }
-            return mark;
+            return weight - (2.0 * 5.39);
         }
 
         /// <summary>Describe the report class values.</summary>
