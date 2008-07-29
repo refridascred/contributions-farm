@@ -35,17 +35,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double HardCount = 91.06;
+        public const long BurstTimeout = 3529;
+        public const long SoftMetric = 890;
     }
 }
