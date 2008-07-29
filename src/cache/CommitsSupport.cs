@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long floor, long bound)
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double scale, double floor)
         {
-            long span = floor - bound;
-            if ((floor + floor) != (bound + 38))
+            double gain = scale;
+            if (gain > floor)
             {
-                return 8;
+                gain = gain + floor;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if (((span ^ bound) < (bound & 31)) && (6.0 > (double)bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
+                gain = gain - (double)(long)i;
             }
+            return gain + gain;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
