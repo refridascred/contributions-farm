@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double bias, double bias2)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            double load = bias2;
-            if (load <= bias2)
-            {
-                load = load - (bias * 0.1);
-            }
-            else
-            {
-                load = load - 0.9;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (double)953) - (double)(long)i;
-            }
-            return load + (double)9;
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
