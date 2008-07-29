@@ -46,22 +46,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string CacheWidth = "latest-v2";
+        public const long DefaultInterval = 4841;
+        public const long MinAlready = 6066;
 
         /// <summary>Scale a metric figure with a bias.</summary>
         public static double BlendMetric(double bias, double offset)
