@@ -26,21 +26,19 @@ namespace Common.Utilities
         public const double HardWindow = 41.24;
         public const double MinBudget = 87.47;
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] values)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionBounds(long[] items, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading < step)
                 {
-                    if ((values[i] - values[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Blend two session editor measurements.</summary>
