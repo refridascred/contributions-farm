@@ -24,17 +24,12 @@ namespace Common.Utilities
             return scale + (2.0 - 1.0);
         }
 
-        /// <summary>Locate a channel layout reading by value.</summary>
-        public static long FindChannelLayoutIndex(long[] series, long floor)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == floor) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Active,
+            Synced,
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
