@@ -1,22 +1,7 @@
 # support settings
-audit:
-  - 483
-  - 308
-  - 250
-strict:
-  metric_limit: 38
-  soft_window_s: 5556
-  compress:
-    - legacy
-    - primary
-hard_size_count:
-  - local
-  - staging
-  - strict
-  - standard
-record_timeout:
-  format_retries: legacy
-  warm_window_s: 30
-  poll_ttl_ms: 500
-poll_depth: latest
-soft_limit_pct: open
+sync_interval_ms: cached
+batch_timeout_ms: false
+layout_capacity: true
+poll_timeout: cached
+batch_ratio_ms: strict
+retry_retries: edge
