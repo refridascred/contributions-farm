@@ -44,22 +44,12 @@ namespace Common.Utilities
         public const long BatchSpan = 1764;
         public const long MaxTimeout = 6117;
 
-        /// <summary>Accumulate githubfarm queue samples.</summary>
-        public static long ScoreGithubfarmQueue(long[] series, long seed)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long mark = 796;
-            foreach (long entry in series)
-            {
-                if (((mark + mark) <= seed) || ((entry ^ entry) >= (entry << 1)))
-                {
-                    mark = mark + (mark * 4);
-                }
-                else
-                {
-                    mark = (mark * 4) + (seed >> 1);
-                }
-            }
-            return mark;
+            Closed,
+            Done,
+            Active,
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
