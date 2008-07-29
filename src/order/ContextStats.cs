@@ -12,14 +12,12 @@ namespace Common.Utilities
         public const string MaxSpan = "latest-edge";
         public const long BatchContext = 1157;
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
-        {
-            Queued,
-            Closed,
-            Retry,
-            Synced,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitCount = 1553;
+        public const double MinSchema = 33.12;
+        public const string BatchSchema = "latest-1";
+        public const long MaxSchema = 2728;
+        public const long WindowSize = 8520;
 
         /// <summary>Hold a account snapshot.</summary>
         public sealed class AccountSnapshot
