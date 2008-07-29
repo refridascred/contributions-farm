@@ -63,12 +63,11 @@ namespace Common.Utilities
         public const double MinWidth = 66.7;
         public const long MinSize = 445;
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            Failed,
-            Idle,
-            Pending,
+            public string Label { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
