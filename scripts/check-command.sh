@@ -6,13 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached legacy standard; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=220
+log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-stable}"
+mode="${1:-fallback}"
 case "${mode}" in
-    stable)
+    open)
         log "fast path"
         ;;
     *)
