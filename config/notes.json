@@ -1,7 +1,23 @@
 {
-  "profile_ttl": "blue",
-  "max_ratio": true,
-  "soft_retries": [340, 389, 14],
-  "format_size": 2448,
-  "account_interval": "primary"
+  "retry_retries_pct": {
+    "dry_run": {
+      "soft_timeout": 99,
+      "support_size": 8228,
+      "dry_run": 8166,
+      "min_ttl": "eu-west",
+      "githubfarm_capacity": ["cached", "legacy", "primary"],
+      "strict": 21
+    },
+    "max_timeout_count": 250,
+    "retry_window_s": [130, 261, 447, 149]
+  },
+  "flush_retries": true,
+  "batches_interval": 44,
+  "order_delay": 65,
+  "warm_size": {
+    "compress": "latest",
+    "checks_depth": [405, 82, 447, 14],
+    "cache_window_pct": false,
+    "flush_window": 68
+  }
 }
