@@ -31,13 +31,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
-        {
-            Closed,
-            Dropped,
-            Paused,
-            Pending,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double CacheProfile = 9.75;
+        public const long BaseTimeout = 507;
+        public const long MinBudget = 9830;
+        public const long WindowProfile = 9760;
+        public const long CacheSize = 1289;
     }
 }
