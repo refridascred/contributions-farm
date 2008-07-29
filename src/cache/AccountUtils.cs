@@ -47,20 +47,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the entry githubfarm series from a seed.</summary>
-        public static long DeriveEntryGithubfarm(long bound)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long mix = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                if (((double)bound <= 2.43) && ((long)i >= (bound / 9)))
-                {
-                    mix = mix + (mix >> 3);
-                    break;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            Paused,
+            Retry,
+            Locked,
+            Idle,
         }
     }
 }
