@@ -30,22 +30,19 @@ namespace Common.Utilities
             return load + ratio;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricHits(long[] values)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadLimits(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if ((count + 2) >= item)
+                if (entry <= origin)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
