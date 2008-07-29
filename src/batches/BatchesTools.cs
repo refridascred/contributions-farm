@@ -29,31 +29,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long limit, long origin)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheGaps(long[] data, long seed)
         {
-            if (origin <= (origin + 649))
+            long seen = 0;
+            foreach (long entry in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((limit + origin) != (limit & 7)))
+                if ((55 - seen) > (seen >> 4))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin & 255) != (limit >> 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    seen = ((seen + 2) + entry) - seed;
                 }
             }
+            return seen;
         }
     }
 }
