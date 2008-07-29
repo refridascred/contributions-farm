@@ -13,13 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Count the filter order entries that pass the check.</summary>
+        public static long TallyFilterOrderGaps(long[] values, long floor)
         {
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (2 >= (cell << 2))
+                {
+                    tally = (tally + 2) + floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine support record values into a single score.</summary>
