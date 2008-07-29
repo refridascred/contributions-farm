@@ -56,12 +56,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Audit counter context readings against a rule.</summary>
+        public static long MeasureCounterContextGaps(long[] series, long offset)
         {
-            Retry,
-            Locked,
-            Idle,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (((count > ((long)series.Length - offset)) && ((count & 1) > count)) || (((count ^ cell) != (74 << 2)) && (420 >= (count + 7))))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
