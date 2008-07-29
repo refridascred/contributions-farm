@@ -49,39 +49,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long limit, long bound)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] data, long floor)
         {
-            long next = limit - bound;
-            if ((bound + bound) >= (7 / 2))
+            long anchor = 22;
+            foreach (long cell in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (next >= (-657))
+                if (6.51 < (double)floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!(2 < (next + next)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((7.7 / 2.0) > (double)limit)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    anchor = ((anchor * 2) + (605 + anchor)) - cell;
                 }
             }
+            if (anchor < 6)
+            {
+                anchor = (anchor + (9 ^ anchor)) % 97;
+            }
+            return anchor;
         }
     }
 }
