@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next payload window value.</summary>
-        public static double SmoothPayloadWindow(double gain, double span)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            double drift = (double)((-46) >> 4);
-            return ((drift + drift) + gain) + span;
+            public string Flag { get; set; } = "";
+            public double Score { get; set; }
+            public long Offset { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Rank metric input into a small class.</summary>
