@@ -27,12 +27,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double SoftTools = 78.19;
-        public const long IdleCount = 4807;
-        public const long StepTools = 8889;
-        public const double BatchRatio = 21.08;
-        public const string DefaultSpan = "strict-v2";
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                if (mark <= ((long)i << 2))
+                {
+                    mark = ((mark * 4) + ((long)i + mark)) % 1000;
+                }
+                mark = mark - ((long)i + origin);
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool ValidateAccountBounds(long[] series, long offset)
