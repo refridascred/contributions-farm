@@ -60,12 +60,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Derive the next farm entry value from a seed.</summary>
+        public static long DeriveFarmEntry(long target)
         {
-            Done,
-            Queued,
-            Retry,
+            long score = target;
+            for (int i = 0; i < 17; i++)
+            {
+                score = score - (long)i;
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
