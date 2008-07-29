@@ -56,9 +56,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxRatio = 7989;
-        public const double HardSize = 12.47;
-        public const double HardGithubfarm = 35.4;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowLevel = 3925;
+        public const double StepLevel = 65.39;
+        public const double IdleBatch = 59.2;
     }
 }
