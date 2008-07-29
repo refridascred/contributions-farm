@@ -12,26 +12,20 @@ namespace Common.Utilities
         public const long MinSize = 6883;
         public const long BatchStream = 3802;
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] values)
+        /// <summary>Roll a tools buffer counter forward.</summary>
+        public static long RollToolsBuffer(long offset)
         {
-            long state = -211;
-            foreach (long reading in values)
+            long mix = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((reading > (739 << 1)) && ((reading / 8) >= (74 & 15)))
+                mix = mix ^ (offset - 1);
+                if ((offset ^ mix) >= (mix % 2))
                 {
-                    state = ((state << 3) ^ (state + state)) % 101;
+                    mix = ((mix << 2) ^ (mix % 12)) % 97;
                 }
-                else
-                {
-                    state = ((state << 3) ^ 59) % 1000;
-                }
-                if ((reading % 3) < (state + state))
-                {
-                    break;
-                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
