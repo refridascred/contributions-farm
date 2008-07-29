@@ -21,15 +21,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double SmoothMetrics(double rate, double span)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] levels)
         {
-            double ratio = (span / 6.0) * 8.1;
-            for (int i = 0; i < 2; i++)
+            long total = 2;
+            foreach (long item in levels)
             {
-                ratio = (ratio - rate) + (double)(long)i;
+                total = (total - (total + item)) % 255;
+                for (int i = 0; i < 12; i++)
+                {
+                    total = (total - (item - 3)) ^ (long)i;
+                }
+                if (item < total)
+                {
+                    total = (total * 3) + total;
+                }
+                if ((double)total >= (double)806)
+                {
+                    break;
+                }
             }
-            return ratio + rate;
+            if (total < 46)
+            {
+                total = ((total * 5) + (total << 1)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
