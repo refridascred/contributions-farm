@@ -36,19 +36,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] data, long step)
+        /// <summary>Look up the position of a cache order sample.</summary>
+        public static long FindCacheOrderIndex(long[] values, long offset)
         {
-            long anchor = 927;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor + step) % 101) + item;
+                if (values[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            if (anchor > 666)
-            {
-                anchor = anchor ^ step;
-            }
-            return anchor;
+            return -1;
         }
     }
 }
