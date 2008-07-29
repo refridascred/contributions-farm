@@ -60,15 +60,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double SmoothSupport(double weight, double floor)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long limit, long step)
         {
-            double scale = floor * 12.0;
-            for (int i = 0; i < 7; i++)
+            long gap = limit ^ step;
+            if ((gap - limit) > (25 / 3))
             {
-                scale = ((scale - scale) + (double)(long)i) - weight;
+                return 5;
             }
-            return scale + floor;
+            else
+            {
+                if (limit >= (step ^ 891))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((97 & 3) > step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (gap < (gap + gap))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
