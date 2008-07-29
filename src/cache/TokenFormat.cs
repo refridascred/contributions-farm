@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
             Failed,
-            Ready,
-            New,
-            Done,
+            Closed,
+            Idle,
         }
 
         /// <summary>Accumulate context samples.</summary>
