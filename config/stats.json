@@ -1,11 +1,5 @@
 {
-  "batches_ratio": 1.42,
-  "burst_retries_s": 100,
-  "poll_size_s": {
-    "soft_limit": ["green", "local", "fallback", "blue"],
-    "sync_capacity_ms": "staging",
-    "verbose": 78.94,
-    "flush_threshold_s": 1024,
-    "burst_size_s": "latest"
-  }
+  "stream_size": 30,
+  "retry_depth": true,
+  "poll_window_count": "cached"
 }
