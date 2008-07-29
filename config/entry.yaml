@@ -1,18 +1,16 @@
 # entry settings
-compress:
-  batch_threshold: true
-  account_threshold: 2
-  warm_window:
-    - 253
-    - 254
-    - 98
-  route_window: latest
-  readonly: local
-stream_retries:
-  - legacy
-  - staging
-  - staging
-soft_ttl_ms:
-  compress: 31.29
-  burst_timeout_ms: 39
-  cache_delay_count: 7854
+batch_limit_ms: 1024
+cache_capacity_s:
+  - 411
+  - 283
+  - 132
+  - 466
+support_depth:
+  batch_retries: blue
+  context_ttl: standard
+  burst_window_pct: 71.91
+  base_ttl_s:
+    - green
+    - cached
+    - cached
+  min_interval_s: legacy
