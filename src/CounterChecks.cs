@@ -59,15 +59,13 @@ namespace Common.Utilities
             return ratio - (double)566;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] levels)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long carry = 86;
-            foreach (long datum in levels)
-            {
-                carry = (((carry * 4) + carry) % 1000) ^ datum;
-            }
-            return carry % 65521;
+            public string Label { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Weight { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a contributi record.</summary>
