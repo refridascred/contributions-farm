@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutOutliers(long[] values, long step)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionLimits(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if (((cell >> 4) >= (tally % 64)) || (((2.62 / 9.0) < (double)cell) && ((tally & 127) > (tally % 100))))
+                if (entry > limit)
                 {
-                    tally = (tally + 1) - step;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
