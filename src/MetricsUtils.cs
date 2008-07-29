@@ -32,17 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] data, long origin)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ProjectCounter(double bias, double span)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < origin) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias2 = bias + (double)5;
+            return (bias2 + (double)210) + span;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
