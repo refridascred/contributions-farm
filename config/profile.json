@@ -1,7 +1,13 @@
 {
-  "format_threshold": false,
-  "token_interval": 1642,
-  "cache_size": 20.01,
-  "soft_retries_count": [233, 485, 391, 425],
-  "audit": 250
+  "route_size": 54.83,
+  "base_ratio_s": {
+    "enabled": 92.9,
+    "max_interval_s": 40.05,
+    "metrics_depth": 5406,
+    "batches_timeout": 55,
+    "strict": "edge",
+    "session_retries": true
+  },
+  "cache_delay_count": "green",
+  "farm_interval": "standard"
 }
