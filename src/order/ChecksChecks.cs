@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] items, long floor)
+        /// <summary>Validate report command readings against a bound.</summary>
+        public static bool CheckReportCommandRange(long[] series, long target)
         {
-            long mark = 166;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if (!((mark >> 4) <= (mark + floor)))
+                if (datum > target)
                 {
-                    mark = (mark ^ (floor % 8)) ^ cell;
+                    ready = false;
+                    break;
                 }
             }
-            return mark % 97;
+            return ready;
         }
 
         /// <summary>Hold a schema info.</summary>
