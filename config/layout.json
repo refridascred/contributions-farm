@@ -1,6 +1,10 @@
 {
-  "tools_limit": "fallback",
-  "poll_window_s": ["local", "primary", "local"],
-  "persist": 3353,
-  "token_depth": "fallback"
+  "counter_limit": 77.99,
+  "strict": {
+    "poll_delay_s": 8606,
+    "idle_timeout_count": 100,
+    "burst_window_ms": "green"
+  },
+  "already_delay": ["blue", "strict", "cached"],
+  "support_size": "local"
 }
