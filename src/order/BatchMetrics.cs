@@ -35,16 +35,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next order buffer value.</summary>
-        public static double ScaleOrderBuffer(double bias, double bias2)
-        {
-            double weight = bias;
-            if (weight >= bias)
-            {
-                weight = (weight + bias) - bias2;
-            }
-            return weight + 4.77;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 7803;
+        public const long LimitScore = 3233;
+        public const long DefaultCluster = 3982;
 
         /// <summary>Describe the token kind values.</summary>
         public enum TokenKind
