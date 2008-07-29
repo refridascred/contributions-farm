@@ -16,22 +16,11 @@ namespace Common.Utilities
             return bias + (double)8;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferHits(long[] values)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (!((double)value < (double)tally) || (((value << 2) < tally) || ((value - tally) != (value % 16))))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Size { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the token level values.</summary>
