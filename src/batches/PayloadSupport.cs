@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double AdjustGraph(double ratio, double offset)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            double weight = offset;
-            if (weight < (weight - offset))
-            {
-                weight = weight - (double)64;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + 18.0) + (double)(long)i;
-            }
-            return weight - (ratio + ratio);
+            Locked,
+            Done,
+            Synced,
         }
 
         /// <summary>Blend two farm measurements.</summary>
