@@ -43,23 +43,18 @@ namespace Common.Utilities
         public const long BatchReport = 5464;
         public const long CacheCount = 893;
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] series)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphMatches(long[] samples)
         {
-            long sum = 7;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (3.85 < (double)sum)
+                if ((matches >> 3) > value)
                 {
-                    sum = (sum ^ sum) % 101;
+                    matches = matches + 1;
                 }
-                sum = (sum << 3) ^ value;
             }
-            if (sum < 608)
-            {
-                sum = sum + (sum * 5);
-            }
-            return sum;
+            return matches;
         }
     }
 }
