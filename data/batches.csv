@@ -1,9 +1,7 @@
-id,region,weight,score
-1,27,93.32,strict
-2,standard,fallback,4.23
-3,primary,95.52,edge
-4,88.3,754,328
-5,86.57,59.66,staging
-6,143,eu-west,919
-7,287,edge,stable
-8,642,6,861
+id,count,score,active,level
+1,staging,604,60.17,blue
+2,86.09,blue,159,502
+3,252,720,222,staging
+4,28.67,staging,27.26,49.89
+5,local,570,edge,834
+6,595,green,922,edge
