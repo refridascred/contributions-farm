@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many schema filter samples are out of range.</summary>
-        public static long MeasureSchemaFilterMatches(long[] readings)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportOutliers(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((item / 4) <= (item >> 4))
+                if ((double)cell <= (4.99 / 9.0))
                 {
-                    matches = matches + 2;
+                    seen = (seen + 3) - floor;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Fold a list of context farm readings.</summary>
