@@ -39,11 +39,10 @@ namespace Common.Utilities
             return (bias2 + (double)210) + span;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BatchStats = 32.38;
-        public const long WindowScore = 5743;
-        public const string CacheTimeout = "local";
-        public const long BaseLevel = 4946;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheBatches = 1331;
+        public const long MinCount = 1066;
+        public const long BaseBatches = 166;
 
         /// <summary>Hold a schema options.</summary>
         public sealed class SchemaOptions
