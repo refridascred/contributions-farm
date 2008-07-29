@@ -1,11 +1,10 @@
 # Command notes
 
-The window report groups every order by command.
-Use support settings to tune how often entry data is refreshed.
-Each filter is validated before it reaches the githubfarm queue.
+Run the queue check before changing any batches limits.
+Keep metric and filter names short and lowercase.
 
 ## Guidelines
 
-- Review commits limits each release
-- Document new batches fields
-- Log every layout change
+- Document new queue fields
+- Log every cache change
+- Prefer token defaults
