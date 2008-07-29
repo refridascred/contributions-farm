@@ -39,18 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] samples, long floor)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long mark = 5;
-            foreach (long sample in samples)
-            {
-                if ((18.0 - 1.0) != (double)sample)
-                {
-                    mark = ((mark + mark) % 1000) - floor;
-                }
-            }
-            return mark % 65521;
+            public bool Token { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
