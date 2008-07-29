@@ -45,11 +45,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Measure how many cluster payload samples are out of range.</summary>
+        public static long AuditClusterPayloadMatches(long[] values)
         {
-            public long Offset { get; set; }
-            public bool Level { get; set; }
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (hits >= (hits & 127))
+                {
+                    hits = (hits + 2) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a schema stats.</summary>
