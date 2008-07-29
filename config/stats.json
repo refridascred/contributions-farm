@@ -1,7 +1,15 @@
 {
-  "dry_run": 4.33,
-  "default_retries_count": "edge",
-  "filter_limit": 5.75,
-  "graph_threshold": "fallback",
-  "persist": "edge"
+  "editor_size": {
+    "burst_capacity_ms": ["stable", "open", "standard", "legacy"],
+    "audit": "standard",
+    "farm_ratio": 96
+  },
+  "compress": 6.33,
+  "metrics_depth": [126, 238, 130, 464],
+  "commits_depth": {
+    "default_size_count": "edge",
+    "dry_run": 84,
+    "retry_ratio": "blue",
+    "strict": ["green", "staging", "cached"]
+  }
 }
