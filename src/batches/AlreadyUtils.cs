@@ -64,20 +64,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long floor)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long result = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                result = (result - (result >> 4)) % 65521;
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    result = ((result * 4) + floor) - (long)i2;
-                }
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            public long Limit { get; set; }
+            public double Level { get; set; }
+            public long Label { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
