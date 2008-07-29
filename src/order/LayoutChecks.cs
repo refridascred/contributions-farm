@@ -53,17 +53,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] data, long limit)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= limit) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Score { get; set; }
+            public string Size { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
