@@ -23,12 +23,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitBudget = 6615;
-        public const long RetryWidth = 8741;
-        public const string MaxChecks = "stable-v2";
-        public const long MinChecks = 7373;
-        public const long BurstChecks = 9387;
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool ValidateGraphBounds(long[] samples, long target)
