@@ -1,10 +1,7 @@
 # support settings
-record_delay: 43.3
-metrics_ttl: edge
-default_size_ms: strict
-command_limit:
-  - 143
-  - 231
-  - 149
-  - 442
-window_delay: strict
+dry_run: green
+audit: eu-west
+min_delay: 49
+max_capacity_count: stable
+session_window: standard
+metrics_interval: primary
