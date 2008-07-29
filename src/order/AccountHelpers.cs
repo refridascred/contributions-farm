@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long limit)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double SmoothMetrics(double ratio, double span)
         {
-            long acc = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            double load = (5.06 + span) + span;
+            return (load - (double)9) + ratio;
         }
 
         /// <summary>Describe the already phase values.</summary>
