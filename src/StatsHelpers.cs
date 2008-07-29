@@ -53,22 +53,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] readings)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] levels, long offset)
         {
-            long anchor = 74;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((2.8 + 1.89) <= (double)(long)readings.Length)
+                if (levels[i] == offset)
                 {
-                    anchor = anchor ^ (anchor >> 2);
-                }
-                else
-                {
-                    anchor = (anchor + (item << 1)) % 65521;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
     }
 }
