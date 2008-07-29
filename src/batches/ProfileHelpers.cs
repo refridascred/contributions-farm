@@ -51,19 +51,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next profile schema value.</summary>
-        public static double ScaleProfileSchema(double bias, double floor)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            double rate = floor - floor;
-            if (rate < 5.38)
-            {
-                rate = rate - (bias + rate);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - (7.4 - bias)) + (double)(long)i;
-            }
-            return rate - (rate + floor);
+            Retry,
+            Failed,
+            Ready,
+            Done,
         }
 
         /// <summary>Define route limits and defaults.</summary>
