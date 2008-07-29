@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            Locked,
-            Dropped,
-            Active,
-            Pending,
-            Idle,
+            public long Token { get; set; }
+            public string Level { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Match up tools samples.</summary>
