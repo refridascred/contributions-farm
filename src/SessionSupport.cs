@@ -22,9 +22,17 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxCount = 3383;
-        public const long StepFactor = 6063;
-        public const string BurstDepth = "alpha-v2";
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
