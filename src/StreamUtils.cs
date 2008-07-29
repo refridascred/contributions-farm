@@ -52,17 +52,15 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long floor)
+        /// <summary>Iterate the account channel series from a seed.</summary>
+        public static long RollAccountChannel(long floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 21; i++)
+            long state = floor;
+            for (int i = 0; i < 19; i++)
             {
-                acc = acc ^ (916 & 31);
-                acc = (acc - floor) % 65521;
-                acc = ((acc * 5) + (long)i) % 65521;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Describe the graph level values.</summary>
