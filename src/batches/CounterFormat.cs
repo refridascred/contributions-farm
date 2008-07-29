@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine buffer checks values into a single score.</summary>
-        public static long DigestBufferChecks(long[] readings)
+        /// <summary>Measure how many farm notes samples are out of range.</summary>
+        public static long TallyFarmNotesOutliers(long[] items, long floor)
         {
-            long score = -702;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((sample * 2) == (sample % 16))
+                if ((entry >> 3) < (entry % 10))
                 {
-                    score = (score + score) % 97;
+                    tally = (tally + 2) - floor;
                 }
             }
-            return score % 65521;
+            return tally;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
