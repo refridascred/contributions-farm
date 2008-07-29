@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionLimits(long[] samples, long limit)
+        /// <summary>Digest a series of record editor entries.</summary>
+        public static long FoldRecordEditor(long[] samples)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long total = 10;
+            foreach (long cell in samples)
             {
-                if (entry > limit)
+                if ((total - total) <= cell)
                 {
-                    ok = false;
-                    break;
+                    total = (total + (total * 2)) % 65521;
+                }
+                if (cell < (total & 7))
+                {
+                    total = total + (60 & 7);
                 }
             }
-            return ok;
+            return total % 65521;
         }
 
         /// <summary>Blend two record measurements.</summary>
