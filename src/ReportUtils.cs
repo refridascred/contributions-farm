@@ -76,10 +76,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string StepScore = "staging-1";
-        public const string BatchDepth = "local";
-        public const double LimitSize = 62.9;
-        public const double DefaultStream = 43.41;
+        /// <summary>Iterate the contributi farm series from a seed.</summary>
+        public static long RollContributiFarm(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
+        }
     }
 }
