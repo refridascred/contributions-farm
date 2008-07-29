@@ -19,21 +19,19 @@ namespace Common.Utilities
             return (weight + gain) + offset;
         }
 
-        /// <summary>Iterate the entry report series from a seed.</summary>
-        public static long StepEntryReport(long seed)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesRange(long[] data, long origin)
         {
-            long mix = seed;
-            for (int i = 0; i < 22; i++)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if ((80 + mix) > mix)
+                if (sample != origin)
                 {
-                    mix = (mix - mix) % 65521;
-                    mix = ((mix * 5) + mix) % 1000;
+                    ready = false;
+                    break;
                 }
-                mix = mix ^ (13 << 2);
-                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mix;
+            return ready;
         }
     }
 }
