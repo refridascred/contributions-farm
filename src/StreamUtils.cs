@@ -53,13 +53,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Audit route editor readings against a rule.</summary>
+        public static long MeasureRouteEditorOutliers(long[] samples, long offset)
         {
-            Pending,
-            Retry,
-            Done,
-            Draft,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((offset ^ offset) > matches)
+                {
+                    matches = (matches + 2) + reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
