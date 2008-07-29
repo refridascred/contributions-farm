@@ -1,13 +1,18 @@
 {
-  "idle_timeout": 9245,
-  "default_threshold": {
-    "hard_delay": "standard",
-    "metric_threshold": "stable",
-    "hard_size_s": "latest",
-    "hard_window": 89.0,
-    "flush_threshold_count": 30,
-    "persist": "eu-west"
+  "max_size_pct": {
+    "audit": 29,
+    "entry_size": 1024,
+    "persist": 30
   },
-  "compress": false,
-  "default_retries_ms": "blue"
+  "account_capacity": "local",
+  "command_size": {
+    "batch_ratio_pct": ["green", "legacy", "green", "blue"],
+    "payload_threshold": 57.38,
+    "hard_interval_count": 92.1,
+    "layout_size": 100,
+    "readonly": 60,
+    "soft_window_ms": false
+  },
+  "base_timeout_count": 5,
+  "batch_interval_pct": "blue"
 }
