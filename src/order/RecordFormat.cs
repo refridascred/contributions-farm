@@ -27,13 +27,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteBounds(long[] readings, long step)
         {
-            public long Token { get; set; }
-            public long Label { get; set; }
-            public bool Owner { get; set; }
-            public long Rank { get; set; }
+            bool ready = true;
+            foreach (long reading in readings)
+            {
+                if (reading > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a schema record.</summary>
