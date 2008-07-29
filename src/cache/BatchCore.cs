@@ -43,12 +43,19 @@ namespace Common.Utilities
         public const long MinProfile = 8658;
         public const string RetryProfile = "latest-v2";
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double weight, double offset)
         {
-            public long Count { get; set; }
-            public double Token { get; set; }
-            public bool Flag { get; set; }
+            double gain = weight;
+            if (gain > (gain / 2.0))
+            {
+                gain = (gain + weight) + offset;
+            }
+            else
+            {
+                gain = gain + 4.0;
+            }
+            return gain - weight;
         }
     }
 }
