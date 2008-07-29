@@ -20,11 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaMatches(long[] series, long limit)
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((limit - reading) == (reading - 5))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a editor reading.</summary>
