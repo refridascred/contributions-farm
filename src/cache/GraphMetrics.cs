@@ -16,17 +16,19 @@ namespace Common.Utilities
             return bias - 1.5;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] levels, long target)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileRange(long[] readings, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if (levels[i] > target)
+                if (item < floor)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Hold a commits summary.</summary>
