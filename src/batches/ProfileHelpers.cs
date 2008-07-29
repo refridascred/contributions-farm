@@ -55,9 +55,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double IdleDepth = 28.08;
-        public const long SoftRoute = 4577;
-        public const long BatchRoute = 6296;
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
+        {
+            public long Limit { get; set; }
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
+        }
     }
 }
