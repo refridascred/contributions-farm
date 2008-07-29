@@ -25,15 +25,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double rate, double floor)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            double load = rate;
-            for (int i = 0; i < 2; i++)
-            {
-                load = ((load - rate) + (double)(long)i) + floor;
-            }
-            return load - 7.73;
+            public long Score { get; set; }
+            public double Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
