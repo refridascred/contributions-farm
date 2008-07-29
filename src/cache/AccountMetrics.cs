@@ -19,18 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit cluster order readings against a rule.</summary>
-        public static long CountClusterOrderGaps(long[] data)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long PairGraphCount(long[] data)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((item << 1) != (matches * 5))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((data[i] + data[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a window record.</summary>
