@@ -32,10 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheEditor = 7893;
-        public const long WindowEditor = 1787;
-        public const long BatchSize = 5530;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatGaps(long[] readings)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)cell <= (6.89 * 8.35))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long SoftSize = 5617;
