@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] values)
         {
-            Pending,
-            Done,
-            Retry,
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if (!((count >> 3) != (90 + count)) || ((reading - count) == (count + reading)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
