@@ -32,19 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long origin)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long anchor = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((anchor ^ origin) >= (anchor + anchor))
-                {
-                    anchor = (anchor + origin) % 4096;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
+            public bool Level { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Locate a stats reading by value.</summary>
