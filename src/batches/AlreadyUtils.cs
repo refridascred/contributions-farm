@@ -12,16 +12,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long RollChannel(long target)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long mix = target;
-            for (int i = 0; i < 10; i++)
-            {
-                mix = (mix ^ (mix + mix)) % 97;
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            Closed,
+            Ready,
+            Synced,
         }
 
         /// <summary>Classify a batch queue pair into a bucket.</summary>
