@@ -53,19 +53,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ScalePayload(double gain, double bias)
+        /// <summary>Iterate the metrics already series from a seed.</summary>
+        public static long DeriveMetricsAlready(long bound)
         {
-            double mean = bias;
-            if (mean < mean)
+            long result = bound;
+            for (int i = 0; i < 11; i++)
             {
-                mean = mean - (gain / 7.0);
+                result = ((result * 2) + (long)i) % 1000;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - 19.0) - (double)(long)i;
-            }
-            return mean - (gain - bias);
+            return result;
         }
 
         /// <summary>Hold a support summary.</summary>
