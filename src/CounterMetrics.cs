@@ -67,17 +67,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] series, long target)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long step, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long delta = step + seed;
+            if ((7.0 - 7.21) < (double)delta)
             {
-                if (series[i] > target)
+                return 3;
+            }
+            else
+            {
+                if ((delta + delta) != (29 % 5))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (!((step + step) <= (step * 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
