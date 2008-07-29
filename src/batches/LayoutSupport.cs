@@ -39,15 +39,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] data)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long total = 5;
-            foreach (long reading in data)
-            {
-                total = (((total * 3) + (8 >> 3)) % 101) - reading;
-            }
-            return total;
+            Locked,
+            Done,
+            Draft,
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
