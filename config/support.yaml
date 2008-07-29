@@ -1,8 +1,4 @@
 # support settings
-strict:
-  - 126
-  - 255
-  - 453
-  - 204
-commits_ttl: staging
-flush_limit_pct: false
+strict: 46
+default_depth_count: 78.17
+batch_retries: cached
