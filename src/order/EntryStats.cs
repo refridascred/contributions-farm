@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double ProjectCommand(double bias, double floor)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderLimits(long[] levels, long limit)
         {
-            double bias2 = (floor + floor) * 14.0;
-            if (bias2 >= (bias + 3.0))
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                bias2 = bias2 - (bias2 * 1.9);
+                if (sample > limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                bias2 = bias2 - 12.0;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 - (bias / 4.0)) + (double)(long)i;
-            }
-            return bias2 + (bias + bias);
+            return ok;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
