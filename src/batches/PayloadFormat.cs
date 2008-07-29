@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string LimitSession = "standard-1";
+        public const long StepSession = 1608;
+        public const string StepTimeout = "legacy";
 
         /// <summary>Hold a channel entry.</summary>
         public sealed class ChannelEntry
