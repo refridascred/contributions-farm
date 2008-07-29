@@ -22,18 +22,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountOutliers(long[] data)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((202 % 10) > tally)
-                {
-                    tally = (tally + 3) + sample;
-                }
-            }
-            return tally;
+            public bool Count { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
