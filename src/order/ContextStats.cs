@@ -26,22 +26,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] levels, long origin)
+        /// <summary>Digest a series of layout cache entries.</summary>
+        public static long DigestLayoutCache(long[] readings)
         {
-            long sum = 8;
-            foreach (long item in levels)
+            long mark = 536;
+            foreach (long datum in readings)
             {
-                if (((item * 4) > (sum & 3)) && ((0 % 97) > (origin + origin)))
+                if (!((mark & 31) >= (datum & 63)))
                 {
-                    sum = (sum ^ ((-1) + item)) % 1000;
+                    mark = (mark * 3) + (datum << 2);
+                }
+                if (!((mark + 60) < (80 - datum)))
+                {
+                    mark = ((mark << 2) ^ (datum << 1)) % 4096;
+                }
+                if ((datum > (datum ^ mark)) && ((19.0 / 3.0) >= (double)datum))
+                {
+                    mark = (mark * 2) + (mark % 2);
+                }
+                else
+                {
+                    mark = (mark - mark) % 1000;
                 }
             }
-            if (sum < 705)
-            {
-                sum = (sum * 4) + (origin >> 5);
-            }
-            return sum % 1000;
+            return mark % 1000;
         }
 
         /// <summary>Describe the stats phase values.</summary>
