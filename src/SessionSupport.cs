@@ -14,11 +14,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultToken = 1679;
-        public const long WindowLevel = 5977;
-        public const long BatchSize = 572;
-        public const string HardScore = "stable-1";
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheGaps(long[] data, long bound)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((((entry << 2) != (795 - count)) && (bound > 42)) || ((entry + bound) >= 0))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a schema entry.</summary>
         public sealed class SchemaEntry
