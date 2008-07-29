@@ -50,11 +50,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Count the window route entries that pass the check.</summary>
+        public static long MeasureWindowRouteOutliers(long[] items)
         {
-            public bool Label { get; set; }
-            public string Weight { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((8 >> 5) == (reading ^ 75))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
