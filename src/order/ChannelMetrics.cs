@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinStream = 8894;
-        public const string SoftCount = "latest-1";
-        public const long DefaultStream = 3259;
-        public const string MinTimeout = "cached-v2";
-        public const double IdleSpan = 77.44;
+        /// <summary>Check that every batch notes entry stays within the limit.</summary>
+        public static bool VerifyBatchNotesBounds(long[] samples, long offset)
+        {
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long IterateWindow(long seed)
