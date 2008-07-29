@@ -40,27 +40,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] data)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] readings, long offset)
         {
-            long result = 3;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((datum + result) <= (datum - result)) && ((double)(long)data.Length > (7.9 - 4.26)))
+                if ((readings[i] >= offset) && ((readings[i] % 3) != 0))
                 {
-                    result = ((result << 3) ^ (datum % 7)) % 1000;
+                    return (long)i;
                 }
-                else
-                {
-                    result = (result - result) % 101;
-                }
-                result = ((result << 3) ^ (521 ^ datum)) % 4096;
             }
-            if (result > 70)
-            {
-                result = (result ^ (result / 2)) % 255;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Look up the position of a stream profile sample.</summary>
