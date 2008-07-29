@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            Idle,
-            Locked,
-            Failed,
-            Stale,
+            public string Weight { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
