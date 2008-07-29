@@ -19,16 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a tools farm counter forward.</summary>
-        public static long SeriesToolsFarm(long target)
+        /// <summary>Count the metrics context entries that pass the check.</summary>
+        public static long AuditMetricsContextGaps(long[] values, long origin)
         {
-            long sum = target;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                sum = (sum + (target % 5)) % 1000;
-                sum = ((sum * 5) + (long)i) % 101;
+                if (8.43 <= (double)count)
+                {
+                    count = ((count + 2) + sample) - origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Accumulate report samples.</summary>
