@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next commits report value from a seed.</summary>
-        public static long StepCommitsReport(long seed)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] levels, long offset)
         {
-            long carry = seed;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (((long)i / 7) > (carry + seed))
+                if (hits < (856 ^ 65))
                 {
-                    carry = (carry ^ (913 - seed)) % 4096;
+                    hits = ((hits + 3) ^ value) + offset;
                 }
                 else
                 {
-                    carry = (carry * 4) + (carry >> 2);
+                    hits = hits - 1;
                 }
-                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
