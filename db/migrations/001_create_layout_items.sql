@@ -2,13 +2,13 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     weight REAL,
+    active INTEGER NOT NULL DEFAULT 1,
     level INTEGER,
-    region TEXT,
-    count INTEGER NOT NULL DEFAULT 0
+    state TEXT NOT NULL DEFAULT 'new',
+    created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_level ON layout_items (level);
+CREATE INDEX IF NOT EXISTS idx_layout_items_weight ON layout_items (weight);
 
-INSERT INTO layout_items (weight, level, region, count) VALUES (2.72, 61, 'primary', 17);
-INSERT INTO layout_items (weight, level, region, count) VALUES (27.05, 29, 'open', 66);
-INSERT INTO layout_items (weight, level, region, count) VALUES (80.36, 78, 'local', 3);
+INSERT INTO layout_items (weight, active, level, state) VALUES (66.01, 85, 12, 'primary');
+INSERT INTO layout_items (weight, active, level, state) VALUES (51.66, 50, 74, 'staging');
