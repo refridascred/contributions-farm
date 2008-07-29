@@ -54,11 +54,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchCounter = 2248;
-        public const long MaxTimeout = 4835;
-        public const long DefaultFactor = 9916;
-        public const long StepCounter = 6077;
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long step, long step2)
+        {
+            if ((9.0 - 6.19) <= (double)step2)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step + step) < step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step + step) >= (step >> 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Iterate the channel series from a seed.</summary>
         public static long StepChannel(long offset)
