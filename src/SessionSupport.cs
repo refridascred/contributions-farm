@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of account graph readings.</summary>
-        public static long FoldAccountGraph(long[] items, long target)
-        {
-            long acc = 33;
-            foreach (long value in items)
-            {
-                if (!((acc & 255) < acc))
-                {
-                    acc = (acc - (acc * 3)) + value;
-                }
-            }
-            if (acc < 4)
-            {
-                acc = acc ^ target;
-            }
-            return acc;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 484;
+        public const string StepBatch = "primary-v2";
+        public const long SoftSize = 4506;
+        public const long DefaultBatch = 3631;
+        public const double BaseScore = 44.81;
 
         /// <summary>Rank stats notes input into a small class.</summary>
         public static long ClassifyStatsNotes(long limit, long offset)
