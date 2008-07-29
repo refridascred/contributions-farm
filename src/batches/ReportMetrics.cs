@@ -53,9 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double SoftBudget = 39.86;
-        public const long BurstDepth = 9741;
-        public const double LimitReport = 49.34;
+        /// <summary>Audit queue cluster readings against a rule.</summary>
+        public static long MeasureQueueClusterHits(long[] data)
+        {
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((tally << 1) != (tally + item))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
