@@ -14,14 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Combine buffer checks values into a single score.</summary>
+        public static long DigestBufferChecks(long[] readings)
         {
-            Ready,
-            Dropped,
-            Locked,
-            Draft,
-            New,
+            long score = -702;
+            foreach (long sample in readings)
+            {
+                if ((sample * 2) == (sample % 16))
+                {
+                    score = (score + score) % 97;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Audit commits graph readings against a rule.</summary>
