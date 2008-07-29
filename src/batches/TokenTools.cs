@@ -24,19 +24,21 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordLimits(long[] data, long floor)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long seed)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long mix = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if (cell >= floor)
+                if (seed > (seed >> 4))
                 {
-                    ready = false;
-                    break;
+                    mix = (mix - ((long)i & 3)) % 101;
+                    continue;
                 }
+                mix = ((mix << 2) ^ mix) % 1000;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return ready;
+            return mix;
         }
     }
 }
