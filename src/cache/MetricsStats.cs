@@ -59,13 +59,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Classify a metric window pair into a bucket.</summary>
+        public static long GradeMetricWindow(long floor, long offset)
         {
-            Stale,
-            Queued,
-            Ready,
-            Dropped,
+            if (!((32 + floor) == (offset & 63)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset >> 2) >= (-905))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
