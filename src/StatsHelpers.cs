@@ -15,13 +15,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] items, long floor)
         {
-            Ready,
-            Failed,
-            Pending,
-            Active,
+            long sum = 23;
+            foreach (long value in items)
+            {
+                sum = ((((sum * 3) + (230 * 4)) % 4096) - value) - floor;
+            }
+            return sum;
         }
 
         /// <summary>Describe the token mode values.</summary>
