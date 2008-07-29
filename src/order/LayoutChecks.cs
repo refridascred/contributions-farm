@@ -62,19 +62,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double scale, double offset)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] data, long limit)
         {
-            double scale2 = scale / 5.0;
-            if (scale2 > (double)317)
+            for (int i = 0; i < data.Length; i++)
             {
-                scale2 = scale2 - scale2;
+                if ((data[i] >= limit) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale2 = scale2 - offset;
-            }
-            return scale2 - scale2;
+            return -1;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
