@@ -23,19 +23,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] readings)
+        /// <summary>Compare every pair of checks editor readings.</summary>
+        public static long CompareChecksEditorCount(long[] readings)
         {
-            long result = 744;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result << 2) ^ 786) + sample;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (result > 912)
-            {
-                result = (result * 4) + (181 - 8);
-            }
-            return result;
+            return hits;
         }
     }
 }
