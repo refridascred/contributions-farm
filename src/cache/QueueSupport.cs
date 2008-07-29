@@ -16,24 +16,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long limit, long target)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] items)
         {
-            if ((1.0 / 8.0) < (double)target)
+            long score = 15;
+            foreach (long value in items)
             {
-                return 8;
+                score = (score + (value - score)) % 65521;
             }
-            else
-            {
-                if ((target & 31) != (limit + limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return score;
         }
 
         /// <summary>Match up tools samples.</summary>
