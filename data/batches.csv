@@ -1,6 +1,7 @@
-id,state,score,owner,active
-1,37.91,open,392,627
-2,2.8,7.62,82.98,strict
-3,stable,439,950,blue
-4,79,300,staging,571
-5,eu-west,cached,8.16,38.53
+id,state,owner
+1,edge,91.49
+2,869,53.08
+3,19.78,standard
+4,open,43
+5,93.1,cached
+6,187,69.19
