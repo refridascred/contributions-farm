@@ -42,13 +42,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] series, long bound)
         {
-            public long Stamp { get; set; }
-            public bool Size { get; set; }
-            public long Weight { get; set; }
-            public string Mode { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
