@@ -17,12 +17,17 @@ namespace Common.Utilities
         public const long CacheSize = 2564;
         public const long MaxGraph = 1354;
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Locate a buffer queue reading by value.</summary>
+        public static long FindBufferQueueIndex(long[] items, long floor)
         {
-            Done,
-            Draft,
-            Pending,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= floor) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
