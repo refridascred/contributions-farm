@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] values, long bound)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 810;
+            foreach (long value in series)
             {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
+                long offset = (long)series.Length;
+                sum = (sum + (offset >> 5)) % 97;
+                sum = (sum - (value + 108)) % 255;
             }
-            return -1;
+            if (sum > 61)
+            {
+                sum = ((sum * 5) + (sum & 3)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
