@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] levels, long floor)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphOutliers(long[] series, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (levels[i] == floor)
+                if (!((3.97 / 4.0) >= (double)value) || (((value ^ (-656)) == (94 >> 4)) || ((0 << 1) <= count)))
                 {
-                    return (long)i;
+                    count = (count + 1) + bound;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
