@@ -60,18 +60,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the token already entries that pass the check.</summary>
-        public static long MeasureTokenAlreadyGaps(long[] series, long limit)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long target, long bound)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long bound2 = target - bound;
+            if ((double)bound >= (0.98 * 18.0))
             {
-                if ((((1.01 * 1.1) <= (double)cell) && ((double)tally < (3.74 - 1.6))) || ((limit + cell) < limit))
+                return 7;
+            }
+            else
+            {
+                if ((bound << 3) == (target - target))
                 {
-                    tally = tally + 1;
+                    return 1;
+                }
+                else
+                {
+                    if (!((bound - bound) > bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (bound2 < (bound2 ^ bound2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
