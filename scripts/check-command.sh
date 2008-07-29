@@ -6,18 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=434
+log "limit is ${COMMAND_LIMIT}"
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 4))
+for item in standard edge strict; do
+    log "checking ${item}"
 done
-log "total ${total}"
