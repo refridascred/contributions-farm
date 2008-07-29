@@ -58,19 +58,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileMatches(long[] readings)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (reading > (76 + hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxWidth = 4569;
+        public const long StepCommand = 6405;
+        public const long IdleTimeout = 4801;
+        public const long CacheCommand = 1922;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double CacheStream = 41.06;
