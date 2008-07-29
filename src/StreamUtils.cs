@@ -41,15 +41,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two session editor measurements.</summary>
-        public static double AdjustSessionEditor(double bias, double offset)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long offset, long target)
         {
-            double load = bias;
-            for (int i = 0; i < 8; i++)
+            long bound = offset - target;
+            if (((4.13 / 3.0) != (double)target) && ((target & 63) >= (bound - target)))
             {
-                load = (load - (double)700) + (double)(long)i;
+                return 2;
             }
-            return load + offset;
+            else
+            {
+                if ((double)bound != (1.0 * 7.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Iterate the account channel series from a seed.</summary>
