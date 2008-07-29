@@ -1,16 +1,8 @@
 {
-  "token_interval": "local",
-  "cache_ratio": {
-    "order_timeout": true,
-    "idle_retries_s": {
-      "burst_threshold": 51.22,
-      "format_ratio": ["green", "blue", "open"],
-      "hard_depth_s": [20, 181, 284],
-      "dry_run": 31.87,
-      "min_depth": 1741,
-      "compress": 90
-    },
-    "verbose": 500
-  },
-  "hard_interval_count": ["edge", "strict", "primary", "strict"]
+  "base_delay_count": true,
+  "sync_retries_ms": ["stable", "latest", "standard"],
+  "retry_threshold": 56.73,
+  "compress": "staging",
+  "sync_interval_s": "stable",
+  "warm_ttl_pct": "primary"
 }
