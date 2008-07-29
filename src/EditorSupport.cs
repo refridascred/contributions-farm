@@ -23,12 +23,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a batches githubfarm sample.</summary>
-        public static long LocateBatchesGithubfarmIndex(long[] data, long limit)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] readings, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (data[i] > limit)
+                if (readings[i] <= seed)
                 {
                     return (long)i;
                 }
