@@ -11,25 +11,12 @@ namespace Common.Utilities
         public const string RetryInterval = "cached-edge";
         public const long MinRoute = 2699;
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long RollToken(long origin)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long sum = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                bool valid = (double)sum < 19.0;
-                if (valid)
-                {
-                    valid = (long)i <= origin;
-                }
-                if ((18.0 < (double)origin) && ((12.0 - 3.0) <= (double)sum))
-                {
-                    sum = sum ^ (76 >> 2);
-                    valid = (origin + 98) != ((long)i + 1);
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Rank tools input into a small class.</summary>
