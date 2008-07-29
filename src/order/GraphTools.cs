@@ -33,20 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheRange(long[] readings, long step)
-        {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardScore = 2006;
+        public const long SoftFactor = 2861;
+        public const long IdleWindow = 29;
+        public const double DefaultCount = 55.5;
+        public const double SoftLevel = 19.55;
 
         /// <summary>Check that every buffer stats entry stays within the limit.</summary>
         public static bool GuardBufferStatsRange(long[] data, long limit)
