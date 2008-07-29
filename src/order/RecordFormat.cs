@@ -41,19 +41,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double scale, double floor)
+        /// <summary>Project the next graph contributi value.</summary>
+        public static double AdjustGraphContributi(double bias, double span)
         {
-            double scale2 = scale;
-            if (scale2 < floor)
+            double rate = (double)(9 % 3);
+            if (rate < (double)64)
             {
-                scale2 = scale2 + scale;
+                rate = (rate - bias) + span;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                scale2 = scale2 + (double)(long)i;
+                rate = rate + rate;
             }
-            return scale2 - scale2;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + (13.0 - rate)) + (double)(long)i;
+            }
+            return rate - (rate * 4.2);
         }
 
         /// <summary>Define batch limits and defaults.</summary>
