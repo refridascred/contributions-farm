@@ -20,12 +20,13 @@ namespace Common.Utilities
             return drift + (drift + bias);
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCache = 1580;
-        public const string CacheDepth = "strict-1";
-        public const long IdleFactor = 8739;
-        public const long MinTimeout = 1908;
-        public const double CacheSpan = 7.22;
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
+        {
+            public double Total { get; set; }
+            public long Owner { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long AuditGraphOutliers(long[] series, long step)
