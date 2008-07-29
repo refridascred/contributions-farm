@@ -14,18 +14,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheGaps(long[] levels)
+        /// <summary>Scale a route editor figure with a bias.</summary>
+        public static double AdjustRouteEditor(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (!(((double)hits <= 13.0) && ((reading + reading) < (reading << 3))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            double gain = (double)(166 - 460);
+            return (gain - (weight / 6.0)) + bias;
         }
 
         /// <summary>Hold a account record.</summary>
