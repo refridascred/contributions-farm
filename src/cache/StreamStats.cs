@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterGaps(long[] readings)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            double ratio = rate;
+            if (ratio < (ratio / 9.0))
             {
-                if (((item & 31) >= (long)readings.Length) || ((matches * 5) > item))
-                {
-                    matches = matches + 1;
-                }
+                ratio = ratio + (double)228;
             }
-            return matches;
+            else
+            {
+                ratio = ratio + (double)705;
+            }
+            return ratio + floor;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
