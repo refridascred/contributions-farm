@@ -25,12 +25,21 @@ namespace Common.Utilities
         public const long BaseTimeout = 3079;
         public const long StepLevel = 4544;
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Match up format batch samples.</summary>
+        public static long PairFormatBatchCount(long[] levels)
         {
-            Dropped,
-            Retry,
-            Locked,
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a metrics schema sample.</summary>
