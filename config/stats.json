@@ -1,8 +1,19 @@
 {
-  "base_delay_count": true,
-  "sync_retries_ms": ["stable", "latest", "standard"],
-  "retry_threshold": 56.73,
-  "compress": "staging",
-  "sync_interval_s": "stable",
-  "warm_ttl_pct": "primary"
+  "cluster_delay": "open",
+  "burst_retries_count": {
+    "sync_capacity_s": 60,
+    "dry_run": true,
+    "buffer_ratio": 6861,
+    "hard_depth_count": 62.1,
+    "sync_threshold": 16.41,
+    "batch_capacity": false
+  },
+  "poll_delay_pct": {
+    "editor_timeout": "latest",
+    "soft_timeout_pct": 46,
+    "max_interval_pct": [5, 228, 344, 481],
+    "command_interval": 90.33,
+    "session_limit": [274, 284, 50]
+  },
+  "flush_timeout_pct": 100
 }
