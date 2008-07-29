@@ -25,19 +25,19 @@ namespace Common.Utilities
             return rate2 + (rate * 16.0);
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] series, long target)
+        /// <summary>Check that every record entry entry stays within the limit.</summary>
+        public static bool GuardRecordEntryRange(long[] readings, long seed)
         {
-            long sum = 502;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                sum = (sum - (entry + entry)) - target;
+                if (item <= seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (sum < 6)
-            {
-                sum = (sum + (sum >> 2)) % 255;
-            }
-            return sum;
+            return valid;
         }
     }
 }
