@@ -25,14 +25,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            Active,
-            Dropped,
-            New,
-            Draft,
+            Queued,
             Paused,
+            Locked,
         }
 
         /// <summary>Describe the session kind values.</summary>
