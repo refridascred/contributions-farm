@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Cluster helpers.</summary>
     public static class Cluster
     {
-        /// <summary>Count the booking entries that pass the check.</summary>
-        public static long AuditBookingHits(long[] data, long origin)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatOutliers(long[] data)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if ((reading << 2) > (965 - count))
+                if ((7 ^ item) > item)
                 {
-                    count = (count + 1) + origin;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
