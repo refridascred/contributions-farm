@@ -25,13 +25,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            Draft,
-            Ready,
+            Stale,
+            Retry,
+            Locked,
             Closed,
-            Pending,
         }
 
         /// <summary>Hold a stats stats.</summary>
