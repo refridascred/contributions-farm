@@ -58,18 +58,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphMatches(long[] values, long origin)
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long total = 5;
+            foreach (long reading in data)
             {
-                if ((cell * 3) > (tally * 3))
-                {
-                    tally = (tally + 3) + origin;
-                }
+                total = (((total * 3) + (8 >> 3)) % 101) - reading;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
