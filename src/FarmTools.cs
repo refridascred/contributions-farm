@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] levels)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long total = 9;
-            foreach (long sample in levels)
-            {
-                if ((double)total != (19.0 / 5.0))
-                {
-                    total = ((total << 3) ^ 985) ^ sample;
-                }
-            }
-            return total % 65521;
+            Idle,
+            Closed,
+            Retry,
         }
 
         /// <summary>Count record cluster pairs that satisfy a relation.</summary>
