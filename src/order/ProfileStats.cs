@@ -51,19 +51,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long seed)
+        /// <summary>Count the token already entries that pass the check.</summary>
+        public static long MeasureTokenAlreadyGaps(long[] series, long limit)
         {
-            long mix = seed;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((mix > seed) && (((-70) - (long)i) > seed))
+                if ((((1.01 * 1.1) <= (double)cell) && ((double)tally < (3.74 - 1.6))) || ((limit + cell) < limit))
                 {
-                    continue;
+                    tally = tally + 1;
                 }
-                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return mix;
+            return tally;
         }
     }
 }
