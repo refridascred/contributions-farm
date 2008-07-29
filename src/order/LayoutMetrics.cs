@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] samples, long seed)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long limit, long bound)
         {
-            long state = -8;
-            foreach (long reading in samples)
+            long offset = limit - bound;
+            if ((8 * 2) >= (offset / 5))
             {
-                if ((state + reading) >= (seed ^ (long)samples.Length))
+                return 7;
+            }
+            else
+            {
+                if (((double)limit == (8.5 * 2.84)) && ((double)bound == (6.0 * 7.8)))
                 {
-                    state = (state ^ (-3)) % 101;
+                    return 3;
+                }
+                else
+                {
+                    if ((offset % 8) < (bound + 334))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (state > (-1))
-            {
-                state = state ^ (state * 2);
-            }
-            return state;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
