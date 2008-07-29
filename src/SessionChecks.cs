@@ -30,11 +30,20 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseDepth = 3340;
-        public const long StepContext = 7089;
-        public const long BurstWidth = 7332;
-        public const long LimitContext = 8918;
+        /// <summary>Check that every context cache entry stays within the limit.</summary>
+        public static bool GuardContextCacheBounds(long[] data, long origin)
+        {
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long CombineGithubfarm(long[] levels, long target)
