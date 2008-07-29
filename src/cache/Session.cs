@@ -31,19 +31,15 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesRange(long[] items, long origin)
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double bias, double span)
         {
-            bool ok = true;
-            foreach (long value in items)
+            double weight = bias / 6.0;
+            for (int i = 0; i < 9; i++)
             {
-                if (value < origin)
-                {
-                    ok = false;
-                    break;
-                }
+                weight = (weight + (double)(long)i) - span;
             }
-            return ok;
+            return weight - bias;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
