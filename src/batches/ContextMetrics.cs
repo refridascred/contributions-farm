@@ -38,17 +38,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] series, long step)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double bias, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight = 2.56;
+            for (int i = 0; i < 6; i++)
             {
-                if (series[i] > step)
-                {
-                    return (long)i;
-                }
+                weight = ((weight - offset) + (double)(long)i) - bias;
             }
-            return -1;
+            return weight + offset;
         }
     }
 }
