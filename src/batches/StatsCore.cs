@@ -26,23 +26,36 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long seed, long origin)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long step, long floor)
         {
-            long prev = seed ^ origin;
-            if ((4.9 * 9.7) == (double)prev)
+            if ((step >> 4) >= floor)
             {
-                return 0;
+                return 7;
             }
             else
             {
-                if (3.0 <= (double)origin)
+                if ((step + floor) < floor)
                 {
-                    return 7;
+                    return 5;
                 }
                 else
                 {
-                    return 2;
+                    if (!((step & 7) != (step ^ 354)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step - 798) <= (36 & 63))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
         }
