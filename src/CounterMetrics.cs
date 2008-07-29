@@ -19,21 +19,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Match up token stats samples.</summary>
-        public static long MatchTokenStatsCount(long[] values)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Locate a buffer queue reading by value.</summary>
