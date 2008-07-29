@@ -37,13 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            public bool Mode { get; set; }
-            public string Total { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public double Weight { get; set; }
+            Active,
+            Locked,
+            Retry,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
