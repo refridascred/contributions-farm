@@ -36,22 +36,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] data)
+        /// <summary>Find the first token context entry that matches the target.</summary>
+        public static long LocateTokenContextIndex(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long value in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(((value * 3) != (value & 255)) && ((13 / 8) > tally)))
+                if ((items[i] <= floor) && ((items[i] % 2) != 0))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
