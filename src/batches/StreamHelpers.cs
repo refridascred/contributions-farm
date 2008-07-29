@@ -64,11 +64,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryBudget = 5745;
-        public const long IdleSpan = 2164;
-        public const long CacheCount = 688;
-        public const double MaxAlready = 80.92;
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
+        {
+            public double Limit { get; set; }
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long RetryFilter = 7275;
