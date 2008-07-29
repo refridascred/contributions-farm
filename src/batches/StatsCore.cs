@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxBudget = 7008;
-        public const long BatchCluster = 2114;
-        public const long DefaultCluster = 5937;
-        public const string LimitCluster = "standard";
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
+        {
+            Done,
+            Queued,
+            Failed,
+            Draft,
+            Stale,
+        }
 
         /// <summary>Digest a series of command entries.</summary>
         public static long CombineCommand(long[] samples)
