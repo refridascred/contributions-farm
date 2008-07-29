@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTimeout = 8214;
-        public const string BatchTools = "latest-edge";
-        public const long BaseTools = 9250;
-        public const string BurstTools = "stable-edge";
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LocateReportIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next batches stream value from a seed.</summary>
         public static long StepBatchesStream(long offset)
