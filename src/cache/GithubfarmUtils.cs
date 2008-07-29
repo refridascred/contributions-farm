@@ -39,12 +39,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] levels)
         {
-            Paused,
-            Queued,
-            New,
+            long total = 783;
+            foreach (long entry in levels)
+            {
+                if (((double)entry <= 5.6) && (entry >= (entry % 12)))
+                {
+                    total = (total << 2) ^ total;
+                }
+            }
+            return total;
         }
     }
 }
