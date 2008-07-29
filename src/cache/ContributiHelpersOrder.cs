@@ -16,11 +16,13 @@ namespace Common.Utilities
             return scale - (scale + offset);
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            public double Score { get; set; }
-            public bool Offset { get; set; }
+            Retry,
+            Done,
+            Synced,
+            New,
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
