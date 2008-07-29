@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheGaps(long[] data)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long carry = -28;
+            foreach (long item in samples)
             {
-                if ((tally / 6) != (680 + item))
+                for (int i = 0; i < 5; i++)
                 {
-                    tally = tally + 1;
+                    carry = (((carry << 2) ^ ((long)i - target)) % 97) - item;
                 }
+                carry = (carry << 3) ^ (target >> 3);
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
