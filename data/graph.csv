@@ -1,6 +1,6 @@
-id,rank,token
-1,552,662
-2,eu-west,36.76
-3,37.05,edge
-4,edge,strict
-5,legacy,edge
+id,active,ratio
+1,72.91,648
+2,574,latest
+3,965,eu-west
+4,green,edge
+5,cached,fallback
