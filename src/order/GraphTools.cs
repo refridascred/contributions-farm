@@ -12,18 +12,10 @@ namespace Common.Utilities
         public const long DefaultGraph = 1146;
         public const long StepCount = 1761;
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BatchCount = 57.42;
+        public const string MaxScore = "standard-edge";
+        public const long MaxEditor = 9450;
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
         public static long MatchGithubfarmCount(long[] values)
