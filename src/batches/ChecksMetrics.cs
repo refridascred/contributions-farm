@@ -22,16 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] data)
-        {
-            long carry = 5;
-            foreach (long datum in data)
-            {
-                carry = ((carry - (carry ^ carry)) % 97) ^ datum;
-            }
-            return carry;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepLayout = 2496;
+        public const long CacheLayout = 2576;
+        public const long WindowSpan = 8633;
+        public const string IdleLayout = "staging-v2";
 
         /// <summary>Derive the next route metrics value from a seed.</summary>
         public static long DeriveRouteMetrics(long target)
