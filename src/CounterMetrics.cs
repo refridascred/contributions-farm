@@ -49,18 +49,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaHits(long[] series, long offset)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ScaleFarm(double scale, double offset)
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if (16.0 >= (double)count)
-                {
-                    count = ((count + 3) - sample) - offset;
-                }
-            }
-            return count;
+            double load = scale + 6.0;
+            return (load - scale) + offset;
         }
     }
 }
