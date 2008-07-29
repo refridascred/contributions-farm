@@ -20,19 +20,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ProjectBatches(double rate, double floor)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferBounds(long[] levels, long bound)
         {
-            double weight = (double)(25 ^ (-624));
-            if (weight > (floor / 8.0))
+            bool ok = true;
+            foreach (long value in levels)
             {
-                weight = (weight - (7.3 - 8.6)) - rate;
+                if (value <= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + (weight + floor)) + (double)(long)i;
-            }
-            return weight + floor;
+            return ok;
         }
 
         /// <summary>Hold a contributi options.</summary>
