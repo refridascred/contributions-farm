@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long origin, long target)
         {
-            public long Count { get; set; }
-            public long Total { get; set; }
+            if (((9.0 + 5.9) > (7.8 - 2.0)) && ((5.9 * 6.1) >= (double)origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((3 ^ target) != (origin + target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((origin ^ origin) != (origin - target)) || (target <= origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a context stats.</summary>
