@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteBounds(long[] series, long step)
-        {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BaseWidth = 90.8;
+        public const long BatchScore = 873;
+        public const long CacheWindow = 2820;
 
         /// <summary>Rank order input into a small class.</summary>
         public static long ClassifyOrder(long offset, long bound)
