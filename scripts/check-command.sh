@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in strict primary fallback stable; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-COMMAND_LIMIT=373
-log "limit is ${COMMAND_LIMIT}"
-
-for item in latest cached staging; do
-    log "checking ${item}"
-done
+mode="${1:-primary}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
