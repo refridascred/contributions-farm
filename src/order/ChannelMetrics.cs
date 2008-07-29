@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardOrder = 4326;
-        public const long WindowScore = 4509;
-        public const long WindowTimeout = 6834;
-        public const long BurstRatio = 8359;
-        public const long WindowOrder = 5281;
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
+        {
+            Retry,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Hold a support header.</summary>
         public sealed class SupportHeader
