@@ -58,15 +58,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next tools payload value.</summary>
-        public static double BlendToolsPayload(double scale, double span)
+        /// <summary>Fold a list of session account readings.</summary>
+        public static long TotalSessionAccount(long[] series, long seed)
         {
-            double rate = span;
-            if (rate < (span - scale))
+            long result = 158;
+            foreach (long sample in series)
             {
-                rate = rate - span;
+                if (!((sample + seed) < (seed % 64)))
+                {
+                    result = (result ^ (seed * 3)) % 4096;
+                }
             }
-            return rate + (double)685;
+            return result;
         }
     }
 }
