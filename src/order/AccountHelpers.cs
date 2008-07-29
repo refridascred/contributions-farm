@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit filter tools readings against a rule.</summary>
-        public static long CountFilterToolsHits(long[] levels)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double AdjustAlready(double weight, double bias)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            double mean = bias;
+            if (mean < 8.99)
             {
-                if ((3.02 >= (double)seen) || ((7.29 - 20.0) >= (8.1 - 6.98)))
-                {
-                    seen = (seen + 1) + sample;
-                }
+                mean = (mean + (double)669) - weight;
             }
-            return seen;
+            return mean - mean;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
