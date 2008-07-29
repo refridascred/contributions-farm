@@ -20,22 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportGaps(long[] values)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long mark = 8;
+            foreach (long datum in items)
             {
-                if (((-9) * 5) >= ((-4) + hits))
+                mark = mark ^ ((-821) >> 3);
+                if ((5.37 - 7.0) >= (double)mark)
                 {
-                    hits = (hits + 2) ^ reading;
+                    mark = (mark + mark) % 101;
                 }
-                else
+                if ((datum ^ datum) <= (724 << 2))
                 {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            return mark % 65521;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
