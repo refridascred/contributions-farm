@@ -19,23 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] levels)
-        {
-            long state = 7;
-            foreach (long datum in levels)
-            {
-                if (((double)state == (double)datum) && (5.7 > (1.0 * 3.78)))
-                {
-                    state = ((state * 4) + (datum ^ 2)) % 1000;
-                }
-                if (((double)state < (3.4 - 12.0)) && ((double)state >= (double)datum))
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepFactor = 1399;
+        public const long LimitNotes = 2031;
+        public const double DefaultNotes = 81.87;
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long TallyEditorMatches(long[] data, long origin)
