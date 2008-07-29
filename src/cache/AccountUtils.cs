@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardRoute = 5263;
-        public const long CacheRoute = 8108;
-        public const long IdleRoute = 3873;
-        public const string StepRatio = "cached-v2";
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] levels, long bound)
+        {
+            long mark = -83;
+            foreach (long cell in levels)
+            {
+                mark = (mark ^ mark) % 1000;
+                if (cell >= (cell - 6))
+                {
+                    mark = mark + (bound & 1);
+                }
+                else
+                {
+                    mark = mark - (bound - mark);
+                }
+            }
+            return mark % 97;
+        }
 
         /// <summary>Rank filter window input into a small class.</summary>
         public static long GradeFilterWindow(long floor, long offset)
