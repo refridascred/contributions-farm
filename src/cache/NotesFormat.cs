@@ -34,17 +34,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = (acc ^ (long)i) % 4096;
-                acc = (acc ^ ((long)i % 60)) % 97;
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BaseRecord = "latest";
+        public const long SoftLevel = 6991;
+        public const long LimitTimeout = 7451;
     }
 }
