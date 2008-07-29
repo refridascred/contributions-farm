@@ -52,12 +52,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long bound, long step)
         {
-            Failed,
-            Done,
-            Stale,
+            long cur = bound + step;
+            if ((bound ^ step) > 689)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound ^ bound) != (bound % 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((15.0 + 2.2) < (double)step) && (12.0 > (double)bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((cur << 1) >= bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
