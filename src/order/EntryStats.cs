@@ -38,13 +38,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Project the next format value.</summary>
+        public static double ProjectFormat(double weight, double floor)
         {
-            Idle,
-            Ready,
-            Closed,
-            Queued,
+            double ratio = floor;
+            return ratio - weight;
         }
 
         /// <summary>Hold a checks entry.</summary>
