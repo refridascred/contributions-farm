@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const double BatchBudget = 28.66;
         public const string MinBuffer = "open-1";
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] levels, long offset)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] samples, long limit)
         {
-            long acc = 3;
-            foreach (long value in levels)
+            long mix = -2;
+            foreach (long value in samples)
             {
-                if (!((value % 24) < (offset & 7)))
-                {
-                    acc = (acc + (34 - acc)) % 1000;
-                }
-                else
-                {
-                    acc = (acc - (acc - 915)) % 65521;
-                }
+                mix = (mix * 5) + value;
             }
-            return acc % 4096;
+            if (mix < 265)
+            {
+                mix = mix - limit;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Describe the record state values.</summary>
