@@ -39,18 +39,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Audit channel counter readings against a rule.</summary>
-        public static long AuditChannelCounterMatches(long[] levels)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteRange(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            bool found = true;
+            foreach (long item in readings)
             {
-                if ((datum - tally) > (tally % 16))
+                if (item >= target)
                 {
-                    tally = tally + 3;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
