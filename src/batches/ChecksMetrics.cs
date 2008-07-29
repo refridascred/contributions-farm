@@ -31,14 +31,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
-        {
-            Stale,
-            Retry,
-            Locked,
-            Closed,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double RetryLevel = 92.96;
+        public const double WindowFactor = 29.81;
+        public const long MinOrder = 6695;
+        public const double MinInterval = 59.38;
+        public const long BatchDepth = 5096;
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long TallyFilterHits(long[] levels)
