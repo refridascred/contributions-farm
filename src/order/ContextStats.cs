@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] items, long limit)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] readings, long floor)
         {
-            long mark = 9;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (((mark << 3) ^ (value ^ mark)) % 4096) - limit;
+                if (readings[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            if (mark > 233)
-            {
-                mark = ((mark * 2) + mark) % 65521;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
