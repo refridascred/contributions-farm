@@ -23,20 +23,10 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmBounds(long[] items, long step)
-        {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitInterval = 4047;
+        public const long MaxLevel = 3718;
+        public const string SoftScore = "latest";
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
         public static long MatchBatchCount(long[] items)
