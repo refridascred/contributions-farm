@@ -22,14 +22,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
-        {
-            Retry,
-            Synced,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BurstSpan = 21.25;
+        public const string MinRecord = "stable-1";
+        public const long RetryDepth = 4197;
+        public const long HardFactor = 9035;
+        public const long BaseCount = 7041;
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long TallyEntry(long[] series, long limit)
