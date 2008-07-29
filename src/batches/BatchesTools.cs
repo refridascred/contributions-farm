@@ -21,18 +21,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheGaps(long[] data, long seed)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long acc = -952;
+            foreach (long datum in values)
             {
-                if ((55 - seen) > (seen >> 4))
-                {
-                    seen = ((seen + 2) + entry) - seed;
-                }
+                acc = ((acc - (590 << 2)) ^ datum) - origin;
             }
-            return seen;
+            return acc;
         }
     }
 }
