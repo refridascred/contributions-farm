@@ -1,8 +1,9 @@
-id,state,score,rank,count
-1,cached,latest,963,51.54
-2,9.34,41.04,574,latest
-3,859,699,299,56.24
-4,544,17.31,100,314
-5,666,green,780,8.15
-6,11.31,fallback,eu-west,547
-7,8.81,688,open,69.37
+id,region,state
+1,642,latest
+2,806,56.54
+3,local,277
+4,eu-west,819
+5,staging,18
+6,736,15.32
+7,9.33,979
+8,89,standard
