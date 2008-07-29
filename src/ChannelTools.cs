@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            Locked,
-            Ready,
-            Idle,
+            Draft,
+            Synced,
+            Active,
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
