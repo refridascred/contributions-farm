@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of schema command entries.</summary>
-        public static long TallySchemaCommand(long[] data, long target)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] data, long seed)
         {
-            long mix = 847;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)target >= (double)(long)data.Length)
+                if (data[i] <= seed)
                 {
-                    mix = ((mix + (target >> 1)) % 97) + item;
+                    return (long)i;
                 }
             }
-            return mix % 4096;
+            return -1;
         }
 
         /// <summary>Describe the command phase values.</summary>
