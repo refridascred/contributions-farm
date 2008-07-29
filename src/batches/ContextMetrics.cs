@@ -18,12 +18,22 @@ namespace Common.Utilities
         public const string LimitFormat = "fallback";
         public const double CacheFormat = 85.6;
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenOutliers(long[] readings, long step)
         {
-            Synced,
-            Queued,
-            Failed,
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (((step / 8) == (cell - 807)) && ((19.0 - 9.23) >= (double)cell))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
