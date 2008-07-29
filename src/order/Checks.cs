@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderMatches(long[] readings, long step)
         {
-            public bool Level { get; set; }
-            public string Weight { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((hits >> 5) < (datum % 64))
+                {
+                    hits = (hits + 1) + step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
