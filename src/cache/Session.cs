@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Digest a series of notes queue entries.</summary>
+        public static long TotalNotesQueue(long[] readings, long bound)
         {
-            Active,
-            Locked,
-            Draft,
+            long score = 63;
+            foreach (long reading in readings)
+            {
+                score = ((score * 2) + reading) + bound;
+                for (int i = 0; i < 9; i++)
+                {
+                    score = ((score - (reading * 2)) % 4096) - (long)i;
+                }
+                score = (score << 3) ^ (reading & 3);
+            }
+            if (score < (-26))
+            {
+                score = (score << 3) ^ (score + 672);
+            }
+            return score % 4096;
         }
 
         /// <summary>Count the filter order entries that pass the check.</summary>
