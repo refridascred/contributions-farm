@@ -65,28 +65,13 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Combine already commits values into a single score.</summary>
-        public static long TotalAlreadyCommits(long[] series)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long total = -417;
-            foreach (long datum in series)
-            {
-                if ((datum << 1) <= total)
-                {
-                    total = (total << 2) ^ (total + datum);
-                    total = (total ^ (total - 9)) % 65521;
-                    break;
-                }
-                if ((7.08 > (double)total) && (629 > total))
-                {
-                    total = total ^ datum;
-                }
-            }
-            if (total > 375)
-            {
-                total = (total + (total >> 1)) % 101;
-            }
-            return total;
+            Stale,
+            Queued,
+            Ready,
+            Dropped,
         }
     }
 }
