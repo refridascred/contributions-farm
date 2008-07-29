@@ -31,11 +31,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            public long Region { get; set; }
-            public long Limit { get; set; }
+            Synced,
+            Closed,
+            Paused,
         }
 
         /// <summary>Digest a series of account entries.</summary>
