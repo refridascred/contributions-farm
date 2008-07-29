@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long bound)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double bias, double bias2)
         {
-            long mark = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                if (28 < bound)
-                {
-                    mark = (mark << 2) ^ 450;
-                }
-                mark = (mark << 2) ^ (bound * 5);
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
+            double weight = bias2;
+            return (weight - bias2) + bias;
         }
 
         /// <summary>Hold a layout entry.</summary>
