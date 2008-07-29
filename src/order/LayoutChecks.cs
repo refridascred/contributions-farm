@@ -55,18 +55,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the buffer entry entries that pass the check.</summary>
-        public static long CountBufferEntryMatches(long[] levels)
+        /// <summary>Look up the position of a editor format sample.</summary>
+        public static long LocateEditorFormatIndex(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading % 12) >= (reading + reading))
+                if (data[i] < seed)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Scale a schema graph figure with a bias.</summary>
