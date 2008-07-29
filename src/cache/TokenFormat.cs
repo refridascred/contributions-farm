@@ -32,21 +32,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up payload layout samples.</summary>
-        public static long PairPayloadLayoutCount(long[] levels)
+        /// <summary>Rank contributi profile input into a small class.</summary>
+        public static long RankContributiProfile(long origin, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long step = origin - bound;
+            if ((double)56 >= (double)step)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((origin - bound) >= bound)
                 {
-                    if ((levels[i] + levels[j]) > 19)
+                    return 8;
+                }
+                else
+                {
+                    if ((origin * 4) == (bound - origin))
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
