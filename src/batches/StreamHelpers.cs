@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowLimits(long[] data, long seed)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            bool valid = true;
-            foreach (long datum in data)
-            {
-                if (datum <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Score { get; set; }
+            public long Label { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
