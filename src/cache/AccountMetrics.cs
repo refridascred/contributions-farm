@@ -35,18 +35,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] series, long bound)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenGaps(long[] values, long step)
         {
-            long state = 93;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((bound / 4) == (bound ^ bound))
+                if ((6.9 - 2.18) == (double)tally)
                 {
-                    state = ((state ^ (state / 9)) % 101) + entry;
+                    tally = ((tally + 1) + value) - step;
                 }
             }
-            return state % 97;
+            return tally;
         }
 
         /// <summary>Blend two metric measurements.</summary>
