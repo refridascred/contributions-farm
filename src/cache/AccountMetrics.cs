@@ -63,12 +63,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            Done,
-            Locked,
-            Queued,
+            public long Limit { get; set; }
+            public long Size { get; set; }
+            public double Mode { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
