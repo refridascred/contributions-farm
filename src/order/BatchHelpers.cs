@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountHits(long[] samples)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((878 + cell) < cell)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Idle,
+            Stale,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Combine account session values into a single score.</summary>
