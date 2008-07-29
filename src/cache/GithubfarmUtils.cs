@@ -20,12 +20,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long target, long offset)
         {
-            Ready,
-            Done,
-            Dropped,
+            if (offset > (offset / 6))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target * 2) >= (target >> 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((offset % 64) > (target + offset)) && (offset <= (target + target)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((target * 4) >= (offset - target)) || ((747 + target) >= offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
