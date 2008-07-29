@@ -40,12 +40,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextGaps(long[] samples)
         {
-            Idle,
-            Paused,
-            Synced,
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((double)2 >= (double)item)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the record mode values.</summary>
