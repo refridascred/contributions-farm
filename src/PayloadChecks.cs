@@ -23,14 +23,19 @@ namespace Common.Utilities
         public const long MinTimeout = 1908;
         public const double CacheSpan = 7.22;
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Blend two command farm measurements.</summary>
+        public static double ScaleCommandFarm(double gain, double bias)
         {
-            Synced,
-            Failed,
-            Paused,
-            Locked,
-            New,
+            double gain2 = (double)747;
+            if (gain2 > (gain2 - 6.1))
+            {
+                gain2 = (gain2 + gain2) - gain;
+            }
+            else
+            {
+                gain2 = gain2 - (bias * 4.88);
+            }
+            return gain2 - gain2;
         }
 
         /// <summary>Define format limits and defaults.</summary>
