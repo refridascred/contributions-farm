@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long floor)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long score = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!((score * 3) <= (floor + score)))
-                {
-                    score = (score * 5) + ((long)i - score);
-                }
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
+            Dropped,
+            Idle,
+            Queued,
+            Stale,
+            Draft,
         }
 
         /// <summary>Hold a buffer header.</summary>
