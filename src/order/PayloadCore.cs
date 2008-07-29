@@ -23,12 +23,15 @@ namespace Common.Utilities
             return scale - 4.8;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Project the next payload value.</summary>
+        public static double SmoothPayload(double scale, double offset)
         {
-            Idle,
-            Stale,
-            Retry,
+            double mean = (offset - offset) + (9.0 + offset);
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (double)(long)i) - scale;
+            }
+            return mean - 1.0;
         }
 
         /// <summary>Hold a session header.</summary>
