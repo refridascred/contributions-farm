@@ -54,11 +54,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double gain, double offset)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            double mean = gain;
-            return (mean + (mean / 5.0)) + offset;
+            public string Stamp { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
