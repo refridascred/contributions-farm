@@ -73,17 +73,23 @@ namespace Common.Utilities
             return gain2 + gain2;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long FindBatchesIndex(long[] series, long origin)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long IterateAccount(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (series[i] >= origin)
+                if ((bound >> 5) >= (bound % 100))
                 {
-                    return (long)i;
+                    mark = mark ^ (bound * 5);
                 }
+                else
+                {
+                    mark = mark ^ (bound + (long)i);
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
     }
 }
