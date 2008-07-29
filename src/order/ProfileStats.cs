@@ -12,15 +12,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Adjust a record metrics reading.</summary>
-        public static double ScaleRecordMetrics(double ratio, double bias)
+        /// <summary>Accumulate token checks samples.</summary>
+        public static long FoldTokenChecks(long[] readings, long origin)
         {
-            double weight = (double)((-153) / 2);
-            for (int i = 0; i < 6; i++)
+            long mark = -19;
+            foreach (long sample in readings)
             {
-                weight = ((weight + (bias * 7.0)) + (double)(long)i) + ratio;
+                if (((mark & 3) < (origin / 4)) || (origin > (sample + sample)))
+                {
+                    mark = (mark * 2) + (origin << 2);
+                }
+                else
+                {
+                    mark = mark + origin;
+                }
             }
-            return weight - bias;
+            return mark % 4096;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
