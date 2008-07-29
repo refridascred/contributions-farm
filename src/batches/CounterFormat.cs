@@ -34,11 +34,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] levels)
         {
-            public double Limit { get; set; }
-            public double Stamp { get; set; }
+            long result = 378;
+            foreach (long reading in levels)
+            {
+                if (((reading % 7) < (reading >> 4)) || ((reading >> 3) == (result >> 5)))
+                {
+                    result = (result ^ (reading + result)) % 97;
+                }
+            }
+            return result;
         }
     }
 }
