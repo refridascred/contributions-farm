@@ -40,15 +40,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long StepPayload(long offset)
+        /// <summary>Project the next profile schema value.</summary>
+        public static double ScaleProfileSchema(double bias, double floor)
         {
-            long total = offset;
-            for (int i = 0; i < 19; i++)
+            double rate = floor - floor;
+            if (rate < 5.38)
             {
-                total = ((total * 4) + (long)i) % 97;
+                rate = rate - (bias + rate);
             }
-            return total;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - (7.4 - bias)) + (double)(long)i;
+            }
+            return rate - (rate + floor);
         }
 
         /// <summary>Hold a batch entry.</summary>
