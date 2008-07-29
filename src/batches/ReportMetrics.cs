@@ -25,17 +25,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] data, long step)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamBounds(long[] levels, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if ((data[i] == step) && ((data[i] % 5) != 0))
+                if (cell != step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
