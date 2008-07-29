@@ -28,15 +28,11 @@ namespace Common.Utilities
         public const long MinSpan = 7946;
         public const long MaxBatch = 7865;
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double scale, double floor)
-        {
-            double drift = floor;
-            if (drift < floor)
-            {
-                drift = (drift + drift) + scale;
-            }
-            return drift - (floor - drift);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinFarm = 6889;
+        public const string WindowRatio = "cached-v2";
+        public const string BatchBudget = "primary";
+        public const long StepFarm = 8127;
+        public const long BurstWidth = 5240;
     }
 }
