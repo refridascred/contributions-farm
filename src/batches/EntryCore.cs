@@ -26,15 +26,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] levels, long seed)
+        /// <summary>Classify a batch githubfarm pair into a bucket.</summary>
+        public static long ClassifyBatchGithubfarm(long bound, long bound2)
         {
-            long score = 18;
-            foreach (long reading in levels)
+            long cur = bound + bound2;
+            if (!((93 / 4) >= cur))
             {
-                score = ((score + (reading % 12)) % 1000) + seed;
+                return 3;
             }
-            return score;
+            else
+            {
+                if ((4.0 - 12.0) < (double)bound2)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Hold a channel snapshot.</summary>
