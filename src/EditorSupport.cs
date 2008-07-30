@@ -22,27 +22,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine notes token values into a single score.</summary>
-        public static long FoldNotesToken(long[] series, long step)
+        /// <summary>Find the first payload batches entry that matches the target.</summary>
+        public static long LocatePayloadBatchesIndex(long[] levels, long floor)
         {
-            long anchor = 98;
-            foreach (long item in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (((anchor << 2) ^ (step << 3)) % 4096) ^ item;
-                if (step <= (step & 7))
+                if (levels[i] <= floor)
                 {
-                    anchor = (anchor << 2) ^ ((-1) % 16);
-                }
-                else
-                {
-                    anchor = (anchor ^ (step - step)) % 101;
+                    return (long)i;
                 }
             }
-            if (anchor < 581)
-            {
-                anchor = ((anchor * 2) + anchor) % 255;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Validate commits format readings against a bound.</summary>
