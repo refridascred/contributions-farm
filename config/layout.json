@@ -1,14 +1,6 @@
 {
-  "verbose": 13.54,
-  "soft_size": false,
-  "retry_limit_s": true,
-  "poll_size": false,
-  "max_threshold_count": ["cached", "stable"],
-  "counter_threshold": {
-    "poll_retries": "blue",
-    "soft_window_pct": ["edge", "blue", "latest", "primary"],
-    "batch_size_pct": 5427,
-    "strict": [284, 188, 414],
-    "persist": "latest"
-  }
+  "warm_delay": "primary",
+  "warm_timeout_ms": 65,
+  "poll_threshold_count": [29, 135, 68],
+  "flush_ratio_s": 37.66
 }
