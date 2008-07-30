@@ -78,18 +78,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadOutliers(long[] series, long offset)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (((double)offset <= (5.65 + 3.0)) || (seen <= (8 + seen)))
-                {
-                    seen = (seen + 2) + reading;
-                }
-            }
-            return seen;
+            New,
+            Ready,
+            Retry,
+            Synced,
+            Failed,
         }
     }
 }
