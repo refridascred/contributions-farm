@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            Done,
-            Queued,
-            Dropped,
+            Paused,
+            Closed,
             Idle,
-            Ready,
+            Done,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
