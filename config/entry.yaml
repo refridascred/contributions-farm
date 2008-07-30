@@ -1,14 +1,13 @@
 # entry settings
-poll_interval:
-  cache_interval: 51.11
-  batch_timeout: primary
-  dry_run: eu-west
-  strict:
-    - primary
-    - standard
-    - legacy
-  warm_timeout_pct: 8081
-  cache_size_count: 5491
-strict: green
-warm_window_s: eu-west
-base_delay_ms: false
+burst_ttl_pct: true
+token_size: false
+min_capacity: 4
+record_interval:
+  readonly: 250
+  base_delay: 1024
+  dry_run: true
+  audit: 19
+  base_size_count:
+    - 294
+    - 119
+  enabled: 8879
