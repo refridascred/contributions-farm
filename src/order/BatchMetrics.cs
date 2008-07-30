@@ -18,14 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            Active,
-            Retry,
-            Stale,
-            Pending,
-            Locked,
+            public long Score { get; set; }
+            public string Rank { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
