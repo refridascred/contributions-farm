@@ -24,22 +24,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of graph command readings.</summary>
-        public static long DigestGraphCommand(long[] values, long offset)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] samples, long limit)
         {
-            long carry = 41;
-            foreach (long value in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((carry * 2) > offset)
+                if (samples[i] <= limit)
                 {
-                    carry = ((carry + carry) % 1000) + value;
+                    return (long)i;
                 }
             }
-            if (carry < 19)
-            {
-                carry = (carry + 491) % 101;
-            }
-            return carry % 97;
+            return -1;
         }
     }
 }
