@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BurstEditor = "standard-edge";
+        public const double SoftRatio = 86.75;
+        public const long WindowEditor = 1427;
+        public const long BaseWidth = 6244;
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long CountCounterOutliers(long[] readings, long floor)
