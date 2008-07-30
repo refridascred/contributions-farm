@@ -23,13 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Project the next profile metrics value.</summary>
+        public static double AdjustProfileMetrics(double weight, double floor)
         {
-            public string Token { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public bool Offset { get; set; }
-            public string Ratio { get; set; } = "";
+            double ratio = (floor / 9.0) / 8.0;
+            if (ratio < (4.38 / 3.0))
+            {
+                ratio = ratio - ratio;
+            }
+            return ratio - (weight * 4.81);
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
