@@ -27,19 +27,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmLimits(long[] samples, long limit)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmOutliers(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (entry <= limit)
+                if ((step * 4) > (entry & 3))
                 {
-                    ok = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Hold a record stats.</summary>
