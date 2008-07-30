@@ -30,23 +30,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] data, long floor)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long seed)
         {
-            long state = 2;
-            foreach (long cell in data)
+            long acc = seed;
+            for (int i = 0; i < 7; i++)
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    state = (state << 3) ^ ((long)i + cell);
-                }
-                if (!!(454 > (floor * 4)))
-                {
-                    state = (state << 2) ^ (497 * 3);
-                }
-                state = (state - 1) % 101;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return state % 65521;
+            return acc;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
