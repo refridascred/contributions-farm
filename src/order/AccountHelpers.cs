@@ -31,16 +31,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long bound)
+        /// <summary>Match up support command samples.</summary>
+        public static long CompareSupportCommandCount(long[] values)
         {
-            long mark = bound;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (mark + ((long)i * 4)) % 1000;
-                mark = ((mark * 5) + (long)i) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Accumulate already samples.</summary>
