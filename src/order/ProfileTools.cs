@@ -19,14 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
-        {
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 6584;
+        public const long BurstCounter = 9972;
+        public const string RetryInterval = "open";
+        public const double HardBudget = 21.32;
+        public const long CacheRatio = 9446;
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
