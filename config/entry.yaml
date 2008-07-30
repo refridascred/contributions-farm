@@ -1,22 +1,10 @@
 # entry settings
-account_interval:
-  account_timeout:
-    - stable
-    - edge
-  poll_ratio:
-    min_depth: 67
-    soft_delay_s: false
-    audit: 53.27
-  order_capacity: 8331
-  flush_threshold_count:
-    enabled: 27.41
-    min_window:
-      - 452
-      - 241
-      - 318
-    cache_interval_pct: 91
-  flush_ttl:
-    - 470
-    - 240
-dry_run: staging
-poll_size: 52.49
+soft_threshold_ms: standard
+poll_window: 30
+graph_timeout:
+  - 400
+  - 26
+  - 299
+  - 366
+flush_ratio: 47
+persist: 71
