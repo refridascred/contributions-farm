@@ -12,25 +12,12 @@ namespace Common.Utilities
             return (gain + 6.08) + offset;
         }
 
-        /// <summary>Rank commits already input into a small class.</summary>
-        public static long GradeCommitsAlready(long bound, long bound2)
-        {
-            if ((bound2 + 64) > 5)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((4.2 - 12.0) >= (double)bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheSpan = 7919;
+        public const string WindowCount = "legacy-v2";
+        public const string StepRecord = "latest";
+        public const long MinTimeout = 4971;
+        public const string BurstRatio = "alpha-1";
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long SeriesNotes(long target)
