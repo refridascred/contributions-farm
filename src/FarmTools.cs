@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long LimitScore = 6005;
         public const double RetryTimeout = 12.71;
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesRange(long[] data, long step)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiHits(long[] items)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (sample < step)
+                if (item >= (matches + item))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Accumulate metric layout samples.</summary>
