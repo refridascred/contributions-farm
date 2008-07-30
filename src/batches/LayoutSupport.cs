@@ -14,15 +14,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long bound)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long anchor = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            Retry,
+            Draft,
+            Locked,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Accumulate editor samples.</summary>
