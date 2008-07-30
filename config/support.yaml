@@ -1,5 +1,6 @@
 # support settings
-retry_size_ms: green
-audit: 77
-warm_size: 250
-report_depth: 89
+filter_window: open
+contributi_delay:
+  - standard
+  - green
+warm_interval: 25
