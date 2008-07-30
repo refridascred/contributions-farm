@@ -20,14 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            Locked,
-            Draft,
-            Ready,
-            Active,
-            Queued,
+            public string Mode { get; set; } = "";
+            public double Label { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
