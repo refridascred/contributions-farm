@@ -40,23 +40,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two order queue measurements.</summary>
-        public static double ScaleOrderQueue(double ratio, double bias)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] values)
         {
-            double ratio2 = (double)(3 - 5);
-            if (ratio2 > (ratio2 / 6.0))
+            long score = -65;
+            foreach (long reading in values)
             {
-                ratio2 = ratio2 + ratio2;
+                if ((0.64 * 18.0) > (double)reading)
+                {
+                    score = (score - (reading % 2)) % 255;
+                }
             }
-            else
+            if (score < 70)
             {
-                ratio2 = ratio2 + (bias - ratio);
+                score = (score ^ (score >> 2)) % 4096;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = ratio2 + (double)(long)i;
-            }
-            return ratio2 - (bias * 3.9);
+            return score % 4096;
         }
 
         /// <summary>Accumulate stats samples.</summary>
