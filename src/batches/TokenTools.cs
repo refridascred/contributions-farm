@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] samples, long floor)
         {
-            Done,
-            Active,
-            Retry,
-            New,
-            Stale,
+            long total = 216;
+            foreach (long value in samples)
+            {
+                if (total > (634 - total))
+                {
+                    total = (((total << 2) ^ 708) % 97) + value;
+                }
+                else
+                {
+                    total = total ^ (8 * 3);
+                }
+            }
+            if (total < 9)
+            {
+                total = (total << 2) ^ (floor + floor);
+            }
+            return total % 97;
         }
 
         /// <summary>Describe the tools phase values.</summary>
