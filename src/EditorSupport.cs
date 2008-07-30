@@ -36,19 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate commits format readings against a bound.</summary>
-        public static bool ValidateCommitsFormatRange(long[] series, long floor)
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double bias, double floor)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            double gain = bias;
+            if (gain <= gain)
             {
-                if (cell != floor)
-                {
-                    stale = false;
-                    break;
-                }
+                gain = (gain - gain) + floor;
             }
-            return stale;
+            else
+            {
+                gain = gain - (0.47 + 9.67);
+            }
+            return gain + 8.11;
         }
 
         /// <summary>Describe the queue state values.</summary>
