@@ -43,18 +43,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] readings)
+        /// <summary>Project the next command value.</summary>
+        public static double AdjustCommand(double gain, double floor)
         {
-            long anchor = 9;
-            foreach (long sample in readings)
+            double bias = (double)4 / 2.0;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)694 == (double)sample)
-                {
-                    anchor = (anchor - (496 ^ 1)) % 97;
-                }
+                bias = (bias + (bias + gain)) + (double)(long)i;
             }
-            return anchor;
+            return bias - floor;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
