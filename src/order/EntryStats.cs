@@ -14,11 +14,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next buffer editor value.</summary>
-        public static double SmoothBufferEditor(double bias, double span)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksBounds(long[] series, long target)
         {
-            double load = span * 8.16;
-            return load - bias;
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
