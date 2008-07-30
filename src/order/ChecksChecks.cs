@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double WindowChecks = 85.14;
-        public const string MinScore = "cached-1";
-        public const string LimitChecks = "local-1";
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long StepAlready = 4988;
