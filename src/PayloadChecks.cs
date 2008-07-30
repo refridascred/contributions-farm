@@ -43,39 +43,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long seed, long limit)
+        /// <summary>Count the account checks entries that pass the check.</summary>
+        public static long MeasureAccountChecksHits(long[] values)
         {
-            long offset = seed - limit;
-            if ((4.0 / 8.0) > (double)limit)
+            long count = 0;
+            foreach (long reading in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed == (double)limit)
+                if ((reading / 7) >= reading)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((offset * 2) >= (limit >> 1)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed % 3) <= (offset + offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Match up already samples.</summary>
