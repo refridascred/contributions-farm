@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long bound, long bound2)
         {
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
-            public bool Weight { get; set; }
-            public string Label { get; set; } = "";
+            if ((2.3 * 10.0) != (double)bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound + bound2) >= (bound2 >> 4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Describe the token status values.</summary>
