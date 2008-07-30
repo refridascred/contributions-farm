@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long bound)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] items, long origin)
         {
-            long acc = bound;
-            for (int i = 0; i < 11; i++)
+            long result = -3;
+            foreach (long item in items)
             {
-                acc = (acc - (acc & 3)) % 65521;
-                acc = ((acc * 3) + (long)i) % 101;
+                result = ((result + 92) ^ item) + origin;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
