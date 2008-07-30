@@ -20,31 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long origin, long bound)
+        /// <summary>Measure how many metrics stats samples are out of range.</summary>
+        public static long CountMetricsStatsHits(long[] samples)
         {
-            if ((origin * 5) >= (bound << 1))
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(9.34 > (double)origin))
+                if ((double)sample <= (8.0 * 8.97))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((origin & 3) == (origin >> 3)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a context header.</summary>
