@@ -28,38 +28,26 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long origin, long seed)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] readings, long bound)
         {
-            if ((seed & 3) >= (seed - origin))
+            long state = 1;
+            foreach (long cell in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((120 >> 3) > (origin / 3))
+                if ((bound + 69) != (bound * 4))
                 {
-                    return 1;
+                    state = (((state << 2) ^ (state + state)) % 101) - cell;
                 }
                 else
                 {
-                    if ((-78) > origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((origin & 63) <= (seed / 4)) && ((seed << 2) > seed))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    state = (state ^ bound) % 1000;
                 }
             }
+            if (state < 980)
+            {
+                state = (state ^ (state - bound)) % 255;
+            }
+            return state;
         }
     }
 }
