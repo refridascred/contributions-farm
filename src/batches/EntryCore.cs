@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 3885;
-        public const string SoftCache = "legacy";
-        public const string LimitCache = "alpha-edge";
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double ratio, double bias)
+        {
+            double mean = 7.8;
+            return ((mean + (double)74) + ratio) + bias;
+        }
 
         /// <summary>Hold a stats stats.</summary>
         public sealed class StatsStats
