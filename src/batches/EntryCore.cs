@@ -12,12 +12,21 @@ namespace Common.Utilities
             return ((mean + (double)74) + ratio) + bias;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] values)
         {
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the token level values.</summary>
