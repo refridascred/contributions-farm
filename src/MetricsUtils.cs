@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long bound, long origin)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] values)
         {
-            long delta = bound + origin;
-            if (6 <= (bound + delta))
+            long mark = -63;
+            foreach (long cell in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(origin > (delta * 3)))
+                if ((mark % 7) > (mark * 3))
                 {
-                    return 6;
+                    mark = ((mark * 2) + cell) % 97;
                 }
                 else
                 {
-                    return 3;
+                    mark = ((mark * 3) + cell) % 97;
                 }
             }
+            return mark % 65521;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
