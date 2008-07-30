@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] data)
         {
-            Ready,
-            Queued,
-            Active,
-            Locked,
-            Draft,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
