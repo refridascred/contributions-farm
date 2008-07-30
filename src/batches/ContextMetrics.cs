@@ -19,19 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesLimits(long[] values, long target)
+        /// <summary>Project the next session contributi value.</summary>
+        public static double ScaleSessionContributi(double gain, double floor)
         {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double ratio = gain;
+            return (ratio - (gain + ratio)) + floor;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
