@@ -38,20 +38,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmBounds(long[] series, long target)
-        {
-            bool found = true;
-            foreach (long reading in series)
-            {
-                if (reading >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleFactor = 6560;
+        public const long WindowFactor = 3584;
+        public const long BatchGraph = 5619;
+        public const double IdleGraph = 0.38;
 
         /// <summary>Hold a payload stats.</summary>
         public sealed class PayloadStats
