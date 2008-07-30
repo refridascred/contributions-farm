@@ -18,19 +18,24 @@ namespace Common.Utilities
         public const long MaxWidth = 3009;
         public const long DefaultLevel = 8409;
 
-        /// <summary>Project the next support value.</summary>
-        public static double SmoothSupport(double rate, double floor)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long origin, long bound)
         {
-            double load = rate;
-            if (load <= (double)14)
+            if (((-24) % 24) < (bound - bound))
             {
-                load = load - (rate * 2.4);
+                return 3;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                load = (load - rate) + (double)(long)i;
+                if ((origin / 8) <= origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return load + floor;
         }
 
         /// <summary>Hold a metric info.</summary>
