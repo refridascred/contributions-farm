@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double AdjustRoute(double bias, double floor)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            double mean = bias;
-            if (mean > (floor - 8.0))
-            {
-                mean = mean - mean;
-            }
-            else
-            {
-                mean = mean + (floor + 17.0);
-            }
-            return mean - bias;
+            Ready,
+            Stale,
+            New,
+            Queued,
+            Pending,
         }
 
         /// <summary>Look up the position of a entry githubfarm sample.</summary>
