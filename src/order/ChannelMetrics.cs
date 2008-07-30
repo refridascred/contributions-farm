@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long limit)
         {
-            Paused,
-            Failed,
-            Pending,
+            long score = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                score = ((score << 3) ^ score) % 101;
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Hold a route record.</summary>
