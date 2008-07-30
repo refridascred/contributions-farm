@@ -1,4 +1,4 @@
 # support settings
-batch_ratio: 55
-max_ttl: true
-cache_timeout_s: 50
+warm_ttl_s: primary
+stream_depth: fallback
+burst_ratio: 85
