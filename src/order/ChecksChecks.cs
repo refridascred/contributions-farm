@@ -20,22 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaMatches(long[] series, long limit)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordGaps(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((limit - reading) == (reading - 5))
+                if (!(((entry + 134) != (limit / 8)) && ((3.62 + 11.0) >= (double)entry)))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
