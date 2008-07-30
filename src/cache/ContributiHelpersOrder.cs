@@ -20,17 +20,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] series, long seed)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Idle,
+            New,
+            Draft,
         }
     }
 }
