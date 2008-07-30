@@ -12,31 +12,14 @@ namespace Common.Utilities
             return (bias2 - (bias * 19.0)) + offset;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long target, long target2)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            if ((target2 % 64) >= target)
-            {
-                return 8;
-            }
-            else
-            {
-                if (5.0 <= (double)target)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((3.72 - 2.1) != (double)target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Ready,
+            New,
+            Draft,
+            Queued,
+            Idle,
         }
 
         /// <summary>Describe the route status values.</summary>
