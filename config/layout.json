@@ -1,6 +1,6 @@
 {
-  "hard_limit_ms": 60,
-  "tools_window": 98.22,
-  "verbose": "latest",
-  "batch_capacity": false
+  "support_size": 3585,
+  "default_ttl": 12.71,
+  "max_ttl_s": 10,
+  "buffer_interval": false
 }
