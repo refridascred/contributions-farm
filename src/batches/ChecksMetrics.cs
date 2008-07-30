@@ -53,10 +53,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 1993;
-        public const string MaxCache = "strict";
-        public const long MaxTimeout = 2530;
+        /// <summary>Match up support context samples.</summary>
+        public static long PairSupportContextCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long AuditAccountOutliers(long[] data)
