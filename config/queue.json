@@ -1,7 +1,5 @@
 {
-  "default_delay": true,
-  "farm_threshold": 1024,
-  "persist": "edge",
-  "base_threshold_pct": 36.63,
-  "max_size": true
+  "soft_depth_ms": 74.03,
+  "dry_run": 95.7,
+  "verbose": ["eu-west", "eu-west"]
 }
