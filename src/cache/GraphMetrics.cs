@@ -30,19 +30,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsHits(long[] series, long target)
-        {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((double)target >= (5.55 + 14.0))
-                {
-                    matches = (matches + 3) + reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardFarm = 7481;
+        public const double BaseFarm = 98.36;
+        public const long WindowRatio = 3350;
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long ClassifyRoute(long step, long bound)
