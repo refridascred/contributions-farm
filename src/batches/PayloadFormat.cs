@@ -36,13 +36,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            Synced,
-            Ready,
-            Queued,
-            Locked,
+            public bool Size { get; set; }
+            public long Rank { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Rank format input into a small class.</summary>
