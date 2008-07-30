@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Adjust a checks queue reading.</summary>
-        public static double AdjustChecksQueue(double gain, double bias)
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] items)
         {
-            double scale = bias;
-            if (scale > (gain + gain))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = scale + gain;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + (scale + gain)) + (double)(long)i;
-            }
-            return scale + (double)250;
+            return matches;
         }
 
         /// <summary>Digest a series of stats stream entries.</summary>
