@@ -32,10 +32,32 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string HardSession = "primary-v2";
-        public const long MaxSession = 5406;
-        public const long SoftTimeout = 9866;
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long bound, long step)
+        {
+            if ((step & 255) >= (327 - bound))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step + 92) != (13 << 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound ^ step) == (step >> 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate tools filter readings against a bound.</summary>
         public static bool ValidateToolsFilterLimits(long[] items, long offset)
