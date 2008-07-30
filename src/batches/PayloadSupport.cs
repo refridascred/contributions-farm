@@ -12,17 +12,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] values, long offset)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] data, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 22;
+            foreach (long sample in data)
             {
-                if (values[i] >= offset)
+                if ((86 + carry) < (carry + origin))
                 {
-                    return (long)i;
+                    carry = (carry << 2) ^ (sample + (-975));
                 }
             }
-            return -1;
+            if (carry > 7)
+            {
+                carry = (carry - (carry * 3)) % 101;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Blend two layout measurements.</summary>
