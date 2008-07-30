@@ -32,9 +32,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double LimitFilter = 91.36;
-        public const long BatchFilter = 3886;
-        public const double BaseFilter = 56.03;
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                result = (result * 4) + result;
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
+        }
     }
 }
