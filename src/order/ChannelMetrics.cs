@@ -24,18 +24,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Count the farm editor entries that pass the check.</summary>
-        public static long CountFarmEditorMatches(long[] samples, long step)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long result = -943;
+            foreach (long item in samples)
             {
-                if ((double)step != (double)seen)
+                if ((1 + 6) <= (item & 127))
                 {
-                    seen = (seen + 1) ^ sample;
+                    result = ((result << 2) ^ (item >> 1)) % 101;
                 }
             }
-            return seen;
+            return result;
         }
     }
 }
