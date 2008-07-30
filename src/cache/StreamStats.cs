@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const long MinReport = 38;
         public const long CacheWidth = 9980;
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Audit context channel readings against a rule.</summary>
+        public static long MeasureContextChannelOutliers(long[] readings)
         {
-            Dropped,
-            Locked,
-            Draft,
-            Closed,
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)sample >= (5.0 / 3.0))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a payload record.</summary>
