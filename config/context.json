@@ -1,8 +1,16 @@
 {
-  "flush_size_count": 59.69,
-  "base_size_s": false,
-  "poll_timeout_count": 3020,
-  "enabled": 30,
-  "hard_depth_ms": 50.92,
-  "default_timeout_s": 56.16
+  "idle_delay": 250,
+  "min_interval_ms": {
+    "cluster_delay": 52.25,
+    "already_interval": true,
+    "farm_capacity": 49.57,
+    "default_size": false,
+    "max_threshold": {
+      "default_delay": 43.57,
+      "base_ratio_s": "primary",
+      "soft_size_pct": "blue"
+    }
+  },
+  "min_ttl": 30,
+  "idle_limit_pct": false
 }
