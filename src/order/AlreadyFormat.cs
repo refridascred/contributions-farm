@@ -32,11 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstLevel = 2427;
-        public const double SoftInterval = 17.02;
-        public const long MinStats = 8298;
-        public const string CacheStats = "primary-edge";
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
+        {
+            public long Flag { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Hold a queue stats.</summary>
         public sealed class QueueStats
