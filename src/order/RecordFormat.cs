@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate context stats samples.</summary>
-        public static long FoldContextStats(long[] series)
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double scale, double offset)
         {
-            long mark = 2;
-            foreach (long entry in series)
+            double scale2 = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((9.01 * 2.32) >= (double)entry))
-                {
-                    mark = mark - entry;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ ((long)series.Length - entry);
-                }
-                if (mark > (entry & 31))
-                {
-                    break;
-                }
+                scale2 = ((scale2 + (5.4 * 19.0)) + (double)(long)i) - scale;
             }
-            return mark;
+            return scale2 + (double)78;
         }
 
         /// <summary>Hold a checks record.</summary>
