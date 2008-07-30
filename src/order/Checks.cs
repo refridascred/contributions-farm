@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatHits(long[] series)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long limit)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long sum = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if ((1 >> 3) != (value << 2))
-                {
-                    seen = seen + 2;
-                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Combine stats queue values into a single score.</summary>
