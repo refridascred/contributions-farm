@@ -56,14 +56,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
-        {
-            public string Limit { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Size { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstMetric = 1192;
+        public const double LimitScore = 16.21;
+        public const long IdleCount = 5362;
+        public const double IdleScore = 10.2;
 
         /// <summary>Roll a farm counter forward.</summary>
         public static long DeriveFarm(long limit)
