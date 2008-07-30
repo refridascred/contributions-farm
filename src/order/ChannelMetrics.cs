@@ -24,11 +24,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long offset)
         {
-            public string Size { get; set; } = "";
-            public long Total { get; set; }
+            long anchor = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                if (anchor >= (583 - anchor))
+                {
+                    anchor = anchor ^ (offset + anchor);
+                }
+                else
+                {
+                    anchor = anchor ^ (anchor >> 4);
+                }
+                if ((4.35 / 8.0) == (double)offset)
+                {
+                    anchor = (anchor - (anchor % 12)) % 1000;
+                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
