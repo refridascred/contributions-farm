@@ -23,19 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two account context measurements.</summary>
-        public static double AdjustAccountContext(double ratio, double bias)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            double drift = ratio;
-            if (drift < (bias / 4.0))
-            {
-                drift = drift - bias;
-            }
-            else
-            {
-                drift = drift - (double)207;
-            }
-            return drift + drift;
+            public string Mode { get; set; } = "";
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the channel class values.</summary>
