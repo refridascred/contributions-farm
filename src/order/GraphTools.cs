@@ -55,18 +55,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats support samples are out of range.</summary>
-        public static long MeasureStatsSupportOutliers(long[] series)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((tally & 1) <= (entry + tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Done,
+            Failed,
+            Stale,
         }
     }
 }
