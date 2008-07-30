@@ -39,12 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftScore = 6213;
-        public const double HardDepth = 36.38;
-        public const double MinSupport = 27.27;
-        public const long RetryWidth = 4555;
-        public const string LimitScore = "staging-1";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BatchCount = 22.76;
+        public const long LimitLevel = 3459;
+        public const long RetryGithubfarm = 9958;
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
