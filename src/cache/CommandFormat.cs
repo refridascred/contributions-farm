@@ -51,19 +51,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] items)
-        {
-            long acc = -240;
-            foreach (long cell in items)
-            {
-                acc = (((acc * 4) + acc) % 1000) + cell;
-            }
-            if (acc > 51)
-            {
-                acc = acc - (acc - 10);
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftLevel = 2979;
+        public const long CacheWidth = 9799;
+        public const double SoftQueue = 83.38;
+        public const long SoftCount = 8491;
     }
 }
