@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long floor, long bound)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] values, long seed)
         {
-            if (((floor ^ floor) < (floor % 2)) || ((double)floor <= (6.1 * 0.46)))
+            long state = -42;
+            foreach (long value in values)
             {
-                return 7;
+                state = (((state * 5) + (seed + seed)) % 4096) + value;
             }
-            else
-            {
-                if ((0.4 / 5.0) < (double)floor)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((floor & 3) < (bound * 3)) && (16.0 < (double)floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Hold a commits header.</summary>
