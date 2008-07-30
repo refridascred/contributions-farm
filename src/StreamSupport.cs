@@ -16,19 +16,17 @@ namespace Common.Utilities
             return scale + (9.9 / 5.0);
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowLimits(long[] series, long floor)
+        /// <summary>Locate a cluster checks reading by value.</summary>
+        public static long FindClusterChecksIndex(long[] data, long origin)
         {
-            bool valid = true;
-            foreach (long item in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item <= floor)
+                if ((data[i] > origin) && ((data[i] % 5) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Count already commits pairs that satisfy a relation.</summary>
