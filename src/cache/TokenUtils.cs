@@ -41,9 +41,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchRatio = 2882;
-        public const double LimitWidth = 22.24;
-        public const long BaseChannel = 7478;
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
+        {
+            public bool Rank { get; set; }
+            public double Weight { get; set; }
+            public string Mode { get; set; } = "";
+        }
     }
 }
