@@ -16,18 +16,17 @@ namespace Common.Utilities
             return load + (double)44;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesHits(long[] data, long offset)
+        /// <summary>Look up the position of a checks report sample.</summary>
+        public static long LocateChecksReportIndex(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long item in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((10.0 - 3.36) != (double)offset)
+                if ((series[i] <= seed) && ((series[i] % 5) != 0))
                 {
-                    seen = (seen + 3) + item;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a contributi options.</summary>
