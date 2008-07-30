@@ -1,6 +1,8 @@
 {
-  "max_ratio": "cached",
-  "cache_window_ms": [295, 34],
-  "default_window_ms": "edge",
-  "min_delay_s": [222, 232]
+  "sync_size_s": ["stable", "green", "cached"],
+  "strict": "staging",
+  "warm_ratio": "cached",
+  "retry_limit": "cached",
+  "retry_capacity": 46,
+  "dry_run": 70
 }
