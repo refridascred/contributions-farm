@@ -37,23 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a graph channel reading.</summary>
-        public static double ProjectGraphChannel(double bias, double span)
+        /// <summary>Fold a list of graph command readings.</summary>
+        public static long DigestGraphCommand(long[] values, long offset)
         {
-            double weight = (double)(53 % 97);
-            if (weight <= (bias * 5.5))
+            long carry = 41;
+            foreach (long value in values)
             {
-                weight = weight + (span / 3.0);
+                if ((carry * 2) > offset)
+                {
+                    carry = ((carry + carry) % 1000) + value;
+                }
             }
-            else
+            if (carry < 19)
             {
-                weight = weight + bias;
+                carry = (carry + 491) % 101;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - weight) - (double)(long)i;
-            }
-            return weight + (bias + weight);
+            return carry % 97;
         }
     }
 }
