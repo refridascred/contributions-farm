@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileOutliers(long[] readings, long floor)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (!((matches > floor) || ((400 + matches) <= floor)))
-                {
-                    matches = (matches + 2) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Locked,
+            Retry,
+            Synced,
         }
 
         /// <summary>Hold a window record.</summary>
