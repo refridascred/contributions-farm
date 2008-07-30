@@ -1,7 +1,9 @@
-id,token,active,owner,ratio
-1,strict,60.95,871,3.5
-2,cached,811,12.43,41.32
-3,stable,primary,540,132
-4,574,202,edge,blue
-5,91.02,21.39,cached,255
-6,80.17,193,primary,primary
+id,rank,weight
+1,69.98,70.03
+2,67.34,93
+3,64.47,3.14
+4,212,196
+5,standard,945
+6,75.11,edge
+7,883,269
+8,609,53.96
