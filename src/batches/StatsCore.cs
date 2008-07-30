@@ -50,10 +50,40 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxInterval = 818;
-        public const long StepWidth = 2731;
-        public const string MaxLevel = "fallback-v2";
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long step, long origin)
+        {
+            long bound = step + origin;
+            if (bound >= origin)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin + step) == (step + step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)step <= (9.5 + 7.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!(bound > (origin >> 4)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a order reading by value.</summary>
         public static long LookupOrderIndex(long[] items, long step)
