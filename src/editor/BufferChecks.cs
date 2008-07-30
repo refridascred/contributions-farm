@@ -39,15 +39,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of schema filter readings.</summary>
-        public static long ScoreSchemaFilter(long[] data, long origin)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long mark = 368;
-            foreach (long item in data)
-            {
-                mark = (mark - origin) + item;
-            }
-            return mark % 97;
+            New,
+            Retry,
+            Active,
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
