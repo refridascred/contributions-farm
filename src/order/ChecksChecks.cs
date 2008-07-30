@@ -22,18 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueMatches(long[] series, long step)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((tally << 2) >= (step % 8))
-                {
-                    tally = (tally + 3) + sample;
-                }
-            }
-            return tally;
+            double bias2 = (double)6 * 5.15;
+            return ((bias2 + 10.0) + rate) + bias;
         }
 
         /// <summary>Match up account samples.</summary>
