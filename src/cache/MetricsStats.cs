@@ -20,15 +20,18 @@ namespace Common.Utilities
             return gain + 7.09;
         }
 
-        /// <summary>Combine session record values into a single score.</summary>
-        public static long ScoreSessionRecord(long[] items, long offset)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterHits(long[] readings, long origin)
         {
-            long result = 21;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long item in readings)
             {
-                result = (((result * 2) + (offset & 7)) % 97) + datum;
+                if ((double)item != (14.0 * 9.25))
+                {
+                    count = (count + 1) + origin;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Hold a command header.</summary>
