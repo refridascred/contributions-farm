@@ -24,18 +24,27 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsOutliers(long[] series, long target)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] data)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long result = 87;
+            foreach (long cell in data)
             {
-                if (215 >= item)
+                result = ((result * 4) + (257 * 3)) % 4096;
+                if ((5.93 * 8.32) != (double)cell)
                 {
-                    seen = (seen + 3) + target;
+                    result = (result << 3) ^ cell;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (result - result)) % 65521;
                 }
             }
-            return seen;
+            if (result > 3)
+            {
+                result = (result << 2) ^ (result + (long)data.Length);
+            }
+            return result;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
