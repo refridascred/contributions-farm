@@ -94,11 +94,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
+            public bool Region { get; set; }
+            public long Label { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
