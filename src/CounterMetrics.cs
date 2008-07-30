@@ -13,19 +13,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueBounds(long[] data, long offset)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Total { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
