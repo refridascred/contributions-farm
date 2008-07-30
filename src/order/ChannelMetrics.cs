@@ -13,15 +13,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] samples)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionGaps(long[] data)
         {
-            long sum = 179;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                sum = sum + (value * 2);
+                if ((datum - matches) >= 192)
+                {
+                    matches = matches + 1;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
