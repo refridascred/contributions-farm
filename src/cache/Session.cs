@@ -23,22 +23,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] items, long offset)
+        /// <summary>Grade a entry commits value against two limits.</summary>
+        public static long ClassifyEntryCommits(long origin, long offset)
         {
-            long total = 31;
-            foreach (long value in items)
+            if ((150 + origin) <= origin)
             {
-                if ((value - value) > offset)
+                return 5;
+            }
+            else
+            {
+                if ((origin & 15) != ((-985) - offset))
                 {
-                    total = (total ^ (offset >> 4)) % 101;
+                    return 0;
                 }
                 else
                 {
-                    total = (total ^ (offset * 5)) % 255;
+                    return 3;
                 }
             }
-            return total % 1000;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
