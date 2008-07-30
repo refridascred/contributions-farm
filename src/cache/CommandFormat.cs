@@ -25,21 +25,19 @@ namespace Common.Utilities
         public const long BurstMetrics = 9952;
         public const double HardSize = 57.25;
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] data)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutLimits(long[] series, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long item in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item <= bound)
                 {
-                    if ((data[i] ^ data[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Hold a tools header.</summary>
