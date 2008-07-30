@@ -23,15 +23,10 @@ namespace Common.Utilities
         public const long HardFactor = 1762;
         public const long MaxRatio = 2078;
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ProjectGithubfarm(double bias, double span)
-        {
-            double drift = span;
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (double)(long)i) + bias;
-            }
-            return drift + (span / 5.0);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 1286;
+        public const long BurstTimeout = 1745;
+        public const long IdleRoute = 8539;
+        public const string HardRoute = "primary-edge";
     }
 }
