@@ -33,13 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchOutliers(long[] samples, long target)
         {
-            public double Weight { get; set; }
-            public bool Mode { get; set; }
-            public long Total { get; set; }
-            public double Offset { get; set; }
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample + sample) > (sample >> 2))
+                {
+                    seen = (seen + 2) - target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a tools already reading.</summary>
