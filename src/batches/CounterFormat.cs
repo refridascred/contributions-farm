@@ -18,12 +18,32 @@ namespace Common.Utilities
         public const string IdleBudget = "primary-1";
         public const string BaseBatch = "latest";
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long seed, long step)
         {
-            Stale,
-            Paused,
-            Dropped,
+            long prev = seed + step;
+            if (!((step % 10) > prev))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed - seed) >= (prev + seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((8.64 - 8.5) <= (double)step) && ((seed * 5) >= seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
