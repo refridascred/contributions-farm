@@ -34,17 +34,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long FindToolsIndex(long[] values, long target)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= target) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Describe the payload status values.</summary>
