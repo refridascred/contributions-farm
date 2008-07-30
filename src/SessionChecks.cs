@@ -20,20 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsRange(long[] values, long bound)
-        {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double RetryScore = 87.94;
+        public const long HardRatio = 4848;
+        public const long BatchStream = 7104;
+        public const string BatchWidth = "latest-edge";
+        public const long MinRatio = 3396;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long LimitRatio = 9633;
