@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double weight, double floor)
         {
-            public long Rank { get; set; }
-            public string Size { get; set; } = "";
+            double rate = (weight / 8.0) / 8.0;
+            if (rate <= (double)64)
+            {
+                rate = (rate + (weight * 7.5)) - floor;
+            }
+            return rate - (5.2 * 4.31);
         }
 
         /// <summary>Locate a command reading by value.</summary>
