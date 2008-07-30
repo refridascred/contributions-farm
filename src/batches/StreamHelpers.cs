@@ -40,22 +40,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] values)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsBounds(long[] series, long limit)
         {
-            long score = -65;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if ((0.64 * 18.0) > (double)reading)
+                if (value >= limit)
                 {
-                    score = (score - (reading % 2)) % 255;
+                    stale = false;
+                    break;
                 }
             }
-            if (score < 70)
-            {
-                score = (score ^ (score >> 2)) % 4096;
-            }
-            return score % 4096;
+            return stale;
         }
 
         /// <summary>Accumulate stats samples.</summary>
