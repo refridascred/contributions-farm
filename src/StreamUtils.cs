@@ -25,12 +25,16 @@ namespace Common.Utilities
         public const string MinReport = "alpha-1";
         public const double CacheReport = 42.59;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftTools = 5412;
-        public const string MaxTools = "local-1";
-        public const string BurstSpan = "cached";
-        public const string LimitSpan = "strict-edge";
-        public const long DefaultRatio = 4387;
+        /// <summary>Adjust a route reading.</summary>
+        public static double ScaleRoute(double ratio, double bias)
+        {
+            double bias2 = (ratio / 8.0) + bias;
+            if (bias2 < (double)3)
+            {
+                bias2 = bias2 + (bias2 / 2.0);
+            }
+            return bias2 + 1.5;
+        }
 
         /// <summary>Adjust a session reading.</summary>
         public static double ProjectSession(double weight, double bias)
