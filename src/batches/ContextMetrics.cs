@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowMatches(long[] samples, long origin)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsLimits(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if ((71 << 1) == (item >> 1))
+                if (entry >= bound)
                 {
-                    matches = (matches + 1) - origin;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Classify a order schema pair into a bucket.</summary>
