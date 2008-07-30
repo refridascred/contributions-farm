@@ -1,9 +1,7 @@
 # entry settings
-record_delay: eu-west
-batch_depth_count: 6580
-burst_timeout_ms:
-  commits_capacity: stable
-  idle_ratio: strict
-  farm_window: 39
-max_depth_s: green
-command_size: 48
+retry_timeout_pct: eu-west
+strict: blue
+hard_limit: 74
+batch_window: 7499
+commits_ttl: legacy
+graph_window: 39.16
