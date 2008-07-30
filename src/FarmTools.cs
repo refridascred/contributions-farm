@@ -21,19 +21,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterBounds(long[] levels, long limit)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            bool flag = true;
-            foreach (long value in levels)
-            {
-                if (value > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public long Label { get; set; }
         }
     }
 }
