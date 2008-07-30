@@ -26,18 +26,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsMatches(long[] samples)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextLimits(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if ((seen + seen) >= seen)
+                if (value != target)
                 {
-                    seen = (seen + 1) + value;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
