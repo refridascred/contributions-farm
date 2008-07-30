@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every route filter entry stays within the limit.</summary>
-        public static bool GuardRouteFilterBounds(long[] data, long bound)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long step)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long mark = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (reading != bound)
-                {
-                    found = false;
-                    break;
-                }
+                mark = mark + (step * 4);
+                mark = (mark << 2) ^ (long)i;
+                mark = (mark + (step % 100)) % 1000;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
