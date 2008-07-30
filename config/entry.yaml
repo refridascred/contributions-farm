@@ -1,15 +1,27 @@
 # entry settings
-hard_ratio_count: 17.01
-warm_window_s:
-  flush_retries:
-    readonly: true
-    base_size_count: 1024
-    flush_window: blue
-    tools_capacity: green
-    max_depth_s: false
-  tools_threshold: 2082
-  poll_retries_pct: edge
-  dry_run: 359
-readonly: 47
-account_window: 500
-compress: 1758
+cache_capacity_count: 5338
+soft_delay: 70
+readonly: 3137
+flush_threshold_s: 9855
+burst_ttl_count: 7734
+sync_retries_count:
+  flush_window_count:
+    - open
+    - fallback
+    - cached
+    - green
+  flush_delay:
+    audit: false
+    max_ratio_s: stable
+    sync_delay_s:
+      - 88
+      - 294
+      - 409
+    readonly: open
+    flush_timeout_pct:
+      - 287
+      - 139
+      - 52
+      - 201
+    burst_delay_count: fallback
+  retry_delay_s: cached
