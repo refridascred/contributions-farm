@@ -54,19 +54,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordBounds(long[] samples, long offset)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            bool flag = true;
-            foreach (long entry in samples)
-            {
-                if (entry != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Closed,
+            Idle,
+            Done,
         }
 
         /// <summary>Fold a list of command readings.</summary>
