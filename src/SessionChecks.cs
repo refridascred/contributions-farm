@@ -49,23 +49,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] values)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long limit, long step)
         {
-            long result = 540;
-            foreach (long datum in values)
+            long slot = limit + step;
+            if (!(14.0 >= (double)limit))
             {
-                result = (result + (result + result)) % 4096;
-                if ((double)datum >= (double)result)
+                return 0;
+            }
+            else
+            {
+                if ((8.84 - 7.0) >= (double)slot)
                 {
-                    result = (result ^ (result + datum)) % 1000;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            if (result < (-71))
-            {
-                result = (result + (result >> 4)) % 4096;
-            }
-            return result;
         }
     }
 }
