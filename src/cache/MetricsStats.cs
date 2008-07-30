@@ -44,39 +44,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long limit, long offset)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] samples, long floor)
         {
-            long cur = limit - offset;
-            if ((offset % 24) >= (cur ^ offset))
+            long acc = 5;
+            foreach (long entry in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (((5.7 * 7.81) != (double)cur) || ((offset + offset) >= (1 / 3)))
+                if ((902 - entry) >= entry)
                 {
-                    return 5;
+                    acc = (acc + entry) + floor;
+                    continue;
                 }
-                else
-                {
-                    if ((9.9 + 9.97) == (double)cur)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((limit + limit) == ((-65) % 64)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                acc = ((acc << 2) ^ 71) % 101;
             }
+            return acc;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
