@@ -2,8 +2,11 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     state TEXT NOT NULL DEFAULT 'new',
-    count INTEGER NOT NULL DEFAULT 0,
-    owner TEXT NOT NULL
+    region TEXT,
+    label TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_state ON commits_records (state);
+CREATE INDEX IF NOT EXISTS idx_commits_records_region ON commits_records (region);
+
+INSERT INTO commits_records (state, region, label) VALUES ('local', 'eu-west', 'latest');
+INSERT INTO commits_records (state, region, label) VALUES ('latest', 'blue', 'local');
