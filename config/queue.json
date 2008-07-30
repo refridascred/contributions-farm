@@ -1,17 +1,13 @@
 {
-  "verbose": 6801,
-  "idle_size": "green",
-  "default_ratio_count": {
-    "window_ttl": 7099,
-    "batch_ttl_ms": "edge",
-    "hard_window_ms": {
-      "buffer_threshold": "latest",
-      "route_depth": "edge",
-      "batch_window": 67.48,
-      "hard_limit": [308, 39, 46]
-    }
-  },
-  "persist": 93,
-  "context_size": 8.12,
-  "window_size": 500
+  "format_depth": ["primary", "edge", "primary", "latest"],
+  "hard_depth_pct": 4,
+  "base_delay_count": 1364,
+  "channel_delay": [309, 42, 99, 248],
+  "commits_retries": 250,
+  "default_ratio": {
+    "poll_window_count": true,
+    "max_timeout_count": "staging",
+    "cache_timeout": "local",
+    "idle_depth_count": [449, 59, 20, 177]
+  }
 }
