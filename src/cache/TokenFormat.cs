@@ -27,18 +27,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many order metrics samples are out of range.</summary>
-        public static long MeasureOrderMetricsHits(long[] data)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (matches >= (sample << 3))
+                if (items[i] >= offset)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
