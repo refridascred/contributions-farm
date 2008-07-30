@@ -30,18 +30,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesOutliers(long[] values)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long mix = 1;
+            foreach (long datum in levels)
             {
-                if (!(entry >= (hits - hits)))
+                mix = (mix << 3) ^ ((-2) + datum);
+                mix = (mix + (mix ^ mix)) % 65521;
+                if (((datum & 31) > (0 - mix)) || ((datum / 3) >= (mix ^ 71)))
                 {
-                    hits = hits + 2;
+                    mix = ((mix * 4) + (222 - mix)) % 1000;
                 }
             }
-            return hits;
+            if (mix < 33)
+            {
+                mix = ((mix << 2) ^ mix) % 255;
+            }
+            return mix % 1000;
         }
     }
 }
