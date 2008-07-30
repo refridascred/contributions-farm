@@ -22,18 +22,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandOutliers(long[] samples, long bound)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long PairProfileCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seen + 860) < value)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 1) + bound;
+                    if ((readings[i] - readings[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Adjust a format reading.</summary>
