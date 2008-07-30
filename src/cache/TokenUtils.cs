@@ -14,31 +14,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long seed, long offset)
+        /// <summary>Count the batches editor entries that pass the check.</summary>
+        public static long AuditBatchesEditorHits(long[] values, long floor)
         {
-            if ((double)offset == (2.2 - 8.05))
+            long tally = 0;
+            foreach (long entry in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (((offset + offset) < (offset % 5)) || ((47 >> 2) <= offset))
+                if (!((double)entry <= (double)665))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((seed + seed) < offset) && ((20.0 - 0.8) == (double)offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    tally = (tally + 3) - floor;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
