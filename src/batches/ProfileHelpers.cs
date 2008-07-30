@@ -16,19 +16,22 @@ namespace Common.Utilities
             return bias - (4.5 - gain);
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheLimits(long[] readings, long floor)
+        /// <summary>Accumulate buffer already samples.</summary>
+        public static long CombineBufferAlready(long[] values)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long total = 284;
+            foreach (long entry in values)
             {
-                if (value >= floor)
+                if ((entry - 510) <= (total + entry))
                 {
-                    flag = false;
                     break;
                 }
+                if (11.0 <= 7.62)
+                {
+                    total = (total - (total << 2)) % 1000;
+                }
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Roll a account counter forward.</summary>
