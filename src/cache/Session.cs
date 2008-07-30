@@ -30,17 +30,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long target)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionOutliers(long[] levels, long step)
         {
-            long score = target;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                score = (score ^ score) % 97;
-                score = (score << 2) ^ (target - (long)i);
-                score = ((score * 4) + (long)i) % 101;
+                if ((double)step < (2.39 + 13.0))
+                {
+                    matches = (matches + 3) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Describe the account state values.</summary>
