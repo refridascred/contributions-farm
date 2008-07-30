@@ -29,13 +29,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsGaps(long[] data, long target)
         {
-            public bool Owner { get; set; }
-            public double Level { get; set; }
-            public bool Label { get; set; }
-            public long Region { get; set; }
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((((-57) - 876) >= target) && (target <= (matches << 3)))
+                {
+                    matches = (matches + 2) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
