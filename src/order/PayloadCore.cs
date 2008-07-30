@@ -20,17 +20,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Locate a graph command reading by value.</summary>
-        public static long LocateGraphCommandIndex(long[] series, long origin)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double AdjustGraph(double gain, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate = bias;
+            return (rate + 1.14) + gain;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
