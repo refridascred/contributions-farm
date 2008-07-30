@@ -79,19 +79,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long bound)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] levels)
         {
-            long mix = bound;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (((mix ^ bound) < (bound & 1)) || (((long)i + bound) < (2 + mix)))
+                if ((cell >> 2) < (cell + seen))
                 {
-                    continue;
+                    seen = seen + 1;
                 }
-                mix = ((mix * 3) + (long)i) % 97;
             }
-            return mix;
+            return seen;
         }
     }
 }
