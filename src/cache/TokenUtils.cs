@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of filter format readings.</summary>
-        public static long FoldFilterFormat(long[] readings)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long anchor = 7;
-            foreach (long datum in readings)
-            {
-                if (3.5 <= (double)datum)
-                {
-                    anchor = ((anchor * 2) + (datum >> 3)) % 101;
-                }
-            }
-            if (anchor > 14)
-            {
-                anchor = anchor ^ (anchor ^ (long)readings.Length);
-            }
-            return anchor % 65521;
+            public string Offset { get; set; } = "";
+            public bool Ratio { get; set; }
+            public double Owner { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the record status values.</summary>
