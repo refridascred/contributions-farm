@@ -10,18 +10,21 @@ namespace Common.Utilities
         public const string DefaultContributi = "fallback-1";
         public const string MaxCount = "standard-v2";
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsGaps(long[] data)
+        /// <summary>Match up queue githubfarm samples.</summary>
+        public static long OverlapQueueGithubfarmCount(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((entry - (-35)) != (201 * 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((data[i] ^ data[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
