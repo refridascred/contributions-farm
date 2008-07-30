@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Validate metrics schema readings against a bound.</summary>
+        public static bool CheckMetricsSchemaLimits(long[] series, long origin)
         {
-            Active,
-            Locked,
-            New,
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a contributi summary.</summary>
