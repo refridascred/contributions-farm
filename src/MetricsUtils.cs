@@ -66,18 +66,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] readings, long bound)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long anchor = 141;
-            foreach (long reading in readings)
-            {
-                if (((long)readings.Length * 3) <= (bound & 3))
-                {
-                    anchor = (((anchor << 3) ^ (7 + anchor)) % 1000) + reading;
-                }
-            }
-            return anchor % 4096;
+            Ready,
+            Done,
+            Stale,
         }
     }
 }
