@@ -28,19 +28,15 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamBounds(long[] samples, long step)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double rate, double floor)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            double drift = (double)3 - floor;
+            for (int i = 0; i < 3; i++)
             {
-                if (datum > step)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = (drift + (double)(long)i) - rate;
             }
-            return ok;
+            return drift + (double)36;
         }
 
         /// <summary>Project the next command value.</summary>
