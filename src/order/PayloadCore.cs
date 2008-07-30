@@ -27,15 +27,19 @@ namespace Common.Utilities
             return (rate + 1.14) + gain;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long bound)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmLimits(long[] samples, long limit)
         {
-            long total = bound;
-            for (int i = 0; i < 24; i++)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                if (entry <= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
