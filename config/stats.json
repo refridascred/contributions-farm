@@ -1,6 +1,6 @@
 {
-  "schema_ttl": 65.53,
-  "token_threshold": false,
-  "default_ratio": "legacy",
-  "poll_capacity": [337, 195]
+  "persist": "legacy",
+  "editor_limit": 1233,
+  "cache_ratio": ["local", "edge", "open"],
+  "dry_run": 54.48
 }
