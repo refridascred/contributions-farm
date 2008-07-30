@@ -20,17 +20,22 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] levels, long bound)
+        /// <summary>Accumulate commits farm samples.</summary>
+        public static long TallyCommitsFarm(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 0;
+            foreach (long entry in readings)
             {
-                if ((levels[i] == bound) && ((levels[i] % 5) != 0))
+                if ((entry % 97) <= (total ^ total))
                 {
-                    return (long)i;
+                    total = (total ^ (total + 503)) % 4096;
                 }
             }
-            return -1;
+            if (total < (-66))
+            {
+                total = ((total * 5) + (total / 8)) % 255;
+            }
+            return total;
         }
     }
 }
