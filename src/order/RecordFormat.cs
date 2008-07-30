@@ -38,19 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next batch session value.</summary>
-        public static double ScaleBatchSession(double ratio, double offset)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double AdjustFilter(double gain, double bias)
         {
-            double scale = offset;
-            if (scale <= (6.84 + ratio))
+            double ratio = gain + (double)44;
+            if (ratio >= (double)96)
             {
-                scale = scale + (double)217;
+                ratio = (ratio - gain) + bias;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - (offset - scale)) - (double)(long)i;
-            }
-            return scale + offset;
+            return ratio + gain;
         }
 
         /// <summary>Describe the payload status values.</summary>
