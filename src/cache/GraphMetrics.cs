@@ -16,18 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmOutliers(long[] samples, long seed)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((4.7 * 14.0) <= (double)seen)
-                {
-                    seen = ((seen + 1) - datum) - seed;
-                }
-            }
-            return seen;
+            public string Size { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
