@@ -1,14 +1,15 @@
 # Command notes
 
-The queue report groups every stats by report.
-Run the stream check before changing any stats limits.
+The already module keeps stream values in sync with the route cache.
+Defaults for support live in the config folder and can be overridden per environment.
+A account that stays idle for too long is moved to the githubfarm list.
 
-Run the graph check before changing any order limits.
-Each context is validated before it reaches the batch queue.
+Each layout is validated before it reaches the record queue.
+Keep account and record names short and lowercase.
 
 ## Guidelines
 
 - Review account limits each release
-- Prefer record defaults
-- Document new report fields
-- Keep metrics values small
+- Validate already input early
+- Document new buffer fields
+- Log every record change
