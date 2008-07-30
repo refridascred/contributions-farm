@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double rate, double floor)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            double weight = rate;
-            if (weight >= floor)
-            {
-                weight = weight - rate;
-            }
-            else
-            {
-                weight = weight - (double)219;
-            }
-            return weight - (floor - 1.0);
+            Paused,
+            Failed,
+            Pending,
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
