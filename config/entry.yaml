@@ -1,10 +1,6 @@
 # entry settings
-verbose: cached
-audit: 10
-flush_delay:
-  - fallback
-  - open
-  - legacy
-strict: staging
-sync_retries: legacy
-min_size_pct: true
+burst_capacity_pct: staging
+idle_delay: strict
+warm_retries_count: legacy
+hard_ratio_pct: fallback
+warm_timeout: stable
