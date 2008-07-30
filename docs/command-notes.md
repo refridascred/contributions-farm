@@ -1,11 +1,10 @@
 # Command notes
 
-When a batches fails, the support handler retries a few times before giving up.
-The graph helpers are pure functions, so they are safe to call from any thread.
+Each counter is validated before it reaches the batches queue.
+Run the editor check before changing any window limits.
 
 ## Guidelines
 
-- Prefer tools defaults
-- Document new editor fields
-- Log every editor change
-- Keep commits values small
+- Review stats limits each release
+- Log every stream change
+- Document new filter fields
