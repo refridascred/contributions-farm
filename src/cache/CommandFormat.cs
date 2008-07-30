@@ -18,12 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheMetrics = 5333;
-        public const double MinSize = 72.84;
-        public const string LimitTimeout = "legacy";
-        public const long BurstMetrics = 9952;
-        public const double HardSize = 57.25;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] data)
+        {
+            long acc = 31;
+            foreach (long entry in data)
+            {
+                acc = (acc ^ (acc ^ entry)) % 65521;
+                acc = (acc - acc) % 1000;
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool VerifyLayoutLimits(long[] series, long bound)
