@@ -1,13 +1,13 @@
 {
-  "poll_size_s": {
-    "burst_capacity": 57.43,
-    "burst_depth": true,
-    "queue_timeout": false,
-    "min_threshold_ms": 9418,
-    "session_threshold": ["latest", "primary", "green", "blue"],
-    "schema_timeout": "cached"
-  },
-  "support_ratio": 7645,
-  "account_depth": 77.24,
-  "persist": false
+  "idle_ratio_count": 7497,
+  "retry_delay_ms": 8.45,
+  "verbose": "green",
+  "hard_retries": {
+    "base_capacity": true,
+    "min_timeout_ms": "eu-west",
+    "enabled": "staging",
+    "readonly": 58.96,
+    "flush_window_ms": 44,
+    "dry_run": false
+  }
 }
