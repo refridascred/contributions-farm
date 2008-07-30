@@ -1,7 +1,9 @@
-id,score,state,ratio,label
-1,21.77,88.27,89.93,local
-2,53.56,304,784,stable
-3,standard,701,37.87,edge
-4,fallback,35.53,staging,3.1
-5,538,125,23.39,88.19
-6,68.43,93.33,89.08,local
+id,ratio,state
+1,914,blue
+2,4.82,green
+3,513,489
+4,61.18,legacy
+5,legacy,blue
+6,316,40.7
+7,77.05,269
+8,37.34,288
