@@ -26,19 +26,18 @@ namespace Common.Utilities
             return bias - 17.0;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] data)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionOutliers(long[] series)
         {
-            long sum = 805;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                sum = ((sum * 3) + (reading ^ sum)) % 4096;
+                if (7 <= datum)
+                {
+                    hits = hits + 1;
+                }
             }
-            if (sum > 6)
-            {
-                sum = ((sum * 4) + (sum - sum)) % 101;
-            }
-            return sum;
+            return hits;
         }
     }
 }
