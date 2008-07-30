@@ -33,15 +33,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long bound)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] data)
         {
-            long sum = bound;
-            for (int i = 0; i < 6; i++)
+            long mix = 6;
+            foreach (long reading in data)
             {
-                sum = ((sum * 4) + (long)i) % 4093;
+                mix = (((mix << 3) ^ (mix << 3)) % 4096) - reading;
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
