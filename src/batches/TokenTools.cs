@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordMatches(long[] samples, long seed)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell * 4) <= (seed + seed))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Limit { get; set; }
+            public double Ratio { get; set; }
+            public long Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
