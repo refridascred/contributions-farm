@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            Dropped,
-            Synced,
-            Idle,
-            Failed,
+            public bool Level { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a commits header.</summary>
