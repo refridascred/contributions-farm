@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheQueue = 2398;
-        public const long IdleQueue = 8950;
-        public const long BatchWidth = 3225;
-        public const long HardScore = 1008;
-        public const long BaseQueue = 6170;
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank cache input into a small class.</summary>
         public static long GradeCache(long offset, long step)
