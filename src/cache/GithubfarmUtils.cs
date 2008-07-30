@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every report already entry stays within the limit.</summary>
-        public static bool VerifyReportAlreadyBounds(long[] readings, long bound)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Flag { get; set; } = "";
+            public bool Level { get; set; }
+            public string Size { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
