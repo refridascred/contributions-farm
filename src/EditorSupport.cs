@@ -44,11 +44,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowDepth = 4204;
-        public const long WindowFactor = 6606;
-        public const long BurstStats = 4448;
-        public const string HardTimeout = "legacy-v2";
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BatchInterval = "primary-edge";
+        public const long CacheSpan = 4085;
+        public const long WindowRoute = 8136;
 
         /// <summary>Digest a series of account entries.</summary>
         public static long DigestAccount(long[] readings, long floor)
