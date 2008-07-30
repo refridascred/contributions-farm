@@ -25,38 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank tools command input into a small class.</summary>
-        public static long SortToolsCommand(long bound, long seed)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelHits(long[] levels, long floor)
         {
-            if (((12 ^ 4) < (seed >> 3)) || ((1.6 * 0.7) != (double)bound))
+            long count = 0;
+            foreach (long datum in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (seed <= 60)
+                if ((datum - 788) < (datum << 1))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed + 90) >= bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (seed > (bound - seed))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = (count + 1) + floor;
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
