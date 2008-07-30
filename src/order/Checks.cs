@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            Dropped,
-            Locked,
-            Draft,
-            Synced,
-            New,
+            public bool Score { get; set; }
+            public bool Owner { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
