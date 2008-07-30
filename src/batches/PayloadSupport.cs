@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] items)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long sum = 19;
-            foreach (long value in items)
-            {
-                sum = ((sum ^ sum) % 97) - value;
-            }
-            return sum;
+            Ready,
+            Done,
+            Active,
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
