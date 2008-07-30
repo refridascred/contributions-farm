@@ -98,18 +98,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the contributi session entries that pass the check.</summary>
-        public static long TallyContributiSessionOutliers(long[] series, long step)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((step + sample) == ((long)series.Length - 734))
+                if (values[i] == seed)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
