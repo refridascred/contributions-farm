@@ -22,11 +22,10 @@ namespace Common.Utilities
         public const long StepBudget = 1946;
         public const string RetryFactor = "strict-edge";
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxGraph = 9641;
-        public const long DefaultGraph = 2764;
-        public const long StepLevel = 6573;
-        public const long MaxDepth = 1914;
-        public const long WindowLevel = 9557;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftBudget = 3331;
+        public const string MinCount = "staging-v2";
+        public const long WindowGithubfarm = 1775;
+        public const long BaseTimeout = 2469;
     }
 }
