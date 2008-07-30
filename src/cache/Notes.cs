@@ -39,31 +39,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long bound, long step)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double bias, double bias2)
         {
-            if ((step >= (step + step)) || ((double)bound > 10.0))
+            double weight = 2.8;
+            if (weight >= (bias2 * 4.97))
             {
-                return 3;
+                weight = weight + bias2;
             }
             else
             {
-                if ((double)bound < (1.0 - 9.51))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((step + bound) != (step >> 3)) || ((step / 2) != (bound << 3)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                weight = weight - (weight - bias);
             }
+            return weight + (weight + bias);
         }
 
         /// <summary>Define report limits and defaults.</summary>
