@@ -21,15 +21,13 @@ namespace Common.Utilities
         public const long SoftInterval = 58;
         public const double MinProfile = 32.24;
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long floor)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long score = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            public long Owner { get; set; }
+            public long Label { get; set; }
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
