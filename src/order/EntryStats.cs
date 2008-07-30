@@ -45,15 +45,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ProjectFilter(double bias, double bias2)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutOutliers(long[] levels)
         {
-            double load = (double)(64 + 75);
-            if (load <= (load - load))
+            long count = 0;
+            foreach (long item in levels)
             {
-                load = (load - (double)5) + bias;
+                if (!((169 + count) == (item - count)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return load + bias2;
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
