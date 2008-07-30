@@ -79,16 +79,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long bound)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelHits(long[] items, long step)
         {
-            long sum = bound;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                sum = ((sum << 2) ^ sum) % 255;
-                sum = ((sum * 5) + (long)i) % 65521;
+                if (((seen ^ step) == (value << 3)) && ((1 << 3) <= value))
+                {
+                    seen = seen + 1;
+                }
             }
-            return sum;
+            return seen;
         }
     }
 }
