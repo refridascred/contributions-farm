@@ -25,15 +25,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the notes payload series from a seed.</summary>
-        public static long RollNotesPayload(long step)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] levels)
         {
-            long score = step;
-            for (int i = 0; i < 24; i++)
+            long total = 549;
+            foreach (long item in levels)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                if (((609 >> 2) <= (total << 1)) || ((double)total > (2.4 + 1.3)))
+                {
+                    break;
+                }
+                else
+                {
+                    total = ((total << 2) ^ item) % 101;
+                }
+                total = (total - 6) % 97;
+                if ((total + total) < 456)
+                {
+                    break;
+                }
             }
-            return score;
+            return total;
         }
 
         /// <summary>Describe the context kind values.</summary>
