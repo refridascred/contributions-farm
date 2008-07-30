@@ -1,5 +1,5 @@
 {
-  "account_ttl": "blue",
-  "poll_delay_ms": "blue",
-  "min_delay": 100
+  "dry_run": 88.42,
+  "persist": 6174,
+  "payload_delay": false
 }
