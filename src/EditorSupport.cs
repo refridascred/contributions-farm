@@ -22,23 +22,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] samples, long limit)
-        {
-            long result = -319;
-            foreach (long reading in samples)
-            {
-                if ((reading - 54) < (-9))
-                {
-                    result = ((result ^ (-517)) % 101) - limit;
-                }
-            }
-            if (result > (-5))
-            {
-                result = (result << 3) ^ result;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseFactor = 6122;
+        public const long BurstFactor = 2717;
+        public const string StepRecord = "staging-v2";
+        public const long MinDepth = 8837;
+        public const double WindowBudget = 82.98;
 
         /// <summary>Validate commits format readings against a bound.</summary>
         public static bool ValidateCommitsFormatRange(long[] series, long floor)
