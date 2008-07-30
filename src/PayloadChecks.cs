@@ -20,12 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 6518;
-        public const long RetryLevel = 7810;
-        public const long BatchNotes = 4573;
-        public const double SoftTimeout = 84.71;
-        public const long BatchLevel = 5428;
+        /// <summary>Audit notes support readings against a rule.</summary>
+        public static long TallyNotesSupportHits(long[] levels, long bound)
+        {
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (datum < bound)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next channel value from a seed.</summary>
         public static long StepChannel(long bound)
