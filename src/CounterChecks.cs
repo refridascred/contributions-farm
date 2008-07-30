@@ -58,19 +58,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionBounds(long[] readings, long step)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterLimits(long[] readings, long bound)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if (item != step)
+                if (reading >= bound)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
