@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double rate, double span)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            double scale = (double)(977 / 3);
-            if (scale <= (double)82)
-            {
-                scale = ((scale - (double)86) + rate) - span;
-            }
-            return scale + (9.9 / 5.0);
+            public long Total { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Locate a cluster checks reading by value.</summary>
