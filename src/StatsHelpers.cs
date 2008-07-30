@@ -46,19 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyBounds(long[] readings, long target)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsMatches(long[] items)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (item > target)
+                if (!((21 & 1) < (matches & 255)))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 2) + value;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Hold a window options.</summary>
