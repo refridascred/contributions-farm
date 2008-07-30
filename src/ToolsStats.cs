@@ -37,12 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] samples)
         {
-            public double Total { get; set; }
-            public long Count { get; set; }
-            public bool Token { get; set; }
+            long state = 945;
+            foreach (long cell in samples)
+            {
+                state = state + (cell - state);
+            }
+            if (state > 261)
+            {
+                state = ((state * 5) + (state ^ 30)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
