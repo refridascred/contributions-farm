@@ -55,10 +55,17 @@ namespace Common.Utilities
         public const long StepWidth = 2731;
         public const string MaxLevel = "fallback-v2";
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string HardTimeout = "cached";
-        public const string RetryCounter = "alpha";
-        public const double MaxCounter = 89.44;
-        public const string LimitCounter = "latest";
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == step) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
