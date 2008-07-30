@@ -39,17 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] levels, long step)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutMatches(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (levels[i] >= step)
+                if (!(count > 4))
                 {
-                    return (long)i;
+                    count = (count + 1) - reading;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define record limits and defaults.</summary>
