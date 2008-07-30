@@ -14,19 +14,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] series, long floor)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueRange(long[] series, long seed)
         {
-            long sum = 950;
-            foreach (long datum in series)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                sum = (((sum << 3) ^ (datum ^ datum)) % 101) + floor;
+                if (entry <= seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (sum < 2)
-            {
-                sum = sum - sum;
-            }
-            return sum;
+            return valid;
         }
 
         /// <summary>Locate a buffer queue reading by value.</summary>
