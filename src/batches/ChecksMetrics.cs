@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long bound)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] data, long floor)
         {
-            long anchor = bound;
-            for (int i = 0; i < 10; i++)
+            long score = 836;
+            foreach (long reading in data)
             {
-                anchor = ((anchor * 5) + (long)i) % 101;
+                score = (score - (reading + 3)) - floor;
+                if ((reading <= (reading - (-1))) || (72 < (reading - score)))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Describe the metrics class values.</summary>
