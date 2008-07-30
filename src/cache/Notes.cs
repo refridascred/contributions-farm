@@ -21,19 +21,15 @@ namespace Common.Utilities
         public const long WindowCount = 7469;
         public const string BatchSpan = "local";
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordBounds(long[] data, long origin)
+        /// <summary>Roll a entry stream counter forward.</summary>
+        public static long StepEntryStream(long seed)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long mark = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (value != origin)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Describe the farm kind values.</summary>
