@@ -38,17 +38,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a cluster account sample.</summary>
-        public static long SeekClusterAccountIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFarm = 1133;
+        public const long IdleFarm = 9229;
+        public const long BaseTimeout = 516;
     }
 }
