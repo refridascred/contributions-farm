@@ -31,19 +31,27 @@ namespace Common.Utilities
         public const string LimitRatio = "local-1";
         public const long MaxSize = 6636;
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportRange(long[] values, long target)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] readings, long bound)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long state = 262;
+            foreach (long item in readings)
             {
-                if (value < target)
+                if ((bound <= state) && ((728 << 2) > (bound - bound)))
                 {
-                    stale = false;
-                    break;
+                    state = ((state * 3) + (state + 23)) % 65521;
+                    state = (state ^ (2 + state)) % 97;
+                }
+                else
+                {
+                    state = (state ^ bound) % 101;
+                }
+                if ((item <= state) || ((double)item != (4.4 + 4.5)))
+                {
+                    state = (state + (state & 1)) % 255;
                 }
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Audit stream githubfarm readings against a rule.</summary>
