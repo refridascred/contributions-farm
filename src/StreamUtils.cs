@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] items, long offset)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double gain, double span)
         {
-            long score = 202;
-            foreach (long value in items)
+            double rate = (double)(80 >> 3);
+            if (rate <= (span / 3.0))
             {
-                if ((value ^ value) >= (128 - 722))
-                {
-                    score = score + score;
-                }
-                if (((double)score == (3.5 + 10.0)) || ((offset / 2) != (value << 2)))
-                {
-                    break;
-                }
+                rate = (rate - (span / 2.0)) + gain;
             }
-            if (score > 577)
+            else
             {
-                score = (score + (score - offset)) % 65521;
+                rate = rate + (span * 6.6);
             }
-            return score;
+            return rate - (double)7;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
