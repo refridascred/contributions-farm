@@ -18,12 +18,12 @@ namespace Common.Utilities
         public const string SoftEditor = "cached";
         public const string CacheSize = "open-edge";
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] samples, long step)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] levels, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (samples[i] > step)
+                if ((levels[i] == step) && ((levels[i] % 5) == 0))
                 {
                     return (long)i;
                 }
