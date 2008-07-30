@@ -26,17 +26,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] values, long origin)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] levels, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 18;
+            foreach (long reading in levels)
             {
-                if ((values[i] < origin) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                score = ((score + (reading % 12)) % 1000) + seed;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
