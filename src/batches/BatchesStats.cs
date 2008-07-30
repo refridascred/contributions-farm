@@ -34,18 +34,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueHits(long[] samples)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long target, long offset)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            if (target <= (target & 3))
             {
-                if (((matches - matches) == (matches ^ sample)) || ((7 >> 3) > sample))
+                return 4;
+            }
+            else
+            {
+                if ((2 + target) < (-629))
                 {
-                    matches = matches + 2;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
     }
 }
