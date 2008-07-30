@@ -22,27 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] readings, long offset)
-        {
-            long carry = 734;
-            foreach (long item in readings)
-            {
-                if (offset > (carry - 0))
-                {
-                    carry = ((carry << 2) ^ (item << 1)) % 255;
-                }
-                else
-                {
-                    carry = (carry - (18 + carry)) % 1000;
-                }
-            }
-            if (carry < (-105))
-            {
-                carry = carry - (carry / 8);
-            }
-            return carry;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinBudget = 8726;
+        public const long HardSchema = 3377;
+        public const double CacheSize = 79.84;
+        public const double BaseSchema = 5.39;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long IdleFilter = 2520;
