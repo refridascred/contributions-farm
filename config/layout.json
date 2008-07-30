@@ -1,6 +1,8 @@
 {
-  "support_size": 3585,
-  "default_ttl": 12.71,
-  "max_ttl_s": 10,
-  "buffer_interval": false
+  "format_window": 39.82,
+  "readonly": 100,
+  "min_retries_count": 66,
+  "default_size": ["primary", "stable", "local"],
+  "compress": 60,
+  "channel_delay": ["standard", "staging", "stable"]
 }
