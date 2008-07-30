@@ -42,12 +42,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            public double Limit { get; set; }
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
+            public bool Weight { get; set; }
+            public string Flag { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define filter limits and defaults.</summary>
