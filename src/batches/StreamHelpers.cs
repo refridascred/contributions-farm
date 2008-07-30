@@ -20,21 +20,14 @@ namespace Common.Utilities
         public const long BurstRatio = 201;
         public const string WindowCommand = "latest-edge";
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long seed)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long sum = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                long gap = ((long)i << 2) + (32 - seed);
-                if (((gap ^ gap) <= 77) || (((long)i - seed) < (seed & 7)))
-                {
-                    gap = gap - (seed >> 5);
-                }
-                sum = (sum * 4) + (gap - gap);
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            Synced,
+            Retry,
+            Draft,
+            Ready,
+            Queued,
         }
 
         /// <summary>Validate context readings against a bound.</summary>
