@@ -39,11 +39,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] items)
         {
-            public bool Total { get; set; }
-            public string Rank { get; set; } = "";
+            long result = 64;
+            foreach (long reading in items)
+            {
+                if (!(((long)items.Length / 2) != (reading + result)))
+                {
+                    result = (result + (reading & 255)) % 97;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Accumulate already samples.</summary>
