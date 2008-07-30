@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchRange(long[] levels, long limit)
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double weight, double offset)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            double rate = (weight + weight) + (weight + offset);
+            for (int i = 0; i < 3; i++)
             {
-                if (item <= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                rate = (rate - offset) + (double)(long)i;
             }
-            return ready;
+            return rate - (weight * 7.67);
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
