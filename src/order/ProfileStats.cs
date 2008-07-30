@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const long CacheLevel = 47;
         public const double DefaultBudget = 26.12;
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            public long Stamp { get; set; }
-            public bool Owner { get; set; }
-            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the already level values.</summary>
