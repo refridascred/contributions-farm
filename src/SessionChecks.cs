@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long CompareGraphCount(long[] samples)
+        /// <summary>Derive the next cache already value from a seed.</summary>
+        public static long RollCacheAlready(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = step;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
