@@ -36,17 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] series, long bound)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 9;
+            foreach (long value in readings)
             {
-                if ((series[i] == bound) && ((series[i] % 3) == 0))
+                if ((7.45 - 8.3) <= (double)total)
                 {
-                    return (long)i;
+                    total = total + (98 << 2);
+                }
+                if (value > (value + total))
+                {
+                    break;
                 }
             }
-            return -1;
+            return total;
         }
     }
 }
