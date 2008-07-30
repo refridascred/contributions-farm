@@ -15,15 +15,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
-        {
-            Stale,
-            Failed,
-            Active,
-            Synced,
-            Ready,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseChecks = 1611;
+        public const string StepWidth = "local-v2";
+        public const long SoftLevel = 6056;
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool GuardMetricsLimits(long[] levels, long offset)
