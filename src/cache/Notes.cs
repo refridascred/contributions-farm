@@ -73,24 +73,12 @@ namespace Common.Utilities
         public const long BatchCount = 8550;
         public const long SoftReport = 8066;
 
-        /// <summary>Classify a already farm pair into a bucket.</summary>
-        public static long RankAlreadyFarm(long limit, long bound)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            if (((bound ^ limit) != (95 + bound)) && (59 > limit))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound >> 3) == (limit - limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Synced,
+            Queued,
+            Failed,
         }
     }
 }
