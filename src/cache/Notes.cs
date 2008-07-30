@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] items)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((acc + acc) >= (limit + acc)) && ((179 % 7) >= (limit - (long)i)))
                 {
-                    if ((items[i] + items[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc - (acc >> 5)) % 4096;
+                    acc = acc ^ limit;
                 }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Digest a series of stats stream entries.</summary>
