@@ -40,12 +40,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double LimitPayload = 86.19;
-        public const string IdlePayload = "legacy";
-        public const double RetryPayload = 57.48;
-        public const string BatchBudget = "open";
-        public const long HardFactor = 1664;
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
+        {
+            Queued,
+            Idle,
+            Locked,
+            Draft,
+            Done,
+        }
 
         /// <summary>Match up token samples.</summary>
         public static long OverlapTokenCount(long[] readings)
