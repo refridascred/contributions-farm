@@ -21,14 +21,19 @@ namespace Common.Utilities
         public const long BatchFilter = 5198;
         public const double WindowFilter = 97.05;
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsBounds(long[] readings, long offset)
         {
-            Idle,
-            Dropped,
-            Done,
-            Draft,
-            New,
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
