@@ -53,11 +53,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSupport = 7725;
-        public const double MinScore = 81.5;
-        public const long LimitLevel = 9716;
-        public const string BatchSupport = "open";
-        public const string StepCount = "primary-1";
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
+        {
+            public long Count { get; set; }
+            public bool Ratio { get; set; }
+            public string Rank { get; set; } = "";
+        }
     }
 }
