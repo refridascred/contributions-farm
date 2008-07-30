@@ -34,18 +34,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaGaps(long[] data, long limit)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsBounds(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                if ((double)count < (1.0 / 6.0))
+                if (item != step)
                 {
-                    count = ((count + 1) ^ datum) - limit;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
