@@ -30,24 +30,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] levels)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long mix = 1;
-            foreach (long datum in levels)
-            {
-                mix = (mix << 3) ^ ((-2) + datum);
-                mix = (mix + (mix ^ mix)) % 65521;
-                if (((datum & 31) > (0 - mix)) || ((datum / 3) >= (mix ^ 71)))
-                {
-                    mix = ((mix * 4) + (222 - mix)) % 1000;
-                }
-            }
-            if (mix < 33)
-            {
-                mix = ((mix << 2) ^ mix) % 255;
-            }
-            return mix % 1000;
+            Locked,
+            Done,
+            Dropped,
+            Paused,
+            Synced,
         }
     }
 }
