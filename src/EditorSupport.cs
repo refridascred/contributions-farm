@@ -17,13 +17,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            New,
-            Stale,
+            Failed,
             Locked,
-            Synced,
+            Dropped,
+            Active,
         }
 
         /// <summary>Hold a contributi info.</summary>
