@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] items)
+        /// <summary>Compare every pair of counter stream readings.</summary>
+        public static long OverlapCounterStreamCount(long[] levels)
         {
-            long acc = 0;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(reading < ((long)items.Length + reading)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = ((acc * 5) + (-1)) % 97;
+                    if ((levels[i] - levels[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Audit context channel readings against a rule.</summary>
