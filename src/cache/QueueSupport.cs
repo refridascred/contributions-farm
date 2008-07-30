@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] series)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long result = 232;
-            foreach (long datum in series)
-            {
-                if (!((420 * 5) >= datum))
-                {
-                    result = (result << 2) ^ (result & 127);
-                }
-                result = result ^ (datum << 3);
-                if ((result + 6) >= 93)
-                {
-                    break;
-                }
-            }
-            return result;
+            Locked,
+            Queued,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
