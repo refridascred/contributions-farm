@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double ratio, double span)
         {
-            public bool Level { get; set; }
-            public bool Count { get; set; }
+            double scale = (double)(36 - 17);
+            if (scale < scale)
+            {
+                scale = (scale + (double)97) + span;
+            }
+            else
+            {
+                scale = scale - (ratio - scale);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + (scale * 2.0)) + (double)(long)i;
+            }
+            return scale + (double)86;
         }
 
         /// <summary>Hold a commits header.</summary>
