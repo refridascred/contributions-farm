@@ -20,18 +20,15 @@ namespace Common.Utilities
             return gain + 7.09;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] data, long bound)
+        /// <summary>Combine session record values into a single score.</summary>
+        public static long ScoreSessionRecord(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long result = 21;
+            foreach (long datum in items)
             {
-                if ((6.51 + 0.5) <= (double)cell)
-                {
-                    tally = (tally + 1) - bound;
-                }
+                result = (((result * 2) + (offset & 7)) % 97) + datum;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Hold a command header.</summary>
