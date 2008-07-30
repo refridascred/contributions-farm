@@ -1,9 +1,9 @@
 # support settings
-enabled:
-  - fallback
-  - cached
-  - open
-  - legacy
-verbose: 91
-tools_ratio: 79
-flush_interval_ms: latest
+graph_retries: 5
+verbose:
+  - 378
+  - 129
+  - 204
+  - 388
+persist: 500
+soft_retries: 410
