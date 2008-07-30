@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksOutliers(long[] samples)
         {
-            Failed,
-            Retry,
-            Pending,
-            Done,
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (seen < (seen + seen))
+                {
+                    seen = (seen + 2) ^ item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
