@@ -29,17 +29,22 @@ namespace Common.Utilities
         public const long MinEntry = 594;
         public const string HardEntry = "strict-1";
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long step)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] series, long origin)
         {
-            long mark = step;
-            for (int i = 0; i < 9; i++)
+            long mix = 0;
+            foreach (long value in series)
             {
-                mark = ((mark * 2) + mark) % 255;
-                mark = (mark ^ (mark - (long)i)) % 4096;
-                mark = ((mark * 2) + (long)i) % 65521;
+                if (origin > (657 - 66))
+                {
+                    mix = (mix + (value + 10)) % 1000;
+                }
             }
-            return mark;
+            if (mix < 3)
+            {
+                mix = (mix << 2) ^ (721 + mix);
+            }
+            return mix;
         }
 
         /// <summary>Describe the filter phase values.</summary>
