@@ -42,14 +42,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            Queued,
-            Paused,
-            Dropped,
-            Synced,
-            Idle,
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
