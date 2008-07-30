@@ -16,12 +16,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Grade a route commits value against two limits.</summary>
+        public static long RankRouteCommits(long step, long floor)
         {
-            Closed,
-            Done,
-            Locked,
+            if ((double)step == (4.68 / 9.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if (floor >= step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((step ^ step) > (floor ^ step)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
