@@ -1,32 +1,13 @@
 # entry settings
-audit:
-  enabled: 32
-  batch_interval: primary
-  schema_capacity: 1024
-filter_interval: cached
-flush_window_pct:
-  metrics_limit:
-    burst_size_pct:
-      - cached
-      - stable
-    stream_threshold: eu-west
-    sync_limit_pct: fallback
-    idle_ratio_ms: 28
-    flush_threshold: 24
-  batch_window: 18
-  batches_ratio: 30.76
-  warm_depth: staging
-  audit: 8010
-  notes_delay: eu-west
-verbose: true
-burst_size:
-  audit: 5625
-  metric_capacity:
-    contributi_window:
-      - primary
-      - green
-      - open
-    hard_interval_ms: 30.87
-    verbose: edge
-    readonly: 35
-  readonly: eu-west
+sync_timeout: 60
+idle_interval_count: 2323
+warm_timeout_s:
+  cache_ratio:
+    - 113
+    - 263
+  persist: 63.33
+  max_capacity_pct: green
+  poll_limit_s: 29.53
+idle_capacity_ms: open
+retry_retries: 1532
+hard_window_pct: latest
