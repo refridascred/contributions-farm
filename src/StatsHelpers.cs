@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            Ready,
-            New,
-            Closed,
-            Synced,
+            public double Ratio { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Combine report values into a single score.</summary>
