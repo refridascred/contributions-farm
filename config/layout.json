@@ -1,7 +1,12 @@
 {
-  "idle_window_pct": [292, 393, 303],
-  "hard_depth_count": "open",
-  "layout_capacity": 20,
-  "base_limit": true,
-  "poll_delay_ms": 63
+  "context_retries": {
+    "warm_ttl": 51.91,
+    "flush_timeout_ms": "open",
+    "idle_depth_count": 9882,
+    "verbose": 39,
+    "cache_capacity": "open",
+    "idle_timeout_ms": "eu-west"
+  },
+  "burst_delay_count": "edge",
+  "retry_ttl_pct": 8051
 }
