@@ -32,19 +32,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] items)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] levels)
         {
-            long state = -4;
-            foreach (long entry in items)
+            long acc = -3;
+            foreach (long value in levels)
             {
-                state = (state - (265 + entry)) % 4096;
+                acc = (acc + (value << 1)) % 97;
+                acc = (acc + (value - acc)) % 4096;
             }
-            if (state < 480)
+            if (acc < 25)
             {
-                state = (state << 3) ^ (state << 3);
+                acc = (acc << 2) ^ (acc * 3);
             }
-            return state;
+            return acc;
         }
     }
 }
