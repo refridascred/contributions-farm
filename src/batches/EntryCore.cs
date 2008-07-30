@@ -30,19 +30,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] data, long bound)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] values, long origin)
         {
-            long mark = 58;
-            foreach (long datum in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (((mark << 3) ^ (1 >> 2)) % 255) ^ datum;
+                if ((values[i] < origin) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mark < 15)
-            {
-                mark = (mark - (bound & 1)) % 4096;
-            }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
