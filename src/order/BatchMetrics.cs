@@ -64,18 +64,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit window metrics readings against a rule.</summary>
-        public static long TallyWindowMetricsOutliers(long[] levels, long step)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long mark = 34;
+            foreach (long datum in values)
             {
-                if ((double)item > (8.39 * 9.8))
+                mark = ((mark * 3) + (limit / 8)) % 1000;
+                if ((datum >> 2) < datum)
                 {
-                    count = (count + 3) + step;
+                    break;
                 }
             }
-            return count;
+            return mark;
         }
     }
 }
