@@ -67,12 +67,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheMatches(long[] levels)
         {
-            public long Count { get; set; }
-            public bool Ratio { get; set; }
-            public string Rank { get; set; } = "";
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((270 ^ count) <= count)
+                {
+                    count = (count + 3) + entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
