@@ -37,13 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheHits(long[] values, long seed)
         {
-            New,
-            Retry,
-            Queued,
-            Paused,
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (2.16 <= (double)seen)
+                {
+                    seen = ((seen + 1) + sample) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the commits status values.</summary>
