@@ -53,25 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long step)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long total = step;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((total % 7) <= (step % 2))
-                {
-                    total = (total - step) % 65521;
-                    total = (total + (long)i) % 101;
-                    break;
-                }
-                if (step > (total << 1))
-                {
-                    total = total - total;
-                }
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            public string Weight { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
