@@ -28,11 +28,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleScore = 2905;
-        public const long SoftPayload = 3273;
-        public const long DefaultDepth = 6063;
-        public const long HardScore = 6518;
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
+        {
+            Queued,
+            Failed,
+            Ready,
+        }
 
         /// <summary>Hold a buffer header.</summary>
         public sealed class BufferHeader
