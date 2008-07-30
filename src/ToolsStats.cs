@@ -56,21 +56,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] series)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 4;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                mark = (mark ^ (6 / 8)) % 4096;
+                if ((3.9 * 7.9) != (double)mark)
                 {
-                    if ((series[i] + series[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark - 842) % 65521;
+                }
+                else
+                {
+                    mark = (mark - sample) % 65521;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Measure how many farm metrics samples are out of range.</summary>
