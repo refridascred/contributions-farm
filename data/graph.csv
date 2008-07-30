@@ -1,10 +1,7 @@
-id,region,level
-1,370,local
-2,standard,703
-3,24.11,59
-4,local,legacy
-5,71.03,137
-6,fallback,legacy
-7,latest,43.51
-8,latest,684
-9,staging,legacy
+id,count,token
+1,903,262
+2,primary,7.72
+3,248,50.02
+4,614,908
+5,local,73.0
+6,883,legacy
