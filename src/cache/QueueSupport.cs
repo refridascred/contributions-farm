@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate window token samples.</summary>
-        public static long TallyWindowToken(long[] series, long step)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaRange(long[] readings, long limit)
         {
-            long state = 194;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                state = (state - (step << 2)) % 1000;
-                if ((state >> 5) < (state ^ item))
+                if (reading <= limit)
                 {
-                    state = ((state << 3) ^ (step + state)) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            return state % 1000;
+            return found;
         }
 
         /// <summary>Look up the position of a queue batch sample.</summary>
