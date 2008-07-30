@@ -22,13 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteRange(long[] levels, long limit)
         {
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public double Level { get; set; }
-            public long Flag { get; set; }
+            bool flag = true;
+            foreach (long value in levels)
+            {
+                if (value > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Match up channel samples.</summary>
