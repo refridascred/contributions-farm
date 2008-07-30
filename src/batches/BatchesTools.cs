@@ -55,15 +55,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double bias, double offset)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            double rate = (double)633 / 6.0;
-            for (int i = 0; i < 5; i++)
-            {
-                rate = ((rate + bias) + (double)(long)i) + offset;
-            }
-            return rate + bias;
+            Synced,
+            Active,
+            Paused,
+            Draft,
+            Ready,
         }
     }
 }
