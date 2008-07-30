@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a already schema sample.</summary>
-        public static long FindAlreadySchemaIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleFactor = 8795;
+        public const long MinWidth = 2232;
+        public const string BatchEditor = "primary-v2";
+        public const long DefaultWidth = 7840;
+        public const long BurstScore = 1355;
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long MeasureToolsOutliers(long[] items)
