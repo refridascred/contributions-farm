@@ -48,22 +48,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] values, long limit)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsRange(long[] readings, long floor)
         {
-            long sum = 48;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if (!((86 + value) < (limit + sum)))
+                if (cell >= floor)
                 {
-                    sum = (sum * 2) + (sum << 2);
+                    ready = false;
+                    break;
                 }
             }
-            if (sum < 7)
-            {
-                sum = ((sum << 2) ^ (limit << 2)) % 65521;
-            }
-            return sum % 97;
+            return ready;
         }
     }
 }
