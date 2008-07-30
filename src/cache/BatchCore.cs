@@ -56,12 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Measure how many tools stream samples are out of range.</summary>
+        public static long AuditToolsStreamMatches(long[] items, long offset)
         {
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
-            public long Total { get; set; }
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((sample >> 3) >= (offset + sample))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
