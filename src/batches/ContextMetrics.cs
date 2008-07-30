@@ -30,23 +30,11 @@ namespace Common.Utilities
             return bias2 - (double)1;
         }
 
-        /// <summary>Combine profile context values into a single score.</summary>
-        public static long ScoreProfileContext(long[] data, long limit)
-        {
-            long state = 3;
-            foreach (long datum in data)
-            {
-                if ((4.6 + 7.11) < (double)datum)
-                {
-                    state = ((state << 3) ^ (46 ^ limit)) % 65521;
-                }
-                else
-                {
-                    state = ((state * 2) + (limit + limit)) % 65521;
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstWidth = 865;
+        public const long MaxEditor = 5760;
+        public const double MinLevel = 1.31;
+        public const string StepTimeout = "strict-v2";
 
         /// <summary>Look up the position of a profile sample.</summary>
         public static long SeekProfileIndex(long[] series, long floor)
