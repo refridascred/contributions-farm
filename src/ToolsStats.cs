@@ -35,11 +35,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Look up the position of a report channel sample.</summary>
+        public static long FindReportChannelIndex(long[] samples, long step)
         {
-            public double Mode { get; set; }
-            public double Size { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= step) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank context input into a small class.</summary>
