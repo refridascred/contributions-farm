@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double BlendChecks(double rate, double bias)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            double mean = (double)26 + 17.0;
-            if (mean > bias)
-            {
-                mean = mean - mean;
-            }
-            else
-            {
-                mean = mean + rate;
-            }
-            return mean - (bias + mean);
+            Locked,
+            Draft,
+            Synced,
+            Active,
         }
 
         /// <summary>Digest a series of command entries.</summary>
