@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long target, long target2)
+        /// <summary>Find the first batches context entry that matches the target.</summary>
+        public static long LocateBatchesContextIndex(long[] series, long limit)
         {
-            if (((target + target) <= (0 - target2)) || (target >= 57))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target2 >> 1) > (target + 27))
+                if (series[i] == limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((target2 ^ target2) > (target2 + (-4)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a cache info.</summary>
