@@ -15,17 +15,32 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a entry githubfarm sample.</summary>
-        public static long LookupEntryGithubfarmIndex(long[] levels, long seed)
+        /// <summary>Classify a counter window pair into a bucket.</summary>
+        public static long RankCounterWindow(long floor, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long next = floor - step;
+            if (((next & 255) >= (6 & 15)) && ((double)step >= (16.0 * 14.0)))
             {
-                if (levels[i] < seed)
+                return 6;
+            }
+            else
+            {
+                if (((step % 10) < floor) || (((-9) & 7) > (step * 5)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((floor ^ step) < floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a buffer stats.</summary>
