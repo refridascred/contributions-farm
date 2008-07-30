@@ -1,21 +1,9 @@
 # support settings
-warm_ratio_s:
-  hard_capacity_s:
-    - 174
-    - 254
-    - 121
-  support_window: 876
-  burst_timeout_count: 19.86
-  warm_size_s:
-    - cached
-    - stable
-    - green
-sync_limit_ms: stable
-burst_retries_s: edge
-max_retries_s: 1024
-hard_window_count:
-  entry_retries: 77.64
-  enabled: green
-  support_ratio: 4666
-  burst_delay_pct: legacy
-  layout_depth: 52.21
+flush_ttl_s: eu-west
+verbose: 19.74
+cache_retries_ms: 72.97
+enabled:
+  - stable
+  - strict
+dry_run: 30
+batch_threshold_ms: 55.64
