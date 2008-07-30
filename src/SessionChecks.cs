@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next cache already value from a seed.</summary>
-        public static long RollCacheAlready(long step)
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double scale, double span)
         {
-            long result = step;
-            for (int i = 0; i < 21; i++)
+            double gain = (scale / 3.0) / 9.0;
+            for (int i = 0; i < 3; i++)
             {
-                result = ((result * 2) + (long)i) % 4093;
+                gain = ((gain - gain) + (double)(long)i) - span;
             }
-            return result;
+            return gain - (scale - 1.2);
         }
 
         /// <summary>Hold a graph entry.</summary>
