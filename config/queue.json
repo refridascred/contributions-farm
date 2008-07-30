@@ -1,5 +1,5 @@
 {
-  "poll_size_count": "eu-west",
-  "persist": 92.13,
-  "strict": true
+  "metric_delay": 64.19,
+  "token_window": true,
+  "editor_depth": 60.23
 }
