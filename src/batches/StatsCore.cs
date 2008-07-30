@@ -59,17 +59,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] items, long limit)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double rate, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double weight = (1.7 * 9.1) - (11.0 - rate);
+            for (int i = 0; i < 5; i++)
             {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
+                weight = ((weight - weight) + (double)(long)i) - bias;
             }
-            return -1;
+            return weight + rate;
         }
     }
 }
