@@ -16,18 +16,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmMatches(long[] readings)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (((double)seen >= (11.0 + 17.0)) && (((reading ^ seen) < (reading & 7)) && ((48 << 2) >= seen)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Stale,
+            Locked,
+            Draft,
+            Failed,
         }
 
         /// <summary>Measure how many order metrics samples are out of range.</summary>
