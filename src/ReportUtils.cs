@@ -39,21 +39,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] readings)
+        /// <summary>Grade a graph metric value against two limits.</summary>
+        public static long GradeGraphMetric(long floor, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (!((double)floor >= (double)target))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((9 + floor) != (floor % 100))
                 {
-                    if ((readings[i] + readings[j]) < 9)
+                    return 5;
+                }
+                else
+                {
+                    if ((double)floor >= (8.21 / 6.0))
                     {
-                        seen = seen + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (target > floor)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
