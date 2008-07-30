@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double SmoothRecord(double bias, double floor)
-        {
-            double scale = bias / 5.0;
-            if (scale < scale)
-            {
-                scale = scale - (floor + scale);
-            }
-            else
-            {
-                scale = scale - (double)56;
-            }
-            return scale + (floor - scale);
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double LimitBuffer = 76.45;
+        public const long BaseWidth = 490;
+        public const string MinBuffer = "open-edge";
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long PairRouteCount(long[] levels)
