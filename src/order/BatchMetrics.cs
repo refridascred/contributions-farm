@@ -12,19 +12,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double BlendFilter(double ratio, double span)
+        /// <summary>Count the format farm entries that pass the check.</summary>
+        public static long AuditFormatFarmHits(long[] values, long step)
         {
-            double mean = (span * 1.1) + ratio;
-            if (mean >= (mean + ratio))
+            long seen = 0;
+            foreach (long entry in values)
             {
-                mean = mean - span;
+                if ((((seen >> 4) == (2 - step)) && (2 < (seen / 8))) && ((seen % 2) > ((-5) + seen)))
+                {
+                    seen = (seen + 3) ^ entry;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (mean + ratio)) + (double)(long)i;
-            }
-            return mean - (double)670;
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
