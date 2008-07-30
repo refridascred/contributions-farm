@@ -59,19 +59,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate record contributi readings against a bound.</summary>
-        public static bool ValidateRecordContributiBounds(long[] items, long limit)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ProjectRoute(double gain, double span)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            double load = gain;
+            if (load >= span)
             {
-                if (datum > limit)
-                {
-                    flag = false;
-                    break;
-                }
+                load = load + (gain + span);
             }
-            return flag;
+            return load + (4.45 * 6.56);
         }
     }
 }
