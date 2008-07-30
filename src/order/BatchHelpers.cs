@@ -19,22 +19,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsHits(long[] levels, long origin)
+        /// <summary>Grade a profile counter value against two limits.</summary>
+        public static long BucketProfileCounter(long seed, long limit)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            if ((limit + seed) >= limit)
             {
-                if (((origin & 15) < (origin * 5)) && !((6 >> 4) == (datum & 15)))
+                return 8;
+            }
+            else
+            {
+                if ((seed & 127) == (limit + seed))
                 {
-                    count = count + 3;
+                    return 5;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((double)seed > (1.17 - 6.3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (2.8 <= (double)seed)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Match up stats samples.</summary>
