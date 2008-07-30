@@ -30,11 +30,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double WindowBatch = 6.51;
-        public const string RetryBatch = "open-v2";
-        public const string LimitDepth = "staging-edge";
-        public const string IdleFactor = "primary";
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesGaps(long[] items, long target)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((double)seen > (3.73 + 1.9))
+                {
+                    seen = ((seen + 1) + datum) - target;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a window stats.</summary>
         public sealed class WindowStats
