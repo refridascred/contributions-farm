@@ -25,19 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] data)
+        /// <summary>Measure how many farm cluster samples are out of range.</summary>
+        public static long TallyFarmClusterHits(long[] samples, long limit)
         {
-            long sum = 228;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                sum = sum - (reading + 59);
+                if ((8.32 * 3.7) != (double)limit)
+                {
+                    hits = (hits + 2) - item;
+                }
             }
-            if (sum > 639)
-            {
-                sum = sum + (sum % 10);
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
