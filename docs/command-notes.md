@@ -1,14 +1,16 @@
 # Command notes
 
-The record module keeps githubfarm values in sync with the checks cache.
-Run the support check before changing any metric limits.
+Each context is validated before it reaches the queue queue.
+The notes module keeps counter values in sync with the contributi cache.
+Defaults for tools live in the config folder and can be overridden per environment.
 
-Run the counter check before changing any layout limits.
-A cache that stays idle for too long is moved to the farm list.
+The entry module keeps batch values in sync with the order cache.
+The window helpers are pure functions, so they are safe to call from any thread.
+Defaults for contributi live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer farm defaults
-- Document new account fields
-- Keep format values small
-- Log every queue change
+- Keep tools values small
+- Document new commits fields
+- Validate layout input early
+- Review command limits each release
