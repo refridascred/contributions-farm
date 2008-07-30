@@ -40,18 +40,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many stats tools samples are out of range.</summary>
-        public static long TallyStatsToolsOutliers(long[] series)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((7 - hits) >= (cell - hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Size { get; set; }
+            public long Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Project the next entry stats value.</summary>
