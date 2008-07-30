@@ -63,17 +63,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] values, long limit)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsRange(long[] data, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if (values[i] < limit)
+                if (value != floor)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
