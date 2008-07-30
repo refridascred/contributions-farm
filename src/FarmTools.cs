@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatHits(long[] levels, long target)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long mark = 8;
+            foreach (long value in values)
             {
-                if (!((target + entry) >= (long)levels.Length))
-                {
-                    hits = hits + 1;
-                }
+                mark = ((mark - (mark / 9)) % 97) - value;
+                mark = ((mark * 3) + mark) % 255;
             }
-            return hits;
+            if (mark < 2)
+            {
+                mark = mark - 9;
+            }
+            return mark % 97;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
