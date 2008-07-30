@@ -13,10 +13,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double DefaultCommits = 49.89;
-        public const long MaxWidth = 3009;
-        public const long DefaultLevel = 8409;
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long RankFarm(long origin, long bound)
