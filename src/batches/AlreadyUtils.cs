@@ -65,19 +65,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every batches channel entry stays within the limit.</summary>
-        public static bool GuardBatchesChannelLimits(long[] items, long step)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandRange(long[] values, long origin)
         {
-            bool found = true;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                if (datum >= step)
+                if (sample <= origin)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
     }
 }
