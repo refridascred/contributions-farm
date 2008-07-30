@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] items, long seed)
         {
-            public bool Weight { get; set; }
-            public long Total { get; set; }
+            long anchor = 17;
+            foreach (long reading in items)
+            {
+                anchor = (((anchor << 3) ^ (reading + 8)) % 65521) + seed;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a cluster stats.</summary>
