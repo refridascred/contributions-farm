@@ -63,19 +63,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] data, long limit)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long state = 20;
-            foreach (long reading in data)
-            {
-                state = (state - (5 - state)) + reading;
-            }
-            if (state > 881)
-            {
-                state = ((state * 3) + limit) % 65521;
-            }
-            return state;
+            public long Region { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
