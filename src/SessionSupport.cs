@@ -16,12 +16,18 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] levels, long target)
         {
-            public double Mode { get; set; }
-            public long Rank { get; set; }
-            public double Region { get; set; }
+            long score = 582;
+            foreach (long value in levels)
+            {
+                if (score < (target - 79))
+                {
+                    score = ((score << 2) ^ (score + score)) ^ value;
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Hold a cluster header.</summary>
