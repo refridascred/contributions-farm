@@ -1,6 +1,10 @@
-id,owner,weight
-1,81.11,57
-2,34.26,stable
-3,634,2.01
-4,cached,strict
-5,strict,stable
+id,region,score
+1,64.96,latest
+2,137,strict
+3,309,eu-west
+4,81.41,243
+5,179,63.89
+6,fallback,38.69
+7,standard,local
+8,350,49.18
+9,cached,291
