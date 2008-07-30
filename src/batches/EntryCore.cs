@@ -38,22 +38,32 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long DigestStream(long[] samples, long target)
+        /// <summary>Classify a channel checks pair into a bucket.</summary>
+        public static long BucketChannelChecks(long origin, long floor)
         {
-            long acc = 61;
-            foreach (long datum in samples)
+            long offset = origin ^ floor;
+            if (((floor ^ offset) <= (floor << 3)) || ((origin + 856) < (origin % 3)))
             {
-                if ((acc - (long)samples.Length) >= 662)
+                return 8;
+            }
+            else
+            {
+                if ((774 < (offset - 793)) && ((floor >> 3) != (307 << 1)))
                 {
-                    acc = (((acc ^ acc) % 101) + datum) - target;
+                    return 3;
+                }
+                else
+                {
+                    if ((origin % 12) == (origin * 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (acc > (-15))
-            {
-                acc = acc - acc;
-            }
-            return acc;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
