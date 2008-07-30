@@ -40,16 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the context metrics series from a seed.</summary>
-        public static long RollContextMetrics(long bound)
+        /// <summary>Validate record checks readings against a bound.</summary>
+        public static bool GuardRecordChecksRange(long[] values, long seed)
         {
-            long result = bound;
-            for (int i = 0; i < 19; i++)
+            bool valid = true;
+            foreach (long item in values)
             {
-                result = (result ^ ((long)i & 3)) % 101;
-                result = ((result * 5) + (long)i) % 4093;
+                if (item <= seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Iterate the order notes series from a seed.</summary>
