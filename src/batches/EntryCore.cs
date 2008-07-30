@@ -30,32 +30,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long limit, long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelHits(long[] series, long step)
         {
-            long gap = limit ^ target;
-            if ((975 / 5) > (target * 2))
+            long seen = 0;
+            foreach (long cell in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit - gap) > (5 / 9))
+                if ((double)cell >= (double)step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)75 != (double)gap)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
