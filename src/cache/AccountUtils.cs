@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a commits format reading by value.</summary>
-        public static long SeekCommitsFormatIndex(long[] values, long step)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Pending,
+            New,
+            Retry,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
