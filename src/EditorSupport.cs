@@ -26,13 +26,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Locate a entry format reading by value.</summary>
+        public static long LocateEntryFormatIndex(long[] series, long offset)
         {
-            public long Ratio { get; set; }
-            public double Stamp { get; set; }
-            public long Flag { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == offset) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a queue stats.</summary>
