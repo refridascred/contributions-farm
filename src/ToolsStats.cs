@@ -55,20 +55,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] levels)
-        {
-            long anchor = 7;
-            foreach (long cell in levels)
-            {
-                anchor = anchor - (anchor + cell);
-            }
-            if (anchor < (-8))
-            {
-                anchor = ((anchor * 2) + (anchor + 83)) % 255;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 5917;
+        public const double BaseContext = 71.04;
+        public const long WindowDepth = 3437;
+        public const long MaxContext = 9166;
+        public const double CacheContext = 91.42;
 
         /// <summary>Digest a series of order profile entries.</summary>
         public static long TotalOrderProfile(long[] values, long offset)
