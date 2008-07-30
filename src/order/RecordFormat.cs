@@ -44,18 +44,25 @@ namespace Common.Utilities
         public const long BurstFactor = 7793;
         public const long RetrySpan = 7322;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadHits(long[] data, long limit)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long step, long offset)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long edge = step + offset;
+            if ((offset + edge) != (step % 97))
             {
-                if (!((43 - cell) > 2))
+                return 7;
+            }
+            else
+            {
+                if (edge > (edge + edge))
                 {
-                    tally = (tally + 3) + limit;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
     }
 }
