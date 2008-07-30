@@ -1,5 +1,6 @@
 # githubfarm settings
-flush_retries: true
-cluster_delay: 41.64
-cache_retries: 31.37
-default_size: false
+checks_window:
+  - 416
+  - 211
+buffer_delay: false
+counter_threshold: false
