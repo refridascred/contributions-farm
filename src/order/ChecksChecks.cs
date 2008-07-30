@@ -20,18 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the commits batch entries that pass the check.</summary>
-        public static long TallyCommitsBatchGaps(long[] series)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((hits + sample) != (sample / 3))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Closed,
+            Pending,
+            New,
         }
 
         /// <summary>Count notes stream pairs that satisfy a relation.</summary>
