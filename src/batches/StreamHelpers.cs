@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheBatches = 9967;
+        public const string SoftLevel = "standard-edge";
+        public const long LimitBatches = 5302;
 
         /// <summary>Check that every schema graph entry stays within the limit.</summary>
         public static bool VerifySchemaGraphRange(long[] samples, long origin)
