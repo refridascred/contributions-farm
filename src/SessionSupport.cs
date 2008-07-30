@@ -14,12 +14,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-            public bool Level { get; set; }
+            Pending,
+            Done,
+            New,
         }
 
         /// <summary>Combine farm values into a single score.</summary>
