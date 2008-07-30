@@ -51,18 +51,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] series, long offset)
+        /// <summary>Accumulate order token samples.</summary>
+        public static long ScoreOrderToken(long[] readings)
         {
-            long state = 643;
-            foreach (long cell in series)
+            long score = 111;
+            foreach (long value in readings)
             {
-                if (((cell + (-21)) >= (state % 7)) && (offset > (582 / 9)))
-                {
-                    state = ((state * 3) + (cell / 7)) % 65521;
-                }
+                score = score - (value ^ score);
             }
-            return state;
+            if (score > 91)
+            {
+                score = score + ((-64) ^ score);
+            }
+            return score;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
