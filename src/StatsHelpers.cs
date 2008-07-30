@@ -12,21 +12,38 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long OverlapEditorCount(long[] samples)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long bound, long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)target > (17.0 / 7.0))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((bound & 15) != (5 ^ target))
                 {
-                    if ((samples[i] + samples[j]) == 0)
+                    return 1;
+                }
+                else
+                {
+                    if ((bound * 4) > (bound + target))
                     {
-                        count = count + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((-86) <= (bound & 1))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
