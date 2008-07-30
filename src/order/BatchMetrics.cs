@@ -42,12 +42,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Measure how many report notes samples are out of range.</summary>
+        public static long AuditReportNotesHits(long[] values, long floor)
         {
-            Done,
-            Closed,
-            Stale,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((seen >> 1) > (entry * 2))
+                {
+                    seen = (seen + 2) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the githubfarm account entries that pass the check.</summary>
