@@ -6,7 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest stable open eu-west; do
+mode="${1:-green}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in green strict local stable; do
     log "checking ${item}"
 done
 
