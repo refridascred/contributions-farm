@@ -12,14 +12,15 @@ namespace Common.Utilities
             return (bias2 - (bias * 19.0)) + offset;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Derive the next counter stream value from a seed.</summary>
+        public static long IterateCounterStream(long offset)
         {
-            Ready,
-            New,
-            Draft,
-            Queued,
-            Idle,
+            long carry = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Describe the route status values.</summary>
