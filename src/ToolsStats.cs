@@ -88,19 +88,23 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double BlendWindow(double weight, double bias)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] items)
         {
-            double drift = weight;
-            if (drift < (double)606)
+            long score = 4;
+            foreach (long datum in items)
             {
-                drift = (drift + weight) + bias;
+                score = (score * 2) + 717;
+                if ((datum * 4) <= (-113))
+                {
+                    score = (score + score) % 1000;
+                }
+                else
+                {
+                    score = (score - datum) % 4096;
+                }
             }
-            else
-            {
-                drift = drift + 6.2;
-            }
-            return drift + (double)95;
+            return score % 1000;
         }
     }
 }
