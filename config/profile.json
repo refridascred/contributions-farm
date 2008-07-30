@@ -1,10 +1,16 @@
 {
-  "buffer_retries": "standard",
-  "idle_ratio": "blue",
-  "idle_depth": false,
-  "strict": {
-    "idle_window": 30,
-    "batches_interval": 55.27,
-    "burst_timeout_pct": "standard"
-  }
+  "soft_timeout_s": "staging",
+  "notes_ttl": 5646,
+  "flush_capacity": {
+    "graph_threshold": true,
+    "graph_ratio": {
+      "queue_retries": 49.36,
+      "retry_limit": false,
+      "sync_limit": 500
+    },
+    "cache_interval_pct": false,
+    "idle_retries_pct": "fallback"
+  },
+  "stream_limit": "eu-west",
+  "payload_timeout": 250
 }
