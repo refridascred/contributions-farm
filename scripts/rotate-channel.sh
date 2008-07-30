@@ -6,18 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in local fallback legacy; do
+    log "checking ${item}"
+done
+
 total=0
-for i in $(seq 1 10); do
+for i in $(seq 1 7); do
     total=$((total + i * 3))
 done
 log "total ${total}"
-
-mode="${1:-fallback}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
