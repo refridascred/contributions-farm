@@ -43,18 +43,25 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] readings, long floor)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long offset, long seed)
         {
-            long result = 7;
-            foreach (long item in readings)
+            long gap = offset - seed;
+            if ((double)seed >= 6.17)
             {
-                if (4 < result)
+                return 8;
+            }
+            else
+            {
+                if ((double)seed < (double)gap)
                 {
-                    result = (((result << 3) ^ (942 + result)) ^ item) + floor;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return result % 65521;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
