@@ -14,19 +14,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksHits(long[] items)
-        {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if (((-376) + value) < (value >> 2))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepLevel = 3487;
+        public const double BatchSpan = 24.14;
+        public const double IdleContext = 53.52;
+        public const long StepWidth = 4211;
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
