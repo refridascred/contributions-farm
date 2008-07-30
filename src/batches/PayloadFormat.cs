@@ -44,29 +44,28 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long target, long origin)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long origin, long origin2)
         {
-            long offset = target + origin;
-            if ((2.06 + 2.8) != (double)origin)
+            if (!((origin2 / 3) != (origin + 801)))
             {
-                return 0;
+                return 7;
             }
             else
             {
-                if (8.4 > (double)offset)
+                if (((origin2 % 16) > origin2) && (((-7) + origin2) != (origin - 42)))
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    if ((origin - target) == (offset - origin))
+                    if ((origin2 & 31) >= origin)
                     {
-                        return 4;
+                        return 1;
                     }
                     else
                     {
-                        return 7;
+                        return 2;
                     }
                 }
             }
