@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double HardContributi = 55.27;
+        public const long WindowContributi = 6665;
+        public const long CacheContributi = 859;
+        public const long HardSize = 6975;
 
         /// <summary>Adjust a filter reading.</summary>
         public static double AdjustFilter(double scale, double floor)
