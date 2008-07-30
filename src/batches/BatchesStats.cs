@@ -38,23 +38,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of account batch entries.</summary>
-        public static long WeighAccountBatch(long[] items)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] samples, long bound)
         {
-            long mark = 78;
-            foreach (long entry in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((entry - 0) <= (mark + mark)))
+                if (samples[i] > bound)
                 {
-                    mark = (mark + (mark % 100)) % 1000;
+                    return (long)i;
                 }
-                mark = (mark + (entry + entry)) % 255;
             }
-            if (mark < (-7))
-            {
-                mark = ((mark << 2) ^ 9) % 1000;
-            }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
