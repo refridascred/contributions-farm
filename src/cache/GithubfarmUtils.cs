@@ -23,31 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long floor, long target)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsHits(long[] data)
         {
-            if ((target / 4) < target)
+            long hits = 0;
+            foreach (long item in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor >= (target ^ 3)) || ((floor ^ floor) > target))
+                if ((44 % 10) < (hits ^ 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((target >> 1) <= (target + 294))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = (hits + 1) + item;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
