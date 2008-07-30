@@ -1,18 +1,4 @@
 # support settings
-default_ttl_s:
-  - 471
-  - 222
-default_window_s: 81.1
-record_interval: true
-flush_size_s:
-  dry_run:
-    compress: blue
-    account_capacity: standard
-    queue_threshold: 10.66
-    audit: 31
-  notes_depth:
-    - strict
-    - edge
-    - edge
-  compress: eu-west
-min_interval_s: 250
+default_ttl_count: 3220
+verbose: fallback
+retry_limit_s: strict
