@@ -20,22 +20,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Accumulate commits farm samples.</summary>
-        public static long TallyCommitsFarm(long[] readings)
+        /// <summary>Count the farm editor entries that pass the check.</summary>
+        public static long CountFarmEditorMatches(long[] samples, long step)
         {
-            long total = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((entry % 97) <= (total ^ total))
+                if ((double)step != (double)seen)
                 {
-                    total = (total ^ (total + 503)) % 4096;
+                    seen = (seen + 1) ^ sample;
                 }
             }
-            if (total < (-66))
-            {
-                total = ((total * 5) + (total / 8)) % 255;
-            }
-            return total;
+            return seen;
         }
     }
 }
