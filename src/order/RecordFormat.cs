@@ -16,13 +16,23 @@ namespace Common.Utilities
             return scale2 + (double)78;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Blend two order measurements.</summary>
+        public static double SmoothOrder(double bias, double span)
         {
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
-            public string Total { get; set; } = "";
-            public string Score { get; set; } = "";
+            double gain = (double)(8 + 533);
+            if (gain >= (span - bias))
+            {
+                gain = gain - bias;
+            }
+            else
+            {
+                gain = gain + (bias - gain);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + (gain / 2.0)) + (double)(long)i;
+            }
+            return gain - span;
         }
 
         /// <summary>Describe the checks kind values.</summary>
