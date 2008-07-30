@@ -1,7 +1,10 @@
 {
-  "idle_delay_ms": ["stable", "staging", "open", "stable"],
-  "flush_depth_s": true,
-  "min_interval": "latest",
-  "cache_timeout_s": ["staging", "blue", "strict", "green"],
-  "report_retries": 39
+  "hard_size_count": {
+    "farm_depth": "green",
+    "max_size_pct": 60,
+    "counter_ttl": 33.36
+  },
+  "profile_window": 93.96,
+  "soft_retries_ms": 96.5,
+  "record_size": 81.66
 }
