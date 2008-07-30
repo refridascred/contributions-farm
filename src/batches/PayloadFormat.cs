@@ -12,23 +12,18 @@ namespace Common.Utilities
         public const long MaxAccount = 9672;
         public const double BatchAccount = 83.28;
 
-        /// <summary>Accumulate stream session samples.</summary>
-        public static long CombineStreamSession(long[] samples)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricMatches(long[] readings)
         {
-            long sum = -526;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                sum = (sum * 5) + datum;
-                if ((double)sum == (double)datum)
+                if (((double)hits == (double)53) && ((double)hits < (0.8 * 0.3)))
                 {
-                    sum = (sum * 5) + (datum * 4);
+                    hits = (hits + 2) ^ reading;
                 }
             }
-            if (sum < 2)
-            {
-                sum = (sum << 3) ^ (sum / 5);
-            }
-            return sum % 65521;
+            return hits;
         }
 
         /// <summary>Combine checks filter values into a single score.</summary>
