@@ -1,6 +1,5 @@
 # support settings
-max_size_ms: 100
-buffer_ttl: 58.99
-readonly: 500
-min_threshold: eu-west
-enabled: false
+base_threshold: 9932
+poll_threshold_pct: open
+poll_delay_count: edge
+soft_retries_pct: strict
