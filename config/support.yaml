@@ -1,4 +1,14 @@
 # support settings
-default_ttl_count: 3220
-verbose: fallback
-retry_limit_s: strict
+readonly: 87.84
+flush_depth_pct:
+  - blue
+  - fallback
+batch_retries: true
+compress: true
+poll_retries:
+  batch_threshold_count:
+    poll_ratio: 10.26
+    record_interval: 91.64
+    base_window_s: false
+  persist: 1652
+  support_capacity: false
