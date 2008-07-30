@@ -1,8 +1,5 @@
 {
-  "entry_retries": 34.14,
-  "account_size": 80,
-  "batch_window_count": 60,
-  "sync_interval": "open",
-  "hard_retries": true,
-  "batch_timeout_pct": 60
+  "notes_interval": false,
+  "audit": false,
+  "soft_size": "standard"
 }
