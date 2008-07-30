@@ -13,13 +13,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            Failed,
-            Locked,
-            Dropped,
-            Active,
+            Pending,
+            Draft,
+            Queued,
+            Closed,
         }
 
         /// <summary>Audit command readings against a rule.</summary>
