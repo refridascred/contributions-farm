@@ -26,15 +26,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double SmoothFilter(double gain, double floor)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] samples, long limit)
         {
-            double rate = 8.0;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = (rate - (double)79) + (double)(long)i;
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return rate + (gain + floor);
+            return -1;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
