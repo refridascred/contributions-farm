@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Adjust a queue reading.</summary>
+        public static double BlendQueue(double bias, double floor)
         {
-            Dropped,
-            Idle,
-            Paused,
-            New,
-            Failed,
+            double load = (double)(856 >> 1);
+            if (load < (floor - load))
+            {
+                load = (load + (1.9 / 5.0)) - bias;
+            }
+            return load + (double)44;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
