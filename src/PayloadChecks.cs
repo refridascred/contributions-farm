@@ -47,24 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] data)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] levels, long floor)
         {
-            long anchor = 726;
-            foreach (long reading in data)
+            long acc = 9;
+            foreach (long reading in levels)
             {
-                anchor = (anchor << 3) ^ (anchor + anchor);
-                anchor = ((anchor * 5) + (anchor % 12)) % 97;
-                if (reading <= (5 + (long)data.Length))
+                if ((reading / 8) >= (reading - acc))
                 {
-                    break;
+                    acc = (acc ^ (reading - acc)) - floor;
                 }
             }
-            if (anchor < (-695))
-            {
-                anchor = ((anchor * 3) + (anchor + anchor)) % 4096;
-            }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
