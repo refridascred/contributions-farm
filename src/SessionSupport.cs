@@ -19,13 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] series)
         {
-            Retry,
-            Done,
-            Pending,
-            Stale,
+            long total = 3;
+            foreach (long cell in series)
+            {
+                total = (total + cell) % 97;
+            }
+            return total;
         }
 
         /// <summary>Hold a cluster header.</summary>
