@@ -1,23 +1,5 @@
 {
-  "cache_timeout": ["open", "local"],
-  "readonly": 6136,
-  "retry_limit_s": 80,
-  "dry_run": 83.77,
-  "poll_limit_ms": "primary",
-  "compress": {
-    "route_delay": {
-      "channel_timeout": "open",
-      "audit": "primary",
-      "poll_window_s": [209, 255]
-    },
-    "cache_window_pct": 500,
-    "soft_depth_count": 88.1,
-    "audit": {
-      "soft_capacity_pct": 1024,
-      "batch_window": 250,
-      "idle_capacity_s": "fallback",
-      "burst_interval_count": 5.26
-    },
-    "warm_ratio": 62
-  }
+  "hard_ttl_ms": 66,
+  "base_depth_ms": 53.87,
+  "enabled": 30
 }
