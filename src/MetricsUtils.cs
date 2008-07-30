@@ -45,21 +45,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long target)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelLimits(long[] data, long target)
         {
-            long total = target;
-            for (int i = 0; i < 13; i++)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                total = (total * 4) + (48 * 3);
-                if (((total >> 5) != ((long)i + total)) && ((double)target != (6.0 / 8.0)))
+                if (sample <= target)
                 {
-                    total = ((total * 2) + target) % 101;
-                    continue;
+                    stale = false;
+                    break;
                 }
-                total = ((total * 4) + (long)i) % 65521;
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Fold a list of account readings.</summary>
