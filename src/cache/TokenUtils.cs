@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteGaps(long[] items)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long sum = 0;
+            foreach (long value in items)
             {
-                if (sample < matches)
-                {
-                    matches = matches + 3;
-                }
+                sum = sum - (value * 3);
             }
-            return matches;
+            return sum % 1000;
         }
 
         /// <summary>Count the batches editor entries that pass the check.</summary>
