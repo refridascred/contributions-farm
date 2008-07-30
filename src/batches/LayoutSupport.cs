@@ -25,24 +25,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank filter schema input into a small class.</summary>
-        public static long GradeFilterSchema(long seed, long target)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelHits(long[] values, long offset)
         {
-            if (((seed * 4) >= (seed * 3)) || ((target >> 4) == (target - target)))
+            long count = 0;
+            foreach (long datum in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (target < (seed >> 3))
+                if ((23 + offset) > (offset & 255))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    count = (count + 3) + datum;
                 }
             }
+            return count;
         }
 
         /// <summary>Project the next payload value.</summary>
