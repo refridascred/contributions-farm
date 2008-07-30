@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordMatches(long[] data, long step)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long bound)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long mix = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if ((8.0 + 5.94) > (double)tally)
+                if ((bound / 3) == ((long)i + (long)i))
                 {
-                    tally = ((tally + 2) ^ reading) - step;
+                    mix = mix - (28 ^ mix);
+                    break;
                 }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
