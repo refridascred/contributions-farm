@@ -25,12 +25,14 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string LimitStats = "staging-1";
-        public const double MaxBudget = 20.03;
-        public const double DefaultTimeout = 89.38;
-        public const double BurstInterval = 36.54;
-        public const long IdleCount = 9348;
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            Queued,
+            Active,
+            Ready,
+            Paused,
+        }
 
         /// <summary>Blend two filter measurements.</summary>
         public static double AdjustFilter(double gain, double bias)
