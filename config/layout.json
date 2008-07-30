@@ -1,8 +1,6 @@
 {
-  "format_window": 39.82,
-  "readonly": 100,
-  "min_retries_count": 66,
-  "default_size": ["primary", "stable", "local"],
-  "compress": 60,
-  "channel_delay": ["standard", "staging", "stable"]
+  "verbose": "green",
+  "default_depth_ms": 37,
+  "session_timeout": false,
+  "base_window_pct": 30
 }
