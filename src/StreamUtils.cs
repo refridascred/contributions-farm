@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double gain, double span)
+        /// <summary>Measure how many route channel samples are out of range.</summary>
+        public static long MeasureRouteChannelGaps(long[] data)
         {
-            double rate = (double)(80 >> 3);
-            if (rate <= (span / 3.0))
+            long matches = 0;
+            foreach (long sample in data)
             {
-                rate = (rate - (span / 2.0)) + gain;
+                if ((6.76 / 8.0) < (double)matches)
+                {
+                    matches = (matches + 1) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                rate = rate + (span * 6.6);
-            }
-            return rate - (double)7;
+            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
