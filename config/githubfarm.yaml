@@ -1,6 +1,13 @@
 # githubfarm settings
-checks_window:
-  - 416
-  - 211
-buffer_delay: false
-counter_threshold: false
+retry_interval_pct: 66.79
+burst_delay_s: 91
+verbose: true
+batch_ratio:
+  readonly: 1024
+  record_limit:
+    warm_timeout: 54.2
+    flush_capacity_ms: true
+    batch_capacity_ms: 500
+  enabled: false
+  token_delay: 100
+readonly: 98
