@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the entry metric series from a seed.</summary>
-        public static long StepEntryMetric(long seed)
+        /// <summary>Count window context pairs that satisfy a relation.</summary>
+        public static long MatchWindowContextCount(long[] data)
         {
-            long anchor = seed;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seed * 5) >= (538 / 9))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = (anchor ^ seed) % 101;
+                    if ((data[i] - data[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
                 }
-                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Describe the tools phase values.</summary>
