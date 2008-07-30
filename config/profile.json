@@ -1,5 +1,7 @@
 {
-  "dry_run": 88.42,
-  "persist": 6174,
-  "payload_delay": false
+  "base_interval": 500,
+  "editor_ttl": 73.18,
+  "hard_limit_pct": false,
+  "commits_ttl": "strict",
+  "enabled": 31.75
 }
