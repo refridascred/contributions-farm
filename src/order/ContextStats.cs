@@ -30,38 +30,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Grade a graph stream value against two limits.</summary>
-        public static long ClassifyGraphStream(long step, long target)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmRange(long[] items, long offset)
         {
-            if ((9 >> 5) >= target)
+            bool ready = true;
+            foreach (long value in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)step >= (3.0 / 5.0)) || ((19.0 + 4.16) <= (double)target))
+                if (value != offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((1.58 * 8.1) == (double)step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (step >= (step % 97))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Match up order samples.</summary>
