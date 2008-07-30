@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a schema account reading.</summary>
-        public static double SmoothSchemaAccount(double bias, double span)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long origin)
         {
-            double gain = span + (span * 8.8);
-            if (gain < (bias - gain))
+            long mark = origin;
+            for (int i = 0; i < 6; i++)
             {
-                gain = gain - (gain / 5.0);
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            else
-            {
-                gain = gain - bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - (bias / 4.0)) + (double)(long)i;
-            }
-            return gain + span;
+            return mark;
         }
 
         /// <summary>Digest a series of already entries.</summary>
