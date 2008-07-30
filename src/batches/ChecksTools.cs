@@ -12,12 +12,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double CacheSchema = 65.54;
-        public const double WindowSchema = 77.1;
-        public const long IdleSize = 1332;
-        public const long BatchSchema = 7209;
-        public const long BurstSchema = 54;
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
+        {
+            public bool Weight { get; set; }
+            public long Label { get; set; }
+            public string Level { get; set; } = "";
+            public double Token { get; set; }
+        }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long LookupContributiIndex(long[] data, long bound)
