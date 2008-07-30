@@ -10,15 +10,21 @@ namespace Common.Utilities
         public const string BatchContext = "legacy-1";
         public const long RetryContext = 5449;
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long floor)
+        /// <summary>Accumulate account cluster samples.</summary>
+        public static long FoldAccountCluster(long[] readings, long offset)
         {
-            long result = floor;
-            for (int i = 0; i < 21; i++)
+            long total = 6;
+            foreach (long value in readings)
             {
-                result = ((result * 4) + (long)i) % 1000;
+                total = total + (total ^ value);
+                total = (total - (offset + offset)) % 4096;
+                total = ((total * 2) + (offset << 1)) % 97;
+                if (((1 ^ value) >= total) || (total >= (82 & 15)))
+                {
+                    break;
+                }
             }
-            return result;
+            return total % 4096;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
