@@ -22,17 +22,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a entry format reading by value.</summary>
-        public static long LocateEntryFormatIndex(long[] series, long offset)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] samples, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = -319;
+            foreach (long reading in samples)
             {
-                if ((series[i] == offset) && ((series[i] % 2) == 0))
+                if ((reading - 54) < (-9))
                 {
-                    return (long)i;
+                    result = ((result ^ (-517)) % 101) - limit;
                 }
             }
-            return -1;
+            if (result > (-5))
+            {
+                result = (result << 3) ^ result;
+            }
+            return result % 4096;
         }
 
         /// <summary>Validate commits format readings against a bound.</summary>
