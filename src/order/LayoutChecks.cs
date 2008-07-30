@@ -31,21 +31,19 @@ namespace Common.Utilities
         public const string LimitRatio = "local-1";
         public const long MaxSize = 6636;
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] readings)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportRange(long[] values, long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (value < target)
                 {
-                    if ((readings[i] ^ readings[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Audit stream githubfarm readings against a rule.</summary>
