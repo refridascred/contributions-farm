@@ -25,23 +25,21 @@ namespace Common.Utilities
         public const long SoftCluster = 8294;
         public const long LimitInterval = 9667;
 
-        /// <summary>Project the next support channel value.</summary>
-        public static double SmoothSupportChannel(double weight, double floor)
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] items)
         {
-            double gain = (floor * 0.17) + (double)389;
-            if (gain >= (double)4)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = gain - weight;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain + (weight + 17.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - floor) - (double)(long)i;
-            }
-            return gain - (double)2;
+            return hits;
         }
     }
 }
