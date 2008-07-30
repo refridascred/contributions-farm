@@ -40,19 +40,11 @@ namespace Common.Utilities
         public const long BaseLevel = 4040;
         public const long CacheWidth = 7880;
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double AdjustChannel(double weight, double span)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            double drift = span;
-            if (drift < 5.05)
-            {
-                drift = drift - weight;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + weight) + (double)(long)i;
-            }
-            return drift - weight;
+            public long Level { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
