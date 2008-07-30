@@ -34,18 +34,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate window editor samples.</summary>
-        public static long FoldWindowEditor(long[] levels, long limit)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricOutliers(long[] series)
         {
-            long mark = 81;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((double)mark <= 3.8)
+                if ((double)datum < 9.79)
                 {
-                    mark = ((((mark * 4) + (mark ^ 35)) % 101) - reading) + limit;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return mark % 97;
+            return seen;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
