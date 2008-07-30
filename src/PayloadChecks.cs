@@ -48,13 +48,30 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] samples)
         {
-            Closed,
-            Ready,
-            Done,
-            Synced,
+            long result = 3;
+            foreach (long datum in samples)
+            {
+                if ((datum > (datum ^ datum)) || (datum > (datum >> 1)))
+                {
+                    result = result - result;
+                }
+                else
+                {
+                    result = (result + (datum << 2)) % 101;
+                }
+                if (result < (16 % 24))
+                {
+                    break;
+                }
+            }
+            if (result > 6)
+            {
+                result = ((result << 2) ^ (result >> 2)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Blend two farm measurements.</summary>
