@@ -79,11 +79,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ProjectSupport(double bias, double span)
+        /// <summary>Measure how many contributi route samples are out of range.</summary>
+        public static long CountContributiRouteGaps(long[] series)
         {
-            double drift = bias - span;
-            return drift + (8.5 + drift);
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((double)cell == (1.1 - 16.0))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
