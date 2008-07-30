@@ -21,12 +21,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            public double Size { get; set; }
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
+            Ready,
+            Retry,
+            Idle,
         }
 
         /// <summary>Hold a checks snapshot.</summary>
