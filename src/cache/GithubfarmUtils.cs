@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double gain, double span)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportOutliers(long[] readings, long limit)
         {
-            double drift = span;
-            if (drift <= span)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                drift = drift + (double)4;
+                if ((value & 127) < (value - limit))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                drift = drift + (gain * 1.89);
-            }
-            return drift + span;
+            return hits;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
