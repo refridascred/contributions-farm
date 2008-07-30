@@ -26,13 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Fold a list of stats checks readings.</summary>
+        public static long ScoreStatsChecks(long[] readings, long limit)
         {
-            Draft,
-            Dropped,
-            Done,
-            Queued,
+            long result = 5;
+            foreach (long reading in readings)
+            {
+                if ((reading % 8) < (reading ^ reading))
+                {
+                    result = ((result << 2) ^ (reading % 3)) - limit;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
