@@ -34,19 +34,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsBounds(long[] levels, long step)
-        {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseLevel = 2475;
+        public const long WindowWidth = 2178;
+        public const long WindowSpan = 1162;
     }
 }
