@@ -48,32 +48,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long step, long bound)
-        {
-            if (step <= (bound % 5))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)step < (9.75 / 2.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (step >= (16 & 7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BatchBudget = "open-edge";
+        public const double StepFactor = 92.17;
+        public const long SoftMetric = 2237;
+        public const long MaxMetric = 4861;
+        public const long BatchScore = 4160;
 
         /// <summary>Describe the commits status values.</summary>
         public enum CommitsStatus
