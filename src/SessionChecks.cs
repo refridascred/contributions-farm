@@ -31,28 +31,16 @@ namespace Common.Utilities
             return weight - scale;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] samples)
+        /// <summary>Iterate the order notes series from a seed.</summary>
+        public static long StepOrderNotes(long step)
         {
-            long mark = 195;
-            foreach (long item in samples)
+            long sum = step;
+            for (int i = 0; i < 10; i++)
             {
-                long gap = (item / 4) + mark;
-                if (((double)item < (7.85 + 9.02)) || (mark >= (gap + mark)))
-                {
-                    continue;
-                }
-                mark = mark ^ (mark - item);
-                if (!((15.0 / 3.0) == (double)mark))
-                {
-                    break;
-                }
+                sum = (sum ^ (step << 1)) % 101;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            if (mark < 4)
-            {
-                mark = (mark * 3) + (mark << 3);
-            }
-            return mark;
+            return sum;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
