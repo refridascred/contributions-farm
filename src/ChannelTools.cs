@@ -20,27 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] samples)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatRange(long[] data, long limit)
         {
-            long mark = 607;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long item in data)
             {
-                if ((datum % 7) == (datum + datum))
+                if (item <= limit)
                 {
-                    mark = mark + datum;
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    mark = (mark << 3) ^ (datum << 3);
-                }
-                mark = mark ^ (long)samples.Length;
             }
-            if (mark > 3)
-            {
-                mark = (mark - (mark - mark)) % 4096;
-            }
-            return mark % 4096;
+            return found;
         }
 
         /// <summary>Combine window values into a single score.</summary>
