@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountOutliers(long[] samples)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (((value % 12) <= matches) && ((value * 5) >= value))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public string Rank { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Fold a list of commits readings.</summary>
