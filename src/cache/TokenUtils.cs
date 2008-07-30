@@ -19,11 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseCluster = 2514;
-        public const long WindowCluster = 4168;
-        public const long SoftCluster = 8294;
-        public const long LimitInterval = 9667;
+        /// <summary>Measure how many editor checks samples are out of range.</summary>
+        public static long TallyEditorChecksMatches(long[] series, long seed)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (677 < (item * 3))
+                {
+                    seen = (seen + 1) + seed;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double MaxWidth = 55.25;
