@@ -13,12 +13,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            public long Total { get; set; }
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
+            public long Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Count the window route entries that pass the check.</summary>
