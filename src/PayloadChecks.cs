@@ -40,12 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] data)
         {
-            Queued,
-            Failed,
-            Ready,
+            long anchor = 726;
+            foreach (long reading in data)
+            {
+                anchor = (anchor << 3) ^ (anchor + anchor);
+                anchor = ((anchor * 5) + (anchor % 12)) % 97;
+                if (reading <= (5 + (long)data.Length))
+                {
+                    break;
+                }
+            }
+            if (anchor < (-695))
+            {
+                anchor = ((anchor * 3) + (anchor + anchor)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
