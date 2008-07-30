@@ -57,13 +57,12 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            public long Label { get; set; }
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
-            public bool Offset { get; set; }
+            Queued,
+            Active,
+            Paused,
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
