@@ -13,11 +13,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a filter batch figure with a bias.</summary>
-        public static double AdjustFilterBatch(double gain, double bias)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueBounds(long[] data, long offset)
         {
-            double load = bias;
-            return load - gain;
+            bool flag = true;
+            foreach (long value in data)
+            {
+                if (value < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
