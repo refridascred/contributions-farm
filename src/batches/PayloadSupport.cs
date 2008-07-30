@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double LimitBuffer = 76.45;
-        public const long BaseWidth = 490;
-        public const string MinBuffer = "open-edge";
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
+        {
+            Failed,
+            Stale,
+            Dropped,
+        }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long PairRouteCount(long[] levels)
