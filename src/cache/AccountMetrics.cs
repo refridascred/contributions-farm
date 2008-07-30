@@ -20,21 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate account cluster samples.</summary>
-        public static long FoldAccountCluster(long[] readings, long offset)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] data)
         {
-            long total = 6;
-            foreach (long value in readings)
+            long total = 451;
+            foreach (long value in data)
             {
-                total = total + (total ^ value);
-                total = (total - (offset + offset)) % 4096;
-                total = ((total * 2) + (offset << 1)) % 97;
-                if (((1 ^ value) >= total) || (total >= (82 & 15)))
+                if (!((value >> 1) >= (total - total)))
                 {
-                    break;
+                    total = (total - (total & 127)) % 65521;
                 }
             }
-            return total % 4096;
+            return total;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
