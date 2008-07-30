@@ -24,27 +24,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long offset)
+        /// <summary>Validate route checks readings against a bound.</summary>
+        public static bool CheckRouteChecksBounds(long[] data, long origin)
         {
-            long anchor = offset;
-            for (int i = 0; i < 19; i++)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if (anchor >= (583 - anchor))
+                if (cell != origin)
                 {
-                    anchor = anchor ^ (offset + anchor);
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    anchor = anchor ^ (anchor >> 4);
-                }
-                if ((4.35 / 8.0) == (double)offset)
-                {
-                    anchor = (anchor - (anchor % 12)) % 1000;
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return found;
         }
     }
 }
