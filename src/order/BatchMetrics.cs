@@ -43,19 +43,32 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] series, long step)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long origin, long seed)
         {
-            long mark = 32;
-            foreach (long cell in series)
+            long prev = origin ^ seed;
+            if (!((origin >> 5) > (origin / 5)))
             {
-                mark = (((mark << 2) ^ (step * 3)) % 255) + cell;
-                if ((step + step) >= (mark / 9))
+                return 0;
+            }
+            else
+            {
+                if (!(prev >= 7))
                 {
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((seed << 3) > (origin & 127))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return mark % 1000;
         }
 
         /// <summary>Count the editor support entries that pass the check.</summary>
