@@ -29,13 +29,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
-        {
-            public bool Weight { get; set; }
-            public long Level { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string DefaultFarm = "primary-edge";
+        public const long LimitDepth = 8032;
+        public const long HardSpan = 8306;
 
         /// <summary>Roll a cache layout counter forward.</summary>
         public static long DeriveCacheLayout(long bound)
