@@ -1,6 +1,8 @@
 {
-  "warm_ttl_ms": 1449,
-  "order_limit": "eu-west",
-  "schema_threshold": 20,
-  "context_depth": 98.81
+  "cache_delay_ms": "standard",
+  "min_threshold_ms": 343,
+  "stream_ratio": false,
+  "retry_depth_count": false,
+  "strict": 19.85,
+  "cache_capacity": "standard"
 }
