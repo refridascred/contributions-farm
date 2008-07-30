@@ -30,19 +30,22 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double BlendLayout(double ratio, double span)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutMatches(long[] values, long limit)
         {
-            double gain = ratio;
-            if (gain >= (ratio + 3.03))
+            long matches = 0;
+            foreach (long value in values)
             {
-                gain = gain + span;
+                if ((8.1 + 3.0) <= (double)value)
+                {
+                    matches = (matches + 1) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain + gain;
+            return matches;
         }
     }
 }
