@@ -1,22 +1,25 @@
 # githubfarm settings
-schema_threshold: 100
-burst_window_ms:
-  metric_ttl: primary
-  order_delay: local
-  strict: false
-  persist: latest
-queue_limit: 1024
-hard_threshold:
-  min_retries: 500
-  base_ttl_pct:
-    sync_size_pct: 100
-    route_threshold: 89
-    hard_retries_ms: false
-    format_size: legacy
-    cache_delay: 60
-    command_size: 10.26
-  warm_interval_s: cached
-  already_window:
-    buffer_depth: 21.12
-    warm_ratio: 4.61
-    sync_window: cached
+default_capacity_count: 4462
+notes_ratio:
+  - standard
+  - staging
+sync_interval: 60
+poll_timeout_s:
+  - 338
+  - 315
+  - 110
+  - 336
+command_window:
+  githubfarm_threshold: 486
+  flush_size_s:
+    - 453
+    - 55
+    - 291
+    - 369
+  counter_retries:
+    - cached
+    - edge
+    - blue
+    - standard
+  enabled: true
+  retry_limit_ms: open
