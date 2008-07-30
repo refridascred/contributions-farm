@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double ProjectContext(double weight, double bias)
+        /// <summary>Check that every route stream entry stays within the limit.</summary>
+        public static bool CheckRouteStreamBounds(long[] values, long offset)
         {
-            double gain = (double)36 + (double)41;
-            if (gain <= (weight / 2.0))
+            bool flag = true;
+            foreach (long value in values)
             {
-                gain = gain + bias;
+                if (value <= offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + (weight - weight);
-            }
-            return gain + (gain - gain);
+            return flag;
         }
 
         /// <summary>Describe the tools kind values.</summary>
