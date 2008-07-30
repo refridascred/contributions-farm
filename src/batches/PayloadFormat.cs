@@ -55,27 +55,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Digest a series of metric buffer entries.</summary>
-        public static long TotalMetricBuffer(long[] samples)
+        /// <summary>Audit session cluster readings against a rule.</summary>
+        public static long MeasureSessionClusterGaps(long[] readings)
         {
-            long mix = 4;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if ((cell & 3) < (826 & 63))
+                if ((double)98 >= (double)cell)
                 {
-                    mix = ((mix * 5) + 67) % 255;
-                }
-                mix = ((mix * 5) + (cell * 3)) % 4096;
-                if ((cell + 7) <= (cell + cell))
-                {
-                    mix = mix ^ (mix << 2);
+                    matches = matches + 3;
                 }
             }
-            if (mix > 44)
-            {
-                mix = mix + (702 - mix);
-            }
-            return mix;
+            return matches;
         }
     }
 }
