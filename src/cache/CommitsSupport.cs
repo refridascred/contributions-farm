@@ -45,18 +45,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double RetryMetric = 24.93;
+        public const long IdleLevel = 3963;
+        public const string IdleMetric = "standard-v2";
+        public const double MaxMetric = 73.38;
 
         /// <summary>Describe the record mode values.</summary>
         public enum RecordMode
