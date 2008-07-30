@@ -22,16 +22,38 @@ namespace Common.Utilities
             return load + (load * 6.1);
         }
 
-        /// <summary>Roll a window route counter forward.</summary>
-        public static long StepWindowRoute(long bound)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long origin, long target)
         {
-            long score = bound;
-            for (int i = 0; i < 13; i++)
+            if (((target >> 1) > target) || ((double)target < (double)origin))
             {
-                score = (score + (long)i) % 65521;
-                score = ((score * 2) + (long)i) % 97;
+                return 5;
             }
-            return score;
+            else
+            {
+                if ((origin % 3) <= target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (target <= ((-2) + origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target + origin) < (-155))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the route class values.</summary>
