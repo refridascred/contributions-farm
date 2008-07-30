@@ -41,18 +41,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmOutliers(long[] data, long step)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((step * 4) > (entry & 3))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Count { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the profile mode values.</summary>
