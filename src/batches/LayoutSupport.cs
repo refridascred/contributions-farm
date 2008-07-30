@@ -34,12 +34,21 @@ namespace Common.Utilities
             return scale - (floor - rate);
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Compare every pair of buffer support readings.</summary>
+        public static long MatchBufferSupportCount(long[] levels)
         {
-            Ready,
-            Pending,
-            Synced,
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine queue layout values into a single score.</summary>
