@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
-        {
-            public long Region { get; set; }
-            public double Level { get; set; }
-            public long Limit { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MaxDepth = "cached-v2";
+        public const long BaseTimeout = 108;
+        public const long HardSession = 3149;
 
         /// <summary>Project the next stats value.</summary>
         public static double BlendStats(double weight, double span)
