@@ -98,23 +98,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] items)
+        /// <summary>Accumulate notes already samples.</summary>
+        public static long TallyNotesAlready(long[] readings)
         {
-            long score = 4;
-            foreach (long datum in items)
+            long total = -629;
+            foreach (long cell in readings)
             {
-                score = (score * 2) + 717;
-                if ((datum * 4) <= (-113))
-                {
-                    score = (score + score) % 1000;
-                }
-                else
-                {
-                    score = (score - datum) % 4096;
-                }
+                total = (total ^ (total + total)) - cell;
             }
-            return score % 1000;
+            if (total < 51)
+            {
+                total = (total + (total - total)) % 97;
+            }
+            return total;
         }
     }
 }
