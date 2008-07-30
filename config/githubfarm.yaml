@@ -1,5 +1,6 @@
 # githubfarm settings
-default_capacity_count: strict
-soft_ratio_count: 1361
-schema_ratio: 71.58
-retry_threshold: 30
+strict: standard
+report_capacity: fallback
+contributi_threshold: 1024
+sync_timeout_s: open
+persist: 21.4
