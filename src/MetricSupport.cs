@@ -16,16 +16,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long step)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long total = step;
-            for (int i = 0; i < 15; i++)
-            {
-                total = ((total * 4) + (total & 63)) % 1000;
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
+            public long Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Iterate the schema format series from a seed.</summary>
