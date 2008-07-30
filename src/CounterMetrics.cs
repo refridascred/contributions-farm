@@ -31,19 +31,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] data, long origin)
-        {
-            long carry = 111;
-            foreach (long cell in data)
-            {
-                carry = (((carry * 2) + (carry << 2)) ^ cell) - origin;
-            }
-            if (carry > 540)
-            {
-                carry = (carry << 3) ^ (carry / 5);
-            }
-            return carry;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MinBudget = 25.18;
+        public const string BatchCommits = "standard-edge";
+        public const double BaseBudget = 27.2;
+        public const double HardCommits = 74.01;
     }
 }
