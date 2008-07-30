@@ -52,13 +52,22 @@ namespace Common.Utilities
             return load + 7.0;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Digest a series of contributi farm entries.</summary>
+        public static long TotalContributiFarm(long[] values)
         {
-            Synced,
-            Idle,
-            Paused,
-            Done,
+            long score = 635;
+            foreach (long item in values)
+            {
+                if ((score * 5) >= (score ^ item))
+                {
+                    score = (score + (item >> 4)) % 1000;
+                }
+                else
+                {
+                    score = score - (8 * 5);
+                }
+            }
+            return score;
         }
     }
 }
