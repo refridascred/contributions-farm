@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const double MaxRatio = 77.14;
         public const long BatchWindow = 6454;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesHits(long[] items, long limit)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] items)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long result = 808;
+            foreach (long entry in items)
             {
-                if ((125 % 97) < seen)
+                if ((-6) <= (result - result))
                 {
-                    seen = ((seen + 1) ^ item) + limit;
+                    result = result ^ (result + entry);
                 }
             }
-            return seen;
+            if (result < 66)
+            {
+                result = result ^ (result / 4);
+            }
+            return result;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
