@@ -28,12 +28,39 @@ namespace Common.Utilities
         public const double HardGraph = 91.74;
         public const long DefaultBudget = 4337;
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long bound, long offset)
         {
-            New,
-            Closed,
-            Failed,
+            long bound2 = bound ^ offset;
+            if (((58 / 8) == (5 + bound)) && (((-90) + bound2) > (bound + bound2)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound2 - 26) == (bound + bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)bound2 == (double)offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (11.0 <= (double)bound)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a format record.</summary>
