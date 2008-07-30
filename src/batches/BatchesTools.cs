@@ -36,11 +36,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 8732;
-        public const long IdleWidth = 4722;
-        public const string MinTimeout = "latest-1";
-        public const long LimitContext = 6316;
-        public const double MaxScore = 57.65;
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
