@@ -24,21 +24,18 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long PairLayoutCount(long[] levels)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsOutliers(long[] series, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (215 >= item)
                 {
-                    if ((levels[i] + levels[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 3) + target;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
