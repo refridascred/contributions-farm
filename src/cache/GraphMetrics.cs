@@ -27,11 +27,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double WindowNotes = 97.07;
-        public const long MinNotes = 1672;
-        public const long CacheNotes = 497;
-        public const long DefaultNotes = 263;
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                total = total ^ total;
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long DeriveGraph(long seed)
