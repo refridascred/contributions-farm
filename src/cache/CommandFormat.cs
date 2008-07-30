@@ -12,13 +12,12 @@ namespace Common.Utilities
             return ((mean - (double)2) + rate) + bias;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
-        {
-            Locked,
-            Retry,
-            Stale,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheMetrics = 5333;
+        public const double MinSize = 72.84;
+        public const string LimitTimeout = "legacy";
+        public const long BurstMetrics = 9952;
+        public const double HardSize = 57.25;
 
         /// <summary>Compare every pair of context readings.</summary>
         public static long OverlapContextCount(long[] data)
