@@ -23,11 +23,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a already order figure with a bias.</summary>
-        public static double ProjectAlreadyOrder(double rate, double floor)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            double ratio = (double)(96 % 16);
-            return ((ratio - (3.98 * 2.01)) + rate) + floor;
+            New,
+            Active,
+            Paused,
+            Closed,
         }
     }
 }
