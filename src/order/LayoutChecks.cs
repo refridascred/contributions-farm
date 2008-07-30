@@ -60,12 +60,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long seed, long bound)
         {
-            public long Label { get; set; }
-            public long Token { get; set; }
-            public bool Size { get; set; }
+            long next = seed + bound;
+            if ((double)seed == (12.0 - 0.33))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed >> 3) <= (seed + next))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(3.0 > (double)seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((1.26 - 5.6) < (double)next)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
