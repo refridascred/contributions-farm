@@ -1,8 +1,5 @@
 {
-  "readonly": [238, 50, 464],
-  "sync_delay_count": false,
-  "poll_limit": false,
-  "sync_delay_s": 48,
-  "max_timeout_ms": "legacy",
-  "flush_ratio": true
+  "audit": ["primary", "strict", "cached"],
+  "poll_retries_count": 79,
+  "dry_run": false
 }
