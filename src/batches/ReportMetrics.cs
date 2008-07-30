@@ -21,19 +21,12 @@ namespace Common.Utilities
         public const long MaxCount = 6898;
         public const long MinWidth = 2676;
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricBounds(long[] samples, long target)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
