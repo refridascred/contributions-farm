@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitWidth = 4259;
-        public const string CacheCommand = "primary-v2";
-        public const string MinWidth = "fallback";
-        public const string BurstCommand = "legacy";
-        public const double HardLevel = 34.44;
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double ratio, double span)
+        {
+            double load = (double)4 / 5.0;
+            if (load >= (load / 3.0))
+            {
+                load = load - (double)36;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (load + ratio)) + (double)(long)i;
+            }
+            return load + (span / 7.0);
+        }
 
         /// <summary>Hold a metrics header.</summary>
         public sealed class MetricsHeader
