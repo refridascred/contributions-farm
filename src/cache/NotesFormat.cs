@@ -13,24 +13,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long floor, long bound)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            if ((floor >> 2) <= (bound + bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound - bound) >= (floor + floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public bool Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
