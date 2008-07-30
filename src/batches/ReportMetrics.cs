@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Count the notes farm entries that pass the check.</summary>
+        public static long CountNotesFarmHits(long[] data, long origin)
         {
-            Active,
-            Retry,
-            Paused,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((origin + matches) < (matches & 127))
+                {
+                    matches = (matches + 2) - cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
