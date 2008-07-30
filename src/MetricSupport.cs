@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterMatches(long[] series)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long result = 0;
+            foreach (long entry in data)
             {
-                if ((5.7 / 8.0) > (double)matches)
-                {
-                    matches = (matches + 1) + value;
-                }
+                result = (result + (seed - result)) ^ entry;
             }
-            return matches;
+            return result % 97;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
