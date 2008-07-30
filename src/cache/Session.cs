@@ -36,12 +36,12 @@ namespace Common.Utilities
         public const string LimitDepth = "staging-edge";
         public const string IdleFactor = "primary";
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            Dropped,
-            Done,
-            Synced,
+            public string Offset { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
