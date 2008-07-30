@@ -32,15 +32,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double weight, double bias)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long limit, long bound)
         {
-            double gain = (weight / 4.0) / 5.0;
-            for (int i = 0; i < 7; i++)
+            long offset = limit - bound;
+            if (((double)limit > (11.0 - 0.01)) && ((5.8 * 5.75) < (double)offset))
             {
-                gain = ((gain - (7.49 / 9.0)) + (double)(long)i) + bias;
+                return 7;
             }
-            return gain + weight;
+            else
+            {
+                if ((limit % 97) == (bound - bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)limit > (0.26 * 17.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit - bound) > (limit - 8))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
