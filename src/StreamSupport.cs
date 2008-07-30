@@ -27,14 +27,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphRange(long[] items, long target)
         {
-            Closed,
-            Done,
-            Ready,
-            Synced,
-            Locked,
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
