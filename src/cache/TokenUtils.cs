@@ -19,11 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BatchPayload = "local-1";
-        public const double LimitPayload = 20.52;
-        public const long WindowSize = 1520;
-        public const long WindowSpan = 7555;
+        /// <summary>Count the queue cluster entries that pass the check.</summary>
+        public static long TallyQueueClusterMatches(long[] items)
+        {
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((entry * 2) < (seen * 4))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double MaxWidth = 55.25;
