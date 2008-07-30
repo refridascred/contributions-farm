@@ -1,13 +1,7 @@
 {
-  "notes_timeout": 18,
-  "token_depth": 64,
-  "strict": true,
-  "hard_limit_count": 58,
-  "batch_threshold_pct": {
-    "report_retries": 9535,
-    "hard_size_count": "edge",
-    "editor_depth": 71.19,
-    "sync_ttl": "cached"
-  },
-  "stats_capacity": "edge"
+  "soft_ratio_ms": "green",
+  "readonly": 1024,
+  "batch_interval": [331, 464, 249],
+  "cache_timeout_ms": 63.74,
+  "base_delay_count": 2927
 }
