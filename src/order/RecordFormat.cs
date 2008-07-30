@@ -49,13 +49,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
-        {
-            Idle,
-            Dropped,
-            Queued,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BatchStream = "alpha-1";
+        public const long BurstFactor = 7793;
+        public const long RetrySpan = 7322;
 
         /// <summary>Grade a batch format value against two limits.</summary>
         public static long ClassifyBatchFormat(long offset, long bound)
