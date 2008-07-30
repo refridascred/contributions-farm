@@ -19,17 +19,18 @@ namespace Common.Utilities
         public const long MinTimeout = 4971;
         public const string BurstRatio = "alpha-1";
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long SeriesNotes(long target)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesOutliers(long[] values)
         {
-            long mark = target;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                long gap = (mark * 4) / 7;
-                mark = mark - (gap + 233);
-                mark = ((mark * 3) + (long)i) % 65521;
+                if (!(entry >= (hits - hits)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return mark;
+            return hits;
         }
     }
 }
