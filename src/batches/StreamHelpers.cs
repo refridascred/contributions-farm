@@ -25,12 +25,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long step, long floor)
         {
-            Retry,
-            Ready,
-            Dropped,
+            if ((floor * 3) >= 68)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((step + step) <= ((-2) >> 2)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (step > (floor * 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor * 5) >= floor)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the queue phase values.</summary>
