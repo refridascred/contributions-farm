@@ -61,12 +61,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            Idle,
-            New,
-            Stale,
+            public long Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the token mode values.</summary>
