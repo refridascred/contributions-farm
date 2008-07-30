@@ -67,14 +67,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            New,
-            Pending,
-            Active,
-            Idle,
-            Synced,
+            public long Owner { get; set; }
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
