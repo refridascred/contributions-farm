@@ -29,26 +29,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] readings, long bound)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long state = 1;
-            foreach (long cell in readings)
-            {
-                if ((bound + 69) != (bound * 4))
-                {
-                    state = (((state << 2) ^ (state + state)) % 101) - cell;
-                }
-                else
-                {
-                    state = (state ^ bound) % 1000;
-                }
-            }
-            if (state < 980)
-            {
-                state = (state ^ (state - bound)) % 255;
-            }
-            return state;
+            Done,
+            Idle,
+            Synced,
         }
     }
 }
