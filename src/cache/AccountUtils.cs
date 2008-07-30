@@ -39,17 +39,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 8365;
+        public const double CacheDepth = 20.52;
+        public const long SoftFactor = 8722;
     }
 }
