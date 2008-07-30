@@ -13,14 +13,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            Pending,
-            Draft,
-            Queued,
-            Closed,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double SoftFormat = 26.37;
+        public const long DefaultBudget = 6540;
+        public const long DefaultFormat = 3645;
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long PairProfileCount(long[] readings)
