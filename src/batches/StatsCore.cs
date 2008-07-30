@@ -67,23 +67,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] samples, long target)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] values, long limit)
         {
-            long anchor = 64;
-            foreach (long reading in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)anchor == (2.56 - 6.0))
+                if (values[i] < limit)
                 {
-                    anchor = ((anchor + anchor) % 1000) - reading;
+                    return (long)i;
                 }
-                else
-                {
-                    anchor = anchor - target;
-                }
-                anchor = anchor + (anchor + 0);
             }
-            return anchor % 97;
+            return -1;
         }
     }
 }
