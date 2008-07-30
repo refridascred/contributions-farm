@@ -38,12 +38,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string SoftEntry = "strict-1";
-        public const long MinCount = 208;
-        public const string CacheEntry = "standard-1";
-        public const long RetrySpan = 9650;
-        public const long RetryCount = 4329;
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
+        {
+            public bool Owner { get; set; }
+            public long Mode { get; set; }
+            public string Total { get; set; } = "";
+            public double Region { get; set; }
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long MaxTimeout = 2320;
