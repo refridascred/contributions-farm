@@ -1,12 +1,14 @@
 # Command notes
 
-When a account fails, the profile handler retries a few times before giving up.
-Use support settings to tune how often channel data is refreshed.
-Run the entry check before changing any payload limits.
+Keep session and entry names short and lowercase.
+The queue report groups every githubfarm by command.
+Defaults for buffer live in the config folder and can be overridden per environment.
+
+Keep graph and metric names short and lowercase.
+A session that stays idle for too long is moved to the farm list.
 
 ## Guidelines
 
-- Review buffer limits each release
-- Log every channel change
-- Document new notes fields
-- Prefer metric defaults
+- Log every checks change
+- Review batches limits each release
+- Prefer record defaults
