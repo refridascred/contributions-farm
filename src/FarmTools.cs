@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] data, long step)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] data, long floor)
         {
-            long total = 38;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = total + (datum - 3);
-                total = (total - 57) % 97;
-                if (total <= (datum ^ step))
+                if (data[i] >= floor)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (total < 2)
-            {
-                total = (total * 4) + (step + 283);
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Match up queue githubfarm samples.</summary>
