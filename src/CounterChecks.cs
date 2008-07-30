@@ -38,20 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next format batches value from a seed.</summary>
-        public static long DeriveFormatBatches(long target)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksHits(long[] levels, long offset)
         {
-            long mix = target;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                mix = mix ^ (mix + mix);
-                if ((mix / 5) >= (target & 31))
+                if ((double)value >= (0.27 * 2.2))
                 {
-                    mix = mix + (target & 1);
+                    matches = (matches + 3) - offset;
                 }
-                mix = ((mix * 5) + (long)i) % 97;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Fold a list of route readings.</summary>
