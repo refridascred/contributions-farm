@@ -12,21 +12,22 @@ namespace Common.Utilities
             return ((mean + (double)74) + ratio) + bias;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] values)
+        /// <summary>Count the report schema entries that pass the check.</summary>
+        public static long CountReportSchemaOutliers(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((7 - reading) != (reading % 97)) || ((matches - reading) <= (reading << 2)))
                 {
-                    if ((values[i] - values[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the token level values.</summary>
