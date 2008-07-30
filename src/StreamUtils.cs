@@ -54,25 +54,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long bound, long origin)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordBounds(long[] samples, long offset)
         {
-            long diff = bound ^ origin;
-            if ((diff + bound) >= (diff - diff))
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((diff - origin) < (origin + diff))
+                if (entry != offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
