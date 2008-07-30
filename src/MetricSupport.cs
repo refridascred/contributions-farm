@@ -22,29 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long bound)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long score = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    score = (score + (bound + bound)) ^ (long)i2;
-                }
-                if ((7 / 4) > (bound >> 1))
-                {
-                    score = score ^ ((long)i + bound);
-                    continue;
-                }
-                else
-                {
-                    score = score + (bound / 2);
-                }
-                score = (score << 3) ^ (5 % 16);
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
+            public long Token { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Iterate the schema format series from a seed.</summary>
