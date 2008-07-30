@@ -62,17 +62,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string WindowStream = "fallback-1";
+        public const long BurstLevel = 8479;
+        public const long IdleSpan = 7168;
     }
 }
