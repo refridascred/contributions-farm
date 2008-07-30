@@ -33,13 +33,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            public double Ratio { get; set; }
-            public double Owner { get; set; }
-            public string Weight { get; set; } = "";
-            public string Token { get; set; } = "";
+            Synced,
+            Ready,
+            Queued,
+            Locked,
         }
 
         /// <summary>Digest a series of format entries.</summary>
