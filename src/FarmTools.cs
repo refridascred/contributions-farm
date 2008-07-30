@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const string DefaultContributi = "fallback-1";
         public const string MaxCount = "standard-v2";
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiHits(long[] items)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsGaps(long[] data)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (item >= (matches + item))
+                if ((entry - (-35)) != (201 * 3))
                 {
-                    matches = matches + 3;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Fold a list of graph command readings.</summary>
