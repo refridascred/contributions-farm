@@ -76,27 +76,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] levels, long bound)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] levels, long origin)
         {
-            long acc = 7;
+            long state = 943;
             foreach (long datum in levels)
             {
-                acc = (acc - (bound * 2)) % 255;
-                if (bound > (bound + bound))
+                if ((9.28 * 15.0) < (double)state)
                 {
-                    acc = acc ^ (3 - acc);
-                }
-                if (datum >= ((-507) / 6))
-                {
-                    break;
+                    state = (((state * 3) + state) + datum) + origin;
                 }
             }
-            if (acc > 0)
-            {
-                acc = acc + (bound + acc);
-            }
-            return acc % 65521;
+            return state;
         }
     }
 }
