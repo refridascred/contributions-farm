@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double SmoothLayout(double ratio, double bias)
+        /// <summary>Roll a cache farm counter forward.</summary>
+        public static long RollCacheFarm(long bound)
         {
-            double load = (bias - 2.8) + (ratio - ratio);
-            for (int i = 0; i < 6; i++)
+            long mark = bound;
+            for (int i = 0; i < 7; i++)
             {
-                load = (load - load) + (double)(long)i;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return load + (2.0 + 0.7);
+            return mark;
         }
 
         /// <summary>Describe the tools kind values.</summary>
