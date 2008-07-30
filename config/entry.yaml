@@ -1,17 +1,9 @@
 # entry settings
-min_threshold_count: 9136
-max_delay_ms: 21
-checks_delay:
-  compress:
-    - cached
-    - fallback
-    - blue
-    - staging
-  counter_delay: 22
-  metric_timeout: 39
-  poll_capacity: standard
-  idle_depth: 10.14
-  sync_depth_s: eu-west
-warm_threshold_s: 16.07
-cache_capacity: true
-poll_ttl_ms: eu-west
+min_size: 50
+window_ttl: standard
+batch_interval_count:
+  - 447
+  - 97
+  - 346
+command_threshold: local
+burst_timeout_ms: true
