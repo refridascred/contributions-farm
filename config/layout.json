@@ -1,7 +1,8 @@
 {
-  "dry_run": "stable",
-  "retry_interval_s": 18.46,
-  "token_window": 34,
-  "verbose": 17.76,
-  "metrics_size": "primary"
+  "audit": 40.27,
+  "max_size": "legacy",
+  "base_retries_pct": [334, 266, 333],
+  "retry_window_count": 60,
+  "cache_timeout": "staging",
+  "batch_delay_count": true
 }
