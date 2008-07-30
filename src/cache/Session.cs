@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MaxInterval = "latest-edge";
-        public const string SoftTimeout = "cached-1";
-        public const long LimitDepth = 5054;
-        public const double RetryCount = 41.22;
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandBounds(long[] samples, long floor)
+        {
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long StepSchema(long floor)
