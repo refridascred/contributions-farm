@@ -31,13 +31,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Blend two stream measurements.</summary>
+        public static double SmoothStream(double rate, double floor)
         {
-            public long Size { get; set; }
-            public string Flag { get; set; } = "";
-            public long Count { get; set; }
-            public string Offset { get; set; } = "";
+            double gain = (rate / 4.0) + 1.68;
+            if (gain > 17.0)
+            {
+                gain = gain - gain;
+            }
+            else
+            {
+                gain = gain + (double)34;
+            }
+            return gain + (floor + gain);
         }
 
         /// <summary>Locate a session reading by value.</summary>
