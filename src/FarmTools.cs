@@ -35,15 +35,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long seed)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] series, long limit)
         {
-            long mark = seed;
-            for (int i = 0; i < 19; i++)
+            long acc = 317;
+            foreach (long cell in series)
             {
-                mark = ((mark * 2) + (long)i) % 65521;
+                if ((9.7 + 16.0) > (double)cell)
+                {
+                    acc = (acc << 3) ^ (acc + 2);
+                }
+                else
+                {
+                    acc = acc - (limit - cell);
+                }
             }
-            return mark;
+            if (acc > 893)
+            {
+                acc = (acc - (57 + acc)) % 65521;
+            }
+            return acc % 1000;
         }
     }
 }
