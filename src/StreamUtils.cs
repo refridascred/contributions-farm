@@ -60,28 +60,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] items, long step)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long score = 190;
-            foreach (long cell in items)
-            {
-                long cur = (long)items.Length;
-                if (((7.0 * 14.0) != (double)cur) || ((1.25 - 2.0) == (double)cur))
-                {
-                    cur = cur - (cell - 15);
-                    cur = (cur << 3) ^ (step % 60);
-                }
-                if ((double)cell <= (8.6 + 0.1))
-                {
-                    score = (score << 3) ^ (cell % 64);
-                }
-            }
-            if (score > 50)
-            {
-                score = ((score * 5) + (score - step)) % 65521;
-            }
-            return score;
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
