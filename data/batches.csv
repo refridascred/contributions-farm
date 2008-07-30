@@ -1,9 +1,8 @@
-id,label,level,count
-1,green,860,91.39
-2,445,latest,34.79
-3,622,24.87,326
-4,52.75,73.5,59.17
-5,18.82,staging,63.49
-6,73.66,78,7.95
-7,legacy,404,open
-8,6.14,70.78,604
+id,active,owner,score,state
+1,322,38.94,legacy,1.51
+2,425,939,96,775
+3,716,staging,530,fallback
+4,84.74,29.62,87.17,330
+5,green,9,292,strict
+6,75.17,697,986,0.57
+7,2.82,local,fallback,20.06
