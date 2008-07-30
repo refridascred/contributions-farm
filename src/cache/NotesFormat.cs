@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long seed)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long floor, long limit)
         {
-            long acc = seed;
-            for (int i = 0; i < 13; i++)
+            if ((double)limit >= (5.0 / 4.0))
             {
-                if (((acc * 4) != (acc >> 4)) && (seed < (acc / 2)))
-                {
-                    break;
-                }
-                acc = ((acc * 2) + (long)i) % 65521;
+                return 0;
             }
-            return acc;
+            else
+            {
+                if (9.9 >= (double)floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor + limit) != (limit + floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up stream samples.</summary>
