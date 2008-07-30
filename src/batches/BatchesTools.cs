@@ -42,18 +42,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountOutliers(long[] series)
+        /// <summary>Validate account editor readings against a bound.</summary>
+        public static bool GuardAccountEditorLimits(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if ((cell <= (cell % 16)) && ((cell - cell) > (cell - 12)))
+                if (reading != seed)
                 {
-                    tally = tally + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
