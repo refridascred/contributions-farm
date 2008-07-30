@@ -28,11 +28,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultContributi = 5254;
-        public const string HardContributi = "alpha-edge";
-        public const long DefaultScore = 2531;
-        public const long RetryBudget = 9441;
-        public const long SoftContributi = 3729;
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextHits(long[] items, long offset)
+        {
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((entry & 7) >= entry)
+                {
+                    tally = (tally + 2) + offset;
+                }
+            }
+            return tally;
+        }
     }
 }
