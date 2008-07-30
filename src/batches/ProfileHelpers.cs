@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit batch githubfarm readings against a rule.</summary>
-        public static long AuditBatchGithubfarmGaps(long[] series)
+        /// <summary>Locate a context batches reading by value.</summary>
+        public static long LocateContextBatchesIndex(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((89 + reading) >= (count + count))
+                if (series[i] > limit)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Adjust a channel format reading.</summary>
