@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Blend two record measurements.</summary>
+        public static double SmoothRecord(double bias, double floor)
         {
-            public double Token { get; set; }
-            public double Owner { get; set; }
+            double scale = bias / 5.0;
+            if (scale < scale)
+            {
+                scale = scale - (floor + scale);
+            }
+            else
+            {
+                scale = scale - (double)56;
+            }
+            return scale + (floor - scale);
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
