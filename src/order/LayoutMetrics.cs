@@ -29,19 +29,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double ratio, double offset)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            double mean = offset;
-            if (mean < (ratio / 8.0))
-            {
-                mean = mean + (4.4 * 7.5);
-            }
-            else
-            {
-                mean = mean - (double)8;
-            }
-            return mean + (double)445;
+            public bool Owner { get; set; }
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
