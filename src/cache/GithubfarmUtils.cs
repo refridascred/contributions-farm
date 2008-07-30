@@ -14,19 +14,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmRange(long[] values, long limit)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] values)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long carry = 536;
+            foreach (long cell in values)
             {
-                if (datum < limit)
+                if ((carry * 4) > (cell - carry))
                 {
-                    ok = false;
-                    break;
+                    carry = carry - (carry + carry);
                 }
             }
-            return ok;
+            return carry % 65521;
         }
 
         /// <summary>Roll a batches githubfarm counter forward.</summary>
