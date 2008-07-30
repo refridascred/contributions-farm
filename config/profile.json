@@ -1,5 +1,10 @@
 {
-  "warm_ttl_ms": false,
-  "cache_size_s": "edge",
-  "token_retries": 29
+  "buffer_retries": "standard",
+  "idle_ratio": "blue",
+  "idle_depth": false,
+  "strict": {
+    "idle_window": 30,
+    "batches_interval": 55.27,
+    "burst_timeout_pct": "standard"
+  }
 }
