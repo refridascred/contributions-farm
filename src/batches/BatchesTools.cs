@@ -34,14 +34,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaGaps(long[] data, long limit)
         {
-            Synced,
-            Active,
-            Paused,
-            Draft,
-            Ready,
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((double)count < (1.0 / 6.0))
+                {
+                    count = ((count + 1) ^ datum) - limit;
+                }
+            }
+            return count;
         }
     }
 }
