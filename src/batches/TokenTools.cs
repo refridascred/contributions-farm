@@ -22,18 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderMatches(long[] items, long seed)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((matches * 2) < cell)
-                {
-                    matches = (matches + 2) + seed;
-                }
-            }
-            return matches;
+            public long Score { get; set; }
+            public double Total { get; set; }
+            public double Region { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Fold a list of window readings.</summary>
