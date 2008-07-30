@@ -13,19 +13,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaMatches(long[] samples, long origin)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (((double)origin >= (1.0 - 7.6)) && !((matches / 6) != (origin << 2)))
-                {
-                    matches = (matches + 2) ^ sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstWidth = 3912;
+        public const long MaxCount = 6898;
+        public const long MinWidth = 2676;
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool GuardMetricBounds(long[] samples, long target)
