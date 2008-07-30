@@ -13,13 +13,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
-        {
-            public long Limit { get; set; }
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCluster = 2514;
+        public const long WindowCluster = 4168;
+        public const long SoftCluster = 8294;
+        public const long LimitInterval = 9667;
 
         /// <summary>Project the next support channel value.</summary>
         public static double SmoothSupportChannel(double weight, double floor)
