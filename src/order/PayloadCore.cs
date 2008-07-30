@@ -42,19 +42,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate stats profile readings against a bound.</summary>
-        public static bool GuardStatsProfileLimits(long[] data, long target)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Total { get; set; } = "";
+            public double Stamp { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
