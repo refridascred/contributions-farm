@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double CacheQueue = 84.37;
-        public const double DefaultQueue = 92.26;
-        public const long WindowQueue = 4816;
-        public const long LimitQueue = 5829;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string CacheDepth = "legacy-1";
+        public const long StepBuffer = 2517;
+        public const long RetryDepth = 3545;
+        public const long MinWidth = 4572;
+        public const long BatchBuffer = 254;
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long MeasureStatsHits(long[] levels, long origin)
