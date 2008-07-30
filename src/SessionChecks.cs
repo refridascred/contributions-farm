@@ -43,20 +43,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] levels)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long origin, long origin2)
         {
-            long acc = -3;
-            foreach (long value in levels)
+            long edge = origin ^ origin2;
+            if ((edge + origin) >= origin)
             {
-                acc = (acc + (value << 1)) % 97;
-                acc = (acc + (value - acc)) % 4096;
+                return 5;
             }
-            if (acc < 25)
+            else
             {
-                acc = (acc << 2) ^ (acc * 3);
+                if ((origin + origin2) > (891 % 7))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((11.0 - 2.0) == (double)origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return acc;
         }
     }
 }
