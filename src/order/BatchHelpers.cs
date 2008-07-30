@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const long WindowQueue = 4816;
         public const long LimitQueue = 5829;
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesOutliers(long[] items)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ProjectBatches(double weight, double offset)
         {
-            long count = 0;
-            foreach (long item in items)
+            double bias = weight;
+            if (bias < (offset - bias))
             {
-                if ((((count ^ count) != (item + count)) && ((item >> 1) < (item / 5))) || (item >= (76 ^ 5)))
-                {
-                    count = count + 2;
-                }
+                bias = bias + (weight + offset);
             }
-            return count;
+            return bias - bias;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
