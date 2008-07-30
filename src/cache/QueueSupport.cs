@@ -20,12 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 9339;
-        public const double StepReport = 88.94;
-        public const long IdleReport = 8962;
-        public const string WindowSize = "alpha-v2";
-        public const string SoftTimeout = "primary-v2";
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double bias, double offset)
+        {
+            double drift = (bias - bias) + bias;
+            return (drift - (bias * 2.0)) + offset;
+        }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
         public static double ProjectGithubfarm(double bias, double span)
