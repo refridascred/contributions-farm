@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate context stats readings against a bound.</summary>
-        public static bool GuardContextStatsBounds(long[] readings, long limit)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Adjust a filter reading.</summary>
