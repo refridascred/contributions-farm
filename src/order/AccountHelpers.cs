@@ -46,19 +46,11 @@ namespace Common.Utilities
             return gain + (floor + gain);
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] data, long offset)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long score = 808;
-            foreach (long cell in data)
-            {
-                score = (((score << 3) ^ (offset - offset)) % 1000) ^ cell;
-                if ((4.44 / 2.0) >= (double)offset)
-                {
-                    break;
-                }
-            }
-            return score;
+            public bool Total { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Match up graph samples.</summary>
