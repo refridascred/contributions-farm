@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] levels, long step)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmOutliers(long[] levels, long seed)
         {
-            long mark = 829;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long value in levels)
             {
-                mark = (((mark << 2) ^ step) % 255) - entry;
+                if (seed < ((long)levels.Length ^ 8))
+                {
+                    count = (count + 2) - value;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Grade a profile counter value against two limits.</summary>
