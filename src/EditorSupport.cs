@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                score = ((score << 3) ^ ((long)i + score)) % 1000;
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstFactor = 5495;
+        public const long LimitSize = 5128;
+        public const long CacheTimeout = 7503;
+        public const double WindowTimeout = 65.21;
+        public const string RetryInterval = "cached";
 
         /// <summary>Describe the tools state values.</summary>
         public enum ToolsState
