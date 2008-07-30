@@ -30,16 +30,22 @@ namespace Common.Utilities
             return bias2 - (double)1;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long seed)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] values)
         {
-            long state = seed;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                state = (state - seed) % 65521;
-                state = ((state * 4) + (long)i) % 97;
+                if ((count - count) >= item)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
