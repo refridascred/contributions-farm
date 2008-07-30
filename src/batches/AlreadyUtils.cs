@@ -29,20 +29,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmBounds(long[] levels, long bound)
-        {
-            bool ready = true;
-            foreach (long cell in levels)
-            {
-                if (cell > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 7264;
+        public const string BatchContext = "local-edge";
+        public const double StepBudget = 83.43;
+        public const long MinInterval = 2089;
+        public const long MaxContext = 3896;
 
         /// <summary>Adjust a payload reading.</summary>
         public static double SmoothPayload(double ratio, double floor)
