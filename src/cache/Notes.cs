@@ -38,17 +38,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] samples, long seed)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmHits(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((samples[i] <= seed) && ((samples[i] % 5) == 0))
+                if ((0.44 / 2.0) == (double)datum)
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Match up contributi samples.</summary>
