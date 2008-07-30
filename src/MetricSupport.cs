@@ -20,19 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmRange(long[] readings, long bound)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] values, long step)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long mark = 557;
+            foreach (long reading in values)
             {
-                if (sample <= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = (((mark - mark) % 97) - reading) - step;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
