@@ -26,13 +26,19 @@ namespace Common.Utilities
             return bias - 17.0;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] samples)
         {
-            public bool Owner { get; set; }
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
+            long score = 77;
+            foreach (long value in samples)
+            {
+                score = ((score << 2) ^ (9 & 31)) % 97;
+                if (value >= (value + score))
+                {
+                    break;
+                }
+            }
+            return score;
         }
     }
 }
