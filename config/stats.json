@@ -1,6 +1,6 @@
 {
-  "burst_delay_ms": false,
-  "payload_threshold": 44.55,
-  "enabled": ["staging", "eu-west", "cached", "stable"],
-  "account_threshold": true
+  "buffer_capacity": 7148,
+  "idle_depth_ms": 1847,
+  "retry_size": 4093,
+  "warm_limit": "fallback"
 }
