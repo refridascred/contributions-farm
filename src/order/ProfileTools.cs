@@ -49,38 +49,19 @@ namespace Common.Utilities
             return rate + 3.0;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long limit, long seed)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderLimits(long[] series, long seed)
         {
-            if ((seed * 4) == (limit / 3))
+            bool ready = true;
+            foreach (long datum in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (((limit / 5) > limit) || ((seed - limit) < (limit & 7)))
+                if (datum <= seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed * 2) > (limit / 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((seed + seed) >= limit) && (seed < (seed >> 2)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
