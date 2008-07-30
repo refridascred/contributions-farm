@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Order utils helpers.</summary>
     public static class OrderUtils
     {
-        /// <summary>Describe the booking level values.</summary>
-        public enum BookingLevel
-        {
-            Ready,
-            Failed,
-            Synced,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinBudget = 2726;
+        public const long LimitSize = 8491;
+        public const string WindowSchema = "open-1";
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long CountMetricsGaps(long[] values, long seed)
