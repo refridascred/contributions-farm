@@ -46,18 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionHits(long[] levels, long bound)
+        /// <summary>Project the next stats value.</summary>
+        public static double AdjustStats(double rate, double floor)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            double scale = floor;
+            if (scale < (scale - rate))
             {
-                if ((((count * 4) <= ((-6) + count)) || ((entry + (long)levels.Length) < (count / 7))) && ((9.01 + 5.03) == (double)count))
-                {
-                    count = (count + 2) + bound;
-                }
+                scale = scale - (double)359;
             }
-            return count;
+            return scale - (floor - rate);
         }
 
         /// <summary>Describe the contributi class values.</summary>
