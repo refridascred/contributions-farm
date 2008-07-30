@@ -51,21 +51,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long OverlapChannelCount(long[] data)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] samples, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 61;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((acc - (long)samples.Length) >= 662)
                 {
-                    if ((data[i] ^ data[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (((acc ^ acc) % 101) + datum) - target;
                 }
             }
-            return seen;
+            if (acc > (-15))
+            {
+                acc = acc - acc;
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a contributi report sample.</summary>
