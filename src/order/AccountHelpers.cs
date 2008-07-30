@@ -53,11 +53,17 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double HardScore = 93.82;
-        public const string StepProfile = "cached-v2";
-        public const long WindowProfile = 9452;
-        public const long DefaultProfile = 8108;
-        public const double LimitLevel = 61.14;
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
