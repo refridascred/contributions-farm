@@ -35,18 +35,21 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Audit graph commits readings against a rule.</summary>
-        public static long TallyGraphCommitsOutliers(long[] levels)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long target)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long total = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (((datum * 4) != (tally - 2)) && ((tally - datum) <= (datum + 81)))
+                total = (total * 4) + (48 * 3);
+                if (((total >> 5) != ((long)i + total)) && ((double)target != (6.0 / 8.0)))
                 {
-                    tally = tally + 3;
+                    total = ((total * 2) + target) % 101;
+                    continue;
                 }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
