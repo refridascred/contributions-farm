@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long target)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long total = target;
-            for (int i = 0; i < 22; i++)
-            {
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
+            Done,
+            Queued,
+            Dropped,
+            Idle,
+            Ready,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
