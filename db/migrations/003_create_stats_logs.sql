@@ -2,12 +2,9 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     level INTEGER,
-    created_at TIMESTAMP,
-    state TEXT NOT NULL DEFAULT 'new'
+    owner TEXT NOT NULL,
+    weight REAL,
+    score REAL NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_level ON stats_logs (level);
-
-INSERT INTO stats_logs (level, state) VALUES (72, 'standard');
-INSERT INTO stats_logs (level, state) VALUES (80, 'eu-west');
-INSERT INTO stats_logs (level, state) VALUES (88, 'cached');
+CREATE INDEX IF NOT EXISTS idx_stats_logs_score ON stats_logs (score);
