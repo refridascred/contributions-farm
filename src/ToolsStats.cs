@@ -72,19 +72,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterBounds(long[] values, long seed)
-        {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitInterval = 7418;
+        public const long WindowSpan = 1255;
+        public const long MaxGithubfarm = 5434;
+        public const long LimitGithubfarm = 5112;
     }
 }
