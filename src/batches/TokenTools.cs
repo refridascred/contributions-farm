@@ -19,21 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] levels)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ProjectTools(double weight, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double bias2 = weight;
+            if (bias2 > bias2)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias2 = (bias2 - 15.0) - bias;
             }
-            return seen;
+            else
+            {
+                bias2 = bias2 + 5.73;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = bias2 - (double)(long)i;
+            }
+            return bias2 - (double)865;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
