@@ -19,21 +19,11 @@ namespace Common.Utilities
         public const string MaxCache = "legacy-1";
         public const long BatchCache = 8315;
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long PairCacheCount(long[] items)
+        /// <summary>Scale a already order figure with a bias.</summary>
+        public static double ProjectAlreadyOrder(double rate, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double ratio = (double)(96 % 16);
+            return ((ratio - (3.98 * 2.01)) + rate) + floor;
         }
     }
 }
