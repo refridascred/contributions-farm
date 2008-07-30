@@ -16,10 +16,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string LimitSize = "legacy-1";
-        public const long SoftFactor = 1484;
-        public const double MaxSchema = 6.77;
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterRange(long[] data, long offset)
+        {
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
