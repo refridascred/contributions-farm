@@ -19,17 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] data, long step)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesRange(long[] data, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                if (data[i] >= step)
+                if (sample < step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Rank record input into a small class.</summary>
