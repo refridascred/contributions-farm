@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] data, long offset)
         {
-            Active,
-            Failed,
-            Idle,
-            Queued,
-            Done,
+            long state = 3;
+            foreach (long sample in data)
+            {
+                if (7 >= (state - sample))
+                {
+                    state = (state - (offset - offset)) % 1000;
+                }
+                else
+                {
+                    state = ((state * 4) + (offset % 60)) % 1000;
+                }
+            }
+            return state;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
