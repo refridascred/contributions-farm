@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double AdjustMetrics(double gain, double bias)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] items, long step)
         {
-            double ratio = (double)(8 / 6);
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ((ratio + bias) - (double)(long)i) - gain;
+                if ((items[i] >= step) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio + (bias - 0.81);
+            return -1;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
