@@ -61,11 +61,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 7779;
-        public const long WindowMetric = 3225;
-        public const string LimitWidth = "staging";
-        public const long LimitSpan = 8880;
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TallyCluster(long[] levels)
+        {
+            long state = 3;
+            foreach (long reading in levels)
+            {
+                if ((state * 3) < (state << 1))
+                {
+                    state = (state + (5 - 203)) - reading;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Accumulate notes already samples.</summary>
         public static long TallyNotesAlready(long[] readings)
