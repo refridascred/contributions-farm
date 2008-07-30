@@ -50,11 +50,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 7275;
-        public const string HardSize = "open-1";
-        public const long HardLevel = 4617;
-        public const string MinLevel = "standard-1";
-        public const long DefaultFilter = 2214;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricGaps(long[] values, long limit)
+        {
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((11 - 0) >= (limit + limit))
+                {
+                    matches = (matches + 2) - sample;
+                }
+            }
+            return matches;
+        }
     }
 }
