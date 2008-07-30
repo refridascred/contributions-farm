@@ -20,22 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryAccount = 1534;
+        public const long BurstAccount = 954;
+        public const long DefaultSpan = 9623;
 
         /// <summary>Hold a cluster header.</summary>
         public sealed class ClusterHeader
