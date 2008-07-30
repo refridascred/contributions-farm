@@ -59,21 +59,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCount(long[] levels)
+        /// <summary>Roll a batches entry counter forward.</summary>
+        public static long IterateBatchesEntry(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                score = (score * 4) + ((long)i >> 1);
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    if ((levels[i] ^ levels[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = ((score - (origin ^ origin)) % 101) - (long)i2;
                 }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return hits;
+            return score;
         }
     }
 }
