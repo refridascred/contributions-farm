@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelOutliers(long[] readings, long offset)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long bound)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long mix = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (((sample / 9) != (sample + sample)) && ((long)readings.Length == (72 + sample)))
-                {
-                    hits = (hits + 1) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = (mix - (bound + mix)) % 97;
+                mix = (mix + (bound - bound)) % 101;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Hold a format header.</summary>
