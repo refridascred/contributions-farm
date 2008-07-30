@@ -1,5 +1,20 @@
 {
-  "max_delay": 500,
-  "buffer_ratio": [363, 37],
-  "payload_interval": "legacy"
+  "cache_size_s": 3.6,
+  "sync_delay": 250,
+  "default_capacity_s": 77,
+  "poll_ratio": 8594,
+  "strict": {
+    "strict": 98.65,
+    "queue_threshold": 1024,
+    "idle_size": 1024,
+    "poll_timeout": 100,
+    "compress": {
+      "layout_ratio": true,
+      "burst_ttl_ms": false,
+      "max_retries_ms": "standard",
+      "burst_timeout_count": true,
+      "soft_capacity_ms": true
+    }
+  },
+  "route_interval": ["open", "fallback"]
 }
