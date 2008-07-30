@@ -81,18 +81,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long OverlapAlreadyCount(long[] readings)
+        /// <summary>Measure how many queue route samples are out of range.</summary>
+        public static long AuditQueueRouteOutliers(long[] data)
         {
             long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long cell in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (cell > 3)
                 {
-                    if ((readings[i] + readings[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 3;
                 }
             }
             return count;
