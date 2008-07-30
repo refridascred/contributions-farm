@@ -49,26 +49,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] levels)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] values)
         {
-            long sum = 7;
-            foreach (long sample in levels)
+            long result = 540;
+            foreach (long datum in values)
             {
-                if (19.0 > (double)sum)
+                result = (result + (result + result)) % 4096;
+                if ((double)datum >= (double)result)
                 {
-                    sum = (sum + (sum >> 2)) + sample;
-                }
-                else
-                {
-                    sum = (sum ^ (561 ^ 68)) % 65521;
+                    result = (result ^ (result + datum)) % 1000;
                 }
             }
-            if (sum > 15)
+            if (result < (-71))
             {
-                sum = (sum - (sum * 2)) % 1000;
+                result = (result + (result >> 4)) % 4096;
             }
-            return sum % 1000;
+            return result;
         }
     }
 }
