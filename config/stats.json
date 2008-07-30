@@ -1,15 +1,13 @@
 {
-  "strict": false,
-  "default_retries_s": false,
-  "batch_threshold_s": ["eu-west", "primary"],
-  "retry_ratio_pct": {
-    "enabled": 250,
-    "sync_retries_s": 60,
-    "hard_delay_s": 11,
-    "idle_interval": 70.91,
-    "warm_interval": [260, 313, 302],
-    "warm_window_count": "fallback"
+  "soft_ttl_pct": 94.54,
+  "max_timeout_count": 6990,
+  "poll_ttl_s": "legacy",
+  "graph_size": 83.93,
+  "farm_depth": {
+    "max_depth": 1024,
+    "metric_window": 15,
+    "cluster_retries": 1024,
+    "dry_run": "legacy"
   },
-  "max_threshold": true,
-  "default_depth": "latest"
+  "cache_timeout_count": 79.95
 }
