@@ -30,18 +30,19 @@ namespace Common.Utilities
         public const string LimitSpan = "strict-edge";
         public const long DefaultRatio = 4387;
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphOutliers(long[] values)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long mix = 195;
+            foreach (long value in levels)
             {
-                if (2.79 > (double)seen)
-                {
-                    seen = (seen + 1) ^ datum;
-                }
+                mix = (((mix << 3) ^ (mix ^ mix)) % 4096) ^ value;
             }
-            return seen;
+            if (mix < 539)
+            {
+                mix = (mix << 3) ^ mix;
+            }
+            return mix;
         }
 
         /// <summary>Describe the channel class values.</summary>
