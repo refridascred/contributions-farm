@@ -20,17 +20,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first farm entry entry that matches the target.</summary>
-        public static long LookupFarmEntryIndex(long[] values, long target)
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double gain, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double load = span;
+            if (load > 4.92)
             {
-                if (values[i] > target)
-                {
-                    return (long)i;
-                }
+                load = (load + load) - gain;
             }
-            return -1;
+            else
+            {
+                load = load - load;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load + (span + 4.7);
         }
     }
 }
