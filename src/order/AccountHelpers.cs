@@ -40,18 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] readings, long target)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((17.0 - 19.0) > (double)sample)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 3) + target;
+                    if ((data[i] + data[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the account phase values.</summary>
