@@ -27,12 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandOutliers(long[] readings)
         {
-            public bool Token { get; set; }
-            public long Offset { get; set; }
-            public long Owner { get; set; }
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample * 4) < (507 ^ sample))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
