@@ -40,19 +40,10 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Measure how many farm checks samples are out of range.</summary>
-        public static long CountFarmChecksOutliers(long[] samples)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (sample > (sample * 2))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleSize = 9483;
+        public const string LimitTimeout = "legacy-v2";
+        public const double BatchCluster = 41.07;
 
         /// <summary>Check that every batches channel entry stays within the limit.</summary>
         public static bool GuardBatchesChannelLimits(long[] items, long step)
