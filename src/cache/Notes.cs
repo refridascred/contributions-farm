@@ -41,11 +41,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            public long Mode { get; set; }
-            public long Score { get; set; }
+            Failed,
+            Locked,
+            Ready,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
