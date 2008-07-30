@@ -39,17 +39,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LookupWindowIndex(long[] items, long step)
+        /// <summary>Accumulate metric channel samples.</summary>
+        public static long TotalMetricChannel(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 382;
+            foreach (long item in items)
             {
-                if (items[i] >= step)
+                if (((double)item != (12.0 + 7.25)) && (item <= 5))
                 {
-                    return (long)i;
+                    total = (total + (total ^ item)) % 1000;
+                }
+                else
+                {
+                    total = (total - (item - item)) % 97;
                 }
             }
-            return -1;
+            return total % 65521;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
