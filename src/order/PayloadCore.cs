@@ -19,19 +19,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate stats editor readings against a bound.</summary>
-        public static bool ValidateStatsEditorBounds(long[] data, long step)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandMatches(long[] values, long limit)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (entry >= step)
+                if (((long)values.Length + sample) > (sample << 1))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 2) + limit;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Find the first support farm entry that matches the target.</summary>
