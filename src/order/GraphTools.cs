@@ -20,17 +20,22 @@ namespace Common.Utilities
         public const double LimitInterval = 75.22;
         public const long IdleChecks = 4084;
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] samples, long bound)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteGaps(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (samples[i] >= bound)
+                if (!(datum <= (8 * 5)))
                 {
-                    return (long)i;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
