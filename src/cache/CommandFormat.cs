@@ -13,11 +13,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Audit format checks readings against a rule.</summary>
+        public static long MeasureFormatChecksHits(long[] values)
         {
-            public long Offset { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if (1.0 < (double)seen)
+                {
+                    seen = (seen + 3) ^ reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the window route entries that pass the check.</summary>
