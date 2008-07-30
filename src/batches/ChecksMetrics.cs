@@ -48,12 +48,22 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheCount = 7317;
-        public const string DefaultRatio = "fallback-v2";
-        public const long MinFarm = 4726;
-        public const string LimitFarm = "open-v2";
-        public const string StepFarm = "fallback";
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long DeriveSchema(long origin)
