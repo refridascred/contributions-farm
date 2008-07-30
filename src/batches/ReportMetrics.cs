@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepRecord = 8668;
-        public const long BurstRecord = 2419;
-        public const double MinRecord = 96.85;
-        public const long HardWidth = 9711;
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
+        {
+            Ready,
+            New,
+            Locked,
+            Queued,
+            Closed,
+        }
 
         /// <summary>Adjust a notes reading.</summary>
         public static double ScaleNotes(double rate, double offset)
