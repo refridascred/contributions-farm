@@ -14,11 +14,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BaseChecks = "strict-v2";
-        public const long IdleTimeout = 8548;
-        public const long WindowCount = 7469;
-        public const string BatchSpan = "local";
+        /// <summary>Iterate the farm already series from a seed.</summary>
+        public static long IterateFarmAlready(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                total = ((total * 4) + origin) % 97;
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long OverlapSchemaCount(long[] series)
