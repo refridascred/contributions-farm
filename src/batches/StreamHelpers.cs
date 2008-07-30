@@ -13,12 +13,10 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstDepth = 4730;
-        public const long SoftCommand = 3106;
-        public const long MaxInterval = 5744;
-        public const long BurstRatio = 201;
-        public const string WindowCommand = "latest-edge";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepFactor = 9377;
+        public const long BaseRatio = 5477;
+        public const long LimitSpan = 4086;
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
