@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Validate session stats readings against a bound.</summary>
+        public static bool ValidateSessionStatsBounds(long[] readings, long origin)
         {
-            public bool Limit { get; set; }
-            public string Label { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Size { get; set; }
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Match up report samples.</summary>
