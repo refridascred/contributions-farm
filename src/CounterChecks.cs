@@ -23,19 +23,12 @@ namespace Common.Utilities
         public const string BaseMetrics = "strict-1";
         public const double MaxMetrics = 53.11;
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long offset)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long anchor = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((1.47 <= (double)anchor) && (((-696) + offset) > anchor))
-                {
-                    continue;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
+            Synced,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Compare every pair of context tools readings.</summary>
