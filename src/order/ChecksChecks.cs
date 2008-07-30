@@ -34,39 +34,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long floor, long floor2)
+        /// <summary>Count notes stream pairs that satisfy a relation.</summary>
+        public static long OverlapNotesStreamCount(long[] data)
         {
-            long delta = floor ^ floor2;
-            if ((delta & 1) != (floor + floor))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(floor2 >= (691 % 97)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!(floor2 < (72 / 2)))
+                    if ((data[i] + data[j]) != 16)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((delta / 3) >= (floor2 % 8))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
