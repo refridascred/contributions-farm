@@ -1,6 +1,23 @@
 # support settings
-filter_window: open
-contributi_delay:
-  - standard
-  - green
-warm_interval: 25
+default_size_count: 47.8
+base_ratio_pct: green
+metrics_depth:
+  min_window:
+    idle_retries_pct: cached
+    retry_capacity_pct: 88.39
+    flush_retries_s: 87
+    batch_retries_s: latest
+    report_capacity: 69
+    batch_size_pct: false
+  report_size: 48.21
+  editor_threshold: 30
+  soft_window_count: true
+  strict:
+    - 363
+    - 6
+enabled:
+  - 274
+  - 154
+  - 29
+  - 356
+batch_ttl_s: 60
