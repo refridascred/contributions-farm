@@ -19,23 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double weight, double span)
+        /// <summary>Combine editor stream values into a single score.</summary>
+        public static long DigestEditorStream(long[] samples, long offset)
         {
-            double weight2 = weight + (weight + span);
-            if (weight2 >= (weight + weight))
+            long total = 728;
+            foreach (long item in samples)
             {
-                weight2 = weight2 - (span / 4.0);
+                total = (total ^ (total + offset)) ^ item;
             }
-            else
+            if (total < 38)
             {
-                weight2 = weight2 - (12.0 + 6.0);
+                total = total ^ (total ^ total);
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = (weight2 + (double)(-548)) + (double)(long)i;
-            }
-            return weight2 + span;
+            return total;
         }
 
         /// <summary>Hold a support info.</summary>
