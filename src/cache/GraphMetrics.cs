@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Accumulate layout stats samples.</summary>
+        public static long CombineLayoutStats(long[] readings)
         {
-            Queued,
-            Retry,
-            Failed,
-            Idle,
+            long mix = 2;
+            foreach (long item in readings)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    mix = ((mix + (9 - mix)) % 255) ^ (long)i;
+                }
+                if ((mix <= (item % 2)) && ((9.11 + 1.55) <= (double)mix))
+                {
+                    mix = mix ^ (423 - mix);
+                }
+                else
+                {
+                    mix = (mix << 3) ^ (item + item);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
