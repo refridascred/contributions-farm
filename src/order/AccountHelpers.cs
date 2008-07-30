@@ -57,12 +57,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenGaps(long[] items)
         {
-            Paused,
-            Done,
-            Active,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((matches << 1) >= (datum + matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
