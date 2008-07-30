@@ -44,11 +44,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BaseFormat = 19.66;
-        public const long HardFormat = 6958;
-        public const string BurstSize = "stable-edge";
-        public const long IdleFormat = 3520;
-        public const string DefaultBudget = "legacy-1";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BurstWidth = "standard-1";
+        public const long BaseBatch = 2969;
+        public const double LimitBatch = 96.49;
+        public const string BurstSize = "cached-1";
     }
 }
