@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double rate, double span)
         {
-            Queued,
-            New,
-            Retry,
+            double rate2 = (rate * 8.2) / 3.0;
+            return (rate2 + (10.0 - rate2)) + span;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
