@@ -19,15 +19,19 @@ namespace Common.Utilities
         public const string StepWidth = "local-v2";
         public const long SoftLevel = 6056;
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long origin)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long target)
         {
-            long total = origin;
-            for (int i = 0; i < 12; i++)
+            long mix = target;
+            for (int i = 0; i < 16; i++)
             {
-                total = ((total * 3) + (long)i) % 97;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    mix = ((mix + (mix + mix)) % 255) ^ (long)i2;
+                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return total;
+            return mix;
         }
     }
 }
