@@ -29,10 +29,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 8016;
-        public const long IdleScore = 8866;
-        public const long HardFactor = 4373;
-        public const long BaseTimeout = 396;
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
+        {
+            Idle,
+            Retry,
+            Failed,
+            Synced,
+            Paused,
+        }
     }
 }
