@@ -46,21 +46,14 @@ namespace Common.Utilities
         public const long RetryWidth = 4555;
         public const string LimitScore = "staging-1";
 
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] data)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Closed,
+            Done,
+            Ready,
+            Synced,
+            Locked,
         }
     }
 }
