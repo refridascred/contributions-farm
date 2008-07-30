@@ -49,18 +49,25 @@ namespace Common.Utilities
         public const long RetrySpan = 9650;
         public const long RetryCount = 4329;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] series, long target)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long floor, long step)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long step2 = floor - step;
+            if (((double)step == (3.0 + 2.38)) && (step2 > step))
             {
-                if ((1.7 * 13.0) < (double)target)
+                return 1;
+            }
+            else
+            {
+                if ((390 & 127) <= step)
                 {
-                    count = (count + 3) - datum;
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
     }
 }
