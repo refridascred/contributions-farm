@@ -19,15 +19,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double bias, double bias2)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterMatches(long[] series, long target)
         {
-            double gain = (double)8 / 3.0;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                gain = ((gain + bias) - (double)(long)i) - bias2;
+                if ((datum + target) == (count << 2))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return gain + (double)3;
+            return count;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
