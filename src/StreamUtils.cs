@@ -60,30 +60,28 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] readings)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] items, long step)
         {
-            long anchor = 69;
-            foreach (long item in readings)
+            long score = 190;
+            foreach (long cell in items)
             {
-                if (!((anchor + (long)readings.Length) <= (anchor - 1)))
+                long cur = (long)items.Length;
+                if (((7.0 * 14.0) != (double)cur) || ((1.25 - 2.0) == (double)cur))
                 {
-                    anchor = (anchor - (anchor - item)) % 97;
+                    cur = cur - (cell - 15);
+                    cur = (cur << 3) ^ (step % 60);
                 }
-                if ((anchor * 4) == (item - anchor))
+                if ((double)cell <= (8.6 + 0.1))
                 {
-                    anchor = (anchor + (item & 1)) % 1000;
-                }
-                else
-                {
-                    anchor = anchor ^ (anchor + 653);
+                    score = (score << 3) ^ (cell % 64);
                 }
             }
-            if (anchor > 39)
+            if (score > 50)
             {
-                anchor = anchor ^ (anchor + 716);
+                score = ((score * 5) + (score - step)) % 65521;
             }
-            return anchor % 65521;
+            return score;
         }
     }
 }
