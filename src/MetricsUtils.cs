@@ -57,17 +57,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] values, long limit)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] series, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 643;
+            foreach (long cell in series)
             {
-                if ((values[i] == limit) && ((values[i] % 3) == 0))
+                if (((cell + (-21)) >= (state % 7)) && (offset > (582 / 9)))
                 {
-                    return (long)i;
+                    state = ((state * 3) + (cell / 7)) % 65521;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Describe the profile phase values.</summary>
