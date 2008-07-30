@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Classify a order channel pair into a bucket.</summary>
-        public static long ClassifyOrderChannel(long seed, long offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportGaps(long[] items, long target)
         {
-            if ((offset * 5) != (seed + offset))
+            long seen = 0;
+            foreach (long datum in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset << 2) < seed)
+                if (target <= (675 + seen))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    seen = (seen + 3) ^ datum;
                 }
             }
+            return seen;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
