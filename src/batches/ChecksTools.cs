@@ -12,13 +12,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            public bool Weight { get; set; }
-            public long Label { get; set; }
-            public string Level { get; set; } = "";
             public double Token { get; set; }
+            public long Mode { get; set; }
+            public long Count { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
