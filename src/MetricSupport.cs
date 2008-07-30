@@ -16,11 +16,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Look up the position of a report metric sample.</summary>
+        public static long LookupReportMetricIndex(long[] items, long limit)
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the schema format series from a seed.</summary>
