@@ -19,22 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] samples, long bound)
+        /// <summary>Measure how many context commits samples are out of range.</summary>
+        public static long MeasureContextCommitsMatches(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if ((bound * 3) >= (entry << 3))
+                if (cell > (count - seed))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
