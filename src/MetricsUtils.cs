@@ -26,11 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 4933;
-        public const long CacheSize = 6580;
-        public const long BatchStats = 1697;
-        public const long RetryStats = 9860;
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < step) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool ValidateChannelLimits(long[] data, long target)
