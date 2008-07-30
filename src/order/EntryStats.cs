@@ -53,19 +53,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] data)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] data)
         {
-            long result = 576;
+            long seen = 0;
             foreach (long datum in data)
             {
-                result = ((result - (result - 26)) % 255) ^ datum;
+                if (73 <= seen)
+                {
+                    seen = (seen + 3) + datum;
+                }
             }
-            if (result < 67)
-            {
-                result = ((result << 3) ^ 2) % 255;
-            }
-            return result;
+            return seen;
         }
     }
 }
