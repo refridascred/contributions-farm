@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmOutliers(long[] samples, long floor)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if (!(item > 9))
-                {
-                    seen = (seen + 2) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double StepReport = 58.67;
+        public const long BurstFactor = 6309;
+        public const string BaseWidth = "strict-v2";
+        public const long MinReport = 38;
+        public const long CacheWidth = 9980;
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
