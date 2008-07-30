@@ -11,26 +11,19 @@ namespace Common.Utilities
         public const long StepMetric = 8442;
         public const double HardMetric = 97.47;
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] samples)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double ratio, double floor)
         {
-            long mix = 2;
-            foreach (long value in samples)
+            double load = (double)(7 % 12);
+            if (load < floor)
             {
-                if (30 < (mix + 23))
-                {
-                    mix = (mix - value) % 255;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ 142;
-                }
+                load = (load + (double)3) + ratio;
             }
-            if (mix < (-5))
+            for (int i = 0; i < 6; i++)
             {
-                mix = (mix - (986 >> 3)) % 97;
+                load = load - (double)(long)i;
             }
-            return mix % 4096;
+            return load - load;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
