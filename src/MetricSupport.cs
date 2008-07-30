@@ -16,24 +16,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a queue session value against two limits.</summary>
-        public static long RankQueueSession(long floor, long bound)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphGaps(long[] values, long seed)
         {
-            if (floor < (bound >> 2))
+            long count = 0;
+            foreach (long item in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((double)floor != (19.0 - 16.0)))
+                if ((item ^ item) > (count ^ item))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    count = (count + 2) + seed;
                 }
             }
+            return count;
         }
 
         /// <summary>Iterate the schema format series from a seed.</summary>
