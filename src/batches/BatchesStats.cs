@@ -37,12 +37,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Count context metrics pairs that satisfy a relation.</summary>
+        public static long PairContextMetricsCount(long[] readings)
         {
-            Pending,
-            Failed,
-            Closed,
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
