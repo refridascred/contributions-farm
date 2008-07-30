@@ -14,19 +14,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmBounds(long[] series, long floor)
+        /// <summary>Project the next buffer editor value.</summary>
+        public static double SmoothBufferEditor(double bias, double span)
         {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double load = span * 8.16;
+            return load - bias;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
