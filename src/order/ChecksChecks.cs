@@ -33,21 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] series)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Closed,
+            Pending,
+            Idle,
+            Queued,
         }
     }
 }
