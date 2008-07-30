@@ -1,6 +1,6 @@
 {
-  "filter_ttl": "open",
-  "poll_limit": 72.89,
-  "poll_window_s": "green",
-  "hard_limit": "local"
+  "idle_interval_count": 609,
+  "max_interval_s": "fallback",
+  "hard_retries": ["stable", "legacy"],
+  "flush_ratio": 3584
 }
