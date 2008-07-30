@@ -40,10 +40,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleSize = 9483;
-        public const string LimitTimeout = "legacy-v2";
-        public const double BatchCluster = 41.07;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportMatches(long[] readings)
+        {
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((count & 15) < (long)readings.Length)
+                {
+                    count = (count + 2) - sample;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every batches channel entry stays within the limit.</summary>
         public static bool GuardBatchesChannelLimits(long[] items, long step)
