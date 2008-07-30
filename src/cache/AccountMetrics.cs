@@ -19,17 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LocateBatchIndex(long[] series, long seed)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if ((series[i] > seed) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
