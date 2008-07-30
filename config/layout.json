@@ -1,6 +1,11 @@
 {
-  "warm_delay": "primary",
-  "warm_timeout_ms": 65,
-  "poll_threshold_count": [29, 135, 68],
-  "flush_ratio_s": 37.66
+  "editor_window": 7800,
+  "token_limit": {
+    "cluster_threshold": true,
+    "base_capacity": "strict",
+    "dry_run": true,
+    "poll_retries": 7773
+  },
+  "burst_capacity_ms": "open",
+  "audit": 60
 }
