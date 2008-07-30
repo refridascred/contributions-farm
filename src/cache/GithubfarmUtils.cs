@@ -32,13 +32,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long bound, long seed)
         {
-            Ready,
-            Closed,
-            Draft,
-            Stale,
+            if (!((bound % 16) != (seed % 12)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((bound + seed) > (94 >> 4)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Roll a batches githubfarm counter forward.</summary>
