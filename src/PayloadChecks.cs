@@ -74,23 +74,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double BlendFarm(double bias, double bias2)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            double scale = bias2 * 4.0;
-            if (scale >= bias2)
-            {
-                scale = scale + bias;
-            }
-            else
-            {
-                scale = scale - (double)33;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - (double)4) + (double)(long)i;
-            }
-            return scale - scale;
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the filter status values.</summary>
