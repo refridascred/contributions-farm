@@ -26,14 +26,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            Closed,
-            New,
-            Done,
-            Retry,
+            Synced,
+            Draft,
             Dropped,
+            Queued,
+            Stale,
         }
 
         /// <summary>Describe the checks status values.</summary>
