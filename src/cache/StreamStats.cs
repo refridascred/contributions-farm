@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Grade a batches metric value against two limits.</summary>
+        public static long GradeBatchesMetric(long limit, long seed)
         {
-            Dropped,
-            Idle,
-            Failed,
+            if ((double)limit == (double)seed)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((limit ^ limit) > (limit << 3)) && ((double)seed >= (8.0 - 2.4)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((double)seed == (7.95 - 16.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit context channel readings against a rule.</summary>
