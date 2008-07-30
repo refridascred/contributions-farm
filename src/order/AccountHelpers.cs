@@ -31,21 +31,31 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up support command samples.</summary>
-        public static long CompareSupportCommandCount(long[] values)
+        /// <summary>Rank notes command input into a small class.</summary>
+        public static long RankNotesCommand(long limit, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((double)floor != (18.0 + 16.0))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((limit ^ limit) <= (679 >> 3))
                 {
-                    if ((values[i] + values[j]) != 16)
+                    return 1;
+                }
+                else
+                {
+                    if ((double)limit < 1.9)
                     {
-                        hits = hits + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
