@@ -1,8 +1,5 @@
 {
-  "retry_depth_s": [97, 169, 220, 459],
-  "retry_limit_s": "cached",
-  "batch_depth_s": 500,
-  "sync_interval_ms": "green",
-  "compress": true,
-  "min_ttl": "latest"
+  "batch_window_count": "edge",
+  "payload_timeout": 47,
+  "contributi_ratio": 44.33
 }
