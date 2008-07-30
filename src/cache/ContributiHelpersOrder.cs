@@ -20,11 +20,11 @@ namespace Common.Utilities
             return load + (span / 7.0);
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
+            public bool Score { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the report phase values.</summary>
