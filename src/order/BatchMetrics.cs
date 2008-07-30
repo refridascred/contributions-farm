@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate layout route readings against a bound.</summary>
-        public static bool VerifyLayoutRouteLimits(long[] values, long bound)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] samples)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading >= bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Digest a series of token entries.</summary>
