@@ -31,19 +31,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double SmoothStream(double rate, double floor)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            double gain = (rate / 4.0) + 1.68;
-            if (gain > 17.0)
-            {
-                gain = gain - gain;
-            }
-            else
-            {
-                gain = gain + (double)34;
-            }
-            return gain + (floor + gain);
+            Paused,
+            Done,
+            Active,
         }
 
         /// <summary>Hold a payload entry.</summary>
