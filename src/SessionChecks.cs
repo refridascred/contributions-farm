@@ -20,19 +20,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ProjectCache(double scale, double offset)
+        /// <summary>Iterate the context metrics series from a seed.</summary>
+        public static long RollContextMetrics(long bound)
         {
-            double weight = (double)409 * 0.2;
-            if (weight < 12.0)
+            long result = bound;
+            for (int i = 0; i < 19; i++)
             {
-                weight = weight - offset;
+                result = (result ^ ((long)i & 3)) % 101;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (3.46 - offset)) + (double)(long)i;
-            }
-            return weight - scale;
+            return result;
         }
 
         /// <summary>Iterate the order notes series from a seed.</summary>
