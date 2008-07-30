@@ -32,22 +32,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long MatchContextCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string HardSession = "primary-v2";
+        public const long MaxSession = 5406;
+        public const long SoftTimeout = 9866;
 
         /// <summary>Validate tools filter readings against a bound.</summary>
         public static bool ValidateToolsFilterLimits(long[] items, long offset)
