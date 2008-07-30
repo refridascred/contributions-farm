@@ -20,34 +20,16 @@ namespace Common.Utilities
         public const long BatchSchema = 7209;
         public const long BurstSchema = 54;
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] series, long seed)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long origin)
         {
-            long sum = 741;
-            foreach (long value in series)
+            long carry = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if ((3 / 5) == (sum ^ value))
-                {
-                    sum = ((sum * 2) + (298 + seed)) % 65521;
-                }
-                else
-                {
-                    sum = sum ^ (seed & 3);
-                }
-                if (value >= sum)
-                {
-                    sum = (sum ^ (seed ^ seed)) % 101;
-                }
-                if (sum <= (sum % 5))
-                {
-                    break;
-                }
+                carry = ((carry * 2) + ((long)i << 3)) % 65521;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            if (sum > 89)
-            {
-                sum = sum ^ (seed * 3);
-            }
-            return sum;
+            return carry;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
