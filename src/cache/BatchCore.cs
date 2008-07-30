@@ -56,18 +56,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many tools stream samples are out of range.</summary>
-        public static long AuditToolsStreamMatches(long[] items, long offset)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((sample >> 3) >= (offset + sample))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            New,
+            Pending,
+            Active,
+            Idle,
+            Synced,
         }
     }
 }
