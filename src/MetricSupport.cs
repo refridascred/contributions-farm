@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string HardInterval = "cached-1";
-        public const string BurstInterval = "standard-v2";
-        public const long SoftSize = 7335;
-        public const long WindowSize = 1441;
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
+        {
+            public double Flag { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
