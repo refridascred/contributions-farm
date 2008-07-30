@@ -14,24 +14,23 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long target, long bound)
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double weight, double span)
         {
-            if ((target << 2) < (target - bound))
+            double weight2 = weight + (weight + span);
+            if (weight2 >= (weight + weight))
             {
-                return 2;
+                weight2 = weight2 - (span / 4.0);
             }
             else
             {
-                if ((target & 63) <= target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
+                weight2 = weight2 - (12.0 + 6.0);
             }
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = (weight2 + (double)(-548)) + (double)(long)i;
+            }
+            return weight2 + span;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
