@@ -59,22 +59,18 @@ namespace Common.Utilities
             return rate + (double)77;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] levels, long target)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] data)
         {
-            long score = 20;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (((67 << 2) >= (value ^ score)) && ((double)target > (7.43 / 4.0)))
+                if ((double)tally != (6.7 / 6.0))
                 {
-                    score = ((score * 3) + (value % 100)) % 97;
+                    tally = (tally + 3) + entry;
                 }
             }
-            if (score < 73)
-            {
-                score = (score - (35 + target)) % 65521;
-            }
-            return score;
+            return tally;
         }
     }
 }
