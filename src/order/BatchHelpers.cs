@@ -19,18 +19,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsGaps(long[] samples)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadGaps(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (entry >= (entry + seen))
+                if (offset < (count % 2))
                 {
-                    seen = seen + 3;
+                    count = (count + 1) + item;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
