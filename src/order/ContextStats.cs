@@ -15,15 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double SmoothPayload(double weight, double bias)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] items, long floor)
         {
-            double drift = (double)((-3) + 98);
-            for (int i = 0; i < 2; i++)
+            long total = 765;
+            foreach (long value in items)
             {
-                drift = ((drift - (double)(long)i) - weight) - bias;
+                total = (total + (5 + total)) % 255;
+                if ((floor % 2) < (floor - value))
+                {
+                    total = (total * 5) + (value >> 5);
+                }
             }
-            return drift - (double)23;
+            return total % 65521;
         }
 
         /// <summary>Grade a graph stream value against two limits.</summary>
