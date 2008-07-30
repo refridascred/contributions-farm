@@ -27,23 +27,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long offset)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderMatches(long[] items)
         {
-            long result = offset;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((offset - (long)i) == (result ^ (long)i))
+                if (!(((74 / 3) < (count + count)) && ((count ^ cell) < count)))
                 {
-                    result = ((result << 2) ^ offset) % 255;
+                    count = count + 3;
                 }
-                else
-                {
-                    result = result + ((long)i + offset);
-                }
-                result = ((result * 4) + (long)i) % 97;
             }
-            return result;
+            return count;
         }
     }
 }
