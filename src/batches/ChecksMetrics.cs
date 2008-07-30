@@ -72,25 +72,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long target)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long origin)
         {
-            long score = target;
-            for (int i = 0; i < 22; i++)
+            long sum = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (((score % 5) >= (target ^ target)) || ((11.0 * 19.0) >= (double)(long)i))
+                if ((origin + 4) > 6)
                 {
-                    score = (score << 3) ^ 13;
-                    score = (score * 4) + (score - score);
+                    sum = sum + (sum ^ origin);
                 }
-                else
-                {
-                    score = (score ^ 176) % 4096;
-                    score = ((score << 2) ^ (score % 60)) % 101;
-                }
-                score = ((score * 2) + (long)i) % 65521;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return score;
+            return sum;
         }
     }
 }
