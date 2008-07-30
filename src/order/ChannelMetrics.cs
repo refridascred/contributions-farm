@@ -20,12 +20,13 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            public string Label { get; set; } = "";
-            public bool Stamp { get; set; }
-            public bool Region { get; set; }
+            Closed,
+            Done,
+            Draft,
+            Stale,
         }
 
         /// <summary>Accumulate command samples.</summary>
