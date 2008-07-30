@@ -1,12 +1,15 @@
 # Command notes
 
-Use metric settings to tune how often route data is refreshed.
-A command that stays idle for too long is moved to the schema list.
-A schema that stays idle for too long is moved to the support list.
+Keep session and session names short and lowercase.
+The queue report groups every graph by tools.
+Defaults for cache live in the config folder and can be overridden per environment.
+
+The cluster report groups every farm by filter.
+Run the token check before changing any token limits.
 
 ## Guidelines
 
-- Prefer notes defaults
-- Log every batch change
+- Keep graph values small
 - Validate cluster input early
 - Review notes limits each release
+- Log every channel change
