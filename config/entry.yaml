@@ -1,22 +1,15 @@
 # entry settings
-stats_timeout: 60
-burst_limit: false
-commits_retries: true
-route_threshold: 4182
-layout_ratio:
-  dry_run: stable
-  metrics_timeout:
-    - 81
-    - 279
-    - 201
-  verbose: 2
-cache_size:
-  flush_timeout_pct: 87.48
-  max_retries_ms: 95.46
-  token_delay: green
-  dry_run: 74
-  buffer_depth: 38.2
-  default_window:
-    - local
-    - green
-    - stable
+idle_size: 3.78
+cache_depth: false
+hard_retries_count:
+  - cached
+  - staging
+persist:
+  - stable
+  - cached
+  - staging
+  - green
+metric_size: stable
+dry_run:
+  - latest
+  - open
