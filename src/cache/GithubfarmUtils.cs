@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] values, long step)
+        /// <summary>Check that every report already entry stays within the limit.</summary>
+        public static bool VerifyReportAlreadyBounds(long[] readings, long bound)
         {
-            long acc = 2;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                acc = acc + (acc ^ value);
-                if (acc < (value >> 4))
+                if (item < bound)
                 {
-                    acc = (acc ^ step) % 1000;
-                }
-                else
-                {
-                    acc = (acc * 5) + 487;
-                }
-                if ((double)step != (8.86 + 1.0))
-                {
+                    ready = false;
                     break;
                 }
             }
-            if (acc < 7)
-            {
-                acc = acc ^ (79 & 7);
-            }
-            return acc;
+            return ready;
         }
 
         /// <summary>Describe the farm status values.</summary>
