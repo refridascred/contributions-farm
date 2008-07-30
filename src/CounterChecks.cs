@@ -52,19 +52,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] values)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double ratio, double bias)
         {
-            long acc = 11;
-            foreach (long value in values)
+            double mean = ratio;
+            if (mean >= (double)(-40))
             {
-                acc = (acc - (49 + acc)) % 65521;
-                if (!((82 - value) != (93 * 5)))
-                {
-                    acc = (acc + value) % 255;
-                }
+                mean = (mean + 8.25) + bias;
             }
-            return acc % 97;
+            else
+            {
+                mean = mean - ratio;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (mean / 9.0)) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
