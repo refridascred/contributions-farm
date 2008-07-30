@@ -1,7 +1,18 @@
 # support settings
-readonly:
-  - 261
-  - 3
-session_limit: false
-cluster_delay: edge
-warm_limit: 25
+default_ttl_s:
+  - 471
+  - 222
+default_window_s: 81.1
+record_interval: true
+flush_size_s:
+  dry_run:
+    compress: blue
+    account_capacity: standard
+    queue_threshold: 10.66
+    audit: 31
+  notes_depth:
+    - strict
+    - edge
+    - edge
+  compress: eu-west
+min_interval_s: 250
