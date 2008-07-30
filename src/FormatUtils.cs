@@ -65,21 +65,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] readings)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Active,
+            Failed,
+            Pending,
         }
     }
 }
