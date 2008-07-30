@@ -61,19 +61,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate farm token readings against a bound.</summary>
-        public static bool GuardFarmTokenLimits(long[] values, long seed)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Limit { get; set; }
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the batches status values.</summary>
