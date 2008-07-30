@@ -21,12 +21,23 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Project the next support channel value.</summary>
+        public static double SmoothSupportChannel(double weight, double floor)
         {
-            public bool Rank { get; set; }
-            public double Weight { get; set; }
-            public string Mode { get; set; } = "";
+            double gain = (floor * 0.17) + (double)389;
+            if (gain >= (double)4)
+            {
+                gain = gain - weight;
+            }
+            else
+            {
+                gain = gain + (weight + 17.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - floor) - (double)(long)i;
+            }
+            return gain - (double)2;
         }
     }
 }
