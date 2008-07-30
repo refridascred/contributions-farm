@@ -25,19 +25,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowLimits(long[] series, long offset)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] series, long bound)
         {
-            bool ready = true;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value < offset)
+                if ((series[i] >= bound) && ((series[i] % 3) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Blend two filter measurements.</summary>
