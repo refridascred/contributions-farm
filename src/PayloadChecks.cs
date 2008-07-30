@@ -41,22 +41,37 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long bound, long origin)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long seed, long limit)
         {
-            if ((double)origin >= 16.0)
+            long offset = seed - limit;
+            if ((4.0 / 8.0) > (double)limit)
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if (((7.69 - 2.7) != (double)origin) && (bound >= (bound * 5)))
+                if ((double)seed == (double)limit)
                 {
-                    return 1;
+                    return 4;
                 }
                 else
                 {
-                    return 5;
+                    if (!((offset * 2) >= (limit >> 1)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed % 3) <= (offset + offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
         }
