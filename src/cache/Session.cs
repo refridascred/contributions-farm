@@ -20,12 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Check that every already order entry stays within the limit.</summary>
+        public static bool CheckAlreadyOrderLimits(long[] data, long bound)
         {
-            public string Mode { get; set; } = "";
-            public double Label { get; set; }
-            public long Total { get; set; }
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
