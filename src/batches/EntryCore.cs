@@ -12,17 +12,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Locate a record graph reading by value.</summary>
-        public static long SeekRecordGraphIndex(long[] values, long step)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsRange(long[] data, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if ((values[i] < step) && ((values[i] % 3) != 0))
+                if (reading <= limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Measure how many farm cluster samples are out of range.</summary>
