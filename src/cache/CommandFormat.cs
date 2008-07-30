@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterHits(long[] levels, long floor)
         {
-            public long Score { get; set; }
-            public long Size { get; set; }
-            public long Total { get; set; }
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (((long)levels.Length & 63) < (long)levels.Length)
+                {
+                    seen = ((seen + 1) ^ value) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
