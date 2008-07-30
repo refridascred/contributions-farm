@@ -24,12 +24,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepSize = 1511;
-        public const double HardOrder = 95.72;
-        public const long BatchInterval = 6602;
-        public const long IdleWidth = 394;
-        public const long BaseOrder = 4563;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 8508;
+        public const long MinEntry = 594;
+        public const string HardEntry = "strict-1";
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long IterateFormat(long step)
