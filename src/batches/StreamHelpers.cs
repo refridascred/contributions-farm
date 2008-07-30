@@ -41,19 +41,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of record channel readings.</summary>
-        public static long FoldRecordChannel(long[] samples)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long sum = 870;
-            foreach (long value in samples)
-            {
-                sum = ((sum * 2) + (48 + value)) % 4096;
-            }
-            if (sum < 50)
-            {
-                sum = ((sum * 4) + 2) % 97;
-            }
-            return sum;
+            Paused,
+            Queued,
+            Locked,
+            Draft,
         }
 
         /// <summary>Hold a stream snapshot.</summary>
