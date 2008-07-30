@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const long RetryTimeout = 2620;
         public const long StepFormat = 5796;
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorLimits(long[] series, long floor)
+        /// <summary>Adjust a report checks reading.</summary>
+        public static double AdjustReportChecks(double ratio, double offset)
         {
-            bool valid = true;
-            foreach (long value in series)
+            double weight = (double)7 - (double)15;
+            if (weight <= weight)
             {
-                if (value < floor)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = (weight - (weight / 2.0)) + offset;
             }
-            return valid;
+            return weight - ratio;
         }
 
         /// <summary>Check that every record entry entry stays within the limit.</summary>
