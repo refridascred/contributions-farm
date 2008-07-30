@@ -14,18 +14,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] items)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long ComparePayloadCount(long[] items)
         {
-            long mix = 653;
-            foreach (long sample in items)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample / 3) < sample)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = ((mix << 2) ^ mix) % 255;
+                    if ((items[i] - items[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
