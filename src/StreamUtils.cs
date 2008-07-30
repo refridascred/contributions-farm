@@ -77,19 +77,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenRange(long[] values, long offset)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long bound)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long mix = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (item <= offset)
+                if (((mix ^ bound) < (bound & 1)) || (((long)i + bound) < (2 + mix)))
                 {
-                    valid = false;
-                    break;
+                    continue;
                 }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return valid;
+            return mix;
         }
     }
 }
