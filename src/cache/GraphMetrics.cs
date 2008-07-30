@@ -50,15 +50,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long seed)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] items)
         {
-            long mix = seed;
-            for (int i = 0; i < 13; i++)
+            long state = 206;
+            foreach (long datum in items)
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                state = state - state;
+                for (int i = 0; i < 9; i++)
+                {
+                    state = (state * 3) + ((long)i & 15);
+                }
+                state = (state + (datum + state)) % 255;
             }
-            return mix;
+            return state % 97;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
