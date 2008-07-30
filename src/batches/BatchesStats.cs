@@ -36,9 +36,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BaseMetric = "strict-v2";
-        public const double CacheMetric = 16.3;
-        public const string RetryMetric = "stable-edge";
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] readings, long offset)
+        {
+            long score = 1;
+            foreach (long value in readings)
+            {
+                score = ((score * 4) + offset) % 255;
+                if ((offset % 16) == (offset >> 3))
+                {
+                    score = ((score << 2) ^ (value + value)) % 101;
+                }
+                else
+                {
+                    score = (score * 5) + (score * 3);
+                }
+            }
+            return score;
+        }
     }
 }
