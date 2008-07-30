@@ -43,19 +43,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextLimits(long[] items, long origin)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            Done,
+            Active,
+            Idle,
+            Queued,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
