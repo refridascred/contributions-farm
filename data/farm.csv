@@ -1,8 +1,9 @@
-id,score,label,level
-1,408,911,51.7
-2,green,fallback,834
-3,528,79.67,41.92
-4,blue,62.91,90.61
-5,879,642,835
-6,560,standard,430
-7,627,primary,green
+id,label,ratio
+1,366,895
+2,staging,643
+3,green,42.34
+4,4.26,fallback
+5,stable,78
+6,standard,open
+7,edge,615
+8,10.97,fallback
