@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferGaps(long[] data, long bound)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long target)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long result = target;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)bound == (double)count)
-                {
-                    count = (count + 3) ^ entry;
-                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
