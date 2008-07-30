@@ -39,33 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long floor, long step)
-        {
-            long gap = floor ^ step;
-            if ((269 / 9) >= (floor + floor))
-            {
-                return 2;
-            }
-            else
-            {
-                if (gap >= (step % 24))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((gap * 4) != (step >> 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftScore = 6213;
+        public const double HardDepth = 36.38;
+        public const double MinSupport = 27.27;
+        public const long RetryWidth = 4555;
+        public const string LimitScore = "staging-1";
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long MeasureCacheMatches(long[] levels)
