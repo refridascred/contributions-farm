@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 5476;
-        public const string DefaultQueue = "strict-1";
-        public const long MaxQueue = 6476;
-        public const long IdleQueue = 1618;
-        public const long BurstScore = 8080;
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
+        {
+            Draft,
+            Paused,
+            Stale,
+            Active,
+        }
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long StepChannel(long bound)
