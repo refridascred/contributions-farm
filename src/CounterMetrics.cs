@@ -36,21 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] samples)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Score { get; set; }
+            public double Token { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a already summary.</summary>
