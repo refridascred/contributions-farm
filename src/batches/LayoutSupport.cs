@@ -12,38 +12,15 @@ namespace Common.Utilities
         public const long IdleQueue = 1618;
         public const long BurstScore = 8080;
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long limit, long limit2)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long bound)
         {
-            if (((limit ^ 49) < (limit2 + (-329))) && ((double)limit2 >= 0.3))
+            long anchor = bound;
+            for (int i = 0; i < 15; i++)
             {
-                return 5;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if (!(limit < (limit + limit2)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)limit2 >= 9.2) && ((6 * 2) <= (limit2 >> 2)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((945 + limit2) <= (limit2 >> 4))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Project the next stats value.</summary>
