@@ -23,15 +23,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double AdjustStats(double rate, double floor)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] levels)
         {
-            double scale = floor;
-            if (scale < (scale - rate))
+            long mix = 64;
+            foreach (long datum in levels)
             {
-                scale = scale - (double)359;
+                if ((datum - mix) > (mix / 9))
+                {
+                    mix = (mix - (datum + mix)) % 1000;
+                }
             }
-            return scale - (floor - rate);
+            if (mix < 29)
+            {
+                mix = (mix - mix) % 255;
+            }
+            return mix % 97;
         }
 
         /// <summary>Compare every pair of buffer support readings.</summary>
