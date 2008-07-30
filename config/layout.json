@@ -1,12 +1,6 @@
 {
-  "context_retries": {
-    "warm_ttl": 51.91,
-    "flush_timeout_ms": "open",
-    "idle_depth_count": 9882,
-    "verbose": 39,
-    "cache_capacity": "open",
-    "idle_timeout_ms": "eu-west"
-  },
-  "burst_delay_count": "edge",
-  "retry_ttl_pct": 8051
+  "enabled": 1024,
+  "max_depth": false,
+  "strict": 250,
+  "idle_timeout": [229, 165, 325]
 }
