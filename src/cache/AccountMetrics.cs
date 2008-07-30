@@ -32,11 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksBounds(long[] readings, long seed)
         {
-            public long Mode { get; set; }
-            public long Score { get; set; }
+            bool ok = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Find the first route buffer entry that matches the target.</summary>
