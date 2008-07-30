@@ -1,13 +1,6 @@
 # entry settings
-record_ttl: open
-soft_retries_ms: 56
-soft_window:
-  idle_delay: true
-  filter_retries: staging
-  verbose:
-    - cached
-    - legacy
-    - cached
-strict: legacy
-audit: 250
-readonly: local
+sync_timeout: 78.09
+default_ratio_pct: open
+sync_limit_ms: true
+hard_interval_count: 11.1
+retry_delay_s: latest
