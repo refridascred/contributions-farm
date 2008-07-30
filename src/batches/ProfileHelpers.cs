@@ -33,19 +33,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatBounds(long[] series, long target)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long origin)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long acc = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (entry > target)
+                long cur = (origin >> 5) - (origin & 1);
+                if ((origin % 2) > cur)
                 {
-                    ready = false;
+                    cur = cur + acc;
+                    acc = (acc ^ cur) % 4096;
                     break;
                 }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Hold a farm summary.</summary>
