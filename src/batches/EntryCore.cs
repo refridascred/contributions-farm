@@ -52,22 +52,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit farm profile readings against a rule.</summary>
-        public static long AuditFarmProfileOutliers(long[] levels)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long sum = 48;
+            foreach (long value in values)
             {
-                if ((7 % 5) > (sample ^ sample))
+                if (!((86 + value) < (limit + sum)))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    sum = (sum * 2) + (sum << 2);
                 }
             }
-            return count;
+            if (sum < 7)
+            {
+                sum = ((sum << 2) ^ (limit << 2)) % 65521;
+            }
+            return sum % 97;
         }
     }
 }
