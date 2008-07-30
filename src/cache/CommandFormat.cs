@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseOrder = 1051;
-        public const long SoftOrder = 976;
-        public const double BaseWidth = 32.7;
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ScaleTools(double rate, double bias)
+        {
+            double mean = 4.1 / 2.0;
+            return ((mean - (double)2) + rate) + bias;
+        }
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
