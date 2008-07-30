@@ -13,20 +13,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Check that every schema graph entry stays within the limit.</summary>
-        public static bool VerifySchemaGraphRange(long[] samples, long origin)
-        {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstDepth = 4730;
+        public const long SoftCommand = 3106;
+        public const long MaxInterval = 5744;
+        public const long BurstRatio = 201;
+        public const string WindowCommand = "latest-edge";
 
         /// <summary>Iterate the entry series from a seed.</summary>
         public static long StepEntry(long floor)
