@@ -20,18 +20,15 @@ namespace Common.Utilities
             return gain + 7.09;
         }
 
-        /// <summary>Compare every pair of session layout readings.</summary>
-        public static long OverlapSessionLayoutCount(long[] readings)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] data, long bound)
         {
             long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long cell in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((6.51 + 0.5) <= (double)cell)
                 {
-                    if ((readings[i] ^ readings[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 1) - bound;
                 }
             }
             return tally;
