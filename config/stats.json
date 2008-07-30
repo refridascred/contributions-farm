@@ -1,28 +1,5 @@
 {
-  "sync_delay": {
-    "enabled": 45.65,
-    "default_ratio_pct": 3415,
-    "burst_threshold": {
-      "batch_ttl_count": "legacy",
-      "hard_depth_count": 30,
-      "enabled": false
-    },
-    "graph_delay": {
-      "hard_ttl_ms": "edge",
-      "flush_ratio_s": 250,
-      "route_capacity": 30,
-      "already_interval": true
-    },
-    "record_interval": "cached",
-    "compress": 65
-  },
-  "metric_limit": 41.0,
-  "soft_ttl": "open",
-  "warm_timeout": 1024,
-  "enabled": {
-    "hard_depth_pct": "local",
-    "max_retries": "edge",
-    "batch_threshold_pct": false
-  },
-  "warm_timeout_count": 60.22
+  "min_timeout_ms": [44, 350, 350, 121],
+  "sync_interval_count": 100,
+  "persist": "legacy"
 }
