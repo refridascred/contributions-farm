@@ -23,17 +23,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] readings, long origin)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                result = (result - result) % 65521;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a cache header.</summary>
