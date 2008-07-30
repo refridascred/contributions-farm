@@ -34,21 +34,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up record stream samples.</summary>
-        public static long OverlapRecordStreamCount(long[] readings)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] items, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 294;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((target / 4) > acc)
                 {
-                    if ((readings[i] ^ readings[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc - acc) % 97;
+                }
+                if ((683 % 12) == (77 + entry))
+                {
+                    break;
                 }
             }
-            return tally;
+            return acc % 65521;
         }
 
         /// <summary>Hold a checks options.</summary>
