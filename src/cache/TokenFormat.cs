@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long origin)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] series, long floor)
         {
-            long sum = origin;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                if (series[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Describe the profile status values.</summary>
