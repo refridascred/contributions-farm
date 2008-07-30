@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            public bool Ratio { get; set; }
-            public long Flag { get; set; }
-            public string Weight { get; set; } = "";
+            Failed,
+            Retry,
+            Pending,
+            Done,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
