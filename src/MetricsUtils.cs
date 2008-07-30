@@ -35,12 +35,12 @@ namespace Common.Utilities
             return (bias2 + (double)210) + span;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double AdjustEntry(double ratio, double bias)
-        {
-            double load = (ratio / 8.0) / 6.0;
-            return load - bias;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowBudget = 2730;
+        public const long MinRatio = 532;
+        public const double IdleContributi = 40.0;
+        public const long CacheLevel = 4241;
+        public const long HardContributi = 5757;
 
         /// <summary>Fold a list of session profile readings.</summary>
         public static long FoldSessionProfile(long[] levels, long offset)
