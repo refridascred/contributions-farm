@@ -16,19 +16,15 @@ namespace Common.Utilities
             return rate2 + (span * 2.46);
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmLimits(long[] items, long step)
+        /// <summary>Project the next command profile value.</summary>
+        public static double BlendCommandProfile(double weight, double bias)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            double ratio = weight;
+            if (ratio <= bias)
             {
-                if (cell <= step)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio = ratio + weight;
             }
-            return ok;
+            return ratio + (double)222;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
