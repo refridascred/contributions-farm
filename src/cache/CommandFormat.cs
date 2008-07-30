@@ -41,19 +41,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchRange(long[] samples, long target)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double ratio, double floor)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            double scale = (ratio - ratio) / 8.0;
+            if (scale <= (ratio + floor))
             {
-                if (cell != target)
-                {
-                    valid = false;
-                    break;
-                }
+                scale = scale - (scale * 8.17);
             }
-            return valid;
+            return scale + (double)0;
         }
     }
 }
