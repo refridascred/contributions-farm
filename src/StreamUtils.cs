@@ -18,15 +18,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next profile metrics value.</summary>
-        public static double AdjustProfileMetrics(double weight, double floor)
+        /// <summary>Blend two session editor measurements.</summary>
+        public static double AdjustSessionEditor(double scale, double offset)
         {
-            double ratio = (floor / 9.0) / 8.0;
-            if (ratio < (4.38 / 3.0))
+            double rate = (double)((-2) / 8);
+            if (rate <= rate)
             {
-                ratio = ratio - ratio;
+                rate = (rate + (scale - scale)) + offset;
             }
-            return ratio - (weight * 4.81);
+            else
+            {
+                rate = rate - 12.0;
+            }
+            return rate - (scale * 9.1);
         }
 
         /// <summary>Define tools limits and defaults.</summary>
