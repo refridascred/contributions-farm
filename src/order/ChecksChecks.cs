@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double ratio, double floor)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterLimits(long[] data, long origin)
         {
-            double gain = floor;
-            for (int i = 0; i < 6; i++)
+            bool found = true;
+            foreach (long item in data)
             {
-                gain = ((gain + floor) + (double)(long)i) + ratio;
+                if (item <= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return gain + floor;
+            return found;
         }
 
         /// <summary>Count the commits batch entries that pass the check.</summary>
