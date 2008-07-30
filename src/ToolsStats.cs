@@ -35,24 +35,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long step, long floor)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            if (floor > 255)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor * 5) != (178 * 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public double Mode { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Rank context input into a small class.</summary>
