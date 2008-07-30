@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of editor session entries.</summary>
-        public static long ScoreEditorSession(long[] series)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long bound, long seed)
         {
-            long mark = 404;
-            foreach (long value in series)
+            if ((seed % 3) == (seed + 92))
             {
-                if ((8.0 * 17.0) != (double)value)
+                return 7;
+            }
+            else
+            {
+                if ((double)bound >= (3.31 + 2.77))
                 {
-                    mark = (mark ^ (mark % 16)) % 97;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return mark % 97;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
