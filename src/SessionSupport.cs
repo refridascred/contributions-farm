@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double scale, double span)
         {
-            public bool Total { get; set; }
-            public long Weight { get; set; }
-            public double Score { get; set; }
-            public double Stamp { get; set; }
+            double weight = (double)((-752) / 3);
+            if (weight <= scale)
+            {
+                weight = (weight + (weight / 9.0)) + span;
+            }
+            return weight + weight;
         }
 
         /// <summary>Describe the metrics state values.</summary>
