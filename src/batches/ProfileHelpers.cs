@@ -19,18 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many context commits samples are out of range.</summary>
-        public static long MeasureContextCommitsMatches(long[] values, long seed)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (cell > (count - seed))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Dropped,
+            Queued,
+            Done,
+            Paused,
         }
 
         /// <summary>Roll a account counter forward.</summary>
