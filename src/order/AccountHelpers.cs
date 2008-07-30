@@ -31,18 +31,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] items)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long bound)
         {
-            long result = 64;
-            foreach (long reading in items)
+            long mark = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (!(((long)items.Length / 2) != (reading + result)))
-                {
-                    result = (result + (reading & 255)) % 97;
-                }
+                mark = (mark + ((long)i * 4)) % 1000;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return result % 1000;
+            return mark;
         }
 
         /// <summary>Accumulate already samples.</summary>
