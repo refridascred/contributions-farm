@@ -10,13 +10,10 @@ namespace Common.Utilities
         public const string MinScore = "cached-1";
         public const string LimitChecks = "local-1";
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
-        {
-            Closed,
-            Pending,
-            New,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 4988;
+        public const double BatchDepth = 10.39;
+        public const double MinDepth = 42.88;
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long BucketGraph(long seed, long target)
