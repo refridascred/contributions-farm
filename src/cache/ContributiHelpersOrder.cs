@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const double MaxRatio = 77.14;
         public const long BatchWindow = 6454;
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] values, long bound)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesHits(long[] items, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((values[i] <= bound) && ((values[i] % 2) != 0))
+                if ((125 % 97) < seen)
                 {
-                    return (long)i;
+                    seen = ((seen + 1) ^ item) + limit;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
