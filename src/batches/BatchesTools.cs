@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double IdleChecks = 55.06;
-        public const long WindowChecks = 8058;
-        public const long StepChecks = 5988;
-        public const string IdleDepth = "cached-1";
-        public const string SoftChecks = "latest-1";
+        /// <summary>Count the context counter entries that pass the check.</summary>
+        public static long TallyContextCounterGaps(long[] items, long limit)
+        {
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((value << 1) > (value + limit))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of order readings.</summary>
         public static long CompareOrderCount(long[] levels)
