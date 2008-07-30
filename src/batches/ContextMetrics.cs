@@ -81,10 +81,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstCount = 9062;
-        public const double WindowDepth = 98.38;
-        public const double CacheContext = 28.58;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] levels)
+        {
+            long acc = -26;
+            foreach (long value in levels)
+            {
+                if ((double)value >= (double)acc)
+                {
+                    acc = acc ^ (acc - (-12));
+                }
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Blend two route measurements.</summary>
         public static double ProjectRoute(double gain, double span)
