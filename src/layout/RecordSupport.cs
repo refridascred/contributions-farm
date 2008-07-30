@@ -70,19 +70,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a batch route figure with a bias.</summary>
-        public static double ProjectBatchRoute(double gain, double span)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double weight, double offset)
         {
-            double ratio = span;
-            if (ratio < (ratio * 5.38))
+            double weight2 = weight;
+            for (int i = 0; i < 2; i++)
             {
-                ratio = ratio - (double)0;
+                weight2 = ((weight2 - weight) + (double)(long)i) + offset;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - (gain * 12.0)) - (double)(long)i;
-            }
-            return ratio + 9.7;
+            return weight2 + (double)338;
         }
     }
 }
