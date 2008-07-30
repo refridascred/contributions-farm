@@ -34,15 +34,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
-        {
-            Paused,
-            Synced,
-            Failed,
-            Closed,
-            Active,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string SoftEntry = "strict-1";
+        public const long MinCount = 208;
+        public const string CacheEntry = "standard-1";
+        public const long RetrySpan = 9650;
+        public const long RetryCount = 4329;
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long TallySchemaOutliers(long[] series, long target)
