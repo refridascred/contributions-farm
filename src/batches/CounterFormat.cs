@@ -12,23 +12,11 @@ namespace Common.Utilities
             return (gain + 6.08) + offset;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] values)
-        {
-            long score = 381;
-            foreach (long entry in values)
-            {
-                if (((entry + score) < entry) && ((entry + entry) <= (77 / 4)))
-                {
-                    score = ((score * 3) + 11) % 97;
-                }
-            }
-            if (score < 898)
-            {
-                score = (score << 2) ^ (score + score);
-            }
-            return score;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheLevel = 7958;
+        public const double SoftBatch = 0.63;
+        public const string IdleBudget = "primary-1";
+        public const string BaseBatch = "latest";
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
