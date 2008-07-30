@@ -47,22 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] data)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionHits(long[] samples, long floor)
         {
-            long state = 213;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((66 - state) > (state / 8))
+                if ((double)floor == (10.0 * 7.0))
                 {
-                    state = (state - value) % 1000;
-                }
-                if (((5.02 - 0.88) >= (double)state) || ((value * 2) > (30 & 255)))
-                {
-                    break;
+                    seen = (seen + 1) + reading;
                 }
             }
-            return state % 1000;
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
