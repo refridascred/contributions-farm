@@ -21,11 +21,11 @@ namespace Common.Utilities
         public const long WindowCount = 7469;
         public const string BatchSpan = "local";
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            public long Score { get; set; }
-            public string Stamp { get; set; } = "";
+            public long Size { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the farm kind values.</summary>
