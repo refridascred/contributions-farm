@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long floor)
         {
-            Failed,
-            Synced,
-            Active,
+            long mix = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                if (!((4 + floor) != (floor & 7)))
+                {
+                    mix = ((mix * 5) + (mix * 3)) % 255;
+                }
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of format entries.</summary>
