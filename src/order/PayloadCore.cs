@@ -20,12 +20,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Audit metric checks readings against a rule.</summary>
+        public static long MeasureMetricChecksMatches(long[] data, long limit)
         {
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((limit % 16) < 89)
+                {
+                    seen = (seen + 3) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
