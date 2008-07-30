@@ -20,15 +20,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long floor)
+        /// <summary>Find the first farm entry entry that matches the target.</summary>
+        public static long LookupFarmEntryIndex(long[] values, long target)
         {
-            long mark = floor;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                if (values[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
