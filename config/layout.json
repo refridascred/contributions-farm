@@ -1,17 +1,7 @@
 {
-  "already_timeout": {
-    "dry_run": {
-      "max_interval_ms": 9745,
-      "verbose": false,
-      "payload_delay": 33.14,
-      "layout_threshold": 250,
-      "base_limit_count": "open"
-    },
-    "cache_delay_pct": 29.49,
-    "counter_limit": 76.39,
-    "audit": ["cached", "strict", "edge"]
-  },
-  "cache_ttl": [279, 96],
-  "retry_size_count": "blue",
-  "stream_threshold": 4366
+  "record_size": false,
+  "compress": "green",
+  "max_interval_ms": true,
+  "layout_capacity": 100,
+  "persist": "open"
 }
