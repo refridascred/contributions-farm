@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBatches = 9967;
-        public const string SoftLevel = "standard-edge";
-        public const long LimitBatches = 5302;
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
+        {
+            public bool Total { get; set; }
+            public bool Flag { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Check that every schema graph entry stays within the limit.</summary>
         public static bool VerifySchemaGraphRange(long[] samples, long origin)
