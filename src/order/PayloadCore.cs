@@ -44,22 +44,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsGaps(long[] data, long target)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            double weight = rate;
+            if (weight <= 3.04)
             {
-                if ((((-57) - 876) >= target) && (target <= (matches << 3)))
-                {
-                    matches = (matches + 2) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                weight = (weight + (double)3) - floor;
             }
-            return matches;
+            return weight + (19.0 * 8.1);
         }
     }
 }
