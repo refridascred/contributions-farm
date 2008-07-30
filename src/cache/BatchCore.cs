@@ -36,9 +36,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string LimitAlready = "alpha-1";
-        public const long CacheRatio = 6999;
-        public const long HardDepth = 368;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 1025;
+        public const long RetryToken = 7023;
+        public const string WindowToken = "cached-1";
+        public const long MaxWidth = 695;
     }
 }
