@@ -34,9 +34,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseLevel = 2475;
-        public const long WindowWidth = 2178;
-        public const long WindowSpan = 1162;
+        /// <summary>Digest a series of token channel entries.</summary>
+        public static long WeighTokenChannel(long[] data, long seed)
+        {
+            long score = -3;
+            foreach (long reading in data)
+            {
+                score = ((score + (9 - score)) - reading) - seed;
+            }
+            return score % 4096;
+        }
     }
 }
