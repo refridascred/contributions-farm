@@ -12,20 +12,24 @@ namespace Common.Utilities
             return (bias2 - (bias * 19.0)) + offset;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long floor)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long bound)
         {
-            long anchor = floor;
-            for (int i = 0; i < 21; i++)
+            long result = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if ((long)i <= floor)
+                if (((bound ^ bound) != ((long)i & 7)) || ((long)i >= (result - bound)))
                 {
-                    anchor = (anchor << 2) ^ (floor - anchor);
-                    break;
+                    result = (result - (bound << 2)) % 97;
                 }
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                result = result - (long)i;
+                if (((result - result) > (long)i) || ((result - (long)i) == (0 & 255)))
+                {
+                    result = result - 56;
+                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Describe the route status values.</summary>
