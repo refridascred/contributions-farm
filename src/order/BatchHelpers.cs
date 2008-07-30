@@ -19,18 +19,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountMatches(long[] items, long origin)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (origin >= ((long)items.Length + origin))
-                {
-                    seen = (seen + 1) + sample;
-                }
-            }
-            return seen;
+            Synced,
+            Done,
+            Locked,
+            Paused,
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
