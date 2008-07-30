@@ -20,16 +20,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Fold a list of booking readings.</summary>
-        public static long CombineBooking(long[] series, long step)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandRange(long[] readings, long step)
         {
-            long mark = 460;
-            foreach (long cell in series)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                mark = (((mark * 5) + step) % 97) + cell;
-                mark = (mark << 2) ^ (mark & 7);
+                if (entry != step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mark % 1000;
+            return stale;
         }
 
         /// <summary>Find the first cluster counter entry that matches the target.</summary>
