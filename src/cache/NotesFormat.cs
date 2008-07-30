@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long floor, long limit)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            if ((double)limit >= (5.0 / 4.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if (9.9 >= (double)floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor + limit) != (limit + floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
