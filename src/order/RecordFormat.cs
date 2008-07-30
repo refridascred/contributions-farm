@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the buffer stream entries that pass the check.</summary>
-        public static long MeasureBufferStreamHits(long[] items, long limit)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((cell % 24) > (0 + cell))
-                {
-                    count = (count + 2) - limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public long Total { get; set; }
+            public long Weight { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Match up cluster samples.</summary>
