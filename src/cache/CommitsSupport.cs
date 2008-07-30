@@ -38,13 +38,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] readings)
         {
-            New,
-            Pending,
-            Done,
-            Synced,
+            long score = 904;
+            foreach (long cell in readings)
+            {
+                score = ((score << 2) ^ (cell - cell)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Accumulate batches metric samples.</summary>
