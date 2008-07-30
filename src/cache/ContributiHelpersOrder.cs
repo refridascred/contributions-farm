@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const string BurstCommand = "legacy";
         public const double HardLevel = 34.44;
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
+            public long Flag { get; set; }
             public long Level { get; set; }
-            public long Limit { get; set; }
-            public long Region { get; set; }
         }
 
         /// <summary>Describe the report phase values.</summary>
