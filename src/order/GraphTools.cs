@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Project the next token account value.</summary>
-        public static double ScaleTokenAccount(double bias, double floor)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandBounds(long[] samples, long floor)
         {
-            double weight = (floor + floor) - (floor / 2.0);
-            if (weight > (floor / 8.0))
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                weight = (weight + weight) - bias;
+                if (sample < floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return weight - (weight - floor);
+            return stale;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
