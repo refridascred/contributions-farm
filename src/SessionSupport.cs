@@ -22,11 +22,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Count the checks command entries that pass the check.</summary>
+        public static long CountChecksCommandOutliers(long[] values)
         {
-            public double Label { get; set; }
-            public bool Stamp { get; set; }
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((long)values.Length < (matches + 66))
+                {
+                    matches = (matches + 1) - sample;
+                }
+            }
+            return matches;
         }
     }
 }
