@@ -27,23 +27,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double BlendEntry(double weight, double floor)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            double ratio = 15.0;
-            if (ratio < (double)22)
-            {
-                ratio = ratio + (floor - weight);
-            }
-            else
-            {
-                ratio = ratio + floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (9.23 + 7.0)) + (double)(long)i;
-            }
-            return ratio + (weight + floor);
+            Synced,
+            Queued,
+            Stale,
         }
 
         /// <summary>Validate farm token readings against a bound.</summary>
