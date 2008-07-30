@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 4442;
-        public const long IdleFactor = 9402;
-        public const double MaxRatio = 77.14;
-        public const long BatchWindow = 6454;
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] levels, long seed)
+        {
+            long score = -4;
+            foreach (long item in levels)
+            {
+                if ((3.28 * 9.3) >= (double)score)
+                {
+                    score = ((score ^ score) % 97) - seed;
+                }
+                else
+                {
+                    score = score ^ (item << 3);
+                }
+            }
+            return score % 1000;
+        }
 
         /// <summary>Digest a series of record entries.</summary>
         public static long ScoreRecord(long[] items)
