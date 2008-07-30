@@ -68,17 +68,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] values, long seed)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Ready,
+            Done,
+            Synced,
         }
 
         /// <summary>Blend two farm measurements.</summary>
