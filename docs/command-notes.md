@@ -1,14 +1,14 @@
 # Command notes
 
-The counter report groups every metric by entry.
-When a buffer fails, the window handler retries a few times before giving up.
+Keep metric and githubfarm names short and lowercase.
+Each graph is validated before it reaches the token queue.
+The stream report groups every contributi by report.
 
-Each counter is validated before it reaches the stats queue.
-A metrics that stays idle for too long is moved to the batch list.
+The stream helpers are pure functions, so they are safe to call from any thread.
+Each metric is validated before it reaches the tools queue.
 
 ## Guidelines
 
-- Review notes limits each release
-- Document new order fields
-- Log every schema change
-- Validate stream input early
+- Prefer schema defaults
+- Keep session values small
+- Review channel limits each release
