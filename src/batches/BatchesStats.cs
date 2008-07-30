@@ -23,15 +23,10 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
-        {
-            Locked,
-            Synced,
-            Pending,
-            Queued,
-            Dropped,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepRatio = 6141;
+        public const double DefaultOrder = 42.31;
+        public const long MaxOrder = 576;
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long AuditQueueHits(long[] samples)
