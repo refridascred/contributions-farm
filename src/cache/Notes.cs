@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamMatches(long[] readings)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long target)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long total = target;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)sample > (8.93 - 7.0))
-                {
-                    seen = seen + 1;
-                }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Digest a series of stats stream entries.</summary>
