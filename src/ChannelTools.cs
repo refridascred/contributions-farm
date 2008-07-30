@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up stats graph samples.</summary>
-        public static long PairStatsGraphCount(long[] series)
+        /// <summary>Validate payload counter readings against a bound.</summary>
+        public static bool VerifyPayloadCounterRange(long[] data, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long item in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item != target)
                 {
-                    if ((series[i] + series[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
