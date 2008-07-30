@@ -28,11 +28,39 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Rank context entry input into a small class.</summary>
+        public static long BucketContextEntry(long seed, long limit)
         {
-            public long Owner { get; set; }
-            public double Offset { get; set; }
+            long prev = seed - limit;
+            if ((seed + limit) < (limit - prev))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed + prev) != (prev % 24))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)prev != (12.0 - 9.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((2 & 3) == (prev + 5))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
