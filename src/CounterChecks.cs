@@ -16,13 +16,25 @@ namespace Common.Utilities
             return load + (double)44;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long limit, long floor)
         {
-            public long Size { get; set; }
-            public double Mode { get; set; }
-            public long Label { get; set; }
-            public string Weight { get; set; } = "";
+            long span = limit - floor;
+            if ((limit / 7) <= (span + span))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)span == (2.82 + 2.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Hold a contributi options.</summary>
