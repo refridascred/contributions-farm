@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double rate, double floor)
         {
-            Dropped,
-            Synced,
-            Failed,
-            Active,
-            Draft,
+            double weight = rate;
+            if (weight >= floor)
+            {
+                weight = weight - rate;
+            }
+            else
+            {
+                weight = weight - (double)219;
+            }
+            return weight - (floor - 1.0);
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
