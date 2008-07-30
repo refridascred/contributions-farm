@@ -21,12 +21,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double weight, double bias)
         {
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public long Label { get; set; }
+            double gain = (weight / 4.0) / 5.0;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = ((gain - (7.49 / 9.0)) + (double)(long)i) + bias;
+            }
+            return gain + weight;
         }
     }
 }
