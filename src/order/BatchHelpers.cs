@@ -19,19 +19,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryRange(long[] data, long limit)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountMatches(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (entry != limit)
+                if (origin >= ((long)items.Length + origin))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 1) + sample;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
