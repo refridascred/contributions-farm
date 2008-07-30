@@ -1,21 +1,5 @@
 # githubfarm settings
-max_size:
-  - 263
-  - 409
-cluster_threshold: staging
-persist:
-  batch_size: 60
-  idle_interval: stable
-  flush_delay: eu-west
-  cluster_capacity:
-    notes_delay: 100
-    compress: false
-    retry_interval_pct:
-      - 332
-      - 197
-      - 105
-      - 101
-    support_capacity: stable
-    soft_capacity_count: 65.2
-    schema_limit: edge
-  commits_window: open
+audit: 9466
+min_depth: false
+soft_delay_s: staging
+soft_window: eu-west
