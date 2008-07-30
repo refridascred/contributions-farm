@@ -67,22 +67,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] levels)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] values, long seed)
         {
-            long sum = 901;
-            foreach (long sample in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)sum <= (9.41 * 3.0)) || ((sum + sample) < sum))
+                if (values[i] < seed)
                 {
-                    sum = (sum ^ (sample * 3)) % 97;
-                }
-                else
-                {
-                    sum = (sum - (sample + sum)) % 4096;
+                    return (long)i;
                 }
             }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
