@@ -61,11 +61,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Count the contributi session entries that pass the check.</summary>
+        public static long TallyContributiSessionOutliers(long[] series, long step)
         {
-            public long Rank { get; set; }
-            public double Label { get; set; }
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((step + sample) == ((long)series.Length - 734))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
