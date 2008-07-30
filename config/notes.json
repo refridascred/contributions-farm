@@ -1,13 +1,12 @@
 {
-  "compress": [338, 94],
-  "warm_interval_s": ["primary", "staging", "standard"],
-  "sync_capacity": 33,
-  "account_size": {
-    "readonly": "local",
-    "tools_depth": true,
-    "max_retries_pct": ["standard", "standard", "fallback", "blue"],
-    "base_delay_s": [49, 405, 404],
-    "format_window": "edge"
+  "sync_timeout_ms": "local",
+  "retry_retries_count": 54.35,
+  "idle_capacity_pct": 100,
+  "support_capacity": ["local", "stable"],
+  "persist": {
+    "dry_run": "stable",
+    "batch_depth": [1, 83],
+    "stats_threshold": true
   },
-  "sync_interval": 2446
+  "audit": 71.23
 }
