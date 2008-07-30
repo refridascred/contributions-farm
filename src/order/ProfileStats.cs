@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long CacheLevel = 47;
         public const double DefaultBudget = 26.12;
 
-        /// <summary>Digest a series of record counter entries.</summary>
-        public static long ScoreRecordCounter(long[] data)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long acc = 0;
-            foreach (long cell in data)
-            {
-                if ((2.12 / 2.0) > (double)acc)
-                {
-                    acc = ((acc - (acc + acc)) % 255) + cell;
-                }
-            }
-            return acc;
+            public long Stamp { get; set; }
+            public bool Owner { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the already level values.</summary>
