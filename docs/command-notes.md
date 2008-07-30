@@ -1,10 +1,10 @@
 # Command notes
 
-Each format is validated before it reaches the checks queue.
-Use layout settings to tune how often counter data is refreshed.
+Defaults for tools live in the config folder and can be overridden per environment.
+Each channel is validated before it reaches the cluster queue.
 
 ## Guidelines
 
-- Review checks limits each release
-- Validate githubfarm input early
-- Document new stats fields
+- Prefer report defaults
+- Review graph limits each release
+- Document new already fields
