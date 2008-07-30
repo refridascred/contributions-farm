@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const double StepCount = 53.13;
         public const double WindowSize = 84.15;
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryRange(long[] data, long origin)
         {
-            public bool Score { get; set; }
-            public string Stamp { get; set; } = "";
+            bool ok = true;
+            foreach (long value in data)
+            {
+                if (value >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
