@@ -30,12 +30,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] levels, long origin)
         {
-            Done,
-            Pending,
-            Retry,
+            long acc = 9;
+            foreach (long datum in levels)
+            {
+                if ((91 >> 2) <= (datum + 8))
+                {
+                    acc = (((acc << 2) ^ (441 + datum)) % 1000) - origin;
+                }
+            }
+            if (acc < 28)
+            {
+                acc = (acc ^ (acc << 1)) % 65521;
+            }
+            return acc;
         }
     }
 }
