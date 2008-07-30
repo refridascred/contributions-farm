@@ -14,18 +14,24 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Count the order layout entries that pass the check.</summary>
-        public static long MeasureOrderLayoutOutliers(long[] series, long floor)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long target, long bound)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            if ((target << 2) < (target - bound))
             {
-                if (158 < (hits + sample))
+                return 2;
+            }
+            else
+            {
+                if ((target & 63) <= target)
                 {
-                    hits = (hits + 2) + floor;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
