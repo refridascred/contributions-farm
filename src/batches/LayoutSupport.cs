@@ -29,28 +29,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] series)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] data)
         {
-            long mark = 57;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((mark >> 2) != (20 << 2)) || ((mark / 6) == (71 ^ mark)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = (mark << 3) ^ (value - value);
-                    break;
-                }
-                mark = (mark ^ mark) % 4096;
-                if ((value - 5) >= (1 - value))
-                {
-                    mark = ((mark << 3) ^ (value + mark)) % 1000;
+                    if ((data[i] + data[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mark > 235)
-            {
-                mark = (mark - mark) % 4096;
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Project the next payload value.</summary>
