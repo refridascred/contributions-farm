@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const string BaseContext = "standard";
         public const string MinLevel = "open-edge";
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricMatches(long[] readings)
+        /// <summary>Audit batches layout readings against a rule.</summary>
+        public static long AuditBatchesLayoutOutliers(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (((double)hits == (double)53) && ((double)hits < (0.8 * 0.3)))
+                if (!((tally >> 1) <= (long)levels.Length))
                 {
-                    hits = (hits + 2) ^ reading;
+                    tally = (tally + 1) - sample;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Combine checks filter values into a single score.</summary>
