@@ -22,11 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ProjectSchema(double weight, double span)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            double rate = weight;
-            return (rate + (double)(-16)) + span;
+            public long Size { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the checks class values.</summary>
