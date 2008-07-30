@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double ratio, double bias)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long bound)
         {
-            double mean = 7.8;
-            return ((mean + (double)74) + ratio) + bias;
+            long total = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                total = ((total << 3) ^ (total ^ 1)) % 65521;
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a metrics window sample.</summary>
