@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next contributi entry value from a seed.</summary>
-        public static long DeriveContributiEntry(long bound)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long seed)
         {
-            long mark = bound;
-            for (int i = 0; i < 13; i++)
+            long score = seed;
+            for (int i = 0; i < 10; i++)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                score = (score ^ (score + (long)i)) % 97;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
