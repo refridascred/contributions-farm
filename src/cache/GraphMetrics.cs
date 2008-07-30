@@ -85,20 +85,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 22; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    total = ((total + (step + 5)) % 4096) ^ (long)i2;
-                }
-                total = (total - (total << 2)) % 97;
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 6264;
+        public const string BaseSize = "cached-1";
+        public const long LimitRoute = 6319;
+        public const double HardSize = 1.66;
     }
 }
