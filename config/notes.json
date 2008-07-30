@@ -1,12 +1,5 @@
 {
-  "retry_depth": "open",
-  "flush_timeout_ms": {
-    "checks_window": 1.33,
-    "min_threshold_count": 6453,
-    "flush_size_ms": ["legacy", "staging"]
-  },
-  "idle_ttl": 7708,
-  "retry_retries_ms": 250,
-  "base_retries_pct": "legacy",
-  "max_depth_count": ["local", "open", "primary", "staging"]
+  "poll_capacity": false,
+  "enabled": 44.54,
+  "poll_threshold_pct": 500
 }
