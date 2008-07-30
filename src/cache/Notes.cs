@@ -21,11 +21,22 @@ namespace Common.Utilities
         public const long WindowCount = 7469;
         public const string BatchSpan = "local";
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportOutliers(long[] levels, long bound)
         {
-            public long Size { get; set; }
-            public bool Score { get; set; }
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (!((-4) < (datum - datum)))
+                {
+                    tally = (tally + 2) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the farm kind values.</summary>
