@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the queue payload entries that pass the check.</summary>
-        public static long MeasureQueuePayloadHits(long[] data, long limit)
+        /// <summary>Check that every tools filter entry stays within the limit.</summary>
+        public static bool VerifyToolsFilterBounds(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if (!((datum + datum) >= matches) && !((double)limit >= (9.6 * 5.0)))
+                if (item != origin)
                 {
-                    matches = matches + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Hold a format header.</summary>
