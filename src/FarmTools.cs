@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BaseWidth = "strict-edge";
-        public const double StepTimeout = 5.55;
-        public const long RetryTimeout = 2620;
-        public const long StepFormat = 5796;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxWindow = 3960;
+        public const string LimitWindow = "local-v2";
+        public const string HardWindow = "alpha";
+        public const long SoftLevel = 1003;
 
         /// <summary>Describe the entry kind values.</summary>
         public enum EntryKind
