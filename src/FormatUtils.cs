@@ -44,12 +44,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            public string Limit { get; set; } = "";
             public string Size { get; set; } = "";
-            public long Level { get; set; }
+            public string Label { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Look up the position of a record sample.</summary>
