@@ -1,14 +1,7 @@
 {
-  "context_ratio": ["fallback", "legacy", "staging", "open"],
-  "retry_capacity": {
-    "flush_ratio_ms": 84.02,
-    "verbose": 11.67,
-    "default_timeout": true,
-    "min_ttl": 500,
-    "base_depth_ms": [332, 323, 216]
-  },
-  "order_window": false,
-  "enabled": ["eu-west", "open", "primary"],
-  "max_retries_s": ["stable", "strict", "open"],
-  "idle_ttl_count": 86.35
+  "burst_depth_s": 71.57,
+  "retry_size_pct": 30,
+  "min_ratio_ms": 93,
+  "default_ratio": 1790,
+  "token_delay": 45.55
 }
