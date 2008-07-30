@@ -57,15 +57,10 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Iterate the metric channel series from a seed.</summary>
-        public static long StepMetricChannel(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 8384;
+        public const long WindowBudget = 5534;
+        public const long IdleSchema = 5512;
+        public const long MaxSchema = 4153;
     }
 }
