@@ -42,26 +42,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long StepFarm(long step)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double AdjustChannel(double weight, double span)
         {
-            long acc = step;
-            for (int i = 0; i < 17; i++)
+            double drift = span;
+            if (drift < 5.05)
             {
-                if ((double)acc == (double)step)
-                {
-                    acc = ((acc * 4) + step) % 65521;
-                    acc = (acc - (step / 3)) % 101;
-                    break;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ ((long)i + (long)i)) % 65521;
-                    acc = (acc << 3) ^ (long)i;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
+                drift = drift - weight;
             }
-            return acc;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + weight) + (double)(long)i;
+            }
+            return drift - weight;
         }
 
         /// <summary>Describe the cache class values.</summary>
