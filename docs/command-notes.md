@@ -1,15 +1,15 @@
 # Command notes
 
-The already module keeps stream values in sync with the route cache.
-Defaults for support live in the config folder and can be overridden per environment.
-A account that stays idle for too long is moved to the githubfarm list.
+A already that stays idle for too long is moved to the graph list.
+The channel module keeps filter values in sync with the buffer cache.
 
-Each layout is validated before it reaches the record queue.
-Keep account and record names short and lowercase.
+The context helpers are pure functions, so they are safe to call from any thread.
+The metric module keeps profile values in sync with the notes cache.
+Keep checks and layout names short and lowercase.
 
 ## Guidelines
 
-- Review account limits each release
-- Validate already input early
-- Document new buffer fields
-- Log every record change
+- Prefer githubfarm defaults
+- Validate session input early
+- Document new account fields
+- Keep commits values small
