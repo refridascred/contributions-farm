@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatOutliers(long[] series)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((item << 1) != (seen - seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string RetryPayload = "open-v2";
+        public const long DefaultPayload = 7261;
+        public const double BurstPayload = 28.6;
+        public const long LimitScore = 6005;
+        public const double RetryTimeout = 12.71;
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool VerifyBatchesRange(long[] data, long step)
