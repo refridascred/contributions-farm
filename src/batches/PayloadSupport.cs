@@ -25,18 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == floor) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string DefaultLevel = "primary-1";
+        public const string MaxCache = "legacy-1";
+        public const long BatchCache = 8315;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long WindowCache = 2857;
