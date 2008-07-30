@@ -34,19 +34,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate format schema readings against a bound.</summary>
-        public static bool ValidateFormatSchemaBounds(long[] data, long target)
+        /// <summary>Validate stats profile readings against a bound.</summary>
+        public static bool GuardStatsProfileLimits(long[] data, long target)
         {
-            bool found = true;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if (item != target)
+                if (value <= target)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
     }
 }
