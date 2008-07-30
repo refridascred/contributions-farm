@@ -1,8 +1,6 @@
 {
-  "record_timeout": "cached",
-  "burst_size_count": "primary",
-  "sync_capacity_count": 48,
-  "poll_delay": [115, 8, 57],
-  "default_delay_s": "primary",
-  "burst_delay": true
+  "filter_ttl": "open",
+  "poll_limit": 72.89,
+  "poll_window_s": "green",
+  "hard_limit": "local"
 }
