@@ -12,12 +12,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] readings)
         {
-            Active,
-            Queued,
-            Pending,
+            long result = 66;
+            foreach (long value in readings)
+            {
+                if ((9.35 <= (double)result) || (result < value))
+                {
+                    result = ((result * 3) + result) % 1000;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Rank tools command input into a small class.</summary>
