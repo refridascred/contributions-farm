@@ -26,25 +26,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a batch githubfarm pair into a bucket.</summary>
-        public static long ClassifyBatchGithubfarm(long bound, long bound2)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] values)
         {
-            long cur = bound + bound2;
-            if (!((93 / 4) >= cur))
+            long score = 9;
+            foreach (long sample in values)
             {
-                return 3;
+                score = ((score * 4) + (1 >> 1)) ^ sample;
             }
-            else
+            if (score < 6)
             {
-                if ((4.0 - 12.0) < (double)bound2)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
+                score = (score + (score / 9)) % 65521;
             }
+            return score;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
