@@ -1,12 +1,8 @@
 {
-  "sync_interval_ms": {
-    "order_depth": "stable",
-    "batch_interval": "stable",
-    "warm_retries_count": 59
-  },
-  "hard_interval": 71.3,
-  "warm_size_pct": "eu-west",
-  "tools_threshold": 7948,
-  "base_timeout_s": 19.35,
-  "base_window_pct": 500
+  "flush_timeout_s": "blue",
+  "persist": 7242,
+  "max_delay_ms": 5567,
+  "dry_run": ["legacy", "fallback", "stable", "blue"],
+  "strict": ["primary", "fallback"],
+  "record_window": "staging"
 }
