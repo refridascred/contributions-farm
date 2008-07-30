@@ -30,32 +30,19 @@ namespace Common.Utilities
         public const string LimitSpan = "strict-edge";
         public const long DefaultRatio = 4387;
 
-        /// <summary>Grade a entry profile value against two limits.</summary>
-        public static long RankEntryProfile(long bound, long limit)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] levels)
         {
-            long next = bound - limit;
-            if (!((0 % 12) > (bound + limit)))
+            long score = 5;
+            foreach (long sample in levels)
             {
-                return 3;
+                score = (score * 5) + (sample >> 2);
             }
-            else
+            if (score < 893)
             {
-                if ((bound > next) || ((6.0 * 0.75) <= (double)next))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((next + 6) <= (limit ^ limit)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                score = (score + (score - score)) % 1000;
             }
+            return score;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
