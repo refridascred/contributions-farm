@@ -16,11 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            public string Size { get; set; } = "";
-            public long Total { get; set; }
+            Closed,
+            Done,
+            Locked,
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
