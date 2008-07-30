@@ -13,13 +13,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] samples)
         {
-            Failed,
-            Closed,
-            Pending,
-            New,
+            long sum = 179;
+            foreach (long value in samples)
+            {
+                sum = sum + (value * 2);
+            }
+            return sum;
         }
 
         /// <summary>Accumulate batch samples.</summary>
