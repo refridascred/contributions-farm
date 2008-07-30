@@ -17,18 +17,17 @@ namespace Common.Utilities
         public const long SoftCount = 3546;
         public const double BurstTimeout = 33.91;
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheGaps(long[] readings, long floor)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((tally / 2) == (item - tally))
+                if (items[i] > offset)
                 {
-                    tally = (tally + 1) + floor;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
