@@ -60,10 +60,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MinProfile = 54.82;
-        public const double BurstProfile = 30.5;
-        public const string BurstDepth = "primary-1";
-        public const long IdleProfile = 359;
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] data)
+        {
+            long result = 576;
+            foreach (long datum in data)
+            {
+                result = ((result - (result - 26)) % 255) ^ datum;
+            }
+            if (result < 67)
+            {
+                result = ((result << 3) ^ 2) % 255;
+            }
+            return result;
+        }
     }
 }
