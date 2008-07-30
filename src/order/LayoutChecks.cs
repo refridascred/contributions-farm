@@ -16,13 +16,13 @@ namespace Common.Utilities
             return scale + (span + weight);
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            public string Mode { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Region { get; set; }
-            public string Score { get; set; } = "";
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
