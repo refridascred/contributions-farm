@@ -25,22 +25,23 @@ namespace Common.Utilities
             return (rate + (double)(-16)) + span;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextHits(long[] samples)
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] values)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long acc = 47;
+            foreach (long cell in values)
             {
-                if ((hits % 10) <= 807)
+                acc = ((acc + (89 - acc)) % 1000) - cell;
+                if ((long)values.Length >= acc)
                 {
-                    hits = (hits + 2) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    acc = ((acc * 5) + 4) % 4096;
                 }
             }
-            return hits;
+            if (acc < 94)
+            {
+                acc = acc - (acc - acc);
+            }
+            return acc;
         }
     }
 }
