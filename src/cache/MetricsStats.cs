@@ -20,18 +20,20 @@ namespace Common.Utilities
             return gain + 7.09;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] items, long floor)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long offset)
         {
-            long mix = 3;
-            foreach (long sample in items)
+            long total = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((-88) <= (floor >> 1)))
+                if (!(offset <= total))
                 {
-                    mix = (mix + (floor * 5)) ^ sample;
+                    total = ((total << 3) ^ total) % 1000;
+                    total = ((total << 3) ^ (offset & 255)) % 65521;
                 }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Hold a command header.</summary>
