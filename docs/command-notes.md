@@ -1,15 +1,14 @@
 # Command notes
 
-A account that stays idle for too long is moved to the window list.
-Use queue settings to tune how often tools data is refreshed.
-Defaults for filter live in the config folder and can be overridden per environment.
+When a commits fails, the metric handler retries a few times before giving up.
+Each graph is validated before it reaches the account queue.
 
-The schema helpers are pure functions, so they are safe to call from any thread.
-A editor that stays idle for too long is moved to the stream list.
-A tools that stays idle for too long is moved to the layout list.
+When a graph fails, the format handler retries a few times before giving up.
+Use schema settings to tune how often support data is refreshed.
 
 ## Guidelines
 
-- Prefer record defaults
-- Validate profile input early
-- Keep schema values small
+- Keep filter values small
+- Log every farm change
+- Document new buffer fields
+- Review token limits each release
