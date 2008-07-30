@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 5162;
+        public const long SoftLayout = 9165;
+        public const string BaseLayout = "local-v2";
+        public const long RetryInterval = 2300;
+        public const string DefaultDepth = "primary-1";
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool GuardChecksLimits(long[] items, long bound)
