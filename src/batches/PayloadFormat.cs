@@ -31,12 +31,22 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Combine checks filter values into a single score.</summary>
+        public static long DigestChecksFilter(long[] data)
         {
-            public bool Size { get; set; }
-            public long Rank { get; set; }
-            public double Flag { get; set; }
+            long acc = 0;
+            foreach (long item in data)
+            {
+                if (!((double)item > (7.8 * 7.06)))
+                {
+                    acc = (acc - 23) % 1000;
+                }
+            }
+            if (acc > (-216))
+            {
+                acc = (acc ^ (acc ^ acc)) % 101;
+            }
+            return acc % 97;
         }
 
         /// <summary>Look up the position of a record account sample.</summary>
