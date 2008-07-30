@@ -70,19 +70,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] series, long step)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double ratio, double bias)
         {
-            bool found = true;
-            foreach (long cell in series)
+            double scale = bias;
+            if (scale < (scale - ratio))
             {
-                if (cell > step)
-                {
-                    found = false;
-                    break;
-                }
+                scale = scale - 19.0;
             }
-            return found;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (0.4 + scale)) + (double)(long)i;
+            }
+            return scale + (ratio * 0.1);
         }
     }
 }
