@@ -28,16 +28,21 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Roll a batches githubfarm counter forward.</summary>
-        public static long IterateBatchesGithubfarm(long seed)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long OverlapStreamCount(long[] data)
         {
-            long mark = seed;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (mark ^ (seed % 12)) % 4096;
-                mark = ((mark * 3) + (long)i) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
