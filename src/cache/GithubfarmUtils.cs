@@ -32,24 +32,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long bound, long seed)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            if (!((bound % 16) != (seed % 12)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((bound + seed) > (94 >> 4)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Done,
+            Failed,
+            Synced,
+            New,
         }
 
         /// <summary>Roll a batches githubfarm counter forward.</summary>
