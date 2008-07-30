@@ -47,15 +47,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a tools already reading.</summary>
-        public static double ProjectToolsAlready(double weight, double bias)
+        /// <summary>Rank batches cluster input into a small class.</summary>
+        public static long SortBatchesCluster(long offset, long offset2)
         {
-            double rate = bias;
-            for (int i = 0; i < 4; i++)
+            if ((double)offset == (6.8 / 3.0))
             {
-                rate = ((rate + (bias * 20.0)) - (double)(long)i) - weight;
+                return 4;
             }
-            return rate - (4.7 - bias);
+            else
+            {
+                if (!((double)offset2 <= (double)offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
