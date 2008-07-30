@@ -51,12 +51,16 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 5917;
-        public const double BaseContext = 71.04;
-        public const long WindowDepth = 3437;
-        public const long MaxContext = 9166;
-        public const double CacheContext = 91.42;
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long SeriesStream(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long CacheMetric = 7779;
