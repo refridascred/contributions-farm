@@ -42,17 +42,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] series, long step)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= step) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Idle,
+            Stale,
+            Active,
         }
     }
 }
