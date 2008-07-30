@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next order notes value.</summary>
-        public static double ProjectOrderNotes(double scale, double span)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            double weight = scale;
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + (double)(long)i) + span;
-            }
-            return weight - weight;
+            Ready,
+            Idle,
+            Retry,
+            New,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
