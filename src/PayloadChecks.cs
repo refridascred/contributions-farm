@@ -20,32 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long seed, long step)
-        {
-            if (!((seed & 7) < (step + step)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (seed >= (seed + seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!(step >= (step / 8)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double RetryTimeout = 42.28;
+        public const string StepAlready = "open-v2";
+        public const long HardAlready = 2664;
 
         /// <summary>Derive the next channel value from a seed.</summary>
         public static long StepChannel(long bound)
