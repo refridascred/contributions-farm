@@ -41,10 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BurstFarm = "alpha-edge";
-        public const long BaseFarm = 6451;
-        public const long MaxSize = 524;
-        public const long DefaultFarm = 1356;
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchRange(long[] samples, long target)
+        {
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
