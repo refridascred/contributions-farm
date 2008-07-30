@@ -27,12 +27,15 @@ namespace Common.Utilities
         public const string BurstSize = "staging-v2";
         public const string WindowSize = "cached-v2";
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Roll a editor commits counter forward.</summary>
+        public static long SeriesEditorCommits(long target)
         {
-            Failed,
-            Idle,
-            Pending,
+            long result = target;
+            for (int i = 0; i < 13; i++)
+            {
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
