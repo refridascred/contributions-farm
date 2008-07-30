@@ -60,38 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long limit, long bound)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterMatches(long[] values)
         {
-            if (((bound & 31) > (6 + bound)) && ((limit % 3) <= (0 + bound)))
+            long hits = 0;
+            foreach (long reading in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit + 9) == (limit ^ 2))
+                if ((reading - 0) > 74)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((4.2 + 9.3) != (double)bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (7 < (limit - 43))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
     }
 }
