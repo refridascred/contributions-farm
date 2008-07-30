@@ -65,22 +65,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] data)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferOutliers(long[] samples)
         {
-            long total = 415;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((total % 24) < (total + 95))
+                if ((matches + value) > matches)
                 {
-                    total = ((total << 3) ^ total) % 255;
-                }
-                if (value <= (total << 3))
-                {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Iterate the cluster editor series from a seed.</summary>
