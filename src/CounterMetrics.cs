@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountBounds(long[] items, long floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowHits(long[] values, long origin)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (entry >= floor)
+                if ((461 * 2) < (origin + origin))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 2) ^ item;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Hold a window record.</summary>
