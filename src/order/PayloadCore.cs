@@ -20,22 +20,17 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Audit metric checks readings against a rule.</summary>
-        public static long MeasureMetricChecksMatches(long[] data, long limit)
+        /// <summary>Locate a graph command reading by value.</summary>
+        public static long LocateGraphCommandIndex(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long item in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((limit % 16) < 89)
+                if (series[i] == origin)
                 {
-                    seen = (seen + 3) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
