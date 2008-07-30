@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long limit, long bound)
         {
-            Draft,
-            Retry,
-            Queued,
-            Synced,
-            Pending,
+            if (((bound & 127) != (limit - limit)) && ((bound + limit) > (bound << 2)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (2 >= (943 + bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
