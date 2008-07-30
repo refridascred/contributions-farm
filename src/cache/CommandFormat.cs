@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long floor)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long acc = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                acc = (acc << 3) ^ (acc + (long)i);
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            public long Score { get; set; }
+            public long Size { get; set; }
+            public long Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
