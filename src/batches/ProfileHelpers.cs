@@ -57,18 +57,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSize = 3633;
+        public const long MaxSupport = 3649;
+        public const string SoftSpan = "stable-1";
+        public const double BurstSupport = 31.84;
+        public const double BurstTimeout = 89.49;
 
         /// <summary>Grade a notes window value against two limits.</summary>
         public static long GradeNotesWindow(long origin, long seed)
