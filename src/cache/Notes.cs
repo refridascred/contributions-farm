@@ -46,12 +46,13 @@ namespace Common.Utilities
             return weight + (weight + bias);
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BurstCount = 3.61;
-        public const long LimitFactor = 2362;
-        public const long LimitReport = 2561;
-        public const long BatchCount = 8550;
-        public const long SoftReport = 8066;
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
+        {
+            Idle,
+            Ready,
+            Dropped,
+        }
 
         /// <summary>Locate a record reading by value.</summary>
         public static long LookupRecordIndex(long[] readings, long bound)
