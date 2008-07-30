@@ -31,11 +31,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            public long Total { get; set; }
-            public string Label { get; set; } = "";
+            Active,
+            Pending,
+            Dropped,
+            Queued,
+            Draft,
         }
 
         /// <summary>Iterate the metrics already series from a seed.</summary>
