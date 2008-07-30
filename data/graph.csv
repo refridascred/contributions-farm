@@ -1,6 +1,9 @@
-id,region,score,owner
-1,243,staging,187
-2,79.44,249,edge
-3,628,44.23,primary
-4,61.19,543,887
-5,307,536,918
+id,level,region,owner,label
+1,open,323,88,530
+2,green,267,88.24,blue
+3,35.82,371,open,10.47
+4,eu-west,standard,223,84.63
+5,593,297,538,62.18
+6,local,562,178,12.48
+7,11,0,latest,51.28
+8,green,blue,stable,941
