@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmGaps(long[] items)
+        /// <summary>Classify a notes tools pair into a bucket.</summary>
+        public static long GradeNotesTools(long target, long limit)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long delta = target - limit;
+            if ((double)target >= (double)delta)
             {
-                if ((tally << 2) < (12 / 6))
+                return 2;
+            }
+            else
+            {
+                if (!((target ^ limit) <= target))
                 {
-                    tally = (tally + 2) - datum;
+                    return 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate account cluster samples.</summary>
