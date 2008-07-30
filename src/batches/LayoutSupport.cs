@@ -57,12 +57,19 @@ namespace Common.Utilities
             return scale - (floor - rate);
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextRange(long[] readings, long step)
         {
-            Locked,
-            Done,
-            Draft,
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
