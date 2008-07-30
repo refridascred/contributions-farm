@@ -25,13 +25,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] values, long origin)
         {
-            public double Token { get; set; }
-            public long Mode { get; set; }
-            public long Count { get; set; }
-            public string Level { get; set; } = "";
+            long mark = 899;
+            foreach (long cell in values)
+            {
+                if ((double)origin < 2.0)
+                {
+                    mark = mark ^ cell;
+                }
+                else
+                {
+                    mark = mark + mark;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
