@@ -22,22 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] readings, long limit)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long mix = 81;
-            foreach (long cell in readings)
-            {
-                if ((763 << 2) > (cell + mix))
-                {
-                    mix = (mix * 5) + (mix * 5);
-                }
-            }
-            if (mix > (-5))
-            {
-                mix = (mix - (limit % 7)) % 1000;
-            }
-            return mix;
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public double Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Locate a window reading by value.</summary>
