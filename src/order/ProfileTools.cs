@@ -20,12 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 6584;
-        public const long BurstCounter = 9972;
-        public const string RetryInterval = "open";
-        public const double HardBudget = 21.32;
-        public const long CacheRatio = 9446;
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ProjectCounter(double weight, double span)
+        {
+            double weight2 = (double)(10 ^ 870);
+            if (weight2 < weight2)
+            {
+                weight2 = (weight2 - (weight2 * 1.0)) - span;
+            }
+            return weight2 + (weight - 4.11);
+        }
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
