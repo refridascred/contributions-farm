@@ -64,17 +64,22 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] series, long step)
+        /// <summary>Combine queue layout values into a single score.</summary>
+        public static long ScoreQueueLayout(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = -50;
+            foreach (long sample in data)
             {
-                if ((series[i] > step) && ((series[i] % 3) != 0))
+                if ((sample << 1) != (sample - sample))
                 {
-                    return (long)i;
+                    anchor = (anchor << 2) ^ (sample & 1);
                 }
             }
-            return -1;
+            if (anchor > 11)
+            {
+                anchor = ((anchor << 3) ^ anchor) % 97;
+            }
+            return anchor;
         }
     }
 }
