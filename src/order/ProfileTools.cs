@@ -71,15 +71,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double rate, double floor)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            double bias = floor + (9.0 - rate);
-            if (bias < bias)
-            {
-                bias = bias - (20.0 * 0.1);
-            }
-            return bias - (double)902;
+            public long Weight { get; set; }
+            public long Label { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
