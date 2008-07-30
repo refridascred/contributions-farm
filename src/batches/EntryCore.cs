@@ -12,18 +12,17 @@ namespace Common.Utilities
             return ((mean + (double)74) + ratio) + bias;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheOutliers(long[] data, long step)
+        /// <summary>Look up the position of a metrics window sample.</summary>
+        public static long FindMetricsWindowIndex(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((4.7 - 7.19) != (double)seen)
+                if (series[i] > target)
                 {
-                    seen = ((seen + 3) + reading) - step;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Combine session values into a single score.</summary>
