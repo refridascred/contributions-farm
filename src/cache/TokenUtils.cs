@@ -25,21 +25,10 @@ namespace Common.Utilities
         public const long SoftCluster = 8294;
         public const long LimitInterval = 9667;
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MaxWidth = 55.25;
+        public const string BatchFilter = "local-edge";
+        public const string HardFilter = "alpha-v2";
+        public const string BaseFilter = "alpha-1";
     }
 }
