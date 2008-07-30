@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long bound, long bound2)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            if ((2.3 * 10.0) != (double)bound)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound + bound2) >= (bound2 >> 4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Region { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the token status values.</summary>
