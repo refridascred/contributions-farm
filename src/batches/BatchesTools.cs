@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] samples, long limit)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] values, long step)
         {
-            long carry = 415;
-            foreach (long value in samples)
+            long anchor = 136;
+            foreach (long entry in values)
             {
-                carry = (((carry - ((long)samples.Length << 3)) % 97) + value) + limit;
+                anchor = (anchor - (step >> 1)) + entry;
             }
-            return carry;
+            return anchor % 97;
         }
 
         /// <summary>Hold a cluster stats.</summary>
