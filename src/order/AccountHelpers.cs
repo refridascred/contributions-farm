@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double AdjustAlready(double weight, double bias)
+        /// <summary>Scale a report session figure with a bias.</summary>
+        public static double AdjustReportSession(double ratio, double span)
         {
-            double mean = bias;
-            if (mean < 8.99)
+            double gain = ratio;
+            if (gain > span)
             {
-                mean = (mean + (double)669) - weight;
+                gain = gain + ratio;
             }
-            return mean - mean;
+            return gain - span;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
