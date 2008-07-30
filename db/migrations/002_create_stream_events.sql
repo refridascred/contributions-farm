@@ -2,12 +2,10 @@
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
     label TEXT,
-    level INTEGER,
-    count INTEGER NOT NULL DEFAULT 0
+    ratio REAL,
+    created_at TIMESTAMP
 );
 
 CREATE INDEX IF NOT EXISTS idx_stream_events_label ON stream_events (label);
 
-INSERT INTO stream_events (label, level, count) VALUES ('standard', 11, 12);
-INSERT INTO stream_events (label, level, count) VALUES ('legacy', 36, 22);
-INSERT INTO stream_events (label, level, count) VALUES ('primary', 55, 56);
+INSERT INTO stream_events (label, ratio) VALUES ('open', 17.06);
