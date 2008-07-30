@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] levels, long offset)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (hits < (856 ^ 65))
-                {
-                    hits = ((hits + 3) ^ value) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            New,
+            Failed,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
