@@ -39,10 +39,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BatchStream = "alpha-1";
-        public const long BurstFactor = 7793;
-        public const long RetrySpan = 7322;
+        /// <summary>Match up record stream samples.</summary>
+        public static long OverlapRecordStreamCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long GradeCounter(long step, long offset)
