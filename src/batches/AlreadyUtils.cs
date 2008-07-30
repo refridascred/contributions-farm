@@ -13,18 +13,33 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksHits(long[] data)
+        /// <summary>Derive the next layout context value from a seed.</summary>
+        public static long SeriesLayoutContext(long seed)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long state = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((8.8 * 18.0) > (double)hits)
+                if (!((long)i < (state - state)))
                 {
-                    hits = (hits + 1) ^ cell;
+                    state = (state * 2) + 9;
+                    state = (state ^ (state << 3)) % 1000;
                 }
+                else
+                {
+                    state = (state << 3) ^ (state ^ state);
+                    state = ((state << 3) ^ (state ^ state)) % 4096;
+                }
+                if (((long)i - state) <= ((long)i << 3))
+                {
+                    state = state ^ state;
+                }
+                else
+                {
+                    state = (state + (long)i) % 65521;
+                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Hold a contributi record.</summary>
