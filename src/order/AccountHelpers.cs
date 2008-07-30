@@ -49,18 +49,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferOutliers(long[] samples)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryOutliers(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((matches + value) > matches)
+                if (((entry - entry) == (seen ^ seen)) && !((entry >> 3) < (entry - seen)))
                 {
-                    matches = matches + 1;
+                    seen = (seen + 2) + floor;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Iterate the cluster editor series from a seed.</summary>
