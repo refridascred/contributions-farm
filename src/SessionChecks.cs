@@ -43,32 +43,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long origin, long origin2)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] levels)
         {
-            long edge = origin ^ origin2;
-            if ((edge + origin) >= origin)
+            long sum = 7;
+            foreach (long sample in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin + origin2) > (891 % 7))
+                if (19.0 > (double)sum)
                 {
-                    return 7;
+                    sum = (sum + (sum >> 2)) + sample;
                 }
                 else
                 {
-                    if ((11.0 - 2.0) == (double)origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    sum = (sum ^ (561 ^ 68)) % 65521;
                 }
             }
+            if (sum > 15)
+            {
+                sum = (sum - (sum * 2)) % 1000;
+            }
+            return sum % 1000;
         }
     }
 }
