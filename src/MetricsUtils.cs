@@ -41,19 +41,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate order token samples.</summary>
-        public static long ScoreOrderToken(long[] readings)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long score = 111;
-            foreach (long value in readings)
-            {
-                score = score - (value ^ score);
-            }
-            if (score > 91)
-            {
-                score = score + ((-64) ^ score);
-            }
-            return score;
+            Retry,
+            Closed,
+            Dropped,
+            Failed,
+            New,
         }
 
         /// <summary>Describe the support status values.</summary>
