@@ -56,25 +56,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long step, long offset)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long edge = step + offset;
-            if ((offset + edge) != (step % 97))
-            {
-                return 7;
-            }
-            else
-            {
-                if (edge > (edge + edge))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Offset { get; set; }
+            public long Score { get; set; }
+            public double Count { get; set; }
         }
     }
 }
