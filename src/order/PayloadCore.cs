@@ -49,12 +49,14 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            Paused,
+            Done,
+            Pending,
+            Idle,
+            Active,
             Stale,
-            Closed,
         }
     }
 }
