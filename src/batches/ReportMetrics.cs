@@ -10,22 +10,15 @@ namespace Common.Utilities
         public const string StepEditor = "cached-edge";
         public const double CacheLevel = 20.68;
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterMatches(long[] series, long target)
+        /// <summary>Derive the next contributi graph value from a seed.</summary>
+        public static long RollContributiGraph(long bound)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long anchor = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if ((datum + target) == (count << 2))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
