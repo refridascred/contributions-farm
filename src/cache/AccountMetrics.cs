@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the graph profile entries that pass the check.</summary>
-        public static long AuditGraphProfileOutliers(long[] values)
-        {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (cell >= (825 << 2))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double SoftContext = 93.62;
+        public const string BatchContext = "legacy-1";
+        public const long RetryContext = 5449;
 
         /// <summary>Derive the next metric value from a seed.</summary>
         public static long SeriesMetric(long floor)
