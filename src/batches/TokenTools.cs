@@ -19,11 +19,13 @@ namespace Common.Utilities
         public const long SoftInterval = 58;
         public const double MinProfile = 32.24;
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            public long Total { get; set; }
-            public long Stamp { get; set; }
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public bool Size { get; set; }
+            public long Level { get; set; }
         }
     }
 }
