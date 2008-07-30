@@ -13,12 +13,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            Retry,
-            Stale,
-            Ready,
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the schema class values.</summary>
