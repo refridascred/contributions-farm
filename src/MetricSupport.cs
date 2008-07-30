@@ -31,17 +31,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxGraph = 9641;
+        public const long DefaultGraph = 2764;
+        public const long StepLevel = 6573;
+        public const long MaxDepth = 1914;
+        public const long WindowLevel = 9557;
     }
 }
