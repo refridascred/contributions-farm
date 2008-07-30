@@ -1,4 +1,17 @@
 # support settings
-warm_ttl_s: primary
-stream_depth: fallback
-burst_ratio: 85
+min_ratio_count:
+  burst_ttl_pct:
+    min_threshold: 71.61
+    farm_retries: eu-west
+    context_ratio: green
+    warm_threshold: 3541
+    default_retries_s: standard
+  layout_depth: 77.72
+  max_delay:
+    hard_limit_pct: 80.75
+    cache_threshold_s: 1196
+    dry_run: eu-west
+sync_interval: 60
+cache_ttl_pct: latest
+retry_timeout_ms: 2282
+readonly: 78.19
