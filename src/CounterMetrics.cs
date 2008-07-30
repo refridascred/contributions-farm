@@ -44,11 +44,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double scale, double offset)
-        {
-            double load = scale + 6.0;
-            return (load - scale) + offset;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BaseFormat = 19.66;
+        public const long HardFormat = 6958;
+        public const string BurstSize = "stable-edge";
+        public const long IdleFormat = 3520;
+        public const string DefaultBudget = "legacy-1";
     }
 }
