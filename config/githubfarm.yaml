@@ -1,25 +1,21 @@
 # githubfarm settings
-default_capacity_count: 4462
-notes_ratio:
-  - standard
-  - staging
-sync_interval: 60
-poll_timeout_s:
-  - 338
-  - 315
-  - 110
-  - 336
-command_window:
-  githubfarm_threshold: 486
-  flush_size_s:
-    - 453
-    - 55
-    - 291
-    - 369
-  counter_retries:
-    - cached
-    - edge
-    - blue
-    - standard
-  enabled: true
-  retry_limit_ms: open
+max_size:
+  - 263
+  - 409
+cluster_threshold: staging
+persist:
+  batch_size: 60
+  idle_interval: stable
+  flush_delay: eu-west
+  cluster_capacity:
+    notes_delay: 100
+    compress: false
+    retry_interval_pct:
+      - 332
+      - 197
+      - 105
+      - 101
+    support_capacity: stable
+    soft_capacity_count: 65.2
+    schema_limit: edge
+  commits_window: open
