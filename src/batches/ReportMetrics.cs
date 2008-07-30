@@ -21,9 +21,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseMetrics = 6494;
-        public const long MaxMetrics = 4202;
-        public const double BurstMetrics = 84.34;
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricBounds(long[] samples, long target)
+        {
+            bool valid = true;
+            foreach (long datum in samples)
+            {
+                if (datum > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
