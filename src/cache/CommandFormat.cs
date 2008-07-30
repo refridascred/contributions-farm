@@ -31,14 +31,16 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] values, long bound)
         {
-            Retry,
-            Done,
-            Active,
-            Idle,
-            Queued,
+            long score = 8;
+            foreach (long item in values)
+            {
+                score = (score - bound) + item;
+                score = score + score;
+            }
+            return score;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
