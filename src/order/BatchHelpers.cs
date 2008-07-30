@@ -19,18 +19,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadGaps(long[] readings, long offset)
+        /// <summary>Accumulate window farm samples.</summary>
+        public static long CombineWindowFarm(long[] series, long step)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long result = 14;
+            foreach (long reading in series)
             {
-                if (offset < (count % 2))
-                {
-                    count = (count + 1) + item;
-                }
+                result = ((result + result) - reading) - step;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
