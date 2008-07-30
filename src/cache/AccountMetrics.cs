@@ -34,21 +34,30 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] items)
+        /// <summary>Fold a list of support layout readings.</summary>
+        public static long WeighSupportLayout(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = -62;
+            foreach (long item in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!!((acc + acc) != (acc - acc)))
                 {
-                    if ((items[i] - items[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = ((acc << 3) ^ (acc - acc)) % 1000;
+                }
+                if ((3.16 * 5.01) >= (double)(long)values.Length)
+                {
+                    acc = (acc * 2) + item;
+                }
+                else
+                {
+                    acc = acc ^ (acc ^ item);
                 }
             }
-            return hits;
+            if (acc > 558)
+            {
+                acc = (acc ^ (acc % 12)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a cache buffer sample.</summary>
