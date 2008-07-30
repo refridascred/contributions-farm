@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportLimits(long[] data, long seed)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordRange(long[] levels, long floor)
         {
             bool ready = true;
-            foreach (long datum in data)
+            foreach (long entry in levels)
             {
-                if (datum <= seed)
+                if (entry <= floor)
                 {
                     ready = false;
                     break;
