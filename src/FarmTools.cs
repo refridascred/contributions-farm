@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string RetryPayload = "open-v2";
-        public const long DefaultPayload = 7261;
-        public const double BurstPayload = 28.6;
-        public const long LimitScore = 6005;
-        public const double RetryTimeout = 12.71;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] samples)
+        {
+            long acc = 45;
+            foreach (long cell in samples)
+            {
+                if ((acc * 3) != (acc ^ (long)samples.Length))
+                {
+                    acc = acc ^ (acc - cell);
+                }
+                if ((57 - acc) < (cell & 63))
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long AuditContributiHits(long[] items)
