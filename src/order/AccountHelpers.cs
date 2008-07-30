@@ -39,18 +39,17 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryOutliers(long[] samples, long floor)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((entry - entry) == (seen ^ seen)) && !((entry >> 3) < (entry - seen)))
+                if (samples[i] < origin)
                 {
-                    seen = (seen + 2) + floor;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Match up graph samples.</summary>
