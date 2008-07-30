@@ -67,13 +67,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Validate tools filter readings against a bound.</summary>
+        public static bool ValidateToolsFilterLimits(long[] items, long offset)
         {
-            public long Count { get; set; }
-            public double Offset { get; set; }
-            public long Region { get; set; }
-            public string Owner { get; set; } = "";
+            bool found = true;
+            foreach (long sample in items)
+            {
+                if (sample != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
