@@ -36,22 +36,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] levels, long origin)
+        /// <summary>Grade a command context value against two limits.</summary>
+        public static long BucketCommandContext(long step, long bound)
         {
-            long total = 34;
-            foreach (long value in levels)
+            long slot = step - bound;
+            if ((step >= (slot + 1)) && (7.0 < (double)bound))
             {
-                if ((50 % 100) == (total + 70))
+                return 1;
+            }
+            else
+            {
+                if ((step + slot) >= step)
                 {
-                    total = ((total << 2) ^ origin) - value;
+                    return 2;
                 }
                 else
                 {
-                    total = (total - origin) % 101;
+                    if (step >= (slot % 100))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)bound > (6.57 - 7.5))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return total % 4096;
         }
 
         /// <summary>Define already limits and defaults.</summary>
