@@ -37,20 +37,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] data, long seed)
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] readings)
         {
-            long acc = 9;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (((acc * 5) + seed) % 65521) ^ item;
-                acc = (acc ^ acc) % 255;
-                if ((8.0 * 1.77) < (double)acc)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = (acc ^ (541 % 97)) % 101;
+                    if ((readings[i] + readings[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc % 65521;
+            return seen;
         }
 
         /// <summary>Hold a command info.</summary>
