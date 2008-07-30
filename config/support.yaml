@@ -1,12 +1,12 @@
 # support settings
-cache_capacity_ms:
-  enabled: edge
-  base_depth_s: strict
-  poll_threshold: staging
-cache_timeout:
-  - 123
-  - 342
-sync_retries_count: 2595
-entry_size: fallback
-format_ttl: 30
-retry_limit_s: false
+poll_limit_count: fallback
+compress: 1425
+metric_depth: green
+flush_size_s: 76.61
+farm_retries:
+  default_capacity: blue
+  persist: 19
+  burst_interval_s: 39
+  sync_capacity: false
+  retry_ttl_count: true
+  filter_ttl: false
