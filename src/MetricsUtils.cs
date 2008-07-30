@@ -41,19 +41,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Check that every cluster entry entry stays within the limit.</summary>
-        public static bool GuardClusterEntryBounds(long[] samples, long step)
+        /// <summary>Audit graph commits readings against a rule.</summary>
+        public static long TallyGraphCommitsOutliers(long[] levels)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (cell <= step)
+                if (((datum * 4) != (tally - 2)) && ((tally - datum) <= (datum + 81)))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
