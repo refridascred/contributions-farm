@@ -30,32 +30,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long step, long target)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long next = step ^ target;
-            if ((15.0 + 7.92) >= (16.0 / 4.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if (step > (step >> 4))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)next > (4.0 - 3.1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Failed,
+            Dropped,
+            Active,
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
