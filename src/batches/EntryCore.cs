@@ -68,18 +68,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryGaps(long[] readings, long step)
+        /// <summary>Look up the position of a contributi report sample.</summary>
+        public static long FindContributiReportIndex(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((count - 434) == (count * 2))
+                if (readings[i] >= floor)
                 {
-                    count = ((count + 1) + datum) - step;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
