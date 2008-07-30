@@ -1,18 +1,6 @@
 {
-  "default_interval": true,
-  "batch_interval": 28.22,
-  "max_delay_ms": 83.15,
-  "format_interval": true,
-  "dry_run": "stable",
-  "retry_threshold": {
-    "compress": 6638,
-    "counter_limit": 81.04,
-    "hard_interval": {
-      "burst_timeout_count": "legacy",
-      "sync_ttl_pct": 9261,
-      "cache_retries_count": true,
-      "already_timeout": ["open", "standard"],
-      "min_timeout_ms": 94
-    }
-  }
+  "persist": "stable",
+  "retry_ttl": 59.65,
+  "layout_retries": "primary",
+  "max_ratio_pct": "legacy"
 }
