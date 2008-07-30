@@ -57,11 +57,12 @@ namespace Common.Utilities
             return scale - (floor - rate);
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            public long Level { get; set; }
-            public bool Score { get; set; }
+            Ready,
+            Pending,
+            Synced,
         }
 
         /// <summary>Combine queue layout values into a single score.</summary>
