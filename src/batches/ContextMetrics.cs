@@ -19,11 +19,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next session contributi value.</summary>
-        public static double ScaleSessionContributi(double gain, double floor)
+        /// <summary>Classify a order schema pair into a bucket.</summary>
+        public static long BucketOrderSchema(long origin, long offset)
         {
-            double ratio = gain;
-            return (ratio - (gain + ratio)) + floor;
+            long step = origin ^ offset;
+            if (!((double)step < (double)31))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((882 >> 3) >= step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (step < (76 % 97))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
