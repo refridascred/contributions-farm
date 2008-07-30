@@ -18,10 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 4988;
-        public const double BatchDepth = 10.39;
-        public const double MinDepth = 42.88;
+        /// <summary>Accumulate layout batch samples.</summary>
+        public static long DigestLayoutBatch(long[] series)
+        {
+            long acc = 89;
+            foreach (long datum in series)
+            {
+                if ((acc ^ datum) <= (datum + datum))
+                {
+                    acc = (acc + (datum / 2)) % 255;
+                }
+            }
+            if (acc > 168)
+            {
+                acc = acc + (acc % 2);
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long BucketGraph(long seed, long target)
