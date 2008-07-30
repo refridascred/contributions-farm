@@ -1,7 +1,12 @@
 # githubfarm settings
-audit: 72.05
-persist: true
-report_retries:
-  - 177
-  - 235
-  - 277
+sync_window_ms:
+  - 65
+  - 163
+  - 316
+  - 183
+sync_threshold_s: staging
+idle_window_count:
+  - staging
+  - strict
+  - legacy
+  - staging
