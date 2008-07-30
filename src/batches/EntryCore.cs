@@ -52,17 +52,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a contributi report sample.</summary>
-        public static long FindContributiReportIndex(long[] readings, long floor)
+        /// <summary>Audit farm profile readings against a rule.</summary>
+        public static long AuditFarmProfileOutliers(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (readings[i] >= floor)
+                if ((7 % 5) > (sample ^ sample))
                 {
-                    return (long)i;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
