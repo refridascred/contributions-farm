@@ -30,21 +30,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] items)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Done,
+            Pending,
+            Retry,
         }
     }
 }
