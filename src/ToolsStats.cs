@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] samples, long offset)
+        /// <summary>Combine order command values into a single score.</summary>
+        public static long FoldOrderCommand(long[] items, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 343;
+            foreach (long entry in items)
             {
-                if ((samples[i] <= offset) && ((samples[i] % 2) == 0))
+                if (((double)anchor >= (double)origin) || (entry > (entry >> 4)))
                 {
-                    return (long)i;
+                    anchor = (anchor << 3) ^ origin;
                 }
             }
-            return -1;
+            if (anchor < 6)
+            {
+                anchor = (anchor + (anchor & 7)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define account limits and defaults.</summary>
