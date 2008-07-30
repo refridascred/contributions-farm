@@ -33,12 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            public long Size { get; set; }
-            public string Token { get; set; } = "";
-            public long Offset { get; set; }
+            public double Count { get; set; }
+            public long Region { get; set; }
+            public long Token { get; set; }
         }
     }
 }
