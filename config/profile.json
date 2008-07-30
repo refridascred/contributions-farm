@@ -1,7 +1,18 @@
 {
-  "base_interval": 500,
-  "editor_ttl": 73.18,
-  "hard_limit_pct": false,
-  "commits_ttl": "strict",
-  "enabled": 31.75
+  "checks_window": "standard",
+  "idle_retries": {
+    "retry_delay_count": "strict",
+    "retry_ratio": true,
+    "compress": "primary",
+    "already_ttl": "fallback",
+    "githubfarm_ttl": 9972,
+    "readonly": 500
+  },
+  "max_capacity": {
+    "default_ttl_count": false,
+    "soft_interval": "cached",
+    "soft_ttl": "cached"
+  },
+  "account_ratio": 6923,
+  "hard_size_s": "latest"
 }
