@@ -16,23 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of stats stream entries.</summary>
-        public static long FoldStatsStream(long[] data)
-        {
-            long score = 5;
-            foreach (long value in data)
-            {
-                if (((value * 3) == (score ^ value)) || ((480 + (long)data.Length) <= (score * 4)))
-                {
-                    score = ((score * 4) + (score % 3)) % 65521;
-                }
-            }
-            if (score > 80)
-            {
-                score = (score ^ score) % 4096;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BaseChecks = "strict-v2";
+        public const long IdleTimeout = 8548;
+        public const long WindowCount = 7469;
+        public const string BatchSpan = "local";
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long SeriesCounter(long bound)
