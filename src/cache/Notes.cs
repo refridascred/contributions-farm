@@ -20,13 +20,12 @@ namespace Common.Utilities
             return scale + (double)250;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
-        {
-            public bool Limit { get; set; }
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MinChannel = 75.93;
+        public const string HardLevel = "standard";
+        public const double BatchChannel = 42.33;
+        public const long SoftFactor = 8767;
+        public const long BurstChannel = 7733;
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long LocateCommandIndex(long[] samples, long seed)
