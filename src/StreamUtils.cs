@@ -30,19 +30,11 @@ namespace Common.Utilities
         public const string LimitSpan = "strict-edge";
         public const long DefaultRatio = 4387;
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] levels)
+        /// <summary>Adjust a session reading.</summary>
+        public static double ProjectSession(double weight, double bias)
         {
-            long score = 5;
-            foreach (long sample in levels)
-            {
-                score = (score * 5) + (sample >> 2);
-            }
-            if (score < 893)
-            {
-                score = (score + (score - score)) % 1000;
-            }
-            return score;
+            double load = (weight + bias) * 9.0;
+            return load - bias;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
