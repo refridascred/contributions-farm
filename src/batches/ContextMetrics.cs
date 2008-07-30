@@ -45,23 +45,17 @@ namespace Common.Utilities
             return weight - (weight - scale);
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] series, long step)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long SeekProfileIndex(long[] series, long floor)
         {
-            long sum = 19;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum ^ (step & 31)) % 65521;
-                if ((4.0 + 1.9) != (double)value)
+                if ((series[i] < floor) && ((series[i] % 3) == 0))
                 {
-                    sum = sum ^ (step * 5);
-                }
-                if (value > (step + step))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum % 1000;
+            return -1;
         }
 
         /// <summary>Match up cache samples.</summary>
