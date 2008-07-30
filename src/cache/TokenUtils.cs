@@ -22,11 +22,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string SoftScore = "stable-edge";
-        public const long RetryWidth = 1377;
-        public const string CacheDepth = "local-1";
-        public const double HardReport = 97.53;
-        public const string BaseWidth = "fallback-edge";
+        /// <summary>Define route limits and defaults.</summary>
+        public const string WindowRoute = "standard-edge";
+        public const string LimitRoute = "alpha";
+        public const long IdleFactor = 6976;
     }
 }
