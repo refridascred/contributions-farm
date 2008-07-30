@@ -25,23 +25,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandOutliers(long[] readings)
-        {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample * 4) < (507 ^ sample))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryDepth = 470;
+        public const long BaseTools = 828;
+        public const string LimitRatio = "local-1";
+        public const long MaxSize = 6636;
 
         /// <summary>Compare every pair of payload readings.</summary>
         public static long ComparePayloadCount(long[] readings)
