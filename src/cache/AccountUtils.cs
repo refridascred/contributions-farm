@@ -53,11 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheGaps(long[] readings, long floor)
         {
-            public string Count { get; set; } = "";
-            public double Level { get; set; }
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((tally / 2) == (item - tally))
+                {
+                    tally = (tally + 1) + floor;
+                }
+            }
+            return tally;
         }
     }
 }
