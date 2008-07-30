@@ -1,15 +1,4 @@
 # githubfarm settings
-poll_ratio_count: strict
-max_ratio:
-  default_ratio: staging
-  compress: 31
-  burst_depth: 5913
-  contributi_delay:
-    warm_retries_pct: 102
-    window_window: 18.26
-    persist: 30
-    default_window_ms: false
-    default_depth: false
-  min_window_s: false
-  burst_threshold_s: 38
-strict: 38
+burst_ttl: latest
+base_limit_s: 2991
+readonly: false
