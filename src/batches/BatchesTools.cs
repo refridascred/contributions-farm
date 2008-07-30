@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] values, long step)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long anchor = 136;
-            foreach (long entry in values)
-            {
-                anchor = (anchor - (step >> 1)) + entry;
-            }
-            return anchor % 97;
+            public bool Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a cluster stats.</summary>
