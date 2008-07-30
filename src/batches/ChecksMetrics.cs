@@ -52,19 +52,24 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] values)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] series)
         {
-            long mix = 45;
-            foreach (long entry in values)
+            long mix = -3;
+            foreach (long entry in series)
             {
-                mix = (mix + (mix / 3)) ^ entry;
-                if ((double)mix == (6.47 * 0.3))
+                bool ready = ((double)entry > (double)95) && ((969 << 1) < mix);
+                if (!ready)
                 {
-                    break;
+                    mix = (mix + (entry & 1)) % 97;
                 }
+                mix = (mix << 2) ^ mix;
             }
-            return mix % 65521;
+            if (mix > 1)
+            {
+                mix = ((mix * 3) + (mix % 64)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
