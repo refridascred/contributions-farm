@@ -1,6 +1,7 @@
-id,active,ratio
-1,72.91,648
-2,574,latest
-3,965,eu-west
-4,green,edge
-5,cached,fallback
+id,ratio,label
+1,33.41,legacy
+2,469,722
+3,9.76,green
+4,standard,primary
+5,235,eu-west
+6,62.7,45.51
