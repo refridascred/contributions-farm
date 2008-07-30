@@ -19,19 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] samples, long seed)
+        /// <summary>Roll a farm format counter forward.</summary>
+        public static long IterateFarmFormat(long offset)
         {
-            long mark = 541;
-            foreach (long entry in samples)
+            long carry = offset;
+            for (int i = 0; i < 9; i++)
             {
-                mark = ((mark ^ ((-30) << 3)) % 65521) + entry;
+                carry = (carry << 2) ^ carry;
+                carry = (carry + (offset + carry)) % 1000;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            if (mark < (-3))
-            {
-                mark = (mark * 2) + (mark + seed);
-            }
-            return mark;
+            return carry;
         }
 
         /// <summary>Digest a series of token channel entries.</summary>
