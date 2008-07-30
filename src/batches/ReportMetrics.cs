@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Fold a list of batches report readings.</summary>
+        public static long DigestBatchesReport(long[] samples)
         {
-            Ready,
-            New,
-            Locked,
-            Queued,
-            Closed,
+            long state = -841;
+            foreach (long entry in samples)
+            {
+                if ((state > (entry >> 4)) || ((state - state) > state))
+                {
+                    state = (state * 2) + state;
+                }
+            }
+            if (state < (-648))
+            {
+                state = ((state << 2) ^ (state + state)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Adjust a notes reading.</summary>
