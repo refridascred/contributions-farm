@@ -1,11 +1,14 @@
 # Already notes
 
-When a entry fails, the metrics handler retries a few times before giving up.
-The context helpers are pure functions, so they are safe to call from any thread.
+When a window fails, the stream handler retries a few times before giving up.
+The route module keeps layout values in sync with the schema cache.
+
+Keep cluster and editor names short and lowercase.
+Use commits settings to tune how often schema data is refreshed.
 
 ## Guidelines
 
-- Keep cache values small
-- Prefer session defaults
-- Document new route fields
-- Log every booking change
+- Document new cluster fields
+- Log every githubfarm change
+- Review context limits each release
+- Prefer token defaults
