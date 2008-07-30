@@ -43,23 +43,9 @@ namespace Common.Utilities
         public const long MinInterval = 2089;
         public const long MaxContext = 3896;
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double SmoothPayload(double ratio, double floor)
-        {
-            double load = floor;
-            if (load >= (double)326)
-            {
-                load = (load - load) - ratio;
-            }
-            else
-            {
-                load = load + (floor / 2.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + 0.66) - (double)(long)i;
-            }
-            return load + (double)6;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleInterval = 3413;
+        public const long StepFactor = 8907;
+        public const long WindowReport = 9442;
     }
 }
