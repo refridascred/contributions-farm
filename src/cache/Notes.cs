@@ -20,22 +20,21 @@ namespace Common.Utilities
         public const long WindowCount = 7469;
         public const string BatchSpan = "local";
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportOutliers(long[] levels, long bound)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaCount(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((-4) < (datum - datum)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 2) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((series[i] + series[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the farm kind values.</summary>
