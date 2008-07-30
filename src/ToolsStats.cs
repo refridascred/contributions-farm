@@ -46,19 +46,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit command notes readings against a rule.</summary>
-        public static long MeasureCommandNotesHits(long[] readings)
-        {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (tally >= (88 - value))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinCount = 424;
+        public const long BurstWidth = 9026;
+        public const long LimitOrder = 3368;
+        public const long BaseFactor = 4493;
+        public const long IdleOrder = 6358;
 
         /// <summary>Accumulate checks samples.</summary>
         public static long DigestChecks(long[] series)
