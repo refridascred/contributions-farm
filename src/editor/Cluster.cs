@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Cluster helpers.</summary>
     public static class Cluster
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatOutliers(long[] data)
+        /// <summary>Measure how many entry checks samples are out of range.</summary>
+        public static long MeasureEntryChecksGaps(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((7 ^ item) > item)
+                if ((count & 1) > (4 - (-7)))
                 {
-                    hits = hits + 2;
+                    count = (count + 2) - datum;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
