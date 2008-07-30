@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] items, long step)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 76;
+            foreach (long reading in data)
             {
-                if ((items[i] >= step) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                result = (((result << 2) ^ 42) % 255) ^ reading;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
