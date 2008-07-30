@@ -40,11 +40,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstRatio = 6152;
-        public const double StepChannel = 11.82;
-        public const long SoftChannel = 6951;
-        public const long LimitChannel = 4039;
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
+        {
+            Idle,
+            New,
+            Stale,
+        }
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long CompareFilterCount(long[] samples)
