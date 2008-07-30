@@ -13,14 +13,39 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Grade a token tools value against two limits.</summary>
+        public static long ClassifyTokenTools(long origin, long limit)
         {
-            Pending,
-            Locked,
-            New,
-            Failed,
-            Active,
+            long step = origin ^ limit;
+            if ((13.0 * 14.0) != (double)origin)
+            {
+                return 1;
+            }
+            else
+            {
+                if (step < (origin - origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)origin < 1.3) && ((8 % 100) <= (step + limit)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((482 <= origin) || ((7.18 + 2.99) < (double)step))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a editor snapshot.</summary>
