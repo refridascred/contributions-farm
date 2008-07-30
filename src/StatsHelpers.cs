@@ -45,11 +45,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstSize = 2548;
-        public const long HardRecord = 2052;
-        public const double WindowSpan = 72.91;
-        public const double WindowRatio = 95.85;
-        public const long WindowSize = 6051;
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
