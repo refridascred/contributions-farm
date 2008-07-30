@@ -47,17 +47,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] data, long floor)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= floor) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Weight { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
     }
 }
