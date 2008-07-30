@@ -21,11 +21,15 @@ namespace Common.Utilities
         public const long HardFactor = 1762;
         public const long MaxRatio = 2078;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowScore = 4593;
-        public const double IdleRatio = 72.26;
-        public const string WindowLevel = "primary-v2";
-        public const double BatchAlready = 87.88;
-        public const long BaseAlready = 1580;
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long RollMetrics(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 24; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
+        }
     }
 }
