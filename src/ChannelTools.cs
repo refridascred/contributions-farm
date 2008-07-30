@@ -13,11 +13,22 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double RetryTools = 2.98;
-        public const long WindowTools = 5977;
-        public const long BatchTools = 1303;
-        public const string MaxWidth = "stable";
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool ValidateTokenLimits(long[] samples, long step)
