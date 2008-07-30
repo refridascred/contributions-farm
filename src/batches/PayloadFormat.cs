@@ -55,18 +55,17 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Audit session cluster readings against a rule.</summary>
-        public static long MeasureSessionClusterGaps(long[] readings)
+        /// <summary>Look up the position of a record account sample.</summary>
+        public static long LocateRecordAccountIndex(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)98 >= (double)cell)
+                if (levels[i] <= target)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
