@@ -31,24 +31,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a payload farm pair into a bucket.</summary>
-        public static long GradePayloadFarm(long floor, long seed)
+        /// <summary>Derive the next channel schema value from a seed.</summary>
+        public static long RollChannelSchema(long seed)
         {
-            if (floor <= (160 * 4))
+            long mix = seed;
+            for (int i = 0; i < 17; i++)
             {
-                return 2;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if (((8 + floor) <= seed) || ((33 + seed) <= floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return mix;
         }
     }
 }
