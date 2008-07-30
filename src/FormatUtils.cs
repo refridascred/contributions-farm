@@ -5,15 +5,29 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double weight, double floor)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long target)
         {
-            double rate = (weight / 8.0) / 8.0;
-            if (rate <= (double)64)
+            long score = target;
+            for (int i = 0; i < 10; i++)
             {
-                rate = (rate + (weight * 7.5)) - floor;
+                score = (score * 2) + (942 - target);
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    score = ((score << 3) ^ (target / 9)) ^ (long)i2;
+                }
+                if ((score >> 1) == (target % 10))
+                {
+                    score = score ^ score;
+                }
+                else
+                {
+                    score = (score ^ ((long)i << 3)) % 97;
+                    score = ((score << 3) ^ (target + target)) % 1000;
+                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return rate - (5.2 * 4.31);
+            return score;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
