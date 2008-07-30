@@ -45,15 +45,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double BlendGraph(double ratio, double offset)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            double load = (double)(49 << 2);
-            for (int i = 0; i < 9; i++)
-            {
-                load = ((load - (offset + offset)) - (double)(long)i) + ratio;
-            }
-            return load + (double)381;
+            public double Total { get; set; }
+            public long Stamp { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
