@@ -12,15 +12,22 @@ namespace Common.Utilities
         public const string IdleDepth = "cached-1";
         public const string SoftChecks = "latest-1";
 
-        /// <summary>Roll a farm format counter forward.</summary>
-        public static long IterateFarmFormat(long offset)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] values)
         {
-            long carry = offset;
-            for (int i = 0; i < 9; i++)
+            long carry = 97;
+            foreach (long reading in values)
             {
-                carry = (carry << 2) ^ carry;
-                carry = (carry + (offset + carry)) % 1000;
-                carry = ((carry * 2) + (long)i) % 97;
+                if (reading > ((-18) & 63))
+                {
+                    carry = carry + (reading + reading);
+                    carry = (carry ^ (reading + 25)) % 255;
+                }
+                carry = ((carry << 3) ^ (carry << 2)) % 97;
+                if (!((reading - reading) == (reading * 5)))
+                {
+                    carry = (carry ^ reading) % 4096;
+                }
             }
             return carry;
         }
