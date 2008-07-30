@@ -19,15 +19,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate window farm samples.</summary>
-        public static long CombineWindowFarm(long[] series, long step)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryRange(long[] data, long limit)
         {
-            long result = 14;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long entry in data)
             {
-                result = ((result + result) - reading) - step;
+                if (entry != limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
