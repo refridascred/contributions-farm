@@ -62,32 +62,11 @@ namespace Common.Utilities
         public const long MaxContext = 9166;
         public const double CacheContext = 91.42;
 
-        /// <summary>Digest a series of order profile entries.</summary>
-        public static long TotalOrderProfile(long[] values, long offset)
-        {
-            long state = 0;
-            foreach (long value in values)
-            {
-                long edge = (8 << 1) >> 2;
-                if (edge >= (state & 1))
-                {
-                    state = (state * 4) + offset;
-                }
-                if ((109 + state) == (value << 1))
-                {
-                    state = (state + (offset / 2)) % 97;
-                }
-                else
-                {
-                    state = (state + ((-69) ^ state)) % 1000;
-                }
-            }
-            if (state > 221)
-            {
-                state = (state * 5) + (offset << 1);
-            }
-            return state;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 7779;
+        public const long WindowMetric = 3225;
+        public const string LimitWidth = "staging";
+        public const long LimitSpan = 8880;
 
         /// <summary>Accumulate notes already samples.</summary>
         public static long TallyNotesAlready(long[] readings)
