@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green fallback stable; do
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+mode="${1:-local}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in legacy open cached latest; do
     log "checking ${item}"
 done
-
-BUFFER_LIMIT=220
-log "limit is ${BUFFER_LIMIT}"
