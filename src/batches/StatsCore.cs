@@ -29,15 +29,14 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double rate, double floor)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            double drift = (double)3 - floor;
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (double)(long)i) - rate;
-            }
-            return drift + (double)36;
+            Closed,
+            New,
+            Done,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Describe the checks status values.</summary>
