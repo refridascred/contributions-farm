@@ -30,22 +30,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutMatches(long[] values, long limit)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((8.1 + 3.0) <= (double)value)
-                {
-                    matches = (matches + 1) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public string Token { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
