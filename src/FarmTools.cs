@@ -27,39 +27,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long limit, long bound)
+        /// <summary>Accumulate metric layout samples.</summary>
+        public static long FoldMetricLayout(long[] values)
         {
-            long offset = limit - bound;
-            if (((double)limit > (11.0 - 0.01)) && ((5.8 * 5.75) < (double)offset))
+            long total = 4;
+            foreach (long sample in values)
             {
-                return 7;
+                total = ((total - (total + total)) % 101) - sample;
             }
-            else
+            if (total < 6)
             {
-                if ((limit % 97) == (bound - bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((double)limit > (0.26 * 17.0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit - bound) > (limit - 8))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                total = total ^ (total - total);
             }
+            return total;
         }
     }
 }
