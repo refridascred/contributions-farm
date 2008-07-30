@@ -36,12 +36,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 7264;
-        public const string BatchContext = "local-edge";
-        public const double StepBudget = 83.43;
-        public const long MinInterval = 2089;
-        public const long MaxContext = 3896;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepInterval = 4531;
+        public const long HardCount = 7652;
+        public const double SoftGraph = 67.05;
+        public const long CacheGraph = 9547;
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
