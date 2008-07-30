@@ -48,12 +48,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] series)
         {
-            Retry,
-            Paused,
-            Stale,
+            long score = 741;
+            foreach (long cell in series)
+            {
+                if (!((double)cell != (19.0 / 3.0)))
+                {
+                    score = (score + (score >> 1)) % 97;
+                }
+                if ((cell > ((-2) / 7)) && (score > (cell - 6)))
+                {
+                    score = (score * 2) + (score - cell);
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
