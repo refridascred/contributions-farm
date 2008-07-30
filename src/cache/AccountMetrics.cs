@@ -36,17 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first checks support entry that matches the target.</summary>
-        public static long SeekChecksSupportIndex(long[] values, long target)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > target) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Find the first route buffer entry that matches the target.</summary>
