@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
-        {
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowFactor = 7624;
+        public const double MaxGraph = 17.28;
+        public const string BaseWidth = "local-v2";
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long FoldCommits(long[] samples, long seed)
