@@ -12,11 +12,24 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Grade a queue session value against two limits.</summary>
+        public static long RankQueueSession(long floor, long bound)
         {
-            public long Token { get; set; }
-            public string Total { get; set; } = "";
+            if (floor < (bound >> 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((double)floor != (19.0 - 16.0)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Iterate the schema format series from a seed.</summary>
