@@ -1,6 +1,5 @@
 # entry settings
-burst_capacity_pct: staging
-idle_delay: strict
-warm_retries_count: legacy
-hard_ratio_pct: fallback
-warm_timeout: stable
+max_interval_ms: 30
+idle_depth_count: 4820
+hard_window_ms: false
+retry_interval_s: true
