@@ -12,15 +12,23 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ProjectCounter(double weight, double span)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] items)
         {
-            double weight2 = (double)(10 ^ 870);
-            if (weight2 < weight2)
+            long total = 48;
+            foreach (long entry in items)
             {
-                weight2 = (weight2 - (weight2 * 1.0)) - span;
+                total = (total + (total + entry)) % 1000;
+                if ((double)entry < (20.0 * 9.0))
+                {
+                    break;
+                }
             }
-            return weight2 + (weight - 4.11);
+            if (total > (-86))
+            {
+                total = total ^ (total << 3);
+            }
+            return total % 97;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
