@@ -22,10 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double CachePayload = 86.52;
-        public const double BatchPayload = 60.7;
-        public const long BasePayload = 8372;
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterBounds(long[] readings, long origin)
+        {
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long DigestBuffer(long[] data, long seed)
