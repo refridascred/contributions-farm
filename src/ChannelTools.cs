@@ -13,19 +13,16 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaRange(long[] levels, long seed)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long seed)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long carry = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (value < seed)
-                {
-                    found = false;
-                    break;
-                }
+                carry = (carry + seed) % 255;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
