@@ -70,19 +70,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double SmoothToken(double scale, double floor)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] samples)
         {
-            double ratio = scale;
-            if (ratio >= scale)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                ratio = (ratio + (scale - ratio)) - floor;
+                if ((double)hits < 8.3)
+                {
+                    hits = (hits + 3) ^ sample;
+                }
             }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            return ratio + ratio;
+            return hits;
         }
     }
 }
