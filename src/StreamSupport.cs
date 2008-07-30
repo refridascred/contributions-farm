@@ -30,19 +30,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphRange(long[] items, long target)
+        /// <summary>Count already commits pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyCommitsCount(long[] series)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value < target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] - series[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
