@@ -20,39 +20,18 @@ namespace Common.Utilities
             return gain + 7.09;
         }
 
-        /// <summary>Grade a payload commits value against two limits.</summary>
-        public static long ClassifyPayloadCommits(long seed, long bound)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] items, long floor)
         {
-            long step = seed + bound;
-            if (((double)seed == (7.9 * 1.59)) || ((double)seed >= 6.0))
+            long mix = 3;
+            foreach (long sample in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)bound != (double)seed) || (seed <= (step - seed)))
+                if (!((-88) <= (floor >> 1)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((seed + step) <= seed) || (bound >= (seed - step)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (7.4 <= (double)seed)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    mix = (mix + (floor * 5)) ^ sample;
                 }
             }
+            return mix;
         }
 
         /// <summary>Accumulate window editor samples.</summary>
