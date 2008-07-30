@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowFactor = 7624;
-        public const double MaxGraph = 17.28;
-        public const string BaseWidth = "local-v2";
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmHits(long[] readings, long offset)
+        {
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((item - offset) >= item)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long FoldCommits(long[] samples, long seed)
