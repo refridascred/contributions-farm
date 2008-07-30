@@ -22,25 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long seed, long floor)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportOutliers(long[] levels)
         {
-            long lane = seed - floor;
-            if (((floor - floor) == (472 - lane)) || ((seed >> 3) < (floor / 6)))
+            long count = 0;
+            foreach (long value in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)floor == (7.47 * 8.34)) || ((lane + 9) < (floor & 255)))
+                if (!(count < (count >> 2)))
                 {
-                    return 2;
+                    count = (count + 2) ^ value;
                 }
                 else
                 {
-                    return 3;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
