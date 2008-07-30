@@ -19,18 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] levels, long target)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long score = 582;
-            foreach (long value in levels)
-            {
-                if (score < (target - 79))
-                {
-                    score = ((score << 2) ^ (score + score)) ^ value;
-                }
-            }
-            return score % 4096;
+            Retry,
+            Done,
+            Pending,
+            Stale,
         }
 
         /// <summary>Hold a cluster header.</summary>
