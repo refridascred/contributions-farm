@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] samples)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long mark = 715;
-            foreach (long value in samples)
-            {
-                if (value >= (mark << 3))
-                {
-                    mark = (mark + (mark + mark)) % 1000;
-                }
-            }
-            return mark;
+            public string Limit { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the command class values.</summary>
