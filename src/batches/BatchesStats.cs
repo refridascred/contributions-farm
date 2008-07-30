@@ -20,10 +20,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepRatio = 6141;
-        public const double DefaultOrder = 42.31;
-        public const long MaxOrder = 576;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadMatches(long[] samples)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)(long)samples.Length == (10.0 / 8.0))
+                {
+                    hits = (hits + 1) + entry;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long AuditQueueHits(long[] samples)
