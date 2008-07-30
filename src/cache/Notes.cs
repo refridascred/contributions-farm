@@ -42,12 +42,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            Idle,
-            Ready,
-            Dropped,
+            public long Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
