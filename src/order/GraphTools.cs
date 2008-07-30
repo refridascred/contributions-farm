@@ -37,13 +37,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] levels, long floor)
         {
-            public string Total { get; set; } = "";
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a batch info.</summary>
