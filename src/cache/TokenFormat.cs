@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long origin)
         {
-            public string Limit { get; set; } = "";
-            public bool Mode { get; set; }
-            public bool Region { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
