@@ -29,23 +29,18 @@ namespace Common.Utilities
             return (rate + (double)(-16)) + span;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] values)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionMatches(long[] samples, long offset)
         {
-            long acc = 47;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                acc = ((acc + (89 - acc)) % 1000) - cell;
-                if ((long)values.Length >= acc)
+                if ((double)reading > (0.7 - 2.17))
                 {
-                    acc = ((acc * 5) + 4) % 4096;
+                    tally = (tally + 1) + offset;
                 }
             }
-            if (acc < 94)
-            {
-                acc = acc - (acc - acc);
-            }
-            return acc;
+            return tally;
         }
     }
 }
