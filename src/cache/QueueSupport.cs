@@ -40,12 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BaseRatio = 85.59;
-        public const double RetryInterval = 75.44;
-        public const long StepBudget = 5986;
-        public const long CacheRoute = 8527;
-        public const long LimitRoute = 1330;
+        /// <summary>Look up the position of a queue batch sample.</summary>
+        public static long LookupQueueBatchIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= floor) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool VerifyFilterBounds(long[] samples, long limit)
