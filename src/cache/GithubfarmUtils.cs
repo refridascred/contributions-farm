@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportOutliers(long[] readings, long limit)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long acc = 2;
+            foreach (long value in values)
             {
-                if ((value & 127) < (value - limit))
+                acc = acc + (acc ^ value);
+                if (acc < (value >> 4))
                 {
-                    hits = hits + 3;
+                    acc = (acc ^ step) % 1000;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    acc = (acc * 5) + 487;
+                }
+                if ((double)step != (8.86 + 1.0))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (acc < 7)
+            {
+                acc = acc ^ (79 & 7);
+            }
+            return acc;
         }
 
         /// <summary>Describe the counter phase values.</summary>
