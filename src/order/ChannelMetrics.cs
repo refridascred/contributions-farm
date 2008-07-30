@@ -27,12 +27,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long origin)
         {
-            Done,
-            Idle,
-            Synced,
+            long total = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
