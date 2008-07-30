@@ -30,11 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
-        {
-            public string Rank { get; set; } = "";
-            public double Score { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string SoftScore = "stable-edge";
+        public const long RetryWidth = 1377;
+        public const string CacheDepth = "local-1";
+        public const double HardReport = 97.53;
+        public const string BaseWidth = "fallback-edge";
     }
 }
