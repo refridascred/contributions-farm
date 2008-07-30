@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatHits(long[] levels, long target)
         {
-            Retry,
-            Locked,
-            New,
-            Idle,
-            Pending,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if (!((target + entry) >= (long)levels.Length))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
