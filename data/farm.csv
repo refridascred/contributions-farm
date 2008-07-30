@@ -1,9 +1,7 @@
-id,active,score,weight
-1,local,51.29,21.63
-2,cached,63.76,129
-3,647,62.01,746
-4,blue,stable,862
-5,eu-west,247,604
-6,7.79,575,93.71
-7,47.91,527,373
-8,96.04,cached,647
+id,score,state,ratio,label
+1,21.77,88.27,89.93,local
+2,53.56,304,784,stable
+3,standard,701,37.87,edge
+4,fallback,35.53,staging,3.1
+5,538,125,23.39,88.19
+6,68.43,93.33,89.08,local
