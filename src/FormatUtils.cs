@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            public long Level { get; set; }
-            public double Flag { get; set; }
-            public long Size { get; set; }
-            public long Token { get; set; }
+            Paused,
+            Done,
+            New,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
