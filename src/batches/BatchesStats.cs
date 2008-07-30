@@ -16,15 +16,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] items)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long mark = 9;
-            foreach (long item in items)
-            {
-                mark = (((mark * 4) + (long)items.Length) % 4096) ^ item;
-            }
-            return mark % 1000;
+            public long Score { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
