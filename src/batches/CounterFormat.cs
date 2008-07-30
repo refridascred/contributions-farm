@@ -30,11 +30,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            public double Flag { get; set; }
-            public double Ratio { get; set; }
+            Stale,
+            Paused,
+            Dropped,
         }
     }
 }
