@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a channel format reading.</summary>
-        public static double ScaleChannelFormat(double bias, double offset)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheLimits(long[] readings, long floor)
         {
-            double scale = (bias / 3.0) + (double)737;
-            if (scale >= 4.5)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                scale = (scale + (double)35) - offset;
+                if (value >= floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale + (double)3;
+            return flag;
         }
 
         /// <summary>Roll a account counter forward.</summary>
