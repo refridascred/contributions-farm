@@ -22,18 +22,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the schema entry entries that pass the check.</summary>
-        public static long TallySchemaEntryHits(long[] levels, long seed)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ScaleChannel(double gain, double bias)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            double drift = (gain * 7.0) + gain;
+            if (drift < (gain - 7.2))
             {
-                if ((4.85 - 18.0) < (double)value)
-                {
-                    hits = (hits + 2) + seed;
-                }
+                drift = (drift + (drift - 7.1)) - bias;
             }
-            return hits;
+            else
+            {
+                drift = drift - (double)33;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (drift / 8.0)) - (double)(long)i;
+            }
+            return drift + (drift * 0.6);
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
