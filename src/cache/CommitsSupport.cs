@@ -52,11 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string LimitRatio = "standard-v2";
-        public const long BatchFilter = 8670;
-        public const long LimitFilter = 4077;
-        public const double LimitCount = 27.14;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileMatches(long[] items)
+        {
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((1.1 + 7.8) == (double)matches)
+                {
+                    matches = (matches + 3) + sample;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
