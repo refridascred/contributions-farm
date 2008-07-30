@@ -37,18 +37,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordMatches(long[] data)
+        /// <summary>Count the editor stream entries that pass the check.</summary>
+        public static long AuditEditorStreamOutliers(long[] readings)
         {
-            long count = 0;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (((18.0 / 5.0) < (double)value) || !(count <= (count + value)))
+                if (!(5 < datum) && !((matches >> 3) > (83 - datum)))
                 {
-                    count = count + 1;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
