@@ -28,11 +28,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double weight, double bias)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            double gain = 9.8;
-            return (gain + (bias * 2.1)) + weight;
+            public bool Mode { get; set; }
+            public bool Region { get; set; }
+            public string Level { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the queue phase values.</summary>
