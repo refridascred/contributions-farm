@@ -12,13 +12,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] samples, long seed)
         {
-            public string Ratio { get; set; } = "";
-            public long Label { get; set; }
-            public long Weight { get; set; }
-            public long Level { get; set; }
+            long mark = 541;
+            foreach (long entry in samples)
+            {
+                mark = ((mark ^ ((-30) << 3)) % 65521) + entry;
+            }
+            if (mark < (-3))
+            {
+                mark = (mark * 2) + (mark + seed);
+            }
+            return mark;
         }
 
         /// <summary>Project the next token value.</summary>
