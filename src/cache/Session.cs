@@ -42,14 +42,12 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            Ready,
-            Draft,
-            Paused,
-            Queued,
-            Pending,
+            public double Token { get; set; }
+            public bool Limit { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
