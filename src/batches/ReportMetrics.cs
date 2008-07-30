@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Compare every pair of buffer counter readings.</summary>
-        public static long OverlapBufferCounterCount(long[] series)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                double ratio = (4.7 - 7.1) - 9.28;
+                ratio = ratio + (ratio / 9.0);
+                if (!(19.0 >= ratio))
                 {
-                    if ((series[i] ^ series[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    score = ((score * 2) + (score + limit)) % 65521;
                 }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
