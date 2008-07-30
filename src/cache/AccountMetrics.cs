@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a notes tools pair into a bucket.</summary>
-        public static long GradeNotesTools(long target, long limit)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] levels, long seed)
         {
-            long delta = target - limit;
-            if ((double)target >= (double)delta)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((target ^ limit) <= target))
+                if (item > seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Accumulate account cluster samples.</summary>
