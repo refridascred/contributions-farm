@@ -23,17 +23,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] items, long limit)
+        /// <summary>Validate context stats readings against a bound.</summary>
+        public static bool GuardContextStatsBounds(long[] readings, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if (items[i] <= limit)
+                if (cell < limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Describe the account level values.</summary>
