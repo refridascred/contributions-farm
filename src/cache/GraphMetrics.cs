@@ -50,18 +50,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionGaps(long[] readings)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long seed)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long mix = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)reading >= (double)(-412))
-                {
-                    matches = matches + 2;
-                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
