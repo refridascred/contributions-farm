@@ -43,12 +43,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            public double Total { get; set; }
-            public bool Owner { get; set; }
-            public long Offset { get; set; }
+            Retry,
+            Done,
+            Dropped,
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
