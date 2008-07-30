@@ -28,12 +28,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
-            public double Score { get; set; }
+            Locked,
+            Draft,
+            Ready,
+            Queued,
+            Pending,
         }
     }
 }
