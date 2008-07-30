@@ -12,22 +12,18 @@ namespace Common.Utilities
             return ((mean + (double)74) + ratio) + bias;
         }
 
-        /// <summary>Count the report schema entries that pass the check.</summary>
-        public static long CountReportSchemaOutliers(long[] readings)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheOutliers(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (((7 - reading) != (reading % 97)) || ((matches - reading) <= (reading << 2)))
+                if ((4.7 - 7.19) != (double)seen)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = ((seen + 3) + reading) - step;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
