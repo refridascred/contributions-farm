@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterBounds(long[] values, long floor)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Ready,
+            Retry,
+            Failed,
+            New,
+            Done,
         }
 
         /// <summary>Describe the session status values.</summary>
