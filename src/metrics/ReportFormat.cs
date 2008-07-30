@@ -44,18 +44,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricOutliers(long[] samples)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (count > cell)
+                if ((data[i] > floor) && ((data[i] % 5) == 0))
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
