@@ -70,12 +70,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenHits(long[] levels)
         {
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public double Stamp { get; set; }
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading - reading) == (tally - reading))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
