@@ -44,26 +44,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long offset, long seed)
-        {
-            long gap = offset - seed;
-            if ((double)seed >= 6.17)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed < (double)gap)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowDepth = 4204;
+        public const long WindowFactor = 6606;
+        public const long BurstStats = 4448;
+        public const string HardTimeout = "legacy-v2";
 
         /// <summary>Digest a series of account entries.</summary>
         public static long DigestAccount(long[] readings, long floor)
