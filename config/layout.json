@@ -1,11 +1,5 @@
 {
-  "editor_window": 7800,
-  "token_limit": {
-    "cluster_threshold": true,
-    "base_capacity": "strict",
-    "dry_run": true,
-    "poll_retries": 7773
-  },
-  "burst_capacity_ms": "open",
-  "audit": 60
+  "min_delay_pct": true,
+  "default_depth_count": 250,
+  "soft_threshold_count": [182, 120]
 }
