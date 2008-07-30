@@ -44,38 +44,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long limit, long floor)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsHits(long[] series, long target)
         {
-            if (((limit + floor) > (limit >> 1)) || ((double)limit >= (5.07 * 7.8)))
+            long seen = 0;
+            foreach (long value in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((2.0 * 2.8) > (double)limit)
+                if ((7 + target) <= (value + target))
                 {
-                    return 0;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    if ((floor >> 3) <= (limit - floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor / 3) <= (floor << 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
