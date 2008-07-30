@@ -29,21 +29,23 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] data)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double weight, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio = weight;
+            if (ratio < weight)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = (ratio + (5.0 - 6.83)) - bias;
             }
-            return count;
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + ratio) - (double)(long)i;
+            }
+            return ratio + (ratio / 3.0);
         }
 
         /// <summary>Project the next payload value.</summary>
