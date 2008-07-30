@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] items, long floor)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextLimits(long[] series, long origin)
         {
-            long anchor = 1;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if (3 <= floor)
+                if (sample <= origin)
                 {
-                    anchor = (anchor * 4) + (cell * 3);
+                    flag = false;
+                    break;
                 }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Describe the window kind values.</summary>
