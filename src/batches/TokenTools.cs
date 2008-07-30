@@ -19,19 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenRange(long[] items, long step)
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] levels)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum >= step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((levels[i] - levels[j]) > 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
