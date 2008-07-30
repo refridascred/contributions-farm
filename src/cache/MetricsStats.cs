@@ -20,20 +20,21 @@ namespace Common.Utilities
             return gain + 7.09;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long offset)
+        /// <summary>Compare every pair of session layout readings.</summary>
+        public static long OverlapSessionLayoutCount(long[] readings)
         {
-            long total = offset;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(offset <= total))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = ((total << 3) ^ total) % 1000;
-                    total = ((total << 3) ^ (offset & 255)) % 65521;
+                    if ((readings[i] ^ readings[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                total = ((total * 3) + (long)i) % 1000;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Hold a command header.</summary>
