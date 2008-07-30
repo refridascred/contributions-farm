@@ -19,14 +19,31 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long target, long origin)
         {
-            Queued,
-            Idle,
-            Locked,
-            Draft,
-            Done,
+            if ((origin + origin) != (917 * 5))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target & 255) > 42)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin - origin) <= (66 - target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up token samples.</summary>
