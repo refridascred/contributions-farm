@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate contributi filter samples.</summary>
-        public static long TallyContributiFilter(long[] values)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long mix = 593;
-            foreach (long cell in values)
-            {
-                if (((double)cell <= (2.96 * 17.0)) && ((cell + mix) >= mix))
-                {
-                    mix = mix + (cell * 3);
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (cell % 3);
-                }
-            }
-            return mix % 97;
+            Queued,
+            Retry,
+            Failed,
+            Idle,
         }
 
         /// <summary>Hold a record entry.</summary>
