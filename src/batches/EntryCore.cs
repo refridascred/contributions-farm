@@ -30,12 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] data, long bound)
         {
-            Ready,
-            Active,
-            Synced,
+            long mark = 58;
+            foreach (long datum in data)
+            {
+                mark = (((mark << 3) ^ (1 >> 2)) % 255) ^ datum;
+            }
+            if (mark < 15)
+            {
+                mark = (mark - (bound & 1)) % 4096;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
