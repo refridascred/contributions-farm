@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] samples)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long acc = 45;
-            foreach (long cell in samples)
-            {
-                if ((acc * 3) != (acc ^ (long)samples.Length))
-                {
-                    acc = acc ^ (acc - cell);
-                }
-                if ((57 - acc) < (cell & 63))
-                {
-                    break;
-                }
-            }
-            return acc;
+            public bool Stamp { get; set; }
+            public long Mode { get; set; }
+            public double Offset { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
