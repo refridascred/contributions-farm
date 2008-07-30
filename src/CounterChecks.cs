@@ -23,12 +23,19 @@ namespace Common.Utilities
         public const string BaseMetrics = "strict-1";
         public const double MaxMetrics = 53.11;
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportLimits(long[] levels, long offset)
         {
-            Synced,
-            Dropped,
-            Stale,
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Compare every pair of context tools readings.</summary>
