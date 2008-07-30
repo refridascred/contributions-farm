@@ -1,6 +1,6 @@
 {
-  "cache_size": ["edge", "primary"],
-  "enabled": 52.79,
-  "default_limit_ms": 86,
-  "max_ratio_pct": 43
+  "min_threshold_ms": [2, 3],
+  "burst_ttl_pct": "latest",
+  "batch_depth_ms": true,
+  "session_capacity": [85, 414, 63, 314]
 }
