@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double bias, double floor)
         {
-            public long Mode { get; set; }
-            public double Stamp { get; set; }
+            double bias2 = (double)(515 / 2);
+            return ((bias2 + (double)704) + bias) + floor;
         }
 
         /// <summary>Validate stats editor readings against a bound.</summary>
