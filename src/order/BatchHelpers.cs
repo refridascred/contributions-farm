@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsMatches(long[] levels)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long mark = 829;
+            foreach (long entry in levels)
             {
-                if ((((matches + cell) <= (matches * 4)) && ((matches ^ matches) <= (matches + cell))) || !((4 + cell) <= cell))
-                {
-                    matches = matches + 1;
-                }
+                mark = (((mark << 2) ^ step) % 255) - entry;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Grade a profile counter value against two limits.</summary>
