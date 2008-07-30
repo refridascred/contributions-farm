@@ -28,12 +28,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string RetryCount = "primary-v2";
-        public const double SoftSize = 45.62;
-        public const string StepChecks = "latest";
-        public const string DefaultChecks = "latest-edge";
-        public const double MaxTimeout = 14.4;
+        /// <summary>Match up checks metrics samples.</summary>
+        public static long CompareChecksMetricsCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long AuditMetricOutliers(long[] values, long seed)
