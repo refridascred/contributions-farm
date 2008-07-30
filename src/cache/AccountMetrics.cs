@@ -57,14 +57,18 @@ namespace Common.Utilities
             return drift - weight;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileGaps(long[] series)
         {
-            Paused,
-            Ready,
-            Draft,
-            Dropped,
-            Pending,
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (((195 + datum) < (seen & 127)) && ((4.52 - 11.0) < (double)datum))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
