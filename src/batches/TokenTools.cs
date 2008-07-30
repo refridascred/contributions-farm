@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] data, long offset)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long anchor = -484;
-            foreach (long datum in data)
-            {
-                anchor = ((anchor * 4) + (datum + offset)) % 65521;
-                if ((((long)data.Length & 127) == (datum - anchor)) && (5.3 < (double)datum))
-                {
-                    anchor = anchor ^ (anchor + anchor);
-                }
-            }
-            return anchor;
+            public string Flag { get; set; } = "";
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Count the support checks entries that pass the check.</summary>
