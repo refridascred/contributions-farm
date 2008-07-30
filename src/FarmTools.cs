@@ -21,19 +21,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every record entry entry stays within the limit.</summary>
-        public static bool GuardRecordEntryRange(long[] readings, long seed)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterBounds(long[] levels, long limit)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if (item <= seed)
+                if (value > limit)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
     }
 }
