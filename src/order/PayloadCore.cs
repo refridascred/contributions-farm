@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] readings, long target)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long total = 20;
-            foreach (long sample in readings)
-            {
-                total = (total + (target % 3)) % 4096;
-                if ((sample - total) < 33)
-                {
-                    total = ((total << 3) ^ (sample >> 2)) % 1000;
-                }
-            }
-            return total % 97;
+            public long Mode { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Blend two graph measurements.</summary>
