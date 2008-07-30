@@ -50,10 +50,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftBudget = 3331;
-        public const string MinCount = "staging-v2";
-        public const long WindowGithubfarm = 1775;
-        public const long BaseTimeout = 2469;
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BurstCount = 36.85;
+        public const string SoftToken = "standard-edge";
+        public const long RetryToken = 5493;
     }
 }
