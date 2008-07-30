@@ -32,28 +32,35 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long bound, long step)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long offset, long offset2)
         {
-            if ((step & 255) >= (327 - bound))
+            if ((offset2 + 32) > offset2)
             {
-                return 0;
+                return 3;
             }
             else
             {
-                if ((step + 92) != (13 << 1))
+                if (!((offset2 - offset) >= offset2))
                 {
-                    return 6;
+                    return 5;
                 }
                 else
                 {
-                    if ((bound ^ step) == (step >> 4))
+                    if ((offset + offset) < 3)
                     {
-                        return 4;
+                        return 1;
                     }
                     else
                     {
-                        return 3;
+                        if (offset >= (offset2 & 15))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
