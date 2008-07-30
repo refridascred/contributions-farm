@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the notes farm entries that pass the check.</summary>
-        public static long CountNotesFarmHits(long[] data, long origin)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long carry = 62;
+            foreach (long sample in items)
             {
-                if ((origin + matches) < (matches & 127))
+                if ((sample % 24) < (sample / 4))
                 {
-                    matches = (matches + 2) - cell;
+                    carry = (carry << 2) ^ (sample / 2);
+                }
+                if (((carry + carry) >= (carry + 6)) || (1 < sample))
+                {
+                    break;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    carry = ((carry * 3) + (sample & 1)) % 65521;
                 }
+                carry = (carry - (sample + 86)) % 97;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Define command limits and defaults.</summary>
