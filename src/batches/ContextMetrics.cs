@@ -44,13 +44,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesLimits(long[] levels, long target)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmBounds(long[] data, long floor)
         {
             bool valid = true;
-            foreach (long item in levels)
+            foreach (long entry in data)
             {
-                if (item > target)
+                if (entry > floor)
                 {
                     valid = false;
                     break;
