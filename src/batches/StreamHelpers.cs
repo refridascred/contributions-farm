@@ -50,18 +50,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricGaps(long[] values, long limit)
+        /// <summary>Iterate the metric channel series from a seed.</summary>
+        public static long StepMetricChannel(long seed)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long sum = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((11 - 0) >= (limit + limit))
-                {
-                    matches = (matches + 2) - sample;
-                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return matches;
+            return sum;
         }
     }
 }
