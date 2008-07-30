@@ -1,5 +1,7 @@
 {
-  "hard_capacity_ms": "latest",
-  "support_retries": "blue",
-  "batch_retries": 52
+  "burst_ratio_ms": 90.2,
+  "batch_depth_count": [106, 413, 136],
+  "already_size": 26.22,
+  "soft_interval": [368, 493, 87],
+  "account_capacity": false
 }
