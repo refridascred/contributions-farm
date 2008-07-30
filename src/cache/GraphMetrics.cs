@@ -23,11 +23,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double bias, double bias2)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            double rate = 1.0;
-            return (rate - bias) + bias2;
+            public string Size { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Fold a list of token readings.</summary>
