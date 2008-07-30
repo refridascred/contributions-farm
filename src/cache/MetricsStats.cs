@@ -20,13 +20,11 @@ namespace Common.Utilities
             return gain + 7.09;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            public bool Token { get; set; }
-            public bool Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Compare every pair of buffer layout readings.</summary>
