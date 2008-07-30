@@ -24,15 +24,15 @@ namespace Common.Utilities
         public const string StepWidth = "local-v2";
         public const long SoftLevel = 6056;
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double SmoothEntry(double weight, double span)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long origin)
         {
-            double gain = (double)(584 >> 2);
-            if (gain > weight)
+            long total = origin;
+            for (int i = 0; i < 12; i++)
             {
-                gain = (gain + (weight + gain)) - span;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return gain - gain;
+            return total;
         }
     }
 }
