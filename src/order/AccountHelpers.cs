@@ -46,17 +46,19 @@ namespace Common.Utilities
             return gain + (floor + gain);
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] samples, long origin)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] data, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 808;
+            foreach (long cell in data)
             {
-                if (samples[i] < origin)
+                score = (((score << 3) ^ (offset - offset)) % 1000) ^ cell;
+                if ((4.44 / 2.0) >= (double)offset)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Match up graph samples.</summary>
