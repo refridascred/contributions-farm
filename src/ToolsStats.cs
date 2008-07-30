@@ -29,21 +29,18 @@ namespace Common.Utilities
         public const double WindowWidth = 80.64;
         public const long HardAccount = 8215;
 
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] items)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferMatches(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((2 << 3) == (value % 60))
                 {
-                    if ((items[i] - items[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
