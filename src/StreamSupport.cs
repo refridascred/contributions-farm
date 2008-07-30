@@ -53,11 +53,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MaxRecord = 37.74;
-        public const string DefaultTimeout = "latest-edge";
-        public const long CacheRecord = 5312;
-        public const string RetrySize = "stable-v2";
-        public const long MinScore = 9208;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSupport = 7725;
+        public const double MinScore = 81.5;
+        public const long LimitLevel = 9716;
+        public const string BatchSupport = "open";
+        public const string StepCount = "primary-1";
     }
 }
