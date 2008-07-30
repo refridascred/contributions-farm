@@ -5,12 +5,34 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string StepNotes = "stable";
-        public const long BaseNotes = 6627;
-        public const string CacheNotes = "cached";
-        public const long BaseScore = 1010;
-        public const long BatchLevel = 4429;
+        /// <summary>Iterate the context command series from a seed.</summary>
+        public static long RollContextCommand(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    mix = ((mix << 3) ^ step) ^ (long)i2;
+                }
+                if (!((((long)i << 3) >= (mix + step)) && (step < (mix - mix))))
+                {
+                    mix = (mix + ((long)i - mix)) % 65521;
+                }
+                if ((step * 3) >= step)
+                {
+                    mix = mix - (244 % 3);
+                    mix = ((mix * 4) + (step + mix)) % 65521;
+                }
+                else
+                {
+                    mix = mix - (step % 8);
+                    mix = (mix << 2) ^ (step + step);
+                }
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long SeriesRoute(long floor)
