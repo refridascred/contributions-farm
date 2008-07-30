@@ -12,11 +12,39 @@ namespace Common.Utilities
             return (drift - offset) + scale;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 6757;
-        public const double WindowLayout = 18.19;
-        public const double HardDepth = 96.93;
-        public const long SoftScore = 1401;
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long limit, long limit2)
+        {
+            if (((limit ^ 49) < (limit2 + (-329))) && ((double)limit2 >= 0.3))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!(limit < (limit + limit2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)limit2 >= 9.2) && ((6 * 2) <= (limit2 >> 2)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((945 + limit2) <= (limit2 >> 4))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long MeasureSessionHits(long[] levels, long bound)
