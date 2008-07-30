@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionOutliers(long[] values)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordMatches(long[] data, long step)
         {
             long tally = 0;
-            foreach (long sample in values)
+            foreach (long reading in data)
             {
-                if ((double)tally >= (0.65 - 2.56))
+                if ((8.0 + 5.94) > (double)tally)
                 {
-                    tally = (tally + 1) + sample;
+                    tally = ((tally + 2) ^ reading) - step;
                 }
             }
             return tally;
