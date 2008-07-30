@@ -1,5 +1,20 @@
 {
-  "min_timeout_ms": [44, 350, 350, 121],
-  "sync_interval_count": 100,
-  "persist": "legacy"
+  "contributi_limit": "staging",
+  "metrics_size": {
+    "verbose": {
+      "idle_threshold_count": 9506,
+      "soft_ratio_pct": 15,
+      "commits_interval": 80
+    },
+    "already_threshold": ["latest", "open", "fallback", "edge"],
+    "dry_run": true
+  },
+  "cache_ratio_count": 60,
+  "enabled": 1024,
+  "default_delay_s": {
+    "min_depth_count": false,
+    "strict": "primary",
+    "base_ttl_pct": "green"
+  },
+  "persist": false
 }
