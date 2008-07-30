@@ -81,22 +81,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long CompareContextCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstCount = 9062;
+        public const double WindowDepth = 98.38;
+        public const double CacheContext = 28.58;
 
         /// <summary>Blend two route measurements.</summary>
         public static double ProjectRoute(double gain, double span)
