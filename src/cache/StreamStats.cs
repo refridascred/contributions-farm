@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleCount = 8312;
-        public const string MinBatches = "open-v2";
-        public const long BatchDepth = 7243;
-        public const string BatchBatches = "staging-1";
-        public const long BaseBatches = 9125;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmOutliers(long[] samples, long floor)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (!(item > 9))
+                {
+                    seen = (seen + 2) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
