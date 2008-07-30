@@ -1,4 +1,9 @@
 # entry settings
-notes_window: 91.83
-soft_limit_count: 30
-min_delay_ms: false
+record_delay: eu-west
+batch_depth_count: 6580
+burst_timeout_ms:
+  commits_capacity: stable
+  idle_ratio: strict
+  farm_window: 39
+max_depth_s: green
+command_size: 48
