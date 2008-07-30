@@ -70,13 +70,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Find the first farm editor entry that matches the target.</summary>
+        public static long LocateFarmEditorIndex(long[] readings, long floor)
         {
-            public double Size { get; set; }
-            public double Rank { get; set; }
-            public long Weight { get; set; }
-            public double Owner { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= floor) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
