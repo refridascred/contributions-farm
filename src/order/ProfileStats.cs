@@ -28,21 +28,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up checks metrics samples.</summary>
-        public static long CompareChecksMetricsCount(long[] items)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] series, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((series[i] < target) && ((series[i] % 5) == 0))
                 {
-                    if ((items[i] - items[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
