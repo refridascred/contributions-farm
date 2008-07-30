@@ -23,18 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsHits(long[] data)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((44 % 10) < (hits ^ 0))
-                {
-                    hits = (hits + 1) + item;
-                }
-            }
-            return hits;
+            Ready,
+            Closed,
+            Draft,
+            Stale,
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
