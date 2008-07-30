@@ -18,13 +18,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            public double Total { get; set; }
-            public bool Count { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Limit { get; set; }
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the buffer status values.</summary>
