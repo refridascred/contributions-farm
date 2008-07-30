@@ -12,26 +12,10 @@ namespace Common.Utilities
         public const long HardBudget = 9349;
         public const double CacheSize = 30.16;
 
-        /// <summary>Rank filter window input into a small class.</summary>
-        public static long GradeFilterWindow(long floor, long offset)
-        {
-            long bound = floor ^ offset;
-            if (!((bound + floor) >= (offset + 0)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((72 < (bound + bound)) || ((offset << 3) > 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BaseWidth = 80.5;
+        public const long SoftCount = 3546;
+        public const double BurstTimeout = 33.91;
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long MeasureCacheGaps(long[] readings, long floor)
