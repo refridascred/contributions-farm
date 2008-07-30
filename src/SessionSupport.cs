@@ -16,13 +16,12 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            Synced,
-            Active,
-            Done,
-            New,
+            public double Mode { get; set; }
+            public long Rank { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a cluster header.</summary>
