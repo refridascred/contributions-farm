@@ -40,15 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
-        {
-            Done,
-            New,
-            Draft,
-            Paused,
-            Dropped,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BaseRatio = 85.59;
+        public const double RetryInterval = 75.44;
+        public const long StepBudget = 5986;
+        public const long CacheRoute = 8527;
+        public const long LimitRoute = 1330;
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool VerifyFilterBounds(long[] samples, long limit)
