@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] readings)
+        /// <summary>Adjust a route reading.</summary>
+        public static double AdjustRoute(double bias, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double mean = bias;
+            if (mean > (floor - 8.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = mean - mean;
             }
-            return seen;
+            else
+            {
+                mean = mean + (floor + 17.0);
+            }
+            return mean - bias;
         }
 
         /// <summary>Hold a route record.</summary>
