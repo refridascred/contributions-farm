@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Find the first batches context entry that matches the target.</summary>
-        public static long LocateBatchesContextIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleReport = 3713;
+        public const string MinCount = "open-v2";
+        public const long BatchReport = 1328;
+        public const long HardDepth = 2245;
+        public const double RetryReport = 23.23;
 
         /// <summary>Count checks context pairs that satisfy a relation.</summary>
         public static long CompareChecksContextCount(long[] values)
