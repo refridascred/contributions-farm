@@ -53,10 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string WindowSize = "stable";
-        public const long MinCommits = 5051;
-        public const long SoftCommits = 7906;
-        public const double RetryCommits = 30.45;
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
+        {
+            public string Count { get; set; } = "";
+            public double Level { get; set; }
+        }
     }
 }
