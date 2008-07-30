@@ -20,18 +20,12 @@ namespace Common.Utilities
             return scale + (double)250;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] levels, long bound)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long carry = 480;
-            foreach (long sample in levels)
-            {
-                if (((bound & 127) >= bound) && ((carry * 3) == (sample & 255)))
-                {
-                    carry = (carry - (carry >> 2)) % 97;
-                }
-            }
-            return carry;
+            public bool Limit { get; set; }
+            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Look up the position of a command sample.</summary>
