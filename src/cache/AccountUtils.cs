@@ -32,9 +32,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 8365;
-        public const double CacheDepth = 20.52;
-        public const long SoftFactor = 8722;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesGaps(long[] levels, long bound)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((item & 1) < bound)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
