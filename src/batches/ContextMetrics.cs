@@ -60,15 +60,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of filter window readings.</summary>
-        public static long FoldFilterWindow(long[] data)
+        /// <summary>Validate record contributi readings against a bound.</summary>
+        public static bool ValidateRecordContributiBounds(long[] items, long limit)
         {
-            long anchor = 285;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                anchor = (anchor * 3) + (anchor - datum);
+                if (datum > limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor;
+            return flag;
         }
     }
 }
