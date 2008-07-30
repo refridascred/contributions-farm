@@ -19,15 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] series)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long total = 3;
-            foreach (long cell in series)
-            {
-                total = (total + cell) % 97;
-            }
-            return total;
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a cluster header.</summary>
