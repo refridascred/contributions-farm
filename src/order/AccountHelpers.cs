@@ -53,21 +53,20 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] data)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 4;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = ((sum * 3) + (sample / 6)) % 255;
+                sum = (sum - (sum + sum)) % 97;
             }
-            return matches;
+            if (sum > 73)
+            {
+                sum = (sum * 3) + (sum - 94);
+            }
+            return sum;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
