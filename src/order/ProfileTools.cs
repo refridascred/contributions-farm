@@ -41,18 +41,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryMatches(long[] data, long bound)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double BlendCounter(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            double rate = offset - 8.3;
+            if (rate < (rate * 2.3))
             {
-                if ((seen + seen) > (bound << 2))
-                {
-                    seen = (seen + 2) + reading;
-                }
+                rate = (rate - (rate - rate)) - ratio;
             }
-            return seen;
+            else
+            {
+                rate = rate - 4.0;
+            }
+            return rate + 3.0;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
