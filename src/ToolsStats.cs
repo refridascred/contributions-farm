@@ -27,12 +27,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] series)
         {
-            Queued,
-            Done,
-            Pending,
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
