@@ -37,12 +37,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long limit, long seed)
         {
-            Failed,
-            Ready,
-            Paused,
+            if ((seed * 4) == (limit / 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((limit / 5) > limit) || ((seed - limit) < (limit & 7)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed * 2) > (limit / 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((seed + seed) >= limit) && (seed < (seed >> 2)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a command reading.</summary>
