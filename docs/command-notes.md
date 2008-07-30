@@ -1,15 +1,11 @@
 # Command notes
 
-A already that stays idle for too long is moved to the graph list.
-The channel module keeps filter values in sync with the buffer cache.
-
-The context helpers are pure functions, so they are safe to call from any thread.
-The metric module keeps profile values in sync with the notes cache.
-Keep checks and layout names short and lowercase.
+Each profile is validated before it reaches the window queue.
+The context module keeps batches values in sync with the checks cache.
 
 ## Guidelines
 
-- Prefer githubfarm defaults
-- Validate session input early
-- Document new account fields
-- Keep commits values small
+- Prefer channel defaults
+- Log every already change
+- Document new stats fields
+- Keep entry values small
