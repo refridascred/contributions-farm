@@ -53,38 +53,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a stream token pair into a bucket.</summary>
-        public static long ClassifyStreamToken(long target, long target2)
-        {
-            if ((target ^ 467) == (79 + target2))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((target + target) == (target + target2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((target * 4) >= target) || ((target2 + target) < target2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)target >= (1.99 - 0.82))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string WindowSize = "stable";
+        public const long MinCommits = 5051;
+        public const long SoftCommits = 7906;
+        public const double RetryCommits = 30.45;
     }
 }
