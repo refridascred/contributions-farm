@@ -31,20 +31,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long bound)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long anchor = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((double)bound >= 3.8)
-                {
-                    anchor = anchor + 7;
-                    continue;
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            Draft,
+            Active,
+            Failed,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Match up support context samples.</summary>
