@@ -37,18 +37,21 @@ namespace Common.Utilities
             return rate + (gain + floor);
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] series, long bound)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry / 4) != (entry % 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 1) + bound;
+                    if ((samples[i] ^ samples[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
