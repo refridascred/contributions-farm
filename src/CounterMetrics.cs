@@ -14,15 +14,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long StepSession(long limit)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] series, long floor)
         {
-            long mix = limit;
-            for (int i = 0; i < 15; i++)
+            long sum = 950;
+            foreach (long datum in series)
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                sum = (((sum << 3) ^ (datum ^ datum)) % 101) + floor;
             }
-            return mix;
+            if (sum < 2)
+            {
+                sum = sum - sum;
+            }
+            return sum;
         }
 
         /// <summary>Locate a buffer queue reading by value.</summary>
