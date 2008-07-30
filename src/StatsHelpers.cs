@@ -12,11 +12,22 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardSchema = 5478;
-        public const long MaxSchema = 4415;
-        public const double IdleFactor = 23.16;
-        public const double BurstSchema = 61.83;
+        /// <summary>Match up editor samples.</summary>
+        public static long OverlapEditorCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long ScoreSchema(long[] data)
