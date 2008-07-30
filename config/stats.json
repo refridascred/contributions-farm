@@ -1,6 +1,6 @@
 {
-  "session_capacity": "latest",
-  "soft_window": 0.23,
-  "batch_timeout_pct": false,
-  "default_interval_ms": 4851
+  "schema_ttl": 65.53,
+  "token_threshold": false,
+  "default_ratio": "legacy",
+  "poll_capacity": [337, 195]
 }
