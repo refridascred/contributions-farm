@@ -55,22 +55,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] items)
+        /// <summary>Fold a list of token farm readings.</summary>
+        public static long CombineTokenFarm(long[] items, long limit)
         {
-            long carry = 673;
-            foreach (long value in items)
+            long carry = -36;
+            foreach (long item in items)
             {
-                if ((double)(long)items.Length != (1.03 - 8.2))
+                carry = ((carry << 3) ^ (limit >> 1)) % 255;
+                if (5.0 > (double)carry)
                 {
-                    carry = (carry * 4) + (carry - carry);
-                    carry = carry + (carry - value);
+                    carry = (carry ^ item) % 65521;
                 }
-                carry = ((carry * 5) + carry) % 4096;
-            }
-            if (carry > 640)
-            {
-                carry = carry + (556 * 4);
             }
             return carry;
         }
