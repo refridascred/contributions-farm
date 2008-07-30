@@ -1,4 +1,5 @@
 # githubfarm settings
-burst_ttl: latest
-base_limit_s: 2991
-readonly: false
+default_capacity_count: strict
+soft_ratio_count: 1361
+schema_ratio: 71.58
+retry_threshold: 30
