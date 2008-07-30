@@ -25,18 +25,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string LimitStats = "staging-1";
+        public const double MaxBudget = 20.03;
+        public const double DefaultTimeout = 89.38;
+        public const double BurstInterval = 36.54;
+        public const long IdleCount = 9348;
 
         /// <summary>Blend two filter measurements.</summary>
         public static double AdjustFilter(double gain, double bias)
