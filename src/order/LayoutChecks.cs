@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportGaps(long[] items, long target)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long mix = 9;
+            foreach (long item in levels)
             {
-                if (target <= (675 + seen))
+                for (int i = 0; i < 10; i++)
                 {
-                    seen = (seen + 3) ^ datum;
+                    mix = (mix ^ mix) + (long)i;
+                }
+                if (!((double)item > (2.0 + 7.2)))
+                {
+                    mix = ((mix << 2) ^ mix) % 255;
                 }
             }
-            return seen;
+            return mix % 65521;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
