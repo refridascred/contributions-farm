@@ -1,5 +1,9 @@
 # githubfarm settings
-audit: 9466
-min_depth: false
-soft_delay_s: staging
-soft_window: eu-west
+burst_size_s: 12.57
+stream_size: 82
+cache_retries_count:
+  - 190
+  - 238
+  - 157
+burst_window: 42
+warm_size_s: strict
