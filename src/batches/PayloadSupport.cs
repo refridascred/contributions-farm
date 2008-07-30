@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long bound, long step)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            if ((1.0 / 2.0) <= (double)step)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step >> 3) != (step - bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define cache limits and defaults.</summary>
