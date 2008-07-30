@@ -49,24 +49,17 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Rank batch batches input into a small class.</summary>
-        public static long GradeBatchBatches(long bound, long offset)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] data, long floor)
         {
-            if ((offset / 7) < offset)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((-237) < (offset - bound))
+                if (data[i] <= floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
