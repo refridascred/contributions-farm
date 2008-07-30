@@ -38,22 +38,12 @@ namespace Common.Utilities
             return bias2 - (double)865;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] readings)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long total = 9;
-            foreach (long value in readings)
-            {
-                if ((7.45 - 8.3) <= (double)total)
-                {
-                    total = total + (98 << 2);
-                }
-                if (value > (value + total))
-                {
-                    break;
-                }
-            }
-            return total;
+            Active,
+            Paused,
+            Queued,
         }
     }
 }
