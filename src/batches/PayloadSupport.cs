@@ -20,11 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleStats = 3989;
-        public const string MaxSpan = "standard-edge";
-        public const long SoftStats = 4741;
-        public const long WindowStats = 8965;
+        /// <summary>Adjust a cache editor reading.</summary>
+        public static double ProjectCacheEditor(double bias, double floor)
+        {
+            double ratio = (bias - floor) - (bias - floor);
+            if (ratio < (double)17)
+            {
+                ratio = ratio + (0.1 + floor);
+            }
+            else
+            {
+                ratio = ratio - (floor - ratio);
+            }
+            return ratio - (floor - ratio);
+        }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
         public static long CompareReportCount(long[] readings)
