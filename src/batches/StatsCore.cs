@@ -14,16 +14,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] samples)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] items)
         {
-            long mix = 120;
-            foreach (long sample in samples)
+            long mix = 653;
+            foreach (long sample in items)
             {
-                mix = mix + sample;
-                if ((double)mix == (0.83 - 18.0))
+                if ((sample / 3) < sample)
                 {
-                    mix = (mix + (mix & 7)) % 4096;
+                    mix = ((mix << 2) ^ mix) % 255;
                 }
             }
             return mix;
