@@ -37,11 +37,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 5643;
-        public const double DefaultSpan = 93.88;
-        public const long LimitTimeout = 556;
-        public const string CacheTimeout = "staging-1";
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
+        {
+            Retry,
+            Paused,
+            Stale,
+        }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long BucketFarm(long limit, long floor)
