@@ -1,9 +1,7 @@
-id,level,token,ratio
-1,230,strict,91.29
-2,177,317,standard
-3,93.03,38.77,38.5
-4,518,778,628
-5,19.12,110,standard
-6,532,51.61,blue
-7,269,stable,5.45
-8,primary,585,blue
+id,region,token,level
+1,72.03,1.64,88
+2,66.03,1.8,703
+3,cached,71.24,58.93
+4,green,strict,999
+5,202,814,green
+6,217,731,894
