@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
-        {
-            Locked,
-            Queued,
-            Stale,
-            Dropped,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 5549;
+        public const double StepFilter = 93.24;
+        public const double CacheFilter = 89.42;
 
         /// <summary>Derive the next profile value from a seed.</summary>
         public static long RollProfile(long target)
