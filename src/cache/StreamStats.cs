@@ -22,11 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxLevel = 6181;
-        public const long HardContributi = 1758;
-        public const long DefaultContributi = 2249;
-        public const long MaxFactor = 5505;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string WindowBudget = "open-edge";
+        public const string SoftToken = "alpha-edge";
+        public const long StepSpan = 6028;
+        public const long IdleFactor = 9507;
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long MeasureBatchOutliers(long[] samples, long target)
