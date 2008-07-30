@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] data, long floor)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long score = 836;
-            foreach (long reading in data)
-            {
-                score = (score - (reading + 3)) - floor;
-                if ((reading <= (reading - (-1))) || (72 < (reading - score)))
-                {
-                    break;
-                }
-            }
-            return score;
+            public double Flag { get; set; }
+            public double Token { get; set; }
+            public string Level { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the metrics class values.</summary>
