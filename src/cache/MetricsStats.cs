@@ -74,13 +74,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
-        {
-            Draft,
-            Paused,
-            Done,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftSize = 547;
+        public const long WindowContributi = 8700;
+        public const long HardContributi = 1630;
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool CheckFilterRange(long[] data, long bound)
