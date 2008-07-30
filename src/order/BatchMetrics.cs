@@ -20,15 +20,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double scale, double floor)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] readings, long offset)
         {
-            double load = floor;
-            for (int i = 0; i < 2; i++)
+            long carry = 734;
+            foreach (long item in readings)
             {
-                load = ((load - 1.02) + (double)(long)i) - scale;
+                if (offset > (carry - 0))
+                {
+                    carry = ((carry << 2) ^ (item << 1)) % 255;
+                }
+                else
+                {
+                    carry = (carry - (18 + carry)) % 1000;
+                }
             }
-            return load + (load * 6.1);
+            if (carry < (-105))
+            {
+                carry = carry - (carry / 8);
+            }
+            return carry;
         }
 
         /// <summary>Describe the metrics state values.</summary>
