@@ -21,12 +21,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            Ready,
-            Draft,
-            Pending,
+            public bool Weight { get; set; }
+            public long Level { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Roll a cache layout counter forward.</summary>
