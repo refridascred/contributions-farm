@@ -20,16 +20,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long bound)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] levels, long bound)
         {
-            long total = bound;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total << 3) ^ ((long)i * 3)) % 1000;
-                total = ((total * 3) + (long)i) % 4093;
+                if ((levels[i] > bound) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a context info.</summary>
