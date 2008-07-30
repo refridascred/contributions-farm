@@ -42,22 +42,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutOutliers(long[] levels)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] series)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((169 + count) == (item - count)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((series[i] + series[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
