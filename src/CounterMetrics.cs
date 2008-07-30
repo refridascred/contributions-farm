@@ -41,11 +41,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] data, long origin)
         {
-            public bool Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            long carry = 111;
+            foreach (long cell in data)
+            {
+                carry = (((carry * 2) + (carry << 2)) ^ cell) - origin;
+            }
+            if (carry > 540)
+            {
+                carry = (carry << 3) ^ (carry / 5);
+            }
+            return carry;
         }
     }
 }
