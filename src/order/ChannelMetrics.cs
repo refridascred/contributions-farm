@@ -15,15 +15,31 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double BlendNotes(double bias, double span)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long bound, long step)
         {
-            double bias2 = (4.37 + 16.0) - (double)72;
-            if (bias2 < (0.2 + span))
+            if ((16.0 - 8.93) <= (double)bound)
             {
-                bias2 = (bias2 - bias2) - bias;
+                return 1;
             }
-            return bias2 + (bias2 / 5.0);
+            else
+            {
+                if ((step / 6) > (step << 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)bound > (double)59)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
