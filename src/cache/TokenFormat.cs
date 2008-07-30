@@ -13,39 +13,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Grade a token tools value against two limits.</summary>
-        public static long ClassifyTokenTools(long origin, long limit)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long step = origin ^ limit;
-            if ((13.0 * 14.0) != (double)origin)
-            {
-                return 1;
-            }
-            else
-            {
-                if (step < (origin - origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)origin < 1.3) && ((8 % 100) <= (step + limit)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((482 <= origin) || ((7.18 + 2.99) < (double)step))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a editor snapshot.</summary>
