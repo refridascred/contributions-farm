@@ -56,17 +56,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] values, long seed)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaGaps(long[] values, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((values[i] == seed) && ((values[i] % 2) != 0))
+                if ((count >> 4) < sample)
                 {
-                    return (long)i;
+                    count = (count + 2) - target;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the profile phase values.</summary>
