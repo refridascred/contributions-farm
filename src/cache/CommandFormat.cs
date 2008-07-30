@@ -10,21 +10,12 @@ namespace Common.Utilities
         public const long SoftOrder = 976;
         public const double BaseWidth = 32.7;
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] data)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Locked,
+            Retry,
+            Stale,
         }
 
         /// <summary>Count the window route entries that pass the check.</summary>
