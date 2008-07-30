@@ -28,11 +28,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double bias, double span)
+        /// <summary>Check that every cluster entry entry stays within the limit.</summary>
+        public static bool GuardClusterEntryBounds(long[] samples, long step)
         {
-            double bias2 = bias + (double)5;
-            return (bias2 + (double)210) + span;
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
