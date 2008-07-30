@@ -22,12 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            Idle,
-            Queued,
-            Dropped,
+            public long Size { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
