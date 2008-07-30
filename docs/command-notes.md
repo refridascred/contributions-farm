@@ -1,11 +1,10 @@
 # Command notes
 
-When a editor fails, the session handler retries a few times before giving up.
-Run the route check before changing any support limits.
-The layout report groups every stats by batches.
+Each format is validated before it reaches the checks queue.
+Use layout settings to tune how often counter data is refreshed.
 
 ## Guidelines
 
-- Prefer layout defaults
-- Log every report change
-- Validate profile input early
+- Review checks limits each release
+- Validate githubfarm input early
+- Document new stats fields
