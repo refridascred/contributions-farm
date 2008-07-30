@@ -13,11 +13,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmMatches(long[] readings)
         {
-            public long Mode { get; set; }
-            public double Label { get; set; }
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (((double)seen >= (11.0 + 17.0)) && (((reading ^ seen) < (reading & 7)) && ((48 << 2) >= seen)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
