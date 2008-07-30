@@ -1,8 +1,8 @@
-id,label,state,owner
-1,264,84.71,primary
-2,20.69,blue,858
-3,eu-west,427,34.81
-4,43,standard,369
-5,green,44.23,6.46
-6,434,eu-west,79.48
-7,open,276,eu-west
+id,score,region
+1,48.42,cached
+2,cached,72.77
+3,81,382
+4,11.41,604
+5,39.86,primary
+6,479,standard
+7,822,929
