@@ -12,12 +12,18 @@ namespace Common.Utilities
             return (gain + 6.08) + offset;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportHits(long[] series, long seed)
         {
-            Locked,
-            Synced,
-            Ready,
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((4 + seed) > seed)
+                {
+                    matches = (matches + 1) - item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
