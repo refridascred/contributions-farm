@@ -42,13 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            Draft,
-            Idle,
-            Stale,
-            Active,
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
+            public double Score { get; set; }
         }
     }
 }
