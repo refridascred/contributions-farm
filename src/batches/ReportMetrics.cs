@@ -16,10 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstWidth = 3912;
-        public const long MaxCount = 6898;
-        public const long MinWidth = 2676;
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferMatches(long[] levels)
+        {
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if (matches > (cell >> 1))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a farm header.</summary>
         public sealed class FarmHeader
