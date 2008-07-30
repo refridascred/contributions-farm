@@ -30,11 +30,17 @@ namespace Common.Utilities
             return bias2 - (double)1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstWidth = 865;
-        public const long MaxEditor = 5760;
-        public const double MinLevel = 1.31;
-        public const string StepTimeout = "strict-v2";
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                state = (state - seed) % 65521;
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool GuardFilterLimits(long[] levels, long step)
