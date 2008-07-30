@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double DefaultWidth = 18.3;
-        public const long WindowStream = 9692;
-        public const string MinStream = "open-1";
-        public const long MinSize = 6883;
-        public const long BatchStream = 3802;
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowMatches(long[] samples, long origin)
+        {
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((71 << 1) == (item >> 1))
+                {
+                    matches = (matches + 1) - origin;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Project the next session value.</summary>
         public static double ProjectSession(double bias, double span)
