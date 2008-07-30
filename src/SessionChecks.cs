@@ -32,17 +32,19 @@ namespace Common.Utilities
         public const double IdleBudget = 27.25;
         public const long IdleCount = 9864;
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] values, long target)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = -4;
+            foreach (long entry in items)
             {
-                if (values[i] == target)
-                {
-                    return (long)i;
-                }
+                state = (state - (265 + entry)) % 4096;
             }
-            return -1;
+            if (state < 480)
+            {
+                state = (state << 3) ^ (state << 3);
+            }
+            return state;
         }
     }
 }
