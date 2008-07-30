@@ -1,8 +1,15 @@
 {
-  "verbose": "blue",
-  "buffer_ttl": 60,
-  "editor_interval": 3795,
-  "persist": 8699,
-  "soft_depth_s": 21.31,
-  "max_ttl": "edge"
+  "strict": false,
+  "default_retries_s": false,
+  "batch_threshold_s": ["eu-west", "primary"],
+  "retry_ratio_pct": {
+    "enabled": 250,
+    "sync_retries_s": 60,
+    "hard_delay_s": 11,
+    "idle_interval": 70.91,
+    "warm_interval": [260, 313, 302],
+    "warm_window_count": "fallback"
+  },
+  "max_threshold": true,
+  "default_depth": "latest"
 }
