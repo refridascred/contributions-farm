@@ -36,17 +36,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a buffer queue reading by value.</summary>
-        public static long FindBufferQueueIndex(long[] items, long floor)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long MatchFilterCount(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((items[i] <= floor) && ((items[i] % 3) == 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a already summary.</summary>
