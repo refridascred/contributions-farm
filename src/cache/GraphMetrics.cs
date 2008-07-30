@@ -30,12 +30,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsHits(long[] series, long target)
         {
-            public long Rank { get; set; }
-            public double Flag { get; set; }
-            public string Size { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((double)target >= (5.55 + 14.0))
+                {
+                    matches = (matches + 3) + reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
