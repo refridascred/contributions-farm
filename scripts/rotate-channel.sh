@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green edge eu-west primary; do
+mode="${1:-cached}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in cached fallback; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-CHANNEL_LIMIT=439
-log "limit is ${CHANNEL_LIMIT}"
