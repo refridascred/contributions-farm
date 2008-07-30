@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double ratio, double span)
-        {
-            double load = (double)4 / 5.0;
-            if (load >= (load / 3.0))
-            {
-                load = load - (double)36;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (load + ratio)) + (double)(long)i;
-            }
-            return load + (span / 7.0);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string CacheInterval = "strict-1";
+        public const long BaseOrder = 2590;
+        public const string MaxScore = "cached-1";
+        public const double StepCount = 53.13;
+        public const double WindowSize = 84.15;
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
