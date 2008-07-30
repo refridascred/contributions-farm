@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesRange(long[] levels, long seed)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Synced,
+            Done,
         }
 
         /// <summary>Digest a series of stats entries.</summary>
