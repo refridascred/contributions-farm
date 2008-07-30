@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadGaps(long[] items)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesOutliers(long[] levels, long offset)
         {
             long hits = 0;
-            foreach (long entry in items)
+            foreach (long cell in levels)
             {
-                if ((double)entry < (9.88 + 2.43))
+                if (cell < (45 - hits))
                 {
-                    hits = hits + 2;
+                    hits = (hits + 3) - offset;
                 }
             }
             return hits;
