@@ -19,11 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Count githubfarm buffer pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmBufferCount(long[] samples)
         {
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a cluster header.</summary>
