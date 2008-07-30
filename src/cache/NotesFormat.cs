@@ -33,18 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowOutliers(long[] data, long origin)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((double)origin <= (double)cell)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultContributi = 5254;
+        public const string HardContributi = "alpha-edge";
+        public const long DefaultScore = 2531;
+        public const long RetryBudget = 9441;
+        public const long SoftContributi = 3729;
     }
 }
