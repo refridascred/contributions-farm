@@ -22,18 +22,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Count the checks command entries that pass the check.</summary>
-        public static long CountChecksCommandOutliers(long[] values)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long anchor = 485;
+            foreach (long reading in data)
             {
-                if ((long)values.Length < (matches + 66))
+                anchor = (anchor ^ anchor) - reading;
+                if ((41 * 4) > origin)
                 {
-                    matches = (matches + 1) - sample;
+                    anchor = anchor - origin;
                 }
             }
-            return matches;
+            return anchor % 97;
         }
     }
 }
