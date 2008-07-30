@@ -32,15 +32,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double ratio, double floor)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            double scale = (ratio - ratio) / 8.0;
-            if (scale <= (ratio + floor))
-            {
-                scale = scale - (scale * 8.17);
-            }
-            return scale + (double)0;
+            Dropped,
+            Locked,
+            Queued,
+            New,
         }
     }
 }
