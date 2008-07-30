@@ -46,22 +46,21 @@ namespace Common.Utilities
         public const long RetryWidth = 4555;
         public const string LimitScore = "staging-1";
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheMatches(long[] levels)
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] data)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((270 ^ count) <= count)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 3) + entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((data[i] ^ data[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
