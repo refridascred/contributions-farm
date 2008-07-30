@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double rate, double span)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            double rate2 = (rate * 8.2) / 3.0;
-            return (rate2 + (10.0 - rate2)) + span;
+            public long Rank { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
