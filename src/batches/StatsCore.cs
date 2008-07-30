@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Check that every tools filter entry stays within the limit.</summary>
-        public static bool VerifyToolsFilterBounds(long[] levels, long origin)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelOutliers(long[] readings, long offset)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (item != origin)
+                if (((sample / 9) != (sample + sample)) && ((long)readings.Length == (72 + sample)))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 1) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Hold a format header.</summary>
