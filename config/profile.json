@@ -1,5 +1,7 @@
 {
-  "hard_ttl_ms": 66,
-  "base_depth_ms": 53.87,
-  "enabled": 30
+  "farm_capacity": 20,
+  "burst_timeout_ms": [421, 86],
+  "persist": false,
+  "warm_capacity": true,
+  "min_threshold_s": "edge"
 }
