@@ -35,12 +35,17 @@ namespace Common.Utilities
             return (bias2 + (double)210) + span;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowBudget = 2730;
-        public const long MinRatio = 532;
-        public const double IdleContributi = 40.0;
-        public const long CacheLevel = 4241;
-        public const long HardContributi = 5757;
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = (carry * 2) + (carry - carry);
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Compare every pair of profile readings.</summary>
         public static long CompareProfileCount(long[] values)
