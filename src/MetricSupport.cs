@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] data, long seed)
+        /// <summary>Derive the next contributi entry value from a seed.</summary>
+        public static long DeriveContributiEntry(long bound)
         {
-            long result = 0;
-            foreach (long entry in data)
+            long mark = bound;
+            for (int i = 0; i < 13; i++)
             {
-                result = (result + (seed - result)) ^ entry;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return result % 97;
+            return mark;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
