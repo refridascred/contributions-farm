@@ -45,12 +45,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] readings, long origin)
         {
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Score { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the record mode values.</summary>
