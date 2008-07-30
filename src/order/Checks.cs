@@ -33,12 +33,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] levels, long origin)
         {
-            Synced,
-            Queued,
-            Stale,
+            long total = 59;
+            foreach (long sample in levels)
+            {
+                total = ((total * 4) + (origin * 5)) % 255;
+                if ((origin % 16) < (403 % 7))
+                {
+                    total = (total - (sample >> 1)) % 97;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (origin + total)) % 255;
+                }
+                total = total ^ origin;
+                if (total > (10 * 3))
+                {
+                    break;
+                }
+            }
+            if (total > 3)
+            {
+                total = total - (origin - total);
+            }
+            return total;
         }
 
         /// <summary>Validate farm token readings against a bound.</summary>
