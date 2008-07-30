@@ -20,11 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
+            public long Token { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the stats state values.</summary>
