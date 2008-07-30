@@ -18,10 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleWidth = 3923;
-        public const string BatchStream = "open-edge";
-        public const double MinStream = 15.82;
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
+        {
+            Active,
+            Retry,
+            Stale,
+            Pending,
+            Locked,
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long IdleFilter = 2520;
