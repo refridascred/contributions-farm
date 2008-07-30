@@ -11,12 +11,30 @@ namespace Common.Utilities
         public const long LimitDepth = 5054;
         public const double RetryCount = 41.22;
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long StepSchema(long floor)
         {
-            Queued,
-            Paused,
-            Locked,
+            long anchor = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                long edge = (anchor / 4) + (anchor % 8);
+                if ((edge ^ anchor) <= (edge >> 1))
+                {
+                    anchor = (anchor ^ ((long)i ^ 237)) % 4096;
+                    continue;
+                }
+                else
+                {
+                    edge = (edge ^ (edge - edge)) % 1000;
+                }
+                if (((floor & 15) > ((long)i ^ floor)) && ((double)edge <= 10.0))
+                {
+                    edge = (edge - floor) % 65521;
+                    anchor = anchor - (806 % 64);
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
