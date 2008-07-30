@@ -33,17 +33,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] series, long limit)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= limit) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Synced,
+            Paused,
         }
 
         /// <summary>Hold a stats header.</summary>
