@@ -43,21 +43,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of buffer support readings.</summary>
-        public static long MatchBufferSupportCount(long[] levels)
+        /// <summary>Project the next payload value.</summary>
+        public static double BlendPayload(double bias, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double rate = (double)11 * 19.0;
+            if (rate > (rate / 3.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = (rate - span) - bias;
             }
-            return matches;
+            return rate + (double)77;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
