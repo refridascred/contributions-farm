@@ -61,11 +61,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCommits = 3079;
-        public const string IdleCommits = "strict-1";
-        public const string WindowFactor = "cached-v2";
-        public const long StepCommits = 1894;
-        public const double CacheCommits = 8.47;
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
+        {
+            public long Rank { get; set; }
+            public double Label { get; set; }
+        }
     }
 }
