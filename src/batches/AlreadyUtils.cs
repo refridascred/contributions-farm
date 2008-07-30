@@ -15,19 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every filter report entry stays within the limit.</summary>
-        public static bool ValidateFilterReportLimits(long[] levels, long target)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorHits(long[] items)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (reading >= target)
+                if ((datum - tally) > (tally * 4))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Hold a contributi record.</summary>
