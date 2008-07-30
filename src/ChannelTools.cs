@@ -40,13 +40,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatBounds(long[] data, long floor)
         {
-            public string Token { get; set; } = "";
-            public double Size { get; set; }
-            public long Offset { get; set; }
-            public bool Score { get; set; }
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
