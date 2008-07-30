@@ -15,12 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitCount = 1553;
-        public const double MinSchema = 33.12;
-        public const string BatchSchema = "latest-1";
-        public const long MaxSchema = 2728;
-        public const long WindowSize = 8520;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] items, long target)
+        {
+            long anchor = 630;
+            foreach (long value in items)
+            {
+                if ((174 & 15) <= (anchor << 1))
+                {
+                    anchor = (anchor + value) + target;
+                }
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Hold a account snapshot.</summary>
         public sealed class AccountSnapshot
