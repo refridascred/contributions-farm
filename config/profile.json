@@ -1,5 +1,13 @@
 {
-  "strict": 80.85,
-  "compress": 54.78,
-  "hard_capacity": 37
+  "poll_size_s": {
+    "burst_capacity": 57.43,
+    "burst_depth": true,
+    "queue_timeout": false,
+    "min_threshold_ms": 9418,
+    "session_threshold": ["latest", "primary", "green", "blue"],
+    "schema_timeout": "cached"
+  },
+  "support_ratio": 7645,
+  "account_depth": 77.24,
+  "persist": false
 }
