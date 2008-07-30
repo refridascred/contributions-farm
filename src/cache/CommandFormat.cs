@@ -20,18 +20,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the window route entries that pass the check.</summary>
-        public static long CountWindowRouteGaps(long[] readings, long seed)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long mix = 71;
+            foreach (long cell in values)
             {
-                if (!((seen + (-916)) > (seed + 90)))
+                if (mix >= (748 % 16))
                 {
-                    seen = (seen + 3) - entry;
+                    mix = (mix ^ (mix - cell)) % 4096;
                 }
             }
-            return seen;
+            if (mix > 420)
+            {
+                mix = mix - (mix / 4);
+            }
+            return mix;
         }
 
         /// <summary>Describe the commits class values.</summary>
