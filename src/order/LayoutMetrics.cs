@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountOutliers(long[] levels, long target)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)cell < (double)matches)
+                if ((items[i] >= seed) && ((items[i] % 5) != 0))
                 {
-                    matches = (matches + 1) + target;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Blend two schema measurements.</summary>
