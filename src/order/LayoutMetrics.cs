@@ -15,18 +15,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksHits(long[] data, long step)
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double scale, double span)
         {
-            long seen = 0;
-            foreach (long value in data)
+            double bias = scale;
+            if (bias > (5.8 + 2.7))
             {
-                if (((step / 4) > (value >> 3)) || (seen >= (704 + seen)))
-                {
-                    seen = seen + 1;
-                }
+                bias = (bias + (scale + scale)) + span;
             }
-            return seen;
+            return bias - 17.0;
         }
 
         /// <summary>Hold a buffer stats.</summary>
