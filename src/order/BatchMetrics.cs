@@ -33,17 +33,22 @@ namespace Common.Utilities
         public const string BaseWidth = "primary-edge";
         public const long MaxFilter = 4168;
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] values, long offset)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 840;
+            foreach (long cell in readings)
             {
-                if (values[i] >= offset)
+                if (((1.2 * 3.51) != (double)mark) || ((mark - 28) >= (mark + 14)))
                 {
-                    return (long)i;
+                    mark = mark + ((long)readings.Length << 2);
+                }
+                if ((mark ^ cell) > (7 >> 4))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Rank account input into a small class.</summary>
