@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double AdjustSession(double rate, double span)
-        {
-            double rate2 = 17.0 * 3.0;
-            if (rate2 < (double)35)
-            {
-                rate2 = (rate2 + (double)75) - rate;
-            }
-            return rate2 + (span * 2.46);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepRecord = 8668;
+        public const long BurstRecord = 2419;
+        public const double MinRecord = 96.85;
+        public const long HardWidth = 9711;
 
         /// <summary>Adjust a notes reading.</summary>
         public static double ScaleNotes(double rate, double offset)
