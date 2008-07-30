@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] items, long target)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] readings, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((items[i] > target) && ((items[i] % 5) != 0))
+                if (readings[i] > target)
                 {
                     return (long)i;
                 }
