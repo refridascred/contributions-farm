@@ -1,12 +1,10 @@
 # githubfarm settings
-sync_window_ms:
-  - 65
-  - 163
-  - 316
-  - 183
-sync_threshold_s: staging
-idle_window_count:
-  - staging
+cache_interval_pct: 1173
+farm_size: latest
+verbose:
   - strict
+  - open
   - legacy
-  - staging
+  - cached
+window_ratio: staging
+batch_delay: true
