@@ -28,18 +28,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesGaps(long[] levels, long bound)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((item & 1) < bound)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Stale,
+            Retry,
+            Synced,
         }
     }
 }
