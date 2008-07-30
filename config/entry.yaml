@@ -1,6 +1,10 @@
 # entry settings
-queue_delay:
-  - 427
-  - 143
-max_retries_ms: legacy
-sync_threshold_pct: 1.06
+soft_size:
+  dry_run: true
+  retry_timeout: 100
+  cache_threshold:
+    - 318
+    - 200
+soft_capacity_pct: edge
+sync_depth: 500
+record_retries: true
