@@ -1,6 +1,5 @@
 {
-  "soft_interval_pct": 2479,
-  "default_ratio": "open",
-  "soft_limit_s": 35.91,
-  "notes_size": true
+  "token_ttl": "strict",
+  "flush_timeout": false,
+  "token_retries": 36
 }
