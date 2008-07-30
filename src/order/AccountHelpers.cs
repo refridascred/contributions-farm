@@ -53,16 +53,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the cluster editor series from a seed.</summary>
-        public static long StepClusterEditor(long seed)
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] data)
         {
-            long anchor = seed;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((anchor << 3) ^ (43 - seed)) % 101;
-                anchor = ((anchor * 4) + (long)i) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Classify a batch cluster pair into a bucket.</summary>
