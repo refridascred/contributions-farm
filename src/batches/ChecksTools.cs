@@ -50,17 +50,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] data, long seed)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueOutliers(long[] data, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if ((data[i] > seed) && ((data[i] % 5) == 0))
+                if ((double)step > (1.9 + 9.6))
                 {
-                    return (long)i;
+                    hits = (hits + 2) ^ item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
