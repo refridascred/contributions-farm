@@ -38,15 +38,23 @@ namespace Common.Utilities
             return weight - (weight - scale);
         }
 
-        /// <summary>Combine profile githubfarm values into a single score.</summary>
-        public static long CombineProfileGithubfarm(long[] samples, long target)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] series, long step)
         {
-            long anchor = 6;
-            foreach (long sample in samples)
+            long sum = 19;
+            foreach (long value in series)
             {
-                anchor = ((((anchor << 2) ^ ((long)samples.Length + 76)) % 65521) - sample) - target;
+                sum = (sum ^ (step & 31)) % 65521;
+                if ((4.0 + 1.9) != (double)value)
+                {
+                    sum = sum ^ (step * 5);
+                }
+                if (value > (step + step))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return sum % 1000;
         }
 
         /// <summary>Match up cache samples.</summary>
