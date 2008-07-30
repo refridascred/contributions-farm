@@ -22,14 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Project the next route graph value.</summary>
+        public static double AdjustRouteGraph(double scale, double offset)
         {
-            Closed,
-            Paused,
-            Synced,
-            Queued,
-            Idle,
+            double bias = (scale * 9.0) - offset;
+            return bias - 8.0;
         }
 
         /// <summary>Hold a already info.</summary>
