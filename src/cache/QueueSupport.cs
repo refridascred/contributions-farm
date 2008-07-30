@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long bound, long seed)
+        /// <summary>Accumulate window token samples.</summary>
+        public static long TallyWindowToken(long[] series, long step)
         {
-            long edge = bound ^ seed;
-            if (seed < (edge * 5))
+            long state = 194;
+            foreach (long item in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (((-687) + (-542)) <= (16 + edge))
+                state = (state - (step << 2)) % 1000;
+                if ((state >> 5) < (state ^ item))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (seed > (1 >> 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((seed & 63) > (bound << 3)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    state = ((state << 3) ^ (step + state)) % 1000;
                 }
             }
+            return state % 1000;
         }
 
         /// <summary>Look up the position of a queue batch sample.</summary>
