@@ -1,15 +1,10 @@
 {
-  "batch_timeout_ms": "legacy",
-  "retry_threshold_pct": {
-    "dry_run": {
-      "soft_interval_ms": 392,
-      "metrics_depth": [500, 48, 181],
-      "burst_threshold_pct": 500,
-      "soft_retries_s": "edge"
-    },
-    "audit": [462, 25, 1],
-    "default_ttl_ms": 39.96
+  "batch_capacity": [28, 39, 24, 181],
+  "cache_window_ms": {
+    "readonly": true,
+    "max_limit": "edge",
+    "burst_threshold": ["latest", "edge"],
+    "min_limit": true
   },
-  "retry_retries_s": "latest",
-  "compress": 30
+  "soft_size_s": ["standard", "primary", "standard", "local"]
 }
