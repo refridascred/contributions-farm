@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] data, long seed)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] data, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 1;
+            foreach (long value in data)
             {
-                if (data[i] > seed)
+                anchor = (anchor ^ (value & 7)) + floor;
+                if (((value + anchor) < (value + value)) || ((value + value) <= (value ^ (-5))))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (anchor > 61)
+            {
+                anchor = ((anchor << 3) ^ 9) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Define already limits and defaults.</summary>
