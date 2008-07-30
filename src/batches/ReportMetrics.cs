@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinLevel = 625;
-        public const string StepEditor = "cached-edge";
-        public const double CacheLevel = 20.68;
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
+        {
+            Active,
+            Retry,
+            Paused,
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long AuditSchemaMatches(long[] samples, long origin)
