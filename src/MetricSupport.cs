@@ -20,24 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a editor notes pair into a bucket.</summary>
-        public static long GradeEditorNotes(long step, long limit)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmRange(long[] readings, long bound)
         {
-            if (0 <= step)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((642 * 3) >= step))
+                if (sample <= bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
