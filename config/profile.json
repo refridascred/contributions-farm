@@ -1,14 +1,13 @@
 {
-  "queue_capacity": {
-    "readonly": ["edge", "latest", "strict"],
-    "order_retries": "stable",
-    "max_window": 90,
-    "base_ratio_pct": 3438,
-    "min_interval_ms": "fallback"
+  "notes_timeout": 18,
+  "token_depth": 64,
+  "strict": true,
+  "hard_limit_count": 58,
+  "batch_threshold_pct": {
+    "report_retries": 9535,
+    "hard_size_count": "edge",
+    "editor_depth": 71.19,
+    "sync_ttl": "cached"
   },
-  "schema_timeout": "open",
-  "burst_interval": "latest",
-  "default_window": 250,
-  "hard_timeout": 96,
-  "contributi_ttl": "cached"
+  "stats_capacity": "edge"
 }
