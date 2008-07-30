@@ -1,8 +1,16 @@
 # githubfarm settings
-idle_threshold_s: 6809
-verbose: 56
-batch_limit: 36.28
-warm_capacity:
-  - local
-  - primary
-soft_capacity_s: false
+idle_interval: 3989
+notes_retries:
+  retry_ttl: local
+  flush_size: standard
+  checks_ttl: 2277
+  retry_ratio: 52.79
+  already_delay: primary
+default_limit:
+  burst_threshold: true
+  contributi_window:
+    - 487
+    - 384
+    - 90
+  cache_capacity_pct: 90
+  batch_timeout_s: eu-west
