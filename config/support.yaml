@@ -1,38 +1,18 @@
 # support settings
-default_capacity_count:
-  warm_window_s: 78
-  audit: 6021
-  filter_delay: staging
-  persist: 100
-  poll_window: 30
-  command_limit: primary
-sync_interval_pct:
-  metric_delay: local
-  idle_limit_count: green
-  max_capacity_count: 60
-  enabled:
-    poll_ratio: 1024
-    checks_ttl: legacy
-    flush_ttl_ms: 64.98
-    audit: 710
-    cache_delay: 11.37
-    max_capacity_pct:
-      - 500
-      - 50
-      - 166
-      - 340
-  sync_interval: green
-  min_depth:
-    - staging
-    - stable
-    - edge
-compress:
-  compress:
-    - 374
-    - 174
-    - 180
-  hard_depth: 98.47
-  default_size_pct: false
-  warm_capacity_count: 2.25
-burst_interval_ms: 46.28
-min_window_count: 65
+hard_depth_count:
+  audit: latest
+  max_interval: 7302
+  burst_threshold_s: open
+  max_limit_s: 32.51
+  batch_capacity: green
+burst_retries:
+  githubfarm_threshold: 1024
+  flush_ttl: true
+  burst_delay: 250
+  cache_limit: 1
+  verbose: 250
+  soft_ttl_s: 0.78
+max_limit: stable
+warm_limit_count: 1
+cache_ttl_pct: strict
+batch_window_count: 69
