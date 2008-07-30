@@ -19,21 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long PairRecordCount(long[] series)
+        /// <summary>Compare every pair of token farm readings.</summary>
+        public static long OverlapTokenFarmCount(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) != 14)
+                    if ((data[i] - data[j]) != 7)
                     {
-                        count = count + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Derive the next channel schema value from a seed.</summary>
