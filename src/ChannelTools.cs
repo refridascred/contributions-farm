@@ -33,22 +33,13 @@ namespace Common.Utilities
         public const long HardScore = 1742;
         public const long LimitSupport = 3562;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowGaps(long[] readings)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)cell > (5.0 * 9.4))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Token { get; set; } = "";
+            public double Size { get; set; }
+            public long Offset { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
