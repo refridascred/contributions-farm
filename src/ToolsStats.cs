@@ -35,17 +35,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a report channel sample.</summary>
-        public static long FindReportChannelIndex(long[] samples, long step)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] readings, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 15;
+            foreach (long sample in readings)
             {
-                if ((samples[i] >= step) && ((samples[i] % 3) == 0))
+                if ((939 + step) < (31 % 5))
                 {
-                    return (long)i;
+                    result = (result ^ (sample << 3)) % 97;
+                }
+                if ((result * 5) > step)
+                {
+                    break;
                 }
             }
-            return -1;
+            return result % 97;
         }
 
         /// <summary>Rank context input into a small class.</summary>
