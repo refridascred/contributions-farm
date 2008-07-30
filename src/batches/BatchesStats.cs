@@ -41,24 +41,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long target, long offset)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordMatches(long[] data)
         {
-            if (target <= (target & 3))
+            long count = 0;
+            foreach (long value in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((2 + target) < (-629))
+                if (((18.0 / 5.0) < (double)value) || !(count <= (count + value)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    count = count + 1;
                 }
             }
+            return count;
         }
     }
 }
