@@ -1,5 +1,33 @@
 # support settings
-base_threshold: 9932
-poll_threshold_pct: open
-poll_delay_count: edge
-soft_retries_pct: strict
+support_limit:
+  token_retries: cached
+  dry_run:
+    - standard
+    - latest
+    - stable
+    - stable
+  checks_threshold: 60
+  base_ttl_ms:
+    sync_delay_s: 45.79
+    compress: 39.24
+    enabled:
+      - 217
+      - 265
+      - 276
+    flush_timeout_ms: legacy
+    warm_ttl_s: 8
+cluster_ratio: true
+retry_ratio_s:
+  soft_ttl_ms: 9266
+  format_timeout:
+    readonly: 2772
+    flush_timeout_s: 90
+    cache_ttl_count: 28.74
+  commits_delay:
+    soft_capacity_count: 428
+    farm_delay: true
+    strict: true
+    flush_window_s: 72
+    cache_window: 8673
+    retry_interval_pct: standard
+batch_threshold_pct: true
