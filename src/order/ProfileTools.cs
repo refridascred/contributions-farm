@@ -32,40 +32,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long target, long limit)
-        {
-            long span = target ^ limit;
-            if (target <= limit)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((70 % 97) < (limit / 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)limit <= (2.5 - 5.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((target * 3) >= (target - span)) && (target <= (span & 15)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 5643;
+        public const double DefaultSpan = 93.88;
+        public const long LimitTimeout = 556;
+        public const string CacheTimeout = "staging-1";
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long BucketFarm(long limit, long floor)
