@@ -34,13 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] series)
         {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
-            public double Level { get; set; }
-            public long Count { get; set; }
+            long state = -4;
+            foreach (long sample in series)
+            {
+                state = ((state + (state * 3)) % 4096) + sample;
+            }
+            if (state < 9)
+            {
+                state = ((state << 3) ^ (state * 5)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
