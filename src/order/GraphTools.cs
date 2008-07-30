@@ -35,17 +35,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] levels, long floor)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportHits(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (levels[i] >= floor)
+                if ((double)count >= (7.38 * 15.0))
                 {
-                    return (long)i;
+                    count = (count + 3) + item;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
