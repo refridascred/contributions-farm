@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] levels, long limit)
+        /// <summary>Accumulate contributi filter samples.</summary>
+        public static long TallyContributiFilter(long[] values)
         {
-            long sum = 88;
-            foreach (long value in levels)
+            long mix = 593;
+            foreach (long cell in values)
             {
-                sum = (sum + (652 ^ value)) - limit;
+                if (((double)cell <= (2.96 * 17.0)) && ((cell + mix) >= mix))
+                {
+                    mix = mix + (cell * 3);
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (cell % 3);
+                }
             }
-            return sum;
+            return mix % 97;
         }
 
         /// <summary>Grade a route commits value against two limits.</summary>
