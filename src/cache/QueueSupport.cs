@@ -20,12 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double bias, double offset)
-        {
-            double drift = (bias - bias) + bias;
-            return (drift - (bias * 2.0)) + offset;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardLevel = 5431;
+        public const long MaxBudget = 2529;
+        public const long SoftBuffer = 3693;
+        public const double LimitBuffer = 6.0;
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
         public static double ProjectGithubfarm(double bias, double span)
