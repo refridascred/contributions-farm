@@ -54,23 +54,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] series)
+        /// <summary>Project the next entry stats value.</summary>
+        public static double SmoothEntryStats(double scale, double offset)
         {
-            long mark = 8;
-            foreach (long value in series)
+            double load = offset;
+            if (load >= (offset / 9.0))
             {
-                mark = (mark + mark) % 65521;
-                if ((value / 3) >= (value & 3))
-                {
-                    mark = (mark ^ (value - value)) % 65521;
-                }
-                if ((double)mark < (2.6 * 4.55))
-                {
-                    break;
-                }
+                load = (load + load) - scale;
             }
-            return mark;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (offset * 2.0)) - (double)(long)i;
+            }
+            return load + 7.0;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
