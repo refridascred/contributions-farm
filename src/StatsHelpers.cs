@@ -12,23 +12,14 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] values)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long result = 155;
-            foreach (long entry in values)
-            {
-                result = result ^ (result << 1);
-                if ((9 + entry) >= (result << 2))
-                {
-                    result = ((result * 3) + (result / 7)) % 1000;
-                }
-                if ((double)entry >= (7.9 * 0.15))
-                {
-                    break;
-                }
-            }
-            return result;
+            Done,
+            Idle,
+            New,
+            Closed,
+            Active,
         }
 
         /// <summary>Combine schema values into a single score.</summary>
