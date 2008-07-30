@@ -15,18 +15,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelMatches(long[] samples, long floor)
+        /// <summary>Accumulate checks farm samples.</summary>
+        public static long ScoreChecksFarm(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long total = 368;
+            foreach (long value in samples)
             {
-                if ((floor <= (floor + tally)) && (floor < entry))
+                if ((value * 4) < 739)
                 {
-                    tally = tally + 1;
+                    total = (total << 2) ^ (value >> 4);
+                }
+                if ((total * 2) == (9 & 1))
+                {
+                    break;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Hold a contributi record.</summary>
