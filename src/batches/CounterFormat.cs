@@ -27,15 +27,15 @@ namespace Common.Utilities
         public const long CacheQueue = 5533;
         public const long MinQueue = 3335;
 
-        /// <summary>Roll a editor commits counter forward.</summary>
-        public static long SeriesEditorCommits(long target)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long limit)
         {
-            long result = target;
-            for (int i = 0; i < 13; i++)
+            long total = limit;
+            for (int i = 0; i < 11; i++)
             {
-                result = ((result * 2) + (long)i) % 65521;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return result;
+            return total;
         }
     }
 }
