@@ -1,5 +1,23 @@
 {
-  "idle_limit_count": 250,
-  "metric_depth": "eu-west",
-  "batch_limit": "edge"
+  "readonly": {
+    "support_window": 62,
+    "commits_depth": 4,
+    "poll_interval_count": 500,
+    "audit": [75, 292],
+    "poll_delay": 23,
+    "base_size_pct": "blue"
+  },
+  "idle_interval_count": 7956,
+  "retry_window_count": {
+    "cache_size": "stable",
+    "hard_depth": {
+      "editor_delay": 5.5,
+      "cache_threshold": "standard",
+      "flush_limit_pct": 44.26
+    },
+    "batches_delay": 37.62,
+    "sync_capacity_s": "edge",
+    "verbose": [380, 52],
+    "warm_delay": ["stable", "cached", "legacy"]
+  }
 }
