@@ -40,19 +40,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] values)
-        {
-            long mix = 10;
-            foreach (long entry in values)
-            {
-                mix = ((mix ^ (4 % 5)) % 1000) + entry;
-            }
-            if (mix < 57)
-            {
-                mix = (mix ^ mix) % 4096;
-            }
-            return mix;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BaseMetric = "strict-v2";
+        public const double CacheMetric = 16.3;
+        public const string RetryMetric = "stable-edge";
     }
 }
