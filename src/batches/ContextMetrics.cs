@@ -90,21 +90,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long OverlapProfileCount(long[] readings)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double bias, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double ratio = bias;
+            return (ratio + 7.54) + offset;
         }
     }
 }
