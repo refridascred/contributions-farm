@@ -14,21 +14,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCount(long[] items)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] items, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 31;
+            foreach (long value in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((value - value) > offset)
                 {
-                    if ((items[i] - items[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total ^ (offset >> 4)) % 101;
+                }
+                else
+                {
+                    total = (total ^ (offset * 5)) % 255;
                 }
             }
-            return hits;
+            return total % 1000;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
