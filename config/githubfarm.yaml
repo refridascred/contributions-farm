@@ -1,16 +1,10 @@
 # githubfarm settings
-idle_interval: 3989
-notes_retries:
-  retry_ttl: local
-  flush_size: standard
-  checks_ttl: 2277
-  retry_ratio: 52.79
-  already_delay: primary
-default_limit:
-  burst_threshold: true
-  contributi_window:
-    - 487
-    - 384
-    - 90
-  cache_capacity_pct: 90
-  batch_timeout_s: eu-west
+soft_retries_pct: strict
+base_ttl: 94.52
+soft_timeout_s: legacy
+enabled:
+  - 241
+  - 4
+  - 306
+  - 237
+cluster_ttl: false
