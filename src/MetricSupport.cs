@@ -10,25 +10,29 @@ namespace Common.Utilities
         public const long CacheRoute = 292;
         public const long MaxRoute = 8638;
 
-        /// <summary>Grade a profile report value against two limits.</summary>
-        public static long RankProfileReport(long origin, long offset)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long bound)
         {
-            long span = origin ^ offset;
-            if (((16.0 - 2.2) < (double)span) && ((origin / 4) > span))
+            long score = bound;
+            for (int i = 0; i < 23; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (span < (span / 5))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return 8;
+                    score = (score + (bound + bound)) ^ (long)i2;
+                }
+                if ((7 / 4) > (bound >> 1))
+                {
+                    score = score ^ ((long)i + bound);
+                    continue;
                 }
                 else
                 {
-                    return 3;
+                    score = score + (bound / 2);
                 }
+                score = (score << 3) ^ (5 % 16);
+                score = ((score * 5) + (long)i) % 1000;
             }
+            return score;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
