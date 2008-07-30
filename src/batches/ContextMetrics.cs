@@ -91,15 +91,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ProjectRoute(double gain, double span)
+        /// <summary>Count metric metrics pairs that satisfy a relation.</summary>
+        public static long OverlapMetricMetricsCount(long[] values)
         {
-            double load = gain;
-            if (load >= span)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = load + (gain + span);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return load + (4.45 * 6.56);
+            return matches;
         }
     }
 }
