@@ -48,14 +48,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            Idle,
-            New,
-            Draft,
-            Paused,
-            Locked,
+            public string Limit { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Look up the position of a record sample.</summary>
