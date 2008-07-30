@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long step, long offset)
         {
-            public long Size { get; set; }
-            public bool Label { get; set; }
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
+            if ((step * 5) >= offset)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset - offset) <= (offset - 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
