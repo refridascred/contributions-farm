@@ -31,13 +31,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Roll a githubfarm window counter forward.</summary>
+        public static long RollGithubfarmWindow(long target)
         {
-            Paused,
-            Locked,
-            Queued,
-            New,
+            long acc = target;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = (acc + target) % 101;
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate graph samples.</summary>
