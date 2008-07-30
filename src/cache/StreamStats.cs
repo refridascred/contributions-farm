@@ -20,22 +20,13 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Measure how many already token samples are out of range.</summary>
-        public static long CountAlreadyTokenMatches(long[] readings, long target)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)datum <= (11.0 + 3.0))
-                {
-                    tally = (tally + 2) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Locked,
+            Draft,
+            Closed,
         }
 
         /// <summary>Hold a payload record.</summary>
