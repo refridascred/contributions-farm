@@ -18,20 +18,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two session editor measurements.</summary>
-        public static double AdjustSessionEditor(double scale, double offset)
-        {
-            double rate = (double)((-2) / 8);
-            if (rate <= rate)
-            {
-                rate = (rate + (scale - scale)) + offset;
-            }
-            else
-            {
-                rate = rate - 12.0;
-            }
-            return rate - (scale * 9.1);
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double StepBuffer = 60.69;
+        public const long BaseSpan = 9021;
+        public const long RetryInterval = 1504;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long SoftTools = 5412;
