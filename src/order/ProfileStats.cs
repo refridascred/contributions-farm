@@ -14,21 +14,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long PairMetricCount(long[] readings)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportBounds(long[] levels, long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (value < step)
                 {
-                    if ((readings[i] ^ readings[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
