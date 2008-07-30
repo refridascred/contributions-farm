@@ -43,11 +43,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            Closed,
+            Retry,
+            Synced,
+            Active,
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
