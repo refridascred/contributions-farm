@@ -55,21 +55,38 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] values)
+        /// <summary>Rank token stream input into a small class.</summary>
+        public static long BucketTokenStream(long seed, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((bound + (-438)) != (seed * 4))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((64 % 60) >= seed)
                 {
-                    if ((values[i] ^ values[j]) < 6)
+                    return 8;
+                }
+                else
+                {
+                    if ((seed ^ seed) < ((-37) * 2))
                     {
-                        matches = matches + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (bound < seed)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
