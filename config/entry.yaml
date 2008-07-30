@@ -1,13 +1,15 @@
 # entry settings
-batch_ratio_count:
-  max_retries_s: 245
-  batch_size_ms: 220
-  flush_interval_ms:
-    - 322
-    - 250
-    - 175
-    - 193
-  idle_limit_ms: staging
-  soft_threshold: staging
-sync_ratio: eu-west
-readonly: 56.84
+hard_ratio_count: 17.01
+warm_window_s:
+  flush_retries:
+    readonly: true
+    base_size_count: 1024
+    flush_window: blue
+    tools_capacity: green
+    max_depth_s: false
+  tools_threshold: 2082
+  poll_retries_pct: edge
+  dry_run: 359
+readonly: 47
+account_window: 500
+compress: 1758
