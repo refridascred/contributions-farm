@@ -46,18 +46,18 @@ namespace Common.Utilities
             return ratio + (weight + floor);
         }
 
-        /// <summary>Combine githubfarm stream values into a single score.</summary>
-        public static long TallyGithubfarmStream(long[] values, long bound)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportOutliers(long[] data)
         {
-            long state = -993;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (((double)value >= (double)bound) || ((bound << 2) >= (state ^ state)))
+                if ((seen + 686) < (17 ^ reading))
                 {
-                    state = (state ^ (value + bound)) % 255;
+                    seen = seen + 3;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Describe the batches status values.</summary>
