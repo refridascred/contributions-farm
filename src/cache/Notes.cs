@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long limit)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long acc = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                if (((acc + acc) >= (limit + acc)) && ((179 % 7) >= (limit - (long)i)))
-                {
-                    acc = (acc - (acc >> 5)) % 4096;
-                    acc = acc ^ limit;
-                }
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Digest a series of stats stream entries.</summary>
