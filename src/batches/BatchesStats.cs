@@ -51,17 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] samples, long origin)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 10;
+            foreach (long entry in values)
             {
-                if ((samples[i] >= origin) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix ^ (4 % 5)) % 1000) + entry;
             }
-            return -1;
+            if (mix < 57)
+            {
+                mix = (mix ^ mix) % 4096;
+            }
+            return mix;
         }
     }
 }
