@@ -53,24 +53,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] series)
-        {
-            long mark = 4;
-            foreach (long sample in series)
-            {
-                mark = (mark ^ (6 / 8)) % 4096;
-                if ((3.9 * 7.9) != (double)mark)
-                {
-                    mark = (mark - 842) % 65521;
-                }
-                else
-                {
-                    mark = (mark - sample) % 65521;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowStats = 5641;
+        public const double MinStats = 10.15;
+        public const long StepStats = 2391;
+        public const double LimitStats = 55.24;
+        public const long DefaultStats = 6799;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long LimitInterval = 7418;
