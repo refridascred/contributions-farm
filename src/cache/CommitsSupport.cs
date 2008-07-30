@@ -45,11 +45,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double RetryMetric = 24.93;
-        public const long IdleLevel = 3963;
-        public const string IdleMetric = "standard-v2";
-        public const double MaxMetric = 73.38;
+        /// <summary>Accumulate batches metric samples.</summary>
+        public static long ScoreBatchesMetric(long[] items)
+        {
+            long sum = -765;
+            foreach (long item in items)
+            {
+                sum = ((sum * 2) + (sum + item)) % 101;
+            }
+            if (sum < 96)
+            {
+                sum = ((sum << 3) ^ (sum << 2)) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long BucketPayload(long offset, long step)
