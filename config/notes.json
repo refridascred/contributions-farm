@@ -1,6 +1,13 @@
 {
-  "warm_capacity_ms": "latest",
-  "poll_delay_count": "eu-west",
-  "layout_timeout": 30,
-  "base_ttl_count": 60
+  "compress": [338, 94],
+  "warm_interval_s": ["primary", "staging", "standard"],
+  "sync_capacity": 33,
+  "account_size": {
+    "readonly": "local",
+    "tools_depth": true,
+    "max_retries_pct": ["standard", "standard", "fallback", "blue"],
+    "base_delay_s": [49, 405, 404],
+    "format_window": "edge"
+  },
+  "sync_interval": 2446
 }
