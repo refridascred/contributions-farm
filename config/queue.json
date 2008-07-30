@@ -1,15 +1,8 @@
 {
-  "dry_run": ["latest", "eu-west"],
-  "poll_timeout_ms": ["staging", "stable", "green", "local"],
-  "batches_depth": "staging",
-  "profile_size": 5.84,
-  "base_ratio": {
-    "retry_ratio_count": false,
-    "commits_capacity": "local",
-    "buffer_window": 56.17,
-    "retry_interval_count": 16.85,
-    "max_delay_count": 69.91,
-    "editor_interval": 83.84
-  },
-  "context_timeout": 1024
+  "record_timeout": "cached",
+  "burst_size_count": "primary",
+  "sync_capacity_count": 48,
+  "poll_delay": [115, 8, 57],
+  "default_delay_s": "primary",
+  "burst_delay": true
 }
