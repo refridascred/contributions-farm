@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double HardContributi = 55.27;
-        public const long WindowContributi = 6665;
-        public const long CacheContributi = 859;
-        public const long HardSize = 6975;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchBudget = 9021;
+        public const double HardSchema = 8.44;
+        public const double SoftSchema = 59.09;
+        public const string StepSchema = "strict";
+        public const long BurstDepth = 8290;
 
         /// <summary>Adjust a filter reading.</summary>
         public static double AdjustFilter(double scale, double floor)
