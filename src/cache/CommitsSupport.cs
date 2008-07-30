@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] readings)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] values, long bound)
         {
-            long mix = 28;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = mix + (cell ^ cell);
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Validate context stats readings against a bound.</summary>
