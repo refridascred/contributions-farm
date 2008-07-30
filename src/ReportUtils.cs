@@ -24,17 +24,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] data, long seed)
+        /// <summary>Check that every window context entry stays within the limit.</summary>
+        public static bool CheckWindowContextRange(long[] items, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if ((data[i] <= seed) && ((data[i] % 2) == 0))
+                if (item < target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Match up already samples.</summary>
