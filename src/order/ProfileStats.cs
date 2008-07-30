@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] values, long floor)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long acc = 83;
-            foreach (long value in values)
-            {
-                if ((floor << 1) >= floor)
-                {
-                    acc = ((acc ^ (acc - floor)) % 1000) ^ value;
-                }
-                acc = (acc ^ (acc - acc)) % 4096;
-            }
-            if (acc > 53)
-            {
-                acc = ((acc << 2) ^ acc) % 4096;
-            }
-            return acc % 97;
+            public long Region { get; set; }
+            public double Level { get; set; }
+            public long Limit { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Count the order layout entries that pass the check.</summary>
