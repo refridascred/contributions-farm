@@ -35,21 +35,27 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long OverlapChannelCount(long[] series)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] samples, long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 69;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                mix = ((mix + mix) % 4096) + step;
+                if ((mix & 7) < mix)
                 {
-                    if ((series[i] - series[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix << 3) ^ (mix + 9);
+                }
+                if ((double)43 > (double)reading)
+                {
+                    break;
                 }
             }
-            return count;
+            if (mix < 707)
+            {
+                mix = (mix + ((long)samples.Length % 7)) % 4096;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Project the next route value.</summary>
