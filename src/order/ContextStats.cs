@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryContext = 9266;
-        public const long CacheWidth = 8837;
-        public const long DefaultContext = 7903;
-        public const string MaxSpan = "latest-edge";
-        public const long BatchContext = 1157;
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
+        {
+            Queued,
+            Stale,
+            Ready,
+            Locked,
+            Dropped,
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long LimitCount = 1553;
