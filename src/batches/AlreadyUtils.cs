@@ -14,11 +14,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepLevel = 3487;
-        public const double BatchSpan = 24.14;
-        public const double IdleContext = 53.52;
-        public const long StepWidth = 4211;
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a context summary.</summary>
         public sealed class ContextSummary
