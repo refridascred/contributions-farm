@@ -28,21 +28,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count notes stream pairs that satisfy a relation.</summary>
-        public static long OverlapNotesStreamCount(long[] data)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchOutliers(long[] series, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((6.3 - 5.38) < (double)offset)
                 {
-                    if ((data[i] + data[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 2) ^ sample;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
