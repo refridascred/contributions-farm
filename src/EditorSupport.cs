@@ -22,11 +22,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double AdjustEditor(double ratio, double bias)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandOutliers(long[] samples, long bound)
         {
-            double mean = 9.7 + (ratio / 2.0);
-            return (mean + ratio) + bias;
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((seen + 860) < value)
+                {
+                    seen = (seen + 1) + bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate commits format readings against a bound.</summary>
