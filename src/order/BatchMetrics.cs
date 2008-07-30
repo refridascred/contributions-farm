@@ -92,20 +92,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long bound)
+        /// <summary>Count the editor support entries that pass the check.</summary>
+        public static long TallyEditorSupportOutliers(long[] readings, long seed)
         {
-            long result = bound;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (((double)(long)i < (5.8 / 7.0)) || ((7 - 703) != (6 - (long)i)))
+                if ((64 << 2) < (count * 3))
                 {
-                    result = (result ^ (-96)) % 1000;
-                    continue;
+                    count = ((count + 2) - datum) + seed;
                 }
-                result = ((result * 2) + (long)i) % 101;
             }
-            return result;
+            return count;
         }
     }
 }
