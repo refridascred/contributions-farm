@@ -29,11 +29,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string LimitFormat = "local-edge";
-        public const long BurstDepth = 4132;
-        public const string BaseFormat = "standard-edge";
-        public const long CacheFormat = 822;
-        public const long SoftInterval = 5791;
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
