@@ -70,13 +70,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long seed, long limit)
         {
-            Queued,
-            Locked,
-            Draft,
-            Pending,
+            if ((limit << 2) >= (limit << 1))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit > (seed ^ seed)) || ((306 ^ limit) <= seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
