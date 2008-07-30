@@ -29,12 +29,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            Closed,
-            New,
-            Synced,
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
