@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterRange(long[] series, long floor)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheMatches(long[] series, long floor)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (reading < floor)
+                if (((-9) * 3) >= floor)
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 1) ^ value;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Define account limits and defaults.</summary>
