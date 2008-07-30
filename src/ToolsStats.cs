@@ -45,12 +45,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinCount = 424;
-        public const long BurstWidth = 9026;
-        public const long LimitOrder = 3368;
-        public const long BaseFactor = 4493;
-        public const long IdleOrder = 6358;
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
+        {
+            public double Total { get; set; }
+            public long Count { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Accumulate checks samples.</summary>
         public static long DigestChecks(long[] series)
