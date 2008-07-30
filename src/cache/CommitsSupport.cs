@@ -52,39 +52,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long offset, long step)
-        {
-            if ((offset % 64) == (offset & 255))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step * 5) <= (step % 12))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((27 > (offset / 5)) && (6.8 < (double)offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step + offset) > offset)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string LimitRatio = "standard-v2";
+        public const long BatchFilter = 8670;
+        public const long LimitFilter = 4077;
+        public const double LimitCount = 27.14;
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
