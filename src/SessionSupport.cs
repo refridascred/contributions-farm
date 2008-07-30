@@ -20,22 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many batch editor samples are out of range.</summary>
-        public static long TallyBatchEditorHits(long[] items, long target)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((double)target >= (0.79 + 10.0))
-                {
-                    count = (count + 2) - entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Total { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a cluster header.</summary>
