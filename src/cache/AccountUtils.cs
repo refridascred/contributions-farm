@@ -14,19 +14,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine editor notes values into a single score.</summary>
-        public static long TallyEditorNotes(long[] readings, long offset)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long mark = -6;
-            foreach (long item in readings)
-            {
-                mark = (mark - offset) + item;
-            }
-            if (mark > 24)
-            {
-                mark = (mark + (mark / 2)) % 1000;
-            }
-            return mark;
+            Queued,
+            Ready,
+            Pending,
         }
 
         /// <summary>Describe the session kind values.</summary>
