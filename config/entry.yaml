@@ -1,9 +1,22 @@
 # entry settings
-min_size: 50
-window_ttl: standard
-batch_interval_count:
-  - 447
-  - 97
-  - 346
-command_threshold: local
-burst_timeout_ms: true
+account_interval:
+  account_timeout:
+    - stable
+    - edge
+  poll_ratio:
+    min_depth: 67
+    soft_delay_s: false
+    audit: 53.27
+  order_capacity: 8331
+  flush_threshold_count:
+    enabled: 27.41
+    min_window:
+      - 452
+      - 241
+      - 318
+    cache_interval_pct: 91
+  flush_ttl:
+    - 470
+    - 240
+dry_run: staging
+poll_size: 52.49
