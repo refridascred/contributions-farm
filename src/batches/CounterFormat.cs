@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] levels)
+        /// <summary>Match up window samples.</summary>
+        public static long MatchWindowCount(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) < 20)
+                    if ((samples[i] ^ samples[j]) == 20)
                     {
-                        tally = tally + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
