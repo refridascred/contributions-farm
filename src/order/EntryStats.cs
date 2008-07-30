@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MinWidth = "latest-v2";
-        public const long WindowRatio = 8670;
-        public const long CacheBatch = 810;
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiLimits(long[] levels, long origin)
+        {
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Combine stream buffer values into a single score.</summary>
         public static long CombineStreamBuffer(long[] series)
