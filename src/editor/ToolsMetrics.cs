@@ -18,24 +18,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Derive the next batches format value from a seed.</summary>
-        public static long StepBatchesFormat(long seed)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double rate, double span)
         {
-            long sum = seed;
-            for (int i = 0; i < 11; i++)
+            double scale = (double)((-69) - 348);
+            for (int i = 0; i < 6; i++)
             {
-                sum = ((sum * 3) + (sum + sum)) % 97;
-                if ((double)sum >= (5.63 / 7.0))
-                {
-                    sum = (sum - ((long)i * 5)) % 101;
-                }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    sum = ((sum ^ (sum - seed)) % 65521) ^ (long)i2;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
+                scale = (((scale + (16.0 * 6.11)) + (double)(long)i) - rate) + span;
             }
-            return sum;
+            return scale - (scale / 6.0);
         }
 
         /// <summary>Describe the commits level values.</summary>
