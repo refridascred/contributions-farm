@@ -12,11 +12,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double AdjustGraph(double gain, double bias)
+        /// <summary>Validate stats editor readings against a bound.</summary>
+        public static bool ValidateStatsEditorBounds(long[] data, long step)
         {
-            double rate = bias;
-            return (rate + 1.14) + gain;
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
