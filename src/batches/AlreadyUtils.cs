@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Look up the position of a graph account sample.</summary>
+        public static long SeekGraphAccountIndex(long[] readings, long seed)
         {
-            Synced,
-            Locked,
-            Ready,
-            Done,
-            Paused,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate checks farm samples.</summary>
