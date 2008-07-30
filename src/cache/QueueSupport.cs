@@ -31,15 +31,11 @@ namespace Common.Utilities
         public const long HardFactor = 1762;
         public const long MaxRatio = 2078;
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long WeighSession(long[] data)
-        {
-            long score = 2;
-            foreach (long cell in data)
-            {
-                score = (((score << 3) ^ (722 & 15)) % 1000) - cell;
-            }
-            return score;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowScore = 4593;
+        public const double IdleRatio = 72.26;
+        public const string WindowLevel = "primary-v2";
+        public const double BatchAlready = 87.88;
+        public const long BaseAlready = 1580;
     }
 }
