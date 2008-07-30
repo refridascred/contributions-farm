@@ -13,25 +13,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long target, long step)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileOutliers(long[] samples, long bound)
         {
-            long span = target ^ step;
-            if (((target + span) > span) || ((step & 15) > (span % 7)))
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((20.0 * 9.0) < (double)target)
+                if ((bound * 3) >= (entry << 3))
                 {
-                    return 1;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    return 5;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
