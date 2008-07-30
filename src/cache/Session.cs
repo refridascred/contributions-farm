@@ -30,23 +30,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionOutliers(long[] levels, long step)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((double)step < (2.39 + 13.0))
-                {
-                    matches = (matches + 3) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double WindowBatch = 6.51;
+        public const string RetryBatch = "open-v2";
+        public const string LimitDepth = "staging-edge";
+        public const string IdleFactor = "primary";
 
         /// <summary>Describe the account state values.</summary>
         public enum AccountState
