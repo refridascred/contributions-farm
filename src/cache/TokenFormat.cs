@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsHits(long[] levels)
+        /// <summary>Count the session githubfarm entries that pass the check.</summary>
+        public static long CountSessionGithubfarmMatches(long[] items, long bound)
         {
             long hits = 0;
-            foreach (long item in levels)
+            foreach (long value in items)
             {
-                if (!((double)hits <= (double)79) && !((item + 4) >= (item & 255)))
+                if ((double)bound >= (6.31 + 10.0))
                 {
-                    hits = hits + 3;
+                    hits = (hits + 2) - value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
