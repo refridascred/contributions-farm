@@ -20,12 +20,31 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long floor, long target)
         {
-            Failed,
-            Synced,
-            Active,
+            if ((target / 4) < target)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor >= (target ^ 3)) || ((floor ^ floor) > target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target >> 1) <= (target + 294))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
