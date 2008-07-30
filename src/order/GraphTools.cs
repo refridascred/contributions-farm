@@ -28,12 +28,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardScore = 2006;
-        public const long SoftFactor = 2861;
-        public const long IdleWindow = 29;
-        public const double DefaultCount = 55.5;
-        public const double SoftLevel = 19.55;
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
+        {
+            public string Total { get; set; } = "";
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
