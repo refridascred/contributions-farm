@@ -55,11 +55,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double SoftSize = 42.88;
-        public const long CacheContributi = 8963;
-        public const long SoftContributi = 4232;
-        public const long LimitContributi = 6698;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] items)
+        {
+            long acc = 9;
+            foreach (long sample in items)
+            {
+                if (((double)acc <= (8.6 - 9.25)) || (sample > (acc + acc)))
+                {
+                    acc = acc ^ (acc ^ sample);
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (acc - 74)) % 65521;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Match up contributi samples.</summary>
         public static long CompareContributiCount(long[] samples)
