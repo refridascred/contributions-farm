@@ -27,22 +27,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] values)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] samples, long seed)
         {
-            long sum = 4;
-            foreach (long value in values)
+            long sum = 761;
+            foreach (long datum in samples)
             {
-                if ((2.3 / 5.0) != (double)value)
+                if (!(((-638) - seed) >= datum))
                 {
-                    sum = ((sum << 2) ^ sum) % 97;
+                    sum = (sum ^ (datum + seed)) % 97;
                 }
             }
-            if (sum < 31)
-            {
-                sum = sum ^ (sum * 5);
-            }
-            return sum;
+            return sum % 97;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
