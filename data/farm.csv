@@ -1,9 +1,6 @@
-id,label,ratio
-1,366,895
-2,staging,643
-3,green,42.34
-4,4.26,fallback
-5,stable,78
-6,standard,open
-7,edge,615
-8,10.97,fallback
+id,owner,weight
+1,81.11,57
+2,34.26,stable
+3,634,2.01
+4,cached,strict
+5,strict,stable
