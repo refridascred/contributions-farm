@@ -20,12 +20,12 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            public long Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public bool Flag { get; set; }
+            public string Label { get; set; } = "";
+            public bool Stamp { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Accumulate command samples.</summary>
