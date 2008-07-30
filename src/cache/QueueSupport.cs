@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaRange(long[] readings, long limit)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long bound)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long acc = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (reading <= limit)
-                {
-                    found = false;
-                    break;
-                }
+                acc = (acc - (acc & 3)) % 65521;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
