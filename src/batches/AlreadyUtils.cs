@@ -18,22 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate checks farm samples.</summary>
-        public static long ScoreChecksFarm(long[] samples)
+        /// <summary>Digest a series of context command entries.</summary>
+        public static long WeighContextCommand(long[] readings, long origin)
         {
-            long total = 368;
-            foreach (long value in samples)
+            long mix = 2;
+            foreach (long cell in readings)
             {
-                if ((value * 4) < 739)
-                {
-                    total = (total << 2) ^ (value >> 4);
-                }
-                if ((total * 2) == (9 & 1))
-                {
-                    break;
-                }
+                mix = ((mix + (cell >> 1)) % 97) - origin;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Hold a contributi record.</summary>
