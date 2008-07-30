@@ -15,19 +15,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a schema order reading.</summary>
-        public static double AdjustSchemaOrder(double weight, double bias)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] levels, long target)
         {
-            double bias2 = (bias + bias) - bias;
-            if (bias2 > (bias2 * 3.2))
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias2 = bias2 + weight;
+                if (levels[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 - weight) + (double)(long)i;
-            }
-            return bias2 - bias;
+            return -1;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
