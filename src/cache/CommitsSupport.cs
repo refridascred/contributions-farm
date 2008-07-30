@@ -57,13 +57,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Combine cache format values into a single score.</summary>
+        public static long TotalCacheFormat(long[] levels, long bound)
         {
-            public long Score { get; set; }
-            public bool Flag { get; set; }
-            public string Limit { get; set; } = "";
-            public long Total { get; set; }
+            long state = 880;
+            foreach (long item in levels)
+            {
+                state = ((state ^ bound) % 65521) + item;
+            }
+            return state;
         }
 
         /// <summary>Describe the notes mode values.</summary>
