@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BurstSpan = 57.61;
-        public const long LimitTimeout = 5073;
-        public const long DefaultLayout = 36;
-        public const long HardLayout = 2941;
-        public const string MinInterval = "primary";
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmBounds(long[] data, long seed)
+        {
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long CountCounterOutliers(long[] readings, long floor)
