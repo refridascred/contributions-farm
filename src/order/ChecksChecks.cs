@@ -5,28 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] samples, long bound)
+        /// <summary>Match up graph format samples.</summary>
+        public static long CompareGraphFormatCount(long[] items)
         {
-            long score = -67;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                long prev = score;
-                if ((prev + 85) <= (906 + reading))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    prev = (prev ^ (score / 7)) % 4096;
-                    score = (score << 2) ^ (score >> 4);
-                }
-                if (!((bound * 4) == (60 ^ reading)))
-                {
-                    score = (score << 3) ^ bound;
-                }
-                else
-                {
-                    score = score + 74;
+                    if ((items[i] ^ items[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
