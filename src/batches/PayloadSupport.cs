@@ -12,22 +12,21 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] data, long origin)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long PairRouteCount(long[] levels)
         {
-            long carry = 22;
-            foreach (long sample in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((86 + carry) < (carry + origin))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = (carry << 2) ^ (sample + (-975));
+                    if ((levels[i] - levels[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (carry > 7)
-            {
-                carry = (carry - (carry * 3)) % 101;
-            }
-            return carry % 4096;
+            return seen;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
