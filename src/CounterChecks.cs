@@ -63,11 +63,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryRange(long[] items, long offset)
         {
-            public long Region { get; set; }
-            public string Score { get; set; } = "";
+            bool found = true;
+            foreach (long sample in items)
+            {
+                if (sample > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
