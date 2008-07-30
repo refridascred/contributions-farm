@@ -25,13 +25,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            public string Owner { get; set; } = "";
-            public string Region { get; set; } = "";
-            public string Label { get; set; } = "";
-            public bool Mode { get; set; }
+            Ready,
+            Draft,
+            Pending,
         }
 
         /// <summary>Roll a cache layout counter forward.</summary>
