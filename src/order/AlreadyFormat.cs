@@ -49,11 +49,23 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] series)
         {
-            public string Level { get; set; } = "";
-            public bool Owner { get; set; }
+            long mark = 8;
+            foreach (long value in series)
+            {
+                mark = (mark + mark) % 65521;
+                if ((value / 3) >= (value & 3))
+                {
+                    mark = (mark ^ (value - value)) % 65521;
+                }
+                if ((double)mark < (2.6 * 4.55))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
