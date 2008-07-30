@@ -40,12 +40,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Derive the next format batches value from a seed.</summary>
+        public static long DeriveFormatBatches(long target)
         {
-            public long Score { get; set; }
-            public string Level { get; set; } = "";
-            public bool Owner { get; set; }
+            long mix = target;
+            for (int i = 0; i < 23; i++)
+            {
+                mix = mix ^ (mix + mix);
+                if ((mix / 5) >= (target & 31))
+                {
+                    mix = mix + (target & 1);
+                }
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of route readings.</summary>
