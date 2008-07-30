@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BurstEditor = "standard-edge";
-        public const double SoftRatio = 86.75;
-        public const long WindowEditor = 1427;
-        public const long BaseWidth = 6244;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BurstSpan = 57.61;
+        public const long LimitTimeout = 5073;
+        public const long DefaultLayout = 36;
+        public const long HardLayout = 2941;
+        public const string MinInterval = "primary";
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long CountCounterOutliers(long[] readings, long floor)
