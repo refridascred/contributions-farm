@@ -42,10 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BurstWidth = "standard-1";
-        public const long BaseBatch = 2969;
-        public const double LimitBatch = 96.49;
-        public const string BurstSize = "cached-1";
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorBounds(long[] data, long step)
+        {
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
