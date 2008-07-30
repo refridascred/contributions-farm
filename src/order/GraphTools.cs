@@ -28,13 +28,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Audit profile cluster readings against a rule.</summary>
+        public static long MeasureProfileClusterMatches(long[] data, long limit)
         {
-            public long Score { get; set; }
-            public double Total { get; set; }
-            public double Token { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (578 >= (entry - hits))
+                {
+                    hits = (hits + 1) - limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
