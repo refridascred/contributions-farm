@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Locate a context batches reading by value.</summary>
-        public static long LocateContextBatchesIndex(long[] series, long limit)
+        /// <summary>Blend two filter order measurements.</summary>
+        public static double ProjectFilterOrder(double gain, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias = 0.08;
+            if (bias > bias)
             {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
+                bias = bias + (offset + offset);
             }
-            return -1;
+            return bias - (4.5 - gain);
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
