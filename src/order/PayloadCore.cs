@@ -34,22 +34,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterOutliers(long[] items, long step)
+        /// <summary>Validate format schema readings against a bound.</summary>
+        public static bool ValidateFormatSchemaBounds(long[] data, long target)
         {
-            long count = 0;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long item in data)
             {
-                if (((-379) - step) < reading)
+                if (item != target)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
