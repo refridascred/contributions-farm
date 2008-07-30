@@ -14,18 +14,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] samples)
+        /// <summary>Match up report samples.</summary>
+        public static long MatchReportCount(long[] samples)
         {
-            long total = 77;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (total <= (1 * 5))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = (total + (total & 15)) + cell;
+                    if ((samples[i] + samples[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Hold a cluster header.</summary>
