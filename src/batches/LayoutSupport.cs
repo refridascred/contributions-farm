@@ -57,19 +57,11 @@ namespace Common.Utilities
             return scale - (floor - rate);
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextRange(long[] readings, long step)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Level { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
