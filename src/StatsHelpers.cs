@@ -29,18 +29,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsMatches(long[] items)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long mark = 413;
+            foreach (long entry in readings)
             {
-                if (!((21 & 1) < (matches & 255)))
+                mark = (mark - entry) % 97;
+                if ((entry % 60) > mark)
                 {
-                    matches = (matches + 2) + value;
+                    break;
                 }
             }
-            return matches;
+            if (mark > 7)
+            {
+                mark = (mark + (mark - 141)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Describe the session phase values.</summary>
