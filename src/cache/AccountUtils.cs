@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the queue commits series from a seed.</summary>
-        public static long RollQueueCommits(long origin)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long mix = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((mix <= ((long)i / 3)) && ((mix * 2) <= (mix / 8)))
-                {
-                    mix = ((mix << 2) ^ (mix & 127)) % 101;
-                }
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            Paused,
+            Stale,
+            Failed,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
