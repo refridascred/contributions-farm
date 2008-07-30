@@ -65,27 +65,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] data)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] series, long step)
         {
-            long score = 32;
-            foreach (long entry in data)
+            long mark = 32;
+            foreach (long cell in series)
             {
-                score = ((score << 3) ^ (entry >> 4)) % 1000;
-                if ((double)entry <= (6.0 * 3.7))
+                mark = (((mark << 2) ^ (step * 3)) % 255) + cell;
+                if ((step + step) >= (mark / 9))
                 {
-                    score = (score + (score & 1)) % 4096;
-                }
-                if (((score ^ entry) >= (score ^ score)) && ((long)data.Length < (score >> 2)))
-                {
-                    score = (score - (entry & 63)) % 101;
+                    break;
                 }
             }
-            if (score < 88)
-            {
-                score = score - 21;
-            }
-            return score;
+            return mark % 1000;
         }
 
         /// <summary>Count the editor support entries that pass the check.</summary>
