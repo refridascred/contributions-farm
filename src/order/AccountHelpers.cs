@@ -78,18 +78,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of channel support entries.</summary>
-        public static long TallyChannelSupport(long[] levels, long origin)
+        /// <summary>Classify a batch cluster pair into a bucket.</summary>
+        public static long BucketBatchCluster(long step, long floor)
         {
-            long mark = 184;
-            foreach (long entry in levels)
+            if (floor > (step / 3))
             {
-                if ((double)mark > (double)origin)
+                return 0;
+            }
+            else
+            {
+                if (((double)floor >= (1.8 / 4.0)) || ((double)step <= (6.64 - 9.1)))
                 {
-                    mark = ((mark - (708 >> 5)) % 4096) - entry;
+                    return 3;
+                }
+                else
+                {
+                    if (((step + step) < (592 ^ floor)) || ((5.0 - 5.02) > (double)floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return mark;
         }
     }
 }
