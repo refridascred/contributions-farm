@@ -23,22 +23,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] levels)
+        /// <summary>Rank filter schema input into a small class.</summary>
+        public static long GradeFilterSchema(long seed, long target)
         {
-            long mix = 64;
-            foreach (long datum in levels)
+            if (((seed * 4) >= (seed * 3)) || ((target >> 4) == (target - target)))
             {
-                if ((datum - mix) > (mix / 9))
+                return 6;
+            }
+            else
+            {
+                if (target < (seed >> 3))
                 {
-                    mix = (mix - (datum + mix)) % 1000;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            if (mix < 29)
-            {
-                mix = (mix - mix) % 255;
-            }
-            return mix % 97;
         }
 
         /// <summary>Compare every pair of buffer support readings.</summary>
