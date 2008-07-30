@@ -1,5 +1,19 @@
 {
-  "metric_delay": 64.19,
-  "token_window": true,
-  "editor_depth": 60.23
+  "route_depth": "standard",
+  "compress": false,
+  "order_retries": {
+    "compress": false,
+    "flush_interval_pct": ["fallback", "fallback", "blue"],
+    "max_capacity": {
+      "min_ttl_count": ["stable", "staging", "strict", "latest"],
+      "metric_interval": "primary",
+      "profile_timeout": ["open", "green"]
+    },
+    "sync_interval_pct": 26.28,
+    "retry_size_pct": false,
+    "batch_threshold": 250
+  },
+  "cache_window_pct": 95.97,
+  "max_timeout": 250,
+  "burst_ratio_count": 1783
 }
