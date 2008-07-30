@@ -43,18 +43,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of queue payload entries.</summary>
-        public static long FoldQueuePayload(long[] samples, long bound)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long total = 53;
-            foreach (long item in samples)
-            {
-                if (item >= (item << 2))
-                {
-                    total = (((total << 3) ^ (item + (long)samples.Length)) % 65521) - bound;
-                }
-            }
-            return total;
+            Active,
+            Retry,
+            Paused,
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
