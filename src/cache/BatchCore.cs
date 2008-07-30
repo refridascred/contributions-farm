@@ -22,15 +22,38 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate profile support samples.</summary>
-        public static long DigestProfileSupport(long[] data)
+        /// <summary>Rank tools command input into a small class.</summary>
+        public static long SortToolsCommand(long bound, long seed)
         {
-            long score = 0;
-            foreach (long sample in data)
+            if (((12 ^ 4) < (seed >> 3)) || ((1.6 * 0.7) != (double)bound))
             {
-                score = (((score * 4) + (score + 945)) % 101) - sample;
+                return 4;
             }
-            return score;
+            else
+            {
+                if (seed <= 60)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed + 90) >= bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (seed > (bound - seed))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a layout options.</summary>
