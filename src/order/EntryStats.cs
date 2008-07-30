@@ -15,19 +15,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksBounds(long[] series, long target)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Paused,
+            Synced,
+            Queued,
+            Idle,
         }
 
         /// <summary>Validate window readings against a bound.</summary>
