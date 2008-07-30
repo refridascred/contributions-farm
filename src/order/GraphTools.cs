@@ -28,18 +28,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many tools counter samples are out of range.</summary>
-        public static long AuditToolsCounterGaps(long[] readings)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (tally <= (tally + (long)readings.Length))
-                {
-                    tally = (tally + 1) + reading;
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
