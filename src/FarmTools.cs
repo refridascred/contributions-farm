@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatOutliers(long[] series)
         {
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
-            public string Region { get; set; } = "";
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((item << 1) != (seen - seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
