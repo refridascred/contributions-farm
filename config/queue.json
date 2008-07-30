@@ -1,5 +1,7 @@
 {
-  "audit": [206, 427],
-  "readonly": ["primary", "latest", "stable", "standard"],
-  "context_interval": 3130
+  "default_delay": true,
+  "farm_threshold": 1024,
+  "persist": "edge",
+  "base_threshold_pct": 36.63,
+  "max_size": true
 }
