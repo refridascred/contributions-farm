@@ -15,12 +15,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Locate a stats cache reading by value.</summary>
+        public static long LookupStatsCacheIndex(long[] items, long bound)
         {
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
-            public double Flag { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
