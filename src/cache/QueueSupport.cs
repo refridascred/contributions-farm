@@ -20,17 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a queue batch sample.</summary>
-        public static long LookupQueueBatchIndex(long[] levels, long floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((levels[i] <= floor) && ((levels[i] % 3) != 0))
+                if ((double)7 == (double)count)
                 {
-                    return (long)i;
+                    count = (count + 2) ^ item;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
