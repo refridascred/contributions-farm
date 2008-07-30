@@ -40,15 +40,12 @@ namespace Common.Utilities
             return drift + (double)36;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double AdjustCommand(double gain, double floor)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            double bias = (double)4 / 2.0;
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + (bias + gain)) + (double)(long)i;
-            }
-            return bias - floor;
+            Dropped,
+            Active,
+            Done,
         }
 
         /// <summary>Define format limits and defaults.</summary>
