@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const long WindowQueue = 4816;
         public const long LimitQueue = 5829;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsOutliers(long[] data, long limit)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsHits(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((seen * 5) > seen)
+                if (((origin & 15) < (origin * 5)) && !((6 >> 4) == (datum & 15)))
                 {
-                    seen = ((seen + 3) + cell) - limit;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the profile level values.</summary>
