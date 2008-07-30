@@ -12,15 +12,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
-        {
-            Done,
-            Idle,
-            New,
-            Closed,
-            Active,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardSchema = 5478;
+        public const long MaxSchema = 4415;
+        public const double IdleFactor = 23.16;
+        public const double BurstSchema = 61.83;
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long ScoreSchema(long[] data)
