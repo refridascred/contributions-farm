@@ -12,38 +12,21 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long bound, long target)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long CompareMetricCount(long[] data)
         {
-            if ((double)target > (17.0 / 7.0))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound & 15) != (5 ^ target))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound * 4) > (bound + target))
+                    if ((data[i] ^ data[j]) == 18)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((-86) <= (bound & 1))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
