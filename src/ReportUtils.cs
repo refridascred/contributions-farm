@@ -55,38 +55,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Rank token stream input into a small class.</summary>
-        public static long BucketTokenStream(long seed, long bound)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long limit)
         {
-            if ((bound + (-438)) != (seed * 4))
+            long result = limit;
+            for (int i = 0; i < 23; i++)
             {
-                return 4;
+                result = ((result * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((64 % 60) >= seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed ^ seed) < ((-37) * 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (bound < seed)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return result;
         }
     }
 }
