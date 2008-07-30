@@ -34,19 +34,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextBounds(long[] readings, long offset)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] samples, long seed)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value >= offset)
+                if ((samples[i] <= seed) && ((samples[i] % 5) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
