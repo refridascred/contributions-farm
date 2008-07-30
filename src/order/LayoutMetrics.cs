@@ -19,19 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheBounds(long[] items, long floor)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ProjectSchema(double weight, double span)
         {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double rate = weight;
+            return (rate + (double)(-16)) + span;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
