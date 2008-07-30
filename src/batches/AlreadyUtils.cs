@@ -67,13 +67,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            Paused,
-            Done,
-            Failed,
             Queued,
+            Idle,
+            Retry,
         }
     }
 }
