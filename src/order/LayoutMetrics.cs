@@ -29,21 +29,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long MatchGithubfarmCount(long[] series)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double ratio, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = offset;
+            if (mean < (ratio / 8.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = mean + (4.4 * 7.5);
             }
-            return count;
+            else
+            {
+                mean = mean - (double)8;
+            }
+            return mean + (double)445;
         }
     }
 }
