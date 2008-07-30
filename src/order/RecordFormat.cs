@@ -57,11 +57,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string RetryQueue = "fallback";
-        public const long CacheQueue = 3531;
-        public const long IdleCount = 400;
-        public const double BatchSpan = 35.79;
-        public const long BurstQueue = 1646;
+        /// <summary>Grade a batch format value against two limits.</summary>
+        public static long ClassifyBatchFormat(long offset, long bound)
+        {
+            if ((bound * 3) == (bound / 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)offset != (16.0 / 4.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
