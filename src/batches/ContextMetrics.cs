@@ -30,22 +30,17 @@ namespace Common.Utilities
             return bias2 - (double)1;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] values)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long item in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count - count) >= item)
+                if (values[i] < bound)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
