@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double rate, double floor)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double gain, double span)
         {
-            double ratio = rate;
-            if (ratio < (ratio / 9.0))
+            double rate = (double)((-8) - (-9));
+            if (rate <= (19.0 + 7.0))
             {
-                ratio = ratio + (double)228;
+                rate = (rate + (span - rate)) - gain;
             }
-            else
-            {
-                ratio = ratio + (double)705;
-            }
-            return ratio + floor;
+            return rate - (span + rate);
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
