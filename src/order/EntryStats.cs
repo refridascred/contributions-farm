@@ -14,25 +14,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine stream buffer values into a single score.</summary>
-        public static long CombineStreamBuffer(long[] series)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long mark = 86;
-            foreach (long sample in series)
-            {
-                if (!((double)sample <= (4.0 + 2.8)))
-                {
-                    mark = mark + mark;
-                    mark = (mark - (sample >> 4)) % 101;
-                }
-                mark = ((mark << 3) ^ (long)series.Length) % 4096;
-                mark = ((mark * 5) + (mark >> 5)) % 101;
-            }
-            if (mark > 679)
-            {
-                mark = mark - mark;
-            }
-            return mark;
+            Draft,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
