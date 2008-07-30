@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] samples, long floor)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] levels, long origin)
         {
-            long total = 216;
-            foreach (long value in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (total > (634 - total))
+                if (levels[i] == origin)
                 {
-                    total = (((total << 2) ^ 708) % 97) + value;
-                }
-                else
-                {
-                    total = total ^ (8 * 3);
+                    return (long)i;
                 }
             }
-            if (total < 9)
-            {
-                total = (total << 2) ^ (floor + floor);
-            }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Describe the tools phase values.</summary>
