@@ -12,22 +12,17 @@ namespace Common.Utilities
         public const double StepCount = 53.13;
         public const double WindowSize = 84.15;
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] series)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] values, long bound)
         {
-            long result = 9;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)series.Length - 323) <= (result - result))
+                if ((values[i] <= bound) && ((values[i] % 2) != 0))
                 {
-                    result = (result << 2) ^ sample;
-                }
-                if ((sample >> 4) > (result & 7))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return result % 1000;
+            return -1;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
