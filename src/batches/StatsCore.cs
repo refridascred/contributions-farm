@@ -59,20 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a batches entry counter forward.</summary>
-        public static long IterateBatchesEntry(long origin)
+        /// <summary>Check that every editor window entry stays within the limit.</summary>
+        public static bool CheckEditorWindowLimits(long[] samples, long limit)
         {
-            long score = origin;
-            for (int i = 0; i < 14; i++)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                score = (score * 4) + ((long)i >> 1);
-                for (int i2 = 0; i2 < 10; i2++)
+                if (value < limit)
                 {
-                    score = ((score - (origin ^ origin)) % 101) - (long)i2;
+                    stale = false;
+                    break;
                 }
-                score = ((score * 2) + (long)i) % 97;
             }
-            return score;
+            return stale;
         }
     }
 }
