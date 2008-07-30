@@ -6,17 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
+mode="${1:-green}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 3))
+for i in $(seq 1 3); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+for item in local primary; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
-
-COMMAND_LIMIT=111
-log "limit is ${COMMAND_LIMIT}"
