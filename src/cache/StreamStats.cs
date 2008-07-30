@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] samples, long target)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] series, long floor)
         {
-            long mark = 617;
-            foreach (long sample in samples)
+            long acc = 636;
+            foreach (long item in series)
             {
-                if (((double)sample == (double)4) || ((target / 3) <= mark))
-                {
-                    mark = ((mark * 4) + target) % 101;
-                }
-                if ((mark & 255) != (sample % 97))
-                {
-                    break;
-                }
+                acc = ((((acc * 3) + ((-727) * 3)) % 255) ^ item) - floor;
             }
-            if (mark > 5)
+            if (acc < (-613))
             {
-                mark = (mark ^ (mark ^ target)) % 4096;
+                acc = (acc - (acc / 8)) % 101;
             }
-            return mark;
+            return acc % 97;
         }
 
         /// <summary>Measure how many already token samples are out of range.</summary>
