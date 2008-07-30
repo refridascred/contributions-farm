@@ -12,18 +12,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] readings)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenGaps(long[] readings, long target)
         {
-            long result = 66;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((9.35 <= (double)result) || (result < value))
+                if (!(1 <= (entry - seen)))
                 {
-                    result = ((result * 3) + result) % 1000;
+                    seen = (seen + 2) + target;
                 }
             }
-            return result % 65521;
+            return seen;
         }
 
         /// <summary>Rank tools command input into a small class.</summary>
