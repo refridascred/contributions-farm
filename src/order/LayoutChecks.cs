@@ -64,12 +64,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            Synced,
-            Failed,
-            Ready,
+            Locked,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Hold a stats stats.</summary>
