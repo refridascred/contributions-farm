@@ -1,6 +1,18 @@
 {
-  "verbose": "green",
-  "default_depth_ms": 37,
-  "session_timeout": false,
-  "base_window_pct": 30
+  "enabled": false,
+  "max_ttl_ms": ["standard", "green", "standard", "local"],
+  "dry_run": 30,
+  "farm_limit": "staging",
+  "warm_capacity": "blue",
+  "hard_timeout": {
+    "format_limit": false,
+    "batch_depth_s": false,
+    "tools_ratio": 4394,
+    "soft_ratio_pct": {
+      "poll_limit": ["blue", "primary", "cached"],
+      "hard_capacity_ms": false,
+      "warm_interval_pct": "green",
+      "poll_window_pct": "legacy"
+    }
+  }
 }
