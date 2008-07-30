@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheMatches(long[] series, long floor)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if (((-9) * 3) >= floor)
-                {
-                    tally = (tally + 1) ^ value;
-                }
-            }
-            return tally;
+            Failed,
+            Done,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Define account limits and defaults.</summary>
