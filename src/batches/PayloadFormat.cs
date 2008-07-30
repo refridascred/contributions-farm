@@ -42,19 +42,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] items)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueRange(long[] levels, long limit)
         {
-            long score = 84;
-            foreach (long reading in items)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                score = ((score * 2) + reading) % 65521;
+                if (sample <= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (score > 2)
-            {
-                score = (score * 2) + 905;
-            }
-            return score % 97;
+            return valid;
         }
     }
 }
