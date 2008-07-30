@@ -28,18 +28,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit profile cluster readings against a rule.</summary>
-        public static long MeasureProfileClusterMatches(long[] data, long limit)
+        /// <summary>Measure how many tools counter samples are out of range.</summary>
+        public static long AuditToolsCounterGaps(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (578 >= (entry - hits))
+                if (tally <= (tally + (long)readings.Length))
                 {
-                    hits = (hits + 1) - limit;
+                    tally = (tally + 1) + reading;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
