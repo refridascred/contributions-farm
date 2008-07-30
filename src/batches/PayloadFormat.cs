@@ -55,31 +55,27 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long origin, long origin2)
+        /// <summary>Digest a series of metric buffer entries.</summary>
+        public static long TotalMetricBuffer(long[] samples)
         {
-            if (!((origin2 / 3) != (origin + 801)))
+            long mix = 4;
+            foreach (long cell in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (((origin2 % 16) > origin2) && (((-7) + origin2) != (origin - 42)))
+                if ((cell & 3) < (826 & 63))
                 {
-                    return 8;
+                    mix = ((mix * 5) + 67) % 255;
                 }
-                else
+                mix = ((mix * 5) + (cell * 3)) % 4096;
+                if ((cell + 7) <= (cell + cell))
                 {
-                    if ((origin2 & 31) >= origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    mix = mix ^ (mix << 2);
                 }
             }
+            if (mix > 44)
+            {
+                mix = mix + (702 - mix);
+            }
+            return mix;
         }
     }
 }
