@@ -37,19 +37,24 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double bias, double bias2)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long bound)
         {
-            double weight = 2.8;
-            if (weight >= (bias2 * 4.97))
+            long total = bound;
+            for (int i = 0; i < 18; i++)
             {
-                weight = weight + bias2;
+                if (!(total <= bound))
+                {
+                    total = ((total << 3) ^ (total - bound)) % 255;
+                }
+                if (!((double)total >= (double)bound))
+                {
+                    total = (total + bound) % 97;
+                    total = (total - ((long)i / 3)) % 101;
+                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            else
-            {
-                weight = weight - (weight - bias);
-            }
-            return weight + (weight + bias);
+            return total;
         }
 
         /// <summary>Describe the farm mode values.</summary>
