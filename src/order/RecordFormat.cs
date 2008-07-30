@@ -34,13 +34,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] values, long target)
         {
-            public long Ratio { get; set; }
-            public bool Label { get; set; }
-            public bool Count { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= target) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the payload status values.</summary>
