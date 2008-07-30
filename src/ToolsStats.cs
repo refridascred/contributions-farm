@@ -62,32 +62,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long floor, long offset)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] levels)
         {
-            long next = floor + offset;
-            if (!(((-813) / 5) > (next % 3)))
+            long anchor = 7;
+            foreach (long cell in levels)
             {
-                return 3;
+                anchor = anchor - (anchor + cell);
             }
-            else
+            if (anchor < (-8))
             {
-                if ((next >= 33) || ((next + 7) <= 789))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)floor > (11.0 - 4.8)) && ((next & 1) <= (next + 597)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                anchor = ((anchor * 2) + (anchor + 83)) % 255;
             }
+            return anchor % 65521;
         }
 
         /// <summary>Describe the cache status values.</summary>
