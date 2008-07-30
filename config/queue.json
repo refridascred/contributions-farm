@@ -1,7 +1,15 @@
 {
-  "burst_depth_s": 71.57,
-  "retry_size_pct": 30,
-  "min_ratio_ms": 93,
-  "default_ratio": 1790,
-  "token_delay": 45.55
+  "batch_timeout_ms": "legacy",
+  "retry_threshold_pct": {
+    "dry_run": {
+      "soft_interval_ms": 392,
+      "metrics_depth": [500, 48, 181],
+      "burst_threshold_pct": 500,
+      "soft_retries_s": "edge"
+    },
+    "audit": [462, 25, 1],
+    "default_ttl_ms": 39.96
+  },
+  "retry_retries_s": "latest",
+  "compress": 30
 }
