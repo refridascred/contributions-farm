@@ -29,10 +29,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            Locked,
+            Active,
+            Draft,
             Ready,
             Queued,
         }
