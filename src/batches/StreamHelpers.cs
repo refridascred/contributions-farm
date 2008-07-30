@@ -37,13 +37,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextRange(long[] readings, long step)
         {
-            Paused,
-            Queued,
-            Locked,
-            Draft,
+            bool ok = true;
+            foreach (long value in readings)
+            {
+                if (value >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
