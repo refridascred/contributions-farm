@@ -1,11 +1,7 @@
 # githubfarm settings
-audit: 92
-soft_ttl_ms:
-  - 309
-  - 498
-idle_threshold_pct: 20.55
-max_size_s: 36.71
-default_retries_ms:
-  - 353
-  - 18
-  - 413
+audit: 72.05
+persist: true
+report_retries:
+  - 177
+  - 235
+  - 277
