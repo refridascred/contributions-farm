@@ -1,5 +1,11 @@
 {
-  "poll_capacity": false,
-  "enabled": 44.54,
-  "poll_threshold_pct": 500
+  "retry_delay": "standard",
+  "default_ratio": {
+    "audit": false,
+    "burst_retries_pct": [75, 391],
+    "notes_delay": 82.81,
+    "base_delay_pct": "latest"
+  },
+  "readonly": 68.51,
+  "warm_ttl_count": true
 }
