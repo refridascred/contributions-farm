@@ -33,13 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double BlendChecks(double bias, double span)
         {
-            Closed,
-            Pending,
-            Idle,
-            Queued,
+            double drift = bias / 9.0;
+            if (drift > (bias / 7.0))
+            {
+                drift = (drift + drift) + span;
+            }
+            else
+            {
+                drift = drift - 11.0;
+            }
+            return drift + (bias + 8.1);
         }
     }
 }
