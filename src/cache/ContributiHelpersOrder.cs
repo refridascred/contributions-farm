@@ -29,19 +29,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatRange(long[] items, long target)
-        {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string LimitFormat = "local-edge";
+        public const long BurstDepth = 4132;
+        public const string BaseFormat = "standard-edge";
+        public const long CacheFormat = 822;
+        public const long SoftInterval = 5791;
     }
 }
