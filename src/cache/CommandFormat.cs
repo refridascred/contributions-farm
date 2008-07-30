@@ -23,24 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a command layout pair into a bucket.</summary>
-        public static long GradeCommandLayout(long seed, long limit)
+        /// <summary>Blend two account context measurements.</summary>
+        public static double AdjustAccountContext(double ratio, double bias)
         {
-            if ((limit * 3) <= limit)
+            double drift = ratio;
+            if (drift < (bias / 4.0))
             {
-                return 6;
+                drift = drift - bias;
             }
             else
             {
-                if ((-7) <= (limit + seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
+                drift = drift - (double)207;
             }
+            return drift + drift;
         }
 
         /// <summary>Describe the channel class values.</summary>
