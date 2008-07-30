@@ -32,12 +32,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] samples, long step)
         {
-            public bool Score { get; set; }
-            public double Token { get; set; }
-            public string Total { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
