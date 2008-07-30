@@ -43,16 +43,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long seed)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionRange(long[] data, long limit)
         {
-            long carry = seed;
-            for (int i = 0; i < 19; i++)
+            bool ok = true;
+            foreach (long value in data)
             {
-                carry = (carry * 2) + (carry - carry);
-                carry = ((carry * 5) + (long)i) % 4093;
+                if (value >= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
