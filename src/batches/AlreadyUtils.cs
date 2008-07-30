@@ -15,13 +15,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorHits(long[] items)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelMatches(long[] samples, long floor)
         {
             long tally = 0;
-            foreach (long datum in items)
+            foreach (long entry in samples)
             {
-                if ((datum - tally) > (tally * 4))
+                if ((floor <= (floor + tally)) && (floor < entry))
                 {
                     tally = tally + 1;
                 }
