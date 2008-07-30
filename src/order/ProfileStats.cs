@@ -41,12 +41,32 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Roll a cluster batch counter forward.</summary>
+        public static long IterateClusterBatch(long target)
         {
-            public double Total { get; set; }
-            public long Stamp { get; set; }
-            public bool Limit { get; set; }
+            long score = target;
+            for (int i = 0; i < 19; i++)
+            {
+                if (1.0 > (double)score)
+                {
+                    score = score + (41 << 3);
+                    score = (score + (score << 1)) % 4096;
+                }
+                if (target < (target << 1))
+                {
+                    score = (score ^ (target & 31)) % 4096;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (long)i) % 4096;
+                }
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    score = (((score << 2) ^ (target >> 4)) % 101) - (long)i2;
+                }
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
