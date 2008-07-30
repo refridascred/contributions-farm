@@ -15,15 +15,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double scale, double span)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheBounds(long[] items, long floor)
         {
-            double bias = scale;
-            if (bias > (5.8 + 2.7))
+            bool valid = true;
+            foreach (long cell in items)
             {
-                bias = (bias + (scale + scale)) + span;
+                if (cell <= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return bias - 17.0;
+            return valid;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
