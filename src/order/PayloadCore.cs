@@ -28,12 +28,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long bound)
         {
-            Ready,
-            Retry,
-            Idle,
+            long total = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
