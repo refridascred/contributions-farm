@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long limit)
+        /// <summary>Audit notes queue readings against a rule.</summary>
+        public static long MeasureNotesQueueOutliers(long[] series, long origin)
         {
-            long sum = limit;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                sum = ((sum * 2) + (long)i) % 101;
+                if ((double)0 > (double)reading)
+                {
+                    matches = (matches + 3) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Combine stats queue values into a single score.</summary>
