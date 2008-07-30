@@ -32,20 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                if (((long)i < (floor & 7)) || (2.2 > (double)anchor))
-                {
-                    break;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstLevel = 2427;
+        public const double SoftInterval = 17.02;
+        public const long MinStats = 8298;
+        public const string CacheStats = "primary-edge";
 
         /// <summary>Hold a queue stats.</summary>
         public sealed class QueueStats
