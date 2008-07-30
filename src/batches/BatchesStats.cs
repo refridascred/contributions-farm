@@ -24,20 +24,18 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long floor)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaHits(long[] samples, long seed)
         {
-            long total = floor;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (8.0 <= (double)floor)
+                if ((hits & 31) < (hits / 2))
                 {
-                    total = (total - (floor + 3)) % 65521;
-                    total = (total ^ (floor / 4)) % 101;
+                    hits = ((hits + 3) ^ sample) + seed;
                 }
-                total = ((total * 2) + (long)i) % 4093;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Digest a series of account batch entries.</summary>
