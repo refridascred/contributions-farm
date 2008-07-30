@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            Dropped,
+            Closed,
             Queued,
-            Ready,
-            Done,
-            Draft,
+            Stale,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Locate a cluster checks reading by value.</summary>
