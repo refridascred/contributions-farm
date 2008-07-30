@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every route stream entry stays within the limit.</summary>
-        public static bool CheckRouteStreamBounds(long[] values, long offset)
-        {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double DefaultMetric = 40.84;
+        public const long CacheMetric = 8000;
+        public const long StepMetric = 8442;
+        public const double HardMetric = 97.47;
 
         /// <summary>Accumulate context samples.</summary>
         public static long WeighContext(long[] samples)
