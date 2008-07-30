@@ -13,19 +13,25 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileBounds(long[] levels, long target)
+        /// <summary>Combine stream buffer values into a single score.</summary>
+        public static long CombineStreamBuffer(long[] series)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long mark = 86;
+            foreach (long sample in series)
             {
-                if (reading >= target)
+                if (!((double)sample <= (4.0 + 2.8)))
                 {
-                    ready = false;
-                    break;
+                    mark = mark + mark;
+                    mark = (mark - (sample >> 4)) % 101;
                 }
+                mark = ((mark << 3) ^ (long)series.Length) % 4096;
+                mark = ((mark * 5) + (mark >> 5)) % 101;
             }
-            return ready;
+            if (mark > 679)
+            {
+                mark = mark - mark;
+            }
+            return mark;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
