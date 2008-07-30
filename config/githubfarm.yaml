@@ -1,19 +1,22 @@
 # githubfarm settings
-hard_interval_count: 48
-min_limit:
-  cache_interval_count: staging
-  checks_window:
-    - 46
-    - 136
-    - 256
-    - 499
-  default_window_count: 40
-  persist:
-    poll_retries_count: open
-    strict: strict
-    hard_window_count: local
-  metrics_size: 1024
-flush_size: 430
-token_window: primary
-burst_capacity_count: false
-sync_ratio_ms: open
+soft_depth_pct: 15.68
+burst_limit_pct:
+  poll_window_s: 1024
+  hard_window: local
+  dry_run: 98
+  verbose: legacy
+  filter_interval: 8759
+  audit:
+    cache_interval: cached
+    poll_limit_pct: standard
+    batch_threshold:
+      - eu-west
+      - blue
+    metric_threshold: 4134
+    max_capacity: legacy
+persist:
+  - 440
+  - 57
+  - 345
+  - 467
+support_ttl: 30
