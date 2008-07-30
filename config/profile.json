@@ -1,13 +1,5 @@
 {
-  "flush_ttl_ms": "legacy",
-  "commits_capacity": 53,
-  "idle_interval_s": false,
-  "idle_size_count": 6319,
-  "dry_run": [350, 176],
-  "command_ratio": {
-    "strict": 100,
-    "metrics_ttl": ["fallback", "blue"],
-    "tools_delay": "eu-west",
-    "flush_retries_pct": 30
-  }
+  "strict": 80.85,
+  "compress": 54.78,
+  "hard_capacity": 37
 }
