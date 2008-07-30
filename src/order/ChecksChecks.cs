@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] samples)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double ratio, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double gain = floor;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = ((gain + floor) + (double)(long)i) + ratio;
             }
-            return hits;
+            return gain + floor;
         }
 
         /// <summary>Count the commits batch entries that pass the check.</summary>
