@@ -25,19 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportBounds(long[] levels, long step)
+        /// <summary>Digest a series of record counter entries.</summary>
+        public static long ScoreRecordCounter(long[] data)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long acc = 0;
+            foreach (long cell in data)
             {
-                if (value < step)
+                if ((2.12 / 2.0) > (double)acc)
                 {
-                    ready = false;
-                    break;
+                    acc = ((acc - (acc + acc)) % 255) + cell;
                 }
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Describe the already level values.</summary>
