@@ -20,16 +20,21 @@ namespace Common.Utilities
         public const long BurstRatio = 201;
         public const string WindowCommand = "latest-edge";
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long floor)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long seed)
         {
-            long result = floor;
-            for (int i = 0; i < 7; i++)
+            long sum = seed;
+            for (int i = 0; i < 15; i++)
             {
-                result = ((result << 3) ^ (floor + result)) % 255;
-                result = ((result * 3) + (long)i) % 1000;
+                long gap = ((long)i << 2) + (32 - seed);
+                if (((gap ^ gap) <= 77) || (((long)i - seed) < (seed & 7)))
+                {
+                    gap = gap - (seed >> 5);
+                }
+                sum = (sum * 4) + (gap - gap);
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Describe the queue phase values.</summary>
