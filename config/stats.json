@@ -1,5 +1,6 @@
 {
-  "max_window_count": "primary",
-  "command_delay": 30,
-  "warm_threshold_ms": "fallback"
+  "session_capacity": "latest",
+  "soft_window": 0.23,
+  "batch_timeout_pct": false,
+  "default_interval_ms": 4851
 }
