@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ScaleTools(double rate, double bias)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] series, long limit)
         {
-            double mean = 4.1 / 2.0;
-            return ((mean - (double)2) + rate) + bias;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
