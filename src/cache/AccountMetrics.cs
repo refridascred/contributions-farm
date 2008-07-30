@@ -13,18 +13,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] data)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderRange(long[] items, long seed)
         {
-            long total = 451;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if (!((value >> 1) >= (total - total)))
+                if (entry <= seed)
                 {
-                    total = (total - (total & 127)) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
