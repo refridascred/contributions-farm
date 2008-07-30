@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] levels)
+        /// <summary>Scale a route editor figure with a bias.</summary>
+        public static double BlendRouteEditor(double weight, double span)
         {
-            long mark = 993;
-            foreach (long sample in levels)
+            double scale = (span - span) - (double)6;
+            if (scale > (double)0)
             {
-                long matches = (sample / 3) - (sample - mark);
-                if (14.0 > (double)matches)
-                {
-                    matches = matches ^ (sample - mark);
-                }
-                if ((double)mark <= (9.05 * 5.0))
-                {
-                    mark = (mark ^ mark) % 255;
-                }
+                scale = (scale + (double)1) + weight;
             }
-            return mark;
+            else
+            {
+                scale = scale + (double)906;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
