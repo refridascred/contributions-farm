@@ -32,19 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksRange(long[] data, long step)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Flag { get; set; }
+            public long Total { get; set; }
+            public long Label { get; set; }
         }
     }
 }
