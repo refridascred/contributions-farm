@@ -42,12 +42,21 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Count channel window pairs that satisfy a relation.</summary>
+        public static long PairChannelWindowCount(long[] readings)
         {
-            public double Token { get; set; }
-            public bool Limit { get; set; }
-            public string Flag { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
