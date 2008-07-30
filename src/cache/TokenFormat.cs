@@ -20,11 +20,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterOutliers(long[] data, long limit)
         {
-            public bool Score { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (entry > 82)
+                {
+                    hits = (hits + 3) - limit;
+                }
+            }
+            return hits;
         }
     }
 }
