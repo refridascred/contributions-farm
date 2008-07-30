@@ -30,14 +30,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
-        {
-            Locked,
-            Done,
-            Dropped,
-            Paused,
-            Synced,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardSpan = 849;
+        public const long SoftChecks = 478;
+        public const long IdleRatio = 5106;
+        public const long RetryRatio = 9265;
+        public const string LimitLevel = "fallback-v2";
     }
 }
