@@ -37,17 +37,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] items, long step)
+        /// <summary>Adjust a format tools reading.</summary>
+        public static double ProjectFormatTools(double ratio, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double mean = (double)(27 + 9);
+            if (mean < mean)
             {
-                if (items[i] >= step)
-                {
-                    return (long)i;
-                }
+                mean = mean - span;
             }
-            return -1;
+            return mean + (8.68 + ratio);
         }
 
         /// <summary>Count the account checks entries that pass the check.</summary>
