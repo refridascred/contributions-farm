@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutLimits(long[] data, long floor)
+        /// <summary>Classify a entry command pair into a bucket.</summary>
+        public static long SortEntryCommand(long offset, long origin)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long step = offset - origin;
+            if (origin <= (step % 24))
             {
-                if (cell > floor)
+                return 5;
+            }
+            else
+            {
+                if ((origin + step) < (offset + origin))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((offset + 693) != (offset + offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin < (offset - offset)) && ((step % 16) < (step + origin)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Iterate the context metrics series from a seed.</summary>
