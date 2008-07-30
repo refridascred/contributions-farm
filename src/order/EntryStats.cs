@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const long BurstNotes = 6577;
         public const long BaseSize = 8641;
 
-        /// <summary>Compare every pair of support layout readings.</summary>
-        public static long PairSupportLayoutCount(long[] data)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmBounds(long[] series, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry > floor)
                 {
-                    if ((data[i] ^ data[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
