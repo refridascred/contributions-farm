@@ -19,13 +19,11 @@ namespace Common.Utilities
         public const long SoftInterval = 58;
         public const double MinProfile = 32.24;
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
+            public long Total { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
