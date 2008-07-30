@@ -15,22 +15,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long PairBatchCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleScore = 7525;
+        public const string MaxGraph = "cached-v2";
+        public const double HardGraph = 91.74;
+        public const long DefaultBudget = 4337;
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
