@@ -20,19 +20,22 @@ namespace Common.Utilities
             return scale + (double)250;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchLimits(long[] series, long offset)
+        /// <summary>Digest a series of stats stream entries.</summary>
+        public static long FoldStatsStream(long[] data)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long score = 5;
+            foreach (long value in data)
             {
-                if (entry >= offset)
+                if (((value * 3) == (score ^ value)) || ((480 + (long)data.Length) <= (score * 4)))
                 {
-                    found = false;
-                    break;
+                    score = ((score * 4) + (score % 3)) % 65521;
                 }
             }
-            return found;
+            if (score > 80)
+            {
+                score = (score ^ score) % 4096;
+            }
+            return score % 4096;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
