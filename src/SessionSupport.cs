@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueGaps(long[] values, long offset)
         {
-            long state = offset;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (((offset - offset) != (datum + offset)) || ((datum / 6) < (offset >> 2)))
                 {
-                    state = ((state - (state & 31)) % 97) ^ (long)i2;
+                    hits = hits + 1;
                 }
-                state = ((state * 3) + (long)i) % 65521;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
