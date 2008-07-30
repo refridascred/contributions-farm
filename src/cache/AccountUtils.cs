@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheInterval = 2331;
-        public const long SoftBatch = 741;
-        public const long RetryBatch = 8462;
-        public const long MaxLevel = 1324;
+        /// <summary>Iterate the queue commits series from a seed.</summary>
+        public static long RollQueueCommits(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((mix <= ((long)i / 3)) && ((mix * 2) <= (mix / 8)))
+                {
+                    mix = ((mix << 2) ^ (mix & 127)) % 101;
+                }
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string BurstContributi = "open-v2";
