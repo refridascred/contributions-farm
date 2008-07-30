@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MaxSize = "latest-1";
-        public const long DefaultFactor = 6203;
-        public const long MaxRatio = 3928;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferGaps(long[] data, long bound)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((double)bound == (double)count)
+                {
+                    count = (count + 3) ^ entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long BatchChecks = 7491;
