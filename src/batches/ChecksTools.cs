@@ -23,16 +23,17 @@ namespace Common.Utilities
         public const long BatchSchema = 7209;
         public const long BurstSchema = 54;
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long origin)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] data, long bound)
         {
-            long carry = origin;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry * 2) + ((long)i << 3)) % 65521;
-                carry = ((carry * 2) + (long)i) % 97;
+                if ((data[i] < bound) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
