@@ -35,39 +35,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long bound, long offset)
-        {
-            if ((1.0 + 0.75) == (double)offset)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)bound >= (6.1 + 0.8))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((2.4 + 1.8) >= (double)offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)bound == (3.9 / 4.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitRatio = 9633;
+        public const double IdleBudget = 27.25;
+        public const long IdleCount = 9864;
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long SeekCacheIndex(long[] values, long target)
