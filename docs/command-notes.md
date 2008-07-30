@@ -1,11 +1,11 @@
 # Command notes
 
-Run the notes check before changing any checks limits.
-The metric module keeps cache values in sync with the record cache.
+The command module keeps farm values in sync with the already cache.
+Defaults for format live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep order values small
-- Log every batch change
-- Review stats limits each release
-- Document new support fields
+- Validate session input early
+- Log every metric change
+- Prefer counter defaults
+- Review command limits each release
