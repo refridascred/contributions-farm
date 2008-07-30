@@ -57,18 +57,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaGaps(long[] values, long target)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count >> 4) < sample)
+                if ((values[i] == limit) && ((values[i] % 3) == 0))
                 {
-                    count = (count + 2) - target;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the profile phase values.</summary>
