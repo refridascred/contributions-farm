@@ -16,11 +16,19 @@ namespace Common.Utilities
             return gain - (scale - 1.2);
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Project the next cache value.</summary>
+        public static double ProjectCache(double scale, double offset)
         {
-            public long Owner { get; set; }
-            public string Size { get; set; } = "";
+            double weight = (double)409 * 0.2;
+            if (weight < 12.0)
+            {
+                weight = weight - offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (3.46 - offset)) + (double)(long)i;
+            }
+            return weight - scale;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
