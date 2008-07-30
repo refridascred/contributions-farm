@@ -28,12 +28,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] samples)
         {
-            Active,
-            Paused,
-            Queued,
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
