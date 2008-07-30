@@ -1,10 +1,11 @@
 # Command notes
 
-Defaults for report live in the config folder and can be overridden per environment.
-Use commits settings to tune how often metric data is refreshed.
+Run the notes check before changing any checks limits.
+The metric module keeps cache values in sync with the record cache.
 
 ## Guidelines
 
-- Document new account fields
-- Prefer profile defaults
-- Keep already values small
+- Keep order values small
+- Log every batch change
+- Review stats limits each release
+- Document new support fields
