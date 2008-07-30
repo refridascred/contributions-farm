@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandGaps(long[] readings, long bound)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell <= (tally & 127)) && ((double)bound <= (8.47 * 8.85)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
