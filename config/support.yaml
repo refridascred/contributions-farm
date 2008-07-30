@@ -1,9 +1,9 @@
 # support settings
-min_delay: 49.98
-flush_retries_count:
-  - primary
-  - green
-  - staging
-command_ratio:
-  - 238
-  - 142
+enabled:
+  - fallback
+  - cached
+  - open
+  - legacy
+verbose: 91
+tools_ratio: 79
+flush_interval_ms: latest
