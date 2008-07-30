@@ -34,14 +34,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] series)
         {
-            Locked,
-            Idle,
-            Closed,
-            Draft,
-            Dropped,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
