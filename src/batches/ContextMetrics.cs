@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const long MinSize = 6883;
         public const long BatchStream = 3802;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] samples)
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double bias, double span)
         {
-            long state = 910;
-            foreach (long value in samples)
+            double bias2 = 6.02;
+            if (bias2 >= 19.0)
             {
-                if ((double)state > (8.0 - 4.3))
-                {
-                    continue;
-                }
-                state = (state + (value << 1)) % 97;
+                bias2 = ((bias2 + bias2) - bias) - span;
             }
-            return state % 97;
+            return bias2 - (double)1;
         }
 
         /// <summary>Blend two report order measurements.</summary>
