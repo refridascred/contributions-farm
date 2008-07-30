@@ -64,10 +64,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 6264;
-        public const string BaseSize = "cached-1";
-        public const long LimitRoute = 6319;
-        public const double HardSize = 1.66;
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
+        {
+            Dropped,
+            Ready,
+            Stale,
+        }
     }
 }
