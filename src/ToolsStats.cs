@@ -72,22 +72,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many farm metrics samples are out of range.</summary>
-        public static long AuditFarmMetricsHits(long[] values)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterBounds(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if ((entry / 6) == (entry << 2))
+                if (cell < seed)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
