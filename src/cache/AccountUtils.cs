@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Blend two layout measurements.</summary>
+        public static double BlendLayout(double weight, double offset)
         {
-            Paused,
-            Stale,
-            Failed,
+            double mean = offset / 6.0;
+            if (mean >= (double)30)
+            {
+                mean = (mean + offset) + weight;
+            }
+            return mean + mean;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
