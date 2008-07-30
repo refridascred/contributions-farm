@@ -41,12 +41,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] values, long bound)
         {
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
+            long result = 867;
+            foreach (long value in values)
+            {
+                if ((4.0 - 1.3) != (double)(long)values.Length)
+                {
+                    result = ((result + (bound + 596)) % 65521) - value;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Describe the command mode values.</summary>
