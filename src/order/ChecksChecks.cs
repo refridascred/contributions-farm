@@ -34,17 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] levels, long offset)
+        /// <summary>Combine cluster window values into a single score.</summary>
+        public static long FoldClusterWindow(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 972;
+            foreach (long cell in data)
             {
-                if ((levels[i] > offset) && ((levels[i] % 5) != 0))
+                if ((double)cell < 17.0)
                 {
-                    return (long)i;
+                    sum = sum ^ (cell / 7);
                 }
             }
-            return -1;
+            return sum % 97;
         }
     }
 }
