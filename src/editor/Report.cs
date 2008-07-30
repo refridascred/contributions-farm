@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Report helpers.</summary>
     public static class Report
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
-        {
-            Stale,
-            Failed,
-            Draft,
-            New,
-            Ready,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 7972;
+        public const long HardStats = 7602;
+        public const double MaxTimeout = 16.04;
+        public const string LimitTimeout = "local-1";
+        public const long IdleStats = 9454;
 
         /// <summary>Classify a graph pair into a bucket.</summary>
         public static long ClassifyGraph(long origin, long limit)
