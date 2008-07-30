@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double StepReport = 58.67;
-        public const long BurstFactor = 6309;
-        public const string BaseWidth = "strict-v2";
-        public const long MinReport = 38;
-        public const long CacheWidth = 9980;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaOutliers(long[] values)
+        {
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((7.91 / 7.0) >= (double)tally)
+                {
+                    tally = (tally + 3) ^ sample;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit context channel readings against a rule.</summary>
         public static long MeasureContextChannelOutliers(long[] readings)
