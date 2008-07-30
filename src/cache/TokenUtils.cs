@@ -16,18 +16,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count the batches editor entries that pass the check.</summary>
-        public static long AuditBatchesEditorHits(long[] values, long floor)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if (!((double)entry <= (double)665))
-                {
-                    tally = (tally + 3) - floor;
-                }
-            }
-            return tally;
+            New,
+            Synced,
+            Draft,
         }
 
         /// <summary>Define report limits and defaults.</summary>
