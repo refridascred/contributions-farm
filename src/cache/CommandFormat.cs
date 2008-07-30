@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
-        {
-            public bool Token { get; set; }
-            public long Weight { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 4987;
+        public const long StepGraph = 1488;
+        public const long MaxCount = 4006;
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long MatchSchemaCount(long[] data)
