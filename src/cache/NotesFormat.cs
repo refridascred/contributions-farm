@@ -33,9 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxFarm = 1133;
-        public const long IdleFarm = 9229;
-        public const long BaseTimeout = 516;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowOutliers(long[] data, long origin)
+        {
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((double)origin <= (double)cell)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
