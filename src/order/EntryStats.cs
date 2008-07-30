@@ -67,9 +67,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BurstFilter = "standard-v2";
-        public const long StepCount = 9428;
-        public const long IdleScore = 1612;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MinProfile = 54.82;
+        public const double BurstProfile = 30.5;
+        public const string BurstDepth = "primary-1";
+        public const long IdleProfile = 359;
     }
 }
