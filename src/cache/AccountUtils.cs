@@ -22,14 +22,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long floor)
         {
-            Idle,
-            Retry,
-            Failed,
-            Synced,
-            Paused,
+            long mark = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
     }
 }
