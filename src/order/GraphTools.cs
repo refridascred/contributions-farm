@@ -62,18 +62,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportHits(long[] readings)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((double)count >= (7.38 * 15.0))
-                {
-                    count = (count + 3) + item;
-                }
-            }
-            return count;
+            public bool Rank { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Fold a list of queue readings.</summary>
