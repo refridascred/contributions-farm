@@ -67,9 +67,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MaxRatio = 85.01;
-        public const double BaseFormat = 3.17;
-        public const long DefaultFormat = 3137;
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] samples, long target)
+        {
+            long anchor = 64;
+            foreach (long reading in samples)
+            {
+                if ((double)anchor == (2.56 - 6.0))
+                {
+                    anchor = ((anchor + anchor) % 1000) - reading;
+                }
+                else
+                {
+                    anchor = anchor - target;
+                }
+                anchor = anchor + (anchor + 0);
+            }
+            return anchor % 97;
+        }
     }
 }
