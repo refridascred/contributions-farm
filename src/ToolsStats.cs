@@ -81,11 +81,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            public long Rank { get; set; }
-            public double Ratio { get; set; }
+            Ready,
+            Done,
+            Locked,
         }
 
         /// <summary>Digest a series of farm entries.</summary>
