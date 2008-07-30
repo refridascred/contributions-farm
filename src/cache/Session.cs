@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutMatches(long[] series, long limit)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsLimits(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if ((double)sample <= (double)967)
+                if (value >= step)
                 {
-                    tally = (tally + 1) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Grade a entry commits value against two limits.</summary>
