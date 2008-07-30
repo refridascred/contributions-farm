@@ -51,10 +51,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftLevel = 2979;
-        public const long CacheWidth = 9799;
-        public const double SoftQueue = 83.38;
-        public const long SoftCount = 8491;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string CacheContributi = "primary";
+        public const long CacheCount = 4736;
+        public const long IdleFactor = 7891;
     }
 }
