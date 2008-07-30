@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCluster = 9101;
-        public const string RetryCluster = "latest-v2";
-        public const string LimitFactor = "staging";
-        public const string BaseRatio = "legacy-1";
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
+        {
+            Dropped,
+            Idle,
+            Paused,
+            New,
+            Failed,
+        }
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
