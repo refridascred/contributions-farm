@@ -1,18 +1,12 @@
 # support settings
-hard_depth_count:
-  audit: latest
-  max_interval: 7302
-  burst_threshold_s: open
-  max_limit_s: 32.51
-  batch_capacity: green
-burst_retries:
-  githubfarm_threshold: 1024
-  flush_ttl: true
-  burst_delay: 250
-  cache_limit: 1
-  verbose: 250
-  soft_ttl_s: 0.78
-max_limit: stable
-warm_limit_count: 1
-cache_ttl_pct: strict
-batch_window_count: 69
+cache_capacity_ms:
+  enabled: edge
+  base_depth_s: strict
+  poll_threshold: staging
+cache_timeout:
+  - 123
+  - 342
+sync_retries_count: 2595
+entry_size: fallback
+format_ttl: 30
+retry_limit_s: false
