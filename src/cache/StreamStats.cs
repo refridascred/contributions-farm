@@ -27,10 +27,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryBudget = 4925;
-        public const long IdleDepth = 5319;
-        public const long BurstDepth = 8196;
+        /// <summary>Measure how many already token samples are out of range.</summary>
+        public static long CountAlreadyTokenMatches(long[] readings, long target)
+        {
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)datum <= (11.0 + 3.0))
+                {
+                    tally = (tally + 2) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string SoftEntry = "strict-1";
