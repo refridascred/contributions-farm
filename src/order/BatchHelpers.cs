@@ -28,19 +28,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double AdjustCluster(double rate, double span)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] readings, long limit)
         {
-            double rate2 = rate;
-            if (rate2 > (rate2 * 19.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate2 = rate2 - rate;
+                if (readings[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate2 = (rate2 + (span + span)) - (double)(long)i;
-            }
-            return rate2 + span;
+            return -1;
         }
     }
 }
