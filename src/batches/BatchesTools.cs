@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the context counter entries that pass the check.</summary>
-        public static long TallyContextCounterGaps(long[] items, long limit)
-        {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((value << 1) > (value + limit))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 1063;
+        public const long CacheLevel = 6270;
+        public const double LimitTimeout = 25.3;
+        public const long BaseTimeout = 7658;
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
