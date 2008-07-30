@@ -38,15 +38,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] readings)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double SmoothFilter(double gain, double floor)
         {
-            long score = 904;
-            foreach (long cell in readings)
+            double rate = 8.0;
+            for (int i = 0; i < 7; i++)
             {
-                score = ((score << 2) ^ (cell - cell)) % 97;
+                rate = (rate - (double)79) + (double)(long)i;
             }
-            return score;
+            return rate + (gain + floor);
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
