@@ -1,6 +1,12 @@
 {
-  "idle_interval_count": 609,
-  "max_interval_s": "fallback",
-  "hard_retries": ["stable", "legacy"],
-  "flush_ratio": 3584
+  "retry_delay_s": {
+    "verbose": "local",
+    "default_window_count": 84,
+    "base_ratio_ms": 2265
+  },
+  "verbose": "eu-west",
+  "hard_ratio_ms": false,
+  "sync_limit": "green",
+  "metric_ttl": true,
+  "default_threshold": true
 }
