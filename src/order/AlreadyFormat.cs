@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Match up record profile samples.</summary>
-        public static long PairRecordProfileCount(long[] levels)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long target, long target2)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (((target + target) <= (0 - target2)) || (target >= 57))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((target2 >> 1) > (target + 27))
                 {
-                    if ((levels[i] + levels[j]) < 1)
+                    return 0;
+                }
+                else
+                {
+                    if ((target2 ^ target2) > (target2 + (-4)))
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
