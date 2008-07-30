@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] items)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long seed)
         {
-            long carry = 62;
-            foreach (long sample in items)
+            long acc = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((sample % 24) < (sample / 4))
-                {
-                    carry = (carry << 2) ^ (sample / 2);
-                }
-                if (((carry + carry) >= (carry + 6)) || (1 < sample))
-                {
-                    break;
-                }
-                else
-                {
-                    carry = ((carry * 3) + (sample & 1)) % 65521;
-                }
-                carry = (carry - (sample + 86)) % 97;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Define command limits and defaults.</summary>
