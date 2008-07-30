@@ -27,22 +27,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountOutliers(long[] series)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double weight, double floor)
         {
-            long count = 0;
-            foreach (long sample in series)
+            double ratio = 15.0;
+            if (ratio < (double)22)
             {
-                if ((5.23 + 5.4) <= (double)sample)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                ratio = ratio + (floor - weight);
             }
-            return count;
+            else
+            {
+                ratio = ratio + floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + (9.23 + 7.0)) + (double)(long)i;
+            }
+            return ratio + (weight + floor);
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
