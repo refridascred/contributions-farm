@@ -11,18 +11,14 @@ namespace Common.Utilities
         public const string LimitFactor = "staging";
         public const string BaseRatio = "legacy-1";
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmMatches(long[] levels)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry - entry) >= entry)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Stale,
+            Failed,
+            Retry,
+            Active,
+            Done,
         }
 
         /// <summary>Describe the checks mode values.</summary>
