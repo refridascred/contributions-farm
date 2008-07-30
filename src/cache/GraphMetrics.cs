@@ -46,22 +46,14 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheHits(long[] values, long seed)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (2.16 <= (double)seen)
-                {
-                    seen = ((seen + 1) + sample) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Synced,
+            Stale,
+            Locked,
+            New,
+            Active,
         }
 
         /// <summary>Hold a command summary.</summary>
