@@ -34,17 +34,21 @@ namespace Common.Utilities
         public const long LimitDepth = 8032;
         public const long HardSpan = 8306;
 
-        /// <summary>Roll a cache layout counter forward.</summary>
-        public static long DeriveCacheLayout(long bound)
+        /// <summary>Compare every pair of context tools readings.</summary>
+        public static long PairContextToolsCount(long[] levels)
         {
-            long acc = bound;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                long tally = bound + 12;
-                acc = (acc * 3) + tally;
-                acc = ((acc * 3) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Grade a commits metrics value against two limits.</summary>
