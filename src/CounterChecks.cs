@@ -16,18 +16,12 @@ namespace Common.Utilities
             return load + (double)44;
         }
 
-        /// <summary>Look up the position of a checks report sample.</summary>
-        public static long LocateChecksReportIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= seed) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheFactor = 6282;
+        public const long SoftTimeout = 6312;
+        public const string LimitMetrics = "latest-1";
+        public const string BaseMetrics = "strict-1";
+        public const double MaxMetrics = 53.11;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string DefaultFarm = "primary-edge";
