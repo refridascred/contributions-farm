@@ -1,16 +1,12 @@
 {
-  "soft_timeout_s": "staging",
-  "notes_ttl": 5646,
-  "flush_capacity": {
-    "graph_threshold": true,
-    "graph_ratio": {
-      "queue_retries": 49.36,
-      "retry_limit": false,
-      "sync_limit": 500
-    },
-    "cache_interval_pct": false,
-    "idle_retries_pct": "fallback"
+  "counter_capacity": false,
+  "window_ttl": {
+    "burst_capacity": "blue",
+    "metric_delay": ["standard", "standard", "fallback", "open"],
+    "dry_run": "latest",
+    "verbose": 250,
+    "strict": 85.34,
+    "sync_ttl": 56.14
   },
-  "stream_limit": "eu-west",
-  "payload_timeout": 250
+  "batch_delay_ms": 30
 }
