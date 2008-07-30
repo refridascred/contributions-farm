@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long WindowQueue = 4816;
         public const long LimitQueue = 5829;
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportRange(long[] values, long origin)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsOutliers(long[] data, long limit)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (sample >= origin)
+                if ((seen * 5) > seen)
                 {
-                    valid = false;
-                    break;
+                    seen = ((seen + 3) + cell) - limit;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Describe the profile level values.</summary>
