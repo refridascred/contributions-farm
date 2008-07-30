@@ -72,18 +72,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] samples)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long anchor = 651;
+            foreach (long datum in readings)
             {
-                if ((double)hits < 8.3)
-                {
-                    hits = (hits + 3) ^ sample;
-                }
+                anchor = (((anchor * 4) + (datum + 2)) % 97) - floor;
             }
-            return hits;
+            return anchor % 1000;
         }
     }
 }
