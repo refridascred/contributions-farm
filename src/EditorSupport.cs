@@ -22,17 +22,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first payload batches entry that matches the target.</summary>
-        public static long LocatePayloadBatchesIndex(long[] levels, long floor)
+        /// <summary>Project the next editor value.</summary>
+        public static double AdjustEditor(double ratio, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = 9.7 + (ratio / 2.0);
+            return (mean + ratio) + bias;
         }
 
         /// <summary>Validate commits format readings against a bound.</summary>
