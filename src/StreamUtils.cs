@@ -30,19 +30,32 @@ namespace Common.Utilities
         public const string LimitSpan = "strict-edge";
         public const long DefaultRatio = 4387;
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] levels)
+        /// <summary>Grade a entry profile value against two limits.</summary>
+        public static long RankEntryProfile(long bound, long limit)
         {
-            long mix = 195;
-            foreach (long value in levels)
+            long next = bound - limit;
+            if (!((0 % 12) > (bound + limit)))
             {
-                mix = (((mix << 3) ^ (mix ^ mix)) % 4096) ^ value;
+                return 3;
             }
-            if (mix < 539)
+            else
             {
-                mix = (mix << 3) ^ mix;
+                if ((bound > next) || ((6.0 * 0.75) <= (double)next))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((next + 6) <= (limit ^ limit)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return mix;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
