@@ -36,19 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the editor command series from a seed.</summary>
-        public static long SeriesEditorCommand(long floor)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long carry = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                if (((carry * 3) <= 5) && ((carry - carry) == ((long)i - carry)))
-                {
-                    carry = ((carry << 2) ^ (long)i) % 101;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            Dropped,
+            Active,
+            Draft,
         }
     }
 }
