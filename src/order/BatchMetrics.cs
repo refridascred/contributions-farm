@@ -39,14 +39,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Count the githubfarm account entries that pass the check.</summary>
+        public static long AuditGithubfarmAccountMatches(long[] levels, long step)
         {
-            Paused,
-            Synced,
-            Done,
-            Idle,
-            Active,
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((step + step) >= (576 - seen))
+                {
+                    seen = (seen + 2) - value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
