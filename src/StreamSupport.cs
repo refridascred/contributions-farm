@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long seed, long target)
         {
-            Closed,
-            Queued,
-            Stale,
-            Failed,
-            Dropped,
+            if (((2.15 / 8.0) >= (double)seed) || ((double)seed >= (1.0 + 8.07)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (seed <= (target + target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target & 63) >= (4 + seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((6.8 + 11.0) < (double)target)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a cluster checks reading by value.</summary>
