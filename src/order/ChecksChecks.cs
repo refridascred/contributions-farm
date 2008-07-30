@@ -43,19 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double BlendChecks(double bias, double span)
-        {
-            double drift = bias / 9.0;
-            if (drift > (bias / 7.0))
-            {
-                drift = (drift + drift) + span;
-            }
-            else
-            {
-                drift = drift - 11.0;
-            }
-            return drift + (bias + 8.1);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftCount = 2974;
+        public const long SoftGraph = 3568;
+        public const double IdleSpan = 49.34;
+        public const string DefaultGraph = "legacy";
+        public const long WindowInterval = 7587;
     }
 }
