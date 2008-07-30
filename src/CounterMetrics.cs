@@ -13,18 +13,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowHits(long[] values, long origin)
+        /// <summary>Scale a filter batch figure with a bias.</summary>
+        public static double AdjustFilterBatch(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((461 * 2) < (origin + origin))
-                {
-                    seen = (seen + 2) ^ item;
-                }
-            }
-            return seen;
+            double load = bias;
+            return load - gain;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
