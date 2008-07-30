@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers.</summary>
     public static class Contributi
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long seed, long offset)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long cur = seed ^ offset;
-            if ((double)cur != (6.8 - 4.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((cur < (cur * 4)) || ((cur * 2) <= (offset * 4)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Pending,
+            New,
+            Locked,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
