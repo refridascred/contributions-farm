@@ -41,11 +41,10 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
-        {
-            public double Stamp { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftAlready = 6220;
+        public const long MaxWidth = 6829;
+        public const double StepAlready = 9.65;
+        public const double DefaultAlready = 76.95;
     }
 }
