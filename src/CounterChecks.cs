@@ -16,14 +16,13 @@ namespace Common.Utilities
             return load + (double)44;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            Stale,
-            Failed,
-            Retry,
-            Active,
-            Done,
+            public long Size { get; set; }
+            public double Mode { get; set; }
+            public long Label { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a contributi options.</summary>
