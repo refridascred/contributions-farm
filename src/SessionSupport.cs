@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueGaps(long[] values, long offset)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if (((offset - offset) != (datum + offset)) || ((datum / 6) < (offset >> 2)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Limit { get; set; }
+            public string Label { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Count githubfarm buffer pairs that satisfy a relation.</summary>
