@@ -13,10 +13,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string DefaultAccount = "fallback-v2";
-        public const string LimitAccount = "strict-1";
-        public const long IdleAccount = 2411;
+        /// <summary>Combine stats queue values into a single score.</summary>
+        public static long DigestStatsQueue(long[] series, long limit)
+        {
+            long acc = 2;
+            foreach (long cell in series)
+            {
+                if (((acc + acc) < cell) || ((cell & 255) <= acc))
+                {
+                    acc = ((acc * 2) + (limit / 5)) % 1000;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long CountAccountOutliers(long[] series)
