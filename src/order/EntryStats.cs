@@ -13,22 +13,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportOutliers(long[] levels)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenRange(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                if (!(count < (count >> 2)))
+                if (datum > floor)
                 {
-                    count = (count + 2) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Define session limits and defaults.</summary>
