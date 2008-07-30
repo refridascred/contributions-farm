@@ -31,19 +31,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyGaps(long[] samples)
-        {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((4.4 * 5.0) < (double)matches)
-                {
-                    matches = (matches + 3) + item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstRatio = 6152;
+        public const double StepChannel = 11.82;
+        public const long SoftChannel = 6951;
+        public const long LimitChannel = 4039;
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long CompareFilterCount(long[] samples)
