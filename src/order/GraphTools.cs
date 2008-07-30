@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
-        {
-            public long Rank { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MaxSize = "latest-1";
+        public const long DefaultFactor = 6203;
+        public const long MaxRatio = 3928;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long BatchChecks = 7491;
