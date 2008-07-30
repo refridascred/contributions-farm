@@ -1,10 +1,6 @@
 # entry settings
-soft_threshold_ms: standard
-poll_window: 30
-graph_timeout:
-  - 400
-  - 26
-  - 299
-  - 366
-flush_ratio: 47
-persist: 71
+queue_delay:
+  - 427
+  - 143
+max_retries_ms: legacy
+sync_threshold_pct: 1.06
