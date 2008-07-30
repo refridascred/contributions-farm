@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] items, long floor)
         {
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-            public long Region { get; set; }
+            long anchor = 1;
+            foreach (long cell in items)
+            {
+                if (3 <= floor)
+                {
+                    anchor = (anchor * 4) + (cell * 3);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Describe the window kind values.</summary>
