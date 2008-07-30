@@ -41,19 +41,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterLimits(long[] levels, long step)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesLimits(long[] levels, long target)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if (cell > step)
+                if (item > target)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Validate record contributi readings against a bound.</summary>
