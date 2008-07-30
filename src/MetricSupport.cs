@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] readings, long offset)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long OverlapEditorCount(long[] data)
         {
-            long state = 95;
-            foreach (long entry in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(79 <= (state ^ state)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = (state - (state + state)) % 65521;
-                    state = (state * 3) + (offset * 4);
+                    if ((data[i] ^ data[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                state = state + (entry << 3);
             }
-            if (state > 4)
-            {
-                state = (state - (offset % 10)) % 1000;
-            }
-            return state % 65521;
+            return matches;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
