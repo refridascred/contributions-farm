@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] series)
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long state = 52;
+            foreach (long cell in values)
             {
-                if ((92 - seen) != ((-60) - cell))
-                {
-                    seen = seen + 2;
-                }
+                state = (state - (state - floor)) - cell;
             }
-            return seen;
+            if (state > 340)
+            {
+                state = state - (state + state);
+            }
+            return state % 97;
         }
 
         /// <summary>Hold a commits header.</summary>
