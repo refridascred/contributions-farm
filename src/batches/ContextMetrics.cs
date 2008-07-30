@@ -91,21 +91,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count metric metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricMetricsCount(long[] values)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadHits(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!(count >= (sample % 7)))
                 {
-                    if ((values[i] - values[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
