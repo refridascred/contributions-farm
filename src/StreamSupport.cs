@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a queue batches reading by value.</summary>
-        public static long LocateQueueBatchesIndex(long[] series, long offset)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > offset) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Queued,
+            Ready,
+            Done,
+            Draft,
         }
 
         /// <summary>Locate a cluster checks reading by value.</summary>
