@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a batches metric value against two limits.</summary>
-        public static long GradeBatchesMetric(long limit, long seed)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] items)
         {
-            if ((double)limit == (double)seed)
+            long acc = 0;
+            foreach (long reading in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (((limit ^ limit) > (limit << 3)) && ((double)seed >= (8.0 - 2.4)))
+                if (!(reading < ((long)items.Length + reading)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((double)seed == (7.95 - 16.0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    acc = ((acc * 5) + (-1)) % 97;
                 }
             }
+            return acc;
         }
 
         /// <summary>Audit context channel readings against a rule.</summary>
