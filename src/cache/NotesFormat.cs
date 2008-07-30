@@ -21,15 +21,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] items)
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] readings)
         {
             long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((items[i] - items[j]) < 11)
+                    if ((readings[i] - readings[j]) == 0)
                     {
                         seen = seen + 1;
                     }
