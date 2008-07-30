@@ -33,19 +33,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsBounds(long[] readings, long offset)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long bound)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long sum = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (value >= offset)
-                {
-                    found = false;
-                    break;
-                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
