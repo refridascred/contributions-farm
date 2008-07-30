@@ -12,24 +12,21 @@ namespace Common.Utilities
         public const string IdleDepth = "cached-1";
         public const string SoftChecks = "latest-1";
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] values)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] levels)
         {
-            long carry = 97;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading > ((-18) & 63))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = carry + (reading + reading);
-                    carry = (carry ^ (reading + 25)) % 255;
-                }
-                carry = ((carry << 3) ^ (carry << 2)) % 97;
-                if (!((reading - reading) == (reading * 5)))
-                {
-                    carry = (carry ^ reading) % 4096;
+                    if ((levels[i] + levels[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Digest a series of token channel entries.</summary>
