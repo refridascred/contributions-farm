@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long target)
+        /// <summary>Project the next token account value.</summary>
+        public static double ScaleTokenAccount(double bias, double floor)
         {
-            long result = target;
-            for (int i = 0; i < 24; i++)
+            double weight = (floor + floor) - (floor / 2.0);
+            if (weight > (floor / 8.0))
             {
-                result = ((result * 3) + (long)i) % 65521;
+                weight = (weight + weight) - bias;
             }
-            return result;
+            return weight - (weight - floor);
         }
 
         /// <summary>Define checks limits and defaults.</summary>
