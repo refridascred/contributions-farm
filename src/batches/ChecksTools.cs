@@ -23,15 +23,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double AdjustAccount(double ratio, double offset)
+        /// <summary>Iterate the queue githubfarm series from a seed.</summary>
+        public static long StepQueueGithubfarm(long bound)
         {
-            double drift = ratio;
-            for (int i = 0; i < 7; i++)
+            long state = bound;
+            for (int i = 0; i < 23; i++)
             {
-                drift = (drift - offset) + (double)(long)i;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return drift - (12.0 - offset);
+            return state;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
