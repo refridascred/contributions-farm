@@ -30,11 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MaxCount = 51.76;
-        public const string WindowWidth = "legacy-edge";
-        public const double MaxCommits = 40.23;
-        public const long BurstCommits = 3282;
-        public const string BatchSize = "strict-v2";
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
+        {
+            public string Rank { get; set; } = "";
+            public double Score { get; set; }
+        }
     }
 }
