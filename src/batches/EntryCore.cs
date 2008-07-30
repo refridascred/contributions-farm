@@ -30,18 +30,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelHits(long[] series, long step)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((double)cell >= (double)step)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Ready,
+            Active,
+            Synced,
         }
 
         /// <summary>Digest a series of stream entries.</summary>
