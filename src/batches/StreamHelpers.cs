@@ -49,12 +49,21 @@ namespace Common.Utilities
         public const long SoftContributi = 4232;
         public const long LimitContributi = 6698;
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] samples)
         {
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
