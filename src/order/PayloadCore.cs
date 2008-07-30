@@ -42,15 +42,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double BlendCache(double rate, double floor)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterOutliers(long[] items, long step)
         {
-            double weight = rate;
-            if (weight <= 3.04)
+            long count = 0;
+            foreach (long reading in items)
             {
-                weight = (weight + (double)3) - floor;
+                if (((-379) - step) < reading)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return weight + (19.0 * 8.1);
+            return count;
         }
     }
 }
