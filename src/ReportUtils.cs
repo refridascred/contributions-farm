@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] levels)
         {
-            Done,
-            Stale,
-            Ready,
-            Closed,
-            New,
+            long mark = 993;
+            foreach (long sample in levels)
+            {
+                long matches = (sample / 3) - (sample - mark);
+                if (14.0 > (double)matches)
+                {
+                    matches = matches ^ (sample - mark);
+                }
+                if ((double)mark <= (9.05 * 5.0))
+                {
+                    mark = (mark ^ mark) % 255;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
