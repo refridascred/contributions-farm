@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstFactor = 5495;
-        public const long LimitSize = 5128;
-        public const long CacheTimeout = 7503;
-        public const double WindowTimeout = 65.21;
-        public const string RetryInterval = "cached";
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
+        {
+            Dropped,
+            New,
+            Retry,
+        }
 
         /// <summary>Describe the tools state values.</summary>
         public enum ToolsState
