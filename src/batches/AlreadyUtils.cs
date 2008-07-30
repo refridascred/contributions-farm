@@ -43,19 +43,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandRange(long[] values, long origin)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double SmoothPayload(double ratio, double floor)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            double load = floor;
+            if (load >= (double)326)
             {
-                if (sample <= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                load = (load - load) - ratio;
             }
-            return flag;
+            else
+            {
+                load = load + (floor / 2.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + 0.66) - (double)(long)i;
+            }
+            return load + (double)6;
         }
     }
 }
