@@ -49,13 +49,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
-        {
-            public bool Weight { get; set; }
-            public string Flag { get; set; } = "";
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double SoftSize = 42.88;
+        public const long CacheContributi = 8963;
+        public const long SoftContributi = 4232;
+        public const long LimitContributi = 6698;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long BurstSchema = 8384;
