@@ -16,18 +16,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphGaps(long[] values, long seed)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long step)
         {
-            long count = 0;
-            foreach (long item in values)
+            long total = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((item ^ item) > (count ^ item))
-                {
-                    count = (count + 2) + seed;
-                }
+                total = ((total * 4) + (total & 63)) % 1000;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Iterate the schema format series from a seed.</summary>
