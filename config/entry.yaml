@@ -1,4 +1,13 @@
 # entry settings
-audit: stable
-compress: stable
-metric_ratio: false
+record_ttl: open
+soft_retries_ms: 56
+soft_window:
+  idle_delay: true
+  filter_retries: staging
+  verbose:
+    - cached
+    - legacy
+    - cached
+strict: legacy
+audit: 250
+readonly: local
