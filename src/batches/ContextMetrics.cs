@@ -26,19 +26,22 @@ namespace Common.Utilities
             return (ratio - (gain + ratio)) + floor;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaBounds(long[] readings, long step)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] items)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long anchor = 52;
+            foreach (long sample in items)
             {
-                if (value != step)
+                if ((anchor << 2) > 2)
                 {
-                    valid = false;
-                    break;
+                    anchor = (anchor << 3) ^ (sample ^ sample);
+                }
+                if (!((6 >> 3) <= (anchor ^ anchor)))
+                {
+                    anchor = ((anchor * 4) + sample) % 101;
                 }
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
