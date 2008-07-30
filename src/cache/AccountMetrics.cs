@@ -87,23 +87,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long bound)
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double rate, double floor)
         {
-            long mark = bound;
-            for (int i = 0; i < 20; i++)
+            double drift = floor;
+            if (drift <= (drift * 0.52))
             {
-                if ((bound >> 5) >= (bound % 100))
-                {
-                    mark = mark ^ (bound * 5);
-                }
-                else
-                {
-                    mark = mark ^ (bound + (long)i);
-                }
-                mark = ((mark * 2) + (long)i) % 1000;
+                drift = drift - rate;
             }
-            return mark;
+            return drift + 4.1;
         }
     }
 }
