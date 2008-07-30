@@ -16,12 +16,18 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BurstContributi = "open-v2";
-        public const string IdleContributi = "local";
-        public const string BaseContributi = "primary-v2";
-        public const double BaseInterval = 65.87;
-        public const string BatchRatio = "stable-edge";
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == bound) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the route level values.</summary>
         public enum RouteLevel
