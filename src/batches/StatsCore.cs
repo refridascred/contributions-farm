@@ -59,19 +59,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every editor window entry stays within the limit.</summary>
-        public static bool CheckEditorWindowLimits(long[] samples, long limit)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] items, long limit)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value < limit)
+                if (items[i] < limit)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
