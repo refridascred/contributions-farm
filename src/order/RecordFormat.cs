@@ -21,18 +21,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MinReport = 53.07;
+        public const long IdleReport = 134;
+        public const string BaseRatio = "stable";
+        public const long HardReport = 3350;
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long CombineBatch(long[] items, long target)
