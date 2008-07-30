@@ -31,31 +31,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank notes command input into a small class.</summary>
-        public static long RankNotesCommand(long limit, long floor)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            if ((double)floor != (18.0 + 16.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit ^ limit) <= (679 >> 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)limit < 1.9)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public string Owner { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a payload stats.</summary>
