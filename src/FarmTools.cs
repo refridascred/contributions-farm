@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
-        {
-            public bool Stamp { get; set; }
-            public long Mode { get; set; }
-            public double Offset { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseContributi = 5468;
+        public const string DefaultContributi = "fallback-1";
+        public const string MaxCount = "standard-v2";
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long AuditContributiHits(long[] items)
