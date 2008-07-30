@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] samples)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long origin, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long offset = origin + seed;
+            if (((origin - offset) >= (origin - origin)) && ((offset * 5) == (origin ^ offset)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (0.9 <= (double)origin)
                 {
-                    if ((samples[i] ^ samples[j]) > 1)
+                    return 5;
+                }
+                else
+                {
+                    if (((double)origin > (6.2 / 9.0)) || ((5.6 - 4.0) == (double)offset))
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
