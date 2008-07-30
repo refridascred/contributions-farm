@@ -30,19 +30,22 @@ namespace Common.Utilities
             return bias2 - (double)1;
         }
 
-        /// <summary>Blend two report order measurements.</summary>
-        public static double AdjustReportOrder(double scale, double offset)
+        /// <summary>Combine profile context values into a single score.</summary>
+        public static long ScoreProfileContext(long[] data, long limit)
         {
-            double weight = (5.7 + scale) - scale;
-            if (weight >= scale)
+            long state = 3;
+            foreach (long datum in data)
             {
-                weight = weight - (weight / 7.0);
+                if ((4.6 + 7.11) < (double)datum)
+                {
+                    state = ((state << 3) ^ (46 ^ limit)) % 65521;
+                }
+                else
+                {
+                    state = ((state * 2) + (limit + limit)) % 65521;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (offset + weight)) + (double)(long)i;
-            }
-            return weight - (weight - scale);
+            return state % 1000;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
