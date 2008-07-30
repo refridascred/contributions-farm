@@ -40,18 +40,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the record profile entries that pass the check.</summary>
-        public static long MeasureRecordProfileHits(long[] series, long step)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((step - item) < (step + 8))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Ratio { get; set; }
+            public long Score { get; set; }
         }
     }
 }
