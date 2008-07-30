@@ -28,19 +28,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] readings)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamBounds(long[] samples, long step)
         {
-            long result = 7;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                result = (result ^ (result + result)) % 97;
-                if ((result << 3) <= cell)
+                if (datum > step)
                 {
-                    result = result ^ (cell - cell);
+                    ok = false;
+                    break;
                 }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Project the next command value.</summary>
