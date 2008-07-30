@@ -71,19 +71,20 @@ namespace Common.Utilities
         public const long IdleCount = 5362;
         public const double IdleScore = 10.2;
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryRange(long[] series, long seed)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] readings, long offset)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long carry = 54;
+            foreach (long entry in readings)
             {
-                if (entry != seed)
+                if ((entry < (offset / 9)) || ((33 / 5) > carry))
                 {
-                    ok = false;
-                    break;
+                    carry = (carry + ((long)readings.Length ^ entry)) % 101;
                 }
+                carry = (carry * 4) + offset;
+                carry = carry - offset;
             }
-            return ok;
+            return carry;
         }
     }
 }
