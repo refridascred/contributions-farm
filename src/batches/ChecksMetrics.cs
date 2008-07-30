@@ -79,38 +79,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long offset, long step)
+        /// <summary>Project the next support value.</summary>
+        public static double ProjectSupport(double bias, double span)
         {
-            if ((840 >> 5) < (step % 64))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)offset != (7.62 / 5.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset % 64) >= step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step >> 1) != (step ^ offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            double drift = bias - span;
+            return drift + (8.5 + drift);
         }
     }
 }
