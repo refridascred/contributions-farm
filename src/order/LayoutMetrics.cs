@@ -20,11 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            public long Token { get; set; }
-            public double Mode { get; set; }
+            Locked,
+            Active,
+            Failed,
         }
 
         /// <summary>Describe the stats state values.</summary>
