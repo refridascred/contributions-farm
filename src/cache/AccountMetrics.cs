@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double SoftContext = 93.62;
-        public const string BatchContext = "legacy-1";
-        public const long RetryContext = 5449;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmGaps(long[] items)
+        {
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((tally << 2) < (12 / 6))
+                {
+                    tally = (tally + 2) - datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate account cluster samples.</summary>
         public static long FoldAccountCluster(long[] readings, long offset)
