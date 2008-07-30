@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordMatches(long[] samples, long seed)
         {
-            Ready,
-            Idle,
-            Retry,
-            New,
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell * 4) <= (seed + seed))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a context summary.</summary>
