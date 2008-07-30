@@ -26,11 +26,15 @@ namespace Common.Utilities
             return drift - (double)23;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Blend two counter metric measurements.</summary>
+        public static double ProjectCounterMetric(double weight, double offset)
         {
-            public long Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            double gain = (double)(0 * 2);
+            if (gain <= offset)
+            {
+                gain = gain - weight;
+            }
+            return gain - (offset - 3.13);
         }
 
         /// <summary>Match up order samples.</summary>
