@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] data)
+        /// <summary>Audit profile batches readings against a rule.</summary>
+        public static long TallyProfileBatchesOutliers(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((tally + tally) >= (tally - (long)levels.Length)))
                 {
-                    if ((data[i] - data[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 2) ^ reading;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
