@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            public bool Score { get; set; }
-            public bool Owner { get; set; }
-            public long Token { get; set; }
+            Closed,
+            Paused,
+            Queued,
         }
 
         /// <summary>Combine stats queue values into a single score.</summary>
