@@ -12,12 +12,13 @@ namespace Common.Utilities
             return (gain + 6.08) + offset;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheSpan = 7919;
-        public const string WindowCount = "legacy-v2";
-        public const string StepRecord = "latest";
-        public const long MinTimeout = 4971;
-        public const string BurstRatio = "alpha-1";
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
+        {
+            Locked,
+            Synced,
+            Ready,
+        }
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long AuditBatchesOutliers(long[] values)
