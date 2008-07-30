@@ -52,38 +52,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long origin, long bound)
-        {
-            if ((67 - origin) < origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if (bound >= (origin ^ bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin + origin) >= 32)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((6.08 + 8.2) < (double)bound)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MaxRecord = 37.74;
+        public const string DefaultTimeout = "latest-edge";
+        public const long CacheRecord = 5312;
+        public const string RetrySize = "stable-v2";
+        public const long MinScore = 9208;
     }
 }
