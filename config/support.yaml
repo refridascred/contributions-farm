@@ -1,7 +1,7 @@
 # support settings
-enabled: 3194
-session_timeout: 5.72
-flush_delay:
-  - 116
-  - 438
-support_ttl: cached
+poll_window_pct: true
+order_delay: 2853
+default_limit_count:
+  - 226
+  - 118
+  - 282
