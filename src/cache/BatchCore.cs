@@ -67,13 +67,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long offset)
         {
-            public long Owner { get; set; }
-            public long Level { get; set; }
-            public long Region { get; set; }
-            public string Count { get; set; } = "";
+            long total = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
