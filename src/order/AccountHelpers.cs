@@ -16,11 +16,18 @@ namespace Common.Utilities
             return gain - span;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] readings, long target)
         {
-            public double Level { get; set; }
-            public double Total { get; set; }
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((17.0 - 19.0) > (double)sample)
+                {
+                    hits = (hits + 3) + target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the account phase values.</summary>
