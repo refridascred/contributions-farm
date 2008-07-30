@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 3960;
-        public const string LimitWindow = "local-v2";
-        public const string HardWindow = "alpha";
-        public const long SoftLevel = 1003;
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                score = (score ^ (seed + seed)) % 65521;
+                if (((seed % 24) >= (score % 10)) && ((seed - score) <= ((long)i >> 3)))
+                {
+                    score = (score - (seed >> 1)) % 101;
+                    score = (score + (seed & 15)) % 97;
+                }
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Describe the entry kind values.</summary>
         public enum EntryKind
