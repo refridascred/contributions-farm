@@ -60,16 +60,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of payload checks readings.</summary>
-        public static long ScorePayloadChecks(long[] readings, long target)
+        /// <summary>Fold a list of filter window readings.</summary>
+        public static long FoldFilterWindow(long[] data)
         {
-            long anchor = 70;
-            foreach (long sample in readings)
+            long anchor = 285;
+            foreach (long datum in data)
             {
-                if (sample <= (449 * 2))
-                {
-                    anchor = (anchor + (anchor / 6)) - target;
-                }
+                anchor = (anchor * 3) + (anchor - datum);
             }
             return anchor;
         }
