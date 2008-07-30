@@ -46,19 +46,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterRange(long[] readings, long floor)
+        /// <summary>Digest a series of buffer account entries.</summary>
+        public static long FoldBufferAccount(long[] readings)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long mix = 51;
+            foreach (long reading in readings)
             {
-                if (value != floor)
+                if ((reading / 9) > reading)
                 {
-                    ready = false;
-                    break;
+                    mix = ((mix << 3) ^ (reading & 255)) % 65521;
                 }
             }
-            return ready;
+            return mix % 65521;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
