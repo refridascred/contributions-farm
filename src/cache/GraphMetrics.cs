@@ -56,12 +56,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] samples, long target)
         {
-            Dropped,
-            Ready,
-            Stale,
+            long mix = 1;
+            foreach (long cell in samples)
+            {
+                mix = ((mix + (mix - cell)) % 1000) + target;
+            }
+            return mix % 97;
         }
     }
 }
