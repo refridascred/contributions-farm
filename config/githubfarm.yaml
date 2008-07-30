@@ -1,14 +1,19 @@
 # githubfarm settings
-audit: 95
-layout_capacity:
-  dry_run:
-    - standard
-    - strict
-    - latest
-    - blue
-  warm_depth_ms: 96.05
-  editor_timeout:
-    - fallback
-    - strict
-  warm_ratio_pct: blue
-context_size: legacy
+hard_interval_count: 48
+min_limit:
+  cache_interval_count: staging
+  checks_window:
+    - 46
+    - 136
+    - 256
+    - 499
+  default_window_count: 40
+  persist:
+    poll_retries_count: open
+    strict: strict
+    hard_window_count: local
+  metrics_size: 1024
+flush_size: 430
+token_window: primary
+burst_capacity_count: false
+sync_ratio_ms: open
