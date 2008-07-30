@@ -47,23 +47,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] series)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] series)
         {
-            long result = 23;
-            foreach (long reading in series)
+            long result = 134;
+            foreach (long value in series)
             {
-                for (int i = 0; i < 7; i++)
-                {
-                    result = ((result << 2) ^ (result - reading)) - (long)i;
-                    result = result + (reading % 12);
-                }
-                if (((long)series.Length ^ reading) > (result + 900))
-                {
-                    result = result - (reading * 5);
-                }
+                result = ((result + (result + 15)) % 101) + value;
             }
-            return result % 97;
+            return result;
         }
     }
 }
