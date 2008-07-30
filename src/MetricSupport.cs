@@ -20,17 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a report metric sample.</summary>
-        public static long LookupReportMetricIndex(long[] items, long limit)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 999;
+            foreach (long reading in readings)
             {
-                if (items[i] == limit)
-                {
-                    return (long)i;
-                }
+                mix = mix + reading;
             }
-            return -1;
+            if (mix > 8)
+            {
+                mix = mix - (mix % 24);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
