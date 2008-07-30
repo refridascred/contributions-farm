@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of checks editor entries.</summary>
-        public static long FoldChecksEditor(long[] items)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] levels, long bound)
         {
-            long anchor = 256;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((datum * 2) <= (anchor / 9)) || ((anchor << 3) == (anchor % 64)))
+                if (levels[i] == bound)
                 {
-                    anchor = (anchor ^ (anchor & 15)) % 101;
-                }
-                if ((anchor + datum) < (datum * 3))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Check that every schema graph entry stays within the limit.</summary>
