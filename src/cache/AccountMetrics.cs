@@ -34,20 +34,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksBounds(long[] readings, long seed)
-        {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSchema = 882;
+        public const long IdleSchema = 1970;
+        public const long BaseLevel = 4040;
+        public const long CacheWidth = 7880;
 
         /// <summary>Scale a channel figure with a bias.</summary>
         public static double AdjustChannel(double weight, double span)
