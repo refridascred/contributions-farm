@@ -20,14 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Audit counter graph readings against a rule.</summary>
+        public static long MeasureCounterGraphHits(long[] series, long origin)
         {
-            Draft,
-            Failed,
-            Idle,
-            New,
-            Queued,
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (origin >= (101 + entry))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
