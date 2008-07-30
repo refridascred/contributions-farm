@@ -36,22 +36,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksHits(long[] data)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if (hits < (199 << 3))
-                {
-                    hits = (hits + 1) ^ value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
