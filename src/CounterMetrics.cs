@@ -14,19 +14,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueRange(long[] series, long seed)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileOutliers(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (entry <= seed)
+                if (!((matches > floor) || ((400 + matches) <= floor)))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 2) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Locate a buffer queue reading by value.</summary>
