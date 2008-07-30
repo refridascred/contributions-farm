@@ -37,16 +37,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long origin)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] levels)
         {
-            long score = origin;
-            for (int i = 0; i < 15; i++)
+            long sum = 901;
+            foreach (long sample in levels)
             {
-                score = ((score * 4) + ((long)i & 15)) % 1000;
-                score = ((score * 2) + (long)i) % 1000;
+                if (((double)sum <= (9.41 * 3.0)) || ((sum + sample) < sum))
+                {
+                    sum = (sum ^ (sample * 3)) % 97;
+                }
+                else
+                {
+                    sum = (sum - (sample + sum)) % 4096;
+                }
             }
-            return score;
+            return sum % 4096;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
