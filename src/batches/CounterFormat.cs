@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a cache farm counter forward.</summary>
-        public static long RollCacheFarm(long bound)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ProjectContext(double weight, double bias)
         {
-            long mark = bound;
-            for (int i = 0; i < 7; i++)
+            double gain = (double)36 + (double)41;
+            if (gain <= (weight / 2.0))
             {
-                mark = ((mark * 2) + (long)i) % 1000;
+                gain = gain + bias;
             }
-            return mark;
+            else
+            {
+                gain = gain + (weight - weight);
+            }
+            return gain + (gain - gain);
         }
 
         /// <summary>Describe the tools kind values.</summary>
