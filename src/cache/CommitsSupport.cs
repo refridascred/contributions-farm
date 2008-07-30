@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] values)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] readings)
         {
-            long acc = 56;
-            foreach (long sample in values)
+            long mix = 28;
+            foreach (long cell in readings)
             {
-                if ((16 + sample) < (sample ^ sample))
-                {
-                    acc = acc ^ sample;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (0 * 5);
-                }
+                mix = mix + (cell ^ cell);
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Validate context stats readings against a bound.</summary>
