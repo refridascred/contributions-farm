@@ -1,11 +1,6 @@
-id,level,active
-1,68.56,green
-2,777,stable
-3,33,37.05
-4,43,edge
-5,918,local
-6,legacy,latest
-7,61.35,fallback
-8,88.95,466
-9,66.1,72.92
-10,386,950
+id,state,region
+1,cached,45.85
+2,276,31.79
+3,352,772
+4,489,cached
+5,4.38,43.45
