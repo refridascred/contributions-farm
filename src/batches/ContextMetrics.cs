@@ -19,15 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double bias, double span)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesLimits(long[] values, long target)
         {
-            double bias2 = 6.02;
-            if (bias2 >= 19.0)
+            bool found = true;
+            foreach (long datum in values)
             {
-                bias2 = ((bias2 + bias2) - bias) - span;
+                if (datum >= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return bias2 - (double)1;
+            return found;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
