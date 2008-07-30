@@ -53,16 +53,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the metrics already series from a seed.</summary>
-        public static long DeriveMetricsAlready(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 1993;
+        public const string MaxCache = "strict";
+        public const long MaxTimeout = 2530;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long AuditAccountOutliers(long[] data)
