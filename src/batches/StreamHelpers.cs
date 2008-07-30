@@ -16,10 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepFactor = 9377;
-        public const long BaseRatio = 5477;
-        public const long LimitSpan = 4086;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorOutliers(long[] series, long bound)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (((entry / 6) == (entry >> 5)) || ((entry >= (tally % 2)) && (4 > tally)))
+                {
+                    tally = (tally + 2) - bound;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
