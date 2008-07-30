@@ -58,19 +58,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelRange(long[] levels, long floor)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Token { get; set; }
+            public double Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
