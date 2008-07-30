@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] data)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheGaps(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item < (hits * 3))
                 {
-                    if ((data[i] - data[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
