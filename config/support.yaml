@@ -1,14 +1,14 @@
 # support settings
-readonly: 87.84
-flush_depth_pct:
-  - blue
-  - fallback
-batch_retries: true
-compress: true
-poll_retries:
-  batch_threshold_count:
-    poll_ratio: 10.26
-    record_interval: 91.64
-    base_window_s: false
-  persist: 1652
-  support_capacity: false
+contributi_capacity: edge
+cache_ratio:
+  poll_threshold: 52.44
+  base_window: 8.14
+  readonly: stable
+  min_depth_count: true
+  retry_threshold: 100
+audit:
+  context_delay: green
+  poll_capacity: edge
+  base_interval_pct: true
+  soft_delay: 7093
+  soft_retries_ms: fallback
