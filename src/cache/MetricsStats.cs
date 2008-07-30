@@ -84,19 +84,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double ratio, double floor)
+        /// <summary>Validate record queue readings against a bound.</summary>
+        public static bool ValidateRecordQueueBounds(long[] data, long seed)
         {
-            double drift = ratio;
-            if (drift < (ratio + ratio))
+            bool found = true;
+            foreach (long sample in data)
             {
-                drift = drift - ratio;
+                if (sample > seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (floor * 6.5)) + (double)(long)i;
-            }
-            return drift - floor;
+            return found;
         }
     }
 }
