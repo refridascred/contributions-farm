@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long limit)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long score = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                score = ((score << 3) ^ score) % 101;
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            public bool Size { get; set; }
+            public double Owner { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
