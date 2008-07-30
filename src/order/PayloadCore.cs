@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double bias, double floor)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long floor, long target)
         {
-            double bias2 = (double)(515 / 2);
-            return ((bias2 + (double)704) + bias) + floor;
+            long lane = floor - target;
+            if (((floor / 7) < (5 & 3)) && (lane <= (floor << 3)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)lane > (19.0 / 2.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Validate stats editor readings against a bound.</summary>
