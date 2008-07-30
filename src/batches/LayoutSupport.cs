@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ProjectQueue(double scale, double offset)
-        {
-            double drift = (double)255 + offset;
-            return (drift - offset) + scale;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 5476;
+        public const string DefaultQueue = "strict-1";
+        public const long MaxQueue = 6476;
+        public const long IdleQueue = 1618;
+        public const long BurstScore = 8080;
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long BucketEntry(long limit, long limit2)
