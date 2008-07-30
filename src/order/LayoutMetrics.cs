@@ -20,11 +20,17 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Look up the position of a entry githubfarm sample.</summary>
+        public static long LookupEntryGithubfarmIndex(long[] levels, long seed)
         {
-            public long Size { get; set; }
-            public double Offset { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a buffer stats.</summary>
