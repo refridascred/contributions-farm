@@ -1,9 +1,26 @@
 {
-  "window_ttl": {
-    "idle_interval_ms": 37.83,
-    "batch_depth": true,
-    "warm_size": true
+  "min_interval_count": {
+    "batch_size": {
+      "cache_ttl_ms": "latest",
+      "retry_depth_ms": true,
+      "strict": "fallback",
+      "batches_ttl": 70.77
+    },
+    "default_retries_s": false,
+    "min_size": "green",
+    "min_capacity_ms": {
+      "cluster_size": 250,
+      "verbose": "local",
+      "report_limit": true,
+      "audit": 8752,
+      "cache_timeout": 97,
+      "base_capacity": 8094
+    },
+    "batch_interval_s": [38, 73, 405],
+    "stream_interval": 41.13
   },
-  "cache_depth": 60,
-  "dry_run": 87.16
+  "session_timeout": true,
+  "min_window_pct": "standard",
+  "burst_ttl": false,
+  "commits_size": 82.26
 }
