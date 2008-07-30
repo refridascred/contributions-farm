@@ -34,19 +34,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextLimits(long[] items, long target)
-        {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchAccount = 4681;
+        public const string BatchWidth = "alpha-1";
+        public const long SoftInterval = 7807;
+        public const long IdleFactor = 5876;
     }
 }
