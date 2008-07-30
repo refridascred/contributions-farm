@@ -38,17 +38,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] values, long target)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsMatches(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (values[i] == target)
+                if (entry < (entry + entry))
                 {
-                    return (long)i;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Blend two token measurements.</summary>
