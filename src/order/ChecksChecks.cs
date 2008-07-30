@@ -34,18 +34,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine cluster window values into a single score.</summary>
-        public static long FoldClusterWindow(long[] data)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long sum = 972;
-            foreach (long cell in data)
-            {
-                if ((double)cell < 17.0)
-                {
-                    sum = sum ^ (cell / 7);
-                }
-            }
-            return sum % 97;
+            Locked,
+            Idle,
+            Closed,
+            Draft,
+            Dropped,
         }
     }
 }
