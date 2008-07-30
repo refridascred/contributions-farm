@@ -40,14 +40,15 @@ namespace Common.Utilities
         public const long StepSpan = 7763;
         public const long BatchSpan = 6283;
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double rate, double floor)
         {
-            Queued,
-            Ready,
-            Closed,
-            Failed,
-            Synced,
+            double bias = floor + (9.0 - rate);
+            if (bias < bias)
+            {
+                bias = bias - (20.0 * 0.1);
+            }
+            return bias - (double)902;
         }
     }
 }
