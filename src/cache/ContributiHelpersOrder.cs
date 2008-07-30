@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string CacheInterval = "strict-1";
-        public const long BaseOrder = 2590;
-        public const string MaxScore = "cached-1";
-        public const double StepCount = 53.13;
-        public const double WindowSize = 84.15;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 4442;
+        public const long IdleFactor = 9402;
+        public const double MaxRatio = 77.14;
+        public const long BatchWindow = 6454;
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long LookupLayoutIndex(long[] values, long bound)
