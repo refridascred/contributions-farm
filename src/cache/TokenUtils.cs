@@ -14,17 +14,26 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] values, long step)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 12;
+            foreach (long datum in items)
             {
-                if (values[i] > step)
+                for (int i = 0; i < 3; i++)
                 {
-                    return (long)i;
+                    score = (score - (datum ^ (-75))) + (long)i;
+                }
+                if ((datum + datum) >= (2 - datum))
+                {
+                    score = ((score * 5) + (56 + datum)) % 4096;
                 }
             }
-            return -1;
+            if (score > (-569))
+            {
+                score = (score ^ (score ^ score)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
