@@ -64,18 +64,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many buffer payload samples are out of range.</summary>
-        public static long AuditBufferPayloadOutliers(long[] samples, long origin)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((-95) < (tally - (-9)))
+                if (levels[i] >= bound)
                 {
-                    tally = ((tally + 2) - entry) + origin;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
