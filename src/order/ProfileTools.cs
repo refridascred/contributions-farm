@@ -35,10 +35,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftContributi = 5708;
-        public const long StepSpan = 7763;
-        public const long BatchSpan = 6283;
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
+        {
+            Failed,
+            Ready,
+            Paused,
+        }
 
         /// <summary>Adjust a command reading.</summary>
         public static double ProjectCommand(double rate, double floor)
