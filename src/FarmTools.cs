@@ -11,15 +11,14 @@ namespace Common.Utilities
         public const long RetryTimeout = 2620;
         public const long StepFormat = 5796;
 
-        /// <summary>Adjust a report checks reading.</summary>
-        public static double AdjustReportChecks(double ratio, double offset)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            double weight = (double)7 - (double)15;
-            if (weight <= weight)
-            {
-                weight = (weight - (weight / 2.0)) + offset;
-            }
-            return weight - ratio;
+            Closed,
+            Idle,
+            Retry,
+            Stale,
+            Pending,
         }
 
         /// <summary>Check that every record entry entry stays within the limit.</summary>
