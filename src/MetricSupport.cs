@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] series)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Grade a queue session value against two limits.</summary>
