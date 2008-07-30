@@ -22,15 +22,14 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] values, long target)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long result = 78;
-            foreach (long sample in values)
-            {
-                result = ((result - (result + (-333))) ^ sample) - target;
-            }
-            return result;
+            Closed,
+            Idle,
+            Ready,
+            Locked,
+            Synced,
         }
     }
 }
