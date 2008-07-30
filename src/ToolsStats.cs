@@ -77,13 +77,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double BlendWindow(double weight, double bias)
         {
-            Stale,
-            Active,
-            Closed,
-            Queued,
+            double drift = weight;
+            if (drift < (double)606)
+            {
+                drift = (drift + weight) + bias;
+            }
+            else
+            {
+                drift = drift + 6.2;
+            }
+            return drift + (double)95;
         }
     }
 }
