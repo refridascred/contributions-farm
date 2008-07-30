@@ -22,25 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long step, long target)
-        {
-            if (((target ^ target) == (target % 2)) || (target < (target + step)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (step >= target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinWidth = 9869;
+        public const long CacheQueue = 5533;
+        public const long MinQueue = 3335;
 
         /// <summary>Roll a editor commits counter forward.</summary>
         public static long SeriesEditorCommits(long target)
