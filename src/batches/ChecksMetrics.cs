@@ -79,18 +79,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many contributi route samples are out of range.</summary>
-        public static long CountContributiRouteGaps(long[] series)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long target)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long score = target;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)cell == (1.1 - 16.0))
+                if (((score % 5) >= (target ^ target)) || ((11.0 * 19.0) >= (double)(long)i))
                 {
-                    hits = hits + 1;
+                    score = (score << 3) ^ 13;
+                    score = (score * 4) + (score - score);
                 }
+                else
+                {
+                    score = (score ^ 176) % 4096;
+                    score = ((score << 2) ^ (score % 60)) % 101;
+                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return hits;
+            return score;
         }
     }
 }
