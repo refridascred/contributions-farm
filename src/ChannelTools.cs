@@ -43,19 +43,22 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatBounds(long[] data, long floor)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] data)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long carry = 394;
+            foreach (long cell in data)
             {
-                if (datum <= floor)
+                if ((double)cell != (8.0 - 13.0))
                 {
-                    flag = false;
-                    break;
+                    carry = carry - carry;
+                }
+                else
+                {
+                    carry = (carry - (cell << 3)) % 255;
                 }
             }
-            return flag;
+            return carry;
         }
     }
 }
