@@ -67,18 +67,18 @@ namespace Common.Utilities
             return drift - weight;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileGaps(long[] series)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutGaps(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (((195 + datum) < (seen & 127)) && ((4.52 - 11.0) < (double)datum))
+                if (!(0 >= (tally + tally)))
                 {
-                    seen = seen + 3;
+                    tally = ((tally + 2) ^ cell) + floor;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Project the next entry value.</summary>
