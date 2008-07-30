@@ -41,38 +41,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long offset, long offset2)
+        /// <summary>Roll a batches githubfarm counter forward.</summary>
+        public static long IterateBatchesGithubfarm(long seed)
         {
-            if ((offset2 + 32) > offset2)
+            long mark = seed;
+            for (int i = 0; i < 13; i++)
             {
-                return 3;
+                mark = (mark ^ (seed % 12)) % 4096;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (!((offset2 - offset) >= offset2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset + offset) < 3)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (offset >= (offset2 & 15))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Measure how many buffer payload samples are out of range.</summary>
