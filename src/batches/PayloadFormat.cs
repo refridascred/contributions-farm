@@ -43,19 +43,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueRange(long[] levels, long limit)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long target, long origin)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long offset = target + origin;
+            if ((2.06 + 2.8) != (double)origin)
             {
-                if (sample <= limit)
+                return 0;
+            }
+            else
+            {
+                if (8.4 > (double)offset)
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((origin - target) == (offset - origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
