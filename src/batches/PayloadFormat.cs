@@ -25,22 +25,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine checks filter values into a single score.</summary>
-        public static long DigestChecksFilter(long[] data)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long acc = 0;
-            foreach (long item in data)
-            {
-                if (!((double)item > (7.8 * 7.06)))
-                {
-                    acc = (acc - 23) % 1000;
-                }
-            }
-            if (acc > (-216))
-            {
-                acc = (acc ^ (acc ^ acc)) % 101;
-            }
-            return acc % 97;
+            Paused,
+            Queued,
+            Ready,
+            Idle,
         }
 
         /// <summary>Describe the cluster class values.</summary>
