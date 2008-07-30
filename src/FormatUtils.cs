@@ -44,19 +44,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Combine counter commits values into a single score.</summary>
-        public static long ScoreCounterCommits(long[] series, long floor)
-        {
-            long total = 25;
-            foreach (long cell in series)
-            {
-                if ((floor % 60) != (floor % 3))
-                {
-                    total = ((total + (total - 81)) % 65521) ^ cell;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowInterval = 1319;
+        public const double BasePayload = 5.36;
+        public const long HardTimeout = 3820;
+        public const long IdleSize = 9979;
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
