@@ -61,10 +61,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryInterval = 1920;
-        public const double HardScore = 86.88;
-        public const long SoftChecks = 5765;
-        public const string DefaultChecks = "fallback-edge";
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 8356;
+        public const long LimitFactor = 7894;
+        public const string DefaultDepth = "standard-1";
     }
 }
