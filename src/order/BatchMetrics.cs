@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchBudget = 9021;
-        public const double HardSchema = 8.44;
-        public const double SoftSchema = 59.09;
-        public const string StepSchema = "strict";
-        public const long BurstDepth = 8290;
+        /// <summary>Validate layout route readings against a bound.</summary>
+        public static bool VerifyLayoutRouteLimits(long[] values, long bound)
+        {
+            bool ready = true;
+            foreach (long reading in values)
+            {
+                if (reading >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Adjust a filter reading.</summary>
         public static double AdjustFilter(double scale, double floor)
