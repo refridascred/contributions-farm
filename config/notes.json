@@ -1,6 +1,8 @@
 {
-  "cache_capacity_s": "blue",
-  "flush_limit": "green",
-  "payload_size": "legacy",
-  "cache_limit": "local"
+  "batch_threshold": true,
+  "account_interval": "primary",
+  "retry_size_ms": "eu-west",
+  "githubfarm_threshold": ["local", "staging", "open"],
+  "account_limit": 4134,
+  "readonly": false
 }
