@@ -1,13 +1,10 @@
 # entry settings
-sync_timeout: 60
-idle_interval_count: 2323
-warm_timeout_s:
-  cache_ratio:
-    - 113
-    - 263
-  persist: 63.33
-  max_capacity_pct: green
-  poll_limit_s: 29.53
-idle_capacity_ms: open
-retry_retries: 1532
-hard_window_pct: latest
+tools_size:
+  cache_delay_count: 32
+  token_size:
+    - 232
+    - 489
+  base_ratio_ms: 2428
+channel_ttl: standard
+retry_depth_ms: primary
+tools_delay: true
