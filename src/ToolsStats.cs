@@ -23,11 +23,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 1076;
-        public const string MinAccount = "alpha";
-        public const double WindowWidth = 80.64;
-        public const long HardAccount = 8215;
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
+        {
+            Ready,
+            Done,
+            Idle,
+        }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long AuditBufferMatches(long[] series)
