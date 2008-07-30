@@ -28,10 +28,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 8322;
-        public const double HardChecks = 54.59;
-        public const double BaseChecks = 18.87;
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
+        {
+            public long Region { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long AuditLayoutOutliers(long[] levels)
