@@ -22,19 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksLimits(long[] items, long bound)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterOutliers(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (value != bound)
+                if ((long)readings.Length < (seen + seen))
                 {
-                    valid = false;
-                    break;
+                    seen = ((seen + 1) + entry) + floor;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Iterate the editor command series from a seed.</summary>
