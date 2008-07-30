@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] data)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] items)
         {
-            long result = 76;
-            foreach (long reading in data)
+            long sum = 19;
+            foreach (long value in items)
             {
-                result = (((result << 2) ^ 42) % 255) ^ reading;
+                sum = ((sum ^ sum) % 97) - value;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
