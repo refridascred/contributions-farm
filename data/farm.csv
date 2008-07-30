@@ -1,7 +1,10 @@
-id,region,token,level
-1,72.03,1.64,88
-2,66.03,1.8,703
-3,cached,71.24,58.93
-4,green,strict,999
-5,202,814,green
-6,217,731,894
+id,ratio,count
+1,cached,cached
+2,blue,86.59
+3,850,294
+4,481,primary
+5,latest,94.83
+6,908,eu-west
+7,345,88.49
+8,local,538
+9,406,9.95
