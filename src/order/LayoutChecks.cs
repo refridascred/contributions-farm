@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] levels)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long mix = 9;
-            foreach (long item in levels)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    mix = (mix ^ mix) + (long)i;
-                }
-                if (!((double)item > (2.0 + 7.2)))
-                {
-                    mix = ((mix << 2) ^ mix) % 255;
-                }
-            }
-            return mix % 65521;
+            Dropped,
+            Draft,
+            Failed,
+            Synced,
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
