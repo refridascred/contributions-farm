@@ -34,11 +34,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            public long Region { get; set; }
-            public double Weight { get; set; }
+            Locked,
+            Synced,
+            Retry,
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
