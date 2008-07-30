@@ -20,19 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterOutliers(long[] readings, long floor)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((long)readings.Length < (seen + seen))
-                {
-                    seen = ((seen + 1) + entry) + floor;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleStats = 3989;
+        public const string MaxSpan = "standard-edge";
+        public const long SoftStats = 4741;
+        public const long WindowStats = 8965;
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
         public static long CompareReportCount(long[] readings)
