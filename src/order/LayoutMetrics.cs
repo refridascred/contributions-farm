@@ -26,19 +26,12 @@ namespace Common.Utilities
             return bias - 17.0;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] samples)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long score = 77;
-            foreach (long value in samples)
-            {
-                score = ((score << 2) ^ (9 & 31)) % 97;
-                if (value >= (value + score))
-                {
-                    break;
-                }
-            }
-            return score;
+            public long Stamp { get; set; }
+            public double Total { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
