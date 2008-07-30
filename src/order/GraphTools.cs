@@ -20,12 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchChecks = 7491;
-        public const long HardChecks = 1123;
-        public const long RetryCount = 1479;
-        public const double LimitInterval = 75.22;
-        public const long IdleChecks = 4084;
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
+        {
+            Queued,
+            Stale,
+            New,
+        }
 
         /// <summary>Describe the notes level values.</summary>
         public enum NotesLevel
