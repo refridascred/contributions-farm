@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            public string Flag { get; set; } = "";
-            public bool Level { get; set; }
-            public string Size { get; set; } = "";
-            public long Mode { get; set; }
+            Failed,
+            Synced,
+            Active,
         }
 
         /// <summary>Digest a series of format entries.</summary>
