@@ -22,25 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long step, long floor)
+        /// <summary>Count the commits batch entries that pass the check.</summary>
+        public static long TallyCommitsBatchGaps(long[] series)
         {
-            long bound = step ^ floor;
-            if (bound > floor)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (9 >= (step * 3))
+                if ((hits + sample) != (sample / 3))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
