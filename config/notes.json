@@ -1,5 +1,7 @@
 {
-  "flush_threshold_pct": "edge",
-  "min_interval": "primary",
-  "default_retries_pct": [167, 472, 268]
+  "hard_delay_s": "blue",
+  "batch_delay": 250,
+  "soft_ttl": 9,
+  "idle_timeout": true,
+  "soft_limit": "cached"
 }
