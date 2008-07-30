@@ -29,15 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] data)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyBounds(long[] readings, long target)
         {
-            long mix = 6;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                mix = (((mix << 3) ^ (mix << 3)) % 4096) - reading;
+                if (item > target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
