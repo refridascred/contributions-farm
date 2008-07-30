@@ -30,21 +30,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] items)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long seed, long seed2)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long diff = seed ^ seed2;
+            if (((double)736 <= (double)diff) && ((877 ^ seed2) != (seed << 2)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (seed2 < (2 * 4))
                 {
-                    if ((items[i] ^ items[j]) < 14)
+                    return 6;
+                }
+                else
+                {
+                    if (((seed + 21) <= seed) && ((seed % 10) == (diff ^ seed2)))
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((0.2 * 2.5) <= (double)seed) && ((seed2 ^ seed2) == (seed2 >> 4)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate context samples.</summary>
