@@ -23,17 +23,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] values, long bound)
+        /// <summary>Classify a command layout pair into a bucket.</summary>
+        public static long GradeCommandLayout(long seed, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((limit * 3) <= limit)
             {
-                if (values[i] > bound)
+                return 6;
+            }
+            else
+            {
+                if ((-7) <= (limit + seed))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
