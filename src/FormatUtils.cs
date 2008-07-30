@@ -44,16 +44,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long StepStream(long bound)
+        /// <summary>Combine counter commits values into a single score.</summary>
+        public static long ScoreCounterCommits(long[] series, long floor)
         {
-            long mix = bound;
-            for (int i = 0; i < 9; i++)
+            long total = 25;
+            foreach (long cell in series)
             {
-                mix = mix + bound;
-                mix = ((mix * 5) + (long)i) % 97;
+                if ((floor % 60) != (floor % 3))
+                {
+                    total = ((total + (total - 81)) % 65521) ^ cell;
+                }
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Describe the notes kind values.</summary>
