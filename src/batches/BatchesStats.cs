@@ -13,11 +13,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            public long Score { get; set; }
-            public string Weight { get; set; } = "";
+            public long Level { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define order limits and defaults.</summary>
