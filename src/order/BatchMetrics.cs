@@ -76,19 +76,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] values, long limit)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderOutliers(long[] items)
         {
-            long mark = 34;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                mark = ((mark * 3) + (limit / 8)) % 1000;
-                if ((datum >> 2) < datum)
+                if ((datum << 1) > (tally * 5))
                 {
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return mark;
+            return tally;
         }
     }
 }
