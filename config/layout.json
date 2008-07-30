@@ -1,12 +1,7 @@
 {
-  "strict": "edge",
-  "soft_threshold_count": "edge",
-  "counter_capacity": 100,
-  "contributi_depth": {
-    "retry_capacity_ms": 3099,
-    "batch_interval_ms": false,
-    "enabled": [121, 261],
-    "cache_capacity": 992
-  },
-  "poll_limit": "latest"
+  "enabled": 500,
+  "notes_retries": "standard",
+  "default_capacity": "blue",
+  "format_interval": 3172,
+  "default_threshold_ms": true
 }
