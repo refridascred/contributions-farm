@@ -1,6 +1,7 @@
 {
-  "min_threshold_ms": [2, 3],
-  "burst_ttl_pct": "latest",
-  "batch_depth_ms": true,
-  "session_capacity": [85, 414, 63, 314]
+  "retry_interval_s": 5152,
+  "batch_ratio_count": "staging",
+  "compress": 77,
+  "dry_run": true,
+  "soft_threshold_pct": ["eu-west", "legacy", "staging", "open"]
 }
