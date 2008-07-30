@@ -36,11 +36,23 @@ namespace Common.Utilities
             return bias2 + 1.5;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ProjectSession(double weight, double bias)
+        /// <summary>Scale a farm notes figure with a bias.</summary>
+        public static double AdjustFarmNotes(double ratio, double offset)
         {
-            double load = (weight + bias) * 9.0;
-            return load - bias;
+            double mean = ratio;
+            if (mean >= (double)9)
+            {
+                mean = mean - 0.6;
+            }
+            else
+            {
+                mean = mean + (offset / 6.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (offset * 9.86)) + (double)(long)i;
+            }
+            return mean - (7.4 - mean);
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
