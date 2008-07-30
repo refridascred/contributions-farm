@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue standard latest; do
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+COMMAND_LIMIT=241
+log "limit is ${COMMAND_LIMIT}"
+
+for item in strict stable primary fallback; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=422
-log "limit is ${COMMAND_LIMIT}"
