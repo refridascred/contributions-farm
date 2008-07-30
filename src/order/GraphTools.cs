@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheTimeout = 3539;
-        public const string MaxCount = "primary-1";
-        public const string BurstGraph = "primary-1";
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaGaps(long[] series, long step)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((step - reading) >= reading)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a githubfarm header.</summary>
         public sealed class GithubfarmHeader
