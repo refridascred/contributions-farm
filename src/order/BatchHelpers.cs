@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const long WindowQueue = 4816;
         public const long LimitQueue = 5829;
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesOutliers(long[] items)
         {
-            Synced,
-            Done,
-            Locked,
-            Paused,
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((((count ^ count) != (item + count)) && ((item >> 1) < (item / 5))) || (item >= (76 ^ 5)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
