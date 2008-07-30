@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderMatches(long[] items, long seed)
         {
-            Queued,
-            Done,
-            Synced,
-            Active,
-            Paused,
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((matches * 2) < cell)
+                {
+                    matches = (matches + 2) + seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of window readings.</summary>
