@@ -26,23 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] values, long offset)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long state = 95;
-            foreach (long value in values)
-            {
-                state = ((state << 2) ^ (state + state)) % 101;
-                if ((value % 60) >= (state - value))
-                {
-                    break;
-                }
-            }
-            if (state < (-942))
-            {
-                state = (state * 5) + offset;
-            }
-            return state;
+            public double Limit { get; set; }
+            public string Score { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
