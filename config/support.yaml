@@ -1,8 +1,14 @@
 # support settings
-batch_retries: true
-verbose:
-  - legacy
-  - cached
-  - eu-west
-format_threshold: 86
-dry_run: 27.46
+tools_ratio: 30
+audit:
+  batches_retries: edge
+  burst_window_pct: 81
+  base_size_s: edge
+  strict:
+    - 221
+    - 30
+    - 220
+    - 276
+  max_threshold_s: standard
+  compress: 77.77
+account_ttl: 3775
