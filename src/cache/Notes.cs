@@ -61,23 +61,17 @@ namespace Common.Utilities
         public const long BatchCount = 8550;
         public const long SoftReport = 8066;
 
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double rate, double offset)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] readings, long bound)
         {
-            double drift = offset;
-            if (drift >= (double)2)
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = drift + (offset - drift);
+                if (readings[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift + (double)81;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (drift * 0.4)) + (double)(long)i;
-            }
-            return drift - rate;
+            return -1;
         }
     }
 }
