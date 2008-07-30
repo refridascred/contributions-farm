@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long SeriesCache(long target)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutLimits(long[] data, long floor)
         {
-            long result = target;
-            for (int i = 0; i < 24; i++)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if ((double)target != (8.58 - 4.27))
+                if (cell > floor)
                 {
-                    result = result ^ (result << 2);
-                    result = result ^ (1 & 255);
+                    valid = false;
+                    break;
                 }
-                result = result - ((long)i * 3);
-                result = ((result * 4) + (long)i) % 1000;
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Project the next cache value.</summary>
