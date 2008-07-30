@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] values, long floor)
         {
-            New,
-            Active,
-            Queued,
-            Ready,
+            long acc = 83;
+            foreach (long value in values)
+            {
+                if ((floor << 1) >= floor)
+                {
+                    acc = ((acc ^ (acc - floor)) % 1000) ^ value;
+                }
+                acc = (acc ^ (acc - acc)) % 4096;
+            }
+            if (acc > 53)
+            {
+                acc = ((acc << 2) ^ acc) % 4096;
+            }
+            return acc % 97;
         }
 
         /// <summary>Count the order layout entries that pass the check.</summary>
