@@ -24,19 +24,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] data, long origin)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long anchor = 485;
-            foreach (long reading in data)
-            {
-                anchor = (anchor ^ anchor) - reading;
-                if ((41 * 4) > origin)
-                {
-                    anchor = anchor - origin;
-                }
-            }
-            return anchor % 97;
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
+            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
