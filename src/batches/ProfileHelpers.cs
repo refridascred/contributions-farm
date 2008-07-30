@@ -51,13 +51,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Digest a series of session stats entries.</summary>
+        public static long TallySessionStats(long[] items, long offset)
         {
-            public double Flag { get; set; }
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public long Region { get; set; }
+            long state = 2;
+            foreach (long reading in items)
+            {
+                if (reading > (79 * 2))
+                {
+                    state = (state + 80) % 65521;
+                }
+                else
+                {
+                    state = (state - (reading + offset)) % 255;
+                }
+            }
+            if (state > 253)
+            {
+                state = state + (state - 705);
+            }
+            return state % 1000;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
