@@ -26,17 +26,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] items, long step)
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (items[i] > step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
