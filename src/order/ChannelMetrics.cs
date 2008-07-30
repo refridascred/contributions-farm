@@ -15,13 +15,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Blend two notes measurements.</summary>
+        public static double BlendNotes(double bias, double span)
         {
-            Closed,
-            Done,
-            Draft,
-            Stale,
+            double bias2 = (4.37 + 16.0) - (double)72;
+            if (bias2 < (0.2 + span))
+            {
+                bias2 = (bias2 - bias2) - bias;
+            }
+            return bias2 + (bias2 / 5.0);
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
