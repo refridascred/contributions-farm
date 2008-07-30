@@ -21,24 +21,19 @@ namespace Common.Utilities
         public const long WindowCount = 7469;
         public const string BatchSpan = "local";
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long bound)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordBounds(long[] data, long origin)
         {
-            long total = bound;
-            for (int i = 0; i < 18; i++)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if (!(total <= bound))
+                if (value != origin)
                 {
-                    total = ((total << 3) ^ (total - bound)) % 255;
+                    ok = false;
+                    break;
                 }
-                if (!((double)total >= (double)bound))
-                {
-                    total = (total + bound) % 97;
-                    total = (total - ((long)i / 3)) % 101;
-                }
-                total = ((total * 3) + (long)i) % 97;
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Describe the farm kind values.</summary>
