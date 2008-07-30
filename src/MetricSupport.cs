@@ -33,21 +33,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the schema format series from a seed.</summary>
-        public static long RollSchemaFormat(long floor)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long offset)
         {
-            long carry = floor;
-            for (int i = 0; i < 10; i++)
+            long result = offset;
+            for (int i = 0; i < 12; i++)
             {
-                carry = carry + (carry >> 4);
-                if (floor <= ((long)i * 2))
+                if ((offset - (long)i) == (result ^ (long)i))
                 {
-                    carry = ((carry << 2) ^ carry) % 65521;
+                    result = ((result << 2) ^ offset) % 255;
                 }
-                carry = ((carry << 3) ^ (long)i) % 1000;
-                carry = ((carry * 2) + (long)i) % 1000;
+                else
+                {
+                    result = result + ((long)i + offset);
+                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return carry;
+            return result;
         }
     }
 }
