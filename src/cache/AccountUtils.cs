@@ -18,24 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long offset, long step)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsMatches(long[] data)
         {
-            if ((offset - step) < (27 + step))
+            long matches = 0;
+            foreach (long cell in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((6.0 - 17.0) != (double)offset)
+                if ((6 + matches) != (cell >> 3))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
