@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many route channel samples are out of range.</summary>
-        public static long MeasureRouteChannelGaps(long[] data)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long IterateAccount(long step)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long sum = step;
+            for (int i = 0; i < 7; i++)
             {
-                if ((6.76 / 8.0) < (double)matches)
-                {
-                    matches = (matches + 1) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = sum ^ (sum >> 5);
+                sum = (sum - (step + sum)) % 4096;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Project the next profile metrics value.</summary>
