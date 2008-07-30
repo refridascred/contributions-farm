@@ -59,21 +59,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long CompareProfileCount(long[] values)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Level { get; set; } = "";
+            public bool Weight { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
