@@ -42,19 +42,21 @@ namespace Common.Utilities
         public const long CacheLevel = 4241;
         public const long HardContributi = 5757;
 
-        /// <summary>Fold a list of session profile readings.</summary>
-        public static long FoldSessionProfile(long[] levels, long offset)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long CompareProfileCount(long[] values)
         {
-            long mark = -5;
-            foreach (long item in levels)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark ^ (offset * 4)) % 4096) + item;
-                if ((offset / 7) <= (mark - 15))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = mark + (offset + mark);
+                    if ((values[i] + values[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark;
+            return count;
         }
     }
 }
