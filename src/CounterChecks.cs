@@ -42,23 +42,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double ratio, double bias)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionBounds(long[] readings, long step)
         {
-            double mean = ratio;
-            if (mean >= (double)(-40))
+            bool flag = true;
+            foreach (long item in readings)
             {
-                mean = (mean + 8.25) + bias;
+                if (item != step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - ratio;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (mean / 9.0)) + (double)(long)i;
-            }
-            return mean + mean;
+            return flag;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
