@@ -42,11 +42,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstMetric = 1192;
-        public const double LimitScore = 16.21;
-        public const long IdleCount = 5362;
-        public const double IdleScore = 10.2;
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double bias, double bias2)
+        {
+            double drift = (double)((-400) << 3);
+            if (drift >= (double)307)
+            {
+                drift = drift - (bias / 8.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift - (bias2 * 5.4);
+        }
 
         /// <summary>Validate checks record readings against a bound.</summary>
         public static bool GuardChecksRecordLimits(long[] values, long bound)
