@@ -58,39 +58,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank githubfarm farm input into a small class.</summary>
-        public static long ClassifyGithubfarmFarm(long floor, long target)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] items, long step)
         {
-            long diff = floor ^ target;
-            if ((target < diff) && ((floor & 15) > (floor >> 3)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target + floor) <= (966 + diff))
+                if (items[i] >= step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (floor <= (diff * 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (floor < (floor - target))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the account checks entries that pass the check.</summary>
