@@ -18,16 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] data)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] values, long bound)
         {
-            long acc = 31;
-            foreach (long entry in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (acc ^ (acc ^ entry)) % 65521;
-                acc = (acc - acc) % 1000;
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
