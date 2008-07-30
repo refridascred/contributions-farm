@@ -76,39 +76,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long limit, long step)
-        {
-            long gap = limit ^ step;
-            if ((gap - limit) > (25 / 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if (limit >= (step ^ 891))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((97 & 3) > step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (gap < (gap + gap))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepInterval = 5420;
+        public const long HardGraph = 1742;
+        public const long SoftInterval = 73;
+        public const double MaxGraph = 45.04;
     }
 }
