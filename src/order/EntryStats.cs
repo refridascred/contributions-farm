@@ -43,13 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
-        {
-            public double Owner { get; set; }
-            public long Total { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 1409;
+        public const long HardFactor = 3510;
+        public const double SoftFactor = 23.74;
+        public const long WindowEntry = 1230;
+        public const long WindowWidth = 9596;
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long AuditLayoutOutliers(long[] levels)
