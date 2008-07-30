@@ -51,19 +51,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double BlendNotes(double rate, double floor)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] levels, long offset)
         {
-            double rate2 = (9.13 - floor) * 5.8;
-            if (rate2 <= (rate2 - rate2))
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate2 = rate2 + rate;
+                if (levels[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate2 = rate2 + (rate / 5.0);
-            }
-            return rate2 + (rate2 * 8.6);
+            return -1;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
