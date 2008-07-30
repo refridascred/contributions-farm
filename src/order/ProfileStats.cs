@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long step, long offset)
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] values)
         {
-            if ((step * 5) >= offset)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset - offset) <= (offset - 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    if ((values[i] ^ values[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of record counter entries.</summary>
