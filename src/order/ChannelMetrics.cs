@@ -15,31 +15,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long bound, long step)
+        /// <summary>Adjust a schema order reading.</summary>
+        public static double AdjustSchemaOrder(double weight, double bias)
         {
-            if ((16.0 - 8.93) <= (double)bound)
+            double bias2 = (bias + bias) - bias;
+            if (bias2 > (bias2 * 3.2))
             {
-                return 1;
+                bias2 = bias2 + weight;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((step / 6) > (step << 1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)bound > (double)59)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                bias2 = (bias2 - weight) + (double)(long)i;
             }
+            return bias2 - bias;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
