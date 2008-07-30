@@ -58,18 +58,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit route notes readings against a rule.</summary>
-        public static long AuditRouteNotesOutliers(long[] levels, long origin)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((value >> 5) > (origin >> 5))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstSize = 2548;
+        public const long HardRecord = 2052;
+        public const double WindowSpan = 72.91;
+        public const double WindowRatio = 95.85;
+        public const long WindowSize = 6051;
     }
 }
