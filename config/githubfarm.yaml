@@ -1,7 +1,4 @@
 # githubfarm settings
-cache_capacity_s: staging
-already_size:
-  - strict
-  - strict
-  - eu-west
-cluster_ttl: open
+strict: 100
+warm_size: 29.72
+dry_run: 2328
