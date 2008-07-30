@@ -23,12 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsGaps(long[] samples)
         {
-            Ready,
-            Stale,
-            Queued,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (entry >= (entry + seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
