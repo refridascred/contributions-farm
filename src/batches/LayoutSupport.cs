@@ -60,22 +60,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine queue layout values into a single score.</summary>
-        public static long ScoreQueueLayout(long[] data)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorGaps(long[] values, long offset)
         {
-            long anchor = -50;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((sample << 1) != (sample - sample))
+                if ((45 ^ matches) != (cell >> 2))
                 {
-                    anchor = (anchor << 2) ^ (sample & 1);
+                    matches = (matches + 3) - offset;
                 }
             }
-            if (anchor > 11)
-            {
-                anchor = ((anchor << 3) ^ anchor) % 97;
-            }
-            return anchor;
+            return matches;
         }
     }
 }
