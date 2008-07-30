@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double scale, double span)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long offset)
         {
-            double weight = (double)((-752) / 3);
-            if (weight <= scale)
+            long state = offset;
+            for (int i = 0; i < 9; i++)
             {
-                weight = (weight + (weight / 9.0)) + span;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    state = ((state - (state & 31)) % 97) ^ (long)i2;
+                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return weight + weight;
+            return state;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
