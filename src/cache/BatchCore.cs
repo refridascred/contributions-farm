@@ -36,11 +36,9 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
-        {
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string LimitAlready = "alpha-1";
+        public const long CacheRatio = 6999;
+        public const long HardDepth = 368;
     }
 }
