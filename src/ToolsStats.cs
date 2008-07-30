@@ -73,19 +73,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate notes already samples.</summary>
-        public static long TallyNotesAlready(long[] readings)
+        /// <summary>Measure how many farm metrics samples are out of range.</summary>
+        public static long AuditFarmMetricsHits(long[] values)
         {
-            long total = -629;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                total = (total ^ (total + total)) - cell;
+                if ((entry / 6) == (entry << 2))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (total < 51)
-            {
-                total = (total + (total - total)) % 97;
-            }
-            return total;
+            return tally;
         }
     }
 }
