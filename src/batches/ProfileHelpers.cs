@@ -72,19 +72,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double ratio, double bias)
+        /// <summary>Grade a notes window value against two limits.</summary>
+        public static long GradeNotesWindow(long origin, long seed)
         {
-            double scale = bias;
-            if (scale < (scale - ratio))
+            if ((0.48 <= (double)origin) || ((origin ^ seed) > (676 << 2)))
             {
-                scale = scale - 19.0;
+                return 1;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                scale = (scale - (0.4 + scale)) + (double)(long)i;
+                if ((origin + seed) > seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin < (97 & 63)) && ((origin + seed) > (origin << 1)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin % 100) > (seed + seed))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return scale + (ratio * 0.1);
         }
     }
 }
