@@ -16,13 +16,21 @@ namespace Common.Utilities
             return scale2 + (double)78;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] samples)
         {
-            Pending,
-            Draft,
-            Idle,
-            Active,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the checks kind values.</summary>
