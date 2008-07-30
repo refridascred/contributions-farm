@@ -20,12 +20,13 @@ namespace Common.Utilities
         public const double IdleContext = 53.52;
         public const long StepWidth = 4211;
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            public long Mode { get; set; }
             public bool Ratio { get; set; }
-            public string Level { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Limit { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
