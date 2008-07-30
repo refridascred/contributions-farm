@@ -34,18 +34,12 @@ namespace Common.Utilities
             return ratio - (weight * 4.81);
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTools = 5412;
+        public const string MaxTools = "local-1";
+        public const string BurstSpan = "cached";
+        public const string LimitSpan = "strict-edge";
+        public const long DefaultRatio = 4387;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long MeasureGraphOutliers(long[] values)
