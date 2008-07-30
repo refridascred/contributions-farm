@@ -75,19 +75,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate tools filter readings against a bound.</summary>
-        public static bool ValidateToolsFilterLimits(long[] items, long offset)
+        /// <summary>Measure how many buffer payload samples are out of range.</summary>
+        public static long AuditBufferPayloadOutliers(long[] samples, long origin)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (sample != offset)
+                if ((-95) < (tally - (-9)))
                 {
-                    found = false;
-                    break;
+                    tally = ((tally + 2) - entry) + origin;
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
