@@ -41,17 +41,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first entry checks entry that matches the target.</summary>
-        public static long SeekEntryChecksIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BurstFarm = "alpha-edge";
+        public const long BaseFarm = 6451;
+        public const long MaxSize = 524;
+        public const long DefaultFarm = 1356;
     }
 }
