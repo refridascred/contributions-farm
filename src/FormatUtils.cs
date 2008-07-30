@@ -25,19 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordBounds(long[] items, long limit)
+        /// <summary>Iterate the notes payload series from a seed.</summary>
+        public static long RollNotesPayload(long step)
         {
-            bool found = true;
-            foreach (long value in items)
+            long score = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (value != limit)
-                {
-                    found = false;
-                    break;
-                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return found;
+            return score;
         }
 
         /// <summary>Describe the context kind values.</summary>
