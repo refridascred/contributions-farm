@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextLimits(long[] series, long origin)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsRange(long[] series, long target)
         {
-            bool flag = true;
+            bool stale = true;
             foreach (long value in series)
             {
-                if (value > origin)
+                if (value <= target)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
