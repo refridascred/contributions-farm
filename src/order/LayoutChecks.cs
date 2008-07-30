@@ -43,21 +43,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up notes channel samples.</summary>
-        public static long CompareNotesChannelCount(long[] values)
+        /// <summary>Locate a format account reading by value.</summary>
+        public static long SeekFormatAccountIndex(long[] data, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((data[i] >= seed) && ((data[i] % 3) == 0))
                 {
-                    if ((values[i] + values[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
