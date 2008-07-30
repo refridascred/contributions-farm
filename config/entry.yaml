@@ -1,5 +1,10 @@
 # entry settings
-audit: staging
-retry_ttl_s: standard
-verbose: 59.43
-flush_limit: green
+strict: 92.34
+min_interval:
+  - latest
+  - latest
+  - stable
+batch_ratio: false
+burst_interval_pct: legacy
+soft_depth: latest
+graph_size: 21
