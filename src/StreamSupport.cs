@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a tools window figure with a bias.</summary>
-        public static double SmoothToolsWindow(double bias, double offset)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            double bias2 = bias - (9.9 - bias);
-            return (bias2 - (bias * 19.0)) + offset;
+            Stale,
+            Pending,
+            Closed,
+            Locked,
+            Ready,
         }
 
         /// <summary>Validate window readings against a bound.</summary>
