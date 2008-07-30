@@ -29,14 +29,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            Draft,
-            Active,
-            Failed,
-            Dropped,
-            Retry,
+            public long Flag { get; set; }
+            public long Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
