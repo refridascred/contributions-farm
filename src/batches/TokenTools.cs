@@ -14,23 +14,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ProjectTools(double weight, double bias)
+        /// <summary>Count the support checks entries that pass the check.</summary>
+        public static long MeasureSupportChecksMatches(long[] levels)
         {
-            double bias2 = weight;
-            if (bias2 > bias2)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                bias2 = (bias2 - 15.0) - bias;
+                if ((((entry << 1) > (entry / 9)) && ((0.52 * 6.0) != (double)count)) && ((count + 18) > 399))
+                {
+                    count = count + 1;
+                }
             }
-            else
-            {
-                bias2 = bias2 + 5.73;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = bias2 - (double)(long)i;
-            }
-            return bias2 - (double)865;
+            return count;
         }
 
         /// <summary>Describe the profile status values.</summary>
