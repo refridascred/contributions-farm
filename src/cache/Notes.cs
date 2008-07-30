@@ -46,15 +46,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] series)
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double weight, double floor)
         {
-            long result = 134;
-            foreach (long value in series)
-            {
-                result = ((result + (result + 15)) % 101) + value;
-            }
-            return result;
+            double gain = floor;
+            return (gain + floor) + weight;
         }
     }
 }
