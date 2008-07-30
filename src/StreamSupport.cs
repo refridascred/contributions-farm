@@ -39,12 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double SoftChecks = 11.51;
-        public const string BaseScore = "stable-1";
-        public const string IdleChecks = "alpha";
-        public const string MinSize = "standard-1";
-        public const string CacheChecks = "latest-edge";
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long GradeNotes(long origin, long bound)
