@@ -1,15 +1,11 @@
 # Command notes
 
-Keep session and session names short and lowercase.
-The queue report groups every graph by tools.
-Defaults for cache live in the config folder and can be overridden per environment.
-
-The cluster report groups every farm by filter.
-Run the token check before changing any token limits.
+When a batches fails, the support handler retries a few times before giving up.
+The graph helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep graph values small
-- Validate cluster input early
-- Review notes limits each release
-- Log every channel change
+- Prefer tools defaults
+- Document new editor fields
+- Log every editor change
+- Keep commits values small
