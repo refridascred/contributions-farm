@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 1063;
-        public const long CacheLevel = 6270;
-        public const double LimitTimeout = 25.3;
-        public const long BaseTimeout = 7658;
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
+        {
+            Closed,
+            New,
+            Done,
+        }
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
