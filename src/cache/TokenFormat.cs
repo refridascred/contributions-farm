@@ -30,18 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterOutliers(long[] data, long limit)
+        /// <summary>Measure how many order metrics samples are out of range.</summary>
+        public static long MeasureOrderMetricsHits(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (entry > 82)
+                if (matches >= (sample << 3))
                 {
-                    hits = (hits + 3) - limit;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
