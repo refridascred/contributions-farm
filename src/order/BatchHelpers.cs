@@ -22,12 +22,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long limit, long step)
         {
-            public long Count { get; set; }
-            public double Score { get; set; }
-            public bool Region { get; set; }
+            if (limit >= (limit ^ step))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((step - limit) >= (step - step)) && ((2 ^ limit) == (982 << 1)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((double)step >= (16.0 - 9.5)) || ((396 % 60) >= (limit + 980)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a channel info.</summary>
