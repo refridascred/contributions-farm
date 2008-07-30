@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const double MinCounter = 15.43;
         public const string HardFactor = "strict";
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsRange(long[] levels, long limit)
         {
-            Locked,
-            Active,
-            Failed,
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Fold a list of filter cache readings.</summary>
