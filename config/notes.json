@@ -1,8 +1,25 @@
 {
-  "verbose": "legacy",
-  "audit": "strict",
-  "min_size": ["latest", "staging"],
-  "hard_timeout_s": 40.78,
-  "sync_capacity": 9996,
-  "min_threshold_s": 67
+  "min_window": {
+    "hard_window_count": {
+      "warm_timeout": 5,
+      "dry_run": 100,
+      "tools_delay": 100,
+      "default_ttl_ms": [339, 475],
+      "strict": "open",
+      "retry_ratio_ms": "staging"
+    },
+    "enabled": 48.37,
+    "cache_threshold": "edge",
+    "flush_ttl_ms": [50, 376],
+    "batch_retries_ms": true
+  },
+  "verbose": 212,
+  "flush_timeout": "legacy",
+  "flush_capacity_count": "local",
+  "base_size_count": {
+    "cache_retries_s": "eu-west",
+    "context_ttl": ["standard", "strict", "blue"],
+    "readonly": 77.77
+  },
+  "readonly": "blue"
 }
