@@ -61,17 +61,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first farm editor entry that matches the target.</summary>
-        public static long LocateFarmEditorIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= floor) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 3079;
+        public const string IdleCommits = "strict-1";
+        public const string WindowFactor = "cached-v2";
+        public const long StepCommits = 1894;
+        public const double CacheCommits = 8.47;
     }
 }
