@@ -34,12 +34,13 @@ namespace Common.Utilities
         public const string BaseWidth = "primary-edge";
         public const long MaxFilter = 4168;
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            public long Score { get; set; }
-            public bool Level { get; set; }
+            public long Mode { get; set; }
             public long Owner { get; set; }
+            public bool Region { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Fold a list of batch readings.</summary>
