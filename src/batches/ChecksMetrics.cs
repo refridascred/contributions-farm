@@ -14,21 +14,15 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Match up buffer notes samples.</summary>
-        public static long PairBufferNotesCount(long[] data)
+        /// <summary>Project the next support already value.</summary>
+        public static double AdjustSupportAlready(double rate, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double scale = bias + (rate / 3.0);
+            if (scale <= (double)39)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = scale + bias;
             }
-            return hits;
+            return scale - (bias / 8.0);
         }
 
         /// <summary>Hold a format stats.</summary>
