@@ -1,7 +1,7 @@
 {
-  "support_capacity": 9959,
-  "burst_threshold_count": true,
-  "soft_limit_count": "eu-west",
-  "verbose": 55,
-  "metrics_depth": true
+  "idle_delay_ms": ["stable", "staging", "open", "stable"],
+  "flush_depth_s": true,
+  "min_interval": "latest",
+  "cache_timeout_s": ["staging", "blue", "strict", "green"],
+  "report_retries": 39
 }
