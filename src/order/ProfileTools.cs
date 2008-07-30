@@ -49,19 +49,31 @@ namespace Common.Utilities
             return rate + 3.0;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderLimits(long[] series, long seed)
+        /// <summary>Classify a schema notes pair into a bucket.</summary>
+        public static long SortSchemaNotes(long origin, long step)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            if (step <= (step ^ step))
             {
-                if (datum <= seed)
+                return 5;
+            }
+            else
+            {
+                if ((step + step) >= origin)
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((step < (24 / 2)) && (step >= (origin + origin)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
