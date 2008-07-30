@@ -52,13 +52,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandLimits(long[] items, long target)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryBounds(long[] values, long origin)
         {
             bool stale = true;
-            foreach (long item in items)
+            foreach (long sample in values)
             {
-                if (item != target)
+                if (sample != origin)
                 {
                     stale = false;
                     break;
