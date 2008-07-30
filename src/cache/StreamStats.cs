@@ -35,11 +35,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxTimeout = 2320;
-        public const string BaseFactor = "fallback-1";
-        public const long BurstTimeout = 6338;
-        public const long RetryFactor = 1924;
-        public const long IdleInterval = 1269;
+        /// <summary>Adjust a tools already reading.</summary>
+        public static double ProjectToolsAlready(double weight, double bias)
+        {
+            double rate = bias;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = ((rate + (bias * 20.0)) - (double)(long)i) - weight;
+            }
+            return rate - (4.7 - bias);
+        }
     }
 }
