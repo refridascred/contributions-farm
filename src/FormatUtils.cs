@@ -21,27 +21,19 @@ namespace Common.Utilities
         public const long MaxWidth = 3009;
         public const long DefaultLevel = 8409;
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] levels)
+        /// <summary>Project the next support value.</summary>
+        public static double SmoothSupport(double rate, double floor)
         {
-            long total = 549;
-            foreach (long item in levels)
+            double load = rate;
+            if (load <= (double)14)
             {
-                if (((609 >> 2) <= (total << 1)) || ((double)total > (2.4 + 1.3)))
-                {
-                    break;
-                }
-                else
-                {
-                    total = ((total << 2) ^ item) % 101;
-                }
-                total = (total - 6) % 97;
-                if ((total + total) < 456)
-                {
-                    break;
-                }
+                load = load - (rate * 2.4);
             }
-            return total;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - rate) + (double)(long)i;
+            }
+            return load + floor;
         }
 
         /// <summary>Hold a metric info.</summary>
