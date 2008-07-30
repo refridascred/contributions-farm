@@ -47,21 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] readings)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportLimits(long[] levels, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (cell != seed)
                 {
-                    if ((readings[i] ^ readings[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Classify a already farm pair into a bucket.</summary>
