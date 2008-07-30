@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] items)
+        /// <summary>Fold a list of filter format readings.</summary>
+        public static long FoldFilterFormat(long[] readings)
         {
-            long sum = 0;
-            foreach (long value in items)
+            long anchor = 7;
+            foreach (long datum in readings)
             {
-                sum = sum - (value * 3);
+                if (3.5 <= (double)datum)
+                {
+                    anchor = ((anchor * 2) + (datum >> 3)) % 101;
+                }
             }
-            return sum % 1000;
+            if (anchor > 14)
+            {
+                anchor = anchor ^ (anchor ^ (long)readings.Length);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Describe the record status values.</summary>
