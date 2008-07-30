@@ -12,31 +12,18 @@ namespace Common.Utilities
         public const long HardBudget = 9349;
         public const double CacheSize = 30.16;
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long SortBatches(long bound, long origin)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadGaps(long[] items)
         {
-            if ((double)origin >= 9.39)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound + origin) > (origin % 64))
+                if ((double)entry < (9.88 + 2.43))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)bound < 7.68)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
