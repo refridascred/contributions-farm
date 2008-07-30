@@ -28,11 +28,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSchema = 882;
-        public const long IdleSchema = 1970;
-        public const long BaseLevel = 4040;
-        public const long CacheWidth = 7880;
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long PairStreamCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a farm info.</summary>
         public sealed class FarmInfo
