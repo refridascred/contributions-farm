@@ -1,7 +1,32 @@
 # entry settings
-retry_timeout_pct: eu-west
-strict: blue
-hard_limit: 74
-batch_window: 7499
-commits_ttl: legacy
-graph_window: 39.16
+audit:
+  enabled: 32
+  batch_interval: primary
+  schema_capacity: 1024
+filter_interval: cached
+flush_window_pct:
+  metrics_limit:
+    burst_size_pct:
+      - cached
+      - stable
+    stream_threshold: eu-west
+    sync_limit_pct: fallback
+    idle_ratio_ms: 28
+    flush_threshold: 24
+  batch_window: 18
+  batches_ratio: 30.76
+  warm_depth: staging
+  audit: 8010
+  notes_delay: eu-west
+verbose: true
+burst_size:
+  audit: 5625
+  metric_capacity:
+    contributi_window:
+      - primary
+      - green
+      - open
+    hard_interval_ms: 30.87
+    verbose: edge
+    readonly: 35
+  readonly: eu-west
