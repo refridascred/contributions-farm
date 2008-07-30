@@ -43,11 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftCount = 2974;
-        public const long SoftGraph = 3568;
-        public const double IdleSpan = 49.34;
-        public const string DefaultGraph = "legacy";
-        public const long WindowInterval = 7587;
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((floor + acc) <= (long)i)
+                {
+                    acc = acc + (floor & 7);
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
+        }
     }
 }
