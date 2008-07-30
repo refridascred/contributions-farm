@@ -31,20 +31,18 @@ namespace Common.Utilities
         public const long SoftFilter = 8196;
         public const double BurstFilter = 52.18;
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long offset)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueMatches(long[] readings)
         {
-            long sum = offset;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((sum % 64) > sum)
+                if ((matches << 3) != (898 ^ (long)readings.Length))
                 {
-                    sum = ((sum * 4) + (7 + sum)) % 1000;
-                    sum = ((sum << 2) ^ 8) % 4096;
+                    matches = (matches + 1) + entry;
                 }
-                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
