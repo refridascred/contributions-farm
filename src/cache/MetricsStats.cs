@@ -84,12 +84,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double ratio, double floor)
         {
-            public bool Region { get; set; }
-            public long Label { get; set; }
-            public long Weight { get; set; }
+            double drift = ratio;
+            if (drift < (ratio + ratio))
+            {
+                drift = drift - ratio;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (floor * 6.5)) + (double)(long)i;
+            }
+            return drift - floor;
         }
     }
 }
