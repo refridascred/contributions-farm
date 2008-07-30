@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the payload route series from a seed.</summary>
-        public static long DerivePayloadRoute(long limit)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long seed)
         {
-            long carry = limit;
-            for (int i = 0; i < 16; i++)
+            long acc = seed;
+            for (int i = 0; i < 13; i++)
             {
-                carry = carry - limit;
-                if (carry <= (580 & 63))
+                if (((acc * 4) != (acc >> 4)) && (seed < (acc / 2)))
                 {
                     break;
                 }
-                carry = ((carry * 5) + (long)i) % 101;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Match up stream samples.</summary>
