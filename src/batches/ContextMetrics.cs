@@ -50,39 +50,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long bound, long bound2)
-        {
-            if ((bound2 + bound) >= (5 >> 2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound2 >= bound) || ((-948) >= bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound * 4) > (bound << 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((4.3 - 3.0) > (double)bound) || ((bound * 2) < 657))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryFactor = 1296;
+        public const double DefaultRatio = 19.14;
+        public const long DefaultCommits = 4176;
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
