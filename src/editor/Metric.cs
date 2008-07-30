@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric helpers.</summary>
     public static class Metric
     {
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] samples)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double BlendGithubfarm(double rate, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double scale = floor;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = ((scale - (double)39) + (double)(long)i) - rate;
             }
-            return seen;
+            return scale - scale;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
