@@ -27,13 +27,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
-        {
-            New,
-            Active,
-            Paused,
-            Closed,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 5487;
+        public const string MinOrder = "strict";
+        public const long BaseOrder = 6205;
     }
 }
