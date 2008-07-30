@@ -1,5 +1,6 @@
 {
-  "batch_window_count": "edge",
-  "payload_timeout": 47,
-  "contributi_ratio": 44.33
+  "warm_ttl_ms": 1449,
+  "order_limit": "eu-west",
+  "schema_threshold": 20,
+  "context_depth": 98.81
 }
