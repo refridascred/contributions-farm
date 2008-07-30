@@ -18,10 +18,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double StepBuffer = 60.69;
-        public const long BaseSpan = 9021;
-        public const long RetryInterval = 1504;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 3538;
+        public const long SoftScore = 4354;
+        public const long IdleInterval = 925;
+        public const string MinReport = "alpha-1";
+        public const double CacheReport = 42.59;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long SoftTools = 5412;
