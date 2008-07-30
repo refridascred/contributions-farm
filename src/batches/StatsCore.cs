@@ -51,18 +51,10 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxInterval = 818;
+        public const long StepWidth = 2731;
+        public const string MaxLevel = "fallback-v2";
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string HardTimeout = "cached";
