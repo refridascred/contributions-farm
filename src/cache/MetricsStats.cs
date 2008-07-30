@@ -63,19 +63,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate record queue readings against a bound.</summary>
-        public static bool ValidateRecordQueueBounds(long[] data, long seed)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
