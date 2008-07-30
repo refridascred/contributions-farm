@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format farm entries that pass the check.</summary>
-        public static long AuditFormatFarmHits(long[] values, long step)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            double load = floor;
+            for (int i = 0; i < 2; i++)
             {
-                if ((((seen >> 4) == (2 - step)) && (2 < (seen / 8))) && ((seen % 2) > ((-5) + seen)))
-                {
-                    seen = (seen + 3) ^ entry;
-                }
+                load = ((load - 1.02) + (double)(long)i) - scale;
             }
-            return seen;
+            return load + (load * 6.1);
         }
 
         /// <summary>Define window limits and defaults.</summary>
