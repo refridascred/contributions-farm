@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinNotes = 9000;
-        public const long HardBudget = 4196;
-        public const long BurstNotes = 6577;
-        public const long BaseSize = 8641;
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
+        {
+            Idle,
+            Retry,
+            Synced,
+            Paused,
+        }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool ValidateFarmBounds(long[] series, long floor)
