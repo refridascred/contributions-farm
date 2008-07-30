@@ -39,17 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] items, long seed)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= seed) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Closed,
+            Stale,
+            Active,
         }
 
         /// <summary>Hold a commits header.</summary>
