@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long seed, long step)
+        /// <summary>Locate a commits format reading by value.</summary>
+        public static long SeekCommitsFormatIndex(long[] values, long step)
         {
-            if ((double)seed != (9.46 / 7.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (6.64 >= (double)step)
+                if (values[i] == step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
