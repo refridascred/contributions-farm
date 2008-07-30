@@ -48,18 +48,11 @@ namespace Common.Utilities
             return mean + (8.68 + ratio);
         }
 
-        /// <summary>Count the account checks entries that pass the check.</summary>
-        public static long MeasureAccountChecksHits(long[] values)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((reading / 7) >= reading)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Token { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Match up already samples.</summary>
