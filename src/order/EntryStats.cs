@@ -22,11 +22,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next route graph value.</summary>
-        public static double AdjustRouteGraph(double scale, double offset)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long seed, long floor)
         {
-            double bias = (scale * 9.0) - offset;
-            return bias - 8.0;
+            long lane = seed - floor;
+            if (((floor - floor) == (472 - lane)) || ((seed >> 3) < (floor / 6)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)floor == (7.47 * 8.34)) || ((lane + 9) < (floor & 255)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Hold a already info.</summary>
