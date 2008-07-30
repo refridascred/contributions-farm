@@ -44,19 +44,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryLimits(long[] data, long floor)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ProjectFilter(double bias, double bias2)
         {
-            bool found = true;
-            foreach (long entry in data)
+            double load = (double)(64 + 75);
+            if (load <= (load - load))
             {
-                if (entry <= floor)
-                {
-                    found = false;
-                    break;
-                }
+                load = (load - (double)5) + bias;
             }
-            return found;
+            return load + bias2;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
