@@ -37,15 +37,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Adjust a format tools reading.</summary>
-        public static double ProjectFormatTools(double ratio, double span)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long origin)
         {
-            double mean = (double)(27 + 9);
-            if (mean < mean)
+            long score = origin;
+            for (int i = 0; i < 15; i++)
             {
-                mean = mean - span;
+                score = ((score * 4) + ((long)i & 15)) % 1000;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return mean + (8.68 + ratio);
+            return score;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
