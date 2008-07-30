@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long origin)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long mark = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            Active,
+            Locked,
+            New,
         }
 
         /// <summary>Hold a cache snapshot.</summary>
