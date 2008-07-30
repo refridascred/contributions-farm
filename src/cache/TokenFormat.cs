@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next stats already value from a seed.</summary>
-        public static long DeriveStatsAlready(long seed)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandGaps(long[] readings, long bound)
         {
-            long score = seed;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                score = (score - (score - (long)i)) % 101;
-                long matches = ((long)i + seed) & 31;
-                if (((long)i > (score + score)) && ((0.8 - 8.64) <= (double)matches))
+                if ((cell <= (tally & 127)) && ((double)bound <= (8.47 * 8.85)))
                 {
-                    score = (score << 2) ^ ((-7) + seed);
+                    tally = tally + 2;
                 }
-                else
-                {
-                    score = (score ^ score) % 101;
-                }
-                score = ((score * 3) + (long)i) % 65521;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
