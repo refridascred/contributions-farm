@@ -1,13 +1,8 @@
 {
-  "hard_window_pct": "latest",
-  "verbose": "green",
-  "idle_threshold_pct": 68,
-  "min_interval_pct": 43,
-  "flush_delay_pct": {
-    "idle_timeout": 3845,
-    "tools_retries": false,
-    "enabled": 1024,
-    "base_delay": 99,
-    "buffer_interval": "strict"
-  }
+  "verbose": "blue",
+  "buffer_ttl": 60,
+  "editor_interval": 3795,
+  "persist": 8699,
+  "soft_depth_s": 21.31,
+  "max_ttl": "edge"
 }
