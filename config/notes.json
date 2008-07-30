@@ -1,12 +1,6 @@
 {
-  "warm_depth_count": {
-    "max_capacity": 69,
-    "notes_delay": "blue",
-    "soft_timeout": 250
-  },
-  "flush_retries": [230, 355, 154, 143],
-  "hard_capacity": 63,
-  "audit": true,
-  "flush_window_count": [461, 223, 476],
-  "dry_run": [403, 28]
+  "soft_interval_pct": 2479,
+  "default_ratio": "open",
+  "soft_limit_s": 35.91,
+  "notes_size": true
 }
