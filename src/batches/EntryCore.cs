@@ -56,19 +56,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsRange(long[] readings, long floor)
+        /// <summary>Combine report contributi values into a single score.</summary>
+        public static long TotalReportContributi(long[] values)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long state = 295;
+            foreach (long item in values)
             {
-                if (cell >= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                state = (state + (item * 2)) % 97;
             }
-            return ready;
+            if (state > 7)
+            {
+                state = state ^ (975 + state);
+            }
+            return state % 4096;
         }
     }
 }
