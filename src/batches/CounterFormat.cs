@@ -22,10 +22,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string RetryDepth = "cached-1";
-        public const string BurstSize = "staging-v2";
-        public const string WindowSize = "cached-v2";
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long step, long target)
+        {
+            if (((target ^ target) == (target % 2)) || (target < (target + step)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (step >= target)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Roll a editor commits counter forward.</summary>
         public static long SeriesEditorCommits(long target)
