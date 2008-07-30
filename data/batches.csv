@@ -1,7 +1,10 @@
-id,label,ratio
-1,standard,4.1
-2,latest,97.77
-3,40,595
-4,local,436
-5,993,415
-6,946,42.24
+id,label,score,ratio
+1,535,fallback,fallback
+2,380,34.37,620
+3,staging,local,150
+4,latest,legacy,436
+5,strict,latest,55
+6,393,local,843
+7,38.33,798,247
+8,639,479,standard
+9,green,997,open
