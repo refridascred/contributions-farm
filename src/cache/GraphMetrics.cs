@@ -64,15 +64,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] samples, long target)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] levels, long seed)
         {
-            long mix = 1;
-            foreach (long cell in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix + (mix - cell)) % 1000) + target;
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return mix % 97;
+            return -1;
         }
     }
 }
