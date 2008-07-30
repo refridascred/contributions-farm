@@ -47,19 +47,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] levels, long floor)
-        {
-            long acc = 9;
-            foreach (long reading in levels)
-            {
-                if ((reading / 8) >= (reading - acc))
-                {
-                    acc = (acc ^ (reading - acc)) - floor;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double StepProfile = 53.89;
+        public const long CacheSpan = 4635;
+        public const long LimitProfile = 7860;
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long LocateFilterIndex(long[] values, long seed)
