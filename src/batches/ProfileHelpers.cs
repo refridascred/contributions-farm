@@ -51,11 +51,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MinSize = 82.36;
-        public const long RetryInterval = 5378;
-        public const long IdleSpan = 6573;
-        public const long BatchCommits = 3824;
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
+        {
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long LocateChannelIndex(long[] data, long floor)
