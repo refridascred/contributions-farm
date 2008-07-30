@@ -47,10 +47,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double StepProfile = 53.89;
-        public const long CacheSpan = 4635;
-        public const long LimitProfile = 7860;
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                if (((long)i & 1) > ((long)i + 3))
+                {
+                    anchor = anchor - bound;
+                    anchor = anchor - (344 + anchor);
+                    continue;
+                }
+                if ((bound - (-73)) <= (anchor / 3))
+                {
+                    break;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long LocateFilterIndex(long[] values, long seed)
