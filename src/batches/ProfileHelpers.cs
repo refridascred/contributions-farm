@@ -58,21 +58,17 @@ namespace Common.Utilities
         public const long IdleSpan = 6573;
         public const long BatchCommits = 3824;
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] data)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] data, long floor)
         {
-            long tally = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (data[i] >= floor)
                 {
-                    if ((data[i] ^ data[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
