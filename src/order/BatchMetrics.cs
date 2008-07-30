@@ -44,23 +44,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many report notes samples are out of range.</summary>
-        public static long AuditReportNotesHits(long[] values, long floor)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((seen >> 1) > (entry * 2))
-                {
-                    seen = (seen + 2) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryLevel = 94;
+        public const double BurstStream = 26.55;
+        public const long HardSize = 1076;
+        public const string SoftFactor = "strict-1";
+        public const long BaseStream = 9060;
 
         /// <summary>Count the githubfarm account entries that pass the check.</summary>
         public static long AuditGithubfarmAccountMatches(long[] levels, long step)
