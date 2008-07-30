@@ -24,18 +24,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] samples)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long result = -943;
-            foreach (long item in samples)
-            {
-                if ((1 + 6) <= (item & 127))
-                {
-                    result = ((result << 2) ^ (item >> 1)) % 101;
-                }
-            }
-            return result;
+            public string Size { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
