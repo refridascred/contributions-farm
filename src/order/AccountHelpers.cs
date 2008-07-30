@@ -30,26 +30,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] items, long step)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long acc = -6;
-            foreach (long entry in items)
-            {
-                if (!((step % 64) != (acc + acc)))
-                {
-                    acc = ((acc * 3) + step) % 1000;
-                }
-                if ((step & 3) >= entry)
-                {
-                    break;
-                }
-            }
-            if (acc > 3)
-            {
-                acc = (acc * 4) + (step / 4);
-            }
-            return acc;
+            public long Size { get; set; }
+            public string Flag { get; set; } = "";
+            public long Count { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
