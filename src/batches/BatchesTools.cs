@@ -42,19 +42,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate account editor readings against a bound.</summary>
-        public static bool GuardAccountEditorLimits(long[] data, long seed)
+        /// <summary>Project the next token value.</summary>
+        public static double SmoothToken(double bias, double offset)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            double rate = (double)633 / 6.0;
+            for (int i = 0; i < 5; i++)
             {
-                if (reading != seed)
-                {
-                    ready = false;
-                    break;
-                }
+                rate = ((rate + bias) + (double)(long)i) + offset;
             }
-            return ready;
+            return rate + bias;
         }
     }
 }
