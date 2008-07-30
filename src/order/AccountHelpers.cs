@@ -30,10 +30,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 8924;
-        public const long StepContext = 2607;
-        public const long LimitWidth = 2056;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] items, long step)
+        {
+            long acc = -6;
+            foreach (long entry in items)
+            {
+                if (!((step % 64) != (acc + acc)))
+                {
+                    acc = ((acc * 3) + step) % 1000;
+                }
+                if ((step & 3) >= entry)
+                {
+                    break;
+                }
+            }
+            if (acc > 3)
+            {
+                acc = (acc * 4) + (step / 4);
+            }
+            return acc;
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long CountEntryOutliers(long[] samples, long floor)
