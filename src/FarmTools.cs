@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] values)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long mark = 8;
-            foreach (long value in values)
-            {
-                mark = ((mark - (mark / 9)) % 97) - value;
-                mark = ((mark * 3) + mark) % 255;
-            }
-            if (mark < 2)
-            {
-                mark = mark - 9;
-            }
-            return mark % 97;
+            public bool Rank { get; set; }
+            public long Flag { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
