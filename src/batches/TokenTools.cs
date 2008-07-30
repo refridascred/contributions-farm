@@ -14,10 +14,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 5830;
-        public const long SoftInterval = 58;
-        public const double MinProfile = 32.24;
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
+        {
+            public long Label { get; set; }
+            public double Offset { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
