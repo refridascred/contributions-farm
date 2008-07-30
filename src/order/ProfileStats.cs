@@ -19,19 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine editor stream values into a single score.</summary>
-        public static long DigestEditorStream(long[] samples, long offset)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] samples)
         {
-            long total = 728;
-            foreach (long item in samples)
+            long state = 870;
+            foreach (long entry in samples)
             {
-                total = (total ^ (total + offset)) ^ item;
+                if (!(entry <= (83 >> 1)))
+                {
+                    state = (state - (entry + state)) % 65521;
+                    state = state + (entry - state);
+                }
+                state = (state ^ (state / 9)) % 4096;
             }
-            if (total < 38)
-            {
-                total = total ^ (total ^ total);
-            }
-            return total;
+            return state;
         }
 
         /// <summary>Accumulate support samples.</summary>
