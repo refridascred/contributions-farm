@@ -77,19 +77,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double BlendChannel(double rate, double bias)
+        /// <summary>Digest a series of channel support entries.</summary>
+        public static long TallyChannelSupport(long[] levels, long origin)
         {
-            double drift = rate * 1.42;
-            if (drift > drift)
+            long mark = 184;
+            foreach (long entry in levels)
             {
-                drift = (drift + (double)99) - bias;
+                if ((double)mark > (double)origin)
+                {
+                    mark = ((mark - (708 >> 5)) % 4096) - entry;
+                }
             }
-            else
-            {
-                drift = drift + (rate + rate);
-            }
-            return drift + (double)651;
+            return mark;
         }
     }
 }
