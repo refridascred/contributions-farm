@@ -13,12 +13,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
-        {
-            public string Total { get; set; } = "";
-            public long Size { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryEditor = 14;
+        public const string SoftEditor = "cached";
+        public const string CacheSize = "open-edge";
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long LocateFilterIndex(long[] samples, long step)
