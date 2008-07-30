@@ -39,12 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double WindowMetric = 15.06;
-        public const string StepSpan = "standard-1";
-        public const long WindowFactor = 1720;
-        public const long BaseMetric = 1625;
-        public const long MaxMetric = 4012;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double SoftChecks = 11.51;
+        public const string BaseScore = "stable-1";
+        public const string IdleChecks = "alpha";
+        public const string MinSize = "standard-1";
+        public const string CacheChecks = "latest-edge";
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long GradeNotes(long origin, long bound)
