@@ -37,22 +37,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the editor stream entries that pass the check.</summary>
-        public static long AuditEditorStreamOutliers(long[] readings)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if (!(5 < datum) && !((matches >> 3) > (83 - datum)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Pending,
+            Failed,
+            Closed,
         }
     }
 }
