@@ -12,11 +12,25 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double rate, double bias)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long step, long floor)
         {
-            double bias2 = (double)6 * 5.15;
-            return ((bias2 + 10.0) + rate) + bias;
+            long bound = step ^ floor;
+            if (bound > floor)
+            {
+                return 5;
+            }
+            else
+            {
+                if (9 >= (step * 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Match up account samples.</summary>
