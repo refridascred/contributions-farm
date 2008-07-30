@@ -46,16 +46,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a report already counter forward.</summary>
-        public static long SeriesReportAlready(long offset)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] samples, long target)
         {
-            long mark = offset;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (mark << 3) ^ (mark << 3);
-                mark = ((mark * 3) + (long)i) % 1000;
+                if (samples[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
