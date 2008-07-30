@@ -26,13 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
-        {
-            public double Limit { get; set; }
-            public string Score { get; set; } = "";
-            public long Count { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 4933;
+        public const long CacheSize = 6580;
+        public const long BatchStats = 1697;
+        public const long RetryStats = 9860;
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool ValidateChannelLimits(long[] data, long target)
