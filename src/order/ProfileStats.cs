@@ -36,40 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a command context value against two limits.</summary>
-        public static long BucketCommandContext(long step, long bound)
-        {
-            long slot = step - bound;
-            if ((step >= (slot + 1)) && (7.0 < (double)bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step + slot) >= step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (step >= (slot % 100))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)bound > (6.57 - 7.5))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double LimitPayload = 86.19;
+        public const string IdlePayload = "legacy";
+        public const double RetryPayload = 57.48;
+        public const string BatchBudget = "open";
+        public const long HardFactor = 1664;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long SoftAlready = 6220;
