@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheInterval = 2331;
+        public const long SoftBatch = 741;
+        public const long RetryBatch = 8462;
+        public const long MaxLevel = 1324;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long CountToolsMatches(long[] data)
