@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordRange(long[] levels, long floor)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            bool ready = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            New,
+            Paused,
+            Active,
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
