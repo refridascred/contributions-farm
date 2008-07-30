@@ -34,13 +34,17 @@ namespace Common.Utilities
         public const string BaseWidth = "primary-edge";
         public const long MaxFilter = 4168;
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] values, long offset)
         {
-            public long Mode { get; set; }
-            public long Owner { get; set; }
-            public bool Region { get; set; }
-            public bool Total { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank account input into a small class.</summary>
