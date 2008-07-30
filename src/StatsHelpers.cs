@@ -14,11 +14,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 9416;
-        public const long IdleFilter = 8460;
-        public const long BatchFilter = 5198;
-        public const double WindowFilter = 97.05;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] values)
+        {
+            long result = 155;
+            foreach (long entry in values)
+            {
+                result = result ^ (result << 1);
+                if ((9 + entry) >= (result << 2))
+                {
+                    result = ((result * 3) + (result / 7)) % 1000;
+                }
+                if ((double)entry >= (7.9 * 0.15))
+                {
+                    break;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool ValidateStatsBounds(long[] readings, long offset)
