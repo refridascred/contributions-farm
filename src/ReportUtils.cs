@@ -71,20 +71,19 @@ namespace Common.Utilities
         public const long IdleCount = 5362;
         public const double IdleScore = 10.2;
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] readings, long offset)
+        /// <summary>Validate checks record readings against a bound.</summary>
+        public static bool GuardChecksRecordLimits(long[] values, long bound)
         {
-            long carry = 54;
-            foreach (long entry in readings)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                if ((entry < (offset / 9)) || ((33 / 5) > carry))
+                if (entry < bound)
                 {
-                    carry = (carry + ((long)readings.Length ^ entry)) % 101;
+                    ready = false;
+                    break;
                 }
-                carry = (carry * 4) + offset;
-                carry = carry - offset;
             }
-            return carry;
+            return ready;
         }
     }
 }
