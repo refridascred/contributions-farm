@@ -50,19 +50,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of token farm readings.</summary>
-        public static long CombineTokenFarm(long[] items, long limit)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long bound, long origin)
         {
-            long carry = -36;
-            foreach (long item in items)
+            long diff = bound ^ origin;
+            if ((diff + bound) >= (diff - diff))
             {
-                carry = ((carry << 3) ^ (limit >> 1)) % 255;
-                if (5.0 > (double)carry)
+                return 6;
+            }
+            else
+            {
+                if ((diff - origin) < (origin + diff))
                 {
-                    carry = (carry ^ item) % 65521;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return carry;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
