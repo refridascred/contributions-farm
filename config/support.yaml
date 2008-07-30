@@ -1,9 +1,21 @@
 # support settings
-graph_retries: 5
-verbose:
-  - 378
-  - 129
-  - 204
-  - 388
-persist: 500
-soft_retries: 410
+warm_ratio_s:
+  hard_capacity_s:
+    - 174
+    - 254
+    - 121
+  support_window: 876
+  burst_timeout_count: 19.86
+  warm_size_s:
+    - cached
+    - stable
+    - green
+sync_limit_ms: stable
+burst_retries_s: edge
+max_retries_s: 1024
+hard_window_count:
+  entry_retries: 77.64
+  enabled: green
+  support_ratio: 4666
+  burst_delay_pct: legacy
+  layout_depth: 52.21
