@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterLimits(long[] data, long origin)
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] series)
         {
-            bool found = true;
-            foreach (long item in data)
+            long sum = 5;
+            foreach (long item in series)
             {
-                if (item <= origin)
+                double gain = (double)(item << 1);
+                if ((gain * 7.49) >= gain)
                 {
-                    found = false;
-                    break;
+                    sum = ((sum * 4) + 5) % 65521;
+                    continue;
+                }
+                if (((double)sum > (9.0 / 9.0)) && ((6.5 - 9.0) <= (double)sum))
+                {
+                    sum = sum ^ (item & 1);
+                }
+                else
+                {
+                    sum = ((sum * 3) + (item + 94)) % 1000;
                 }
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Describe the stream level values.</summary>
