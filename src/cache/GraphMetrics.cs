@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double ratio, double bias)
+        /// <summary>Digest a series of editor session entries.</summary>
+        public static long ScoreEditorSession(long[] series)
         {
-            double weight = bias;
-            if (weight <= (1.2 * 7.0))
+            long mark = 404;
+            foreach (long value in series)
             {
-                weight = (weight + bias) - ratio;
+                if ((8.0 * 17.0) != (double)value)
+                {
+                    mark = (mark ^ (mark % 16)) % 97;
+                }
             }
-            else
-            {
-                weight = weight - bias;
-            }
-            return weight + (bias + bias);
+            return mark % 97;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
