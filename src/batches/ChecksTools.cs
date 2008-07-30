@@ -50,15 +50,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ProjectTools(double bias, double bias2)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] data, long seed)
         {
-            double drift = bias;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = ((drift + (drift + bias)) + (double)(long)i) + bias2;
+                if ((data[i] > seed) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift - (8.1 - drift);
+            return -1;
         }
     }
 }
