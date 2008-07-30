@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local standard strict legacy; do
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+for item in staging local; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=413
-log "limit is ${BUFFER_LIMIT}"
+mode="${1:-standard}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
