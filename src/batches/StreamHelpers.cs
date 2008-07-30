@@ -55,10 +55,12 @@ namespace Common.Utilities
         public const long SoftContributi = 4232;
         public const long LimitContributi = 6698;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 8384;
-        public const long WindowBudget = 5534;
-        public const long IdleSchema = 5512;
-        public const long MaxSchema = 4153;
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
+        {
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
+        }
     }
 }
