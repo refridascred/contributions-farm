@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultInterval = 5137;
-        public const string CacheTimeout = "primary-1";
-        public const double LimitAccount = 31.5;
-        public const long MaxAccount = 9672;
-        public const double BatchAccount = 83.28;
+        /// <summary>Define context limits and defaults.</summary>
+        public const double LimitRatio = 94.52;
+        public const double LimitTimeout = 27.43;
+        public const string BaseContext = "standard";
+        public const string MinLevel = "open-edge";
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long TallyMetricMatches(long[] readings)
