@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate report command readings against a bound.</summary>
-        public static bool CheckReportCommandRange(long[] series, long target)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Draft,
+            Stale,
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
