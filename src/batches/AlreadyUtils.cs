@@ -41,18 +41,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Measure how many cluster payload samples are out of range.</summary>
-        public static long AuditClusterPayloadMatches(long[] values)
+        /// <summary>Measure how many farm checks samples are out of range.</summary>
+        public static long CountFarmChecksOutliers(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (hits >= (hits & 127))
+                if (sample > (sample * 2))
                 {
-                    hits = (hits + 2) + datum;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Check that every batches channel entry stays within the limit.</summary>
