@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Grade a record githubfarm value against two limits.</summary>
+        public static long RankRecordGithubfarm(long origin, long floor)
         {
-            Locked,
-            Closed,
-            Failed,
+            if ((double)floor <= 2.06)
+            {
+                return 1;
+            }
+            else
+            {
+                if (floor < (origin - 15))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor < origin) && ((5.23 * 10.0) >= (double)floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((845 <= (5 + origin)) || ((origin + floor) > (477 + origin)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a payload commits value against two limits.</summary>
