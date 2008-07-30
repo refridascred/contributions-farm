@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long limit, long bound)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            if (((bound & 127) != (limit - limit)) && ((bound + limit) > (bound << 2)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (2 >= (943 + bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Idle,
+            Queued,
+            Done,
+            Pending,
+            Active,
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
