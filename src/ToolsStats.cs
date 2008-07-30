@@ -33,22 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] readings, long step)
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] items)
         {
-            long result = 15;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((939 + step) < (31 % 5))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = (result ^ (sample << 3)) % 97;
-                }
-                if ((result * 5) > step)
-                {
-                    break;
+                    if ((items[i] - items[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result % 97;
+            return count;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
