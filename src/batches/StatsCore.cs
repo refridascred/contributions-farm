@@ -48,12 +48,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] data, long floor)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] data, long seed)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] <= floor)
+                if (data[i] > seed)
                 {
                     return (long)i;
                 }
