@@ -82,21 +82,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] readings)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Paused,
+            Locked,
+            Pending,
+            Done,
         }
     }
 }
