@@ -44,21 +44,16 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Match up cluster metric samples.</summary>
-        public static long MatchClusterMetricCount(long[] readings)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long StepStream(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = mix + bound;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Describe the notes kind values.</summary>
