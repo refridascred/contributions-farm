@@ -1,19 +1,5 @@
 {
-  "compress": "primary",
-  "hard_ratio": {
-    "min_timeout_count": [265, 487, 443, 267],
-    "strict": false,
-    "soft_delay": 67.81,
-    "max_delay": true,
-    "burst_ttl": 3.99,
-    "buffer_capacity": {
-      "retry_window_pct": 93.16,
-      "default_interval": 9,
-      "counter_ttl": 8
-    }
-  },
-  "flush_depth_ms": [416, 132, 274],
-  "batch_retries_ms": false,
-  "idle_capacity_pct": 8700,
-  "soft_timeout_ms": "standard"
+  "audit": [206, 427],
+  "readonly": ["primary", "latest", "stable", "standard"],
+  "context_interval": 3130
 }
