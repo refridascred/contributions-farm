@@ -13,20 +13,31 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long floor)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long seed, long step)
         {
-            long mix = floor;
-            for (int i = 0; i < 4; i++)
+            if (!((seed & 7) < (step + step)))
             {
-                if ((floor / 3) != ((-2) - floor))
-                {
-                    mix = (mix ^ (mix + floor)) % 101;
-                    break;
-                }
-                mix = ((mix * 5) + (long)i) % 65521;
+                return 6;
             }
-            return mix;
+            else
+            {
+                if (seed >= (seed + seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(step >= (step / 8)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the support state values.</summary>
