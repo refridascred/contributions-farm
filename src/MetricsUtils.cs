@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Iterate the cluster checks series from a seed.</summary>
-        public static long StepClusterChecks(long step)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long floor, long bound)
         {
-            long acc = step;
-            for (int i = 0; i < 9; i++)
+            if (((floor ^ floor) < (floor % 2)) || ((double)floor <= (6.1 * 0.46)))
             {
-                acc = ((acc * 2) + (long)i) % 97;
+                return 7;
             }
-            return acc;
+            else
+            {
+                if ((0.4 / 5.0) < (double)floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((floor & 3) < (bound * 3)) && (16.0 < (double)floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a commits header.</summary>
