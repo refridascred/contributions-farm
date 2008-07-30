@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadBounds(long[] levels, long bound)
-        {
-            bool ready = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double LimitFactor = 16.83;
+        public const double MinCounter = 15.43;
+        public const string HardFactor = "strict";
 
         /// <summary>Describe the editor level values.</summary>
         public enum EditorLevel
