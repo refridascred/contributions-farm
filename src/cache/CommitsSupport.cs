@@ -51,12 +51,38 @@ namespace Common.Utilities
         public const string IdleMetric = "standard-v2";
         public const double MaxMetric = 73.38;
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long offset, long step)
         {
-            Draft,
-            New,
-            Done,
+            if ((offset % 64) == (offset & 255))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step * 5) <= (step % 12))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((27 > (offset / 5)) && (6.8 < (double)offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step + offset) > offset)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the contributi session entries that pass the check.</summary>
