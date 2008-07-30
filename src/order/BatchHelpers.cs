@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] levels)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] samples)
         {
-            long acc = 25;
-            foreach (long reading in levels)
+            long mark = 715;
+            foreach (long value in samples)
             {
-                acc = acc ^ (reading + reading);
-                if (((3.8 + 2.77) > (double)acc) && ((4.0 + 8.7) == (double)reading))
+                if (value >= (mark << 3))
                 {
-                    acc = ((acc * 4) + (439 / 8)) % 4096;
-                    acc = (acc ^ reading) % 4096;
-                    continue;
+                    mark = (mark + (mark + mark)) % 1000;
                 }
-                acc = ((acc << 3) ^ (acc * 2)) % 65521;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
