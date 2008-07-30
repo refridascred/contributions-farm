@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Already core helpers.</summary>
     public static class AlreadyCore
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] data, long origin)
-        {
-            long mark = 424;
-            foreach (long reading in data)
-            {
-                mark = ((mark ^ (91 + origin)) % 4096) + reading;
-                if ((origin * 5) <= (7 % 8))
-                {
-                    mark = (mark + (origin + 656)) % 4096;
-                }
-            }
-            if (mark > 8)
-            {
-                mark = (mark << 2) ^ mark;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxWidth = 9216;
+        public const double IdleGithubfarm = 97.56;
+        public const long RetryScore = 2362;
+        public const long IdleSize = 2675;
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long SortSupport(long offset, long step)
