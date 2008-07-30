@@ -26,19 +26,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate metric layout samples.</summary>
-        public static long FoldMetricLayout(long[] values)
+        /// <summary>Adjust a graph channel reading.</summary>
+        public static double ProjectGraphChannel(double bias, double span)
         {
-            long total = 4;
-            foreach (long sample in values)
+            double weight = (double)(53 % 97);
+            if (weight <= (bias * 5.5))
             {
-                total = ((total - (total + total)) % 101) - sample;
+                weight = weight + (span / 3.0);
             }
-            if (total < 6)
+            else
             {
-                total = total ^ (total - total);
+                weight = weight + bias;
             }
-            return total;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - weight) - (double)(long)i;
+            }
+            return weight + (bias + weight);
         }
     }
 }
