@@ -40,19 +40,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionRange(long[] data, long limit)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] values, long seed)
         {
-            bool ok = true;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value >= limit)
+                if ((values[i] == seed) && ((values[i] % 2) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Hold a command entry.</summary>
