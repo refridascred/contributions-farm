@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-eu-west}"
 case "${mode}" in
-    latest)
+    eu-west)
         log "fast path"
         ;;
     *)
@@ -16,9 +16,11 @@ case "${mode}" in
         ;;
 esac
 
-COMMAND_LIMIT=461
-log "limit is ${COMMAND_LIMIT}"
-
-for item in stable edge primary latest; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
+
+COMMAND_LIMIT=343
+log "limit is ${COMMAND_LIMIT}"
