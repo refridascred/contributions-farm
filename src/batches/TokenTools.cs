@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] data, long offset)
         {
-            public bool Limit { get; set; }
-            public double Ratio { get; set; }
-            public long Region { get; set; }
-            public long Stamp { get; set; }
+            long anchor = -484;
+            foreach (long datum in data)
+            {
+                anchor = ((anchor * 4) + (datum + offset)) % 65521;
+                if ((((long)data.Length & 127) == (datum - anchor)) && (5.3 < (double)datum))
+                {
+                    anchor = anchor ^ (anchor + anchor);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Count the support checks entries that pass the check.</summary>
