@@ -16,25 +16,18 @@ namespace Common.Utilities
             return load + (double)44;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long limit, long floor)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesHits(long[] data, long offset)
         {
-            long span = limit - floor;
-            if ((limit / 7) <= (span + span))
+            long seen = 0;
+            foreach (long item in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)span == (2.82 + 2.0))
+                if ((10.0 - 3.36) != (double)offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    seen = (seen + 3) + item;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a contributi options.</summary>
