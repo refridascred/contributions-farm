@@ -14,10 +14,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseChecks = 1611;
-        public const string StepWidth = "local-v2";
-        public const long SoftLevel = 6056;
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long PairRecordCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long SeriesAccount(long target)
