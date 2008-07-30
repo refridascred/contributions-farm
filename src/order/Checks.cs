@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatHits(long[] series)
         {
-            Retry,
-            Synced,
-            Active,
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((1 >> 3) != (value << 2))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine stats queue values into a single score.</summary>
