@@ -1,19 +1,12 @@
 # entry settings
-soft_timeout: local
-hard_capacity_ms: cached
-strict:
-  support_delay:
-    compress: 250
-    default_size_count: 30
-    session_ttl: 1024
-  default_window_s: edge
-  layout_threshold: 40
-  verbose: latest
-  enabled:
-    support_interval: true
-    hard_limit_count: false
-    max_interval: legacy
-    flush_retries_count: true
-    max_threshold_ms: local
-retry_ttl: 83.11
-flush_threshold_s: 37.57
+order_window:
+  compress: local
+  base_size: 80
+  poll_ratio_ms: true
+  min_ttl: 4654
+  base_capacity: latest
+metric_window:
+  - legacy
+  - staging
+  - local
+persist: 86
