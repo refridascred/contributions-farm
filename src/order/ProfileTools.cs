@@ -71,12 +71,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long bound)
         {
-            public long Weight { get; set; }
-            public long Label { get; set; }
-            public bool Size { get; set; }
+            long sum = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = ((sum << 2) ^ sum) % 255;
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
