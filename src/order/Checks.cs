@@ -15,18 +15,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a stats cache reading by value.</summary>
-        public static long LookupStatsCacheIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string DefaultAccount = "fallback-v2";
+        public const string LimitAccount = "strict-1";
+        public const long IdleAccount = 2411;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long CountAccountOutliers(long[] series)
