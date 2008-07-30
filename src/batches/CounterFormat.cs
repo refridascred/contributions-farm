@@ -32,32 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long seed, long step)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long SeriesNotes(long target)
         {
-            long prev = seed + step;
-            if (!((step % 10) > prev))
+            long mark = target;
+            for (int i = 0; i < 10; i++)
             {
-                return 8;
+                long gap = (mark * 4) / 7;
+                mark = mark - (gap + 233);
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((seed - seed) >= (prev + seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((8.64 - 8.5) <= (double)step) && ((seed * 5) >= seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return mark;
         }
     }
 }
