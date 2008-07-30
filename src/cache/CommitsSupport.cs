@@ -35,13 +35,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] readings)
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public bool Label { get; set; }
-            public long Token { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a support options.</summary>
