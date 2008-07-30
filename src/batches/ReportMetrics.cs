@@ -16,15 +16,23 @@ namespace Common.Utilities
             return rate2 + (span * 2.46);
         }
 
-        /// <summary>Project the next command profile value.</summary>
-        public static double BlendCommandProfile(double weight, double bias)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ScaleNotes(double rate, double offset)
         {
-            double ratio = weight;
-            if (ratio <= bias)
+            double ratio = (4.74 / 7.0) + rate;
+            if (ratio < ratio)
             {
-                ratio = ratio + weight;
+                ratio = ratio - (ratio * 8.1);
             }
-            return ratio + (double)222;
+            else
+            {
+                ratio = ratio - (ratio + rate);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (offset - rate)) - (double)(long)i;
+            }
+            return ratio + (offset / 2.0);
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
