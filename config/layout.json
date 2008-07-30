@@ -1,6 +1,11 @@
 {
-  "enabled": 1024,
-  "max_depth": false,
-  "strict": 250,
-  "idle_timeout": [229, 165, 325]
+  "layout_ratio": {
+    "audit": 100,
+    "sync_ttl_s": 24,
+    "verbose": 82.64,
+    "hard_ttl_count": 250,
+    "default_limit": 22.48
+  },
+  "warm_capacity_s": "eu-west",
+  "stream_limit": "green"
 }
