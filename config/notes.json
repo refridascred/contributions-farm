@@ -1,5 +1,6 @@
 {
-  "token_ttl": "strict",
-  "flush_timeout": false,
-  "token_retries": 36
+  "warm_capacity_ms": "latest",
+  "poll_delay_count": "eu-west",
+  "layout_timeout": 30,
+  "base_ttl_count": 60
 }
