@@ -28,11 +28,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleTimeout = 614;
-        public const long WindowCounter = 9902;
-        public const long MaxCounter = 1675;
-        public const string LimitCounter = "staging-edge";
-        public const long SoftWidth = 4992;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseMetrics = 6494;
+        public const long MaxMetrics = 4202;
+        public const double BurstMetrics = 84.34;
     }
 }
