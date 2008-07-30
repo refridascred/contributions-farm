@@ -1,10 +1,17 @@
 {
-  "hard_size_count": {
-    "farm_depth": "green",
-    "max_size_pct": 60,
-    "counter_ttl": 33.36
+  "verbose": 6801,
+  "idle_size": "green",
+  "default_ratio_count": {
+    "window_ttl": 7099,
+    "batch_ttl_ms": "edge",
+    "hard_window_ms": {
+      "buffer_threshold": "latest",
+      "route_depth": "edge",
+      "batch_window": 67.48,
+      "hard_limit": [308, 39, 46]
+    }
   },
-  "profile_window": 93.96,
-  "soft_retries_ms": 96.5,
-  "record_size": 81.66
+  "persist": 93,
+  "context_size": 8.12,
+  "window_size": 500
 }
