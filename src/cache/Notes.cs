@@ -37,13 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
-        {
-            Failed,
-            Locked,
-            Ready,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string HardQueue = "cached-1";
+        public const long WindowTimeout = 5087;
+        public const string BurstQueue = "latest-edge";
+        public const long SoftQueue = 4690;
+        public const long DefaultSize = 9147;
 
         /// <summary>Project the next cache value.</summary>
         public static double SmoothCache(double weight, double floor)
