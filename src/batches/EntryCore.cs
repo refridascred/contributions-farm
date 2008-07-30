@@ -25,19 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] values)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] values, long seed)
         {
-            long score = 9;
-            foreach (long sample in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score * 4) + (1 >> 1)) ^ sample;
+                if (values[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            if (score < 6)
-            {
-                score = (score + (score / 9)) % 65521;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
