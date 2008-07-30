@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long seed, long target)
         {
-            Paused,
-            Synced,
-            Queued,
-            Ready,
+            long delta = seed - target;
+            if (!((double)delta >= (13.0 * 0.69)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((delta - seed) < (target << 2)) || ((double)target <= (1.76 - 4.98)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((464 + target) != (2 + target)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the batches editor entries that pass the check.</summary>
