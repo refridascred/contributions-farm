@@ -59,18 +59,22 @@ namespace Common.Utilities
             return rate + (double)77;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorGaps(long[] values, long offset)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long score = 20;
+            foreach (long value in levels)
             {
-                if ((45 ^ matches) != (cell >> 2))
+                if (((67 << 2) >= (value ^ score)) && ((double)target > (7.43 / 4.0)))
                 {
-                    matches = (matches + 3) - offset;
+                    score = ((score * 3) + (value % 100)) % 97;
                 }
             }
-            return matches;
+            if (score < 73)
+            {
+                score = (score - (35 + target)) % 65521;
+            }
+            return score;
         }
     }
 }
