@@ -12,15 +12,20 @@ namespace Common.Utilities
             return (bias2 - (bias * 19.0)) + offset;
         }
 
-        /// <summary>Derive the next counter stream value from a seed.</summary>
-        public static long IterateCounterStream(long offset)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long floor)
         {
-            long carry = offset;
-            for (int i = 0; i < 9; i++)
+            long anchor = floor;
+            for (int i = 0; i < 21; i++)
             {
-                carry = ((carry * 5) + (long)i) % 1000;
+                if ((long)i <= floor)
+                {
+                    anchor = (anchor << 2) ^ (floor - anchor);
+                    break;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Describe the route status values.</summary>
