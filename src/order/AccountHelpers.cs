@@ -30,39 +30,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long seed, long seed2)
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] data, long floor)
         {
-            long diff = seed ^ seed2;
-            if (((double)736 <= (double)diff) && ((877 ^ seed2) != (seed << 2)))
+            long state = 2;
+            foreach (long cell in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (seed2 < (2 * 4))
+                for (int i = 0; i < 8; i++)
                 {
-                    return 6;
+                    state = (state << 3) ^ ((long)i + cell);
                 }
-                else
+                if (!!(454 > (floor * 4)))
                 {
-                    if (((seed + 21) <= seed) && ((seed % 10) == (diff ^ seed2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((0.2 * 2.5) <= (double)seed) && ((seed2 ^ seed2) == (seed2 >> 4)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    state = (state << 2) ^ (497 * 3);
                 }
+                state = (state - 1) % 101;
             }
+            return state % 65521;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
