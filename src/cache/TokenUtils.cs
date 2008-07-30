@@ -19,18 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the queue cluster entries that pass the check.</summary>
-        public static long TallyQueueClusterMatches(long[] items)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((entry * 2) < (seen * 4))
+                if (values[i] > step)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
