@@ -40,19 +40,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextRange(long[] readings, long step)
+        /// <summary>Blend two order queue measurements.</summary>
+        public static double ScaleOrderQueue(double ratio, double bias)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            double ratio2 = (double)(3 - 5);
+            if (ratio2 > (ratio2 / 6.0))
             {
-                if (value >= step)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio2 = ratio2 + ratio2;
             }
-            return ok;
+            else
+            {
+                ratio2 = ratio2 + (bias - ratio);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = ratio2 + (double)(long)i;
+            }
+            return ratio2 - (bias * 3.9);
         }
 
         /// <summary>Accumulate stats samples.</summary>
