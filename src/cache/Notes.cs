@@ -21,15 +21,11 @@ namespace Common.Utilities
         public const long WindowCount = 7469;
         public const string BatchSpan = "local";
 
-        /// <summary>Roll a entry stream counter forward.</summary>
-        public static long StepEntryStream(long seed)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long mark = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            public long Score { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the farm kind values.</summary>
