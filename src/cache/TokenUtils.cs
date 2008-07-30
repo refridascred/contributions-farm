@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit profile batches readings against a rule.</summary>
-        public static long TallyProfileBatchesOutliers(long[] levels)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (!((tally + tally) >= (tally - (long)levels.Length)))
-                {
-                    tally = (tally + 2) ^ reading;
-                }
-            }
-            return tally;
+            Paused,
+            Synced,
+            Queued,
+            Ready,
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
