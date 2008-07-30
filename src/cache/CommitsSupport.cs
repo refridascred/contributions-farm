@@ -37,21 +37,17 @@ namespace Common.Utilities
             return rate + (gain + floor);
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long CompareGraphCount(long[] samples)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LookupWindowIndex(long[] items, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (items[i] >= step)
                 {
-                    if ((samples[i] ^ samples[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
