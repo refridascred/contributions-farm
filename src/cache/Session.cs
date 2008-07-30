@@ -19,14 +19,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double SmoothGithubfarm(double weight, double span)
         {
-            Idle,
-            Done,
-            Draft,
-            Retry,
-            Queued,
+            double rate = (6.31 - weight) - (0.91 - span);
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + rate) - (double)(long)i;
+            }
+            return rate - span;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
