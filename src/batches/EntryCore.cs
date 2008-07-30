@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] levels)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long acc = -7;
-            foreach (long item in levels)
-            {
-                if ((double)item >= (8.3 - 4.21))
-                {
-                    acc = (acc << 3) ^ (acc >> 4);
-                }
-            }
-            if (acc < 827)
-            {
-                acc = (acc ^ acc) % 255;
-            }
-            return acc % 97;
+            public long Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Locate a record graph reading by value.</summary>
