@@ -1,17 +1,5 @@
 # githubfarm settings
-base_retries: 79
-persist:
-  hard_delay_pct: 64.72
-  persist:
-    tools_depth: 47
-    hard_capacity_ms: blue
-    hard_ttl: latest
-    strict: latest
-  commits_depth:
-    - blue
-    - open
-    - legacy
-flush_limit_ms: true
-stream_delay: 4.03
-idle_limit_s: false
-cache_timeout: 6848
+flush_retries: true
+cluster_delay: 41.64
+cache_retries: 31.37
+default_size: false
