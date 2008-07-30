@@ -31,38 +31,17 @@ namespace Common.Utilities
         public const long IdleWidth = 394;
         public const long BaseOrder = 4563;
 
-        /// <summary>Grade a graph metric value against two limits.</summary>
-        public static long GradeGraphMetric(long floor, long target)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long step)
         {
-            if (!((double)floor >= (double)target))
+            long mark = step;
+            for (int i = 0; i < 9; i++)
             {
-                return 1;
+                mark = ((mark * 2) + mark) % 255;
+                mark = (mark ^ (mark - (long)i)) % 4096;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((9 + floor) != (floor % 100))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)floor >= (8.21 / 6.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (target > floor)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
