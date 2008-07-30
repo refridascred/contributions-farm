@@ -27,12 +27,15 @@ namespace Common.Utilities
         public const long SoftInterval = 58;
         public const double MinProfile = 32.24;
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long floor)
         {
-            Stale,
-            Failed,
-            New,
+            long score = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
     }
 }
