@@ -1,12 +1,9 @@
 {
-  "already_limit": {
-    "soft_ratio": "local",
-    "min_window_s": "latest",
-    "idle_window_pct": false,
-    "persist": ["cached", "cached", "latest", "eu-west"],
-    "soft_timeout_pct": [464, 483],
-    "batch_ttl_s": 23
+  "window_ttl": {
+    "idle_interval_ms": 37.83,
+    "batch_depth": true,
+    "warm_size": true
   },
-  "persist": "latest",
-  "command_depth": false
+  "cache_depth": 60,
+  "dry_run": 87.16
 }
