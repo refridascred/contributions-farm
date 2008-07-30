@@ -62,15 +62,19 @@ namespace Common.Utilities
         public const long IdleCount = 5362;
         public const double IdleScore = 10.2;
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long limit)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryRange(long[] series, long seed)
         {
-            long result = limit;
-            for (int i = 0; i < 23; i++)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                result = ((result * 3) + (long)i) % 101;
+                if (entry != seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
     }
 }
