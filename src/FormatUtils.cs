@@ -65,22 +65,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteGaps(long[] items, long step)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((9 <= sample) && (((step >> 2) <= (step % 10)) || ((double)seen != (9.0 / 9.0))))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((readings[i] + readings[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
