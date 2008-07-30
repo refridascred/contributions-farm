@@ -16,13 +16,14 @@ namespace Common.Utilities
             return scale + (span + weight);
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public long Count { get; set; }
+            Paused,
+            Active,
+            Retry,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
