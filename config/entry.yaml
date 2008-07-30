@@ -1,13 +1,5 @@
 # entry settings
-burst_ttl_pct: true
-token_size: false
-min_capacity: 4
-record_interval:
-  readonly: 250
-  base_delay: 1024
-  dry_run: true
-  audit: 19
-  base_size_count:
-    - 294
-    - 119
-  enabled: 8879
+audit: staging
+retry_ttl_s: standard
+verbose: 59.43
+flush_limit: green
