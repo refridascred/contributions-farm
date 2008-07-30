@@ -49,39 +49,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long origin, long origin2)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long step = origin ^ origin2;
-            if ((origin2 > (origin2 * 3)) && (7 <= (origin * 3)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin + step) < (origin2 / 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin % 7) >= step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((origin ^ 87) < (origin2 >> 5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Active,
+            Stale,
+            Draft,
+            Paused,
         }
     }
 }
