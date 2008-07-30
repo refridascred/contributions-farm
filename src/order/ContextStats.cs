@@ -45,21 +45,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] items)
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double weight, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias = span;
+            if (bias >= (bias * 6.8))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias = (bias - (double)78) - weight;
             }
-            return tally;
+            else
+            {
+                bias = bias - (span * 0.03);
+            }
+            return bias - 2.5;
         }
     }
 }
