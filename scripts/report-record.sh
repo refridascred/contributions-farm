@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=122
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-open}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    edge)
+    staging)
         log "fast path"
         ;;
     *)
@@ -19,8 +16,11 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 3))
 done
-log "ran ${count} rounds"
+log "total ${total}"
+
+RECORD_LIMIT=190
+log "limit is ${RECORD_LIMIT}"
