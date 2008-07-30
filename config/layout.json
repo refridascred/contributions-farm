@@ -1,6 +1,7 @@
 {
-  "idle_ratio_s": ["fallback", "staging"],
-  "cache_threshold": false,
-  "max_delay_count": 53.16,
-  "flush_capacity_pct": "staging"
+  "dry_run": "stable",
+  "retry_interval_s": 18.46,
+  "token_window": 34,
+  "verbose": 17.76,
+  "metrics_size": "primary"
 }
