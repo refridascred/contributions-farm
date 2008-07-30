@@ -34,18 +34,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] values, long bound)
+        /// <summary>Find the first support farm entry that matches the target.</summary>
+        public static long SeekSupportFarmIndex(long[] readings, long bound)
         {
-            long result = 867;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((4.0 - 1.3) != (double)(long)values.Length)
+                if (readings[i] > bound)
                 {
-                    result = ((result + (bound + 596)) % 65521) - value;
+                    return (long)i;
                 }
             }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Roll a report already counter forward.</summary>
