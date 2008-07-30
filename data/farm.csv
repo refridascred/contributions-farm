@@ -1,10 +1,7 @@
-id,token,ratio,rank
-1,304,792,28.03
-2,55.66,fallback,staging
-3,eu-west,990,796
-4,339,fallback,9.23
-5,684,strict,92.7
-6,550,latest,edge
-7,eu-west,656,981
-8,edge,10,321
-9,73.92,81,59.14
+id,level,score,count
+1,855,standard,0.54
+2,281,strict,local
+3,126,cached,463
+4,fallback,922,16.61
+5,staging,3.13,green
+6,960,65.02,436
