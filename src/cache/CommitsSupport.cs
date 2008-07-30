@@ -27,17 +27,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] samples, long limit)
+        /// <summary>Validate stream queue readings against a bound.</summary>
+        public static bool GuardStreamQueueRange(long[] levels, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                if (samples[i] > limit)
+                if (reading > floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Accumulate metric channel samples.</summary>
