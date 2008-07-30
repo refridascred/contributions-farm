@@ -5,29 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long target)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long score = target;
-            for (int i = 0; i < 10; i++)
-            {
-                score = (score * 2) + (942 - target);
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    score = ((score << 3) ^ (target / 9)) ^ (long)i2;
-                }
-                if ((score >> 1) == (target % 10))
-                {
-                    score = score ^ score;
-                }
-                else
-                {
-                    score = (score ^ ((long)i << 3)) % 97;
-                    score = ((score << 3) ^ (target + target)) % 1000;
-                }
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
+            public long Level { get; set; }
+            public double Flag { get; set; }
+            public long Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
