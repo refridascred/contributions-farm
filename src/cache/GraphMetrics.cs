@@ -14,12 +14,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
-        {
-            public string Size { get; set; } = "";
-            public long Token { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double WindowNotes = 97.07;
+        public const long MinNotes = 1672;
+        public const long CacheNotes = 497;
+        public const long DefaultNotes = 263;
 
         /// <summary>Fold a list of token readings.</summary>
         public static long TallyToken(long[] items)
