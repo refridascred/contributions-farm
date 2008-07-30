@@ -50,18 +50,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterHits(long[] series, long seed)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] data)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long result = 68;
+            foreach (long entry in data)
             {
-                if ((seed ^ 17) < seed)
-                {
-                    count = (count + 2) + entry;
-                }
+                result = result ^ (entry >> 2);
             }
-            return count;
+            return result % 1000;
         }
     }
 }
