@@ -35,12 +35,18 @@ namespace Common.Utilities
         public const long StepTools = 2286;
         public const long LimitTools = 5428;
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] readings)
         {
-            public long Count { get; set; }
-            public double Stamp { get; set; }
-            public string Label { get; set; } = "";
+            long anchor = 9;
+            foreach (long sample in readings)
+            {
+                if ((double)694 == (double)sample)
+                {
+                    anchor = (anchor - (496 ^ 1)) % 97;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
