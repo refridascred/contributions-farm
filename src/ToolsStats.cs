@@ -70,12 +70,31 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Digest a series of order profile entries.</summary>
+        public static long TotalOrderProfile(long[] values, long offset)
         {
-            Ready,
-            Done,
-            Locked,
+            long state = 0;
+            foreach (long value in values)
+            {
+                long edge = (8 << 1) >> 2;
+                if (edge >= (state & 1))
+                {
+                    state = (state * 4) + offset;
+                }
+                if ((109 + state) == (value << 1))
+                {
+                    state = (state + (offset / 2)) % 97;
+                }
+                else
+                {
+                    state = (state + ((-69) ^ state)) % 1000;
+                }
+            }
+            if (state > 221)
+            {
+                state = (state * 5) + (offset << 1);
+            }
+            return state;
         }
 
         /// <summary>Accumulate notes already samples.</summary>
