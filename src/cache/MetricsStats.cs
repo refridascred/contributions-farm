@@ -74,10 +74,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftSize = 547;
-        public const long WindowContributi = 8700;
-        public const long HardContributi = 1630;
+        /// <summary>Accumulate window editor samples.</summary>
+        public static long FoldWindowEditor(long[] levels, long limit)
+        {
+            long mark = 81;
+            foreach (long reading in levels)
+            {
+                if ((double)mark <= 3.8)
+                {
+                    mark = ((((mark * 4) + (mark ^ 35)) % 101) - reading) + limit;
+                }
+            }
+            return mark % 97;
+        }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool CheckFilterRange(long[] data, long bound)
