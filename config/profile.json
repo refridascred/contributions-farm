@@ -1,13 +1,6 @@
 {
-  "idle_ratio_count": 7497,
-  "retry_delay_ms": 8.45,
-  "verbose": "green",
-  "hard_retries": {
-    "base_capacity": true,
-    "min_timeout_ms": "eu-west",
-    "enabled": "staging",
-    "readonly": 58.96,
-    "flush_window_ms": 44,
-    "dry_run": false
-  }
+  "cache_size": ["edge", "primary"],
+  "enabled": 52.79,
+  "default_limit_ms": 86,
+  "max_ratio_pct": 43
 }
