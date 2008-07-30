@@ -16,13 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksLimits(long[] items, long bound)
         {
-            Paused,
-            Closed,
-            Pending,
-            Draft,
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the notes kind values.</summary>
