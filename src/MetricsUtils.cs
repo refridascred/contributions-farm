@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] values)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long mark = -63;
-            foreach (long cell in values)
-            {
-                if ((mark % 7) > (mark * 3))
-                {
-                    mark = ((mark * 2) + cell) % 97;
-                }
-                else
-                {
-                    mark = ((mark * 3) + cell) % 97;
-                }
-            }
-            return mark % 65521;
+            public double Flag { get; set; }
+            public long Size { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Locate a graph reading by value.</summary>
