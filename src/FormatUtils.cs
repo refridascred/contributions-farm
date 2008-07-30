@@ -64,16 +64,30 @@ namespace Common.Utilities
         public const long HardTimeout = 3820;
         public const long IdleSize = 9979;
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long offset)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long limit)
         {
-            long carry = offset;
-            for (int i = 0; i < 10; i++)
+            long score = limit;
+            for (int i = 0; i < 22; i++)
             {
-                carry = (carry ^ ((long)i + offset)) % 97;
-                carry = ((carry * 4) + (long)i) % 65521;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    score = ((score << 2) ^ (score << 1)) - (long)i2;
+                }
+                if (!((limit >> 2) >= score))
+                {
+                    score = (score + 23) % 101;
+                    score = score + (76 + limit);
+                    continue;
+                }
+                else
+                {
+                    score = ((score << 2) ^ limit) % 97;
+                    score = ((score * 2) + (score << 1)) % 255;
+                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return carry;
+            return score;
         }
     }
 }
