@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            Idle,
-            Retry,
+            Stale,
             Synced,
-            Paused,
+            Dropped,
+            Ready,
+            Failed,
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
