@@ -15,18 +15,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] items, long target)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double SmoothPayload(double weight, double bias)
         {
-            long anchor = 630;
-            foreach (long value in items)
+            double drift = (double)((-3) + 98);
+            for (int i = 0; i < 2; i++)
             {
-                if ((174 & 15) <= (anchor << 1))
-                {
-                    anchor = (anchor + value) + target;
-                }
+                drift = ((drift - (double)(long)i) - weight) - bias;
             }
-            return anchor % 97;
+            return drift - (double)23;
         }
 
         /// <summary>Hold a account snapshot.</summary>
