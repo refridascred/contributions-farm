@@ -16,19 +16,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterRange(long[] data, long offset)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterHits(long[] items, long target)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (value > offset)
+                if ((matches / 8) < 870)
                 {
-                    stale = false;
-                    break;
+                    matches = ((matches + 2) + reading) - target;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Roll a githubfarm window counter forward.</summary>
