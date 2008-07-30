@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of context command entries.</summary>
-        public static long WeighContextCommand(long[] readings, long origin)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksHits(long[] data)
         {
-            long mix = 2;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                mix = ((mix + (cell >> 1)) % 97) - origin;
+                if ((8.8 * 18.0) > (double)hits)
+                {
+                    hits = (hits + 1) ^ cell;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Hold a contributi record.</summary>
