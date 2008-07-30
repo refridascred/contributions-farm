@@ -34,21 +34,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] items)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ProjectGithubfarm(double bias, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double drift = span;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = (drift - (double)(long)i) + bias;
             }
-            return matches;
+            return drift + (span / 5.0);
         }
     }
 }
