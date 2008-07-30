@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long origin)
         {
-            public bool Total { get; set; }
-            public bool Flag { get; set; }
-            public bool Stamp { get; set; }
+            long score = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
