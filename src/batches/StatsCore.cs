@@ -70,15 +70,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double rate, double bias)
-        {
-            double weight = (1.7 * 9.1) - (11.0 - rate);
-            for (int i = 0; i < 5; i++)
-            {
-                weight = ((weight - weight) + (double)(long)i) - bias;
-            }
-            return weight + rate;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MaxRatio = 85.01;
+        public const double BaseFormat = 3.17;
+        public const long DefaultFormat = 3137;
     }
 }
