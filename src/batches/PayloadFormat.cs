@@ -20,19 +20,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesLimits(long[] values, long offset)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long origin, long bound)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            if ((origin * 5) >= (bound << 1))
             {
-                if (entry != offset)
+                return 2;
+            }
+            else
+            {
+                if (!(9.34 > (double)origin))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (!((origin & 3) == (origin >> 3)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a context header.</summary>
