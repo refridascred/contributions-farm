@@ -44,12 +44,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryLevel = 94;
-        public const double BurstStream = 26.55;
-        public const long HardSize = 1076;
-        public const string SoftFactor = "strict-1";
-        public const long BaseStream = 9060;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleFilter = 2520;
+        public const string MinCount = "cached-v2";
+        public const string BaseWidth = "primary-edge";
+        public const long MaxFilter = 4168;
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long MeasureClusterGaps(long[] levels, long seed)
