@@ -57,18 +57,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileMatches(long[] items)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((1.1 + 7.8) == (double)matches)
-                {
-                    matches = (matches + 3) + sample;
-                }
-            }
-            return matches;
+            public long Score { get; set; }
+            public bool Flag { get; set; }
+            public string Limit { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the notes mode values.</summary>
