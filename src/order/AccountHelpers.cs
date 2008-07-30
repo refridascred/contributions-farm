@@ -76,31 +76,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a batch cluster pair into a bucket.</summary>
-        public static long BucketBatchCluster(long step, long floor)
+        /// <summary>Measure how many farm githubfarm samples are out of range.</summary>
+        public static long MeasureFarmGithubfarmGaps(long[] samples, long step)
         {
-            if (floor > (step / 3))
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)floor >= (1.8 / 4.0)) || ((double)step <= (6.64 - 9.1)))
+                if ((((seen << 3) != (step + step)) || ((step + seen) <= (seen >> 5))) || (((12.0 * 1.1) >= (double)sample) || (11 > (step + sample))))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((step + step) < (592 ^ floor)) || ((5.0 - 5.02) > (double)floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
     }
 }
