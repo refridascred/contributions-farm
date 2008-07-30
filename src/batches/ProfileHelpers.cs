@@ -19,13 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Adjust a channel format reading.</summary>
+        public static double ScaleChannelFormat(double bias, double offset)
         {
-            Dropped,
-            Queued,
-            Done,
-            Paused,
+            double scale = (bias / 3.0) + (double)737;
+            if (scale >= 4.5)
+            {
+                scale = (scale + (double)35) - offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale + (double)3;
         }
 
         /// <summary>Roll a account counter forward.</summary>
