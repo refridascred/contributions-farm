@@ -42,13 +42,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public long Flag { get; set; }
+            Ready,
+            Pending,
+            Idle,
         }
     }
 }
