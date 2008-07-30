@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate metrics support readings against a bound.</summary>
-        public static bool GuardMetricsSupportRange(long[] data, long seed)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double bias, double offset)
         {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double gain = (bias / 5.0) * 2.72;
+            return (gain + 6.08) + offset;
         }
 
         /// <summary>Accumulate profile samples.</summary>
