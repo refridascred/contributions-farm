@@ -28,23 +28,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] data)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] data)
         {
-            long state = 65;
-            foreach (long value in data)
+            long sum = 681;
+            foreach (long sample in data)
             {
-                state = ((state * 3) + (state / 4)) % 4096;
-                if ((state >> 3) <= (33 + value))
+                if ((sum ^ sum) <= sample)
                 {
-                    state = state + (value + value);
-                }
-                else
-                {
-                    state = (state + (state / 2)) % 1000;
+                    sum = ((sum * 3) + (sample ^ (long)data.Length)) % 65521;
                 }
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
