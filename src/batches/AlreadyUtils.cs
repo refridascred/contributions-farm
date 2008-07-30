@@ -32,19 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountGaps(long[] series)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelMatches(long[] levels, long limit)
         {
             long matches = 0;
-            foreach (long reading in series)
+            foreach (long item in levels)
             {
-                if ((10.0 + 7.83) < (double)reading)
+                if ((limit ^ item) > 46)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = matches + 1;
                 }
             }
             return matches;
