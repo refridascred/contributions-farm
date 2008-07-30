@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsHits(long[] levels)
         {
-            public long Stamp { get; set; }
-            public double Size { get; set; }
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if (!((double)hits <= (double)79) && !((item + 4) >= (item & 255)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
