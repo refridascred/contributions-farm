@@ -51,22 +51,18 @@ namespace Common.Utilities
         public const string SoftFactor = "strict-1";
         public const long BaseStream = 9060;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteOutliers(long[] values, long offset)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterGaps(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (count <= (offset - value))
+                if ((seed >= (reading * 4)) && (reading > (tally >> 3)))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
