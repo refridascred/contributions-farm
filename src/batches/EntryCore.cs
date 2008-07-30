@@ -38,32 +38,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a channel checks pair into a bucket.</summary>
-        public static long BucketChannelChecks(long origin, long floor)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long offset = origin ^ floor;
-            if (((floor ^ offset) <= (floor << 3)) || ((origin + 856) < (origin % 3)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((774 < (offset - 793)) && ((floor >> 3) != (307 << 1)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin % 12) == (origin * 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public string Count { get; set; } = "";
+            public double Label { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Digest a series of queue entries.</summary>
