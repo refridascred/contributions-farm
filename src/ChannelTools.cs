@@ -13,10 +13,20 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardScore = 6618;
-        public const long BurstRatio = 8161;
-        public const string IdleLayout = "latest-edge";
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaRange(long[] levels, long seed)
+        {
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool ValidateTokenLimits(long[] samples, long step)
