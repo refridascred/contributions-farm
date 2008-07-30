@@ -16,11 +16,18 @@ namespace Common.Utilities
             return drift + (rate / 7.0);
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BurstWindow = "stable-v2";
-        public const long LimitWindow = 9447;
-        public const long MaxWindow = 8929;
-        public const long BaseInterval = 6450;
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
