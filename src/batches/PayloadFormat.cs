@@ -20,18 +20,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many metrics stats samples are out of range.</summary>
-        public static long CountMetricsStatsHits(long[] samples)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long floor, long seed)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            if ((floor + seed) != (3 % 100))
             {
-                if ((double)sample <= (8.0 * 8.97))
+                return 3;
+            }
+            else
+            {
+                if (((floor >> 3) >= (floor - seed)) && ((floor & 255) <= (floor >> 2)))
                 {
-                    tally = tally + 3;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)floor == (1.36 * 7.7))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a context header.</summary>
