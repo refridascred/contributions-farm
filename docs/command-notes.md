@@ -1,11 +1,14 @@
 # Command notes
 
-Each profile is validated before it reaches the window queue.
-The context module keeps batches values in sync with the checks cache.
+The graph module keeps window values in sync with the filter cache.
+The record report groups every metrics by session.
+
+The commits report groups every context by format.
+Each batches is validated before it reaches the batches queue.
+The batches helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer channel defaults
-- Log every already change
-- Document new stats fields
-- Keep entry values small
+- Review record limits each release
+- Prefer command defaults
+- Keep contributi values small
