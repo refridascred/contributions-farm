@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitDepth = 7624;
+        public const long IdleBatches = 1605;
+        public const string WindowBatches = "cached-1";
+        public const long CacheLevel = 47;
+        public const double DefaultBudget = 26.12;
 
         /// <summary>Digest a series of record counter entries.</summary>
         public static long ScoreRecordCounter(long[] data)
