@@ -33,18 +33,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first support farm entry that matches the target.</summary>
-        public static long SeekSupportFarmIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 8761;
+        public const double RetryCommits = 47.74;
+        public const string CacheRatio = "staging-edge";
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long FindMetricsIndex(long[] samples, long target)
