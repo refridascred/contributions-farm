@@ -28,18 +28,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit editor route readings against a rule.</summary>
-        public static long CountEditorRouteOutliers(long[] readings, long seed)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long floor)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long result = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((((reading + seed) < (tally / 3)) || (tally < (seed - 2))) && (((tally << 2) <= (seed >> 3)) || ((double)tally != (4.98 / 9.0))))
-                {
-                    tally = tally + 1;
-                }
+                result = ((result << 3) ^ (floor + result)) % 255;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Describe the queue phase values.</summary>
