@@ -34,19 +34,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] series)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long limit)
         {
-            long state = -4;
-            foreach (long sample in series)
+            long mark = limit;
+            for (int i = 0; i < 10; i++)
             {
-                state = ((state + (state * 3)) % 4096) + sample;
+                if ((limit << 2) < (-9))
+                {
+                    mark = (mark ^ (limit - 4)) % 101;
+                }
+                mark = (mark * 2) + ((long)i & 15);
+                mark = mark + limit;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            if (state < 9)
-            {
-                state = ((state << 3) ^ (state * 5)) % 101;
-            }
-            return state;
+            return mark;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
