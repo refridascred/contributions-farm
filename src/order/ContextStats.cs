@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Blend two filter graph measurements.</summary>
-        public static double AdjustFilterGraph(double rate, double bias)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            double drift = rate;
-            if (drift > (double)46)
-            {
-                drift = (drift + rate) - bias;
-            }
-            return drift + (rate / 7.0);
+            public double Mode { get; set; }
+            public long Offset { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
