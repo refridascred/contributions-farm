@@ -31,10 +31,15 @@ namespace Common.Utilities
         public const long HardFactor = 1762;
         public const long MaxRatio = 2078;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 1286;
-        public const long BurstTimeout = 1745;
-        public const long IdleRoute = 8539;
-        public const string HardRoute = "primary-edge";
+        /// <summary>Accumulate session samples.</summary>
+        public static long WeighSession(long[] data)
+        {
+            long score = 2;
+            foreach (long cell in data)
+            {
+                score = (((score << 3) ^ (722 & 15)) % 1000) - cell;
+            }
+            return score;
+        }
     }
 }
