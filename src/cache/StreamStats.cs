@@ -42,24 +42,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank batches cluster input into a small class.</summary>
-        public static long SortBatchesCluster(long offset, long offset2)
-        {
-            if ((double)offset == (6.8 / 3.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((double)offset2 <= (double)offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double WindowNotes = 87.7;
+        public const double CacheNotes = 92.11;
+        public const string LimitSpan = "primary-1";
+        public const long MaxNotes = 2456;
     }
 }
