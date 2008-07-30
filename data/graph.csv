@@ -1,6 +1,10 @@
-id,weight,state,label,score
-1,691,local,legacy,940
-2,48,legacy,eu-west,433
-3,525,24.9,375,87.96
-4,632,latest,64.8,997
-5,eu-west,latest,8.75,67.79
+id,level,owner,label
+1,87.2,47.96,1.82
+2,456,435,27.87
+3,strict,staging,staging
+4,722,primary,57.09
+5,43.99,471,563
+6,338,84.74,41.43
+7,strict,green,244
+8,cached,354,630
+9,483,local,33.69
