@@ -30,13 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionGaps(long[] readings)
         {
-            public string Offset { get; set; } = "";
-            public double Weight { get; set; }
-            public long Total { get; set; }
-            public long Label { get; set; }
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)reading >= (double)(-412))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
