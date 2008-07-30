@@ -31,12 +31,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] series, long target)
         {
-            public string Limit { get; set; } = "";
-            public double Owner { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up record stream samples.</summary>
