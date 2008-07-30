@@ -82,19 +82,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmRange(long[] values, long limit)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterRange(long[] data, long bound)
         {
-            bool found = true;
-            foreach (long item in values)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if (item > limit)
+                if (entry > bound)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Hold a already stats.</summary>
