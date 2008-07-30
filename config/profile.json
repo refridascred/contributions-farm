@@ -1,7 +1,21 @@
 {
-  "retry_capacity_pct": "open",
-  "context_retries": "cached",
-  "idle_ttl_pct": true,
-  "verbose": "fallback",
-  "soft_delay": 27.89
+  "warm_retries_ms": ["cached", "green", "primary", "blue"],
+  "report_interval": "edge",
+  "flush_size_pct": false,
+  "batch_window_pct": true,
+  "min_limit_pct": {
+    "min_ttl_s": 0.26,
+    "burst_depth_ms": true,
+    "enabled": "blue",
+    "warm_retries": "latest",
+    "graph_depth": 479,
+    "flush_ttl": {
+      "hard_limit_count": false,
+      "counter_timeout": true,
+      "min_limit": true,
+      "base_ttl_ms": false,
+      "farm_size": 3.89
+    }
+  },
+  "hard_capacity_ms": "standard"
 }
