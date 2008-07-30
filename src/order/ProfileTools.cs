@@ -28,13 +28,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
+            Active,
+            Done,
             Dropped,
-            Locked,
-            Idle,
-            Draft,
         }
 
         /// <summary>Describe the window phase values.</summary>
