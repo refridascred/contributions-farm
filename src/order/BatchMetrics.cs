@@ -51,33 +51,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long origin, long seed)
-        {
-            long prev = origin ^ seed;
-            if (!((origin >> 5) > (origin / 5)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(prev >= 7))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed << 3) > (origin & 127))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheLevel = 8379;
+        public const long WindowInterval = 8502;
+        public const string BurstStream = "legacy-v2";
+        public const long IdleStream = 7840;
 
         /// <summary>Count the editor support entries that pass the check.</summary>
         public static long TallyEditorSupportOutliers(long[] readings, long seed)
