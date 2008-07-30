@@ -14,18 +14,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesOutliers(long[] levels, long offset)
+        /// <summary>Combine editor notes values into a single score.</summary>
+        public static long TallyEditorNotes(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long mark = -6;
+            foreach (long item in readings)
             {
-                if (cell < (45 - hits))
-                {
-                    hits = (hits + 3) - offset;
-                }
+                mark = (mark - offset) + item;
             }
-            return hits;
+            if (mark > 24)
+            {
+                mark = (mark + (mark / 2)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Describe the support status values.</summary>
