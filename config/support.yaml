@@ -1,14 +1,7 @@
 # support settings
-contributi_capacity: edge
-cache_ratio:
-  poll_threshold: 52.44
-  base_window: 8.14
-  readonly: stable
-  min_depth_count: true
-  retry_threshold: 100
-audit:
-  context_delay: green
-  poll_capacity: edge
-  base_interval_pct: true
-  soft_delay: 7093
-  soft_retries_ms: fallback
+enabled: 3194
+session_timeout: 5.72
+flush_delay:
+  - 116
+  - 438
+support_ttl: cached
