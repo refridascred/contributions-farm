@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 6796;
-        public const long SoftEntry = 7199;
-        public const long DefaultRatio = 541;
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
+        {
+            public long Size { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Adjust a buffer reading.</summary>
         public static double SmoothBuffer(double ratio, double floor)
