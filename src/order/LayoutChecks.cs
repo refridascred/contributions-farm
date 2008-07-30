@@ -44,17 +44,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a editor format sample.</summary>
-        public static long LocateEditorFormatIndex(long[] data, long seed)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long bound, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long lane = bound ^ seed;
+            if ((712 - lane) < (seed % 64))
             {
-                if (data[i] < seed)
+                return 2;
+            }
+            else
+            {
+                if (((bound & 1) <= (65 + (-30))) && ((seed - seed) > (lane + bound)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the record mode values.</summary>
