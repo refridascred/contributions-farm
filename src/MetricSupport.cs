@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterLimits(long[] samples, long floor)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] data)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long mark = -945;
+            foreach (long sample in data)
             {
-                if (cell < floor)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = ((mark << 2) ^ sample) % 97;
             }
-            return flag;
+            return mark % 4096;
         }
 
         /// <summary>Accumulate payload samples.</summary>
