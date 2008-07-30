@@ -10,10 +10,26 @@ namespace Common.Utilities
         public const long CacheRoute = 292;
         public const long MaxRoute = 8638;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string WindowFormat = "latest-edge";
-        public const long StepBudget = 1946;
-        public const string RetryFactor = "strict-edge";
+        /// <summary>Grade a profile report value against two limits.</summary>
+        public static long RankProfileReport(long origin, long offset)
+        {
+            long span = origin ^ offset;
+            if (((16.0 - 2.2) < (double)span) && ((origin / 4) > span))
+            {
+                return 1;
+            }
+            else
+            {
+                if (span < (span / 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long SoftBudget = 3331;
