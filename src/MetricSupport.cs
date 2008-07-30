@@ -17,20 +17,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionBounds(long[] series, long bound)
-        {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string WindowFormat = "latest-edge";
+        public const long StepBudget = 1946;
+        public const string RetryFactor = "strict-edge";
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long MaxGraph = 9641;
