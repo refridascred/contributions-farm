@@ -20,19 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a cache editor reading.</summary>
-        public static double ProjectCacheEditor(double bias, double floor)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsRange(long[] series, long target)
         {
-            double ratio = (bias - floor) - (bias - floor);
-            if (ratio < (double)17)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                ratio = ratio + (0.1 + floor);
+                if (cell < target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - (floor - ratio);
-            }
-            return ratio - (floor - ratio);
+            return ok;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
