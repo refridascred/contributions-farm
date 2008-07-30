@@ -14,17 +14,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] series, long offset)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Mode { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Region { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
