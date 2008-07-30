@@ -34,13 +34,12 @@ namespace Common.Utilities
             return drift - (12.0 - offset);
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
-        {
-            Draft,
-            Synced,
-            Paused,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string SoftTimeout = "staging-1";
+        public const long DefaultGithubfarm = 4188;
+        public const long MaxGithubfarm = 2378;
+        public const string SoftGithubfarm = "open-v2";
+        public const long RetryGithubfarm = 361;
 
         /// <summary>Hold a stats header.</summary>
         public sealed class StatsHeader
