@@ -1,14 +1,12 @@
 # Command notes
 
-Keep metric and githubfarm names short and lowercase.
-Each graph is validated before it reaches the token queue.
-The stream report groups every contributi by report.
-
-The stream helpers are pure functions, so they are safe to call from any thread.
-Each metric is validated before it reaches the tools queue.
+When a support fails, the graph handler retries a few times before giving up.
+A metric that stays idle for too long is moved to the batches list.
+The session module keeps stream values in sync with the order cache.
 
 ## Guidelines
 
-- Prefer schema defaults
-- Keep session values small
-- Review channel limits each release
+- Review queue limits each release
+- Prefer already defaults
+- Validate graph input early
+- Keep route values small
