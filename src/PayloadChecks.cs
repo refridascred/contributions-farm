@@ -89,13 +89,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Measure how many payload format samples are out of range.</summary>
+        public static long CountPayloadFormatMatches(long[] data)
         {
-            Paused,
-            Locked,
-            Pending,
-            Done,
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if (!((tally + (long)data.Length) > (item - item)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
