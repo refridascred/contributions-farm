@@ -12,31 +12,23 @@ namespace Common.Utilities
         public const long MaxAccount = 9672;
         public const double BatchAccount = 83.28;
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long floor, long seed)
+        /// <summary>Accumulate stream session samples.</summary>
+        public static long CombineStreamSession(long[] samples)
         {
-            if ((floor + seed) != (3 % 100))
+            long sum = -526;
+            foreach (long datum in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (((floor >> 3) >= (floor - seed)) && ((floor & 255) <= (floor >> 2)))
+                sum = (sum * 5) + datum;
+                if ((double)sum == (double)datum)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)floor == (1.36 * 7.7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    sum = (sum * 5) + (datum * 4);
                 }
             }
+            if (sum < 2)
+            {
+                sum = (sum << 3) ^ (sum / 5);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Hold a context header.</summary>
