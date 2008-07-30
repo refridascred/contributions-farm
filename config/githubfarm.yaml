@@ -1,6 +1,8 @@
 # githubfarm settings
-strict: standard
-report_capacity: fallback
-contributi_threshold: 1024
-sync_timeout_s: open
-persist: 21.4
+idle_threshold_s: 6809
+verbose: 56
+batch_limit: 36.28
+warm_capacity:
+  - local
+  - primary
+soft_capacity_s: false
