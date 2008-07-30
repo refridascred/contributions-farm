@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long origin, long seed)
+        /// <summary>Find the first account editor entry that matches the target.</summary>
+        public static long SeekAccountEditorIndex(long[] samples, long bound)
         {
-            long offset = origin + seed;
-            if (((origin - offset) >= (origin - origin)) && ((offset * 5) == (origin ^ offset)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (0.9 <= (double)origin)
+                if ((samples[i] <= bound) && ((samples[i] % 3) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)origin > (6.2 / 9.0)) || ((5.6 - 4.0) == (double)offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
