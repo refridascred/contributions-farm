@@ -1,15 +1,5 @@
 {
-  "cache_timeout_count": "cached",
-  "tools_delay": {
-    "warm_ttl_pct": 81.7,
-    "cache_threshold": 47.48,
-    "idle_limit": {
-      "strict": [83, 32, 226],
-      "farm_timeout": "green",
-      "soft_retries_ms": ["eu-west", "standard", "standard"],
-      "token_window": ["strict", "staging", "local"],
-      "burst_size_pct": 33
-    }
-  },
-  "hard_capacity_count": 94
+  "dry_run": 60,
+  "enabled": "blue",
+  "idle_delay_count": "standard"
 }
