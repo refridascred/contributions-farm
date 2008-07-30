@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorLimits(long[] items, long limit)
         {
-            Closed,
-            Pending,
-            Locked,
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
