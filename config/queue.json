@@ -1,8 +1,5 @@
 {
-  "burst_window_count": 1024,
-  "default_interval_count": "blue",
-  "sync_ratio": "cached",
-  "strict": "standard",
-  "route_delay": false,
-  "base_timeout_s": false
+  "support_window": 8.72,
+  "soft_ratio": 30,
+  "compress": true
 }
