@@ -25,12 +25,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsLimits(long[] levels, long offset)
         {
-            Done,
-            Locked,
-            Retry,
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
