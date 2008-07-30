@@ -24,18 +24,21 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaHits(long[] samples, long seed)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long PairLayoutCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((hits & 31) < (hits / 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = ((hits + 3) ^ sample) + seed;
+                    if ((levels[i] + levels[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
