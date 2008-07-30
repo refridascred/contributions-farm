@@ -1,8 +1,7 @@
 {
-  "batch_threshold": true,
-  "account_interval": "primary",
-  "retry_size_ms": "eu-west",
-  "githubfarm_threshold": ["local", "staging", "open"],
-  "account_limit": 4134,
-  "readonly": false
+  "batch_size": "eu-west",
+  "poll_limit_s": 1024,
+  "sync_timeout": 54.21,
+  "account_retries": 33,
+  "graph_size": "legacy"
 }
