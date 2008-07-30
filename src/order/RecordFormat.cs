@@ -44,24 +44,18 @@ namespace Common.Utilities
         public const long BurstFactor = 7793;
         public const long RetrySpan = 7322;
 
-        /// <summary>Grade a batch format value against two limits.</summary>
-        public static long ClassifyBatchFormat(long offset, long bound)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadHits(long[] data, long limit)
         {
-            if ((bound * 3) == (bound / 3))
+            long tally = 0;
+            foreach (long cell in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)offset != (16.0 / 4.0))
+                if (!((43 - cell) > 2))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    tally = (tally + 3) + limit;
                 }
             }
+            return tally;
         }
     }
 }
