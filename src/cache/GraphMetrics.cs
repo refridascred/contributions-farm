@@ -33,20 +33,17 @@ namespace Common.Utilities
         public const long CacheNotes = 497;
         public const long DefaultNotes = 263;
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] items)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long seed)
         {
-            long state = 206;
-            foreach (long datum in items)
+            long mix = seed;
+            for (int i = 0; i < 10; i++)
             {
-                state = state - state;
-                for (int i = 0; i < 9; i++)
-                {
-                    state = (state * 3) + ((long)i & 15);
-                }
-                state = (state + (datum + state)) % 255;
+                mix = ((mix << 3) ^ (mix / 8)) % 97;
+                mix = ((mix << 2) ^ seed) % 65521;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return state % 97;
+            return mix;
         }
 
         /// <summary>Locate a support graph reading by value.</summary>
