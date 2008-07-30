@@ -13,19 +13,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenRange(long[] levels, long floor)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileBounds(long[] levels, long target)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if (datum > floor)
+                if (reading >= target)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
