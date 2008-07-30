@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long seed, long seed2)
         {
-            public bool Owner { get; set; }
-            public long Level { get; set; }
+            long slot = seed - seed2;
+            if (3.0 >= (double)slot)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((4.19 + 20.0) == (double)seed2) || (127 <= (seed2 / 9)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)seed2 < 15.0)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((0 >= slot) || ((seed2 & 255) <= (-327)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of commits readings.</summary>
