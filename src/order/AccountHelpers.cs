@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Scale a report session figure with a bias.</summary>
-        public static double AdjustReportSession(double ratio, double span)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long bound, long limit)
         {
-            double gain = ratio;
-            if (gain > span)
+            long delta = bound ^ limit;
+            if ((3.6 * 6.0) == (double)delta)
             {
-                gain = gain + ratio;
+                return 1;
             }
-            return gain - span;
+            else
+            {
+                if (!((bound % 100) >= bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (bound >= (limit / 6))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((-1) + limit) <= (limit % 100))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
