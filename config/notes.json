@@ -1,7 +1,5 @@
 {
-  "burst_ratio_ms": 90.2,
-  "batch_depth_count": [106, 413, 136],
-  "already_size": 26.22,
-  "soft_interval": [368, 493, 87],
-  "account_capacity": false
+  "batch_retries": 67.2,
+  "window_retries": "standard",
+  "dry_run": "green"
 }
