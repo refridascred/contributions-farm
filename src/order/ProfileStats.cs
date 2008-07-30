@@ -36,10 +36,21 @@ namespace Common.Utilities
         public const string BatchBudget = "open";
         public const long HardFactor = 1664;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftAlready = 6220;
-        public const long MaxWidth = 6829;
-        public const double StepAlready = 9.65;
-        public const double DefaultAlready = 76.95;
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
