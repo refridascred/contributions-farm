@@ -67,19 +67,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] values, long origin)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Paused,
+            Ready,
+            Draft,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
