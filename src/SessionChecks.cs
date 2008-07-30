@@ -16,22 +16,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterHits(long[] items, long target)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((matches / 8) < 870)
-                {
-                    matches = ((matches + 2) + reading) - target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Roll a githubfarm window counter forward.</summary>
