@@ -6,22 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
 count=0
 while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in blue fallback latest open; do
+for item in green eu-west local open; do
     log "checking ${item}"
 done
+
+mode="${1:-local}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
