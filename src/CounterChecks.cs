@@ -38,22 +38,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsMatches(long[] series)
+        /// <summary>Roll a cache layout counter forward.</summary>
+        public static long DeriveCacheLayout(long bound)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long acc = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (entry < (entry + entry))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                long tally = bound + 12;
+                acc = (acc * 3) + tally;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Blend two token measurements.</summary>
