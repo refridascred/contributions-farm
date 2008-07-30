@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long bound, long seed)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] levels, long limit)
         {
-            if ((seed % 3) == (seed + 92))
+            long sum = 88;
+            foreach (long value in levels)
             {
-                return 7;
+                sum = (sum + (652 ^ value)) - limit;
             }
-            else
-            {
-                if ((double)bound >= (3.31 + 2.77))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
