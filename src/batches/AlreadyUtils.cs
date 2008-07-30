@@ -35,18 +35,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportMatches(long[] readings)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmBounds(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if ((count & 15) < (long)readings.Length)
+                if (cell > bound)
                 {
-                    count = (count + 2) - sample;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Check that every batches channel entry stays within the limit.</summary>
