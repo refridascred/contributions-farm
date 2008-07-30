@@ -1,8 +1,21 @@
 {
-  "flush_timeout_s": "blue",
-  "persist": 7242,
-  "max_delay_ms": 5567,
-  "dry_run": ["legacy", "fallback", "stable", "blue"],
-  "strict": ["primary", "fallback"],
-  "record_window": "staging"
+  "window_size": 60,
+  "sync_capacity_count": 39,
+  "base_limit_ms": 5730,
+  "burst_interval_ms": {
+    "audit": "fallback",
+    "warm_ttl_ms": true,
+    "hard_interval_ms": {
+      "base_timeout_s": true,
+      "hard_delay_count": "fallback",
+      "batch_limit_count": 250,
+      "default_ttl_ms": 9277,
+      "support_capacity": "blue",
+      "hard_size": "staging"
+    },
+    "idle_capacity": 5574,
+    "batch_window": 65.74,
+    "batch_delay_ms": ["blue", "standard"]
+  },
+  "readonly": 80.46
 }
