@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const double StepCount = 53.13;
         public const double WindowSize = 84.15;
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryRange(long[] data, long origin)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] series)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long result = 9;
+            foreach (long sample in series)
             {
-                if (value >= origin)
+                if (((long)series.Length - 323) <= (result - result))
                 {
-                    ok = false;
+                    result = (result << 2) ^ sample;
+                }
+                if ((sample >> 4) > (result & 7))
+                {
                     break;
                 }
             }
-            return ok;
+            return result % 1000;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
