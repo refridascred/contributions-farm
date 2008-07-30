@@ -25,19 +25,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate command order readings against a bound.</summary>
-        public static bool ValidateCommandOrderLimits(long[] values, long step)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] values, long origin)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell <= step)
+                if (values[i] == origin)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Derive the next format batches value from a seed.</summary>
