@@ -34,15 +34,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] samples, long target)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long score = 197;
-            foreach (long cell in samples)
-            {
-                score = (((score + (score / 3)) % 97) ^ cell) + target;
-            }
-            return score % 1000;
+            Idle,
+            Pending,
+            Paused,
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
