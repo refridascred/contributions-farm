@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit counter farm readings against a rule.</summary>
-        public static long TallyCounterFarmGaps(long[] readings, long step)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (((double)datum != (8.9 / 4.0)) && ((datum + step) < (datum % 5)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryOrder = 6300;
+        public const long SoftOrder = 3337;
+        public const long MinWidth = 8062;
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
