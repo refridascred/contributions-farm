@@ -1,8 +1,5 @@
 {
-  "hard_size_pct": "latest",
-  "warm_ratio_ms": false,
-  "warm_depth_ms": [283, 209, 103],
-  "sync_ratio_count": 26.23,
-  "cache_limit_ms": 72,
-  "checks_limit": "latest"
+  "account_ttl": "blue",
+  "poll_delay_ms": "blue",
+  "min_delay": 100
 }
