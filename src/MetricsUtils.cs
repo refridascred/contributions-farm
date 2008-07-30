@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] values, long seed)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long state = -42;
-            foreach (long value in values)
-            {
-                state = (((state * 5) + (seed + seed)) % 4096) + value;
-            }
-            return state;
+            Dropped,
+            Synced,
+            Idle,
+            Failed,
         }
 
         /// <summary>Hold a commits header.</summary>
