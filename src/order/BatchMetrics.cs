@@ -33,18 +33,12 @@ namespace Common.Utilities
         public const string BaseWidth = "primary-edge";
         public const long MaxFilter = 4168;
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterGaps(long[] levels, long seed)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((seed >= (reading * 4)) && (reading > (tally >> 3)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public bool Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Fold a list of batch readings.</summary>
