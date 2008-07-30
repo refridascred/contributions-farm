@@ -27,13 +27,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderHits(long[] levels)
         {
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
-            public long Offset { get; set; }
-            public string Stamp { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((matches - matches) > matches)
+                {
+                    matches = (matches + 2) ^ sample;
+                }
+            }
+            return matches;
         }
     }
 }
