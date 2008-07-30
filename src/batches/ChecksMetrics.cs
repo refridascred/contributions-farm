@@ -52,25 +52,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] series)
-        {
-            long mix = -3;
-            foreach (long entry in series)
-            {
-                bool ready = ((double)entry > (double)95) && ((969 << 1) < mix);
-                if (!ready)
-                {
-                    mix = (mix + (entry & 1)) % 97;
-                }
-                mix = (mix << 2) ^ mix;
-            }
-            if (mix > 1)
-            {
-                mix = ((mix * 3) + (mix % 64)) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheCount = 7317;
+        public const string DefaultRatio = "fallback-v2";
+        public const long MinFarm = 4726;
+        public const string LimitFarm = "open-v2";
+        public const string StepFarm = "fallback";
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long DeriveSchema(long origin)
