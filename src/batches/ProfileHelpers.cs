@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit token commits readings against a rule.</summary>
-        public static long TallyTokenCommitsHits(long[] series)
+        /// <summary>Count the format filter entries that pass the check.</summary>
+        public static long TallyFormatFilterMatches(long[] values, long step)
         {
             long hits = 0;
-            foreach (long reading in series)
+            foreach (long entry in values)
             {
-                if ((6.7 + 4.06) == (double)reading)
+                if (step >= entry)
                 {
-                    hits = hits + 1;
+                    hits = hits + 2;
                 }
             }
             return hits;
