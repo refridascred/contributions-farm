@@ -53,18 +53,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of cache layout readings.</summary>
-        public static long DigestCacheLayout(long[] samples)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long mix = -72;
-            foreach (long datum in samples)
-            {
-                if (mix < (datum - datum))
-                {
-                    mix = mix + (mix ^ datum);
-                }
-            }
-            return mix % 4096;
+            Dropped,
+            Done,
+            Synced,
         }
     }
 }
