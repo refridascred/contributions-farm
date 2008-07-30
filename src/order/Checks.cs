@@ -37,32 +37,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] levels, long origin)
+        /// <summary>Derive the next commits profile value from a seed.</summary>
+        public static long RollCommitsProfile(long origin)
         {
-            long total = 59;
-            foreach (long sample in levels)
+            long mix = origin;
+            for (int i = 0; i < 22; i++)
             {
-                total = ((total * 4) + (origin * 5)) % 255;
-                if ((origin % 16) < (403 % 7))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    total = (total - (sample >> 1)) % 97;
+                    mix = (((mix * 4) + (mix - origin)) % 65521) + (long)i2;
                 }
-                else
-                {
-                    total = ((total << 3) ^ (origin + total)) % 255;
-                }
-                total = total ^ origin;
-                if (total > (10 * 3))
-                {
-                    break;
-                }
+                mix = (mix << 2) ^ (origin * 2);
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            if (total > 3)
-            {
-                total = total - (origin - total);
-            }
-            return total;
+            return mix;
         }
 
         /// <summary>Hold a order info.</summary>
