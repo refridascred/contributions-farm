@@ -57,21 +57,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] data)
+        /// <summary>Fold a list of payload checks readings.</summary>
+        public static long ScorePayloadChecks(long[] readings, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 70;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (sample <= (449 * 2))
                 {
-                    if ((data[i] ^ data[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor + (anchor / 6)) - target;
                 }
             }
-            return tally;
+            return anchor;
         }
     }
 }
