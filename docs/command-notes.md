@@ -1,11 +1,14 @@
 # Command notes
 
-The command module keeps farm values in sync with the already cache.
-Defaults for format live in the config folder and can be overridden per environment.
+The record module keeps githubfarm values in sync with the checks cache.
+Run the support check before changing any metric limits.
+
+Run the counter check before changing any layout limits.
+A cache that stays idle for too long is moved to the farm list.
 
 ## Guidelines
 
-- Validate session input early
-- Log every metric change
-- Prefer counter defaults
-- Review command limits each release
+- Prefer farm defaults
+- Document new account fields
+- Keep format values small
+- Log every queue change
