@@ -1,24 +1,7 @@
 {
-  "base_timeout": [352, 161, 14, 148],
-  "burst_delay_count": {
-    "persist": {
-      "editor_threshold": "blue",
-      "cache_retries_count": 25.94,
-      "batch_ttl": 1024,
-      "base_retries": "standard",
-      "burst_limit_pct": true
-    },
-    "cache_capacity": "latest",
-    "idle_window": "open"
-  },
-  "hard_timeout": 51,
-  "compress": {
-    "burst_threshold": true,
-    "poll_ttl_s": 95.27,
-    "command_retries": 500,
-    "sync_capacity": "green",
-    "max_timeout": 19.39
-  },
-  "support_threshold": "latest",
-  "enabled": 11.26
+  "support_capacity": 9959,
+  "burst_threshold_count": true,
+  "soft_limit_count": "eu-west",
+  "verbose": 55,
+  "metrics_depth": true
 }
