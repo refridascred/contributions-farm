@@ -38,13 +38,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            Dropped,
-            Locked,
-            Queued,
-            New,
+            public string Label { get; set; } = "";
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
