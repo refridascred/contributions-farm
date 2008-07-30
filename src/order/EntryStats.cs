@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((result + (-693)) != (7 << 3))
-                {
-                    result = result + (4 % 12);
-                }
-                if ((long)i != (result - floor))
-                {
-                    result = result + (result % 97);
-                }
-                else
-                {
-                    result = (result - ((long)i - floor)) % 97;
-                }
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinNotes = 9000;
+        public const long HardBudget = 4196;
+        public const long BurstNotes = 6577;
+        public const long BaseSize = 8641;
 
         /// <summary>Compare every pair of support layout readings.</summary>
         public static long PairSupportLayoutCount(long[] data)
