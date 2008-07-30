@@ -60,13 +60,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
-        {
-            Locked,
-            Retry,
-            Dropped,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinCounter = 5833;
+        public const long LimitTimeout = 8517;
+        public const string BurstCounter = "latest";
+        public const string LimitCounter = "stable-1";
+        public const string CacheInterval = "fallback-1";
 
         /// <summary>Hold a stats stats.</summary>
         public sealed class StatsStats
