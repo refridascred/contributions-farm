@@ -19,25 +19,12 @@ namespace Common.Utilities
         public const double BatchFormat = 57.1;
         public const long WindowFormat = 7716;
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] data)
-        {
-            long acc = 276;
-            foreach (long item in data)
-            {
-                acc = (acc + acc) % 255;
-                if (item > (item >> 3))
-                {
-                    acc = (acc << 2) ^ (acc % 2);
-                }
-                acc = acc ^ (acc << 3);
-            }
-            if (acc > (-12))
-            {
-                acc = (acc ^ (acc + acc)) % 4096;
-            }
-            return acc;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string RetryCount = "primary-v2";
+        public const double SoftSize = 45.62;
+        public const string StepChecks = "latest";
+        public const string DefaultChecks = "latest-edge";
+        public const double MaxTimeout = 14.4;
 
         /// <summary>Accumulate support samples.</summary>
         public static long WeighSupport(long[] data, long limit)
