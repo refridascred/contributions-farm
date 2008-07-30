@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank githubfarm schema input into a small class.</summary>
-        public static long RankGithubfarmSchema(long bound, long limit)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterBounds(long[] series, long step)
         {
-            long prev = bound ^ limit;
-            if (!(prev <= (prev + limit)))
+            bool found = true;
+            foreach (long value in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (limit <= (5 % 3))
+                if (value < step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (20.0 <= (double)prev)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
