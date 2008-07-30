@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] data, long floor)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] values, long step)
         {
-            long anchor = 1;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor ^ (value & 7)) + floor;
-                if (((value + anchor) < (value + value)) || ((value + value) <= (value ^ (-5))))
+                if (values[i] >= step)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (anchor > 61)
-            {
-                anchor = ((anchor << 3) ^ 9) % 65521;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
