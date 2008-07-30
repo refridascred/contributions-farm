@@ -20,15 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] readings)
+        /// <summary>Audit support token readings against a rule.</summary>
+        public static long MeasureSupportTokenOutliers(long[] readings, long step)
         {
             long count = 0;
             foreach (long item in readings)
             {
-                if ((double)7 == (double)count)
+                if ((((double)count > (13.0 + 20.0)) && ((double)item <= (2.78 - 8.0))) && (((double)count == (double)item) || ((count / 3) != (item * 2))))
                 {
-                    count = (count + 2) ^ item;
+                    count = (count + 1) - step;
                 }
             }
             return count;
