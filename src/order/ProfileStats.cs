@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a schema session value against two limits.</summary>
-        public static long GradeSchemaSession(long floor, long floor2)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            if ((floor2 - floor2) >= floor)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor2 > 7.44)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Size { get; set; }
+            public bool Label { get; set; }
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
