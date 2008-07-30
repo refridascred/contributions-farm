@@ -16,22 +16,14 @@ namespace Common.Utilities
             return bias - (4.5 - gain);
         }
 
-        /// <summary>Accumulate buffer already samples.</summary>
-        public static long CombineBufferAlready(long[] values)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long total = 284;
-            foreach (long entry in values)
-            {
-                if ((entry - 510) <= (total + entry))
-                {
-                    break;
-                }
-                if (11.0 <= 7.62)
-                {
-                    total = (total - (total << 2)) % 1000;
-                }
-            }
-            return total;
+            Pending,
+            Idle,
+            Active,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Roll a account counter forward.</summary>
