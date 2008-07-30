@@ -39,18 +39,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up support context samples.</summary>
-        public static long PairSupportContextCount(long[] readings)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountHits(long[] values)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long entry in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)337 < (double)entry)
                 {
-                    if ((readings[i] ^ readings[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
             return seen;
