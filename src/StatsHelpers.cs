@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            Idle,
-            Queued,
-            Done,
-            Pending,
-            Active,
+            Ready,
+            New,
+            Closed,
+            Synced,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
