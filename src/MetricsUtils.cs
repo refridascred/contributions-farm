@@ -69,12 +69,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            public string Level { get; set; } = "";
-            public bool Weight { get; set; }
-            public string Stamp { get; set; } = "";
+            Failed,
+            Active,
+            Done,
         }
     }
 }
