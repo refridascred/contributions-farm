@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const long WindowQueue = 4816;
         public const long LimitQueue = 5829;
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ProjectBatches(double weight, double offset)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportRange(long[] values, long origin)
         {
-            double bias = weight;
-            if (bias < (offset - bias))
+            bool valid = true;
+            foreach (long sample in values)
             {
-                bias = bias + (weight + offset);
+                if (sample >= origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return bias - bias;
+            return valid;
         }
 
         /// <summary>Describe the profile level values.</summary>
