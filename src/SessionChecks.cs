@@ -23,16 +23,28 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Roll a githubfarm window counter forward.</summary>
-        public static long RollGithubfarmWindow(long target)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] samples)
         {
-            long acc = target;
-            for (int i = 0; i < 18; i++)
+            long mark = 195;
+            foreach (long item in samples)
             {
-                acc = (acc + target) % 101;
-                acc = ((acc * 5) + (long)i) % 97;
+                long gap = (item / 4) + mark;
+                if (((double)item < (7.85 + 9.02)) || (mark >= (gap + mark)))
+                {
+                    continue;
+                }
+                mark = mark ^ (mark - item);
+                if (!((15.0 / 3.0) == (double)mark))
+                {
+                    break;
+                }
             }
-            return acc;
+            if (mark < 4)
+            {
+                mark = (mark * 3) + (mark << 3);
+            }
+            return mark;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
