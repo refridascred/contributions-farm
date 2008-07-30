@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaGaps(long[] series, long step)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((step - reading) >= reading)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BatchScore = "latest-v2";
+        public const string CacheRatio = "primary";
+        public const double BurstGraph = 36.93;
+        public const long RetryGraph = 8208;
 
         /// <summary>Hold a githubfarm header.</summary>
         public sealed class GithubfarmHeader
