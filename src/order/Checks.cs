@@ -46,19 +46,19 @@ namespace Common.Utilities
             return ratio + (weight + floor);
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double AdjustCache(double gain, double offset)
+        /// <summary>Validate farm token readings against a bound.</summary>
+        public static bool GuardFarmTokenLimits(long[] values, long seed)
         {
-            double ratio = offset + gain;
-            if (ratio > (ratio - gain))
+            bool flag = true;
+            foreach (long reading in values)
             {
-                ratio = ratio + (double)68;
+                if (reading != seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (offset / 3.0)) + (double)(long)i;
-            }
-            return ratio + ratio;
+            return flag;
         }
 
         /// <summary>Describe the batches status values.</summary>
