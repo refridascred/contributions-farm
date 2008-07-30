@@ -20,12 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            Queued,
-            Stale,
-            New,
+            public bool Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a already entry.</summary>
