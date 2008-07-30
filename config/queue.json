@@ -1,5 +1,22 @@
 {
-  "soft_depth_ms": 74.03,
-  "dry_run": 95.7,
-  "verbose": ["eu-west", "eu-west"]
+  "stats_delay": 30,
+  "editor_size": {
+    "enabled": 9003,
+    "soft_threshold_pct": 3126,
+    "batch_limit_count": 17,
+    "readonly": [323, 37, 75, 395],
+    "warm_threshold": "blue",
+    "cluster_size": 79.37
+  },
+  "idle_ttl": "cached",
+  "already_ratio": "staging",
+  "metric_timeout": 87,
+  "compress": {
+    "poll_depth_pct": "staging",
+    "strict": "stable",
+    "audit": 94.7,
+    "min_delay_pct": 65.69,
+    "idle_retries_pct": 1922,
+    "flush_window_count": "local"
+  }
 }
