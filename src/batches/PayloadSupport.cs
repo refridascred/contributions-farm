@@ -12,19 +12,17 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsRange(long[] series, long target)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] values, long offset)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell < target)
+                if (values[i] >= offset)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Blend two layout measurements.</summary>
