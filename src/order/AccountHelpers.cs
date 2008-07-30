@@ -30,16 +30,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 8924;
+        public const long StepContext = 2607;
+        public const long LimitWidth = 2056;
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long CountEntryOutliers(long[] samples, long floor)
