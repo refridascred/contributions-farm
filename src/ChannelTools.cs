@@ -28,22 +28,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] data)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenLimits(long[] samples, long step)
         {
-            long carry = 394;
-            foreach (long cell in data)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if ((double)cell != (8.0 - 13.0))
+                if (entry <= step)
                 {
-                    carry = carry - carry;
-                }
-                else
-                {
-                    carry = (carry - (cell << 3)) % 255;
+                    found = false;
+                    break;
                 }
             }
-            return carry;
+            return found;
         }
     }
 }
