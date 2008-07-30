@@ -1,13 +1,15 @@
 # Command notes
 
-Use farm settings to tune how often tools data is refreshed.
-The cluster helpers are pure functions, so they are safe to call from any thread.
+Defaults for batches live in the config folder and can be overridden per environment.
+Run the cluster check before changing any stream limits.
+The buffer helpers are pure functions, so they are safe to call from any thread.
 
-Run the githubfarm check before changing any layout limits.
-Use contributi settings to tune how often checks data is refreshed.
+Defaults for profile live in the config folder and can be overridden per environment.
+When a batch fails, the graph handler retries a few times before giving up.
+A stream that stays idle for too long is moved to the batch list.
 
 ## Guidelines
 
-- Document new report fields
-- Prefer route defaults
-- Review cache limits each release
+- Document new layout fields
+- Keep account values small
+- Log every account change
