@@ -51,10 +51,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BatchInterval = "primary-edge";
-        public const long CacheSpan = 4085;
-        public const long WindowRoute = 8136;
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
+        {
+            Draft,
+            Idle,
+            Pending,
+        }
 
         /// <summary>Digest a series of account entries.</summary>
         public static long DigestAccount(long[] readings, long floor)
