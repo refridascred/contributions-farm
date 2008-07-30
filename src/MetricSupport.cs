@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long bound)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterLimits(long[] samples, long floor)
         {
-            long result = bound;
-            for (int i = 0; i < 7; i++)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                result = ((result * 5) + (long)i) % 65521;
+                if (cell < floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Look up the position of a report metric sample.</summary>
