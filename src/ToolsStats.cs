@@ -42,12 +42,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Audit command notes readings against a rule.</summary>
+        public static long MeasureCommandNotesHits(long[] readings)
         {
-            Retry,
-            Done,
-            Dropped,
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (tally >= (88 - value))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
