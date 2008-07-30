@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] series)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long score = 0;
-            foreach (long value in series)
-            {
-                if (value >= (value & 255))
-                {
-                    score = (score - (value * 5)) % 255;
-                }
-            }
-            if (score > 5)
-            {
-                score = (score ^ score) % 65521;
-            }
-            return score % 65521;
+            public bool Stamp { get; set; }
+            public double Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
