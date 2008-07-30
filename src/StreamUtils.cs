@@ -47,12 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseDepth = 4563;
-        public const string HardRatio = "standard-v2";
-        public const long IdleCounter = 8303;
-        public const string StepFactor = "legacy-edge";
-        public const long WindowDepth = 1710;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphOutliers(long[] values)
+        {
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if (2.79 > (double)seen)
+                {
+                    seen = (seen + 1) ^ datum;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long FoldGithubfarm(long[] items)
