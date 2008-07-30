@@ -37,18 +37,38 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchOutliers(long[] series, long offset)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long seed, long target)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            if (seed <= (target + seed))
             {
-                if ((6.3 - 5.38) < (double)offset)
+                return 1;
+            }
+            else
+            {
+                if (!((target - target) > seed))
                 {
-                    hits = (hits + 2) ^ sample;
+                    return 8;
+                }
+                else
+                {
+                    if ((seed <= (target / 4)) || ((double)seed <= 4.4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((target + seed) > target) && ((target & 31) <= (target + seed)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
