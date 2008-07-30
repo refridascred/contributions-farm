@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long floor, long limit)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] samples, long limit)
         {
-            long offset = floor ^ limit;
-            if ((floor + limit) >= offset)
+            long carry = 415;
+            foreach (long value in samples)
             {
-                return 7;
+                carry = (((carry - ((long)samples.Length << 3)) % 97) + value) + limit;
             }
-            else
-            {
-                if (!((double)limit < (5.1 + 7.59)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (offset <= (offset ^ floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Hold a cluster stats.</summary>
