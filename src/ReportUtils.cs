@@ -24,20 +24,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every window context entry stays within the limit.</summary>
-        public static bool CheckWindowContextRange(long[] items, long target)
-        {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepSize = 1511;
+        public const double HardOrder = 95.72;
+        public const long BatchInterval = 6602;
+        public const long IdleWidth = 394;
+        public const long BaseOrder = 4563;
 
         /// <summary>Grade a graph metric value against two limits.</summary>
         public static long GradeGraphMetric(long floor, long target)
