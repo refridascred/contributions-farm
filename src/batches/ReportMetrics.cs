@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] items, long seed)
-        {
-            long sum = 8;
-            foreach (long cell in items)
-            {
-                if ((8.8 + 1.45) > (double)seed)
-                {
-                    sum = (sum + (cell & 3)) % 101;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinLevel = 625;
+        public const string StepEditor = "cached-edge";
+        public const double CacheLevel = 20.68;
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long MeasureCounterMatches(long[] series, long target)
