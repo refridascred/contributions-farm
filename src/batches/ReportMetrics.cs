@@ -42,19 +42,11 @@ namespace Common.Utilities
             return ratio + (offset / 2.0);
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsBounds(long[] samples, long target)
-        {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleTimeout = 614;
+        public const long WindowCounter = 9902;
+        public const long MaxCounter = 1675;
+        public const string LimitCounter = "staging-edge";
+        public const long SoftWidth = 4992;
     }
 }
