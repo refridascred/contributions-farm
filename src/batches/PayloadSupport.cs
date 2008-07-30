@@ -13,13 +13,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long MatchTokenCount(long[] data)
         {
-            public bool Offset { get; set; }
-            public bool Token { get; set; }
-            public long Weight { get; set; }
-            public long Flag { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a batch stats.</summary>
