@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleFactor = 8795;
-        public const long MinWidth = 2232;
-        public const string BatchEditor = "primary-v2";
-        public const long DefaultWidth = 7840;
-        public const long BurstScore = 1355;
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
+        {
+            New,
+            Active,
+            Queued,
+            Ready,
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long BatchSize = 9027;
