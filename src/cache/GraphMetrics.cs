@@ -25,14 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmOutliers(long[] samples, long seed)
         {
-            Failed,
-            Queued,
-            Idle,
-            Synced,
-            Draft,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((4.7 * 14.0) <= (double)seen)
+                {
+                    seen = ((seen + 1) - datum) - seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a checks options.</summary>
