@@ -53,9 +53,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string LimitCommits = "local";
-        public const double BatchInterval = 23.38;
-        public const long IdleScore = 2703;
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((total % 7) <= (step % 2))
+                {
+                    total = (total - step) % 65521;
+                    total = (total + (long)i) % 101;
+                    break;
+                }
+                if (step > (total << 1))
+                {
+                    total = total - total;
+                }
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
+        }
     }
 }
