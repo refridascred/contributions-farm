@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double weight, double offset)
-        {
-            double rate = (weight + weight) + (weight + offset);
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - offset) + (double)(long)i;
-            }
-            return rate - (weight * 7.67);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultInterval = 5137;
+        public const string CacheTimeout = "primary-1";
+        public const double LimitAccount = 31.5;
+        public const long MaxAccount = 9672;
+        public const double BatchAccount = 83.28;
 
         /// <summary>Classify a profile pair into a bucket.</summary>
         public static long BucketProfile(long floor, long seed)
