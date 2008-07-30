@@ -45,18 +45,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricOutliers(long[] values, long seed)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((seed + count) == (count & 1))
-                {
-                    count = (count + 2) ^ sample;
-                }
-            }
-            return count;
+            Closed,
+            Dropped,
+            Pending,
         }
     }
 }
