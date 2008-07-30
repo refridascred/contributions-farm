@@ -56,18 +56,22 @@ namespace Common.Utilities
             return rate + (double)77;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] data)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueOutliers(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if ((double)tally != (6.7 / 6.0))
+                if ((6.1 - 1.9) > (double)sample)
                 {
-                    tally = (tally + 3) + entry;
+                    matches = (matches + 1) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
