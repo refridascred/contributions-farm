@@ -30,17 +30,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a already stream reading by value.</summary>
-        public static long SeekAlreadyStreamIndex(long[] values, long origin)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandRange(long[] series, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long value in series)
             {
-                if (values[i] == origin)
+                if (value >= seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
