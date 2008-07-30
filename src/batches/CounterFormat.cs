@@ -12,20 +12,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double ratio, double floor)
-        {
-            double load = (double)(7 % 12);
-            if (load < floor)
-            {
-                load = (load + (double)3) + ratio;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load - load;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string RetryDepth = "cached-1";
+        public const string BurstSize = "staging-v2";
+        public const string WindowSize = "cached-v2";
 
         /// <summary>Describe the context state values.</summary>
         public enum ContextState
