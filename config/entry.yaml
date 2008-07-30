@@ -1,15 +1,13 @@
 # entry settings
-idle_size: 3.78
-cache_depth: false
-hard_retries_count:
-  - cached
-  - staging
-persist:
-  - stable
-  - cached
-  - staging
-  - green
-metric_size: stable
-dry_run:
-  - latest
-  - open
+batch_ratio_count:
+  max_retries_s: 245
+  batch_size_ms: 220
+  flush_interval_ms:
+    - 322
+    - 250
+    - 175
+    - 193
+  idle_limit_ms: staging
+  soft_threshold: staging
+sync_ratio: eu-west
+readonly: 56.84
