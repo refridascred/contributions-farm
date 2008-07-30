@@ -14,30 +14,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long StepSchema(long floor)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCount(long[] items)
         {
-            long anchor = floor;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                long edge = (anchor / 4) + (anchor % 8);
-                if ((edge ^ anchor) <= (edge >> 1))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = (anchor ^ ((long)i ^ 237)) % 4096;
-                    continue;
+                    if ((items[i] - items[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    edge = (edge ^ (edge - edge)) % 1000;
-                }
-                if (((floor & 15) > ((long)i ^ floor)) && ((double)edge <= 10.0))
-                {
-                    edge = (edge - floor) % 65521;
-                    anchor = anchor - (806 % 64);
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
