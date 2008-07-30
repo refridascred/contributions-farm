@@ -20,22 +20,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] values)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] data)
         {
-            long mix = 71;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (mix >= (748 % 16))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = (mix ^ (mix - cell)) % 4096;
+                    if ((data[i] ^ data[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mix > 420)
-            {
-                mix = mix - (mix / 4);
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Hold a tools header.</summary>
