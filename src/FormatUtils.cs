@@ -52,12 +52,16 @@ namespace Common.Utilities
         public const long HardTimeout = 3820;
         public const long IdleSize = 9979;
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long offset)
         {
-            Active,
-            Failed,
-            Pending,
+            long carry = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                carry = (carry ^ ((long)i + offset)) % 97;
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
