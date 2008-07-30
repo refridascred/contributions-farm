@@ -19,20 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] samples)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long PairMetricCount(long[] readings)
         {
-            long state = 870;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(entry <= (83 >> 1)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = (state - (entry + state)) % 65521;
-                    state = state + (entry - state);
+                    if ((readings[i] ^ readings[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
                 }
-                state = (state ^ (state / 9)) % 4096;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Accumulate support samples.</summary>
