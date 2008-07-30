@@ -43,11 +43,13 @@ namespace Common.Utilities
         public const long MinInterval = 2089;
         public const long MaxContext = 3896;
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            public double Count { get; set; }
-            public string Weight { get; set; } = "";
+            Paused,
+            Done,
+            Failed,
+            Queued,
         }
     }
 }
