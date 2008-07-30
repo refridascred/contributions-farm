@@ -28,10 +28,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MaxWidth = 55.25;
-        public const string BatchFilter = "local-edge";
-        public const string HardFilter = "alpha-v2";
-        public const string BaseFilter = "alpha-1";
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long limit, long step)
+        {
+            if (limit >= 38)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit + limit) < (368 >> 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((84 + step) < (step % 97)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit < 9) || ((step - step) > (limit % 60)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
