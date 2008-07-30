@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long RetryBatch = 8462;
         public const long MaxLevel = 1324;
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsMatches(long[] data)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((6 + matches) != (cell >> 3))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BurstContributi = "open-v2";
+        public const string IdleContributi = "local";
+        public const string BaseContributi = "primary-v2";
+        public const double BaseInterval = 65.87;
+        public const string BatchRatio = "stable-edge";
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long IterateProfile(long offset)
