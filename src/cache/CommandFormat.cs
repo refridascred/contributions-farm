@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 4987;
-        public const long StepGraph = 1488;
-        public const long MaxCount = 4006;
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelLimits(long[] readings, long floor)
+        {
+            bool ok = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long MatchSchemaCount(long[] data)
