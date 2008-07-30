@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] items, long origin)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] series)
         {
-            long result = -3;
-            foreach (long item in items)
+            long result = 232;
+            foreach (long datum in series)
             {
-                result = ((result + 92) ^ item) + origin;
+                if (!((420 * 5) >= datum))
+                {
+                    result = (result << 2) ^ (result & 127);
+                }
+                result = result ^ (datum << 3);
+                if ((result + 6) >= 93)
+                {
+                    break;
+                }
             }
             return result;
         }
