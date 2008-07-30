@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksHits(long[] readings, long floor)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long floor)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long anchor = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((94 + floor) == (value - floor))
+                if (((long)i < (floor & 7)) || (2.2 > (double)anchor))
                 {
-                    seen = seen + 3;
+                    break;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Hold a queue stats.</summary>
