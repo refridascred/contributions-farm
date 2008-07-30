@@ -35,19 +35,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double bias, double floor)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] data)
         {
-            double gain = bias;
-            if (gain <= gain)
+            long mark = 239;
+            foreach (long reading in data)
             {
-                gain = (gain - gain) + floor;
+                if (!(mark <= (reading + mark)))
+                {
+                    mark = ((mark << 3) ^ ((-3) / 7)) % 65521;
+                }
+                else
+                {
+                    mark = mark - (750 % 24);
+                }
             }
-            else
-            {
-                gain = gain - (0.47 + 9.67);
-            }
-            return gain + 8.11;
+            return mark % 1000;
         }
 
         /// <summary>Describe the queue state values.</summary>
