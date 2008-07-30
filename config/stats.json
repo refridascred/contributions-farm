@@ -1,6 +1,5 @@
 {
-  "persist": "legacy",
-  "editor_limit": 1233,
-  "cache_ratio": ["local", "edge", "open"],
-  "dry_run": 54.48
+  "verbose": 38.45,
+  "graph_depth": 89.61,
+  "command_ttl": ["latest", "cached"]
 }
