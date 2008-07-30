@@ -57,29 +57,17 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long floor)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] samples, long origin)
         {
-            long sum = floor;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((floor - floor) > floor)
+                if ((samples[i] >= origin) && ((samples[i] % 5) != 0))
                 {
-                    sum = (sum + (sum & 7)) % 4096;
-                    sum = ((sum << 3) ^ (sum + sum)) % 97;
+                    return (long)i;
                 }
-                else
-                {
-                    sum = (sum ^ (long)i) % 4096;
-                }
-                sum = (sum + ((long)i ^ floor)) % 4096;
-                if (14 <= sum)
-                {
-                    sum = (sum ^ ((long)i << 1)) % 4096;
-                }
-                sum = ((sum * 3) + (long)i) % 101;
             }
-            return sum;
+            return -1;
         }
     }
 }
