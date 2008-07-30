@@ -20,22 +20,27 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] series)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] samples)
         {
-            long mark = -79;
-            foreach (long cell in series)
+            long mark = 607;
+            foreach (long datum in samples)
             {
-                if (((double)mark > (0.95 - 10.0)) && ((double)mark < 14.0))
+                if ((datum % 7) == (datum + datum))
                 {
-                    mark = (mark - (cell << 2)) % 65521;
+                    mark = mark + datum;
                 }
+                else
+                {
+                    mark = (mark << 3) ^ (datum << 3);
+                }
+                mark = mark ^ (long)samples.Length;
             }
-            if (mark > (-66))
+            if (mark > 3)
             {
-                mark = mark - mark;
+                mark = (mark - (mark - mark)) % 4096;
             }
-            return mark;
+            return mark % 4096;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
