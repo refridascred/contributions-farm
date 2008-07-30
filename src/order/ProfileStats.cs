@@ -34,11 +34,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] levels, long origin)
         {
-            public long Flag { get; set; }
-            public string Score { get; set; } = "";
+            long total = 34;
+            foreach (long value in levels)
+            {
+                if ((50 % 100) == (total + 70))
+                {
+                    total = ((total << 2) ^ origin) - value;
+                }
+                else
+                {
+                    total = (total - origin) % 101;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Define already limits and defaults.</summary>
