@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            Closed,
-            Paused,
-            Queued,
+            Retry,
+            Synced,
+            Active,
         }
 
         /// <summary>Combine stats queue values into a single score.</summary>
