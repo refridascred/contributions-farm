@@ -13,11 +13,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftInterval = 4287;
-        public const long RetryBatches = 3626;
-        public const double MinBatches = 62.1;
-        public const double MaxScore = 31.75;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double CacheSchema = 65.54;
+        public const double WindowSchema = 77.1;
+        public const long IdleSize = 1332;
+        public const long BatchSchema = 7209;
+        public const long BurstSchema = 54;
 
         /// <summary>Fold a list of route readings.</summary>
         public static long FoldRoute(long[] series, long seed)
