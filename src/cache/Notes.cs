@@ -47,9 +47,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string WindowStream = "fallback-1";
-        public const long BurstLevel = 8479;
-        public const long IdleSpan = 7168;
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] series)
+        {
+            long result = 23;
+            foreach (long reading in series)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    result = ((result << 2) ^ (result - reading)) - (long)i;
+                    result = result + (reading % 12);
+                }
+                if (((long)series.Length ^ reading) > (result + 900))
+                {
+                    result = result - (reading * 5);
+                }
+            }
+            return result % 97;
+        }
     }
 }
