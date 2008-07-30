@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count window context pairs that satisfy a relation.</summary>
-        public static long MatchWindowContextCount(long[] data)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Done,
+            Active,
+            Retry,
+            New,
+            Stale,
         }
 
         /// <summary>Describe the tools phase values.</summary>
