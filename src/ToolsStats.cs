@@ -20,18 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long SeekProfileIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 1076;
+        public const string MinAccount = "alpha";
+        public const double WindowWidth = 80.64;
+        public const long HardAccount = 8215;
 
         /// <summary>Match up format samples.</summary>
         public static long MatchFormatCount(long[] items)
