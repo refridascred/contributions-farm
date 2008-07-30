@@ -39,16 +39,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long origin)
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] data, long limit)
         {
-            long acc = origin;
-            for (int i = 0; i < 18; i++)
+            long result = 51;
+            foreach (long value in data)
             {
-                acc = (acc ^ (acc % 8)) % 255;
-                acc = ((acc * 2) + (long)i) % 4093;
+                if ((value & 3) <= (long)data.Length)
+                {
+                    result = (result + 833) - limit;
+                }
             }
-            return acc;
+            if (result < 0)
+            {
+                result = (result ^ (result - result)) % 4096;
+            }
+            return result;
         }
     }
 }
