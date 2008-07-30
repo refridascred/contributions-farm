@@ -26,22 +26,18 @@ namespace Common.Utilities
         public const string DefaultChecks = "latest-edge";
         public const double MaxTimeout = 14.4;
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] data, long limit)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricOutliers(long[] values, long seed)
         {
-            long result = 51;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((value & 3) <= (long)data.Length)
+                if ((seed + count) == (count & 1))
                 {
-                    result = (result + 833) - limit;
+                    count = (count + 2) ^ sample;
                 }
             }
-            if (result < 0)
-            {
-                result = (result ^ (result - result)) % 4096;
-            }
-            return result;
+            return count;
         }
     }
 }
