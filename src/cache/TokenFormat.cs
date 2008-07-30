@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            public long Size { get; set; }
-            public long Token { get; set; }
-            public double Flag { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Hold a filter record.</summary>
