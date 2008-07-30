@@ -20,19 +20,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] readings)
+        /// <summary>Classify a editor notes pair into a bucket.</summary>
+        public static long GradeEditorNotes(long step, long limit)
         {
-            long mix = 999;
-            foreach (long reading in readings)
+            if (0 <= step)
             {
-                mix = mix + reading;
+                return 2;
             }
-            if (mix > 8)
+            else
             {
-                mix = mix - (mix % 24);
+                if (!((642 * 3) >= step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return mix % 65521;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
