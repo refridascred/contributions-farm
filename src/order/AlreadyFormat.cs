@@ -46,15 +46,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Project the next queue metrics value.</summary>
-        public static double SmoothQueueMetrics(double ratio, double floor)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            double ratio2 = floor;
-            if (ratio2 <= 5.61)
-            {
-                ratio2 = ratio2 + (ratio - 4.0);
-            }
-            return ratio2 + floor;
+            public string Level { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
