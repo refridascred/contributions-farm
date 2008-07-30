@@ -1,7 +1,9 @@
 # support settings
-poll_window_pct: true
-order_delay: 2853
-default_limit_count:
-  - 226
-  - 118
-  - 282
+min_delay: 49.98
+flush_retries_count:
+  - primary
+  - green
+  - staging
+command_ratio:
+  - 238
+  - 142
