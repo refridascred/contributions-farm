@@ -27,21 +27,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long CompareReportCount(long[] readings)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double BlendLayout(double ratio, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = ratio;
+            if (gain >= (ratio + 3.03))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain = gain + span;
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain + gain;
         }
     }
 }
