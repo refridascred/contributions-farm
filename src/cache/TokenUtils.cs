@@ -13,23 +13,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] series, long limit)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long acc = 650;
-            foreach (long cell in series)
-            {
-                if (acc >= (cell - 8))
-                {
-                    acc = (acc + (cell - 963)) % 4096;
-                }
-                if (limit > (cell - limit))
-                {
-                    continue;
-                }
-                acc = (acc ^ (limit & 15)) % 255;
-            }
-            return acc;
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a filter entry.</summary>
