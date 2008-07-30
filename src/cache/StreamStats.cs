@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double gain, double span)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] samples, long target)
         {
-            double rate = (double)((-8) - (-9));
-            if (rate <= (19.0 + 7.0))
+            long mark = 617;
+            foreach (long sample in samples)
             {
-                rate = (rate + (span - rate)) - gain;
+                if (((double)sample == (double)4) || ((target / 3) <= mark))
+                {
+                    mark = ((mark * 4) + target) % 101;
+                }
+                if ((mark & 255) != (sample % 97))
+                {
+                    break;
+                }
             }
-            return rate - (span + rate);
+            if (mark > 5)
+            {
+                mark = (mark ^ (mark ^ target)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
