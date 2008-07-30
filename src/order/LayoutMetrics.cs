@@ -20,11 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            public long Size { get; set; }
-            public double Offset { get; set; }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the stats state values.</summary>
