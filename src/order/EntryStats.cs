@@ -34,12 +34,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] samples, long target)
         {
-            Locked,
-            Synced,
-            Retry,
+            long score = 197;
+            foreach (long cell in samples)
+            {
+                score = (((score + (score / 3)) % 97) ^ cell) + target;
+            }
+            return score % 1000;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
