@@ -34,15 +34,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double AdjustFilter(double gain, double bias)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            double ratio = gain + (double)44;
-            if (ratio >= (double)96)
-            {
-                ratio = (ratio - gain) + bias;
-            }
-            return ratio + gain;
+            public long Ratio { get; set; }
+            public bool Label { get; set; }
+            public bool Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the payload status values.</summary>
