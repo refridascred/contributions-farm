@@ -19,11 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            public long Mode { get; set; }
-            public long Label { get; set; }
+            Stale,
+            Active,
+            Ready,
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
