@@ -48,14 +48,16 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Roll a report already counter forward.</summary>
+        public static long SeriesReportAlready(long offset)
         {
-            Done,
-            Pending,
-            Idle,
-            Active,
-            Stale,
+            long mark = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                mark = (mark << 3) ^ (mark << 3);
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
         }
     }
 }
