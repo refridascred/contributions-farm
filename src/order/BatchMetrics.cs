@@ -87,18 +87,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderOutliers(long[] items)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long bound)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long result = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if ((datum << 1) > (tally * 5))
+                if (((double)(long)i < (5.8 / 7.0)) || ((7 - 703) != (6 - (long)i)))
                 {
-                    tally = tally + 3;
+                    result = (result ^ (-96)) % 1000;
+                    continue;
                 }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return tally;
+            return result;
         }
     }
 }
