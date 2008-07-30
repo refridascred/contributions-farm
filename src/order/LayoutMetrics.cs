@@ -26,12 +26,19 @@ namespace Common.Utilities
             return bias - 17.0;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] data)
         {
-            public long Stamp { get; set; }
-            public double Total { get; set; }
-            public bool Owner { get; set; }
+            long sum = 805;
+            foreach (long reading in data)
+            {
+                sum = ((sum * 3) + (reading ^ sum)) % 4096;
+            }
+            if (sum > 6)
+            {
+                sum = ((sum * 4) + (sum - sum)) % 101;
+            }
+            return sum;
         }
     }
 }
