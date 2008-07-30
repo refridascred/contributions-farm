@@ -1,22 +1,5 @@
 {
-  "stats_delay": 30,
-  "editor_size": {
-    "enabled": 9003,
-    "soft_threshold_pct": 3126,
-    "batch_limit_count": 17,
-    "readonly": [323, 37, 75, 395],
-    "warm_threshold": "blue",
-    "cluster_size": 79.37
-  },
-  "idle_ttl": "cached",
-  "already_ratio": "staging",
-  "metric_timeout": 87,
-  "compress": {
-    "poll_depth_pct": "staging",
-    "strict": "stable",
-    "audit": 94.7,
-    "min_delay_pct": 65.69,
-    "idle_retries_pct": 1922,
-    "flush_window_count": "local"
-  }
+  "strict": "primary",
+  "soft_interval_ms": 9989,
+  "farm_capacity": [195, 43, 445, 74]
 }
