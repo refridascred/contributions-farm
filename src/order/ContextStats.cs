@@ -34,27 +34,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] samples, long step)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long mix = 69;
-            foreach (long reading in samples)
-            {
-                mix = ((mix + mix) % 4096) + step;
-                if ((mix & 7) < mix)
-                {
-                    mix = (mix << 3) ^ (mix + 9);
-                }
-                if ((double)43 > (double)reading)
-                {
-                    break;
-                }
-            }
-            if (mix < 707)
-            {
-                mix = (mix + ((long)samples.Length % 7)) % 4096;
-            }
-            return mix % 65521;
+            New,
+            Closed,
+            Failed,
         }
 
         /// <summary>Project the next route value.</summary>
