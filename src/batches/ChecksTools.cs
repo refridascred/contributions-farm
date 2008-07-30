@@ -17,15 +17,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the queue githubfarm series from a seed.</summary>
-        public static long StepQueueGithubfarm(long bound)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long state = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            public string Rank { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
