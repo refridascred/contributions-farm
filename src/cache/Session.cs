@@ -43,15 +43,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double weight, double span)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long target)
         {
-            double rate = (6.31 - weight) - (0.91 - span);
-            for (int i = 0; i < 3; i++)
+            long score = target;
+            for (int i = 0; i < 13; i++)
             {
-                rate = (rate + rate) - (double)(long)i;
+                score = (score ^ score) % 97;
+                score = (score << 2) ^ (target - (long)i);
+                score = ((score * 4) + (long)i) % 101;
             }
-            return rate - span;
+            return score;
         }
 
         /// <summary>Fold a list of cache layout readings.</summary>
