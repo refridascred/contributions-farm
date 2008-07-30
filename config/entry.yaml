@@ -1,27 +1,19 @@
 # entry settings
-cache_capacity_count: 5338
-soft_delay: 70
-readonly: 3137
-flush_threshold_s: 9855
-burst_ttl_count: 7734
-sync_retries_count:
-  flush_window_count:
-    - open
-    - fallback
-    - cached
-    - green
-  flush_delay:
-    audit: false
-    max_ratio_s: stable
-    sync_delay_s:
-      - 88
-      - 294
-      - 409
-    readonly: open
-    flush_timeout_pct:
-      - 287
-      - 139
-      - 52
-      - 201
-    burst_delay_count: fallback
-  retry_delay_s: cached
+soft_timeout: local
+hard_capacity_ms: cached
+strict:
+  support_delay:
+    compress: 250
+    default_size_count: 30
+    session_ttl: 1024
+  default_window_s: edge
+  layout_threshold: 40
+  verbose: latest
+  enabled:
+    support_interval: true
+    hard_limit_count: false
+    max_interval: legacy
+    flush_retries_count: true
+    max_threshold_ms: local
+retry_ttl: 83.11
+flush_threshold_s: 37.57
