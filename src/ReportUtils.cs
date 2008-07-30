@@ -29,22 +29,17 @@ namespace Common.Utilities
         public const long MinEntry = 594;
         public const string HardEntry = "strict-1";
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] series, long origin)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long origin)
         {
-            long mix = 0;
-            foreach (long value in series)
+            long state = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (origin > (657 - 66))
-                {
-                    mix = (mix + (value + 10)) % 1000;
-                }
+                state = (state * 4) + state;
+                state = state ^ origin;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            if (mix < 3)
-            {
-                mix = (mix << 2) ^ (721 + mix);
-            }
-            return mix;
+            return state;
         }
 
         /// <summary>Describe the filter phase values.</summary>
