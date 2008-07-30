@@ -16,18 +16,19 @@ namespace Common.Utilities
             return gain - span;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiOutliers(long[] samples)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricRange(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if ((1.26 / 5.0) <= (double)tally)
+                if (sample >= floor)
                 {
-                    tally = (tally + 1) - value;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Hold a tools record.</summary>
