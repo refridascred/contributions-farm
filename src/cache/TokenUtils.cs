@@ -28,38 +28,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long limit, long step)
-        {
-            if (limit >= 38)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit + limit) < (368 >> 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((84 + step) < (step % 97)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit < 9) || ((step - step) > (limit % 60)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MaxCount = 51.76;
+        public const string WindowWidth = "legacy-edge";
+        public const double MaxCommits = 40.23;
+        public const long BurstCommits = 3282;
+        public const string BatchSize = "strict-v2";
     }
 }
