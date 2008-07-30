@@ -1,8 +1,8 @@
 {
-  "sync_size_s": ["stable", "green", "cached"],
-  "strict": "staging",
-  "warm_ratio": "cached",
-  "retry_limit": "cached",
-  "retry_capacity": 46,
-  "dry_run": 70
+  "entry_retries": 34.14,
+  "account_size": 80,
+  "batch_window_count": 60,
+  "sync_interval": "open",
+  "hard_retries": true,
+  "batch_timeout_pct": 60
 }
