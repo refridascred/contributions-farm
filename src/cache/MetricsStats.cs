@@ -20,19 +20,11 @@ namespace Common.Utilities
             return gain + 7.09;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterHits(long[] readings, long origin)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((double)item != (14.0 * 9.25))
-                {
-                    count = (count + 1) + origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 5908;
+        public const long LimitSpan = 5326;
+        public const string BurstProfile = "local-v2";
+        public const long WindowFactor = 175;
 
         /// <summary>Compare every pair of buffer layout readings.</summary>
         public static long MatchBufferLayoutCount(long[] samples)
