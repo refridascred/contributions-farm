@@ -39,25 +39,11 @@ namespace Common.Utilities
         public const long RetrySpan = 9650;
         public const long RetryCount = 4329;
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long floor, long step)
-        {
-            long step2 = floor - step;
-            if (((double)step == (3.0 + 2.38)) && (step2 > step))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((390 & 127) <= step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxTimeout = 2320;
+        public const string BaseFactor = "fallback-1";
+        public const long BurstTimeout = 6338;
+        public const long RetryFactor = 1924;
+        public const long IdleInterval = 1269;
     }
 }
