@@ -16,19 +16,11 @@ namespace Common.Utilities
             return gain - span;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricRange(long[] levels, long floor)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Level { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the account phase values.</summary>
