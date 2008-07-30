@@ -43,13 +43,18 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Fold a list of cache layout readings.</summary>
+        public static long DigestCacheLayout(long[] samples)
         {
-            Queued,
-            Done,
-            Idle,
-            Active,
+            long mix = -72;
+            foreach (long datum in samples)
+            {
+                if (mix < (datum - datum))
+                {
+                    mix = mix + (mix ^ datum);
+                }
+            }
+            return mix % 4096;
         }
     }
 }
