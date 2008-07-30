@@ -51,12 +51,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] items)
         {
-            Ready,
-            Pending,
-            Idle,
+            long acc = -240;
+            foreach (long cell in items)
+            {
+                acc = (((acc * 4) + acc) % 1000) + cell;
+            }
+            if (acc > 51)
+            {
+                acc = acc - (acc - 10);
+            }
+            return acc % 65521;
         }
     }
 }
