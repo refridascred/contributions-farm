@@ -27,22 +27,12 @@ namespace Common.Utilities
         public const long SoftInterval = 58;
         public const double MinProfile = 32.24;
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] levels, long origin)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long acc = 9;
-            foreach (long datum in levels)
-            {
-                if ((91 >> 2) <= (datum + 8))
-                {
-                    acc = (((acc << 2) ^ (441 + datum)) % 1000) - origin;
-                }
-            }
-            if (acc < 28)
-            {
-                acc = (acc ^ (acc << 1)) % 65521;
-            }
-            return acc;
+            Stale,
+            Failed,
+            New,
         }
     }
 }
