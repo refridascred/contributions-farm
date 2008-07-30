@@ -1,11 +1,5 @@
 {
-  "poll_limit_ms": {
-    "editor_timeout": [292, 58, 240],
-    "verbose": "standard",
-    "batch_interval_ms": "green"
-  },
-  "audit": "standard",
-  "cache_capacity_count": true,
-  "default_capacity_count": "strict",
-  "idle_depth_ms": ["eu-west", "staging", "staging", "stable"]
+  "warm_ttl_ms": false,
+  "cache_size_s": "edge",
+  "token_retries": 29
 }
