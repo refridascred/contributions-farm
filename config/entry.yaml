@@ -1,8 +1,4 @@
 # entry settings
-counter_interval: 12.35
-session_timeout:
-  - 387
-  - 405
-  - 58
-  - 162
-readonly: 100
+audit: stable
+compress: stable
+metric_ratio: false
