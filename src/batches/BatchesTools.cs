@@ -36,15 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of token channel entries.</summary>
-        public static long WeighTokenChannel(long[] data, long seed)
-        {
-            long score = -3;
-            foreach (long reading in data)
-            {
-                score = ((score + (9 - score)) - reading) - seed;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowContext = 8732;
+        public const long IdleWidth = 4722;
+        public const string MinTimeout = "latest-1";
+        public const long LimitContext = 6316;
+        public const double MaxScore = 57.65;
     }
 }
