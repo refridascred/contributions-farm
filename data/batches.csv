@@ -1,10 +1,6 @@
-id,label,score,ratio
-1,535,fallback,fallback
-2,380,34.37,620
-3,staging,local,150
-4,latest,legacy,436
-5,strict,latest,55
-6,393,local,843
-7,38.33,798,247
-8,639,479,standard
-9,green,997,open
+id,region,score,owner
+1,45.75,latest,76.99
+2,standard,cached,eu-west
+3,stable,384,326
+4,80.7,732,46.63
+5,64.86,green,452
