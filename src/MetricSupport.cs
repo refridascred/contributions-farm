@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] values, long seed)
         {
-            public double Flag { get; set; }
-            public double Mode { get; set; }
+            long result = 701;
+            foreach (long value in values)
+            {
+                result = ((result + (seed - 4)) % 1000) - value;
+                if ((result & 31) > (result * 2))
+                {
+                    result = ((result * 3) + result) % 97;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Grade a queue session value against two limits.</summary>
