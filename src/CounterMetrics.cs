@@ -49,13 +49,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            public string Owner { get; set; } = "";
-            public double Offset { get; set; }
-            public double Limit { get; set; }
-            public long Stamp { get; set; }
+            public bool Stamp { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
