@@ -38,21 +38,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of context tools readings.</summary>
-        public static long PairContextToolsCount(long[] levels)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 3;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((double)sum == (20.0 / 3.0)))
                 {
-                    if ((levels[i] ^ levels[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = ((sum * 3) + (46 + sum)) - sample;
                 }
             }
-            return matches;
+            if (sum < 6)
+            {
+                sum = (sum << 2) ^ (sum - sum);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Grade a commits metrics value against two limits.</summary>
