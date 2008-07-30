@@ -20,11 +20,14 @@ namespace Common.Utilities
             return gain + 7.09;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 5908;
-        public const long LimitSpan = 5326;
-        public const string BurstProfile = "local-v2";
-        public const long WindowFactor = 175;
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
+        {
+            public bool Token { get; set; }
+            public bool Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public long Offset { get; set; }
+        }
 
         /// <summary>Compare every pair of buffer layout readings.</summary>
         public static long MatchBufferLayoutCount(long[] samples)
