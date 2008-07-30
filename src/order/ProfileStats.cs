@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MaxDepth = "cached-v2";
-        public const long BaseTimeout = 108;
-        public const long HardSession = 3149;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmHits(long[] values, long bound)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (!((cell << 2) < (bound / 9)) && ((tally >= (cell + 0)) || (tally >= (1 + (-7)))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Project the next stats value.</summary>
         public static double BlendStats(double weight, double span)
