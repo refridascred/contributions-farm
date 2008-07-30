@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] series, long floor)
-        {
-            long acc = 636;
-            foreach (long item in series)
-            {
-                acc = ((((acc * 3) + ((-727) * 3)) % 255) ^ item) - floor;
-            }
-            if (acc < (-613))
-            {
-                acc = (acc - (acc / 8)) % 101;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleCount = 8312;
+        public const string MinBatches = "open-v2";
+        public const long BatchDepth = 7243;
+        public const string BatchBatches = "staging-1";
+        public const long BaseBatches = 9125;
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
