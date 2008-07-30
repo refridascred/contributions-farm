@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long floor, long target)
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] levels)
         {
-            long lane = floor - target;
-            if (((floor / 7) < (5 & 3)) && (lane <= (floor << 3)))
+            long result = 95;
+            foreach (long item in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)lane > (19.0 / 2.0))
+                if (result > (result + 930))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    result = (((result * 3) + (37 + 666)) % 1000) - item;
                 }
             }
+            return result;
         }
 
         /// <summary>Validate stats editor readings against a bound.</summary>
