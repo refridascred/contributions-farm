@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Iterate the payload route series from a seed.</summary>
+        public static long DerivePayloadRoute(long limit)
         {
-            public long Token { get; set; }
-            public string Level { get; set; } = "";
-            public string Count { get; set; } = "";
+            long carry = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = carry - limit;
+                if (carry <= (580 & 63))
+                {
+                    break;
+                }
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Match up farm samples.</summary>
