@@ -14,10 +14,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchSize = 9027;
-        public const double BatchFormat = 57.1;
-        public const long WindowFormat = 7716;
+        /// <summary>Match up report schema samples.</summary>
+        public static long PairReportSchemaCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string RetryCount = "primary-v2";
