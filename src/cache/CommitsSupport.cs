@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] values, long bound)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksHits(long[] data, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (values[i] == bound)
+                if ((double)limit < (0.1 - 7.8))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - cell;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
