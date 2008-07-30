@@ -1,23 +1,11 @@
 # githubfarm settings
-readonly: 6223
-compress: 500
-githubfarm_window:
-  commits_timeout: open
-  dry_run:
-    - strict
-    - legacy
-    - stable
-  hard_retries_ms: latest
-  max_retries_pct:
-    batch_delay_ms:
-      - latest
-      - eu-west
-      - eu-west
-      - local
-    burst_retries_s: 60
-    support_limit:
-      - 304
-      - 217
-    entry_threshold: true
-    max_delay_s: 4555
-    contributi_delay: edge
+poll_delay_ms:
+  soft_interval: local
+  filter_threshold: 12.05
+  readonly: eu-west
+  enabled: blue
+buffer_timeout: legacy
+poll_limit_ms: 100
+compress: fallback
+notes_size: false
+hard_ttl: eu-west
