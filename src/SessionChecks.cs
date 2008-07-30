@@ -29,10 +29,14 @@ namespace Common.Utilities
         public const string BatchWidth = "latest-edge";
         public const long MinRatio = 3396;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitRatio = 9633;
-        public const double IdleBudget = 27.25;
-        public const long IdleCount = 9864;
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
+        {
+            Paused,
+            Locked,
+            Queued,
+            New,
+        }
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long ScoreEditor(long[] items)
