@@ -70,18 +70,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many farm githubfarm samples are out of range.</summary>
-        public static long MeasureFarmGithubfarmGaps(long[] samples, long step)
-        {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((((seen << 3) != (step + step)) || ((step + seen) <= (seen >> 5))) || (((12.0 * 1.1) >= (double)sample) || (11 > (step + sample))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double HardScore = 93.82;
+        public const string StepProfile = "cached-v2";
+        public const long WindowProfile = 9452;
+        public const long DefaultProfile = 8108;
+        public const double LimitLevel = 61.14;
     }
 }
