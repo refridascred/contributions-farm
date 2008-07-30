@@ -12,23 +12,10 @@ namespace Common.Utilities
         public const long DefaultWidth = 7840;
         public const long BurstScore = 1355;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsOutliers(long[] items)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((reading > (reading + tally)) || ((reading * 4) != (reading + 28)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchSize = 9027;
+        public const double BatchFormat = 57.1;
+        public const long WindowFormat = 7716;
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long WeighChannel(long[] data)
