@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] levels, long step)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextLimits(long[] series, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if (levels[i] < step)
+                if (value > origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
