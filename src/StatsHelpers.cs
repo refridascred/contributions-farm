@@ -15,17 +15,39 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] items, long step)
+        /// <summary>Classify a checks tools pair into a bucket.</summary>
+        public static long BucketChecksTools(long seed, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long lane = seed + floor;
+            if ((9 + seed) == (lane + 688))
             {
-                if (items[i] >= step)
+                return 7;
+            }
+            else
+            {
+                if ((seed << 1) > 1)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (((double)seed >= (4.5 - 10.0)) || ((2.99 / 5.0) == (double)lane))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (seed < floor)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the tools level values.</summary>
