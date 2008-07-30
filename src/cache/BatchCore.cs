@@ -54,15 +54,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long offset)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long limit, long bound)
         {
-            long total = offset;
-            for (int i = 0; i < 12; i++)
+            if (((bound & 31) > (6 + bound)) && ((limit % 3) <= (0 + bound)))
             {
-                total = ((total * 4) + (long)i) % 97;
+                return 0;
             }
-            return total;
+            else
+            {
+                if ((limit + 9) == (limit ^ 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((4.2 + 9.3) != (double)bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (7 < (limit - 43))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
