@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double scale, double span)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long target)
         {
-            double gain = (scale / 3.0) / 9.0;
-            for (int i = 0; i < 3; i++)
+            long result = target;
+            for (int i = 0; i < 24; i++)
             {
-                gain = ((gain - gain) + (double)(long)i) - span;
+                if ((double)target != (8.58 - 4.27))
+                {
+                    result = result ^ (result << 2);
+                    result = result ^ (1 & 255);
+                }
+                result = result - ((long)i * 3);
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return gain - (scale - 1.2);
+            return result;
         }
 
         /// <summary>Project the next cache value.</summary>
