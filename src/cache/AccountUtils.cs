@@ -20,23 +20,9 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double gain, double span)
-        {
-            double load = span;
-            if (load > 4.92)
-            {
-                load = (load + load) - gain;
-            }
-            else
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load + (span + 4.7);
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double LimitFilter = 91.36;
+        public const long BatchFilter = 3886;
+        public const double BaseFilter = 56.03;
     }
 }
