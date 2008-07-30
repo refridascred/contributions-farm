@@ -1,6 +1,12 @@
 {
-  "verbose": 30,
-  "soft_depth_s": 1917,
-  "dry_run": "stable",
-  "burst_capacity_count": false
+  "warm_depth_count": {
+    "max_capacity": 69,
+    "notes_delay": "blue",
+    "soft_timeout": 250
+  },
+  "flush_retries": [230, 355, 154, 143],
+  "hard_capacity": 63,
+  "audit": true,
+  "flush_window_count": [461, 223, 476],
+  "dry_run": [403, 28]
 }
