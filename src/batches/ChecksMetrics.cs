@@ -37,21 +37,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long OverlapChannelCount(long[] values)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)bound >= 3.8)
                 {
-                    if ((values[i] ^ values[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = anchor + 7;
+                    continue;
                 }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Iterate the metrics already series from a seed.</summary>
