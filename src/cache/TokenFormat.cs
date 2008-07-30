@@ -20,13 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
             Stale,
-            Locked,
-            Draft,
             Failed,
+            Active,
+            Synced,
+            Ready,
         }
 
         /// <summary>Locate a order reading by value.</summary>
