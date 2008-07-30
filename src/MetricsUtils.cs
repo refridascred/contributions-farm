@@ -26,18 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stats checks readings.</summary>
-        public static long ScoreStatsChecks(long[] readings, long limit)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] values, long offset)
         {
-            long result = 5;
-            foreach (long reading in readings)
+            long state = 95;
+            foreach (long value in values)
             {
-                if ((reading % 8) < (reading ^ reading))
+                state = ((state << 2) ^ (state + state)) % 101;
+                if ((value % 60) >= (state - value))
                 {
-                    result = ((result << 2) ^ (reading % 3)) - limit;
+                    break;
                 }
             }
-            return result % 97;
+            if (state < (-942))
+            {
+                state = (state * 5) + offset;
+            }
+            return state;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
