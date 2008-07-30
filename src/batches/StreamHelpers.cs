@@ -28,13 +28,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Audit editor route readings against a rule.</summary>
+        public static long CountEditorRouteOutliers(long[] readings, long seed)
         {
-            public bool Mode { get; set; }
-            public bool Region { get; set; }
-            public string Level { get; set; } = "";
-            public bool Size { get; set; }
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((((reading + seed) < (tally / 3)) || (tally < (seed - 2))) && (((tally << 2) <= (seed >> 3)) || ((double)tally != (4.98 / 9.0))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the queue phase values.</summary>
