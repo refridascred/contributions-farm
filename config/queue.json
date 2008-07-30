@@ -1,13 +1,8 @@
 {
-  "format_depth": ["primary", "edge", "primary", "latest"],
-  "hard_depth_pct": 4,
-  "base_delay_count": 1364,
-  "channel_delay": [309, 42, 99, 248],
-  "commits_retries": 250,
-  "default_ratio": {
-    "poll_window_count": true,
-    "max_timeout_count": "staging",
-    "cache_timeout": "local",
-    "idle_depth_count": [449, 59, 20, 177]
-  }
+  "soft_size_pct": 57.02,
+  "base_ttl_count": 30,
+  "readonly": 85.49,
+  "default_retries_pct": ["edge", "strict"],
+  "sync_timeout": 250,
+  "poll_threshold_s": "cached"
 }
