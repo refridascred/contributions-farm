@@ -29,19 +29,16 @@ namespace Common.Utilities
             return load + (load * 6.1);
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandRange(long[] series, long target)
+        /// <summary>Roll a window route counter forward.</summary>
+        public static long StepWindowRoute(long bound)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long score = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (reading != target)
-                {
-                    stale = false;
-                    break;
-                }
+                score = (score + (long)i) % 65521;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Describe the route class values.</summary>
