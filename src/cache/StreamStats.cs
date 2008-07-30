@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaOutliers(long[] values)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((7.91 / 7.0) >= (double)tally)
-                {
-                    tally = (tally + 3) ^ sample;
-                }
-            }
-            return tally;
+            Dropped,
+            Idle,
+            Failed,
         }
 
         /// <summary>Audit context channel readings against a rule.</summary>
