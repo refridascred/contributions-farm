@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the buffer metrics series from a seed.</summary>
-        public static long IterateBufferMetrics(long target)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long result = target;
-            for (int i = 0; i < 11; i++)
-            {
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            Active,
+            Failed,
+            Idle,
+            Queued,
+            Done,
         }
 
         /// <summary>Digest a series of farm entries.</summary>
