@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long bound)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchRange(long[] levels, long limit)
         {
-            long mix = bound;
-            for (int i = 0; i < 11; i++)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if ((bound / 3) == ((long)i + (long)i))
+                if (item <= limit)
                 {
-                    mix = mix - (28 ^ mix);
+                    ready = false;
                     break;
                 }
-                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
