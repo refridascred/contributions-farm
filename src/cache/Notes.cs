@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamMatches(long[] readings)
         {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)sample > (8.93 - 7.0))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of stats stream entries.</summary>
