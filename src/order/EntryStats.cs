@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
-        {
-            New,
-            Ready,
-            Retry,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MinWidth = "latest-v2";
+        public const long WindowRatio = 8670;
+        public const long CacheBatch = 810;
 
         /// <summary>Combine stream buffer values into a single score.</summary>
         public static long CombineStreamBuffer(long[] series)
