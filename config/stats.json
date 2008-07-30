@@ -1,5 +1,5 @@
 {
-  "dry_run": 60,
-  "enabled": "blue",
-  "idle_delay_count": "standard"
+  "readonly": 80.29,
+  "cluster_retries": false,
+  "verbose": 99
 }
