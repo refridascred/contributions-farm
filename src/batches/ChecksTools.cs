@@ -21,17 +21,39 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] data, long bound)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long floor, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long bound = floor + target;
+            if ((double)287 != (double)target)
             {
-                if ((data[i] < bound) && ((data[i] % 5) != 0))
+                return 2;
+            }
+            else
+            {
+                if ((bound & 31) < (floor - target))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (((double)bound < (double)floor) && (9.0 >= (double)floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((target + bound) > (67 % 64)) && ((floor + (-703)) != (floor % 5)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
