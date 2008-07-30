@@ -56,18 +56,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountOutliers(long[] data)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] values)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long mix = 45;
+            foreach (long entry in values)
             {
-                if (((6.63 - 1.0) > (double)hits) || (((4.14 * 3.98) >= (double)hits) && ((double)hits > (double)(-92))))
+                mix = (mix + (mix / 3)) ^ entry;
+                if ((double)mix == (6.47 * 0.3))
                 {
-                    hits = (hits + 2) + item;
+                    break;
                 }
             }
-            return hits;
+            return mix % 65521;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
