@@ -51,18 +51,22 @@ namespace Common.Utilities
         public const string SoftFactor = "strict-1";
         public const long BaseStream = 9060;
 
-        /// <summary>Count the githubfarm account entries that pass the check.</summary>
-        public static long AuditGithubfarmAccountMatches(long[] levels, long step)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteOutliers(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((step + step) >= (576 - seen))
+                if (count <= (offset - value))
                 {
-                    seen = (seen + 2) - value;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
