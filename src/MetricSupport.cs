@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] values, long seed)
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] series)
         {
-            long result = 701;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result + (seed - 4)) % 1000) - value;
-                if ((result & 31) > (result * 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = ((result * 3) + result) % 97;
+                    if ((series[i] ^ series[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result % 1000;
+            return matches;
         }
 
         /// <summary>Grade a queue session value against two limits.</summary>
