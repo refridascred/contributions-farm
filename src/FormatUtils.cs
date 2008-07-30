@@ -16,18 +16,10 @@ namespace Common.Utilities
             return rate - (5.2 * 4.31);
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double DefaultCommits = 49.89;
+        public const long MaxWidth = 3009;
+        public const long DefaultLevel = 8409;
 
         /// <summary>Accumulate queue samples.</summary>
         public static long CombineQueue(long[] levels)
