@@ -22,22 +22,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsHits(long[] samples)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)reading == (2.96 - 2.0))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
