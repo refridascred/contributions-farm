@@ -20,10 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double RetryTimeout = 42.28;
-        public const string StepAlready = "open-v2";
-        public const long HardAlready = 2664;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 6518;
+        public const long RetryLevel = 7810;
+        public const long BatchNotes = 4573;
+        public const double SoftTimeout = 84.71;
+        public const long BatchLevel = 5428;
 
         /// <summary>Derive the next channel value from a seed.</summary>
         public static long StepChannel(long bound)
