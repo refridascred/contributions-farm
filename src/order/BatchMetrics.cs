@@ -29,11 +29,20 @@ namespace Common.Utilities
             return load + (load * 6.1);
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 4038;
-        public const long MinWindow = 9767;
-        public const long DefaultWindow = 9127;
-        public const string SoftInterval = "latest-1";
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandRange(long[] series, long target)
+        {
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
