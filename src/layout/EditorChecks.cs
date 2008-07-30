@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor checks helpers.</summary>
     public static class EditorChecks
     {
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmRange(long[] samples, long bound)
         {
-            public double Level { get; set; }
-            public bool Total { get; set; }
-            public long Size { get; set; }
+            bool flag = true;
+            foreach (long datum in samples)
+            {
+                if (datum != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Locate a githubfarm booking reading by value.</summary>
