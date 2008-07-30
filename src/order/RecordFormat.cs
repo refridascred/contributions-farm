@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double scale, double offset)
+        /// <summary>Count the buffer stream entries that pass the check.</summary>
+        public static long MeasureBufferStreamHits(long[] items, long limit)
         {
-            double scale2 = offset;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                scale2 = ((scale2 + (5.4 * 19.0)) + (double)(long)i) - scale;
+                if ((cell % 24) > (0 + cell))
+                {
+                    count = (count + 2) - limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return scale2 + (double)78;
+            return count;
         }
 
         /// <summary>Match up cluster samples.</summary>
