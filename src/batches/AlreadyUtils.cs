@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmLimits(long[] readings, long step)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Synced,
+            Locked,
+            Ready,
+            Done,
+            Paused,
         }
 
         /// <summary>Check that every filter report entry stays within the limit.</summary>
