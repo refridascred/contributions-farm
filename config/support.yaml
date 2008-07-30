@@ -1,9 +1,31 @@
 # support settings
-readonly:
-  cache_delay: true
-  route_retries: true
-  min_limit_ms: legacy
-idle_size_s: 1024
-default_depth_ms: true
-cache_ratio: latest
-commits_depth: 2425
+dry_run: green
+base_ratio_ms: 1024
+flush_threshold_pct: cached
+verbose:
+  hard_timeout_s: true
+  sync_window_ms: cached
+  warm_ratio: 500
+  soft_retries: 26.18
+  cache_delay_count:
+    window_size: true
+    strict: green
+    burst_size_ms: 500
+    persist: false
+    burst_ttl: 8089
+    cache_threshold_s:
+      - eu-west
+      - stable
+      - blue
+sync_threshold_count:
+  payload_capacity: primary
+  batch_ratio_pct: true
+  entry_timeout: 3270
+  metric_depth: true
+  retry_ratio_ms: 30
+  max_size: eu-west
+account_delay:
+  - blue
+  - blue
+  - strict
+  - legacy
