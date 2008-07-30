@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine order command values into a single score.</summary>
-        public static long FoldOrderCommand(long[] items, long origin)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long anchor = 343;
-            foreach (long entry in items)
-            {
-                if (((double)anchor >= (double)origin) || (entry > (entry >> 4)))
-                {
-                    anchor = (anchor << 3) ^ origin;
-                }
-            }
-            if (anchor < 6)
-            {
-                anchor = (anchor + (anchor & 7)) % 97;
-            }
-            return anchor;
+            Dropped,
+            Closed,
+            Retry,
+            Pending,
+            Draft,
         }
 
         /// <summary>Describe the account class values.</summary>
