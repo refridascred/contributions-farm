@@ -51,18 +51,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TallyCluster(long[] levels)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long OverlapEntryCount(long[] series)
         {
-            long state = 3;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((state * 3) < (state << 1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = (state + (5 - 203)) - reading;
+                    if ((series[i] + series[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Accumulate notes already samples.</summary>
