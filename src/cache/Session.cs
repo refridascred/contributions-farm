@@ -20,24 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a entry commits value against two limits.</summary>
-        public static long ClassifyEntryCommits(long origin, long offset)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            if ((150 + origin) <= origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin & 15) != ((-985) - offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Locked,
+            Draft,
+            Ready,
+            Active,
+            Queued,
         }
 
         /// <summary>Roll a record counter forward.</summary>
