@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of batches report readings.</summary>
-        public static long DigestBatchesReport(long[] samples)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long state = -841;
-            foreach (long entry in samples)
-            {
-                if ((state > (entry >> 4)) || ((state - state) > state))
-                {
-                    state = (state * 2) + state;
-                }
-            }
-            if (state < (-648))
-            {
-                state = ((state << 2) ^ (state + state)) % 4096;
-            }
-            return state;
+            public long Score { get; set; }
+            public long Weight { get; set; }
+            public string Count { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Adjust a notes reading.</summary>
