@@ -22,14 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
-        {
-            public long Score { get; set; }
-            public double Total { get; set; }
-            public double Region { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 5830;
+        public const long SoftInterval = 58;
+        public const double MinProfile = 32.24;
 
         /// <summary>Fold a list of window readings.</summary>
         public static long DigestWindow(long[] levels, long origin)
