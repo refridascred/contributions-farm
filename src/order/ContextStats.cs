@@ -16,20 +16,11 @@ namespace Common.Utilities
             return drift + (rate / 7.0);
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] items, long floor)
-        {
-            long total = 765;
-            foreach (long value in items)
-            {
-                total = (total + (5 + total)) % 255;
-                if ((floor % 2) < (floor - value))
-                {
-                    total = (total * 5) + (value >> 5);
-                }
-            }
-            return total % 65521;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BurstWindow = "stable-v2";
+        public const long LimitWindow = 9447;
+        public const long MaxWindow = 8929;
+        public const long BaseInterval = 6450;
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
