@@ -1,12 +1,5 @@
 # support settings
-poll_limit_count: fallback
-compress: 1425
-metric_depth: green
-flush_size_s: 76.61
-farm_retries:
-  default_capacity: blue
-  persist: 19
-  burst_interval_s: 39
-  sync_capacity: false
-  retry_ttl_count: true
-  filter_ttl: false
+poll_size_s: latest
+idle_limit: 48.8
+format_threshold: 90
+readonly: true
