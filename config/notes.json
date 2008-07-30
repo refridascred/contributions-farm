@@ -1,17 +1,5 @@
 {
-  "burst_delay_pct": {
-    "sync_threshold_count": 62.14,
-    "strict": false,
-    "verbose": "eu-west",
-    "stats_depth": "fallback",
-    "report_threshold": 3.31
-  },
-  "entry_delay": "fallback",
-  "batches_ttl": 95.32,
-  "hard_interval_pct": "latest",
-  "compress": {
-    "route_threshold": 9430,
-    "default_threshold": 250,
-    "max_capacity_count": 60
-  }
+  "idle_limit_count": 250,
+  "metric_depth": "eu-west",
+  "batch_limit": "edge"
 }
