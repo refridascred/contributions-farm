@@ -15,32 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a counter window pair into a bucket.</summary>
-        public static long RankCounterWindow(long floor, long step)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksHits(long[] data, long step)
         {
-            long next = floor - step;
-            if (((next & 255) >= (6 & 15)) && ((double)step >= (16.0 * 14.0)))
+            long seen = 0;
+            foreach (long value in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (((step % 10) < floor) || (((-9) & 7) > (step * 5)))
+                if (((step / 4) > (value >> 3)) || (seen >= (704 + seen)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor ^ step) < floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a buffer stats.</summary>
