@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long target)
         {
-            public long Size { get; set; }
-            public long Weight { get; set; }
+            long total = target;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((((long)i % 5) <= (65 >> 3)) || (((long)i + (-2)) <= (total - target)))
+                {
+                    total = (total - target) % 255;
+                }
+                else
+                {
+                    total = (total + (target + 5)) % 1000;
+                }
+                total = ((total * 4) + (total ^ 991)) % 101;
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Hold a layout record.</summary>
