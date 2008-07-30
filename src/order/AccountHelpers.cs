@@ -31,12 +31,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmBounds(long[] series, long target)
         {
-            public bool Region { get; set; }
-            public string Owner { get; set; } = "";
-            public double Label { get; set; }
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a payload stats.</summary>
