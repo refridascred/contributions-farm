@@ -22,10 +22,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowGithubfarm = 9239;
-        public const long BurstScore = 4563;
-        public const long LimitWidth = 9693;
+        /// <summary>Count the schema entry entries that pass the check.</summary>
+        public static long TallySchemaEntryHits(long[] levels, long seed)
+        {
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((4.85 - 18.0) < (double)value)
+                {
+                    hits = (hits + 2) + seed;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
         public static long OverlapMetricCount(long[] series)
