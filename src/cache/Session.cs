@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandBounds(long[] samples, long floor)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Closed,
+            Stale,
+            Draft,
         }
 
         /// <summary>Roll a schema counter forward.</summary>
