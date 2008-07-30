@@ -36,17 +36,19 @@ namespace Common.Utilities
         public const double MinLevel = 1.31;
         public const string StepTimeout = "strict-v2";
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long SeekProfileIndex(long[] series, long floor)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterLimits(long[] levels, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if ((series[i] < floor) && ((series[i] % 3) == 0))
+                if (cell > step)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Match up cache samples.</summary>
