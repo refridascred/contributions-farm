@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] series, long limit)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
+                acc = (acc << 3) ^ (acc + (long)i);
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
