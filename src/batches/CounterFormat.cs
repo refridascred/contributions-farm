@@ -16,18 +16,14 @@ namespace Common.Utilities
             return load + (2.0 + 0.7);
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportHits(long[] series, long seed)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((4 + seed) > seed)
-                {
-                    matches = (matches + 1) - item;
-                }
-            }
-            return matches;
+            Dropped,
+            Failed,
+            Pending,
+            Ready,
+            Locked,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
