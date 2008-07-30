@@ -39,21 +39,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] samples)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 87;
+            foreach (long item in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((state + state) >= (state % 12))
                 {
-                    if ((samples[i] + samples[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = ((state ^ (state * 5)) % 101) ^ item;
                 }
             }
-            return seen;
+            return state % 65521;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
