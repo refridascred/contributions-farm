@@ -70,19 +70,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsRange(long[] data, long floor)
-        {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string HardTimeout = "cached";
+        public const string RetryCounter = "alpha";
+        public const double MaxCounter = 89.44;
+        public const string LimitCounter = "latest";
     }
 }
