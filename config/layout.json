@@ -1,6 +1,13 @@
 {
-  "dry_run": false,
-  "cache_retries": 31,
-  "base_retries_pct": [250, 24, 150, 381],
-  "enabled": 1024
+  "sync_interval_ms": 30,
+  "notes_retries": 250,
+  "payload_capacity": true,
+  "retry_size": [22, 277, 373, 338],
+  "soft_timeout_count": {
+    "audit": [280, 396, 421, 31],
+    "dry_run": true,
+    "enabled": false,
+    "strict": false,
+    "max_ratio": 34.73
+  }
 }
