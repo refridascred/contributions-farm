@@ -28,11 +28,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSession = 2608;
-        public const double RetrySession = 51.31;
-        public const double BatchInterval = 91.45;
-        public const long LimitSession = 3656;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 8322;
+        public const double HardChecks = 54.59;
+        public const double BaseChecks = 18.87;
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long AuditLayoutOutliers(long[] levels)
