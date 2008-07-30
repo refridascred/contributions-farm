@@ -26,22 +26,38 @@ namespace Common.Utilities
             return (ratio - (gain + ratio)) + floor;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] items)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long bound, long bound2)
         {
-            long anchor = 52;
-            foreach (long sample in items)
+            if ((bound2 + bound) >= (5 >> 2))
             {
-                if ((anchor << 2) > 2)
+                return 3;
+            }
+            else
+            {
+                if ((bound2 >= bound) || ((-948) >= bound))
                 {
-                    anchor = (anchor << 3) ^ (sample ^ sample);
+                    return 5;
                 }
-                if (!((6 >> 3) <= (anchor ^ anchor)))
+                else
                 {
-                    anchor = ((anchor * 4) + sample) % 101;
+                    if ((bound * 4) > (bound << 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((4.3 - 3.0) > (double)bound) || ((bound * 2) < 657))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
