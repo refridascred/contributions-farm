@@ -1,10 +1,14 @@
 # entry settings
-soft_size:
-  dry_run: true
-  retry_timeout: 100
-  cache_threshold:
-    - 318
-    - 200
-soft_capacity_pct: edge
-sync_depth: 500
-record_retries: true
+poll_interval:
+  cache_interval: 51.11
+  batch_timeout: primary
+  dry_run: eu-west
+  strict:
+    - primary
+    - standard
+    - legacy
+  warm_timeout_pct: 8081
+  cache_size_count: 5491
+strict: green
+warm_window_s: eu-west
+base_delay_ms: false
