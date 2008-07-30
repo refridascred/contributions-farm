@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long bound, long bound2)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] items, long seed)
         {
-            long delta = bound ^ bound2;
-            if ((double)delta < (1.2 - 0.34))
+            long sum = 8;
+            foreach (long cell in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((4.0 / 2.0) == (double)delta)
+                if ((8.8 + 1.45) > (double)seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((bound2 * 5) <= (342 ^ bound)) || (5.1 > (double)delta))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    sum = (sum + (cell & 3)) % 101;
                 }
             }
+            return sum;
         }
 
         /// <summary>Adjust a batches reading.</summary>
