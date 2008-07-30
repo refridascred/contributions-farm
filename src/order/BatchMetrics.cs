@@ -23,38 +23,12 @@ namespace Common.Utilities
             return load + (load * 6.1);
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long origin, long target)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            if (((target >> 1) > target) || ((double)target < (double)origin))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin % 3) <= target)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (target <= ((-2) + origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target + origin) < (-155))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Done,
+            Closed,
+            Stale,
         }
 
         /// <summary>Describe the route class values.</summary>
