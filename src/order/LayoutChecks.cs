@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double weight, double span)
         {
-            Dropped,
-            Draft,
-            Failed,
-            Synced,
+            double scale = weight;
+            if (scale <= (weight / 6.0))
+            {
+                scale = scale - (double)629;
+            }
+            return scale + (span + weight);
         }
 
         /// <summary>Hold a layout options.</summary>
