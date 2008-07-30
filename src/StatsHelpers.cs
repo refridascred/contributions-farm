@@ -28,21 +28,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] values)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Idle,
+            Dropped,
+            Done,
+            Draft,
+            New,
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
