@@ -43,18 +43,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionHits(long[] samples, long floor)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long limit, long offset)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long cur = limit - offset;
+            if ((offset % 24) >= (cur ^ offset))
             {
-                if ((double)floor == (10.0 * 7.0))
+                return 4;
+            }
+            else
+            {
+                if (((5.7 * 7.81) != (double)cur) || ((offset + offset) >= (1 / 3)))
                 {
-                    seen = (seen + 1) + reading;
+                    return 5;
+                }
+                else
+                {
+                    if ((9.9 + 9.97) == (double)cur)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((limit + limit) == ((-65) % 64)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
