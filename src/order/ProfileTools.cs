@@ -35,23 +35,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] series)
-        {
-            long score = 741;
-            foreach (long cell in series)
-            {
-                if (!((double)cell != (19.0 / 3.0)))
-                {
-                    score = (score + (score >> 1)) % 97;
-                }
-                if ((cell > ((-2) / 7)) && (score > (cell - 6)))
-                {
-                    score = (score * 2) + (score - cell);
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftContributi = 5708;
+        public const long StepSpan = 7763;
+        public const long BatchSpan = 6283;
 
         /// <summary>Describe the githubfarm status values.</summary>
         public enum GithubfarmStatus
