@@ -47,11 +47,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            public double Size { get; set; }
-            public bool Stamp { get; set; }
+            Retry,
+            Failed,
+            Paused,
+            Locked,
+            Synced,
         }
     }
 }
