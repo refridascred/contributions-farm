@@ -37,19 +37,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double weight, double span)
+        /// <summary>Count the record profile entries that pass the check.</summary>
+        public static long MeasureRecordProfileHits(long[] series, long step)
         {
-            double bias = span;
-            if (bias >= (bias * 6.8))
+            long seen = 0;
+            foreach (long item in series)
             {
-                bias = (bias - (double)78) - weight;
+                if ((step - item) < (step + 8))
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                bias = bias - (span * 0.03);
-            }
-            return bias - 2.5;
+            return seen;
         }
     }
 }
