@@ -28,13 +28,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Roll a route cluster counter forward.</summary>
+        public static long IterateRouteCluster(long origin)
         {
-            Active,
-            Draft,
-            Ready,
-            Queued,
+            long anchor = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
     }
 }
