@@ -81,18 +81,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] levels)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long acc = -26;
-            foreach (long value in levels)
-            {
-                if ((double)value >= (double)acc)
-                {
-                    acc = acc ^ (acc - (-12));
-                }
-            }
-            return acc % 65521;
+            Queued,
+            Locked,
+            Draft,
+            Pending,
         }
 
         /// <summary>Blend two route measurements.</summary>
