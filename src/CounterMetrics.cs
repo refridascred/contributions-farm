@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] items, long target)
         {
-            Retry,
-            New,
-            Paused,
-            Active,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > target) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
