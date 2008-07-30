@@ -46,18 +46,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of buffer account entries.</summary>
-        public static long FoldBufferAccount(long[] readings)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long mix = 51;
-            foreach (long reading in readings)
-            {
-                if ((reading / 9) > reading)
-                {
-                    mix = ((mix << 3) ^ (reading & 255)) % 65521;
-                }
-            }
-            return mix % 65521;
+            public double Flag { get; set; }
+            public long Token { get; set; }
+            public long Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Roll a notes counter forward.</summary>
