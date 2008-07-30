@@ -19,19 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many editor checks samples are out of range.</summary>
-        public static long TallyEditorChecksMatches(long[] series, long seed)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (677 < (item * 3))
-                {
-                    seen = (seen + 1) + seed;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BatchPayload = "local-1";
+        public const double LimitPayload = 20.52;
+        public const long WindowSize = 1520;
+        public const long WindowSpan = 7555;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double MaxWidth = 55.25;
