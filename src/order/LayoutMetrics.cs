@@ -18,15 +18,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a route cluster counter forward.</summary>
-        public static long IterateRouteCluster(long origin)
+        /// <summary>Fold a list of filter cache readings.</summary>
+        public static long CombineFilterCache(long[] items)
         {
-            long anchor = origin;
-            for (int i = 0; i < 24; i++)
+            long result = 81;
+            foreach (long reading in items)
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                result = (((result << 2) ^ (result / 2)) % 101) - reading;
             }
-            return anchor;
+            return result;
         }
     }
 }
