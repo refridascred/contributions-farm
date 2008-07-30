@@ -26,13 +26,16 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long bound)
         {
-            public long Label { get; set; }
-            public long Weight { get; set; }
-            public long Mode { get; set; }
-            public double Level { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = (acc ^ (bound ^ acc)) % 97;
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
     }
 }
