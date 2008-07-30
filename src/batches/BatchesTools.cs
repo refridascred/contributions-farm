@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmHits(long[] readings, long offset)
-        {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((item - offset) >= item)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double IdleChecks = 55.06;
+        public const long WindowChecks = 8058;
+        public const long StepChecks = 5988;
+        public const string IdleDepth = "cached-1";
+        public const string SoftChecks = "latest-1";
 
         /// <summary>Roll a farm format counter forward.</summary>
         public static long IterateFarmFormat(long offset)
