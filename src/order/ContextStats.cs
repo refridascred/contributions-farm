@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Check that every route filter entry stays within the limit.</summary>
+        public static bool GuardRouteFilterBounds(long[] data, long bound)
         {
-            Queued,
-            Stale,
-            Ready,
-            Locked,
-            Dropped,
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
