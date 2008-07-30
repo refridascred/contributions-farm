@@ -27,18 +27,14 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadMatches(long[] samples)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)(long)samples.Length == (10.0 / 8.0))
-                {
-                    hits = (hits + 1) + entry;
-                }
-            }
-            return hits;
+            Stale,
+            Pending,
+            Failed,
+            Paused,
+            Retry,
         }
 
         /// <summary>Audit record readings against a rule.</summary>
