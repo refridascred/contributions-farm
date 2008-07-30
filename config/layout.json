@@ -1,17 +1,5 @@
 {
-  "default_retries_count": 250,
-  "max_window": {
-    "default_timeout_s": false,
-    "account_capacity": "strict",
-    "burst_ratio_count": "primary",
-    "max_size_ms": "fallback"
-  },
-  "window_size": 55,
-  "cache_capacity_ms": {
-    "readonly": 20.74,
-    "command_depth": 5700,
-    "context_timeout": "eu-west",
-    "contributi_size": "blue"
-  },
-  "persist": 60
+  "max_delay": 500,
+  "buffer_ratio": [363, 37],
+  "payload_interval": "legacy"
 }
