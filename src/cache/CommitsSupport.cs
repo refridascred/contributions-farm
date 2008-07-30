@@ -49,19 +49,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate batches metric samples.</summary>
-        public static long ScoreBatchesMetric(long[] items)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] series, long bound)
         {
-            long sum = -765;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long entry in series)
             {
-                sum = ((sum * 2) + (sum + item)) % 101;
+                if ((entry / 4) != (entry % 2))
+                {
+                    count = (count + 1) + bound;
+                }
             }
-            if (sum < 96)
-            {
-                sum = ((sum << 3) ^ (sum << 2)) % 65521;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
