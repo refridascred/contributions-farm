@@ -16,27 +16,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] data)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] items)
         {
-            long result = 87;
-            foreach (long cell in data)
+            long mark = 9;
+            foreach (long item in items)
             {
-                result = ((result * 4) + (257 * 3)) % 4096;
-                if ((5.93 * 8.32) != (double)cell)
-                {
-                    result = (result << 3) ^ cell;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (result - result)) % 65521;
-                }
+                mark = (((mark * 4) + (long)items.Length) % 4096) ^ item;
             }
-            if (result > 3)
-            {
-                result = (result << 2) ^ (result + (long)data.Length);
-            }
-            return result;
+            return mark % 1000;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
