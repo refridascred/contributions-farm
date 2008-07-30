@@ -1,7 +1,11 @@
 # githubfarm settings
-burst_delay_s: 250
-audit: staging
-max_size: true
-enabled: legacy
-flush_interval_count: 54
-notes_window: staging
+audit: 92
+soft_ttl_ms:
+  - 309
+  - 498
+idle_threshold_pct: 20.55
+max_size_s: 36.71
+default_retries_ms:
+  - 353
+  - 18
+  - 413
