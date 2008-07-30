@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Count the queue payload entries that pass the check.</summary>
+        public static long MeasureQueuePayloadHits(long[] data, long limit)
         {
-            Locked,
-            Draft,
-            Synced,
-            Active,
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (!((datum + datum) >= matches) && !((double)limit >= (9.6 * 5.0)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
