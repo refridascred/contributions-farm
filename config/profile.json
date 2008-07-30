@@ -1,7 +1,7 @@
 {
-  "farm_capacity": 20,
-  "burst_timeout_ms": [421, 86],
-  "persist": false,
-  "warm_capacity": true,
-  "min_threshold_s": "edge"
+  "retry_capacity_pct": "open",
+  "context_retries": "cached",
+  "idle_ttl_pct": true,
+  "verbose": "fallback",
+  "soft_delay": 27.89
 }
