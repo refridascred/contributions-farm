@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitDepth = 7624;
-        public const long IdleBatches = 1605;
-        public const string WindowBatches = "cached-1";
-        public const long CacheLevel = 47;
-        public const double DefaultBudget = 26.12;
+        /// <summary>Audit counter farm readings against a rule.</summary>
+        public static long TallyCounterFarmGaps(long[] readings, long step)
+        {
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (((double)datum != (8.9 / 4.0)) && ((datum + step) < (datum % 5)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
