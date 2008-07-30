@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double AdjustMetrics(double gain, double bias)
         {
-            Failed,
-            Stale,
-            Dropped,
+            double ratio = (double)(8 / 6);
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = ((ratio + bias) - (double)(long)i) - gain;
+            }
+            return ratio + (bias - 0.81);
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
