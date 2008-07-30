@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
-        {
-            Dropped,
-            Pending,
-            New,
-            Retry,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheQueue = 2398;
+        public const long IdleQueue = 8950;
+        public const long BatchWidth = 3225;
+        public const long HardScore = 1008;
+        public const long BaseQueue = 6170;
 
         /// <summary>Describe the stats mode values.</summary>
         public enum StatsMode
