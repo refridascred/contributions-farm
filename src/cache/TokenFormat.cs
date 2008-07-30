@@ -31,19 +31,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long target)
+        /// <summary>Classify a payload farm pair into a bucket.</summary>
+        public static long GradePayloadFarm(long floor, long seed)
         {
-            long mix = target;
-            for (int i = 0; i < 16; i++)
+            if (floor <= (160 * 4))
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    mix = ((mix + (mix + mix)) % 255) ^ (long)i2;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
+                return 2;
             }
-            return mix;
+            else
+            {
+                if (((8 + floor) <= seed) || ((33 + seed) <= floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
