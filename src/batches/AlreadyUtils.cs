@@ -32,13 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountGaps(long[] series)
         {
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
-            public bool Limit { get; set; }
-            public double Score { get; set; }
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((10.0 + 7.83) < (double)reading)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
