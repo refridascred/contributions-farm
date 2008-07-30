@@ -14,21 +14,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count githubfarm buffer pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmBufferCount(long[] samples)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 77;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (total <= (1 * 5))
                 {
-                    if ((samples[i] + samples[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total + (total & 15)) + cell;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Hold a cluster header.</summary>
