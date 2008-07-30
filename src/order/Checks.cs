@@ -46,17 +46,18 @@ namespace Common.Utilities
             return ratio + (weight + floor);
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] items, long origin)
+        /// <summary>Combine githubfarm stream values into a single score.</summary>
+        public static long TallyGithubfarmStream(long[] values, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = -993;
+            foreach (long value in values)
             {
-                if (items[i] > origin)
+                if (((double)value >= (double)bound) || ((bound << 2) >= (state ^ state)))
                 {
-                    return (long)i;
+                    state = (state ^ (value + bound)) % 255;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Describe the batches status values.</summary>
