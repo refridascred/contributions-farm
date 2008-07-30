@@ -20,12 +20,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] samples)
         {
-            public double Mode { get; set; }
-            public long Count { get; set; }
-            public double Size { get; set; }
+            long mix = 2;
+            foreach (long value in samples)
+            {
+                if (30 < (mix + 23))
+                {
+                    mix = (mix - value) % 255;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ 142;
+                }
+            }
+            if (mix < (-5))
+            {
+                mix = (mix - (986 >> 3)) % 97;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
