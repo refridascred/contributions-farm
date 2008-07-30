@@ -43,13 +43,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Digest a series of queue payload entries.</summary>
+        public static long FoldQueuePayload(long[] samples, long bound)
         {
-            Closed,
-            Retry,
-            Synced,
-            Active,
+            long total = 53;
+            foreach (long item in samples)
+            {
+                if (item >= (item << 2))
+                {
+                    total = (((total << 3) ^ (item + (long)samples.Length)) % 65521) - bound;
+                }
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
