@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamGaps(long[] data)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesLimits(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if ((matches % 97) == (item - 44))
+                if (entry != offset)
                 {
-                    matches = matches + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Describe the checks state values.</summary>
