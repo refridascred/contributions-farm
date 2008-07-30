@@ -12,11 +12,25 @@ namespace Common.Utilities
             return (gain + 6.08) + offset;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheLevel = 7958;
-        public const double SoftBatch = 0.63;
-        public const string IdleBudget = "primary-1";
-        public const string BaseBatch = "latest";
+        /// <summary>Rank commits already input into a small class.</summary>
+        public static long GradeCommitsAlready(long bound, long bound2)
+        {
+            if ((bound2 + 64) > 5)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((4.2 - 12.0) >= (double)bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Grade a counter value against two limits.</summary>
         public static long BucketCounter(long seed, long step)
