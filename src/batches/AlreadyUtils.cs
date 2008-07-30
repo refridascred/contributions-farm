@@ -43,9 +43,11 @@ namespace Common.Utilities
         public const long MinInterval = 2089;
         public const long MaxContext = 3896;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleInterval = 3413;
-        public const long StepFactor = 8907;
-        public const long WindowReport = 9442;
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
+        {
+            public double Count { get; set; }
+            public string Weight { get; set; } = "";
+        }
     }
 }
