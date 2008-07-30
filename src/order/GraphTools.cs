@@ -28,14 +28,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
-        {
-            Ready,
-            Pending,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseContext = 422;
+        public const long IdleContext = 772;
+        public const string BatchSpan = "primary-1";
+        public const long MinScore = 6594;
+        public const long BurstContext = 6877;
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
