@@ -16,12 +16,12 @@ namespace Common.Utilities
             return drift + (rate / 7.0);
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] levels, long floor)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] values, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (levels[i] <= floor)
+                if (values[i] == seed)
                 {
                     return (long)i;
                 }
