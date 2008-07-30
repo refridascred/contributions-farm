@@ -5,11 +5,28 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] samples, long bound)
         {
-            public string Offset { get; set; } = "";
-            public double Region { get; set; }
+            long score = -67;
+            foreach (long reading in samples)
+            {
+                long prev = score;
+                if ((prev + 85) <= (906 + reading))
+                {
+                    prev = (prev ^ (score / 7)) % 4096;
+                    score = (score << 2) ^ (score >> 4);
+                }
+                if (!((bound * 4) == (60 ^ reading)))
+                {
+                    score = (score << 3) ^ bound;
+                }
+                else
+                {
+                    score = score + 74;
+                }
+            }
+            return score;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
