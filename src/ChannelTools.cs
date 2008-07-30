@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate payload counter readings against a bound.</summary>
-        public static bool VerifyPayloadCounterRange(long[] data, long target)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderRange(long[] data, long floor)
         {
-            bool valid = true;
+            bool flag = true;
             foreach (long item in data)
             {
-                if (item != target)
+                if (item <= floor)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Digest a series of format entries.</summary>
