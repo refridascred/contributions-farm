@@ -1,7 +1,6 @@
 {
-  "record_size": false,
-  "compress": "green",
-  "max_interval_ms": true,
-  "layout_capacity": 100,
-  "persist": "open"
+  "idle_ratio_s": ["fallback", "staging"],
+  "cache_threshold": false,
+  "max_delay_count": 53.16,
+  "flush_capacity_pct": "staging"
 }
