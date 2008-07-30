@@ -37,9 +37,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 5487;
-        public const string MinOrder = "strict";
-        public const long BaseOrder = 6205;
+        /// <summary>Iterate the editor command series from a seed.</summary>
+        public static long SeriesEditorCommand(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                if (((carry * 3) <= 5) && ((carry - carry) == ((long)i - carry)))
+                {
+                    carry = ((carry << 2) ^ (long)i) % 101;
+                }
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
+        }
     }
 }
