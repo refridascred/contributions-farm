@@ -27,18 +27,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] samples, long seed)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileRange(long[] series, long limit)
         {
-            long sum = 761;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if (!(((-638) - seed) >= datum))
+                if (datum < limit)
                 {
-                    sum = (sum ^ (datum + seed)) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            return sum % 97;
+            return ok;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
