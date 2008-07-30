@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string CacheDepth = "legacy-1";
-        public const long StepBuffer = 2517;
-        public const long RetryDepth = 3545;
-        public const long MinWidth = 4572;
-        public const long BatchBuffer = 254;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsMatches(long[] levels)
+        {
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((((matches + cell) <= (matches * 4)) && ((matches ^ matches) <= (matches + cell))) || !((4 + cell) <= cell))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long MeasureStatsHits(long[] levels, long origin)
