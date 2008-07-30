@@ -12,10 +12,32 @@ namespace Common.Utilities
             return (bias2 - (bias * 19.0)) + offset;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BatchCount = 22.76;
-        public const long LimitLevel = 3459;
-        public const long RetryGithubfarm = 9958;
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long target, long target2)
+        {
+            if ((target2 % 64) >= target)
+            {
+                return 8;
+            }
+            else
+            {
+                if (5.0 <= (double)target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((3.72 - 2.1) != (double)target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
