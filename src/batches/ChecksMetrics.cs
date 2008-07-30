@@ -34,18 +34,16 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] items)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long origin)
         {
-            long state = 87;
-            foreach (long item in items)
+            long anchor = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if ((state + state) >= (state % 12))
-                {
-                    state = ((state ^ (state * 5)) % 101) ^ item;
-                }
+                anchor = ((anchor * 5) + anchor) % 4096;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return state % 65521;
+            return anchor;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
