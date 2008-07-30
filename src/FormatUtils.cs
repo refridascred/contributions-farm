@@ -58,18 +58,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionGaps(long[] items, long seed)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long value in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((count >> 2) < ((long)items.Length % 5)))
+                if (items[i] >= floor)
                 {
-                    count = ((count + 2) + value) + seed;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
