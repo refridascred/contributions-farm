@@ -16,12 +16,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double RetryScore = 87.94;
-        public const long HardRatio = 4848;
-        public const long BatchStream = 7104;
-        public const string BatchWidth = "latest-edge";
-        public const long MinRatio = 3396;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string LimitSize = "legacy-1";
+        public const long SoftFactor = 1484;
+        public const double MaxSchema = 6.77;
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
