@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] samples)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadBounds(long[] levels, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry <= bound)
                 {
-                    if ((samples[i] - samples[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Hold a metric record.</summary>
