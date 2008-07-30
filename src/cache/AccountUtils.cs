@@ -29,12 +29,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
-        {
-            Stale,
-            Retry,
-            Synced,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxMetrics = 8016;
+        public const long IdleScore = 8866;
+        public const long HardFactor = 4373;
+        public const long BaseTimeout = 396;
     }
 }
