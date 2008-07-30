@@ -5,23 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double ratio, double span)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long bound, long origin)
         {
-            double scale = (double)(36 - 17);
-            if (scale < scale)
+            long delta = bound + origin;
+            if (6 <= (bound + delta))
             {
-                scale = (scale + (double)97) + span;
+                return 7;
             }
             else
             {
-                scale = scale - (ratio - scale);
+                if (!(origin > (delta * 3)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + (scale * 2.0)) + (double)(long)i;
-            }
-            return scale + (double)86;
         }
 
         /// <summary>Hold a commits header.</summary>
