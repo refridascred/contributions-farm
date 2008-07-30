@@ -24,19 +24,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate route checks readings against a bound.</summary>
-        public static bool CheckRouteChecksBounds(long[] data, long origin)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double bias, double offset)
         {
-            bool found = true;
-            foreach (long cell in data)
+            double gain = (double)(7 >> 5);
+            for (int i = 0; i < 5; i++)
             {
-                if (cell != origin)
-                {
-                    found = false;
-                    break;
-                }
+                gain = (gain - (offset * 1.85)) + (double)(long)i;
             }
-            return found;
+            return gain + bias;
         }
     }
 }
