@@ -43,15 +43,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long floor)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long result = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            public double Total { get; set; }
+            public bool Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate cluster samples.</summary>
