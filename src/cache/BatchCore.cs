@@ -25,18 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelHits(long[] levels, long floor)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsHits(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((datum - 788) < (datum << 1))
+                if ((double)reading == (2.96 - 2.0))
                 {
-                    count = (count + 1) + floor;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
