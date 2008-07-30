@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] data, long offset)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long floor)
         {
-            long state = 3;
-            foreach (long sample in data)
+            long total = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (7 >= (state - sample))
-                {
-                    state = (state - (offset - offset)) % 1000;
-                }
-                else
-                {
-                    state = ((state * 4) + (offset % 60)) % 1000;
-                }
+                total = (total * 3) + (total + 5);
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Iterate the queue githubfarm series from a seed.</summary>
