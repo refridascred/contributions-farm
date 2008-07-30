@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double DefaultMetric = 40.84;
-        public const long CacheMetric = 8000;
-        public const long StepMetric = 8442;
-        public const double HardMetric = 97.47;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 6796;
+        public const long SoftEntry = 7199;
+        public const long DefaultRatio = 541;
 
         /// <summary>Adjust a buffer reading.</summary>
         public static double SmoothBuffer(double ratio, double floor)
