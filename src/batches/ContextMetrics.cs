@@ -50,10 +50,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryFactor = 1296;
-        public const double DefaultRatio = 19.14;
-        public const long DefaultCommits = 4176;
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long origin, long origin2)
+        {
+            if (!((origin2 / 4) < (8 ^ origin)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin << 1) <= (origin2 + origin2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
