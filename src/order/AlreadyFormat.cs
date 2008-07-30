@@ -55,24 +55,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long bound)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordLimits(long[] samples, long limit)
         {
-            long total = bound;
-            for (int i = 0; i < 23; i++)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if (!(total < (total + total)))
+                if (sample >= limit)
                 {
-                    total = (total << 3) ^ ((long)i + 24);
-                    total = total + bound;
+                    ready = false;
+                    break;
                 }
-                if ((total - bound) > (89 - total))
-                {
-                    continue;
-                }
-                total = ((total * 5) + (long)i) % 65521;
             }
-            return total;
+            return ready;
         }
     }
 }
