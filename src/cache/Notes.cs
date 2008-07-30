@@ -39,18 +39,31 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmHits(long[] samples)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long bound, long step)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            if ((step >= (step + step)) || ((double)bound > 10.0))
             {
-                if ((0.44 / 2.0) == (double)datum)
+                return 3;
+            }
+            else
+            {
+                if ((double)bound < (1.0 - 9.51))
                 {
-                    count = count + 3;
+                    return 6;
+                }
+                else
+                {
+                    if (((step + bound) != (step >> 3)) || ((step / 2) != (bound << 3)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Match up contributi samples.</summary>
