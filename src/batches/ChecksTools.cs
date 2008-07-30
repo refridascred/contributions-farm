@@ -23,22 +23,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] values, long origin)
+        /// <summary>Project the next account value.</summary>
+        public static double AdjustAccount(double ratio, double offset)
         {
-            long mark = 899;
-            foreach (long cell in values)
+            double drift = ratio;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)origin < 2.0)
-                {
-                    mark = mark ^ cell;
-                }
-                else
-                {
-                    mark = mark + mark;
-                }
+                drift = (drift - offset) + (double)(long)i;
             }
-            return mark % 97;
+            return drift - (12.0 - offset);
         }
 
         /// <summary>Describe the stats state values.</summary>
