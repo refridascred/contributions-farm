@@ -79,9 +79,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double LimitBudget = 41.58;
-        public const long HardSpan = 1931;
-        public const long MaxFactor = 4818;
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
+        {
+            public long Rank { get; set; }
+            public double Count { get; set; }
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
+        }
     }
 }
