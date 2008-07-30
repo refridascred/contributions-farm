@@ -26,13 +26,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long origin)
         {
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
-            public string Total { get; set; } = "";
-            public double Region { get; set; }
+            long result = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
