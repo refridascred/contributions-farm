@@ -69,14 +69,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] series, long step)
         {
-            New,
-            Ready,
-            Retry,
-            Synced,
-            Failed,
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
