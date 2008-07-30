@@ -40,13 +40,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            Queued,
-            Active,
-            Ready,
-            Paused,
+            public string Limit { get; set; } = "";
+            public double Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
