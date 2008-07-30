@@ -13,11 +13,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            public bool Mode { get; set; }
-            public long Flag { get; set; }
+            public bool Owner { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
