@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up graph format samples.</summary>
-        public static long CompareGraphFormatCount(long[] items)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] samples)
         {
             long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) > 17)
+                    if ((samples[i] ^ samples[j]) < 3)
                     {
                         hits = hits + 1;
                     }
