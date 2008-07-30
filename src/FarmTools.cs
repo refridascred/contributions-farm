@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseContributi = 5468;
-        public const string DefaultContributi = "fallback-1";
-        public const string MaxCount = "standard-v2";
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] data, long step)
+        {
+            long total = 38;
+            foreach (long datum in data)
+            {
+                total = total + (datum - 3);
+                total = (total - 57) % 97;
+                if (total <= (datum ^ step))
+                {
+                    break;
+                }
+            }
+            if (total < 2)
+            {
+                total = (total * 4) + (step + 283);
+            }
+            return total;
+        }
 
         /// <summary>Match up queue githubfarm samples.</summary>
         public static long OverlapQueueGithubfarmCount(long[] data)
