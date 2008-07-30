@@ -19,12 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenRange(long[] items, long step)
         {
-            public long Label { get; set; }
-            public double Offset { get; set; }
-            public bool Size { get; set; }
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
