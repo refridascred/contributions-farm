@@ -18,16 +18,21 @@ namespace Common.Utilities
         public const double BaseInterval = 65.87;
         public const string BatchRatio = "stable-edge";
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long offset)
+        /// <summary>Count queue editor pairs that satisfy a relation.</summary>
+        public static long MatchQueueEditorCount(long[] values)
         {
-            long result = offset;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result * 4) + result;
-                result = ((result * 3) + (long)i) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
