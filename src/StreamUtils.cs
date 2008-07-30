@@ -23,12 +23,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchScore = 2496;
-        public const long StepChannel = 8880;
-        public const long BaseInterval = 8217;
-        public const string RetryRatio = "legacy";
-        public const long CacheChannel = 772;
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
+        {
+            public string Token { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public bool Offset { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
         public static long SeekGithubfarmIndex(long[] samples, long offset)
