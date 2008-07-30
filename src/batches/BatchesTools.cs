@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long seed, long seed2)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountOutliers(long[] samples)
         {
-            long slot = seed - seed2;
-            if (3.0 >= (double)slot)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (((4.19 + 20.0) == (double)seed2) || (127 <= (seed2 / 9)))
+                if (((value % 12) <= matches) && ((value * 5) >= value))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)seed2 < 15.0)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((0 >= slot) || ((seed2 & 255) <= (-327)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
