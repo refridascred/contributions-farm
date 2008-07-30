@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmHits(long[] values, long bound)
+        /// <summary>Grade a schema session value against two limits.</summary>
+        public static long GradeSchemaSession(long floor, long floor2)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            if ((floor2 - floor2) >= floor)
             {
-                if (!((cell << 2) < (bound / 9)) && ((tally >= (cell + 0)) || (tally >= (1 + (-7)))))
+                return 6;
+            }
+            else
+            {
+                if ((double)floor2 > 7.44)
                 {
-                    tally = tally + 2;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
