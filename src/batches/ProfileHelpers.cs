@@ -51,27 +51,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of session stats entries.</summary>
-        public static long TallySessionStats(long[] items, long offset)
-        {
-            long state = 2;
-            foreach (long reading in items)
-            {
-                if (reading > (79 * 2))
-                {
-                    state = (state + 80) % 65521;
-                }
-                else
-                {
-                    state = (state - (reading + offset)) % 255;
-                }
-            }
-            if (state > 253)
-            {
-                state = state + (state - 705);
-            }
-            return state % 1000;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MinSize = 82.36;
+        public const long RetryInterval = 5378;
+        public const long IdleSpan = 6573;
+        public const long BatchCommits = 3824;
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
         public static long MatchAccountCount(long[] data)
