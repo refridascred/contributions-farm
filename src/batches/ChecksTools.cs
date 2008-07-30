@@ -43,39 +43,21 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long floor, long target)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long OverlapFarmCount(long[] samples)
         {
-            long bound = floor + target;
-            if ((double)287 != (double)target)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound & 31) < (floor - target))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)bound < (double)floor) && (9.0 >= (double)floor))
+                    if ((samples[i] + samples[j]) == 13)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((target + bound) > (67 % 64)) && ((floor + (-703)) != (floor % 5)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
