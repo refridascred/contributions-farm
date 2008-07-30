@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] levels)
+        /// <summary>Project the next order notes value.</summary>
+        public static double ProjectOrderNotes(double scale, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double weight = scale;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight = (weight + (double)(long)i) + span;
             }
-            return seen;
+            return weight - weight;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
