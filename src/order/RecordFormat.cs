@@ -57,14 +57,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            Done,
-            Stale,
-            Synced,
-            Paused,
-            Dropped,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string RetryQueue = "fallback";
+        public const long CacheQueue = 3531;
+        public const long IdleCount = 400;
+        public const double BatchSpan = 35.79;
+        public const long BurstQueue = 1646;
     }
 }
