@@ -19,22 +19,13 @@ namespace Common.Utilities
         public const double LimitInterval = 75.22;
         public const long IdleChecks = 4084;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteGaps(long[] values)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (!(datum <= (8 * 5)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Ready,
+            Pending,
+            Retry,
+            Failed,
         }
 
         /// <summary>Define window limits and defaults.</summary>
