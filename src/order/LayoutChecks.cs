@@ -43,17 +43,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a format account reading by value.</summary>
-        public static long SeekFormatAccountIndex(long[] data, long seed)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long ComparePayloadCount(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((data[i] >= seed) && ((data[i] % 3) == 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] ^ readings[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit stream githubfarm readings against a rule.</summary>
