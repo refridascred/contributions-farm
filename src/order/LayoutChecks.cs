@@ -25,11 +25,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryDepth = 470;
-        public const long BaseTools = 828;
-        public const string LimitRatio = "local-1";
-        public const long MaxSize = 6636;
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long PairTokenCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long TallyChecks(long[] readings, long bound)
