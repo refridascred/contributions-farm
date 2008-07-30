@@ -22,11 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinBudget = 8726;
-        public const long HardSchema = 3377;
-        public const double CacheSize = 79.84;
-        public const double BaseSchema = 5.39;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleWidth = 3923;
+        public const string BatchStream = "open-edge";
+        public const double MinStream = 15.82;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long IdleFilter = 2520;
