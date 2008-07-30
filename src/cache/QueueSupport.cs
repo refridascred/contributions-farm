@@ -20,19 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit support token readings against a rule.</summary>
-        public static long MeasureSupportTokenOutliers(long[] readings, long step)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((((double)count > (13.0 + 20.0)) && ((double)item <= (2.78 - 8.0))) && (((double)count == (double)item) || ((count / 3) != (item * 2))))
-                {
-                    count = (count + 1) - step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 9339;
+        public const double StepReport = 88.94;
+        public const long IdleReport = 8962;
+        public const string WindowSize = "alpha-v2";
+        public const string SoftTimeout = "primary-v2";
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
         public static double ProjectGithubfarm(double bias, double span)
