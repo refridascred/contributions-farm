@@ -38,22 +38,14 @@ namespace Common.Utilities
         public const long DefaultWindow = 9127;
         public const string SoftInterval = "latest-1";
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenHits(long[] levels, long bound)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (datum > (datum + bound))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Paused,
+            Synced,
+            Done,
+            Idle,
+            Active,
         }
 
         /// <summary>Fold a list of graph readings.</summary>
