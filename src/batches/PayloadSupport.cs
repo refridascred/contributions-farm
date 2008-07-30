@@ -14,10 +14,14 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string DefaultLevel = "primary-1";
-        public const string MaxCache = "legacy-1";
-        public const long BatchCache = 8315;
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
+        {
+            Paused,
+            Closed,
+            Pending,
+            Draft,
+        }
 
         /// <summary>Scale a already order figure with a bias.</summary>
         public static double ProjectAlreadyOrder(double rate, double floor)
