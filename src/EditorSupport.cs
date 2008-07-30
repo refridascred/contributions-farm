@@ -35,21 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long limit)
+        /// <summary>Validate commits format readings against a bound.</summary>
+        public static bool ValidateCommitsFormatRange(long[] series, long floor)
         {
-            long mark = limit;
-            for (int i = 0; i < 10; i++)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                if ((limit << 2) < (-9))
+                if (cell != floor)
                 {
-                    mark = (mark ^ (limit - 4)) % 101;
+                    stale = false;
+                    break;
                 }
-                mark = (mark * 2) + ((long)i & 15);
-                mark = mark + limit;
-                mark = ((mark * 3) + (long)i) % 101;
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
