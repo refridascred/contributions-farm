@@ -66,22 +66,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BurstCount = 3.61;
+        public const long LimitFactor = 2362;
+        public const long LimitReport = 2561;
+        public const long BatchCount = 8550;
+        public const long SoftReport = 8066;
 
         /// <summary>Classify a already farm pair into a bucket.</summary>
         public static long RankAlreadyFarm(long limit, long bound)
