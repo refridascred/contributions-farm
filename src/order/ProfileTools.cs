@@ -23,12 +23,18 @@ namespace Common.Utilities
             return weight2 + (weight - 4.11);
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryMatches(long[] data, long bound)
         {
-            Active,
-            Done,
-            Dropped,
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((seen + seen) > (bound << 2))
+                {
+                    seen = (seen + 2) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the contributi class values.</summary>
