@@ -46,12 +46,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first filter batches entry that matches the target.</summary>
-        public static long LookupFilterBatchesIndex(long[] values, long bound)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] items, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (values[i] > bound)
+                if (items[i] > origin)
                 {
                     return (long)i;
                 }
