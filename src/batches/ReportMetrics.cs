@@ -14,23 +14,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ScaleNotes(double rate, double offset)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double bias, double bias2)
         {
-            double ratio = (4.74 / 7.0) + rate;
-            if (ratio < ratio)
+            double gain = (double)8 / 3.0;
+            for (int i = 0; i < 4; i++)
             {
-                ratio = ratio - (ratio * 8.1);
+                gain = ((gain + bias) - (double)(long)i) - bias2;
             }
-            else
-            {
-                ratio = ratio - (ratio + rate);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (offset - rate)) - (double)(long)i;
-            }
-            return ratio + (offset / 2.0);
+            return gain + (double)3;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
