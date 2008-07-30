@@ -1,5 +1,19 @@
 {
-  "batch_retries": 67.2,
-  "window_retries": "standard",
-  "dry_run": "green"
+  "readonly": {
+    "cache_threshold_pct": "open",
+    "default_timeout_pct": 100,
+    "strict": {
+      "base_threshold_count": [83, 439],
+      "stats_threshold": 8236,
+      "verbose": 4811,
+      "sync_depth": 38.49
+    },
+    "record_limit": "primary",
+    "compress": 86
+  },
+  "retry_threshold_s": "stable",
+  "hard_window": 28,
+  "poll_depth": 32,
+  "burst_limit_pct": 250,
+  "dry_run": "primary"
 }
