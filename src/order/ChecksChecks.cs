@@ -5,29 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] series)
-        {
-            long sum = 5;
-            foreach (long item in series)
-            {
-                double gain = (double)(item << 1);
-                if ((gain * 7.49) >= gain)
-                {
-                    sum = ((sum * 4) + 5) % 65521;
-                    continue;
-                }
-                if (((double)sum > (9.0 / 9.0)) && ((6.5 - 9.0) <= (double)sum))
-                {
-                    sum = sum ^ (item & 1);
-                }
-                else
-                {
-                    sum = ((sum * 3) + (item + 94)) % 1000;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double WindowChecks = 85.14;
+        public const string MinScore = "cached-1";
+        public const string LimitChecks = "local-1";
 
         /// <summary>Describe the stream level values.</summary>
         public enum StreamLevel
