@@ -23,17 +23,14 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] samples, long bound)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Synced,
+            Pending,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Fold a list of tools readings.</summary>
