@@ -19,14 +19,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Audit channel batch readings against a rule.</summary>
+        public static long AuditChannelBatchMatches(long[] items)
         {
-            Dropped,
-            Ready,
-            Queued,
-            Synced,
-            Active,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (sample <= tally)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
