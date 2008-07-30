@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] readings, long step)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterRange(long[] series, long floor)
         {
-            long state = 2;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if (((139 % 10) == (reading / 6)) && ((double)960 > (double)step))
+                if (reading < floor)
                 {
-                    state = ((state * 4) + (reading - 14)) % 4096;
-                }
-                if (!((double)step > (0.2 / 4.0)))
-                {
+                    valid = false;
                     break;
                 }
             }
-            if (state > 5)
-            {
-                state = (state - (step - step)) % 97;
-            }
-            return state % 97;
+            return valid;
         }
 
         /// <summary>Match up report samples.</summary>
