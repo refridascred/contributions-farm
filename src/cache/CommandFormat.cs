@@ -42,38 +42,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank support command input into a small class.</summary>
-        public static long BucketSupportCommand(long step, long offset)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            if ((192 << 1) <= (step / 4))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)offset < (2.1 * 8.4))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step >> 1) >= (offset * 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset < step) || (step < (4 & 7)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Paused,
+            Dropped,
+            Synced,
+            Idle,
         }
     }
 }
