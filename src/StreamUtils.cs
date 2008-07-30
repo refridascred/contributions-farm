@@ -69,17 +69,30 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] values, long seed)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 69;
+            foreach (long item in readings)
             {
-                if ((values[i] >= seed) && ((values[i] % 5) == 0))
+                if (!((anchor + (long)readings.Length) <= (anchor - 1)))
                 {
-                    return (long)i;
+                    anchor = (anchor - (anchor - item)) % 97;
+                }
+                if ((anchor * 4) == (item - anchor))
+                {
+                    anchor = (anchor + (item & 1)) % 1000;
+                }
+                else
+                {
+                    anchor = anchor ^ (anchor + 653);
                 }
             }
-            return -1;
+            if (anchor > 39)
+            {
+                anchor = anchor ^ (anchor + 716);
+            }
+            return anchor % 65521;
         }
     }
 }
