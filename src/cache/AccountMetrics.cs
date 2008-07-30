@@ -45,17 +45,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first route buffer entry that matches the target.</summary>
-        public static long LocateRouteBufferIndex(long[] readings, long seed)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long StepFarm(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (readings[i] < seed)
+                if ((double)acc == (double)step)
                 {
-                    return (long)i;
+                    acc = ((acc * 4) + step) % 65521;
+                    acc = (acc - (step / 3)) % 101;
+                    break;
                 }
+                else
+                {
+                    acc = ((acc << 2) ^ ((long)i + (long)i)) % 65521;
+                    acc = (acc << 3) ^ (long)i;
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
