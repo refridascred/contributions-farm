@@ -54,17 +54,13 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] data, long seed)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public bool Token { get; set; }
+            public long Stamp { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Locate a payload reading by value.</summary>
