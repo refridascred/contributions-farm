@@ -20,10 +20,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryAccount = 1534;
-        public const long BurstAccount = 954;
-        public const long DefaultSpan = 9623;
+        /// <summary>Measure how many batch editor samples are out of range.</summary>
+        public static long TallyBatchEditorHits(long[] items, long target)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((double)target >= (0.79 + 10.0))
+                {
+                    count = (count + 2) - entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a cluster header.</summary>
         public sealed class ClusterHeader
