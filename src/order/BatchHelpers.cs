@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmOutliers(long[] levels, long seed)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long PairStreamCount(long[] items)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (seed < ((long)levels.Length ^ 8))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 2) - value;
+                    if ((items[i] - items[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a notes stats.</summary>
