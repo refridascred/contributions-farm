@@ -27,13 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutLimits(long[] series, long bound)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] items, long origin)
         {
             bool stale = true;
-            foreach (long item in series)
+            foreach (long reading in items)
             {
-                if (item <= bound)
+                if (reading < origin)
                 {
                     stale = false;
                     break;
