@@ -52,13 +52,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
-        {
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardSize = 2681;
+        public const string HardBatch = "fallback";
+        public const double CacheFactor = 94.37;
+        public const long CacheBatch = 8713;
+        public const long CacheScore = 2433;
     }
 }
