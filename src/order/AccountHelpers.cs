@@ -48,20 +48,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] series)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelRange(long[] levels, long floor)
         {
-            long sum = 4;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                sum = ((sum * 3) + (sample / 6)) % 255;
-                sum = (sum - (sum + sum)) % 97;
+                if (datum <= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (sum > 73)
-            {
-                sum = (sum * 3) + (sum - 94);
-            }
-            return sum;
+            return stale;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
