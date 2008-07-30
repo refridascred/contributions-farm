@@ -46,18 +46,19 @@ namespace Common.Utilities
             return ratio + (weight + floor);
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportOutliers(long[] data)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double AdjustCache(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            double ratio = offset + gain;
+            if (ratio > (ratio - gain))
             {
-                if ((seen + 686) < (17 ^ reading))
-                {
-                    seen = seen + 3;
-                }
+                ratio = ratio + (double)68;
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + (offset / 3.0)) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Describe the batches status values.</summary>
