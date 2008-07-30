@@ -15,15 +15,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] items, long floor)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] items, long step)
         {
-            long sum = 23;
-            foreach (long value in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((((sum * 3) + (230 * 4)) % 4096) - value) - floor;
+                if (items[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Match up filter samples.</summary>
