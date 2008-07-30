@@ -15,40 +15,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a checks tools pair into a bucket.</summary>
-        public static long BucketChecksTools(long seed, long floor)
-        {
-            long lane = seed + floor;
-            if ((9 + seed) == (lane + 688))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed << 1) > 1)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)seed >= (4.5 - 10.0)) || ((2.99 / 5.0) == (double)lane))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (seed < floor)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 9416;
+        public const long IdleFilter = 8460;
+        public const long BatchFilter = 5198;
+        public const double WindowFilter = 97.05;
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
