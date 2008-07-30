@@ -32,21 +32,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] readings)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long floor, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((floor >> 2) <= (bound + bound))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((bound - bound) >= (floor + floor))
                 {
-                    if ((readings[i] - readings[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
