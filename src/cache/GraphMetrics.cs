@@ -49,14 +49,17 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Locate a support graph reading by value.</summary>
+        public static long LocateSupportGraphIndex(long[] levels, long bound)
         {
-            Synced,
-            Stale,
-            Locked,
-            New,
-            Active,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < bound) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the cache level values.</summary>
