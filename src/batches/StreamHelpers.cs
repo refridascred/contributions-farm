@@ -41,12 +41,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Fold a list of record channel readings.</summary>
+        public static long FoldRecordChannel(long[] samples)
         {
-            Locked,
-            Queued,
-            Synced,
+            long sum = 870;
+            foreach (long value in samples)
+            {
+                sum = ((sum * 2) + (48 + value)) % 4096;
+            }
+            if (sum < 50)
+            {
+                sum = ((sum * 4) + 2) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
