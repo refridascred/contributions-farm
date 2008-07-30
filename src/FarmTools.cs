@@ -10,14 +10,17 @@ namespace Common.Utilities
         public const long WindowFactor = 9644;
         public const string MinCluster = "local-v2";
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LocateSchemaIndex(long[] data, long step)
         {
-            Closed,
-            Idle,
-            Retry,
-            Stale,
-            Pending,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next entry value.</summary>
