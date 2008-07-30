@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long seed, long target)
+        /// <summary>Audit tools schema readings against a rule.</summary>
+        public static long TallyToolsSchemaGaps(long[] items, long offset)
         {
-            if (((2.15 / 8.0) >= (double)seed) || ((double)seed >= (1.0 + 8.07)))
+            long tally = 0;
+            foreach (long value in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (seed <= (target + target))
+                if ((double)value < (8.3 * 0.59))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((target & 63) >= (4 + seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((6.8 + 11.0) < (double)target)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = (tally + 2) + offset;
                 }
             }
+            return tally;
         }
 
         /// <summary>Locate a cluster checks reading by value.</summary>
