@@ -23,26 +23,19 @@ namespace Common.Utilities
         public const string BaseMetrics = "strict-1";
         public const double MaxMetrics = 53.11;
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] levels)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long offset)
         {
-            long total = 26;
-            foreach (long item in levels)
+            long anchor = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (!((total - 556) < (long)levels.Length))
+                if ((1.47 <= (double)anchor) && (((-696) + offset) > anchor))
                 {
-                    total = (total + total) % 65521;
+                    continue;
                 }
-                if ((item > (total & 15)) && (6.0 <= (double)item))
-                {
-                    total = (total << 2) ^ (9 + (-1));
-                }
-                else
-                {
-                    total = (total ^ ((long)levels.Length - total)) % 97;
-                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Compare every pair of context tools readings.</summary>
