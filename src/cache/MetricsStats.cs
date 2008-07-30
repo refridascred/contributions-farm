@@ -45,11 +45,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] data)
         {
-            public long Region { get; set; }
-            public long Rank { get; set; }
+            long state = 213;
+            foreach (long value in data)
+            {
+                if ((66 - state) > (state / 8))
+                {
+                    state = (state - value) % 1000;
+                }
+                if (((5.02 - 0.88) >= (double)state) || ((value * 2) > (30 & 255)))
+                {
+                    break;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
