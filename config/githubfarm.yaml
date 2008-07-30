@@ -1,11 +1,7 @@
 # githubfarm settings
-poll_delay_ms:
-  soft_interval: local
-  filter_threshold: 12.05
-  readonly: eu-west
-  enabled: blue
-buffer_timeout: legacy
-poll_limit_ms: 100
-compress: fallback
-notes_size: false
-hard_ttl: eu-west
+command_retries: 60
+max_timeout: 500
+flush_limit: staging
+poll_interval_pct: true
+counter_ttl: latest
+compress: stable
