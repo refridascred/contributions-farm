@@ -36,11 +36,39 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Rank githubfarm farm input into a small class.</summary>
+        public static long ClassifyGithubfarmFarm(long floor, long target)
         {
-            public long Level { get; set; }
-            public long Size { get; set; }
+            long diff = floor ^ target;
+            if ((target < diff) && ((floor & 15) > (floor >> 3)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target + floor) <= (966 + diff))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (floor <= (diff * 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (floor < (floor - target))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the account checks entries that pass the check.</summary>
