@@ -1,8 +1,5 @@
 {
-  "soft_size_pct": 57.02,
-  "base_ttl_count": 30,
-  "readonly": 85.49,
-  "default_retries_pct": ["edge", "strict"],
-  "sync_timeout": 250,
-  "poll_threshold_s": "cached"
+  "readonly": 100,
+  "max_timeout": false,
+  "flush_capacity": 1.95
 }
