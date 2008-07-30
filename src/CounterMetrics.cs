@@ -42,19 +42,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorBounds(long[] data, long step)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Owner { get; set; } = "";
+            public double Offset { get; set; }
+            public double Limit { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
