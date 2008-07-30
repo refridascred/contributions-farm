@@ -62,13 +62,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryRange(long[] items, long offset)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsRange(long[] items, long step)
         {
             bool found = true;
             foreach (long sample in items)
             {
-                if (sample > offset)
+                if (sample >= step)
                 {
                     found = false;
                     break;
