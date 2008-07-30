@@ -40,12 +40,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 1409;
-        public const long HardFactor = 3510;
-        public const double SoftFactor = 23.74;
-        public const long WindowEntry = 1230;
-        public const long WindowWidth = 9596;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 2608;
+        public const double RetrySession = 51.31;
+        public const double BatchInterval = 91.45;
+        public const long LimitSession = 3656;
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long AuditLayoutOutliers(long[] levels)
