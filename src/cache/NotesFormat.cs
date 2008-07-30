@@ -30,18 +30,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandOutliers(long[] samples)
+        /// <summary>Look up the position of a cluster account sample.</summary>
+        public static long SeekClusterAccountIndex(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)count >= 10.0)
+                if (series[i] == seed)
                 {
-                    count = (count + 2) + value;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
