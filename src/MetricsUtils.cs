@@ -26,13 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            public string Count { get; set; } = "";
-            public double Score { get; set; }
-            public bool Ratio { get; set; }
-            public bool Total { get; set; }
+            Draft,
+            Dropped,
+            Done,
+            Queued,
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
