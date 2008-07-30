@@ -1,10 +1,8 @@
 # entry settings
-strict: 92.34
-min_interval:
-  - latest
-  - latest
-  - stable
-batch_ratio: false
-burst_interval_pct: legacy
-soft_depth: latest
-graph_size: 21
+counter_interval: 12.35
+session_timeout:
+  - 387
+  - 405
+  - 58
+  - 162
+readonly: 100
