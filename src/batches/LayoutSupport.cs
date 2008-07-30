@@ -14,14 +14,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            Retry,
-            Draft,
-            Locked,
-            Dropped,
-            Ready,
+            public double Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Accumulate editor samples.</summary>
