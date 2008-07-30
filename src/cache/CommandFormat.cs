@@ -13,18 +13,21 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Audit format checks readings against a rule.</summary>
-        public static long MeasureFormatChecksHits(long[] values)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCount(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (1.0 < (double)seen)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 3) ^ reading;
+                    if ((data[i] ^ data[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count the window route entries that pass the check.</summary>
