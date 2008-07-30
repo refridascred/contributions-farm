@@ -12,18 +12,17 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenGaps(long[] readings, long target)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(1 <= (entry - seen)))
+                if (items[i] <= seed)
                 {
-                    seen = (seen + 2) + target;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Rank tools command input into a small class.</summary>
