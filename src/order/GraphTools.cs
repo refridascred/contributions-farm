@@ -55,12 +55,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] levels, long bound)
         {
-            Done,
-            Failed,
-            Stale,
+            long acc = 7;
+            foreach (long datum in levels)
+            {
+                acc = (acc - (bound * 2)) % 255;
+                if (bound > (bound + bound))
+                {
+                    acc = acc ^ (3 - acc);
+                }
+                if (datum >= ((-507) / 6))
+                {
+                    break;
+                }
+            }
+            if (acc > 0)
+            {
+                acc = acc + (bound + acc);
+            }
+            return acc % 65521;
         }
     }
 }
