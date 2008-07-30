@@ -25,13 +25,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsMatches(long[] samples)
         {
-            public long Count { get; set; }
-            public double Total { get; set; }
-            public string Weight { get; set; } = "";
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((seen + seen) >= seen)
+                {
+                    seen = (seen + 1) + value;
+                }
+            }
+            return seen;
         }
     }
 }
