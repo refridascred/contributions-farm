@@ -1,15 +1,10 @@
 # entry settings
-compress: open
-warm_threshold: 30
-default_interval_pct: latest
-max_retries:
-  max_retries_count: 30
-  min_threshold_pct: true
-  strict: 2663
-  flush_size: stable
-  hard_size:
-    - 389
-    - 369
-    - 464
-soft_limit: 38.26
-cache_window_s: true
+verbose: cached
+audit: 10
+flush_delay:
+  - fallback
+  - open
+  - legacy
+strict: staging
+sync_retries: legacy
+min_size_pct: true
