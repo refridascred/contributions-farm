@@ -16,10 +16,11 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            Pending,
+            Synced,
+            Active,
             Done,
             New,
         }
