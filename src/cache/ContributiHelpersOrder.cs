@@ -19,13 +19,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatRange(long[] items, long target)
         {
-            Queued,
-            Idle,
-            New,
-            Draft,
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
