@@ -19,38 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a profile counter value against two limits.</summary>
-        public static long BucketProfileCounter(long seed, long limit)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            if ((limit + seed) >= limit)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed & 127) == (limit + seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)seed > (1.17 - 6.3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (2.8 <= (double)seed)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public double Score { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Hold a channel info.</summary>
