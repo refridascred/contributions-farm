@@ -43,25 +43,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long bound, long seed)
+        /// <summary>Match up notes channel samples.</summary>
+        public static long CompareNotesChannelCount(long[] values)
         {
-            long lane = bound ^ seed;
-            if ((712 - lane) < (seed % 64))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((bound & 1) <= (65 + (-30))) && ((seed - seed) > (lane + bound)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    if ((values[i] + values[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the account kind values.</summary>
