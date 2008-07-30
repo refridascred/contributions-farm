@@ -56,12 +56,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinCounter = 5833;
-        public const long LimitTimeout = 8517;
-        public const string BurstCounter = "latest";
-        public const string LimitCounter = "stable-1";
-        public const string CacheInterval = "fallback-1";
+        /// <summary>Audit stream githubfarm readings against a rule.</summary>
+        public static long MeasureStreamGithubfarmGaps(long[] series)
+        {
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((double)datum >= (2.34 * 1.5))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a stats stats.</summary>
         public sealed class StatsStats
