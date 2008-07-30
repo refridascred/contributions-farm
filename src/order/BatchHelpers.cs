@@ -25,17 +25,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] readings, long limit)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] values, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 78;
+            foreach (long sample in values)
             {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
+                result = ((result - (result + (-333))) ^ sample) - target;
             }
-            return -1;
+            return result;
         }
     }
 }
