@@ -51,19 +51,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterLimits(long[] readings, long bound)
+        /// <summary>Grade a commits metrics value against two limits.</summary>
+        public static long RankCommitsMetrics(long limit, long limit2)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            if ((double)limit <= (3.6 + 16.0))
             {
-                if (reading >= bound)
+                return 3;
+            }
+            else
+            {
+                if ((limit2 % 97) > (253 + limit))
                 {
-                    ok = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((limit + (-8)) > (limit2 + limit2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
