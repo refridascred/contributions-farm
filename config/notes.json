@@ -1,6 +1,5 @@
 {
-  "warm_ttl_ms": 43,
-  "soft_interval_ms": [314, 126],
-  "verbose": 74.13,
-  "idle_size_s": [388, 395]
+  "cache_window_pct": "primary",
+  "sync_ttl_ms": true,
+  "verbose": "fallback"
 }
