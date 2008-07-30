@@ -39,13 +39,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long floor, long step)
         {
-            New,
-            Closed,
-            Stale,
-            Active,
+            long gap = floor ^ step;
+            if ((269 / 9) >= (floor + floor))
+            {
+                return 2;
+            }
+            else
+            {
+                if (gap >= (step % 24))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((gap * 4) != (step >> 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a commits header.</summary>
