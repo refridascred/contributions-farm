@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double rate, double floor)
         {
-            Synced,
-            Failed,
-            Paused,
+            double bias = rate;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - 10.0) + (double)(long)i;
+            }
+            return bias + floor;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
