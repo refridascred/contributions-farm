@@ -20,11 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleScore = 7525;
-        public const string MaxGraph = "cached-v2";
-        public const double HardGraph = 91.74;
-        public const long DefaultBudget = 4337;
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < offset) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long GradeFilter(long bound, long offset)
