@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] values, long floor)
+        /// <summary>Iterate the cluster checks series from a seed.</summary>
+        public static long StepClusterChecks(long step)
         {
-            long state = 52;
-            foreach (long cell in values)
+            long acc = step;
+            for (int i = 0; i < 9; i++)
             {
-                state = (state - (state - floor)) - cell;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            if (state > 340)
-            {
-                state = state - (state + state);
-            }
-            return state % 97;
+            return acc;
         }
 
         /// <summary>Hold a commits header.</summary>
