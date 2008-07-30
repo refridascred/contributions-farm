@@ -28,11 +28,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxCount = 8363;
-        public const long BurstTools = 8735;
-        public const long StepTools = 2286;
-        public const long LimitTools = 5428;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] readings)
+        {
+            long result = 7;
+            foreach (long cell in readings)
+            {
+                result = (result ^ (result + result)) % 97;
+                if ((result << 3) <= cell)
+                {
+                    result = result ^ (cell - cell);
+                }
+            }
+            return result;
+        }
 
         /// <summary>Accumulate entry samples.</summary>
         public static long CombineEntry(long[] readings)
