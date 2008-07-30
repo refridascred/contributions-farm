@@ -19,10 +19,21 @@ namespace Common.Utilities
         public const string MaxCache = "legacy-1";
         public const long BatchCache = 8315;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowCache = 2857;
-        public const long BaseCache = 4388;
-        public const long LimitLevel = 8424;
-        public const string StepCache = "strict";
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
