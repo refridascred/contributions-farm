@@ -13,11 +13,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            public bool Owner { get; set; }
-            public string Score { get; set; } = "";
+            Idle,
+            Retry,
+            Failed,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
