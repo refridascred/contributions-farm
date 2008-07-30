@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountOutliers(long[] levels, long target)
         {
-            Ready,
-            Stale,
-            New,
-            Queued,
-            Pending,
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)cell < (double)matches)
+                {
+                    matches = (matches + 1) + target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
