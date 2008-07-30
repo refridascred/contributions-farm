@@ -56,22 +56,11 @@ namespace Common.Utilities
             return rate + (double)77;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueOutliers(long[] data, long origin)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((6.1 - 1.9) > (double)sample)
-                {
-                    matches = (matches + 1) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 9113;
+        public const double MinFilter = 78.37;
+        public const long BaseCount = 7409;
+        public const double MaxFilter = 93.04;
+        public const double BatchWidth = 55.65;
     }
 }
