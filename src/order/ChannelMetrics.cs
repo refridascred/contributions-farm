@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two contributi token measurements.</summary>
-        public static double BlendContributiToken(double gain, double offset)
+        /// <summary>Look up the position of a context record sample.</summary>
+        public static long SeekContextRecordIndex(long[] series, long bound)
         {
-            double weight = gain;
-            if (weight <= 5.1)
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = (weight + (double)539) + offset;
+                if ((series[i] >= bound) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + (weight - weight)) + (double)(long)i;
-            }
-            return weight - weight;
+            return -1;
         }
 
         /// <summary>Describe the token status values.</summary>
