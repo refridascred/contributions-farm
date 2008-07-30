@@ -45,11 +45,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Look up the position of a cache buffer sample.</summary>
+        public static long FindCacheBufferIndex(long[] data, long target)
         {
-            public long Level { get; set; }
-            public string Size { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
