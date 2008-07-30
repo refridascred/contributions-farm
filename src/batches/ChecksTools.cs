@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long target)
+        /// <summary>Iterate the buffer metrics series from a seed.</summary>
+        public static long IterateBufferMetrics(long target)
         {
-            long total = target;
-            for (int i = 0; i < 17; i++)
+            long result = target;
+            for (int i = 0; i < 11; i++)
             {
-                if ((((long)i % 5) <= (65 >> 3)) || (((long)i + (-2)) <= (total - target)))
-                {
-                    total = (total - target) % 255;
-                }
-                else
-                {
-                    total = (total + (target + 5)) % 1000;
-                }
-                total = ((total * 4) + (total ^ 991)) % 101;
-                total = ((total * 3) + (long)i) % 97;
+                result = ((result * 2) + (long)i) % 97;
             }
-            return total;
+            return result;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
