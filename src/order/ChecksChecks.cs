@@ -34,19 +34,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long floor)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long floor, long floor2)
         {
-            long acc = floor;
-            for (int i = 0; i < 18; i++)
+            long delta = floor ^ floor2;
+            if ((delta & 1) != (floor + floor))
             {
-                if ((floor + acc) <= (long)i)
-                {
-                    acc = acc + (floor & 7);
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
+                return 2;
             }
-            return acc;
+            else
+            {
+                if (!(floor2 >= (691 % 97)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(floor2 < (72 / 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((delta / 3) >= (floor2 % 8))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
