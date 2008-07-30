@@ -65,11 +65,10 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardSize = 2681;
-        public const string HardBatch = "fallback";
-        public const double CacheFactor = 94.37;
-        public const long CacheBatch = 8713;
-        public const long CacheScore = 2433;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryInterval = 1920;
+        public const double HardScore = 86.88;
+        public const long SoftChecks = 5765;
+        public const string DefaultChecks = "fallback-edge";
     }
 }
