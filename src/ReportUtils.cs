@@ -42,19 +42,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double AdjustOrder(double bias, double bias2)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            double drift = (double)((-400) << 3);
-            if (drift >= (double)307)
-            {
-                drift = drift - (bias / 8.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift - (bias2 * 5.4);
+            Locked,
+            Queued,
+            Pending,
         }
 
         /// <summary>Validate checks record readings against a bound.</summary>
