@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long step)
+        /// <summary>Blend two filter graph measurements.</summary>
+        public static double AdjustFilterGraph(double rate, double bias)
         {
-            long mark = step;
-            for (int i = 0; i < 22; i++)
+            double drift = rate;
+            if (drift > (double)46)
             {
-                mark = mark + (step * 4);
-                mark = (mark << 2) ^ (long)i;
-                mark = (mark + (step % 100)) % 1000;
-                mark = ((mark * 5) + (long)i) % 1000;
+                drift = (drift + rate) - bias;
             }
-            return mark;
+            return drift + (rate / 7.0);
         }
 
         /// <summary>Fold a list of channel readings.</summary>
