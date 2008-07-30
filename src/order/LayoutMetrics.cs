@@ -29,13 +29,12 @@ namespace Common.Utilities
             return (rate + (double)(-16)) + span;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            Closed,
-            Stale,
-            Synced,
-            Done,
+            Locked,
+            Ready,
+            Queued,
         }
     }
 }
