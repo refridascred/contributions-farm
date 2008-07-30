@@ -23,31 +23,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Grade a route commits value against two limits.</summary>
-        public static long RankRouteCommits(long step, long floor)
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double bias, double bias2)
         {
-            if ((double)step == (4.68 / 9.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if (floor >= step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((step ^ step) > (floor ^ step)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            double rate = 1.0;
+            return (rate - bias) + bias2;
         }
 
         /// <summary>Fold a list of token readings.</summary>
