@@ -28,21 +28,23 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long OverlapStreamCount(long[] data)
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double ratio, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double bias = floor;
+            if (bias < bias)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias = (bias + floor) - ratio;
             }
-            return seen;
+            else
+            {
+                bias = bias + (double)77;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + bias) - (double)(long)i;
+            }
+            return bias - floor;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
