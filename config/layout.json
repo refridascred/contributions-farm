@@ -1,7 +1,12 @@
 {
-  "enabled": 500,
-  "notes_retries": "standard",
-  "default_capacity": "blue",
-  "format_interval": 3172,
-  "default_threshold_ms": true
+  "already_limit": {
+    "soft_ratio": "local",
+    "min_window_s": "latest",
+    "idle_window_pct": false,
+    "persist": ["cached", "cached", "latest", "eu-west"],
+    "soft_timeout_pct": [464, 483],
+    "batch_ttl_s": 23
+  },
+  "persist": "latest",
+  "command_depth": false
 }
