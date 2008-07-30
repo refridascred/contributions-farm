@@ -12,9 +12,11 @@ while [ "${count}" -lt 4 ]; do
 done
 log "ran ${count} rounds"
 
-for item in edge primary; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=219
+CHANNEL_LIMIT=321
 log "limit is ${CHANNEL_LIMIT}"
+
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
