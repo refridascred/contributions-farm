@@ -22,11 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] items)
         {
-            public double Total { get; set; }
-            public long Weight { get; set; }
+            long result = -240;
+            foreach (long datum in items)
+            {
+                result = (result * 3) + (datum + datum);
+            }
+            return result;
         }
 
         /// <summary>Adjust a command reading.</summary>
