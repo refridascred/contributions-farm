@@ -13,20 +13,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatRange(long[] data, long limit)
-        {
-            bool found = true;
-            foreach (long item in data)
-            {
-                if (item <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double RetryTools = 2.98;
+        public const long WindowTools = 5977;
+        public const long BatchTools = 1303;
+        public const string MaxWidth = "stable";
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool ValidateTokenLimits(long[] samples, long step)
