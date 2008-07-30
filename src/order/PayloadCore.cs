@@ -41,12 +41,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            public string Total { get; set; } = "";
-            public double Stamp { get; set; }
-            public bool Flag { get; set; }
+            Paused,
+            Stale,
+            Closed,
         }
     }
 }
