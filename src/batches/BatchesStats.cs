@@ -33,23 +33,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] readings, long offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueHits(long[] samples)
         {
-            long score = 1;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                score = ((score * 4) + offset) % 255;
-                if ((offset % 16) == (offset >> 3))
+                if (((matches - matches) == (matches ^ sample)) || ((7 >> 3) > sample))
                 {
-                    score = ((score << 2) ^ (value + value)) % 101;
-                }
-                else
-                {
-                    score = (score * 5) + (score * 3);
+                    matches = matches + 2;
                 }
             }
-            return score;
+            return matches;
         }
     }
 }
