@@ -1,14 +1,18 @@
 # support settings
-tools_ratio: 30
-audit:
-  batches_retries: edge
-  burst_window_pct: 81
-  base_size_s: edge
-  strict:
-    - 221
-    - 30
-    - 220
-    - 276
-  max_threshold_s: standard
-  compress: 77.77
-account_ttl: 3775
+cache_limit:
+  - 331
+  - 484
+  - 199
+  - 458
+burst_ratio_s:
+  - 279
+  - 290
+  - 43
+batch_timeout_count:
+  - 450
+  - 223
+  - 219
+  - 473
+batch_ratio_pct: 30
+editor_ratio: stable
+idle_timeout_s: 8483
