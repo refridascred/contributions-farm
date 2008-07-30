@@ -29,12 +29,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public string Region { get; set; } = "";
+            public bool Owner { get; set; }
+            public double Level { get; set; }
+            public bool Label { get; set; }
+            public long Region { get; set; }
         }
     }
 }
