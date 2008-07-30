@@ -42,22 +42,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsHits(long[] series, long target)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((7 + target) <= (value + target))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Queued,
+            Ready,
+            Closed,
+            Failed,
+            Synced,
         }
     }
 }
