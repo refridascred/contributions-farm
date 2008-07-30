@@ -29,12 +29,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            Failed,
-            Dropped,
-            Active,
+            public string Offset { get; set; } = "";
+            public double Weight { get; set; }
+            public long Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
