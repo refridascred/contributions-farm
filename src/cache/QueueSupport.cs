@@ -14,12 +14,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftSize = 7867;
-        public const long RetryTimeout = 2408;
-        public const long RetryNotes = 6694;
-        public const long HardFactor = 1762;
-        public const long MaxRatio = 2078;
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 20; i++)
+            {
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
         public static long RollMetrics(long step)
