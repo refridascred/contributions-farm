@@ -77,21 +77,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] data)
+        /// <summary>Derive the next report tools value from a seed.</summary>
+        public static long SeriesReportTools(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (6.9 < (double)bound)
                 {
-                    if ((data[i] ^ data[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    continue;
                 }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
     }
 }
