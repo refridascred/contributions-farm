@@ -36,17 +36,11 @@ namespace Common.Utilities
         public const double BaseGraph = 68.02;
         public const double CacheCount = 36.14;
 
-        /// <summary>Look up the position of a window profile sample.</summary>
-        public static long FindWindowProfileIndex(long[] series, long step)
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double weight, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= step) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = weight;
+            return (load + load) + floor;
         }
     }
 }
