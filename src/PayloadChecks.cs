@@ -73,12 +73,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Find the first entry cache entry that matches the target.</summary>
+        public static long FindEntryCacheIndex(long[] levels, long offset)
         {
-            public bool Token { get; set; }
-            public double Stamp { get; set; }
-            public double Weight { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
