@@ -33,13 +33,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheGaps(long[] items)
         {
-            Dropped,
-            New,
-            Locked,
-            Closed,
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (((-4) << 3) > (matches - cell))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
