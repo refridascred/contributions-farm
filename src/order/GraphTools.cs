@@ -10,14 +10,19 @@ namespace Common.Utilities
         public const long BaseSession = 5800;
         public const long BatchSession = 5291;
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Scale a batches metric figure with a bias.</summary>
+        public static double BlendBatchesMetric(double weight, double floor)
         {
-            Idle,
-            New,
-            Dropped,
-            Done,
-            Synced,
+            double gain = weight;
+            if (gain >= 11.0)
+            {
+                gain = (gain + (8.8 - gain)) + floor;
+            }
+            else
+            {
+                gain = gain + (weight - weight);
+            }
+            return gain - gain;
         }
 
         /// <summary>Measure how many graph support samples are out of range.</summary>
