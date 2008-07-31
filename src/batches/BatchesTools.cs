@@ -20,19 +20,19 @@ namespace Common.Utilities
             return rate2 + rate2;
         }
 
-        /// <summary>Check that every graph window entry stays within the limit.</summary>
-        public static bool CheckGraphWindowRange(long[] levels, long target)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterLimits(long[] readings, long target)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if (cell < target)
+                if (cell > target)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
