@@ -26,11 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsRange(long[] values, long seed)
         {
-            public bool Weight { get; set; }
-            public string Total { get; set; } = "";
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the graph phase values.</summary>
