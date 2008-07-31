@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] readings)
+        /// <summary>Project the next cluster entry value.</summary>
+        public static double ProjectClusterEntry(double scale, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double load = scale;
+            return (load - scale) + bias;
         }
 
         /// <summary>Match up filter samples.</summary>
