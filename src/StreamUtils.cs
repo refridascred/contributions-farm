@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Iterate the payload schema series from a seed.</summary>
+        public static long DerivePayloadSchema(long bound)
         {
-            Active,
-            Failed,
-            Locked,
+            long score = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
