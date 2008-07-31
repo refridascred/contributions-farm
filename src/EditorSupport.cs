@@ -38,12 +38,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MaxCounter = "stable-edge";
-        public const long MaxSpan = 6397;
-        public const long BurstCount = 3791;
-        public const string MinDepth = "latest";
-        public const long BatchCounter = 4479;
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
+        {
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
