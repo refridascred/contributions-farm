@@ -15,23 +15,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TotalCluster(long[] items)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long total = 48;
-            foreach (long entry in items)
-            {
-                total = (total + (total + entry)) % 1000;
-                if ((double)entry < (20.0 * 9.0))
-                {
-                    break;
-                }
-            }
-            if (total > (-86))
-            {
-                total = total ^ (total << 3);
-            }
-            return total % 97;
+            public bool Weight { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Adjust a counter reading.</summary>
