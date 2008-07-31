@@ -23,18 +23,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferMatches(long[] series)
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] data)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((2 << 3) == (value % 60))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((data[i] - data[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Accumulate entry samples.</summary>
