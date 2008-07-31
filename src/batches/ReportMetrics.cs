@@ -10,19 +10,10 @@ namespace Common.Utilities
         public const long IdleCluster = 1035;
         public const long HardCluster = 6843;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesMatches(long[] levels)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (15 >= (reading - count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BatchStream = "fallback";
+        public const long RetryStream = 988;
+        public const string CacheStream = "alpha-edge";
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
