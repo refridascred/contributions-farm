@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordOutliers(long[] samples)
         {
-            Stale,
-            Retry,
-            Closed,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry >> 3) >= (entry & 7))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a counter entry.</summary>
