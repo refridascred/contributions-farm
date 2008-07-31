@@ -39,12 +39,11 @@ namespace Common.Utilities
         public const long SoftInterval = 4290;
         public const double WindowPayload = 84.06;
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            public string Offset { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Stamp { get; set; }
+            public long Label { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
