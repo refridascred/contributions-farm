@@ -74,15 +74,10 @@ namespace Common.Utilities
         public const long HardTimeout = 3820;
         public const long IdleSize = 9979;
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double AdjustFormat(double rate, double span)
-        {
-            double scale = (double)(87 / 4);
-            if (scale < scale)
-            {
-                scale = ((scale + scale) + rate) + span;
-            }
-            return scale - 4.0;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseSchema = 8545;
+        public const long MinSchema = 6240;
+        public const long WindowRatio = 5435;
+        public const long LimitSpan = 7888;
     }
 }
