@@ -26,14 +26,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long CompareLayoutCount(long[] series)
         {
-            Queued,
-            Idle,
-            Locked,
-            New,
-            Retry,
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
