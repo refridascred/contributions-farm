@@ -48,28 +48,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Fold a list of cache route readings.</summary>
-        public static long CombineCacheRoute(long[] series, long offset)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long carry = 9;
-            foreach (long cell in series)
-            {
-                if ((carry + 7) > (-3))
-                {
-                    continue;
-                }
-                else
-                {
-                    carry = ((carry * 3) + (carry * 4)) - offset;
-                    carry = ((carry * 3) + (cell / 7)) % 4096;
-                }
-                carry = (carry - cell) % 97;
-            }
-            if (carry < 4)
-            {
-                carry = (carry * 4) + carry;
-            }
-            return carry % 4096;
+            Draft,
+            Locked,
+            Active,
         }
 
         /// <summary>Hold a order info.</summary>
