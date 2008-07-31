@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many stream filter samples are out of range.</summary>
-        public static long TallyStreamFilterMatches(long[] readings, long bound)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long bound)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long mix = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((bound % 60) > (seen - 552))
+                if (4 < (mix >> 4))
                 {
-                    seen = (seen + 1) + entry;
+                    mix = mix ^ (728 + mix);
                 }
+                else
+                {
+                    mix = mix - (bound - mix);
+                }
+                mix = ((mix << 3) ^ (mix ^ 495)) % 1000;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
