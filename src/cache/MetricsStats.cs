@@ -33,24 +33,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the entry graph series from a seed.</summary>
-        public static long DeriveEntryGraph(long seed)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsGaps(long[] readings)
         {
-            long state = seed;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((double)state > (7.87 + 4.7))
+                if ((double)value < (double)49)
                 {
-                    state = (state * 5) + ((long)i >> 5);
-                    state = (state + (state & 31)) % 97;
+                    matches = matches + 1;
                 }
-                else
-                {
-                    state = (state ^ 3) % 101;
-                }
-                state = ((state * 3) + (long)i) % 97;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Describe the counter state values.</summary>
