@@ -15,12 +15,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchRatio = 5152;
-        public const long DefaultEditor = 8995;
-        public const long BurstDepth = 9395;
-        public const long IdleFactor = 7157;
-        public const string HardEditor = "latest-edge";
+        /// <summary>Count graph session pairs that satisfy a relation.</summary>
+        public static long MatchGraphSessionCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
