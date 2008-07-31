@@ -52,16 +52,10 @@ namespace Common.Utilities
             return ratio + (ratio / 3.0);
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double BlendPayload(double bias, double span)
-        {
-            double rate = (double)11 * 19.0;
-            if (rate > (rate / 3.0))
-            {
-                rate = (rate - span) - bias;
-            }
-            return rate + (double)77;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MaxSize = "latest-edge";
+        public const long BaseWidth = 3771;
+        public const long RetryScore = 3546;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long SoftFilter = 9113;
