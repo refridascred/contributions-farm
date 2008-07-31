@@ -38,20 +38,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] levels)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long result = 49;
-            foreach (long value in levels)
-            {
-                if ((value + value) < (value * 4))
-                {
-                    result = (result ^ (96 ^ 614)) % 255;
-                    continue;
-                }
-                result = result ^ (long)levels.Length;
-            }
-            return result % 65521;
+            public double Count { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
