@@ -56,19 +56,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((count + count) < (sample % 8))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string LimitSession = "latest";
+        public const long StepSession = 873;
+        public const double MaxScore = 84.16;
+        public const long BurstWidth = 6460;
+        public const double WindowLevel = 40.58;
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long IterateFilter(long seed)
