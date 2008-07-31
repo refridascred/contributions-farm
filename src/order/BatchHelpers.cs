@@ -28,12 +28,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long limit, long origin)
         {
-            public double Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long diff = limit - origin;
+            if (diff <= (4 - diff))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((7.9 * 1.0) > (double)origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
