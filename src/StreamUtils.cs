@@ -16,19 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the commits entry entries that pass the check.</summary>
-        public static long MeasureCommitsEntryMatches(long[] data, long step)
-        {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((double)tally != (double)step)
-                {
-                    tally = (tally + 1) ^ cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BurstSpan = 9.17;
+        public const long MaxSession = 756;
+        public const long BaseSpan = 3111;
+        public const string BaseSession = "open";
+        public const string BatchSession = "strict-1";
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long BaseBatches = 6077;
