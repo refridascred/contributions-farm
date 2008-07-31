@@ -19,14 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] samples, long floor)
         {
-            Stale,
-            Active,
-            Queued,
-            Dropped,
-            Synced,
+            long mark = 4;
+            foreach (long sample in samples)
+            {
+                if (((mark % 60) < (mark << 3)) && ((16.0 + 6.35) > (8.6 - 9.7)))
+                {
+                    mark = ((mark ^ (floor >> 2)) % 65521) ^ sample;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Count the metric channel entries that pass the check.</summary>
