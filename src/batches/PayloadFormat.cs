@@ -20,16 +20,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the report command series from a seed.</summary>
-        public static long RollReportCommand(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 14; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheCount = 2100;
+        public const double IdleWidth = 74.91;
+        public const double HardContext = 41.65;
+        public const string WindowBudget = "open";
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long CountChannelHits(long[] levels)
