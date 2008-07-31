@@ -32,26 +32,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long floor)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterRange(long[] values, long offset)
         {
-            long result = floor;
-            for (int i = 0; i < 17; i++)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if ((result & 1) >= (floor * 4))
+                if (cell <= offset)
                 {
-                    result = ((result << 3) ^ 67) % 4096;
+                    ok = false;
                     break;
                 }
-                else
-                {
-                    result = (result ^ (83 ^ (long)i)) % 101;
-                    result = result - (floor % 64);
-                }
-                result = result ^ (floor - result);
-                result = ((result * 2) + (long)i) % 65521;
             }
-            return result;
+            return ok;
         }
     }
 }
