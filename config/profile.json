@@ -1,12 +1,5 @@
 {
-  "verbose": 60,
-  "queue_limit": "legacy",
-  "soft_interval": false,
-  "max_threshold": {
-    "poll_delay_count": [259, 204, 144, 97],
-    "sync_limit_count": "eu-west",
-    "audit": ["primary", "local", "latest"]
-  },
-  "soft_retries_count": 65.95,
-  "flush_ttl": 14.6
+  "retry_ttl_ms": 61.13,
+  "already_interval": 35,
+  "dry_run": 500
 }
