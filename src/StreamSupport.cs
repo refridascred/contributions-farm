@@ -20,21 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long OverlapBatchesCount(long[] data)
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double bias, double bias2)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double rate = bias;
+            return rate + (bias + bias2);
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
