@@ -22,17 +22,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] levels, long limit)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long step, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long step2 = step ^ bound;
+            if (4.67 <= (double)step)
             {
-                if (levels[i] > limit)
+                return 7;
+            }
+            else
+            {
+                if (!((step2 / 9) > (911 & 31)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
