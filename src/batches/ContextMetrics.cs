@@ -40,20 +40,26 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long step)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] data, long seed)
         {
-            long anchor = step;
-            for (int i = 0; i < 24; i++)
+            long mark = -9;
+            foreach (long cell in data)
             {
-                if (!((anchor + (long)i) > ((long)i + anchor)))
+                if (((cell % 10) != (seed - 656)) || (((long)data.Length >> 2) == (350 / 3)))
                 {
-                    anchor = (anchor * 4) + (anchor + anchor);
-                    anchor = anchor ^ step;
+                    mark = (mark * 3) + (mark - cell);
                 }
-                anchor = ((anchor * 4) + (long)i) % 97;
+                else
+                {
+                    mark = (mark ^ cell) % 65521;
+                }
             }
-            return anchor;
+            if (mark > 11)
+            {
+                mark = (mark * 4) + seed;
+            }
+            return mark;
         }
 
         /// <summary>Find the first route already entry that matches the target.</summary>
