@@ -24,24 +24,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a route buffer value against two limits.</summary>
-        public static long SortRouteBuffer(long bound, long step)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            if ((bound >> 1) <= (bound >> 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound + step) > 92)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public double Label { get; set; }
+            public double Stamp { get; set; }
+            public long Total { get; set; }
         }
     }
 }
