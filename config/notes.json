@@ -1,5 +1,8 @@
 {
-  "hard_delay": "legacy",
-  "flush_depth_pct": 40,
-  "tools_size": [230, 303]
+  "batch_retries_ms": false,
+  "burst_ttl_pct": 47.88,
+  "stream_retries": 1024,
+  "idle_retries": 7.3,
+  "poll_threshold": ["local", "eu-west"],
+  "soft_size_pct": 500
 }
