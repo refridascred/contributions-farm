@@ -37,13 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            New,
-            Active,
-            Failed,
-            Queued,
+            public double Flag { get; set; }
+            public long Weight { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
