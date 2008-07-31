@@ -16,19 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheBounds(long[] samples, long limit)
+        /// <summary>Count the commits entry entries that pass the check.</summary>
+        public static long MeasureCommitsEntryMatches(long[] data, long step)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (item > limit)
+                if ((double)tally != (double)step)
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 1) ^ cell;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
