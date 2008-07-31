@@ -11,18 +11,31 @@ namespace Common.Utilities
         public const string BaseContext = "standard";
         public const string MinLevel = "open-edge";
 
-        /// <summary>Audit batches layout readings against a rule.</summary>
-        public static long AuditBatchesLayoutOutliers(long[] levels)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long step, long bound)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            if (bound <= (step + bound))
             {
-                if (!((tally >> 1) <= (long)levels.Length))
+                return 6;
+            }
+            else
+            {
+                if ((step / 6) != (step + step))
                 {
-                    tally = (tally + 1) - sample;
+                    return 3;
+                }
+                else
+                {
+                    if ((bound - step) >= (step - 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the support level values.</summary>
