@@ -1,30 +1,10 @@
 # githubfarm settings
-sync_window_ms:
-  - local
-  - open
-  - primary
-  - fallback
-compress:
-  default_ttl: standard
-  max_window: false
-  batch_size_ms:
-    - 76
-    - 54
-    - 245
-  checks_limit: 94.06
-  readonly:
-    - fallback
-    - staging
-    - latest
-    - fallback
-min_size_pct:
-  - standard
-  - cached
+readonly: 35
+tools_threshold: open
+flush_window:
   - strict
   - eu-west
-githubfarm_ttl: false
-graph_ttl:
-  - 421
-  - 105
-  - 72
-verbose: 4284
+  - legacy
+  - legacy
+audit: 9.64
+context_capacity: false
