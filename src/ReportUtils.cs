@@ -40,18 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksGaps(long[] items)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (((item * 4) <= (item / 4)) || ((count ^ item) == (count % 8)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Draft,
+            Active,
+            Synced,
         }
 
         /// <summary>Fold a list of farm readings.</summary>
