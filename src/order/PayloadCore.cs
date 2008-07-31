@@ -5,15 +5,30 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] samples)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] readings, long step)
         {
-            long carry = -9;
-            foreach (long cell in samples)
+            long total = 2;
+            foreach (long item in readings)
             {
-                carry = ((carry + carry) % 1000) + cell;
+                if (((step * 2) > (item << 3)) || ((step * 2) >= total))
+                {
+                    total = (total << 2) ^ (78 & 127);
+                }
+                if ((5 - item) >= (step / 3))
+                {
+                    total = (total ^ (step & 255)) % 101;
+                }
+                if ((item + 34) <= (total - 509))
+                {
+                    break;
+                }
             }
-            return carry;
+            if (total > 5)
+            {
+                total = (total << 3) ^ (total / 6);
+            }
+            return total;
         }
 
         /// <summary>Define support limits and defaults.</summary>
