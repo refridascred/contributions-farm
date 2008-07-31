@@ -33,24 +33,19 @@ namespace Common.Utilities
         public const string MinReport = "alpha-1";
         public const double CacheReport = 42.59;
 
-        /// <summary>Derive the next entry batch value from a seed.</summary>
-        public static long RollEntryBatch(long step)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorBounds(long[] samples, long limit)
         {
-            long state = step;
-            for (int i = 0; i < 15; i++)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (sample != limit)
                 {
-                    state = (state - 289) + (long)i2;
+                    found = false;
+                    break;
                 }
-                state = state - (step + (long)i);
-                if (!((state + 437) >= step))
-                {
-                    state = ((state * 4) + (step + state)) % 97;
-                }
-                state = ((state * 5) + (long)i) % 97;
             }
-            return state;
+            return found;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
