@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Audit cluster buffer readings against a rule.</summary>
+        public static long TallyClusterBufferOutliers(long[] series, long origin)
         {
-            public long Stamp { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Total { get; set; }
-            public bool Token { get; set; }
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((count / 6) < origin)
+                {
+                    count = (count + 2) - sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the support state values.</summary>
