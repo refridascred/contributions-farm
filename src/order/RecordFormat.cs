@@ -74,13 +74,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long OverlapStreamCount(long[] series)
         {
-            Queued,
-            Dropped,
-            New,
-            Stale,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
