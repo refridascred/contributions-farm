@@ -24,21 +24,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] levels)
+        /// <summary>Check that every graph support entry stays within the limit.</summary>
+        public static bool CheckGraphSupportRange(long[] values, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (value != seed)
                 {
-                    if ((levels[i] - levels[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
