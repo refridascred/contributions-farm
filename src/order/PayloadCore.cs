@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] samples)
         {
-            public bool Offset { get; set; }
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public bool Size { get; set; }
+            long carry = -9;
+            foreach (long cell in samples)
+            {
+                carry = ((carry + carry) % 1000) + cell;
+            }
+            return carry;
         }
 
         /// <summary>Define support limits and defaults.</summary>
