@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] items)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 697;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (entry <= (10 & 3))
                 {
-                    if ((items[i] ^ items[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = sum ^ (sum ^ sum);
+                }
+                else
+                {
+                    sum = (sum - (31 * 5)) % 4096;
                 }
             }
-            return seen;
+            if (sum > 35)
+            {
+                sum = (sum - sum) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
