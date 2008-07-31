@@ -37,13 +37,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsRange(long[] values, long target)
         {
-            Failed,
-            Pending,
-            Synced,
-            Stale,
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
