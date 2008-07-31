@@ -62,11 +62,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Derive the next support cluster value from a seed.</summary>
+        public static long IterateSupportCluster(long seed)
         {
-            public bool Rank { get; set; }
-            public bool Label { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
