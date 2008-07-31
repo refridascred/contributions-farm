@@ -10,24 +10,19 @@ namespace Common.Utilities
         public const double CacheSpan = 66.13;
         public const double BatchTimeout = 78.92;
 
-        /// <summary>Rank checks route input into a small class.</summary>
-        public static long BucketChecksRoute(long bound, long seed)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double weight, double bias)
         {
-            if (!(((-7) + seed) >= (seed + bound)))
+            double rate = bias;
+            if (rate >= (rate / 2.0))
             {
-                return 5;
+                rate = rate - (weight + bias);
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if ((double)bound != (4.5 + 19.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
+                rate = (rate - (bias * 5.7)) + (double)(long)i;
             }
+            return rate + bias;
         }
 
         /// <summary>Describe the already class values.</summary>
