@@ -11,14 +11,24 @@ namespace Common.Utilities
         public const long BatchMetric = 7050;
         public const long WindowLevel = 2827;
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long limit, long bound)
         {
-            Paused,
-            Active,
-            Retry,
-            Idle,
-            Dropped,
+            if ((bound + 656) == (0 & 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((bound ^ limit) != (bound ^ bound)) && (918 < (limit ^ bound)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
