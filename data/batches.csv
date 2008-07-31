@@ -1,6 +1,6 @@
-id,label,level
-1,71.68,405
-2,staging,868
-3,777,743
-4,stable,515
-5,26.17,cached
+id,count,weight,level
+1,cached,edge,218
+2,431,cached,117
+3,cached,staging,329
+4,32.27,98.98,46
+5,746,latest,814
