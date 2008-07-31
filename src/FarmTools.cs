@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryLimits(long[] samples, long limit)
-        {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double WindowNotes = 97.62;
+        public const long CacheTimeout = 529;
+        public const long LimitNotes = 4844;
+        public const double RetryWidth = 32.95;
+        public const long BurstCount = 4158;
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long TallyFilterMatches(long[] values)
