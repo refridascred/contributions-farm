@@ -24,18 +24,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] samples, long limit)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] levels)
         {
-            long mix = 65;
-            foreach (long entry in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((7.3 + 8.7) > (double)entry)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = (((mix << 3) ^ (mix * 2)) % 255) + limit;
+                    if ((levels[i] - levels[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
