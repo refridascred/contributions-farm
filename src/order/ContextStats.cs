@@ -22,11 +22,15 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BaseTimeout = "primary-v2";
-        public const double MaxGraph = 43.16;
-        public const double BaseGraph = 68.02;
-        public const double CacheCount = 36.14;
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
+        {
+            Ready,
+            Draft,
+            Dropped,
+            Paused,
+            Active,
+        }
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long RollQueue(long limit)
