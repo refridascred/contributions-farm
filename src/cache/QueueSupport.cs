@@ -28,21 +28,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] samples)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return seen;
+            return sum;
         }
     }
 }
