@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
-        {
-            public bool Size { get; set; }
-            public double Owner { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultPayload = 9700;
+        public const long SoftPayload = 5464;
+        public const long BatchTimeout = 8415;
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
