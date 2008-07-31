@@ -14,15 +14,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
-        {
-            Failed,
-            Closed,
-            Draft,
-            New,
-            Paused,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double IdleScore = 55.64;
+        public const string CacheSize = "strict-edge";
+        public const long CacheReport = 7010;
+        public const long RetryLevel = 6784;
+        public const long MinReport = 6236;
 
         /// <summary>Blend two notes measurements.</summary>
         public static double BlendNotes(double scale, double offset)
