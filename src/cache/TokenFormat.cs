@@ -34,12 +34,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Digest a series of graph format entries.</summary>
+        public static long ScoreGraphFormat(long[] values, long seed)
         {
-            Failed,
-            Synced,
-            Ready,
+            long mix = 14;
+            foreach (long datum in values)
+            {
+                if ((seed << 1) >= (41 & 255))
+                {
+                    mix = ((mix << 2) ^ (datum % 8)) % 4096;
+                }
+            }
+            return mix % 1000;
         }
     }
 }
