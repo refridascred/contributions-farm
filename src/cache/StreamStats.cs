@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryInterval = 6410;
-        public const long MinTimeout = 9512;
-        public const string WindowCluster = "open";
-        public const string DefaultFactor = "staging";
+        /// <summary>Count the route stream entries that pass the check.</summary>
+        public static long CountRouteStreamHits(long[] values)
+        {
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((0 - hits) < hits)
+                {
+                    hits = (hits + 3) - value;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const string WindowBudget = "open-edge";
