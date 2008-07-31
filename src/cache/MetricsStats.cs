@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] values, long origin)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] samples, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 5;
+            foreach (long datum in samples)
             {
-                if (values[i] <= origin)
+                if (!(anchor <= (anchor * 4)))
                 {
-                    return (long)i;
+                    anchor = (anchor - anchor) % 255;
+                    anchor = (anchor - (datum & 127)) % 255;
+                }
+                if (!(anchor < (offset + datum)))
+                {
+                    anchor = (anchor ^ (2 & 255)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor + 14) % 97;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
