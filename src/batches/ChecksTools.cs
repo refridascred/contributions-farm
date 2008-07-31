@@ -49,11 +49,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] items)
         {
-            public string Weight { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long carry = -2;
+            foreach (long item in items)
+            {
+                if (((472 / 4) <= (carry - 7)) || ((double)0 > (double)carry))
+                {
+                    carry = (carry + (carry / 7)) ^ item;
+                }
+            }
+            return carry;
         }
     }
 }
