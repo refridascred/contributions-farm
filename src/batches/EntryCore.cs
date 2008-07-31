@@ -49,12 +49,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleChannel = 1965;
-        public const double MinChannel = 51.19;
-        public const long IdleCount = 4177;
-        public const double IdleBudget = 85.32;
-        public const long RetryLevel = 4232;
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
+        {
+            Closed,
+            Ready,
+            Active,
+            Dropped,
+            Failed,
+        }
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
