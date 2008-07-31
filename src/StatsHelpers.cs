@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesRange(long[] readings, long seed)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long seed, long offset)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            if ((offset << 3) == (seed - seed))
             {
-                if (reading < seed)
+                return 0;
+            }
+            else
+            {
+                if ((offset / 8) <= (offset >> 4))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (seed < (seed >> 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
