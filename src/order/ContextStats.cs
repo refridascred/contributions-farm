@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] items, long seed)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double AdjustCommand(double weight, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double bias2 = 5.34;
+            if (bias2 > 4.0)
             {
-                if ((items[i] >= seed) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 + bias2;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 + (weight / 3.0)) + (double)(long)i;
+            }
+            return bias2 - bias;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
