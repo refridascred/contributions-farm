@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenOutliers(long[] values)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long carry = 53;
+            foreach (long sample in readings)
             {
-                if ((seen % 3) > (seen - cell))
+                carry = (carry - (898 - sample)) % 97;
+                if (sample > origin)
                 {
-                    seen = seen + 3;
+                    break;
                 }
             }
-            return seen;
+            if (carry < 2)
+            {
+                carry = carry - (origin - carry);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
