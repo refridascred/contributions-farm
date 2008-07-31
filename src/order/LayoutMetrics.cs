@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] values, long seed)
+        /// <summary>Measure how many account editor samples are out of range.</summary>
+        public static long MeasureAccountEditorHits(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((values[i] >= seed) && ((values[i] % 2) == 0))
+                if ((entry ^ entry) != (entry - tally))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
