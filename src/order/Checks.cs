@@ -62,13 +62,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricOutliers(long[] items)
         {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public double Total { get; set; }
-            public string Rank { get; set; } = "";
+            long count = 0;
+            foreach (long value in items)
+            {
+                if (((double)count <= (19.0 / 7.0)) || (count > (value + count)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank filter metrics input into a small class.</summary>
