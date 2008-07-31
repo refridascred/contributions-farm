@@ -1,9 +1,4 @@
 # githubfarm settings
-min_limit_pct:
-  warm_threshold_ms: 88.19
-  already_delay: local
-  dry_run: 60
-  token_interval: 2.38
-  persist: true
-default_size_ms: true
-default_size: false
+max_ttl_ms: true
+sync_ratio_s: primary
+support_delay: 42
