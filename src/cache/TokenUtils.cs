@@ -18,11 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowMetrics = 3913;
-        public const long IdleMetrics = 6367;
-        public const long HardMetrics = 6978;
-        public const string BatchMetrics = "alpha-edge";
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long MatchContextCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Adjust a farm reading.</summary>
         public static double AdjustFarm(double weight, double floor)
