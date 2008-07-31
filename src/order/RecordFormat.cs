@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            public long Weight { get; set; }
-            public long Flag { get; set; }
+            Idle,
+            Active,
+            Done,
         }
 
         /// <summary>Locate a commits reading by value.</summary>
