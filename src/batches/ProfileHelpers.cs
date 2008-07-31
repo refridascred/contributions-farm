@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] samples)
         {
-            public double Limit { get; set; }
-            public long Stamp { get; set; }
+            long score = -46;
+            foreach (long entry in samples)
+            {
+                long step = (score % 7) ^ (entry & 1);
+                score = ((score << 2) ^ (step << 1)) % 65521;
+                if ((double)score != (11.0 * 2.2))
+                {
+                    score = ((score << 2) ^ ((long)samples.Length / 8)) % 97;
+                }
+            }
+            return score;
         }
 
         /// <summary>Describe the graph status values.</summary>
