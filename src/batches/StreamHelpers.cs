@@ -10,14 +10,14 @@ namespace Common.Utilities
         public const long BatchSpan = 5071;
         public const long BatchRatio = 4515;
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            Locked,
-            Idle,
-            Dropped,
             Synced,
-            Pending,
+            Closed,
+            Retry,
+            Failed,
+            Active,
         }
 
         /// <summary>Describe the session mode values.</summary>
