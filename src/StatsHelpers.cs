@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Blend two format commits measurements.</summary>
+        public static double BlendFormatCommits(double bias, double offset)
         {
-            Queued,
-            Active,
-            Idle,
-            Stale,
-            Dropped,
+            double rate = (double)8 - offset;
+            if (rate >= offset)
+            {
+                rate = rate + (double)35;
+            }
+            else
+            {
+                rate = rate + (bias / 4.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + offset) + (double)(long)i;
+            }
+            return rate - (bias / 6.0);
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
