@@ -66,21 +66,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] readings)
+        /// <summary>Count the order buffer entries that pass the check.</summary>
+        public static long CountOrderBufferGaps(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((double)seen != (0.84 + 16.0)))
                 {
-                    if ((readings[i] ^ readings[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 2) - entry;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
