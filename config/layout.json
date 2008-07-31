@@ -1,7 +1,7 @@
 {
-  "warm_threshold": "latest",
-  "strict": false,
-  "burst_window": "open",
-  "batch_threshold": false,
-  "payload_ratio": "green"
+  "dry_run": 95,
+  "base_interval": true,
+  "checks_timeout": "fallback",
+  "hard_retries_pct": false,
+  "stats_ratio": "stable"
 }
