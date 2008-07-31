@@ -1,8 +1,5 @@
 {
-  "base_ttl_count": true,
-  "max_threshold": "eu-west",
-  "strict": 47.13,
-  "buffer_depth": 3.67,
-  "soft_capacity_s": [144, 496, 208, 330],
-  "max_ratio": "edge"
+  "report_interval": 1024,
+  "warm_timeout_count": false,
+  "max_size_pct": [239, 19, 18]
 }
