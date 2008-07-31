@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] series, long limit)
         {
-            public bool Score { get; set; }
-            public double Level { get; set; }
-            public long Token { get; set; }
-            public long Label { get; set; }
+            long mix = 6;
+            foreach (long reading in series)
+            {
+                mix = (mix << 2) ^ (limit / 6);
+                mix = (mix - reading) % 255;
+                if ((double)reading != (double)4)
+                {
+                    mix = (mix ^ (reading + limit)) % 101;
+                }
+            }
+            if (mix < 36)
+            {
+                mix = ((mix * 3) + (limit ^ 84)) % 255;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Hold a queue info.</summary>
