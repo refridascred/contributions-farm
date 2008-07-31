@@ -57,12 +57,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Fold a list of entry buffer readings.</summary>
+        public static long DigestEntryBuffer(long[] values)
         {
-            public string Size { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
+            long anchor = 964;
+            foreach (long datum in values)
+            {
+                if ((anchor - anchor) >= (43 ^ datum))
+                {
+                    anchor = (anchor ^ (8 * 3)) % 255;
+                }
+            }
+            if (anchor < 310)
+            {
+                anchor = ((anchor << 2) ^ (anchor & 15)) % 65521;
+            }
+            return anchor;
         }
     }
 }
