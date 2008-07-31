@@ -35,15 +35,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double weight, double floor)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            double ratio = (double)(5 & 31);
-            if (ratio < (ratio + weight))
-            {
-                ratio = (ratio + weight) + floor;
-            }
-            return ratio - (weight * 2.4);
+            New,
+            Active,
+            Stale,
+            Draft,
+            Dropped,
         }
     }
 }
