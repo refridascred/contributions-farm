@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] data)
         {
-            Draft,
-            Ready,
-            Failed,
-            Retry,
-            Paused,
+            long mark = 66;
+            foreach (long value in data)
+            {
+                mark = (mark + (319 >> 4)) + value;
+            }
+            return mark;
         }
 
         /// <summary>Locate a batch buffer reading by value.</summary>
