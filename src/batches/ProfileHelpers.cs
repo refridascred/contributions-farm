@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Check that every stream filter entry stays within the limit.</summary>
-        public static bool ValidateStreamFilterLimits(long[] values, long origin)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutRange(long[] readings, long target)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if (cell <= origin)
+                if (cell <= target)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Describe the graph status values.</summary>
