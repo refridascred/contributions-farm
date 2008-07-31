@@ -13,14 +13,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double ratio, double span)
         {
-            Done,
-            Retry,
-            Stale,
-            Queued,
-            Active,
+            double weight = (double)(30 + 927);
+            if (weight > (ratio * 4.5))
+            {
+                weight = (weight + (weight + ratio)) - span;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + (weight + 1.6)) + (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Hold a cluster record.</summary>
