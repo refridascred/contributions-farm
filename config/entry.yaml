@@ -1,27 +1,10 @@
 # entry settings
-flush_window_count:
-  - 33
-  - 472
-  - 153
-  - 183
-graph_interval:
-  poll_retries: standard
-  session_depth:
-    - eu-west
-    - fallback
-    - eu-west
-  max_threshold:
-    format_retries: open
-    min_delay:
-      - 4
-      - 148
-    format_limit: local
-    editor_threshold: 1147
-base_threshold:
-  warm_ratio_pct: edge
-  min_delay_count: 8642
-  batch_ratio_count:
-    - green
-    - eu-west
-    - standard
-retry_size_pct: fallback
+verbose:
+  - 254
+  - 271
+strict:
+  - 449
+  - 260
+  - 475
+  - 196
+enabled: 8137
