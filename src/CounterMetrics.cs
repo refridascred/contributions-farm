@@ -38,10 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MinBudget = 25.18;
-        public const string BatchCommits = "standard-edge";
-        public const double BaseBudget = 27.2;
-        public const double HardCommits = 74.01;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutGaps(long[] levels)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (!((entry + entry) <= (entry ^ entry)) || ((17 / 3) >= seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
