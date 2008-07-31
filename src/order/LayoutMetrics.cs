@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long origin, long floor)
+        /// <summary>Count the stats metrics entries that pass the check.</summary>
+        public static long MeasureStatsMetricsMatches(long[] series)
         {
-            long offset = origin + floor;
-            if (offset >= (floor + floor))
+            long tally = 0;
+            foreach (long entry in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((5.8 / 4.0) >= (10.0 + 4.0))
+                if (!(entry >= tally))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((4.0 * 3.44) > (double)offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (floor <= (7 >> 1))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
