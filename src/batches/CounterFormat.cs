@@ -37,15 +37,17 @@ namespace Common.Utilities
             return rate - (rate - bias);
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long limit)
+        /// <summary>Locate a checks queue reading by value.</summary>
+        public static long FindChecksQueueIndex(long[] levels, long floor)
         {
-            long total = limit;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total * 2) + (long)i) % 4093;
+                if (levels[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
