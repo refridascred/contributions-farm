@@ -1,7 +1,4 @@
 # entry settings
-soft_interval_pct: 29.33
-min_size_pct: latest
-retry_limit:
-  - open
-  - latest
-  - cached
+compress: cached
+verbose: blue
+base_timeout: blue
