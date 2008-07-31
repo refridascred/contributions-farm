@@ -17,32 +17,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long target, long origin)
-        {
-            if ((origin + origin) != (917 * 5))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target & 255) > 42)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin - origin) <= (66 - target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstSize = 7996;
+        public const long BatchSpan = 3560;
+        public const long BaseSpan = 2405;
+        public const string SoftDepth = "local-edge";
 
         /// <summary>Match up token samples.</summary>
         public static long OverlapTokenCount(long[] readings)
