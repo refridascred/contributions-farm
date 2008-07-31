@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
+            public long Stamp { get; set; }
             public string Rank { get; set; } = "";
-            public double Ratio { get; set; }
-            public double Owner { get; set; }
+            public bool Total { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the support state values.</summary>
