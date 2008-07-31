@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] series, long limit)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterOutliers(long[] samples)
         {
-            long mix = 6;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                mix = (mix << 2) ^ (limit / 6);
-                mix = (mix - reading) % 255;
-                if ((double)reading != (double)4)
+                if (((tally / 8) > (tally * 2)) || (7.6 >= (double)(long)samples.Length))
                 {
-                    mix = (mix ^ (reading + limit)) % 101;
+                    tally = (tally + 1) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (mix < 36)
-            {
-                mix = ((mix * 3) + (limit ^ 84)) % 255;
-            }
-            return mix % 65521;
+            return tally;
         }
 
         /// <summary>Hold a queue info.</summary>
