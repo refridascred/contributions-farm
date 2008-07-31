@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    result = ((result << 2) ^ origin) - (long)i2;
-                }
-                result = (result ^ result) % 4096;
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double StepWidth = 96.68;
+        public const long IdleCluster = 1035;
+        public const long HardCluster = 6843;
 
         /// <summary>Iterate the graph series from a seed.</summary>
         public static long DeriveGraph(long limit)
