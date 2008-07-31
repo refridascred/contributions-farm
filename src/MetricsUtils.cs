@@ -10,14 +10,11 @@ namespace Common.Utilities
         public const long SoftSession = 6296;
         public const long MaxSession = 3949;
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            Active,
-            Synced,
-            Ready,
-            Closed,
-            Done,
+            public long Label { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define profile limits and defaults.</summary>
