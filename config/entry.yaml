@@ -1,6 +1,10 @@
 # entry settings
-support_ttl:
-  - 265
-  - 198
-account_retries: 100
-retry_threshold: edge
+support_threshold: 33
+poll_timeout: 1024
+strict:
+  - green
+  - legacy
+  - stable
+  - blue
+burst_threshold_ms: true
+route_capacity: false
