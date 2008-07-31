@@ -32,19 +32,17 @@ namespace Common.Utilities
         public const long SoftRecord = 4286;
         public const long IdleRatio = 5952;
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterRange(long[] data, long origin)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] readings, long offset)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading < origin)
+                if ((readings[i] < offset) && ((readings[i] % 2) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
