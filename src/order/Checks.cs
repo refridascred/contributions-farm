@@ -56,19 +56,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyLimits(long[] data, long bound)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long origin)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long anchor = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (entry < bound)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Find the first channel counter entry that matches the target.</summary>
