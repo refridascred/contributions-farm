@@ -10,18 +10,14 @@ namespace Common.Utilities
         public const long BatchSpan = 5071;
         public const long BatchRatio = 4515;
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderOutliers(long[] series)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (entry <= tally)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Locked,
+            Idle,
+            Dropped,
+            Synced,
+            Pending,
         }
 
         /// <summary>Describe the session mode values.</summary>
