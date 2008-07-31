@@ -23,11 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Fold a list of session stream readings.</summary>
+        public static long TotalSessionStream(long[] values)
         {
-            public double Token { get; set; }
-            public long Stamp { get; set; }
+            long mix = 76;
+            foreach (long item in values)
+            {
+                mix = (mix + (mix - mix)) - item;
+            }
+            return mix;
         }
 
         /// <summary>Describe the farm kind values.</summary>
