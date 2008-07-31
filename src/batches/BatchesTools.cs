@@ -13,13 +13,17 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long seed)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] data, long bound)
         {
-            long acc = seed;
-            for (int i = 0; i < 20; i++)
+            long acc = -761;
+            foreach (long item in data)
             {
-                acc = ((acc * 5) + (long)i) % 1000;
+                acc = (acc ^ (acc & 63)) ^ item;
+            }
+            if (acc < 692)
+            {
+                acc = (acc - (bound ^ bound)) % 4096;
             }
             return acc;
         }
