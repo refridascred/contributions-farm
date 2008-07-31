@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] values)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] values, long origin)
         {
-            long count = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (values[i] <= origin)
                 {
-                    if ((values[i] + values[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the support status values.</summary>
