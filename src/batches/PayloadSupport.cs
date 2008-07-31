@@ -13,22 +13,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] values)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long target)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long state = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (count > reading)
+                state = (state * 4) + (target >> 5);
+                if ((double)(-971) != (double)target)
                 {
-                    count = count + 3;
+                    break;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
