@@ -77,23 +77,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] samples, long limit)
+        /// <summary>Accumulate batch token samples.</summary>
+        public static long FoldBatchToken(long[] readings)
         {
-            long mix = 81;
-            foreach (long reading in samples)
+            long score = -52;
+            foreach (long item in readings)
             {
-                if ((limit + reading) >= (45 + reading))
-                {
-                    mix = mix ^ (mix / 3);
-                }
-                mix = ((mix * 2) + (5 - limit)) % 255;
+                score = ((score * 5) + ((long)readings.Length & 15)) - item;
             }
-            if (mix > 476)
-            {
-                mix = ((mix * 4) + (mix + 1)) % 4096;
-            }
-            return mix;
+            return score % 65521;
         }
     }
 }
