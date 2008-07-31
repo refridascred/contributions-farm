@@ -1,17 +1,5 @@
 {
-  "burst_ratio_ms": 13,
-  "order_threshold": [92, 88, 112, 486],
-  "commits_window": 9553,
-  "soft_ttl_pct": {
-    "persist": {
-      "hard_threshold_count": [388, 400, 127, 116],
-      "default_capacity": 97,
-      "route_threshold": ["open", "green", "strict"]
-    },
-    "default_limit_pct": "green",
-    "poll_threshold_pct": 57,
-    "format_interval": 71.6
-  },
-  "order_delay": true,
-  "poll_retries_s": "legacy"
+  "schema_capacity": true,
+  "account_size": true,
+  "sync_window_count": true
 }
