@@ -1,6 +1,6 @@
 {
-  "warm_window_s": 82.0,
-  "min_depth_s": [27, 129],
-  "window_limit": true,
-  "audit": 10
+  "metrics_threshold": true,
+  "audit": 82,
+  "cache_retries": 46,
+  "idle_delay_ms": 2928
 }
