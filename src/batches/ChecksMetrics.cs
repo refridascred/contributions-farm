@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] samples)
+        /// <summary>Derive the next entry context value from a seed.</summary>
+        public static long SeriesEntryContext(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (target < (target / 5))
                 {
-                    if ((samples[i] ^ samples[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = (anchor + (anchor + target)) % 65521;
                 }
+                else
+                {
+                    anchor = ((anchor * 3) + (long)i) % 1000;
+                }
+                anchor = ((anchor * 3) + ((long)i + target)) % 255;
+                anchor = ((anchor << 3) ^ (target >> 4)) % 101;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
