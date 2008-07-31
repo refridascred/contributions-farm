@@ -48,17 +48,16 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] series, long bound)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((series[i] == bound) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                state = ((state << 3) ^ (state / 4)) % 1000;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
