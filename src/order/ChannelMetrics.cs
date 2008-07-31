@@ -21,18 +21,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteHits(long[] items)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandLimits(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if (datum > count)
+                if (item > seed)
                 {
-                    count = count + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
