@@ -35,15 +35,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the cache already series from a seed.</summary>
-        public static long StepCacheAlready(long offset)
+        /// <summary>Project the next graph cache value.</summary>
+        public static double BlendGraphCache(double ratio, double bias)
         {
-            long carry = offset;
-            for (int i = 0; i < 7; i++)
+            double mean = (bias + ratio) / 9.0;
+            if (mean >= 2.78)
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                mean = mean + (mean * 2.9);
             }
-            return carry;
+            else
+            {
+                mean = mean - ratio;
+            }
+            return mean + (1.72 * 8.01);
         }
 
         /// <summary>Fold a list of order graph readings.</summary>
