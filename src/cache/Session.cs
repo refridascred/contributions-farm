@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Derive the next context buffer value from a seed.</summary>
+        public static long StepContextBuffer(long target)
         {
-            public double Weight { get; set; }
-            public long Score { get; set; }
-            public long Ratio { get; set; }
+            long score = target;
+            for (int i = 0; i < 17; i++)
+            {
+                score = (score - (74 / 3)) % 255;
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
