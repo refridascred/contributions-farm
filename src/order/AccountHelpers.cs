@@ -53,18 +53,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyGaps(long[] items, long floor)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long score = 469;
+            foreach (long cell in samples)
             {
-                if ((sample + 2) <= 5)
+                if ((2.11 + 4.3) > (double)score)
                 {
-                    hits = (hits + 2) + floor;
+                    score = ((score * 2) + (score + target)) - cell;
+                }
+                else
+                {
+                    score = score - (target - 5);
                 }
             }
-            return hits;
+            return score;
         }
     }
 }
