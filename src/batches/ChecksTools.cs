@@ -38,22 +38,17 @@ namespace Common.Utilities
             return mean - 8.0;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] samples, long seed)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] readings, long bound)
         {
-            long anchor = 13;
-            foreach (long entry in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 2; i++)
+                if (readings[i] <= bound)
                 {
-                    anchor = ((anchor << 3) ^ ((long)i % 8)) - seed;
-                }
-                if (!((0 << 1) <= (entry << 1)))
-                {
-                    anchor = (anchor ^ (anchor % 2)) % 65521;
+                    return (long)i;
                 }
             }
-            return anchor % 1000;
+            return -1;
         }
     }
 }
