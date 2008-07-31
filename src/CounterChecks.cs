@@ -79,22 +79,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] items)
-        {
-            long mix = 4;
-            foreach (long entry in items)
-            {
-                if (!((714 / 6) < (mix ^ mix)))
-                {
-                    mix = ((mix << 3) ^ (entry + (-698))) % 97;
-                }
-                if ((mix & 1) != (mix - 1))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string WindowPayload = "local-1";
+        public const long WindowTimeout = 7522;
+        public const long BurstPayload = 2975;
+        public const long BasePayload = 9808;
     }
 }
