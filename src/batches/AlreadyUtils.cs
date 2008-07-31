@@ -48,12 +48,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Project the next farm value.</summary>
+        public static double AdjustFarm(double gain, double span)
         {
-            public long Ratio { get; set; }
-            public double Rank { get; set; }
-            public long Score { get; set; }
+            double bias = (double)8 - (double)634;
+            if (bias > 17.0)
+            {
+                bias = bias + (18.0 * 5.6);
+            }
+            else
+            {
+                bias = bias - gain;
+            }
+            return bias - (span - bias);
         }
     }
 }
