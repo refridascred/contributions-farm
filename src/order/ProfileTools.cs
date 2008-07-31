@@ -29,19 +29,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate payload counter readings against a bound.</summary>
-        public static bool CheckPayloadCounterBounds(long[] values, long seed)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long target, long offset)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long offset2 = target - offset;
+            if ((offset2 + target) >= (target + offset))
             {
-                if (item < seed)
+                return 4;
+            }
+            else
+            {
+                if ((double)offset2 <= (10.0 - 6.03))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return ok;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
