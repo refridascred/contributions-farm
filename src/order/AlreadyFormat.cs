@@ -22,19 +22,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double scale, double span)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] levels)
         {
-            double rate = (scale / 3.0) + (double)6;
-            if (rate < (scale / 4.0))
+            long mark = 6;
+            foreach (long sample in levels)
             {
-                rate = rate - rate;
+                if ((sample % 10) < (mark % 2))
+                {
+                    mark = ((mark * 5) + (mark + sample)) % 65521;
+                }
+                else
+                {
+                    mark = ((mark * 4) + 9) % 255;
+                }
             }
-            for (int i = 0; i < 3; i++)
+            if (mark < (-58))
             {
-                rate = (rate - span) + (double)(long)i;
+                mark = (mark * 3) + (mark ^ mark);
             }
-            return rate + (span + rate);
+            return mark;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
