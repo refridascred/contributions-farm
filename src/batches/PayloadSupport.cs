@@ -30,12 +30,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            public double Count { get; set; }
-            public long Region { get; set; }
-            public long Token { get; set; }
+            public long Total { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Mode { get; set; }
         }
     }
 }
