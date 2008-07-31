@@ -1,10 +1,6 @@
-id,level,score
-1,10.34,eu-west
-2,eu-west,staging
-3,832,917
-4,535,35.45
-5,17.87,76.98
-6,open,194
-7,eu-west,42.8
-8,legacy,152
-9,336,primary
+id,label,level
+1,71.68,405
+2,staging,868
+3,777,743
+4,stable,515
+5,26.17,cached
