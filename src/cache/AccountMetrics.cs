@@ -79,12 +79,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            Idle,
-            New,
-            Draft,
+            public string Label { get; set; } = "";
+            public double Flag { get; set; }
+            public long Weight { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
