@@ -39,17 +39,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] samples, long offset)
+        /// <summary>Audit schema format readings against a rule.</summary>
+        public static long CountSchemaFormatOutliers(long[] items, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (samples[i] <= offset)
+                if (!((matches + 5) != (cell + matches)))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - floor;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
