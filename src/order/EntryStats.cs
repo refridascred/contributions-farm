@@ -30,20 +30,10 @@ namespace Common.Utilities
             return rate - offset;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double BlendSupport(double bias, double bias2)
-        {
-            double rate = (bias2 * 2.3) + (bias2 * 1.7);
-            if (rate > (bias2 / 4.0))
-            {
-                rate = rate + bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - 8.7) - (double)(long)i;
-            }
-            return rate - bias;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 8729;
+        public const long HardDepth = 9157;
+        public const long WindowSpan = 6983;
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long SortGithubfarm(long seed, long origin)
