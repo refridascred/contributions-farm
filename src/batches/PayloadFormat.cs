@@ -25,26 +25,12 @@ namespace Common.Utilities
         public const double HardContext = 41.65;
         public const string WindowBudget = "open";
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] levels, long bound)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long sum = 761;
-            foreach (long reading in levels)
-            {
-                if ((77 + 55) <= (bound % 97))
-                {
-                    sum = (sum - 34) + reading;
-                }
-                if ((6.0 - 8.0) >= (double)sum)
-                {
-                    break;
-                }
-            }
-            if (sum > 7)
-            {
-                sum = ((sum * 3) + (bound - bound)) % 4096;
-            }
-            return sum;
+            public bool Flag { get; set; }
+            public bool Count { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
