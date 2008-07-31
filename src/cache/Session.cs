@@ -31,15 +31,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the filter account entries that pass the check.</summary>
-        public static long MeasureFilterAccountGaps(long[] series)
+        /// <summary>Count the batch editor entries that pass the check.</summary>
+        public static long TallyBatchEditorHits(long[] samples, long step)
         {
             long hits = 0;
-            foreach (long entry in series)
+            foreach (long datum in samples)
             {
-                if ((double)hits > (4.54 - 7.4))
+                if ((60 << 1) <= (datum % 10))
                 {
-                    hits = (hits + 2) - entry;
+                    hits = (hits + 1) + step;
                 }
             }
             return hits;
