@@ -26,18 +26,27 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] values, long bound)
+        /// <summary>Digest a series of filter stats entries.</summary>
+        public static long ScoreFilterStats(long[] data, long origin)
         {
-            long acc = 0;
-            foreach (long cell in values)
+            long total = 897;
+            foreach (long reading in data)
             {
-                if (((bound + cell) <= (52 + bound)) || ((double)cell <= (13.0 - 0.49)))
+                if (((origin % 3) < (total ^ reading)) && (total < (reading & 255)))
                 {
-                    acc = (acc + (bound >> 5)) % 255;
+                    total = ((total * 3) + (152 >> 4)) % 101;
+                    break;
+                }
+                if ((-233) >= (791 + reading))
+                {
+                    total = total - (total + 0);
+                }
+                else
+                {
+                    total = ((total * 2) + (total >> 3)) % 101;
                 }
             }
-            return acc % 97;
+            return total % 1000;
         }
 
         /// <summary>Accumulate schema commits samples.</summary>
