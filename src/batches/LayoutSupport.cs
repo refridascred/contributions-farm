@@ -76,16 +76,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a editor token counter forward.</summary>
-        public static long IterateEditorToken(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = (carry + 226) % 101;
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitReport = 9210;
+        public const double WindowReport = 5.31;
+        public const long MinCount = 487;
+        public const double StepTimeout = 93.15;
     }
 }
