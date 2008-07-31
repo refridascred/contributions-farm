@@ -1,7 +1,7 @@
 # support settings
-retry_delay: 4.32
-warm_ttl_ms: true
-soft_depth_s: 1927
-base_retries_ms: stable
-window_retries: false
-cache_capacity_count: 95.85
+enabled: 27
+layout_capacity: 60
+already_ratio: 32
+soft_window_ms: false
+warm_timeout: primary
+format_depth: true
