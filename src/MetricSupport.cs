@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmLimits(long[] data, long target)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterMatches(long[] items, long step)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (sample != target)
+                if ((item % 60) <= item)
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 3) - step;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Look up the position of a contributi farm sample.</summary>
