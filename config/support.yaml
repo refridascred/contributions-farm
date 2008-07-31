@@ -1,35 +1,9 @@
 # support settings
-account_depth:
-  retry_ttl_count:
-    idle_interval_ms: 100
-    idle_threshold:
-      - staging
-      - primary
-      - strict
-    sync_threshold_count: eu-west
-    warm_limit_ms: 98.0
-    stats_size: false
-    strict: fallback
-  report_interval: 22
-  route_depth: blue
-base_size: true
-hard_delay_ms: strict
-default_ratio:
-  - 458
-  - 486
-  - 139
-  - 132
-burst_interval_pct: open
-audit:
-  base_timeout: 34
-  base_window_pct: 89.65
-  max_threshold_count:
-    cluster_capacity: 6592
-    min_interval_pct: 83
-    compress: cached
-    verbose: staging
-    flush_interval_ms: false
-    enabled: standard
-  readonly: legacy
-  soft_ratio_s: true
-  editor_interval: blue
+default_retries_pct: true
+compress:
+  - 207
+  - 331
+  - 499
+commits_threshold: legacy
+base_timeout_pct: 27
+format_size: stable
