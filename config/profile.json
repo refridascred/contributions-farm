@@ -1,7 +1,5 @@
 {
-  "compress": 60,
-  "warm_ttl": [155, 114, 228, 346],
-  "sync_interval_ms": true,
-  "verbose": false,
-  "poll_ratio": "open"
+  "retry_timeout_s": "fallback",
+  "max_limit_count": 76,
+  "max_ratio": 8991
 }
