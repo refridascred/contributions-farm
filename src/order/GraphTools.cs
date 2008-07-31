@@ -49,13 +49,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next support cluster value from a seed.</summary>
-        public static long IterateSupportCluster(long seed)
+        /// <summary>Combine payload editor values into a single score.</summary>
+        public static long FoldPayloadEditor(long[] readings)
         {
-            long mark = seed;
-            for (int i = 0; i < 8; i++)
+            long mark = 5;
+            foreach (long sample in readings)
             {
-                mark = ((mark * 5) + (long)i) % 1000;
+                if ((mark << 1) <= (mark >> 2))
+                {
+                    mark = ((mark - mark) % 255) + sample;
+                }
+            }
+            if (mark > 538)
+            {
+                mark = (mark << 3) ^ (mark & 3);
             }
             return mark;
         }
