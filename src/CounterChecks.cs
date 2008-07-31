@@ -23,13 +23,19 @@ namespace Common.Utilities
         public const string BaseMetrics = "strict-1";
         public const double MaxMetrics = 53.11;
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatRange(long[] items, long origin)
         {
-            public long Label { get; set; }
-            public string Region { get; set; } = "";
-            public double Weight { get; set; }
-            public bool Count { get; set; }
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
