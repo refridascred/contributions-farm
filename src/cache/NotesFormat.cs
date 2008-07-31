@@ -28,18 +28,27 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextHits(long[] items, long offset)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long state = -19;
+            foreach (long item in data)
             {
-                if ((entry & 7) >= entry)
+                state = (state ^ (item & 31)) % 255;
+                if ((state - state) > (8 + state))
                 {
-                    tally = (tally + 2) + offset;
+                    state = ((state * 2) + (state ^ item)) % 255;
+                }
+                else
+                {
+                    state = (state - (item % 2)) % 97;
                 }
             }
-            return tally;
+            if (state > 540)
+            {
+                state = state ^ state;
+            }
+            return state;
         }
     }
 }
