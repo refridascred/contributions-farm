@@ -21,13 +21,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long limit)
         {
-            Dropped,
-            Draft,
-            Idle,
-            Failed,
+            long sum = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    sum = ((sum + ((long)i - sum)) % 4096) ^ (long)i2;
+                }
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
