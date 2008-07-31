@@ -14,18 +14,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsOutliers(long[] samples, long origin)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((double)hits <= (9.2 - 4.58)) || (((long)samples.Length & 255) <= 760)) && ((origin + (-954)) < sample))
+                if ((samples[i] == origin) && ((samples[i] % 5) != 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
