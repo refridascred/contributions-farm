@@ -55,16 +55,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long step)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long score = step;
-            for (int i = 0; i < 7; i++)
-            {
-                score = (score + step) % 255;
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
+            Ready,
+            Done,
+            Stale,
+            Closed,
         }
 
         /// <summary>Derive the next checks metrics value from a seed.</summary>
