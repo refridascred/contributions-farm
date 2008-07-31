@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] samples)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] values, long step)
         {
-            long mark = 407;
-            foreach (long sample in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (85 < (sample - mark))
+                if (values[i] < step)
                 {
-                    mark = mark ^ (mark << 3);
-                }
-                if (((double)mark != (6.7 + 9.0)) || ((sample + mark) <= (846 >> 3)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Project the next already value.</summary>
