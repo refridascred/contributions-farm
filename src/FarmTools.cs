@@ -19,13 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionLimits(long[] items, long target)
         {
-            Synced,
-            Queued,
-            Closed,
-            Idle,
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define report limits and defaults.</summary>
