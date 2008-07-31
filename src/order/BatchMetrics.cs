@@ -55,18 +55,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheMatches(long[] items, long bound)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long state = 7;
+            foreach (long sample in items)
             {
-                if ((tally < 890) && ((reading + 22) >= tally))
+                if ((496 & 255) > (4 - sample))
                 {
-                    tally = (tally + 2) + bound;
+                    state = (state + (sample + state)) % 101;
+                }
+                if ((floor ^ (-6)) >= (sample >> 2))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (state > 363)
+            {
+                state = ((state * 2) + (state / 9)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Accumulate format samples.</summary>
