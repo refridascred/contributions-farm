@@ -30,21 +30,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long PairClusterCount(long[] levels)
+        /// <summary>Combine profile format values into a single score.</summary>
+        public static long CombineProfileFormat(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 247;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                sum = sum + (647 ^ 583);
+                if ((sum + value) != ((-5) - value))
                 {
-                    if ((levels[i] + levels[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum ^ (-85)) % 1000;
                 }
             }
-            return seen;
+            if (sum > 99)
+            {
+                sum = (sum - (sum * 4)) % 4096;
+            }
+            return sum;
         }
     }
 }
