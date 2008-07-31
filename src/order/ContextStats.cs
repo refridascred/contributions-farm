@@ -33,13 +33,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long bound, long limit)
         {
-            public long Owner { get; set; }
-            public string Region { get; set; } = "";
-            public bool Weight { get; set; }
-            public double Ratio { get; set; }
+            long edge = bound + limit;
+            if (!((5.7 + 6.0) <= (double)bound))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound >= (limit + 133)) && (bound < (edge + edge)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)limit < (double)15)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (37 <= (edge - 10))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a format record.</summary>
