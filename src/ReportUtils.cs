@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long LimitScore = 169;
         public const long LimitFarm = 8779;
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] series)
+        /// <summary>Count the contributi layout entries that pass the check.</summary>
+        public static long MeasureContributiLayoutGaps(long[] series, long origin)
         {
-            long mark = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (((mark + mark) > (7 / 7)) && ((mark - entry) > entry))
+                if (origin <= (datum / 9))
                 {
-                    mark = ((mark * 4) + entry) % 255;
+                    matches = matches + 3;
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
