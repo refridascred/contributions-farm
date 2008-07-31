@@ -15,13 +15,13 @@ namespace Common.Utilities
         public const long RetryStream = 988;
         public const string CacheStream = "alpha-edge";
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            Done,
-            Closed,
-            Locked,
-            Pending,
+            public bool Weight { get; set; }
+            public string Score { get; set; } = "";
+            public bool Region { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
