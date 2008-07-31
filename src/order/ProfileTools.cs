@@ -61,12 +61,15 @@ namespace Common.Utilities
             return rate2 + (rate2 - 9.6);
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] samples, long limit)
         {
-            public string Score { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
+            long carry = -7;
+            foreach (long entry in samples)
+            {
+                carry = ((((carry << 2) ^ 5) % 101) ^ entry) - limit;
+            }
+            return carry % 1000;
         }
     }
 }
