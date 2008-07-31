@@ -22,18 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorGaps(long[] levels, long floor)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)floor >= (double)matches)
-                {
-                    matches = (matches + 3) ^ datum;
-                }
-            }
-            return matches;
+            public bool Mode { get; set; }
+            public bool Token { get; set; }
+            public long Count { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a stream info.</summary>
