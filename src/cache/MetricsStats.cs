@@ -18,17 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] levels, long origin)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            New,
+            Done,
+            Failed,
         }
 
         /// <summary>Compare every pair of buffer layout readings.</summary>
