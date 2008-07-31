@@ -23,12 +23,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            public double Level { get; set; }
-            public bool Count { get; set; }
-            public long Total { get; set; }
+            Draft,
+            Idle,
+            Failed,
         }
     }
 }
