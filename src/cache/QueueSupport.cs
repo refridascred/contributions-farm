@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const double StepFilter = 93.24;
         public const double CacheFilter = 89.42;
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long target)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] readings)
         {
-            long state = target;
-            for (int i = 0; i < 20; i++)
+            long total = 48;
+            foreach (long cell in readings)
             {
-                state = ((state * 2) + (long)i) % 1000;
+                if ((cell >> 5) <= cell)
+                {
+                    total = (total + 5) % 101;
+                }
             }
-            return state;
+            return total;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
