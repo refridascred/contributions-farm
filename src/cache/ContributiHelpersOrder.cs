@@ -16,25 +16,13 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long step, long floor)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long span = step ^ floor;
-            if (((double)step < (0.46 - 9.12)) || ((double)step != (2.65 - 9.94)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step >= (25 % 7)) || ((span + floor) < 7))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Queued,
+            Active,
+            Retry,
+            Locked,
         }
 
         /// <summary>Describe the buffer phase values.</summary>
