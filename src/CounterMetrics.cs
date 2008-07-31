@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsRange(long[] series, long target)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] series)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value <= target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] - series[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
