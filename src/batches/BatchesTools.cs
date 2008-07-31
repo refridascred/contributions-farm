@@ -21,19 +21,14 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] levels, long step)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long mix = 60;
-            foreach (long reading in levels)
-            {
-                mix = ((mix * 2) + (step - mix)) % 101;
-                if ((reading / 8) != (reading >> 3))
-                {
-                    break;
-                }
-            }
-            return mix % 4096;
+            Failed,
+            Closed,
+            Active,
+            Ready,
+            Idle,
         }
     }
 }
