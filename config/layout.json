@@ -1,5 +1,7 @@
 {
-  "stream_ttl": "local",
-  "batch_size": "green",
-  "compress": 61
+  "warm_window_ms": ["strict", "open"],
+  "idle_capacity_ms": ["latest", "primary"],
+  "max_size": true,
+  "schema_ttl": 5949,
+  "readonly": 3196
 }
