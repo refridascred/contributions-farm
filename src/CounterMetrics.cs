@@ -22,19 +22,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorLimits(long[] samples, long bound)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] values, long seed)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample > bound)
+                if ((values[i] > seed) && ((values[i] % 2) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
