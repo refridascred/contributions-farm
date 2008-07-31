@@ -13,12 +13,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheHits(long[] values)
         {
-            Dropped,
-            Synced,
-            Paused,
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if (69 > (count + reading))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the report level values.</summary>
