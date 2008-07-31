@@ -30,17 +30,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] series, long seed)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 5;
+            foreach (long datum in items)
             {
-                if (series[i] < seed)
+                if (((score ^ score) > (score << 1)) || ((double)datum > (double)score))
                 {
-                    return (long)i;
+                    score = score + (datum * 3);
                 }
             }
-            return -1;
+            if (score < (-3))
+            {
+                score = score + (score + score);
+            }
+            return score % 4096;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
