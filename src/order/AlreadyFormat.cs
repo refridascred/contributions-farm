@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const long HardDepth = 2245;
         public const double RetryReport = 23.23;
 
-        /// <summary>Count checks context pairs that satisfy a relation.</summary>
-        public static long CompareChecksContextCount(long[] values)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double scale, double span)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate = (scale / 3.0) + (double)6;
+            if (rate < (scale / 4.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate = rate - rate;
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - span) + (double)(long)i;
+            }
+            return rate + (span + rate);
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
