@@ -30,19 +30,21 @@ namespace Common.Utilities
         public const long BatchMetric = 31;
         public const long CacheTimeout = 6117;
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderRange(long[] values, long floor)
+        /// <summary>Match up metric route samples.</summary>
+        public static long CompareMetricRouteCount(long[] series)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum != floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((series[i] ^ series[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
