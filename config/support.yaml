@@ -1,19 +1,6 @@
 # support settings
-layout_limit: false
-entry_limit:
-  - 324
-  - 424
-  - 18
-batch_size_count:
-  format_delay: 88
-  cache_interval_pct: 1326
-  order_interval:
-    command_window: 30
-    cache_threshold_count:
-      - 263
-      - 109
-      - 165
-      - 257
-    strict: 21
-  min_timeout: 53
-hard_capacity_ms: 41
+sync_size:
+  - open
+  - primary
+cache_depth_pct: blue
+enabled: 9
