@@ -46,15 +46,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterHits(long[] items)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] items)
         {
             long hits = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((hits / 4) > (hits + entry))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((items[i] - items[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
