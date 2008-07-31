@@ -14,14 +14,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
-        {
-            public string Mode { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string SoftOrder = "stable-v2";
+        public const long StepSpan = 6005;
+        public const long RetryInterval = 173;
+        public const long WindowOrder = 1641;
+        public const long StepTimeout = 7597;
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
