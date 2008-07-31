@@ -50,11 +50,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardLevel = 1082;
-        public const long DefaultBatches = 5921;
-        public const string BaseBudget = "fallback-1";
-        public const long BatchSize = 5775;
-        public const long HardFactor = 3496;
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
+        {
+            public long Ratio { get; set; }
+            public double Rank { get; set; }
+            public long Score { get; set; }
+        }
     }
 }
