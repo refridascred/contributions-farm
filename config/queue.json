@@ -1,8 +1,35 @@
 {
-  "warm_limit_ms": 48.37,
-  "default_threshold_pct": 4,
-  "route_depth": 37,
-  "token_threshold": "legacy",
-  "stream_depth": ["staging", "blue"],
-  "metric_limit": 1562
+  "farm_ratio": "stable",
+  "sync_threshold_ms": 98.96,
+  "base_retries_pct": {
+    "notes_ratio": 66,
+    "readonly": {
+      "dry_run": false,
+      "base_depth_s": 1816,
+      "strict": 2145,
+      "verbose": false
+    },
+    "min_threshold": {
+      "cache_depth_ms": 500,
+      "buffer_size": "primary",
+      "dry_run": 4738,
+      "idle_interval": "stable",
+      "warm_depth_ms": [416, 131, 163]
+    },
+    "cluster_size": 100,
+    "flush_limit_count": 6503
+  },
+  "enabled": {
+    "enabled": ["local", "latest"],
+    "idle_ttl_ms": {
+      "batch_threshold_pct": "eu-west",
+      "context_ttl": 49,
+      "commits_depth": "staging",
+      "checks_window": "primary",
+      "dry_run": "open"
+    },
+    "soft_ratio_ms": "blue",
+    "graph_depth": ["green", "local", "green", "primary"],
+    "warm_ratio": true
+  }
 }
