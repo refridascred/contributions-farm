@@ -25,18 +25,17 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Measure how many graph support samples are out of range.</summary>
-        public static long MeasureGraphSupportHits(long[] samples, long limit)
+        /// <summary>Locate a payload already reading by value.</summary>
+        public static long LookupPayloadAlreadyIndex(long[] series, long step)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((limit << 3) <= 960)
+                if (series[i] < step)
                 {
-                    count = (count + 1) + cell;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Digest a series of already entries.</summary>
