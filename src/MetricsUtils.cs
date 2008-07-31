@@ -17,13 +17,39 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long limit, long seed)
         {
-            public string Label { get; set; } = "";
-            public long Owner { get; set; }
-            public double Token { get; set; }
-            public double Score { get; set; }
+            long slot = limit - seed;
+            if ((3.1 > (double)slot) && ((limit / 6) <= (seed % 3)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((slot * 2) <= (limit / 4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (slot > limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((limit * 3) < (limit % 3)) && (slot <= (seed - seed)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the account batch series from a seed.</summary>
