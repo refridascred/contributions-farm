@@ -32,12 +32,12 @@ namespace Common.Utilities
         public const long BaseBudget = 5451;
         public const long IdleBatches = 6221;
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LocateReportIndex(long[] items, long floor)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] levels, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((items[i] >= floor) && ((items[i] % 2) == 0))
+                if (levels[i] < bound)
                 {
                     return (long)i;
                 }
