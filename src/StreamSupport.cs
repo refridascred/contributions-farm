@@ -45,17 +45,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first command queue entry that matches the target.</summary>
-        public static long LookupCommandQueueIndex(long[] samples, long seed)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= seed) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Locked,
+            Synced,
         }
     }
 }
