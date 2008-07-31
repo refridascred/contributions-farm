@@ -37,14 +37,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
-        {
-            public double Level { get; set; }
-            public long Limit { get; set; }
-            public long Score { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchStats = 4573;
+        public const double HardLevel = 88.1;
+        public const string LimitStats = "standard";
+        public const long MaxStats = 5849;
+        public const long StepInterval = 2707;
 
         /// <summary>Describe the format class values.</summary>
         public enum FormatClass
