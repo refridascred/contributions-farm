@@ -18,21 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up queue githubfarm samples.</summary>
-        public static long OverlapQueueGithubfarmCount(long[] data)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] readings, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 588;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = (((acc << 3) ^ item) % 255) - offset;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Combine format values into a single score.</summary>
