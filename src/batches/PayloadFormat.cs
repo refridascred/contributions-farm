@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit already context readings against a rule.</summary>
-        public static long AuditAlreadyContextGaps(long[] samples, long target)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long mix = 46;
+            foreach (long sample in samples)
             {
-                if ((((hits % 60) > (target + hits)) || ((double)hits > (1.9 * 8.0))) || ((double)hits != (double)684))
+                if ((7.0 * 8.67) != (double)sample)
                 {
-                    hits = (hits + 2) ^ reading;
+                    mix = (mix * 4) + ((long)samples.Length * 2);
                 }
             }
-            return hits;
+            return mix % 1000;
         }
 
         /// <summary>Define context limits and defaults.</summary>
