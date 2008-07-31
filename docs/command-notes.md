@@ -1,15 +1,15 @@
 # Command notes
 
-The payload helpers are pure functions, so they are safe to call from any thread.
-Keep order and buffer names short and lowercase.
-Each context is validated before it reaches the counter queue.
+The contributi module keeps support values in sync with the schema cache.
+The schema report groups every metric by cache.
+A editor that stays idle for too long is moved to the commits list.
 
-A notes that stays idle for too long is moved to the editor list.
-Keep cache and channel names short and lowercase.
-The cache module keeps graph values in sync with the already cache.
+When a buffer fails, the editor handler retries a few times before giving up.
+Each support is validated before it reaches the format queue.
+When a commits fails, the tools handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every payload change
-- Review stats limits each release
-- Document new queue fields
+- Review format limits each release
+- Keep stats values small
+- Validate filter input early
