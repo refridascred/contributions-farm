@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterOutliers(long[] samples)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (((tally / 8) > (tally * 2)) || (7.6 >= (double)(long)samples.Length))
-                {
-                    tally = (tally + 1) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseBudget = 2334;
+        public const double BatchRatio = 78.95;
+        public const long MinCount = 8298;
+        public const long SoftSpan = 281;
+        public const long BaseCommand = 3798;
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long SortGithubfarm(long limit, long step)
