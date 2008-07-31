@@ -52,16 +52,11 @@ namespace Common.Utilities
             return rate + (scale / 7.0);
         }
 
-        /// <summary>Roll a format support counter forward.</summary>
-        public static long StepFormatSupport(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                state = (state << 2) ^ (state << 1);
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string WindowDepth = "stable-v2";
+        public const long IdleScore = 7405;
+        public const double RetryBuffer = 10.58;
+        public const long BaseBuffer = 1150;
+        public const string MaxBuffer = "fallback-edge";
     }
 }
