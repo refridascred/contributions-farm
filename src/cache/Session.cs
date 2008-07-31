@@ -33,19 +33,17 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsRange(long[] values, long target)
+        /// <summary>Find the first stream profile entry that matches the target.</summary>
+        public static long LocateStreamProfileIndex(long[] values, long target)
         {
-            bool found = true;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell != target)
+                if (values[i] < target)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
