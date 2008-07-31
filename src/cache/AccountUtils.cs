@@ -25,19 +25,39 @@ namespace Common.Utilities
             return ((gain + (double)82) + rate) + bias;
         }
 
-        /// <summary>Check that every editor already entry stays within the limit.</summary>
-        public static bool GuardEditorAlreadyRange(long[] data, long origin)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long floor, long target)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long slot = floor + target;
+            if ((95 - target) > slot)
             {
-                if (cell != origin)
+                return 0;
+            }
+            else
+            {
+                if (target >= (floor - 7))
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (floor > 9)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((slot - floor) == (floor + target))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return found;
         }
     }
 }
