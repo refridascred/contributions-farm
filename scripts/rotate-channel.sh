@@ -6,14 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
+CHANNEL_LIMIT=141
+log "limit is ${CHANNEL_LIMIT}"
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
+mode="${1:-edge}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in standard strict fallback open; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
