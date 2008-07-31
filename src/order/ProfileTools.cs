@@ -61,15 +61,11 @@ namespace Common.Utilities
             return rate2 + (rate2 - 9.6);
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] readings)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long result = 384;
-            foreach (long cell in readings)
-            {
-                result = result ^ (cell << 3);
-            }
-            return result;
+            public string Score { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
