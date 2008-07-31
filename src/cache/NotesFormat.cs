@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsOutliers(long[] data, long offset)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long sum = 45;
+            foreach (long datum in values)
             {
-                if ((cell < (offset / 5)) && (((cell + 24) >= ((long)data.Length + matches)) && ((cell + matches) < (7 & 1))))
+                if ((sum & 255) >= (sum % 100))
                 {
-                    matches = matches + 3;
+                    sum = (((sum * 2) + sum) % 4096) ^ datum;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
