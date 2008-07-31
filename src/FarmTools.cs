@@ -32,12 +32,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            Queued,
-            Failed,
             Pending,
+            Done,
+            Locked,
         }
     }
 }
