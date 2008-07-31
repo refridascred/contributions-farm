@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderMatches(long[] items, long offset)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((double)matches >= 1.2)
-                {
-                    matches = ((matches + 2) + reading) - offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Total { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public bool Label { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Accumulate graph samples.</summary>
