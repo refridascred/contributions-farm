@@ -62,18 +62,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many token profile samples are out of range.</summary>
-        public static long MeasureTokenProfileMatches(long[] samples, long bound)
+        /// <summary>Find the first route already entry that matches the target.</summary>
+        public static long SeekRouteAlreadyIndex(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(((8.1 - 15.0) != (double)bound) || ((8 * 4) < (reading + seen))))
+                if ((data[i] <= target) && ((data[i] % 3) == 0))
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
