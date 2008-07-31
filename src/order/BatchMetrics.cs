@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 10; i++)
-            {
-                mark = mark ^ (target / 5);
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BaseScore = "standard-1";
+        public const string BaseInterval = "legacy";
+        public const double MaxMetrics = 75.37;
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long CountGithubfarmHits(long[] items)
