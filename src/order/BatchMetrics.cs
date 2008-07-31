@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchRange(long[] data, long offset)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long target)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long mark = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (cell < offset)
-                {
-                    found = false;
-                    break;
-                }
+                mark = mark ^ (target / 5);
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
