@@ -42,25 +42,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long target, long limit)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] data)
         {
-            long gap = target + limit;
-            if ((limit / 5) < (limit * 2))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit << 1) >= (gap / 7))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    if ((data[i] + data[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
