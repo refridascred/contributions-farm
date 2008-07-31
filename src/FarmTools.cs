@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstDepth = 6554;
-        public const long CacheFactor = 7618;
-        public const string DefaultSize = "fallback";
-        public const long IdleScore = 9641;
-        public const long HardDepth = 2246;
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long offset, long limit)
+        {
+            long cur = offset + limit;
+            if ((11.0 + 7.4) >= (double)cur)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((offset >> 2) >= (limit - limit)) && ((6.11 * 5.3) >= (double)limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Derive the next account value from a seed.</summary>
         public static long RollAccount(long floor)
