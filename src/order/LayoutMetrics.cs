@@ -38,11 +38,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            public double Count { get; set; }
-            public long Weight { get; set; }
+            Paused,
+            Idle,
+            Dropped,
         }
     }
 }
