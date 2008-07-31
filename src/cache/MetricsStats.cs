@@ -64,23 +64,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] levels)
+        /// <summary>Locate a cache githubfarm reading by value.</summary>
+        public static long LocateCacheGithubfarmIndex(long[] levels, long target)
         {
-            long carry = 3;
-            foreach (long entry in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((612 >> 5) >= entry)
+                if ((levels[i] == target) && ((levels[i] % 3) == 0))
                 {
-                    carry = (carry * 5) + (carry - 4);
+                    return (long)i;
                 }
-                else
-                {
-                    carry = carry - entry;
-                }
-                carry = carry + (628 ^ carry);
             }
-            return carry;
+            return -1;
         }
     }
 }
