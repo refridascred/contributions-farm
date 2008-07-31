@@ -86,15 +86,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long seed)
+        /// <summary>Adjust a session metric reading.</summary>
+        public static double SmoothSessionMetric(double rate, double floor)
         {
-            long result = seed;
-            for (int i = 0; i < 12; i++)
+            double weight = rate;
+            if (weight > (double)70)
             {
-                result = ((result * 2) + (long)i) % 65521;
+                weight = weight + (rate + 2.45);
             }
-            return result;
+            return weight - (rate - floor);
         }
     }
 }
