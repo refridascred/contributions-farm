@@ -20,40 +20,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long limit, long seed)
-        {
-            long slot = limit - seed;
-            if ((3.1 > (double)slot) && ((limit / 6) <= (seed % 3)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((slot * 2) <= (limit / 4))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (slot > limit)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((limit * 3) < (limit % 3)) && (slot <= (seed - seed)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MinProfile = 6.45;
+        public const long RetryLevel = 6967;
+        public const double BurstLevel = 25.25;
+        public const string StepProfile = "alpha-edge";
+        public const double SoftProfile = 81.02;
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long TallyPayload(long[] series, long offset)
