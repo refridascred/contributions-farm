@@ -19,11 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordMatches(long[] readings)
         {
-            public string Count { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((item & 7) >= ((long)readings.Length >> 2))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
