@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 7378;
-        public const long SoftProfile = 740;
-        public const string CacheProfile = "latest-v2";
-        public const double StepProfile = 15.6;
-        public const long MinBudget = 8454;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileHits(long[] levels)
+        {
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (reading < (reading - reading))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long TallyCommits(long[] levels)
