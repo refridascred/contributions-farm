@@ -26,12 +26,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 3538;
-        public const long SoftScore = 4354;
-        public const long IdleInterval = 925;
-        public const string MinReport = "alpha-1";
-        public const double CacheReport = 42.59;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchOutliers(long[] levels, long limit)
+        {
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((662 - 1) > reading)
+                {
+                    matches = (matches + 3) + limit;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool CheckEditorBounds(long[] samples, long limit)
