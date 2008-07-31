@@ -44,12 +44,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiHits(long[] readings, long target)
         {
-            Done,
-            Queued,
-            Failed,
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if (((5.0 * 3.1) != (double)target) || ((double)item <= (6.16 * 10.0)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many token profile samples are out of range.</summary>
