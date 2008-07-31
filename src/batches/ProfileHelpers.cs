@@ -44,12 +44,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Roll a commits tools counter forward.</summary>
+        public static long StepCommitsTools(long origin)
         {
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
-            public long Ratio { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
