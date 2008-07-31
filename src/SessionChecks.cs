@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Check that every profile schema entry stays within the limit.</summary>
+        public static bool ValidateProfileSchemaLimits(long[] series, long seed)
         {
-            public bool Weight { get; set; }
-            public string Limit { get; set; } = "";
-            public long Flag { get; set; }
-            public string Size { get; set; } = "";
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
