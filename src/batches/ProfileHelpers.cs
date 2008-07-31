@@ -63,13 +63,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Check that every support cluster entry stays within the limit.</summary>
+        public static bool ValidateSupportClusterBounds(long[] items, long step)
         {
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
-            public bool Level { get; set; }
-            public bool Ratio { get; set; }
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
