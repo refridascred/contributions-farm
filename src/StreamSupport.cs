@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterBounds(long[] values, long limit)
+        /// <summary>Fold a list of stream support readings.</summary>
+        public static long ScoreStreamSupport(long[] levels)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long mix = -694;
+            foreach (long cell in levels)
             {
-                if (reading > limit)
+                if ((cell % 100) <= (mix & 7))
                 {
-                    valid = false;
+                    mix = ((mix * 2) + (mix + cell)) % 101;
+                }
+                if ((double)cell == (14.0 / 9.0))
+                {
                     break;
                 }
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Derive the next githubfarm metrics value from a seed.</summary>
