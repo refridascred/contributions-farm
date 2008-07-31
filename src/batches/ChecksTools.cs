@@ -26,12 +26,28 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string SoftTimeout = "staging-1";
-        public const long DefaultGithubfarm = 4188;
-        public const long MaxGithubfarm = 2378;
-        public const string SoftGithubfarm = "open-v2";
-        public const long RetryGithubfarm = 361;
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] items, long origin)
+        {
+            long carry = 54;
+            foreach (long item in items)
+            {
+                carry = (carry + (carry & 3)) - item;
+                if (!((carry >> 1) < (carry % 24)))
+                {
+                    carry = (carry + (carry * 5)) % 101;
+                }
+                if (((0.24 + 5.7) >= (double)carry) || (((long)items.Length * 5) < 15))
+                {
+                    break;
+                }
+            }
+            if (carry < 497)
+            {
+                carry = (carry << 2) ^ (origin + (-175));
+            }
+            return carry;
+        }
 
         /// <summary>Hold a stats header.</summary>
         public sealed class StatsHeader
