@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterGaps(long[] values, long floor)
         {
-            Idle,
-            Retry,
-            Failed,
-            Synced,
-            Draft,
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((cell - hits) < (floor * 5))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of buffer layout readings.</summary>
