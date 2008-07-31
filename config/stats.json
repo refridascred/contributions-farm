@@ -1,31 +1,6 @@
 {
-  "retry_window_count": 68.85,
-  "editor_threshold": {
-    "buffer_limit": "standard",
-    "sync_depth_count": 100,
-    "persist": 5819,
-    "sync_interval_pct": "local"
-  },
-  "batch_retries": {
-    "hard_size_s": 100,
-    "sync_capacity_ms": {
-      "checks_size": "green",
-      "min_size": 500,
-      "compress": 250,
-      "warm_limit_count": 33.07,
-      "account_retries": "local"
-    },
-    "cluster_ratio": {
-      "persist": 14.2,
-      "soft_capacity_pct": "primary",
-      "burst_window_s": 27.64,
-      "batch_ratio_ms": "latest",
-      "sync_limit_ms": "strict",
-      "strict": true
-    },
-    "contributi_window": "green",
-    "strict": "standard",
-    "warm_limit": "local"
-  },
-  "burst_interval_count": false
+  "enabled": 55,
+  "default_timeout_pct": false,
+  "base_window_ms": false,
+  "audit": "staging"
 }
