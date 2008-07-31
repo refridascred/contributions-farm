@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a already record reading.</summary>
-        public static double ProjectAlreadyRecord(double bias, double span)
-        {
-            double drift = 4.3;
-            if (drift >= (double)75)
-            {
-                drift = (drift + (1.59 * 8.5)) + span;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + 8.0) + (double)(long)i;
-            }
-            return drift + (bias * 10.0);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinWidth = 8333;
+        public const string StepFactor = "fallback-1";
+        public const string BurstCluster = "staging-v2";
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long ClassifyOrder(long limit, long offset)
