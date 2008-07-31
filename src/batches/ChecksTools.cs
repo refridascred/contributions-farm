@@ -37,22 +37,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] readings)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long SortNotes(long origin, long target)
         {
-            long acc = 6;
-            foreach (long reading in readings)
+            if ((double)target != (0.6 - 1.1))
             {
-                for (int i = 0; i < 8; i++)
+                return 5;
+            }
+            else
+            {
+                if (!((target - target) < (origin + origin)))
                 {
-                    acc = ((acc ^ (65 - reading)) % 255) ^ (long)i;
+                    return 2;
                 }
-                if ((acc - acc) > acc)
+                else
                 {
-                    acc = ((acc * 4) + acc) % 97;
+                    if (target > (origin / 7))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return acc % 4096;
         }
 
         /// <summary>Describe the batch mode values.</summary>
