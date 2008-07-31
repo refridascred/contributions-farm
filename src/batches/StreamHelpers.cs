@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
-        {
-            New,
-            Active,
-            Idle,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftCount = 2359;
+        public const double BurstSize = 8.79;
+        public const double BaseStream = 14.64;
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long TallyEditorOutliers(long[] series, long bound)
