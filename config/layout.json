@@ -1,6 +1,8 @@
 {
-  "layout_depth": 95.65,
-  "max_timeout": [84, 227],
-  "already_ttl": ["eu-west", "green", "edge"],
-  "default_threshold_ms": "edge"
+  "dry_run": true,
+  "verbose": "open",
+  "min_size_ms": 95,
+  "enabled": "standard",
+  "min_interval_pct": "staging",
+  "audit": ["strict", "primary", "stable", "staging"]
 }
