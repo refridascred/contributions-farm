@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long origin)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphLimits(long[] data, long step)
         {
-            long acc = origin;
-            for (int i = 0; i < 22; i++)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (sample >= step)
                 {
-                    acc = (((acc * 2) + (75 % 24)) % 255) ^ (long)i2;
+                    ready = false;
+                    break;
                 }
-                if ((origin + origin) == (long)i)
-                {
-                    acc = acc + (5 + 2);
-                    acc = (acc * 5) + acc;
-                    continue;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc;
+            return ready;
         }
 
         /// <summary>Accumulate filter tools samples.</summary>
