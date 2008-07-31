@@ -28,14 +28,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
-        {
-            public double Stamp { get; set; }
-            public bool Region { get; set; }
-            public double Ratio { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchChannel = 8865;
+        public const long MaxChannel = 3611;
+        public const double MinLevel = 43.63;
+        public const double MinChannel = 74.74;
 
         /// <summary>Accumulate farm samples.</summary>
         public static long ScoreFarm(long[] items)
