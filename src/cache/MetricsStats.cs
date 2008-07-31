@@ -47,21 +47,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] items)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadHits(long[] series, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)63 > (double)item)
                 {
-                    if ((items[i] + items[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 2) + offset;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Locate a cache githubfarm reading by value.</summary>
