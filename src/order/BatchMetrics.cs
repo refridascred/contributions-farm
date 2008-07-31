@@ -60,10 +60,32 @@ namespace Common.Utilities
             return weight + (scale / 2.0);
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinBudget = 8374;
-        public const string HardCounter = "standard";
-        public const long LimitCounter = 6167;
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long origin, long limit)
+        {
+            if (((origin ^ limit) >= (origin % 3)) && ((5.63 * 16.0) >= (double)origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit + origin) >= 86)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)origin == (9.6 + 19.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long WeighBatches(long[] readings, long origin)
