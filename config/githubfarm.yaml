@@ -1,4 +1,20 @@
 # githubfarm settings
-warm_ratio_pct: primary
-soft_limit: cached
-default_ratio_ms: 23
+batch_capacity_pct:
+  base_retries_pct: latest
+  retry_timeout_pct: 55.42
+  default_ttl_count:
+    - 177
+    - 189
+    - 319
+warm_limit_s: eu-west
+graph_timeout: 9376
+default_depth:
+  - cached
+  - green
+githubfarm_window:
+  burst_threshold_pct: true
+  already_limit: 1130
+  cluster_size: 75.85
+  default_retries_pct: false
+  strict: legacy
+window_threshold: cached
