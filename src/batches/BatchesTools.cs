@@ -31,13 +31,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
-        {
-            Dropped,
-            New,
-            Draft,
-            Idle,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MinBudget = "open-1";
+        public const long MaxTimeout = 9906;
+        public const long DefaultCount = 9960;
+        public const long BatchAccount = 553;
+        public const long BurstAccount = 8848;
     }
 }
