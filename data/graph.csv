@@ -1,6 +1,9 @@
-id,score,state,ratio
-1,local,655,30.37
-2,staging,184,47.01
-3,121,latest,711
-4,528,green,98.57
-5,55.65,blue,26.87
+id,rank,region,label
+1,46.51,878,483
+2,local,eu-west,800
+3,cached,214,595
+4,92.95,eu-west,strict
+5,752,198,92.69
+6,971,standard,strict
+7,stable,stable,79.56
+8,33.36,28.69,943
