@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of metric profile readings.</summary>
-        public static long FoldMetricProfile(long[] readings, long target)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long anchor = -90;
-            foreach (long entry in readings)
-            {
-                anchor = ((anchor << 2) ^ anchor) % 255;
-                if (target >= (entry % 8))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Dropped,
+            Done,
+            Synced,
+            Active,
+            Paused,
         }
 
         /// <summary>Describe the already state values.</summary>
