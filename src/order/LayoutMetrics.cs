@@ -19,35 +19,21 @@ namespace Common.Utilities
         public const double LimitWidth = 86.12;
         public const double MaxGithubfarm = 69.97;
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] data)
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] data)
         {
-            long score = 59;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i = 0; i < 3; i++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = ((score ^ score) % 97) - (long)i;
-                }
-                if ((14.0 + 14.0) != (double)(long)data.Length)
-                {
-                    score = (score + score) % 4096;
-                }
-                else
-                {
-                    score = (score * 2) + (87 - sample);
-                }
-                score = (score - (score - 9)) % 101;
-                if (((double)score != (6.7 / 9.0)) && ((3.12 - 18.0) <= (double)sample))
-                {
-                    break;
+                    if ((data[i] - data[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (score > (-99))
-            {
-                score = (score * 4) + (score + score);
-            }
-            return score % 65521;
+            return hits;
         }
     }
 }
