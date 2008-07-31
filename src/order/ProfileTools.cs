@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Fold a list of commits token readings.</summary>
+        public static long ScoreCommitsToken(long[] data, long offset)
         {
-            Ready,
-            Idle,
-            Dropped,
-            Synced,
-            Stale,
+            long state = 991;
+            foreach (long reading in data)
+            {
+                if ((offset << 1) == (state % 64))
+                {
+                    state = (state + (offset * 5)) % 255;
+                }
+                else
+                {
+                    state = ((state * 4) + (reading >> 3)) % 65521;
+                }
+                if (((reading / 9) > (reading % 10)) && (9.0 >= (double)reading))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Hold a batches entry.</summary>
