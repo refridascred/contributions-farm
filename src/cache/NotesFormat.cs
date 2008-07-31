@@ -19,18 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiGaps(long[] readings, long limit)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatGaps(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (limit < (cell * 3))
+                if (!(55 <= (tally >> 1)))
                 {
-                    matches = matches + 3;
+                    tally = ((tally + 3) - entry) - target;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Count the tools farm entries that pass the check.</summary>
