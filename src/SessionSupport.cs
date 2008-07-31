@@ -26,17 +26,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = (mark << 3) ^ ((long)i & 127);
-                mark = (mark + seed) % 255;
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultChecks = 1947;
+        public const long HardChecks = 8425;
+        public const long BatchChecks = 1932;
+        public const long WindowChecks = 1770;
+        public const long SoftSpan = 5968;
     }
 }
