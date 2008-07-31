@@ -23,13 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricMatches(long[] series)
         {
-            public double Ratio { get; set; }
-            public long Total { get; set; }
-            public long Flag { get; set; }
-            public bool Count { get; set; }
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((double)datum > (9.1 * 4.0))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
