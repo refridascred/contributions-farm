@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsHits(long[] levels)
         {
-            public bool Size { get; set; }
-            public string Region { get; set; } = "";
-            public long Label { get; set; }
-            public bool Owner { get; set; }
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((value % 10) > (value - (long)levels.Length))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
