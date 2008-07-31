@@ -70,38 +70,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long step, long floor)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderMatches(long[] values)
         {
-            if (!((double)step <= (6.27 * 4.95)))
+            long matches = 0;
+            foreach (long value in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (748 <= (1 + floor))
+                if (matches < 5)
                 {
-                    return 7;
+                    matches = (matches + 2) + value;
                 }
                 else
                 {
-                    if (step < (365 % 16))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (floor >= ((-25) + (-8)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
