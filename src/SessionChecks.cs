@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double LimitSpan = 98.11;
-        public const long LimitCommand = 4204;
-        public const long BurstCommand = 7977;
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
+        {
+            Closed,
+            Paused,
+            Ready,
+            New,
+            Failed,
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string RetryInterval = "alpha-1";
