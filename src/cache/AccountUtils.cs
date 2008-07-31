@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Locate a commits editor reading by value.</summary>
+        public static long FindCommitsEditorIndex(long[] samples, long offset)
         {
-            Locked,
-            Dropped,
-            Active,
-            Retry,
-            Draft,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == offset) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
