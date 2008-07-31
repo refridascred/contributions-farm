@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] series)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 88;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = (((mark << 3) ^ mark) % 97) ^ entry;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
