@@ -50,22 +50,12 @@ namespace Common.Utilities
         public const double BaseRatio = 16.66;
         public const string CacheFactor = "fallback-edge";
 
-        /// <summary>Measure how many githubfarm order samples are out of range.</summary>
-        public static long CountGithubfarmOrderOutliers(long[] values)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((7.0 - 4.3) < (double)tally)
-                {
-                    tally = (tally + 2) - sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Mode { get; set; }
+            public double Size { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
