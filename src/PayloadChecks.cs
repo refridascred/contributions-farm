@@ -20,10 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 2752;
-        public const long BatchRatio = 8430;
-        public const long LimitBuffer = 8545;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsGaps(long[] data, long target)
+        {
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (9.5 > (double)target)
+                {
+                    seen = (seen + 3) + cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next channel value from a seed.</summary>
         public static long StepChannel(long bound)
