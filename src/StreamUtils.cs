@@ -72,22 +72,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderMatches(long[] values)
+        /// <summary>Roll a already metrics counter forward.</summary>
+        public static long DeriveAlreadyMetrics(long step)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long result = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (matches < 5)
-                {
-                    matches = (matches + 2) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return matches;
+            return result;
         }
     }
 }
