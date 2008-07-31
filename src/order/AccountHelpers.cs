@@ -61,22 +61,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] samples, long target)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] data, long offset)
         {
-            long score = 469;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((2.11 + 4.3) > (double)score)
+                if ((data[i] > offset) && ((data[i] % 5) == 0))
                 {
-                    score = ((score * 2) + (score + target)) - cell;
-                }
-                else
-                {
-                    score = score - (target - 5);
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
     }
 }
