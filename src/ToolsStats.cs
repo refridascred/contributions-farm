@@ -46,11 +46,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryScore = 2506;
-        public const string IdleCount = "cached-1";
-        public const double DefaultBatches = 47.67;
-        public const string MinBudget = "fallback";
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] items)
+        {
+            long sum = 931;
+            foreach (long sample in items)
+            {
+                sum = (sum + 0) % 1000;
+                sum = (sum - 642) % 97;
+                sum = (sum ^ (sample & 63)) % 4096;
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool ValidateWindowRange(long[] data, long target)
