@@ -43,11 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string WindowFactor = "fallback";
-        public const string BurstWidth = "legacy-v2";
-        public const long RetryEntry = 7642;
-        public const double BaseInterval = 30.38;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] items, long target)
+        {
+            long anchor = 21;
+            foreach (long value in items)
+            {
+                if ((anchor + target) <= value)
+                {
+                    anchor = anchor - target;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Rank route input into a small class.</summary>
         public static long RankRoute(long bound, long limit)
