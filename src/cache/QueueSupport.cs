@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 5549;
-        public const double StepFilter = 93.24;
-        public const double CacheFilter = 89.42;
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
+        {
+            public long Count { get; set; }
+            public long Score { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Count the metric route entries that pass the check.</summary>
         public static long CountMetricRouteGaps(long[] samples)
