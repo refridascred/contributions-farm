@@ -43,19 +43,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] items, long origin)
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double rate, double bias)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            double mean = bias;
+            if (mean <= bias)
             {
-                if (entry != origin)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = mean - (mean / 4.0);
             }
-            return stale;
+            else
+            {
+                mean = mean - (bias + rate);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - 7.6) + (double)(long)i;
+            }
+            return mean + (bias / 2.0);
         }
     }
 }
