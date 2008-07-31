@@ -64,18 +64,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the checks commits entries that pass the check.</summary>
-        public static long TallyChecksCommitsGaps(long[] data, long bound)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long step)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long score = step;
+            for (int i = 0; i < 7; i++)
             {
-                if ((11.0 / 8.0) != (double)cell)
-                {
-                    matches = (matches + 1) - bound;
-                }
+                score = (score + step) % 255;
+                score = ((score * 3) + (long)i) % 101;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
