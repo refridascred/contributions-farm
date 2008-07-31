@@ -31,20 +31,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorBounds(long[] samples, long limit)
-        {
-            bool found = true;
-            foreach (long sample in samples)
-            {
-                if (sample != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 6077;
+        public const long MinBatches = 4502;
+        public const long WindowSpan = 1922;
+        public const long RetryBatches = 8767;
+        public const long BatchTimeout = 7101;
 
         /// <summary>Hold a buffer summary.</summary>
         public sealed class BufferSummary
