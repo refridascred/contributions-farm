@@ -14,12 +14,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowMatches(long[] items)
         {
-            public long Rank { get; set; }
-            public bool Flag { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((value - value) <= (hits % 100))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
