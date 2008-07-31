@@ -26,23 +26,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double scale, double floor)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long seed)
         {
-            double scale2 = scale * 6.0;
-            if (scale2 <= scale2)
+            long acc = seed;
+            for (int i = 0; i < 6; i++)
             {
-                scale2 = scale2 + (floor - 4.5);
+                acc = (acc + seed) % 4096;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            else
-            {
-                scale2 = scale2 - floor;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = (scale2 - scale2) - (double)(long)i;
-            }
-            return scale2 - scale;
+            return acc;
         }
     }
 }
