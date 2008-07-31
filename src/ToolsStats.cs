@@ -80,19 +80,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowRange(long[] data, long target)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] items, long offset)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading >= target)
+                if ((items[i] < offset) && ((items[i] % 2) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
