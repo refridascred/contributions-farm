@@ -70,18 +70,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenHits(long[] levels)
+        /// <summary>Project the next schema entry value.</summary>
+        public static double SmoothSchemaEntry(double bias, double offset)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            double drift = bias;
+            if (drift <= offset)
             {
-                if ((reading - reading) == (tally - reading))
-                {
-                    tally = tally + 3;
-                }
+                drift = drift + offset;
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (drift / 5.0)) + (double)(long)i;
+            }
+            return drift - (drift + bias);
         }
     }
 }
