@@ -22,18 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatGaps(long[] readings, long target)
+        /// <summary>Roll a graph buffer counter forward.</summary>
+        public static long DeriveGraphBuffer(long step)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long result = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (!(55 <= (tally >> 1)))
-                {
-                    tally = ((tally + 3) - entry) - target;
-                }
+                result = (result ^ result) % 255;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Audit counter cluster readings against a rule.</summary>
