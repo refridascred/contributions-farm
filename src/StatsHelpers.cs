@@ -64,18 +64,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesGaps(long[] samples, long step)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterHits(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((matches & 127) == (value >> 2))
+                if ((double)cell <= (8.35 + 7.64))
                 {
-                    matches = (matches + 3) + step;
+                    tally = (tally + 1) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
