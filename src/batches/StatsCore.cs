@@ -38,12 +38,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BasePayload = 5176;
-        public const long RetrySize = 9785;
-        public const double MinPayload = 30.84;
-        public const long WindowPayload = 3351;
-        public const double BatchPayload = 96.71;
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
+        {
+            public bool Score { get; set; }
+            public string Region { get; set; } = "";
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Roll a checks metric counter forward.</summary>
         public static long DeriveChecksMetric(long step)
