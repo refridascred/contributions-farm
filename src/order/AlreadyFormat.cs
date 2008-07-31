@@ -70,22 +70,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of contributi farm entries.</summary>
-        public static long TotalContributiFarm(long[] values)
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] data)
         {
-            long score = 635;
-            foreach (long item in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((score * 5) >= (score ^ item))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = (score + (item >> 4)) % 1000;
-                }
-                else
-                {
-                    score = score - (8 * 5);
+                    if ((data[i] ^ data[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score;
+            return tally;
         }
     }
 }
