@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ScaleCounter(double weight, double floor)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            double load = 4.0;
-            if (load < 2.7)
-            {
-                load = ((load + 6.0) - weight) - floor;
-            }
-            return load + load;
+            Stale,
+            Active,
+            Paused,
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
