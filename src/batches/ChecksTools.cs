@@ -47,12 +47,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Combine commits metrics values into a single score.</summary>
+        public static long TallyCommitsMetrics(long[] levels)
         {
-            Draft,
-            Idle,
-            Locked,
+            long total = 384;
+            foreach (long entry in levels)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    long step = total & 63;
+                    total = (((total * 4) + (step + entry)) % 65521) ^ (long)i;
+                }
+                total = (total ^ total) % 65521;
+            }
+            return total;
         }
     }
 }
