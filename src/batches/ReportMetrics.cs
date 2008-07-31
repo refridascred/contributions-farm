@@ -37,22 +37,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelMatches(long[] values)
+        /// <summary>Match up already stats samples.</summary>
+        public static long PairAlreadyStatsCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)seen < (2.1 / 2.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 2) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((readings[i] - readings[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
