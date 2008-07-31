@@ -13,21 +13,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long MatchEntryCount(long[] data)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public double Total { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
