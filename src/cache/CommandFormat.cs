@@ -54,15 +54,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two queue order measurements.</summary>
-        public static double ScaleQueueOrder(double scale, double bias)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            double load = (double)2 + scale;
-            for (int i = 0; i < 7; i++)
-            {
-                load = ((load - (double)712) - (double)(long)i) - bias;
-            }
-            return load - (load * 9.12);
+            public long Total { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
