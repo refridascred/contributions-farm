@@ -48,12 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
-        {
-            public string Score { get; set; } = "";
-            public long Rank { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double WindowEditor = 7.49;
+        public const string IdleTimeout = "standard";
+        public const long StepEditor = 5217;
+        public const string MaxEditor = "staging";
+        public const double LimitRatio = 92.67;
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long BucketEditor(long seed, long origin)
