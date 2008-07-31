@@ -36,18 +36,20 @@ namespace Common.Utilities
         public const double BaseGraph = 68.02;
         public const double CacheCount = 36.14;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterGaps(long[] series)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long RollMetrics(long floor)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long result = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if ((count + reading) == (71 & 15))
+                if (((result - floor) > ((long)i + result)) && ((result - result) > 950))
                 {
-                    count = count + 2;
+                    result = result + (floor + floor);
                 }
+                result = ((result << 2) ^ (floor - (long)i)) % 65521;
+                result = ((result * 4) + (long)i) % 97;
             }
-            return count;
+            return result;
         }
     }
 }
