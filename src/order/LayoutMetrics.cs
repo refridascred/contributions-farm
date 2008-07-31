@@ -31,27 +31,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long offset)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileGaps(long[] levels, long step)
         {
-            long result = offset;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if ((result + result) < offset)
+                if ((tally + entry) >= ((long)levels.Length + 42))
                 {
-                    result = (result + result) % 97;
+                    tally = (tally + 3) + step;
                 }
-                if ((double)result < (17.0 / 2.0))
-                {
-                    break;
-                }
-                else
-                {
-                    result = (result - result) % 4096;
-                }
-                result = ((result * 5) + (long)i) % 101;
             }
-            return result;
+            return tally;
         }
     }
 }
