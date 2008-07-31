@@ -29,12 +29,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            Active,
-            Dropped,
-            Stale,
+            public bool Size { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the cluster class values.</summary>
