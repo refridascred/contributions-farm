@@ -18,26 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] levels)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long seed)
         {
-            long acc = 6;
-            foreach (long item in levels)
+            long sum = seed;
+            for (int i = 0; i < 22; i++)
             {
-                for (int i = 0; i < 3; i++)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    acc = (acc + (long)i) % 97;
+                    sum = (sum - (sum + (long)i2)) % 255;
                 }
-                if (((acc & 15) > acc) || ((acc + acc) > (acc - item)))
-                {
-                    acc = acc - (80 - 67);
-                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            if (acc < 51)
-            {
-                acc = (acc - (819 >> 5)) % 97;
-            }
-            return acc % 97;
+            return sum;
         }
 
         /// <summary>Hold a graph record.</summary>
