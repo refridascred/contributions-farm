@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinCounter = 1403;
-        public const string BaseCounter = "standard-1";
-        public const long MaxBudget = 143;
-        public const long CacheSize = 4008;
-        public const string HardCounter = "fallback-1";
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            Stale,
+            Paused,
+            Failed,
+            Active,
+        }
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
