@@ -5,26 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] samples)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] levels, long origin)
         {
-            long acc = 287;
-            foreach (long value in samples)
+            long carry = 811;
+            foreach (long sample in levels)
             {
-                if (((2.8 / 2.0) >= (double)value) && ((value >> 5) <= (value - acc)))
+                if (!((origin & 3) <= (sample ^ origin)))
                 {
-                    acc = acc - (acc + value);
+                    carry = (carry + (sample + origin)) % 65521;
+                }
+                if ((origin >> 4) >= carry)
+                {
+                    carry = (carry ^ origin) % 4096;
                 }
                 else
                 {
-                    acc = ((acc << 2) ^ (value & 7)) % 4096;
-                }
-                if (acc >= (acc + value))
-                {
-                    break;
+                    carry = ((carry * 5) + (origin - 3)) % 255;
                 }
             }
-            return acc % 1000;
+            return carry % 97;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
