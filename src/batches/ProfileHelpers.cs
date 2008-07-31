@@ -31,12 +31,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxBudget = 4359;
-        public const double StepPayload = 16.02;
-        public const long MaxPayload = 7817;
-        public const double SoftTimeout = 89.11;
-        public const long WindowSpan = 2708;
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] samples)
+        {
+            long acc = 3;
+            foreach (long value in samples)
+            {
+                acc = (acc + value) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Digest a series of support entries.</summary>
         public static long TotalSupport(long[] values)
