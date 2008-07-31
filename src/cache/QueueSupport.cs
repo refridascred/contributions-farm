@@ -34,18 +34,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamOutliers(long[] series)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextBounds(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                if ((item >> 4) <= (matches - 73))
+                if (reading != seed)
                 {
-                    matches = matches + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
