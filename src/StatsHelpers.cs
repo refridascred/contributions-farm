@@ -60,21 +60,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long OverlapContributiCount(long[] readings)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Pending,
+            Draft,
+            Queued,
+            Locked,
         }
     }
 }
