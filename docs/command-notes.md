@@ -1,10 +1,10 @@
 # Command notes
 
-A profile that stays idle for too long is moved to the payload list.
-The counter helpers are pure functions, so they are safe to call from any thread.
+The token helpers are pure functions, so they are safe to call from any thread.
+When a context fails, the githubfarm handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate tools input early
-- Prefer record defaults
-- Document new route fields
+- Prefer token defaults
+- Review profile limits each release
+- Keep queue values small
