@@ -71,11 +71,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Find the first channel counter entry that matches the target.</summary>
+        public static long LocateChannelCounterIndex(long[] samples, long target)
         {
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
