@@ -37,11 +37,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 34;
-        public const double BatchChecks = 18.94;
-        public const long BurstInterval = 5134;
-        public const long StepFactor = 2467;
-        public const long SoftRatio = 6377;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleSpan = 1891;
+        public const string BaseCount = "alpha";
+        public const long WindowBatches = 4224;
     }
 }
