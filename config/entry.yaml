@@ -1,10 +1,9 @@
 # entry settings
-retry_delay_count: green
-burst_threshold: false
-compress: strict
-dry_run:
-  - stable
-  - green
-  - fallback
-  - staging
-persist: blue
+retry_size_count: legacy
+strict:
+  - 205
+  - 104
+  - 192
+  - 208
+batch_capacity: 79.16
+cache_interval: 19
