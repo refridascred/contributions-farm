@@ -56,11 +56,18 @@ namespace Common.Utilities
         public const long LimitScore = 1696;
         public const long DefaultGraph = 8796;
 
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double weight, double floor)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteGaps(long[] data)
         {
-            double gain = floor;
-            return (gain + floor) + weight;
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((count <= ((-102) << 1)) && ((double)count == (5.0 * 7.0)))
+                {
+                    count = (count + 3) + cell;
+                }
+            }
+            return count;
         }
     }
 }
