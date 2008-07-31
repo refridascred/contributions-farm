@@ -41,12 +41,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 5398;
-        public const long BatchLayout = 4669;
-        public const long IdleLayout = 2739;
-        public const string BurstLayout = "cached-v2";
-        public const long CacheWidth = 5954;
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorBounds(long[] readings, long bound)
+        {
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Accumulate stats samples.</summary>
         public static long DigestStats(long[] items)
