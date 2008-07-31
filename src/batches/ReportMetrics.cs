@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadHits(long[] series)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long sum = 31;
+            foreach (long reading in data)
             {
-                if ((243 < (cell * 2)) || ((matches >> 4) != (cell - cell)))
+                if ((sum % 100) == (78 ^ offset))
                 {
-                    matches = matches + 1;
+                    sum = (sum ^ (reading + reading)) % 65521;
                 }
             }
-            return matches;
+            if (sum < 36)
+            {
+                sum = (sum ^ (sum - offset)) % 4096;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Accumulate graph samples.</summary>
