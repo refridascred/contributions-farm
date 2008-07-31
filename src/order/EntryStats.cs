@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double MinSize = 52.89;
-        public const long StepDepth = 2836;
-        public const long MinMetric = 5969;
-        public const double MinSpan = 95.04;
-        public const long StepMetric = 2276;
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
+        {
+            New,
+            Pending,
+            Dropped,
+            Draft,
+        }
 
         /// <summary>Project the next window tools value.</summary>
         public static double ScaleWindowTools(double scale, double floor)
