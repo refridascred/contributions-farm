@@ -1,8 +1,9 @@
 # support settings
-idle_timeout: 58
-compress:
-  - stable
-  - fallback
-default_threshold_s: 60
-default_capacity_s: 71.13
-cache_size_ms: 1024
+hard_capacity_count: 5662
+enabled: 1024
+burst_interval_ms: true
+filter_retries: legacy
+strict: stable
+idle_delay_pct:
+  - eu-west
+  - strict
