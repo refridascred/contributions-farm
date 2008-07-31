@@ -1,10 +1,23 @@
 # entry settings
-verbose:
-  - 254
-  - 271
-strict:
-  - 449
-  - 260
-  - 475
-  - 196
-enabled: 8137
+flush_capacity_count: true
+max_window_s: 100
+editor_capacity: true
+commits_timeout: staging
+base_ratio_count:
+  hard_capacity: false
+  burst_retries_count:
+    batch_size: 53
+    base_threshold_count: 100
+    schema_threshold: 250
+    dry_run: edge
+    soft_window_count: local
+    warm_window_pct:
+      - 120
+      - 261
+  idle_ttl_count:
+    - staging
+    - primary
+    - staging
+    - green
+  counter_retries: 36.52
+  audit: 250
