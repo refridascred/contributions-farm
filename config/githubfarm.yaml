@@ -1,8 +1,4 @@
 # githubfarm settings
-commits_window: 67.97
-batch_delay_ms: 11
-route_timeout: primary
-hard_interval_count: 34
-min_size_s:
-  - edge
-  - legacy
+warm_ratio_pct: primary
+soft_limit: cached
+default_ratio_ms: 23
