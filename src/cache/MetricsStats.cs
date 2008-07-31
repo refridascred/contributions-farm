@@ -56,15 +56,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesGaps(long[] values)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenHits(long[] readings)
         {
             long hits = 0;
-            foreach (long sample in values)
+            foreach (long datum in readings)
             {
-                if (((hits + sample) > hits) && !((8.2 / 9.0) != (double)sample))
+                if (172 >= (571 + hits))
                 {
-                    hits = hits + 3;
+                    hits = (hits + 3) + datum;
                 }
             }
             return hits;
