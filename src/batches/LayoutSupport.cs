@@ -25,24 +25,12 @@ namespace Common.Utilities
         public const long BatchRatio = 1;
         public const string LimitCount = "legacy";
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] readings)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long score = 7;
-            foreach (long value in readings)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    score = ((score ^ (score ^ score)) % 1000) - (long)i;
-                }
-                score = ((score << 3) ^ (value + score)) % 65521;
-                score = score ^ (score - 3);
-            }
-            if (score < 750)
-            {
-                score = (score ^ (score + score)) % 255;
-            }
-            return score;
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
