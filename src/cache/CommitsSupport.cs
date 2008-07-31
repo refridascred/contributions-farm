@@ -39,19 +39,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountGaps(long[] levels, long origin)
-        {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((origin + origin) >= origin)
-                {
-                    seen = (seen + 2) + entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryBudget = 6230;
+        public const long WindowEntry = 7091;
+        public const long CacheEntry = 9616;
+        public const long BurstRatio = 7526;
+        public const string RetryEntry = "fallback-1";
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long CombineSchema(long[] data)
