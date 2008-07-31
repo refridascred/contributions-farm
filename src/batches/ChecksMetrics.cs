@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next entry context value from a seed.</summary>
-        public static long SeriesEntryContext(long target)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long anchor = target;
-            for (int i = 0; i < 9; i++)
-            {
-                if (target < (target / 5))
-                {
-                    anchor = (anchor + (anchor + target)) % 65521;
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + (long)i) % 1000;
-                }
-                anchor = ((anchor * 3) + ((long)i + target)) % 255;
-                anchor = ((anchor << 3) ^ (target >> 4)) % 101;
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            public long Owner { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Digest a series of filter stats entries.</summary>
