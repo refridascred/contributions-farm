@@ -1,5 +1,22 @@
 # support settings
-poll_retries_count: 6.13
-poll_depth_ms: legacy
-warm_limit_s: latest
-burst_threshold_ms: 100
+soft_limit:
+  - 315
+  - 256
+  - 28
+  - 83
+flush_threshold: true
+schema_delay:
+  cache_capacity_s:
+    cache_threshold: 9751
+    cache_depth_s: staging
+    soft_size_s: standard
+    max_interval_s: stable
+    payload_window: 35
+    idle_window_s: 9493
+  batch_ttl_pct: 3999
+  batch_ttl:
+    verbose: 41.64
+    window_delay: strict
+    batch_timeout_count: 32
+  batch_ttl_ms: stable
+  poll_window: 100
