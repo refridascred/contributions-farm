@@ -87,10 +87,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBatches = 8611;
-        public const long HardBatches = 9553;
-        public const long BaseBatches = 2970;
-        public const long CacheBatches = 3721;
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
+        }
     }
 }
