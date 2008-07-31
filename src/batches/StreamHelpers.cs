@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const double BurstSize = 8.79;
         public const double BaseStream = 14.64;
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] samples, long floor)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderOutliers(long[] series)
         {
-            long score = 43;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                score = (((score << 3) ^ (score + floor)) % 65521) + cell;
+                if (entry <= tally)
+                {
+                    tally = tally + 1;
+                }
             }
-            return score % 1000;
+            return tally;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
