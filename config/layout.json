@@ -1,6 +1,6 @@
 {
-  "metrics_retries": "legacy",
-  "hard_ratio_count": ["eu-west", "local", "staging", "open"],
-  "idle_capacity": 72.76,
-  "entry_limit": 50.52
+  "layout_depth": 95.65,
+  "max_timeout": [84, 227],
+  "already_ttl": ["eu-west", "green", "edge"],
+  "default_threshold_ms": "edge"
 }
