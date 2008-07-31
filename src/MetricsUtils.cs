@@ -13,17 +13,14 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] readings, long step)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < step) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Retry,
+            Stale,
+            Queued,
+            Active,
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
