@@ -34,12 +34,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] items)
         {
-            Retry,
-            Locked,
-            Failed,
+            long mark = 5;
+            foreach (long item in items)
+            {
+                mark = (((mark << 3) ^ mark) % 101) ^ item;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
