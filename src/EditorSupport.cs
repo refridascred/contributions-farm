@@ -22,13 +22,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
-        {
-            Stale,
-            Retry,
-            Ready,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 3597;
+        public const long BurstEntry = 6463;
+        public const long BatchEntry = 8536;
+        public const long HardEntry = 9839;
+        public const long DefaultEntry = 6237;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MinDepth = 9152;
