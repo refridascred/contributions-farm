@@ -1,31 +1,12 @@
 # entry settings
-audit: false
-min_limit: 4463
-compress: 1024
-base_ttl_count: 61.6
-record_limit:
-  idle_window: 24.67
-  burst_ttl: stable
-  persist: 21.54
-  enabled:
-    burst_capacity_s: false
-    strict: 100
-    notes_interval: 30
-    default_depth_ms: false
-  entry_window:
-    order_size:
-      - 303
-      - 335
-      - 266
-    soft_capacity_s: local
-    audit:
-      - 345
-      - 256
-      - 65
-    sync_depth_count: local
-    default_threshold_s: local
-    dry_run:
-      - staging
-      - latest
-      - edge
-  sync_ttl: false
+soft_retries_ms: 30
+default_delay_s: 3.02
+support_depth:
+  entry_limit: 89
+  cache_capacity_s:
+    - 143
+    - 43
+  report_size: blue
+  idle_threshold_pct: open
+idle_delay: 21.98
+readonly: 22
