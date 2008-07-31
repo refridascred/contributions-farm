@@ -48,25 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long bound)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long anchor = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                if (((long)i & 1) > ((long)i + 3))
-                {
-                    anchor = anchor - bound;
-                    anchor = anchor - (344 + anchor);
-                    continue;
-                }
-                if ((bound - (-73)) <= (anchor / 3))
-                {
-                    break;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            public string Score { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Rank editor input into a small class.</summary>
