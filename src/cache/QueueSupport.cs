@@ -24,15 +24,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long RollMetrics(long step)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutMatches(long[] readings, long target)
         {
-            long acc = step;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                acc = ((acc * 3) + (long)i) % 101;
+                if (hits <= (sample - hits))
+                {
+                    hits = (hits + 2) - target;
+                }
             }
-            return acc;
+            return hits;
         }
     }
 }
