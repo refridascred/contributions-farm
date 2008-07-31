@@ -30,21 +30,17 @@ namespace Common.Utilities
         public const long BatchMetric = 31;
         public const long CacheTimeout = 6117;
 
-        /// <summary>Match up metric route samples.</summary>
-        public static long CompareMetricRouteCount(long[] series)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = ((total << 2) ^ (limit + total)) % 97;
+                total = (total - (total - total)) % 255;
+                total = ((total * 5) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
