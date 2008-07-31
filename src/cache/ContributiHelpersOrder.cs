@@ -17,22 +17,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] items)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] items, long target)
         {
-            long result = 808;
-            foreach (long entry in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((-6) <= (result - result))
+                if (items[i] <= target)
                 {
-                    result = result ^ (result + entry);
+                    return (long)i;
                 }
             }
-            if (result < 66)
-            {
-                result = result ^ (result / 4);
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
