@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterBounds(long[] items, long origin)
-        {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BaseFarm = "stable-1";
+        public const long LimitScore = 169;
+        public const long LimitFarm = 8779;
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long ScoreCounter(long[] series)
