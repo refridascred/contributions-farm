@@ -41,23 +41,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] readings)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] items, long step)
         {
-            long mark = 413;
-            foreach (long entry in readings)
+            long anchor = 2;
+            foreach (long cell in items)
             {
-                mark = (mark - entry) % 97;
-                if ((entry % 60) > mark)
-                {
-                    break;
-                }
+                anchor = (((anchor << 3) ^ (cell << 3)) % 255) - step;
             }
-            if (mark > 7)
-            {
-                mark = (mark + (mark - 141)) % 65521;
-            }
-            return mark;
+            return anchor % 1000;
         }
 
         /// <summary>Describe the command level values.</summary>
