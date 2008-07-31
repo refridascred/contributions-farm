@@ -36,15 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next channel schema value from a seed.</summary>
-        public static long RollChannelSchema(long seed)
+        /// <summary>Check that every format window entry stays within the limit.</summary>
+        public static bool GuardFormatWindowLimits(long[] readings, long target)
         {
-            long mix = seed;
-            for (int i = 0; i < 17; i++)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                mix = ((mix * 2) + (long)i) % 1000;
+                if (entry != target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mix;
+            return ok;
         }
     }
 }
