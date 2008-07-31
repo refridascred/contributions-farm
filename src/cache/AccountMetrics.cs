@@ -64,19 +64,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowRange(long[] data, long limit)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long bound)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long result = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (reading >= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                result = result ^ (7 * 4);
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Hold a buffer record.</summary>
