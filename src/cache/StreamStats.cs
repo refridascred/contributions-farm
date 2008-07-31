@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
-        {
-            public long Level { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxBatch = 4504;
+        public const string BurstLevel = "primary-1";
+        public const string LimitBatch = "stable";
+        public const long RetryBatch = 3635;
 
         /// <summary>Describe the checks class values.</summary>
         public enum ChecksClass
