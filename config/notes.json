@@ -1,6 +1,7 @@
 {
-  "checks_ttl": "standard",
-  "batch_capacity": 6801,
-  "base_ttl_ms": false,
-  "dry_run": true
+  "default_ttl_s": true,
+  "min_size_s": "standard",
+  "batch_capacity": [95, 345],
+  "graph_size": true,
+  "readonly": 250
 }
