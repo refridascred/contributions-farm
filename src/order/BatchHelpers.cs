@@ -41,11 +41,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            public double Region { get; set; }
-            public long Owner { get; set; }
+            public double Limit { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
