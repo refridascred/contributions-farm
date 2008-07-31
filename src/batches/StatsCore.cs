@@ -20,21 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] levels)
+        /// <summary>Blend two githubfarm editor measurements.</summary>
+        public static double AdjustGithubfarmEditor(double rate, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double bias = (0.8 + rate) * 18.0;
+            if (bias > (double)47)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias = (bias - (10.0 / 9.0)) - offset;
             }
-            return matches;
+            return bias + (bias + 3.4);
         }
 
         /// <summary>Validate report readings against a bound.</summary>
