@@ -40,17 +40,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the order notes series from a seed.</summary>
-        public static long StepOrderNotes(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = (sum ^ (step << 1)) % 101;
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string WindowContributi = "stable-1";
+        public const string SoftTimeout = "stable-v2";
+        public const double StepContributi = 60.79;
+        public const long BatchWidth = 7356;
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long RankFilter(long bound, long bound2)
