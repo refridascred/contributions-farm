@@ -14,13 +14,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
-        {
-            Synced,
-            Locked,
-            Idle,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string LimitTimeout = "latest-1";
+        public const long WindowSize = 7656;
+        public const long SoftMetric = 9984;
+        public const string LimitDepth = "local";
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long GradeWindow(long step, long bound)
