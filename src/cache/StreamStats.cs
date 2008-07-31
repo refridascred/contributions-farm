@@ -24,21 +24,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up commits filter samples.</summary>
-        public static long OverlapCommitsFilterCount(long[] data)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatLimits(long[] data, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long value in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (value <= floor)
                 {
-                    if ((data[i] + data[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Hold a stream stats.</summary>
