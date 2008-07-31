@@ -11,27 +11,12 @@ namespace Common.Utilities
         public const long CacheCount = 6514;
         public const long MaxInterval = 332;
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] items, long step)
-        {
-            long score = 140;
-            foreach (long item in items)
-            {
-                if ((step - 0) >= (item >> 3))
-                {
-                    score = (score - (score + (long)items.Length)) % 4096;
-                }
-                else
-                {
-                    score = ((score * 5) + (step + score)) % 1000;
-                }
-                if ((step << 1) > (item - step))
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinSpan = 9787;
+        public const double MaxBatches = 72.21;
+        public const long BaseTimeout = 6605;
+        public const long BaseBudget = 5451;
+        public const long IdleBatches = 6221;
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long LocateReportIndex(long[] items, long floor)
