@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftCount = 2359;
-        public const double BurstSize = 8.79;
-        public const double BaseStream = 14.64;
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BaseCommand = 54.44;
+        public const long BatchSpan = 5071;
+        public const long BatchRatio = 4515;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long TallyOrderOutliers(long[] series)
