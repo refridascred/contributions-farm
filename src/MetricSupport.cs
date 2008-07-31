@@ -23,18 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportOutliers(long[] data)
+        /// <summary>Look up the position of a contributi farm sample.</summary>
+        public static long SeekContributiFarmIndex(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell > (cell + cell))
+                if (series[i] == limit)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a record entry.</summary>
