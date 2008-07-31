@@ -28,19 +28,12 @@ namespace Common.Utilities
         public const double LimitRoute = 10.08;
         public const string MinRoute = "open";
 
-        /// <summary>Fold a list of channel metrics readings.</summary>
-        public static long FoldChannelMetrics(long[] levels, long step)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long total = 96;
-            foreach (long value in levels)
-            {
-                total = ((((total << 2) ^ (total >> 5)) % 101) + value) + step;
-            }
-            if (total < 8)
-            {
-                total = total ^ (total & 63);
-            }
-            return total;
+            public long Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the record class values.</summary>
