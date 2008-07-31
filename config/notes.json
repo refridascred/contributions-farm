@@ -1,13 +1,5 @@
 {
-  "min_interval_pct": "cached",
-  "poll_ratio": false,
-  "base_ratio_ms": false,
-  "window_ratio": "eu-west",
-  "sync_delay": {
-    "readonly": 60,
-    "sync_retries_s": false,
-    "retry_ttl": 26.04,
-    "flush_timeout_s": "cached"
-  },
-  "cache_size_ms": 90.39
+  "hard_delay": "legacy",
+  "flush_depth_pct": 40,
+  "tools_size": [230, 303]
 }
