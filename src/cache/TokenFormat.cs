@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderBounds(long[] samples, long seed)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            bool flag = true;
-            foreach (long cell in samples)
-            {
-                if (cell < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Owner { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
