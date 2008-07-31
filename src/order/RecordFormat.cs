@@ -67,22 +67,12 @@ namespace Common.Utilities
         public const long LimitTimeout = 219;
         public const string IdleFactor = "latest";
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] items, long offset)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long acc = -3;
-            foreach (long item in items)
-            {
-                if ((item % 12) >= (acc << 1))
-                {
-                    acc = acc - (item & 127);
-                }
-            }
-            if (acc > 79)
-            {
-                acc = (acc * 2) + (acc - offset);
-            }
-            return acc % 97;
+            Active,
+            Queued,
+            Paused,
         }
     }
 }
