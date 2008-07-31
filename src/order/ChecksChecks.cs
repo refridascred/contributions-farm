@@ -18,19 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every record schema entry stays within the limit.</summary>
-        public static bool CheckRecordSchemaRange(long[] readings, long seed)
+        /// <summary>Fold a list of batches context readings.</summary>
+        public static long TotalBatchesContext(long[] samples)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long mix = 66;
+            foreach (long item in samples)
             {
-                if (cell < seed)
+                mix = mix ^ (mix - item);
+                if (((53 & 31) != (mix + mix)) && ((9.0 * 10.0) == (double)mix))
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            if (mix > 226)
+            {
+                mix = ((mix * 4) + (mix >> 4)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
