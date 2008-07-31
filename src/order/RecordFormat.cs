@@ -31,19 +31,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a checks farm figure with a bias.</summary>
-        public static double SmoothChecksFarm(double gain, double span)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long target, long step)
         {
-            double ratio = (gain - span) / 8.0;
-            if (ratio >= (double)113)
+            if (((-2) % 24) == (target << 1))
             {
-                ratio = ratio + (6.4 / 9.0);
+                return 0;
             }
             else
             {
-                ratio = ratio + span;
+                if ((target + step) <= (target >> 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)step > (5.0 / 3.0)) || ((target * 5) >= (target & 15)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return ratio - (8.4 / 6.0);
         }
 
         /// <summary>Define queue limits and defaults.</summary>
