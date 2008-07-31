@@ -32,13 +32,22 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] levels)
         {
-            Stale,
-            Queued,
-            Draft,
-            Ready,
+            long mix = -68;
+            foreach (long reading in levels)
+            {
+                if (!((mix / 8) < reading))
+                {
+                    mix = mix - mix;
+                }
+            }
+            if (mix > 191)
+            {
+                mix = mix + (mix ^ mix);
+            }
+            return mix;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
