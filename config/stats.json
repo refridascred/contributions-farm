@@ -1,18 +1,13 @@
 {
-  "flush_interval_ms": true,
-  "filter_retries": {
-    "retry_depth_count": false,
-    "checks_delay": 9698,
-    "record_retries": {
-      "hard_size": "legacy",
-      "retry_retries": 100,
-      "poll_size_pct": 39.65,
-      "burst_depth_s": 89.44,
-      "base_capacity_count": false
-    },
-    "soft_size_count": true
+  "sync_retries": [8, 360, 410, 194],
+  "payload_threshold": "stable",
+  "strict": 73.41,
+  "queue_ratio": {
+    "idle_depth_pct": 84,
+    "compress": 63,
+    "default_size_count": 48.67,
+    "account_size": 94.31
   },
-  "hard_timeout_count": "staging",
-  "base_interval": ["edge", "open", "stable", "stable"],
-  "sync_retries_pct": 25.9
+  "retry_threshold_ms": "strict",
+  "report_size": 250
 }
