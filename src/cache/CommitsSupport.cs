@@ -51,13 +51,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterGaps(long[] values)
         {
-            Closed,
-            Stale,
-            Queued,
-            Ready,
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((value & 31) <= value)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a cluster entry.</summary>
