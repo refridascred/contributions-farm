@@ -6,18 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 2))
+for item in stable edge; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-mode="${1:-eu-west}"
+mode="${1:-fallback}"
 case "${mode}" in
-    standard)
+    edge)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+COMMAND_LIMIT=444
+log "limit is ${COMMAND_LIMIT}"
