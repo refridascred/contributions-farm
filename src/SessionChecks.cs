@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const long LimitCommand = 4204;
         public const long BurstCommand = 7977;
 
-        /// <summary>Compare every pair of queue payload readings.</summary>
-        public static long CompareQueuePayloadCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string RetryInterval = "alpha-1";
+        public const long LimitCount = 2465;
+        public const long StepBudget = 1580;
+        public const long MaxMetric = 9000;
+        public const string LimitMetric = "open-1";
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long DigestFarm(long[] readings, long limit)
