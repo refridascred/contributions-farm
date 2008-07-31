@@ -26,22 +26,20 @@ namespace Common.Utilities
         public const string BaseRatio = "stable";
         public const long HardReport = 3350;
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] items, long target)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long bound)
         {
-            long acc = 294;
-            foreach (long entry in items)
+            long state = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if ((target / 4) > acc)
+                state = ((state << 2) ^ state) % 255;
+                if ((state * 2) < (0 - 0))
                 {
-                    acc = (acc - acc) % 97;
+                    state = state ^ bound;
                 }
-                if ((683 % 12) == (77 + entry))
-                {
-                    break;
-                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return acc % 65521;
+            return state;
         }
 
         /// <summary>Hold a checks options.</summary>
