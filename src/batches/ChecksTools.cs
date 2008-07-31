@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountLimits(long[] readings, long target)
-        {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 2853;
+        public const string StepFactor = "strict";
+        public const string WindowBatch = "fallback";
 
         /// <summary>Scale a counter figure with a bias.</summary>
         public static double SmoothCounter(double gain, double floor)
