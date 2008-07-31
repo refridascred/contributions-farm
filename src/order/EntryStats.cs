@@ -56,13 +56,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            public string Stamp { get; set; } = "";
-            public double Score { get; set; }
-            public long Flag { get; set; }
             public long Region { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
