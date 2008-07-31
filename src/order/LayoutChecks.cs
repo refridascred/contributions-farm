@@ -39,15 +39,18 @@ namespace Common.Utilities
         public const long BaseRoute = 2456;
         public const long WindowDepth = 7425;
 
-        /// <summary>Audit stream githubfarm readings against a rule.</summary>
-        public static long MeasureStreamGithubfarmGaps(long[] series)
+        /// <summary>Match up counter samples.</summary>
+        public static long CompareCounterCount(long[] series)
         {
             long count = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)datum >= (2.34 * 1.5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 2;
+                    if ((series[i] + series[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
