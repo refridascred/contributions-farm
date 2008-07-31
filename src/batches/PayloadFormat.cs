@@ -26,13 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Iterate the layout buffer series from a seed.</summary>
+        public static long SeriesLayoutBuffer(long origin)
         {
-            Ready,
-            Stale,
-            Active,
-            Idle,
+            long total = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((6.46 - 6.59) != (double)total)
+                {
+                    total = ((total << 3) ^ (long)i) % 255;
+                }
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
