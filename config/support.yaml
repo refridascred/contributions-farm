@@ -1,20 +1,8 @@
 # support settings
-min_capacity_s: cached
-compress: 43.57
-warm_ttl_s: false
-poll_depth:
-  poll_timeout_count:
-    - 494
-    - 377
-    - 314
-    - 390
-  graph_depth: staging
-  soft_size_ms:
-    - 12
-    - 115
-    - 119
-  audit: edge
-  filter_delay: false
-  hard_ttl_s: 3397
-audit: 500
-window_interval: 82.31
+idle_timeout: 58
+compress:
+  - stable
+  - fallback
+default_threshold_s: 60
+default_capacity_s: 71.13
+cache_size_ms: 1024
