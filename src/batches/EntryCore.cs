@@ -33,15 +33,12 @@ namespace Common.Utilities
             return ratio + (18.0 + span);
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] items, long seed)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long mark = 288;
-            foreach (long item in items)
-            {
-                mark = ((mark ^ (seed + mark)) % 1000) + item;
-            }
-            return mark % 1000;
+            public bool Total { get; set; }
+            public double Size { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Locate a stream reading by value.</summary>
