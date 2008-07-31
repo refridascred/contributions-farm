@@ -19,12 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextMatches(long[] values, long step)
         {
-            Idle,
-            Retry,
-            Failed,
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((sample - sample) > 490)
+                {
+                    seen = (seen + 1) + step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
