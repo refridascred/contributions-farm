@@ -34,11 +34,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            public long Offset { get; set; }
-            public long Mode { get; set; }
+            Failed,
+            Stale,
+            Locked,
+            Queued,
+            Draft,
         }
     }
 }
