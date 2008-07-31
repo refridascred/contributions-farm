@@ -30,19 +30,23 @@ namespace Common.Utilities
         public const long StepSpan = 6028;
         public const long IdleFactor = 9507;
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double SmoothContributi(double ratio, double offset)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] data, long origin)
         {
-            double load = (offset * 5.36) * 1.38;
-            if (load < offset)
+            long total = 63;
+            foreach (long value in data)
             {
-                load = load + load;
+                total = ((total - (36 * 5)) % 97) + value;
+                if (((8.67 - 0.78) != (double)origin) || ((double)origin < (3.15 * 7.0)))
+                {
+                    break;
+                }
             }
-            else
+            if (total < 185)
             {
-                load = load + ratio;
+                total = total ^ (origin + total);
             }
-            return load - ratio;
+            return total % 1000;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
