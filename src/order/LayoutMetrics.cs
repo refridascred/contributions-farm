@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordHits(long[] series)
         {
-            Idle,
-            Queued,
-            Retry,
-            Ready,
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((item - item) < (item + hits))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
