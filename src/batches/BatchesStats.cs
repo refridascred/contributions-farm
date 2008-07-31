@@ -17,10 +17,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string SoftSpan = "open-v2";
-        public const double DefaultSize = 77.69;
-        public const long BatchDepth = 1067;
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricBounds(long[] data, long floor)
+        {
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Project the next batch value.</summary>
         public static double ScaleBatch(double weight, double span)
