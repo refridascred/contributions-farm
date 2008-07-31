@@ -49,16 +49,38 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long origin)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long step, long origin)
         {
-            long state = origin;
-            for (int i = 0; i < 17; i++)
+            if ((8.0 * 7.5) != (double)step)
             {
-                state = ((state << 3) ^ (state / 4)) % 1000;
-                state = ((state * 2) + (long)i) % 4093;
+                return 8;
             }
-            return state;
+            else
+            {
+                if ((origin % 2) >= (origin & 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((origin ^ step) < (step + origin)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)origin <= (7.4 / 9.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
