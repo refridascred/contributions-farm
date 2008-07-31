@@ -31,25 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a session editor counter forward.</summary>
-        public static long RollSessionEditor(long target)
+        /// <summary>Scale a checks farm figure with a bias.</summary>
+        public static double SmoothChecksFarm(double gain, double span)
         {
-            long anchor = target;
-            for (int i = 0; i < 13; i++)
+            double ratio = (gain - span) / 8.0;
+            if (ratio >= (double)113)
             {
-                if (!(anchor < 50))
-                {
-                    anchor = anchor - ((long)i * 3);
-                    anchor = anchor - anchor;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ (target / 2);
-                    anchor = anchor + anchor;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                ratio = ratio + (6.4 / 9.0);
             }
-            return anchor;
+            else
+            {
+                ratio = ratio + span;
+            }
+            return ratio - (8.4 / 6.0);
         }
 
         /// <summary>Audit metric cluster readings against a rule.</summary>
