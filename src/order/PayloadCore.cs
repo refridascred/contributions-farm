@@ -14,19 +14,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandMatches(long[] values, long limit)
-        {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (((long)values.Length + sample) > (sample << 1))
-                {
-                    hits = (hits + 2) + limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSize = 5698;
+        public const long SoftSpan = 5605;
+        public const long DefaultSupport = 4660;
+        public const long LimitSupport = 9138;
+        public const long RetryLevel = 8157;
 
         /// <summary>Describe the token class values.</summary>
         public enum TokenClass
