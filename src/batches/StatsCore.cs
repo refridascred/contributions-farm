@@ -62,19 +62,11 @@ namespace Common.Utilities
         public const long MaxFactor = 7132;
         public const long LimitWidth = 467;
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportRange(long[] samples, long target)
-        {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchCount = 189;
+        public const long BaseBudget = 8774;
+        public const long MinDepth = 5283;
+        public const long MaxBudget = 1531;
+        public const long RetryGraph = 1583;
     }
 }
