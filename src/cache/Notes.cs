@@ -49,19 +49,19 @@ namespace Common.Utilities
         public const long LimitScore = 1696;
         public const long DefaultGraph = 8796;
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricRange(long[] readings, long limit)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double scale, double floor)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            double rate = 4.3 + (double)(-295);
+            if (rate > (double)5)
             {
-                if (reading >= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = rate - (scale - rate);
             }
-            return ok;
+            else
+            {
+                rate = rate - rate;
+            }
+            return rate + (floor * 17.0);
         }
     }
 }
