@@ -22,25 +22,14 @@ namespace Common.Utilities
         public const long IdleFactor = 7157;
         public const string HardEditor = "latest-edge";
 
-        /// <summary>Classify a checks payload pair into a bucket.</summary>
-        public static long SortChecksPayload(long target, long floor)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long next = target - floor;
-            if (((next + floor) == (115 ^ next)) && (((-244) / 6) != (floor - target)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((next ^ target) < target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Dropped,
+            New,
+            Failed,
+            Pending,
+            Synced,
         }
     }
 }
