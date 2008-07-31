@@ -41,18 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] values, long seed)
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double weight, double span)
         {
-            long sum = 74;
-            foreach (long entry in values)
+            double drift = weight;
+            if (drift >= weight)
             {
-                if ((entry + sum) >= sum)
-                {
-                    sum = (((sum * 4) + (entry & 7)) % 255) - seed;
-                }
+                drift = (drift - (drift / 6.0)) + span;
             }
-            return sum;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (drift - weight)) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
