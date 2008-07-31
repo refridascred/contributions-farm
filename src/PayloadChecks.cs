@@ -74,15 +74,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a session metric reading.</summary>
-        public static double SmoothSessionMetric(double rate, double floor)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long floor)
         {
-            double weight = rate;
-            if (weight > (double)70)
+            long state = floor;
+            for (int i = 0; i < 8; i++)
             {
-                weight = weight + (rate + 2.45);
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return weight - (rate - floor);
+            return state;
         }
     }
 }
