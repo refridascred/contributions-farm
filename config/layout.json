@@ -1,30 +1,7 @@
 {
-  "strict": 46,
-  "hard_delay_pct": {
-    "commits_limit": {
-      "batch_depth_count": [235, 76],
-      "burst_window": "green",
-      "channel_threshold": "blue",
-      "batch_delay_count": false,
-      "audit": false,
-      "cache_limit": 32.98
-    },
-    "compress": 6,
-    "enabled": 81.92,
-    "max_window": 30,
-    "audit": "latest",
-    "poll_delay_s": {
-      "retry_threshold_count": 3045,
-      "burst_depth_pct": false,
-      "max_ratio_s": true,
-      "verbose": ["open", "latest"],
-      "stream_size": 4726
-    }
-  },
-  "hard_retries_s": {
-    "strict": "fallback",
-    "default_interval_count": "stable",
-    "cache_window": "standard",
-    "hard_delay": [169, 434]
-  }
+  "commits_ratio": 500,
+  "counter_window": 58.2,
+  "burst_interval": "stable",
+  "sync_depth_ms": 84.53,
+  "dry_run": true
 }
