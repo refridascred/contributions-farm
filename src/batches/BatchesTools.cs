@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            public string Flag { get; set; } = "";
-            public string Count { get; set; } = "";
-            public string Owner { get; set; } = "";
+            public string Token { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Project the next cluster value.</summary>
