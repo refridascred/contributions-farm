@@ -24,22 +24,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] levels)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double BlendNotes(double scale, double offset)
         {
-            long anchor = 0;
-            foreach (long cell in levels)
+            double drift = 10.0;
+            for (int i = 0; i < 9; i++)
             {
-                if (((cell << 1) < (anchor ^ cell)) && ((anchor / 5) >= anchor))
-                {
-                    anchor = ((anchor * 5) + 7) % 97;
-                }
-                if (!((anchor ^ anchor) == (9 + anchor)))
-                {
-                    break;
-                }
+                drift = ((drift - (offset - 2.78)) + (double)(long)i) + scale;
             }
-            return anchor % 4096;
+            return drift - (0.57 * 7.2);
         }
 
         /// <summary>Hold a account entry.</summary>
