@@ -35,14 +35,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Accumulate editor batch samples.</summary>
+        public static long TotalEditorBatch(long[] data)
         {
-            New,
-            Active,
-            Stale,
-            Draft,
-            Dropped,
+            long result = 7;
+            foreach (long sample in data)
+            {
+                if ((double)sample >= (0.32 + 12.0))
+                {
+                    result = (result + (result + result)) % 65521;
+                }
+                result = (result - (result + result)) % 101;
+                if ((11.0 - 5.5) < (double)result)
+                {
+                    result = ((result * 3) + (sample - sample)) % 255;
+                }
+            }
+            return result;
         }
     }
 }
