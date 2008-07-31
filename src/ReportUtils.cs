@@ -48,23 +48,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] series, long floor)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long mark = -9;
-            foreach (long cell in series)
-            {
-                mark = mark + (cell + mark);
-                if ((65 + floor) == (cell & 3))
-                {
-                    mark = (mark * 4) + 7;
-                }
-                if (232 < (floor ^ cell))
-                {
-                    break;
-                }
-            }
-            return mark;
+            public string Flag { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Combine entry values into a single score.</summary>
