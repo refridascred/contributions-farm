@@ -18,21 +18,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] values)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double SmoothQueue(double scale, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias2 = 5.98;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias2 = ((bias2 + (1.7 + bias)) + (double)(long)i) + scale;
             }
-            return hits;
+            return bias2 - (bias2 - 7.9);
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
