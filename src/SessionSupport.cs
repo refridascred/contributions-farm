@@ -13,12 +13,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long FindAlreadyIndex(long[] samples, long bound)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] series, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (samples[i] > bound)
+                if (series[i] < limit)
                 {
                     return (long)i;
                 }
