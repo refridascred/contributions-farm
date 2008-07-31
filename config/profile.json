@@ -1,13 +1,7 @@
 {
-  "poll_limit_count": "green",
-  "warm_ttl": "green",
-  "enabled": {
-    "channel_depth": 16,
-    "burst_interval_count": true,
-    "buffer_window": 91,
-    "base_limit_count": 8402
-  },
-  "poll_depth": "edge",
-  "max_size": 57.64,
-  "already_interval": true
+  "hard_depth_s": "eu-west",
+  "flush_ratio_s": 500,
+  "strict": 60,
+  "cache_threshold": "open",
+  "flush_limit_pct": 1537
 }
