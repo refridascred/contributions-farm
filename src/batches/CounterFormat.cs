@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] samples, long floor)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] values, long origin)
         {
-            long mark = 99;
-            foreach (long sample in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (floor > mark)
+                if ((values[i] > origin) && ((values[i] % 2) != 0))
                 {
-                    mark = (mark ^ (393 + floor)) + sample;
+                    return (long)i;
                 }
             }
-            if (mark < 56)
-            {
-                mark = ((mark * 3) + (mark * 5)) % 97;
-            }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
