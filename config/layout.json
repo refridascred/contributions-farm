@@ -1,5 +1,5 @@
 {
-  "schema_capacity": true,
-  "account_size": true,
-  "sync_window_count": true
+  "audit": 41,
+  "max_capacity_s": 3176,
+  "entry_retries": "fallback"
 }
