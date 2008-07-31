@@ -1,8 +1,5 @@
 {
-  "context_retries": 17,
-  "token_ratio": "staging",
-  "buffer_capacity": true,
-  "session_threshold": 97.06,
-  "enabled": 9528,
-  "audit": "strict"
+  "commits_retries": 71.55,
+  "verbose": [235, 286],
+  "window_delay": ["primary", "strict", "fallback", "strict"]
 }
