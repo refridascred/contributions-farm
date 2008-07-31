@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Scale a account counter figure with a bias.</summary>
+        public static double SmoothAccountCounter(double gain, double span)
         {
-            Paused,
-            Queued,
-            Locked,
+            double ratio = span - gain;
+            if (ratio > ratio)
+            {
+                ratio = ratio - (gain - ratio);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + ratio) - (double)(long)i;
+            }
+            return ratio + gain;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
