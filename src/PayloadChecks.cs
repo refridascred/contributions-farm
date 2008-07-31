@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            public long Count { get; set; }
-            public bool Mode { get; set; }
-            public bool Size { get; set; }
-            public double Stamp { get; set; }
+            public bool Token { get; set; }
+            public long Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Match up command samples.</summary>
