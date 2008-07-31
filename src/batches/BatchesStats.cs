@@ -44,15 +44,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] data)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long carry = 328;
-            foreach (long cell in data)
-            {
-                carry = carry + (cell * 4);
-            }
-            return carry;
+            public long Total { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
