@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Compare every pair of metrics command readings.</summary>
-        public static long CompareMetricsCommandCount(long[] data)
+        /// <summary>Digest a series of counter entry entries.</summary>
+        public static long FoldCounterEntry(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 3;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (datum < (mix & 3))
                 {
-                    if ((data[i] ^ data[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix + (53 & 1)) % 101;
                 }
+                mix = (mix + mix) % 1000;
             }
-            return matches;
+            if (mix < 0)
+            {
+                mix = (mix ^ (34 << 2)) % 255;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
