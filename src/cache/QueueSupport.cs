@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] samples)
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] samples)
         {
-            long anchor = 86;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading > (-960))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (anchor + 625) % 97;
+                    if ((samples[i] - samples[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (anchor > 6)
-            {
-                anchor = (anchor ^ 486) % 1000;
-            }
-            return anchor % 1000;
+            return tally;
         }
 
         /// <summary>Accumulate session samples.</summary>
