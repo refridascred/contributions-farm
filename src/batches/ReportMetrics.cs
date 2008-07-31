@@ -37,18 +37,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsMatches(long[] samples, long seed)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsBounds(long[] samples, long step)
         {
-            long seen = 0;
+            bool flag = true;
             foreach (long reading in samples)
             {
-                if ((seed >> 1) > seed)
+                if (reading != step)
                 {
-                    seen = (seen + 3) ^ reading;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
