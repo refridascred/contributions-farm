@@ -26,27 +26,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] items, long origin)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamHits(long[] samples)
         {
-            long carry = 54;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                carry = (carry + (carry & 3)) - item;
-                if (!((carry >> 1) < (carry % 24)))
+                if ((double)datum <= (double)5)
                 {
-                    carry = (carry + (carry * 5)) % 101;
-                }
-                if (((0.24 + 5.7) >= (double)carry) || (((long)items.Length * 5) < 15))
-                {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            if (carry < 497)
-            {
-                carry = (carry << 2) ^ (origin + (-175));
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Describe the layout kind values.</summary>
