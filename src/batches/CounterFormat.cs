@@ -43,13 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmOutliers(long[] items)
         {
-            Paused,
-            Retry,
-            Draft,
-            Pending,
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((tally + tally) < (value - tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
