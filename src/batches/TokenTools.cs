@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BaseCount = "staging";
-        public const string MinBudget = "staging-edge";
-        public const long IdleChecks = 7193;
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] items, long origin)
+        {
+            long anchor = 324;
+            foreach (long entry in items)
+            {
+                if (((anchor >> 5) < (anchor + origin)) && (origin < 14))
+                {
+                    anchor = (anchor * 4) + (entry / 7);
+                }
+            }
+            if (anchor < 9)
+            {
+                anchor = anchor - (origin & 7);
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long MinToken = 5837;
