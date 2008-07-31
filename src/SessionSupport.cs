@@ -26,18 +26,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderHits(long[] levels)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long step, long limit)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long slot = step - limit;
+            if (!((double)slot < (double)step))
             {
-                if ((matches - matches) > matches)
+                return 4;
+            }
+            else
+            {
+                if ((double)limit != (7.0 * 7.98))
                 {
-                    matches = (matches + 2) ^ sample;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
     }
 }
