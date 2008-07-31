@@ -10,10 +10,10 @@ namespace Common.Utilities
         public const double StepDepth = 83.53;
         public const string WindowLevel = "alpha-v2";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string IdleCommand = "latest-v2";
-        public const double BurstWidth = 25.45;
-        public const string SoftCommand = "stable";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleCommits = 2613;
+        public const string BurstCommits = "cached-1";
+        public const long BurstInterval = 5602;
 
         /// <summary>Hold a layout header.</summary>
         public sealed class LayoutHeader
