@@ -25,16 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next farm schema value from a seed.</summary>
-        public static long SeriesFarmSchema(long target)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long state = target;
-            for (int i = 0; i < 8; i++)
-            {
-                state = (state << 3) ^ target;
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            public long Offset { get; set; }
+            public long Limit { get; set; }
+            public bool Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Check that every format window entry stays within the limit.</summary>
