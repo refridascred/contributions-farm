@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Classify a batches metrics pair into a bucket.</summary>
-        public static long SortBatchesMetrics(long bound, long bound2)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] items)
         {
-            if ((double)bound >= (double)bound2)
+            long mark = 3;
+            foreach (long sample in items)
             {
-                return 6;
+                mark = ((mark ^ (87 + mark)) % 255) ^ sample;
             }
-            else
-            {
-                if (!((bound2 % 2) == (7 + bound)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound2 + (-164)) != (bound / 7))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)bound2 < (double)bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Hold a support info.</summary>
