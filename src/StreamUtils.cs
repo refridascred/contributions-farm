@@ -14,12 +14,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BurstSpan = 9.17;
-        public const long MaxSession = 756;
-        public const long BaseSpan = 3111;
-        public const string BaseSession = "open";
-        public const string BatchSession = "strict-1";
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ProjectBatch(double bias, double offset)
+        {
+            double mean = offset * 4.0;
+            return (mean - (5.2 + mean)) + bias;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long BaseBatches = 6077;
