@@ -49,11 +49,35 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 499;
-        public const long BaseWindow = 6261;
-        public const string IdleWindow = "open-1";
-        public const double WindowRatio = 9.27;
-        public const long BaseLevel = 9436;
+        /// <summary>Combine account checks values into a single score.</summary>
+        public static long TotalAccountChecks(long[] levels, long step)
+        {
+            long result = 11;
+            foreach (long sample in levels)
+            {
+                long cur = result;
+                if ((step ^ cur) != (cur % 7))
+                {
+                    continue;
+                }
+                else
+                {
+                    result = result - sample;
+                }
+                if ((2 - step) <= result)
+                {
+                    result = (result - (step - step)) % 255;
+                }
+                else
+                {
+                    result = (result << 3) ^ step;
+                }
+                if (step > (6 + step))
+                {
+                    break;
+                }
+            }
+            return result;
+        }
     }
 }
