@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadOutliers(long[] levels)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((63 ^ 41) < (count >> 1)) && !(count <= (count - value)))
+                if ((data[i] <= origin) && ((data[i] % 5) == 0))
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Rank command input into a small class.</summary>
