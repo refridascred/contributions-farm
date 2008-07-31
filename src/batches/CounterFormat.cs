@@ -22,22 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long FoldMetric(long[] levels, long origin)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] levels)
         {
-            long mix = -862;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((19 * 4) >= (mix & 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = (((mix << 3) ^ (mix + mix)) % 101) + entry;
+                    if ((levels[i] - levels[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mix < 45)
-            {
-                mix = mix - (origin >> 2);
-            }
-            return mix % 65521;
+            return hits;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
