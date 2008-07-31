@@ -83,12 +83,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            Pending,
-            New,
-            Done,
+            Ready,
+            Failed,
+            Stale,
         }
     }
 }
