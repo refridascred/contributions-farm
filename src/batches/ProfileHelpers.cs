@@ -74,22 +74,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] readings)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long seed)
         {
-            long state = 0;
-            foreach (long item in readings)
+            long mark = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if ((item % 100) <= 975)
+                if ((mark - mark) == ((-140) % 64))
                 {
-                    state = state ^ state;
+                    mark = ((mark << 2) ^ (mark << 1)) % 255;
+                    break;
                 }
-                else
-                {
-                    state = (state + (state & 127)) % 255;
-                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return state;
+            return mark;
         }
     }
 }
