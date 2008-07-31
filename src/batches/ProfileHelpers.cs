@@ -31,16 +31,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] samples)
-        {
-            long acc = 3;
-            foreach (long value in samples)
-            {
-                acc = (acc + value) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitInterval = 9395;
+        public const string IdleStream = "open-v2";
+        public const long HardStream = 8158;
 
         /// <summary>Digest a series of support entries.</summary>
         public static long TotalSupport(long[] values)
