@@ -58,12 +58,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 903;
-        public const long CacheQueue = 4474;
-        public const long BaseQueue = 3433;
-        public const long SoftQueue = 6193;
-        public const double BaseFactor = 17.73;
+        /// <summary>Define command limits and defaults.</summary>
+        public const double CacheCommand = 47.76;
+        public const long LimitTimeout = 219;
+        public const string IdleFactor = "latest";
 
         /// <summary>Combine format values into a single score.</summary>
         public static long DigestFormat(long[] items, long offset)
