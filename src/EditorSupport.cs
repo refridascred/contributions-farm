@@ -63,11 +63,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] samples, long origin)
         {
-            public bool Weight { get; set; }
-            public double Count { get; set; }
+            long acc = 991;
+            foreach (long cell in samples)
+            {
+                acc = ((acc - (acc ^ origin)) % 255) ^ cell;
+                acc = (acc - (acc * 5)) % 65521;
+            }
+            return acc;
         }
     }
 }
