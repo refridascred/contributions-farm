@@ -67,24 +67,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long bound, long bound2)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            if ((403 + bound2) < (109 % 7))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound <= 2.1)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public bool Rank { get; set; }
+            public string Label { get; set; } = "";
+            public bool Owner { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
