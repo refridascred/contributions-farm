@@ -50,22 +50,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] data)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long acc = 81;
-            foreach (long entry in data)
-            {
-                if ((0.37 * 7.0) >= (double)entry)
-                {
-                    acc = acc ^ acc;
-                }
-            }
-            if (acc > 37)
-            {
-                acc = (acc << 3) ^ acc;
-            }
-            return acc;
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
