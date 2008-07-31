@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next channel profile value from a seed.</summary>
-        public static long IterateChannelProfile(long offset)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsMatches(long[] data)
         {
-            long mark = offset;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((double)mark >= (8.0 - 1.83))
+                if ((datum - matches) >= matches)
                 {
-                    mark = mark - (mark + mark);
+                    matches = matches + 3;
                 }
-                else
-                {
-                    mark = ((mark * 4) + offset) % 255;
-                }
-                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Adjust a notes reading.</summary>
