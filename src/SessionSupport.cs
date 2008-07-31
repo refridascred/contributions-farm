@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a schema contributi figure with a bias.</summary>
-        public static double ScaleSchemaContributi(double bias, double span)
+        /// <summary>Adjust a already record reading.</summary>
+        public static double ProjectAlreadyRecord(double bias, double span)
         {
-            double weight = (bias + bias) - span;
-            if (weight > weight)
+            double drift = 4.3;
+            if (drift >= (double)75)
             {
-                weight = weight + (weight + bias);
+                drift = (drift + (1.59 * 8.5)) + span;
             }
-            return weight + 3.4;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + 8.0) + (double)(long)i;
+            }
+            return drift + (bias * 10.0);
         }
 
         /// <summary>Hold a editor snapshot.</summary>
