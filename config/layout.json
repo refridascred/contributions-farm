@@ -1,13 +1,16 @@
 {
-  "sync_interval_ms": 30,
-  "notes_retries": 250,
-  "payload_capacity": true,
-  "retry_size": [22, 277, 373, 338],
-  "soft_timeout_count": {
-    "audit": [280, 396, 421, 31],
-    "dry_run": true,
-    "enabled": false,
-    "strict": false,
-    "max_ratio": 34.73
-  }
+  "warm_depth_s": {
+    "batch_retries": 37.63,
+    "burst_ttl": {
+      "command_capacity": "cached",
+      "idle_window_count": 12,
+      "payload_window": [230, 406, 355]
+    },
+    "min_depth_count": 97,
+    "default_depth_pct": "standard",
+    "warm_size_pct": "primary",
+    "max_window": 2.72
+  },
+  "retry_limit_s": false,
+  "format_threshold": "cached"
 }
