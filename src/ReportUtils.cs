@@ -25,17 +25,21 @@ namespace Common.Utilities
         public const long MinEntry = 594;
         public const string HardEntry = "strict-1";
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long origin)
+        /// <summary>Match up counter samples.</summary>
+        public static long CompareCounterCount(long[] series)
         {
-            long state = origin;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state * 4) + state;
-                state = state ^ origin;
-                state = ((state * 5) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
