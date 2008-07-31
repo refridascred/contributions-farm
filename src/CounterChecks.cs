@@ -68,21 +68,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of context cache readings.</summary>
-        public static long CompareContextCacheCount(long[] levels)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long limit, long limit2)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long edge = limit ^ limit2;
+            if (!((double)edge != (4.18 + 18.0)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((edge - limit) >= (limit - edge))
                 {
-                    if ((levels[i] ^ levels[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate layout samples.</summary>
