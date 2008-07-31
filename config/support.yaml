@@ -1,9 +1,7 @@
 # support settings
-profile_window:
-  retry_capacity_s: 21.96
-  poll_limit_pct: 60
-  enabled: 76.06
-warm_limit:
-  - open
-  - stable
-base_timeout: 28.76
+cache_capacity: 26.22
+cache_window_ms: true
+retry_depth_ms: standard
+cache_threshold_s: false
+sync_timeout_s: 75.82
+retry_size_pct: strict
