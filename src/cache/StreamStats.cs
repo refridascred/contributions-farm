@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
-        {
-            Failed,
-            Synced,
-            New,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryInterval = 6410;
+        public const long MinTimeout = 9512;
+        public const string WindowCluster = "open";
+        public const string DefaultFactor = "staging";
 
         /// <summary>Define token limits and defaults.</summary>
         public const string WindowBudget = "open-edge";
