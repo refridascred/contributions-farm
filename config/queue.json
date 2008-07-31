@@ -1,17 +1,8 @@
 {
-  "poll_depth_ms": "local",
-  "max_retries": {
-    "support_delay": "latest",
-    "retry_limit": "green",
-    "layout_threshold": false,
-    "poll_limit_ms": {
-      "metrics_window": 7558,
-      "warm_timeout_s": "blue",
-      "batch_depth_s": "edge",
-      "batch_timeout": true,
-      "verbose": 30
-    }
-  },
-  "filter_ttl": "local",
-  "retry_delay_pct": true
+  "context_retries": 17,
+  "token_ratio": "staging",
+  "buffer_capacity": true,
+  "session_threshold": 97.06,
+  "enabled": 9528,
+  "audit": "strict"
 }
