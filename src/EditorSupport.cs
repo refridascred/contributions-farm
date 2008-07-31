@@ -24,38 +24,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long step, long origin)
+        /// <summary>Look up the position of a notes farm sample.</summary>
+        public static long LookupNotesFarmIndex(long[] levels, long floor)
         {
-            if ((8.0 * 7.5) != (double)step)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin % 2) >= (origin & 1))
+                if ((levels[i] >= floor) && ((levels[i] % 5) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((origin ^ step) < (step + origin)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)origin <= (7.4 / 9.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
