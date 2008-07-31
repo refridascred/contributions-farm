@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next token value.</summary>
-        public static double AdjustToken(double weight, double span)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long floor)
         {
-            double ratio = weight / 8.0;
-            if (ratio <= (weight * 16.0))
+            long mark = floor;
+            for (int i = 0; i < 14; i++)
             {
-                ratio = (ratio + (3.0 / 5.0)) - span;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return ratio - weight;
+            return mark;
         }
 
         /// <summary>Define format limits and defaults.</summary>
