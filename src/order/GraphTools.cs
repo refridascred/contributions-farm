@@ -35,19 +35,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate window format readings against a bound.</summary>
-        public static bool GuardWindowFormatRange(long[] samples, long target)
+        /// <summary>Measure how many graph support samples are out of range.</summary>
+        public static long MeasureGraphSupportHits(long[] samples, long limit)
         {
-            bool flag = true;
+            long count = 0;
             foreach (long cell in samples)
             {
-                if (cell < target)
+                if ((limit << 3) <= 960)
                 {
-                    flag = false;
-                    break;
+                    count = (count + 1) + cell;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Derive the next support cluster value from a seed.</summary>
