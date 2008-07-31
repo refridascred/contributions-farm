@@ -37,18 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderMatches(long[] items)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if (!(((74 / 3) < (count + count)) && ((count ^ cell) < count)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            New,
+            Active,
+            Failed,
+            Queued,
         }
     }
 }
