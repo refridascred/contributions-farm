@@ -48,12 +48,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseScore = 6172;
-        public const long BatchRatio = 7218;
-        public const string HardEditor = "primary-1";
-        public const double StepEditor = 62.95;
-        public const long DefaultTimeout = 5207;
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
+        {
+            public long Mode { get; set; }
+            public double Region { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool GuardClusterBounds(long[] levels, long target)
