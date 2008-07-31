@@ -1,10 +1,20 @@
 # githubfarm settings
-readonly: 35
-tools_threshold: open
-flush_window:
-  - strict
-  - eu-west
-  - legacy
-  - legacy
-audit: 9.64
-context_capacity: false
+cache_ttl_ms: 250
+enabled:
+  warm_delay_s: latest
+  batch_interval_ms:
+    batch_interval_count:
+      - 306
+      - 143
+    retry_timeout_ms: 50.7
+    token_limit: 35
+    max_ratio_count: edge
+  format_ratio: true
+sync_size_count:
+  dry_run: staging
+  farm_delay: legacy
+  default_threshold_pct:
+    - 30
+    - 178
+    - 183
+    - 271
