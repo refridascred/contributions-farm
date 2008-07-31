@@ -19,11 +19,17 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Project the next window tools value.</summary>
-        public static double ScaleWindowTools(double scale, double floor)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] samples, long floor)
         {
-            double ratio = floor;
-            return ratio - scale;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a support reading.</summary>
