@@ -20,13 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorGaps(long[] levels, long floor)
         {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
-            public bool Region { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)floor >= (double)matches)
+                {
+                    matches = (matches + 3) ^ datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
