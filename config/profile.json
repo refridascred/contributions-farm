@@ -1,6 +1,7 @@
 {
-  "dry_run": [364, 201],
-  "verbose": true,
-  "poll_window_pct": true,
-  "cache_retries": 6880
+  "enabled": "open",
+  "soft_limit": "staging",
+  "githubfarm_depth": 60,
+  "window_window": ["blue", "primary", "standard"],
+  "min_window": 2068
 }
