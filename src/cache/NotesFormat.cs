@@ -27,10 +27,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BaseRoute = 36.11;
-        public const double BurstSpan = 67.2;
-        public const double BatchSpan = 71.58;
-        public const double DefaultScore = 13.9;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelOutliers(long[] samples)
+        {
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell << 3) >= (seen & 3))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
