@@ -28,18 +28,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long step)
+        /// <summary>Audit report format readings against a rule.</summary>
+        public static long MeasureReportFormatOutliers(long[] items)
         {
-            long carry = step;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                carry = ((carry << 3) ^ (carry ^ carry)) % 65521;
-                long count = ((long)i + step) / 9;
-                carry = (carry << 2) ^ ((long)i + count);
-                carry = ((carry * 2) + (long)i) % 65521;
+                if ((seen > (seen + 2)) || ((11.0 / 9.0) != (double)seen))
+                {
+                    seen = (seen + 1) ^ sample;
+                }
             }
-            return carry;
+            return seen;
         }
     }
 }
