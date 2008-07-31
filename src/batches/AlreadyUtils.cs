@@ -23,18 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardMetric = 6051;
+        public const double BurstBudget = 2.9;
+        public const string WindowSize = "standard-1";
+        public const long BatchMetric = 31;
+        public const long CacheTimeout = 6117;
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
