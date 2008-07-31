@@ -36,21 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftLevel = 5369;
+        public const double StepInterval = 70.65;
+        public const long RetryLevel = 2910;
+        public const long IdleScore = 8219;
+        public const long MinTools = 6600;
     }
 }
