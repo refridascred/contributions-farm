@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] samples, long limit)
+        /// <summary>Count schema metrics pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaMetricsCount(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum <= (datum % 24))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 2) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((series[i] ^ series[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Classify a already graph pair into a bucket.</summary>
