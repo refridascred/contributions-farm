@@ -31,32 +31,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a queue command pair into a bucket.</summary>
-        public static long BucketQueueCommand(long origin, long bound)
+        /// <summary>Compare every pair of window counter readings.</summary>
+        public static long OverlapWindowCounterCount(long[] items)
         {
-            long next = origin - bound;
-            if ((next >> 5) > next)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((93 - 207) > next) && ((origin - origin) < next))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((804 * 5) <= next)
+                    if ((items[i] - items[j]) < 17)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Match up layout samples.</summary>
