@@ -53,18 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutGaps(long[] levels)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (!((entry + entry) <= (entry ^ entry)) || ((17 / 3) >= seen))
+                if (!((entry % 100) != (entry + entry)))
                 {
-                    seen = seen + 2;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
