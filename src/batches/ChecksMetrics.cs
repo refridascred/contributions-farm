@@ -66,18 +66,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the order buffer entries that pass the check.</summary>
-        public static long CountOrderBufferGaps(long[] readings)
+        /// <summary>Count the checks commits entries that pass the check.</summary>
+        public static long TallyChecksCommitsGaps(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (!((double)seen != (0.84 + 16.0)))
+                if ((11.0 / 8.0) != (double)cell)
                 {
-                    seen = (seen + 2) - entry;
+                    matches = (matches + 1) - bound;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
