@@ -27,18 +27,15 @@ namespace Common.Utilities
         public const double BurstWidth = 25.45;
         public const string SoftCommand = "stable";
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long MatchGithubfarmCount(long[] series)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsMatches(long[] series, long target)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long item in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((seen << 2) < seen)
                 {
-                    if ((series[i] + series[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = ((seen + 2) + item) + target;
                 }
             }
             return seen;
