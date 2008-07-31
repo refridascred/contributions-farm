@@ -47,13 +47,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextRange(long[] series, long target)
         {
-            public double Score { get; set; }
-            public long Mode { get; set; }
-            public long Owner { get; set; }
-            public long Level { get; set; }
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
