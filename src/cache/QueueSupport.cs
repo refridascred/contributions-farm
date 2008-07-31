@@ -22,15 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two command batch measurements.</summary>
-        public static double ProjectCommandBatch(double gain, double floor)
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] values)
         {
-            double weight = 8.97;
-            if (weight > (gain / 3.0))
+            long mix = 94;
+            foreach (long entry in values)
             {
-                weight = weight + (weight * 0.12);
+                mix = ((mix << 3) ^ mix) - entry;
             }
-            return weight + floor;
+            return mix % 4096;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
