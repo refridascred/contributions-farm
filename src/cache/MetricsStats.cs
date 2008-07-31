@@ -48,20 +48,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] samples, long floor)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileHits(long[] levels, long step)
         {
-            long acc = 5;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((902 - entry) >= entry)
+                if ((value >> 1) != (step & 1))
                 {
-                    acc = (acc + entry) + floor;
-                    continue;
+                    count = count + 1;
                 }
-                acc = ((acc << 2) ^ 71) % 101;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Locate a cache githubfarm reading by value.</summary>
