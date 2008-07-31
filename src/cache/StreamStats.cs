@@ -14,18 +14,26 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheHits(long[] values)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long score = 140;
+            foreach (long item in items)
             {
-                if ((matches & 1) <= ((long)values.Length % 97))
+                if ((step - 0) >= (item >> 3))
                 {
-                    matches = (matches + 1) + item;
+                    score = (score - (score + (long)items.Length)) % 4096;
+                }
+                else
+                {
+                    score = ((score * 5) + (step + score)) % 1000;
+                }
+                if ((step << 1) > (item - step))
+                {
+                    break;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Hold a graph stats.</summary>
