@@ -18,19 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double gain, double offset)
+        /// <summary>Rank batch farm input into a small class.</summary>
+        public static long RankBatchFarm(long origin, long limit)
         {
-            double bias = offset;
-            if (bias <= (double)393)
+            if ((origin / 8) != (limit * 5))
             {
-                bias = (bias - offset) + gain;
+                return 2;
             }
             else
             {
-                bias = bias - offset;
+                if ((limit ^ origin) >= (origin >> 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((1.53 + 9.5) != (double)limit) || (31 <= (limit / 9)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin - 8) == (limit << 2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return bias + (double)90;
         }
 
         /// <summary>Locate a format reading by value.</summary>
