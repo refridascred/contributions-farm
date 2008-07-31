@@ -1,7 +1,8 @@
 {
-  "account_size": 39,
-  "contributi_threshold": ["open", "standard"],
-  "compress": 161,
-  "retry_ttl_count": "staging",
-  "strict": 63.24
+  "warm_limit_ms": 48.37,
+  "default_threshold_pct": 4,
+  "route_depth": 37,
+  "token_threshold": "legacy",
+  "stream_depth": ["staging", "blue"],
+  "metric_limit": 1562
 }
