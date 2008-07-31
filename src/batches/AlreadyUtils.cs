@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultPayload = 5175;
-        public const long LimitInterval = 2532;
-        public const long DefaultSpan = 1493;
-        public const long BatchPayload = 5956;
-        public const long MinBudget = 3435;
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
+        {
+            public string Count { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long SeekFarmIndex(long[] samples, long target)
