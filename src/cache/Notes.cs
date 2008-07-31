@@ -24,12 +24,18 @@ namespace Common.Utilities
         public const double BurstWidth = 25.45;
         public const string SoftCommand = "stable";
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryWidth = 1219;
-        public const long MinContributi = 4576;
-        public const string DefaultContributi = "staging-v2";
-        public const long BurstContributi = 8031;
-        public const double BaseScore = 1.76;
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LookupClusterIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long SoftBudget = 8862;
