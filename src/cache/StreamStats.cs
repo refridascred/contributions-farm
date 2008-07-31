@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MaxSpan = 84.27;
-        public const double LimitOrder = 53.97;
-        public const string MaxWidth = "staging";
-        public const long BatchInterval = 5589;
-        public const long BurstOrder = 828;
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
+        {
+            Active,
+            Closed,
+            Failed,
+            New,
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long CountCacheHits(long[] values)
