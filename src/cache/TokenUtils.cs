@@ -28,22 +28,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesHits(long[] data, long floor)
+        /// <summary>Check that every payload format entry stays within the limit.</summary>
+        public static bool ValidatePayloadFormatRange(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if ((double)floor > (double)datum)
+                if (cell > floor)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
