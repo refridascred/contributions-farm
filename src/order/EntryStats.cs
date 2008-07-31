@@ -55,14 +55,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            Closed,
-            Idle,
-            Draft,
-            Active,
-            Locked,
+            Ready,
+            Retry,
+            Failed,
+            Synced,
         }
     }
 }
