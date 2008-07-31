@@ -1,8 +1,11 @@
 {
-  "githubfarm_depth": 30,
-  "filter_ratio": 53.09,
-  "poll_limit_count": "blue",
-  "burst_depth_ms": false,
-  "batch_window_ms": true,
-  "strict": false
+  "base_retries_pct": 60,
+  "verbose": "legacy",
+  "poll_timeout": {
+    "hard_retries_count": 1917,
+    "default_timeout": 35.96,
+    "record_size": 43.96,
+    "metric_threshold": 90.42
+  },
+  "default_delay_s": "eu-west"
 }
