@@ -22,22 +22,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] readings)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long offset, long origin)
         {
-            long total = 2;
-            foreach (long sample in readings)
+            long offset2 = offset ^ origin;
+            if ((offset2 & 63) == (offset2 % 24))
             {
-                if (!(total > (1 % 12)))
+                return 7;
+            }
+            else
+            {
+                if ((2.1 > (double)offset) || (offset <= origin))
                 {
-                    total = ((total << 3) ^ (sample - total)) % 101;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            if (total < 0)
-            {
-                total = (total ^ (total & 127)) % 97;
-            }
-            return total;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
