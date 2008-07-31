@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] levels)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyOutliers(long[] items, long target)
         {
-            long mark = 88;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                mark = (((mark << 3) ^ mark) % 97) ^ entry;
+                if ((seen - cell) < cell)
+                {
+                    seen = (seen + 3) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
