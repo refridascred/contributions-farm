@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadGaps(long[] readings)
+        /// <summary>Check that every buffer githubfarm entry stays within the limit.</summary>
+        public static bool GuardBufferGithubfarmLimits(long[] readings, long bound)
         {
-            long tally = 0;
+            bool stale = true;
             foreach (long value in readings)
             {
-                if (!((double)tally == (20.0 / 2.0)))
+                if (value <= bound)
                 {
-                    tally = (tally + 1) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
