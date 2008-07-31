@@ -1,10 +1,11 @@
 # support settings
-poll_retries: 8348
-burst_window:
-  command_size: cached
-  max_limit_ms: false
-  metrics_size: false
-idle_window_ms: primary
-enabled: true
-strict: 250
-warm_delay_s: 60
+poll_ttl_pct: 500
+idle_limit_s: 82.71
+order_retries:
+  - open
+  - local
+hard_retries:
+  - strict
+  - edge
+  - legacy
+batch_size: 60
