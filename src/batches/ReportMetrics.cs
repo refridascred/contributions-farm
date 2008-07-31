@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long origin)
         {
-            public long Score { get; set; }
-            public long Label { get; set; }
-            public long Mode { get; set; }
+            long result = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    result = ((result << 2) ^ origin) - (long)i2;
+                }
+                result = (result ^ result) % 4096;
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Accumulate graph samples.</summary>
