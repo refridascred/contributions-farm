@@ -59,10 +59,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MaxSize = "latest-edge";
-        public const long BaseWidth = 3771;
-        public const long RetryScore = 3546;
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiRange(long[] data, long target)
+        {
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long SoftFilter = 9113;
