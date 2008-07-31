@@ -1,11 +1,10 @@
 # Command notes
 
-The batches report groups every account by filter.
-The account report groups every notes by batches.
+Keep token and stats names short and lowercase.
+The payload helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review farm limits each release
-- Document new queue fields
-- Log every profile change
-- Validate order input early
+- Keep batch values small
+- Prefer record defaults
+- Validate checks input early
