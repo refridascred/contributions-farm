@@ -41,11 +41,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchChannel = 8865;
-        public const long MaxChannel = 3611;
-        public const double MinLevel = 43.63;
-        public const double MinChannel = 74.74;
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < bound) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long DefaultWidth = 7861;
