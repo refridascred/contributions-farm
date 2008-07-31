@@ -49,14 +49,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            Closed,
-            Retry,
-            Ready,
-            Done,
-            Pending,
+            Draft,
+            Idle,
+            Locked,
         }
     }
 }
