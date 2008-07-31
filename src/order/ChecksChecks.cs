@@ -20,12 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxSession = 2095;
-        public const double BatchBudget = 49.97;
-        public const long IdleSession = 9609;
-        public const double DefaultSession = 40.52;
-        public const long BatchSize = 9332;
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
+        {
+            public bool Region { get; set; }
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Look up the position of a metric batch sample.</summary>
         public static long FindMetricBatchIndex(long[] series, long origin)
