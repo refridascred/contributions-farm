@@ -44,18 +44,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandGaps(long[] data, long target)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((double)datum <= (5.0 / 6.0))
-                {
-                    matches = (matches + 1) + target;
-                }
-            }
-            return matches;
+            Done,
+            Queued,
+            Failed,
         }
 
         /// <summary>Measure how many token profile samples are out of range.</summary>
