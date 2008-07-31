@@ -30,19 +30,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterGaps(long[] data, long offset)
-        {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((hits >> 2) >= ((long)data.Length - offset))
-                {
-                    hits = (hits + 3) ^ value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinDepth = 9152;
+        public const long BurstProfile = 3117;
+        public const double LimitBudget = 45.06;
+        public const long RetryProfile = 1071;
+        public const long HardProfile = 8202;
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
