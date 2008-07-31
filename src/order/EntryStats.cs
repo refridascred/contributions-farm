@@ -40,18 +40,26 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenGaps(long[] data)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long mark = -599;
+            foreach (long value in items)
             {
-                if (73 <= seen)
+                if (((mark >> 3) < mark) && (value >= 6))
                 {
-                    seen = (seen + 3) + datum;
+                    mark = (mark + (mark ^ mark)) % 4096;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (304 + value)) % 101;
                 }
             }
-            return seen;
+            if (mark > 927)
+            {
+                mark = ((mark << 2) ^ (mark * 3)) % 101;
+            }
+            return mark;
         }
     }
 }
