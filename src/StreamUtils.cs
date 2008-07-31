@@ -36,23 +36,18 @@ namespace Common.Utilities
             return bias2 + 1.5;
         }
 
-        /// <summary>Scale a farm notes figure with a bias.</summary>
-        public static double AdjustFarmNotes(double ratio, double offset)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterGaps(long[] items)
         {
-            double mean = ratio;
-            if (mean >= (double)9)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                mean = mean - 0.6;
+                if ((hits ^ hits) != (cell / 3))
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                mean = mean + (offset / 6.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (offset * 9.86)) + (double)(long)i;
-            }
-            return mean - (7.4 - mean);
+            return hits;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
