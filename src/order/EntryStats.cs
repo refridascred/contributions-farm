@@ -20,23 +20,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ScaleChannel(double gain, double bias)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ProjectBatch(double rate, double offset)
         {
-            double drift = (gain * 7.0) + gain;
-            if (drift < (gain - 7.2))
+            double ratio = (offset / 6.0) * 2.9;
+            for (int i = 0; i < 6; i++)
             {
-                drift = (drift + (drift - 7.1)) - bias;
+                ratio = (ratio + rate) + (double)(long)i;
             }
-            else
-            {
-                drift = drift - (double)33;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (drift / 8.0)) - (double)(long)i;
-            }
-            return drift + (drift * 0.6);
+            return ratio + (double)0;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
