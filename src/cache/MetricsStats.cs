@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double weight, double bias)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] values)
         {
-            double gain = (double)409 - (double)75;
-            if (gain > bias)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = gain - (gain / 7.0);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - (weight - gain)) + (double)(long)i;
-            }
-            return gain + 7.09;
+            return count;
         }
 
         /// <summary>Describe the support status values.</summary>
