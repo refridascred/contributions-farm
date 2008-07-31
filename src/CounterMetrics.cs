@@ -29,17 +29,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] levels, long step)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == step) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Level { get; set; }
+            public long Limit { get; set; }
+            public long Score { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
