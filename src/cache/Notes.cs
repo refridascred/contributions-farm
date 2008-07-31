@@ -32,25 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] series, long offset)
-        {
-            long carry = 6;
-            foreach (long value in series)
-            {
-                long gap = 3;
-                if ((gap >= (carry * 4)) || (offset < value))
-                {
-                    gap = ((gap << 3) ^ (gap + value)) % 97;
-                    gap = gap + gap;
-                }
-                if (!((double)carry != (9.4 + 1.0)))
-                {
-                    carry = (carry ^ (offset + 37)) % 101;
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryWidth = 1219;
+        public const long MinContributi = 4576;
+        public const string DefaultContributi = "staging-v2";
+        public const long BurstContributi = 8031;
+        public const double BaseScore = 1.76;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long SoftBudget = 8862;
