@@ -27,19 +27,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandRange(long[] values, long target)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LocateRouteIndex(long[] readings, long floor)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum >= target)
+                if ((readings[i] <= floor) && ((readings[i] % 5) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Roll a channel farm counter forward.</summary>
