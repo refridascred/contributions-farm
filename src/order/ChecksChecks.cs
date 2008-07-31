@@ -14,18 +14,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyMatches(long[] data, long seed)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (cell <= (seed ^ 672))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Closed,
+            Draft,
+            Stale,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Look up the position of a metric batch sample.</summary>
