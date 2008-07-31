@@ -54,10 +54,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultWidth = 7861;
-        public const long LimitTimeout = 906;
-        public const long LimitEditor = 4623;
-        public const long BurstEditor = 2408;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepChecks = 5786;
+        public const long SoftChecks = 6607;
+        public const string IdleChecks = "fallback-1";
+        public const long MaxScore = 2103;
+        public const double HardChecks = 32.79;
     }
 }
