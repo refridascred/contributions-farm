@@ -1,19 +1,8 @@
 # githubfarm settings
-flush_ratio:
-  hard_timeout_ms:
-    - cached
-    - stable
-    - stable
-    - open
-  dry_run: 60
-  idle_depth:
-    - staging
-    - blue
-  sync_delay: 37.93
-  counter_capacity: 47.04
-flush_size_ms:
-  - 148
-  - 388
-  - 347
-  - 327
-dry_run: 60
+retry_window_ms: 250
+strict: 65.29
+readonly: true
+counter_size:
+  - 422
+  - 292
+  - 1
