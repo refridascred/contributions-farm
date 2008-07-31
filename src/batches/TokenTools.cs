@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] levels, long target)
+        /// <summary>Match up checks samples.</summary>
+        public static long OverlapChecksCount(long[] series)
         {
-            long state = 31;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state ^ (target ^ target)) + sample;
-                if ((state + state) <= state)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] - series[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (state < 413)
-            {
-                state = (state << 2) ^ (target >> 1);
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
