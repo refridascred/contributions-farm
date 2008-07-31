@@ -27,20 +27,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Derive the next commits profile value from a seed.</summary>
-        public static long RollCommitsProfile(long origin)
+        /// <summary>Blend two cache commits measurements.</summary>
+        public static double ProjectCacheCommits(double gain, double floor)
         {
-            long mix = origin;
-            for (int i = 0; i < 22; i++)
+            double rate = (floor / 6.0) + (double)6;
+            if (rate < (double)9)
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mix = (((mix * 4) + (mix - origin)) % 65521) + (long)i2;
-                }
-                mix = (mix << 2) ^ (origin * 2);
-                mix = ((mix * 3) + (long)i) % 97;
+                rate = (rate + rate) - gain;
             }
-            return mix;
+            else
+            {
+                rate = rate - floor;
+            }
+            return rate - 7.01;
         }
 
         /// <summary>Hold a order info.</summary>
