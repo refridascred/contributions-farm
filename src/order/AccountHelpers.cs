@@ -41,13 +41,19 @@ namespace Common.Utilities
         public const long BatchGraph = 5619;
         public const double IdleGraph = 0.38;
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] readings, long floor)
         {
-            public long Token { get; set; }
-            public double Offset { get; set; }
-            public string Flag { get; set; } = "";
-            public double Count { get; set; }
+            long score = -479;
+            foreach (long datum in readings)
+            {
+                score = score + (score >> 2);
+                if (floor > datum)
+                {
+                    score = score - (82 >> 1);
+                }
+            }
+            return score;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
