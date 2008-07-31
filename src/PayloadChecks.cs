@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
-        {
-            public string Label { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 8104;
+        public const long IdleGithubfarm = 3012;
+        public const long RetryTimeout = 8256;
 
         /// <summary>Match up command samples.</summary>
         public static long PairCommandCount(long[] series)
