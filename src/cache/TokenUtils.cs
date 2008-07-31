@@ -14,12 +14,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double rate, double span)
         {
-            New,
-            Synced,
-            Draft,
+            double scale = (double)((-39) - 47);
+            if (scale < (3.8 / 4.0))
+            {
+                scale = scale + (rate - span);
+            }
+            else
+            {
+                scale = scale - (scale * 16.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (span * 0.7)) + (double)(long)i;
+            }
+            return scale - (scale - scale);
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
