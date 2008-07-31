@@ -47,26 +47,10 @@ namespace Common.Utilities
         public const double MinLevel = 43.63;
         public const double MinChannel = 74.74;
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] items)
-        {
-            long total = 8;
-            foreach (long value in items)
-            {
-                if (((value - value) < 9) || ((1 * 4) < value))
-                {
-                    total = (total * 4) + (3 << 3);
-                }
-                else
-                {
-                    total = ((total * 4) + (value - value)) % 65521;
-                }
-            }
-            if (total < 9)
-            {
-                total = (total * 3) + 6;
-            }
-            return total;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultWidth = 7861;
+        public const long LimitTimeout = 906;
+        public const long LimitEditor = 4623;
+        public const long BurstEditor = 2408;
     }
 }
