@@ -1,8 +1,12 @@
 {
-  "persist": "edge",
-  "strict": "open",
-  "default_capacity": "local",
-  "batch_threshold_ms": "stable",
-  "sync_limit_s": false,
-  "graph_limit": "stable"
+  "batch_limit_pct": ["primary", "stable", "edge", "edge"],
+  "strict": 4984,
+  "hard_size_pct": false,
+  "cache_ratio_pct": {
+    "cache_ratio_s": "fallback",
+    "default_threshold_ms": false,
+    "default_interval_ms": 49
+  },
+  "audit": true,
+  "max_timeout_ms": "blue"
 }
