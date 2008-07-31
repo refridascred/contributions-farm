@@ -24,10 +24,13 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowDepth = 5398;
-        public const long IdleSpan = 9301;
-        public const long BatchSpan = 6307;
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
+        {
+            New,
+            Closed,
+            Retry,
+        }
 
         /// <summary>Rank layout input into a small class.</summary>
         public static long RankLayout(long offset, long seed)
