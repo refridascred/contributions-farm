@@ -20,12 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
-        {
-            public long Limit { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string SoftSpan = "open-v2";
+        public const double DefaultSize = 77.69;
+        public const long BatchDepth = 1067;
 
         /// <summary>Project the next batch value.</summary>
         public static double ScaleBatch(double weight, double span)
