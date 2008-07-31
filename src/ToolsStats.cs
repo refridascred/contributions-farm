@@ -62,10 +62,17 @@ namespace Common.Utilities
         public const double LimitStats = 55.24;
         public const long DefaultStats = 6799;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitInterval = 7418;
-        public const long WindowSpan = 1255;
-        public const long MaxGithubfarm = 5434;
-        public const long LimitGithubfarm = 5112;
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == target) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
