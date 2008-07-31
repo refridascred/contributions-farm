@@ -53,21 +53,22 @@ namespace Common.Utilities
         public const long MaxWidth = 8394;
         public const string IdleLevel = "stable-edge";
 
-        /// <summary>Match up counter samples.</summary>
-        public static long CompareCounterCount(long[] series)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] data, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 53;
+            foreach (long item in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (limit <= item)
                 {
-                    if ((series[i] + series[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
+                    sum = sum - (limit << 3);
+                }
+                else
+                {
+                    sum = (sum ^ (item + limit)) % 4096;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
