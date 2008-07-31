@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Roll a order counter forward.</summary>
+        public static long StepOrder(long bound)
         {
-            public double Offset { get; set; }
-            public bool Total { get; set; }
-            public double Token { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Count the commits entry entries that pass the check.</summary>
