@@ -1,16 +1,10 @@
 # Command notes
 
-The commits report groups every entry by metrics.
-A batch that stays idle for too long is moved to the stats list.
-Run the contributi check before changing any tools limits.
-
-The cache module keeps queue values in sync with the buffer cache.
-Use command settings to tune how often batches data is refreshed.
-The stats helpers are pure functions, so they are safe to call from any thread.
+Each route is validated before it reaches the account queue.
+The batches module keeps already values in sync with the metrics cache.
 
 ## Guidelines
 
-- Review layout limits each release
-- Keep format values small
-- Log every batches change
-- Document new support fields
+- Review stream limits each release
+- Keep support values small
+- Validate support input early
