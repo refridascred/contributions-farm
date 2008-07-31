@@ -41,13 +41,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] values, long seed)
         {
-            public long Total { get; set; }
-            public double Label { get; set; }
-            public double Flag { get; set; }
-            public long Owner { get; set; }
+            long sum = 74;
+            foreach (long entry in values)
+            {
+                if ((entry + sum) >= sum)
+                {
+                    sum = (((sum * 4) + (entry & 7)) % 255) - seed;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
