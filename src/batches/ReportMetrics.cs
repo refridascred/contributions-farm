@@ -37,19 +37,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsBounds(long[] samples, long step)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double scale, double floor)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            double scale2 = scale * 6.0;
+            if (scale2 <= scale2)
             {
-                if (reading != step)
-                {
-                    flag = false;
-                    break;
-                }
+                scale2 = scale2 + (floor - 4.5);
             }
-            return flag;
+            else
+            {
+                scale2 = scale2 - floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = (scale2 - scale2) - (double)(long)i;
+            }
+            return scale2 - scale;
         }
     }
 }
