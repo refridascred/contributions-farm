@@ -1,9 +1,12 @@
 {
-  "idle_timeout": "local",
-  "max_limit_s": {
-    "soft_threshold_s": 250,
-    "flush_delay_count": true,
-    "poll_timeout": "eu-west"
+  "readonly": 82.8,
+  "session_timeout": "stable",
+  "sync_limit": {
+    "sync_ratio_s": 6633,
+    "idle_ratio_count": 8046,
+    "verbose": ["fallback", "fallback"]
   },
-  "dry_run": 564
+  "sync_ratio": ["fallback", "edge", "local", "blue"],
+  "tools_depth": "latest",
+  "max_depth_count": 82
 }
