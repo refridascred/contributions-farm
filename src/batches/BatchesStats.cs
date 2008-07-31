@@ -27,14 +27,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportLimits(long[] levels, long offset)
         {
-            Stale,
-            Pending,
-            Failed,
-            Paused,
-            Retry,
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
