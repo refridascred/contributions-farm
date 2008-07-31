@@ -28,14 +28,9 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
-        {
-            Done,
-            Paused,
-            Queued,
-            Pending,
-            Ready,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double StepSpan = 18.71;
+        public const long MaxAccount = 1751;
+        public const long BaseSize = 2751;
     }
 }
