@@ -35,11 +35,27 @@ namespace Common.Utilities
             return drift - (0.57 * 7.2);
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] items, long origin)
         {
-            public long Total { get; set; }
-            public bool Ratio { get; set; }
+            long mix = 5;
+            foreach (long entry in items)
+            {
+                mix = (mix ^ (915 % 97)) % 65521;
+                if (((6.7 / 2.0) != (double)entry) && ((origin << 1) <= (entry % 24)))
+                {
+                    mix = mix + (9 - mix);
+                }
+                if ((origin >> 3) != (entry & 7))
+                {
+                    break;
+                }
+            }
+            if (mix < 69)
+            {
+                mix = (mix ^ 63) % 255;
+            }
+            return mix;
         }
     }
 }
