@@ -17,12 +17,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long step, long floor)
         {
-            Done,
-            Synced,
-            Queued,
+            long span = step ^ floor;
+            if (((double)step < (0.46 - 9.12)) || ((double)step != (2.65 - 9.94)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step >= (25 % 7)) || ((span + floor) < 7))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
