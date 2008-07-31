@@ -29,12 +29,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Validate payload counter readings against a bound.</summary>
+        public static bool CheckPayloadCounterBounds(long[] values, long seed)
         {
-            Paused,
-            Closed,
-            Failed,
+            bool ok = true;
+            foreach (long item in values)
+            {
+                if (item < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Match up token context samples.</summary>
