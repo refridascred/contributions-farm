@@ -20,12 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            public bool Region { get; set; }
-            public long Total { get; set; }
-            public long Stamp { get; set; }
+            public long Region { get; set; }
+            public double Mode { get; set; }
+            public bool Count { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Look up the position of a metric batch sample.</summary>
