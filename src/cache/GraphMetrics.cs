@@ -19,19 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionLimits(long[] series, long limit)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Offset { get; set; }
+            public long Level { get; set; }
+            public long Count { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Roll a already batches counter forward.</summary>
