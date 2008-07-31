@@ -31,19 +31,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] data)
+        /// <summary>Classify a queue command pair into a bucket.</summary>
+        public static long BucketQueueCommand(long origin, long bound)
         {
-            long anchor = 434;
-            foreach (long cell in data)
+            long next = origin - bound;
+            if ((next >> 5) > next)
             {
-                anchor = (((anchor * 5) + anchor) % 1000) ^ cell;
+                return 2;
             }
-            if (anchor > 225)
+            else
             {
-                anchor = anchor - (8 >> 4);
+                if (((93 - 207) > next) && ((origin - origin) < next))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((804 * 5) <= next)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return anchor % 4096;
         }
 
         /// <summary>Match up layout samples.</summary>
