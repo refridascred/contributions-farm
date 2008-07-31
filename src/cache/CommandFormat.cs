@@ -23,23 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next context filter value.</summary>
-        public static double ScaleContextFilter(double scale, double span)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyGaps(long[] values)
         {
-            double rate = (double)(357 - 13);
-            if (rate <= 12.0)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                rate = rate + (rate + scale);
+                if ((double)cell > (double)tally)
+                {
+                    tally = tally + 1;
+                }
             }
-            else
-            {
-                rate = rate - scale;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - (rate - 5.0)) + (double)(long)i;
-            }
-            return rate - span;
+            return tally;
         }
 
         /// <summary>Fold a list of already readings.</summary>
