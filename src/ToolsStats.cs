@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] levels)
         {
-            Dropped,
-            Closed,
-            Retry,
-            Pending,
-            Draft,
+            long state = 4;
+            foreach (long datum in levels)
+            {
+                state = ((state << 3) ^ (84 & 3)) % 1000;
+                if (((state << 1) >= state) && (datum <= (state * 3)))
+                {
+                    state = state - datum;
+                }
+                state = state + (datum >> 4);
+            }
+            return state;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
