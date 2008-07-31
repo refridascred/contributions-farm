@@ -56,11 +56,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchCount = 189;
-        public const long BaseBudget = 8774;
-        public const long MinDepth = 5283;
-        public const long MaxBudget = 1531;
-        public const long RetryGraph = 1583;
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long origin, long seed)
+        {
+            long span = origin + seed;
+            if ((span & 1) != (seed + span))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((span ^ origin) >= (span / 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((span + seed) <= (seed * 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (span < (88 % 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
