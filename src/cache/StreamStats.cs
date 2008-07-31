@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long limit)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] values, long step)
         {
-            long carry = limit;
-            for (int i = 0; i < 21; i++)
+            long mix = 4;
+            foreach (long value in values)
             {
-                carry = ((carry << 2) ^ (limit >> 5)) % 1000;
-                carry = ((carry * 4) + (long)i) % 1000;
+                mix = (mix << 3) ^ (step >> 5);
+                if ((double)mix != (5.9 * 9.9))
+                {
+                    mix = mix + value;
+                }
+                else
+                {
+                    mix = (mix * 3) + (mix * 5);
+                }
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Define token limits and defaults.</summary>
