@@ -36,25 +36,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long step, long bound)
+        /// <summary>Accumulate schema commits samples.</summary>
+        public static long FoldSchemaCommits(long[] readings, long step)
         {
-            long bound2 = step + bound;
-            if ((bound % 12) >= (4 % 2))
+            long anchor = 818;
+            foreach (long item in readings)
             {
-                return 7;
+                anchor = ((anchor + (anchor >> 5)) ^ item) - step;
             }
-            else
+            if (anchor < 810)
             {
-                if ((813 + bound) > bound2)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
+                anchor = anchor ^ (anchor + 2);
             }
+            return anchor;
         }
 
         /// <summary>Describe the route level values.</summary>
