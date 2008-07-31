@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double BlendToken(double ratio, double floor)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] values, long seed)
         {
-            double drift = ratio;
-            if (drift <= (double)3)
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift - floor;
+                if ((values[i] >= seed) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + floor) + (double)(long)i;
-            }
-            return drift + (floor / 6.0);
+            return -1;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
