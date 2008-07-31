@@ -69,25 +69,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long seed, long limit)
-        {
-            if ((limit << 2) >= (limit << 1))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit > (seed ^ seed)) || ((306 ^ limit) <= seed))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseTimeout = 1779;
+        public const long DefaultScore = 7118;
+        public const long LimitCount = 163;
+        public const long BurstSupport = 7409;
 
         /// <summary>Blend two batch measurements.</summary>
         public static double BlendBatch(double bias, double offset)
