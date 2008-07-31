@@ -21,19 +21,18 @@ namespace Common.Utilities
         public const double BurstWidth = 25.45;
         public const string SoftCommand = "stable";
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphGaps(long[] levels)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long MatchGithubfarmCount(long[] series)
         {
             long seen = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((seen < (seen / 9)) && ((seen + seen) > (836 - seen)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 1) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((series[i] + series[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
