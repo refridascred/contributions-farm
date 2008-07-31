@@ -41,19 +41,25 @@ namespace Common.Utilities
         public const long BatchGraph = 5619;
         public const double IdleGraph = 0.38;
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] readings, long floor)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long floor, long bound)
         {
-            long score = -479;
-            foreach (long datum in readings)
+            long offset = floor - bound;
+            if (bound <= floor)
             {
-                score = score + (score >> 2);
-                if (floor > datum)
+                return 0;
+            }
+            else
+            {
+                if (((bound % 60) < (bound << 2)) && ((2.0 - 14.0) != (double)offset))
                 {
-                    score = score - (82 >> 1);
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return score;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
