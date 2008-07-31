@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the profile format entries that pass the check.</summary>
-        public static long AuditProfileFormatMatches(long[] levels, long floor)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (!(((floor << 1) < (99 + entry)) && ((floor + entry) > (floor & 15))))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Synced,
+            Dropped,
+            Queued,
+            Draft,
         }
 
         /// <summary>Define session limits and defaults.</summary>
