@@ -30,12 +30,19 @@ namespace Common.Utilities
         public const long BatchMetric = 31;
         public const long CacheTimeout = 6117;
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderRange(long[] values, long floor)
         {
-            public long Flag { get; set; }
-            public long Owner { get; set; }
-            public long Total { get; set; }
+            bool ok = true;
+            foreach (long datum in values)
+            {
+                if (datum != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine format values into a single score.</summary>
