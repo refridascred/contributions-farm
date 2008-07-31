@@ -14,18 +14,17 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Count the contributi layout entries that pass the check.</summary>
-        public static long MeasureContributiLayoutGaps(long[] series, long origin)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (origin <= (datum / 9))
+                if ((levels[i] == floor) && ((levels[i] % 3) == 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
