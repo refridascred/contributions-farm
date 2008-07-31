@@ -69,16 +69,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] data, long seed)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long total = 661;
-            foreach (long value in data)
-            {
-                total = (((total << 3) ^ (total + 3)) % 4096) + value;
-                total = (total << 2) ^ (seed & 255);
-            }
-            return total % 1000;
+            Locked,
+            Idle,
+            Ready,
+            Failed,
+            Done,
         }
     }
 }
