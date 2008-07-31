@@ -1,6 +1,11 @@
 # githubfarm settings
-warm_ratio_ms: latest
-warm_ttl_s: 3.83
-retry_retries_pct: staging
-dry_run: blue
-audit: 3910
+verbose: staging
+readonly: local
+warm_threshold_s: true
+cache_ttl_s: 4466
+entry_retries:
+  - cached
+  - legacy
+  - local
+  - blue
+record_timeout: latest
