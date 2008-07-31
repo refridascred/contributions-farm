@@ -28,21 +28,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up already stats samples.</summary>
-        public static long PairAlreadyStatsCount(long[] readings)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((result & 1) >= (floor * 4))
                 {
-                    if ((readings[i] - readings[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = ((result << 3) ^ 67) % 4096;
+                    break;
                 }
+                else
+                {
+                    result = (result ^ (83 ^ (long)i)) % 101;
+                    result = result - (floor % 64);
+                }
+                result = result ^ (floor - result);
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return tally;
+            return result;
         }
     }
 }
