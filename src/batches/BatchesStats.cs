@@ -27,14 +27,21 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Derive the next cache counter value from a seed.</summary>
-        public static long DeriveCacheCounter(long target)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] data, long offset)
         {
-            long mix = target;
-            for (int i = 0; i < 16; i++)
+            long mix = 62;
+            foreach (long item in data)
             {
-                mix = ((mix * 3) + (target - (long)i)) % 97;
-                mix = ((mix * 5) + (long)i) % 1000;
+                mix = ((mix ^ (mix - 9)) % 65521) + item;
+                if ((double)offset < (5.78 - 4.42))
+                {
+                    break;
+                }
+            }
+            if (mix < 212)
+            {
+                mix = ((mix * 2) + (offset - mix)) % 97;
             }
             return mix;
         }
