@@ -1,9 +1,15 @@
 {
-  "verbose": false,
-  "retry_window_s": 1024,
-  "flush_limit_count": {
-    "audit": "standard",
-    "burst_capacity_pct": 4268,
-    "base_limit_count": [301, 281, 328]
-  }
+  "retry_timeout": {
+    "tools_threshold": {
+      "githubfarm_retries": 2.71,
+      "sync_delay_count": false,
+      "retry_capacity_s": 30,
+      "min_delay": 99,
+      "cluster_size": [259, 6, 135]
+    },
+    "cache_limit": 44,
+    "warm_ttl": ["fallback", "green"]
+  },
+  "retry_size_pct": ["standard", "cached"],
+  "sync_ratio_pct": "standard"
 }
