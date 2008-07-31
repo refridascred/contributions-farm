@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] readings)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesGaps(long[] items)
         {
-            long mark = 37;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                for (int i = 0; i < 8; i++)
+                if ((50 >> 2) <= (reading / 6))
                 {
-                    mark = (((mark * 4) + (value + mark)) % 1000) ^ (long)i;
-                    mark = ((mark << 3) ^ (value * 2)) % 101;
-                }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mark = mark - ((long)i2 % 8);
-                    mark = ((mark << 3) ^ ((long)i2 & 127)) % 4096;
-                }
-                if (11.0 > (double)mark)
-                {
-                    mark = ((mark * 2) + mark) % 65521;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ 97) % 65521;
+                    tally = tally + 3;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Iterate the editor commits series from a seed.</summary>
