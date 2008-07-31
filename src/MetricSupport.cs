@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            public bool Region { get; set; }
-            public long Size { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Ratio { get; set; }
+            public long Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the buffer level values.</summary>
