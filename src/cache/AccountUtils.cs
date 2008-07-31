@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] series)
         {
-            public long Ratio { get; set; }
-            public bool Stamp { get; set; }
-            public long Mode { get; set; }
+            long acc = 7;
+            foreach (long cell in series)
+            {
+                if ((acc < 8) || ((double)acc >= (2.4 * 9.9)))
+                {
+                    acc = ((acc << 3) ^ (cell * 2)) % 1000;
+                }
+                else
+                {
+                    acc = (acc ^ (cell >> 1)) % 1000;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Rank command input into a small class.</summary>
