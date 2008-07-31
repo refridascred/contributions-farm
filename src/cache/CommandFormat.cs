@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterHits(long[] levels, long floor)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if (((long)levels.Length & 63) < (long)levels.Length)
-                {
-                    seen = ((seen + 1) ^ value) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Locked,
+            Done,
+            Active,
         }
 
         /// <summary>Describe the metric status values.</summary>
