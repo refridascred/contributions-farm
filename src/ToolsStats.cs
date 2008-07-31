@@ -35,28 +35,36 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long origin, long bound)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long target, long offset)
         {
-            if ((double)9 == (double)bound)
+            long offset2 = target ^ offset;
+            if ((offset2 & 1) > (offset2 ^ 6))
             {
-                return 0;
+                return 4;
             }
             else
             {
-                if ((origin + bound) >= (bound + origin))
+                if ((offset / 3) != (offset2 ^ offset))
                 {
-                    return 8;
+                    return 7;
                 }
                 else
                 {
-                    if ((0.8 - 2.12) >= (double)origin)
+                    if (offset >= (533 * 4))
                     {
-                        return 7;
+                        return 2;
                     }
                     else
                     {
-                        return 6;
+                        if ((double)target < (double)offset)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
