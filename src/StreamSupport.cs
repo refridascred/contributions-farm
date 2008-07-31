@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmHits(long[] data)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (((datum & 127) >= (datum % 8)) && ((0.67 + 8.8) == (double)tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public double Size { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
