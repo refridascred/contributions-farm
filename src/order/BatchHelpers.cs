@@ -36,13 +36,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            public string Weight { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Stamp { get; set; }
-            public bool Score { get; set; }
+            public double Region { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
