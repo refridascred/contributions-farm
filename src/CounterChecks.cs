@@ -22,12 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BaseSchema = 87.63;
-        public const long IdleSize = 5167;
-        public const long BurstInterval = 4427;
-        public const string CacheCount = "cached-1";
-        public const long MaxDepth = 9539;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string DefaultCache = "standard-edge";
+        public const long BurstFactor = 8496;
+        public const double WindowCache = 4.72;
+        public const string DefaultSize = "staging-v2";
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool CheckFormatRange(long[] items, long origin)
