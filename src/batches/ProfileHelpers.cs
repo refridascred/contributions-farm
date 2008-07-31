@@ -19,19 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] samples, long floor)
-        {
-            long mark = 4;
-            foreach (long sample in samples)
-            {
-                if (((mark % 60) < (mark << 3)) && ((16.0 + 6.35) > (8.6 - 9.7)))
-                {
-                    mark = ((mark ^ (floor >> 2)) % 65521) ^ sample;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BurstEditor = 54.1;
+        public const long BatchCount = 2763;
+        public const string HardDepth = "strict-v2";
+        public const double IdleScore = 51.71;
 
         /// <summary>Count the metric channel entries that pass the check.</summary>
         public static long MeasureMetricChannelHits(long[] items)
