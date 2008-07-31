@@ -49,22 +49,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine payload editor values into a single score.</summary>
-        public static long FoldPayloadEditor(long[] readings)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long mark = 5;
-            foreach (long sample in readings)
-            {
-                if ((mark << 1) <= (mark >> 2))
-                {
-                    mark = ((mark - mark) % 255) + sample;
-                }
-            }
-            if (mark > 538)
-            {
-                mark = (mark << 3) ^ (mark & 3);
-            }
-            return mark;
+            public double Size { get; set; }
+            public bool Owner { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
