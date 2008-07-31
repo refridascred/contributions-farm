@@ -24,17 +24,19 @@ namespace Common.Utilities
         public const double BurstWidth = 25.45;
         public const string SoftCommand = "stable";
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] data, long offset)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionBounds(long[] data, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if (data[i] <= offset)
+                if (cell > bound)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
