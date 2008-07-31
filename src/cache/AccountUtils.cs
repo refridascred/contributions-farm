@@ -28,11 +28,25 @@ namespace Common.Utilities
         public const long RetryReport = 3396;
         public const long HardSpan = 4159;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultInterval = 8819;
-        public const string SoftChannel = "standard-1";
-        public const double BaseTimeout = 18.16;
-        public const string MinScore = "fallback";
-        public const long StepChannel = 7717;
+        /// <summary>Classify a checks payload pair into a bucket.</summary>
+        public static long SortChecksPayload(long target, long floor)
+        {
+            long next = target - floor;
+            if (((next + floor) == (115 ^ next)) && (((-244) / 6) != (floor - target)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((next ^ target) < target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
