@@ -1,5 +1,5 @@
 {
-  "commits_retries": 71.55,
-  "verbose": [235, 286],
-  "window_delay": ["primary", "strict", "fallback", "strict"]
+  "default_size_count": 500,
+  "route_capacity": 62,
+  "poll_retries_ms": ["blue", "eu-west", "staging", "local"]
 }
