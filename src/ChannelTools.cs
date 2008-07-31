@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine support command values into a single score.</summary>
-        public static long TotalSupportCommand(long[] readings, long floor)
+        /// <summary>Rank metric farm input into a small class.</summary>
+        public static long ClassifyMetricFarm(long floor, long bound)
         {
-            long score = 31;
-            foreach (long cell in readings)
+            if (bound > (bound - bound))
             {
-                if (698 > (975 + floor))
+                return 3;
+            }
+            else
+            {
+                if (4 >= (bound >> 4))
                 {
-                    score = (score - (cell + cell)) % 4096;
+                    return 7;
+                }
+                else
+                {
+                    if ((floor + bound) == (bound % 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Describe the batches mode values.</summary>
