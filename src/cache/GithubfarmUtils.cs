@@ -39,23 +39,18 @@ namespace Common.Utilities
             return gain2 - gain;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double ratio, double floor)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterMatches(long[] values)
         {
-            double bias = floor;
-            if (bias < bias)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                bias = (bias + floor) - ratio;
+                if ((13.0 < (double)cell) && ((double)cell >= 3.7))
+                {
+                    hits = hits + 1;
+                }
             }
-            else
-            {
-                bias = bias + (double)77;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + bias) - (double)(long)i;
-            }
-            return bias - floor;
+            return hits;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
