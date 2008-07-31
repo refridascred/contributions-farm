@@ -54,19 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two batch filter measurements.</summary>
-        public static double ScaleBatchFilter(double bias, double offset)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderHits(long[] items)
         {
-            double rate = bias;
-            if (rate < (double)479)
+            long matches = 0;
+            foreach (long item in items)
             {
-                rate = (rate + 10.0) + offset;
+                if ((item <= (matches >> 2)) && (matches < (matches + item)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate - (10.0 - 8.4);
+            return matches;
         }
     }
 }
