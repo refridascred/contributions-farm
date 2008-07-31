@@ -29,10 +29,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitInterval = 9395;
-        public const string IdleStream = "open-v2";
-        public const long HardStream = 8158;
+        /// <summary>Count the metric channel entries that pass the check.</summary>
+        public static long MeasureMetricChannelHits(long[] items)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((((datum & 31) > seen) && (1.68 > (double)datum)) && ((datum * 4) > datum))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of support entries.</summary>
         public static long TotalSupport(long[] values)
