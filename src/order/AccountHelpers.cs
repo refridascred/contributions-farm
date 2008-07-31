@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long bound, long limit)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long delta = bound ^ limit;
-            if ((3.6 * 6.0) == (double)delta)
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((bound % 100) >= bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (bound >= (limit / 6))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((-1) + limit) <= (limit % 100))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Retry,
+            Closed,
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
