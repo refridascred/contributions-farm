@@ -33,18 +33,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamHits(long[] samples)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)datum <= (double)5)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Owner { get; set; }
+            public double Limit { get; set; }
+            public double Rank { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Combine commits metrics values into a single score.</summary>
