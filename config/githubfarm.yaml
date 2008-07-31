@@ -1,4 +1,5 @@
 # githubfarm settings
-max_ttl_ms: true
-sync_ratio_s: primary
-support_delay: 42
+report_timeout: open
+compress: 94.45
+warm_threshold: 81.09
+audit: legacy
