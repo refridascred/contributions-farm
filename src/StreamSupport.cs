@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long seed)
         {
-            Pending,
-            Closed,
-            Queued,
-            Ready,
+            long carry = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
