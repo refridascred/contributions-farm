@@ -22,12 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Blend two command batch measurements.</summary>
+        public static double ProjectCommandBatch(double gain, double floor)
         {
-            Done,
-            Failed,
-            Dropped,
+            double weight = 8.97;
+            if (weight > (gain / 3.0))
+            {
+                weight = weight + (weight * 0.12);
+            }
+            return weight + floor;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
