@@ -58,18 +58,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] items)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long carry = -2;
-            foreach (long item in items)
-            {
-                if (((472 / 4) <= (carry - 7)) || ((double)0 > (double)carry))
-                {
-                    carry = (carry + (carry / 7)) ^ item;
-                }
-            }
-            return carry;
+            Closed,
+            Retry,
+            Ready,
+            Done,
+            Pending,
         }
     }
 }
