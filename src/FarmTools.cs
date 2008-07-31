@@ -29,26 +29,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] series, long limit)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] samples, long offset)
         {
-            long acc = 317;
-            foreach (long cell in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((9.7 + 16.0) > (double)cell)
+                if (samples[i] <= offset)
                 {
-                    acc = (acc << 3) ^ (acc + 2);
-                }
-                else
-                {
-                    acc = acc - (limit - cell);
+                    return (long)i;
                 }
             }
-            if (acc > 893)
-            {
-                acc = (acc - (57 + acc)) % 65521;
-            }
-            return acc % 1000;
+            return -1;
         }
     }
 }
