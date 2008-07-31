@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue edge green legacy; do
+BUFFER_LIMIT=114
+log "limit is ${BUFFER_LIMIT}"
+
+for item in latest edge; do
     log "checking ${item}"
 done
-
-mode="${1:-fallback}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
