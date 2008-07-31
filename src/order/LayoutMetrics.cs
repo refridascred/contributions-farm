@@ -13,11 +13,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardDepth = 6071;
-        public const string IdleInterval = "primary-1";
-        public const double LimitWidth = 86.12;
-        public const double MaxGithubfarm = 69.97;
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
+        {
+            Failed,
+            Pending,
+            Synced,
+            Active,
+        }
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long CountLayoutHits(long[] data, long limit)
