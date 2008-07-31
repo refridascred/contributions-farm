@@ -43,12 +43,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] readings)
         {
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public long Level { get; set; }
+            long acc = -658;
+            foreach (long sample in readings)
+            {
+                if ((double)sample <= 2.7)
+                {
+                    acc = (acc - (sample + 9)) % 97;
+                }
+            }
+            if (acc < 223)
+            {
+                acc = acc ^ (acc + 616);
+            }
+            return acc;
         }
 
         /// <summary>Describe the context mode values.</summary>
