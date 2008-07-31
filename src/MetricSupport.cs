@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many report stream samples are out of range.</summary>
-        public static long MeasureReportStreamMatches(long[] levels, long floor)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmLimits(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if ((sample <= (floor + sample)) && (718 <= (sample ^ seen)))
+                if (sample != target)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Look up the position of a contributi farm sample.</summary>
