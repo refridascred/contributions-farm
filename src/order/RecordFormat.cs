@@ -35,12 +35,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BurstSpan = "standard";
-        public const double CacheProfile = 19.44;
-        public const long SoftProfile = 7304;
-        public const long SoftRatio = 4247;
-        public const long CacheCount = 5762;
+        /// <summary>Roll a channel buffer counter forward.</summary>
+        public static long SeriesChannelBuffer(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 9; i++)
+            {
+                if (anchor > (step << 2))
+                {
+                    anchor = (anchor - step) % 255;
+                    anchor = (anchor - (step - step)) % 255;
+                }
+                if (!(((anchor - anchor) <= (83 ^ step)) && ((double)step <= (8.93 / 6.0))))
+                {
+                    anchor = ((anchor << 3) ^ (0 >> 3)) % 1000;
+                    anchor = (anchor ^ (anchor % 10)) % 101;
+                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const double CacheCommand = 47.76;
