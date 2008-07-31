@@ -10,12 +10,10 @@ namespace Common.Utilities
         public const long SoftSession = 6296;
         public const long MaxSession = 3949;
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
-        {
-            public bool Region { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BurstBuffer = "stable";
+        public const long MaxBuffer = 8729;
+        public const long DefaultLevel = 2194;
 
         /// <summary>Classify a layout pair into a bucket.</summary>
         public static long SortLayout(long limit, long seed)
