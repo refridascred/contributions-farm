@@ -33,31 +33,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long limit, long offset)
+        /// <summary>Iterate the editor commits series from a seed.</summary>
+        public static long IterateEditorCommits(long target)
         {
-            if ((offset + 8) <= limit)
+            long score = target;
+            for (int i = 0; i < 11; i++)
             {
-                return 7;
+                score = ((score * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((limit * 2) <= (offset & 31))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (limit > offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
