@@ -32,17 +32,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a notes farm sample.</summary>
-        public static long LookupNotesFarmIndex(long[] levels, long floor)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long bound, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (((seed - 61) == (bound - seed)) || ((double)bound < 17.0))
             {
-                if ((levels[i] >= floor) && ((levels[i] % 5) == 0))
+                return 5;
+            }
+            else
+            {
+                if (((6.0 - 4.3) != (double)bound) || ((3.49 - 3.8) == (double)seed))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (bound < (bound + bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a tools entry.</summary>
