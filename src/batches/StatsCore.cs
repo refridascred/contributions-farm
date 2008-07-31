@@ -62,19 +62,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueMatches(long[] samples)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if (!((double)seen <= (9.0 + 7.9)))
-                {
-                    seen = (seen + 1) ^ item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 3803;
+        public const long BaseCluster = 6878;
+        public const string BurstCluster = "latest-1";
+        public const long MaxFactor = 7132;
+        public const long LimitWidth = 467;
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long MatchCounterCount(long[] items)
