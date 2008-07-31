@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Derive the next session format value from a seed.</summary>
+        public static long IterateSessionFormat(long offset)
         {
-            Closed,
-            Paused,
-            Pending,
+            long sum = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                sum = (sum - ((long)i + offset)) % 65521;
+                if ((sum >> 3) == (577 << 1))
+                {
+                    sum = sum - 955;
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Match up notes samples.</summary>
