@@ -37,11 +37,14 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string WindowDepth = "stable-v2";
-        public const long IdleScore = 7405;
-        public const double RetryBuffer = 10.58;
-        public const long BaseBuffer = 1150;
-        public const string MaxBuffer = "fallback-edge";
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
+        {
+            Synced,
+            Idle,
+            Done,
+            Stale,
+            Draft,
+        }
     }
 }
