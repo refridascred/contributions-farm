@@ -20,18 +20,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterGaps(long[] levels, long floor)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((double)value != (double)floor)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Idle,
+            Queued,
+            Synced,
+            Done,
+            New,
         }
 
         /// <summary>Project the next graph cache value.</summary>
