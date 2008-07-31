@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Match up record token samples.</summary>
+        public static long CompareRecordTokenCount(long[] readings)
         {
-            public double Flag { get; set; }
-            public long Size { get; set; }
-            public bool Label { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
