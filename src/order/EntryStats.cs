@@ -19,15 +19,21 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double rate, double offset)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] series)
         {
-            double ratio = (offset / 6.0) * 2.9;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = (ratio + rate) + (double)(long)i;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return ratio + (double)0;
+            return tally;
         }
 
         /// <summary>Describe the batch level values.</summary>
