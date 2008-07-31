@@ -20,39 +20,15 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long limit, long offset)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long limit)
         {
-            long gap = limit ^ offset;
-            if ((33 & 255) == (gap / 9))
+            long anchor = limit;
+            for (int i = 0; i < 21; i++)
             {
-                return 7;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((offset << 2) <= offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset % 64) < (offset % 12))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((gap << 2) >= (offset * 4))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Roll a graph entry counter forward.</summary>
