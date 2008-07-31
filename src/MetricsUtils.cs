@@ -52,12 +52,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] series, long offset)
         {
-            public long Size { get; set; }
-            public string Flag { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long score = 94;
+            foreach (long datum in series)
+            {
+                score = score - (offset + score);
+                if (((-506) + (long)series.Length) == (offset ^ score))
+                {
+                    score = (score + (datum << 1)) % 65521;
+                }
+            }
+            if (score < 145)
+            {
+                score = (score - (score * 5)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Describe the support status values.</summary>
