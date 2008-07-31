@@ -1,41 +1,12 @@
 # entry settings
-batch_capacity_pct: local
-sync_size_pct: strict
-burst_window_ms:
-  channel_ratio: eu-west
-  stats_delay:
-    flush_interval_pct: stable
-    base_ttl_pct:
-      - local
-      - fallback
-    soft_ttl_ms: 39
-    order_threshold:
-      - 322
-      - 472
-      - 237
-    dry_run: true
-  idle_delay_pct:
-    - 411
-    - 128
-  default_threshold: strict
-  base_interval_count: stable
-  counter_interval: cached
-enabled: fallback
-default_ttl_s:
-  profile_ratio:
-    - stable
-    - local
-    - local
-  sync_retries: eu-west
-  burst_capacity: true
-  max_limit_s: 3
-  stream_capacity: latest
+layout_capacity: false
+layout_ratio: 5974
+hard_retries_pct:
+  batch_retries: 1024
+  default_delay_count: true
+  min_retries_s: false
+  soft_limit_ms: strict
   compress:
-    poll_retries: true
-    burst_depth_count: 7598
-    readonly: false
-    cache_delay: 61.17
-    hard_depth_ms: false
-idle_retries_count:
-  - 492
-  - 73
+    - 340
+    - 279
+layout_ttl: strict
