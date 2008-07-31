@@ -1,8 +1,7 @@
-id,token,level
-1,local,31.19
-2,staging,64.47
-3,362,cached
-4,488,395
-5,16.94,152
-6,89.8,738
-7,50.54,50
+id,weight,token
+1,eu-west,231
+2,27.91,edge
+3,368,610
+4,cached,green
+5,56.85,933
+6,18.96,83.06
