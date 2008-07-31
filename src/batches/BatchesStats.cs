@@ -33,13 +33,13 @@ namespace Common.Utilities
             return rate + (span + weight);
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            public bool Rank { get; set; }
-            public bool Count { get; set; }
-            public long Stamp { get; set; }
-            public bool Region { get; set; }
+            public double Label { get; set; }
+            public long Total { get; set; }
+            public long Score { get; set; }
+            public long Region { get; set; }
         }
     }
 }
