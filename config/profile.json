@@ -1,19 +1,12 @@
 {
-  "batch_threshold_ms": 9.59,
-  "min_capacity_s": {
-    "hard_limit_s": "stable",
-    "persist": 58.0,
-    "batches_capacity": "cached"
+  "warm_capacity_s": false,
+  "strict": 30,
+  "retry_capacity_s": {
+    "base_threshold_ms": 90,
+    "flush_interval_s": "eu-west",
+    "batch_limit_s": false
   },
-  "max_ttl": {
-    "order_threshold": true,
-    "compress": 60,
-    "flush_size_s": 83,
-    "readonly": "fallback",
-    "base_limit_pct": "latest",
-    "persist": 27
-  },
-  "cache_limit": [38, 21],
-  "dry_run": 64.79,
-  "channel_timeout": 1886
+  "commits_ratio": 95,
+  "burst_window_ms": false,
+  "verbose": "primary"
 }
