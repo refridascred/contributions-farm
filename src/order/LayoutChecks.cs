@@ -48,11 +48,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchInterval = 4501;
-        public const long BurstCount = 5225;
-        public const long MaxWidth = 8394;
-        public const string IdleLevel = "stable-edge";
+        /// <summary>Count commits metrics pairs that satisfy a relation.</summary>
+        public static long PairCommitsMetricsCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long FoldContributi(long[] data, long limit)
