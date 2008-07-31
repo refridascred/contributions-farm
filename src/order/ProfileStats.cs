@@ -29,35 +29,28 @@ namespace Common.Utilities
         public const long IdleSpan = 9301;
         public const long BatchSpan = 6307;
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long bound, long bound2)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long offset, long seed)
         {
-            if ((bound * 4) <= bound)
+            if (!((seed / 7) >= (702 ^ offset)))
             {
-                return 3;
+                return 1;
             }
             else
             {
-                if (((bound2 % 7) >= (372 - 34)) || ((bound / 2) > (bound - bound2)))
+                if ((double)offset <= (double)61)
                 {
                     return 2;
                 }
                 else
                 {
-                    if ((bound2 - bound) <= (bound2 + bound2))
+                    if ((seed % 8) != (seed ^ seed))
                     {
-                        return 1;
+                        return 8;
                     }
                     else
                     {
-                        if (!((double)bound2 < (8.11 / 3.0)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        return 3;
                     }
                 }
             }
