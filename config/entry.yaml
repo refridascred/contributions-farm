@@ -1,8 +1,9 @@
 # entry settings
-strict: 5.94
-dry_run: true
-idle_depth: 88
-report_interval:
-  poll_limit: cached
-  sync_delay_ms: edge
-  record_ttl: 2728
+entry_threshold: false
+persist:
+  - 401
+  - 421
+retry_ttl_count: 60
+soft_limit_s:
+  - latest
+  - latest
