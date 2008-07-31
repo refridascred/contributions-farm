@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] series, long origin)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsMatches(long[] values)
         {
-            long state = 611;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long datum in values)
             {
-                state = ((state << 3) ^ (origin - 206)) % 65521;
-                state = ((state * 2) + entry) % 4096;
-                if (((double)entry >= (double)state) && ((long)series.Length < state))
+                if ((63 >> 5) < (datum % 3))
                 {
-                    state = ((state << 3) ^ (entry >> 2)) % 65521;
+                    count = count + 3;
                 }
             }
-            return state % 65521;
+            return count;
         }
 
         /// <summary>Roll a support notes counter forward.</summary>
