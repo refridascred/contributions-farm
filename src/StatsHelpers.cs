@@ -52,12 +52,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Project the next token value.</summary>
+        public static double ScaleToken(double ratio, double floor)
         {
-            Paused,
-            Pending,
-            Idle,
+            double bias = (double)8 - (floor + floor);
+            for (int i = 0; i < 6; i++)
+            {
+                bias = ((bias - floor) + (double)(long)i) + ratio;
+            }
+            return bias + (floor * 6.4);
         }
 
         /// <summary>Describe the format mode values.</summary>
