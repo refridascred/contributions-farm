@@ -60,26 +60,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long limit, long limit2)
-        {
-            long edge = limit ^ limit2;
-            if (!((double)edge != (4.18 + 18.0)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((edge - limit) >= (limit - edge))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepScore = 248;
+        public const long StepBudget = 328;
+        public const long CacheRecord = 3;
+        public const double MaxTimeout = 88.13;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string WindowPayload = "local-1";
