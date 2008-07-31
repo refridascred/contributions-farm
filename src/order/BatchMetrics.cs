@@ -20,13 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmHits(long[] items)
         {
-            public long Score { get; set; }
-            public string Rank { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Offset { get; set; }
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((((double)reading > 4.0) && (9.83 > (double)matches)) || ((double)reading >= (2.9 + 2.2)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
