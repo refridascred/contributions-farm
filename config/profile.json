@@ -1,5 +1,12 @@
 {
-  "retry_timeout_s": "fallback",
-  "max_limit_count": 76,
-  "max_ratio": 8991
+  "verbose": 60,
+  "queue_limit": "legacy",
+  "soft_interval": false,
+  "max_threshold": {
+    "poll_delay_count": [259, 204, 144, 97],
+    "sync_limit_count": "eu-west",
+    "audit": ["primary", "local", "latest"]
+  },
+  "soft_retries_count": 65.95,
+  "flush_ttl": 14.6
 }
