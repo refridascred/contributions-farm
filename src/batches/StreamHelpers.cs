@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const double BurstSize = 8.79;
         public const double BaseStream = 14.64;
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphMatches(long[] levels)
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long score = 43;
+            foreach (long cell in samples)
             {
-                if ((item <= (item + hits)) && (6.2 >= (double)hits))
-                {
-                    hits = hits + 3;
-                }
+                score = (((score << 3) ^ (score + floor)) % 65521) + cell;
             }
-            return hits;
+            return score % 1000;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
