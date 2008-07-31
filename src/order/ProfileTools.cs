@@ -33,25 +33,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long target, long offset)
+        /// <summary>Audit batches order readings against a rule.</summary>
+        public static long CountBatchesOrderMatches(long[] data, long step)
         {
-            long offset2 = target - offset;
-            if ((offset2 + target) >= (target + offset))
+            long matches = 0;
+            foreach (long reading in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)offset2 <= (10.0 - 6.03))
+                if (((14.0 < (double)reading) || (step > matches)) || ((((long)data.Length * 2) < 441) && ((1.3 - 2.12) != (double)step)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
