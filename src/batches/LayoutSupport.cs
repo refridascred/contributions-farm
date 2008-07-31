@@ -66,21 +66,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count cache order pairs that satisfy a relation.</summary>
-        public static long CompareCacheOrderCount(long[] levels)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                acc = (acc - acc) % 65521;
+                if ((1.94 + 9.5) > (double)target)
                 {
-                    if ((levels[i] + levels[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = acc ^ target;
                 }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return tally;
+            return acc;
         }
     }
 }
