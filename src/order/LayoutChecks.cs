@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderRange(long[] series, long seed)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long limit)
         {
-            bool found = true;
-            foreach (long item in series)
+            long carry = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (item <= seed)
-                {
-                    found = false;
-                    break;
-                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
