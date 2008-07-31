@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] items, long origin)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long score = -5;
-            foreach (long cell in items)
-            {
-                score = ((score + (origin + 7)) % 1000) + cell;
-            }
-            if (score < 89)
-            {
-                score = ((score << 3) ^ (score + origin)) % 65521;
-            }
-            return score % 97;
+            Dropped,
+            Stale,
+            New,
+            Paused,
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
