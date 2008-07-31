@@ -20,10 +20,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepFactor = 80;
-        public const long SoftRecord = 4286;
-        public const long IdleRatio = 5952;
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
+        {
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Count { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long LocateFilterIndex(long[] readings, long offset)
