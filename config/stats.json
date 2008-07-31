@@ -1,15 +1,18 @@
 {
-  "sync_depth": {
-    "max_delay_ms": {
-      "retry_retries_ms": "standard",
-      "queue_depth": 3584,
-      "strict": 8050
+  "flush_interval_ms": true,
+  "filter_retries": {
+    "retry_depth_count": false,
+    "checks_delay": 9698,
+    "record_retries": {
+      "hard_size": "legacy",
+      "retry_retries": 100,
+      "poll_size_pct": 39.65,
+      "burst_depth_s": 89.44,
+      "base_capacity_count": false
     },
-    "queue_retries": 17.11,
-    "burst_threshold": "staging",
-    "editor_ttl": 3
+    "soft_size_count": true
   },
-  "idle_retries_count": "latest",
-  "soft_capacity": 11.54,
-  "hard_size": 500
+  "hard_timeout_count": "staging",
+  "base_interval": ["edge", "open", "stable", "stable"],
+  "sync_retries_pct": 25.9
 }
