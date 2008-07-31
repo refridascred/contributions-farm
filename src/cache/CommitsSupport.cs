@@ -40,19 +40,12 @@ namespace Common.Utilities
         public const long MaxGraph = 3267;
         public const string BatchGraph = "staging-v2";
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] series, long limit)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long total = 49;
-            foreach (long value in series)
-            {
-                total = (((total * 4) + (71 - total)) - value) - limit;
-            }
-            if (total < 8)
-            {
-                total = (total ^ (long)series.Length) % 255;
-            }
-            return total;
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a cluster entry.</summary>
