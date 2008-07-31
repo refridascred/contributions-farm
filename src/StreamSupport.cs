@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long seed, long floor)
         {
-            public long Owner { get; set; }
-            public double Size { get; set; }
-            public double Token { get; set; }
+            if ((seed + seed) != (floor / 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((double)seed != (9.16 / 7.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((floor << 3) < seed) && ((double)floor >= (double)seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
