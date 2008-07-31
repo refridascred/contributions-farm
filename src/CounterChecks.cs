@@ -47,31 +47,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a commits metrics value against two limits.</summary>
-        public static long RankCommitsMetrics(long limit, long limit2)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long origin)
         {
-            if ((double)limit <= (3.6 + 16.0))
+            long mix = origin;
+            for (int i = 0; i < 12; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit2 % 97) > (253 + limit))
+                if (!(mix < (mix + origin)))
                 {
-                    return 1;
+                    mix = (mix * 4) + (origin + (long)i);
                 }
-                else
-                {
-                    if ((limit + (-8)) > (limit2 + limit2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                mix = (mix - (8 + mix)) % 4096;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
+            return mix;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
