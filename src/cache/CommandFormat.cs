@@ -23,14 +23,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Project the next context filter value.</summary>
+        public static double ScaleContextFilter(double scale, double span)
         {
-            Closed,
-            Paused,
-            Synced,
-            Dropped,
-            Locked,
+            double rate = (double)(357 - 13);
+            if (rate <= 12.0)
+            {
+                rate = rate + (rate + scale);
+            }
+            else
+            {
+                rate = rate - scale;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - (rate - 5.0)) + (double)(long)i;
+            }
+            return rate - span;
         }
 
         /// <summary>Fold a list of already readings.</summary>
