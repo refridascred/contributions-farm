@@ -24,11 +24,19 @@ namespace Common.Utilities
             return bias - weight;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryWidth = 674;
-        public const long SoftProfile = 8804;
-        public const string MinSize = "primary-1";
-        public const long CacheProfile = 879;
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] levels, long floor)
+        {
+            long state = 422;
+            foreach (long reading in levels)
+            {
+                if (state > (state % 10))
+                {
+                    state = (((state << 2) ^ (state % 8)) - reading) - floor;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool GuardReportRange(long[] samples, long bound)
