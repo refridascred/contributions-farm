@@ -44,19 +44,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportHits(long[] samples, long origin)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (!((0 + datum) >= matches))
-                {
-                    matches = (matches + 3) + origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleChannel = 1965;
+        public const double MinChannel = 51.19;
+        public const long IdleCount = 4177;
+        public const double IdleBudget = 85.32;
+        public const long RetryLevel = 4232;
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
