@@ -74,11 +74,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowInterval = 1319;
-        public const double BasePayload = 5.36;
-        public const long HardTimeout = 3820;
-        public const long IdleSize = 9979;
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
+        {
+            Idle,
+            Queued,
+            Failed,
+        }
 
         /// <summary>Adjust a record reading.</summary>
         public static double AdjustRecord(double weight, double span)
