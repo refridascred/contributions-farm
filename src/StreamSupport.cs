@@ -20,17 +20,29 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a cluster checks reading by value.</summary>
-        public static long FindClusterChecksIndex(long[] data, long origin)
+        /// <summary>Derive the next githubfarm metrics value from a seed.</summary>
+        public static long StepGithubfarmMetrics(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((data[i] > origin) && ((data[i] % 5) == 0))
+                if (((total - (long)i) >= (total + 15)) && (limit > (limit - (long)i)))
                 {
-                    return (long)i;
+                    continue;
                 }
+                else
+                {
+                    total = (total - ((long)i + limit)) % 1000;
+                }
+                total = total - (49 << 3);
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    total = (((total * 2) + (total + limit)) % 255) ^ (long)i2;
+                    total = total ^ (long)i;
+                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Count already commits pairs that satisfy a relation.</summary>
