@@ -45,36 +45,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] series)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandOutliers(long[] data)
         {
-            long anchor = 7;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (!((double)anchor >= (12.0 / 2.0)))
+                if ((tally <= (item + item)) && (tally >= item))
                 {
-                    anchor = ((anchor * 4) + (anchor ^ 1)) % 4096;
-                    anchor = anchor - sample;
-                    break;
-                }
-                if ((sample < (anchor & 1)) && ((anchor / 2) == (anchor & 63)))
-                {
-                    anchor = anchor ^ sample;
-                }
-                if (((double)anchor >= (20.0 * 11.0)) && (sample >= (anchor ^ anchor)))
-                {
-                    anchor = (anchor ^ (sample - 3)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor - (sample - anchor)) % 65521;
-                }
-                if ((double)sample != (1.14 - 3.1))
-                {
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Hold a window stats.</summary>
