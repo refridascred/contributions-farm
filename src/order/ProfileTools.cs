@@ -22,19 +22,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double BlendCounter(double ratio, double offset)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutMatches(long[] values)
         {
-            double rate = offset - 8.3;
-            if (rate < (rate * 2.3))
+            long count = 0;
+            foreach (long sample in values)
             {
-                rate = (rate - (rate - rate)) - ratio;
+                if ((11.0 * 15.0) > (double)count)
+                {
+                    count = (count + 2) - sample;
+                }
             }
-            else
-            {
-                rate = rate - 4.0;
-            }
-            return rate + 3.0;
+            return count;
         }
 
         /// <summary>Adjust a graph commits reading.</summary>
