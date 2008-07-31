@@ -41,26 +41,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] levels)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long floor)
         {
-            long result = 223;
-            foreach (long reading in levels)
+            long result = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if ((result % 64) > (result ^ reading))
-                {
-                    result = (result * 3) + (660 ^ result);
-                }
-                else
-                {
-                    result = (result * 5) + (reading >> 2);
-                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            if (result > 3)
-            {
-                result = (result ^ (result * 5)) % 1000;
-            }
-            return result % 4096;
+            return result;
         }
 
         /// <summary>Digest a series of session entries.</summary>
