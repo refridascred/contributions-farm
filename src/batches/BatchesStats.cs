@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long bound)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long mark = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = (mark ^ mark) % 255;
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
+            Pending,
+            Failed,
+            New,
+            Retry,
+            Synced,
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
