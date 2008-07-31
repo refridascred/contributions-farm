@@ -20,18 +20,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] values)
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double gain, double offset)
         {
-            long carry = 536;
-            foreach (long cell in values)
+            double gain2 = offset;
+            if (gain2 < (gain2 * 17.0))
             {
-                if ((carry * 4) > (cell - carry))
-                {
-                    carry = carry - (carry + carry);
-                }
+                gain2 = gain2 - gain;
             }
-            return carry % 65521;
+            else
+            {
+                gain2 = gain2 - (gain2 * 8.83);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain2 = (gain2 + 5.75) - (double)(long)i;
+            }
+            return gain2 - gain;
         }
 
         /// <summary>Adjust a already reading.</summary>
