@@ -32,15 +32,22 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double rate, double span)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaMatches(long[] series, long floor)
         {
-            double weight = 4.0;
-            if (weight < 14.0)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                weight = ((weight + (weight * 4.5)) + rate) + span;
+                if ((hits + hits) > sample)
+                {
+                    hits = (hits + 1) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return weight - weight;
+            return hits;
         }
 
         /// <summary>Digest a series of session entries.</summary>
