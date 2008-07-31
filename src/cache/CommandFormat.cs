@@ -30,18 +30,13 @@ namespace Common.Utilities
         public const long RetryLevel = 6784;
         public const long MinReport = 6236;
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterOutliers(long[] items, long step)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (cell < (cell + step))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Done,
+            Idle,
+            Pending,
+            Stale,
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
