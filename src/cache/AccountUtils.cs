@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmHits(long[] samples, long origin)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((33 >> 4) >= (item + origin))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Size { get; set; }
+            public bool Region { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the queue phase values.</summary>
