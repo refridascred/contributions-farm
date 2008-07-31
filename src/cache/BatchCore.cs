@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string LimitRatio = "staging-1";
-        public const double BatchDepth = 5.54;
-        public const string StepWidth = "legacy";
-        public const string StepSchema = "stable-1";
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchLimits(long[] levels, long floor)
+        {
+            bool flag = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
