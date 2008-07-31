@@ -1,15 +1,24 @@
 # support settings
-poll_timeout:
-  verbose: 42.74
-  base_depth: legacy
-  flush_size_count: primary
-  max_threshold_pct: blue
-  default_threshold_count: blue
-  dry_run: 100
-idle_ratio: primary
-stream_delay: blue
-cache_window_pct: 2859
-soft_size:
-  - green
-  - cached
-base_delay: 44
+hard_ttl_s:
+  strict: 15
+  cache_limit_ms: blue
+  compress:
+    - eu-west
+    - edge
+  verbose: 100
+default_limit_ms: 6567
+soft_retries_count:
+  batch_ttl_s: open
+  audit: 26.49
+  poll_delay:
+    profile_interval: blue
+    buffer_delay: fallback
+    contributi_depth: 6679
+    commits_window: 26.86
+    order_threshold: 1024
+  batches_ttl: 76
+  base_limit_s: 60
+  sync_capacity_ms: edge
+min_delay_count:
+  - 257
+  - 217
