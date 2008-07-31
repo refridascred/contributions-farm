@@ -13,21 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long bound)
+        /// <summary>Project the next batches entry value.</summary>
+        public static double AdjustBatchesEntry(double weight, double offset)
         {
-            long acc = bound;
-            for (int i = 0; i < 8; i++)
+            double mean = (double)(7 / 2);
+            if (mean < (double)88)
             {
-                acc = (acc + acc) % 101;
-                acc = acc ^ (bound - bound);
-                if (((9.0 / 2.0) == (double)acc) && (acc >= (acc / 3)))
-                {
-                    acc = (acc << 2) ^ (bound - acc);
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
+                mean = (mean + (double)(-234)) - offset;
             }
-            return acc;
+            else
+            {
+                mean = mean - mean;
+            }
+            return mean - weight;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
