@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit farm stream readings against a rule.</summary>
-        public static long MeasureFarmStreamMatches(long[] data)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long StepFormat(long floor)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long carry = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (!((count + count) <= (datum % 7)))
-                {
-                    count = count + 3;
-                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Define command limits and defaults.</summary>
