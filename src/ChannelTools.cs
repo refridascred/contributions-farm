@@ -44,12 +44,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long step)
         {
-            Synced,
-            Ready,
-            Closed,
+            long mark = step;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = (mark - step) % 4096;
+                mark = ((mark * 4) + mark) % 1000;
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
         }
     }
 }
