@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the payload schema series from a seed.</summary>
-        public static long DerivePayloadSchema(long bound)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] items, long origin)
         {
-            long score = bound;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                if (items[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Count the commits entry entries that pass the check.</summary>
