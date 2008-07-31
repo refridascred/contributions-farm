@@ -24,19 +24,17 @@ namespace Common.Utilities
             return load - (double)(-596);
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ScaleTools(double rate, double span)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] readings, long origin)
         {
-            double weight = span;
-            if (weight < rate)
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = weight + (weight * 7.0);
+                if (readings[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight - (double)203;
-            }
-            return weight - (span + 17.0);
+            return -1;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
