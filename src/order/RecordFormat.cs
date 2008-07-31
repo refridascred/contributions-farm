@@ -20,11 +20,26 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MinReport = 53.07;
-        public const long IdleReport = 134;
-        public const string BaseRatio = "stable";
-        public const long HardReport = 3350;
+        /// <summary>Roll a session editor counter forward.</summary>
+        public static long RollSessionEditor(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 13; i++)
+            {
+                if (!(anchor < 50))
+                {
+                    anchor = anchor - ((long)i * 3);
+                    anchor = anchor - anchor;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ (target / 2);
+                    anchor = anchor + anchor;
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long IterateOrder(long bound)
