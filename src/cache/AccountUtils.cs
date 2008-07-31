@@ -18,25 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long step, long bound)
+        /// <summary>Count the token order entries that pass the check.</summary>
+        public static long TallyTokenOrderHits(long[] values, long step)
         {
-            long step2 = step ^ bound;
-            if (4.67 <= (double)step)
+            long count = 0;
+            foreach (long entry in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((step2 / 9) > (911 & 31)))
+                if ((double)count <= (7.7 - 1.2))
                 {
-                    return 8;
+                    count = ((count + 2) ^ entry) + step;
                 }
                 else
                 {
-                    return 1;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
