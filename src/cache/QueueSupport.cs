@@ -28,15 +28,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit report format readings against a rule.</summary>
-        public static long MeasureReportFormatOutliers(long[] items)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long PairFilterCount(long[] readings)
         {
             long seen = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seen > (seen + 2)) || ((11.0 / 9.0) != (double)seen))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 1) ^ sample;
+                    if ((readings[i] ^ readings[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
