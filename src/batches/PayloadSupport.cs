@@ -13,18 +13,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] data)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] values)
         {
             long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long reading in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (count > reading)
                 {
-                    if ((data[i] ^ data[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
