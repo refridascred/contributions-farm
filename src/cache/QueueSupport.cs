@@ -21,15 +21,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long step)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] series)
         {
-            long sum = step;
-            for (int i = 0; i < 5; i++)
+            long score = 362;
+            foreach (long datum in series)
             {
-                sum = ((sum * 2) + (long)i) % 1000;
+                score = (score - (datum * 3)) % 255;
             }
-            return sum;
+            return score;
         }
     }
 }
