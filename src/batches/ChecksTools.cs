@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchRatio = 6647;
-        public const string BurstStats = "standard-1";
-        public const string WindowBudget = "primary-v2";
+        /// <summary>Fold a list of order farm readings.</summary>
+        public static long TallyOrderFarm(long[] levels, long origin)
+        {
+            long state = 3;
+            foreach (long datum in levels)
+            {
+                if ((datum ^ origin) >= datum)
+                {
+                    state = (state + (origin ^ origin)) % 1000;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Scale a counter figure with a bias.</summary>
         public static double SmoothCounter(double gain, double floor)
