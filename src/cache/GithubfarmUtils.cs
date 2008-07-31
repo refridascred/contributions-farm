@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double ScaleNotes(double weight, double span)
+        /// <summary>Derive the next channel profile value from a seed.</summary>
+        public static long IterateChannelProfile(long offset)
         {
-            double rate = span;
-            if (rate >= 5.9)
+            long mark = offset;
+            for (int i = 0; i < 7; i++)
             {
-                rate = rate - weight;
+                if ((double)mark >= (8.0 - 1.83))
+                {
+                    mark = mark - (mark + mark);
+                }
+                else
+                {
+                    mark = ((mark * 4) + offset) % 255;
+                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return rate + (rate + rate);
+            return mark;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
