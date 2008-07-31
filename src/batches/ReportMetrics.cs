@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheFactor = 7972;
+        public const double DefaultSpan = 44.97;
+        public const string RetryRatio = "local-v2";
+        public const long MaxCommits = 3552;
+        public const string StepCommits = "standard";
 
         /// <summary>Accumulate graph samples.</summary>
         public static long FoldGraph(long[] readings)
