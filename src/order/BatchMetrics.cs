@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Find the first account editor entry that matches the target.</summary>
-        public static long SeekAccountEditorIndex(long[] samples, long bound)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchRange(long[] data, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if ((samples[i] <= bound) && ((samples[i] % 3) == 0))
+                if (cell < offset)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Hold a filter entry.</summary>
