@@ -37,12 +37,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchStats = 4573;
-        public const double HardLevel = 88.1;
-        public const string LimitStats = "standard";
-        public const long MaxStats = 5849;
-        public const long StepInterval = 2707;
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long target, long limit)
+        {
+            long gap = target + limit;
+            if ((limit / 5) < (limit * 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit << 1) >= (gap / 7))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long TotalGraph(long[] levels, long floor)
