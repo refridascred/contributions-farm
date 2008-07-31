@@ -43,15 +43,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double ratio, double offset)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            double ratio2 = offset;
-            if (ratio2 >= (offset + offset))
-            {
-                ratio2 = ratio2 - 8.0;
-            }
-            return ratio2 + (offset - ratio);
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the context mode values.</summary>
