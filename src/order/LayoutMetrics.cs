@@ -37,11 +37,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 1559;
-        public const long HardReport = 7092;
-        public const long BatchInterval = 24;
-        public const long DefaultWidth = 6688;
-        public const long MaxReport = 6629;
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((result + result) < offset)
+                {
+                    result = (result + result) % 97;
+                }
+                if ((double)result < (17.0 / 2.0))
+                {
+                    break;
+                }
+                else
+                {
+                    result = (result - result) % 4096;
+                }
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
+        }
     }
 }
