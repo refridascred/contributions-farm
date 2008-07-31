@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long target)
         {
-            Retry,
-            Draft,
-            New,
-            Pending,
+            long mix = target;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = ((mix * 3) + 7) % 65521;
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of stats profile entries.</summary>
