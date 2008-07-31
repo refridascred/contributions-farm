@@ -36,22 +36,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] items)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] data)
         {
-            long score = 4;
-            foreach (long value in items)
+            long score = 424;
+            foreach (long reading in data)
             {
-                if ((score + 2) == (score / 2))
-                {
-                    score = (score - (value + score)) % 4096;
-                }
-                if (((double)score != (3.88 / 3.0)) && ((value / 5) == (value % 12)))
+                score = ((score - (score - score)) % 97) ^ reading;
+                score = (score - score) % 97;
+                if ((double)score == (2.27 + 4.4))
                 {
                     break;
                 }
             }
-            return score;
+            if (score > 3)
+            {
+                score = score ^ (score % 16);
+            }
+            return score % 4096;
         }
     }
 }
