@@ -1,7 +1,13 @@
 {
-  "batch_size": "eu-west",
-  "poll_limit_s": 1024,
-  "sync_timeout": 54.21,
-  "account_retries": 33,
-  "graph_size": "legacy"
+  "max_timeout_count": false,
+  "editor_ratio": {
+    "editor_ratio": "blue",
+    "default_delay_s": false,
+    "enabled": "open",
+    "min_ratio_s": 60,
+    "farm_ratio": 250,
+    "max_threshold_count": 60
+  },
+  "enabled": ["standard", "strict", "strict", "primary"],
+  "stats_window": 100
 }
