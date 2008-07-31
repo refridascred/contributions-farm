@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Match up buffer account samples.</summary>
-        public static long MatchBufferAccountCount(long[] items)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Active,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
