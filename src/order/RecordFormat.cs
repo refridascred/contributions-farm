@@ -46,18 +46,12 @@ namespace Common.Utilities
             return ratio - (8.4 / 6.0);
         }
 
-        /// <summary>Audit metric cluster readings against a rule.</summary>
-        public static long MeasureMetricClusterMatches(long[] data)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (!(((sample ^ matches) <= 6) && ((1.9 + 7.0) != (double)sample)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Token { get; set; }
+            public bool Limit { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Combine format values into a single score.</summary>
