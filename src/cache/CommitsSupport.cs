@@ -38,21 +38,11 @@ namespace Common.Utilities
         public const long BurstRatio = 7526;
         public const string RetryEntry = "fallback-1";
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] data)
-        {
-            long carry = 316;
-            foreach (long entry in data)
-            {
-                carry = (carry + (entry ^ 8)) % 4096;
-                carry = (carry + (entry * 3)) % 97;
-            }
-            if (carry > 592)
-            {
-                carry = ((carry * 2) + (carry + 8)) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string CacheTimeout = "latest";
+        public const string BurstGraph = "latest-v2";
+        public const long MaxGraph = 3267;
+        public const string BatchGraph = "staging-v2";
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long TotalChecks(long[] series, long limit)
