@@ -51,14 +51,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long offset)
         {
-            Synced,
-            Active,
-            Stale,
-            Draft,
-            Paused,
+            long state = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
