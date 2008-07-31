@@ -34,18 +34,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of graph format entries.</summary>
-        public static long ScoreGraphFormat(long[] values, long seed)
-        {
-            long mix = 14;
-            foreach (long datum in values)
-            {
-                if ((seed << 1) >= (41 & 255))
-                {
-                    mix = ((mix << 2) ^ (datum % 8)) % 4096;
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCommand = 2365;
+        public const long IdleCommand = 5380;
+        public const long MaxRatio = 8089;
     }
 }
