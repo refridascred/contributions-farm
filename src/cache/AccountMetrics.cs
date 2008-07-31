@@ -43,20 +43,19 @@ namespace Common.Utilities
         public const long BurstWidth = 6460;
         public const double WindowLevel = 40.58;
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long seed)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchRange(long[] samples, long origin)
         {
-            long anchor = seed;
-            for (int i = 0; i < 23; i++)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if (((long)i >= (seed % 64)) || ((anchor << 3) <= seed))
+                if (reading > origin)
                 {
-                    anchor = (anchor + ((-536) + (long)i)) % 255;
+                    ok = false;
                     break;
                 }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Compare every pair of channel commits readings.</summary>
