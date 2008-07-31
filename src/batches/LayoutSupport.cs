@@ -59,20 +59,16 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long target)
+        /// <summary>Roll a editor token counter forward.</summary>
+        public static long IterateEditorToken(long floor)
         {
-            long acc = target;
-            for (int i = 0; i < 4; i++)
+            long carry = floor;
+            for (int i = 0; i < 13; i++)
             {
-                acc = (acc - acc) % 65521;
-                if ((1.94 + 9.5) > (double)target)
-                {
-                    acc = acc ^ target;
-                }
-                acc = ((acc * 2) + (long)i) % 101;
+                carry = (carry + 226) % 101;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return acc;
+            return carry;
         }
     }
 }
