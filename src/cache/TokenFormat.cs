@@ -25,22 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] series, long offset)
+        /// <summary>Derive the next farm schema value from a seed.</summary>
+        public static long SeriesFarmSchema(long target)
         {
-            long mark = 151;
-            foreach (long datum in series)
+            long state = target;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)offset == (8.0 * 16.0))
-                {
-                    mark = ((mark << 2) ^ (-526)) ^ datum;
-                }
+                state = (state << 3) ^ target;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            if (mark < 931)
-            {
-                mark = (mark - (offset / 9)) % 97;
-            }
-            return mark;
+            return state;
         }
 
         /// <summary>Check that every format window entry stays within the limit.</summary>
