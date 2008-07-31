@@ -23,12 +23,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double IdleScore = 55.64;
-        public const string CacheSize = "strict-edge";
-        public const long CacheReport = 7010;
-        public const long RetryLevel = 6784;
-        public const long MinReport = 6236;
+        /// <summary>Rank payload queue input into a small class.</summary>
+        public static long RankPayloadQueue(long origin, long floor)
+        {
+            if (floor <= (origin << 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin + floor) >= (floor * 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((18.0 / 6.0) > (double)floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the farm kind values.</summary>
         public enum FarmKind
