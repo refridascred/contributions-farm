@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Roll a entry command counter forward.</summary>
-        public static long IterateEntryCommand(long target)
+        /// <summary>Fold a list of metric profile readings.</summary>
+        public static long FoldMetricProfile(long[] readings, long target)
         {
-            long total = target;
-            for (int i = 0; i < 19; i++)
+            long anchor = -90;
+            foreach (long entry in readings)
             {
-                if ((63 / 4) > ((long)i + target))
+                anchor = ((anchor << 2) ^ anchor) % 255;
+                if (target >= (entry % 8))
                 {
-                    total = total ^ 6;
+                    break;
                 }
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Classify a buffer route pair into a bucket.</summary>
