@@ -79,24 +79,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long seed, long origin)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            if ((double)origin == (18.0 * 1.39))
-            {
-                return 6;
-            }
-            else
-            {
-                if (seed > 977)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Total { get; set; }
+            public double Label { get; set; }
+            public double Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Combine payload values into a single score.</summary>
