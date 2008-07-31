@@ -1,9 +1,8 @@
-id,ratio,state,token,active
-1,latest,stable,535,159
-2,27.36,26.26,735,11.58
-3,fallback,58.27,94.95,67.28
-4,blue,53.99,75.06,361
-5,273,open,latest,779
-6,469,691,984,strict
-7,660,local,11.5,60
-8,cached,16.35,81,743
+id,label,region,ratio
+1,37.81,47.72,960
+2,green,45.58,81.25
+3,edge,145,557
+4,cached,618,14
+5,641,715,strict
+6,87.55,legacy,61.65
+7,113,55.07,7.73
