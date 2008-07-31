@@ -49,31 +49,9 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a order session pair into a bucket.</summary>
-        public static long SortOrderSession(long target, long origin)
-        {
-            if (((target % 60) == (origin - target)) && ((double)target != (1.1 / 9.0)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (origin >= (origin * 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)target > (double)487)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowFarm = 1612;
+        public const string CacheScore = "alpha-1";
+        public const long HardWidth = 1883;
     }
 }
