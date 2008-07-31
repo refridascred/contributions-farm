@@ -23,25 +23,28 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long target, long target2)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] data, long step)
         {
-            long span = target + target2;
-            if (!((296 / 2) < (span - span)))
+            long carry = 1;
+            foreach (long sample in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((8.97 / 4.0) != (double)span)
+                carry = (carry * 5) + (661 << 2);
+                if (((step - sample) <= sample) || ((3.24 + 5.8) <= (double)carry))
                 {
-                    return 4;
+                    carry = (carry ^ 799) % 101;
                 }
                 else
                 {
-                    return 7;
+                    carry = ((carry * 2) + (7 * 5)) % 4096;
+                    carry = ((carry << 2) ^ (carry + step)) % 4096;
+                }
+                if ((step > sample) || ((5 * 3) <= (long)data.Length))
+                {
+                    carry = (carry + (step - sample)) % 255;
                 }
             }
+            return carry;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
