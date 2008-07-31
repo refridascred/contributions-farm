@@ -54,11 +54,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long bound, long origin)
         {
-            public long Label { get; set; }
-            public double Offset { get; set; }
+            if (5 < (origin + origin))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((bound - bound) <= (bound + bound)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
