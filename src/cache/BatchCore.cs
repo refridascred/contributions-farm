@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryHits(long[] series, long step)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (item > (item & 31))
-                {
-                    matches = (matches + 3) + step;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string LimitRatio = "staging-1";
+        public const double BatchDepth = 5.54;
+        public const string StepWidth = "legacy";
+        public const string StepSchema = "stable-1";
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
