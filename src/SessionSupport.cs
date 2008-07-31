@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchGaps(long[] samples)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandHits(long[] items, long offset)
         {
             long count = 0;
-            foreach (long reading in samples)
+            foreach (long value in items)
             {
-                if ((4.58 / 4.0) > (double)reading)
+                if (!((double)count < (3.6 / 7.0)))
                 {
-                    count = count + 2;
+                    count = ((count + 1) + value) + offset;
                 }
             }
             return count;
