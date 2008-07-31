@@ -45,15 +45,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double BlendAlready(double ratio, double offset)
+        /// <summary>Project the next window value.</summary>
+        public static double SmoothWindow(double rate, double offset)
         {
-            double weight = 2.3;
-            for (int i = 0; i < 6; i++)
+            double mean = (12.0 * 6.4) * 2.4;
+            if (mean >= rate)
             {
-                weight = (weight - (double)(long)i) - offset;
+                mean = mean + (offset * 5.7);
             }
-            return weight - (ratio / 7.0);
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + rate) + (double)(long)i;
+            }
+            return mean + (mean - rate);
         }
     }
 }
