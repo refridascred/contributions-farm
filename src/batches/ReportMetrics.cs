@@ -30,21 +30,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up filter metrics samples.</summary>
-        public static long OverlapFilterMetricsCount(long[] samples)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long origin, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long delta = origin - offset;
+            if ((offset % 10) <= (offset + delta))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((origin + 970) <= delta)
                 {
-                    if ((samples[i] - samples[j]) < 15)
+                    return 5;
+                }
+                else
+                {
+                    if (delta < (origin >> 3))
                     {
-                        tally = tally + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((origin - delta) > origin))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return tally;
         }
     }
 }
