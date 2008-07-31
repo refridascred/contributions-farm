@@ -36,15 +36,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next notes payload value.</summary>
-        public static double SmoothNotesPayload(double rate, double bias)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricRange(long[] readings, long seed)
         {
-            double ratio = bias;
-            if (ratio <= (double)12)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                ratio = ratio + 5.0;
+                if (datum < seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return ratio - (rate / 5.0);
+            return flag;
         }
     }
 }
