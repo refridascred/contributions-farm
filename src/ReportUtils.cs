@@ -45,39 +45,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long step, long limit)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long slot = step ^ limit;
-            if (((double)slot > 20.0) || ((double)step < 4.11))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((8 + step) >= (step + 14))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((slot & 1) != (limit + slot))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)step >= (8.1 / 3.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public double Offset { get; set; }
+            public long Mode { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Match up filter samples.</summary>
