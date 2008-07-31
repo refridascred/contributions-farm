@@ -29,14 +29,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
+            Active,
+            Stale,
+            Paused,
             Dropped,
-            New,
-            Failed,
-            Pending,
-            Synced,
         }
     }
 }
