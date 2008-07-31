@@ -1,7 +1,5 @@
 # support settings
-enabled: 84.99
-layout_delay:
-  layout_interval: green
-  verbose: blue
-  route_threshold: stable
-hard_interval_pct: 46.31
+poll_retries_count: 6.13
+poll_depth_ms: legacy
+warm_limit_s: latest
+burst_threshold_ms: 100
