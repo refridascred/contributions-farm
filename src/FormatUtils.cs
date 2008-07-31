@@ -20,18 +20,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatOutliers(long[] items)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelBounds(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if (((-77) ^ reading) > (reading - reading))
+                if (datum != target)
                 {
-                    tally = tally + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Iterate the cache already series from a seed.</summary>
