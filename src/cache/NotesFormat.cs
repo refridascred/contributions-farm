@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] series, long target)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenOutliers(long[] values)
         {
-            long result = 8;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                result = ((result << 2) ^ (target >> 4)) % 65521;
-                if (target > (value & 127))
+                if ((seen % 3) > (seen - cell))
                 {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return result % 1000;
+            return seen;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
