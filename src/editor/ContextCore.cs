@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context core helpers.</summary>
     public static class ContextCore
     {
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ScaleGraph(double ratio, double offset)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportBounds(long[] data, long bound)
         {
-            double gain = (4.0 - ratio) - (offset / 8.0);
-            if (gain <= offset)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                gain = gain - offset;
+                if (sample != bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + (ratio + gain)) - (double)(long)i;
-            }
-            return gain - (double)24;
+            return valid;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
