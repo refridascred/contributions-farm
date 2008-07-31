@@ -28,11 +28,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Combine cluster session values into a single score.</summary>
+        public static long CombineClusterSession(long[] items, long offset)
         {
-            public bool Rank { get; set; }
-            public bool Region { get; set; }
+            long result = 35;
+            foreach (long datum in items)
+            {
+                if ((15.0 >= (double)offset) && ((751 % 7) >= (result - offset)))
+                {
+                    result = ((result ^ (2 * 3)) % 255) ^ datum;
+                    continue;
+                }
+                if ((result + offset) > (result * 3))
+                {
+                    result = ((result << 3) ^ (offset + 33)) % 1000;
+                }
+            }
+            if (result < 466)
+            {
+                result = result + (offset - offset);
+            }
+            return result;
         }
 
         /// <summary>Match up token samples.</summary>
