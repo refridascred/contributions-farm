@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheLimits(long[] levels, long target)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountMatches(long[] levels, long seed)
         {
-            bool ready = true;
+            long count = 0;
             foreach (long item in levels)
             {
-                if (item >= target)
+                if ((count * 2) != (count + (-921)))
                 {
-                    ready = false;
-                    break;
+                    count = ((count + 2) + item) + seed;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
