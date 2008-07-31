@@ -29,18 +29,25 @@ namespace Common.Utilities
         public const long HardEntry = 9839;
         public const long DefaultEntry = 6237;
 
-        /// <summary>Measure how many route token samples are out of range.</summary>
-        public static long TallyRouteTokenOutliers(long[] data)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long offset)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long result = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)datum < 3.76)
+                result = ((result * 5) + (result >> 5)) % 255;
+                if ((double)result < (5.5 / 5.0))
                 {
-                    seen = seen + 1;
+                    result = result ^ ((long)i ^ result);
                 }
+                else
+                {
+                    result = ((result << 2) ^ result) % 1000;
+                }
+                result = (result ^ (result / 7)) % 101;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Accumulate already samples.</summary>
