@@ -46,21 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] values)
+        /// <summary>Measure how many batch checks samples are out of range.</summary>
+        public static long AuditBatchChecksHits(long[] readings, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((target - 33) <= target) || ((6.9 * 7.0) != (double)target))
                 {
-                    if ((values[i] ^ values[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 2) - sample;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
