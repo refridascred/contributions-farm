@@ -33,10 +33,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 8761;
-        public const double RetryCommits = 47.74;
-        public const string CacheRatio = "staging-edge";
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
+        {
+            Dropped,
+            New,
+            Locked,
+            Closed,
+        }
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long FindMetricsIndex(long[] samples, long target)
