@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double rate, double bias)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutBounds(long[] data, long step)
         {
-            double gain = (4.3 * 5.7) * 2.16;
-            return ((gain + (double)82) + rate) + bias;
+            bool found = true;
+            foreach (long value in data)
+            {
+                if (value >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Rank command input into a small class.</summary>
