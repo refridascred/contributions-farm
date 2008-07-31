@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long bound)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long mix = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = (mix - (bound + mix)) % 97;
-                mix = (mix + (bound - bound)) % 101;
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            public long Level { get; set; }
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a report entry.</summary>
