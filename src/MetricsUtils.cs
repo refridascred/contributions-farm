@@ -37,22 +37,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] data)
+        /// <summary>Iterate the account batch series from a seed.</summary>
+        public static long IterateAccountBatch(long seed)
         {
-            long carry = 83;
-            foreach (long value in data)
+            long anchor = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (!(carry < ((long)data.Length / 7)))
-                {
-                    carry = (carry + (-77)) + value;
-                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            if (carry > 136)
-            {
-                carry = ((carry << 3) ^ carry) % 255;
-            }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Describe the support status values.</summary>
