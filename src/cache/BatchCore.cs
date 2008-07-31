@@ -22,30 +22,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] series)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long state = 24;
-            foreach (long datum in series)
-            {
-                if ((state - state) <= (state & 255))
-                {
-                    state = (state * 5) + (state & 255);
-                }
-                else
-                {
-                    state = (state << 3) ^ (state >> 5);
-                }
-                if (datum <= (8 + datum))
-                {
-                    break;
-                }
-            }
-            if (state > 1)
-            {
-                state = state + (state * 2);
-            }
-            return state % 1000;
+            public long Label { get; set; }
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Validate order readings against a bound.</summary>
