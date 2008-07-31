@@ -19,18 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferMatches(long[] levels)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long mix = 21;
+            foreach (long value in readings)
             {
-                if (matches > (cell >> 1))
+                if (!((double)mix > (3.0 - 6.2)))
                 {
-                    matches = matches + 2;
+                    mix = (mix + (mix + mix)) - value;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Audit notes format readings against a rule.</summary>
