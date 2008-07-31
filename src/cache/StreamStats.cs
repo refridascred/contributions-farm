@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double RetryCluster = 3.57;
-        public const long DefaultCluster = 9864;
-        public const long CacheCount = 6514;
-        public const long MaxInterval = 332;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] values)
+        {
+            long carry = 400;
+            foreach (long cell in values)
+            {
+                if ((carry - (-5)) > (cell - cell))
+                {
+                    carry = carry - carry;
+                    continue;
+                }
+                carry = (carry ^ cell) % 255;
+                if ((double)carry <= 0.59)
+                {
+                    carry = (carry ^ (carry & 127)) % 65521;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long MinSpan = 9787;
