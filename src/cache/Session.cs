@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsLimits(long[] items, long step)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamMatches(long[] levels, long floor)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (value >= step)
+                if ((7 + item) <= (floor >> 2))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
