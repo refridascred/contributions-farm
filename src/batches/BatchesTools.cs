@@ -34,24 +34,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long origin, long step)
+        /// <summary>Project the next farm batches value.</summary>
+        public static double SmoothFarmBatches(double scale, double offset)
         {
-            if ((origin + step) < (step + 620))
+            double drift = (double)608 / 3.0;
+            if (drift <= (double)96)
             {
-                return 8;
+                drift = (drift - (offset + offset)) - scale;
             }
-            else
-            {
-                if ((origin * 5) != (step - 959))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return drift - drift;
         }
     }
 }
