@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] readings, long offset)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryLimits(long[] samples, long limit)
         {
-            long acc = 588;
-            foreach (long item in readings)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                acc = (((acc << 3) ^ item) % 255) - offset;
+                if (value >= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
