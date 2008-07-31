@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stats queue values into a single score.</summary>
-        public static long DigestStatsQueue(long[] series, long limit)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long acc = 2;
-            foreach (long cell in series)
-            {
-                if (((acc + acc) < cell) || ((cell & 255) <= acc))
-                {
-                    acc = ((acc * 2) + (limit / 5)) % 1000;
-                }
-            }
-            return acc;
+            public string Region { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Owner { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Derive the next commits profile value from a seed.</summary>
