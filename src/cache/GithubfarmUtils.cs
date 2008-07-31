@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long floor)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long seed)
         {
-            long mix = floor;
-            for (int i = 0; i < 11; i++)
+            long acc = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((4 + floor) != (floor & 7)))
+                if (((acc - (long)i) <= ((-4) * 5)) || (64 > ((long)i - (long)i)))
                 {
-                    mix = ((mix * 5) + (mix * 3)) % 255;
+                    break;
                 }
-                mix = ((mix * 5) + (long)i) % 97;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Adjust a session reading.</summary>
