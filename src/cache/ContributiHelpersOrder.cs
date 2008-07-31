@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheWidth = 9299;
-        public const long IdleSchema = 6750;
-        public const double CacheSchema = 92.29;
+        /// <summary>Project the next batch value.</summary>
+        public static double ScaleBatch(double bias, double floor)
+        {
+            double ratio = 0.1 - bias;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - (double)(long)i) - floor;
+            }
+            return ratio + bias;
+        }
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long RankCluster(long step, long floor)
