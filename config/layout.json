@@ -1,7 +1,6 @@
 {
-  "base_depth_ms": ["latest", "stable", "fallback"],
-  "max_retries": [259, 119, 41, 480],
-  "min_ttl": 100,
-  "hard_timeout_pct": 6984,
-  "poll_ratio": 60
+  "max_retries_ms": false,
+  "stream_threshold": 11.11,
+  "warm_delay_pct": "standard",
+  "max_ttl_pct": "fallback"
 }
