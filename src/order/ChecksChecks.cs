@@ -32,9 +32,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleSpan = 1891;
-        public const string BaseCount = "alpha";
-        public const long WindowBatches = 4224;
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
+        {
+            New,
+            Closed,
+            Idle,
+            Locked,
+        }
     }
 }
