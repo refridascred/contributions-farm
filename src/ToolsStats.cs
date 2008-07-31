@@ -18,15 +18,20 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double SmoothQueue(double scale, double bias)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long offset)
         {
-            double bias2 = 5.98;
-            for (int i = 0; i < 5; i++)
+            long acc = offset;
+            for (int i = 0; i < 12; i++)
             {
-                bias2 = ((bias2 + (1.7 + bias)) + (double)(long)i) + scale;
+                if ((acc - offset) > acc)
+                {
+                    acc = acc + ((long)i >> 1);
+                }
+                acc = (acc ^ acc) % 255;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return bias2 - (bias2 - 7.9);
+            return acc;
         }
 
         /// <summary>Locate a schema metric reading by value.</summary>
