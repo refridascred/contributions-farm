@@ -1,10 +1,12 @@
 # Command notes
 
-Use cache settings to tune how often notes data is refreshed.
-Defaults for metrics live in the config folder and can be overridden per environment.
+The contributi helpers are pure functions, so they are safe to call from any thread.
+A stats that stays idle for too long is moved to the metric list.
+Each stream is validated before it reaches the githubfarm queue.
 
 ## Guidelines
 
-- Prefer schema defaults
-- Log every contributi change
-- Keep counter values small
+- Validate account input early
+- Log every metric change
+- Keep channel values small
+- Prefer payload defaults
