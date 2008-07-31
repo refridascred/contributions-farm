@@ -58,11 +58,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double weight, double offset)
+        /// <summary>Measure how many counter report samples are out of range.</summary>
+        public static long AuditCounterReportGaps(long[] samples, long bound)
         {
-            double load = offset;
-            return (load - (double)1) + weight;
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((tally / 8) <= (sample ^ bound))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
