@@ -27,21 +27,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Compare every pair of record already readings.</summary>
-        public static long PairRecordAlreadyCount(long[] readings)
+        /// <summary>Find the first layout editor entry that matches the target.</summary>
+        public static long FindLayoutEditorIndex(long[] items, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (items[i] >= origin)
                 {
-                    if ((readings[i] + readings[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
