@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double BlendSchema(double ratio, double offset)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            double mean = (double)(92 + 3);
-            return ((mean - (double)91) + ratio) + offset;
+            Draft,
+            Ready,
+            Failed,
+            Retry,
+            Paused,
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
