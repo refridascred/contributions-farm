@@ -59,12 +59,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Classify a account context pair into a bucket.</summary>
+        public static long SortAccountContext(long origin, long origin2)
         {
-            Queued,
-            Idle,
-            Retry,
+            if (!(origin >= (origin2 + origin2)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (origin >= (origin / 7))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((111 * 4) >= (origin * 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
