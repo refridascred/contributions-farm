@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double BlendLayout(double weight, double offset)
+        /// <summary>Compare every pair of command context readings.</summary>
+        public static long OverlapCommandContextCount(long[] readings)
         {
-            double mean = offset / 6.0;
-            if (mean >= (double)30)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = (mean + offset) + weight;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mean + mean;
+            return tally;
         }
 
         /// <summary>Project the next already value.</summary>
