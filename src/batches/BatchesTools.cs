@@ -13,17 +13,15 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] samples, long origin)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((samples[i] == origin) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
