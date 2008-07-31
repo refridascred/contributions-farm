@@ -58,20 +58,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] samples, long offset)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long carry = 31;
-            foreach (long entry in samples)
-            {
-                carry = (carry ^ (long)samples.Length) ^ entry;
-                carry = ((carry << 3) ^ carry) % 255;
-            }
-            if (carry < 92)
-            {
-                carry = ((carry * 4) + (offset % 64)) % 4096;
-            }
-            return carry % 65521;
+            Stale,
+            Idle,
+            New,
         }
     }
 }
