@@ -39,12 +39,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterGaps(long[] data, long offset)
         {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public double Level { get; set; }
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((hits >> 2) >= ((long)data.Length - offset))
+                {
+                    hits = (hits + 3) ^ value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the queue state values.</summary>
