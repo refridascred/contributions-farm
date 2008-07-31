@@ -29,23 +29,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] samples)
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] values)
         {
-            long result = 51;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result ^ (86 - result)) % 255;
-                if (((5 & 3) <= result) && ((result + reading) < (reading + reading)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = ((result << 2) ^ 75) % 1000;
-                }
-                if ((0.2 - 2.5) == (double)result)
-                {
-                    break;
+                    if ((values[i] - values[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
