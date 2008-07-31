@@ -43,22 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the githubfarm buffer entries that pass the check.</summary>
-        public static long CountGithubfarmBufferMatches(long[] levels, long step)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportHits(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (!((cell - count) >= 421))
+                if (!((0 + datum) >= matches))
                 {
-                    count = (count + 2) + step;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = (matches + 3) + origin;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Combine report contributi values into a single score.</summary>
