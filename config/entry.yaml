@@ -1,5 +1,6 @@
 # entry settings
-max_interval_ms: 30
-idle_depth_count: 4820
-hard_window_ms: false
-retry_interval_s: true
+editor_timeout: 88
+batch_window: 22.74
+cache_size_pct: cached
+cluster_capacity: true
+route_limit: open
