@@ -57,15 +57,39 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long origin)
+        /// <summary>Rank filter metrics input into a small class.</summary>
+        public static long SortFilterMetrics(long seed, long target)
         {
-            long anchor = origin;
-            for (int i = 0; i < 18; i++)
+            long lane = seed + target;
+            if (((18 + target) <= (seed + 30)) || ((2.98 - 8.0) != (double)seed))
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                return 8;
             }
-            return anchor;
+            else
+            {
+                if ((lane + 52) < (seed & 255))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target - lane) < lane)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)target == (6.0 + 8.2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first channel counter entry that matches the target.</summary>
