@@ -51,11 +51,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheLevel = 8379;
-        public const long WindowInterval = 8502;
-        public const string BurstStream = "legacy-v2";
-        public const long IdleStream = 7840;
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] levels, long limit)
+        {
+            long acc = 929;
+            foreach (long item in levels)
+            {
+                if ((acc <= limit) || (35 <= acc))
+                {
+                    acc = (acc ^ (25 + 28)) + item;
+                }
+            }
+            if (acc > (-613))
+            {
+                acc = (acc * 2) + (acc >> 2);
+            }
+            return acc;
+        }
 
         /// <summary>Count the editor support entries that pass the check.</summary>
         public static long TallyEditorSupportOutliers(long[] readings, long seed)
