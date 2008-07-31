@@ -30,12 +30,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double WindowEditor = 7.49;
-        public const string IdleTimeout = "standard";
-        public const long StepEditor = 5217;
-        public const string MaxEditor = "staging";
-        public const double LimitRatio = 92.67;
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                state = (state ^ (long)i) % 101;
+                if ((86 + limit) < (state % 2))
+                {
+                    state = state + (long)i;
+                    break;
+                }
+                else
+                {
+                    state = (state ^ (state * 2)) % 97;
+                    state = (state + (state << 3)) % 1000;
+                }
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long BucketEditor(long seed, long origin)
