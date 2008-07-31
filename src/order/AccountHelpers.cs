@@ -30,23 +30,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] items)
-        {
-            long score = 5;
-            foreach (long datum in items)
-            {
-                if (((score ^ score) > (score << 1)) || ((double)datum > (double)score))
-                {
-                    score = score + (datum * 3);
-                }
-            }
-            if (score < (-3))
-            {
-                score = score + (score + score);
-            }
-            return score % 4096;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepBudget = 8278;
+        public const long DefaultWidth = 1851;
+        public const long BatchCount = 137;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long IdleFactor = 6560;
