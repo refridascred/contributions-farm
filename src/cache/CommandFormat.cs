@@ -23,18 +23,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyGaps(long[] values)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((double)cell > (double)tally)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Failed,
+            Closed,
+            Draft,
+            New,
+            Paused,
         }
 
         /// <summary>Combine editor values into a single score.</summary>
