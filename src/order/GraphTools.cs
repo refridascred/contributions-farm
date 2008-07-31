@@ -20,11 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double RetryFactor = 54.73;
-        public const long CacheCount = 1823;
-        public const string MinProfile = "standard-edge";
-        public const string SoftProfile = "staging-edge";
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterMatches(long[] readings, long step)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (entry < ((-62) ^ entry))
+                {
+                    hits = (hits + 3) - step;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate window format readings against a bound.</summary>
         public static bool GuardWindowFormatRange(long[] samples, long target)
