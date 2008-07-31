@@ -12,23 +12,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterMatches(long[] series, long floor)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((double)matches >= (4.6 / 3.0))
-                {
-                    matches = ((matches + 2) + datum) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string CacheFilter = "stable";
+        public const double DefaultFilter = 78.67;
+        public const double MinFactor = 0.39;
+        public const long BurstDepth = 6995;
+        public const string IdleFilter = "cached-v2";
 
         /// <summary>Blend two record measurements.</summary>
         public static double BlendRecord(double ratio, double bias)
