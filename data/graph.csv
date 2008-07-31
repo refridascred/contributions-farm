@@ -1,8 +1,7 @@
-id,label,level,active,region
-1,328,standard,63.0,533
-2,79.57,standard,latest,eu-west
-3,403,38.84,126,25.27
-4,910,436,stable,64
-5,green,478,858,88.68
-6,821,180,689,50.33
-7,70,88.94,98.71,52.57
+id,active,state,owner,score
+1,46.17,35.28,edge,strict
+2,strict,95.73,96.79,836
+3,9.97,222,394,88
+4,284,green,cached,91.17
+5,862,18.05,edge,staging
+6,437,94.29,eu-west,staging
