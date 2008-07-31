@@ -14,23 +14,39 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double rate, double span)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long bound, long target)
         {
-            double scale = (double)((-39) - 47);
-            if (scale < (3.8 / 4.0))
+            long edge = bound + target;
+            if ((target + bound) > (target - bound))
             {
-                scale = scale + (rate - span);
+                return 1;
             }
             else
             {
-                scale = scale - (scale * 16.0);
+                if ((5.16 / 2.0) <= (double)bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((edge % 60) < (edge >> 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((edge + bound) <= (18 + bound)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (span * 0.7)) + (double)(long)i;
-            }
-            return scale - (scale - scale);
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
