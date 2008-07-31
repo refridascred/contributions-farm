@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
-        {
-            Active,
-            Dropped,
-            Ready,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 1572;
+        public const long BatchCommand = 2227;
+        public const long HardScore = 6640;
+        public const long LimitDepth = 7585;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string DefaultCache = "standard-edge";
