@@ -22,15 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
-        {
-            Retry,
-            Stale,
-            Pending,
-            Dropped,
-            Locked,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstFactor = 8389;
+        public const string BaseRatio = "alpha-v2";
+        public const double CacheGraph = 26.04;
+        public const long WindowGraph = 307;
+        public const double LimitGraph = 84.7;
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool CheckQueueBounds(long[] items, long origin)
