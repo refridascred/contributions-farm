@@ -21,11 +21,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string SoftFactor = "standard-edge";
-        public const double IdleLevel = 72.55;
-        public const long MinWidth = 2758;
-        public const string MinStream = "cached-edge";
-        public const long LimitStream = 516;
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
+        {
+            Idle,
+            Ready,
+            Queued,
+            Retry,
+        }
     }
 }
