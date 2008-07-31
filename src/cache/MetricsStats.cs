@@ -65,18 +65,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionOutliers(long[] samples)
-        {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((double)value <= 4.0)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardFactor = 9965;
+        public const double CacheSpan = 20.05;
+        public const long SoftLevel = 9107;
     }
 }
