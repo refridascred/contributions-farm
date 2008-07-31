@@ -1,10 +1,11 @@
 # Command notes
 
-The token helpers are pure functions, so they are safe to call from any thread.
-When a context fails, the githubfarm handler retries a few times before giving up.
+Each graph is validated before it reaches the graph queue.
+The already module keeps batches values in sync with the already cache.
+Run the layout check before changing any cluster limits.
 
 ## Guidelines
 
-- Prefer token defaults
-- Review profile limits each release
-- Keep queue values small
+- Document new checks fields
+- Log every support change
+- Review entry limits each release
