@@ -1,9 +1,6 @@
-id,active,weight
-1,48.31,508
-2,475,legacy
-3,554,fallback
-4,887,388
-5,518,latest
-6,staging,stable
-7,596,strict
-8,8.9,green
+id,rank,level
+1,91.7,70.09
+2,201,23.23
+3,stable,761
+4,830,13.17
+5,342,208
