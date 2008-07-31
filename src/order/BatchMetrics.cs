@@ -52,15 +52,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long step)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long target)
         {
-            long carry = step;
-            for (int i = 0; i < 20; i++)
+            long result = target;
+            for (int i = 0; i < 15; i++)
             {
-                carry = ((carry * 4) + (long)i) % 65521;
+                if (result > (8 % 60))
+                {
+                    result = (result - (result + target)) % 65521;
+                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Match up batch samples.</summary>
