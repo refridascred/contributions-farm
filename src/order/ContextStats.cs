@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountMatches(long[] levels, long seed)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count * 2) != (count + (-921)))
+                if ((items[i] >= seed) && ((items[i] % 3) != 0))
                 {
-                    count = ((count + 2) + item) + seed;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
