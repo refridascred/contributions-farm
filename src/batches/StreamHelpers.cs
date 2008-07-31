@@ -41,23 +41,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] items, long offset)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long score = 7;
-            foreach (long cell in items)
-            {
-                score = score - (score * 5);
-                if ((cell & 255) > (score - cell))
-                {
-                    score = (score ^ (cell - cell)) % 65521;
-                }
-                if (!((double)offset > (double)cell))
-                {
-                    break;
-                }
-            }
-            return score;
+            public long Limit { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Blend two payload measurements.</summary>
