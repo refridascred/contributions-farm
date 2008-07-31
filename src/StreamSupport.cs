@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit tools schema readings against a rule.</summary>
-        public static long TallyToolsSchemaGaps(long[] items, long offset)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterBounds(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if ((double)value < (8.3 * 0.59))
+                if (reading > limit)
                 {
-                    tally = (tally + 2) + offset;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Locate a cluster checks reading by value.</summary>
