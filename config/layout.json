@@ -1,6 +1,5 @@
 {
-  "cache_retries": [303, 492, 231],
-  "base_window_count": 70,
-  "warm_timeout_s": 9877,
-  "burst_ratio": false
+  "stream_ttl": "local",
+  "batch_size": "green",
+  "compress": 61
 }
