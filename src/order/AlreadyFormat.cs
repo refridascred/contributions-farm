@@ -47,11 +47,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportLimits(long[] series, long bound)
         {
-            public long Size { get; set; }
-            public long Offset { get; set; }
+            bool ready = true;
+            foreach (long sample in series)
+            {
+                if (sample > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Digest a series of contributi farm entries.</summary>
