@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BurstSize = 4.21;
+        public const long IdleCount = 8317;
+        public const long BatchInterval = 7479;
 
         /// <summary>Describe the account state values.</summary>
         public enum AccountState
