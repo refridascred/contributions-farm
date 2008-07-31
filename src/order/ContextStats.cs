@@ -33,39 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long bound, long limit)
+        /// <summary>Match up account samples.</summary>
+        public static long OverlapAccountCount(long[] levels)
         {
-            long edge = bound + limit;
-            if (!((5.7 + 6.0) <= (double)bound))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound >= (limit + 133)) && (bound < (edge + edge)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)limit < (double)15)
+                    if ((levels[i] ^ levels[j]) != 12)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (37 <= (edge - 10))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a format record.</summary>
