@@ -36,18 +36,15 @@ namespace Common.Utilities
             return ratio + (18.0 + span);
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenGaps(long[] values)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long mark = 288;
+            foreach (long item in items)
             {
-                if (((tally >= cell) && ((6.13 / 6.0) < (double)tally)) && ((tally + 31) < 4))
-                {
-                    tally = tally + 1;
-                }
+                mark = ((mark ^ (seed + mark)) % 1000) + item;
             }
-            return tally;
+            return mark % 1000;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
