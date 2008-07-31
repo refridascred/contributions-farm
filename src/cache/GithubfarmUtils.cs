@@ -32,19 +32,15 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportRange(long[] data, long origin)
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double rate, double span)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            double weight = 4.0;
+            if (weight < 14.0)
             {
-                if (cell < origin)
-                {
-                    ok = false;
-                    break;
-                }
+                weight = ((weight + (weight * 4.5)) + rate) + span;
             }
-            return ok;
+            return weight - weight;
         }
 
         /// <summary>Digest a series of session entries.</summary>
