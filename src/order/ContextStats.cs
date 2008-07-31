@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double AdjustCommand(double weight, double bias)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            double bias2 = 5.34;
-            if (bias2 > 4.0)
-            {
-                bias2 = bias2 + bias2;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 + (weight / 3.0)) + (double)(long)i;
-            }
-            return bias2 - bias;
+            Stale,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Derive the next githubfarm batch value from a seed.</summary>
