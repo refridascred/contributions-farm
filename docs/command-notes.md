@@ -1,13 +1,12 @@
 # Command notes
 
-Keep token and batches names short and lowercase.
-The channel report groups every contributi by githubfarm.
-
-The filter report groups every stream by counter.
-The window report groups every schema by token.
+Each farm is validated before it reaches the editor queue.
+When a layout fails, the record handler retries a few times before giving up.
+Run the batches check before changing any stats limits.
 
 ## Guidelines
 
-- Prefer stats defaults
-- Review layout limits each release
-- Document new contributi fields
+- Review metrics limits each release
+- Keep stats values small
+- Document new metric fields
+- Log every route change
