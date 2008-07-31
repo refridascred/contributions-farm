@@ -72,11 +72,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
-        {
-            public double Total { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseGithubfarm = 122;
+        public const double CacheGithubfarm = 56.06;
+        public const double SoftGithubfarm = 78.19;
+        public const long BurstInterval = 2509;
+        public const long BatchGithubfarm = 5084;
     }
 }
