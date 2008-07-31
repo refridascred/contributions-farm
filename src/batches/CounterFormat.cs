@@ -43,12 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a checks queue reading by value.</summary>
-        public static long FindChecksQueueIndex(long[] levels, long floor)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] readings, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (levels[i] == floor)
+                if (readings[i] == bound)
                 {
                     return (long)i;
                 }
