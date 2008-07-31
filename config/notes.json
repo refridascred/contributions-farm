@@ -1,5 +1,10 @@
 {
-  "idle_size": "green",
-  "cluster_interval": 6228,
-  "compress": 0.99
+  "soft_ttl": [139, 360, 500],
+  "hard_limit_count": {
+    "burst_interval_ms": "edge",
+    "enabled": 83.94,
+    "max_ratio_count": 60,
+    "max_ttl_s": false
+  },
+  "farm_window": false
 }
