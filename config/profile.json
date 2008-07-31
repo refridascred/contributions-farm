@@ -1,5 +1,8 @@
 {
-  "retry_ttl_ms": 61.13,
-  "already_interval": 35,
-  "dry_run": 500
+  "notes_interval": "open",
+  "default_timeout": ["local", "open"],
+  "schema_capacity": "cached",
+  "compress": "stable",
+  "checks_size": 1024,
+  "flush_depth": 50
 }
