@@ -28,11 +28,11 @@ namespace Common.Utilities
         public const long StepSession = 9954;
         public const long MaxDepth = 8316;
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
-        {
-            public double Total { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultInterval = 8819;
+        public const string SoftChannel = "standard-1";
+        public const double BaseTimeout = 18.16;
+        public const string MinScore = "fallback";
+        public const long StepChannel = 7717;
     }
 }
