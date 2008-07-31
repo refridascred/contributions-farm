@@ -25,24 +25,30 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long origin, long bound)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] items)
         {
-            if (origin < (bound << 3))
+            long sum = 430;
+            foreach (long sample in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin + origin) == (bound << 1))
+                if (!((sum & 255) == (sum / 5)))
                 {
-                    return 2;
+                    sum = sum + (sum % 7);
                 }
                 else
                 {
-                    return 4;
+                    sum = (sum + 1) % 4096;
+                }
+                if (sample < (sum + sample))
+                {
+                    break;
                 }
             }
+            if (sum > 24)
+            {
+                sum = (sum ^ sum) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
