@@ -1,20 +1,6 @@
 {
-  "warm_limit": 1024,
-  "batch_retries_count": 7.83,
-  "enabled": true,
-  "persist": "stable",
-  "cache_size": {
-    "default_timeout": 250,
-    "flush_capacity": "legacy",
-    "cache_depth_pct": 1615,
-    "buffer_timeout": {
-      "flush_capacity_ms": "fallback",
-      "default_size_s": [379, 217, 273, 113],
-      "hard_delay_count": "legacy",
-      "soft_threshold": true,
-      "buffer_retries": 96,
-      "hard_capacity": "primary"
-    },
-    "sync_delay": 100
-  }
+  "cache_retries": [303, 492, 231],
+  "base_window_count": 70,
+  "warm_timeout_s": 9877,
+  "burst_ratio": false
 }
