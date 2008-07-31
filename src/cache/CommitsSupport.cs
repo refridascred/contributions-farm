@@ -36,26 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of githubfarm farm readings.</summary>
-        public static long TotalGithubfarmFarm(long[] series, long origin)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long result = 15;
-            foreach (long sample in series)
-            {
-                if ((sample & 255) <= (result - origin))
-                {
-                    result = result ^ (695 << 2);
-                }
-                else
-                {
-                    result = (result << 3) ^ (sample << 3);
-                }
-            }
-            if (result < 39)
-            {
-                result = (result ^ (result >> 5)) % 255;
-            }
-            return result;
+            Done,
+            New,
+            Queued,
         }
 
         /// <summary>Match up metric samples.</summary>
