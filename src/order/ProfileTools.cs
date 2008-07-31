@@ -22,18 +22,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutMatches(long[] values)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((11.0 * 15.0) > (double)count)
-                {
-                    count = (count + 2) - sample;
-                }
-            }
-            return count;
+            Paused,
+            Closed,
+            Failed,
         }
 
         /// <summary>Adjust a graph commits reading.</summary>
