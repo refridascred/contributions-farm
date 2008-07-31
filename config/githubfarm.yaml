@@ -1,9 +1,9 @@
 # githubfarm settings
-readonly: fallback
-poll_capacity_ms:
-  - edge
-  - standard
-  - strict
-  - primary
-persist: eu-west
-verbose: open
+graph_limit: cached
+account_ttl: 88
+batch_capacity_s: 9016
+batch_limit:
+  - 385
+  - 10
+  - 339
+  - 282
