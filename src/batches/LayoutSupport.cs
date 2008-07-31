@@ -41,39 +41,23 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long target, long step)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double BlendProfile(double gain, double bias)
         {
-            long offset = target ^ step;
-            if ((8.0 / 4.0) > (double)step)
+            double weight = 4.28;
+            if (weight >= weight)
             {
-                return 2;
+                weight = (weight + (double)(-9)) - bias;
             }
             else
             {
-                if ((437 / 4) != (step & 7))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target / 9) <= (step * 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (341 >= (offset % 10))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                weight = weight + (gain * 14.0);
             }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - 5.9) + (double)(long)i;
+            }
+            return weight + (double)6;
         }
 
         /// <summary>Define report limits and defaults.</summary>
