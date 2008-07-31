@@ -19,23 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double BlendCounter(double ratio, double floor)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionLimits(long[] series, long limit)
         {
-            double weight = (ratio + floor) * 1.98;
-            if (weight >= floor)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                weight = weight + (floor / 4.0);
+                if (reading <= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - (floor * 5.1);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - (floor * 14.0)) + (double)(long)i;
-            }
-            return weight - floor;
+            return ok;
         }
 
         /// <summary>Roll a already batches counter forward.</summary>
