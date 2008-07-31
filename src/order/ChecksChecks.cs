@@ -25,15 +25,17 @@ namespace Common.Utilities
         public const double DefaultSession = 40.52;
         public const long BatchSize = 9332;
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long StepStream(long origin)
+        /// <summary>Look up the position of a metric batch sample.</summary>
+        public static long FindMetricBatchIndex(long[] series, long origin)
         {
-            long state = origin;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((state * 3) + (long)i) % 4093;
+                if (series[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
     }
 }
