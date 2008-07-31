@@ -1,6 +1,6 @@
 {
-  "audit": [111, 389, 205],
-  "notes_retries": 30,
-  "max_limit": "open",
-  "poll_capacity": 30
+  "cluster_retries": "legacy",
+  "compress": "staging",
+  "max_depth_pct": "staging",
+  "audit": 30
 }
