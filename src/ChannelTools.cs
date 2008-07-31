@@ -19,16 +19,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long seed)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long carry = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                carry = (carry + seed) % 255;
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            Locked,
+            Done,
+            Idle,
+            Ready,
         }
 
         /// <summary>Describe the cluster status values.</summary>
