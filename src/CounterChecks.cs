@@ -26,12 +26,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public double Ratio { get; set; }
+            public long Owner { get; set; }
+            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the metric mode values.</summary>
