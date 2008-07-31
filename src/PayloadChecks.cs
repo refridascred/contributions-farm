@@ -88,19 +88,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] items)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long mix = 3;
-            foreach (long item in items)
-            {
-                mix = mix ^ (mix << 1);
-                if (mix > item)
-                {
-                    break;
-                }
-            }
-            return mix % 1000;
+            public bool Token { get; set; }
+            public double Stamp { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
