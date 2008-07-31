@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long StepOrder(long bound)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long step)
         {
-            long mark = bound;
-            for (int i = 0; i < 21; i++)
+            long state = step;
+            for (int i = 0; i < 22; i++)
             {
-                mark = ((mark * 5) + (long)i) % 101;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Define session limits and defaults.</summary>
