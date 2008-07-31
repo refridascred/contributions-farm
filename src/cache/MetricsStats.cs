@@ -27,17 +27,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LocateRouteIndex(long[] readings, long floor)
+        /// <summary>Combine context contributi values into a single score.</summary>
+        public static long FoldContextContributi(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 952;
+            foreach (long item in readings)
             {
-                if ((readings[i] <= floor) && ((readings[i] % 5) == 0))
+                if (((item ^ score) == (score + item)) && (902 <= (item % 7)))
                 {
-                    return (long)i;
+                    score = (score << 3) ^ item;
                 }
             }
-            return -1;
+            return score % 4096;
         }
 
         /// <summary>Roll a channel farm counter forward.</summary>
