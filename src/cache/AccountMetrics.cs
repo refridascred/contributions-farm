@@ -60,18 +60,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutGaps(long[] samples, long floor)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterHits(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (!(0 >= (tally + tally)))
+                if (!((item * 5) > (49 / 3)))
                 {
-                    tally = ((tally + 2) ^ cell) + floor;
+                    matches = (matches + 1) + floor;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Project the next entry value.</summary>
