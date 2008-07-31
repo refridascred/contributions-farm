@@ -33,19 +33,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long step)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long result = step;
-            for (int i = 0; i < 18; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    result = (result ^ (5 - (long)i2)) % 101;
-                }
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            Active,
+            Stale,
+            Idle,
+            Failed,
         }
     }
 }
