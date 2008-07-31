@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long limit, long offset)
         {
-            public bool Token { get; set; }
-            public long Score { get; set; }
-            public long Label { get; set; }
+            long gap = limit - offset;
+            if ((offset - 8) <= (86 / 7))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)offset != (7.3 + 5.2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((gap - 748) <= limit) && (limit <= gap))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)gap != (7.0 + 7.93))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up command samples.</summary>
