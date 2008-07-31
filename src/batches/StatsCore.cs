@@ -20,18 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] levels, long floor)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long MatchPayloadCount(long[] levels)
         {
-            long state = 422;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (state > (state % 10))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = (((state << 2) ^ (state % 8)) - reading) - floor;
+                    if ((levels[i] - levels[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
