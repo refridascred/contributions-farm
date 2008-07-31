@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] data)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long sum = 697;
-            foreach (long entry in data)
-            {
-                if (entry <= (10 & 3))
-                {
-                    sum = sum ^ (sum ^ sum);
-                }
-                else
-                {
-                    sum = (sum - (31 * 5)) % 4096;
-                }
-            }
-            if (sum > 35)
-            {
-                sum = (sum - sum) % 255;
-            }
-            return sum;
+            New,
+            Done,
+            Idle,
         }
 
         /// <summary>Define window limits and defaults.</summary>
