@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long BurstFactor = 1327;
         public const long MaxStream = 9159;
 
-        /// <summary>Audit format entry readings against a rule.</summary>
-        public static long AuditFormatEntryMatches(long[] values)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((entry + entry) > matches)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Match up account samples.</summary>
