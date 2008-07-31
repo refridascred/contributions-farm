@@ -37,25 +37,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Rank graph notes input into a small class.</summary>
-        public static long GradeGraphNotes(long offset, long seed)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long gap = offset + seed;
-            if ((seed - offset) != (48 - seed))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset / 6) <= (gap ^ gap))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Failed,
+            Pending,
+            Synced,
+            Stale,
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
