@@ -1,37 +1,16 @@
 # entry settings
-commits_timeout: eu-west
-strict: 500
-default_interval_count: staging
-verbose:
-  poll_window_pct: 250
-  soft_capacity:
-    strict: local
-    min_size_s: 30
-    batch_delay: 100
-  max_limit_count:
-    route_ttl:
-      - 220
-      - 22
-      - 234
-      - 52
-    base_ttl_count:
-      - 327
-      - 27
-    profile_window: open
-  burst_limit: staging
-  verbose:
-    - 28
-    - 313
-    - 50
-    - 36
-readonly:
-  entry_retries: false
-  readonly:
-    - standard
-    - fallback
-    - blue
-    - strict
-  warm_ttl_s: 30.64
-  burst_window_count: 4.52
-  token_timeout: local
-record_depth: 93
+poll_retries_s:
+  burst_size_ms: 10.56
+  metric_limit: false
+  min_capacity: 100
+  flush_capacity:
+    enabled: false
+    batch_limit: false
+    strict: primary
+    flush_retries: true
+  burst_size_pct: local
+min_timeout: standard
+sync_window: cached
+enabled: 63
+layout_timeout: 17.61
+audit: eu-west
