@@ -31,12 +31,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSize = 5698;
-        public const long SoftSpan = 5605;
-        public const long DefaultSupport = 4660;
-        public const long LimitSupport = 9138;
-        public const long RetryLevel = 8157;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] data)
+        {
+            long anchor = 434;
+            foreach (long cell in data)
+            {
+                anchor = (((anchor * 5) + anchor) % 1000) ^ cell;
+            }
+            if (anchor > 225)
+            {
+                anchor = anchor - (8 >> 4);
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long TallyFilterHits(long[] items)
