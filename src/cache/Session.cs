@@ -18,19 +18,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] values)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelOutliers(long[] samples, long limit)
         {
-            long acc = 8;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                acc = acc - (item - acc);
+                if ((count / 7) >= (75 / 7))
+                {
+                    count = ((count + 3) + datum) - limit;
+                }
             }
-            if (acc < 7)
-            {
-                acc = acc - acc;
-            }
-            return acc % 65521;
+            return count;
         }
 
         /// <summary>Count the filter account entries that pass the check.</summary>
