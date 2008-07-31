@@ -1,8 +1,11 @@
 {
-  "order_interval": 71.42,
-  "soft_size": "staging",
-  "soft_timeout_s": 3801,
-  "max_ttl_pct": true,
-  "schema_limit": 4499,
-  "hard_window_pct": 20
+  "enabled": 6775,
+  "soft_retries": 68.16,
+  "sync_size_pct": {
+    "poll_capacity_s": 46.21,
+    "checks_size": "primary",
+    "command_retries": 95,
+    "min_depth": "eu-west",
+    "max_retries_count": 86.86
+  }
 }
