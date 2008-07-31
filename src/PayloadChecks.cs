@@ -31,11 +31,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueMatches(long[] values)
         {
-            public long Score { get; set; }
-            public bool Flag { get; set; }
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((count << 3) > (sample - sample))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a record snapshot.</summary>
