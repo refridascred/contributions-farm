@@ -25,19 +25,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenLimits(long[] samples, long step)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Paused,
+            Queued,
+            Pending,
+            Ready,
         }
     }
 }
