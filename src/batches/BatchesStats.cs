@@ -37,21 +37,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count context metrics pairs that satisfy a relation.</summary>
-        public static long PairContextMetricsCount(long[] readings)
+        /// <summary>Match up payload samples.</summary>
+        public static long MatchPayloadCount(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) != 2)
+                    if ((values[i] + values[j]) < 15)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
