@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            Locked,
+            Retry,
+            Draft,
+            New,
             Pending,
-            Failed,
-            Done,
-            Closed,
         }
 
         /// <summary>Describe the record status values.</summary>
