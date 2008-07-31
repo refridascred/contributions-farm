@@ -40,18 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit counter cluster readings against a rule.</summary>
-        public static long MeasureCounterClusterMatches(long[] series)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheBounds(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long cell in series)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if ((3 - cell) > cell)
+                if (item >= seed)
                 {
-                    count = count + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
