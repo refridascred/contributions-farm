@@ -47,19 +47,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ProjectContext(double weight, double bias)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] series, long target)
         {
-            double weight2 = 8.96;
-            if (weight2 > 8.22)
+            for (int i = 0; i < series.Length; i++)
             {
-                weight2 = (weight2 + (double)20) - weight;
+                if (series[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight2 = weight2 - (double)74;
-            }
-            return weight2 + bias;
+            return -1;
         }
 
         /// <summary>Hold a notes stats.</summary>
