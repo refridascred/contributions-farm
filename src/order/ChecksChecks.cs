@@ -18,23 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batches context readings.</summary>
-        public static long TotalBatchesContext(long[] samples)
+        /// <summary>Measure how many githubfarm report samples are out of range.</summary>
+        public static long AuditGithubfarmReportGaps(long[] data)
         {
-            long mix = 66;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long item in data)
             {
-                mix = mix ^ (mix - item);
-                if (((53 & 31) != (mix + mix)) && ((9.0 * 10.0) == (double)mix))
+                if (item > (item % 5))
                 {
-                    break;
+                    count = count + 2;
                 }
             }
-            if (mix > 226)
-            {
-                mix = ((mix * 4) + (mix >> 4)) % 101;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
