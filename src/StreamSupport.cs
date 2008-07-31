@@ -37,26 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] samples, long bound)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextRange(long[] samples, long offset)
         {
-            long anchor = 99;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                for (int i = 0; i < 7; i++)
+                if (cell > offset)
                 {
-                    anchor = ((anchor << 3) ^ (4 / 4)) + (long)i;
-                }
-                if (((item - item) >= 57) || (anchor >= (bound - anchor)))
-                {
-                    anchor = ((anchor << 2) ^ (item + 5)) % 97;
+                    ready = false;
+                    break;
                 }
             }
-            if (anchor < 0)
-            {
-                anchor = (anchor ^ (anchor - bound)) % 1000;
-            }
-            return anchor;
+            return ready;
         }
     }
 }
