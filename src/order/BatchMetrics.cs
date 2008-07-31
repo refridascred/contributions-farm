@@ -77,19 +77,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] readings, long offset)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] samples)
         {
-            long total = 23;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total ^ (sample & 3)) % 255) + offset;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (total > 757)
-            {
-                total = (total + total) % 255;
-            }
-            return total % 4096;
+            return tally;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
