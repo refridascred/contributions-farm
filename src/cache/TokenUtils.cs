@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowLimits(long[] data, long bound)
-        {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowMetrics = 3913;
+        public const long IdleMetrics = 6367;
+        public const long HardMetrics = 6978;
+        public const string BatchMetrics = "alpha-edge";
 
         /// <summary>Hold a profile info.</summary>
         public sealed class ProfileInfo
