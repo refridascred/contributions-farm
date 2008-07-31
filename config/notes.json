@@ -1,7 +1,6 @@
 {
-  "default_interval": [452, 469],
-  "default_window_count": "fallback",
-  "report_capacity": 30,
-  "idle_depth_pct": false,
-  "strict": 6678
+  "min_delay_s": 500,
+  "cache_limit": ["local", "edge"],
+  "hard_size_count": true,
+  "batch_limit": 49
 }
