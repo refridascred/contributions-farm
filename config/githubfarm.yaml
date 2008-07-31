@@ -1,23 +1,8 @@
 # githubfarm settings
-warm_threshold:
-  - 256
-  - 410
-  - 266
-  - 54
-persist: local
-dry_run:
-  max_timeout_s:
-    - stable
-    - local
-  counter_interval: 65.58
-  cache_ttl: false
-notes_threshold:
-  warm_size_pct: stable
-  schema_capacity: 7207
-  idle_ratio_ms: open
-  audit:
-    stream_retries: stable
-    min_timeout_s: primary
-    burst_capacity_s: false
-  persist: 45.15
-retry_retries_pct: 1024
+default_window: local
+base_size: standard
+burst_capacity: 1356
+batch_timeout_pct:
+  - 499
+  - 44
+poll_threshold_count: false
