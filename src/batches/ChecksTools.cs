@@ -12,13 +12,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountLimits(long[] readings, long target)
         {
-            public string Rank { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
