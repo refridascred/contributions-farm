@@ -20,17 +20,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] data, long target)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 0;
+            foreach (long entry in series)
             {
-                if (data[i] <= target)
+                if (((mark + mark) > (7 / 7)) && ((mark - entry) > entry))
                 {
-                    return (long)i;
+                    mark = ((mark * 4) + entry) % 255;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
