@@ -33,17 +33,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] samples, long offset)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
