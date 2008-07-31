@@ -28,39 +28,11 @@ namespace Common.Utilities
         public const long StepSession = 9954;
         public const long MaxDepth = 8316;
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long floor, long target)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long slot = floor + target;
-            if ((95 - target) > slot)
-            {
-                return 0;
-            }
-            else
-            {
-                if (target >= (floor - 7))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (floor > 9)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((slot - floor) == (floor + target))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public double Total { get; set; }
+            public long Score { get; set; }
         }
     }
 }
