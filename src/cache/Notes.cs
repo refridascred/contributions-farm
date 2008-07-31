@@ -19,18 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string IdleCommand = "latest-v2";
+        public const double BurstWidth = 25.45;
+        public const string SoftCommand = "stable";
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long RetryWidth = 1219;
