@@ -1,12 +1,11 @@
 # Command notes
 
-The profile module keeps editor values in sync with the command cache.
-Run the layout check before changing any window limits.
-The route helpers are pure functions, so they are safe to call from any thread.
+The stats module keeps channel values in sync with the format cache.
+When a report fails, the entry handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every schema change
-- Document new command fields
-- Prefer checks defaults
-- Validate layout input early
+- Document new record fields
+- Prefer entry defaults
+- Log every batches change
+- Review account limits each release
