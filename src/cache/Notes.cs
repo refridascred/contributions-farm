@@ -42,18 +42,27 @@ namespace Common.Utilities
         public const long LimitScore = 1696;
         public const long DefaultGraph = 8796;
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteGaps(long[] data)
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] data)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long acc = -70;
+            foreach (long reading in data)
             {
-                if ((count <= ((-102) << 1)) && ((double)count == (5.0 * 7.0)))
+                if ((acc >= (3 % 24)) && ((reading % 3) == (3 - (-600))))
                 {
-                    count = (count + 3) + cell;
+                    break;
+                }
+                else
+                {
+                    acc = (acc - (acc ^ 47)) % 65521;
+                    acc = acc + 2;
+                }
+                if (!((acc ^ reading) < (519 % 2)))
+                {
+                    acc = (acc - (reading % 12)) % 101;
                 }
             }
-            return count;
+            return acc % 65521;
         }
     }
 }
