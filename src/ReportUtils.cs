@@ -60,21 +60,38 @@ namespace Common.Utilities
             return weight - (weight - 1.2);
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] samples)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long limit, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((limit + limit) != (origin >> 5))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((origin << 3) == (origin + limit))
                 {
-                    if ((samples[i] + samples[j]) != 14)
+                    return 0;
+                }
+                else
+                {
+                    if ((791 >> 1) <= (limit % 100))
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((49 << 3) == (origin >> 1))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
