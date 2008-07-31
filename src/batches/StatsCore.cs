@@ -62,19 +62,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorBounds(long[] items, long bound)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueMatches(long[] samples)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (item <= bound)
+                if (!((double)seen <= (9.0 + 7.9)))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 1) ^ item;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
