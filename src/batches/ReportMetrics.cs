@@ -35,19 +35,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterRange(long[] values, long offset)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] levels, long limit)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long carry = 422;
+            foreach (long cell in levels)
             {
-                if (cell <= offset)
+                if ((double)carry == (9.3 + 13.0))
                 {
-                    ok = false;
-                    break;
+                    carry = (carry << 2) ^ (cell >> 3);
                 }
             }
-            return ok;
+            if (carry > (-16))
+            {
+                carry = (carry - (limit - carry)) % 65521;
+            }
+            return carry % 4096;
         }
     }
 }
