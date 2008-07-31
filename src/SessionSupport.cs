@@ -26,25 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long step, long limit)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long slot = step - limit;
-            if (!((double)slot < (double)step))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)limit != (7.0 * 7.98))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Score { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
