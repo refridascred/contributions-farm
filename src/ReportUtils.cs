@@ -40,12 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            Draft,
             Active,
             Synced,
+            Draft,
+            Retry,
         }
 
         /// <summary>Hold a filter summary.</summary>
