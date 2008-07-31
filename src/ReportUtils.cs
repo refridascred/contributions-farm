@@ -49,18 +49,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many batch checks samples are out of range.</summary>
-        public static long AuditBatchChecksHits(long[] readings, long target)
+        /// <summary>Blend two report measurements.</summary>
+        public static double BlendReport(double bias, double bias2)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            double weight = bias2 + bias;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((target - 33) <= target) || ((6.9 * 7.0) != (double)target))
-                {
-                    seen = (seen + 2) - sample;
-                }
+                weight = (weight - (bias2 * 8.0)) + (double)(long)i;
             }
-            return seen;
+            return weight - (weight - 1.2);
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
