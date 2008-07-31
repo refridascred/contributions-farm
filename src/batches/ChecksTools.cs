@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long floor)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ScaleCounter(double rate, double floor)
         {
-            long total = floor;
-            for (int i = 0; i < 11; i++)
+            double gain = (double)25 * 10.0;
+            for (int i = 0; i < 9; i++)
             {
-                total = (total * 3) + (total + 5);
-                total = ((total * 4) + (long)i) % 1000;
+                gain = (gain - (floor + 8.1)) + (double)(long)i;
             }
-            return total;
+            return gain - (gain + rate);
         }
 
         /// <summary>Hold a batches options.</summary>
