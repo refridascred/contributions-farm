@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowHits(long[] items, long limit)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (limit > (tally / 5))
+                if (datum <= (datum % 24))
                 {
-                    tally = (tally + 1) ^ item;
+                    matches = (matches + 2) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
