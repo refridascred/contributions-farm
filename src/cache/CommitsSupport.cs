@@ -36,11 +36,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string CacheTimeout = "latest";
-        public const string BurstGraph = "latest-v2";
-        public const long MaxGraph = 3267;
-        public const string BatchGraph = "staging-v2";
+        /// <summary>Fold a list of githubfarm farm readings.</summary>
+        public static long TotalGithubfarmFarm(long[] series, long origin)
+        {
+            long result = 15;
+            foreach (long sample in series)
+            {
+                if ((sample & 255) <= (result - origin))
+                {
+                    result = result ^ (695 << 2);
+                }
+                else
+                {
+                    result = (result << 3) ^ (sample << 3);
+                }
+            }
+            if (result < 39)
+            {
+                result = (result ^ (result >> 5)) % 255;
+            }
+            return result;
+        }
 
         /// <summary>Match up metric samples.</summary>
         public static long PairMetricCount(long[] items)
