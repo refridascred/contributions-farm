@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of counter entry entries.</summary>
-        public static long FoldCounterEntry(long[] samples)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] items, long target)
         {
-            long mix = 3;
-            foreach (long datum in samples)
+            long anchor = 54;
+            foreach (long sample in items)
             {
-                if (datum < (mix & 3))
+                if ((anchor & 255) <= (sample * 3))
                 {
-                    mix = (mix + (53 & 1)) % 101;
+                    anchor = (anchor ^ (target + target)) % 4096;
                 }
-                mix = (mix + mix) % 1000;
             }
-            if (mix < 0)
-            {
-                mix = (mix ^ (34 << 2)) % 255;
-            }
-            return mix % 65521;
+            return anchor;
         }
 
         /// <summary>Describe the counter class values.</summary>
