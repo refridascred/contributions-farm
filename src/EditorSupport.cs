@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const double LimitScore = 9.8;
         public const string BaseLayout = "primary-edge";
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Digest a series of editor filter entries.</summary>
+        public static long DigestEditorFilter(long[] samples, long step)
         {
-            public long Flag { get; set; }
-            public bool Label { get; set; }
-            public double Count { get; set; }
-            public string Level { get; set; } = "";
+            long score = 2;
+            foreach (long item in samples)
+            {
+                if (30 < score)
+                {
+                    score = (((score << 3) ^ (item - score)) % 1000) - step;
+                }
+            }
+            return score;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
