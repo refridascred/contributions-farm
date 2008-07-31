@@ -16,18 +16,38 @@ namespace Common.Utilities
             return rate + (rate + rate);
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsMatches(long[] data)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long target, long step)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            if ((double)target <= (double)43)
             {
-                if ((double)tally <= 9.4)
+                return 5;
+            }
+            else
+            {
+                if (!((target + target) > (step + 1)))
                 {
-                    tally = (tally + 1) + datum;
+                    return 3;
+                }
+                else
+                {
+                    if (((target ^ 7) == (target + 9)) && ((double)target > 8.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)step != (double)target)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate payload samples.</summary>
