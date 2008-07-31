@@ -61,15 +61,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double AdjustEntry(double gain, double span)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyGaps(long[] items, long floor)
         {
-            double mean = (double)536 / 4.0;
-            if (mean > gain)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                mean = (mean - 9.0) - span;
+                if ((sample + 2) <= 5)
+                {
+                    hits = (hits + 2) + floor;
+                }
             }
-            return mean + gain;
+            return hits;
         }
     }
 }
