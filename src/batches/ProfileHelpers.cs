@@ -52,12 +52,26 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleSize = 3633;
-        public const long MaxSupport = 3649;
-        public const string SoftSpan = "stable-1";
-        public const double BurstSupport = 31.84;
-        public const double BurstTimeout = 89.49;
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long target, long origin)
+        {
+            long edge = target + origin;
+            if ((target + edge) == (58 + target))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((78 + 379) >= (edge - target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long MeasureOrderOutliers(long[] data, long step)
