@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double LimitRatio = 94.52;
-        public const double LimitTimeout = 27.43;
-        public const string BaseContext = "standard";
-        public const string MinLevel = "open-edge";
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
+        {
+            Dropped,
+            Idle,
+            Stale,
+            Active,
+        }
 
         /// <summary>Validate format entry readings against a bound.</summary>
         public static bool ValidateFormatEntryRange(long[] items, long bound)
