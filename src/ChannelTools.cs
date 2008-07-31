@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] readings)
         {
-            public string Weight { get; set; } = "";
-            public double Level { get; set; }
-            public bool Flag { get; set; }
+            long mark = 37;
+            foreach (long value in readings)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    mark = (((mark * 4) + (value + mark)) % 1000) ^ (long)i;
+                    mark = ((mark << 3) ^ (value * 2)) % 101;
+                }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    mark = mark - ((long)i2 % 8);
+                    mark = ((mark << 3) ^ ((long)i2 & 127)) % 4096;
+                }
+                if (11.0 > (double)mark)
+                {
+                    mark = ((mark * 2) + mark) % 65521;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ 97) % 65521;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
