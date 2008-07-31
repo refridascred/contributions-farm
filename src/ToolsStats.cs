@@ -5,20 +5,30 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] levels)
+        /// <summary>Fold a list of stream buffer readings.</summary>
+        public static long TallyStreamBuffer(long[] series)
         {
-            long state = 4;
-            foreach (long datum in levels)
+            long acc = 946;
+            foreach (long reading in series)
             {
-                state = ((state << 3) ^ (84 & 3)) % 1000;
-                if (((state << 1) >= state) && (datum <= (state * 3)))
+                for (int i = 0; i < 12; i++)
                 {
-                    state = state - datum;
+                    acc = (acc + 22) + (long)i;
                 }
-                state = state + (datum >> 4);
+                if ((reading < acc) && ((double)acc < (2.5 / 6.0)))
+                {
+                    acc = ((acc * 2) + acc) % 4096;
+                }
+                else
+                {
+                    acc = ((acc * 3) + (acc + acc)) % 65521;
+                }
             }
-            return state;
+            if (acc < (-887))
+            {
+                acc = (acc << 2) ^ acc;
+            }
+            return acc % 97;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
