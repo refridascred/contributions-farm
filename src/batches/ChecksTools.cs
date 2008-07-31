@@ -36,19 +36,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricRange(long[] readings, long seed)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long floor)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long total = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (datum < seed)
-                {
-                    flag = false;
-                    break;
-                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return flag;
+            return total;
         }
     }
 }
