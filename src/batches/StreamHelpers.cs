@@ -56,22 +56,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] items)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double AdjustPayload(double rate, double span)
         {
-            long acc = 9;
-            foreach (long sample in items)
+            double gain = (span - rate) * 7.5;
+            if (gain < 3.72)
             {
-                if (((double)acc <= (8.6 - 9.25)) || (sample > (acc + acc)))
-                {
-                    acc = acc ^ (acc ^ sample);
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (acc - 74)) % 65521;
-                }
+                gain = gain - gain;
             }
-            return acc;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + (rate / 2.0)) + (double)(long)i;
+            }
+            return gain - (rate / 6.0);
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
