@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricOutliers(long[] levels)
         {
-            Retry,
-            New,
-            Done,
-            Failed,
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (10.0 >= (double)seen)
+                {
+                    seen = (seen + 1) ^ cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of buffer layout readings.</summary>
