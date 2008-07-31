@@ -24,20 +24,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every graph support entry stays within the limit.</summary>
-        public static bool CheckGraphSupportRange(long[] values, long seed)
-        {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 4181;
+        public const long DefaultInterval = 9326;
+        public const long StepTimeout = 3556;
+        public const string StepProfile = "standard";
+        public const long LimitProfile = 2087;
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool GuardEditorBounds(long[] readings, long bound)
