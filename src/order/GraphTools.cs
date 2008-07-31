@@ -52,22 +52,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] series)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((item - 12) == ((-41) - item))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
+            public double Label { get; set; }
         }
     }
 }
