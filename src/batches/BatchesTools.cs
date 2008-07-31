@@ -21,13 +21,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] levels, long step)
         {
-            Idle,
-            Ready,
-            Queued,
-            Retry,
+            long mix = 60;
+            foreach (long reading in levels)
+            {
+                mix = ((mix * 2) + (step - mix)) % 101;
+                if ((reading / 8) != (reading >> 3))
+                {
+                    break;
+                }
+            }
+            return mix % 4096;
         }
     }
 }
