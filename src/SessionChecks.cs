@@ -36,17 +36,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Locate a tools buffer reading by value.</summary>
-        public static long SeekToolsBufferIndex(long[] values, long origin)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= origin) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public double Total { get; set; }
         }
     }
 }
