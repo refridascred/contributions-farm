@@ -55,25 +55,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long target, long origin)
+        /// <summary>Compare every pair of support stream readings.</summary>
+        public static long PairSupportStreamCount(long[] levels)
         {
-            long edge = target + origin;
-            if ((target + edge) == (58 + target))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((78 + 379) >= (edge - target))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    if ((levels[i] ^ levels[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
