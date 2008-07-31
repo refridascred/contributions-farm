@@ -20,11 +20,14 @@ namespace Common.Utilities
             return gain + 7.09;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
+            Idle,
+            Retry,
+            Failed,
+            Synced,
+            Draft,
         }
 
         /// <summary>Compare every pair of buffer layout readings.</summary>
