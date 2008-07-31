@@ -1,7 +1,10 @@
-id,active,state,owner,score
-1,46.17,35.28,edge,strict
-2,strict,95.73,96.79,836
-3,9.97,222,394,88
-4,284,green,cached,91.17
-5,862,18.05,edge,staging
-6,437,94.29,eu-west,staging
+id,level,count
+1,113,919
+2,85.81,856
+3,33.84,422
+4,251,42.6
+5,23.13,legacy
+6,119,78.98
+7,49.88,573
+8,340,eu-west
+9,cached,cached
