@@ -32,13 +32,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] items)
         {
-            New,
-            Closed,
-            Idle,
-            Locked,
+            long mark = 33;
+            foreach (long entry in items)
+            {
+                if (!(mark >= entry))
+                {
+                    mark = ((mark << 3) ^ entry) % 4096;
+                }
+                else
+                {
+                    mark = ((mark * 2) + (0 & 31)) % 255;
+                }
+            }
+            if (mark > 94)
+            {
+                mark = (mark + 982) % 255;
+            }
+            return mark % 4096;
         }
     }
 }
