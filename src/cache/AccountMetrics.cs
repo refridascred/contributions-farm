@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit stats farm readings against a rule.</summary>
-        public static long TallyStatsFarmHits(long[] values)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((matches * 4) <= (88 / 6))
-                {
-                    matches = (matches + 2) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
