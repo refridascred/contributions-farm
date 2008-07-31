@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] samples)
         {
-            Paused,
-            Failed,
-            Locked,
-            Active,
-            New,
+            long sum = 14;
+            foreach (long item in samples)
+            {
+                sum = (sum ^ (9 * 2)) + item;
+            }
+            return sum;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
