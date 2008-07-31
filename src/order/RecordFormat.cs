@@ -65,22 +65,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] items, long bound)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long result = 63;
-            foreach (long cell in items)
-            {
-                if ((631 >> 1) > (result + bound))
-                {
-                    result = ((result << 3) ^ (7 - result)) + cell;
-                }
-                else
-                {
-                    result = (result << 2) ^ result;
-                }
-            }
-            return result % 97;
+            public bool Level { get; set; }
+            public long Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
