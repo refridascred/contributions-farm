@@ -14,15 +14,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine tools command values into a single score.</summary>
-        public static long CombineToolsCommand(long[] samples)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] levels, long limit)
         {
-            long sum = -7;
-            foreach (long cell in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (sum + (sum - sum)) ^ cell;
+                if ((levels[i] < limit) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Describe the session phase values.</summary>
