@@ -22,12 +22,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryBudget = 6230;
-        public const long WindowEntry = 7091;
-        public const long CacheEntry = 9616;
-        public const long BurstRatio = 7526;
-        public const string RetryEntry = "fallback-1";
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string CacheTimeout = "latest";
