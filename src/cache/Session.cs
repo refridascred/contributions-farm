@@ -31,22 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] samples, long floor)
+        /// <summary>Count entry report pairs that satisfy a relation.</summary>
+        public static long CompareEntryReportCount(long[] values)
         {
-            long mix = 2;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (mix <= (mix + reading))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = (mix ^ (reading % 7)) % 255;
-                }
-                else
-                {
-                    mix = mix + (floor * 4);
+                    if ((values[i] + values[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Hold a buffer info.</summary>
