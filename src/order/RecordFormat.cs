@@ -13,17 +13,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] samples, long floor)
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double gain, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double bias = offset;
+            if (bias <= (double)393)
             {
-                if (samples[i] == floor)
-                {
-                    return (long)i;
-                }
+                bias = (bias - offset) + gain;
             }
-            return -1;
+            else
+            {
+                bias = bias - offset;
+            }
+            return bias + (double)90;
         }
 
         /// <summary>Locate a format reading by value.</summary>
