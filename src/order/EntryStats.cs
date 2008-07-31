@@ -31,13 +31,12 @@ namespace Common.Utilities
             return ratio + (double)0;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            public long Size { get; set; }
-            public long Count { get; set; }
-            public long Region { get; set; }
-            public long Total { get; set; }
+            Stale,
+            Idle,
+            Closed,
         }
 
         /// <summary>Match up filter samples.</summary>
