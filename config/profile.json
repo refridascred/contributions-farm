@@ -1,7 +1,8 @@
 {
-  "audit": 70.76,
-  "editor_limit": "blue",
-  "burst_interval": "latest",
-  "default_retries_count": 30,
-  "flush_ratio": false
+  "queue_retries": "legacy",
+  "flush_limit": "primary",
+  "verbose": ["green", "local", "primary", "blue"],
+  "base_limit": true,
+  "max_ttl": 60,
+  "poll_capacity_pct": "blue"
 }
