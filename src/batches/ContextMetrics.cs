@@ -21,13 +21,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long limit)
         {
-            Done,
-            Draft,
-            Locked,
-            Queued,
+            long mix = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
