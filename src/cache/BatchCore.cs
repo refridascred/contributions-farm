@@ -30,20 +30,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long SeriesEntry(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                if (limit <= state)
-                {
-                    state = state - limit;
-                }
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxSpan = 8476;
+        public const string BurstMetrics = "cached-v2";
+        public const double MinSize = 59.13;
+        public const long CacheMetrics = 5755;
+        public const string HardMetrics = "staging-1";
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool CheckOrderBounds(long[] items, long origin)
