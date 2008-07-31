@@ -22,11 +22,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            public long Limit { get; set; }
-            public long Rank { get; set; }
+            public long Token { get; set; }
+            public long Size { get; set; }
         }
     }
 }
