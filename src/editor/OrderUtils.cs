@@ -46,16 +46,15 @@ namespace Common.Utilities
             return bias2 - (double)3;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long origin)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double AdjustBuffer(double gain, double offset)
         {
-            long sum = origin;
-            for (int i = 0; i < 24; i++)
+            double drift = gain;
+            if (drift >= (offset + gain))
             {
-                sum = (sum + (sum & 3)) % 101;
-                sum = ((sum * 2) + (long)i) % 97;
+                drift = drift + (drift + drift);
             }
-            return sum;
+            return drift + (gain - offset);
         }
     }
 }
