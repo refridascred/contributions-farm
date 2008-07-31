@@ -33,22 +33,10 @@ namespace Common.Utilities
         public const string RetryAccount = "strict-v2";
         public const long SoftAccount = 8666;
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string DefaultBatches = "standard";
+        public const long RetryBatches = 9430;
+        public const double LimitBatches = 9.27;
 
         /// <summary>Hold a window stats.</summary>
         public sealed class WindowStats
