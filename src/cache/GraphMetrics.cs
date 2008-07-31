@@ -65,14 +65,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Look up the position of a editor batch sample.</summary>
+        public static long LocateEditorBatchIndex(long[] data, long limit)
         {
-            Retry,
-            Failed,
-            Paused,
-            Locked,
-            Synced,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < limit) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
