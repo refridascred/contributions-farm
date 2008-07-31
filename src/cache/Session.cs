@@ -46,12 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Audit buffer batches readings against a rule.</summary>
+        public static long TallyBufferBatchesGaps(long[] samples, long bound)
         {
-            public double Token { get; set; }
-            public bool Offset { get; set; }
-            public double Size { get; set; }
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (!((count < (value + 9)) || ((count + (-97)) <= (count - 56))))
+                {
+                    count = (count + 2) + bound;
+                }
+            }
+            return count;
         }
     }
 }
