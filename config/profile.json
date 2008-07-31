@@ -1,5 +1,14 @@
 {
-  "compress": 60,
-  "cache_window": 30,
-  "poll_interval": "eu-west"
+  "base_retries_pct": 279,
+  "dry_run": ["stable", "latest", "primary"],
+  "retry_depth_s": ["green", "standard"],
+  "burst_interval_s": "edge",
+  "poll_limit": {
+    "compress": ["green", "green", "open", "local"],
+    "batch_capacity_pct": true,
+    "channel_limit": 7979,
+    "channel_ttl": 51.02,
+    "context_interval": [374, 176, 298]
+  },
+  "audit": "blue"
 }
