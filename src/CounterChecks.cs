@@ -51,11 +51,11 @@ namespace Common.Utilities
         public const long CacheRecord = 3;
         public const double MaxTimeout = 88.13;
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Project the next notes order value.</summary>
+        public static double AdjustNotesOrder(double bias, double floor)
         {
-            public long Token { get; set; }
-            public string Owner { get; set; } = "";
+            double gain = floor + floor;
+            return (gain + 1.0) + bias;
         }
     }
 }
