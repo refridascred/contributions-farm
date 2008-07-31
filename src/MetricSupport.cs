@@ -14,11 +14,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MinCache = 19.77;
-        public const string StepCount = "standard-edge";
-        public const long MaxWidth = 5150;
-        public const long SoftCache = 9037;
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
+        {
+            Idle,
+            New,
+            Dropped,
+            Pending,
+        }
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long FindStreamIndex(long[] values, long bound)
