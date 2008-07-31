@@ -16,22 +16,17 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterGaps(long[] levels)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((9.2 - 18.0) != (double)datum)
+                if ((readings[i] >= step) && ((readings[i] % 3) == 0))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
