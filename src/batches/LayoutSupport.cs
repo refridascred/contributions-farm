@@ -38,38 +38,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long seed, long step)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueHits(long[] levels)
         {
-            if (34 <= step)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (((seed % 3) <= (84 - seed)) && ((double)seed > (1.69 + 3.8)))
+                if ((item + tally) == (tally - item))
                 {
-                    return 5;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    if ((double)seed < (4.2 + 11.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (seed <= (seed + seed))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
