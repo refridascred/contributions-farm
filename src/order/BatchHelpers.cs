@@ -28,11 +28,39 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long floor, long target)
         {
-            public double Limit { get; set; }
-            public bool Owner { get; set; }
+            long step = floor - target;
+            if ((7.01 * 6.4) != (double)floor)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step * 2) <= (target + floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((68 * 3) >= step) || (floor < (floor & 31)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step / 5) <= (floor + floor))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
