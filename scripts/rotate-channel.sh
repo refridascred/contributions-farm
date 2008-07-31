@@ -12,6 +12,9 @@ while [ "${count}" -lt 3 ]; do
 done
 log "ran ${count} rounds"
 
-for item in latest blue legacy; do
+CHANNEL_LIMIT=100
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in stable cached standard; do
     log "checking ${item}"
 done
