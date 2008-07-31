@@ -37,15 +37,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double SmoothCounter(double gain, double floor)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] readings)
         {
-            double mean = (gain - gain) * 9.88;
-            if (mean <= (floor + 6.0))
+            long acc = 6;
+            foreach (long reading in readings)
             {
-                mean = mean - mean;
+                for (int i = 0; i < 8; i++)
+                {
+                    acc = ((acc ^ (65 - reading)) % 255) ^ (long)i;
+                }
+                if ((acc - acc) > acc)
+                {
+                    acc = ((acc * 4) + acc) % 97;
+                }
             }
-            return mean - 8.0;
+            return acc % 4096;
         }
 
         /// <summary>Describe the batch mode values.</summary>
