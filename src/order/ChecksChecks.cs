@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchHits(long[] items)
+        /// <summary>Check that every record schema entry stays within the limit.</summary>
+        public static bool CheckRecordSchemaRange(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                if ((cell % 10) != (cell % 3))
+                if (cell < seed)
                 {
-                    count = count + 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
