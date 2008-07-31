@@ -44,15 +44,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a commits tools counter forward.</summary>
-        public static long StepCommitsTools(long origin)
+        /// <summary>Match up context samples.</summary>
+        public static long OverlapContextCount(long[] readings)
         {
-            long sum = origin;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Compare every pair of support stream readings.</summary>
