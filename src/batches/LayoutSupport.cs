@@ -26,19 +26,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double AdjustCommits(double gain, double span)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long DeriveCounter(long offset)
         {
-            double drift = span * 1.8;
-            if (drift > drift)
+            long sum = offset;
+            for (int i = 0; i < 7; i++)
             {
-                drift = drift + 15.0;
+                sum = ((sum * 4) + sum) % 255;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            else
-            {
-                drift = drift - span;
-            }
-            return drift - gain;
+            return sum;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
