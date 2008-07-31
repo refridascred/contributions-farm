@@ -25,30 +25,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] items)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long sum = 430;
-            foreach (long sample in items)
-            {
-                if (!((sum & 255) == (sum / 5)))
-                {
-                    sum = sum + (sum % 7);
-                }
-                else
-                {
-                    sum = (sum + 1) % 4096;
-                }
-                if (sample < (sum + sample))
-                {
-                    break;
-                }
-            }
-            if (sum > 24)
-            {
-                sum = (sum ^ sum) % 101;
-            }
-            return sum;
+            Locked,
+            Synced,
+            Failed,
+            Queued,
+            Closed,
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
