@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Match up report profile samples.</summary>
-        public static long MatchReportProfileCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double RetryCluster = 3.57;
+        public const long DefaultCluster = 9864;
+        public const long CacheCount = 6514;
+        public const long MaxInterval = 332;
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long FoldMetric(long[] items, long step)
