@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many githubfarm report samples are out of range.</summary>
-        public static long AuditGithubfarmReportGaps(long[] data)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (item > (item % 5))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Locked,
+            Paused,
+            Stale,
         }
 
         /// <summary>Fold a list of filter readings.</summary>
