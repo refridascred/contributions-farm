@@ -33,13 +33,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            Active,
-            Stale,
-            Idle,
-            Failed,
+            public string Owner { get; set; } = "";
+            public long Weight { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
