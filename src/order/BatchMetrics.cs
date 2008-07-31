@@ -82,11 +82,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseDepth = 4322;
-        public const long CacheInterval = 904;
-        public const string DefaultBudget = "open-v2";
-        public const long HardOrder = 2674;
-        public const double BatchWidth = 42.68;
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
+        {
+            Pending,
+            New,
+            Done,
+        }
     }
 }
