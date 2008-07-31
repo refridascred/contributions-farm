@@ -63,19 +63,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate checks record readings against a bound.</summary>
-        public static bool GuardChecksRecordLimits(long[] values, long bound)
-        {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryOrder = 3738;
+        public const string DefaultOrder = "cached-v2";
+        public const long HardOrder = 5900;
     }
 }
