@@ -15,11 +15,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleWidth = 8258;
-        public const long BaseDepth = 671;
-        public const long RetryReport = 3396;
-        public const long HardSpan = 4159;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseTimeout = 9243;
+        public const double BurstChannel = 9.41;
+        public const long IdleChannel = 3100;
 
         /// <summary>Classify a checks payload pair into a bucket.</summary>
         public static long SortChecksPayload(long target, long floor)
