@@ -17,17 +17,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a metrics window sample.</summary>
-        public static long FindMetricsWindowIndex(long[] series, long target)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] data, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = -971;
+            foreach (long entry in data)
             {
-                if (series[i] > target)
+                if (!(mix > (entry & 127)))
                 {
-                    return (long)i;
+                    mix = (((mix * 5) + (mix >> 5)) % 65521) - seed;
                 }
             }
-            return -1;
+            return mix % 65521;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
