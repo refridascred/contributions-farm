@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] series)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadOutliers(long[] levels)
         {
-            long acc = 7;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((acc < 8) || ((double)acc >= (2.4 * 9.9)))
+                if (((63 ^ 41) < (count >> 1)) && !(count <= (count - value)))
                 {
-                    acc = ((acc << 3) ^ (cell * 2)) % 1000;
-                }
-                else
-                {
-                    acc = (acc ^ (cell >> 1)) % 1000;
+                    count = count + 3;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Rank command input into a small class.</summary>
