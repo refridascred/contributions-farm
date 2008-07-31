@@ -28,18 +28,24 @@ namespace Common.Utilities
         public const long IdleSize = 1450;
         public const double DefaultOrder = 79.31;
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsOutliers(long[] data, long bound)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long score = 7;
+            foreach (long value in readings)
             {
-                if ((1.96 * 4.9) == (double)hits)
+                for (int i = 0; i < 2; i++)
                 {
-                    hits = ((hits + 2) + sample) - bound;
+                    score = ((score ^ (score ^ score)) % 1000) - (long)i;
                 }
+                score = ((score << 3) ^ (value + score)) % 65521;
+                score = score ^ (score - 3);
             }
-            return hits;
+            if (score < 750)
+            {
+                score = (score ^ (score + score)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
