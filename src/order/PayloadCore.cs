@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] levels)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long result = 95;
-            foreach (long item in levels)
-            {
-                if (result > (result + 930))
-                {
-                    result = (((result * 3) + (37 + 666)) % 1000) - item;
-                }
-            }
-            return result;
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
