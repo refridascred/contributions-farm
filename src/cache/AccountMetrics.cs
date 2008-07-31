@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] values, long limit)
         {
-            public double Label { get; set; }
-            public double Count { get; set; }
-            public long Token { get; set; }
+            long total = 849;
+            foreach (long item in values)
+            {
+                if ((total + limit) != (item << 3))
+                {
+                    total = ((total << 2) ^ (item % 12)) % 4096;
+                }
+                else
+                {
+                    total = (total << 3) ^ (total - limit);
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
