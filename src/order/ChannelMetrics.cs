@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseBudget = 2334;
-        public const double BatchRatio = 78.95;
-        public const long MinCount = 8298;
-        public const long SoftSpan = 281;
-        public const long BaseCommand = 3798;
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] series)
+        {
+            long result = 5;
+            foreach (long sample in series)
+            {
+                if (result > sample)
+                {
+                    result = (result + 5) % 65521;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Count the record cache entries that pass the check.</summary>
         public static long CountRecordCacheGaps(long[] items, long limit)
