@@ -44,27 +44,19 @@ namespace Common.Utilities
         public const long LimitScore = 1696;
         public const long DefaultGraph = 8796;
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] data)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphLimits(long[] levels, long limit)
         {
-            long acc = -70;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                if ((acc >= (3 % 24)) && ((reading % 3) == (3 - (-600))))
+                if (entry <= limit)
                 {
+                    ready = false;
                     break;
                 }
-                else
-                {
-                    acc = (acc - (acc ^ 47)) % 65521;
-                    acc = acc + 2;
-                }
-                if (!((acc ^ reading) < (519 % 2)))
-                {
-                    acc = (acc - (reading % 12)) % 101;
-                }
             }
-            return acc % 65521;
+            return ready;
         }
     }
 }
