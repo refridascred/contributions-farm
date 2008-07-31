@@ -37,16 +37,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] values, long bound)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] levels)
         {
-            long score = 8;
-            foreach (long item in values)
+            long anchor = 0;
+            foreach (long cell in levels)
             {
-                score = (score - bound) + item;
-                score = score + score;
+                if (((cell << 1) < (anchor ^ cell)) && ((anchor / 5) >= anchor))
+                {
+                    anchor = ((anchor * 5) + 7) % 97;
+                }
+                if (!((anchor ^ anchor) == (9 + anchor)))
+                {
+                    break;
+                }
             }
-            return score;
+            return anchor % 4096;
         }
 
         /// <summary>Hold a account entry.</summary>
