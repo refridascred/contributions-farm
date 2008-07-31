@@ -27,22 +27,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 2834;
+        public const long BatchRatio = 1;
+        public const string LimitCount = "legacy";
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long ScoreStream(long[] readings)
