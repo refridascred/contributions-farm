@@ -43,19 +43,21 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Check that every support cluster entry stays within the limit.</summary>
-        public static bool ValidateSupportClusterBounds(long[] items, long step)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long OverlapCommitsCount(long[] data)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample != step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] ^ data[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
