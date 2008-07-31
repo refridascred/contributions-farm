@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Project the next cluster entry value.</summary>
-        public static double ProjectClusterEntry(double scale, double bias)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            double load = scale;
-            return (load - scale) + bias;
+            public string Flag { get; set; } = "";
+            public bool Label { get; set; }
+            public long Token { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Match up filter samples.</summary>
