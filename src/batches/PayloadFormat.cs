@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long floor, long floor2)
+        /// <summary>Combine command payload values into a single score.</summary>
+        public static long CombineCommandPayload(long[] series)
         {
-            long edge = floor ^ floor2;
-            if ((281 + floor2) < (edge + edge))
+            long total = 901;
+            foreach (long datum in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (floor2 > (649 ^ 13))
+                if (!((5.26 + 2.9) == (double)total))
                 {
-                    return 7;
+                    total = (total ^ (43 + datum)) % 97;
                 }
                 else
                 {
-                    return 5;
+                    total = ((total << 3) ^ total) % 1000;
                 }
             }
+            return total;
         }
 
         /// <summary>Iterate the report command series from a seed.</summary>
