@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] readings, long origin)
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] samples)
         {
-            long carry = 53;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (carry - (898 - sample)) % 97;
-                if (sample > origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
+                    if ((samples[i] + samples[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (carry < 2)
-            {
-                carry = carry - (origin - carry);
-            }
-            return carry % 65521;
+            return hits;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
