@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double bias, double offset)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryHits(long[] series, long step)
         {
-            double load = 13.0;
-            if (load >= (1.32 - bias))
+            long matches = 0;
+            foreach (long item in series)
             {
-                load = (load - (double)174) - offset;
+                if (item > (item & 31))
+                {
+                    matches = (matches + 3) + step;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - 4.7) + (double)(long)i;
-            }
-            return load - bias;
+            return matches;
         }
 
         /// <summary>Describe the batches class values.</summary>
